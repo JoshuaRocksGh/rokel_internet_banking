@@ -21,32 +21,41 @@
                         <div class="col-md-6">
                             <form action="#">
                                 <div class="form-group">
-                                    <label>Date</label>
+                                    <label>Acount Number</label>
                                     <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000">
                                     {{--  <span class="font-13 text-muted">e.g "DD/MM/YYYY"</span>  --}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Hour</label>
+                                    <label>Account Name</label>
                                     <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00:00:00">
                                     {{--  <span class="font-13 text-muted">e.g "HH:MM:SS"</span>  --}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Date & Hour</label>
+                                    <label>Beneficiary Name</label>
                                     <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00">
                                     {{--  <span class="font-13 text-muted">e.g "DD/MM/YYYY HH:MM:SS"</span>  --}}
                                 </div>
                                 <div class="form-group">
-                                    <label>ZIP Code</label>
+                                    <label>Beneficiary Email</label>
                                     <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00000-000">
                                     {{--  <span class="font-13 text-muted">e.g "xxxxx-xxx"</span>  --}}
+                                    <label class="custom-control-label" for="checkmeout0">Check me out !</label>
+
                                 </div>
+                                <div class="form-group">
+                                <label class="custom-control-label" for="checkmeout">Check me out !</label>
+
+                                </div>
+
                                 <div class="form-group">
                                     <label>Crazy Zip Code</label>
                                     <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="0-00-00-00">
                                     {{--  <span class="font-13 text-muted">e.g "x-xx-xx-xx"</span>  --}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Money</label>
+                                    {{--  <label>Money</label>  --}}
+                                    <label class="custom-control-label" for="checkmeout0">Check me out !</label>
+
                                     <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="000.000.000.000.000,00" data-reverse="true">
                                     {{--  <span class="font-13 text-muted">e.g "Your money"</span>  --}}
                                 </div>
@@ -58,6 +67,13 @@
                                 <button class="btn btn-primary" type="submit">Submit form</button>
                             </form>
                         </div> <!-- end col -->
+
+
+                        <div class="col-md-6">
+                            <img src="{{ asset('assets/images/send.png') }}" class="img-fluid" alt="" >
+                       </div> <!-- end col -->
+
+
 
                     </div>
                     <!-- end row -->
