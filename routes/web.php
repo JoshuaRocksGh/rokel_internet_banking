@@ -26,7 +26,10 @@ Route::get('/reset-password', [loginController::class, 'reset_password'])->name(
 
 Route::get('/forget-password', [loginController::class, 'forget_password'])->name('forget-password');
 
+// Transfer Routes
 Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
+Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
+
 
 
 

@@ -11,4 +11,10 @@ class transferController extends Controller
     {
         return view('pages.transfer.transfer');
     }
+    public function add_beneficiary()
+    {
+        // return "Add Beneficiary Page";
+        return view('pages.transfer.add_beneficiary');
+    }
+
 }
