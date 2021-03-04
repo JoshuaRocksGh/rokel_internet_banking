@@ -6,13 +6,29 @@
 <div class="container-fluid">
     <br><br>
 
-
+    {{--  <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                        <li class="breadcrumb-item active">Masks</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Form Masks</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+  --}}
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <i class="fe-arrow-left"></i> &nbsp; <br>
-                    <h4 class="header-title">Same Bank</h4>
+                    <h4 class="header-title">Input Masks</h4>
                     <p class="sub-header font-13">
                         A jQuery Plugin to make masks on form fields and HTML elements.
                     </p>
@@ -53,11 +69,15 @@
                                 <div class="form-group">
                                     <label>Money 2</label>
                                     <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="#.##0,00" data-reverse="true">
-                                    {{--  <span class="font-13 text-muted">e.g "#.##0,00"</span>  --}}
+                                    <span class="font-13 text-muted">e.g "#.##0,00"</span>
                                 </div>
                                 <button class="btn btn-primary" type="submit">Submit form</button>
                             </form>
                         </div> <!-- end col -->
+
+                        <div class="col-md-6">
+                            <img src="{{ asset('assets/images/transfer1.png') }}" class="img-fluid" alt="" >
+                       </div> <!-- end col -->
 
                     </div>
                     <!-- end row -->

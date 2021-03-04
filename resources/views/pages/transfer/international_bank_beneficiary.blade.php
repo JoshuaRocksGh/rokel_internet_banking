@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-body">
                     <i class="fe-arrow-left"></i> &nbsp; <br>
-                    <h4 class="header-title">Same Bank</h4>
+                    <h4 class="header-title">International Bank</h4>
                     <p class="sub-header font-13">
                         A jQuery Plugin to make masks on form fields and HTML elements.
                     </p>
@@ -58,6 +58,13 @@
                                 <button class="btn btn-primary" type="submit">Submit form</button>
                             </form>
                         </div> <!-- end col -->
+
+
+                        <div class="col-md-6">
+                            <img src="{{ asset('assets/images/world.png') }}" class="img-fluid" alt="" >
+                       </div> <!-- end col -->
+
+
 
                     </div>
                     <!-- end row -->
