@@ -28,11 +28,11 @@ Route::get('/forget-password', [loginController::class, 'forget_password'])->nam
 
 
 // Transfer Routes
-Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
+// Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
 Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
-Route::get('/add-beneficiary/same-bank', [transferController::class, 'same_bank'])->name('same-bank');
-Route::get('/add-beneficiary/local-bank', [transferController::class, 'local_bank'])->name('local-bank');
-Route::get('/add-beneficiary/international-bank', [transferController::class, 'international_bank'])->name('international-bank');
+Route::get('/add-beneficiary/same-bank-beneficiary', [transferController::class, 'same_bank'])->name('same-bank-beneficiary');
+Route::get('/add-beneficiary/local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
+Route::get('/add-beneficiary/international-bank-beneficiary', [transferController::class, 'international_bank'])->name('international-bank-beneficiary');
 
 
 

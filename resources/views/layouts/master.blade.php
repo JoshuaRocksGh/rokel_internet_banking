@@ -15,6 +15,17 @@
 
         @include('snippets.style')
 
+
+        <style type="text/css">
+            .purple-color{
+                color: #7e57c2!important;
+             }
+             .btn-color {
+                 background-color: #7e57c2;
+                 color: white;
+             }
+        </style>
+
 </head>
 
 <body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
