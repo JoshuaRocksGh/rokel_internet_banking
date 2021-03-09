@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
+use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\transferController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 
-Route::get('/login', [loginController::class, 'login'])->name('login');
+Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
 
 Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
 
@@ -49,6 +51,6 @@ Route::get('/international-bank', [transferController::class, 'international_ban
 
 
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

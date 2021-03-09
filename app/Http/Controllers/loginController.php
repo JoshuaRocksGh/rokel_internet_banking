@@ -9,8 +9,8 @@ class loginController extends Controller
     //
     public function login()
     {
-        return "Welcome";
-        // return view('login');
+        // return "Welcome";
+        return view('login');
     }
 
     public function reset_password()

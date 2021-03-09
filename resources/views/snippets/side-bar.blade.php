@@ -49,30 +49,12 @@
                 {{--  <li class="menu-title">Navigation</li>  --}}
 
                 <li>
-                    <a href="#sidebarDashboards" data-toggle="collapse">
+                    <a href="{{ url('home') }}">
                         <i data-feather="home" class="icon-dual-activity"></i>
-                        {{--  <span class="badge badge-info badge-pill float-right">4</span>
-                          --}}
-                        <span> Home</span>
+                        <span> Home </span>
                     </a>
-                    {{--  <div class="collapse" id="sidebarDashboards">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="index.html">Dashboard 1</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-2.html">Dashboard 2</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-3.html">Dashboard 3</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-4.html">Dashboard 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                      --}}
                 </li>
+
 {{--
                 <li class="menu-title mt-2">Apps</li>  --}}
 
@@ -371,6 +353,13 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+
+                <li>
+                    <a href="{{ url('login') }}">
+                        <i data-feather="power" class="icon-dual-activity"></i>
+                        <span> Logout </span>
+                    </a>
                 </li>
 
                 {{--  Start Comment  --}}
