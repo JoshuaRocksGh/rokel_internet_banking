@@ -2,7 +2,7 @@
 <div class="navbar-custom">
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-right mb-0">
-
+{{--
             <li class="d-none d-lg-block">
                 <form class="app-search">
                     <div class="app-search-box dropdown">
@@ -70,8 +70,8 @@
                         </div>
                     </div>
                 </form>
-            </li>
-
+            </li>  --}}
+{{--
             <li class="dropdown d-inline-block d-lg-none">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-search noti-icon"></i>
@@ -81,14 +81,14 @@
                         <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
                     </form>
                 </div>
-            </li>
-
+            </li>  --}}
+{{--
             <li class="dropdown d-none d-lg-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
                     <i class="fe-maximize noti-icon"></i>
                 </a>
-            </li>
-
+            </li>  --}}
+{{--
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-grid noti-icon"></i>
@@ -141,8 +141,8 @@
                     </div>
 
                 </div>
-            </li>
-
+            </li>  --}}
+{{--
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ asset('assets/images/flags/us.jpg') }}" alt="user-image" height="16">
@@ -170,7 +170,7 @@
                     </a>
 
                 </div>
-            </li>
+            </li>  --}}
 
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">

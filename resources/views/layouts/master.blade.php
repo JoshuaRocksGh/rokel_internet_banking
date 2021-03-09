@@ -24,6 +24,12 @@
                  background-color: #7e57c2;
                  color: white;
              }
+             .p-text {
+                 color: white;
+             }
+             .card-icon{
+                 color: white;
+             }
         </style>
 
 </head>

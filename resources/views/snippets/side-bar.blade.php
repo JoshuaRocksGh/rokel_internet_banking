@@ -50,7 +50,7 @@
 
                 <li>
                     <a href="#sidebarDashboards" data-toggle="collapse">
-                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <i data-feather="home" class="icon-dual-activity"></i>
                         {{--  <span class="badge badge-info badge-pill float-right">4</span>
                           --}}
                         <span> Home</span>
@@ -99,13 +99,17 @@
                     <div class="collapse" id="sidebarEcommerce">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="ecommerce-dashboard.html">Own Account</a>
+                                <a href="{{ url('own-account') }}">Own Account</a>
                             </li>
                             <li>
-                                <a href="ecommerce-products.html">Other Local Bank</a>
+                                <a href="{{ url('same-bank') }}">Same Bank</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('other-local-bank') }}">Other Local Bank</a>
                             </li>
                             <li>
-                                <a href="ecommerce-product-detail.html">International Bank</a>
+                                <a href="{{ url('international-bank') }}">International Bank</a>
                             </li>
                             <li>
                                 <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>

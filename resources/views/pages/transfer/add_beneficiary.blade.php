@@ -13,11 +13,13 @@
                     <div class="card-body">
                         <h3 class="text-white" >Same Bank</h3>
                         {{--  <i class="mdi mdi-cart-outline text-white" style="font-size: 200px"></i>  --}}
-                        <i class="dripicons-export text-white" style="font-size: 100px"></i>
+                        {{--  <i class="dripicons-export text-white" style="font-size: 100px"></i>  --}}
+                        <i data-feather="refresh-cw" class="icons-xxl card-icon"></i>
+
                         <blockquote class="card-bodyquote">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                            <p class="p-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
                                 erat a ante.</p>
-                            <footer>Someone famous in <cite title="Source Title">Source Title</cite>
+                            <footer class="p-text">Someone famous in <cite title="Source Title">Source Title</cite>
                             </footer>
                         </blockquote>
                     </div>
@@ -32,11 +34,15 @@
                     <a href="{{ url('add-beneficiary/local-bank-beneficiary') }}">
                     <div class="card-body">
                         <h3 class="text-white">Other Local Bank</h3>
-                        <i class="fas fa-external-link-alt" style="font-size: 100px"></i>
+                        {{--  <i class="fas fa-external-link-alt" style="font-size: 100px"></i>  --}}
+                        {{--  <i data-feather="feather-repeat" class="icons-xxl"></i>  --}}
+                        <i data-feather="repeat" class="icons-xxl card-icon"></i>
+
+
                         <blockquote class="card-bodyquote">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                            <p class="p-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
                                 erat a ante.</p>
-                            <footer>Someone famous in <cite title="Source Title">Source Title</cite>
+                            <footer class="p-text">Someone famous in <cite title="Source Title">Source Title</cite>
                             </footer>
                         </blockquote>
                     </div>
@@ -50,10 +56,11 @@
                     <a href="{{ url('add-beneficiary/international-bank-beneficiary') }}">
                     <div class="card-body">
                         <h3 class="text-white">International Bank</h3>
+                        <i data-feather="globe" class="icons-xxl card-icon"></i>
                         <blockquote class="card-bodyquote">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                            <p class="p-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
                                 erat a ante.</p>
-                            <footer>Someone famous in <cite title="Source Title">Source Title</cite>
+                            <footer class="p-text">Someone famous in <cite title="Source Title">Source Title</cite>
                             </footer>
                         </blockquote>
                     </div>
