@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\transferController;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 
 Route::get('/login', [loginController::class, 'login'])->name('login');
 
@@ -50,4 +52,3 @@ Route::get('/international-bank', [transferController::class, 'international_ban
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
