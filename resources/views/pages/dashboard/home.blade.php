@@ -39,7 +39,7 @@
 
         <div class="row">
 
-            <div class="col-md-6 col-xl-12">
+            <div class="col-md-6 col-xl-6">
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
 
@@ -52,7 +52,7 @@
                             <div class="col-md-6 col-xl-12">
                                 <div class="card-box">
                                     {{--  <h4 class="header-title mb-4">Tabs Justified</h4>  --}}
-        
+
                                     <ul class="nav nav-pills navtab-bg nav-justified">
                                         <li class="nav-item">
                                             <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link active">
