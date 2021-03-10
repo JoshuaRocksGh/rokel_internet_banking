@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class transferController extends Controller
 {
@@ -16,6 +18,11 @@ class transferController extends Controller
     {
         // return "Add Beneficiary Page";
         return view('pages.transfer.add_beneficiary');
+    }
+
+    public function own_account_beneficiary()
+    {
+        return view('pages.transfer.own_account_beneficiary');
     }
 
     public function same_bank_beneficiary()
@@ -33,8 +40,11 @@ class transferController extends Controller
         return view('pages.transfer.international_bank_beneficiary');
     }
 
-    public function own_account(){
+    public function own_account(Request $request){
+        Alert::success('Transaction Successful', 'Success Message');
         return view('pages.transfer.own_account');
+
+
     }
 
     public function same_bank(){
