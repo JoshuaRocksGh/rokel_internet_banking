@@ -38,6 +38,7 @@
 
     <!-- Begin page -->
     <div id="wrapper">
+           @include('sweetalert::alert')
 
             @include('snippets.nav')
 
