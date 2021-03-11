@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('styles', )
+@section('styles')
     <style>
 
     </style>
@@ -12,13 +12,13 @@
 
     <!-- Start Content-->
     <div class="container-fluid">
-
+    <legend></legend>
         <!-- start page title -->
         <div class="row" style="zoom: 0.8;">
             <div class="col-12">
-                <div class="page-title-box">
+                <div class="">
                     <div class="page-title-right">
-                        <form class="form-inline">
+                        {{--  <form class="form-inline">
                             <div class="form-group">
                                 <div class="input-group input-group-sm">
                                     <input type="text" class="form-control border" id="dash-daterange">
@@ -35,9 +35,9 @@
                             <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-1">
                                 <i class="mdi mdi-filter-variant"></i>
                             </a>
-                        </form>
+                        </form>  --}}
                     </div>
-                    <h4 class="page-title">Dashboard</h4>
+                    <h5 class="page-title">MY ACCOUNTS</h5>
                 </div>
             </div>
         </div>
@@ -55,171 +55,272 @@
                 </div> <!-- end widget-rounded-circle-->
             </div> <!-- end col-->
 
-                            <div class="col-md-6 col-xl-6">
-                                <div class="card-box">
-                                    {{--  <h4 class="header-title mb-4">Tabs Justified</h4>  --}}
+            <div class="col-md-6 col-xl-6">
+                <div class="card-box">
+                    {{-- <h4 class="header-title mb-4">Tabs Justified</h4> --}}
 
-                                    <ul class="nav nav-pills navtab-bg nav-justified">
-                                        <li class="nav-item">
-                                            <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                                I HAVE
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#profile1" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                                I OWE
-                                            </a>
-                                        </li>
-                                        {{--  <li class="nav-item">
+                    <ul class="nav nav-pills navtab-bg nav-justified">
+                        <li class="nav-item">
+                            <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                I HAVE
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#profile1" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                I OWE
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
                                             <a href="#messages1" data-toggle="tab" aria-expanded="false" class="nav-link">
                                                 Messages
                                             </a>
-                                        </li>  --}}
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane show active" id="home1" style="max-height: 400px;">
+                                        </li> --}}
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="home1" style="max-height: 400px;">
 
 
-                                                <div class="border mt-0 rounded" >
-                                                    {{--  <h4 class="header-title p-2 mb-0">Order Summary</h4>  --}}
+                            <div class="border mt-0 rounded">
+                                <h4 class="header-title p-2 mb-0 text-success">MY CURRENT & SAVINGS</h4>
 
-                                                    <div class="table-responsive" >
-                                                        <table class="table table-centered table-nowrap mb-0">
-                                                            <tbody>
-                                                                <tr>
-                                                                    {{--  <td style="width: 90px;">
-                                                                        <img src="../assets/images/products/product-1.png" alt="product-img"
-                                                                            title="product-img" class="rounded" height="48" />
-                                                                    </td>  --}}
-                                                                    <td>
-                                                                        <a href="ecommerce-product-detail.html" class="text-body font-weight-semibold">Polo Navy blue T-shirt</a>
-                                                                        <small class="d-block">1 x $39</small>
-                                                                    </td>
-
-                                                                    <td class="text-right">
-                                                                        $39
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    {{--  <td>
-                                                                        <img src="../assets/images/products/product-2.png" alt="product-img"
-                                                                            title="product-img" class="rounded" height="48" />
-                                                                    </td>  --}}
-
-                                                                    <td>
-                                                                        <a href="ecommerce-product-detail.html" class="text-body font-weight-semibold">Red Hoodie for men</a>
-                                                                        <small class="d-block">2 x $46</small>
-                                                                    </td>
-                                                                    <td class="text-right">
-                                                                        $92
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    {{--  <td>
-                                                                        <img src="../assets/images/products/product-3.png" alt="product-img"
-                                                                            title="product-img" class="rounded mr-2" height="48" />
-                                                                    </td>  --}}
-                                                                    <td>
-                                                                        <a href="ecommerce-product-detail.html" class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
-                                                                        <small class="d-block">1 x $26</small>
-                                                                    </td>
-                                                                    <td class="text-right">
-                                                                        $26
-                                                                    </td>
-                                                                </tr>
-
-                                                            </tbody>
-                                                        </table>
+                                <div class="table-responsive">
+                                    <table class="table table-centered table-nowrap mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
                                                     </div>
-                                                    <!-- end table-responsive -->
-                                                </div> <!-- end .border-->
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
 
-                                        </div>
-                                        <div class="tab-pane  " id="profile1">
-                                            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                            <p class="mb-0">Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                        </div>
-                                        {{--  <div class="tab-pane" id="messages1">
-                                            <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                            <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                        </div>  --}}
+                                                <td class="text-right">
+                                                    GHS 90,039.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+                                                <td class="text-right">
+                                                    USD 5,700.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+                                                <td class="text-right">
+                                                    SLL 888.00
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+                            </div> <!-- end .border-->
+
+                        </div>
+                        <div class="tab-pane  " id="profile1">
+
+
+
+                            <div class="border mt-0 rounded">
+                                <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
+
+                                <div class="table-responsive">
+                                    <table class="table table-centered table-nowrap mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-danger">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    GHS 90,039.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-danger">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+                                                <td class="text-right">
+                                                    USD 5,700.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-danger">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+                                                <td class="text-right">
+                                                    SLL 888.00
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+                            </div> <!-- end .border-->
+
+
+                        </div>
+
+                    </div>
+                </div> <!-- end card-box-->
+            </div> <!-- end col -->
+
+
+        </div>
+        <!-- end row-->
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="">
+                    <div class="page-title-right">
+
+{{--
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control border" id="dash-daterange">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text bg-blue border-blue text-white">
+                                            <i class="mdi mdi-calendar-range"></i>
+                                        </span>
                                     </div>
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col -->
+                                </div>
+                            </div>
+                            <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-2">
+                                <i class="mdi mdi-autorenew"></i>
+                            </a>
+                            <a href="javascript: void(0);" class="btn btn-blue btn-sm ml-1">
+                                <i class="mdi mdi-filter-variant"></i>
+                            </a>
+                        </form>  --}}
 
-            <div class="col-md-6 col-xl-3">
+
+                    </div>
+                    <h6 class="page-title">QUICK TRANSACTIONS</h6>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xl-3">
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
-                        <div class="col-6">
-                            <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                                <i class="fe-heart font-22 avatar-title text-info"></i>
+                        <div class="col-4">
+                            <div class="avatar-md rounded-circle bg-soft-info border-info border">
+                                <i class="fe-smartphone font-20 avatar-title text-info"></i>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-8">
                             <div class="text-right">
-                                <h3 class="mt-1">$<span data-plugin="counterup">58,947</span></h3>
-                                <p class="text-muted mb-1 text-truncate">Total Revenue</p>
+                                <h3 class="mt-1"><span >&nbsp; Mobile Money</span></h3>
+                                {{--  <p class="text-muted mb-1 text-truncate">Total Revenue</p>  --}}
                             </div>
                         </div>
                     </div> <!-- end row-->
                 </div> <!-- end widget-rounded-circle-->
             </div> <!-- end col-->
 
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-3 col-xl-3">
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
-                        <div class="col-6">
-                            <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
-                                <i class="fe-shopping-cart font-22 avatar-title text-primary"></i>
+                        <div class="col-4">
+                            <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
+                                <i class="fe-log-out font-20 avatar-title text-primary"></i>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-8">
                             <div class="text-right">
-                                <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
-                                <p class="text-muted mb-1 text-truncate">Todays Sales</p>
+                                <h3 class="mt-1"><span >Funds Transactions</span></h3>
+                                {{--  <p class="text-muted mb-1 text-truncate">Todays Sales</p>  --}}
                             </div>
                         </div>
                     </div> <!-- end row-->
                 </div> <!-- end widget-rounded-circle-->
             </div> <!-- end col-->
 
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-3 col-xl-3">
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
-                        <div class="col-6">
-                            <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                                <i class="fe-bar-chart-line- font-22 avatar-title text-info"></i>
+                        <div class="col-4">
+                            <div class="avatar-md rounded-circle bg-soft-info border-info border">
+                                <i class="fe-send font-20 avatar-title text-info"></i>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-8">
                             <div class="text-right">
-                                <h3 class="text-dark mt-1"><span data-plugin="counterup">0.58</span>%</h3>
-                                <p class="text-muted mb-1 text-truncate">Conversion</p>
+                               <h3 class="mt-1"><span > &nbsp; All Payments</span></h3>
+                                {{--  <p class="text-muted mb-1 text-truncate">Conversion</p>  --}}
                             </div>
                         </div>
                     </div> <!-- end row-->
                 </div> <!-- end widget-rounded-circle-->
             </div> <!-- end col-->
 
-            <div class="col-md-6 col-xl-3">
+            <div class="col-md-3 col-xl-3">
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
-                        <div class="col-6">
-                            <div class="avatar-lg rounded-circle bg-soft-primary border-primary border">
-                                <i class="fe-eye font-22 avatar-title text-primary"></i>
+                        <div class="col-4">
+                            <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
+                                <i class="fe-rss font-20 avatar-title text-primary"></i>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-8">
                             <div class="text-right">
-                                <h3 class="text-dark mt-1"><span data-plugin="counterup">78.41</span>k</h3>
-                                <p class="text-muted mb-1 text-truncate">Todays Visits</p>
+                                <h3 class="mt-3"><span > &nbsp;&nbsp; Cardless</span></h3>
+                                {{--  <p class="text-muted mb-1 text-truncate">Todays Visits</p>  --}}
                             </div>
                         </div>
                     </div> <!-- end row-->
                 </div> <!-- end widget-rounded-circle-->
             </div> <!-- end col-->
         </div>
-        <!-- end row-->
 
         <div class="row">
             <div class="col-lg-4">
@@ -327,8 +428,8 @@
                             <tbody>
                                 <tr>
                                     <td style="width: 36px;">
-                                        <img src="{{ asset('assets/images/users/user-2.jpg') }}" alt="contact-img" title="contact-img"
-                                            class="rounded-circle avatar-sm" />
+                                        <img src="{{ asset('assets/images/users/user-2.jpg') }}" alt="contact-img"
+                                            title="contact-img" class="rounded-circle avatar-sm" />
                                     </td>
 
                                     <td>
@@ -358,8 +459,8 @@
 
                                 <tr>
                                     <td style="width: 36px;">
-                                        <img src="{{ asset('assets/images/users/user-3.jpg') }}" alt="contact-img" title="contact-img"
-                                            class="rounded-circle avatar-sm" />
+                                        <img src="{{ asset('assets/images/users/user-3.jpg') }}" alt="contact-img"
+                                            title="contact-img" class="rounded-circle avatar-sm" />
                                     </td>
 
                                     <td>
@@ -388,8 +489,8 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 36px;">
-                                        <img src="{{ asset('assets/images/users/user-4.jpg') }}" alt="contact-img" title="contact-img"
-                                            class="rounded-circle avatar-sm" />
+                                        <img src="{{ asset('assets/images/users/user-4.jpg') }}" alt="contact-img"
+                                            title="contact-img" class="rounded-circle avatar-sm" />
                                     </td>
 
                                     <td>
@@ -418,8 +519,8 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 36px;">
-                                        <img src="{{ asset('assets/images/users/user-5.jpg') }}" alt="contact-img" title="contact-img"
-                                            class="rounded-circle avatar-sm" />
+                                        <img src="{{ asset('assets/images/users/user-5.jpg') }}" alt="contact-img"
+                                            title="contact-img" class="rounded-circle avatar-sm" />
                                     </td>
 
                                     <td>
@@ -448,8 +549,8 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 36px;">
-                                        <img src="{{ asset('assets/images/users/user-6.jpg') }}" alt="contact-img" title="contact-img"
-                                            class="rounded-circle avatar-sm" />
+                                        <img src="{{ asset('assets/images/users/user-6.jpg') }}" alt="contact-img"
+                                            title="contact-img" class="rounded-circle avatar-sm" />
                                     </td>
 
                                     <td>
@@ -670,7 +771,7 @@
 
 
 @section('scripts')
-<!-- Plugins js-->
+    <!-- Plugins js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <script>
@@ -680,7 +781,7 @@
             data: {
                 labels: ['I HAVE', 'I OWE'],
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'MY ACCOUNTS',
                     data: [12, 19],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1)',
@@ -701,7 +802,7 @@
                     borderWidth: 1
                 }]
             },
-            options: {
+            {{-- options: {
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -709,7 +810,7 @@
                         }
                     }]
                 }
-            }
+            } --}}
         });
 
     </script>
