@@ -37,8 +37,21 @@
                                 <span class="font-13 text-muted">GHS 5000.00</span>
 
                             </div>
+
+                            <div class="mt-3">
+                                {{--  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Select Beneficiary</label>
+                                </div>  --}}
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                    <label class="custom-control-label" for="customCheck2">One Time Payment</label>
+                                </div>
+                            </div>
+                            <br>
+
                             <div class="form-group">
-                                <label>Transfer To</label>
+                                <label>Same bank beneficiaries</label>
                                 {{--  <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00:00:00">
                                 <span class="font-13 text-muted">e.g "HH:MM:SS"</span>
                                   --}}
@@ -46,10 +59,16 @@
                                   <select class="custom-select" id="to_account" required>
                                     <option value="">Select Account</option>
                                     {{--  <option value="1">Jonas Korankye - 001023468976001</option>  --}}
-                                    <option value="2" >Jonas Korankye - 001020065985369</option>
+                                    <option value="2" >Elijah Ashitey - 001020065985369</option>
+                                    <option value="2" >Racheal Quaye - 0010200625344125</option>
+                                    <option value="2" >Ato Markin - 0010200689465818</option>
+                                    <option value="2" >Kwabena Ampah - 0010200600000789</option>
+                                    <option value="2" >Joshua Amarfio - 0010200656115851</option>
+                                    <option value="2" >Gilbert Akakpo - 0010200615515519</option>
+
                                     {{--  <option value="3">Three</option>  --}}
                                 </select>
-                                <span class="font-13 text-muted">GHS 50.00</span>
+                                {{--  <span class="font-13 text-muted">GHS 50.00</span>  --}}
 
                             </div>
 
@@ -99,7 +118,7 @@
                     </div> <!-- end col -->
 
                     <div class="col-md-8">
-                            <img src="{{ asset('assets/images/wallet.png') }}" class="img-fluid" alt="" >
+                            <img src="{{ asset('assets/images/Hello.png') }}" class="img-fluid" alt="" style="opacity: 0.8;" >
                     </div> <!-- end col -->
                 </div>
                 <!-- end row -->
@@ -130,7 +149,8 @@
                                             {{--  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>  --}}
                                             From: <span class="font-13 text-primary" id="display_from_account"> &nbsp </span><br><br>
                                             To: <span class="font-13 text-muted" id="display_to_account"> &nbsp </span><br><br>
-                                            Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp </span><br><br>
+                                            Schedule Payment: <span class="font-13 text-muted" id="display_payments"> &nbsp </span><br><br>
+                                            One Time Payment: <span class="font-13 text-muted" id="display_payments2"> &nbsp </span><br><br>
                                             Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp </span><br><br>
                                             Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp </span><br><br>
                                             Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee"> </span><br><br>
@@ -197,6 +217,7 @@
             var send_from = $('#from_account').val();
             var  send_to = $('#to_account').val();
             var custom_check = $('#customCheck1').is(":checked");
+            var custom_check2 = $('#customCheck2').is(":checked");
             var  text_area = $('#textarea').val();
             var  amount = $('#amount').val();
 
@@ -210,14 +231,26 @@
             $("#display_total").text();
 
             if (custom_check == true){
-                var checked = ("Payments Scheduled")
+                var checked = ("Yes")
                 $("#display_payments").text(checked);
 
             }else{
-                var unchecked = ("No Scheduled Payments")
+                var unchecked = (" ")
                 $("#display_payments").text(unchecked);
 
             };
+
+            if (custom_check2 == true){
+                var checked = (" Yes")
+                $("#display_payments2").text(checked);
+
+            }else{
+                var unchecked = (" ")
+                $("#display_payments2").text(unchecked);
+
+            };
+
+
 
 
 {{--

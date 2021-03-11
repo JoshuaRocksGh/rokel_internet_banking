@@ -197,6 +197,7 @@
             var send_from = $('#from_account').val();
             var  send_to = $('#to_account').val();
             var custom_check = $('#customCheck1').is(":checked");
+            var custom_check2 = $('#customCheck2').is(":checked");
             var  text_area = $('#textarea').val();
             var  amount = $('#amount').val();
 
