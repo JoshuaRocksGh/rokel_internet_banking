@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Dashboard\HomeController;
-use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\transferController;
 use App\Http\Controllers\Transfers\OwnAccountController;
 use App\Http\Controllers\Transfers\SameBankController;

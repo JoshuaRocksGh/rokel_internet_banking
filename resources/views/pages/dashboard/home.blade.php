@@ -1,5 +1,11 @@
 @extends('layouts.master')
 
+@section('styles', )
+    <style>
+
+    </style>
+@endsection
+
 @section('content')
 
 
@@ -39,20 +45,20 @@
 
         <div class="row">
 
-            <div class="col-md-6 col-xl-12">
+            <div class="col-md-6 col-xl-6">
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
 
-                        <canvas id="myChart" width="400" height="300"></canvas>
+                        <canvas id="myChart" width="400" height="270"></canvas>
 
                     </div> <!-- end row-->
                 </div> <!-- end widget-rounded-circle-->
             </div> <!-- end col-->
 
-                            <div class="col-md-6 col-xl-12">
+                            <div class="col-md-6 col-xl-6">
                                 <div class="card-box">
                                     {{--  <h4 class="header-title mb-4">Tabs Justified</h4>  --}}
-        
+
                                     <ul class="nav nav-pills navtab-bg nav-justified">
                                         <li class="nav-item">
                                             <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link active">
@@ -71,11 +77,65 @@
                                         </li>  --}}
                                     </ul>
                                     <div class="tab-content">
-                                        <div class="tab-pane" id="home1">
-                                            <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                            <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                        <div class="tab-pane show active" id="home1" style="max-height: 400px;">
+
+
+                                                <div class="border mt-0 rounded" >
+                                                    {{--  <h4 class="header-title p-2 mb-0">Order Summary</h4>  --}}
+
+                                                    <div class="table-responsive" >
+                                                        <table class="table table-centered table-nowrap mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    {{--  <td style="width: 90px;">
+                                                                        <img src="../assets/images/products/product-1.png" alt="product-img"
+                                                                            title="product-img" class="rounded" height="48" />
+                                                                    </td>  --}}
+                                                                    <td>
+                                                                        <a href="ecommerce-product-detail.html" class="text-body font-weight-semibold">Polo Navy blue T-shirt</a>
+                                                                        <small class="d-block">1 x $39</small>
+                                                                    </td>
+
+                                                                    <td class="text-right">
+                                                                        $39
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    {{--  <td>
+                                                                        <img src="../assets/images/products/product-2.png" alt="product-img"
+                                                                            title="product-img" class="rounded" height="48" />
+                                                                    </td>  --}}
+
+                                                                    <td>
+                                                                        <a href="ecommerce-product-detail.html" class="text-body font-weight-semibold">Red Hoodie for men</a>
+                                                                        <small class="d-block">2 x $46</small>
+                                                                    </td>
+                                                                    <td class="text-right">
+                                                                        $92
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    {{--  <td>
+                                                                        <img src="../assets/images/products/product-3.png" alt="product-img"
+                                                                            title="product-img" class="rounded mr-2" height="48" />
+                                                                    </td>  --}}
+                                                                    <td>
+                                                                        <a href="ecommerce-product-detail.html" class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
+                                                                        <small class="d-block">1 x $26</small>
+                                                                    </td>
+                                                                    <td class="text-right">
+                                                                        $26
+                                                                    </td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- end table-responsive -->
+                                                </div> <!-- end .border-->
+
                                         </div>
-                                        <div class="tab-pane show active" id="profile1">
+                                        <div class="tab-pane  " id="profile1">
                                             <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
                                             <p class="mb-0">Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
                                         </div>

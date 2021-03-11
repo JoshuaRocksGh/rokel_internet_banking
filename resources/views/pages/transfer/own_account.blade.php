@@ -2,26 +2,19 @@
 
 @section('content')
 
-<div class="container-fluid">
-<br><br>
-
+<legend></legend>
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Own Account Transfer</h4>
-                {{--  <p class="sub-header font-13 purple-color">
-                    Account Details
-                </p>  --}}
-
                 <div class="row">
                     <div class="col-md-4">
                         <form action="#" id="payment_details_form">
                             <p class="sub-header font-18 purple-color">
                                 Payment Details
                             </p>
-
                             <div class="form-group">
                                 <label>Transfer From</label>
                                 {{--  <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000">

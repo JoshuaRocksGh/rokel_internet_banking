@@ -30,11 +30,32 @@
              .card-icon{
                  color: white;
              }
+
+             /* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(188, 108, 214) rgb(217, 217, 216);
+  }
+
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgb(217, 217, 216);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color:rgb(188, 108, 214);
+    border-radius: 20px;
+    border: 3px solid rgb(217, 217, 216);
+  }
         </style>
 
 </head>
 
-<body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+<body style="zoom: 0.9;" class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
     <!-- Begin page -->
     <div id="wrapper">
