@@ -41,7 +41,7 @@ class transferController extends Controller
     }
 
     public function own_account(Request $request){
-        Alert::success('Transaction Successful', 'Success Message');
+        // Alert::success('Transaction Successful', 'Success Message');
         return view('pages.transfer.own_account');
 
 

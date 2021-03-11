@@ -5,6 +5,8 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\transferController;
+use App\Http\Controllers\Transfers\OwnAccountController;
+use App\Http\Controllers\Transfers\SameBankController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,12 +43,13 @@ Route::get('/add-beneficiary/international-bank-beneficiary', [transferControlle
 
 
 // OWN ACCOUNT
-Route::get('/own-account', [transferController::class, 'own_account'])->name('own-account');
-Route::post('/submit-own-account-transfer', [transferController::class, 'submit_own_account_transfer'])->name('submit-own-account-transfer');
+Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('own-account');
+Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submit_own_account_transfer'])->name('submit-own-account-transfer');
+
+// SAME ACCOUNT
+Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
 
 
-
-Route::get('/same-bank', [transferController::class, 'same_bank'])->name('same-bank');
 Route::get('/other-local-bank', [transferController::class, 'other_local_bank'])->name('other-local-bank');
 Route::get('/international-bank', [transferController::class, 'international_bank_'])->name('international-bank');
 

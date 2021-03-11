@@ -17,7 +17,7 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <form action="#">
+                        <form action="#" id="payment_details_form">
                             <p class="sub-header font-18 purple-color">
                                 Payment Details
                             </p>
@@ -28,7 +28,7 @@
                                 <span class="font-13 text-muted">e.g "DD/MM/YYYY"</span>
                                   --}}
 
-                                  <select class="custom-select "  id="from_account">
+                                  <select class="custom-select "  id="from_account" required>
                                     <option  value="">Select Account</option>
                                     <option value="1" >Jonas Korankye - 001023468976001</option>
                                     {{--  <option value="2">Jonas Korankye - 001020065985369</option>  --}}
@@ -43,7 +43,7 @@
                                 <span class="font-13 text-muted">e.g "HH:MM:SS"</span>
                                   --}}
 
-                                  <select class="custom-select" id="to_account">
+                                  <select class="custom-select" id="to_account" required>
                                     <option value="">Select Account</option>
                                     {{--  <option value="1">Jonas Korankye - 001023468976001</option>  --}}
                                     <option value="2" >Jonas Korankye - 001020065985369</option>
@@ -65,7 +65,7 @@
 
                             <div class="form-group">
                                 <label class="font-16 purple-color">Enter Amount</label>
-                                <input type="text" class="form-control" id="amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+                                <input type="text" class="form-control" id="amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" required>
                                 {{--  <span class="font-13 text-muted">e.g "(xx) xxxxx-xxxx"</span>  --}}
                             </div>
 
@@ -99,7 +99,7 @@
                     </div> <!-- end col -->
 
                     <div class="col-md-8">
-                            <img src="{{ asset('assets/images/fill.png') }}" class="img-fluid" alt="" >
+                            <img src="{{ asset('assets/images/wallet.png') }}" class="img-fluid" alt="" >
                     </div> <!-- end col -->
                 </div>
                 <!-- end row -->
@@ -114,7 +114,7 @@
                             <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                    <form action="POST">
+                                    <form action="POST" id="confirm_details">
                                         <div class="modal-header">
                                             <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm Details</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -147,7 +147,7 @@
 
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-target="#multiple-two" data-toggle="modal" data-dismiss="modal">Send</button>
+                                            <button type="send" id="send" class="btn btn-primary" data-target="#multiple-two" data-toggle="modal" data-dismiss="modal">Send</button>
                                         </div>
                                     </form>
                                     </div><!-- /.modal-content -->
@@ -194,12 +194,13 @@
     $(document).ready(function(){
 
         $("#payment_submit").click(function(){
-
             var send_from = $('#from_account').val();
             var  send_to = $('#to_account').val();
             var custom_check = $('#customCheck1').is(":checked");
             var  text_area = $('#textarea').val();
             var  amount = $('#amount').val();
+
+            {{--  console.log(send_from,send_to,custom_check,text_area,amount)  --}}
 
             $("#display_from_account").text(send_from);
             $("#display_to_account").text(send_to);
@@ -218,29 +219,33 @@
 
             };
 
-            $.ajax({
-                type: "POST"
-                url: "transfer"
-                data: {
-                    send_from: send_from,
-                    send_to: send_to,
-                    cashier_id: cashier_id,
-                    text_area: text_area,
-                    amount: amount,
-                    cashier_id: cashier_id
 
-                },
-                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-                success: function(){
-                    Swal.fire(
-                        'Post Successful',
-                        ' ',
-                        'success'
-                    )
-                }
-            })
+{{--
+            $('#confrim_details').send(function(e){
+                $.ajax({
+                    type: "POST"
+                    url: "submit-own-account-transfer"
+                    data: {
+                        "send_from" : send_from,
+                        "send_to" : send_to,
+                        "cashier_id" : cashier_id,
+                        "text_area" : text_area,
+                        "amount" : amount,
+                        "cashier_id" : cashier_id
+                    },
+                     headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                    success: function(){
+                        Swal.fire(
+                            'Post Successful',
+                            ' ',
+                            'success'
+                        )
+                    }
+                })
+
+            })  --}}
 
         });
       });
