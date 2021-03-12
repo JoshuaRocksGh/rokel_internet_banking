@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\transferController;
+use App\Http\Controllers\Transfers\LocalBankController;
 use App\Http\Controllers\Transfers\OwnAccountController;
 use App\Http\Controllers\Transfers\SameBankController;
 use Illuminate\Support\Facades\Route;
@@ -50,15 +51,12 @@ Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submi
 Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
 
 
-Route::get('/other-local-bank', [transferController::class, 'other_local_bank'])->name('other-local-bank');
+// LOCAL BANK
+Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
+
+
+
 Route::get('/international-bank', [transferController::class, 'international_bank_'])->name('international-bank');
-
-
-
-
-
-
-
 
 
 

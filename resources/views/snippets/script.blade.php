@@ -2,7 +2,7 @@
 <!-- Vendor js -->
 <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
-
+<script src="{{ asset('land_asset/js/jquery.min.js') }}"></script>
 <!-- Plugins js-->
 <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
