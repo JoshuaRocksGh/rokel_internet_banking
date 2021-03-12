@@ -77,11 +77,7 @@
         <div class="auth-fluid-right text-center">
             <div class="auth-user-testimonial">
                 <div class="row">
-                    <div class="col-lg-2">
-                        <div class="avatar-lg rounded-circle bg-soft-info border-info border">
-                            <i class="fe-heart font-22 avatar-title text-info"></i>
-                        </div>
-                    </div>
+                    <div class="col-lg-2"></div>
                     <div class="col-lg-4">
                         <div class="text-center card-box">
                             <div class="pt-2 pb-2">
