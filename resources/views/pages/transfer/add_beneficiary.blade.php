@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <br><br>
             <div class="row">
-                <div class="col-md-4" >
+                <div class="col-md-3" >
                     <div class="card text-white bg-warning text-xs-center">
                     <a href="{{ url('add-beneficiary/own-account-beneficiary') }}">
                         <div class="card-body">
@@ -28,7 +28,7 @@
                 </div> <!-- end col -->
 
 
-            <div class="col-md-4" >
+            <div class="col-md-3" >
                 <div class="card text-white bg-danger text-xs-center">
                 <a href="{{ url('add-beneficiary/same-bank-beneficiary') }}">
                     <div class="card-body">
@@ -50,7 +50,7 @@
 
 
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card text-white bg-success text-xs-center">
                     <a href="{{ url('add-beneficiary/local-bank-beneficiary') }}">
                     <div class="card-body">
@@ -72,7 +72,7 @@
             </div> <!-- end col -->
 
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card text-white bg-info text-xs-center">
                     <a href="{{ url('add-beneficiary/international-bank-beneficiary') }}">
                     <div class="card-body">

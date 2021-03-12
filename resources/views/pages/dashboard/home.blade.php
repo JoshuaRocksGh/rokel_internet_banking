@@ -49,7 +49,7 @@
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
 
-                        <canvas id="myChart" width="400" height="270"></canvas>
+                        <canvas id="myChart" width="400" height="300"></canvas>
 
                     </div> <!-- end row-->
                 </div> <!-- end widget-rounded-circle-->
@@ -77,15 +77,63 @@
                                         </li> --}}
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane show active" id="home1" style="max-height: 400px;">
+                        <div class="tab-pane show active" id="home1" >
 
 
-                            <div class="border mt-0 rounded">
+                            <div class="border mt-0 rounded"  >
                                 <h4 class="header-title p-2 mb-0 text-success">MY CURRENT & SAVINGS</h4>
 
-                                <div class="table-responsive">
+                                <div class="table-responsive" style="height: 275px;">
                                     <table class="table table-centered table-nowrap mb-0">
                                         <tbody>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    GHS 90,039.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    GHS 90,039.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    GHS 90,039.00
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td style="width: 10px;">
                                                     <div class="avatar-sm rounded bg-soft-info">
@@ -148,7 +196,7 @@
                             <div class="border mt-0 rounded">
                                 <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
 
-                                <div class="table-responsive">
+                                <div class="table-responsive" style="height: 275px;">
                                     <table class="table table-centered table-nowrap mb-0">
                                         <tbody>
                                             <tr>
