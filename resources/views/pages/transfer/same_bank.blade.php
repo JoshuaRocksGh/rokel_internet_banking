@@ -147,14 +147,14 @@
                                         <div class="modal-body">
                                             {{--  <h5 class="mt-0">Text in a modal</h5>  --}}
                                             {{--  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>  --}}
-                                            From: <span class="font-13 text-primary" id="display_from_account"> &nbsp </span><br><br>
-                                            To: <span class="font-13 text-muted" id="display_to_account"> &nbsp </span><br><br>
-                                            Schedule Payment: <span class="font-13 text-muted" id="display_payments"> &nbsp </span><br><br>
-                                            One Time Payment: <span class="font-13 text-muted" id="display_payments2"> &nbsp </span><br><br>
-                                            Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp </span><br><br>
-                                            Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp </span><br><br>
-                                            Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee"> </span><br><br>
-                                            Total: <span class="font-13 text-muted" id="display_total"> &nbsp </span><br><br>
+                                            From: &nbsp;   <span class="font-18 text-primary" id="display_from_account"> &nbsp </span><br><br>
+                                            To: &nbsp;  <span class="font-18 text-muted" id="display_to_account"> &nbsp </span><br><br>
+                                            Schedule Payment: &nbsp;    <span class="font-18 text-muted" id="display_payments"> &nbsp </span><br><br>
+                                            One Time Payment: &nbsp;    <span class="font-18 text-muted" id="display_payments2"> &nbsp </span><br><br>
+                                            Amount: &nbsp;  <span class="font-18 text-muted" id="display_amount"> &nbsp </span><br><br>
+                                            Naration: &nbsp;    <span class="font-18 text-muted" id="display_naration"> &nbsp </span><br><br>
+                                            Transaction fee: &nbsp; <span class="font-18 text-muted" id="display_trasaction_fee"> </span><br><br>
+                                            Total: &nbsp;   <span class="font-18 text-muted" id="display_total"> &nbsp </span><br><br>
 
                                         <div class="form-group">
                                             <label class="font-16 purple-color">Enter Pin</label>

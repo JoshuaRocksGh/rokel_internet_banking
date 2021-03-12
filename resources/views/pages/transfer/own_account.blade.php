@@ -2,19 +2,26 @@
 
 @section('content')
 
-<legend></legend>
+<div class="container-fluid">
+<br><br>
+
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
                 <h4 class="header-title">Own Account Transfer</h4>
+                {{--  <p class="sub-header font-13 purple-color">
+                    Account Details
+                </p>  --}}
+
                 <div class="row">
                     <div class="col-md-4">
                         <form action="#" id="payment_details_form">
                             <p class="sub-header font-18 purple-color">
                                 Payment Details
                             </p>
+
                             <div class="form-group">
                                 <label>Transfer From</label>
                                 {{--  <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000">
@@ -121,13 +128,13 @@
                                         <div class="modal-body">
                                             {{--  <h5 class="mt-0">Text in a modal</h5>  --}}
                                             {{--  <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>  --}}
-                                            From: <span class="font-13 text-primary" id="display_from_account"> &nbsp </span><br><br>
-                                            To: <span class="font-13 text-muted" id="display_to_account"> &nbsp </span><br><br>
-                                            Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp </span><br><br>
-                                            Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp </span><br><br>
-                                            Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp </span><br><br>
-                                            Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee"> </span><br><br>
-                                            Total: <span class="font-13 text-muted" id="display_total"> &nbsp </span><br><br>
+                                            From: <span class="font-18 text-primary" id="display_from_account"> &nbsp </span><br><br>
+                                            To: <span class="font-18 text-muted" id="display_to_account"> &nbsp </span><br><br>
+                                            Schedule Payments: <span class="font-18 text-muted" id="display_payments"> &nbsp </span><br><br>
+                                            Amount: <span class="font-18 text-muted" id="display_amount"> &nbsp </span><br><br>
+                                            Naration: <span class="font-18 text-muted" id="display_naration"> &nbsp </span><br><br>
+                                            Transaction fee: <span class="font-18 text-muted" id="display_trasaction_fee"> </span><br><br>
+                                            Total: <span class="font-18 text-muted" id="display_total"> &nbsp </span><br><br>
 
                                         <div class="form-group">
                                             <label class="font-16 purple-color">Enter Pin</label>
@@ -190,7 +197,6 @@
             var send_from = $('#from_account').val();
             var  send_to = $('#to_account').val();
             var custom_check = $('#customCheck1').is(":checked");
-            var custom_check2 = $('#customCheck2').is(":checked");
             var  text_area = $('#textarea').val();
             var  amount = $('#amount').val();
 
