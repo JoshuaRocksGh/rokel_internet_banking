@@ -130,13 +130,13 @@
                     <div class="collapse" id="sidebarCrm">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="crm-dashboard.html">Saved Beneficiary</a>
+                                <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
                             </li>
                             <li>
-                                <a href="crm-contacts.html">One Time</a>
+                                <a href="#">One Time</a>
                             </li>
                             <li>
-                                <a href="crm-opportunities.html">Add Beneficiary</a>
+                                <a href="{{ url('payment-add-beneficiary') }}">Add Beneficiary</a>
                             </li>
 
 {{--
@@ -149,6 +149,7 @@
                               --}}
                         </ul>
                     </div>
+
                 </li>
 
                 <li>

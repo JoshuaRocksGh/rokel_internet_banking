@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <legend></legend>
+<div    <legend></legend>
 
     <div class="row">
         <div class="col-12">
@@ -377,7 +377,7 @@
         <script>
             $(document).ready(function() {
 
-                {{-- hide seleect accounts info --}}
+                {{-- hide select accounts info --}}
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
                 $("#schedule_payment_date").hide()
