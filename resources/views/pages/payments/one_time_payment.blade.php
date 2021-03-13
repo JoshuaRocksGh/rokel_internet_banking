@@ -9,12 +9,12 @@
             <div class="row">
                 <div class="col-md-3" >
                     <div class="card text-white bg-warning text-xs-center" >
-                    <a href="{{ url('/saved-beneficiary/mobile-money-payment') }}" >
+                    <a href="#" >
                         <div class="card-body">
                             <h3 class="text-white" >Mobile Money</h3>
                             {{--  <i class="mdi mdi-cart-outline text-white" style="font-size: 200px"></i>  --}}
                             {{--  <i class="dripicons-export text-white" style="font-size: 100px"></i>  --}}
-                            {{--  <i data-feather="refresh-cw" class="icons-xxl card-icon" ></i>  --}}
+                            {{--  <i data-feather="refresh-cw" class="icons-xxl card-icon"></i>  --}}
                             <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i>
 
                             <blockquote class="card-bodyquote">
@@ -54,7 +54,7 @@
 
             <div class="col-md-3">
                 <div class="card text-white bg-success text-xs-center">
-                    <a href="{{ url('/saved-beneficiary/utility-payment') }}">
+                    <a href="#">
                     <div class="card-body">
                         <h3 class="text-white">Utility Payment</h3>
                         {{--  <i class="fas fa-external-link-alt" style="font-size: 100px"></i>  --}}

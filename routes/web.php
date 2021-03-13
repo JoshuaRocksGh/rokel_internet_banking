@@ -68,6 +68,18 @@ Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentContr
 // SAVED BENEFICIARY
 Route::get('/saved-beneficiary', [paymentController::class, 'saved_beneficiary'])->name('saved-beneficiary');
 
+// SAVED BENEFICIARY MOBILE MONEY
+Route::get('/saved-beneficiary/mobile-money-payment', [paymentController::class, 'mobile_money_payment'])->name('/saved-beneficiary/mobile-money-payment');
+
+// SAVED BENEFICIARY AIRTIME
+
+
+// SAVED BENEFICIARY UTILITY
+Route::get('/saved-beneficiary/utility-payment', [paymentController::class, 'utility_payment'])->name('/saved-beneficiary/utility-payment');
+
+
+// ONE TIME
+Route::get('/one-time-payment', [paymentController::class, 'one_time'])->name('one-time-payment');
 
 
 // Auth::routes();

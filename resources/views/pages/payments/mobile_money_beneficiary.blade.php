@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title"><a href="{{ url('add-beneficiary') }}"><i class="fe-arrow-left"></i></a> Mobile Money Beneficiary</h4><br>
+                    <h4 class="header-title"><a href="{{ url('payment-add-beneficiary') }}"><i class="fe-arrow-left"></i></a> Mobile Money Beneficiary</h4><br>
                     <p class="sub-header font-13">
                         Add a new beneficiary purposely for Mobile Money Payments
                     </p>

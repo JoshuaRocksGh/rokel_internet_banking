@@ -50,7 +50,8 @@
 
                 <li>
                     <a href="{{ url('home') }}">
-                        <i data-feather="home" class="icon-dual-activity"></i>
+                        {{--  <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i>  --}}
+                        <i class="mdi mdi-home-outline"></i>
                         <span> Home </span>
                     </a>
                 </li>
@@ -133,7 +134,7 @@
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
                             </li>
                             <li>
-                                <a href="#">One Time</a>
+                                <a href="{{ url('one-time-payment') }}">One Time</a>
                             </li>
                             <li>
                                 <a href="{{ url('payment-add-beneficiary') }}">Add Beneficiary</a>
@@ -214,7 +215,7 @@
 
                 <li>
                     <a href="#sidebarTasks" data-toggle="collapse">
-                        <i class="mdi mdi-clipboard-multiple-outline"></i>
+                        <i class="mdi mdi-credit-card-multiple-outline"></i>
                         <span> Cards </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -253,7 +254,8 @@
 
                 <li>
                     <a href="#sidebarTickets" data-toggle="collapse">
-                        <i class="mdi mdi-lifebuoy"></i>
+                        {{--  <i class="mdi mdi-lifebuoy"></i>  --}}
+                        <i class="mdi mdi-map-marker-outline"></i>
                         <span> Branch Locator </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -280,7 +282,8 @@
 
                 <li>
                     <a href="#sidebarAuth" data-toggle="collapse">
-                        <i class="mdi mdi-account-circle-outline"></i>
+                        {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
+                        <i class="mdi mdi-chat-processing-outline"></i>
                         <span> Chatbot  </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -301,7 +304,8 @@
 
                 <li>
                     <a href="#sidebarExpages" data-toggle="collapse">
-                        <i class="mdi mdi-text-box-multiple-outline"></i>
+                        {{--  <i class="mdi mdi-text-box-multiple-outline"></i>  --}}
+                        <i class="mdi mdi-cog-outline"></i>
                         <span> Settings </span>
                         <span class="menu-arrow"></span>
                     </a>

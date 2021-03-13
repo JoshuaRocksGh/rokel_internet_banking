@@ -26,4 +26,18 @@ class paymentController extends Controller
     {
         return view("pages.payments.saved_beneficiary");
     }
+
+    public function mobile_money_payment()
+    {
+        return view("pages.payments.mobile_money_saved_beneficiary");
+    }
+
+    public function utility_payment(){
+        return view("pages.payments.utility_saved_beneficiary");
+    }
+
+    public function one_time()
+    {
+        return view("pages.payments.one_time_payment");
+    }
 }
