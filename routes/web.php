@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
+use App\Http\Controllers\Corporate\Approvals\PendingController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\Payments\paymentController;
@@ -80,6 +81,11 @@ Route::get('/saved-beneficiary/utility-payment', [paymentController::class, 'uti
 
 // ONE TIME
 Route::get('/one-time-payment', [paymentController::class, 'one_time'])->name('one-time-payment');
+
+// ? CORPORATE ROUTE
+Route::get('/approvals-pending', [PendingController::class, 'approvals_pending'])->name('approvals-pending');
+Route::get('/approvals-pending-transfer-details', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details');
+
 
 
 // Auth::routes();

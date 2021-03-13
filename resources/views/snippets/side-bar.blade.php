@@ -1,5 +1,5 @@
 <!-- ========== Left Sidebar Start ========== -->
-<div class="left-side-menu">
+<div class="left-side-menu" style="zoom:1;">
 
     <div class="h-100" data-simplebar>
 
@@ -279,6 +279,30 @@
                 </li>  --}}
 {{--
                 <li class="menu-title mt-2">Custom</li>  --}}
+
+
+                <li>
+                    <a href="#approvals" data-toggle="collapse">
+                        {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
+                        <i class="mdi mdi-checkbox-multiple-marked-outline"></i>
+                        <span> Apprpvals  </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="approvals">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ url('approvals-pending') }}">Pending</a>
+                            </li>
+                            <li>
+                                <a href="#">Approved</a>
+                            </li>
+                            <li>
+                                <a href="#">Rejected</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
                 <li>
                     <a href="#sidebarAuth" data-toggle="collapse">
