@@ -92,8 +92,10 @@ Route::get('/approvals-pending-transfer-details', [PendingController::class, 'ap
 // BRANCH LOCATOR LIST VIEW
 Route::get('branch-locator',[branchLocatorController::class,'branch_locator'])->name('branch-locator');
 
-// ACCOUNT SERVICES
+// ACCOUNT CREATION
 Route::get('/account-creation',[accountCreationController::class,'account_creation'])->name('account-creation');
+Route::get('/account-creation/savings-account-creation',[accountCreationController::class,'savings_account_creation'])->name('/account-creation/savings-account-creation');
+
 
 // Auth::routes();
 

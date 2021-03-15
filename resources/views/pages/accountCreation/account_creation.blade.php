@@ -18,7 +18,7 @@
                 <h3 class="card-title" style="text-align: center">SAVINGS ACCOUNT</h3>
                 <p class="card-text" style="text-align: center">An Interest earning Savings Account, tailored
                     to suit the lifestyle demands of customers</p>
-                <a href="#" class="btn btn-outline-primary waves-effect waves-light">Apply</a>
+                <a href="{{ url('/account-creation/savings-account-creation') }}" class="btn btn-outline-primary waves-effect waves-light">Apply</a>
             </div>
         </div>
         <div class="col-lg-4">

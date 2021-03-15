@@ -10,6 +10,11 @@ class accountCreationController extends Controller
     //
     public function account_creation()
     {
-        return view('pages.accountServices.account_creation');
+        return view('pages.accountCreation.account_creation');
+    }
+
+    public function savings_account_creation()
+    {
+        return view('pages.accountCreation.savings_account_creation');
     }
 }
