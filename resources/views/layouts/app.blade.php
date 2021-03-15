@@ -18,7 +18,7 @@
     <body class="loading auth-fluid-pages pb-0">
 
 
-        @yield('content')
+                @yield('content')
 
         {{--  @include('snippets.footer')  --}}
 
