@@ -74,12 +74,12 @@
                 </li>  --}}
 
                 <li>
-                    <a href="#sidebarEcommerce" data-toggle="collapse">
+                    <a href="#sidebarTransfer" data-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
                         <span> Transfer </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarEcommerce">
+                    <div class="collapse" id="sidebarTransfer">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ url('own-account') }}">Own Account</a>
@@ -123,12 +123,61 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarCrm" data-toggle="collapse">
+                    <a href="#sidebarTransfer" data-toggle="collapse">
+                        <i class="mdi mdi-cart-outline"></i>
+                        <span> Transfer </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarTransfer">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ url('own-account') }}">Own Account</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('same-bank') }}">Same Bank</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('other-local-bank') }}">Other Local Bank</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('international-bank') }}">International Bank</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>
+                            </li>
+
+{{--
+                            <li>
+                                <a href="ecommerce-customers.html">Customers</a>
+                            </li>
+                            <li>
+                                <a href="ecommerce-orders.html">Orders</a>
+                            </li>
+                            <li>
+                                <a href="ecommerce-order-detail.html">Order Detail</a>
+                            </li>
+                            <li>
+                                <a href="ecommerce-sellers.html">Sellers</a>
+                            </li>
+                            <li>
+                                <a href="ecommerce-cart.html">Shopping Cart</a>
+                            </li>
+                            <li>
+                                <a href="ecommerce-checkout.html">Checkout</a>
+                            </li>
+                              --}}
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#sidebarBeneficiary" data-toggle="collapse">
                         <i class="mdi mdi-account-multiple-outline"></i>
                         <span>Payments </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarCrm">
+                    <div class="collapse" id="sidebarBeneficiary">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
