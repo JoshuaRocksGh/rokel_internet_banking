@@ -2,14 +2,14 @@
 
 
 @section('content')
+@include('snippets.top_navbar', ['page_title' => 'SAVINGS ACCOUNT OPENING'])
 
-<legend></legend>
+
+
+<div class="container"></div>
+    <legend></legend>
 <br>
-
-<div class="container">
-    <p class="sub-header font-18 purple-color">
-        SAVINGS ACCOUNT CREATION
-    </p>
+    <legend></legend>
 
     <div class="row">
 
@@ -481,8 +481,13 @@
                             <div class="col-lg-12">
                                 <div class="">
                                     <div class="card-body">
+                                        <p class="sub-header font-18 purple-color">
+                                            SAVINGS ACCOUNT CREATION
+                                        </p>
+<hr>
                                         <div class="row">
                                             <div class="col-lg-4">
+                                                <br><br>
                                                 <div class="nav nav-pills flex-column navtab-bg nav-pills-tab text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                                     <a class="nav-link active show py-2" id="custom-v-pills-billing-tab" data-toggle="pill" href="#custom-v-pills-billing" role="tab" aria-controls="custom-v-pills-billing"
                                                         aria-selected="true">
@@ -578,6 +583,7 @@
                                                  --}}
                                             </div> <!-- end col-->
                                             <div class="col-lg-8">
+
                                                 <div class="tab-content p-3">
                                                     <div class="tab-pane fade active show" id="custom-v-pills-billing" role="tabpanel" aria-labelledby="custom-v-pills-billing-tab">
                                                         <div>

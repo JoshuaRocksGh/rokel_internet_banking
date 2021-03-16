@@ -2,16 +2,21 @@
 
 @section('content')
 
-<legend></legend>
-<br>
+@include('snippets.top_navbar', ['page_title' => 'ACCOUNT OPENING'])
 
 
-<div class="container">
-    <p class="sub-header font-18 purple-color">
-        ACCOUNT CREATION
-    </p>
+
+<div class="container"></div>
+
 
     <div class="row">
+        <legend></legend>
+        <br>
+            <legend></legend>
+            <p class="sub-header font-18 purple-color">
+                <br>
+            </p>
+            <br>
         <div class="col-lg-4">
             <div class="card card-body">
                 <i class="mdi mdi-account-plus-outline  mdi-48px" style="margin-left: 40%"></i>
