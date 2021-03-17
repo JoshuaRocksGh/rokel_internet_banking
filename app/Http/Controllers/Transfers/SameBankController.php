@@ -10,7 +10,7 @@ class SameBankController extends Controller
     //
 
     public function same_bank(){
-        return view('pages.transfer.same_bank');
+        return view('pages.transfer.same_bank_');
     }
 
 }

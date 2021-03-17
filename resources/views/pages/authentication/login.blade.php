@@ -136,9 +136,10 @@
 
                                 <i class=" fas fa-map-marked-alt text-primary font-22" style="font-size: 100px;"></i>
 
-                                <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">Branches</a></h4>
+                                <h4 class="mt-3 font-16">Branches</h4>
+                                <a href="{{ url('branches') }}" class="text-dark">
                                 <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
-                                    Here</button>
+                                    Here</button></a>
 
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->
