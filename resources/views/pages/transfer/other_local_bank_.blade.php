@@ -13,7 +13,7 @@
 
                         <div class="col-md-8">
                             <p class="sub-header font-18 purple-color">
-                                MY OWN ACCOUNT TRANSFER
+                                OTHER LOCAL BANK TRANSFER
 
                             </p>
                             <hr>
@@ -26,7 +26,7 @@
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="h6">Transfer From</label>
+                                            <label class="">Transfer From</label>
 
 
                                             <select class="custom-select " id="from_account" required>
@@ -60,14 +60,21 @@
                                             </table>
 
 
+                                            <div class="mt-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                    <label class="custom-control-label" for="customCheck2">One Time Payment</label>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="form-group">
-                                            <label class="h6">Transfer To</label>
+                                            <label class="">Other Local bank beneficiaries</label>
 
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Currenct Account~Joshua Tetteh~8888888888888~USD~800">
-                                                    Currenct Account ~ 8888888888888 </option>
+                                                <option value="Standard Chartered~Joshua Tetteh~Standard Chartered~ ">
+                                                    Joshua Tetteh ~ 11111111111111 </option>
                                             </select>
 
 
@@ -156,7 +163,7 @@
 
                                 <div class="col-md-5 text-center" style="margin-top: 80px;">
 
-                                    <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5">
+                                    <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5">
                                 </div> <!-- end col -->
 
 
