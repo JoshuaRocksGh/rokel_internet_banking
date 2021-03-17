@@ -41,7 +41,7 @@
                                             <tr>
                                                 <td style="width: 10px;">
                                                     <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
+                                                        <i class="dripicons-map font-12 avatar-title text-info"></i> 
                                                     </div>
                                                 </td>
                                                 <td>
