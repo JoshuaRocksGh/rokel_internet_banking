@@ -64,10 +64,11 @@
                                         <div class="form-group">
                                             <label class="h6">Network Type</label>
 
-                                            <select class="custom-select" id="to_account" required>
+                                            <select class="custom-select" id="network_type" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Currenct Account~Joshua Tetteh~8888888888888~USD~800">
-                                                    Currenct Account ~ 8888888888888 </option>
+                                                <option value="MTN">MTN</option>
+                                                <option value="VODAFONE">VODAFONE</option>
+                                                <option value="AIRTEL TOGO">AIRTEL TOGO</option>
                                             </select>
 
 
@@ -94,6 +95,49 @@
                                             </table>
 
 
+                                        </div>
+
+                                        <hr>
+                                        <div class="form-group">
+                                            <div class="mt-3">
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadio1">Select beneficiary</label>
+                                                </div>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadio2">Onetime</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        <div class="form-group">
+                                            <label class="">Receipient Mobile Number</label>
+                                            <input type="text" class="form-control" id="amount"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <select class="custom-select" id="network_type" required>
+                                                <option value="">Select Network Type</option>
+                                                <option value="MTN">MTN</option>
+                                                <option value="VODAFONE">VODAFONE</option>
+                                                <option value="AIRTEL TOGO">AIRTEL TOGO</option>
+                                            </select>
+                                            
+                                            <label class="">Receipient Mobile Number</label>
+                                            <input type="text" class="form-control" id="amount"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="">Enter Amount</label>
+                                            <input type="text" class="form-control" id="amount"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                required>
                                         </div>
 
                                         <div class="form-group">
@@ -156,7 +200,7 @@
 
                                 <div class="col-md-5 text-center" style="margin-top: 80px;">
 
-                                    <img src="{{ asset('assets/images/wallet.png') }}" class="img-fluid" alt="">
+                                    <img src="{{ asset('assets/images/payment-icon-images/mobile_money/mobile_money_logos.jpg') }}" class="img-fluid" alt="">
                                 </div> <!-- end col -->
 
 
