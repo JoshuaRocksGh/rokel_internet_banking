@@ -73,7 +73,7 @@
 
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Standard Chartered~Joshua Tetteh~Standard Chartered~ ">
+                                                <option value="Standard Chartered~Joshua Tetteh~Standard Chartered~USD~800">
                                                     Joshua Tetteh ~ 11111111111111 </option>
                                             </select>
 
