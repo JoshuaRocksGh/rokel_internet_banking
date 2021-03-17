@@ -39,10 +39,6 @@
                             </div>
 
                             <div class="mt-3">
-                                {{--  <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Select Beneficiary</label>
-                                </div>  --}}
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheck2">
                                     <label class="custom-control-label" for="customCheck2">One Time Payment</label>

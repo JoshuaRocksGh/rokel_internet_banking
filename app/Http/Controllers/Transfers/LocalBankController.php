@@ -11,7 +11,7 @@ class LocalBankController extends Controller
 
     public function other_local_bank()
     {
-        return view('pages.transfer.other_local_bank');
+        return view('pages.transfer.other_local_bank_');
     }
 
 

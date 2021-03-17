@@ -12,8 +12,8 @@
                         <div class="col-md-2"></div>
 
                         <div class="col-md-8">
-                            <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
-                                <b> <i class="mdi mdi-arrow-left  font-20 text-primary"></i></b> &nbsp;  MOBILE MONEY
+                            <p class="sub-header font-18 purple-color">
+                                OTHER LOCAL BANK TRANSFER
 
                             </p>
                             <hr>
@@ -26,7 +26,7 @@
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="h6">Transfer From</label>
+                                            <label class="">Transfer From</label>
 
 
                                             <select class="custom-select " id="from_account" required>
@@ -40,15 +40,15 @@
                                             <table
                                                 class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
                                                 <tbody>
-                                                    <tr class="text-primary">
+                                                    <tr>
 
                                                         <td>
                                                             <a
-                                                                class="text-body font-weight-semibold display_from_account_name "></a>
-                                                            <small class="d-block display_from_account_no "></small>
+                                                                class="text-body font-weight-semibold display_from_account_name"></a>
+                                                            <small class="d-block display_from_account_no"></small>
                                                         </td>
 
-                                                        <td class="text-right  font-weight-semibold">
+                                                        <td class="text-right font-weight-semibold">
                                                             <span class="display_from_account_currency"></span>
                                                             <span class="display_from_account_amount"></span>
 
@@ -60,15 +60,21 @@
                                             </table>
 
 
+                                            <div class="mt-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                    <label class="custom-control-label" for="customCheck2">One Time Payment</label>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="form-group">
-                                            <label class="h6">Network Type</label>
+                                            <label class="">Other Local bank beneficiaries</label>
 
-                                            <select class="custom-select" id="network_type" required>
+                                            <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="MTN">MTN</option>
-                                                <option value="VODAFONE">VODAFONE</option>
-                                                <option value="AIRTEL TOGO">AIRTEL TOGO</option>
+                                                <option value="Standard Chartered~Joshua Tetteh~Standard Chartered~USD~800">
+                                                    Joshua Tetteh ~ 11111111111111 </option>
                                             </select>
 
 
@@ -95,50 +101,6 @@
                                             </table>
 
 
-                                        </div>
-
-                                        <hr>
-                                        <div class="form-group">
-                                            <div class="mt-3">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadio1">Select beneficiary</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadio2">Onetime</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-
-                                        <div class="form-group">
-                                            <label class="">Receipient Mobile Number</label>
-                                            <input type="text" class="form-control" id="amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <select class="custom-select" id="network_type" required>
-                                                <option value="">Select Network Type</option>
-                                                <option value="MTN">MTN</option>
-                                                <option value="VODAFONE">VODAFONE</option>
-                                                <option value="AIRTEL TOGO">AIRTEL TOGO</option>
-                                            </select>
-                                            
-
-                                            <label class="">Receipient Mobile Number</label>
-                                            <input type="text" class="form-control" id="amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="">Enter Amount</label>
-                                            <input type="text" class="form-control" id="amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                required>
                                         </div>
 
                                         <div class="form-group">
@@ -201,7 +163,7 @@
 
                                 <div class="col-md-5 text-center" style="margin-top: 80px;">
 
-                                    <img src="{{ asset('assets/images/payment-icon-images/mobile_money/mobile_money_logos.jpg') }}" class="img-fluid" alt="">
+                                    <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5">
                                 </div> <!-- end col -->
 
 

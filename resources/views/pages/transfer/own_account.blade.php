@@ -156,7 +156,7 @@
 
                                 <div class="col-md-5 text-center" style="margin-top: 80px;">
 
-                                    <img src="{{ asset('assets/images/wallet.png') }}" class="img-fluid" alt="">
+                                    <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5">
                                 </div> <!-- end col -->
 
 

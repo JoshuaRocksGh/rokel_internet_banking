@@ -24,7 +24,7 @@
                                 You need to follow the KYC collected process</p>
                                 <br>
                             <h4 class="card-title" style="color: #7e57c2">Savings Account Process</h4>
-    
+
                         </div>
                         <div class="mail-list mt-3">
                             <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #7e57c2"></i>PERSONAL DETAILS</a>
@@ -32,7 +32,7 @@
                             <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #7e57c2"></i>CONTACT DETAILS</a>
                             <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #7e57c2"></i>BIO DETAILS</a>
                         </div>
-    
+
                         <br>
                         <h4 class="card-title" style="color: #7e57c2">Requirements</h4>
                         <div class="mail-list mt-3">
@@ -41,14 +41,14 @@
                                 Birth Certificate)</a>
                             <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-map-marker-outline font-18 align-middle mr-2" style="color: #7e57c2"></i>Residential Address</a>
                           </div>
-    
+
                         <br>
-    
+
                         <h5 class="card-title" ><i class="mdi mdi-alert-circle mdi-18px" style="color: #7e57c2"></i>&nbsp; Must be 18 years and above</h5>
-    
-    
+
+
                     </div>
-    
+
                 </div>
 
             </div>
@@ -96,7 +96,7 @@
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                     
+
                                                             <select class="custom-select ">
                                                                 <option selected>Title</option>
                                                                 <option value="1">Mr</option>
@@ -153,7 +153,7 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="billing-address">Date of Birth</label>
-                                                       
+
                                                         <div class="form-group mb-3">
                                                            <input class="form-control" id="example-date" type="date" name="date">
                                                         </div>
@@ -401,15 +401,15 @@
                                                 </div>
                                             </div> <!-- end row -->
 
-                                            <div class="row mt-4">
-                                                <div class="col-sm-6">
-                                                    <a href="ecommerce-cart.html" class="btn btn-secondary">
+                                            <div class="col-md-12">
+                                                {{-- <div class="col-sm-6">
+                                                    <a href="{{ url('account-creation') }}" class="btn btn-secondary">
                                                         <i class="mdi mdi-arrow-left"></i> Back to Shopping Cart </a>
-                                                </div> <!-- end col -->
-                                                <div class="col-sm-6">
+                                                </div> <!-- end col --> --}}
+                                                <div class="col-md-12">
                                                     <div class="text-sm-right mt-2 mt-sm-0">
-                                                        <a href="ecommerce-checkout.html" class="btn btn-success">
-                                                            <i class="mdi mdi-truck-fast mr-1"></i> Proceed to Shipping </a>
+                                                        <a href="#" class="btn btn-primary btn-block">
+                                                         Next</a>
                                                     </div>
                                                 </div> <!-- end col -->
                                             </div> <!-- end row -->
@@ -456,7 +456,7 @@
                                         <div class="">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                  
+
                                                         <select class="custom-select ">
                                                             <option selected>ID Type</option>
                                                             <option value="1">Passport</option>
@@ -495,13 +495,13 @@
 
                                         <div class="row mt-4">
                                             <div class="col-sm-6">
-                                                <a href="ecommerce-cart.html" class="btn btn-secondary">
-                                                    <i class="mdi mdi-arrow-left"></i> Back to Shopping Cart </a>
+                                                <a href="#" class="btn btn-secondary">
+                                                    Back </a>
                                             </div> <!-- end col -->
                                             <div class="col-sm-6">
                                                 <div class="text-sm-right mt-2 mt-sm-0">
-                                                    <a href="ecommerce-checkout.html" class="btn btn-success">
-                                                        <i class="mdi mdi-cash-multiple mr-1"></i> Continue to Payment </a>
+                                                    <a href="#" class="btn btn-primary">
+                                                         Next </a>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div> <!-- end row -->
@@ -514,21 +514,31 @@
 
                                         <!-- Passport Picture Upload-->
 
-                                        <!-- Credit/Debit Card box-->
+                                        <div class="form-group mb-3">
+                                            <label for="example-fileinput">Picture(Passport)</label>
+                                            <input type="file" id="example-fileinput" class="form-control-file">
+                                        </div>
 
+                                        <!-- Paper and Image Capture-->
+
+
+                                        <div class="form-group mb-3">
+                                            <label for="example-fileinput">Selfie with a signed paper</label>
+                                            <input type="file" id="example-fileinput" class="form-control-file">
+                                        </div>
                                         <!-- Cash on Delivery box-->
 
                                         <!-- end Cash on Delivery box-->
 
                                         <div class="row mt-4">
                                             <div class="col-sm-6">
-                                                <a href="ecommerce-cart.html" class="btn btn-secondary">
-                                                    <i class="mdi mdi-arrow-left"></i> Back to Shopping Cart </a>
+                                                <a href="#" class="btn btn-secondary">
+                                                    Back  </a>
                                             </div> <!-- end col -->
                                             <div class="col-sm-6">
                                                 <div class="text-sm-right mt-2 mt-sm-0">
-                                                    <a href="ecommerce-checkout.html" class="btn btn-success">
-                                                        <i class="mdi mdi-cash-multiple mr-1"></i> Complete Order </a>
+                                                    <a href="#" class="btn btn-primary">
+                                                         Next </a>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div> <!-- end row-->
@@ -547,7 +557,7 @@
         </div>
 
     </div>
-{{--  
+{{--
 
     <div class="row card">
 
@@ -634,7 +644,7 @@
                                                 <div class="">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                         
+
                                                                 <select class="custom-select ">
                                                                     <option selected>Title</option>
                                                                     <option value="1">Mr</option>
@@ -691,7 +701,7 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="billing-address">Date of Birth</label>
-                                                           
+
                                                             <div class="form-group mb-3">
                                                                <input class="form-control" id="example-date" type="date" name="date">
                                                             </div>
@@ -994,7 +1004,7 @@
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                      
+
                                                             <select class="custom-select ">
                                                                 <option selected>ID Type</option>
                                                                 <option value="1">Passport</option>
@@ -1033,7 +1043,8 @@
 
                                             <div class="row mt-4">
                                                 <div class="col-sm-6">
-                                                    <a href="ecommerce-cart.html" class="btn btn-secondary">
+                                                    <a href="ecommerce-cart.html" class=
+                                                    "btn btn-secondary">
                                                         <i class="mdi mdi-arrow-left"></i> Back to Shopping Cart </a>
                                                 </div> <!-- end col -->
                                                 <div class="col-sm-6">
