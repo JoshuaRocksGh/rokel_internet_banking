@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class paymentController extends Controller
 {
     //
+
+    public function list_of_payments()
+    {
+        return view("pages.payments.list_of_payments");
+    }
+
     public function add_beneficiary()
     {
         return view("pages.payments.payment_add_beneficiary");
