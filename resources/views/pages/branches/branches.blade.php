@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('snippets.top_navbar', ['page_title' => 'ACCOUNT OPENING'])
+@include('snippets.top_navbar', ['page_title' => 'BRANCHES'])
 
 
 
@@ -51,7 +51,7 @@
                             <tr>
                                 <td style="width: 10px;">
                                     <div class="avatar-sm rounded bg-soft-info">
-                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                     </div>
                                 </td>
                                 <td>
@@ -64,7 +64,7 @@
                             <tr>
                                 <td style="width: 10px;">
                                     <div class="avatar-sm rounded bg-soft-info">
-                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                     </div>
                                 </td>
                                 <td>
@@ -77,7 +77,7 @@
                             <tr>
                                 <td style="width: 10px;">
                                     <div class="avatar-sm rounded bg-soft-info">
-                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                     </div>
                                 </td>
                                 <td>
@@ -90,7 +90,7 @@
                             <tr>
                                 <td style="width: 10px;">
                                     <div class="avatar-sm rounded bg-soft-info">
-                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                     </div>
                                 </td>
 
@@ -104,7 +104,7 @@
                             <tr>
                                 <td style="width: 10px;">
                                     <div class="avatar-sm rounded bg-soft-info">
-                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                     </div>
                                 </td>
                                 <td>
