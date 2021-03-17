@@ -20,7 +20,7 @@
 
 <!-- Dashboar 1 init js-->
 {{--  <script src="{{ asset('assets/js/pages/dashboard-1.init.js') }}"></script>  --}}
-<script src="{{ asset('assets/js/pages/ecommerce-dashboard.init.js') }}"></script>
+{{--  <script src="{{ asset('assets/js/pages/ecommerce-dashboard.init.js') }}"></script>  --}}
 
 
 <!-- Init js-->

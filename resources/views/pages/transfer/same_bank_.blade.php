@@ -2,7 +2,7 @@
 
 @section('content')
 
-<legend></legend>
+<div    <legend></legend>
 
     <div class="row">
         <div class="col-12">
@@ -13,11 +13,11 @@
 
                         <div class="col-md-8">
                             <p class="sub-header font-18 purple-color">
-                                SAME BANK TRANSFER
+                                SAME BANK ACCOUNT TRANSFER
 
                             </p>
                             <hr>
-
+                        
 
                             <div class="row" id="transaction_form">
 
@@ -26,31 +26,31 @@
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="">Transfer From</label>
+                                            <label class="h6">Payer Account</label>
 
 
                                             <select class="custom-select " id="from_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
-                                                    Saving Account ~ 001023468976001 </option>
+                                                <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
+                                                    Current Account ~ 001023468976001 </option>
 
                                             </select>
 
 
                                             <table
                                                 class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
-                                                <tbody>
-                                                    <tr>
+                                                <tbody class="text-primary">
+                                                    <tr class="text-primary">
 
-                                                        <td>
+                                                        <td class="text-primary">
                                                             <a
-                                                                class="text-body font-weight-semibold display_from_account_name"></a>
-                                                            <small class="d-block display_from_account_no"></small>
+                                                                class="text-body font-weight-semibold display_from_account_name text-primary"></a>
+                                                            <small class="d-block display_from_account_no text-primary"></small>
                                                         </td>
 
-                                                        <td class="text-right font-weight-semibold">
-                                                            <span class="display_from_account_currency"></span>
-                                                            <span class="display_from_account_amount"></span>
+                                                        <td class="text-right font-weight-semibold text-primary">
+                                                            <span class="display_from_account_currency text-primary"></span>
+                                                            <span class="display_from_account_amount text-primary"></span>
 
                                                         </td>
                                                     </tr>
@@ -60,21 +60,29 @@
                                             </table>
 
 
-                                            <div class="mt-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                    <label class="custom-control-label" for="customCheck2">One Time Payment</label>
-                                                </div>
-                                            </div>
-
                                         </div>
+
                                         <div class="form-group">
-                                            <label class="">Same bank beneficiaries</label>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input radio" type="radio" name="onetime" id="inlineRadio1" value="beneficiary" checked="checked">
+                                                <label class="form-check-label" for="inlineRadio1">Select beneficiary</label>
+                                            </div>
+                                            &nbsp;&nbsp;
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input radio" type="radio" name="onetime" id="inlineRadio2" value="onetime">
+                                                <label class="form-check-label" for="inlineRadio2">Onetime beneficiary</label>
+                                            </div>
+                                        </div>
+            
+
+                                        <div class="form-group select_beneficiary" >
+                                            <label class="h6">Beneficiary Account</label>
 
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Current Account~Joshua Tetteh~8888888888888~USD~800">
-                                                    Current Account ~ 8888888888888 </option>
+                                                <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
+                                                    Currenct Account ~ 8888888888888 </option>
                                             </select>
 
 
@@ -103,9 +111,59 @@
 
                                         </div>
 
+                                        <div class="select_onetime">
+<hr>
+                                            <div class="form-group">
+                                                {{--  <label class="">Enter Account Number</label>  --}}
+                                                <input type="text" class="form-control" id="onetime_beneficiary_alias_name"
+                                                   placeholder="Alias Name"
+                                                    required>
+                                            </div>
+                                        
+                                            <div class="form-group">
+                                                {{--  <label class="">Enter Account Number</label>  --}}
+                                                <input type="text" class="form-control" id="onetime_beneficiary_account_number"
+                                                   placeholder="Account Number"
+                                                    required>
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <select class="custom-select" id="onetime_beneficiary_account_currency" required>
+                                                    <option value="">Select Currency</option>
+                                                    <option value="GHS">GHS</option>
+                                                    <option value="USD">USD</option>
+                                                    <option value="EURO">EURO</option>
+                                                    <option value="SLL">SLL</option>
+                                                    <option value="GBP">GBP</option>
+                                                </select>
+                                                
+                                            </div>
+
+                                             
+                                                                                    
+                                            <div class="form-group">
+                                                {{--  <label class="">Enter Account Number</label>  --}}
+                                                <input type="email" class="form-control" id="onetime_beneficiary_email"
+                                                   placeholder="Email"
+                                                    required>
+                                            </div>
+                                              
+                                                                                         
+                                                                                    
+                                            <div class="form-group">
+                                                {{--  <label class="">Enter Account Number</label>  --}}
+                                                <input type="text" class="form-control" id="onetime_beneficiary_phone"
+                                                   placeholder="Phone"
+                                                    required>
+                                            </div>
+                                            <hr>
+
+                                        </div>
+
                                         <div class="form-group">
-                                            <label class="">Enter Amount</label>
-                                            <input type="text" class="form-control" id="amount"
+                                            {{--  <label class="">Enter Amount</label>  --}}
+                                            <input type="text" class="form-control" id="amount" placeholder="Amount: 0.00"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 required>
                                         </div>
@@ -163,7 +221,7 @@
 
                                 <div class="col-md-5 text-center" style="margin-top: 80px;">
 
-                                    <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5">
+                                    <img src="{{ asset('assets/images/wallet.png') }}" class="img-fluid" alt="">
                                 </div> <!-- end col -->
 
 
@@ -212,6 +270,27 @@
                                                             <span
                                                                 class="d-block font-13 text-primary text-bold display_to_account_no"
                                                                 id="display_to_account_no"> </span>
+
+                                                           
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                id="online_display_beneficiary_alias_name"> Daniel Hammond</span>
+
+                                                            <span class="font-13 text-primary h3 online_display_beneficiary_account_no"
+                                                                id="">0000333030303 </span>
+                                                                &nbsp; | &nbsp;
+                                                            <span class="font-13 text-primary h3 online_display_beneficiary_account_currency" id=""> GHS
+                                                            </span>
+
+                                                            <span
+                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                            id="online_display_beneficiary_email">dan@gmail.com</span>
+
+                                                            <span
+                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
+                                                            id="online_display_beneficiary_phone">0554602954</span>
+
+
                                                         </td>
                                                     </tr>
 
@@ -293,6 +372,7 @@
                                         <!-- end table-responsive -->
                                         <br>
                                         <div class="form-group text-center">
+                                            
                                             <span> <button class="btn btn-secondary btn-rounded" type="button"
                                                     id="back_button">Back</button> &nbsp; </span>
                                             <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
@@ -384,7 +464,30 @@
         <script>
             $(document).ready(function() {
 
-                {{-- hide select accounts info --}}
+                $(".select_beneficiary").show();
+                $(".select_onetime").hide();
+
+
+                $(".radio").click(function(){
+
+                    var type = $("input[type='radio']:checked").val();
+                    
+                    if(type == 'beneficiary'){
+                        $(".select_onetime").hide();
+                        $(".select_beneficiary").show();
+                       
+                    }
+                    if(type == 'onetime'){
+                        
+                        $(".select_beneficiary").hide();
+                        $(".select_onetime").show();
+                    }
+
+                });
+
+
+
+                {{-- hide seleect accounts info --}}
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
                 $("#schedule_payment_date").hide()
@@ -530,10 +633,115 @@
 
                 {{-- $("#transaction_form").click(function() {}) --}}
 
+
+                // NEXT BUTTON CLICK
                 $("#next_button").click(function() {
-                    {{--  var t =  $("#schedule_payment_date").val()
-                    alert(t)  --}}
-                    {{--  return false;  --}}
+
+                    var type = $("input[type='radio']:checked").val();
+                    
+                    if(type == 'beneficiary'){
+                     
+                            
+                        
+                    
+                        var from_account = $('#from_account').val()
+                        var to_account = $('#to_account').val()
+                        var transfer_amount = $('#amount').val()
+                        var category = $('#category').val()
+
+                        var purpose = $('#purpose').val()
+
+                        var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                        var schedule_payment_date = $('#schedule_payment_date').val();
+
+                        if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
+                            $('.display_schedule_payment_date').text('N/A') // shedule date NULL
+                            alert('Select schedule date for subsequent transfers')
+                            return false;
+                        }
+
+
+                        $('.display_schedule_payment_date').text(schedule_payment_date)
+
+
+                        if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
+                            alert('Field must not be empty')
+                            return false
+                        }else{
+                            //set purpose and category values
+                            var category_info = category.split("~")
+                            $("#display_category").text(category_info[1])
+                            $("#display_purpose").text(purpose)
+
+                            $("#transaction_form").hide()
+                            $("#transaction_summary").show()
+                        }
+
+                        
+
+                       
+                    }else if(type == 'onetime'){
+                     
+
+
+                        var from_account = $('#from_account').val()
+
+                        // ONETIME BENEFICIARY DETAILS
+                        var onetime_beneficiary_alias_name = $('onetime_beneficiary_alias_name').val()
+                        var onetime_beneficiary_account_number = $('onetime_beneficiary_account_number').val()
+                        var onetime_beneficiary_name = $('onetime_beneficiary_name').val()
+                        var onetime_beneficiary_email = $('onetime_beneficiary_email').val()
+                        var onetime_beneficiary_phone = $('onetime_beneficiary_phone').val()
+                        // END OF ONETIME BENEFICIARY DETAILS
+
+                        if( (undefined || "") == onetime_beneficiary_alias_name, onetime_beneficiary_account_number, ){
+                            alert("beneficiary field required")
+                        }
+
+
+                        var transfer_amount = $('#amount').val()
+                        var category = $('#category').val()
+
+                        var purpose = $('#purpose').val()
+
+                        var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                        var schedule_payment_date = $('#schedule_payment_date').val();
+
+                        if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
+                            $('.display_schedule_payment_date').text('N/A') // shedule date NULL
+                            alert('Select schedule date for subsequent transfers')
+                            return false;
+                        }
+
+
+                        $('.display_schedule_payment_date').text(schedule_payment_date)
+
+
+                        if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
+                            alert('Field must not be empty')
+                            return false
+                        }else{
+                            //set purpose and category values
+                            var category_info = category.split("~")
+                            $("#display_category").text(category_info[1])
+                            $("#display_purpose").text(purpose)
+
+                            $("#transaction_form").hide()
+                            $("#transaction_summary").show()
+                        }
+
+                        
+
+
+                    }else{
+
+                    }
+
+                    
+
+
+                    /*
+                 
                     var from_account = $('#from_account').val()
                     var to_account = $('#to_account').val()
                     var transfer_amount = $('#amount').val()
@@ -566,6 +774,9 @@
                         $("#transaction_form").hide()
                         $("#transaction_summary").show()
                     }
+
+                    */
+
 
                     /**
                     $.ajax({
