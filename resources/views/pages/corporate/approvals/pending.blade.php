@@ -25,11 +25,20 @@
     <div>
 
         <div class="row">
-            <br>
+            <br> <br>
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+
                         <div class="row">
+
+                            <div class="col-md-12">
+                                <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
+                                    <b>  MOBILE MONEY </b>
+    
+                                </p>
+                                <hr>
+                            </div>
 
                             <div class="col-md-12">
 

@@ -100,7 +100,7 @@
                                 <i class=" fas fa-desktop text-primary font-22" style="font-size: 100px;"></i>
                                 <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">Make Enquiries</a>
                                 </h4>
-                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Click
+                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
                                     Here</button>
 
                             </div> <!-- end .padding -->
@@ -123,7 +123,7 @@
 
                                 <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">FAQ</a></h4>
 
-                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Click
+                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
                                     Here</button>
 
                             </div> <!-- end .padding -->
@@ -137,7 +137,7 @@
                                 <i class=" fas fa-map-marked-alt text-primary font-22" style="font-size: 100px;"></i>
 
                                 <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">Branches</a></h4>
-                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Click
+                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
                                     Here</button>
 
                             </div> <!-- end .padding -->

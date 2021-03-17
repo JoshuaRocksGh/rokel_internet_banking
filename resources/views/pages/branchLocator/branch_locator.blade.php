@@ -4,7 +4,7 @@
 
 <legend></legend>
 
-<div class="container-fluid">
+<div class="container-fluid"> 
 
     <div class="row">
         <div class="col-md-12">
@@ -29,6 +29,7 @@
                                 </form>
                             </div>
                             <br>
+<<<<<<< HEAD
                                 <div class="col-md-10 col-xl-3">
                                     <div class="widget-rounded-circle card-box">
                                         <div class="row">
@@ -148,6 +149,105 @@
                                         </div> <!-- end row-->
                                     </div> <!-- end widget-rounded-circle-->
                                 </div> <!-- end col-->
+=======
+
+                            <div class="col-12 ">
+
+                                <div class="table-responsive" style="height: 420px;">
+                                    <table class="table table-centered table-nowrap mb-0">
+                                        <tbody>
+
+                                           
+
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Accra Central</a>
+                                                    <small class="d-block">0302720885</small>
+                                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
+                                                    <small class="d-block">01024499300101</small>
+                                                </td>
+                                              
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->                        
+                            </div>
+
+               
+>>>>>>> 7dea89a2af75217f95c2f6b172026de1fa4957f6
 
                         </div> <!-- end col -->
 
