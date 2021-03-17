@@ -88,7 +88,7 @@
                                 <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">Open An Account</a>
                                 </h4>
 
-                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
+                                <a href="{{ url('account-creation') }}" class="p-text"><button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button></a>
 
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->

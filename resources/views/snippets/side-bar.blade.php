@@ -211,17 +211,19 @@
                     <div class="collapse" id="sidebarEmail">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="email-inbox.html">Inbox</a>
+                                <a href="{{ url('account-creation') }}">Account Creation </a>
                             </li>
                             <li>
-                                <a href="email-read.html">Read Email</a>
+                                <a href="#">Cheque Book Request</a>
                             </li>
                             <li>
-                                <a href="email-compose.html">Compose Email</a>
+                                <a href="#">Request ATM</a>
                             </li>
+{{--
                             <li>
                                 <a href="email-templates.html">Email Templates</a>
-                            </li>
+                            </li> --}}
+
                         </ul>
                     </div>
                 </li>
@@ -301,24 +303,38 @@
                     </div>
                 </li>
 
+
                 <li>
-                    <a href="#sidebarTickets" data-toggle="collapse">
-                        {{--  <i class="mdi mdi-lifebuoy"></i>  --}}
+                    <a href="{{ url('branch-locator') }}">
+                        {{--  <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i>  --}}
                         <i class="mdi mdi-map-marker-outline"></i>
                         <span> Branch Locator </span>
+                    </a>
+                </li>
+
+{{--
+                <li>
+                    <a href="#sidebarTickets" data-toggle="collapse">
+                         <i class="mdi mdi-lifebuoy"></i>
+                        <i class="mdi mdi-map-marker-outline"></i>
+                        <span> Branch Locator</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarTickets">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="tickets-list.html">List</a>
+                                <a href="{{ url('list-view') }}">List View</a>
                             </li>
                             <li>
-                                <a href="tickets-detail.html">Detail</a>
+                                <a href="tickets-detail.html">Map View</a>
                             </li>
                         </ul>
                     </div>
+
                 </li>
+
+                 --}}
+
 {{--
                 <li>
                     <a href="apps-file-manager.html">
