@@ -180,6 +180,9 @@
                     <div class="collapse" id="sidebarBeneficiary">
                         <ul class="nav-second-level">
                             <li>
+                                <a href="{{ url('list-of-payments') }}">List of Payments</a>
+                            </li> 
+                            {{--  <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
                             </li>
                             <li>
@@ -187,16 +190,8 @@
                             </li>
                             <li>
                                 <a href="{{ url('payment-add-beneficiary') }}">Add Beneficiary</a>
-                            </li>
+                            </li>  --}}
 
-{{--
-                            <li>
-                                <a href="crm-leads.html">Leads</a>
-                            </li>
-                            <li>
-                                <a href="crm-customers.html">Customers</a>
-                            </li>
-                              --}}
                         </ul>
                     </div>
 
