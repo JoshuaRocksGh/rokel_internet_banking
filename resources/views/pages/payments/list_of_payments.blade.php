@@ -20,16 +20,20 @@
 
                 
                 
-                <div class="col-md-4 col-xl-3 text-center">
-                    <div class="p-2 ">
-                        <div class="">
-                            <img src="{{ asset('assets/images/payment-icon-images/receive.png') }}" class="img-fluid" alt="user-img" style="height: 100px;"/>
-                        </div>
-                        
-                        <h3 class="text-primary"><span >Mobile Money</span></h3>
-                       
+                    <div class="col-md-4 col-xl-12 text-center">
+                        <a href="{{ url('mobile-money') }}">
+                            <div class="p-2 ">
+                                <div class="">
+                                    <img src="{{ asset('assets/images/payment-icon-images/receive.png') }}" class="img-fluid" alt="user-img" style="height: 100px;"/>
+                                </div>
+                                
+                                <h3 class="text-primary"><span >Mobile Money</span></h3>
+                            
+                            </div>
+                        </a>
                     </div>
-                </div>
+                
+
 
                 
                 <div class="col-md-4 col-xl-3 text-center">
