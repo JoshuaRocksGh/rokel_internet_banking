@@ -29,127 +29,6 @@
                                 </form>
                             </div>
                             <br>
-<<<<<<< HEAD
-                                <div class="col-md-10 col-xl-3">
-                                    <div class="widget-rounded-circle card-box">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="avatar-md rounded ">
-                                                    <i class="mdi mdi-bank mdi-48px avatar-title text-info purple-color"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">
-                                                    <h5 class="text-dark mb-1"><span>Accra Central</span></h6>
-                                                    <p class="text-muted mb-1 text-truncate">0302720885</p>
-                                                    <p class="text-muted mb-1 text-truncate">8:00-16:00 Mon-Fri</p>
-                                                    <p class="text-muted mb-1 text-truncate">10:00-14:00 Sat</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end widget-rounded-circle-->
-                                </div> <!-- end col-->
-
-                                <div class="col-md-10 col-xl-3">
-                                    <div class="widget-rounded-circle card-box">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="avatar-md rounded ">
-                                                    <i class="mdi mdi-bank mdi-48px avatar-title text-info purple-color"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">
-                                                    <h5 class="text-dark mb-1"><span>Nima</span></h6>
-                                                    <p class="text-muted mb-1 text-truncate">0302720000</p>
-                                                    <p class="text-muted mb-1 text-truncate">8:00-16:00 Mon-Fri</p>
-                                                    <p class="text-muted mb-1 text-truncate">10:00-14:00 Sat</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end widget-rounded-circle-->
-                                </div> <!-- end col-->
-
-                                <div class="col-md-10 col-xl-3">
-                                    <div class="widget-rounded-circle card-box">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="avatar-md rounded ">
-                                                    <i class="mdi mdi-bank mdi-48px avatar-title text-info purple-color"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">
-                                                    <h5 class="text-dark mb-1"><span>Dansoman</span></h6>
-                                                    <p class="text-muted mb-1 text-truncate">0302720220</p>
-                                                    <p class="text-muted mb-1 text-truncate">8:00-16:00 Mon-Fri</p>
-                                                    <p class="text-muted mb-1 text-truncate">10:00-14:00 Sat</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end widget-rounded-circle-->
-                                </div> <!-- end col-->
-
-                                <div class="col-md-10 col-xl-3">
-                                    <div class="widget-rounded-circle card-box">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="avatar-md rounded ">
-                                                    <i class="mdi mdi-bank mdi-48px avatar-title text-info purple-color"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">
-                                                    <h5 class="text-dark mb-1"><span>Asafo</span></h6>
-                                                    <p class="text-muted mb-1 text-truncate">0322880200</p>
-                                                    <p class="text-muted mb-1 text-truncate">8:00-16:00 Mon-Fri</p>
-                                                    <p class="text-muted mb-1 text-truncate">10:00-14:00 Sat</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end widget-rounded-circle-->
-                                </div> <!-- end col-->
-
-                                <div class="col-md-10 col-xl-3">
-                                    <div class="widget-rounded-circle card-box">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="avatar-md rounded ">
-                                                    <i class="mdi mdi-bank mdi-48px avatar-title text-info purple-color"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">
-                                                    <h5 class="text-dark mb-1"><span>Adum</span></h6>
-                                                    <p class="text-muted mb-1 text-truncate">0322770563</p>
-                                                    <p class="text-muted mb-1 text-truncate">8:00-16:00 Mon-Fri</p>
-                                                    <p class="text-muted mb-1 text-truncate"> No Sat</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end widget-rounded-circle-->
-                                </div> <!-- end col-->
-
-                                <div class="col-md-10 col-xl-3">
-                                    <div class="widget-rounded-circle card-box">
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="avatar-md rounded ">
-                                                    <i class="mdi mdi-bank mdi-48px avatar-title text-info purple-color"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">
-                                                    <h5 class="text-dark mb-1"><span>Cape Coast</span></h6>
-                                                    <p class="text-muted mb-1 text-truncate">0322880200</p>
-                                                    <p class="text-muted mb-1 text-truncate">8:00-16:00 Mon-Fri</p>
-                                                    <p class="text-muted mb-1 text-truncate">10:00-14:00 Sat</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end row-->
-                                    </div> <!-- end widget-rounded-circle-->
-                                </div> <!-- end col-->
-=======
 
                             <div class="col-12 ">
 
@@ -247,7 +126,6 @@
                             </div>
 
                
->>>>>>> 7dea89a2af75217f95c2f6b172026de1fa4957f6
 
                         </div> <!-- end col -->
 
