@@ -17,7 +17,7 @@
 
                             </p>
                             <hr>
-                        
+
 
                             <div class="row" id="transaction_form">
 
@@ -74,7 +74,7 @@
                                                 <label class="form-check-label" for="inlineRadio2">Onetime beneficiary</label>
                                             </div>
                                         </div>
-            
+
 
                                         <div class="form-group select_beneficiary" >
                                             <label class="h6">Beneficiary Account</label>
@@ -119,7 +119,7 @@
                                                    placeholder="Alias Name"
                                                     required>
                                             </div>
-                                        
+
                                             <div class="form-group">
                                                 {{--  <label class="">Enter Account Number</label>  --}}
                                                 <input type="text" class="form-control" id="onetime_beneficiary_account_number"
@@ -137,20 +137,20 @@
                                                     <option value="SLL">SLL</option>
                                                     <option value="GBP">GBP</option>
                                                 </select>
-                                                
+
                                             </div>
 
-                                             
-                                                                                    
+
+
                                             <div class="form-group">
                                                 {{--  <label class="">Enter Account Number</label>  --}}
                                                 <input type="email" class="form-control" id="onetime_beneficiary_email"
                                                    placeholder="Email"
                                                     required>
                                             </div>
-                                              
-                                                                                         
-                                                                                    
+
+
+
                                             <div class="form-group">
                                                 {{--  <label class="">Enter Account Number</label>  --}}
                                                 <input type="text" class="form-control" id="onetime_beneficiary_phone"
@@ -271,7 +271,7 @@
                                                                 class="d-block font-13 text-primary text-bold display_to_account_no"
                                                                 id="display_to_account_no"> </span>
 
-                                                           
+
                                                             <span
                                                                 class="d-block font-13 text-primary text-bold display_to_account_name"
                                                                 id="online_display_beneficiary_alias_name"> Daniel Hammond</span>
@@ -372,7 +372,7 @@
                                         <!-- end table-responsive -->
                                         <br>
                                         <div class="form-group text-center">
-                                            
+
                                             <span> <button class="btn btn-secondary btn-rounded" type="button"
                                                     id="back_button">Back</button> &nbsp; </span>
                                             <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
@@ -471,14 +471,14 @@
                 $(".radio").click(function(){
 
                     var type = $("input[type='radio']:checked").val();
-                    
+
                     if(type == 'beneficiary'){
                         $(".select_onetime").hide();
                         $(".select_beneficiary").show();
-                       
+
                     }
                     if(type == 'onetime'){
-                        
+
                         $(".select_beneficiary").hide();
                         $(".select_onetime").show();
                     }
@@ -487,7 +487,7 @@
 
 
 
-                {{-- hide seleect accounts info --}}
+                // hide seleect accounts info
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
                 $("#schedule_payment_date").hide()
@@ -548,7 +548,7 @@
 
 
 
-                    {{-- alert(from_account_info[0]); --}}
+                    // alert(from_account_info[0]);
                 });
 
 
@@ -556,7 +556,7 @@
                     var to_account = $(this).val()
                     {{-- alert(to_account) --}}
                     if (to_account.trim() == '' || to_account.trim() == undefined) {
-                        {{-- alert('money') --}}
+
                         $(".to_account_display_info").hide()
 
                     } else {
@@ -584,7 +584,7 @@
 
 
 
-                    {{-- alert(to_account_info[0]); --}}
+                    // alert(to_account_info[0]);
                 });
 
 
@@ -631,19 +631,19 @@
                 });
 
 
-                {{-- $("#transaction_form").click(function() {}) --}}
+
 
 
                 // NEXT BUTTON CLICK
                 $("#next_button").click(function() {
 
                     var type = $("input[type='radio']:checked").val();
-                    
+
                     if(type == 'beneficiary'){
-                     
-                            
-                        
-                    
+
+
+
+
                         var from_account = $('#from_account').val()
                         var to_account = $('#to_account').val()
                         var transfer_amount = $('#amount').val()
@@ -677,11 +677,11 @@
                             $("#transaction_summary").show()
                         }
 
-                        
 
-                       
+
+
                     }else if(type == 'onetime'){
-                     
+
 
 
                         var from_account = $('#from_account').val()
@@ -694,7 +694,7 @@
                         var onetime_beneficiary_phone = $('onetime_beneficiary_phone').val()
                         // END OF ONETIME BENEFICIARY DETAILS
 
-                        if( (undefined || "") == onetime_beneficiary_alias_name, onetime_beneficiary_account_number, ){
+                        if( (undefined || "") == onetime_beneficiary_alias_name, onetime_beneficiary_account_number ){
                             alert("beneficiary field required")
                         }
 
@@ -730,18 +730,18 @@
                             $("#transaction_summary").show()
                         }
 
-                        
+
 
 
                     }else{
 
                     }
 
-                    
+
 
 
                     /*
-                 
+
                     var from_account = $('#from_account').val()
                     var to_account = $('#to_account').val()
                     var transfer_amount = $('#amount').val()
