@@ -31,7 +31,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                        <i class="fas fa-unlock-alt"></i>&nbsp; Change Password
+                                        <i class="fas fa-lock"></i>&nbsp; Change Password
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -50,48 +50,48 @@
                                     </p>
 
                                     <p>
+                                        <p class="text">
+                                            Your new Pin must be different from
+                                            the previous one
+                                        </p>
                                         <div class="">
-                                            {{-- <form>
+                                            <form>
 
                                                 <div class="form-group">
-                                                    <label for="simpleinput">Type Of Enquiry</label>
-                                                    <select class="custom-select ">
-                                                        <option selected>-- Select Enquiry</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
+                                                    <label for="simpleinput">Enter old pin</label>
+                                                    <input type="text" id="simpleinput" class="form-control">
 
+                                                </div>
+{{--
                                                 <div class="form-group">
                                                     <label for="example-textarea">Message</label>
                                                     <textarea class="form-control" id="example-textarea" rows="5"></textarea>
-                                                </div>
+                                                </div> --}}
 
 
                                                 <div class="form-group">
-                                                    <label for="simpleinput">Prefered Contact</label>
+                                                    <label for="simpleinput">Enter new pin</label>
                                                     <input type="text" id="simpleinput" class="form-control">
                                                 </div>
 
 
                                                 <div class="form-group">
-                                                    <label for="simpleinput">Prefered Contact</label>
+                                                    <label for="simpleinput">Confirm pin</label>
                                                     <input type="text" id="simpleinput" class="form-control">
                                                 </div>
-
+{{--
 
                                                 <div class="form-group">
                                                     <label for="simpleinput">Prefered Date</label>
                                                     <input type="date" id="simpleinput" class="form-control">
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="form-group text-center">
                                                     <button class="btn btn-primary btn-rounded" type="button" id="next_button">
                                                         &nbsp; Submit &nbsp;</button>
                                                 </div>
 
-                                            </form> --}}
+                                            </form>
                                         </div> <!-- end col -->
                                     </p>
 
