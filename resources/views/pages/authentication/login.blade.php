@@ -60,13 +60,44 @@
                         </div>
 
 
+                        
                     </form>
                     <!-- end form-->
 
                     <!-- Footer-->
-                    {{-- <footer class="footer footer-alt">
+                  
+                        <br><br><br>
+                        <div class="row ">
+
+                            
+                            <div class="text-center d-sm-none   d-md-none  d-lg-none">
+                                <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-book-open mr-1"></i> Open an account</button>
+                                &nbsp;
+                                <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-headset mr-1"></i>  FAQs</button>
+                                
+                            </div>
+
+        
+                        </div>
+                        <br>
+                        <div class="row ">
+
+                            
+                            <div class="text-center d-sm-none  d-md-none  d-lg-none">
+                                <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-desktop mr-1"></i> Make Enquiry</button>
+                               &nbsp;
+                                <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-map-marked-alt mr-1"></i>  Branches</button>
+                                
+                            </div>
+
+                        </div>
+                    
+                   
+                    <footer class="footer footer-alt">
+
                             <p class="text-muted">Dont have an account? <a href="auth-register-2.html" class="text-muted ml-1"><b>Sign Up</b></a></p>
-                        </footer> --}}
+                        </footer>
+                  
 
                 </div> <!-- end .card-body -->
             </div> <!-- end .align-items-center.d-flex.h-100-->
@@ -88,7 +119,9 @@
                                 <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">Open An Account</a>
                                 </h4>
 
-                                <a href="{{ url('account-creation') }}" class="p-text"><button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button></a>
+                                <a href="{{ url('account-creation') }}" class="p-text">
+                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
+                                </a>
 
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->
@@ -100,8 +133,9 @@
                                 <i class=" fas fa-desktop text-primary font-22" style="font-size: 100px;"></i>
                                 <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">Make Enquiries</a>
                                 </h4>
-                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
-                                    Here</button>
+                                <a href="{{ url('enquiry') }}" class="p-text">
+                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
+                                </a>
 
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->
@@ -123,8 +157,9 @@
 
                                 <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">FAQ</a></h4>
 
-                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
-                                    Here</button>
+                                <a href="{{ url('faq') }}" class="p-text">
+                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
+                                </a>
 
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->
@@ -139,7 +174,8 @@
                                 <h4 class="mt-3 font-16">Branches</h4>
                                 <a href="{{ url('branches') }}" class="text-dark">
                                 <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
-                                    Here</button></a>
+                                    Here</button>
+                                </a>
 
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->
