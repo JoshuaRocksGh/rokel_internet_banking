@@ -56,7 +56,7 @@
             </div> <!-- end col-->
 
             <div class="col-md-6 col-xl-6">
-                <div class="card-box">
+                <div class="card-box" style="zoom: 0.94;">
                     {{-- <h4 class="header-title mb-4">Tabs Justified</h4> --}}
 
                     <ul class="nav nav-pills navtab-bg nav-justified">

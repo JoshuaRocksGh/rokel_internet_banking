@@ -157,7 +157,7 @@
                     <div class="collapse" id="sidebarEmail">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('account-creation') }}">Account Creation </a>
+                                <a href="{{ url('account-creation') }}">Additional Account </a>
                             </li>
                             <li>
                                 <a href="#">Cheque Book Request</a>

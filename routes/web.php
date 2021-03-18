@@ -6,7 +6,12 @@ use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Corporate\Approvals\PendingController;
 use App\Http\Controllers\Dashboard\HomeController;
+<<<<<<< HEAD
 use App\Http\Controllers\Loan\LoansController;
+=======
+use App\Http\Controllers\Enquiry\EnquiryController;
+use App\Http\Controllers\FAQ\FAQController;
+>>>>>>> ac130685bb520213fa6cf4cd52c52b05af33389c
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Start\LandingPageController;
@@ -100,6 +105,10 @@ Route::get('/account-creation/savings-account-creation',[accountCreationControll
 
 // BRANCHES
 Route::get('/branches',[BranchesController::class,'branches'])->name('branches');
+// FAQ
+Route::get('/faq',[FAQController::class,'index'])->name('faq');
+// ENQUIRY
+Route::get('/enquiry',[EnquiryController::class,'index'])->name('enquiry');
 
 
 // LOAN
