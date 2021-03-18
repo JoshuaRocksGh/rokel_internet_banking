@@ -217,7 +217,7 @@
             var  text_area = $('#textarea').val();
             var  amount = $('#amount').val();
 
-            {{--  console.log(send_from,send_to,custom_check,text_area,amount)  --}}
+            //  console.log(send_from,send_to,custom_check,text_area,amount)
 
             $("#display_from_account").text(send_from);
             $("#display_to_account").text(send_to);
@@ -227,21 +227,21 @@
             $("#display_total").text();
 
             if (custom_check == true){
-                var checked = ("Yes")
+                var checked = "Yes"
                 $("#display_payments").text(checked);
 
             }else{
-                var unchecked = (" ")
+                var unchecked = " "
                 $("#display_payments").text(unchecked);
 
             };
 
             if (custom_check2 == true){
-                var checked = (" Yes")
+                var checked = " Yes"
                 $("#display_payments2").text(checked);
 
             }else{
-                var unchecked = (" ")
+                var unchecked = " "
                 $("#display_payments2").text(unchecked);
 
             };
@@ -249,32 +249,6 @@
 
 
 
-{{--
-            $('#confrim_details').send(function(e){
-                $.ajax({
-                    type: "POST"
-                    url: "submit-own-account-transfer"
-                    data: {
-                        "send_from" : send_from,
-                        "send_to" : send_to,
-                        "cashier_id" : cashier_id,
-                        "text_area" : text_area,
-                        "amount" : amount,
-                        "cashier_id" : cashier_id
-                    },
-                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                    success: function(){
-                        Swal.fire(
-                            'Post Successful',
-                            ' ',
-                            'success'
-                        )
-                    }
-                })
-
-            })  --}}
 
         });
       });
