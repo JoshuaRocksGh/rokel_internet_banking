@@ -8,4 +8,8 @@ use Illuminate\Http\Request;
 class LoansController extends Controller
 {
     //
+    public function loans()
+    {
+        return view('pages.loans.loan_qoutation');
+    }
 }

@@ -198,10 +198,10 @@
                     <div class="collapse" id="sidebarProjects">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">Loan Scoring</a>
+                                <a href="{{ url('loan-quotation') }}">Loan Qoutation</a>
                             </li>
                             <li>
-                                <a href="#">Loan Qoutation</a>
+                                <a href="#">Loan Scoring</a>
                             </li>
                             {{-- <li>
                                 <a href="project-create.html">Create Project</a>

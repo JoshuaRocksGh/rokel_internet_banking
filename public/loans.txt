@@ -66,7 +66,7 @@
 
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option class="purple-color" value="Currenct Account~Joshua Tetteh~8888888888888~~">
+                                                <option class="purple-color" value="Currenct Account~Joshua Amarfio~8888888888888~~">
                                                     Currenct Account ~ 8888888888888 </option>
                                             </select>
 
@@ -264,7 +264,7 @@
                                                         <td>Posted BY: </td>
                                                         <td>
                                                             <span class="font-13 text-primary h3"
-                                                                id="display_posted_by">Joshua Tetteh</span>
+                                                                id="display_posted_by">Joshua Amarfio</span>
                                                         </td>
                                                     </tr>
 
