@@ -28,7 +28,6 @@
 <script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script>
 
 
-
 <!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
 

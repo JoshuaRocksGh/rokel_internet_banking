@@ -11,38 +11,36 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title"><a href="{{ url('add-beneficiary') }}"><i class="fe-arrow-left"></i></a> International Bank Beneficiary</h4><br>
-                    <p class="sub-header font-13">
-                        Add a new beneficiary
+                    <p class="sub-header font-18 purple-color" style="cursor: pointer;" onclick="window.history.back()">
+                        <i class="fe-arrow-left"></i> INTERNATIONAL BANK BENEFICIARY
                     </p>
+                    <hr>
+
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <form action="#">
 
                             <div class="col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
 
-                                        {{--  <h4 class="header-title mb-3"> Wizard With Form Validation</h4>  --}}
+                                      
 
                                         <div id="rootwizard">
                                             <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-3">
-                                                <li class="nav-item" data-target-form="#accountForm">
+                                                <li class="nav-item active" data-target-form="#accountForm">
                                                     <a href="#first" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
-                                                        {{--  <i class="mdi mdi-account-circle mr-1"></i>  --}}
                                                         <span class="d-none d-sm-inline">Bank Details</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item" data-target-form="#profileForm">
                                                     <a href="#second" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
-                                                        {{--  <i class="mdi mdi-face-profile mr-1"></i>  --}}
                                                         <span class="d-none d-sm-inline">Account Details</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item" data-target-form="#otherForm">
                                                     <a href="#third" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
-                                                        {{--  <i class="mdi mdi-checkbox-marked-circle-outline mr-1"></i>  --}}
                                                         <span class="d-none d-sm-inline">Beneficiary Details</span>
                                                     </a>
                                                 </li>
@@ -50,16 +48,14 @@
 
                                             <div class="tab-content mb-0 b-0 pt-0">
 
-                                                <div class="tab-pane" id="first">
+                                                <div class="tab-pane active" id="first">
                                                     <form id="accountForm" method="post" action="#" class="form-horizontal">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Bank Details</label><br><br>
                                                                 <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="userName3">User name</label>  --}}
                                                                     <div class="col-md-12">
-                                                                        {{--  <input type="text" class="form-control" id="userName3" name="userName3" placeholder="Bank Country" required>  --}}
-
+                                                                       
                                                                         <select class="custom-select" id="bank_country" name="bank_country" required>
                                                                             <option selected>Bank Country</option>
                                                                             <option value="1">One</option>
@@ -70,10 +66,8 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="password3"> Password</label>  --}}
                                                                     <div class="col-md-12">
-                                                                        {{--  <input type="password" id="password3" name="password3" class="form-control" required>  --}}
-
+                                                                     
                                                                         <select class="custom-select" id="bank_city" name="bank_city">
                                                                             <option selected>Bank City</option>
                                                                             <option value="1">One</option>
@@ -85,10 +79,8 @@
                                                                 </div>
 
                                                                 <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="confirm3">Re Password</label>  --}}
                                                                     <div class="col-md-12">
-                                                                        {{--  <input type="password" id="confirm3" name="confirm3" class="form-control" required>  --}}
-
+                                                                     
                                                                         <select class="custom-select" id="bank_branch" name="bank_branch">
                                                                             <option selected>Bank Branch</option>
                                                                             <option value="1">One</option>
@@ -100,32 +92,18 @@
                                                                 </div>
 
                                                                 <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="confirm3">Re Password</label>  --}}
                                                                     <div class="col-md-12">
                                                                         <input type="password" id="bank_name" name="bank_name" class="form-control" placeholder="Bank Name" required>
-{{--
-                                                                        <select class="custom-select ">
-                                                                            <option selected>Bank Branch</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
-                                                                        </select>  --}}
+
 
                                                                     </div>
                                                                 </div>
 
 
                                                                 <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="confirm3">Re Password</label>  --}}
                                                                     <div class="col-md-12">
                                                                         <input type="password" id="bank_address" name="bank_address" class="form-control" placeholder="Bank Address" required>
-{{--
-                                                                        <select class="custom-select ">
-                                                                            <option selected>Bank Branch</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
-                                                                        </select>  --}}
+
 
                                                                     </div>
                                                                 </div>
@@ -135,13 +113,6 @@
                                                                     {{--  <label class="col-md-3 col-form-label" for="confirm3">Re Password</label>  --}}
                                                                     <div class="col-md-12">
                                                                         <input type="password" id="swift" name="swift" class="form-control" placeholder="Swift" required>
-{{--
-                                                                        <select class="custom-select ">
-                                                                            <option selected>Bank Branch</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
-                                                                        </select>  --}}
 
                                                                     </div>
                                                                 </div>
@@ -369,7 +340,7 @@
                         </div> <!-- end col -->
 
 
-                        <div class="col-md-6">
+                        <div class="col-md-5" style="margin-top: 80px;">
                             <img src="{{ asset('assets/images/world.png') }}" class="img-fluid" alt="" >
                        </div> <!-- end col -->
 
