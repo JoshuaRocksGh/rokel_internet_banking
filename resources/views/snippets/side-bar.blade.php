@@ -430,7 +430,7 @@
                 <li>
                     <a href="#sidebarAuth" data-toggle="collapse">
                         {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
-                        < < class="mdi mdi-cog-outline"></>
+                         <i class="mdi mdi-cog-outline"></i>
                         <span> Settings  </span>
                         <span class="menu-arrow"></span>
                     </a>

@@ -116,7 +116,7 @@
 
                         </form>
                     </div> <!-- end col -->
-
+ 
                     <div class="col-md-8">
                             <img src="{{ asset('assets/images/mobile.png') }}" class="img-fluid" alt="" style="opacity: 0.5;" >
                     </div> <!-- end col -->
