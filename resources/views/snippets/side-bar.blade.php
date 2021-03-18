@@ -132,7 +132,7 @@
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ url('list-of-payments') }}">List of Payments</a>
-                            </li> 
+                            </li>
                             {{--  <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
                             </li>
@@ -198,14 +198,14 @@
                     <div class="collapse" id="sidebarProjects">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="project-list.html">List</a>
+                                <a href="#">Loan Scoring</a>
                             </li>
                             <li>
-                                <a href="project-detail.html">Detail</a>
+                                <a href="#">Loan Qoutation</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="project-create.html">Create Project</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>

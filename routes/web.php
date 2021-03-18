@@ -6,6 +6,7 @@ use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Corporate\Approvals\PendingController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Start\LandingPageController;
@@ -65,7 +66,7 @@ Route::get('/international-bank', [transferController::class, 'international_ban
 
 
 // PAYMENTS ROUTES
-Route::get('/payment-add-beneficiary', [paymentController::class, 'add_beneficiary'])->name('payment-add-beneficiary');
+Route::get('/list-of-payments', [paymentController::class, 'list_of_payments'])->name('list-of-payments');
 Route::get('/payment-add-beneficiary/mobile-money-beneficiary', [paymentController::class, 'mobile_money_beneficiary'])->name('mobile-money-beneficiary');
 Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentController::class, 'utility_payment_beneficiary'])->name('utility-payment-beneficiary');
 
@@ -99,6 +100,11 @@ Route::get('/account-creation/savings-account-creation',[accountCreationControll
 
 // BRANCHES
 Route::get('/branches',[BranchesController::class,'branches'])->name('branches');
+
+
+// LOAN
+Route::get('/loans/loan-quotation',[LoansController::class,'loans'])->name('/loans/loan-quotation');
+
 
 
 // Auth::routes();

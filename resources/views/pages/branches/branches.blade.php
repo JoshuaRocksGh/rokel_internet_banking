@@ -56,8 +56,9 @@
                                 </td>
                                 <td>
                                     <a href="ecommerce-product-detail.html"
-                                        class="text-body font-weight-semibold">Savings Account</a>
-                                    <small class="d-block">01024499300101</small>
+                                        class="text-body font-weight-semibold">Tema</a>
+                                        <small class="d-block">0302720885</small>
+                                        <small class="d-block">8:00-16:00 Mon-Fri</small>
                                 </td>
 
                             </tr>
@@ -69,8 +70,10 @@
                                 </td>
                                 <td>
                                     <a href="ecommerce-product-detail.html"
-                                        class="text-body font-weight-semibold">Savings Account</a>
-                                    <small class="d-block">01024499300101</small>
+                                        class="text-body font-weight-semibold">Osu</a>
+                                    {{-- <small class="d-block">01024499300101</small> --}}
+                                    <small class="d-block">0302720885</small>
+                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
                                 </td>
 
                             </tr>
@@ -82,8 +85,10 @@
                                 </td>
                                 <td>
                                     <a href="ecommerce-product-detail.html"
-                                        class="text-body font-weight-semibold">Savings Account</a>
-                                    <small class="d-block">01024499300101</small>
+                                        class="text-body font-weight-semibold">Dansoman</a>
+                                    {{-- <small class="d-block">01024499300101</small> --}}
+                                    <small class="d-block">0302720885</small>
+                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
                                 </td>
 
                             </tr>
@@ -96,8 +101,10 @@
 
                                 <td>
                                     <a href="ecommerce-product-detail.html"
-                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
-                                    <small class="d-block">01024499300101</small>
+                                        class="text-body font-weight-semibold">Cape Coast Market</a>
+                                    {{-- <small class="d-block">01024499300101</small> --}}
+                                    <small class="d-block">0302720885</small>
+                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
                                 </td>
 
                             </tr>
@@ -109,8 +116,10 @@
                                 </td>
                                 <td>
                                     <a href="ecommerce-product-detail.html"
-                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
-                                    <small class="d-block">01024499300101</small>
+                                        class="text-body font-weight-semibold">Adum</a>
+                                    {{-- <small class="d-block">01024499300101</small> --}}
+                                    <small class="d-block">0302720885</small>
+                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
                                 </td>
 
                             </tr>
