@@ -12,6 +12,7 @@ use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
+use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\transferController;
 use App\Http\Controllers\Transfers\LocalBankController;
@@ -116,6 +117,9 @@ Route::get('/enquiry',[EnquiryController::class,'index'])->name('enquiry');
 // LOAN
 Route::get('/loan-quotation',[LoansController::class,'loans'])->name('loan-quotation');
 
+
+// SETTINGS
+Route::get('/settings',[settingsController::class,'settings'])->name('settings');
 
 
 // Auth::routes();

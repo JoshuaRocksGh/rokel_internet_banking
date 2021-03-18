@@ -338,61 +338,11 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarExpages" data-toggle="collapse">
-                        {{--  <i class="mdi mdi-text-box-multiple-outline"></i>  --}}
+                    <a href="{{ url('settings') }}">
+                        {{--  <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i>  --}}
                         <i class="mdi mdi-cog-outline"></i>
                         <span> Settings </span>
-                        <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarExpages">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="pages-starter.html">Starter</a>
-                            </li>
-                            <li>
-                                <a href="pages-timeline.html">Timeline</a>
-                            </li>
-                            <li>
-                                <a href="pages-sitemap.html">Sitemap</a>
-                            </li>
-                            <li>
-                                <a href="pages-invoice.html">Invoice</a>
-                            </li>
-                            <li>
-                                <a href="pages-faqs.html">FAQs</a>
-                            </li>
-                            <li>
-                                <a href="pages-search-results.html">Search Results</a>
-                            </li>
-                            <li>
-                                <a href="pages-pricing.html">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="pages-maintenance.html">Maintenance</a>
-                            </li>
-                            <li>
-                                <a href="pages-coming-soon.html">Coming Soon</a>
-                            </li>
-                            <li>
-                                <a href="pages-gallery.html">Gallery</a>
-                            </li>
-                            <li>
-                                <a href="pages-404.html">Error 404</a>
-                            </li>
-                            <li>
-                                <a href="pages-404-two.html">Error 404 Two</a>
-                            </li>
-                            <li>
-                                <a href="pages-404-alt.html">Error 404-alt</a>
-                            </li>
-                            <li>
-                                <a href="pages-500.html">Error 500</a>
-                            </li>
-                            <li>
-                                <a href="pages-500-two.html">Error 500 Two</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
 
                 <li>
