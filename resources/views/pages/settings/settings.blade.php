@@ -50,11 +50,13 @@
                                     </p>
 
                                     <p>
-                                        <p class="text">
+                                        <p class="text" style="text-align: center">
                                             Your new Pin must be different from
                                             the previous one
                                         </p>
-                                        <div class="">
+                                        <div class="row">
+                                            <div class="col-md-6">
+
                                             <form>
 
                                                 <div class="form-group">
@@ -62,11 +64,7 @@
                                                     <input type="text" id="simpleinput" class="form-control">
 
                                                 </div>
-{{--
-                                                <div class="form-group">
-                                                    <label for="example-textarea">Message</label>
-                                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
-                                                </div> --}}
+
 
 
                                                 <div class="form-group">
@@ -79,12 +77,6 @@
                                                     <label for="simpleinput">Confirm pin</label>
                                                     <input type="text" id="simpleinput" class="form-control">
                                                 </div>
-{{--
-
-                                                <div class="form-group">
-                                                    <label for="simpleinput">Prefered Date</label>
-                                                    <input type="date" id="simpleinput" class="form-control">
-                                                </div> --}}
 
                                                 <div class="form-group text-center">
                                                     <button class="btn btn-primary btn-rounded" type="button" id="next_button">
@@ -92,6 +84,13 @@
                                                 </div>
 
                                             </form>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <img src="{{ asset('assets/images/change_pin.jpg') }}" class="img-fluid" alt="">
+                                        </div>
+
                                         </div> <!-- end col -->
                                     </p>
 
@@ -104,40 +103,32 @@
                                     </p>
 
                                     <p>
-                                        <div class="">
-                                            {{-- <form>
+                                        <p class="text" style="text-align: center">
+                                            Your new Password must be different from
+                                            the previous one
+                                        </p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                            <form>
 
                                                 <div class="form-group">
-                                                    <label for="simpleinput">Type Of Complaint</label>
-                                                    <select class="custom-select ">
-                                                        <option selected>-- Select Enquiry</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
+                                                    <label for="simpleinput">Enter old password</label>
+                                                    <input type="text" id="simpleinput" class="form-control">
 
-                                                <div class="form-group">
-                                                    <label for="example-textarea">Message</label>
-                                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                                                 </div>
 
 
+
                                                 <div class="form-group">
-                                                    <label for="simpleinput">Prefered Contact</label>
+                                                    <label for="simpleinput">Enter new password</label>
                                                     <input type="text" id="simpleinput" class="form-control">
                                                 </div>
 
 
                                                 <div class="form-group">
-                                                    <label for="simpleinput">Prefered Contact</label>
+                                                    <label for="simpleinput">Confirm password</label>
                                                     <input type="text" id="simpleinput" class="form-control">
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="simpleinput">Prefered Date</label>
-                                                    <input type="date" id="simpleinput" class="form-control">
                                                 </div>
 
                                                 <div class="form-group text-center">
@@ -145,7 +136,9 @@
                                                         &nbsp; Submit &nbsp;</button>
                                                 </div>
 
-                                            </form> --}}
+                                            </form>
+
+                                            </div>
                                         </div> <!-- end col -->
                                     </p>
 
@@ -160,48 +153,25 @@
                                     </p>
 
                                     <p>
-                                        <div class="">
-                                            {{-- <form>
+                                        <p class="text" style="text-align: center">
+                                            Enter your email address and we will send you an email with instructions to reset your pin.
+                                        </p>
+                                        <div class=" ">
+                                            <div class="col-md-12">
+                                                <form action="">
 
                                                 <div class="form-group">
-                                                    <label for="simpleinput">Type Of Complaint</label>
-                                                    <select class="custom-select ">
-                                                        <option selected>-- Select Enquiry</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="example-textarea">Message</label>
-                                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="simpleinput">Prefered Contact</label>
+                                                    <label for="simpleinput">Email Address</label>
                                                     <input type="text" id="simpleinput" class="form-control">
+
                                                 </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="simpleinput">Prefered Contact</label>
-                                                    <input type="text" id="simpleinput" class="form-control">
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="simpleinput">Prefered Date</label>
-                                                    <input type="date" id="simpleinput" class="form-control">
-                                                </div>
-
                                                 <div class="form-group text-center">
-                                                    <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                                        &nbsp; Submit &nbsp;</button>
+                                                    <button class="btn btn-primary " type="button" id=" ">
+                                                        &nbsp; Reset Pin &nbsp;</button>
                                                 </div>
 
-                                            </form> --}}
+                                                </form>
+                                            </div>
                                         </div> <!-- end col -->
                                     </p>
 
