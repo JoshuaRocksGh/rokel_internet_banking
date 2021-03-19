@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Branch\BranchesController;
@@ -84,7 +85,6 @@ Route::get('/saved-beneficiary', [paymentController::class, 'saved_beneficiary']
 // SAVED BENEFICIARY MOBILE MONEY
 Route::get('/saved-beneficiary/mobile-money-payment', [paymentController::class, 'mobile_money_payment'])->name('saved-beneficiary-mobile-money-payment');
 
-// SAVED BENEFICIARY AIRTIME
 
 
 // SAVED BENEFICIARY UTILITY
@@ -127,3 +127,5 @@ Route::get('/settings',[settingsController::class,'settings'])->name('settings')
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
+//route to control the accountEnquiry screen
+Route::get('account-enquiry',[AccountEnquiryController::class,'account_enquiry'])->name('account-enquiry');
