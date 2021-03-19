@@ -4,7 +4,7 @@
 
 <legend></legend>
 
-<div class="container-fluid"> 
+<div class="container-fluid">
 
     <div class="row">
         <div class="col-md-12">
@@ -36,12 +36,12 @@
                                     <table class="table table-centered table-nowrap mb-0">
                                         <tbody>
 
-                                           
+
 
                                             <tr>
                                                 <td style="width: 10px;">
                                                     <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="dripicons-map font-12 avatar-title text-info"></i> 
+                                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -55,77 +55,86 @@
                                             <tr>
                                                 <td style="width: 10px;">
                                                     <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                    <small class="d-block">01024499300101</small>
+                                                        class="text-body font-weight-semibold">Tema</a>
+                                                        <small class="d-block">0302720885</small>
+                                                        <small class="d-block">8:00-16:00 Mon-Fri</small>
                                                 </td>
 
                                             </tr>
                                             <tr>
                                                 <td style="width: 10px;">
                                                     <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                    <small class="d-block">01024499300101</small>
+                                                        class="text-body font-weight-semibold">Osu</a>
+                                                    {{-- <small class="d-block">01024499300101</small> --}}
+                                                    <small class="d-block">0302720885</small>
+                                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
                                                 </td>
 
                                             </tr>
                                             <tr>
                                                 <td style="width: 10px;">
                                                     <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                    <small class="d-block">01024499300101</small>
+                                                        class="text-body font-weight-semibold">Dansoman</a>
+                                                    {{-- <small class="d-block">01024499300101</small> --}}
+                                                    <small class="d-block">0302720885</small>
+                                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
                                                 </td>
 
                                             </tr>
                                             <tr>
                                                 <td style="width: 10px;">
                                                     <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                                     </div>
                                                 </td>
 
                                                 <td>
                                                     <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
-                                                    <small class="d-block">01024499300101</small>
+                                                        class="text-body font-weight-semibold">Cape Coast Market</a>
+                                                    {{-- <small class="d-block">01024499300101</small> --}}
+                                                    <small class="d-block">0302720885</small>
+                                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
                                                 </td>
-                                               
+
                                             </tr>
                                             <tr>
                                                 <td style="width: 10px;">
                                                     <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="ddripicons-map font-4 avatar-title text-info"></i>
+                                                        <i class="dripicons-map font-12 avatar-title text-info"></i>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
-                                                    <small class="d-block">01024499300101</small>
+                                                        class="text-body font-weight-semibold">Adum</a>
+                                                    {{-- <small class="d-block">01024499300101</small> --}}
+                                                    <small class="d-block">0302720885</small>
+                                                    <small class="d-block">8:00-16:00 Mon-Fri</small>
                                                 </td>
-                                              
+
                                             </tr>
 
                                         </tbody>
                                     </table>
                                 </div>
-                                <!-- end table-responsive -->                        
+                                <!-- end table-responsive -->
                             </div>
 
-               
+
 
                         </div> <!-- end col -->
 

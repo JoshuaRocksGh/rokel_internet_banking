@@ -8,8 +8,11 @@ use App\Http\Controllers\Corporate\Approvals\PendingController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
+use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
+use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\transferController;
 use App\Http\Controllers\Transfers\LocalBankController;
@@ -67,6 +70,7 @@ Route::get('/international-bank', [transferController::class, 'international_ban
 
 
 // PAYMENTS ROUTES
+Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
 Route::get('/payment-add-beneficiary', [paymentController::class, 'add_beneficiary'])->name('payment-add-beneficiary');
 Route::get('/payment-add-beneficiary/mobile-money-beneficiary', [paymentController::class, 'mobile_money_beneficiary'])->name('mobile-money-beneficiary');
 Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentController::class, 'utility_payment_beneficiary'])->name('utility-payment-beneficiary');
@@ -74,14 +78,17 @@ Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentContr
 // SAVED BENEFICIARY
 Route::get('/saved-beneficiary', [paymentController::class, 'saved_beneficiary'])->name('saved-beneficiary');
 
+// PAYMENT ROUTES
+
+
 // SAVED BENEFICIARY MOBILE MONEY
-Route::get('/saved-beneficiary/mobile-money-payment', [paymentController::class, 'mobile_money_payment'])->name('/saved-beneficiary/mobile-money-payment');
+Route::get('/saved-beneficiary/mobile-money-payment', [paymentController::class, 'mobile_money_payment'])->name('saved-beneficiary-mobile-money-payment');
 
 // SAVED BENEFICIARY AIRTIME
 
 
 // SAVED BENEFICIARY UTILITY
-Route::get('/saved-beneficiary/utility-payment', [paymentController::class, 'utility_payment'])->name('/saved-beneficiary/utility-payment');
+Route::get('/saved-beneficiary/utility-payment', [paymentController::class, 'utility_payment'])->name('saved-beneficiary/utility-payment');
 
 
 // ONE TIME
@@ -97,7 +104,7 @@ Route::get('branch-locator',[branchLocatorController::class,'branch_locator'])->
 
 // ACCOUNT CREATION
 Route::get('/account-creation',[accountCreationController::class,'account_creation'])->name('account-creation');
-Route::get('/account-creation/savings-account-creation',[accountCreationController::class,'savings_account_creation'])->name('/account-creation/savings-account-creation');
+Route::get('/account-creation/savings-account-creation',[accountCreationController::class,'savings_account_creation'])->name('account-creation/savings-account-creation');
 
 // BRANCHES
 Route::get('/branches',[BranchesController::class,'branches'])->name('branches');
@@ -105,6 +112,14 @@ Route::get('/branches',[BranchesController::class,'branches'])->name('branches')
 Route::get('/faq',[FAQController::class,'index'])->name('faq');
 // ENQUIRY
 Route::get('/enquiry',[EnquiryController::class,'index'])->name('enquiry');
+
+
+// LOAN
+Route::get('/loan-quotation',[LoansController::class,'loans'])->name('loan-quotation');
+
+
+// SETTINGS
+Route::get('/settings',[settingsController::class,'settings'])->name('settings');
 
 
 // Auth::routes();

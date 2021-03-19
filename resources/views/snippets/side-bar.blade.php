@@ -89,10 +89,16 @@
                             </li>
 
                             <li>
-                                <a href="{{ url('other-local-bank') }}">Other Local Bank</a>
+                                <a href="{{ url('other-local-bank') }}">Other Local Bank <b> (ACH)</b> </a>
                             </li>
                             <li>
-                                <a href="{{ url('international-bank') }}">International Bank</a>
+                                <a href="#">Other Local Bank <b> (RTGS)</b> </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('international-bank') }}">International<b> (SWIFT)</b>  </a>
+                            </li>
+                            <li>
+                                <a href="#">Bulk Upload <b> (SWIFT)</b>  </a>
                             </li>
                             <li>
                                 <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>
@@ -180,8 +186,35 @@
                     <div class="collapse" id="sidebarBeneficiary">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('list-of-payments') }}">List of Payments</a>
-                            </li> 
+                                <a href="{{ url('list-of-payments') }}">Mobile Money</a>
+                            </li>
+                            <li>
+                                <a href="#">Airtime</a>
+                            </li>
+                            <li>
+                                <a href="#">Cardless</a>
+                            </li>
+                            <li>
+                                <a href="#">Korpor / Salone Link</a>
+                            </li>
+                            <li>
+                                <a href="#">QR</a>
+                            </li>
+                            <li>
+                                <a href="#">Pay Again</a>
+                            </li>
+                            <li>
+                                <a href="#">Schedule Payment</a>
+                            </li>
+                            <li>
+                                <a href="#">Bulk Upload (Mobile Money)</a>
+                            </li>
+                            <li>
+                                <a href="#">Request Blink Pay </a>
+                            </li>
+                            <li>
+                                <a href="#">Order Blink Pay </a>
+                            </li>
                             {{--  <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
                             </li>
@@ -206,13 +239,49 @@
                     <div class="collapse" id="sidebarEmail">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('account-creation') }}">Additional Account </a>
+                                <a href="#">Cheque Book Request </a>
                             </li>
                             <li>
-                                <a href="#">Cheque Book Request</a>
+                                <a href="#">Activate Cheque Book</a>
                             </li>
                             <li>
-                                <a href="#">Request ATM</a>
+                                <a href="#">Stop Cheque</a>
+                            </li>
+                            <li>
+                                <a href="#">Confirm Cheque</a>
+                            </li>
+                            <li>
+                                <a href="#">Request For Letter</a>
+                            </li>
+                            <li>
+                                <a href="#">Open additional account</a>
+                            </li>
+                            <li>
+                                <a href="#">Request a draft</a>
+                            </li>
+                            <li>
+                                <a href="#">Close account</a>
+                            </li>
+                            <li>
+                                <a href="#">Add a signature</a>
+                            </li>
+                            <li>
+                                <a href="#">Remove a signature </a>
+                            </li>
+                            <li>
+                                <a href="#">Request a statement </a>
+                            </li>
+                            <li>
+                                <a href="#">FD Creation</a>
+                            </li>
+                            <li>
+                                <a href="#">Stop FD</a>
+                            </li>
+                            <li>
+                                <a href="#">KYC Update</a>
+                            </li>
+                            <li>
+                                <a href="#">Request ATN</a>
                             </li>
 {{--
                             <li>
@@ -247,18 +316,36 @@
                     <div class="collapse" id="sidebarProjects">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="project-list.html">List</a>
+                                <a href="{{ url('loan-quotation') }}">Loan Information</a>
                             </li>
                             <li>
-                                <a href="project-detail.html">Detail</a>
+                                <a href="#">Loan Request</a>
                             </li>
                             <li>
+                                <a href="#">Loan Payment</a>
+                            </li>
+                            {{-- <li>
                                 <a href="project-create.html">Create Project</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
 
+                
+                <li>
+                    <a href="#sidebarProjects" data-toggle="collapse">
+                        <i class="mdi mdi-briefcase-check-outline"></i>
+                        <span> Trade Finance </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarProjects">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="#">LC Origination</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <li>
                     <a href="#sidebarTasks" data-toggle="collapse">
                         <i class="mdi mdi-credit-card-multiple-outline"></i>
@@ -268,13 +355,13 @@
                     <div class="collapse" id="sidebarTasks">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="task-list.html">List</a>
+                                <a href="#">Block Debit Card</a>
                             </li>
                             <li>
-                                <a href="task-details.html">Details</a>
+                                <a href="#">Replace Card</a>
                             </li>
                             <li>
-                                <a href="task-kanban-board.html">Kanban Board</a>
+                                <a href="#">Activate Card</a>
                             </li>
                         </ul>
                     </div>
@@ -289,11 +376,9 @@
                     <div class="collapse" id="sidebarContacts">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="contacts-list.html">Members List</a>
+                                <a href="#">Spending Statistics</a>
                             </li>
-                            <li>
-                                <a href="contacts-profile.html">Profile</a>
-                            </li>
+                           
                         </ul>
                     </div>
                 </li>
@@ -357,7 +442,10 @@
                                 <a href="#">Approved</a>
                             </li>
                             <li>
-                                <a href="#">Rejected</a>
+                                <a href="#">Rejects</a>
+                            </li>
+                            <li>
+                                <a href="#">All</a>
                             </li>
                         </ul>
                     </div>
@@ -386,63 +474,38 @@
                     </div>
                 </li>
 
+                
+
                 <li>
-                    <a href="#sidebarExpages" data-toggle="collapse">
-                        {{--  <i class="mdi mdi-text-box-multiple-outline"></i>  --}}
-                        <i class="mdi mdi-cog-outline"></i>
-                        <span> Settings </span>
+                    <a href="#sidebarAuth" data-toggle="collapse">
+                        {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
+                         <i class="mdi mdi-cog-outline"></i>
+                        <span> Settings  </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarExpages">
+                    <div class="collapse" id="sidebarAuth">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="pages-starter.html">Starter</a>
+                                <a href="#">Set Transaction Limits</a>
                             </li>
                             <li>
-                                <a href="pages-timeline.html">Timeline</a>
+                                <a href="#">Update Company Information</a>
                             </li>
                             <li>
-                                <a href="pages-sitemap.html">Sitemap</a>
+                                <a href="#">Forgot Transaction PIN</a>
                             </li>
                             <li>
-                                <a href="pages-invoice.html">Invoice</a>
+                                <a href="#">Biometric Setup</a>
                             </li>
                             <li>
-                                <a href="pages-faqs.html">FAQs</a>
+                                <a href="#">Change PIN</a>
                             </li>
-                            <li>
-                                <a href="pages-search-results.html">Search Results</a>
-                            </li>
-                            <li>
-                                <a href="pages-pricing.html">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="pages-maintenance.html">Maintenance</a>
-                            </li>
-                            <li>
-                                <a href="pages-coming-soon.html">Coming Soon</a>
-                            </li>
-                            <li>
-                                <a href="pages-gallery.html">Gallery</a>
-                            </li>
-                            <li>
-                                <a href="pages-404.html">Error 404</a>
-                            </li>
-                            <li>
-                                <a href="pages-404-two.html">Error 404 Two</a>
-                            </li>
-                            <li>
-                                <a href="pages-404-alt.html">Error 404-alt</a>
-                            </li>
-                            <li>
-                                <a href="pages-500.html">Error 500</a>
-                            </li>
-                            <li>
-                                <a href="pages-500-two.html">Error 500 Two</a>
-                            </li>
+                         
+
                         </ul>
                     </div>
                 </li>
+
 
                 <li>
                     <a href="{{ url('login') }}">
