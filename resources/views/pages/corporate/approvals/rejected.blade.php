@@ -34,7 +34,7 @@
 
                             <div class="col-md-12">
                                 <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
-                                    <b>  PENDING  </b>
+                                    <b>  Rejected  </b>
 
                                 </p>
                                 <hr>
@@ -97,13 +97,13 @@
 
                                                     <tr>
                                                         <td>914</td>
-                                                        <td>Pending</td>
+                                                        <td>Rejected</td>
                                                         <td>AL HAMD ENTERPRISES</td>
                                                         <td>15-04-2020 12:15:52</td>
                                                         <td>004008210057725128</td>
                                                         <td>
                                                             <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                            <a href="{{ url('approvals-Rejected-transfer-details') }}"
                                                                 target="_blank">
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-primary">View</button>
@@ -112,13 +112,13 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1001</td>
-                                                        <td>Pending</td>
+                                                        <td>Rejected</td>
                                                         <td>AL HAMD ENTERPRISES</td>
                                                         <td>12-04-2020 12:15:52</td>
                                                         <td>004008210057725123</td>
                                                         <td>
                                                             <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                            <a href="{{ url('approvals-Rejected-transfer-details') }}"
                                                                 target="_blank">
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-primary">View</button>
@@ -126,13 +126,13 @@
                                                         </td>
                                                         <tr>
                                                             <td>914</td>
-                                                            <td>Pending</td>
+                                                            <td>Rejected</td>
                                                             <td>AL HAMD ENTERPRISES</td>
                                                             <td>15-04-2020 12:15:52</td>
                                                             <td>004008210057725128</td>
                                                             <td>
                                                                 <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                                <a href="{{ url('approvals-Rejected-transfer-details') }}"
                                                                     target="_blank">
                                                                     <button type="button"
                                                                         class="btn btn-sm btn-primary">View</button>
@@ -142,13 +142,13 @@
 
                                                     <tr>
                                                         <td>1001</td>
-                                                        <td>Pending</td>
+                                                        <td>Rejected</td>
                                                         <td>AL HAMD ENTERPRISES</td>
                                                         <td>12-04-2020 12:15:52</td>
                                                         <td>004008210057725123</td>
                                                         <td>
                                                             <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                            <a href="{{ url('approvals-Rejected-transfer-details') }}"
                                                                 target="_blank">
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-primary">View</button>
@@ -156,13 +156,13 @@
                                                         </td>
                                                         <tr>
                                                             <td>914</td>
-                                                            <td>Pending</td>
+                                                            <td>Rejected</td>
                                                             <td>AL HAMD ENTERPRISES</td>
                                                             <td>15-04-2020 12:15:52</td>
                                                             <td>004008210057725128</td>
                                                             <td>
                                                                 <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                                <a href="{{ url('approvals-Rejected-transfer-details') }}"
                                                                     target="_blank">
                                                                     <button type="button"
                                                                         class="btn btn-sm btn-primary">View</button>
@@ -171,13 +171,13 @@
                                                         </tr>
                                                     <tr>
                                                         <td>1001</td>
-                                                        <td>Pending</td>
+                                                        <td>Rejected</td>
                                                         <td>AL HAMD ENTERPRISES</td>
                                                         <td>12-04-2020 12:15:52</td>
                                                         <td>004008210057725123</td>
                                                         <td>
                                                             <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                            <a href="{{ url('approvals-Rejected-transfer-details') }}"
                                                                 target="_blank">
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-primary">View</button>
@@ -185,13 +185,13 @@
                                                         </td>
                                                         <tr>
                                                             <td>914</td>
-                                                            <td>Pending</td>
+                                                            <td>Rejected</td>
                                                             <td>AL HAMD ENTERPRISES</td>
                                                             <td>15-04-2020 12:15:52</td>
                                                             <td>004008210057725128</td>
                                                             <td>
                                                                 <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                                <a href="{{ url('approvals-Rejected-transfer-details') }}"
                                                                     target="_blank">
                                                                     <button type="button"
                                                                         class="btn btn-sm btn-primary">View</button>

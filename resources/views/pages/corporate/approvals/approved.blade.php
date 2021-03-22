@@ -88,7 +88,7 @@
 
                                                     <tr>
                                                         <td>914</td>
-                                                        <td>approved</td>
+                                                        <td>Approved</td>
                                                         <td>AL HAMD ENTERPRISES</td>
                                                         <td>15-04-2020 12:15:52</td>
                                                         <td>004008210057725128</td>
@@ -103,7 +103,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>1001</td>
-                                                        <td>approved</td>
+                                                        <td>Approved</td>
                                                         <td>AL HAMD ENTERPRISES</td>
                                                         <td>12-04-2020 12:15:52</td>
                                                         <td>004008210057725123</td>
@@ -117,7 +117,7 @@
                                                         </td>
                                                         <tr>
                                                             <td>914</td>
-                                                            <td>approved</td>
+                                                            <td>Approved</td>
                                                             <td>AL HAMD ENTERPRISES</td>
                                                             <td>15-04-2020 12:15:52</td>
                                                             <td>004008210057725128</td>
@@ -133,7 +133,7 @@
 
                                                     <tr>
                                                         <td>1001</td>
-                                                        <td>approved</td>
+                                                        <td>Approved</td>
                                                         <td>AL HAMD ENTERPRISES</td>
                                                         <td>12-04-2020 12:15:52</td>
                                                         <td>004008210057725123</td>
@@ -147,7 +147,7 @@
                                                         </td>
                                                         <tr>
                                                             <td>914</td>
-                                                            <td>approved</td>
+                                                            <td>Approved</td>
                                                             <td>AL HAMD ENTERPRISES</td>
                                                             <td>15-04-2020 12:15:52</td>
                                                             <td>004008210057725128</td>
@@ -162,7 +162,7 @@
                                                         </tr>
                                                     <tr>
                                                         <td>1001</td>
-                                                        <td>approved</td>
+                                                        <td>Approved</td>
                                                         <td>AL HAMD ENTERPRISES</td>
                                                         <td>12-04-2020 12:15:52</td>
                                                         <td>004008210057725123</td>
@@ -176,7 +176,7 @@
                                                         </td>
                                                         <tr>
                                                             <td>914</td>
-                                                            <td>approved</td>
+                                                            <td>Approved</td>
                                                             <td>AL HAMD ENTERPRISES</td>
                                                             <td>15-04-2020 12:15:52</td>
                                                             <td>004008210057725128</td>
