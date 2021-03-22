@@ -13,11 +13,6 @@
         type="text/css" />
     <!-- third party css end -->
 
-
-    <style>
-
-    </style>
-
 @endsection
 
 @section('content')
@@ -35,7 +30,7 @@
                             <div class="col-md-12">
                                 <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
                                     <b>  PENDING  </b>
-    
+
                                 </p>
                                 <hr>
                             </div>
@@ -83,11 +78,11 @@
                                                 class="table table-striped dt-responsive nowrap w-100">
                                                 <thead>
                                                     <tr>
-                                                        <th>Type</th>
-                                                        <th>Position</th>
-                                                        <th>Office</th>
-                                                        <th>Age</th>
-                                                        <th>Start date</th>
+                                                        <th>Req-Type</th>
+                                                        <th>Status</th>
+                                                        <th>Initiated By</th>
+                                                        <th>Posted Date</th>
+                                                        <th>Account No</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -96,11 +91,11 @@
                                                 <tbody>
 
                                                     <tr>
-                                                        <td>Sakura Yamamoto</td>
-                                                        <td>Support Engineer</td>
-                                                        <td>Tokyo</td>
-                                                        <td>37</td>
-                                                        <td>2009/08/19</td>
+                                                        <td>914</td>
+                                                        <td>Pending</td>
+                                                        <td>AL HAMD ENTERPRISES</td>
+                                                        <td>15-04-2020 12:15:52</td>
+                                                        <td>004008210057725128</td>
                                                         <td>
                                                             <!-- Info Alert modal -->
                                                             <a href="{{ url('approvals-pending-transfer-details') }}"
@@ -111,189 +106,97 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Thor Walton</td>
-                                                        <td>Developer</td>
-                                                        <td>New York</td>
-                                                        <td>61</td>
-                                                        <td>2013/08/11</td>
+                                                        <td>1001</td>
+                                                        <td>Pending</td>
+                                                        <td>AL HAMD ENTERPRISES</td>
+                                                        <td>12-04-2020 12:15:52</td>
+                                                        <td>004008210057725123</td>
                                                         <td>
+                                                            <!-- Info Alert modal -->
                                                             <a href="{{ url('approvals-pending-transfer-details') }}"
                                                                 target="_blank">
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-primary">View</button>
                                                             </a>
                                                         </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>914</td>
+                                                            <td>Pending</td>
+                                                            <td>AL HAMD ENTERPRISES</td>
+                                                            <td>15-04-2020 12:15:52</td>
+                                                            <td>004008210057725128</td>
+                                                            <td>
+                                                                <!-- Info Alert modal -->
+                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                                    target="_blank">
+                                                                    <button type="button"
+                                                                        class="btn btn-sm btn-primary">View</button>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
                                                     <tr>
-                                                        <td>Finn Camacho</td>
-                                                        <td>Support Engineer</td>
-                                                        <td>San Francisco</td>
-                                                        <td>47</td>
-                                                        <td>2009/07/07</td>
+                                                        <td>1001</td>
+                                                        <td>Pending</td>
+                                                        <td>AL HAMD ENTERPRISES</td>
+                                                        <td>12-04-2020 12:15:52</td>
+                                                        <td>004008210057725123</td>
                                                         <td>
+                                                            <!-- Info Alert modal -->
                                                             <a href="{{ url('approvals-pending-transfer-details') }}"
                                                                 target="_blank">
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-primary">View</button>
                                                             </a>
                                                         </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>914</td>
+                                                            <td>Pending</td>
+                                                            <td>AL HAMD ENTERPRISES</td>
+                                                            <td>15-04-2020 12:15:52</td>
+                                                            <td>004008210057725128</td>
+                                                            <td>
+                                                                <!-- Info Alert modal -->
+                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                                    target="_blank">
+                                                                    <button type="button"
+                                                                        class="btn btn-sm btn-primary">View</button>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
                                                     <tr>
-                                                        <td>Serge Baldwin</td>
-                                                        <td>Data Coordinator</td>
-                                                        <td>Singapore</td>
-                                                        <td>64</td>
-                                                        <td>2012/04/09</td>
+                                                        <td>1001</td>
+                                                        <td>Pending</td>
+                                                        <td>AL HAMD ENTERPRISES</td>
+                                                        <td>12-04-2020 12:15:52</td>
+                                                        <td>004008210057725123</td>
                                                         <td>
+                                                            <!-- Info Alert modal -->
                                                             <a href="{{ url('approvals-pending-transfer-details') }}"
                                                                 target="_blank">
                                                                 <button type="button"
                                                                     class="btn btn-sm btn-primary">View</button>
                                                             </a>
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Zenaida Frank</td>
-                                                        <td>Software Engineer</td>
-                                                        <td>New York</td>
-                                                        <td>63</td>
-                                                        <td>2010/01/04</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Zorita Serrano</td>
-                                                        <td>Software Engineer</td>
-                                                        <td>San Francisco</td>
-                                                        <td>56</td>
-                                                        <td>2012/06/01</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Jennifer Acosta</td>
-                                                        <td>Junior Javascript Developer</td>
-                                                        <td>Edinburgh</td>
-                                                        <td>43</td>
-                                                        <td>2013/02/01</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Cara Stevens</td>
-                                                        <td>Sales Assistant</td>
-                                                        <td>New York</td>
-                                                        <td>46</td>
-                                                        <td>2011/12/06</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Hermione Butler</td>
-                                                        <td>Regional Director</td>
-                                                        <td>London</td>
-                                                        <td>47</td>
-                                                        <td>2011/03/21</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Lael Greer</td>
-                                                        <td>Systems Administrator</td>
-                                                        <td>London</td>
-                                                        <td>21</td>
-                                                        <td>2009/02/27</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Jonas Alexander</td>
-                                                        <td>Developer</td>
-                                                        <td>San Francisco</td>
-                                                        <td>30</td>
-                                                        <td>2010/07/14</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Shad Decker</td>
-                                                        <td>Regional Director</td>
-                                                        <td>Edinburgh</td>
-                                                        <td>51</td>
-                                                        <td>2008/11/13</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Michael Bruce</td>
-                                                        <td>Javascript Developer</td>
-                                                        <td>Singapore</td>
-                                                        <td>29</td>
-                                                        <td>2011/06/27</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Donna Snider</td>
-                                                        <td>Customer Support</td>
-                                                        <td>New York</td>
-                                                        <td>27</td>
-                                                        <td>2011/01/25</td>
-                                                        <td>
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>914</td>
+                                                            <td>Pending</td>
+                                                            <td>AL HAMD ENTERPRISES</td>
+                                                            <td>15-04-2020 12:15:52</td>
+                                                            <td>004008210057725128</td>
+                                                            <td>
+                                                                <!-- Info Alert modal -->
+                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                                    target="_blank">
+                                                                    <button type="button"
+                                                                        class="btn btn-sm btn-primary">View</button>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+
                                                 </tbody>
                                             </table>
+
 
                                         </div> <!-- end card body-->
 

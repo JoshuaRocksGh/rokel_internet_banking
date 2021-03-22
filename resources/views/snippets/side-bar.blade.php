@@ -387,7 +387,7 @@
                                 <a href="{{ url('approvals-approved') }}">Approved</a>
                             </li>
                             <li>
-                                <a href="#">Rejects</a>
+                                <a href="{{ url('approvals-rejected') }}">Rejected</a>
                             </li>
                             <li>
                                 <a href="#">All</a>
