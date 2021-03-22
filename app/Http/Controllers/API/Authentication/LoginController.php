@@ -87,12 +87,7 @@ class LoginController extends Controller
                         'f_login' => $result_data->f_login,
                         'c_type' => $result_data->c_type,
                     ]);
-<<<<<<< HEAD
-
-                    return ($id);
-=======
                     // return $id;
->>>>>>> acf00bfa591b61c823f569beaa99d35047dee91f
 
                     $user = User::where('id', $id)->first();
                     // return json_encode($user);
