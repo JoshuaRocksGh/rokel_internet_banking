@@ -54,7 +54,7 @@
 
 
                         <div class="form-group mb-0 text-center">
-                            <a href="#">
+                            <a href="{{ url('home') }}">
                                 <button class="btn btn-primary btn-block" type="button" id="submit">Log In </button>
                             </a>
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
@@ -196,7 +196,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function(){
+        {{--  $(document).ready(function(){
             $('#submit').click(function(e){
                 e.preventDefault();
                 var email = $("#emailaddress").val();
@@ -212,11 +212,12 @@
                         "password" : password,
                     },
                     success:function(){
-                        alert("success")
+                        {{--  alert("success")  --}}
                     }
                 })
             })
         })
+          --}}
     </script>
 
 @endsection

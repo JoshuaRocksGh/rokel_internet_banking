@@ -22,7 +22,7 @@ class LoginController extends Controller
             // Alert::success('Transaction Successful', 'Success Message');
             // Alert::error('Error Title', 'Error Message');
 
-            return ("error");
+            return view('home');
 
         };
         return $req;
