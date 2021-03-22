@@ -40,6 +40,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 
+Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
+
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
 // Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
@@ -129,7 +131,7 @@ Route::get('/settings',[settingsController::class,'settings'])->name('settings')
 
 // Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 //route to control the accountEnquiry screen
@@ -142,3 +144,10 @@ Route::get('approvals-approved',[ApprovedController::class,'approvals_approved']
 Route::get('approvals-rejected',[RejectedController::class,'approvals_rejected'])->name('approvals-rejected');
 
 
+//Middleware for Agents
+
+Route::middleware(['userAuth'])->group(function () {
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+});
