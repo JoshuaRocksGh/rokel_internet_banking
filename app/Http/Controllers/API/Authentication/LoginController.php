@@ -52,17 +52,50 @@ class LoginController extends Controller
                         return  $base_response->api_response('900', 'This is a corporate user not allowed here',  NULL);
                     }
 
+                    // return $result_data->user_id;
+
+
+                    /*
+
+                    // return $result_data->user_id;
+                    try {
+                        $id = DB::table('users')->insert([
+                            'email' => $result_data->email,
+                            'user_id' => $result_data->user_id,
+                            'customer_no' => $result_data->customer_no,
+                            'f_login' => $result_data->f_login,
+                            'c_type' => $result_data->c_type,
+                        ]);
+                        // dd($id);
+                    } catch (\Exception $th) {
+                        //  return $th->getMessage();
+                         DB::table('error_logs')->insert([
+                            'platform' => 'ONLINE_INTERNET_BANKING',
+                            'user_id' => 'AUTH',
+                            'message' => (string) $th->getMessage()
+                        ]);
+
+                         return $th->getMessage();
+                    }
+
+                    */
+
                     $id = DB::table('users')->insertGetId([
+                        'email' => $result_data->email,
                         'user_id' => $result_data->user_id,
                         'customer_no' => $result_data->customer_no,
                         'f_login' => $result_data->f_login,
                         'c_type' => $result_data->c_type,
                     ]);
+<<<<<<< HEAD
 
                     return ($id);
+=======
+                    // return $id;
+>>>>>>> acf00bfa591b61c823f569beaa99d35047dee91f
 
                     $user = User::where('id', $id)->first();
-                    return json_encode($user);
+                    // return json_encode($user);
                     Auth::login($user);
 
                     return Auth::user();
