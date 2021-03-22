@@ -11,4 +11,6 @@ class AccountEnquiryController extends Controller
     public function account_enquiry(){
         return view('pages.accountEnquiry.accountEnquiry');
     }
+
+    
 }

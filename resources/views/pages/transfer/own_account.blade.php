@@ -98,9 +98,9 @@
 
                                         <div class="form-group">
                                             <label class="">Enter Amount</label>
-                                            <input type="text" class="form-control" id="amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                required>
+                                                <input type="text" class="form-control" id="amount"
+                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                    required>
                                         </div>
 
                                         <div class="form-group">
