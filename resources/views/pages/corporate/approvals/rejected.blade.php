@@ -34,7 +34,7 @@
 
                             <div class="col-md-12">
                                 <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
-                                    <b>  Rejected  </b>
+                                    <b>  REJECTED  </b>
 
                                 </p>
                                 <hr>

@@ -13,11 +13,6 @@
         type="text/css" />
     <!-- third party css end -->
 
-
-    <style>
-
-    </style>
-
 @endsection
 
 @section('content')
