@@ -23,8 +23,12 @@ class LoginController extends Controller
 
         $base_response = new BaseResponse();
 
+<<<<<<< HEAD
+            return view('home');
+=======
         // VALIDATION
         if ($validator->fails()) {
+>>>>>>> eb9064246d94386c91577404e64f358daf957395
 
             return $base_response->api_response('500', $validator->messages(),  NULL);
 
