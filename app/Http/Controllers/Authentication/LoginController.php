@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class LoginController extends Controller
 {
@@ -11,4 +14,5 @@ class LoginController extends Controller
     {
         return view('pages.authentication.login');
     }
+
 }

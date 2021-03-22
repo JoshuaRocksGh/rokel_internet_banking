@@ -31,7 +31,8 @@
                     <p class="text-muted mb-4">Enter your email address and password to access account.</p>
 
                     <!-- form -->
-                    <form action="#">
+                    <form action="POST">
+                        @csrf
                         <div class="form-group">
                             <label for="emailaddress">Email address</label>
                             <input class="form-control" type="email" id="emailaddress" required=""
@@ -53,8 +54,8 @@
 
 
                         <div class="form-group mb-0 text-center">
-                            <a href="{{ url('home') }}">
-                                <button class="btn btn-primary btn-block" type="button">Log In </button>
+                            <a href="#">
+                                <button class="btn btn-primary btn-block" type="button" id="submit">Log In </button>
                             </a>
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
                         </div>
@@ -196,7 +197,25 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
+            $('#submit').click(function(e){
+                e.preventDefault();
+                var email = $("#emailaddress").val();
+                var password = $('#password').val();
 
+                {{--  console.log(email,password);  --}}
+
+                $.ajax({
+                    "type": "POST",
+                    "url" : "api/login",
+                    "data": {
+                        "email" : email,
+                        "password" : password,
+                    },
+                    success:function(){
+                        alert("success")
+                    }
+                })
+            })
         })
     </script>
 
