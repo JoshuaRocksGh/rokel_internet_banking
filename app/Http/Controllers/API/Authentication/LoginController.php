@@ -4,7 +4,10 @@ namespace App\Http\Controllers\API\Authentication;
 
 use App\Http\classes\API\BaseResponse;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,12 +28,17 @@ class LoginController extends Controller
         // VALIDATION
         if ($validator->fails()) {
 
+<<<<<<< HEAD
             return response()->json(
                 $base_response->api_response('500', $validator->errors(),  NULL),
                 200
             );
+=======
+            return $base_response->api_response('500', $validator->errors(), NULL);
+>>>>>>> 104ba5b757a92e4b3e84c401444f507a077e3626
 
         };
+
 
         try {
 
@@ -43,7 +51,28 @@ class LoginController extends Controller
 
                 $result = json_decode($response->body());
 
-                if ($result->responseCode == '000') {   // API responseCode is 000
+                if ($result->responseCode == '000') { // API responseCode is 000
+
+                    $result_data = $result->data;
+
+                    if ($result_data->c_type == 'C') {
+                        return  $base_response->api_response('900', 'This is a corporate user not allowed here',  NULL);
+                    }
+
+                    $id = DB::table('users')->insertGetId([
+                        'user_id' => $result_data->user_id,
+                        'customer_no' => $result_data->customer_no,
+                        'f_login' => $result_data->f_login,
+                        'c_type' => $result_data->c_type,
+                    ]);
+                    dd($id);
+
+                    $user = User::where('id', $id)->first();
+                    return json_encode($user);
+                    Auth::login($user);
+
+                    return Auth::user();
+
 
                     return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
@@ -52,16 +81,30 @@ class LoginController extends Controller
                     return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
                 }
-
             } else { // API response status code not 200
+
+                DB::table('error_logs')->insert([
+                    'platform' => 'ONLINE_INTERNET_BANKING',
+                    'user_id' => 'AUTH',
+                    'code' => $response->status(),
+                    'message' => $response->body()
+                ]);
 
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
             }
-
         } catch (\Exception $e) {
+            try {
+                DB::table('error_logs')->insert([
+                    'platform' => 'ONLINE_INTERNET_BANKING',
+                    'user_id' => 'AUTH',
+                    'message' => (string) $e->getMessage()
+                ]);
+            } catch (\Exception $th) {
+                $th->getMessage();
+            }
 
-            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            // return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
         }
     }
