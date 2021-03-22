@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Transfers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Stevebauman\Location\Facades\Location;
 
 class OwnAccountController extends Controller
 {
@@ -14,8 +15,16 @@ class OwnAccountController extends Controller
         return view('pages.transfer.own_account');
     }
 
-    public function submit_own_account_transfer(Request $request)
-    {
+    // public function submit_own_account_transfer(Request $request)
+    // {
 
-    }
+    // };
+
+
+    // if ($position = Location::get()) {
+    //     // Successfully retrieved position.
+    //     alert($position->countryName);
+    // } else {
+    //     // Failed retrieving position.
+    // }
 }

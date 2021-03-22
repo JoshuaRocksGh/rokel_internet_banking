@@ -110,6 +110,7 @@ Route::get('/account-creation/savings-account-creation',[accountCreationControll
 Route::get('/branches',[BranchesController::class,'branches'])->name('branches');
 // FAQ
 Route::get('/faq',[FAQController::class,'index'])->name('faq');
+
 // ENQUIRY
 Route::get('/enquiry',[EnquiryController::class,'index'])->name('enquiry');
 
@@ -125,5 +126,7 @@ Route::get('/settings',[settingsController::class,'settings'])->name('settings')
 // Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
 
 
