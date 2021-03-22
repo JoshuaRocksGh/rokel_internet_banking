@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group mb-0 text-center">
                                 <a href="{{ url('home') }}">
-                                    <button class="btn btn-primary btn-block" type="submit">Log In </button>
+                                    <button class="btn btn-primary btn-block" type="button">Log In </button>
                                 </a>
                                 {{--  <button class="btn btn-primary btn-block" type="submit">Log In </button>  --}}
                             </div>

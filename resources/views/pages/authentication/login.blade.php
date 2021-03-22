@@ -60,44 +60,44 @@
                         </div>
 
 
-                        
+
                     </form>
                     <!-- end form-->
 
                     <!-- Footer-->
-                  
+
                         <br><br><br>
                         <div class="row ">
 
-                            
+
                             <div class="text-center d-sm-none   d-md-none  d-lg-none">
                                 <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-book-open mr-1"></i> Open an account</button>
                                 &nbsp;
                                 <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-headset mr-1"></i>  FAQs</button>
-                                
+
                             </div>
 
-        
+
                         </div>
                         <br>
                         <div class="row ">
 
-                            
+
                             <div class="text-center d-sm-none  d-md-none  d-lg-none">
                                 <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-desktop mr-1"></i> Make Enquiry</button>
                                &nbsp;
                                 <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-map-marked-alt mr-1"></i>  Branches</button>
-                                
+
                             </div>
 
                         </div>
-                    
-                   
+
+
                     <footer class="footer footer-alt">
 
                             <p class="text-muted">Dont have an account? <a href="auth-register-2.html" class="text-muted ml-1"><b>Sign Up</b></a></p>
                         </footer>
-                  
+
 
                 </div> <!-- end .card-body -->
             </div> <!-- end .align-items-center.d-flex.h-100-->
@@ -193,5 +193,11 @@
     </div>
     <!-- end auth-fluid-->
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+
+        })
+    </script>
 
 @endsection
