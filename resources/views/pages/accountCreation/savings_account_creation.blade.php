@@ -92,7 +92,7 @@
                                     <div>
                                         <h4 class="header-title">Personal Details</h4>
 
-                                        <form>
+                                        <form action="">
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
