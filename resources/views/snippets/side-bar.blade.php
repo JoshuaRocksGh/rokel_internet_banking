@@ -453,7 +453,7 @@
 
 
                 <li>
-                    <a href="{{ url('login') }}">
+                    <a href="{{ url('logout') }}">
                         <i data-feather="power" class="icon-dual-activity"></i>
                         <span> Logout </span>
                     </a>

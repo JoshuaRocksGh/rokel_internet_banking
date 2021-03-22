@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" style="background-image: url('assets/images/background.jpg')">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2"></div>
@@ -103,7 +103,10 @@
                                                     required>
                                         </div>
 
+
                                         <div class="form-group">
+                                            <label class="">Expense Type</label>
+
                                             {{-- <label class="h6">Category</label> --}}
 
                                             <select class="custom-select" id="category" required>
@@ -111,17 +114,22 @@
                                                 <option value="001~Fees">Fees</option>
                                                 <option value="002~Electronics">Electronics</option>
                                                 <option value="003~Travels">Travels</option>
+                                                <option value="004~Travels">Others</option>
                                             </select>
 
                                         </div>
 
 
                                         <div class="form-group">
+                                            <label class="">Expense Narration</label>
+
                                             {{-- <label class="h6">Category</label> --}}
 
                                             <input type="text" class="form-control" id="purpose" placeholder="Enter purpose / narration" required>
 
                                         </div>
+
+
 
 
                                         <div class="form-group">
@@ -133,11 +141,29 @@
                                             </div>
                                             <legend></legend>
 
+
+                                            <div class="form-group" id="frequency">
+                                                <label class="">Payment Frequency</label>
+
+                                                {{-- <label class="h6">Category</label> --}}
+
+                                                <select class="custom-select" id="select_frequency" required>
+                                                    <option value="">Select Frequency</option>
+                                                    <option value="001~Weekly">Weekly</option>
+                                                    <option value="002~Bi-Weekly">Bi-Weekly</option>
+                                                    <option value="003~Monthly">Monthly</option>
+                                                    <option value="004~Quaterly">Quaterly</option>
+                                                </select>
+
+                                            </div>
+
                                             <input type="text" class="form-control" id="schedule_payment_contraint_input">
 
                                             <input type="date" class="form-control" id="schedule_payment_date">
 
                                         </div>
+
+
 
 
 
@@ -247,9 +273,24 @@
                                                                 id="display_schedule_payment">NO </span>
                                                                 &nbsp; | &nbsp;
                                                             <span class="font-13 text-primary h3 display_schedule_payment_date" id="display_schedule_payment_date"> N/A
+
+                                                            </span>
+                                                            &nbsp; | &nbsp;
+
+                                                            <span class="font-13 text-primary h3 display_frequency"id="display_frequency">
+
                                                             </span>
                                                         </td>
                                                     </tr>
+
+{{--
+                                                    <tr>
+                                                        <td>Payment Frequency: </td>
+                                                        <td>
+                                                            <span class="font-13 text-primary h3 display_frequency"
+                                                                id="display_frequency"></span>
+                                                        </td>
+                                                    </tr>  --}}
 
 
                                                     <tr>
@@ -381,6 +422,7 @@
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
                 $("#schedule_payment_date").hide()
+                $("#frequency").hide()
                 $('#schedule_payment_contraint_input').hide()
                 $('.display_schedule_payment_date').text('N/A')
 
@@ -504,6 +546,7 @@
                     if ($(this).is(":checked")) {
                         console.log("Checkbox Checked!");
                         $("#schedule_payment_date").show()
+                        $("#frequency").show()
                         $(".display_schedule_payment").text('YES')
                         $('#schedule_payment_contraint_input').val('TRUE')
 
@@ -511,6 +554,7 @@
                         console.log("Checkbox UnChecked!");
                         $("#schedule_payment_date").val('')
                         $("#schedule_payment_date").hide()
+                        $("#frequency").hide()
                         $('.display_schedule_payment').text('NO')
                         $('.display_schedule_payment_date').text('N/A')
 
@@ -531,7 +575,7 @@
                     var to_account = $('#to_account').val()
                     var transfer_amount = $('#amount').val()
                     var category = $('#category').val()
-
+                    var select_frequency_ = $('#select_frequency').val()
                     var purpose = $('#purpose').val()
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
@@ -553,7 +597,11 @@
                     }else{
                         //set purpose and category values
                         var category_info = category.split("~")
+
+                        var select_frequency_info = select_frequency_.split("~")
+
                         $("#display_category").text(category_info[1])
+                        $("#display_frequency").text(select_frequency_info[1])
                         $("#display_purpose").text(purpose)
 
                         $("#transaction_form").hide()

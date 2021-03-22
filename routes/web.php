@@ -13,6 +13,7 @@ use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
 use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\settingsController;
@@ -44,6 +45,8 @@ Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('l
 
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
 // Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
+
+
 
 
 Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
@@ -148,6 +151,9 @@ Route::get('approvals-rejected',[RejectedController::class,'approvals_rejected']
 
 Route::middleware(['userAuth'])->group(function () {
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    // Logout controller
+Route::get('/logout',[LogoutController::class,'logout_'])->name('logout');
 
 });
