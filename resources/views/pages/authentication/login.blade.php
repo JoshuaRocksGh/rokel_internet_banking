@@ -220,8 +220,14 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success:function(){
-                        {{--  alert("success")  --}}
+                    success:function(response){
+                        console.log(response);
+                        var res = response.data
+                        if(response.responseCode == "000"){
+                            window.location = 'home'
+                        }else{
+                            alert('Failed to login')
+                        }
                     }
                 })
             })

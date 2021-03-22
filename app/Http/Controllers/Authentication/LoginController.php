@@ -100,7 +100,7 @@ class LoginController extends Controller
                     // return json_encode($user);
                     Auth::login($user);
 
-                    return redirect()->route('home');
+                    // return redirect()->route('home');
 
                 //     return Auth::user();
 
