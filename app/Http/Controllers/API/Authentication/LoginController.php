@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Authentication;
 use App\Http\classes\API\BaseResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,16 +26,13 @@ class LoginController extends Controller
         // VALIDATION
         if ($validator->fails()) {
 
-            return response()->json(
-                $base_response->api_response('500', $validator->errors(),  NULL),
-                200
-            );
-            
+            return $base_response->api_response('500', $validator->messages(),  NULL);
+
         };
 
         try {
 
-            $response = Http::post('http://192.168.1.195:84/IIE/login.php', [
+            $response = Http::post('http://192.168.1.195:84/IIE/login.php_', [
                 'email' => 'required',
                 'password' => 'required'
             ]);
@@ -55,13 +53,29 @@ class LoginController extends Controller
 
             } else { // API response status code not 200
 
+                DB::table('error_logs')->insert([
+                    'platform' => 'ONLINE_INTERNET_BANKING',
+                    'user_id' => 'AUTH',
+                    'code' => $response->status(),
+                    'message' => $response->body()
+                ]);
+
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
             }
 
         } catch (\Exception $e) {
-
-            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            try {
+                DB::table('error_logs')->insert([
+                    'platform' => 'ONLINE_INTERNET_BANKING',
+                    'user_id' => 'AUTH',
+                    'message' => (string) $e->getMessage()
+                ]);
+            } catch (\Exception $th) {
+                $th->getMessage();
+            }
+          
+            // return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
         }
     }
