@@ -39,6 +39,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
+// Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
+
 
 Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
 
