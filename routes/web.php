@@ -6,6 +6,7 @@ use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginCo
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Corporate\Approvals\PendingController;
+use App\Http\Controllers\Corporate\Approvals\ApprovedController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
@@ -130,3 +131,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //route to control the accountEnquiry screen
 Route::get('account-enquiry',[AccountEnquiryController::class,'account_enquiry'])->name('account-enquiry');
+
+//route to control the coperate approval screen
+Route::get('approvals-approved',[ApprovedController::class,'approvals_approved'])->name('approvals-approved');
+
+

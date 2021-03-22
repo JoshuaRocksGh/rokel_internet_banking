@@ -116,7 +116,7 @@
 
 
                                 <i class="fas fa-book-open text-primary font-22" style="font-size: 100px;"></i>
-                                <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">Open An Account</a>
+                                <h4 class="mt-3 font-16"><a href="{{ url('account-creation') }}" class="text-dark">Open An Account</a>
                                 </h4>
 
                                 <a href="{{ url('account-creation') }}" class="p-text">
@@ -131,7 +131,7 @@
                         <div class="text-center card-box">
                             <div class="pt-2 pb-2">
                                 <i class=" fas fa-desktop text-primary font-22" style="font-size: 100px;"></i>
-                                <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">Make Enquiries</a>
+                                <h4 class="mt-3 font-16"><a href="{{ url('enquiry') }}" class="text-dark">Enquiries/Complaints</a>
                                 </h4>
                                 <a href="{{ url('enquiry') }}" class="p-text">
                                     <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
@@ -155,7 +155,7 @@
 
                                 <i class="fas fa-headset text-primary font-22" style="font-size: 100px;"></i>
 
-                                <h4 class="mt-3 font-16"><a href="extras-profile.html" class="text-dark">FAQ</a></h4>
+                                <h4 class="mt-3 font-16"><a href="{{ url('faq') }}" class="text-dark">FAQ</a></h4>
 
                                 <a href="{{ url('faq') }}" class="p-text">
                                     <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
