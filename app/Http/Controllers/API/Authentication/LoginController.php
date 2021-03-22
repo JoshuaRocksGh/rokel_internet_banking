@@ -116,17 +116,16 @@ class LoginController extends Controller
 
             }
         } catch (\Exception $e) {
-            try {
+
                 DB::table('error_logs')->insert([
                     'platform' => 'ONLINE_INTERNET_BANKING',
                     'user_id' => 'AUTH',
                     'message' => (string) $e->getMessage()
                 ]);
-            } catch (\Exception $th) {
-                $th->getMessage();
-            }
 
-            // return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+                return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+
+
 
         }
     }
