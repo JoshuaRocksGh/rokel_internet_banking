@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Authentication\LoginController;
+use App\Http\Controllers\API\Authentication\TransferController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/login',[LoginController::class,'login_'])->name('login');
+Route::post('/add-beneficiary/same-bank-beneficiary',[TransferController::class,'same_bank_beneficiary_'])->name('same-bank-beneficiary');
