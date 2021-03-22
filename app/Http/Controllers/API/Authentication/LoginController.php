@@ -25,6 +25,12 @@ class LoginController extends Controller
 
         $base_response = new BaseResponse();
 
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+
+        };
 
 
         try {
@@ -42,17 +48,17 @@ class LoginController extends Controller
 
                     $result_data = $result->data;
 
-                    if($result_data->c_type == 'C') {
+                    if ($result_data->c_type == 'C') {
                         return  $base_response->api_response('900', 'This is a corporate user not allowed here',  NULL);
                     }
 
                     $id = DB::table('users')->insertGetId([
-                            'user_id' => $result_data->user_id,
-                            'customer_no' => $result_data->customer_no,
-                            'f_login' => $result_data->f_login,
-                            'c_type' => $result_data->c_type,
-                        ]);
-                        dd($id);
+                        'user_id' => $result_data->user_id,
+                        'customer_no' => $result_data->customer_no,
+                        'f_login' => $result_data->f_login,
+                        'c_type' => $result_data->c_type,
+                    ]);
+                    dd($id);
 
                     $user = User::where('id', $id)->first();
                     return json_encode($user);
@@ -68,7 +74,6 @@ class LoginController extends Controller
                     return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
                 }
-
             } else { // API response status code not 200
 
                 DB::table('error_logs')->insert([
@@ -76,14 +81,13 @@ class LoginController extends Controller
                     'user_id' => 'AUTH',
                     'code' => $response->status(),
                     'message' => $response->body()
-                    ]);
+                ]);
 
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
             }
-
-        } catch (\Exception $e){
-                    try {
+        } catch (\Exception $e) {
+            try {
                 DB::table('error_logs')->insert([
                     'platform' => 'ONLINE_INTERNET_BANKING',
                     'user_id' => 'AUTH',
