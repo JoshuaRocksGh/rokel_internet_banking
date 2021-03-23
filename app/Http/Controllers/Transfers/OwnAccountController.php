@@ -27,4 +27,8 @@ class OwnAccountController extends Controller
     // } else {
     //     // Failed retrieving position.
     // }
+
+    // $ipAddress = $request->ip();
+
+    // alert($ipAddress);
 }

@@ -178,6 +178,11 @@
                                     Here</button>
                                 </a>
 
+                                {{--  <a href="{{ url('branches') }}" class="text-dark">
+                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
+                                        Here</button>
+                                    </a>  --}}
+
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->
                     </div> <!-- end col -->
@@ -196,7 +201,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
-        {{--  $(document).ready(function(){
+        $(document).ready(function(){
             $('#submit').click(function(e){
                 e.preventDefault();
                 var email = $("#emailaddress").val();
@@ -206,18 +211,28 @@
 
                 $.ajax({
                     "type": "POST",
-                    "url" : "api/login",
+                    "url" : "login",
+                    "datatype" : "application/json",
                     "data": {
-                        "email" : email,
+                        "user_id" : email,
                         "password" : password,
                     },
-                    success:function(){
-                        {{--  alert("success")  --}}
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success:function(response){
+                        console.log(response);
+                        var res = response.data
+                        if(response.responseCode == "000"){
+                            window.location = 'home'
+                        }else{
+                            alert('Failed to login')
+                        }
                     }
                 })
             })
         })
-          --}}
+
     </script>
 
 @endsection

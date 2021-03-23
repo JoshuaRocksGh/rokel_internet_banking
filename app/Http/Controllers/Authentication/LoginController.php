@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Authentication;
 
+use App\Http\classes\API\BaseResponse;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -13,6 +18,125 @@ class LoginController extends Controller
     public function login()
     {
         return view('pages.authentication.login');
+    }
+
+
+    public function login_(Request $req)
+    {
+
+        $validator = Validator::make($req->all(), [
+            'user_id' => 'required',
+            'password' => 'required'
+        ]);
+
+        $base_response = new BaseResponse();
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+
+        };
+
+        // return $req;
+
+        try {
+
+            $response = Http::post('http://192.168.1.195:84/IIE/login.php', [
+                'email' => 'required',
+                'password' => 'required'
+            ]);
+
+            if ($response->ok()) { // API response status code is 200
+
+                $result = json_decode($response->body());
+
+                if ($result->responseCode == '000') { // API responseCode is 000
+
+                    $result_data = $result->data;
+
+                    if ($result_data->c_type == 'C') {
+                        return  $base_response->api_response('900', 'This is a corporate user not allowed here',  NULL);
+                    }
+
+                    // return $result_data->user_id;
+
+
+                    /*
+
+                    // return $result_data->user_id;
+                    try {
+                        $id = DB::table('users')->insert([
+                            'email' => $result_data->email,
+                            'user_id' => $result_data->user_id,
+                            'customer_no' => $result_data->customer_no,
+                            'f_login' => $result_data->f_login,
+                            'c_type' => $result_data->c_type,
+                        ]);
+                        // dd($id);
+                    } catch (\Exception $th) {
+                        //  return $th->getMessage();
+                         DB::table('error_logs')->insert([
+                            'platform' => 'ONLINE_INTERNET_BANKING',
+                            'user_id' => 'AUTH',
+                            'message' => (string) $th->getMessage()
+                        ]);
+
+                         return $th->getMessage();
+                    }
+
+                    */
+
+                    $id = DB::table('users')->insertGetId([
+                        'email' => $result_data->email,
+                        'user_id' => $result_data->user_id,
+                        'customer_no' => $result_data->customer_no,
+                        'f_login' => $result_data->f_login,
+                        'c_type' => $result_data->c_type,
+                    ]);
+                    // return $id;
+
+                    $user = User::where('id', $id)->first();
+                    // return json_encode($user);
+                    Auth::login($user);
+
+                    // return redirect()->route('home');
+
+                //     return Auth::user();
+
+
+                    return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+                } else {  // API responseCode is not 000
+
+                    return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+                }
+            } else { // API response status code not 200
+
+                DB::table('error_logs')->insert([
+                    'platform' => 'ONLINE_INTERNET_BANKING',
+                    'user_id' => 'AUTH',
+                    'code' => $response->status(),
+                    'message' => $response->body()
+                ]);
+
+                return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+            }
+        } catch (\Exception $e) {
+
+                DB::table('error_logs')->insert([
+                    'platform' => 'ONLINE_INTERNET_BANKING',
+                    'user_id' => 'AUTH',
+                    'message' => (string) $e->getMessage()
+                ]);
+
+                return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+
+
+
+        }
     }
 
 }

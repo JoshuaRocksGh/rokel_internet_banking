@@ -15,6 +15,7 @@ use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
 use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\settingsController;
@@ -42,14 +43,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 
+Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
+
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
 // Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
 //route to control the forgot-password screen for email
 Route::get('/forgot-password',[ForgotPasswordController::class,'email_reset_password'])->name('forgot-password');
 
+<<<<<<< HEAD
 //Route to control the change-password screen
 Route::get('/change-password',[ResetPasswordController::class,'change_password'])->name('change-password');
+=======
+
+
+Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
+
+Route::get('/forget-password', [loginController::class, 'forget_password'])->name('forget-password');
+
+>>>>>>> 807a6940b11b54f245865dd8199b3d981da31dcd
 
 //Route to control the reset-success screen
 Route::get('/reset-success',[ResetPasswordController::class,'reset_success'])->name('reset-success');
@@ -133,7 +145,7 @@ Route::get('/settings',[settingsController::class,'settings'])->name('settings')
 
 // Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 //route to control the accountEnquiry screen
@@ -146,3 +158,13 @@ Route::get('approvals-approved',[ApprovedController::class,'approvals_approved']
 Route::get('approvals-rejected',[RejectedController::class,'approvals_rejected'])->name('approvals-rejected');
 
 
+//Middleware for Agents
+
+Route::middleware(['userAuth'])->group(function () {
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    // Logout controller
+Route::get('/logout',[LogoutController::class,'logout_'])->name('logout');
+
+});
