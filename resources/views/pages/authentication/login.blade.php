@@ -39,7 +39,7 @@
                                 placeholder="Enter your email">
                         </div>
                         <div class="form-group">
-                            <a href="auth-recoverpw-2.html" class="text-muted float-right"><small>Forgot your
+                            <a href="{{ url('forgot-password') }}" class="text-muted float-right"><small>Forgot your
                                     password?</small></a>
                             <label for="password">Password</label>
                             <div class="input-group input-group-merge">

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountServices\accountCreationController;
+use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
+use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Corporate\Approvals\PendingController;
@@ -43,12 +45,14 @@ Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
 // Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
+//route to control the forgot-password screen for email
+Route::get('/forgot-password',[ForgotPasswordController::class,'email_reset_password'])->name('forgot-password');
 
-Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
+//Route to control the change-password screen
+Route::get('/change-password',[ResetPasswordController::class,'change_password'])->name('change-password');
 
-Route::get('/forget-password', [loginController::class, 'forget_password'])->name('forget-password');
-
-
+//Route to control the reset-success screen
+Route::get('/reset-success',[ResetPasswordController::class,'reset_success'])->name('reset-success');
 // Transfer Routes
 // Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
 Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
