@@ -200,10 +200,10 @@
                                             <a href="{{ url('cheque-approvals-pending') }}">Pending</a>
                                         </li>
                                         <li>
-                                            <a href="#">Approved</a>
+                                            <a href="{{ url('cheque-approvals-approved') }}">Approved</a>
                                         </li>
                                         <li>
-                                            <a href="#">Rejected</a>
+                                            <a href="{{ url('cheque-approvals-rejected') }}">Rejected</a>
                                         </li>
                                     </ul>
                                 </div>

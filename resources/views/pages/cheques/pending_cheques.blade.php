@@ -23,13 +23,13 @@
             <br> <br>
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-background-image">
 
                         <div class="row">
 
                             <div class="col-md-12">
                                 <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
-                                    <b>  Cheques Pending Approved  </b>
+                                    <b>  Cheques Pending Approval  </b>
 
                                 </p>
                                 <hr>
@@ -72,11 +72,18 @@
                                                         <td>60,000</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>004008210059825128</td>
+                                                        <td>004008210051325128</td>
                                                         <td>Joshua Tetteh</td>
-                                                        <td class="text text-info" data-toggle="modal" data-target="#bs-example-modal-lg">9145</td>
+                                                        <td class="text text-info" data-toggle="modal" data-target="#bs-example-modal-lg">9146</td>
                                                         <td>GHS</td>
                                                         <td>20,000</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>004008210052325128</td>
+                                                        <td>Abena Amponsah</td>
+                                                        <td class="text text-info" data-toggle="modal" data-target="#bs-example-modal-lg">9150</td>
+                                                        <td>GHS</td>
+                                                        <td>10,000</td>
                                                     </tr>
 
                                                     </tbody>

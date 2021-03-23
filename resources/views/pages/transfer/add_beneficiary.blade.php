@@ -7,7 +7,7 @@
 
         <div class="card container-fluid">
 
-            <div class="card-body">
+            <div class="card-body card-background-image">
 
                 <div class="row">
                     <div class="col-md-12">

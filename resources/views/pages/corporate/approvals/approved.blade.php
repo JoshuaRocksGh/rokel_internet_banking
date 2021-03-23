@@ -23,7 +23,7 @@
             <br> <br>
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-background-image">
 
                         <div class="row">
 
