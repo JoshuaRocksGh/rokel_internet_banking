@@ -47,26 +47,26 @@
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="transfer_tab">
 
-                                        <div class="card-body">
-
 
                                 <div class="row">
+
+
                                     <div class="col-md-4">
                                         <div class="mb-4">
-                                            <h5 class="font-14">Start Date</h5>
-                                            <p>17 March 2019 <small class="text-muted">1:00 PM</small></p>
+                                            <h5 class="font-14">Account No: <b class="text-primary">  00120002020303 </b> </h5>
+                                            {{--  <p>17 March 2019 <small class="text-muted">1:00 PM</small></p>  --}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-4">
+                                            <h5 class="font-14">Currency <b class="text-primary"> GHS </b> </h5>
+                                            {{--  <p>22 December 2019 <small class="text-muted">1:00 PM</small></p>  --}}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-4">
-                                            <h5 class="font-14">End Date</h5>
-                                            <p>22 December 2019 <small class="text-muted">1:00 PM</small></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-4">
-                                            <h5 class="font-14">Budget</h5>
-                                            <p>$15,800</p>
+                                            <h5 class="font-14">Producr: <b class="text-primary">  Current Account </b> </h5>
+                                            {{--  <p>$15,800</p>  --}}
                                         </div>
                                     </div>
                                 </div>
