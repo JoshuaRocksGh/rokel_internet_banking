@@ -32,7 +32,8 @@
                                             <select class="custom-select " id="from_account" required>
                                                 <option value="">Select Account</option>
                                                 <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
-                                                    Saving Account ~ 001023468976001 </option>
+                                                    Saving Account~001023468976001~GHS~2000
+                                                 </option>
 
                                             </select>
 
@@ -66,8 +67,8 @@
 
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Currenct Account~Joshua Tetteh~8888888888888~USD~800">
-                                                    Currenct Account ~ 8888888888888 </option>
+                                                <option value="Currenct Account~8888888888888~USD~800">
+                                                    Currenct Account ~ 8888888888888 ~ USD</option>
                                             </select>
 
 
@@ -83,8 +84,8 @@
                                                         </td>
 
                                                         <td class="text-right font-weight-semibold">
-                                                            <span class="display_to_account_currency"></span>
-                                                            <span class="display_to_account_amount"></span>
+                                                             {{--  <span class="display_to_account_currency"></span>  --}}
+                                                            {{--  <span class="display_to_account_amount"></span>  --}}
 
                                                         </td>
                                                     </tr>
@@ -507,8 +508,8 @@
                         $(".display_to_account_type").text(to_account_info[0].trim())
                         $(".display_to_account_name").text(to_account_info[1].trim())
                         $(".display_to_account_no").text(to_account_info[2].trim())
-                        $(".display_to_account_currency").text(to_account_info[3].trim())
-                        $(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
+                        //$(".display_to_account_currency").text(to_account_info[3].trim())
+                        //$(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
 
                         $(".to_account_display_info").show()
                     }
