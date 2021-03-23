@@ -108,11 +108,13 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+                            <h4 class="modal-title" id="myLargeModalLabel">Pending Cheque ready for approval</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <img src="{{ asset('assets/images/cheque.png') }}"/>
+                            <br/>
+                            <img src="{{ asset('assets/images/back_cheque.jpg') }}"/>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
