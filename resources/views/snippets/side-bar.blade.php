@@ -176,18 +176,37 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarEmail" data-toggle="collapse">
+                    <a href="#sidebarAccountServices" data-toggle="collapse">
                         <i class="mdi mdi-email-multiple-outline"></i>
                         <span> Account Services </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarEmail">
+                    <div class="collapse" id="sidebarAccountServices">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="#">Cheque Book Request </a>
                             </li>
                             <li>
                                 <a href="#">Activate Cheque Book</a>
+                            </li>
+                            <li>
+                                <a href="#sidebarChequeApprovals" data-toggle="collapse">
+                                    <span>Cheque Approvals</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarChequeApprovals">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="#">Pending</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Approved</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Rejected</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             <li>
                                 <a href="#">Stop Cheque</a>
