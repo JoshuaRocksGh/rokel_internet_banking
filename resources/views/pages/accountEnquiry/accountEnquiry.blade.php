@@ -22,21 +22,90 @@
 @section('content')
 
     <div>
+        <br>
+
+
 
         <div class="row">
             <br>
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+
+
                         <div class="row">
 
+
                             <div class="col-md-12">
+
+                            </div>
+
+                            <div class="col-md-12">
+
 
 
                                 <div class="tab-content">
                                     <div class="tab-pane show active" id="transfer_tab">
 
                                         <div class="card-body">
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="mb-4">
+                                            <h5 class="font-14">Start Date</h5>
+                                            <p>17 March 2019 <small class="text-muted">1:00 PM</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-4">
+                                            <h5 class="font-14">End Date</h5>
+                                            <p>22 December 2019 <small class="text-muted">1:00 PM</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-4">
+                                            <h5 class="font-14">Budget</h5>
+                                            <p>$15,800</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                                                                    <div class="row mb-2">
+                            <div class="col-sm-5">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <b>Start Date</b>
+                                            <input type="text" id="basic-datepicker" class="form-control" placeholder="Basic datepicker">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <b>End Date</b>
+                                            <input type="text" id="basic-datepicker_" class="form-control" placeholder="Basic datepicker">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-sm-3"></div>
+
+                            <div class="col-sm-4">
+                                <br>
+                                <div class="text-sm-right float-right">
+                                     <button type="button" class="btn btn-sm btn-light mb-2 mr-1">Print Statement</button>
+                                    <button type="button" class="btn btn-sm btn-light mb-2">Export</button>
+                                </div>
+                            </div><!-- end col-->
+                        </div>
+
 
                                             {{-- <h4 class="header-title">Buttons example</h4>
                                             <p class="sub-header font-13">
