@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card" style="background-image: url('assets/images/background.jpg')">
+            <div class="card" style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2"></div>
