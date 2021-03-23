@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountServices\accountCreationController;
+use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
@@ -44,6 +45,8 @@ Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
+// Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
+
 // Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
 
