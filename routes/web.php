@@ -7,6 +7,7 @@ use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginCo
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
+use App\Http\Controllers\Cheques\ChequesPendingController;
 use App\Http\Controllers\Corporate\Approvals\PendingController;
 use App\Http\Controllers\Corporate\Approvals\ApprovedController;
 use App\Http\Controllers\Corporate\Approvals\RejectedController;
@@ -154,6 +155,8 @@ Route::get('approvals-approved',[ApprovedController::class,'approvals_approved']
 //route to control the coperate rejected screen
 Route::get('approvals-rejected',[RejectedController::class,'approvals_rejected'])->name('approvals-rejected');
 
+//route to return the cheque approvals screen for pending
+Route::get('cheque-approvals-pending',[ChequesPendingController::class,'pending_cheques'])->name('cheque-approvals-pending');
 
 //Middleware for Agents
 
@@ -165,3 +168,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout',[LogoutController::class,'logout_'])->name('logout');
 
 });
+
+
+

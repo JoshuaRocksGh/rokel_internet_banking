@@ -197,7 +197,7 @@
                                 <div class="collapse" id="sidebarChequeApprovals">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="#">Pending</a>
+                                            <a href="{{ url('cheque-approvals-pending') }}">Pending</a>
                                         </li>
                                         <li>
                                             <a href="#">Approved</a>
