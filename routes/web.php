@@ -51,17 +51,14 @@ Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('log
 //route to control the forgot-password screen for email
 Route::get('/forgot-password',[ForgotPasswordController::class,'email_reset_password'])->name('forgot-password');
 
-<<<<<<< HEAD
 //Route to control the change-password screen
 Route::get('/change-password',[ResetPasswordController::class,'change_password'])->name('change-password');
-=======
 
 
 Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
 
 Route::get('/forget-password', [loginController::class, 'forget_password'])->name('forget-password');
 
->>>>>>> 807a6940b11b54f245865dd8199b3d981da31dcd
 
 //Route to control the reset-success screen
 Route::get('/reset-success',[ResetPasswordController::class,'reset_success'])->name('reset-success');
