@@ -57,7 +57,7 @@
                 </div> <!-- end widget-rounded-circle-->
 
                 <div class="col-md-13 col-xl-13">
-                    <div class="card-box" style="zoom: 0.80;">
+                    <div class="card-box" style="zoom: 0.90;">
                         {{-- <h4 class="header-title mb-4">Tabs Justified</h4> --}}
 {{--
                         <ul class="nav nav-pills navtab-bg nav-justified">
@@ -99,7 +99,7 @@
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
 
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         GHS 90,039.00
                                                     </td>
                                                 </tr>
@@ -115,7 +115,7 @@
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
 
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         GHS 90,039.00
                                                     </td>
                                                 </tr>
@@ -131,7 +131,7 @@
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
 
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         GHS 90,039.00
                                                     </td>
                                                 </tr>
@@ -147,7 +147,7 @@
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
 
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         GHS 90,039.00
                                                     </td>
                                                 </tr>
@@ -163,7 +163,7 @@
                                                             class="text-body font-weight-semibold">Red Hoodie for men</a>
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         USD 5,700.00
                                                     </td>
                                                 </tr>
@@ -178,7 +178,7 @@
                                                             class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         SLL 888.00
                                                     </td>
                                                 </tr>
@@ -213,7 +213,7 @@
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
 
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         GHS 90,039.00
                                                     </td>
                                                 </tr>
@@ -229,7 +229,7 @@
                                                             class="text-body font-weight-semibold">Red Hoodie for men</a>
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         USD 5,700.00
                                                     </td>
                                                 </tr>
@@ -244,7 +244,7 @@
                                                             class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
                                                         <small class="d-block">01024499300101</small>
                                                     </td>
-                                                    <td class="text-right">
+                                                    <td class="">
                                                         SLL 888.00
                                                     </td>
                                                 </tr>
