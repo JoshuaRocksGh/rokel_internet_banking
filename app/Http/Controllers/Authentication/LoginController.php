@@ -42,7 +42,7 @@ class LoginController extends Controller
 
         try {
 
-            $response = Http::post('http://192.168.1.195:84/IIE/login.php', [
+            $response = Http::post('http://localhost/IIE/login.php', [
                 'user_id' => 'required',
                 'password' => 'required'
             ]);
