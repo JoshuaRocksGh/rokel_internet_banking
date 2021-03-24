@@ -35,7 +35,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="emailaddress">Email address</label>
-                            <input class="form-control" type="email" id="emailaddress" required=""
+                            <input class="form-control" type="email" id="emailaddress" required
                                 placeholder="Enter your email">
                         </div>
                         <div class="form-group">
@@ -43,7 +43,7 @@
                                     password?</small></a>
                             <label for="password">Password</label>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>
@@ -227,6 +227,8 @@
                             window.location = 'home'
                         }else{
                             alert('Failed to login')
+
+
                         }
                     }
                 })
