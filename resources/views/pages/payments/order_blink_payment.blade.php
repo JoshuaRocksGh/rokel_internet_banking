@@ -2,19 +2,22 @@
 
 @section('content')
 
-<div class="card container-fluid">
+<div class="row">
+    <div class="col-12">
+        <div class="card card-background-image">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2"></div>
 
-    {{-- page title --}}
-    <div class="row">
-        <div class="col-md-12">
-            <h3 class="text-primary">Order blink payment</h4>
-                <hr>
-        </div>
-    </div>
-
-    <div class="card-body">
-        <div class="row">
-
+                     {{-- page title --}}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="text-primary">Order blink payment</h4>
+                                    <hr>
+                            </div>
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
