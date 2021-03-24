@@ -166,8 +166,6 @@ Route::get('cheque-approvals-approved',[ChequesApprovedController::class,'cheque
 //route to control the cheques rejected screen
 Route::get('cheque-approvals-rejected',[ChequesRejectedController::class,'cheques_rejected'])->name('cheques-approvals-rejected');
 
-<<<<<<< HEAD
-=======
 //route to display the airtime payment screen
 Route::get('airtime-payment',[paymentController::class,'airtime_payment'])->name('airtime-payment');
 
@@ -194,7 +192,6 @@ Route::get('request-blink',[paymentController::class,'request_blink_payment'])->
 
 //route to display the schedule payment screen
 Route::get('schedule-payment',[paymentController::class,'schedule_payment'])->name('schedule-payment');
->>>>>>> 16f5a947c9b52053f5b259fdc645cadc6a218b6e
 
 
 Route::middleware(['userAuth'])->group(function () {
