@@ -131,34 +131,34 @@
                     <div class="collapse" id="sidebarBeneficiary">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('list-of-payments') }}">Mobile Money</a>
+                                <a href="{{ url('mobile-money') }}">Mobile Money</a>
                             </li>
                             <li>
-                                <a href="#">Airtime</a>
+                                <a href="{{ url('airtime-payment') }}">Airtime</a>
                             </li>
                             <li>
-                                <a href="#">Cardless</a>
+                                <a href="{{ url('cardless-payment') }}">Cardless</a>
                             </li>
                             <li>
-                                <a href="#">Korpor / Salone Link</a>
+                                <a href="{{ url('korpone-loane-payment') }}">Korpor / Salone Link</a>
                             </li>
                             <li>
-                                <a href="#">QR</a>
+                                <a href="{{ url('qr-payment') }}">QR</a>
                             </li>
                             <li>
-                                <a href="#">Pay Again</a>
+                                <a href="{{ url('pay-again') }}">Pay Again</a>
                             </li>
                             <li>
-                                <a href="#">Schedule Payment</a>
+                                <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
                             </li>
                             <li>
-                                <a href="#">Bulk Upload (Mobile Money)</a>
+                                <a href="{{ url('bulk-upload-payment') }}">Bulk Upload (Mobile Money)</a>
                             </li>
                             <li>
-                                <a href="#">Request Blink Pay </a>
+                                <a href="{{ url('request-blink') }}">Request Blink Pay </a>
                             </li>
                             <li>
-                                <a href="#">Order Blink Pay </a>
+                                <a href="{{ url('order-blink-payment') }}">Order Blink Pay </a>
                             </li>
                             {{--  <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
@@ -417,22 +417,22 @@
 
 
                 <li>
-                    <a href="#sidebarAuth" data-toggle="collapse">
+                    <a href="#sidebarChatbot" data-toggle="collapse">
                         {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
                         <i class="mdi mdi-chat-processing-outline"></i>
                         <span> Chatbot  </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarAuth">
+                    <div class="collapse" id="sidebarChatbot">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="#">WhatsApp</a>
                             </li>
                             <li>
-                                <a href="auth-login-2.html">Facebook</a>
+                                <a href="#">Facebook</a>
                             </li>
                             <li>
-                                <a href="auth-register.html">Instagram</a>
+                                <a href="#">Instagram</a>
                             </li>
                         </ul>
                     </div>
@@ -441,13 +441,13 @@
 
 
                 <li>
-                    <a href="#sidebarAuth" data-toggle="collapse">
+                    <a href="#sidebarSetting" data-toggle="collapse">
                         {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
                          <i class="mdi mdi-cog-outline"></i>
                         <span> Settings  </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarAuth">
+                    <div class="collapse" id="sidebarSetting">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="#">Set Transaction Limits</a>

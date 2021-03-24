@@ -166,6 +166,35 @@ Route::get('cheque-approvals-approved',[ChequesApprovedController::class,'cheque
 //route to control the cheques rejected screen
 Route::get('cheque-approvals-rejected',[ChequesRejectedController::class,'cheques_rejected'])->name('cheques-approvals-rejected');
 
+<<<<<<< HEAD
+=======
+//route to display the airtime payment screen
+Route::get('airtime-payment',[paymentController::class,'airtime_payment'])->name('airtime-payment');
+
+//route to display the bulk upload payment screen
+Route::get('bulk-upload-payment',[paymentController::class,'bulk_upload_payment'])->name('bulk-upload-payment');
+
+//route to display the cardless payment screen
+Route::get('cardless-payment',[paymentController::class,'cardless_payment'])->name('cardless-payment');
+
+//route to display the korpone loane payment screen
+Route::get('korpone-loane-payment',[paymentController::class,'korpone_loane_payment'])->name('korpone-loane-payment');
+
+//route to display order blink payment screen
+Route::get('order-blink-payment',[paymentController::class,'order_blink_payment'])->name('order-blink-payment');
+
+//route to display the pay again payment screen
+Route::get('pay-again',[paymentController::class,'pay_again_payment'])->name('pay-again');
+
+//route to display the qr payment screen
+Route::get('qr-payment',[paymentController::class,'qr_payment'])->name('qr-payment');
+
+//route to display the request blink payment screen
+Route::get('request-blink',[paymentController::class,'request_blink_payment'])->name('request-blink');
+
+//route to display the schedule payment screen
+Route::get('schedule-payment',[paymentController::class,'schedule_payment'])->name('schedule-payment');
+>>>>>>> 16f5a947c9b52053f5b259fdc645cadc6a218b6e
 
 
 Route::middleware(['userAuth'])->group(function () {
