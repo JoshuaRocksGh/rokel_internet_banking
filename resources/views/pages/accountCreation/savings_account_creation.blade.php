@@ -478,7 +478,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>ID Number</label></label>
-                                                        <input class="form-control" type="number" placeholder="ID Number" id="id_number" />
+                                                        <input class="form-control" type="text" placeholder="ID Number" id="id_number" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -575,45 +575,79 @@
 <script>
     $(document).ready(function(){
 
-        {{-- Title option selector --}}
-        $('select.title').change(function(){
-            var title_selected = $(this).children("option:selected").val();
-            console.log(title_selected)
-        })
-
-        {{-- Country option selector --}}
-        $("select.country").change(function(){
-            var country_selected = $(this).children("option:selected").val();
-            console.log(country_selected);
-        });
-
-        {{--Personal Details form  --}}
+        // Personal Details form
         $('#next1').click(function(e){
             e.preventDefault();
 
 
+            var title = $('select.title').val();
+            if ($('select.title').val() == 'Title' ){
+                {{-- alert('Chose a Title'); --}}
+            }
+
             var surname = $('#surname').val();
+            if (surname.trim() == '' || surname.trim() == undefined ){
+                {{-- alert("Enter your Surname"); --}}
+            }
+
             var firstname = $('#firstname').val();
+            if (firstname.trim() == '' || firstname.trim() == undefined ){
+                {{-- alert("Enter your Firstname"); --}}
+            }
+
+
             var gender = $("#select_gender input[type='radio']:checked").val();
+
             var birthday = $("#DOB").datepicker().val();
             var birth_place = $('#birth_place').val();
 
+
+
+            // check if the value are empty or undefined.. if any is, alert that all filed required
+            // if not show the next section..
+
+
+            // please make use of the same bank transfer...there is alot you can learn and use from there
+
         })
 
-        {{-- Contact ID Details form --}}
+
+        // ID option selector
+        $('select.id').change(function(){
+            var id_type = $(this).children("option:selected").val();
+            console.log(id_type)
+        })
+
+        // Contact ID Details form
         $('#next2').click(function(e){
             e.preventDefault();
 
+            // you dont have to be doing onchange
+            let title = $('select.title').val();
+            alert(title)
+
+            // C0ntact Details Values
             var mobile_number = $('#mobile_number').val();
             var email = $('#email').val();
             var city = $('#city').val();
             var town = $('#town').val();
+            var id_number = $('#id_number').val();
             var residential_address = $('#residential_address').val();
-            console.log(mobile_number);
+            var issue_date = $("#issue_date").datepicker().val();
+            var expiry_date = $("#expiry_date").datepicker().val();
+
+            {{-- console.log(mobile_number);
             console.log(email);
             console.log(city);
             console.log(town);
+            console.log(id_number);
             console.log(residential_address);
+            console.log(issue_date);
+            console.log(expiry_date); --}}
+            {{-- console.log(mobile_number); --}}
+
+
+            {{-- ID details --}}
         })
 
     })

@@ -166,6 +166,8 @@ Route::get('cheque-approvals-approved',[ChequesApprovedController::class,'cheque
 //route to control the cheques rejected screen
 Route::get('cheque-approvals-rejected',[ChequesRejectedController::class,'cheques_rejected'])->name('cheques-approvals-rejected');
 
+
+
 Route::middleware(['userAuth'])->group(function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
