@@ -2,11 +2,7 @@
 
 use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountServices\accountCreationController;
-
-use App\Http\Controllers\Auth\LoginController as AuthLoginController;
-
 use App\Http\Controllers\Authentication\ForgotPasswordController;
-
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\Branch\BranchesController;
@@ -52,13 +48,8 @@ Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('l
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
 // Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
-<<<<<<< HEAD
-// Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
-
-=======
 //route to control the forgot-password screen for email
 Route::get('/forgot-password',[ForgotPasswordController::class,'email_reset_password'])->name('forgot-password');
->>>>>>> a32d723c067d10756e0f017b518c1671f62a942a
 
 //Route to control the change-password screen
 Route::get('/change-password',[ResetPasswordController::class,'change_password'])->name('change-password');

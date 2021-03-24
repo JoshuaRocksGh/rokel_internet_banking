@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use function PHPUnit\Framework\returnSelf;
 
 class LoginController extends Controller
 {
@@ -50,6 +51,8 @@ class LoginController extends Controller
             if ($response->ok()) { // API response status code is 200
 
                 $result = json_decode($response->body());
+
+                return view('pages.dashboard.home');
 
                 if ($result->responseCode == '000') { // API responseCode is 000
 
