@@ -34,14 +34,14 @@
                     <form action="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="emailaddress">Email address</label>
-                            <input class="form-control" type="email" id="emailaddress" required
-                                placeholder="Enter your email">
+                            <label for="emailaddress">Email address<span class="text-danger">*</span></label>
+                            <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email" parsley-trigger="change" required>
+                            <span class="text-danger" id="error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
                         </div>
                         <div class="form-group">
                             <a href="{{ url('forgot-password') }}" class="text-muted float-right"><small>Forgot your
                                     password?</small></a>
-                            <label for="password">Password</label>
+                            <label for="password">Password<span class="text-danger">*</span></label>
                             <div class="input-group input-group-merge">
                                 <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
                                 <div class="input-group-append" data-password="false">
@@ -50,6 +50,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <span class="text-danger" id="error1"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+
                         </div>
 
 
@@ -202,10 +204,22 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
+            $('#error').hide(),
+            $('#error1').hide(),
+
+
             $('#submit').click(function(e){
                 e.preventDefault();
                 var email = $("#emailaddress").val();
                 var password = $('#password').val();
+
+                if($.trim($('#emailaddress').val()) == ''){
+                    $('#error').show()
+
+
+                }else if ($.trim($('#password').val()) == ''){
+                    $('#error1').show()
+                }
 
                 {{--  console.log(email,password);  --}}
 
