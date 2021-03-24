@@ -11,7 +11,7 @@
 
 
     <!-- Start Content-->
-    <div class="container-fluid">
+    <div class="container-fluid card-background-image">
     <legend></legend>
         <!-- start page title -->
         {{-- <div class="row" style="zoom: 0.8;">

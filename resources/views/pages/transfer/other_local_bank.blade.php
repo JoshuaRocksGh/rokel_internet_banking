@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-12">
-        <div class="card">
+        <div class="card" style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;">
             <div class="card-body">
                 <h4 class="header-title">Other Local Bank Transfer</h4>
                 {{--  <p class="sub-header font-13 purple-color">
@@ -116,7 +116,7 @@
 
                         </form>
                     </div> <!-- end col -->
- 
+
                     <div class="col-md-8">
                             <img src="{{ asset('assets/images/mobile.png') }}" class="img-fluid" alt="" style="opacity: 0.5;" >
                     </div> <!-- end col -->

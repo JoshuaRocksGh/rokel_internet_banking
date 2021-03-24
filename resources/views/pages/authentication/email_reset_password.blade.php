@@ -40,7 +40,7 @@
 
 
                         <div class="form-group mb-0 text-center">
-                            <a href="{{ url('reset-password') }}">
+                            <a href="{{ url('reset-success') }}">
                                 <button class="btn btn-primary btn-block" type="button">Send</button>
                             </a>
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}

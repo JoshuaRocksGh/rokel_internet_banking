@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card card-background-image">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2"></div>

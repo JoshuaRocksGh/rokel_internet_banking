@@ -7,6 +7,9 @@ use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginCo
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
+use App\Http\Controllers\Cheques\ChequesApprovedController;
+use App\Http\Controllers\Cheques\ChequesPendingController;
+use App\Http\Controllers\Cheques\ChequesRejectedController;
 use App\Http\Controllers\Corporate\Approvals\PendingController;
 use App\Http\Controllers\Corporate\Approvals\ApprovedController;
 use App\Http\Controllers\Corporate\Approvals\RejectedController;
@@ -83,7 +86,7 @@ Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-b
 Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
 
 
-
+//international bank transfer
 Route::get('/international-bank', [transferController::class, 'international_bank_'])->name('international-bank');
 
 
@@ -154,8 +157,14 @@ Route::get('approvals-approved',[ApprovedController::class,'approvals_approved']
 //route to control the coperate rejected screen
 Route::get('approvals-rejected',[RejectedController::class,'approvals_rejected'])->name('approvals-rejected');
 
+//route to return the cheque approvals screen for pending
+Route::get('cheque-approvals-pending',[ChequesPendingController::class,'pending_cheques'])->name('cheque-approvals-pending');
 
-//Middleware for Agents
+//route to control the cheques approved screen
+Route::get('cheque-approvals-approved',[ChequesApprovedController::class,'cheques_approved'])->name('cheque-approval-approved');
+
+//route to control the cheques rejected screen
+Route::get('cheque-approvals-rejected',[ChequesRejectedController::class,'cheques_rejected'])->name('cheques-approvals-rejected');
 
 Route::middleware(['userAuth'])->group(function () {
 
@@ -165,3 +174,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout',[LogoutController::class,'logout_'])->name('logout');
 
 });
+
+
+
