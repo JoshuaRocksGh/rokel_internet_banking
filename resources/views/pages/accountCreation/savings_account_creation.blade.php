@@ -178,7 +178,7 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label>Country</label>
-                                                        <select data-toggle="select2" title="Country" class="form-control">
+                                                        <select data-toggle="select2" title="Country" class="form-control country">
                                                             <option value="0">Select Country</option>
                                                             <option value="AF">Afghanistan</option>
                                                             <option value="AL">Albania</option>
@@ -425,90 +425,96 @@
                                         <h4 class="header-title">Contact Details</h4>
 
                                         <form action="">
-                                        <div class="">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input class="form-control" type="number" placeholder="Mobile number" id="billing-last-name" />
+                                            <div class="">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Mobile Number</label>
+                                                        <input class="form-control" type="number" placeholder="Mobile number" id="mobile_number" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                     <input class="form-control" type="email" placeholder="Email" id="billing-last-name" />
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Email</label>
+                                                        <input class="form-control" type="email" placeholder="Email" id="email" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input class="form-control" type="text" placeholder="City" id="billing-last-name" />
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>City</label>
+                                                        <input class="form-control" type="text" placeholder="City" id="city" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input class="form-control" type="text" placeholder="Town" id="billing-last-name" />
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Town</label>
+                                                        <input class="form-control" type="text" placeholder="Town" id="town" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input class="form-control" type="text" placeholder="Home Address" id="billing-last-name" />
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Residential Address</label>
+                                                        <input class="form-control" type="text" placeholder="Home Address" id="residential_address" />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                        </div>
-                                        <!-- end row-->
-
-                                        <h4 class="header-title mt-4">ID Details</h4>
-
-                                        <div class="">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-
-                                                        <select class="custom-select ">
-                                                            <option selected>ID Type</option>
-                                                            <option value="1">Passport</option>
-                                                            <option value="2">Driver license</option>
-                                                            <option value="3">Voter ID</option>
-                                                            <option value="4">Ghana Card</option>
-                                                        </select>
-                                                </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input class="form-control" type="number" placeholder="ID Number" id="billing-last-name" />
+                                            <!-- end row-->
+
+                                            <h4 class="header-title mt-4">ID Details</h4>
+
+                                            <div class="">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>ID Type</label>
+                                                            <select class="custom-select id">
+                                                                <option selected>ID Type</option>
+                                                                <option value="1">Passport</option>
+                                                                <option value="2">Driver license</option>
+                                                                <option value="3">Voter ID</option>
+                                                                <option value="4">Ghana Card</option>
+                                                            </select>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="billing-last-name">Date of Issue</label>
-                                                    <input class="form-control" type="date" placeholder="Date of Issue" id="billing-last-name" />
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>ID Number</label></label>
+                                                        <input class="form-control" type="number" placeholder="ID Number" id="id_number" />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="billing-last-name">Date of Expiry</label>
-                                                    <input class="form-control" type="date" placeholder=" " id="billing-last-name" />
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="billing-last-name">Date of Issue</label>
+                                                        <input class="form-control" type="date" placeholder="Date of Issue" id="issue_date" />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="billing-last-name">Date of Expiry</label>
+                                                        <input class="form-control" type="date" placeholder=" " id="expiry_date" />
+                                                    </div>
+                                                </div>
 
 
-                                            <div class="form-group mb-3">
-                                                <label for="example-fileinput">Upload Image of Selected ID</label>
-                                                <input type="file" id="example-fileinput" class="form-control-file">
-                                            </div>
-
-                                        </div>
-                                        <!-- end row-->
-
-                                        <div class="row mt-4">
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-secondary">
-                                                    Back </a>
-                                            </div> <!-- end col -->
-                                            <div class="col-sm-6">
-                                                <div class="text-sm-right mt-2 mt-sm-0">
-                                                    <a href="#" class="btn btn-primary">
-                                                         Next </a>
+                                                <div class="form-group mb-3">
+                                                    <label for="example-fileinput">Upload Image of Selected ID</label>
+                                                    <input type="file" id="example-fileinput" class="form-control-file">
                                                 </div>
-                                            </div> <!-- end col -->
-                                        </div> <!-- end row -->
+
+                                            </div>
+                                            <!-- end row-->
+
+                                            <div class="row mt-4">
+                                                <div class="col-sm-6">
+                                                    <a href="#" class="btn btn-secondary">
+                                                        Back </a>
+                                                </div> <!-- end col -->
+                                                <div class="col-sm-6">
+                                                    <div class="text-sm-right mt-2 mt-sm-0">
+                                                        <a href="#" class="btn btn-primary" id="next2">
+                                                            Next </a>
+                                                    </div>
+                                                </div> <!-- end col -->
+                                            </div> <!-- end row -->
                                     </form>
                                     </div>
                                 </div>
@@ -569,16 +575,22 @@
 <script>
     $(document).ready(function(){
 
+        {{-- Title option selector --}}
+        $('select.title').change(function(){
+            var title_selected = $(this).children("option:selected").val();
+            console.log(title_selected)
+        })
 
+        {{-- Country option selector --}}
+        $("select.country").change(function(){
+            var country_selected = $(this).children("option:selected").val();
+            console.log(country_selected);
+        });
+
+        {{--Personal Details form  --}}
         $('#next1').click(function(e){
             e.preventDefault();
 
-
-            $('select.title').change(function(){
-                var title_selected = $(this).children("option:selected").val();
-                console.log(title_selected)
-
-            })
 
             var surname = $('#surname').val();
             var firstname = $('#firstname').val();
@@ -586,12 +598,22 @@
             var birthday = $("#DOB").datepicker().val();
             var birth_place = $('#birth_place').val();
 
-            console.log(surname);
-            console.log(firstname);
-            console.log(gender);
-            console.log(birthday);
-            console.log(birth_place);
+        })
 
+        {{-- Contact ID Details form --}}
+        $('#next2').click(function(e){
+            e.preventDefault();
+
+            var mobile_number = $('#mobile_number').val();
+            var email = $('#email').val();
+            var city = $('#city').val();
+            var town = $('#town').val();
+            var residential_address = $('#residential_address').val();
+            console.log(mobile_number);
+            console.log(email);
+            console.log(city);
+            console.log(town);
+            console.log(residential_address);
         })
 
     })
