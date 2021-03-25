@@ -17,7 +17,7 @@
 
 </head>
 
-<body class="loading auth-fluid-pages pb-0">
+<body class="loading auth-fluid-pages pb-0" style="zoom: 0.9;">
 
 
     @yield('content')
