@@ -82,6 +82,10 @@
                                     aria-selected="false">
 
                                     Bio Details</a>
+                                <a class="nav-link mt-2 py-2" id="summary-tab" data-toggle="pill" href="#summary-v-pills-payment" role="tab" aria-controls="custom-v-pills-payment"
+                                    aria-selected="false">
+
+                                    Summary</a>
                             </div>
 
                         </div> <!-- end col-->
@@ -92,14 +96,14 @@
                                     <div>
                                         <h4 class="header-title">Personal Details</h4>
 
-                                        <form action="">
+                                        <form action="" id="personal_details">
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="billing-phone">Title</label>
 
-                                                            <select class="custom-select title">
-                                                                <option selected id="title_select">Title</option>
+                                                            <select class="custom-select title" id="title" required>
+                                                                <option value="">Title</option>
                                                                 <option value="Mr">Mr</option>
                                                                 <option value="Mrs">Mrs</option>
                                                                 <option value="Dr">Dr</option>
@@ -111,7 +115,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="billing-phone">Surname</label>
-                                                        <input class="form-control" type="text" placeholder="Surname" id="surname" />
+                                                        <input class="form-control" type="text" placeholder="Surname" id="surname" required/>
                                                     </div>
                                                 </div>
                                             </div> <!-- end row -->
@@ -120,7 +124,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="billing-phone">Firstname</label>
-                                                         <input class="form-control" type="email" placeholder="Firstname" id="firstname" />
+                                                         <input class="form-control" type="text" placeholder="Firstname" id="firstname" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -131,7 +135,7 @@
                                                                 <div class="form-group">
 
                                                                     <div class="radio form-check-inline radio-primary">
-                                                                        <input type="radio" id="male" value="Male" name="radioInline" >
+                                                                        <input type="radio" id="radio1" value="Male" name="radioInline" required>
                                                                         <label for="inlineRadio1">Male </label>
                                                                     </div>
 
@@ -142,7 +146,7 @@
                                                                 <div class="form-group">
 
                                                                         <div class="radio form-check-inline radio-primary">
-                                                                            <input type="radio" id="female" value="Female" name="radioInline">
+                                                                            <input type="radio" id="radio2" value="Female" name="radioInline" required>
                                                                             <label for="inlineRadio2">Female </label>
                                                                         </div>
                                                                 </div>
@@ -158,7 +162,7 @@
                                                         <label for="billing-address">Date of Birth</label>
 
                                                         <div class="form-group mb-3">
-                                                           <input class="form-control" id="DOB" type="date" name="date">
+                                                           <input class="form-control" id="DOB" type="date" name="date" required>
                                                         </div>
 
                                                     </div>
@@ -169,7 +173,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="billing-town-city">Place of Birth</label>
-                                                        <input class="form-control" type="text" placeholder="Enter your place of birth" id="birth_place" />
+                                                        <input class="form-control" type="text" placeholder="Enter your place of birth" id="birth_place" required/>
                                                     </div>
                                                 </div>
 
@@ -178,8 +182,8 @@
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label>Country</label>
-                                                        <select data-toggle="select2" title="Country" class="form-control country">
-                                                            <option value="0">Select Country</option>
+                                                        <select data-toggle="select2" title="Country" class="form-control country" id="country" required>
+                                                            <option value="">Select Country</option>
                                                             <option value="AF">Afghanistan</option>
                                                             <option value="AL">Albania</option>
                                                             <option value="DZ">Algeria</option>
@@ -411,8 +415,9 @@
                                                 </div> <!-- end col --> --}}
                                                 <div class="col-md-12">
                                                     <div class="text-sm-right mt-2 mt-sm-0">
-                                                        <a href="#" class="btn btn-primary btn-block" id="next1">
-                                                         Next</a>
+                                                        {{--  <a href="#" class="btn btn-primary btn-block" id="next1">
+                                                         Next</a>  --}}
+                                                         <button class="btn btn-primary btn-block" type="submit" id="submit1">Next</button>
                                                     </div>
                                                 </div> <!-- end col -->
                                             </div> <!-- end row -->
@@ -424,36 +429,36 @@
                                     <div>
                                         <h4 class="header-title">Contact Details</h4>
 
-                                        <form action="">
+                                        <form action="" id="contact_id_details">
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Mobile Number</label>
-                                                        <input class="form-control" type="number" placeholder="Mobile number" id="mobile_number" />
+                                                        <input class="form-control" type="number" placeholder="Mobile number" id="mobile_number" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Email</label>
-                                                        <input class="form-control" type="email" placeholder="Email" id="email" />
+                                                        <input class="form-control" type="email" placeholder="Email" id="email" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>City</label>
-                                                        <input class="form-control" type="text" placeholder="City" id="city" />
+                                                        <input class="form-control" type="text" placeholder="City" id="city" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Town</label>
-                                                        <input class="form-control" type="text" placeholder="Town" id="town" />
+                                                        <input class="form-control" type="text" placeholder="Town" id="town" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>Residential Address</label>
-                                                        <input class="form-control" type="text" placeholder="Home Address" id="residential_address" />
+                                                        <input class="form-control" type="text" placeholder="Home Address" id="residential_address" required/>
                                                     </div>
                                                 </div>
 
@@ -466,8 +471,8 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>ID Type</label>
-                                                            <select class="custom-select id">
-                                                                <option selected>ID Type</option>
+                                                            <select class="custom-select id" id="id_type" required>
+                                                                <option value="">ID Type</option>
                                                                 <option value="1">Passport</option>
                                                                 <option value="2">Driver license</option>
                                                                 <option value="3">Voter ID</option>
@@ -478,26 +483,26 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label>ID Number</label></label>
-                                                        <input class="form-control" type="text" placeholder="ID Number" id="id_number" />
+                                                        <input class="form-control" type="text" placeholder="ID Number" id="id_number" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="billing-last-name">Date of Issue</label>
-                                                        <input class="form-control" type="date" placeholder="Date of Issue" id="issue_date" />
+                                                        <input class="form-control" type="date" placeholder="Date of Issue" id="issue_date" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="billing-last-name">Date of Expiry</label>
-                                                        <input class="form-control" type="date" placeholder=" " id="expiry_date" />
+                                                        <input class="form-control" type="date" placeholder=" " id="expiry_date" required/>
                                                     </div>
                                                 </div>
 
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-fileinput">Upload Image of Selected ID</label>
-                                                    <input type="file" id="example-fileinput" class="form-control-file">
+                                                    <input type="file" id="example-fileinput image_upload" class="form-control-file" required>
                                                 </div>
 
                                             </div>
@@ -510,8 +515,9 @@
                                                 </div> <!-- end col -->
                                                 <div class="col-sm-6">
                                                     <div class="text-sm-right mt-2 mt-sm-0">
-                                                        <a href="#" class="btn btn-primary" id="next2">
-                                                            Next </a>
+                                                        {{--  <a href="#" class="btn btn-primary" id="next2">
+                                                            Next </a>  --}}
+                                                            <button class="btn btn-primary" type="submit" id="submit2">Next</button>
                                                     </div>
                                                 </div> <!-- end col -->
                                             </div> <!-- end row -->
@@ -524,37 +530,133 @@
                                         <h4 class="header-title">Bio Details</h4>
 
                                         <!-- Passport Picture Upload-->
+                                        <form action="" id="bio_details">
+                                            <div class="form-group mb-3">
+                                                <label for="example-fileinput">Picture(Passport)</label>
+                                                <input type="file" id="example-fileinput passport_picture" class="form-control-file" required>
+                                            </div>
 
-                                        <div class="form-group mb-3">
-                                            <label for="example-fileinput">Picture(Passport)</label>
-                                            <input type="file" id="example-fileinput" class="form-control-file">
-                                        </div>
-
-                                        <!-- Paper and Image Capture-->
+                                            <!-- Paper and Image Capture-->
 
 
-                                        <div class="form-group mb-3">
-                                            <label for="example-fileinput">Selfie with a signed paper</label>
-                                            <input type="file" id="example-fileinput" class="form-control-file">
-                                        </div>
-                                        <!-- Cash on Delivery box-->
+                                            <div class="form-group mb-3">
+                                                <label for="example-fileinput">Selfie with a signed paper</label>
+                                                <input type="file" id="example-fileinput selfie_upload" class="form-control-file" required>
+                                            </div>
+                                            <!-- Cash on Delivery box-->
 
-                                        <!-- end Cash on Delivery box-->
+                                            <!-- end Cash on Delivery box-->
 
-                                        <div class="row mt-4">
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-secondary">
-                                                    Back  </a>
-                                            </div> <!-- end col -->
-                                            <div class="col-sm-6">
-                                                <div class="text-sm-right mt-2 mt-sm-0">
-                                                    <a href="#" class="btn btn-primary">
-                                                         Next </a>
-                                                </div>
-                                            </div> <!-- end col -->
-                                        </div> <!-- end row-->
-
+                                            <div class="row mt-4">
+                                                <div class="col-sm-6">
+                                                    <a href="#" class="btn btn-secondary">
+                                                        Back  </a>
+                                                </div> <!-- end col -->
+                                                <div class="col-sm-6">
+                                                    <div class="text-sm-right mt-2 mt-sm-0">
+                                                        {{--  <a href="#" class="btn btn-primary">
+                                                            Next </a>  --}}
+                                                            <button class="btn btn-primary" type="submit" id="final_submit">Submit</button>
+                                                    </div>
+                                                </div> <!-- end col -->
+                                            </div> <!-- end row-->
+                                        </form>
                                     </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="summary-v-pills-payment" role="tabpanel" aria-labelledby="custom-v-pills-payment-tab">
+                                    <div class="">
+                                        <div class="">
+                                            <div class="">
+                                                {{--  <h4 class="header-title mb-3">Summary</h4>  --}}
+
+                                                {{--  <h5 class="font-family-primary font-weight-semibold">Brent Jones</h5>  --}}
+                                                <div class="border p-3 mt-4 mt-lg-0 rounded">
+                                                    <h4 class="header-title mb-3">Order Summary</h4>
+
+                                                    <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Grand Total :</td>
+                                                                    <td>$1571.19</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Discount : </td>
+                                                                    <td>-$157.11</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Shipping Charge :</td>
+                                                                    <td>$25</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Estimated Tax : </td>
+                                                                    <td>$19.22</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Total :</th>
+                                                                    <th>$1458.3</th>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- end table-responsive -->
+                                                    <h4 class="header-title mb-3">Order Summary</h4>
+
+                                                    <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Grand Total :</td>
+                                                                    <td>$1571.19</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Discount : </td>
+                                                                    <td>-$157.11</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Shipping Charge :</td>
+                                                                    <td>$25</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Estimated Tax : </td>
+                                                                    <td>$19.22</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Total :</th>
+                                                                    <th>$1458.3</th>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+
+                                                <p class="mb-2" id="title_"><span class="font-weight-semibold mr-2">Title:</span></p><br>
+                                                <p class="mb-2"><span class="font-weight-semibold mr-2">Surname:</span> (123) 456-7890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Firstname:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Gender:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Date of Birth:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Place of Birth:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Country:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Mobile Number:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Email:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">City:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Town:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Residential Address:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">ID Type:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">ID Number:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Date Issued:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Date of Expiry:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">ID image:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Passport Picture:</span> (+01) 12345 67890</p><br>
+                                                <p class="mb-0"><span class="font-weight-semibold mr-2">Selfie Image:</span> (+01) 12345 67890</p><br>
+
+
+                                            </div>
+                                        </div>
+                                    </div> <!-- end col -->
+
                                 </div>
                             </div>
                         </div> <!-- end col-->
@@ -575,82 +677,88 @@
 <script>
     $(document).ready(function(){
 
+        $('#personal_details').submit(function(e){
+            e.preventDefault();
+
+            var title = $('#title').val();
+            var surname = $('#surname').val();
+            var firstname = $('#firstname').val();
+            var gender = $("#select_gender input[type='radio']:checked").val();
+            var birthday = $("#DOB").datepicker().val();
+            var birth_place = $('#birth_place').val();
+            var country = $('#country').val();
+
+            $('#custom-v-pills-billing-tab').removeClass('active show');
+            $('#custom-v-pills-shipping-tab').addClass('active show');
+            $('#custom-v-pills-billing').removeClass('active show');
+            $('#custom-v-pills-shipping').addClass('active show');
+//            alert(title + ' ' + surname + ' ' + firstname + ' ' + gender + ' ' + birthday + ' ' + birth_place + ' ' + country);
+        })
+
         // Personal Details form
         $('#next1').click(function(e){
             e.preventDefault();
 
-
-            var title = $('select.title').val();
-            if ($('select.title').val() == 'Title' ){
-                {{-- alert('Chose a Title'); --}}
-            }
-
+            var title = $('#title').val();
             var surname = $('#surname').val();
-            if (surname.trim() == '' || surname.trim() == undefined ){
-                {{-- alert("Enter your Surname"); --}}
-            }
-
             var firstname = $('#firstname').val();
-            if (firstname.trim() == '' || firstname.trim() == undefined ){
-                {{-- alert("Enter your Firstname"); --}}
-            }
-
-
             var gender = $("#select_gender input[type='radio']:checked").val();
-
             var birthday = $("#DOB").datepicker().val();
             var birth_place = $('#birth_place').val();
+            var country = $('#country').val();
 
+//            alert(title + '' + surname + '' + firstname + '' + gender + '' + birthday + '' + birth_place + '' + country);
 
-
-            // check if the value are empty or undefined.. if any is, alert that all filed required
-            // if not show the next section..
-
-
-            // please make use of the same bank transfer...there is alot you can learn and use from there
 
         })
 
 
         // ID option selector
-        $('select.id').change(function(){
-            var id_type = $(this).children("option:selected").val();
-            console.log(id_type)
-        })
 
-        // Contact ID Details form
-        $('#next2').click(function(e){
-            e.preventDefault();
-
-            // you dont have to be doing onchange
-            let title = $('select.title').val();
-            alert(title)
 
             // C0ntact Details Values
-            var mobile_number = $('#mobile_number').val();
-            var email = $('#email').val();
-            var city = $('#city').val();
-            var town = $('#town').val();
-            var id_number = $('#id_number').val();
-            var residential_address = $('#residential_address').val();
-            var issue_date = $("#issue_date").datepicker().val();
-            var expiry_date = $("#expiry_date").datepicker().val();
+            $('#contact_id_details').submit(function(e){
+//            $('#next2').submit(function(e){
+                e.preventDefault();
 
-            {{-- console.log(mobile_number);
-            console.log(email);
-            console.log(city);
-            console.log(town);
-            console.log(id_number);
-            console.log(residential_address);
-            console.log(issue_date);
-            console.log(expiry_date); --}}
-            {{-- console.log(mobile_number); --}}
+                var mobile_number = $('#mobile_number').val();
+                var email = $('#email').val();
+                var city = $('#city').val();
+                var town = $('#town').val();
+                var id_number = $('#id_number').val();
+                var residential_address = $('#residential_address').val();
+                var issue_date = $("#issue_date").datepicker().val();
+                var expiry_date = $("#expiry_date").datepicker().val();
+//                var image_upload = $('#image_upload').
+
+//                alert(mobile_number + ' ' + email + ' ' + city + ' ' + town + ' ' + id_number + ' ' + residential_address + ' ' + issue_date + ' ' + expiry_date + ' ');
 
 
-            {{-- ID details --}}
+                $('#custom-v-pills-shipping-tab').removeClass('active show');
+                $('#custom-v-pills-payment-tab').addClass('active show');
+                $('#custom-v-pills-shipping').removeClass('active show');
+                $('#custom-v-pills-payment').addClass('active show');
+
+
+            })
+
+            $('#bio_details').submit(function(e){
+                e.preventDefault();
+
+//                var passport_picture = $('#passport_picture').val();
+//                var selfie_upload = $('#selfie_upload').val();
+
+
+                $('#custom-v-pills-payment-tab').removeClass('active show');
+                $('#summary-tab').addClass('active show');
+                $('#custom-v-pills-payment').removeClass('active show');
+                $('#summary-v-pills-payment').addClass('active show');
+
+
+                $('#title_').val() = title;
+            })
         })
 
-    })
 </script>
 
 @endsection
