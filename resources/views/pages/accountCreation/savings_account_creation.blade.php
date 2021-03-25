@@ -186,7 +186,7 @@
                                                             <option value="">Select Country</option>
                                                             <option value="AF~Afghanistan">Afghanistan</option>
                                                             <option value="AL~Albania">Albania</option>
-                                                            
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -286,7 +286,8 @@
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-fileinput">Upload Image of Selected ID</label>
-                                                    <input type="file" id="image_upload" class="form-control-file" required>
+                                                    <input type="file" id="image_upload" class="form-control-file" required><br>
+                                                    <img class="img-fluid select_id" id="previewImg" src="#" alt="your image" />
                                                 </div>
 
 
@@ -319,7 +320,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="example-fileinput">Picture(Passport)</label>
                                                 <input type="file" id="passport_picture" class="form-control-file" required><br>
-                                                <img class="img-fluid previewImg1" id="previewImg1" src="#" alt="your image" />
+                                                <img class="img-fluid img_display previewImg1" id="previewImg1" src="#" alt="your image" />
                                             </div>
 
                                             <!-- Paper and Image Capture-->
@@ -328,7 +329,7 @@
                                             <div class="form-group mb-3">
                                                 <label for="example-fileinput">Selfie with a signed paper</label>
                                                 <input type="file" id="selfie_upload" class="form-control-file" required><br>
-                                                <img class="img-fluid previewImg2" id="previewImg2" src="#" alt="your image" />
+                                                <img class="img-fluid img_display previewImg2" id="previewImg2" src="#" alt="your image" />
                                             </div>
                                             <!-- Cash on Delivery box-->
 
@@ -409,6 +410,8 @@
 <script>
     $(document).ready(function(){
 
+    //    $('#previewImg').hide();
+
         $('#personal_details').submit(function(e){
             e.preventDefault();
 
@@ -464,19 +467,25 @@
                 var expiry_date = $("#expiry_date").datepicker().val();
 //                var image_upload = $('#image_upload').val(this.files && this.files.length ? this.files[0].name.split('.')[0] : '');
 //                console.log(image_upload);
-                                
+
+                $('#image_upload').change(function(){
+
+                })
+
                 var file = $("input[type=file]").get(0).files[0];
-                
+
                         if(file){
                             var reader = new FileReader();
-                
+
                             reader.onload = function(){
                                 $("#previewImg").attr("src", reader.result);
+                                $('.img_display').show();
+
                             }
-                
+
                             reader.readAsDataURL(file);
-                        }               
-                                
+                        }
+
 
 //                alert(mobile_number + ' ' + email + ' ' + city + ' ' + town + ' ' + id_number + ' ' + residential_address + ' ' + issue_date + ' ' + expiry_date + ' ');
 
@@ -504,7 +513,7 @@
                 // Personal Details
                 var title = $('#title').val();
                 $('#display_title').text(title);
-                 
+
                 var surname = $('#surname').val();
                 $('#display_surname').text(surname);
 
@@ -526,7 +535,7 @@
 
 
 
-                // Contact & ID Details                
+                // Contact & ID Details
                 var mobile_number = $('#mobile_number').val();
                 $('#display_mobile_number').text(mobile_number);
 
@@ -554,79 +563,79 @@
                 var expiry_date = $("#expiry_date").datepicker().val();
                 $('#display_expiry_date').text(expiry_date);
 
-                                
+
                 var file = $("input[type=file]").get(0).files[0];
-                
+
                         if(file){
                             var reader = new FileReader();
-                
+
                             reader.onload = function(){
                                 $("#previewImg").attr("src", reader.result);
                             }
-                
+
                             reader.readAsDataURL(file);
                         }
 
-{{--  
+{{--
                 // Bio Details on Summary Page
                 var file = $("#passport_picture[type=file]").get(0).files[0];
 
                         if(file){
                             var reader = new FileReader();
-                
+
                             reader.onload = function(){
                                 $("#passport_picture_summary").attr("src", reader.result);
                             }
-                
+
                             reader.readAsDataURL(file);
                         }
 
 
-                                
+
                  var file = $("#selfie_upload[type=file]").get(0).files[0];
-                
+
                         if(file){
                             var reader = new FileReader();
-                
+
                             reader.onload = function(){
                                 $("#selfie_picture_summary").attr("src", reader.result);
                             }
-                
+
                             reader.readAsDataURL(file);
-                        }   
+                        }
                                 --}}
             })
 
             // Bio Details
 
             $('#passport_picture').change(function(){
-                
+
                  var file = $("#passport_picture[type=file]").get(0).files[0];
-                
+
                         if(file){
                             var reader = new FileReader();
-                
+
                             reader.onload = function(){
                                 $(".previewImg1").attr("src", reader.result);
                             }
-                
+
                             reader.readAsDataURL(file);
-                        }             
+                        }
             })
-            
+
             $('#selfie_upload').change(function(){
-                
+
                  var file = $("#selfie_upload[type=file]").get(0).files[0];
-                
+
                         if(file){
                             var reader = new FileReader();
-                
+
                             reader.onload = function(){
                                 $(".previewImg2").attr("src", reader.result);
                             }
-                
+
                             reader.readAsDataURL(file);
-                        }             
+                        }
             })
     })
 
