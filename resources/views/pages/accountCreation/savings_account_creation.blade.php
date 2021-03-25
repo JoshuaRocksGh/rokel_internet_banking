@@ -257,9 +257,9 @@
                                                         <label>ID Type</label>
                                                             <select class="custom-select" id="id_type" required>
                                                                 <option value="">ID Type</option>
-                                                                <option value="1">Passport</option>
-                                                                <option value="2">Driver license</option>
-                                                                <option value="3">Voter ID</option>
+                                                                <option value="Passport">Passport</option>
+                                                                <option value="Driver license">Driver license</option>
+                                                                <option value="Voter ID">Voter ID</option>
                                                                 <option value="4">Ghana Card</option>
                                                             </select>
                                                     </div>
