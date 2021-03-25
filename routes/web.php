@@ -19,6 +19,7 @@ use App\Http\Controllers\FAQ\FAQController;
 use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MaileController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\settingsController;
@@ -202,6 +203,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout',[LogoutController::class,'logout_'])->name('logout');
 
 });
+
+Route::get('/send-email',[MaileController::class,'send_email'])->name('send-email');
 
 
 
