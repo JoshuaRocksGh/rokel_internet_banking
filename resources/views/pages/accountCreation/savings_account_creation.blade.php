@@ -260,7 +260,7 @@
                                                                 <option value="Passport">Passport</option>
                                                                 <option value="Driver license">Driver license</option>
                                                                 <option value="Voter ID">Voter ID</option>
-                                                                <option value="4">Ghana Card</option>
+                                                                <option value="Ghana Card">Ghana Card</option>
                                                             </select>
                                                     </div>
                                                 </div>
@@ -286,8 +286,8 @@
 
                                                 <div class="form-group mb-3">
                                                     <label for="example-fileinput">Upload Image of Selected ID</label>
-                                                    <input type="file" id="image_upload" class="form-control-file" required><br>
-                                                    <img class="img-fluid select_id" id="previewImg" src="#" alt="your image" />
+                                                    <input type="file" id="id_upload" class="form-control-file" required><br>
+                                                    <img class="img-fluid previewImg" id="previewImg" src="#" alt="your image" />
                                                 </div>
 
 
@@ -376,7 +376,7 @@
                                                     <p class="mb-1"><span class="font-weight-light mr-2">ID Number:<span class="font-weight-semibold mr-2" id="display_id_number"> &nbsp</span></span></p>
                                                     <p class="mb-1"><span class="font-weight-light mr-2">Date Issued:<span class="font-weight-semibold mr-2" id="display_issue_date"> &nbsp</span></span></p>
                                                     <p class="mb-1"><span class="font-weight-light mr-2">Date of Expiry:<span class="font-weight-semibold mr-2" id="display_expiry_date"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2">ID image:<img class="img-fluid" id="previewImg" src="#" alt="your image" /><span class="font-weight-semibold mr-2" id="display_title"> &nbsp</span></span></p>
+                                                    <p class="mb-1"><span class="font-weight-light mr-2">ID image:<img class="img-fluid previewImg" id="id_image_summary" src="#" alt="your image" /><span class="font-weight-semibold mr-2" id="display_title"> &nbsp</span></span></p>
                                                 </div>
                                                 <h5 class="mb-3 mt-4 bg-light p-2"> Bio Details Summary</h5>
                                                 <div>
@@ -410,7 +410,10 @@
 <script>
     $(document).ready(function(){
 
-    //    $('#previewImg').hide();
+        $('#previewImg').hide();
+        $('#previewImg1').hide();
+        $('#previewImg2').hide();
+
 
         $('#personal_details').submit(function(e){
             e.preventDefault();
@@ -427,8 +430,9 @@
             $('#custom-v-pills-shipping-tab').addClass('active show');
             $('#custom-v-pills-billing').removeClass('active show');
             $('#custom-v-pills-shipping').addClass('active show');
-//            alert(title + ' ' + surname + ' ' + firstname + ' ' + gender + ' ' + birthday + ' ' + birth_place + ' ' + country);
+
         })
+
 
         // Personal Details form
         $('#next1').click(function(e){
@@ -442,16 +446,32 @@
             var birth_place = $('#birth_place').val();
             var country = $('#country').val();
 
-//            alert(title + '' + surname + '' + firstname + '' + gender + '' + birthday + '' + birth_place + '' + country);
-
 
         })
 
 
-        // ID option selector
 
 
-            // C0ntact Details Values
+
+            // Contact Details & ID Details
+
+
+            $('#id_upload').change(function(){
+
+                var file = $("#id_upload[type=file]").get(0).files[0];
+
+                if(file){
+                    var reader = new FileReader();
+
+                    reader.onload = function(){
+                        $(".previewImg").attr("src", reader.result);
+                        $('#previewImg').show();
+                }
+
+                    reader.readAsDataURL(file);
+                }
+            })
+
             $('#contact_id_details').submit(function(e){
 //            $('#next2').submit(function(e){
                 e.preventDefault();
@@ -468,27 +488,6 @@
 //                var image_upload = $('#image_upload').val(this.files && this.files.length ? this.files[0].name.split('.')[0] : '');
 //                console.log(image_upload);
 
-                $('#image_upload').change(function(){
-
-                })
-
-                var file = $("input[type=file]").get(0).files[0];
-
-                        if(file){
-                            var reader = new FileReader();
-
-                            reader.onload = function(){
-                                $("#previewImg").attr("src", reader.result);
-                                $('.img_display').show();
-
-                            }
-
-                            reader.readAsDataURL(file);
-                        }
-
-
-//                alert(mobile_number + ' ' + email + ' ' + city + ' ' + town + ' ' + id_number + ' ' + residential_address + ' ' + issue_date + ' ' + expiry_date + ' ');
-
 
                 $('#custom-v-pills-shipping-tab').removeClass('active show');
                 $('#custom-v-pills-payment-tab').addClass('active show');
@@ -497,6 +496,44 @@
 
 
             })
+
+
+            // Bio Details
+
+            $('#passport_picture').change(function(){
+
+                var file = $("#passport_picture[type=file]").get(0).files[0];
+
+                       if(file){
+                           var reader = new FileReader();
+
+                           reader.onload = function(){
+                               $(".previewImg1").attr("src", reader.result);
+                                $('#previewImg1').show();
+                           }
+
+                           reader.readAsDataURL(file);
+                       }
+           })
+
+           $('#selfie_upload').change(function(){
+
+                var file = $("#selfie_upload[type=file]").get(0).files[0];
+
+                       if(file){
+                           var reader = new FileReader();
+
+                           reader.onload = function(){
+                               $(".previewImg2").attr("src", reader.result);
+                                $('#previewImg2').show();
+
+                           }
+
+                           reader.readAsDataURL(file);
+                       }
+           })
+
+//          Summary
 
             $('#bio_details').submit(function(e){
                 e.preventDefault();
@@ -552,25 +589,25 @@
                 $('#display_residential_address').text(residential_address);
 
                 var id_type = $('#id_type').val();
-                $('#dislay_id_type').text(id_type);
+                $('#display_id_type').text(id_type);
 
                 var id_number = $('#id_number').val();
                 $('#display_id_number').text(id_number);
 
                 var issue_date = $("#issue_date").datepicker().val();
-//                $('#display_issue_date').text(issue_date);
+                $('#display_issue_date').text(issue_date);
 
                 var expiry_date = $("#expiry_date").datepicker().val();
                 $('#display_expiry_date').text(expiry_date);
 
 
-                var file = $("input[type=file]").get(0).files[0];
+                var file = $("image_upload[type=file]").get(0).files[0];
 
                         if(file){
                             var reader = new FileReader();
 
                             reader.onload = function(){
-                                $("#previewImg").attr("src", reader.result);
+                                $("#id_image_summary").attr("src", reader.result);
                             }
 
                             reader.readAsDataURL(file);
@@ -606,37 +643,6 @@
                                 --}}
             })
 
-            // Bio Details
-
-            $('#passport_picture').change(function(){
-
-                 var file = $("#passport_picture[type=file]").get(0).files[0];
-
-                        if(file){
-                            var reader = new FileReader();
-
-                            reader.onload = function(){
-                                $(".previewImg1").attr("src", reader.result);
-                            }
-
-                            reader.readAsDataURL(file);
-                        }
-            })
-
-            $('#selfie_upload').change(function(){
-
-                 var file = $("#selfie_upload[type=file]").get(0).files[0];
-
-                        if(file){
-                            var reader = new FileReader();
-
-                            reader.onload = function(){
-                                $(".previewImg2").attr("src", reader.result);
-                            }
-
-                            reader.readAsDataURL(file);
-                        }
-            })
     })
 
 </script>
