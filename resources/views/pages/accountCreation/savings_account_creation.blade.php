@@ -96,7 +96,8 @@
                                     <div>
                                         <h4 class="header-title">Personal Details</h4>
 
-                                        <form action="" id="personal_details">
+                                        <form action="POST" id="personal_details">
+                                            @csrf
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -205,7 +206,7 @@
                                                     </div>
                                                 </div> <!-- end col -->
                                             </div> <!-- end row -->
-                                        </form>
+
                                     </div>
                                 </div>
 
@@ -214,6 +215,7 @@
                                         <h4 class="header-title">Contact Details</h4>
 
                                         <form action="" id="contact_id_details">
+                                            @csrf
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -349,6 +351,8 @@
                                                 </div> <!-- end col -->
                                             </div> <!-- end row-->
                                         </form>
+
+                                    </form>
                                     </div>
                                 </div>
 
@@ -384,7 +388,7 @@
                                                     <p class="mb-1"><span class="font-weight-light mr-2">Selfie Image:<img class="img-fluid previewImg2" id="selfie_picture_summary" src="#" alt="your image" /><span class="font-weight-semibold mr-2" id="display_title"> &nbsp</span></span></p>
                                                 </div>
 
-                                                <button class="btn btn-primary btn-block" type="submit"> Submit</button>
+                                                <button class="btn btn-primary btn-block" type="submit" id="final_submit"> Submit</button>
 
                                                 </div>
 
