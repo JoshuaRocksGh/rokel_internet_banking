@@ -272,12 +272,12 @@
                 </li>  --}}
 
                 <li>
-                    <a href="#sidebarProjects" data-toggle="collapse">
+                    <a href="#sidebarLoans" data-toggle="collapse">
                         <i class="mdi mdi-briefcase-check-outline"></i>
                         <span> Loans </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarProjects">
+                    <div class="collapse" id="sidebarLoans">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ url('loan-quotation') }}">Loan Information</a>
@@ -297,12 +297,12 @@
 
 
                 <li>
-                    <a href="#sidebarProjects" data-toggle="collapse">
+                    <a href="#sidebarTradeFinance" data-toggle="collapse">
                         <i class="mdi mdi-briefcase-check-outline"></i>
                         <span> Trade Finance </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarProjects">
+                    <div class="collapse" id="sidebarTradeFinance">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="#">LC Origination</a>
