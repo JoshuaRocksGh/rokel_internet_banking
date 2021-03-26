@@ -2,11 +2,17 @@
 
 use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountServices\accountCreationController;
+use App\Http\Controllers\AccountServices\AccountServicesController;
 use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
+use App\Http\Controllers\Budgeting\SpendingStaticsController;
+use App\Http\Controllers\Cards\CardsController;
+use App\Http\Controllers\Chatbot\FacebookChatbotController;
+use App\Http\Controllers\Chatbot\InstagramChatbotController;
+use App\Http\Controllers\Chatbot\WhatsAppChatbotController;
 use App\Http\Controllers\Cheques\ChequesApprovedController;
 use App\Http\Controllers\Cheques\ChequesPendingController;
 use App\Http\Controllers\Cheques\ChequesRejectedController;
@@ -24,6 +30,7 @@ use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
+use App\Http\Controllers\TradeFinance\TradeFinanceController;
 use App\Http\Controllers\transferController;
 use App\Http\Controllers\Transfers\LocalBankController;
 use App\Http\Controllers\Transfers\OwnAccountController;
@@ -194,6 +201,89 @@ Route::get('request-blink',[paymentController::class,'request_blink_payment'])->
 //route to display the schedule payment screen
 Route::get('schedule-payment',[paymentController::class,'schedule_payment'])->name('schedule-payment');
 
+//route to display the activate cheque screen
+Route::get('activate-cheque-book',[AccountServicesController::class,'activate_cheque_book'])->name('activate-cheque-book');
+
+//route to display the add signature screen
+Route::get('add-signature',[AccountServicesController::class,'add_signature'])->name('add-signature');
+
+//route to display the activate cheque screen
+Route::get('cheque-book-request',[AccountServicesController::class,'cheque_book_request'])->name('cheque-book-request');
+
+//route to display the confirm cheque screen
+Route::get('confirm-cheque',[AccountServicesController::class,'confirm_cheque'])->name('confirm-cheque');
+
+//route to display the fd creation screen
+Route::get('fd-creation',[AccountServicesController::class,'fd_creation'])->name('fd-creation');
+
+//route to display the kyc update screen
+Route::get('kyc-update',[AccountServicesController::class,'kyc_update'])->name('kyc-update');
+
+//route to display the open additional acc screen
+Route::get('open-additional-account',[AccountServicesController::class,'open_additional_acc'])->name('open-additional-account');
+
+//route to display the request atm screen
+Route::get('request-atm',[AccountServicesController::class,'request_atm'])->name('request-atm');
+
+//route to display the remove signature screen
+Route::get('remove-signature',[AccountServicesController::class,'remove_signature'])->name('remove-signature');
+
+//route to display the request draft screen
+Route::get('request-draft',[AccountServicesController::class,'request_draft'])->name('request-draft');
+
+//route to display the request statement screen
+Route::get('request-statement',[AccountServicesController::class,'request_statement'])->name('request-statement');
+
+//route to display the request for letter screen
+Route::get('request-for-letter',[AccountServicesController::class,'request_for_letter'])->name('request-for-letter');
+
+//route to display the close account
+Route::get('close-account',[AccountServicesController::class,'close_account'])->name('close-account');
+
+//route to display the stop cheque screen
+Route::get('stop-cheque',[AccountServicesController::class,'stop_cheque'])->name('stop-cheque');
+
+//route to display the activate card screen
+Route::get('activate-card',[CardsController::class,'activate_card'])->name('activate-card');
+
+//route to display the block debit card screen
+Route::get('block-debit-card',[CardsController::class,'block_debit_card'])->name('block-debit-card');
+
+//route to display the replace card screen
+Route::get('replace-card',[CardsController::class,'replace_card'])->name('replace-card');
+
+//route to display the stop fd screen
+Route::get('stop-fd',[AccountServicesController::class,'stop_fd'])->name('stop-fd');
+
+//route to display the biometric setup screen
+Route::get('biometric-setup',[settingsController::class,'biometric_setup'])->name('biometric-setup');
+
+//route to display the change pin screen
+Route::get('change-pin',[settingsController::class,'change_pin'])->name('change-pin');
+
+//route to display the forgot transaction pin screen
+Route::get('set-transaction-limit',[settingsController::class,'set_transaction_limit'])->name('set-transaction-limit');
+
+//route to display the update company info screen
+Route::get('update-company-info',[settingsController::class,'update_company_info'])->name('update-company-info');
+
+//route to display the forgot transaction pin screen
+Route::get('forgot-transaction-pin',[settingsController::class,'forgot_transaction_pin'])->name('forgot-transaction-pin');
+
+//route to display the lc origination of the trade finance screen
+Route::get('lc-origination',[TradeFinanceController::class,'lc_origination'])->name('lc-origination');
+
+//route to display the spending statics screen for budgetting
+Route::get('budgeting-spending-statics',[SpendingStaticsController::class,'spending_statics'])->name('budgeting-spending-statics');
+
+//route to display the whatsapp chatbook screen
+Route::get('WhatsApp-Chatbot',[WhatsAppChatbotController::class,'whatsApp_chatbot'])->name('WhatsApp-Chatbot');
+
+//route to display the facebook chatbot screen
+Route::get('Facebook-Chatbot',[FacebookChatbotController::class,'facebook_chatbot'])->name('Facebook-Chatbot');
+
+//route to display the instagram chatbot screen
+Route::get('Instagram-Chatbot',[InstagramChatbotController::class,'instagram_chatbot'])->name('Instagram-Chatbot');
 
 Route::middleware(['userAuth'])->group(function () {
 

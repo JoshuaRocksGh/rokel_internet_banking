@@ -184,10 +184,10 @@
                     <div class="collapse" id="sidebarAccountServices">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">Cheque Book Request </a>
+                                <a href="{{ url('cheque-book-request') }}">Cheque Book Request </a>
                             </li>
                             <li>
-                                <a href="#">Activate Cheque Book</a>
+                                <a href="{{ url('activate-cheque-book') }}">Activate Cheque Book</a>
                             </li>
                             <li>
                                 <a href="#sidebarChequeApprovals" data-toggle="collapse">
@@ -209,49 +209,44 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="#">Stop Cheque</a>
+                                <a href="{{ url('stop-cheque') }}">Stop Cheque</a>
                             </li>
                             <li>
-                                <a href="#">Confirm Cheque</a>
+                                <a href="{{ url('confirm-cheque') }}">Confirm Cheque</a>
                             </li>
                             <li>
-                                <a href="#">Request For Letter</a>
+                                <a href="{{ url('request-for-letter') }}">Request For Letter</a>
                             </li>
                             <li>
-                                <a href="#">Open additional account</a>
+                                <a href="{{ url('open-additional-account') }}">Open additional account</a>
                             </li>
                             <li>
-                                <a href="#">Request a draft</a>
+                                <a href="{{ url('request-draft') }}">Request a draft</a>
                             </li>
                             <li>
-                                <a href="#">Close account</a>
+                                <a href="close-account">Close account</a>
                             </li>
                             <li>
-                                <a href="#">Add a signature</a>
+                                <a href="{{ url('add-signature') }}">Add a signature</a>
                             </li>
                             <li>
-                                <a href="#">Remove a signature </a>
+                                <a href="{{ url('remove-signature') }}">Remove a signature </a>
                             </li>
                             <li>
-                                <a href="#">Request a statement </a>
+                                <a href="{{ url('request-for-letter') }}">Request a statement </a>
                             </li>
                             <li>
-                                <a href="#">FD Creation</a>
+                                <a href="{{ url('fd-creation') }}">FD Creation</a>
                             </li>
                             <li>
-                                <a href="#">Stop FD</a>
+                                <a href="{{ url('stop-fd') }}">Stop FD</a>
                             </li>
                             <li>
-                                <a href="#">KYC Update</a>
+                                <a href="{{ url('kyc-update') }}">KYC Update</a>
                             </li>
                             <li>
-                                <a href="#">Request ATN</a>
+                                <a href="{{ url('request-atm') }}">Request ATM</a>
                             </li>
-{{--
-                            <li>
-                                <a href="email-templates.html">Email Templates</a>
-                            </li> --}}
-
                         </ul>
                     </div>
                 </li>
@@ -305,7 +300,7 @@
                     <div class="collapse" id="sidebarTradeFinance">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">LC Origination</a>
+                                <a href="{{ url('lc-origination') }}">LC Origination</a>
                             </li>
                         </ul>
                     </div>
@@ -319,13 +314,13 @@
                     <div class="collapse" id="sidebarTasks">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">Block Debit Card</a>
+                                <a href="{{ url('block-debit-card') }}">Block Debit Card</a>
                             </li>
                             <li>
-                                <a href="#">Replace Card</a>
+                                <a href="{{ url('replace-card') }}">Replace Card</a>
                             </li>
                             <li>
-                                <a href="#">Activate Card</a>
+                                <a href="{{ url('activate-card') }}">Activate Card</a>
                             </li>
                         </ul>
                     </div>
@@ -340,7 +335,7 @@
                     <div class="collapse" id="sidebarContacts">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">Spending Statistics</a>
+                                <a href="{{ url('budgeting-spending-statics') }}">Spending Statistics</a>
                             </li>
 
                         </ul>
@@ -426,13 +421,13 @@
                     <div class="collapse" id="sidebarChatbot">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">WhatsApp</a>
+                                <a href="{{ url('WhatsApp-Chatbot') }}">WhatsApp</a>
                             </li>
                             <li>
-                                <a href="#">Facebook</a>
+                                <a href="{{ url('Facebook-Chatbot') }}">Facebook</a>
                             </li>
                             <li>
-                                <a href="#">Instagram</a>
+                                <a href="{{ url('Instagram-Chatbot') }}">Instagram</a>
                             </li>
                         </ul>
                     </div>
@@ -450,19 +445,19 @@
                     <div class="collapse" id="sidebarSetting">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">Set Transaction Limits</a>
+                                <a href="{{ url('set-transaction') }}">Set Transaction Limits</a>
                             </li>
                             <li>
-                                <a href="#">Update Company Information</a>
+                                <a href="{{ url('update-company-info') }}">Update Company Information</a>
                             </li>
                             <li>
-                                <a href="#">Forgot Transaction PIN</a>
+                                <a href="{{ url('forgot-transaction-pin') }}">Forgot Transaction PIN</a>
                             </li>
                             <li>
-                                <a href="#">Biometric Setup</a>
+                                <a href="{{ url('biometric-setup') }}">Biometric Setup</a>
                             </li>
                             <li>
-                                <a href="#">Change PIN</a>
+                                <a href="{{ url('change-pin') }}">Change PIN</a>
                             </li>
 
 
