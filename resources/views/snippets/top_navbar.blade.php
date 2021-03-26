@@ -1,5 +1,5 @@
 <!-- Topbar Start -->
-<div class="navbar-custom" style="zoom: 0.95;">
+<div class="navbar-custom" style="zoom: 0.9;">
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-left mb-0">
 

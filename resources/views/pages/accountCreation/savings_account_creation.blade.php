@@ -647,6 +647,25 @@
                                 --}}
             })
 
+            $('#final_submit').click(function(e){
+                e.preventDefault();
+                var title = $('#title').val();
+                var surname = $('#surname').val();
+                var firstname = $('#firstname').val();
+                var gender = $("#select_gender input[type='radio']:checked").val();
+                var birthday = $("#DOB").datepicker().val();
+                var birth_place = $('#birth_place').val();
+                var country = $('#country').val();
+                var mobile_number = $('#mobile_number').val();
+                var email = $('#email').val();
+                var city = $('#city').val();
+                var town = $('#town').val();
+                var residential_address = $('#residential_address').val();
+
+
+
+            })
+
     })
 
 </script>
