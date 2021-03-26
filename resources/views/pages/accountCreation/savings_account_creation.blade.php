@@ -753,5 +753,4 @@
 
 </script>
 
-
-@endsection
+</script>
