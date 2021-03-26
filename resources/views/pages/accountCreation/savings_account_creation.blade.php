@@ -661,7 +661,13 @@
                 var city = $('#city').val();
                 var town = $('#town').val();
                 var residential_address = $('#residential_address').val();
-
+                var id_type = $('#id_type').val();
+                var id_number = $('#id_number').val();
+                var issue_date = $("#issue_date").datepicker().val();
+                var expiry_date = $("#expiry_date").datepicker().val();
+                // ID Image
+                // PAssport Picture
+                // Selfie with signed paper
 
 
             })
