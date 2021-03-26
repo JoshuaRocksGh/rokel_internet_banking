@@ -23,34 +23,39 @@
 
                                 <div class="col-md-7">
 
-                                    <form action="#">
+                                    <form action="#" id="same_bank">
+                                        {{-- @csrf --}}
                                         <div class="form-group">
-                                            <label class="purple-color"> Beneficiary Account Details</label>
-                                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000" placeholder="Account Number">
+                                            <label class="purple-color"> Beneficiary Account Details</label><br>
+                                            <label >Account Number</label>
+                                            <input type="text" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required>
 
                                         </div>
                                         <div class="form-group">
-
-                                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name">
+                                            <label >Account Name</label>
+                                            <input type="text" class="form-control" id="account_name" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name" required>
 
                                         </div><br>
                                         <div class="form-group">
-                                            <label class="purple-color">Beneficiary Personal Details</label>
-                                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name">
+                                            <label class="purple-color">Beneficiary Personal Details</label><br>
+                                            <label >Beneficiary Name</label>
+                                            <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required>
 
                                         </div>
                                         <div class="form-group">
-
-                                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email">
+                                            <label >Beneficiary Email</label>
+                                            <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required>
 
                                         </div><br>
 
 
                                         <div class="form-group">
 
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                                <label class="custom-control-label" for="customSwitch1">Email beneficiary when a transfer is made</label>
+                                            <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                                <input id="checkbox2" type="checkbox">
+                                                <label for="checkbox2">
+                                                    Email beneficiary when a transfer is made
+                                                </label>
                                             </div>
 
                                         </div>
@@ -60,7 +65,9 @@
 
                                         </p>
 
-                                        <button class="btn btn-primary btn-rounded" type="submit">Save Beneficiary</button>
+                                        <button class="btn btn-primary btn-rounded" type="submit" id="save_beneficiary" data-toggle="modal">Save Beneficiary</button>
+                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button>
+
                                     </form>
 
                                 </div> <!-- end col -->
@@ -79,168 +86,6 @@
 
                             </div>
 
-{{--
-
-                            <div class="row" id="transaction_summary">
-
-
-                                <div class="col-md-12">
-                                    <div class="border p-3 mt-4 mt-lg-0 rounded">
-                                        <h4 class="header-title mb-3">Transfer Detail Summary</h4>
-
-                                        <div class="table-responsive">
-                                            <table class="table mb-0">
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td>From Account:</td>
-                                                        <td>
-                                                            <span
-                                                                class="font-13 text-primary text-bold display_from_account_type"
-                                                                id="display_from_account_type"></span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                id="display_from_account_name"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                id="display_from_account_no"></span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>To Account:</td>
-                                                        <td>
-
-                                                            <span
-                                                                class="font-13 text-primary text-bold display_to_account_type"
-                                                                id="display_to_account_type"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                id="display_to_account_name"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                id="display_to_account_no"> </span>
-
-
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                id="online_display_beneficiary_alias_name"> Daniel Hammond</span>
-
-                                                            <span class="font-13 text-primary h3 online_display_beneficiary_account_no"
-                                                                id="">0000333030303 </span>
-                                                                &nbsp; | &nbsp;
-                                                            <span class="font-13 text-primary h3 online_display_beneficiary_account_currency" id=""> GHS
-                                                            </span>
-
-                                                            <span
-                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
-                                                            id="online_display_beneficiary_email">dan@gmail.com</span>
-
-                                                            <span
-                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
-                                                            id="online_display_beneficiary_phone">0554602954</span>
-
-
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Amount:</td>
-                                                        <td>
-                                                            <span class="font-15 text-primary h3 display_currency"
-                                                                id="display_currency"> </span>
-                                                            &nbsp;
-                                                            <span class="font-15 text-primary h3 display_transfer_amount"
-                                                                id="display_transfer_amount"></span>
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Category:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_category"
-                                                                id="display_category"></span>
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Purpose:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_purpose"
-                                                                id="display_purpose"></span>
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Schedule Payment:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_schedule_payment"
-                                                                id="display_schedule_payment">NO </span>
-                                                                &nbsp; | &nbsp;
-                                                            <span class="font-13 text-primary h3 display_schedule_payment_date" id="display_schedule_payment_date"> N/A
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Transfer Date: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3"
-                                                                id="display_transfer_date">{{  date('d F, Y') }}</span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Posted BY: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3"
-                                                                id="display_posted_by">Kwabena Ampah</span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Enter Pin: </td>
-                                                        <td>
-                                                            <div class="form-group">
-                                                                <input type="text" name="user_pin" class="form-control"
-                                                                    id="user_pin"
-                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- end table-responsive -->
-                                        <br>
-                                        <div class="form-group text-center">
-
-                                            <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                    id="back_button">Back</button> &nbsp; </span>
-                                            <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                    id="confirm_button">Confirm Transfer </button></span>
-                                            <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
-                                                    id="confirm_button">Print Receipt </button></span>
-                                        </div>
-                                    </div>
-
-                                </div> <!-- end col -->
-
-
-
-
-
-                            </div>
-  --}}
-
 
                         </div>
 
@@ -250,7 +95,7 @@
 
 
                     <!-- Modal -->
-                    <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
+                    {{--  <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
                         aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -295,8 +140,35 @@
                                 </form>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
+                    </div>  --}}
+                    <!-- /.modal -->
 
+
+                    <!-- Center modal content -->
+                    <div class="modal fade center_modal" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered center_modal">
+                            <div class="modal-content center_modal">
+                                <div class="modal-header center_modal">
+                                    <h4 class="modal-title center_modal" id="myCenterModalLabel">Summary</h4>
+                                    <button type="button" class="close center_modal" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body center_modal">
+
+                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Account Number:&emsp;<span class="font-weight-semibold mr-2" id="display_account_number"> &nbsp</span></span></p>
+                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Account Name:&emsp;<span class="font-weight-semibold mr-2" id="display_account_name"> &nbsp</span></span></p>
+                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Beneficiary Name:&emsp;<span class="font-weight-semibold mr-2" id="display_beneficiary_name"> &nbsp</span></span></p>
+                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Beneficairy Email:&emsp;<span class="font-weight-semibold mr-2" id="display_beneficiary_email"> &nbsp</span></span></p>
+                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Email Beneficiary:&emsp;<span class="font-weight-semibold mr-2" id="display_transfer_email"> &nbsp</span></span></p>
+                                </div>
+                                <div>
+                                    <button class="btn btn-secondary btn-rounded center_modal" type="submit" id="save_beneficiary" style="align-items: center">Back</button>&emsp;
+                                    <button class="btn btn-primary btn-rounded center_modal" type="submit" id="save_beneficiary" style="align-items: center">Submit</button>
+
+                                </div>
+                            </div><!-- /.modal-content -->
+
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
 
 
 
@@ -312,8 +184,53 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script>
-            $(document).ready(function() {
+             $(document).ready(function() {
 
+                $('#center_modal').click(function(e){
+                e.preventDefault();
+
+
+                var account_number = $('#account_number').val();
+                var account_name = $('#account_name').val();
+                var beneficiary_name = $('#beneficiary_name').val();
+                var beneficiary_email = $('#beneficiary_email').val();
+                var transfer_email = $("#transfer_email input[type='checkbox']:checked").val();
+
+
+                    console.log(account_number);
+                    console.log(account_name);
+                    console.log(beneficiary_name);
+                    console.log(beneficiary_email);
+                    console.log(transfer_email);
+
+                var account_number = $('#account_number').val();
+                $('#display_account_number').text(account_number);
+
+                var account_name = $('#account_name').val();
+                $('#display_account_name').text(account_name)
+
+                var beneficiary_name = $('#beneficiary_name').val();
+                $('#display_beneficiary_name').text(beneficiary_name);
+
+                var beneficiary_email = $('#beneficiary_email').val();
+                $('#display_beneficiary_email').text(beneficiary_email);
+
+                var transfer_email = $("#transfer_email input[type='checkbox']:checked").val();
+                if (transfer_email == 'on'){
+                   $('#display_transfer_email').text('Yes');
+                }else {
+                   $('#display_transfer_email').text('No');
+                }
+
+                if(account_number.trim() == '' || account_name.trim() == '' || beneficiary_name.trim() == '' || beneficiary_email.trim() == '' ){
+                    $('.center_modal').hide();
+
+                }else{
+                    $('.center_modal').show();
+
+                }
+
+                })
             });
 
         </script>
