@@ -32,7 +32,7 @@
              }
 
              .card-background-image{
-                background-image: url('assets/images/background.png');
+                background-image: url("{{ asset('assets/images/background.png') }}");
                  background-repeat: no-repeat;
                  background-size: cover;
              }

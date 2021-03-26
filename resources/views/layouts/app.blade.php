@@ -15,9 +15,17 @@
 
     @include('snippets.style')
 
+    {{-- <style>
+        .card-background-image{
+            background-image: url("{{ asset('assets/images/background.png') }}");
+             background-repeat: no-repeat;
+             background-size: cover;
+         }
+    </style> --}}
+
 </head>
 
-<body class="loading auth-fluid-pages pb-0">
+<body class="loading auth-fluid-pages pb-0" >
 
 
     @yield('content')
@@ -25,6 +33,8 @@
     {{-- @include('snippets.footer') --}}
 
     @include('snippets.script')
+
+    @yield('scripts')
 </body>
 
 </html>

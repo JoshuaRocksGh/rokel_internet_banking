@@ -22,3 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/login',[LoginController::class,'login_'])->name('login');
 Route::post('/add-beneficiary/same-bank-beneficiary',[TransferController::class,'same_bank_beneficiary_'])->name('same-bank-beneficiary');
+
+// Savings Account Creation 
+
+
