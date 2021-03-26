@@ -357,13 +357,13 @@
                                                 <h5 class="mb-3 mt-4 bg-light p-2">Personal Details Summary</h5>
                                                 <div class="">
 
-                                                    <p class="mb-1"><span class="font-weight-light mr-2">Title:<span class="font-weight-semibold mr-2" id="display_title"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2">Surname:<span class="font-weight-semibold mr-2" id="display_surname"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2">Firstname:<span class="font-weight-semibold mr-2" id="display_firstname"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2">Gender:<span class="font-weight-semibold mr-2" id="display_select_gender"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2">Date of Birth:<span class="font-weight-semibold mr-2" id="display_DOB"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2">Place of Birth:<span class="font-weight-semibold mr-2" id="display_birth_place"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2">Country:<span class="font-weight-semibold mr-2" id="display_country"> &nbsp</span></span></p>
+                                                    <p class="mb-1"><span class="font-weight-light mr-2">Title:&emsp;<span class="font-weight-semibold mr-2" id="display_title"> &nbsp</span></span></p>
+                                                    <p class="mb-1"><span class="font-weight-light mr-2">Surname:&emsp;<span class="font-weight-semibold mr-2" id="display_surname"> &nbsp</span></span></p>
+                                                    <p class="mb-1"><span class="font-weight-light mr-2">Firstname:&emsp;<span class="font-weight-semibold mr-2" id="display_firstname"> &nbsp</span></span></p>
+                                                    <p class="mb-1"><span class="font-weight-light mr-2">Gender:&emsp;<span class="font-weight-semibold mr-2" id="display_select_gender"> &nbsp</span></span></p>
+                                                    <p class="mb-1"><span class="font-weight-light mr-2">Date of Birth:&emsp;<span class="font-weight-semibold mr-2" id="display_DOB"> &nbsp</span></span></p>
+                                                    <p class="mb-1"><span class="font-weight-light mr-2">Place of Birth:&emsp;<span class="font-weight-semibold mr-2" id="display_birth_place"> &nbsp</span></span></p>
+                                                    <p class="mb-1"><span class="font-weight-light mr-2">Country:&emsp;<span class="font-weight-semibold mr-2" id="display_country"> &nbsp</span></span></p>
                                                 </div>
                                                 <h5 class="mb-3 mt-4 bg-light p-2"> Contact & ID Details Summary</h5>
                                                 <div id=" ">
