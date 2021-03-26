@@ -74,9 +74,9 @@
 
 
                             <div class="text-center d-sm-none   d-md-none  d-lg-none">
-                                <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-book-open mr-1"></i> Open an account</button>
+                                <a  href="{{ url('account-creation') }}" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-book-open mr-1"></i> Open an account</a>
                                 &nbsp;
-                                <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-headset mr-1"></i>  FAQs</button>
+                                <a  href="{{ url('faq') }}" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-headset mr-1"></i>  FAQs</a>
 
                             </div>
 
@@ -87,9 +87,9 @@
 
 
                             <div class="text-center d-sm-none  d-md-none  d-lg-none">
-                                <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-desktop mr-1"></i> Make Enquiry</button>
+                                <a href="{{ url('enquiry') }}" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-desktop mr-1"></i> Make Enquiry</a>
                                &nbsp;
-                                <button type="button" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-map-marked-alt mr-1"></i>  Branches</button>
+                               <a href="{{ url('branches') }}" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-map-marked-alt mr-1"></i>  Branches</a>
 
                             </div>
 
@@ -201,54 +201,58 @@
     </div>
     <!-- end auth-fluid-->
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function(){
-            $('#error').hide(),
-            $('#error1').hide(),
+@endsection
+
+@section('scripts')
+
+<script>
+    $(document).ready(function(){
+        $('#error').hide(),
+        $('#error1').hide(),
 
 
-            $('#submit').click(function(e){
-                e.preventDefault();
-                var email = $("#emailaddress").val();
-                var password = $('#password').val();
+        $('#submit').click(function(e){
+            e.preventDefault();
+            var email = $("#emailaddress").val();
+            var password = $('#password').val();
 
-                if($.trim($('#emailaddress').val()) == ''){
-                    $('#error').show()
-
-
-                }else if ($.trim($('#password').val()) == ''){
-                    $('#error1').show()
-                }
-
-                {{--  console.log(email,password);  --}}
-
-                $.ajax({
-                    "type": "POST",
-                    "url" : "login",
-                    "datatype" : "application/json",
-                    "data": {
-                        "user_id" : email,
-                        "password" : password,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success:function(response){
-                        console.log(response);
-                        var res = response.data
-                        if(response.responseCode == "000"){
-                            window.location = 'home'
-                        }else{
-                            alert('Failed to login')
+            if($.trim($('#emailaddress').val()) == ''){
+                $('#error').show()
 
 
-                        }
+            }else if ($.trim($('#password').val()) == ''){
+                $('#error1').show()
+            }
+
+            {{--  console.log(email,password);  --}}
+
+            $.ajax({
+                "type": "POST",
+                "url" : "login",
+                "datatype" : "application/json",
+                "data": {
+                    "user_id" : email,
+                    "password" : password,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success:function(response){
+                    console.log(response);
+                    var res = response.data
+                    if(response.responseCode == "000"){
+                        window.location = 'home'
+                    }else{
+                        alert('Failed to login')
+
+
                     }
-                })
+                }
             })
         })
+    })
 
-    </script>
+</script>
+
 
 @endsection
