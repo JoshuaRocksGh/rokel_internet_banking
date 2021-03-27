@@ -23,56 +23,148 @@
 
                                 <div class="col-md-7">
 
-                                    <form action="#">
+                                    <form action="#" id="local_bank_details">
                                         <div class="form-group">
                                             <label class="purple-color"> Bank Details</label>
                                          </div>
                                         <div class="form-group">
-                                            <select class="custom-select ">
+                                            <label> Select Bank</label>
+                                            <select class="custom-select " id="select_bank">
                                                 <option selected>Select Bank</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option value="Stanbic Bank">Stanbic Bank</option>
+                                                <option value="GCB Bank">GCB Bank</option>
+                                                <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                                                <option value="Zenith Bank">Zenith Bank</option>
+                                                <option value="Cal Bank">Cal Bank</option>
+                                                <option value="FNB Bank">FNB Bank</option>
                                             </select>
-        
+
                                         </div>
                                         <br>
-        
+                                        <label class="purple-color">  Account Details</label>
                                         <div class="form-group">
-                                            <label class="purple-color">  Account Details</label>
-                                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000" placeholder="Account Number">
+                                            <label>Account Number</label>
+                                            <input type="number" class="form-control" id="account_number" placeholder="Account Number" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name">
+                                            <label>Account Name</label>
+                                            <input type="text" class="form-control" id="account_name" placeholder="Account Name">
                                          </div><br>
+
+
+                                         <label class="purple-color"> Personal Details</label>
                                         <div class="form-group">
-                                            <label class="purple-color"> Personal Details</label>
-                                            <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name">
+                                            <label>Beneficiary Name</label>
+                                            <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name">
                                          </div>
+
+                                         <div class="form-group">
+                                            <label>Beneficiary Email</label>
+                                            <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name">
+                                         </div>
+
                                         <div class="form-group">
-                                          
+
                                         </div><br>
-                                        
+
                                         <div class="form-group">
-                                          
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                                <label class="custom-control-label" for="customSwitch1">Email beneficiary when a transfer is made</label>
+
+                                            <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                                <input id="checkbox2" type="checkbox">
+                                                <label class="custom-control-label" for="checkbox2">
+                                                    Email beneficiary when a transfer is made
+                                                </label>
                                             </div>
-        
+
                                         </div>
-                                  
+
                                         <p class="sub-header font-13">
                                             Providing  beneficairy email  and  checking
                                             the box, enables us to send an alert mail to
                                             the beneficiary each time a transfer is made
                                         </p>
-                                        <button class="btn btn-primary btn-rounded" type="submit">Save Beneficiary</button>
+                                        <button class="btn btn-primary btn-rounded btn-block" type="submit" id="save_beneficiary_next">Next</button>
+                                    </form>
+
+
+                                    <form action="#" id="local_bank_details_summary">
+                                        <div class="form-group">
+                                            <label class="purple-color"> Bank Details Summary</label>
+                                         </div>
+                                        <div class="form-group">
+                                            <label> Select Bank</label>
+                                            {{-- <select class="custom-select " id="select_bank">
+                                                <option selected>Select Bank</option>
+                                                <option value="Stanbic Bank">Stanbic Bank</option>
+                                                <option value="GCB Bank">GCB Bank</option>
+                                                <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                                                <option value="Zenith Bank">Zenith Bank</option>
+                                                <option value="Cal Bank">Cal Bank</option>
+                                                <option value="FNB Bank">FNB Bank</option>
+                                            </select> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span></span></p>
+
+                                        </div>
+                                        <br>
+                                        <label class="purple-color">  Account Details</label>
+                                        <div class="form-group">
+                                            <label>Account Number</label>
+                                            {{-- <input type="number" class="form-control" id="account_number" placeholder="Account Number" required> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span></span></p>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Account Name</label>
+                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span></span></p>
+
+                                         </div><br>
+
+
+                                         <label class="purple-color"> Personal Details</label>
+                                        <div class="form-group">
+                                            <label>Beneficiary Name</label>
+                                            {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span></span></p>
+
+                                         </div>
+
+                                         <div class="form-group">
+                                            <label>Beneficiary Email</label>
+                                            {{-- <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name"> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span></span></p>
+
+                                         </div>
+
+                                        <div class="form-group">
+
+                                        </div><br>
+
+                                        <div class="form-group">
+
+                                            <div class="">
+                                                {{-- <input id="checkbox2" type="checkbox"> --}}
+                                                <label>
+                                                    Email beneficiary when a transfer is made
+                                                </label>
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span></span></p>
+
+                                            </div>
+
+                                        </div>
+
+                                        {{-- <p class="sub-header font-13">
+                                            Providing  beneficairy email  and  checking
+                                            the box, enables us to send an alert mail to
+                                            the beneficiary each time a transfer is made
+                                        </p> --}}
+
+                                        <button type="submit" class="btn btn-secondary"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
+
+                                        <button class="btn btn-primary btn-rounded" type="submit" id="save_beneficiary">Save Beneficiary</button>
                                     </form>
 
                                 </div> <!-- end col -->
-
-
 
                                 <div class="col-md-5 text-center" style="margin-top: 80px;">
 
@@ -85,169 +177,6 @@
 
 
                             </div>
-
-{{--
-
-                            <div class="row" id="transaction_summary">
-
-
-                                <div class="col-md-12">
-                                    <div class="border p-3 mt-4 mt-lg-0 rounded">
-                                        <h4 class="header-title mb-3">Transfer Detail Summary</h4>
-
-                                        <div class="table-responsive">
-                                            <table class="table mb-0">
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td>From Account:</td>
-                                                        <td>
-                                                            <span
-                                                                class="font-13 text-primary text-bold display_from_account_type"
-                                                                id="display_from_account_type"></span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                id="display_from_account_name"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                id="display_from_account_no"></span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>To Account:</td>
-                                                        <td>
-
-                                                            <span
-                                                                class="font-13 text-primary text-bold display_to_account_type"
-                                                                id="display_to_account_type"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                id="display_to_account_name"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                id="display_to_account_no"> </span>
-
-
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                id="online_display_beneficiary_alias_name"> Daniel Hammond</span>
-
-                                                            <span class="font-13 text-primary h3 online_display_beneficiary_account_no"
-                                                                id="">0000333030303 </span>
-                                                                &nbsp; | &nbsp;
-                                                            <span class="font-13 text-primary h3 online_display_beneficiary_account_currency" id=""> GHS
-                                                            </span>
-
-                                                            <span
-                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
-                                                            id="online_display_beneficiary_email">dan@gmail.com</span>
-
-                                                            <span
-                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
-                                                            id="online_display_beneficiary_phone">0554602954</span>
-
-
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Amount:</td>
-                                                        <td>
-                                                            <span class="font-15 text-primary h3 display_currency"
-                                                                id="display_currency"> </span>
-                                                            &nbsp;
-                                                            <span class="font-15 text-primary h3 display_transfer_amount"
-                                                                id="display_transfer_amount"></span>
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Category:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_category"
-                                                                id="display_category"></span>
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Purpose:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_purpose"
-                                                                id="display_purpose"></span>
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Schedule Payment:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_schedule_payment"
-                                                                id="display_schedule_payment">NO </span>
-                                                                &nbsp; | &nbsp;
-                                                            <span class="font-13 text-primary h3 display_schedule_payment_date" id="display_schedule_payment_date"> N/A
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Transfer Date: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3"
-                                                                id="display_transfer_date">{{  date('d F, Y') }}</span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Posted BY: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3"
-                                                                id="display_posted_by">Kwabena Ampah</span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Enter Pin: </td>
-                                                        <td>
-                                                            <div class="form-group">
-                                                                <input type="text" name="user_pin" class="form-control"
-                                                                    id="user_pin"
-                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- end table-responsive -->
-                                        <br>
-                                        <div class="form-group text-center">
-
-                                            <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                    id="back_button">Back</button> &nbsp; </span>
-                                            <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                    id="confirm_button">Confirm Transfer </button></span>
-                                            <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
-                                                    id="confirm_button">Print Receipt </button></span>
-                                        </div>
-                                    </div>
-
-                                </div> <!-- end col -->
-
-
-
-
-
-                            </div>
-  --}}
-
 
                         </div>
 
@@ -316,111 +245,29 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function() {
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
+        <script>
+            $(document).ready(function(){
+
+                $('#local_bank_details_summary').hide();
+
+                $('#save_beneficiary_next').click(function(e){
+                    e.preventDefault();
+
+                    $('#local_bank_details').hide();
+                    $('#local_bank_details_summary').toggle('500');
+
+                })
+
+                $('#save_beneficiary_back').click(function(e){
+                    e.preventDefault();
+
+                    $('#local_bank_details_summary').hide();
+                    $('#local_bank_details').toggle('500');
+
+                })
             });
 
         </script>
     @endsection
-
-
-
-
-
-
-
-
-
-
-
-{{--  
-
-@extends('layouts.master')
-
-@section('content')
-
-<!-- Start Content-->
-<div class="container-fluid">
-    <br><br>
-
-
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="header-title"><a href="{{ url('add-beneficiary') }}"><i class="fe-arrow-left"></i></a> Other Local Bank Beneficiary</h4><br>
-                    <p class="sub-header font-13">
-                        Add a new beneficiary
-                    </p>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <form action="#">
-                                <div class="form-group">
-                                    <label class="purple-color"> Beneficiary Bank Details</label>
-                                 </div>
-                                <div class="form-group">
-                                    <select class="custom-select ">
-                                        <option selected>Select Bank</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-
-                                </div>
-                                <br>
-
-                                <div class="form-group">
-                                    <label class="purple-color"> Beneficiary Account Details</label>
-                                    <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000" placeholder="Account Number">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name">
-                                 </div><br>
-                                <div class="form-group">
-                                    <label class="purple-color">Beneficiary Personal Details</label>
-                                    <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name">
-                                 </div>
-                                <div class="form-group">
-                                  
-                                </div><br>
-                                
-                                <div class="form-group">
-                                  
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                        <label class="custom-control-label" for="customSwitch1">Email beneficiary when a transfer is made</label>
-                                    </div>
-
-                                </div>
-                          
-                                <p class="sub-header font-13">
-                                    Providing  beneficairy email  and  checking
-                                    the box, enables us to send an alert mail to
-                                    the beneficiary each time a transfer is made
-                                </p>
-                                <button class="btn btn-primary" type="submit">Save Beneficiary</button>
-                            </form>
-                        </div> <!-- end col -->
-
-
-                        <div class="col-md-6">
-                            <img src="{{ asset('assets/images/transfer1.png') }}" class="img-fluid" alt="" >
-                       </div> <!-- end col -->
-
-
-
-                    </div>
-                    <!-- end row -->
-                </div> <!-- end card-body -->
-            </div> <!-- end card -->
-        </div> <!-- end col -->
-    </div> <!-- end row -->
-
-
-
-
-@endsection  --}}

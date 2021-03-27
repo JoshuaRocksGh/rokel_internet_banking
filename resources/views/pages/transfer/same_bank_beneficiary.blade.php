@@ -29,6 +29,8 @@
                                             <label class="purple-color"> Beneficiary Account Details</label><br>
                                             <label >Account Number</label>
                                             <input type="number" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required>
+                                            <span class="text-danger" id="error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+
 
                                         </div>
                                         <div class="form-group">
@@ -243,6 +245,8 @@
              $(document).ready(function() {
 
                 $('#same_bank_summary').hide();
+                $('#error').hide();
+
 
                 $('#save_beneficiary').click(function(e){
                 e.preventDefault();
@@ -271,6 +275,14 @@
                 }else {
                    $('#display_transfer_email').text('No');
                 }
+
+                if(account_number.trim() == '' ){
+                    $('#error').show();
+                }
+{{--
+                if(account_number.trim() == '' || account_number.trim() = 'undefined'){
+                    $('#error').show();
+                } --}}
 
                 if(account_number.trim() != '' && account_name.trim() != '' && beneficiary_name.trim() != '' && beneficiary_email.trim() != '' ){
                     $('#same_bank').hide();
