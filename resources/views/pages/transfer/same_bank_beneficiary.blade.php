@@ -28,7 +28,7 @@
                                         <div class="form-group">
                                             <label class="purple-color"> Beneficiary Account Details</label><br>
                                             <label >Account Number</label>
-                                            <input type="text" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required>
+                                            <input type="number" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required>
 
                                         </div>
                                         <div class="form-group">
@@ -44,7 +44,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label >Beneficiary Email</label>
-                                            <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required>
+                                            <input type="email" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required>
 
                                         </div><br>
 
@@ -65,10 +65,66 @@
 
                                         </p>
 
-                                        <button class="btn btn-primary btn-rounded" type="submit" id="save_beneficiary" data-toggle="modal">Save Beneficiary</button>
-                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button>
+                                        <button class="btn btn-primary btn-rounded" type="submit" id="save_beneficiary" >Next</button>
+                                        {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button> --}}
 
                                     </form>
+
+                                    <form action="#" id="same_bank_summary">
+                                        {{-- @csrf --}}
+                                        <div class="form-group">
+                                            <label class="purple-color"> Beneficiary Account Summary</label><br>
+                                            <label >Account Number</label>
+                                            {{-- <input type="text" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span></span></p>
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label >Account Name</label>
+                                            {{-- <input type="text" class="form-control" id="account_name" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name" required> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_name"> &nbsp</span></span></p>
+
+                                        </div><br>
+                                        <div class="form-group">
+                                            <label class="purple-color">Beneficiary Personal Details</label><br>
+                                            <label >Beneficiary Name</label>
+                                            {{-- <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_beneficiary_name"> &nbsp</span></span></p>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label >Beneficiary Email</label>
+                                            {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
+                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_beneficiary_email"> &nbsp</span></span></p>
+
+                                        </div><br>
+
+
+                                        <div class="form-group">
+
+                                            <div class="">
+                                                {{-- <input id="checkbox2" type="checkbox"> --}}
+                                                <label>
+                                                    Email beneficiary when a transfer is made
+                                                </label>
+                                                <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_transfer_email"> &nbsp</span></span></p>
+
+                                            </div>
+
+                                        </div>
+
+                                        {{-- <p class="sub-header font-13">
+                                            Providing  beneficairy email  and  checking
+
+                                        </p> --}}
+
+                                        <button type="submit" class="btn btn-secondary"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
+                                        <button class="btn btn-primary btn-rounded" type="submit" id="save_beneficiary_summary" >Save Beneficiary</button>
+
+
+                                    </form>
+
 
                                 </div> <!-- end col -->
 
@@ -145,24 +201,24 @@
 
 
                     <!-- Center modal content -->
-                    <div class="modal fade center_modal" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered center_modal">
-                            <div class="modal-content center_modal">
-                                <div class="modal-header center_modal">
-                                    <h4 class="modal-title center_modal" id="myCenterModalLabel">Summary</h4>
-                                    <button type="button" class="close center_modal" data-dismiss="modal" aria-hidden="true">×</button>
+                    <div class="modal fade " id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myCenterModalLabel">Summary</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 </div>
-                                <div class="modal-body center_modal">
+                                <div class="modal-body">
 
-                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Account Number:&emsp;<span class="font-weight-semibold mr-2" id="display_account_number"> &nbsp</span></span></p>
-                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Account Name:&emsp;<span class="font-weight-semibold mr-2" id="display_account_name"> &nbsp</span></span></p>
-                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Beneficiary Name:&emsp;<span class="font-weight-semibold mr-2" id="display_beneficiary_name"> &nbsp</span></span></p>
-                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Beneficairy Email:&emsp;<span class="font-weight-semibold mr-2" id="display_beneficiary_email"> &nbsp</span></span></p>
-                                    <p class="mb-1 center_modal"><span class="font-weight-light mr-2" style="font-size: 18px">Email Beneficiary:&emsp;<span class="font-weight-semibold mr-2" id="display_transfer_email"> &nbsp</span></span></p>
+                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Account Number:&emsp;<span class="font-weight-semibold mr-2" id="display_account_number"> &nbsp</span></span></p>
+                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Account Name:&emsp;<span class="font-weight-semibold mr-2" id="display_account_name"> &nbsp</span></span></p>
+                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Beneficiary Name:&emsp;<span class="font-weight-semibold mr-2" id="display_beneficiary_name"> &nbsp</span></span></p>
+                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Beneficairy Email:&emsp;<span class="font-weight-semibold mr-2" id="display_beneficiary_email"> &nbsp</span></span></p>
+                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Email Beneficiary:&emsp;<span class="font-weight-semibold mr-2" id="display_transfer_email"> &nbsp</span></span></p>
                                 </div>
                                 <div>
-                                    <button class="btn btn-secondary btn-rounded center_modal" type="submit" id="save_beneficiary" style="align-items: center">Back</button>&emsp;
-                                    <button class="btn btn-primary btn-rounded center_modal" type="submit" id="save_beneficiary" style="align-items: center">Submit</button>
+                                    <button class="btn btn-secondary btn-rounded center_modal" type="button" id="save_beneficiary" style="align-items: center">Back</button>&emsp;
+                                    <button class="btn btn-primary btn-rounded center_modal" type="button" id="save_beneficiary" style="align-items: center">Submit</button>
 
                                 </div>
                             </div><!-- /.modal-content -->
@@ -186,22 +242,16 @@
         <script>
              $(document).ready(function() {
 
-                $('#center_modal').click(function(e){
-                e.preventDefault();
+                $('#same_bank_summary').hide();
 
+                $('#save_beneficiary').click(function(e){
+                e.preventDefault();
 
                 var account_number = $('#account_number').val();
                 var account_name = $('#account_name').val();
                 var beneficiary_name = $('#beneficiary_name').val();
                 var beneficiary_email = $('#beneficiary_email').val();
                 var transfer_email = $("#transfer_email input[type='checkbox']:checked").val();
-
-
-                    console.log(account_number);
-                    console.log(account_name);
-                    console.log(beneficiary_name);
-                    console.log(beneficiary_email);
-                    console.log(transfer_email);
 
                 var account_number = $('#account_number').val();
                 $('#display_account_number').text(account_number);
@@ -222,23 +272,31 @@
                    $('#display_transfer_email').text('No');
                 }
 
-                if(account_number.trim() == '' || account_name.trim() == '' || beneficiary_name.trim() == '' || beneficiary_email.trim() == '' ){
-                    $('.center_modal').hide();
-
-                }else{
-                    $('.center_modal').show();
+                if(account_number.trim() != '' && account_name.trim() != '' && beneficiary_name.trim() != '' && beneficiary_email.trim() != '' ){
+                    $('#same_bank').hide();
+                    $("#same_bank_summary" ).toggle( '500' );
 
                 }
 
                 })
+
+                $('#save_beneficiary_back').click(function(e){
+                    e.preventDefault(e);
+
+                    $("#same_bank" ).toggle( '500' );
+                    $('#same_bank_summary').hide();
+
+                })
+
+
             });
 
         </script>
     @endsection
-
+{{--
     @section('scripts')
 
-    @endsection
+    @endsection --}}
 
 
 
