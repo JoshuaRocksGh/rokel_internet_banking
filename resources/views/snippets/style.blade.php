@@ -22,6 +22,4 @@
 <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 
-
-
-
+{{-- <link rel="stylesheet" href="{{ asset('assets/css/c_cards.css') }}"/> --}}
