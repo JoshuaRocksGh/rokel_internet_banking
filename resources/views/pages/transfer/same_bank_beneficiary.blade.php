@@ -29,24 +29,27 @@
                                             <label class="purple-color"> Beneficiary Account Details</label><br>
                                             <label >Account Number</label>
                                             <input type="number" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required>
-                                            <span class="text-danger" id="error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+                                            <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
 
                                         </div>
                                         <div class="form-group">
                                             <label >Account Name</label>
                                             <input type="text" class="form-control" id="account_name" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name" required>
+                                            <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                         </div><br>
                                         <div class="form-group">
                                             <label class="purple-color">Beneficiary Personal Details</label><br>
                                             <label >Beneficiary Name</label>
                                             <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required>
+                                            <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                         </div>
                                         <div class="form-group">
                                             <label >Beneficiary Email</label>
                                             <input type="email" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required>
+                                            <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                         </div><br>
 
@@ -245,8 +248,10 @@
              $(document).ready(function() {
 
                 $('#same_bank_summary').hide();
-                $('#error').hide();
-
+                $('#account_number_error').hide();
+                $('#account_name_error').hide();
+                $('#beneficiary_name_error').hide();
+                $('#beneficiary_email_error').hide();
 
                 $('#save_beneficiary').click(function(e){
                 e.preventDefault();
@@ -276,9 +281,31 @@
                    $('#display_transfer_email').text('No');
                 }
 
-                if(account_number.trim() == '' ){
-                    $('#error').show();
+
+                if(account_number.trim() == '' || account_number.trim() == undefined){
+                    $('#account_number_error').show();
+                }else{
+                $('#account_number_error').hide();
                 }
+
+                if(account_name.trim() == '' || account_name.trim() == undefined){
+                    $('#account_name_error').show();
+                }else{
+                $('#account_name_error').hide();
+                }
+
+                if(beneficiary_name == '' || beneficiary_name == undefined){
+                    $('#beneficiary_name_error').show();
+                }else{
+                $('#beneficiary_name_error').hide();
+                }
+
+                if(beneficiary_email == ''){
+                    $('#beneficiary_email_error').show();
+                }else{
+                    $('#beneficiary_email_error').hide();
+                }
+
 {{--
                 if(account_number.trim() == '' || account_number.trim() = 'undefined'){
                     $('#error').show();
@@ -300,6 +327,9 @@
 
                 })
 
+                $.ajax({
+                    ""
+                })
 
             });
 
