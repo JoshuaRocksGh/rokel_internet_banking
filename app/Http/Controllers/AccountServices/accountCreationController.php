@@ -19,13 +19,4 @@ class accountCreationController extends Controller
         return view('pages.accountCreation.savings_account_creation');
     }
 
-    //method to return activate cheque book screen
-    public function activate_cheque_book (){
-        return view('pages.accountCreation.activate_cheque_book');
-    }
-
-    //method to return add signature screen
-    public function add_signature(){
-        return view('pages.add_signature');
-    }
 }

@@ -81,4 +81,6 @@ class AccountServicesController extends Controller
     public function close_account(){
         return view('pages.accountServices.close_account');
     }
+
+    
 }
