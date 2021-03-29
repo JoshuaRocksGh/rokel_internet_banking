@@ -13,6 +13,8 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
+
+
         @include('snippets.style')
 
 
@@ -62,6 +64,7 @@
                 float: right;
             }
         </style>
+
 
 </head>
 

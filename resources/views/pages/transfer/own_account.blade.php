@@ -29,7 +29,7 @@
                                             <label class="h6">Transfer From</label>
 
 
-                                            <select class="custom-select " id="from_account" required>
+                                            <select class="custom-select" id="from_account" required>
                                                 <option value="">Select Account</option>
                                                 <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
                                                     Saving Account~001023468976001~GHS~2000

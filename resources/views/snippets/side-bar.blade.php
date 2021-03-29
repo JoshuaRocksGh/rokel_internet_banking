@@ -351,39 +351,6 @@
                     </a>
                 </li>
 
-{{--
-                <li>
-                    <a href="#sidebarTickets" data-toggle="collapse">
-                         <i class="mdi mdi-lifebuoy"></i>
-                        <i class="mdi mdi-map-marker-outline"></i>
-                        <span> Branch Locator</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarTickets">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('list-view') }}">List View</a>
-                            </li>
-                            <li>
-                                <a href="tickets-detail.html">Map View</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </li>
-
-                 --}}
-
-{{--
-                <li>
-                    <a href="apps-file-manager.html">
-                        <i class="mdi mdi-folder-star-outline"></i>
-                        <span> File Manager </span>
-                    </a>
-                </li>  --}}
-{{--
-                <li class="menu-title mt-2">Custom</li>  --}}
-
 
                 <li>
                     <a href="#approvals" data-toggle="collapse">
