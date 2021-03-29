@@ -174,7 +174,7 @@
                 <h4 class="header-title mb-3">Sales Analytics</h4>
 
                 <div dir="ltr">
-                    <div id="sales-analytics" class="mt-4" data-colors="#088b66,#4fc6e1"></div>
+                    <div id="sales-analytics" class="mt-4" data-colors="#0561ad,#4fc6e1"></div>
                 </div>
             </div> <!-- end card-box -->
         </div> <!-- end col-->

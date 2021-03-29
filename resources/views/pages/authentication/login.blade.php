@@ -26,6 +26,7 @@
                         </div>
                     </div>
 
+
                     <!-- title-->
                     <h4 class="mt-0">Sign In</h4>
                     <p class="text-muted mb-4">Enter your email address and password to access account.</p>
@@ -34,6 +35,25 @@
                     <form action="POST">
                         @csrf
                         <div class="form-group">
+                            <div class="card-box text-white img-rounded" style="background-image: url('https://mophy.dexignzone.com/laravel/demo/images/card/card1.png'); padding:10px;">
+                                <p class="mb-1">Main Balance</p>
+                                <h2 class="fs-36 text-white mb-sm-4 mb-3">$673,412.66</h2>
+                                <div class="d-flex align-items-center justify-content-between mb-sm-1 mb-1">
+                                    <img src="https://mophy.dexignzone.com/laravel/demo/images/dual-dot.png" alt="" class="dot-img" style="opacity: 1;">
+                                    <h4 class="fs-20 text-white mb-0">**** **** **** 1234</h4>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="mr-5">
+                                        <p class="fs-14 mb-1 op6">VALID THRU</p>
+                                        <span>08/21</span>
+                                    </div>
+                                    <div>
+                                        <p class="fs-14 mb-1 op6">CARD HOLDER</p>
+                                        <span>Franklin Jr.</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <label for="emailaddress">Email address<span class="text-danger">*</span></label>
                             <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email" parsley-trigger="change" required>
                             <span class="text-danger" id="error"><i class="fas fa-times-circle"></i>This field is reqiured</span>

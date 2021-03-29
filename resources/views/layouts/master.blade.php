@@ -18,10 +18,10 @@
 
         <style type="text/css">
             .purple-color{
-                color: ##088b66!important;
+                color: ##0561ad!important;
              }
              .btn-color {
-                 background-color: #088b66;
+                 background-color: #0561ad;
                  color: white;
              }
              .p-text {

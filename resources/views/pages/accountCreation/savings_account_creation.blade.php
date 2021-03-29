@@ -43,30 +43,30 @@
                                                 <br>
 
 
-                                            <h4 class="card-title" style="color: #088b66">
+                                            <h4 class="card-title" style="color: #0561ad">
                                                 Process
                                             </h4>
 
                                         </div>
                                         <div class="mail-list mt-3">
-                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #088b66"></i>PERSONAL DETAILS</a>
-                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #088b66"></i>ID  DETAILS</a>
-                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #088b66"></i>CONTACT DETAILS</a>
-                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #088b66"></i>BIO DETAILS</a>
+                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #0561ad"></i>PERSONAL DETAILS</a>
+                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #0561ad"></i>ID  DETAILS</a>
+                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #0561ad"></i>CONTACT DETAILS</a>
+                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-adjust font-18 align-middle mr-2" style="color: #0561ad"></i>BIO DETAILS</a>
                                         </div>
 
                                         <br>
-                                        <h4 class="card-title" style="color: #088b66">Requirements</h4>
+                                        <h4 class="card-title" style="color: #0561ad">Requirements</h4>
                                         <div class="mail-list mt-3">
-                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-account-check-outline font-18 align-middle mr-2" style="color: #088b66"></i>Selfie</a>
-                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-card-account-details-outline font-18 align-middle mr-2" style="color: #088b66"></i>ID (Driver Licence SSNIT/Passport/Voter card +
+                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-account-check-outline font-18 align-middle mr-2" style="color: #0561ad"></i>Selfie</a>
+                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-card-account-details-outline font-18 align-middle mr-2" style="color: #0561ad"></i>ID (Driver Licence SSNIT/Passport/Voter card +
                                                 Birth Certificate)</a>
-                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-map-marker-outline font-18 align-middle mr-2" style="color: #088b66"></i>Residential Address</a>
+                                            <a href="#" class="list-group-item border-0 font-14"><i class="mdi mdi-map-marker-outline font-18 align-middle mr-2" style="color: #0561ad"></i>Residential Address</a>
                                           </div>
 
                                         <br>
 
-                                        <h5 class="card-title" ><i class="mdi mdi-alert-circle mdi-18px" style="color: #088b66"></i>&nbsp; Must be 18 years and above</h5>
+                                        <h5 class="card-title" ><i class="mdi mdi-alert-circle mdi-18px" style="color: #0561ad"></i>&nbsp; Must be 18 years and above</h5>
 
 
                                     </div>
