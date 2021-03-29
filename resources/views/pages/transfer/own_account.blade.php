@@ -360,6 +360,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <form action="POST" id="confirm_details">
+                                    @csrf
                                     <div class="modal-header">
                                         <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
                                             Details</h4>
@@ -417,8 +418,25 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script>
+
+            function call_api(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'own-account-api',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        {{--  console.log(response.data);  --}}
+                        let data = response.data
+                        $.each(data, function(index) {
+                        $('#from_account').append($('<option>', { value : data[index].account_type+'~'+data[index].account_name+'~'+data[index].account_number+'~'+data[index].currency+'~'+data[index].amount}).text(data[index].account_type +'~'+ data[index].account_number +'~'+data[index].currency+'~'+data[index].amount));
+                            });
+                    },
+
+                })
+            }
             $(document).ready(function() {
 
+                call_api();
                 {{-- hide select accounts info --}}
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
@@ -610,32 +628,26 @@
                         $("#transaction_summary").show()
                     }
 
-                    /**
-                    $.ajax({
-                        type: "POST"
-                        url: "submit-own-account-transfer"
-                        data: {
-                            "send_from": send_from,
-                            "send_to": send_to,
-                            "cashier_id": cashier_id,
-                            "text_area": text_area,
-                            "amount": amount,
-                            "cashier_id": cashier_id
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                        success: function() {
-                            Swal.fire(
-                                'Post Successful',
-                                ' ',
-                                'success'
-                            )
-                        }
+                    $('#confirm_button').click(function(e){
+                        var from_account = $('#from_account').val();
+                        console.log(from_account);
+
+                        $.ajax({
+                            'type' : 'POST',
+                            'url' : 'own-account',
+                            'data' : {
+
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success:function(){
+
+                            }
+
+                        })
                     })
 
-
-                     */
                 });
 
 

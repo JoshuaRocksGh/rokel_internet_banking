@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
+use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
@@ -87,6 +88,8 @@ Route::get('/add-beneficiary/international-bank-beneficiary', [transferControlle
 
 // OWN ACCOUNT
 Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('own-account');
+Route::get('/own-account-api', [TransferOwnAccountController::class, 'own_account_'])->name('own-account-api');
+
 Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submit_own_account_transfer'])->name('submit-own-account-transfer');
 
 // SAME ACCOUNT
