@@ -39,8 +39,8 @@
 
 
                                             <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
-                                                <tbody>
+                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
+                                                <tbody class="">
                                                     <tr>
 
                                                         <td>
@@ -73,7 +73,7 @@
 
 
                                             <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info">
+                                                class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card" >
                                                 <tbody>
                                                     <tr>
 
@@ -419,7 +419,7 @@
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script>
 
-            function call_api(){
+            function from_account(){
                 $.ajax({
                     'type': 'GET',
                     'url' : 'own-account-api',
@@ -434,9 +434,28 @@
 
                 })
             }
+
+            function to_account(){
+                $.ajax({
+                    'type' : 'GET',
+                    'url' : 'own-account-api',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+                            $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency));
+                            });
+                    }
+                })
+            }
+
+
             $(document).ready(function() {
 
-                call_api();
+                from_account();
+                to_account();
+
                 {{-- hide select accounts info --}}
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
