@@ -75,13 +75,13 @@
 
                                     </form>
 
-                                    <form action="#" id="same_bank_summary">
+                                    <form action="POST" id="same_bank_summary">
                                         {{-- @csrf --}}
                                         <div class="form-group">
                                             <label class="purple-color"> Beneficiary Account Summary</label><br>
                                             <label >Account Number</label>
                                             {{-- <input type="text" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required> --}}
-                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span></span></p>
+                                            <span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span>
 
 
                                         </div>
@@ -95,7 +95,7 @@
                                             <label class="purple-color">Beneficiary Personal Details</label><br>
                                             <label >Beneficiary Name</label>
                                             {{-- <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required> --}}
-                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_beneficiary_name"> &nbsp</span></span></p>
+                                            <p class="mb-1" id="display_beneficiary_name_"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_beneficiary_name"> &nbsp</span></span></p>
 
                                         </div>
                                         <div class="form-group">
@@ -124,7 +124,7 @@
 
                                         </p> --}}
 
-                                        <button type="submit" class="btn btn-secondary"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
+                                        <button type="submit" class="btn btn-secondary btn-rounded"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
                                         <button class="btn btn-primary btn-rounded" type="submit" id="save_beneficiary_summary" >Save Beneficiary</button>
 
 
@@ -205,7 +205,7 @@
                     <!-- /.modal -->
 
 
-                    <!-- Center modal content -->
+                    {{--  <!-- Center modal content -->
                     <div class="modal fade " id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -230,7 +230,7 @@
 
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-
+  --}}
 
 
                 </div> <!-- end col -->
@@ -242,8 +242,8 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
              $(document).ready(function() {
 
@@ -319,6 +319,7 @@
 
                 })
 
+
                 $('#save_beneficiary_back').click(function(e){
                     e.preventDefault(e);
 
@@ -327,18 +328,94 @@
 
                 })
 
+
+                $('#save_beneficiary_summary').click(function(e){
+                    e.preventDefault();
+                     var account_number = $('#account_number').val();
+                     var account_name = $('#account_name').val();
+                     var beneficiary_name = $('#beneficiary_name').val();
+                     var beneficiary_email = $('#beneficiary_email').val();
+                     var send_email = $("#transfer_email input[type='checkbox']:checked").val();
+                    if(send_email){
+                        var transfer_email = ('Yes');
+                    }else{
+                        var transfer_email = ('No');
+                    }
+/*
+                    console.log(account_number);
+                    console.log(account_name);
+                    console.log(beneficiary_name);
+                    console.log(beneficiary_email);
+                    console.log(transfer_email); */
+
+
                 $.ajax({
-                    ""
+                    "type" : "POST",
+                    "url" : "same-bank-beneficiary",
+                    "datatype" : "application/json",
+                    "data" : {
+                        "account_number" : account_number ,
+                        "account_name" : account_name ,
+                        "beneficiary_name" : beneficiary_name,
+                        "beneficairy_email" : beneficiary_email,
+                        "send_mail" : transfer_email,
+
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    success:
+                    function(response){
+
+                        console.log(response.responseCode)
+                        if(response.responseCode == "000"){
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: false,
+                                didOpen: (toast) => {
+                                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                              })
+
+                              Toast.fire({
+                                icon: 'success',
+                                title: 'Beneficiary Successfully Added'
+                              })
+                        }else{
+
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: false,
+                                didOpen: (toast) => {
+                                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                              })
+
+                              Toast.fire({
+                                icon: 'error',
+                                title: 'Failed To Add Beneficiary'
+                              })
+                    }
+                }
+
                 })
+
+                });
 
             });
 
         </script>
     @endsection
-{{--
-    @section('scripts')
 
-    @endsection --}}
 
 
 
