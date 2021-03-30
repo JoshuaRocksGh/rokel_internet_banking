@@ -252,6 +252,7 @@
                 $('#save_beneficiary').click(function(e){
                 e.preventDefault();
 
+
                 var account_number = $('#account_number').val();
                 var account_name = $('#account_name').val();
                 var beneficiary_name = $('#beneficiary_name').val();
@@ -278,9 +279,6 @@
                 }
 
 
-                function show_error(){
-
-                }
                 if(account_number.trim() == '' || account_number.trim() == undefined){
                     $('#account_number_error').show();
 
