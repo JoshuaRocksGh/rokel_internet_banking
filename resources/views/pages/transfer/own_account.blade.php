@@ -441,15 +441,14 @@
                     'url' : 'own-account-api',
                     "datatype" : "application/json",
                     success:function(response){
-                        console.log(response.data);
+
                         let data = response.data
                         $.each(data, function(index) {
-                            $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency));
+                            $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency+'~'+data[index].amount}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency));
                             });
                     }
                 })
             }
-
 
             $(document).ready(function() {
 
@@ -562,17 +561,20 @@
                 $("#amount").keyup(function() {
                     var from_account = $('#from_account').val()
                     var to_account = $('#to_account').val()
+
+
                     if (from_account.trim() == '' || to_account.trim() == '') {
                         alert('Please select source and destination accounts')
                         $(this).val('')
                         return false;
                     } else {
                         var transfer_amount = $(this).val()
-                        $(".display_transfer_amount").text(formatToCurrency(Number(to_account_info[4]
-                        .trim())))
+                        $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)));
                     }
 
                 })
+
+
 
 
                 function formatToCurrency(amount) {
@@ -583,14 +585,14 @@
                 // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
                 $("input:checkbox").on("change", function() {
                     if ($(this).is(":checked")) {
-                        console.log("Checkbox Checked!");
+                        {{--  console.log("Checkbox Checked!");  --}}
                         $("#schedule_payment_date").show()
                         $("#frequency").show()
                         $(".display_schedule_payment").text('YES')
                         $('#schedule_payment_contraint_input').val('TRUE')
 
                     } else {
-                        console.log("Checkbox UnChecked!");
+                        {{--  console.log("Checkbox UnChecked!");  --}}
                         $("#schedule_payment_date").val('')
                         $("#schedule_payment_date").hide()
                         $("#frequency").hide()
@@ -619,6 +621,19 @@
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
+{{--
+                    if(from_account == to_account){
+                        alert('You can not transfer to same account');
+                    }  --}}
+
+
+                    var from_account_ = $('#from_account').val().split('~');
+                    var to_account_ = $('#to_account').val().split('~');
+
+                    if(from_account_[2] == to_account_[1]){
+                        alert('You can not send to same account');
+                        return false;
+                    }
 
                     if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
                         $('.display_schedule_payment_date').text('N/A') // shedule date NULL
@@ -647,11 +662,56 @@
                         $("#transaction_summary").show()
                     }
 
-                    $('#confirm_button').click(function(e){
-                        var from_account = $('#from_account').val();
-                        console.log(from_account);
+                    function user_pin(){
+                        let pin = 1234;
 
-                        $.ajax({
+                        if ($('#user_pin').val() == pin){
+                            alert('correct pin');
+                        }else{
+                            alert('enter correct pin');
+                            return false;
+                        }
+                    }
+
+
+                    // SUBMIT TO API
+
+                    $('#confirm_button').click(function(e){
+                        e.preventDefault();
+
+                        user_pin();
+
+                        var from_account = $('#from_account').val().split('~');
+                        var to_account = $('#to_account').val().split('~');
+                        var category = $('#category').val().split('~');
+                        var select_frequency = $('#select_frequency').val().split('~')
+
+
+
+
+                        //GET VALUES
+                        var from_account_ = from_account[2];
+                        var to_account_ = to_account[1];
+                        var transfer_amount = $('#amount').val();
+                        var category_ = category[1];
+                        var select_frequency_ = select_frequency[1];
+                        var purpose = $('#purpose').val();
+
+                        var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                        var schedule_payment_date = $('#schedule_payment_date').val();
+
+                        console.log(from_account_);
+                        console.log(to_account_);
+                        console.log(transfer_amount);
+                        console.log(category_);
+                        console.log(select_frequency_);
+                        console.log(purpose);
+                        console.log(schedule_payment_contraint_input);
+                        console.log(schedule_payment_date);
+
+
+
+                        {{--  $.ajax({
                             'type' : 'POST',
                             'url' : 'own-account',
                             'data' : {
@@ -664,7 +724,7 @@
 
                             }
 
-                        })
+                        })  --}}
                     })
 
                 });
