@@ -23,32 +23,32 @@
 
                                 <div class="col-md-7">
 
-                                    <form action="#" id="same_bank">
+                                    <form class="parsley-examples" action="#" id="same_bank">
                                         {{-- @csrf --}}
                                         <div class="form-group">
                                             <label class="purple-color"> Beneficiary Account Details</label><br>
                                             <label >Account Number</label>
-                                            <input type="number" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required>
+                                            <input class="form-control" type="number" class="form-control" id="account_number" parsley-trigger="change" placeholder="Account Number" required>
                                             <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
 
                                         </div>
                                         <div class="form-group">
                                             <label >Account Name</label>
-                                            <input type="text" class="form-control" id="account_name" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name" required>
+                                            <input type="text" class="form-control" id="account_name" parsley-trigger="change"  placeholder="Account Name" required>
                                             <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                         </div><br>
                                         <div class="form-group">
                                             <label class="purple-color">Beneficiary Personal Details</label><br>
                                             <label >Beneficiary Name</label>
-                                            <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required>
+                                            <input type="text" class="form-control" id="beneficiary_name" parsley-trigger="change" placeholder="Beneficiary Name" required>
                                             <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                         </div>
                                         <div class="form-group">
                                             <label >Beneficiary Email</label>
-                                            <input type="email" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required>
+                                            <input type="email" class="form-control" id="beneficiary_email" parsley-trigger="change" placeholder="Beneficiary Email" required>
                                             <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                         </div><br>
@@ -70,38 +70,36 @@
 
                                         </p>
 
-                                        <button class="btn btn-primary btn-rounded" type="submit" id="save_beneficiary" >Next</button>
+                                        <button class="btn btn-primary waves-effect waves-light btn-rounded" type="submit" id="save_beneficiary" >Next</button>
                                         {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button> --}}
 
                                     </form>
 
+
                                     <form action="POST" id="same_bank_summary">
-                                        {{-- @csrf --}}
+                                        <div class="card-box">
+                                        @csrf
+
                                         <div class="form-group">
-                                            <label class="purple-color"> Beneficiary Account Summary</label><br>
-                                            <label >Account Number</label>
+                                            {{--  <label class="purple-color"> Beneficiary Account Summary</label><br>  --}}
+                                            <label >Account Number:&emsp;</label><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span><br>
                                             {{-- <input type="text" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required> --}}
-                                            <span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span>
-
-
                                         </div>
                                         <div class="form-group">
-                                            <label >Account Name</label>
+                                            <label >Account Name:&emsp;</label><span class="font-weight-light mr-2" id="display_account_name"> &nbsp</span><br>
                                             {{-- <input type="text" class="form-control" id="account_name" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name" required> --}}
-                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_account_name"> &nbsp</span></span></p>
-
-                                        </div><br>
+                                        </div>
                                         <div class="form-group">
-                                            <label class="purple-color">Beneficiary Personal Details</label><br>
-                                            <label >Beneficiary Name</label>
+                                            {{--  <label class="purple-color">Beneficiary Personal Details</label><br>  --}} <br>
+                                            <label >Beneficiary Name:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_name"> &nbsp</span><br>
+
                                             {{-- <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required> --}}
-                                            <p class="mb-1" id="display_beneficiary_name_"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_beneficiary_name"> &nbsp</span></span></p>
 
                                         </div>
                                         <div class="form-group">
-                                            <label >Beneficiary Email</label>
+                                            <label >Beneficiary Email:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_email"> &nbsp</span><br>
+
                                             {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
-                                            <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_beneficiary_email"> &nbsp</span></span></p>
 
                                         </div><br>
 
@@ -110,10 +108,8 @@
 
                                             <div class="">
                                                 {{-- <input id="checkbox2" type="checkbox"> --}}
-                                                <label>
-                                                    Email beneficiary when a transfer is made
-                                                </label>
-                                                <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px"><span class="font-weight-light mr-2" id="display_transfer_email"> &nbsp</span></span></p>
+                                                <label>Email beneficiary when a transfer is made:&emsp;</label><span class="font-weight-light mr-2" id="display_transfer_email"> &nbsp</span>
+
 
                                             </div>
 
@@ -124,12 +120,12 @@
 
                                         </p> --}}
 
-                                        <button type="submit" class="btn btn-secondary btn-rounded"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
-                                        <button class="btn btn-primary btn-rounded" type="submit" id="save_beneficiary_summary" >Save Beneficiary</button>
+                                        <button type="submit" class="btn btn-secondary btn-rounded waves-effect waves-light"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
+                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="save_beneficiary_summary" >Save Beneficiary</button>
 
+                                    </div>
 
                                     </form>
-
 
                                 </div> <!-- end col -->
 
@@ -282,26 +278,33 @@
                 }
 
 
+                function show_error(){
+
+                }
                 if(account_number.trim() == '' || account_number.trim() == undefined){
                     $('#account_number_error').show();
+
                 }else{
                 $('#account_number_error').hide();
                 }
 
                 if(account_name.trim() == '' || account_name.trim() == undefined){
                     $('#account_name_error').show();
+
                 }else{
                 $('#account_name_error').hide();
                 }
 
-                if(beneficiary_name == '' || beneficiary_name == undefined){
+                if(beneficiary_name.trim() == '' || beneficiary_name.trim() == undefined){
                     $('#beneficiary_name_error').show();
+
                 }else{
                 $('#beneficiary_name_error').hide();
                 }
 
-                if(beneficiary_email == ''){
+                if(beneficiary_email.trim() == ''){
                     $('#beneficiary_email_error').show();
+
                 }else{
                     $('#beneficiary_email_error').hide();
                 }

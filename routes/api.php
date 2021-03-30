@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Authentication\LoginController;
 use App\Http\Controllers\API\Authentication\TransferController;
 use App\Http\Controllers\API\Transfer\OwnAccountController;
 use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSameBankController;
+use App\Http\Controllers\BENEFICIARY\Transfer\LocalBankController as TransferLocalBankController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +27,12 @@ Route::post('/login',[LoginController::class,'login_'])->name('login');
 
 // Route::post('/add-beneficiary/same-bank-beneficiary',[TransferController::class,'same_bank_beneficiary_'])->name('same-bank-beneficiary');
 Route::get('/own-account-api', [OwnAccountController::class, 'own_account_'])->name('own-account-api');
+Route::post('/own-account-api', [OwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
 Route::post('/add-beneficiary/same-bank-beneficiary', [TransferSameBankController::class, 'same_bank_benefiaciary_'])->name('same-bank-beneficiary');
+Route::post('/add-beneficiary/local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('local-bank-beneficiary-api');
+
+
 
 // Savings Account Creation
 

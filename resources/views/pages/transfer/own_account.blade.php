@@ -415,8 +415,9 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
         <script>
 
             function from_account(){
@@ -572,9 +573,7 @@
                         $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)));
                     }
 
-                })
-
-
+                });
 
 
                 function formatToCurrency(amount) {
@@ -621,15 +620,12 @@
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
-{{--
-                    if(from_account == to_account){
-                        alert('You can not transfer to same account');
-                    }  --}}
 
 
                     var from_account_ = $('#from_account').val().split('~');
                     var to_account_ = $('#to_account').val().split('~');
-
+                    var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
+                        console.log(schdule_pay);
                     if(from_account_[2] == to_account_[1]){
                         alert('You can not send to same account');
                         return false;
@@ -662,75 +658,114 @@
                         $("#transaction_summary").show()
                     }
 
-                    function user_pin(){
-                        let pin = 1234;
-
-                        if ($('#user_pin').val() == pin){
-                            alert('correct pin');
-                        }else{
-                            alert('enter correct pin');
-                            return false;
-                        }
-                    }
-
-
-                    // SUBMIT TO API
-
-                    $('#confirm_button').click(function(e){
-                        e.preventDefault();
-
-                        user_pin();
-
-                        var from_account = $('#from_account').val().split('~');
-                        var to_account = $('#to_account').val().split('~');
-                        var category = $('#category').val().split('~');
-                        var select_frequency = $('#select_frequency').val().split('~')
-
-
-
-
-                        //GET VALUES
-                        var from_account_ = from_account[2];
-                        var to_account_ = to_account[1];
-                        var transfer_amount = $('#amount').val();
-                        var category_ = category[1];
-                        var select_frequency_ = select_frequency[1];
-                        var purpose = $('#purpose').val();
-
-                        var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                        var schedule_payment_date = $('#schedule_payment_date').val();
-
-                        console.log(from_account_);
-                        console.log(to_account_);
-                        console.log(transfer_amount);
-                        console.log(category_);
-                        console.log(select_frequency_);
-                        console.log(purpose);
-                        console.log(schedule_payment_contraint_input);
-                        console.log(schedule_payment_date);
-
-
-
-                        {{--  $.ajax({
-                            'type' : 'POST',
-                            'url' : 'own-account',
-                            'data' : {
-
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success:function(){
-
-                            }
-
-                        })  --}}
-                    })
-
                 });
 
 
+                function user_pin(){
+                    let pin = 1234;
+
+                    if ($('#user_pin').val() == pin){
+                        alert('correct pin');
+                    }else{
+                        alert('enter correct pin');
+                        return false;
+                    }
+                }
+
+
+                // SUBMIT TO API
+
+                $('#confirm_button').click(function(e){
+                    e.preventDefault();
+
+
+                    user_pin();
+
+                    var from_account = $('#from_account').val().split('~');
+                    var to_account = $('#to_account').val().split('~');
+                    var category = $('#category').val().split('~');
+                    var select_frequency = $('#select_frequency').val().split('~')
+
+
+
+
+                    //GET VALUES
+                    var from_account_ = from_account[2];
+                    var to_account_ = to_account[1];
+                    var transfer_amount = $('#amount').val();
+                    var category_ = category[1];
+                    var select_frequency_ = select_frequency[1];
+                    var purpose = $('#purpose').val();
+
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                    var schedule_payment_date = $('#schedule_payment_date').val();
+
+                    $.ajax({
+
+                        'type' : 'POST',
+                        'url' : 'own-account-api',
+                        "datatype" : "application/json",
+                        'data' : {
+                            'from_account' : from_account_ ,
+                            'to_account' : to_account_ ,
+                            'transfer_amount' : transfer_amount ,
+                            'category' : category_ ,
+                            'select_frequency' : select_frequency_ ,
+                            'purpose' : purpose ,
+                            'schedule_payment_type' : schedule_payment_contraint_input ,
+                            'schedule_payment_date' : schedule_payment_date,
+
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success:
+                        function(response){
+
+                            console.log(response.responseCode)
+                            if(response.responseCode == "000"){
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: false,
+                                    didOpen: (toast) => {
+                                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                    }
+                                  })
+
+                                  Toast.fire({
+                                    icon: 'success',
+                                    title: 'Transfer Successful'
+                                  })
+                            }else{
+
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: false,
+                                    didOpen: (toast) => {
+                                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                    }
+                                  })
+
+                                  Toast.fire({
+                                    icon: 'error',
+                                    title: 'Transfer Failed'
+                                  })
+                        }
+                    }
+
+                    })
+
+
+                })
             });
 
-        </script>
-    @endsection
+    </script>
+@endsection
