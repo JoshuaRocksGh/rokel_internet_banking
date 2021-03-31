@@ -223,11 +223,7 @@
                                                 </div>
 
                                                 <div class="tab-pane fade" id="third">
-<<<<<<< HEAD
-                                                    <form id="international_bank_beneficiary_details" method="POST" action="#" class="form-horizontal">
-=======
                                                     <form id="international_bank_beneficiary_details" method="post" action="#" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
->>>>>>> 8fbb7a0f45701875ce405d302d3e5654635b4cec
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Personal Details</label><br><br>
