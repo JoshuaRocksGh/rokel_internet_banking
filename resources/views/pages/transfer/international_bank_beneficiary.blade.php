@@ -223,7 +223,7 @@
                                                 </div>
 
                                                 <div class="tab-pane fade" id="third">
-                                                    <form id="international_bank_beneficiary_details" method="post" action="#" class="form-horizontal">
+                                                    <form id="international_bank_beneficiary_details" method="POST" action="#" class="form-horizontal">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Personal Details</label><br><br>
@@ -267,7 +267,7 @@
                                                                     {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
                                                                     <div class="col-md-12">
                                                                         <label class="col-md-3 col-form-label" for="confirm3">Middlename</label>
-                                                                        <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Nickname" required>
+                                                                        <input type="text" id="middlename" name="middlename" class="form-control" placeholder="Middlename" required>
                                                                     </div>
                                                                 </div>
 
@@ -276,7 +276,7 @@
                                                                     {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
                                                                     <div class="col-md-12">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
-
+                                                                        <label class="col-md-3 col-form-label" for="confirm3">Nationality</label>
                                                                         <select class="custom-select" id="nationality" name="nationality" required>
                                                                             <option value="">Nationality</option>
                                                                             <option value="1">One</option>
@@ -292,6 +292,7 @@
                                                                     {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
                                                                     <div class="col-md-12">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
+                                                                        <label class="col-md-3 col-form-label" for="confirm3">Country of Residence</label>
 
                                                                         <select class="custom-select" id="residence" name="residence" required>
                                                                             <option value="">Country of residence</option>
@@ -308,6 +309,7 @@
                                                                     {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
                                                                     <div class="col-md-12">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
+                                                                        <label class="col-md-3 col-form-label" for="confirm3">City</label>
 
                                                                         <select class="custom-select" id="city" name="city" required>
                                                                             <option value="">City</option>
@@ -469,6 +471,29 @@
                 $('#international_bank_account_details').toggle('500');
 
 
+            })
+
+            // SUBMIT TO API
+            $('#international_bank_beneficiary_details').submit(function(e){
+                e.preventDefault();
+
+
+                var bank_contry = $('#bank_country').val();
+                var bank_city = $('#bank_city').val();
+                var bank_branch = $('#bank_branch').val();
+                var bank_name = $('#bank_name').val();
+                var bank_address = $('#bank_address').val();
+                var swift_code = $('#swift_code').val();
+
+                var acc_number = $('#acc_number').val();
+                var currency = $('#currency').val();
+                var firstname = $('#firstname').val();
+                var lastname = $('#lastname').val();
+                var middlename = $('#middlename').val();
+
+                var beneficiary_name = $('#beneficiary_name').val();
+                var beneficiary_email = $('#beneficiary_email').val();
+                var middlename = $('#middlename').val();
             })
 
         })
