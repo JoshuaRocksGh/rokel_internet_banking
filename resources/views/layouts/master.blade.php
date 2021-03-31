@@ -43,7 +43,7 @@
 
                 background-color: #2793ec;
                 border-color: #0561ad;
-    
+
             }
 
              .p-text {
