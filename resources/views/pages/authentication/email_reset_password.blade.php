@@ -31,7 +31,7 @@
                     <p class="text-muted mb-4">Enter your email for the reset password link</p>
 
                     <!-- form -->
-                    <form action="#">
+                    <form action="#" autocomplete="off" aria-autocomplete="off">
                         <div class="form-group">
                             <label for="pass_email">Email</label><div class="input-group input-group-merge">
                                 <input type="email" id="pass_email" class="form-control" placeholder="name@email.com">

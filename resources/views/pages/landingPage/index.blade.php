@@ -78,9 +78,9 @@
                             <div class="col-lg-6">
                                 <div class="home-title mo-mb-20">
                                     <h1 class="mb-4 text-white">Ubold is a fully featured premium admin template</h1>
-                                    <p class="text-white-50 home-desc mb-5">Ubold is a fully featured premium admin template built on top of awesome Bootstrap 4.4.1, modern web technology HTML5, CSS3 and jQuery. It has many ready to use hand crafted components. </p>
+                                    <p class="text-white-50 home-desc mb-5">Ubold is a fully featured premium admin template built on top of awesome Bootstrap 4.4.1, modern web technology HTML5, CSS3 and jQuery. It has many ready to se hand crafted components. </p>
                                     <div class="subscribe">
-                                        <form>
+                                        <form autocomplete="off" aria-autocomplete="off">
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <div class="mb-2">
@@ -730,7 +730,7 @@
 
                         <div class="custom-form p-5 bg-white">
                             <div id="message"></div>
-                            <form method="post" action="https://coderthemes.com/ubold/landing/php/contact.php" name="contact-form" id="contact-form">
+                            <form method="post" action="" name="contact-form" id="contact-form"  autocomplete="off" aria-autocomplete="off">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">

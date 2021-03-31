@@ -23,7 +23,7 @@
 
                                 <div class="col-md-7">
 
-                                    <form  action="#" id="local_bank_beneficiary_details">
+                                    <form  action="#" id="local_bank_beneficiary_details" autocomplete="off" aria-autocomplete="off">
                                         <div class="form-group">
                                             <label class="purple-color"> Bank Details</label>
                                          </div>
@@ -95,7 +95,7 @@
                                     </form>
 
 
-                                    <form action="#" method="POST"  id="local_bank_beneficiary_summary">
+                                    <form action="#" method="POST"  id="local_bank_beneficiary_summary" autocomplete="off" aria-autocomplete="off">
                                         <div class="card-box">
                                         @csrf
                                         <div class="form-group">
@@ -199,7 +199,7 @@
                         aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="POST" id="confirm_details">
+                                <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
                                     <div class="modal-header">
                                         <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
                                             Details</h4>

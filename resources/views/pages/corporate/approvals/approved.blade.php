@@ -461,7 +461,7 @@
                             aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
-                                    <form action="POST" id="confirm_details">
+                                    <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
                                         <div class="modal-header">
                                             <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
                                                 Details</h4>

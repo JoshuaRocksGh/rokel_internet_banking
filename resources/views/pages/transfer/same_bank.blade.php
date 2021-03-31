@@ -17,7 +17,7 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <form action="#" id="payment_details_form">
+                        <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
                             <p class="sub-header font-18 purple-color">
                                 Payment Details
                             </p>
@@ -129,7 +129,7 @@
                             <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                    <form action="POST" id="confirm_details">
+                                    <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
                                         <div class="modal-header">
                                             <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm Details</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

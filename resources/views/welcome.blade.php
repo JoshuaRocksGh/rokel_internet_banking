@@ -12,7 +12,7 @@
         <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
-                    <form class="form-inline">
+                    <form class="form-inline"  autocomplete="off" aria-autocomplete="off">
                         <div class="form-group">
                             <div class="input-group input-group-sm">
                                 <input type="text" class="form-control border" id="dash-daterange">

@@ -19,7 +19,7 @@
 
                     <div class="row">
                         <div class="col-md-7">
-                            <form action="#">
+                            <form action="#"  autocomplete="off" aria-autocomplete="off">
 
                             <div class="col-xl-12">
                                 <div class="card">
@@ -49,7 +49,7 @@
                                             <div class="tab-content mb-0 b-0 pt-0">
 
                                                 <div class="tab-pane active" id="first">
-                                                    <form id="international_bank_details" action="#" class="form-horizontal">
+                                                    <form id="international_bank_details" action="#" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Bank Details</label><br><br>
@@ -127,7 +127,7 @@
                                                 </div>
 
                                                 <div class="tab-pane fade" id="second">
-                                                    <form id="international_bank_account_details" class="form-horizontal">
+                                                    <form id="international_bank_account_details" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Account Details</label><br><br>
@@ -223,7 +223,11 @@
                                                 </div>
 
                                                 <div class="tab-pane fade" id="third">
+<<<<<<< HEAD
                                                     <form id="international_bank_beneficiary_details" method="POST" action="#" class="form-horizontal">
+=======
+                                                    <form id="international_bank_beneficiary_details" method="post" action="#" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
+>>>>>>> 8fbb7a0f45701875ce405d302d3e5654635b4cec
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Personal Details</label><br><br>

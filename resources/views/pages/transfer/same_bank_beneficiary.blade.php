@@ -23,7 +23,7 @@
 
                                 <div class="col-md-7">
 
-                                    <form action="#" id="same_bank_beneficiary_form">
+                                    <form action="#" id="same_bank_beneficiary_form"  autocomplete="off" aria-autocomplete="off">
                                         {{-- @csrf --}}
                                         <div class="form-group">
                                             <label class="purple-color"> Beneficiary Account Details</label><br>
@@ -76,7 +76,7 @@
                                     </form>
 
 
-                                    <form action="#" method="POST" id="same_bank_beneficiary_form_summary">
+                                    <form action="#" method="POST" id="same_bank_beneficiary_form_summary"  autocomplete="off" aria-autocomplete="off">
                                         <div class="card-box">
                                         @csrf
 
