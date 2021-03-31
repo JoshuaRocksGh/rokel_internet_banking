@@ -415,8 +415,9 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
         <script>
 
             function from_account(){
@@ -441,15 +442,14 @@
                     'url' : 'own-account-api',
                     "datatype" : "application/json",
                     success:function(response){
-                        console.log(response.data);
+
                         let data = response.data
                         $.each(data, function(index) {
-                            $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency));
+                            $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency+'~'+data[index].amount}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency));
                             });
                     }
                 })
             }
-
 
             $(document).ready(function() {
 
@@ -562,17 +562,18 @@
                 $("#amount").keyup(function() {
                     var from_account = $('#from_account').val()
                     var to_account = $('#to_account').val()
+
+
                     if (from_account.trim() == '' || to_account.trim() == '') {
                         alert('Please select source and destination accounts')
                         $(this).val('')
                         return false;
                     } else {
                         var transfer_amount = $(this).val()
-                        $(".display_transfer_amount").text(formatToCurrency(Number(to_account_info[4]
-                        .trim())))
+                        $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)));
                     }
 
-                })
+                });
 
 
                 function formatToCurrency(amount) {
@@ -583,14 +584,14 @@
                 // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
                 $("input:checkbox").on("change", function() {
                     if ($(this).is(":checked")) {
-                        console.log("Checkbox Checked!");
+                        {{--  console.log("Checkbox Checked!");  --}}
                         $("#schedule_payment_date").show()
                         $("#frequency").show()
                         $(".display_schedule_payment").text('YES')
                         $('#schedule_payment_contraint_input').val('TRUE')
 
                     } else {
-                        console.log("Checkbox UnChecked!");
+                        {{--  console.log("Checkbox UnChecked!");  --}}
                         $("#schedule_payment_date").val('')
                         $("#schedule_payment_date").hide()
                         $("#frequency").hide()
@@ -620,6 +621,16 @@
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
 
+
+                    var from_account_ = $('#from_account').val().split('~');
+                    var to_account_ = $('#to_account').val().split('~');
+                    var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
+                        console.log(schdule_pay);
+                    if(from_account_[2] == to_account_[1]){
+                        alert('You can not send to same account');
+                        return false;
+                    }
+
                     if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
                         $('.display_schedule_payment_date').text('N/A') // shedule date NULL
                         alert('Select schedule date for subsequent transfers')
@@ -647,30 +658,114 @@
                         $("#transaction_summary").show()
                     }
 
-                    $('#confirm_button').click(function(e){
-                        var from_account = $('#from_account').val();
-                        console.log(from_account);
-
-                        $.ajax({
-                            'type' : 'POST',
-                            'url' : 'own-account',
-                            'data' : {
-
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success:function(){
-
-                            }
-
-                        })
-                    })
-
                 });
 
 
+                function user_pin(){
+                    let pin = 1234;
+
+                    if ($('#user_pin').val() == pin){
+                        alert('correct pin');
+                    }else{
+                        alert('enter correct pin');
+                        return false;
+                    }
+                }
+
+
+                // SUBMIT TO API
+
+                $('#confirm_button').click(function(e){
+                    e.preventDefault();
+
+
+                    user_pin();
+
+                    var from_account = $('#from_account').val().split('~');
+                    var to_account = $('#to_account').val().split('~');
+                    var category = $('#category').val().split('~');
+                    var select_frequency = $('#select_frequency').val().split('~')
+
+
+
+
+                    //GET VALUES
+                    var from_account_ = from_account[2];
+                    var to_account_ = to_account[1];
+                    var transfer_amount = $('#amount').val();
+                    var category_ = category[1];
+                    var select_frequency_ = select_frequency[1];
+                    var purpose = $('#purpose').val();
+
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                    var schedule_payment_date = $('#schedule_payment_date').val();
+
+                    $.ajax({
+
+                        'type' : 'POST',
+                        'url' : 'own-account-api',
+                        "datatype" : "application/json",
+                        'data' : {
+                            'from_account' : from_account_ ,
+                            'to_account' : to_account_ ,
+                            'transfer_amount' : transfer_amount ,
+                            'category' : category_ ,
+                            'select_frequency' : select_frequency_ ,
+                            'purpose' : purpose ,
+                            'schedule_payment_type' : schedule_payment_contraint_input ,
+                            'schedule_payment_date' : schedule_payment_date,
+
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success:
+                        function(response){
+
+                            console.log(response.responseCode)
+                            if(response.responseCode == "000"){
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: false,
+                                    didOpen: (toast) => {
+                                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                    }
+                                  })
+
+                                  Toast.fire({
+                                    icon: 'success',
+                                    title: 'Transfer Successful'
+                                  })
+                            }else{
+
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: false,
+                                    didOpen: (toast) => {
+                                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                    }
+                                  })
+
+                                  Toast.fire({
+                                    icon: 'error',
+                                    title: 'Transfer Failed'
+                                  })
+                        }
+                    }
+
+                    })
+
+
+                })
             });
 
-        </script>
-    @endsection
+    </script>
+@endsection

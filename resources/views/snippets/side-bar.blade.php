@@ -143,9 +143,6 @@
                                 <a href="{{ url('korpone-loane-payment') }}">Korpor / Salone Link</a>
                             </li>
                             <li>
-                                <a href="{{ url('qr-payment') }}">QR</a>
-                            </li>
-                            <li>
                                 <a href="{{ url('pay-again') }}">Pay Again</a>
                             </li>
                             <li>
