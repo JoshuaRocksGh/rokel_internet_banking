@@ -362,7 +362,15 @@
                                             <!-- Cash on Delivery box-->
 
                                             <!-- end Cash on Delivery box-->
+                                            <ul class="list-inline wizard mb-0">
+                                                <li class=" list-inline-item"><button type="button"  class="btn btn-secondary btn-rounded" id="bio-previous-btn" data-toggle="pill" href="#custom-v-pills-contact-and-id-details" role="tab" aria-controls="custom-v-pills-contact-and-id-details">
+                                                    <i class="fe-arrow-left"></i> Previous  </button></li>
 
+                                                <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded float-right" type="submit" id="final_submit">
+                                                    Next  <i class="fe-arrow-right"></i>
+                                                </button></li>
+                                            </ul>
+{{--
                                             <div class="row mt-4">
                                                 <div class="col-sm-7">
 
@@ -378,7 +386,7 @@
                                                             </button>
 
                                                 </div> <!-- end col -->
-                                            </div> <!-- end row-->
+                                            </div> <!-- end row-->  --}}
 
                                         </form>
                                     </div>
@@ -418,21 +426,24 @@
 
                                             </div>
 
+                                            <ul class="list-inline wizard mb-0">
+                                                <li class=" list-inline-item"><button type="button"  class="btn btn-secondary btn-rounded" id="bio-previous-btn" data-toggle="pill" href="#custom-v-pills-bio-details" role="tab" aria-controls="custom-v-pills-bio-details"><i class="fe-arrow-left"></i> Previous</button></li>
 
+                                                <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded float-right " type="button"> <i class="fe-checked"></i> Confirm & Submit</button></li>
+                                            </ul>
+{{--
                                             <div class="row mt-4">
                                                 <div class="col-sm-5">
 
                                                 </div> <!-- end col -->
 
                                                     <div class="col-sm-7">
-                                                            <button type="button"  class="btn btn-secondary btn-rounded" id="bio-previous-btn" data-toggle="pill" href="#custom-v-pills-bio-details" role="tab" aria-controls="custom-v-pills-bio-details">
-                                                                <i class="fe-arrow-left"></i> Previous
-                                                            </button>
+                                                            <button type="button"  class="btn btn-secondary btn-rounded" id="bio-previous-btn" data-toggle="pill" href="#custom-v-pills-bio-details" role="tab" aria-controls="custom-v-pills-bio-details"><i class="fe-arrow-left"></i> Previous</button>
                                                             <button class="btn btn-primary btn-rounded float-right " type="button"> <i class="fe-checked"></i> Confirm & Submit</button>
 
                                                 </div> <!-- end col -->
                                             </div> <!-- end row-->
-
+  --}}
 
 
                                     </div>

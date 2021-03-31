@@ -135,7 +135,7 @@
                                                                 <div class="form-group row mb-3">
                                                                     <label class="col-md-3 col-form-label" for="name3"> Account Number</label>
                                                                     <div class="col-md-12">
-                                                                        <input type="text" id="acc_nmuber" name="acc_number" class="form-control" placeholder="Account number/BBAN" required>
+                                                                        <input type="number" id="acc_nmuber" name="acc_number" class="form-control" placeholder="Account number/BBAN" required>
                                                                     </div>
                                                                 </div>
 
@@ -165,7 +165,7 @@
                                                                 <div class="form-group row mb-3">
                                                                     <label class="col-md-3 col-form-label" for="confirm3">Firstname</label>
                                                                     <div class="col-md-12">
-                                                                        <input type="password" id="firstname" name="firstname" class="form-control" placeholder="Firstname" required>
+                                                                        <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Firstname" required>
 {{--
                                                                         <select class="custom-select ">
                                                                             <option selected>Bank Branch</option>
@@ -180,7 +180,7 @@
                                                                 <div class="form-group row mb-3">
                                                                     <label class="col-md-3 col-form-label" for="confirm3">Lastname</label>
                                                                     <div class="col-md-12">
-                                                                        <input type="password" id="lastname" name="lastname" class="form-control" placeholder="Lastname" required>
+                                                                        <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Lastname" required>
 {{--
                                                                         <select class="custom-select ">
                                                                             <option selected>Bank Branch</option>
@@ -196,7 +196,7 @@
                                                                 <div class="form-group row mb-3">
                                                                     <label class="col-md-3 col-form-label" for="confirm3">Middlename</label>
                                                                     <div class="col-md-12">
-                                                                        <input type="password" id="middlename" name="middlename" class="form-control" placeholder="Middlename" required>
+                                                                        <input type="text" id="middlename" name="middlename" class="form-control" placeholder="Middlename" required>
 {{--
                                                                         <select class="custom-select ">
                                                                             <option selected>Bank Branch</option>
@@ -432,9 +432,15 @@
 
                 var acc_number = $('#acc_number').val();
                 var currency = $('#currency').val();
-                var acc_number = $('#acc_number').val();
-                var acc_number = $('#acc_number').val();
-                var acc_number = $('#acc_number').val();
+                var firstname = $('#firstname').val();
+                var lastname = $('#lastname').val();
+                var middlename = $('#middlename').val();
+
+                console.log(acc_number);
+                console.log(currency);
+                console.log(firstname);
+                console.log(lastname);
+                console.log(middlename);
 
                 $('#account_tab').removeClass('active show');
                 $('#beneficiary_tab').addClass('active show');
