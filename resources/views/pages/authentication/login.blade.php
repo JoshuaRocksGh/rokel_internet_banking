@@ -14,7 +14,7 @@
                         <div class="auth-logo">
                             <a href="index.html" class="logo logo-dark text-center">
                                 <span class="logo-lg">
-                                    <img src="{{  asset("assets/images/" . env('APPLICATION_INFO_LOGO_DARK') )}} " alt="" height="22">
+                                    <img src="{{  asset("assets/images/" . env('APPLICATION_INFO_LOGO_DARK') )}} " alt="" height="50">
                                 </span>
                             </a>
 
@@ -34,7 +34,11 @@
                     <!-- form -->
                     <form action="POST">
                         @csrf
+
+
                         <div class="form-group">
+{{--
+
                             <div class="card-box text-white img-rounded" style="background-image: url('https://mophy.dexignzone.com/laravel/demo/images/card/card1.png'); padding:10px;">
                                 <p class="mb-1">Main Balance</p>
                                 <h2 class="fs-36 text-white mb-sm-4 mb-3">$673,412.66</h2>
@@ -53,11 +57,15 @@
                                     </div>
                                 </div>
                             </div>
+                              --}}
 
                             <label for="emailaddress">Email address<span class="text-danger">*</span></label>
                             <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email" parsley-trigger="change" required>
                             <span class="text-danger" id="error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
                         </div>
+
+
+
                         <div class="form-group">
                             <a href="{{ url('forgot-password') }}" class="text-muted float-right"><small>Forgot your
                                     password?</small></a>

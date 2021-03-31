@@ -13,6 +13,24 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
+    <style>
+        .btn-primary {
+            color: #fff;
+            background-color: #0561ad;
+            border-color: #0561ad;
+
+        }
+
+        .btn-primary:hover {
+
+            background-color: #2793ec;
+            border-color: #0561ad;
+
+        }
+
+
+    </style>
+
     @include('snippets.style')
 
 

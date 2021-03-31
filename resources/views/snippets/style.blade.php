@@ -1,3 +1,5 @@
+
+
 <!-- App favicon -->
 <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -23,3 +25,10 @@
 
 
 {{-- <link rel="stylesheet" href="{{ asset('assets/css/c_cards.css') }}"/> --}}
+
+
+    {{--  <style>
+        .btn-primary {
+            box-shadow: 0 0 0 0 rgb(6 55 195 / 70%) !important;
+        }
+    </style>  --}}

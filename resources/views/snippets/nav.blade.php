@@ -318,11 +318,11 @@
         <div class="logo-box">
             <a href="#" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_SMALL') )}} " alt="" height="22">
+                    img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_SMALL') )}} " alt="" height="40">
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
                 <span class="logo-lg">
-                    <img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_DARK') )}} " alt="" height="20">
+                    <img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_DARK') )}} " alt="" height="40">
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>

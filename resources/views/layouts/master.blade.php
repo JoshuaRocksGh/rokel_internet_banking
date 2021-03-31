@@ -19,6 +19,9 @@
 
 
         <style type="text/css">
+            .navbar-custom{
+                background-color: {{ env('APPLICATION_CUSTOM_COLOR') }};
+            }
             .purple-color{
                 color: ##0561ad!important;
              }
@@ -26,6 +29,23 @@
                  background-color: #0561ad;
                  color: white;
              }
+
+
+
+            .btn-primary {
+                color: #fff;
+                background-color: #0561ad;
+                border-color: #0561ad;
+                box-shadow: 0 0 0 0 rgb(6 55 195 / 70%);
+            }
+
+            .btn-primary:hover {
+
+                background-color: #2793ec;
+                border-color: #0561ad;
+    
+            }
+
              .p-text {
                  color: white;
              }
