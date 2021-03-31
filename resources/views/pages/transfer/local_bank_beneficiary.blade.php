@@ -23,14 +23,14 @@
 
                                 <div class="col-md-7">
 
-                                    <form class="parsley-examples" action="#" id="local_bank_details">
+                                    <form  action="#" id="local_bank_beneficiary_details">
                                         <div class="form-group">
                                             <label class="purple-color"> Bank Details</label>
                                          </div>
                                         <div class="form-group">
                                             <label> Select Bank</label>
-                                            <select class="custom-select " id="select_bank" parsley-trigger="change" required>
-                                                <option selected>Select Bank</option>
+                                            <select class="custom-select " id="select_bank" required>
+                                                <option value="">Select Bank</option>
                                                 <option value="Stanbic Bank">Stanbic Bank</option>
                                                 <option value="GCB Bank">GCB Bank</option>
                                                 <option value="Standard Chartered Bank">Standard Chartered Bank</option>
@@ -45,12 +45,12 @@
                                         <label class="purple-color">  Account Details</label>
                                         <div class="form-group">
                                             <label>Account Number</label>
-                                            <input type="number" class="form-control" id="account_number" placeholder="Account Number" parsley-trigger="change" required>
+                                            <input type="number" class="form-control" id="account_number" placeholder="Account Number"  required>
                                             <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
                                         </div>
                                         <div class="form-group">
                                             <label>Account Name</label>
-                                            <input type="text" class="form-control" id="account_name" placeholder="Account Name" parsley-trigger="change" required>
+                                            <input type="text" class="form-control" id="account_name" placeholder="Account Name" required>
                                             <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                          </div><br>
@@ -59,14 +59,14 @@
                                          <label class="purple-color"> Personal Details</label>
                                         <div class="form-group">
                                             <label>Beneficiary Name</label>
-                                            <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name" parsley-trigger="change" required>
+                                            <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name" required>
                                             <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                          </div>
 
                                          <div class="form-group">
                                             <label>Beneficiary Email</label>
-                                            <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name" parsley-trigger="change" required>
+                                            <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name" required>
                                             <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                          </div>
@@ -95,7 +95,8 @@
                                     </form>
 
 
-                                    <form action="POST" id="local_bank_details_summary">
+                                    <form action="#" method="POST"  id="local_bank_beneficiary_summary">
+                                        <div class="card-box">
                                         @csrf
                                         <div class="form-group">
                                             <label class="purple-color"> Bank Details Summary</label>
@@ -169,6 +170,7 @@
                                         <button type="submit" class="btn btn-secondary btn-rounded waves-effect waves-light"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
 
                                         <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="save_beneficiary">Save Beneficiary</button>
+                                    </div>
                                     </form>
 
                                 </div> <!-- end col -->
@@ -258,7 +260,7 @@
         <script>
             $(document).ready(function(){
 
-                $('#local_bank_details_summary').hide();
+                $('#local_bank_beneficiary_summary').hide();
                 $('#select_bank_error').hide();
                 $('#account_number_error').hide();
                 $('#account_name_error').hide();
@@ -266,7 +268,7 @@
                 $('#beneficiary_email_error').hide();
 
 
-                $('#save_beneficiary_next').click(function(e){
+                $('#local_bank_beneficiary_details').submit(function(e){
                     e.preventDefault();
 
                     var select_bank = $('#select_bank').val();
@@ -300,7 +302,7 @@
                         $('#display_transfer_email').text('No');
                      }
 
-
+{{--
                     if(select_bank.trim() == '' || select_bank.trim() == undefined){
                         $('#select_bank_error').show();
 
@@ -338,11 +340,11 @@
 
                     }else{
                         $('#beneficiarbeneficiary_email_errory_name_error').hide();
-                    }
+                    }  --}}
 
                     if(select_bank.trim() != '' && account_number.trim() != '' && account_name.trim() != '' && beneficiary_name.trim() != ''){
-                        $('#local_bank_details').hide();
-                        $("#local_bank_details_summary" ).toggle( '500' );
+                        $('#local_bank_beneficiary_details').hide();
+                        $("#local_bank_beneficiary_summary" ).toggle( '500' );
 
                     }
 
@@ -353,14 +355,14 @@
                 $('#save_beneficiary_back').click(function(e){
                     e.preventDefault();
 
-                    $('#local_bank_details_summary').hide();
-                    $('#local_bank_details').toggle('500');
+                    $('#local_bank_beneficiary_summary').hide();
+                    $('#local_bank_beneficiary_details').toggle('500');
 
                 })
 
 
                 // SEND TO API
-                $('#save_beneficiary').click(function(e){
+                $('#local_bank_beneficiary_summary').submit(function(e){
                     e.preventDefault();
 
 
@@ -399,40 +401,17 @@
 
                             console.log(response.responseCode);
                             if(response.responseCode == "000"){
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                    timerProgressBar: false,
-                                    didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                    }
-                                })
-
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: 'Beneficiary Successfully Added'
-                                })
+                                Swal.fire(
+                                    'Beneficiary Successfully Added',
+                                    '',
+                                    'success'
+                                  )
                             }else{
-
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                    timerProgressBar: false,
-                                    didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                    }
-                                })
-
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: 'Failed To Add Beneficiary'
-                                })
+                                Swal.fire(
+                                    'Failed to Add Beneficiary',
+                                    '',
+                                    'error'
+                                  )
                         }
                     }
                     })

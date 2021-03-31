@@ -625,7 +625,7 @@
                     var from_account_ = $('#from_account').val().split('~');
                     var to_account_ = $('#to_account').val().split('~');
                     var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
-                        console.log(schdule_pay);
+                        {{--  console.log(schdule_pay);  --}}
                     if(from_account_[2] == to_account_[1]){
                         alert('You can not send to same account');
                         return false;

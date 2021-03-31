@@ -23,12 +23,12 @@
 
                                 <div class="col-md-7">
 
-                                    <form class="parsley-examples" action="#" id="same_bank">
+                                    <form action="#" id="same_bank_beneficiary_form">
                                         {{-- @csrf --}}
                                         <div class="form-group">
                                             <label class="purple-color"> Beneficiary Account Details</label><br>
                                             <label >Account Number</label>
-                                            <input class="form-control" type="number" class="form-control" id="account_number" parsley-trigger="change" placeholder="Account Number" required>
+                                            <input class="form-control" type="number" class="form-control" id="account_number" placeholder="Account Number" required>
                                             <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
 
@@ -76,7 +76,7 @@
                                     </form>
 
 
-                                    <form action="POST" id="same_bank_summary">
+                                    <form action="#" method="POST" id="same_bank_beneficiary_form_summary">
                                         <div class="card-box">
                                         @csrf
 
@@ -243,13 +243,13 @@
         <script>
              $(document).ready(function() {
 
-                $('#same_bank_summary').hide();
+                $('#same_bank_beneficiary_form_summary').hide();
                 $('#account_number_error').hide();
                 $('#account_name_error').hide();
                 $('#beneficiary_name_error').hide();
                 $('#beneficiary_email_error').hide();
 
-                $('#save_beneficiary').click(function(e){
+                $('#same_bank_beneficiary_form').submit(function(e){
                 e.preventDefault();
 
 
@@ -279,6 +279,8 @@
                 }
 
 
+
+{{--
                 if(account_number.trim() == '' || account_number.trim() == undefined){
                     $('#account_number_error').show();
 
@@ -305,7 +307,9 @@
 
                 }else{
                     $('#beneficiary_email_error').hide();
-                }
+                }  --}}
+
+
 
 {{--
                 if(account_number.trim() == '' || account_number.trim() = 'undefined'){
@@ -313,8 +317,8 @@
                 } --}}
 
                 if(account_number.trim() != '' && account_name.trim() != '' && beneficiary_name.trim() != '' && beneficiary_email.trim() != '' ){
-                    $('#same_bank').hide();
-                    $("#same_bank_summary" ).toggle( '500' );
+                    $('#same_bank_beneficiary_form').hide();
+                    $("#same_bank_beneficiary_form_summary" ).toggle( '500' );
 
                 }
 
@@ -324,8 +328,8 @@
                 $('#save_beneficiary_back').click(function(e){
                     e.preventDefault(e);
 
-                    $("#same_bank" ).toggle( '500' );
-                    $('#same_bank_summary').hide();
+                    $("#same_bank_beneficiary_form" ).toggle( '500' );
+                    $('#same_bank_beneficiary_form_summary').hide();
 
                 })
 
@@ -369,42 +373,19 @@
                     success:
                     function(response){
 
-                        console.log(response.responseCode)
+                        {{--  console.log(response.responseCode)  --}}
                         if(response.responseCode == "000"){
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: false,
-                                didOpen: (toast) => {
-                                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
-                              })
-
-                              Toast.fire({
-                                icon: 'success',
-                                title: 'Beneficiary Successfully Added'
-                              })
+                            Swal.fire(
+                                'Beneficiary Successfully Added',
+                                '',
+                                'success'
+                              )
                         }else{
-
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: false,
-                                didOpen: (toast) => {
-                                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
-                              })
-
-                              Toast.fire({
-                                icon: 'error',
-                                title: 'Failed To Add Beneficiary'
-                              })
+                            Swal.fire(
+                                'Failed to Add Beneficiary',
+                                '',
+                                'error'
+                              )
                     }
                 }
 

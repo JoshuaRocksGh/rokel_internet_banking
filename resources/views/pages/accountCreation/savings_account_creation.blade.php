@@ -9,7 +9,7 @@
     @include('snippets.top_navbar', ['page_title' => 'SAVINGS ACCOUNT '])
 
 
-<div class="container" style="zoom: 0.9;">
+<div class="container" style="zoom: 0.8;">
     <br><br><br><br>
     <div class="row" >
 

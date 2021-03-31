@@ -6,8 +6,6 @@
 <script src="{{ asset('land_asset/js/jquery.min.js') }}"></script>
 
 <!-- Plugins js-->
-<script src="{{ asset('assets/libs/parsleyjs/parsley.min.js') }}"></script>
-
 <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
 <script src="{{ asset('assets/libs/clockpicker/bootstrap-clockpicker.min.js') }}"></script>
@@ -29,8 +27,7 @@
 <script src="{{ asset('assets/js/pages/form-pickers.init.js') }}"></script>
 <script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script>
 
-<!-- Validation init js-->
-<script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
+
 
 <!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
