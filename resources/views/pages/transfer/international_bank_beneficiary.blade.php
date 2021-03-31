@@ -380,7 +380,7 @@
             $('#international_bank_beneficiary_details').hide();
 
 
-            $('#bank_details_next_btn').submit(function(e){
+            $('#bank_details_next_btn').click(function(e){
                 e.preventDefault();
 
                 var bank_contry = $('#bank_country').val();
@@ -409,6 +409,8 @@
 
             })
 
+            // Return to Beneficiary Bank Details
+
             $('#account_deatils_back_btn').click(function(e){
                 e.preventDefault();
 
@@ -428,6 +430,11 @@
             $('#account_details_next_btn').click(function(e){
                 e.preventDefault();
 
+                var acc_number = $('#acc_number').val();
+                var currency = $('#currency').val();
+                var acc_number = $('#acc_number').val();
+                var acc_number = $('#acc_number').val();
+                var acc_number = $('#acc_number').val();
 
                 $('#account_tab').removeClass('active show');
                 $('#beneficiary_tab').addClass('active show');
