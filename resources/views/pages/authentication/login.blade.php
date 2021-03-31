@@ -34,7 +34,11 @@
                     <p class="text-muted mb-4">Enter your email address and password to access account.</p>
 
                     <!-- form -->
+<<<<<<< HEAD
                     <form action="POST" autocomplete="off" aria-autocomplete="off">
+=======
+                    <form action="POST" id="login_post">
+>>>>>>> 04d0abea221e1629f92e012e8b52ec5f11b16002
                         @csrf
 
 
@@ -66,7 +70,7 @@
 
                         <div class="form-group mb-0 text-center">
                             <a href="{{ url('home') }}">
-                                <button class="btn btn-primary btn-block" type="button" id="submit">Log In </button>
+                                <button class="btn btn-primary btn-block" type="submit" id="submit">Log In </button>
                             </a>
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
                         </div>
@@ -220,18 +224,18 @@
         $('#error1').hide(),
 
 
-        $('#submit').click(function(e){
+        $('#login_post').submit(function(e){
             e.preventDefault();
             var email = $("#emailaddress").val();
             var password = $('#password').val();
-
+{{--
             if($.trim($('#emailaddress').val()) == ''){
-                $('#error').show()
+                $('#error').show()  --}}
 
 
-            }else if ($.trim($('#password').val()) == ''){
+            {{--  }else if ($.trim($('#password').val()) == ''){
                 $('#error1').show()
-            }
+            }  --}}
 
             {{--  console.log(email,password);  --}}
 
