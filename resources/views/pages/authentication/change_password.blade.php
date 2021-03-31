@@ -31,7 +31,7 @@
                     <p class="text-muted mb-4">Reset your password to access account.</p>
 
                     <!-- form -->
-                    <form action="#">
+                    <form action="#" autocomplete="off" aria-autocomplete="off">
                         <div class="form-group">
                             <label for="new_password">Enter New Password</label><div class="input-group input-group-merge">
                                 <input type="password" id="new_password" class="form-control" placeholder="New Password">

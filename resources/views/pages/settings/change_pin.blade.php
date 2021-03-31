@@ -57,7 +57,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
 
-                                            <form>
+                                            <form  autocomplete="off" aria-autocomplete="off">
 
                                                 <div class="form-group">
                                                     <label for="simpleinput">Enter old pin</label>
@@ -110,7 +110,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
 
-                                            <form>
+                                            <form  autocomplete="off" aria-autocomplete="off">
 
                                                 <div class="form-group">
                                                     <label for="simpleinput">Enter old password</label>
@@ -158,7 +158,7 @@
                                         </p>
                                         <div class=" ">
                                             <div class="col-md-12">
-                                                <form action="">
+                                                <form action=""  autocomplete="off" aria-autocomplete="off">
 
                                                 <div class="form-group">
                                                     <label for="simpleinput">Email Address</label>

@@ -31,7 +31,7 @@
                         <p class="text-muted mb-4">Enter your email address and password to access account.</p>
 
                         <!-- form -->
-                        <form action="POST">
+                        <form action="POST" autocomplete="off" aria-autocomplete="off">
                             {{--  @csrf  --}}
                             <div class="form-group">
                                 <label for="emailaddress">Email address</label>

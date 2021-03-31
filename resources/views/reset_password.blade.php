@@ -32,7 +32,7 @@
                 {{--  <p class="text-muted mb-4">Dont have an account? Create your account, it takes less than a minute</p>  --}}
 
                 <!-- form -->
-                <form action="#">
+                <form action="#"  autocomplete="off" aria-autocomplete="off">
                     <div class="form-group">
                         <label for="fullname">Username</label>
                         <input class="form-control" type="text" id="fullname" placeholder="Enter your username" required>

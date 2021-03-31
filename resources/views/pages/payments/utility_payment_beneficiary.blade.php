@@ -18,7 +18,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <form action="#">
+                            <form action="#" autocomplete="off" aria-autocomplete="off">
                                 <div class="form-group">
                                     <label class="purple-color"> Beneficiary Account Details</label>
                                     {{--  <input type="text" class="form-control" data-toggle="input-mask" data-mask-format="00/00/0000" placeholder="Account Number">  --}}

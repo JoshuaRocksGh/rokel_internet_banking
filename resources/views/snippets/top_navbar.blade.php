@@ -30,7 +30,7 @@
             </div>
 
             <li class="d-none d-lg-block">
-                <form class="app-search">
+                <form class="app-search"  autocomplete="off" aria-autocomplete="off">
                     <div class="app-search-box dropdown">
                         <div class="input-group">
                             <input type="search" class="form-control" placeholder="Search..." id="top-search">

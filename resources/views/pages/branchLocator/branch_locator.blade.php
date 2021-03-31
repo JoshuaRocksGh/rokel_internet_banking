@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="col-12 ">
-                                <form class="search-bar form-inline">
+                                <form class="search-bar form-inline" autocomplete="off" aria-autocomplete="off">
                                     <div class="position-relative">
                                         <input type="text" class="form-control" placeholder="Search...">
                                         <span class="mdi mdi-magnify"></span>

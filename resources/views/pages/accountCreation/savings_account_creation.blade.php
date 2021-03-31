@@ -116,7 +116,7 @@
 
                                         <h5 class="mb-3 mt-0 bg-light p-2">Personal Details</h5>
 
-                                        <form action="" id="personal_details" autocapitalize="off" aria-autocomplete="off">
+                                        <form action="" id="personal_details"  autocomplete="off" aria-autocomplete="off">
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -229,7 +229,7 @@
                                     <div>
                                         <h5 class="mb-3 mt-1 bg-light p-2">Contact Details</h5>
 
-                                        <form action="" id="contact_id_details" autocapitalize="off" aria-autocomplete="off">
+                                        <form action="" id="contact_id_details"  autocomplete="off" aria-autocomplete="off">
                                             <div class="">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -344,7 +344,7 @@
 
 
                                         <!-- Passport Picture Upload-->
-                                        <form action="" id="bio_details" autocapitalize="off" aria-autocomplete="off">
+                                        <form action="" id="bio_details" autocomplete="off" aria-autocomplete="off">
                                             <div class="form-group mb-3">
                                                 <b for="example-fileinput">Picture(Passport)</b>
                                                 <input type="file" id="passport_picture" class="form-control-file" required><br>

@@ -32,7 +32,7 @@
                 <p class="text-muted mb-4">Enter your email address and we will send you an email with instructions to reset your password.</p>
 
                 <!-- form -->
-                <form action="#">
+                <form action="#" autocomplete="off" aria-autocomplete="off">
 
                     <div class="form-group mb-3">
                         <label for="emailaddress">Email address</label>
