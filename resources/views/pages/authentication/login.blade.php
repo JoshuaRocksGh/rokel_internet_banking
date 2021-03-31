@@ -5,7 +5,9 @@
 
     <div class="auth-fluid">
         <!--Auth fluid left content -->
-        <div class="auth-fluid-form-box">
+        <div class="auth-fluid-form-box" style="background-image: url(http://localhost/laravel/int/public/assets/images/login-bg.jpg);background-repeat: no-repeat;
+            background-size: cover;
+        ">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
