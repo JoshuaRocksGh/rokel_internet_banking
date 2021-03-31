@@ -30,8 +30,8 @@
             <div class="container-fluid">
                 <!-- LOGO -->
                 <a class="logo text-uppercase" href="index.html">
-                    <img src="{{ asset('land_asset/images/logo-light.png') }}" alt="" class="logo-light" height="21" />
-                    <img src="{{ asset('land_asset/images/logo-dark.png') }}" alt="" class="logo-dark" height="21" />
+                    <img src="{{  asset("assets/images/" . env('APPLICATION_INFO_LOGO_DARK') )}} " alt="" class="logo-light" height="21" />
+                    <img src="{{  asset("assets/images/" . env('APPLICATION_INFO_LOGO_DARK') )}} " alt="" class="logo-dark" height="21" />
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
