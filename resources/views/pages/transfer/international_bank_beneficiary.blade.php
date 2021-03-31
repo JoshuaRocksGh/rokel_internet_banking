@@ -30,17 +30,17 @@
                                         <div id="rootwizard">
                                             <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-3">
                                                 <li class="nav-item active" id="details_tab" data-target-form="#accountForm">
-                                                    <a href="#first" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                                    <a href="#first" data-toggle="tab"  class="nav-link rounded-0 pt-2 pb-2">
                                                         <span class="d-none d-sm-inline">Bank Details</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item" id="account_tab" data-target-form="#profileForm">
-                                                    <a href="#second" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                                    <a href="#second" data-toggle="tab"  class="nav-link rounded-0 pt-2 pb-2">
                                                         <span class="d-none d-sm-inline">Account Details</span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item" id="beneficiary_tab" data-target-form="#otherForm">
-                                                    <a href="#third" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                                    <a href="#third" data-toggle="tab"  class="nav-link rounded-0 pt-2 pb-2">
                                                         <span class="d-none d-sm-inline">Beneficiary Details</span>
                                                     </a>
                                                 </li>
@@ -133,16 +133,17 @@
                                                                <label class="purple-color"> Beneficiary Account Details</label><br><br>
 
                                                                 <div class="form-group row mb-3">
-                                                                    <label class="col-md-3 col-form-label" for="name3"> Account Number</label>
                                                                     <div class="col-md-12">
-                                                                        <input type="number" id="acc_nmuber" name="acc_number" class="form-control" placeholder="Account number/BBAN" required>
+                                                                        <label class="form-group" for="name3"> Account Number</label>
+
+                                                                        <input type="number" id="acc_number" name="acc_number" class="form-control" placeholder="Account number/BBAN" required>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="form-group row mb-3">
-                                                                    <label class="col-md-3 col-form-label" for="surname3">Currency</label>
                                                                     <div class="col-md-12">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
+                                                                        <label class="form-group" for="surname3">Currency</label>
 
                                                                         <select class="custom-select" id="currency" name="currency" required>
                                                                             <option value="">Currency</option>
@@ -163,9 +164,10 @@
                                                                 </div>  --}}
 
                                                                 <div class="form-group row mb-3">
-                                                                    <label class="col-md-3 col-form-label" for="confirm3">Firstname</label>
                                                                     <div class="col-md-12">
+                                                                        <label class="form-group" for="confirm3">Firstname</label>
                                                                         <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Firstname" required>
+
 {{--
                                                                         <select class="custom-select ">
                                                                             <option selected>Bank Branch</option>
@@ -178,9 +180,10 @@
                                                                 </div>
 
                                                                 <div class="form-group row mb-3">
-                                                                    <label class="col-md-3 col-form-label" for="confirm3">Lastname</label>
                                                                     <div class="col-md-12">
+                                                                        <label class="form-group" for="confirm3">Lastname</label>
                                                                         <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Lastname" required>
+
 {{--
                                                                         <select class="custom-select ">
                                                                             <option selected>Bank Branch</option>
@@ -194,9 +197,10 @@
 
 
                                                                 <div class="form-group row mb-3">
-                                                                    <label class="col-md-3 col-form-label" for="confirm3">Middlename</label>
                                                                     <div class="col-md-12">
+                                                                        <label class="form-group" for="confirm3">Middlename</label>
                                                                         <input type="text" id="middlename" name="middlename" class="form-control" placeholder="Middlename" required>
+
 {{--
                                                                         <select class="custom-select ">
                                                                             <option selected>Bank Branch</option>
@@ -250,7 +254,7 @@
                                                                 <div class="form-group row mb-3">
                                                                     {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
                                                                     <div class="col-md-12">
-                                                                        <label class="col-md-3 col-form-label" for="confirm3">Beneficiary Name</label>
+                                                                        <label class="form-group" for="confirm3">Beneficiary Name</label>
                                                                         <input type="text" id="beneficiary_name" name="beneficiary_name" class="form-control" placeholder="Beneficiary name" required>
                                                                     </div>
                                                                 </div>
@@ -258,25 +262,25 @@
                                                                 <div class="form-group row mb-3">
                                                                     {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
                                                                     <div class="col-md-12">
-                                                                        <label class="col-md-3 col-form-label" for="confirm3">Beneficiary Email</label>
+                                                                        <label class="form-group" for="confirm3">Beneficiary Email</label>
                                                                         <input type="text" id="beneficiary_email" name="beneficiary_name" class="form-control" placeholder="Beneficiary email" required>
                                                                     </div>
                                                                 </div>
-
+{{--
                                                                 <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
+                                                                    <label class="col-md-3 col-form-label" for="name3"> First name</label>
                                                                     <div class="col-md-12">
-                                                                        <label class="col-md-3 col-form-label" for="confirm3">Middlename</label>
+                                                                        <label class="form-group" for="confirm3">Middlename</label>
                                                                         <input type="text" id="middlename" name="middlename" class="form-control" placeholder="Middlename" required>
                                                                     </div>
-                                                                </div>
+                                                                </div>  --}}
 
 
                                                                 <div class="form-group row mb-3">
                                                                     {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
                                                                     <div class="col-md-12">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
-                                                                        <label class="col-md-3 col-form-label" for="confirm3">Nationality</label>
+                                                                        <label class="form-group" for="confirm3">Nationality</label>
                                                                         <select class="custom-select" id="nationality" name="nationality" required>
                                                                             <option value="">Nationality</option>
                                                                             <option value="1">One</option>
@@ -292,7 +296,7 @@
                                                                     {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
                                                                     <div class="col-md-12">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
-                                                                        <label class="col-md-3 col-form-label" for="confirm3">Country of Residence</label>
+                                                                        <label class="form-group" for="confirm3">Country of Residence</label>
 
                                                                         <select class="custom-select" id="residence" name="residence" required>
                                                                             <option value="">Country of residence</option>
@@ -309,7 +313,7 @@
                                                                     {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
                                                                     <div class="col-md-12">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
-                                                                        <label class="col-md-3 col-form-label" for="confirm3">City</label>
+                                                                        <label class="form-group" for="confirm3">City</label>
 
                                                                         <select class="custom-select" id="city" name="city" required>
                                                                             <option value="">City</option>
@@ -324,7 +328,7 @@
                                                                 <div class="form-group row mb-3">
                                                                     {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
                                                                     <div class="col-md-12">
-                                                                        <label class="col-md-3 col-form-label" for="confirm3">Address</label>
+                                                                        <label class="form-group" for="confirm3">Address</label>
                                                                         <input type="text" id="address" name="address" class="form-control" placeholder="Address" required>
                                                                     </div>
                                                                 </div>
@@ -392,13 +396,6 @@
                 var bank_address = $('#bank_address').val();
                 var swift_code = $('#swift_code').val();
 
-                console.log(bank_contry);
-                console.log(bank_city);
-                console.log(bank_branch);
-                console.log(bank_name);
-                console.log(bank_address);
-                console.log(swift_code);
-
 
                 $('#details_tab').removeClass('active show');
                 $('#account_tab').addClass('active show');
@@ -438,12 +435,7 @@
                 var lastname = $('#lastname').val();
                 var middlename = $('#middlename').val();
 
-                console.log(acc_number);
-                console.log(currency);
-                console.log(firstname);
-                console.log(lastname);
-                console.log(middlename);
-
+                alert(acc_number);
                 $('#account_tab').removeClass('active show');
                 $('#beneficiary_tab').addClass('active show');
 
@@ -493,7 +485,30 @@
 
                 var beneficiary_name = $('#beneficiary_name').val();
                 var beneficiary_email = $('#beneficiary_email').val();
-                var middlename = $('#middlename').val();
+                {{--  var middlename = $('#middlename').val();  --}}
+                var nationality = $('#nationality').val();
+                var residence = $('#residence').val();
+                var city = $('#city').val();
+                var address = $('#address').val();
+
+                console.log(bank_contry);
+                console.log(bank_city);
+                console.log(bank_branch);
+                console.log(bank_name);
+                console.log(bank_address);
+                console.log(swift_code);
+                console.log(acc_number);
+                console.log(currency);
+                console.log(firstname);
+                console.log(lastname);
+                console.log(middlename);
+                console.log(beneficiary_name);
+                console.log(beneficiary_email);
+                console.log(nationality);
+                console.log(residence);
+                console.log(city);
+                console.log(address);
+
             })
 
         })
