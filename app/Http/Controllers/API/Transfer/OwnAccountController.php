@@ -24,7 +24,7 @@ class OwnAccountController extends Controller
 
         $result = json_decode($response->body());
         // return $result->responseCode;
-
+ 
 
         if($result->responseCode == '000'){
 
@@ -76,10 +76,12 @@ class OwnAccountController extends Controller
         }else
         // return $req;
 
+        $from_account = $req->from_account;
+
         try{
 
             $response = Http::post('http://localhost/IIE/own-account.php', [
-                'from_account' => 'required' ,
+                'from_account' => $from_account ,
                 'to_account' => 'required' ,
                 'transfer_amount' => 'required' ,
                 'category' => 'required' ,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\classes\WEB\UserAuth;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,8 @@ class UserAuthenticationMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (is_null(Auth::user()) )
+        $user = (Object) UserAuth::getDetails();
+        if (is_null($user) )
         {
         // The user is logged in...
             return redirect()->route('login');
