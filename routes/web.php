@@ -301,9 +301,11 @@ Route::middleware(['userAuth'])->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Logout controller
-Route::get('/logout',[LogoutController::class,'logout_'])->name('logout');
+
 
 });
+
+Route::get('/logout',[LogoutController::class,'logout_'])->name('logout');
 
 Route::get('/send-email',[MaileController::class,'send_email'])->name('send-email');
 

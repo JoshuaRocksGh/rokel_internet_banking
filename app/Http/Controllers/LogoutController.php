@@ -11,7 +11,10 @@ class LogoutController extends Controller
     public function logout_()
     {
         Auth::logout();
-        return redirect()->route('home');
+
+        session()->forget('user');
+
+        return redirect()->route('login');
         // return Redirect::route('home');
     }
 }

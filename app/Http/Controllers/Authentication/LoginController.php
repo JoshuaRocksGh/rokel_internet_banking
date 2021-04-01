@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Authentication;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,25 +40,66 @@ class LoginController extends Controller
         };
 
         // return $req;
+        $user_id = strtoupper($req->user_id);
+        $password = $req->password;
+
+        // return $user_id . " - " . $password;
+        $data =  [
+            "appVersion" => "string",
+            "brand" => "string",
+            "country" => "string",
+            "deviceId" => "string",
+            "deviceIp" => "string",
+            "deviceOs" => "A",
+            "manufacturer" => "string",
+            "model" => "string",
+            "password" => $password,
+            "userId" => $user_id
+        ];
+
+        // return $data;
+
+
 
         try {
 
-            $response = Http::post('http://localhost/IIE/login.php', [
-                'user_id' => 'required',
-                'password' => 'required'
-            ]);
+            $response = Http::post(env('API_BASE_URL') . "/user/login", $data);
 
             if ($response->ok()) { // API response status code is 200
 
                 $result = json_decode($response->body());
 
+
                 if ($result->responseCode == '000') { // API responseCode is 000
 
                     $result_data = $result->data;
 
+                    // CHECK FOR USER TYPE PERSONAL OR CORPORATE
+                    /*
                     if ($result_data->c_type == 'C') {
                         return  $base_response->api_response('900', 'This is a corporate user not allowed here',  NULL);
                     }
+                    */
+
+                    $user_detail = $result->data;
+
+                    // SET USER SESSION
+                    $user = (Object) UserAuth::getDetails();
+
+                    session(['user' => [
+                        "userId" => $user_detail->userId,
+                        "userAlias" => $user_detail->userAlias,
+                        "updateFlag" => $user_detail->updateFlag,
+                        "setPin" => $user_detail->setPin,
+                        "changePassword" => $user_detail->changePassword,
+                        "email" => $user_detail->email,
+                        "userToken" => $user_detail->userToken,
+                        "customerNumber" => $user_detail->customerNumber,
+                        "updateUrl" => $user_detail->updateUrl,
+                        "lastLogin" => $user_detail->lastLogin,
+                    ]]);
+
+                    // return redirect()->route('home');
 
                     // return $result_data->user_id;
 
@@ -85,25 +127,7 @@ class LoginController extends Controller
                          return $th->getMessage();
                     }
 
-                    */
-
-                    $id = DB::table('users')->insertGetId([
-                        'email' => $result_data->email,
-                        'user_id' => $result_data->user_id,
-                        'customer_no' => $result_data->customer_no,
-                        'f_login' => $result_data->f_login,
-                        'c_type' => $result_data->c_type,
-                    ]);
-                    // return $id;
-
-                    $user = User::where('id', $id)->first();
-                    // return json_encode($user);
-                    Auth::login($user);
-
-                    // return redirect()->route('home');
-
-                //     return Auth::user();
-
+               */
 
                     return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 

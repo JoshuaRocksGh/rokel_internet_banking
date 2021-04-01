@@ -41,8 +41,6 @@
                                             <p class="card-text" >To successfully create an account
                                                 You need to follow the KYC collected process</p>
                                                 <br>
-
-
                                             <h4 class="card-title" style="color: #0561ad">
                                                 Process
                                             </h4>

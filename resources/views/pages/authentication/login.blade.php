@@ -34,14 +34,14 @@
                     <p class="text-muted mb-4">Enter your email address and password to access account.</p>
 
                     <!-- form -->
-                    <form action="POST" id="login_post">
+                    <form action="POST" id="login_post_form" autocomplete="off" aria-autocomplete="off">
                         @csrf
 
 
                         <div class="form-group">
 
-                            <label for="emailaddress">Email address<span class="text-danger">*</span></label>
-                            <input class="form-control" type="email" id="emailaddress" required placeholder="Enter your email" parsley-trigger="change" required>
+                            <label for="user_id">User ID<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" id="user_id" required placeholder="Enter your email" parsley-trigger="change" required>
                             <span class="text-danger" id="error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
                         </div>
 
@@ -220,12 +220,14 @@
         $('#error1').hide(),
 
 
-        $('#login_post').submit(function(e){
+        $('#login_post_form').submit(function(e){
             e.preventDefault();
-            var email = $("#emailaddress").val();
+            var email = $("#user_id").val();
             var password = $('#password').val();
+            {{--  alert('hello')
+            return false;  --}}
 {{--
-            if($.trim($('#emailaddress').val()) == ''){
+            if($.trim($('#user_id').val()) == ''){
                 $('#error').show()  --}}
 
 
@@ -250,13 +252,15 @@
                 success:function(response){
                     console.log(response);
                     var res = response.data
-                    if(response.responseCode == "000"){
+
+                    if(response.responseCode == "00"){
                         window.location = 'home'
                     }else{
                         alert('Failed to login')
 
 
                     }
+
                 }
             })
         })

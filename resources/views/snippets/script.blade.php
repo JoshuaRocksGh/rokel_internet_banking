@@ -3,7 +3,11 @@
 <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
 <!-- Third Party js-->
-<script src="{{ asset('land_asset/js/jquery.min.js') }}"></script>
+{{--  <script src="{{ asset('land_asset/js/jquery.min.js') }}"></script>  --}}
+{{--  Jequery cdn  --}}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
 
 <!-- Plugins js-->
 <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
@@ -31,9 +35,6 @@
 
 <!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
-
-{{--  Jequery cdn  --}}
-{{--  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>  --}}
 
 
 
