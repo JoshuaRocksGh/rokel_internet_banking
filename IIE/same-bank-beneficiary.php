@@ -11,15 +11,40 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 $response = [
     'responseCode' => '000',
-    'message' => 'Beneficiary Added Successfully',
+    'message' => 'Success',
     'data' => [
-        'account_number' => '0001212362' ,
-        'account_name' => 'Joshua Tetteh' ,
-        'beneficiary_name' => 'Joshua Tetteh',
-        'beneficairy_email' => 'josh.tetteh@gmail.com',
-        'send_mail' => 'Yes',
-        'f_login' => 'Y',
-        'c_type' => 'I'
+        [
+
+            'account_type' => 'CA - P' ,
+            'account_number' => '004001016997522124' ,
+            'alias_name' => 'Joshua Tetteh' ,
+            'account_currency' => 'SLL',
+            'email' => 'josh.tetteh@gmail.com',
+            'phone' => '+232245369123',
+            'bene_type' => 'SM',
+
+        ],
+        [
+            'account_type' => 'CA - STAFF' ,
+            'account_number' => '004001016997452652' ,
+            'alias_name' => 'Kwabena Ampah' ,
+            'account_currency' => 'SLL',
+            'email' => 'kwabena.ampah@gmail.com',
+            'phone' => '+232500369123',
+            'bene_type' => 'CO',
+
+        ],
+        [
+            'account_type' => 'SA - P' ,
+            'account_number' => '00400101002432212013' ,
+            'alias_name' => 'Jonas Korankye' ,
+            'account_currency' => 'SLL',
+            'email' => 'jonas100@gmail.com',
+            'phone' => '+2324245369123',
+            'bene_type' => 'SM',
+
+        ],
+
     ]
 ];
     exit(json_encode($response));

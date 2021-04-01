@@ -31,9 +31,10 @@
 
                                             <select class="custom-select" id="from_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
+
+                                                {{--  <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
                                                     Saving Account~001023468976001~GHS~2000
-                                                 </option>
+                                                 </option>  --}}
 
                                             </select>
 
@@ -67,8 +68,9 @@
 
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Currenct Account~8888888888888~USD~800">
-                                                    Currenct Account ~ 8888888888888 ~ USD</option>
+
+                                                {{--  <option value="Currenct Account~8888888888888~USD~800">
+                                                    Currenct Account ~ 8888888888888 ~ USD</option>  --}}
                                             </select>
 
 
@@ -426,17 +428,19 @@
                     'url' : 'own-account-api',
                     "datatype" : "application/json",
                     success:function(response){
-                        {{--  console.log(response.data);  --}}
+                        //console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
-                        $('#from_account').append($('<option>', { value : data[index].account_type+'~'+data[index].account_name+'~'+data[index].account_number+'~'+data[index].currency+'~'+data[index].amount}).text(data[index].account_type +'~'+ data[index].account_number +'~'+data[index].currency+'~'+data[index].amount));
-                            });
+                        $('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                        $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                        });
                     },
 
                 })
             }
 
-            function to_account(){
+            {{--  function to_account(){
                 $.ajax({
                     'type' : 'GET',
                     'url' : 'own-account-api',
@@ -449,12 +453,34 @@
                             });
                     }
                 })
-            }
+            }  --}}
 
             $(document).ready(function() {
 
-                from_account();
-                to_account();
+                setTimeout(function(){
+                    from_account();
+
+
+                },3000);
+
+                function sweet_alert(){
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
+
+                      Toast.fire({
+                        icon: 'info',
+                        title: 'Can not send to same account'
+                      })
+                }
 
                 {{-- hide select accounts info --}}
                 $(".from_account_display_info").hide()
@@ -493,11 +519,16 @@
                         from_account_info = from_account.split("~")
                         {{-- alert('continue') --}}
 
+                        // Sweet alert function
+
+
+
                         var to_account = $('#to_account').val()
 
                         if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                             to_account.trim() != '') {
-                            alert('can not transfer to same account')
+                            {{--  alert('can not transfer to same account')  --}}
+                            sweet_alert();
                             $(this).val('')
                         }
 
@@ -627,7 +658,8 @@
                     var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
                         {{--  console.log(schdule_pay);  --}}
                     if(from_account_[2] == to_account_[1]){
-                        alert('You can not send to same account');
+                        {{--  alert('You can not send to same account');  --}}
+                        sweet_alert();
                         return false;
                     }
 

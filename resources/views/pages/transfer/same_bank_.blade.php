@@ -31,14 +31,14 @@
 
                                             <select class="custom-select " id="from_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
-                                                    Current Account ~ 001023468976001 </option>
+                                                {{--  <option value="CA - PERSONAL~kwabeane Ampah~001023468976001~GHS~2000">
+                                                    Current Account~001023468976001~GHS~2000 </option>  --}}
 
                                             </select>
 
 
                                             <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
+                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
                                                 <tbody class="text-primary">
                                                     <tr class="text-primary">
 
@@ -82,12 +82,13 @@
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
                                                 <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
-                                                    Currenct Account ~ 8888888888888 </option>
+                                                    Currenct Account ~ 8888888888888~Joshua Amarfio
+                                                </option>
                                             </select>
 
 
                                             <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info">
+                                                class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
                                                 <tbody>
                                                     <tr>
 
@@ -98,6 +99,7 @@
                                                         </td>
 
                                                         <td class="text-right font-weight-semibold">
+
                                                             <span class="display_to_account_currency"></span>
                                                             <span class="display_to_account_amount"></span>
 
@@ -114,20 +116,21 @@
                                         <div class="select_onetime">
 <hr>
                                             <div class="form-group">
-                                                {{--  <label class="">Enter Account Number</label>  --}}
+                                                <label class="">Beneficiary Name</label>
                                                 <input type="text" class="form-control" id="onetime_beneficiary_alias_name"
                                                    placeholder="Alias Name"
                                                     required>
                                             </div>
 
                                             <div class="form-group">
-                                                {{--  <label class="">Enter Account Number</label>  --}}
+                                                <label class="">Amount</label>
                                                 <input type="text" class="form-control" id="onetime_beneficiary_account_number"
                                                    placeholder="Account Number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                     required>
                                             </div>
 
                                             <div class="form-group">
+                                                <label class="">Account Currency</label>
 
                                                 <select class="custom-select" id="onetime_beneficiary_account_currency" required>
                                                     <option value="">Select Currency</option>
@@ -139,37 +142,29 @@
                                                 </select>
 
                                             </div>
-
-
-
                                             <div class="form-group">
-                                                {{--  <label class="">Enter Account Number</label>  --}}
+                                                <label class="">Beneficiary Email</label>
                                                 <input type="email" class="form-control" id="onetime_beneficiary_email"
                                                    placeholder="Email"
                                                     required>
                                             </div>
-
-
-
                                             <div class="form-group">
-                                                {{--  <label class="">Enter Account Number</label>  --}}
+                                                <label class="">Beneficiary Phone Number</label>
                                                 <input type="text" class="form-control" id="onetime_beneficiary_phone"
                                                    placeholder="Phone"
                                                     required>
                                             </div>
-                                            <hr>
-
                                         </div>
 
                                         <div class="form-group">
-                                            {{--  <label class="">Enter Amount</label>  --}}
+                                            <label class="">Amount</label>
                                             <input type="text" class="form-control" id="amount" placeholder="Amount: 0.00"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 required>
                                         </div>
 
                                         <div class="form-group">
-                                            {{-- <label class="h6">Category</label> --}}
+                                            <label class="h6">Category</label>
 
                                             <select class="custom-select" id="category" required>
                                                 <option value="">Select Category</option>
@@ -182,7 +177,7 @@
 
 
                                         <div class="form-group">
-                                            {{-- <label class="h6">Category</label> --}}
+                                            <label class="h6">Naration</label>
 
                                             <input type="text" class="form-control" id="purpose" placeholder="Enter purpose / narration" required>
 
@@ -462,8 +457,54 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script>
+
+
+            function from_account(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'get-my-account',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        //console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+                        $('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                        //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                        });
+                    },
+
+                })
+            }
+
+
+            function to_account(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'get-same-bank-beneficiary',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+                        //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                        $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].alias_name+'~'+data[index].account_number+'~'+data[index].account_currency}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].alias_name+'~'+data[index].account_currency));
+
+                        });
+                        {{--  <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
+                            Currenct Account ~ 8888888888888~Joshua Amarfio
+                        </option>  --}}
+                    },
+
+                })
+            }
+
             $(document).ready(function() {
 
+                setTimeout(function(){
+                    from_account();
+                    to_account();
+                },3000);
 
                 $(".select_onetime").css("display", "none");
                 $(".select_beneficiary").css("display", "block");
@@ -505,7 +546,7 @@
 
 
 
-                // hide seleect accounts info
+                // hide select accounts info
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
                 $("#schedule_payment_date").hide()
@@ -594,7 +635,7 @@
                         $(".display_to_account_name").text(to_account_info[1].trim())
                         $(".display_to_account_no").text(to_account_info[2].trim())
                         $(".display_to_account_currency").text(to_account_info[3].trim())
-                        $(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
+                        //$(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
 
                         $(".to_account_display_info").show()
                     }
@@ -634,11 +675,6 @@
                         var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
                         var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
                         var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-                        console.log(onetime_beneficiary_alias_name)
-                        console.log(onetime_beneficiary_account_number)
-                        console.log(onetime_beneficiary_account_currency)
-
 
                         if (from_account.trim() == '' || onetime_beneficiary_alias_name.trim() == '' || onetime_beneficiary_account_number.trim() == '' || onetime_beneficiary_account_currency.trim() == '') {
                             alert('Please select source and destination accounts')
@@ -764,10 +800,6 @@
                         var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
 
 
-                        console.log(onetime_beneficiary_alias_name)
-                        console.log(onetime_beneficiary_account_number)
-                        console.log(onetime_beneficiary_account_currency)
-
 
                         // END OF ONETIME BENEFICIARY DETAILS
 
@@ -793,6 +825,89 @@
                     }
 
 
+                    $('#confirm_button').click(function(e){
+                        e.preventDefault();
+
+                        var type = $("input[type='radio']:checked").val();
+                        // console.log(type);
+
+                        if(type == 'beneficiary'){
+
+                            //get values
+
+                            var from_account = $('#from_account').val().split('~');
+                            var to_account = $('#to_account').val().split('~');
+                            var transfer_amount = $('#amount').val();
+                            var category = $('#category').val().split('~');
+                            var purpose = $('#purpose').val();
+                            var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
+                            var schedule_payment_date = $('#schedule_payment_date').val();
+
+                            var from_account_ = from_account[2];
+                            var to_account_ = to_account[2];
+                            var transfer_amount = $('#amount').val();
+                            var category_ = category[1];
+                            var purpose = $('#purpose').val();
+                            var schedule_payment_date = $('#schedule_payment_date').val();
+
+
+                            {{--  console.log(form_account_);
+                            console.log(to_account_);
+                            console.log(transfer_amount);
+                            console.log(category_);
+                            console.log(purpose);
+                            console.log(schedule_payment_date);  --}}
+
+                            // SEND TO API
+                            $.ajax({
+                                'type' : 'POST' ,
+                                'url' : 'transfer-to-beneficiary' ,
+                                "datatype" : "application/json",
+                                'data' : {
+                                    'from_account' : from_account_ ,
+                                    'to_account' : to_account_ ,
+                                    'transfer_amount' : transfer_amount ,
+                                    'category' : category_ ,
+                                    //'select_frequency' : select_frequency_ ,
+                                    'purpose' : purpose ,
+                                    //'schedule_payment_type' : schedule_payment_contraint_input ,
+                                    'schedule_payment_date' : schedule_payment_date,
+                                },headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success:
+                                function(resonse){
+                                    console.log(response.responseCode)
+                                    if(response.responseCode){
+                                        Swal.fire(
+                                            'Transfer Successful',
+                                            '',
+                                            'success'
+                                        )
+                                    }else {
+                                        Swal.fire(
+                                            'Tranfer Failed',
+                                            '',
+                                            'error'
+                                        )
+                                    }
+                                }
+
+                            })
+
+                        }else if (type == 'onetime'){
+
+                            var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
+                            var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
+                            var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
+                            var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
+                            var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
+                            var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
+
+
+                        }
+
+                    })
 
 
                     /*

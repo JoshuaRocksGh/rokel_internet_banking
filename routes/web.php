@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
+use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
 use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
@@ -82,7 +83,6 @@ Route::get('/reset-success',[ResetPasswordController::class,'reset_success'])->n
 Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
 Route::get('/add-beneficiary/same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('same-bank-beneficiary');
-Route::post('/add-beneficiary/same-bank-beneficiary', [TransferSameBankController::class, 'same_bank_benefiaciary_'])->name('same-bank-beneficiary');
 
 Route::get('/add-beneficiary/local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
 Route::post('/add-beneficiary/local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('local-bank-beneficiary-api');
@@ -91,7 +91,6 @@ Route::get('/add-beneficiary/international-bank-beneficiary', [transferControlle
 
 // OWN ACCOUNT
 Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('own-account');
-Route::get('/own-account-api', [TransferOwnAccountController::class, 'own_account_'])->name('own-account-api');
 Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
 
@@ -313,7 +312,14 @@ Route::get('/send-email',[MaileController::class,'send_email'])->name('send-emai
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
 
 // Transfers
+Route::post('/transfer-to-beneficiary', [APITransferSameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary');
+Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
+Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
+
 
 // Transfers Beneficiary
-Route::get('/add-beneficiary/international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
+Route::post('/add-beneficiary/same-bank-beneficiary', [TransferSameBankController::class, 'same_bank_benefiaciary_'])->name('same-bank-beneficiary');
+
+
+Route::post('/add-beneficiary/international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
 

@@ -104,17 +104,6 @@
                                         <div class="form-group">
                                             <label> Select Bank:&emsp;</label>
                                             <span class="font-weight-light mr-2" id="display_selected_bank"> &nbsp</span>
-                                            {{-- <select class="custom-select " id="select_bank">
-                                                <option selected>Select Bank</option>
-                                                <option value="Stanbic Bank">Stanbic Bank</option>
-                                                <option value="GCB Bank">GCB Bank</option>
-                                                <option value="Standard Chartered Bank">Standard Chartered Bank</option>
-                                                <option value="Zenith Bank">Zenith Bank</option>
-                                                <option value="Cal Bank">Cal Bank</option>
-                                                <option value="FNB Bank">FNB Bank</option>
-                                            </select> --}}
-
-
                                         </div>
                                         <br>
                                         {{--  <label class="purple-color">  Account Details</label>  --}}
@@ -414,6 +403,7 @@
                                   )
                         }
                     }
+
                     })
                 })
             });

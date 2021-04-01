@@ -180,7 +180,7 @@
                                                 </div>
 
                                                 <div class="tab-pane fade" id="third">
-                                                    <form id="international_bank_beneficiary_details" method="post" action="#" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
+                                                    <form id="international_bank_beneficiary_details" method="" action="#" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Personal Details</label><br><br>
@@ -252,34 +252,99 @@
                                                         <ul class="list-inline wizard mb-0">
                                                             <li class=" list-inline-item"><button class="btn btn-secondary btn-rounded waves-effect waves-light" type="back" id="beneficiary_details_back_btn">Back</button></li>
 
-                                                            <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit">Submit</button></li>
+                                                            <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="beneficiary_details_submit_btn">Submit</button></li>
                                                         </ul>
                                                     </form>
                                                 </div>
 
-                                                <div class="tab-pane " id="fourth">
-                                                    <form id="international_bank_summary" method="" action="#" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
+                                                <div class="tab-pane fade " id="fourth">
+                                                    <form id="international_bank_summary" method="POST" action="#" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Summary</label><br><br>
-                                                                <div "form-group row mb-3">
+                                                                <div class="form-group row mb-3">
+
                                                                     <div class="col-md-6">
-                                                                        <label> Bank Country</label><span class="font-weight-light mr-2" id="display_"> &nbsp</span>
+                                                                        <label> Bank Country: &emsp;</label><span class="font-weight-light mr-2" id="display_bank_country"></span>
                                                                         <br>
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label> Bank Country</label><span class="font-weight-light mr-2" id="display_"> &nbsp</span>
+                                                                        <label> Bank City: &emsp;</label><span class="font-weight-light mr-2" id="display_bank_city"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Bank branch: &emsp;</label><span class="font-weight-light mr-2" id="display_bank_branch"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Bank Name: &emsp;</label><span class="font-weight-light mr-2" id="display_bank_name"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Bank Address: &emsp;</label><span class="font-weight-light mr-2" id="display_bank_address"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Swift Code: &emsp;</label><span class="font-weight-light mr-2" id="display_swift_code"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Account Number: &emsp;</label><span class="font-weight-light mr-2" id="display_account_number"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Currency: &emsp;</label><span class="font-weight-light mr-2" id="display_currency"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Firstname: &emsp;</label><span class="font-weight-light mr-2" id="display_firstname"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Lastname: &emsp;</label><span class="font-weight-light mr-2" id="display_lastname"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Middlename: &emsp;</label><span class="font-weight-light mr-2" id="display_middlename"></span>
+                                                                        <br>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <label> Beneficiary Name: &emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_name"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Beneficiary Email: &emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_email"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Nationality: &emsp;</label><span class="font-weight-light mr-2" id="display_nationality"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> Country of Residence: &emsp;</label><span class="font-weight-light mr-2" id="display_country_of_residence"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label> City: &emsp;</label><span class="font-weight-light mr-2" id="display_city"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Address: &emsp;</label><span class="font-weight-light mr-2" id="display_address"></span>
                                                                         <br>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             </div>
-                                                                <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="bank_add_beneficiary_btn">Add Beneficiary <i class="fe-arrow-right"></i></button>
 
-                                                            </div> <!-- end col -->
-                                                        </div> <!-- end row -->
+                                                        {{--  <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="bank_add_beneficiary_btn">Add Beneficiary <i class="fe-arrow-right"></i></button>  --}}
+                                                        <ul class="list-inline wizard mb-0">
+                                                            <li class=" list-inline-item"><button class="btn btn-secondary btn-rounded waves-effect waves-light" type="back" id="bank_add_beneficiary_back_btn">Back</button></li>
+
+                                                            <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="bank_add_beneficiary_btn">Add Beneficiary </button></li>
+                                                        </ul>
                                                     </form>
                                                 </div>
 
@@ -321,7 +386,7 @@
             $('#details_tab').addClass('active show');
             $('#international_bank_account_details').hide();
             $('#international_bank_beneficiary_details').hide();
-
+            $('#international_bank_summary').hide();
 
             $('#bank_details_next_btn').click(function(e){
                 e.preventDefault();
@@ -402,8 +467,92 @@
 
             })
 
+            $('#beneficiary_details_submit_btn').click(function(e){
+                e.preventDefault();
+
+
+                var bank_country = $('#bank_country').val();
+                $('#display_bank_country').text(bank_country);
+
+                var bank_city = $('#bank_city').val();
+                $('#display_bank_city').text(bank_city);
+
+                var bank_branch = $('#bank_branch').val();
+                $('#display_bank_branch').text(bank_branch);
+
+                var bank_name = $('#bank_name').val();
+                $('#display_bank_name').text(bank_name);
+
+                var bank_address = $('#bank_address').val();
+                $('#display_bank_address').text(bank_address);
+
+                var swift_code = $('#swift_code').val();
+                $('#display_swift_code').text(swift_code);
+
+                var acc_number = $('#acc_number').val();
+                $('#display_account_number').text(acc_number);
+
+                var currency = $('#currency').val();
+                $('#display_currency').text(currency);
+
+                var firstname = $('#firstname').val();
+                $('#display_firstname').text(firstname);
+
+                var lastname = $('#lastname').val();
+                $('#display_lastname').text(lastname);
+
+                var middlename = $('#middlename').val();
+                $('#display_middlename').text(middlename);
+
+                var beneficiary_name = $('#beneficiary_name').val();
+                $('#display_beneficiary_name').text(beneficiary_name);
+
+                var beneficiary_email = $('#beneficiary_email').val();
+                $('#display_beneficiary_email').text(beneficiary_email);
+
+                var nationality = $('#nationality').val();
+                $('#display_nationality').text(nationality);
+
+                var residence = $('#residence').val();
+                $('#display_country_of_residence').text(residence);
+
+                var city = $('#city').val();
+                $('#display_city').text(city);
+
+                var address = $('#address').val();
+                $('#display_address').text(address);
+
+
+                $('#beneficiary_tab').removeClass('active show');
+                $('#summary_tab').addClass('active show');
+
+                $('#third').removeClass('active show');
+                $('#fourth').addClass('active show');
+
+                $('#international_bank_beneficiary_details').hide();
+                $('#international_bank_summary').toggle('500');
+
+
+            })
+
+            $('#bank_add_beneficiary_back_btn').click(function(e){
+                e.preventDefault();
+
+
+                $('#summary_tab').removeClass('active show');
+                $('#beneficiary_tab').addClass('active show');
+
+                $('#fourth').removeClass('active show');
+                $('#third').addClass('active show');
+
+                $('#international_bank_summary').hide();
+                $('#international_bank_beneficiary_details').toggle('500');
+            })
+
             // SUBMIT TO API
-            $('#international_bank_beneficiary_details').submit(function(e){
+
+
+            $('#bank_add_beneficiary_btn').click(function(e){
                 e.preventDefault();
 
 
@@ -422,7 +571,6 @@
 
                 var beneficiary_name = $('#beneficiary_name').val();
                 var beneficiary_email = $('#beneficiary_email').val();
-                {{--  var middlename = $('#middlename').val();  --}}
                 var nationality = $('#nationality').val();
                 var residence = $('#residence').val();
                 var city = $('#city').val();
@@ -456,7 +604,26 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success:
+                    function(response){
+
+                        console.log(response.responseCode);
+                        if(response.responseCode == "000"){
+                            Swal.fire(
+                                'Beneficiary Successfully Added',
+                                '',
+                                'success'
+                              )
+                        }else{
+                            Swal.fire(
+                                'Failed to Add Beneficiary',
+                                '',
+                                'error'
+                              )
+                    }
+                }
+
                 })
+
 
             })
 
