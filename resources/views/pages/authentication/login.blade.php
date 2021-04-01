@@ -34,11 +34,7 @@
                     <p class="text-muted mb-4">Enter your email address and password to access account.</p>
 
                     <!-- form -->
-<<<<<<< HEAD
-                    <form action="POST" autocomplete="off" aria-autocomplete="off">
-=======
                     <form action="POST" id="login_post">
->>>>>>> 04d0abea221e1629f92e012e8b52ec5f11b16002
                         @csrf
 
 

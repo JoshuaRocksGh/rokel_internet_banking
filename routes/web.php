@@ -7,6 +7,7 @@ use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccount
 use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
+use App\Http\Controllers\BENEFICIARY\Transfer\InternationalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\LocalBankController as TransferLocalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSameBankController;
 use App\Http\Controllers\Branch\BranchesController;
@@ -307,4 +308,10 @@ Route::get('/logout',[LogoutController::class,'logout_'])->name('logout');
 Route::get('/send-email',[MaileController::class,'send_email'])->name('send-email');
 
 
+// >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
+
+// Transfers
+
+// Transfers Beneficiary
+Route::get('/add-beneficiary/international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
 

@@ -19,7 +19,7 @@
 
                     <div class="row">
                         <div class="col-md-7">
-                            <form action="#"  autocomplete="off" aria-autocomplete="off">
+
 
                             <div class="col-xl-12">
                                 <div class="card">
@@ -44,6 +44,11 @@
                                                         <span class="d-none d-sm-inline">Beneficiary Details</span>
                                                     </a>
                                                 </li>
+                                                <li class="nav-item" id="summary_tab" data-target-form="#summaryForm">
+                                                    <a href="#fourth" data-toggle="tab"  class="nav-link rounded-0 pt-2 pb-2">
+                                                        <span class="d-none d-sm-inline">Summary</span>
+                                                    </a>
+                                                </li>
                                             </ul>
 
                                             <div class="tab-content mb-0 b-0 pt-0">
@@ -54,7 +59,7 @@
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Bank Details</label><br><br>
                                                                 <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label for="form-group">Bank Country</label>
                                                                         <select class="custom-select" id="bank_country" name="bank_country" required>
                                                                             <option value="">Bank Country</option>
@@ -62,11 +67,11 @@
                                                                             <option value="2">Two</option>
                                                                             <option value="3">Three</option>
                                                                         </select>
+                                                                        <br><br>
 
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+
+                                                                    <div class="col-md-6">
                                                                         <label for="form-group">Bank City</label>
                                                                         <select class="custom-select" id="bank_city" name="bank_city">
                                                                             <option value="">Bank City</option>
@@ -74,12 +79,11 @@
                                                                             <option value="2">Two</option>
                                                                             <option value="3">Three</option>
                                                                         </select>
+                                                                    <br><br>
 
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label for="form-group">Bank Branch</label>
                                                                         <select class="custom-select" id="bank_branch" name="bank_branch">
                                                                             <option value="">Bank Branch</option>
@@ -87,38 +91,29 @@
                                                                             <option value="2">Two</option>
                                                                             <option value="3">Three</option>
                                                                         </select>
-
+                                                                        <br><br>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label for="form-group">Bank Name</label>
                                                                         <input type="text" id="bank_name" name="bank_name" class="form-control" placeholder="Bank Name" required>
-
-
+                                                                        <br><br>
                                                                     </div>
-                                                                </div>
 
-
-                                                                <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label for="form-group">Bank Address</label>
                                                                         <input type="text" id="bank_address" name="bank_address" class="form-control" placeholder="Bank Address" required>
-
-
+                                                                        <br><br>
                                                                     </div>
-                                                                </div>
 
-
-                                                                <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="confirm3">Re Password</label>  --}}
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label for="form-group">Swift Code</label>
                                                                         <input type="text" id="swift_code" name="swift" class="form-control" placeholder="Swift Code" required>
-
+                                                                        <br><br>
                                                                     </div>
+
                                                                 </div>
+
                                                                 <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="bank_details_next_btn">Next <i class="fe-arrow-right"></i></button>
 
                                                             </div> <!-- end col -->
@@ -133,15 +128,14 @@
                                                                <label class="purple-color"> Beneficiary Account Details</label><br><br>
 
                                                                 <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label class="form-group" for="name3"> Account Number</label>
 
                                                                         <input type="number" id="acc_number" name="acc_number" class="form-control" placeholder="Account number/BBAN" required>
+                                                                        <br>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
                                                                         <label class="form-group" for="surname3">Currency</label>
 
@@ -151,68 +145,27 @@
                                                                             <option value="2">Two</option>
                                                                             <option value="3">Three</option>
                                                                         </select>
-
+                                                                        <br>
                                                                     </div>
-                                                                </div>
 
-{{--
-                                                                <div class="form-group row mb-3">
-                                                                    <label class="col-md-3 col-form-label" for="email3">Email</label>
-                                                                    <div class="col-md-9">
-                                                                        <input type="email" id="email3" name="email3" class="form-control" required>
-                                                                    </div>
-                                                                </div>  --}}
-
-                                                                <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label class="form-group" for="confirm3">Firstname</label>
                                                                         <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Firstname" required>
-
-{{--
-                                                                        <select class="custom-select ">
-                                                                            <option selected>Bank Branch</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
-                                                                        </select>  --}}
-
+                                                                        <br>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label class="form-group" for="confirm3">Lastname</label>
                                                                         <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Lastname" required>
-
-{{--
-                                                                        <select class="custom-select ">
-                                                                            <option selected>Bank Branch</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
-                                                                        </select>  --}}
-
+                                                                        <br>
                                                                     </div>
-                                                                </div>
 
-
-                                                                <div class="form-group row mb-3">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label class="form-group" for="confirm3">Middlename</label>
                                                                         <input type="text" id="middlename" name="middlename" class="form-control" placeholder="Middlename" required>
-
-{{--
-                                                                        <select class="custom-select ">
-                                                                            <option selected>Bank Branch</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
-                                                                        </select>  --}}
-
+                                                                        <br>
                                                                     </div>
                                                                 </div>
-
-
 
                                                             </div>
                                                             <!-- end col -->
@@ -231,54 +184,23 @@
                                                         <div class="row">
                                                             <div class="col-12">
                                                                <label class="purple-color"> Beneficiary Personal Details</label><br><br>
-                                                                    {{--  <h2 class="mt-0">
-                                                                        <i class="mdi mdi-check-all"></i>
-                                                                    </h2>
 
-                                                                      --}}
-                                                                    {{--  <h3 class="mt-0">Thank you !</h3>
-                                                                      --}}
-{{--
-                                                                    <p class="w-75 mb-2 mx-auto">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis
-                                                                        dui. Aliquam mattis dictum aliquet.</p>
-                                                                          --}}
-{{--
-                                                                    <div class="mb-3">
-                                                                        <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" class="custom-control-input" id="customCheck4" required>
-                                                                            <label class="custom-control-label" for="customCheck4">I agree with the Terms and Conditions</label>
-                                                                        </div>
-                                                                    </div>
-                                                                      --}}
 
                                                                 <div class="form-group row mb-3">
                                                                     {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label class="form-group" for="confirm3">Beneficiary Name</label>
                                                                         <input type="text" id="beneficiary_name" name="beneficiary_name" class="form-control" placeholder="Beneficiary name" required>
+                                                                        <br>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label class="form-group" for="confirm3">Beneficiary Email</label>
                                                                         <input type="text" id="beneficiary_email" name="beneficiary_name" class="form-control" placeholder="Beneficiary email" required>
+                                                                        <br>
                                                                     </div>
-                                                                </div>
-{{--
-                                                                <div class="form-group row mb-3">
-                                                                    <label class="col-md-3 col-form-label" for="name3"> First name</label>
-                                                                    <div class="col-md-12">
-                                                                        <label class="form-group" for="confirm3">Middlename</label>
-                                                                        <input type="text" id="middlename" name="middlename" class="form-control" placeholder="Middlename" required>
-                                                                    </div>
-                                                                </div>  --}}
 
-
-                                                                <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
                                                                         <label class="form-group" for="confirm3">Nationality</label>
                                                                         <select class="custom-select" id="nationality" name="nationality" required>
@@ -287,14 +209,10 @@
                                                                             <option value="2">Two</option>
                                                                             <option value="3">Three</option>
                                                                         </select>
-
+                                                                        <br>
                                                                     </div>
-                                                                </div>
 
-
-                                                                <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
                                                                         <label class="form-group" for="confirm3">Country of Residence</label>
 
@@ -304,14 +222,10 @@
                                                                             <option value="2">Two</option>
                                                                             <option value="3">Three</option>
                                                                         </select>
-
+                                                                        <br><br>
                                                                     </div>
-                                                                </div>
 
-
-                                                                <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="surname3"> Last name</label>  --}}
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
                                                                         <label class="form-group" for="confirm3">City</label>
 
@@ -321,18 +235,15 @@
                                                                             <option value="2">Two</option>
                                                                             <option value="3">Three</option>
                                                                         </select>
-
+                                                                        <br>
                                                                     </div>
-                                                                </div>
 
-                                                                <div class="form-group row mb-3">
-                                                                    {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label class="form-group" for="confirm3">Address</label>
                                                                         <input type="text" id="address" name="address" class="form-control" placeholder="Address" required>
+                                                                        <br>
                                                                     </div>
                                                                 </div>
-
 
                                                             </div>
                                                             <!-- end col -->
@@ -345,6 +256,33 @@
                                                         </ul>
                                                     </form>
                                                 </div>
+
+                                                <div class="tab-pane " id="fourth">
+                                                    <form id="international_bank_summary" method="" action="#" class="form-horizontal"  autocomplete="off" aria-autocomplete="off">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                               <label class="purple-color"> Summary</label><br><br>
+                                                                <div "form-group row mb-3">
+                                                                    <div class="col-md-6">
+                                                                        <label> Bank Country</label><span class="font-weight-light mr-2" id="display_"> &nbsp</span>
+                                                                        <br>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <label> Bank Country</label><span class="font-weight-light mr-2" id="display_"> &nbsp</span>
+                                                                        <br>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                                <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="bank_add_beneficiary_btn">Add Beneficiary <i class="fe-arrow-right"></i></button>
+
+                                                            </div> <!-- end col -->
+                                                        </div> <!-- end row -->
+                                                    </form>
+                                                </div>
+
 
                                                 {{--  <ul class="list-inline wizard mb-0">
                                                     <li class="previous list-inline-item"><a href="javascript: void(0);" class="btn btn-color">Previous</a>
@@ -359,7 +297,6 @@
                                 </div> <!-- end card-->
                             </div> <!-- end col -->
 
-                            </form>
                         </div> <!-- end col -->
 
 
@@ -389,7 +326,7 @@
             $('#bank_details_next_btn').click(function(e){
                 e.preventDefault();
 
-                var bank_contry = $('#bank_country').val();
+                var bank_country = $('#bank_country').val();
                 var bank_city = $('#bank_city').val();
                 var bank_branch = $('#bank_branch').val();
                 var bank_name = $('#bank_name').val();
@@ -435,7 +372,7 @@
                 var lastname = $('#lastname').val();
                 var middlename = $('#middlename').val();
 
-                alert(acc_number);
+
                 $('#account_tab').removeClass('active show');
                 $('#beneficiary_tab').addClass('active show');
 
@@ -470,7 +407,7 @@
                 e.preventDefault();
 
 
-                var bank_contry = $('#bank_country').val();
+                var bank_country = $('#bank_country').val();
                 var bank_city = $('#bank_city').val();
                 var bank_branch = $('#bank_branch').val();
                 var bank_name = $('#bank_name').val();
@@ -491,23 +428,35 @@
                 var city = $('#city').val();
                 var address = $('#address').val();
 
-                console.log(bank_contry);
-                console.log(bank_city);
-                console.log(bank_branch);
-                console.log(bank_name);
-                console.log(bank_address);
-                console.log(swift_code);
-                console.log(acc_number);
-                console.log(currency);
-                console.log(firstname);
-                console.log(lastname);
-                console.log(middlename);
-                console.log(beneficiary_name);
-                console.log(beneficiary_email);
-                console.log(nationality);
-                console.log(residence);
-                console.log(city);
-                console.log(address);
+
+                $.ajax({
+                    'type' : 'POST' ,
+                    'url' : 'international-bank-beneficiary-api' ,
+                    "datatype" : "application/json",
+                    'data' : {
+                        'bank_country' : bank_country ,
+                        'bank_city' : bank_city ,
+                        'bank_branch' : bank_branch ,
+                        'bank_name' : bank_name ,
+                        'bank_address' : bank_address,
+                        'swift_code' : swift_code ,
+                        'acc_number' : acc_number ,
+                        'currency' : currency ,
+                        'firstname' : firstname ,
+                        'lastname' : lastname ,
+                        'middlename' : middlename ,
+                        'beneficiary_name' : beneficiary_name ,
+                        'beneficiary_email' : beneficiary_email ,
+                        'nationality' : nationality ,
+                        'residence' : residence ,
+                        'city' : city ,
+                        'address' : address ,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success:
+                })
 
             })
 
