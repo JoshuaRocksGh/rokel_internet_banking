@@ -37,14 +37,61 @@ class SameBankController extends Controller
 
         // return $req;
 
+        $data = [
+                    "accountDetails" => [
+                        "beneficiaryAccount" => $req->account_number,
+                        "beneficiaryAccountCurrency" => "string",
+                        "beneficiaryAcountName" => $req->account_name
+                    ],
+
+                    "addressDetails" => [
+                        "address1" => "string",
+                        "address2" => "string",
+                        "address3" => "string",
+                        "city" => "string",
+                        "countryOfResidence" => "string"
+                    ],
+
+                    "bankDetails" => [
+                        "bankAddress" => "string",
+                        "bankBranch" => "string",
+                        "bankCity" => "string",
+                        "bankCountry" => "string",
+                        "bankName" => "string",
+                        "bankSwiftCode" => "string"
+                    ],
+
+                    "beneID" => "string",
+
+                    "beneficiaryDetails" => [
+                        "email" => $req->beneficiary_email,
+                        "firstName" => "string",
+                        "lastName" => "string",
+                        "nationality" => "string",
+                        "nickname" => "string",
+                        "otherName" => "string",
+                        "sendMail" => $req->transfer_email
+                    ],
+
+                    "beneficiaryType" => "string",
+
+                    "securityDetails" => [
+                    "approvedBy" => "string",
+                    "approvedDateTime" => "2021-04-06",
+                    "createdBy" => "string",
+                    "createdDateTime" => "2021-04-06",
+                    "entrySource" => "string",
+                    "modifyBy" => "string",
+                    "modifyDateTime" => "2021-04-06"
+                    ],
+
+                    "transactionType" => "string",
+                    "userID" => "string"
+
+        ];
+
         try{
-            $response = Http::post('http://localhost/IIE/same-bank-beneficiary.php',[
-                'account_number' => 'required' ,
-                'account_name' => 'required',
-                'beneficiary_name' => 'required',
-                'beneficairy_email' => 'required',
-                'send_mail' => 'required',
-            ]);
+            $response = Http::post(env('API_BASE_URL') ."beneficiary/addTransferBeneficiary",$data);
 
             // return json_decode($response->body());
 

@@ -454,8 +454,9 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
         <script>
 
 
@@ -509,9 +510,6 @@
                 $(".select_onetime").css("display", "none");
                 $(".select_beneficiary").css("display", "block");
 
-               // $(".select_beneficiary").show();
-                //$(".select_onetime").hide();
-
                 var type = $("input[type='radio']:checked").val();
 
                 $(".radio").click(function(){
@@ -544,6 +542,25 @@
 
                 });
 
+                function toaster(message, icon )
+                {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
+
+                      Toast.fire({
+                        icon: icon,
+                        title: message
+                      })
+                };
 
 
                 // hide select accounts info
@@ -586,7 +603,8 @@
 
                         if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                             to_account.trim() != '') {
-                            alert('can not transfer to same account')
+                            toaster('can not transfer to same account','error')
+                            {{--  alert('can not transfer to same account')  --}}
                             $(this).val('')
                         }
 
@@ -626,7 +644,9 @@
 
                         if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                             to_account.trim() != '') {
-                            alert('can not transfer to same account')
+                            toaster('can not transfer to same account','error')
+
+                            {{--  alert('can not transfer to same account')  --}}
                             $(this).val('')
                         }
 
@@ -658,7 +678,9 @@
                         var to_account = $('#to_account').val()
 
                         if (from_account.trim() == '' || to_account.trim() == '') {
-                            alert('Please select source and destination accounts')
+                            toaster('Please select source and destination accounts','error')
+
+                            {{--  alert('Please select source and destination accounts')  --}}
                             $(this).val('')
                             return false;
                         } else {
@@ -677,7 +699,9 @@
                         var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
 
                         if (from_account.trim() == '' || onetime_beneficiary_alias_name.trim() == '' || onetime_beneficiary_account_number.trim() == '' || onetime_beneficiary_account_currency.trim() == '') {
-                            alert('Please select source and destination accounts')
+                            toaster('Please select source and destination accounts','error')
+
+                            {{--  alert('Please select source and destination accounts')  --}}
                             $(this).val('')
                             return false;
                         } else {
@@ -741,7 +765,10 @@
                     var schedule_payment_date = $('#schedule_payment_date').val();
 
                     if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
+                        toaster('Field must not be empty','error')
+
+                        {{--  alert('Field must not be empty')  --}}
+
                         return false
 
                     }
@@ -758,7 +785,9 @@
 
                     if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
                         $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
+                        toaster('Select schedule date for subsequent transfers','error')
+
+                        {{--  alert('Select schedule date for subsequent transfers')  --}}
                         return false;
                     }
 
@@ -772,7 +801,9 @@
 
 
                         if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                            alert('Field must not be empty')
+                            toaster('Field must not be empty','error')
+
+                            {{--  alert('Field must not be empty')  --}}
                             return false
                         }else{
                             //set purpose and category values
@@ -805,7 +836,9 @@
 
 
                         if (from_account.trim() == '' || onetime_beneficiary_account_number.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                            alert('Field must not be empty')
+                            toaster('Field must not be empty','error')
+
+                            {{--  alert('Field must not be empty')  --}}
                             return false
                         }else{
                             //set purpose and category values
@@ -821,7 +854,9 @@
 
 
                     }else{
-                        alert('CHOOSE EITHER BENEFICIARY OR ONTIME')
+                        toaster('CHOOSE EITHER BENEFICIARY OR ONTIME','error')
+
+                        {{--  alert('CHOOSE EITHER BENEFICIARY OR ONTIME')  --}}
                     }
 
 
@@ -850,6 +885,10 @@
                             var purpose = $('#purpose').val();
                             var schedule_payment_date = $('#schedule_payment_date').val();
 
+                            if(from_account_.trim() == '' || to_account_.trim() == '' || transfer_amount.trim() == '' || category_.trim() == '' || purpose.trim() == ''){
+                                toaster('Field must not be empty', 'error' )
+                                return false;
+                            }
 
                             {{--  console.log(form_account_);
                             console.log(to_account_);
@@ -861,7 +900,7 @@
                             // SEND TO API
                             $.ajax({
                                 'type' : 'POST' ,
-                                'url' : 'transfer-to-beneficiary' ,
+                                'url' : 'transfer-to-beneficiary-api' ,
                                 "datatype" : "application/json",
                                 'data' : {
                                     'from_account' : from_account_ ,

@@ -278,9 +278,9 @@
                      var beneficiary_email = $('#beneficiary_email').val();
                      var send_email = $("#transfer_email input[type='checkbox']:checked").val();
                     if(send_email){
-                        var transfer_email = ('Yes');
+                        var transfer_email = ('Y');
                     }else{
-                        var transfer_email = ('No');
+                        var transfer_email = ('N');
                     }
 
 
