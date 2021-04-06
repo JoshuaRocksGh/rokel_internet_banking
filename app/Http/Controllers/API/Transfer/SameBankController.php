@@ -131,35 +131,62 @@ class SameBankController extends Controller
             //'select_frequency' => 'required' ,
             'purpose' => 'required' ,
 
+
         ]);
+
+
+        // IF VALIDATOR FAILS STATEMENT SHOULD BE HERE
 
         // return $req;
 
+
         $base_response = new BaseResponse();
 
-        $from_account = $req->from_account_ ;
-        $to_account = $req->to_account_ ;
-        $transfer_amount = $req->transfer_amount ;
-        $category = $req->category_ ;
-        //'select_frequency' : select_frequency_ ,
-        $purpose = $req->purpose ;
-        //'schedule_payment_type' : schedule_payment_contraint_input ,
-        $schedule_payment_date = $req->schedule_payment_date;
+
+        $user_pin = $req->secPin;
+
+        // return $user_pin;
+        if($user_pin != '123456'){
+
+            return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
+
+        }
+
+        $user = (object) UserAuth::getDetails();
+        //return $user;
+
+        $authToken = $user->userToken;
+        $userID = $user->userId;
+
+
 
         $data = [
 
-            "amount"=> $req->transfer_amount,
-            "authToken"=> "string",
-            "creditAccount"=> $req->to_account_,
-            "debitAccount"=> $req->from_account_,
+            "amount"=> (float) $req->transfer_amount,
+            "authToken"=> $authToken,
+            "creditAccount" => $req->to_account,
+            "debitAccount"=> $req->from_account,
             "deviceIp"=> "string",
             "entrySource"=> "string",
-            "narration"=> "string",
-            "secPin"=> "string",
-            "userName"=> "string"
+            "narration"=> $req->purpose,
+            //security pin
+            "secPin"=> $user_pin,
+            "userName"=> "string",
+            "category" => $req->category ,
+
 
         ];
 
+
+        if(isset($req->select_frequency)){
+            $frequency = explode('~',$req->select_frequency);
+            // return $frequency;
+            $selected_frequency_code = $frequency[0];
+            $data['schedulePaymentDate'] = $req->schedule_payment_date;
+            $data['selectFrequency'] = $selected_frequency_code;
+        }
+
+        //return $data ;
         // if($schedule_paymen == "Y")
         // {
         //     $data['schedule_date'] = '03-23-20021';
@@ -168,16 +195,18 @@ class SameBankController extends Controller
 
         // $from_account = $req->from_account;
 
+
         try{
 
-            $response = Http::post('http://localhost/IIE/own-account.php',$data);
+            $response = Http::post(env('API_BASE_URL') ."transfers/sameBank",$data);
 
+            // return $response;
             // return json_decode($response->body();
 
             if($response->ok()){ // API response status code is 200
 
                 $result = json_decode($response->body());
-                return $result;
+                // return $result;
 
                 if($result->responseCode == '000'){
 
