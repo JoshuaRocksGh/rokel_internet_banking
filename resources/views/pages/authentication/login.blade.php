@@ -73,7 +73,10 @@
 
                         <div class="form-group mb-0 text-center">
                             <a href="{{ url('home') }}">
-                                <button class="btn btn-primary btn-block" type="submit" id="submit">Log In </button>
+                                <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="log_in" >Log In</span>
+                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                    <span id="spinner-text">Loading...</span>
+                                </button>
                             </a>
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
                         </div>
@@ -225,12 +228,21 @@
     $(document).ready(function(){
 
         $('#failed_login').hide(),
+        $('#spinner').hide(),
+        $('#spinner-text').hide(),
+
 
 
         $('#login_post_form').submit(function(e){
             e.preventDefault();
             var email = $("#user_id").val();
             var password = $('#password').val();
+            $('#spinner').show(),
+            $('#spinner-text').show(),
+
+            $('#log_in').hide(),
+            $('#submit').attr('disabled',true);
+
             //var show_error = $('#failed_login').show();
             $.ajax({
                 "type": "POST",
@@ -248,12 +260,16 @@
                 function(response){
                     console.log(response);
                     var res = response.data
+                    $('#submit').attr('disabled',false);
 
                     if(response.responseCode == "000"){
                         window.location = 'home';
 
                     }else {
+                        $('#spinner').hide();
+                        $('#spinner-text').hide(),
 
+                        $('#log_in').show(),
                         $('#failed_login').show();
 
                     }
