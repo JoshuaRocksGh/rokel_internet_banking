@@ -66,7 +66,10 @@
 
                         <div class="form-group mb-0 text-center">
                             <a href="{{ url('home') }}">
-                                <button class="btn btn-primary btn-block" type="submit" id="submit">Log In </button>
+                                <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="log_in" >Log In</span>
+                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                    <span id="spinner-text">Loading...</span>
+                                </button>
                             </a>
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
                         </div>
@@ -216,14 +219,23 @@
 
 <script>
     $(document).ready(function(){
+<<<<<<< HEAD
         $('#error').hide(),
         $('#error1').hide(),
+=======
+
+        $('#failed_login').hide(),
+        $('#spinner').hide(),
+        $('#spinner-text').hide(),
+
+>>>>>>> eb8a0bac48756f9c94a6570ea0bca9e4756393ae
 
 
         $('#login_post_form').submit(function(e){
             e.preventDefault();
             var email = $("#user_id").val();
             var password = $('#password').val();
+<<<<<<< HEAD
             {{--  alert('hello')
             return false;  --}}
 {{--
@@ -237,6 +249,15 @@
 
             {{--  console.log(email,password);  --}}
 
+=======
+            $('#spinner').show(),
+            $('#spinner-text').show(),
+
+            $('#log_in').hide(),
+            $('#submit').attr('disabled',true);
+
+            //var show_error = $('#failed_login').show();
+>>>>>>> eb8a0bac48756f9c94a6570ea0bca9e4756393ae
             $.ajax({
                 "type": "POST",
                 "url" : "login",
@@ -252,11 +273,24 @@
                 success:function(response){
                     console.log(response);
                     var res = response.data
+                    $('#submit').attr('disabled',false);
 
+<<<<<<< HEAD
                     if(response.responseCode == "00"){
                         window.location = 'home'
                     }else{
                         alert('Failed to login')
+=======
+                    if(response.responseCode == "000"){
+                        window.location = 'home';
+
+                    }else {
+                        $('#spinner').hide();
+                        $('#spinner-text').hide(),
+
+                        $('#log_in').show(),
+                        $('#failed_login').show();
+>>>>>>> eb8a0bac48756f9c94a6570ea0bca9e4756393ae
 
                     }
 
