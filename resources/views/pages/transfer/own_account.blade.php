@@ -69,8 +69,8 @@
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
 
-                                                {{--  <option value="Currenct Account~8888888888888~USD~800">
-                                                    Currenct Account ~ 8888888888888 ~ USD</option>  --}}
+                                                 <option value="Currenct Account~8888888888888~USD~800">
+                                                    Currenct Account ~ 8888888888888 ~ USD</option>
                                             </select>
 
 
@@ -199,11 +199,11 @@
 
 
                                 <div class="col-md-12">
-                                    <div class="border p-3 mt-4 mt-lg-0 rounded">
+                                    <div class="border card p-3 mt-4 mt-lg-0 rounded">
                                         <h4 class="header-title mb-3">Transfer Detail Summary</h4>
 
                                         <div class="table-responsive">
-                                            <table class="table mb-0">
+                                            <table class="table mb-0 table-bordered table-striped">
 
                                                 <tbody>
                                                     <tr>
@@ -462,7 +462,7 @@
                       })
 
                       Toast.fire({
-                        icon: 'info',
+                        icon: 'error',
                         title: 'Can not send to same account'
                       })
                 }
@@ -513,7 +513,8 @@
                         if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                             to_account.trim() != '') {
                             {{--  alert('can not transfer to same account')  --}}
-                            sweet_alert();
+
+                            toaster('Can not send to same account', 'error' )
                             $(this).val('')
                         }
 
@@ -644,13 +645,15 @@
                         {{--  console.log(schdule_pay);  --}}
                     if(from_account_[2] == to_account_[1]){
                         {{--  alert('You can not send to same account');  --}}
-                        sweet_alert();
+
+                        toaster('Can not send to same account', 'error' )
                         return false;
                     }
 
                     if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
                         $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
+                        toaster('Select schedule date for subsequent transfers', 'error' )
+                        {{-- alert('Select schedule date for subsequent transfers') --}}
                         return false;
                     }
 
@@ -659,7 +662,8 @@
 
 
                     if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
+                        {{-- alert('Field must not be empty') --}}
+                        toaster('Field must not be empty', 'error' )
                         return false
                     }else{
                         //set purpose and category values
@@ -678,15 +682,35 @@
                 });
 
 
-                function user_pin(){
+                {{-- function user_pin(){
                     let pin = 1234;
 
                     if ($('#user_pin').val() == pin){
-                        alert('correct pin');
+                        toaster('Field must not be empty', 'error' )
                     }else{
-                        alert('enter correct pin');
+                        toaster('Field must not be empty', 'error' )
                         return false;
                     }
+                } --}}
+
+                function toaster(message, icon )
+                {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
+
+                      Toast.fire({
+                        icon: icon,
+                        title: message
+                      })
                 }
 
 
@@ -696,7 +720,13 @@
                     e.preventDefault();
 
 
-                    user_pin();
+                    //user_pin();
+                    let pin = $('#user_pin').val();
+
+                    if ( pin != '1234'){
+                        toaster('Incorrect pin entered', 'error')
+                        return false;
+                    }
 
                     var from_account = $('#from_account').val().split('~');
                     var to_account = $('#to_account').val().split('~');
@@ -741,40 +771,12 @@
 
                             console.log(response.responseCode)
                             if(response.responseCode == "000"){
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                    timerProgressBar: false,
-                                    didOpen: (toast) => {
-                                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                    }
-                                  })
+                                toaster('Transfer Successful', 'success' )
 
-                                  Toast.fire({
-                                    icon: 'success',
-                                    title: 'Transfer Successful'
-                                  })
                             }else{
 
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 3000,
-                                    timerProgressBar: false,
-                                    didOpen: (toast) => {
-                                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                    }
-                                  })
+                                toaster('Transfer Failed', 'error' )
 
-                                  Toast.fire({
-                                    icon: 'error',
-                                    title: 'Transfer Failed'
-                                  })
                         }
                     }
 
