@@ -459,8 +459,6 @@
 
                 setTimeout(function(){
                     from_account();
-
-
                 },3000);
 
                 function sweet_alert(){

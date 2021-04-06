@@ -39,10 +39,10 @@
 
                         <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert" id="failed_login">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                {{--  <span aria-hidden="true">&times;</span>  --}}
                             </button>
                             <i class="mdi mdi-block-helper mr-2"></i>
-                            Failed to Login
+                            <span id="error_message"></span>
                         </div>
 
                         <div class="form-group">
@@ -266,11 +266,12 @@
                         window.location = 'home';
 
                     }else {
-                        $('#spinner').hide();
-                        $('#spinner-text').hide(),
+                        $('#spinner').hide()
+                        $('#spinner-text').hide()
 
-                        $('#log_in').show(),
-                        $('#failed_login').show();
+                        $('#log_in').show()
+                        $('#error_message').text(response.message)
+                        $('#failed_login').show()
 
                     }
                 }

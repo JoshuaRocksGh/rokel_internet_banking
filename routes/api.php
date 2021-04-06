@@ -29,9 +29,10 @@ Route::post('/login',[LoginController::class,'login_'])->name('login');
 Route::get('/own-account-api', [OwnAccountController::class, 'own_account_'])->name('own-account-api');
 Route::post('/own-account-api', [OwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
-Route::post('/add-beneficiary/same-bank-beneficiary', [TransferSameBankController::class, 'same_bank_benefiaciary_'])->name('same-bank-beneficiary');
+Route::post('/add-beneficiary/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_benefiaciary_'])->name('same-bank-beneficiary');
 Route::post('/add-beneficiary/local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('local-bank-beneficiary-api');
 
+// TRANSFER BENEFICIARY
 
 
 // Savings Account Creation

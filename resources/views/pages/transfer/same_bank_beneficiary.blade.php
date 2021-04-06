@@ -201,33 +201,6 @@
                     <!-- /.modal -->
 
 
-                    {{--  <!-- Center modal content -->
-                    <div class="modal fade " id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="myCenterModalLabel">Summary</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Account Number:&emsp;<span class="font-weight-semibold mr-2" id="display_account_number"> &nbsp</span></span></p>
-                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Account Name:&emsp;<span class="font-weight-semibold mr-2" id="display_account_name"> &nbsp</span></span></p>
-                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Beneficiary Name:&emsp;<span class="font-weight-semibold mr-2" id="display_beneficiary_name"> &nbsp</span></span></p>
-                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Beneficairy Email:&emsp;<span class="font-weight-semibold mr-2" id="display_beneficiary_email"> &nbsp</span></span></p>
-                                    <p class="mb-1"><span class="font-weight-light mr-2" style="font-size: 18px">Email Beneficiary:&emsp;<span class="font-weight-semibold mr-2" id="display_transfer_email"> &nbsp</span></span></p>
-                                </div>
-                                <div>
-                                    <button class="btn btn-secondary btn-rounded center_modal" type="button" id="save_beneficiary" style="align-items: center">Back</button>&emsp;
-                                    <button class="btn btn-primary btn-rounded center_modal" type="button" id="save_beneficiary" style="align-items: center">Submit</button>
-
-                                </div>
-                            </div><!-- /.modal-content -->
-
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-  --}}
-
 
                 </div> <!-- end col -->
 
@@ -279,43 +252,6 @@
                 }
 
 
-
-{{--
-                if(account_number.trim() == '' || account_number.trim() == undefined){
-                    $('#account_number_error').show();
-
-                }else{
-                $('#account_number_error').hide();
-                }
-
-                if(account_name.trim() == '' || account_name.trim() == undefined){
-                    $('#account_name_error').show();
-
-                }else{
-                $('#account_name_error').hide();
-                }
-
-                if(beneficiary_name.trim() == '' || beneficiary_name.trim() == undefined){
-                    $('#beneficiary_name_error').show();
-
-                }else{
-                $('#beneficiary_name_error').hide();
-                }
-
-                if(beneficiary_email.trim() == ''){
-                    $('#beneficiary_email_error').show();
-
-                }else{
-                    $('#beneficiary_email_error').hide();
-                }  --}}
-
-
-
-{{--
-                if(account_number.trim() == '' || account_number.trim() = 'undefined'){
-                    $('#error').show();
-                } --}}
-
                 if(account_number.trim() != '' && account_name.trim() != '' && beneficiary_name.trim() != '' && beneficiary_email.trim() != '' ){
                     $('#same_bank_beneficiary_form').hide();
                     $("#same_bank_beneficiary_form_summary" ).toggle( '500' );
@@ -346,17 +282,11 @@
                     }else{
                         var transfer_email = ('No');
                     }
-/*
-                    console.log(account_number);
-                    console.log(account_name);
-                    console.log(beneficiary_name);
-                    console.log(beneficiary_email);
-                    console.log(transfer_email); */
 
 
                 $.ajax({
                     "type" : "POST",
-                    "url" : "same-bank-beneficiary",
+                    "url" : "same-bank-beneficiary-api",
                     "datatype" : "application/json",
                     "data" : {
                         "account_number" : account_number ,
@@ -373,7 +303,7 @@
                     success:
                     function(response){
 
-                        {{--  console.log(response.responseCode)  --}}
+                        console.log(response.responseCode)
                         if(response.responseCode == "000"){
                             Swal.fire(
                                 'Beneficiary Successfully Added',
