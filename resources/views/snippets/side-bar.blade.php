@@ -89,6 +89,10 @@
                             </li>
 
                             <li>
+                                <a href="{{ url('multiple-transfers') }}">Multiple Transfers </a>
+                            </li>
+
+                            <li>
                                 <a href="{{ url('other-local-bank') }}">Other Local Bank</a>
                             </li>
                             <li>

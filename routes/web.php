@@ -38,6 +38,7 @@ use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\TradeFinance\TradeFinanceController;
 use App\Http\Controllers\transferController;
 use App\Http\Controllers\Transfers\LocalBankController;
+use App\Http\Controllers\Transfers\MultipleTransfersController;
 use App\Http\Controllers\Transfers\OwnAccountController;
 use App\Http\Controllers\Transfers\SameBankController;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +100,10 @@ Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submi
 
 // SAME ACCOUNT
 Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
+
+
+// MULTIPLE TRANSFERS
+Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])->name('multiple-transfers');
 
 
 // LOCAL BANK
@@ -313,7 +318,7 @@ Route::get('/send-email',[MaileController::class,'send_email'])->name('send-emai
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
 
 // Transfers
-Route::post('/transfer-to-beneficiary-api', [APITransferSameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary-api');
+Route::post('/transfer-to-beneficiary', [APITransferSameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary');
 Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
 

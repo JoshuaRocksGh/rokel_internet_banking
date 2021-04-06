@@ -119,8 +119,6 @@ class SameBankController extends Controller
         }
     }
 
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>> SELECT BENEFICIARY API <<<<<<<<<<<<<<<<<<<<<<<< */
-
     public function transfer_to_beneficiary(Request $req)
     {
         $validate = Validator::make($req->all(),[
@@ -148,10 +146,10 @@ class SameBankController extends Controller
 
         $data = [
 
-            "amount"=> $req->transfer_amount,
+            "amount"=> $transfer_amount,
             "authToken"=> "string",
-            "creditAccount"=> $req->to_account_,
-            "debitAccount"=> $req->from_account_,
+            "creditAccount"=> "string",
+            "debitAccount"=> "string",
             "deviceIp"=> "string",
             "entrySource"=> "string",
             "narration"=> "string",
