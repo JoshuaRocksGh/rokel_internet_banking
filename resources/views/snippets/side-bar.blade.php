@@ -142,9 +142,9 @@
                             <li>
                                 <a href="{{ url('korpone-loane-payment') }}">Korpor / Salone Link</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('pay-again') }}">Pay Again</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
                             </li>
@@ -230,7 +230,7 @@
                                 <a href="{{ url('remove-signature') }}">Remove a signature </a>
                             </li>
                             <li>
-                                <a href="{{ url('request-for-letter') }}">Request a statement </a>
+                                <a href="{{ url('request-statement') }}">Request a statement </a>
                             </li>
                             <li>
                                 <a href="{{ url('fd-creation') }}">FD Creation</a>
