@@ -425,12 +425,13 @@
             function from_account(){
                 $.ajax({
                     'type': 'GET',
-                    'url' : 'own-account-api',
+                    'url' : 'get-my-account',
                     "datatype" : "application/json",
                     success:function(response){
-                        //console.log(response.data);
+                        console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
+
                         $('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
                         $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
@@ -440,20 +441,6 @@
                 })
             }
 
-            {{--  function to_account(){
-                $.ajax({
-                    'type' : 'GET',
-                    'url' : 'own-account-api',
-                    "datatype" : "application/json",
-                    success:function(response){
-
-                        let data = response.data
-                        $.each(data, function(index) {
-                            $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency+'~'+data[index].amount}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].currency));
-                            });
-                    }
-                })
-            }  --}}
 
             $(document).ready(function() {
 
