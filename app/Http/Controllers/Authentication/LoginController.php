@@ -85,6 +85,7 @@ class LoginController extends Controller
 
                     // SET USER SESSION
                     $user = (Object) UserAuth::getDetails();
+                    // $tokn  = $user->userToken
 
                     session(['user' => [
                         "userId" => $user_detail->userId,
