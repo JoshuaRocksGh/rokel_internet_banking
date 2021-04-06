@@ -37,12 +37,19 @@
                     <form action="POST" id="login_post_form" autocomplete="off" aria-autocomplete="off">
                         @csrf
 
+                        <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert" id="failed_login">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <i class="mdi mdi-block-helper mr-2"></i>
+                            Failed to Login
+                        </div>
 
                         <div class="form-group">
 
                             <label for="user_id">User ID<span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="user_id" required placeholder="Enter your email" parsley-trigger="change" required>
-                            <span class="text-danger" id="error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+
                         </div>
 
 
@@ -59,7 +66,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <span class="text-danger" id="error1"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+
 
                         </div>
 
@@ -219,37 +226,17 @@
 
 <script>
     $(document).ready(function(){
-<<<<<<< HEAD
-        $('#error').hide(),
-        $('#error1').hide(),
-=======
 
         $('#failed_login').hide(),
         $('#spinner').hide(),
         $('#spinner-text').hide(),
 
->>>>>>> eb8a0bac48756f9c94a6570ea0bca9e4756393ae
 
 
         $('#login_post_form').submit(function(e){
             e.preventDefault();
             var email = $("#user_id").val();
             var password = $('#password').val();
-<<<<<<< HEAD
-            {{--  alert('hello')
-            return false;  --}}
-{{--
-            if($.trim($('#user_id').val()) == ''){
-                $('#error').show()  --}}
-
-
-            {{--  }else if ($.trim($('#password').val()) == ''){
-                $('#error1').show()
-            }  --}}
-
-            {{--  console.log(email,password);  --}}
-
-=======
             $('#spinner').show(),
             $('#spinner-text').show(),
 
@@ -257,7 +244,6 @@
             $('#submit').attr('disabled',true);
 
             //var show_error = $('#failed_login').show();
->>>>>>> eb8a0bac48756f9c94a6570ea0bca9e4756393ae
             $.ajax({
                 "type": "POST",
                 "url" : "login",
@@ -270,17 +256,12 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
 
-                success:function(response){
+                success:
+                function(response){
                     console.log(response);
                     var res = response.data
                     $('#submit').attr('disabled',false);
 
-<<<<<<< HEAD
-                    if(response.responseCode == "00"){
-                        window.location = 'home'
-                    }else{
-                        alert('Failed to login')
-=======
                     if(response.responseCode == "000"){
                         window.location = 'home';
 
@@ -290,10 +271,8 @@
 
                         $('#log_in').show(),
                         $('#failed_login').show();
->>>>>>> eb8a0bac48756f9c94a6570ea0bca9e4756393ae
 
                     }
-
                 }
             })
         })
