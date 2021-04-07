@@ -318,7 +318,8 @@ Route::get('/send-email',[MaileController::class,'send_email'])->name('send-emai
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
 
 // Transfers
-Route::post('/transfer-to-beneficiary', [APITransferSameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary');
+Route::post('/transfer-to-beneficiary-api', [APITransferSameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary-api');
+Route::post('/transfer-to-beneficiary-api', [APITransferSameBankController::class, 'one_time_beneficiary'])->name('transfer-to-beneficiary-api');
 Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
 

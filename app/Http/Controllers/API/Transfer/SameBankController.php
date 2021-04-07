@@ -255,4 +255,144 @@ class SameBankController extends Controller
         }
 
     }
+
+
+
+    public function one_time_beneficiary(Request $req)
+    {
+        $validator = Validator::make($req->all(),[
+            'from_account' => 'required' ,
+            'alias_name' => 'required' ,
+            'beneficiary_account_number' => 'required' ,
+            'beneficiary_account_currency' => 'required' ,
+            'beneficiary_email' => 'required' ,
+            'amount' => 'required' ,
+            'category' => 'required',
+            'purpose' => 'required' ,
+            //'select_frequency' => 'required' ,
+            //'naration' => 'required' ,
+
+        ]);
+
+
+
+        $base_response = new BaseResponse();
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+
+        };
+
+        //return $req;
+
+        $user_pin = $req->secPin;
+
+        // return $user_pin;
+        if($user_pin != '123456'){
+
+            return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
+
+        }
+
+        $user = (object) UserAuth::getDetails();
+        //return $user;
+
+        $authToken = $user->userToken;
+        $userID = $user->userId;
+
+
+
+        $data = [
+
+            "amount"=> (float) $req->amount,
+            "authToken"=> $authToken,
+            "creditAccount" => $req->beneficiary_account_number,
+            "debitAccount"=> $req->from_account,
+            "deviceIp"=> "string",
+            "entrySource"=> "string",
+            "narration"=> $req->purpose,
+            //security pin
+            "secPin"=> $user_pin,
+            "userName"=> "string",
+            "category" => $req->category ,
+            "aliasName" => $req->alias_name,
+            'beneficiaryCurrency' => $req->beneficiary_account_currency ,
+            'beneficiaryEmail' => $req->beneficiary_email ,
+        ];
+
+
+        if(isset($req->select_frequency)){
+            $frequency = explode('~',$req->select_frequency);
+            // return $frequency;
+            $selected_frequency_code = $frequency[0];
+            $data['schedulePaymentDate'] = $req->schedule_payment_date;
+            $data['selectFrequency'] = $selected_frequency_code;
+        }
+
+        //return $data ;
+        // if($schedule_paymen == "Y")
+        // {
+        //     $data['schedule_date'] = '03-23-20021';
+        // }
+
+
+        // $from_account = $req->from_account;
+
+
+        try{
+
+            $response = Http::post(env('API_BASE_URL') ."transfers/sameBank",$data);
+
+            // return $response;
+            // return json_decode($response->body();
+
+            if($response->ok()){ // API response status code is 200
+
+                $result = json_decode($response->body());
+                // return $result;
+
+                if($result->responseCode == '000'){
+
+                    // $result_data = $result->data;
+                    // return $result_data;
+
+                    return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+
+
+                } else {  // API responseCode is not 000
+
+                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+                }
+
+            } else { // API response status code not 200
+
+                DB::table('error_logs')->insert([
+                    'platform' => 'ONLINE_INTERNET_BANKING',
+                    'user_id' => 'AUTH',
+                    'code' => $response->status(),
+                    'message' => $response->body()
+                ]);
+
+                return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+            }
+
+
+        }catch(\Exception $e){
+
+            DB::table('error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+
+
+        }
+    }
 }

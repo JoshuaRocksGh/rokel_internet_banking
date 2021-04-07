@@ -113,7 +113,7 @@
 
                                         </div>
 
-                                        <div class="select_onetime">
+                                    <div class="select_onetime">
 <hr>
                                             <div class="form-group">
                                                 <label class="">Beneficiary Name</label>
@@ -546,7 +546,7 @@
                         icon: icon,
                         title: message
                       })
-                }
+                };
 
                 $(".select_onetime").css("display", "none");
                 $(".select_beneficiary").css("display", "block");
@@ -741,7 +741,7 @@
 
 
 
-                })
+                });
 
 
                 function formatToCurrency(amount) {
@@ -776,12 +776,11 @@
 
 
 
-
-
                 // NEXT BUTTON CLICK
                 $("#next_button").click(function() {
 
                     var type = $("input[type='radio']:checked").val();
+                    console.log(type);
 
                     var from_account = $('#from_account').val()
                     var transfer_amount = $('#amount').val()
@@ -860,6 +859,10 @@
 
                         // END OF ONETIME BENEFICIARY DETAILS
 
+                        ///////////////////////////////
+
+                        //////////////////////////////
+
 
                         if (from_account.trim() == '' || onetime_beneficiary_account_number.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
                             toaster('Field must not be empty','error')
@@ -885,6 +888,9 @@
                         {{--  alert('CHOOSE EITHER BENEFICIARY OR ONTIME')  --}}
                     }
 
+                });
+
+                    // POST TO API
 
                     $('#confirm_button').click(function(e){
                         e.preventDefault();
@@ -982,22 +988,22 @@
                             })
 
 
-                        }else if (type == 'onetime'){
+                        }else {
 
-                            $('#next_button').click(function(e){
+                                {{--  alert('onetime');  --}}
 
-                                e.preventDefault();
                                 var from_account = $('#from_account').val().split('~');
                                 var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
                                 var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
                                 var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
-                                var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
+                                var purpose = $('#purpose').val()
                                 var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
                                 var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
                                 var transfer_amount = $('#amount').val();
                                 var select_frequency = $('#select_frequency').val()
                                 var schedule_payment_date = $('#schedule_payment_date').val();
-
+                                var category = $('#category').val();
+                                var user_pin = $('#user_pin').val();
 
                                 var from_account_ = from_account[2];
 
@@ -1005,89 +1011,73 @@
                                 console.log(onetime_beneficiary_alias_name);
                                 console.log(onetime_beneficiary_account_number);
                                 console.log(onetime_beneficiary_account_currency);
-                                console.log(onetime_beneficiary_name);
+                                console.log(purpose);
                                 console.log(onetime_beneficiary_email);
                                 console.log(onetime_beneficiary_phone);
                                 console.log(transfer_amount);
                                 console.log(select_frequency);
                                 console.log(schedule_payment_date);
+                                console.log(category);
 
-                            })
+                                $()
+
+                                // Summary of Transcation
+
+
+                                $.ajax({
+                                    'type' : 'POST' ,
+                                    'url' : 'transfer-to-beneficiary-api',
+                                    "datatype" : "application/json",
+                                    'data' : {
+                                        'from_account' : from_account_ ,
+                                        'alias_name' :  onetime_beneficiary_alias_name ,
+                                        'beneficiary_account_number' : onetime_beneficiary_account_number ,
+                                        'beneficiary_account_currency' : onetime_beneficiary_account_currency ,
+                                        'purpose' : purpose ,
+                                        'beneficiary_email' : onetime_beneficiary_email ,
+                                        'beneficiary_phone' : onetime_beneficiary_phone ,
+                                        'amount' : transfer_amount ,
+                                        'frequency' : select_frequency ,
+                                        'schedule_payment_date' : schedule_payment_date,
+                                        'category' : category,
+                                        'secPin' : user_pin
+                                    },headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success:
+                                    function(response){
+                                        {{--  console.log(response);  --}}
+
+                                        if(response.responseCode == '000'){
+                                            toaster(response.message,'success')
+                                            $('#confirm_button').hide();
+                                            $('#back_button').hide();
+                                            $('#print_receipt').show();
+
+
+                                        }else {
+                                            toaster(response.message,'error')
+
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#print_receipt').hide();
+
+
+                                            $('#confirm_transfer').show();
+                                            $('#confirm_button').attr('disabled',false);
+
+
+                                        }
+                                    }
+                                })
+
+
 
                         }
 
-                        {{--  $.ajax({
-                            'type'  --}}
-                        })
+
 
                     })
-
-
-                    /*
-
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-
-                    var purpose = $('#purpose').val()
-
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
-
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
-
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
-                        return false
-                    }else{
-                        //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
-
-                    */
-
-
-                    /**
-                    $.ajax({
-                        type: "POST"
-                        url: "submit-own-account-transfer"
-                        data: {
-                            "send_from": send_from,
-                            "send_to": send_to,
-                            "cashier_id": cashier_id,
-                            "text_area": text_area,
-                            "amount": amount,
-                            "cashier_id": cashier_id
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                        success: function() {
-                            Swal.fire(
-                                'Post Successful',
-                                ' ',
-                                'success'
-                            )
-                        }
-                    })
-
-
-                     */
-                });
 
 
             });
