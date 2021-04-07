@@ -920,7 +920,7 @@
 
                             var pin = $('#user_pin').val();
 
-                            console.log(pin);
+                            {{--  console.log(pin);  --}}
 
                             if(from_account_.trim() == '' || to_account_.trim() == '' || transfer_amount.trim() == '' || category_.trim() == '' || purpose.trim() == ''){
                                 toaster('Field must not be empty', 'error' )

@@ -121,7 +121,7 @@ class SameBankController extends Controller
 
     public function transfer_to_beneficiary(Request $req)
     {
-        $validate = Validator::make($req->all(),[
+        $validator = Validator::make($req->all(),[
             'from_account' => 'required' ,
             'to_account' => 'required' ,
             'transfer_amount' => 'required' ,
@@ -133,12 +133,18 @@ class SameBankController extends Controller
         ]);
 
 
-        // IF VALIDATOR FAILS STATEMENT SHOULD BE HERE
+        $base_response = new BaseResponse();
 
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+
+        };
         // return $req;
 
 
-        $base_response = new BaseResponse();
+
 
 
         $user_pin = $req->secPin;

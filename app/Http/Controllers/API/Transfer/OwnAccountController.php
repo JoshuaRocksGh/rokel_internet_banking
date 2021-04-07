@@ -70,10 +70,10 @@ class OwnAccountController extends Controller
             'to_account' => 'required' ,
             'transfer_amount' => 'required' ,
             'category' => 'required' ,
-            'select_frequency' => 'required' ,
+            // 'select_frequency' => 'required' ,
             'purpose' => 'required' ,
-            'schedule_payment_type' => 'required' ,
-            'schedule_payment_date' => 'required',
+            // 'schedule_payment_type' => 'required' ,
+            // 'schedule_payment_date' => 'required',
 
         ]);
             // return $req ;
@@ -86,30 +86,76 @@ class OwnAccountController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
 
-        }else
+        };
         // return $req;
 
+        $user_pin = $req->secPin;
+
+        // return $user_pin;
+        if($user_pin != '123456'){
+
+            return $base_response->api_response('099', 'Incorrect Pin',  null); // return API BASERESPONSE
+
+        }
+
+        $user = (object) UserAuth::getDetails();
+        //return $user;
+
+        $authToken = $user->userToken;
+        $userID = $user->userId;
+
+
         $from_account = $req->from_account;
+        // 'from_account' : from_account_ ,
+        // 'to_account' : to_account_ ,
+        // 'transfer_amount' : transfer_amount ,
+        // 'category' : category_ ,
+        // 'select_frequency' : select_frequency_ ,
+        // 'purpose' : purpose ,
+        // 'schedule_payment_type' : schedule_payment_contraint_input ,
+        // 'schedule_payment_date' : schedule_payment_date,
+        // 'secPin' : pin
+
+
+        $data = [
+
+                "amount" => $req->transfer_amount,
+                "authToken" => $authToken ,
+                "creditAccount" => $req->to_account,
+                "currency" => "string",
+                "debitAccount" => $req->from_account,
+                "deviceIp" => "string",
+                "entrySource" => "string",
+                "narration" => $req->purpose,
+                "secPin" => $user_pin,
+                "userName" => "string" ,
+                "category" => $req->category ,
+
+
+            ];
+
+
+        if(isset($req->select_frequency)){
+            $frequency = $req->select_frequency;
+            // return $frequency;
+            $selected_frequency_code = $frequency ;
+            $data['schedulePaymentDate'] = $req->schedule_payment_date;
+            $data['selectFrequency'] = $selected_frequency_code;
+        }
+
+        // return $data ;
 
         try{
 
-            $response = Http::post('http://localhost/IIE/own-account.php', [
-                'from_account' => $from_account ,
-                'to_account' => 'required' ,
-                'transfer_amount' => 'required' ,
-                'category' => 'required' ,
-                'select_frequency' => 'required' ,
-                'purpose' => 'required' ,
-                'schedule_payment_type' => 'required' ,
-                'schedule_payment_date' => 'required',
-            ]);
+            $response = Http::post(env('API_BASE_URL') ."transfers/sameBank",$data);
+
 
             // return json_decode($response->body();
 
             if($response->ok()){ // API response status code is 200
 
                 $result = json_decode($response->body());
-                return $result;
+                // return $result;
 
                 if($result->responseCode == '000'){
 
