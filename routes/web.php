@@ -99,7 +99,7 @@ Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_accou
 Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submit_own_account_transfer'])->name('submit-own-account-transfer');
 
 // SAME ACCOUNT
-Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
+// Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
 
 
 // MULTIPLE TRANSFERS
@@ -304,7 +304,7 @@ Route::get('Instagram-Chatbot',[InstagramChatbotController::class,'instagram_cha
 Route::middleware(['userAuth'])->group(function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
     // Logout controller
 
 

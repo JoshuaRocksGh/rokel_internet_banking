@@ -128,8 +128,8 @@ class SameBankController extends Controller
             'category' => 'required' ,
             //'select_frequency' => 'required' ,
             'purpose' => 'required' ,
-
-
+            'alias_name' => 'required' ,
+            'type' => 'required'
         ]);
 
 
@@ -177,9 +177,13 @@ class SameBankController extends Controller
             "secPin"=> $user_pin,
             "userName"=> "string",
             "category" => $req->category ,
-
+            "posted_by" => $userID
 
         ];
+
+        if ($req->type == 'onetime'){
+            $data['alias_name'] = $req->alias_name;
+        }
 
 
         if(isset($req->select_frequency)){
