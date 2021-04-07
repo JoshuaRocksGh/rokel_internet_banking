@@ -24,7 +24,7 @@
                         </button>
                     </span>
                     <span class="logo-lg">
-                        <img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT') )}} " alt="" height="20">
+                        <img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT') )}} " alt="" height="40">
                    </span>
                 </a>
             </div>
