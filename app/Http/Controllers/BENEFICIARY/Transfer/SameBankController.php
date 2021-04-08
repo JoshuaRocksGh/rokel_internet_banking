@@ -20,6 +20,8 @@ class SameBankController extends Controller
             'account_name' => 'required' ,
             'beneficiary_name' => 'required',
             'beneficiary_email' => 'required',
+            'beneficiary_address' => 'required',
+            'number' => 'required'
             //'send_mail' => 'required',
 
         ]);
@@ -54,7 +56,7 @@ class SameBankController extends Controller
                     ],
 
                     "addressDetails" => [
-                        "address1" => "string",
+                        "address1" => $req->beneficiary_address,
                         "address2" => "string",
                         "address3" => "string",
                         "city" => "string",
@@ -77,7 +79,7 @@ class SameBankController extends Controller
                         "firstName" => "string",
                         "lastName" => "string",
                         "nationality" => "string",
-                        "nickname" => "string",
+                        "nickname" => $req->beneficiary_name,
                         "otherName" => "string",
                         "sendMail" => $req->transfer_email
                     ],
@@ -95,7 +97,8 @@ class SameBankController extends Controller
                     ],
 
                     "transactionType" => "string",
-                    "userID" => $userID
+                    "userID" => $userID ,
+                    "telephone" => $req->number
 
         ];
 
