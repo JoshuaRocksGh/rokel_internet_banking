@@ -23,10 +23,10 @@
 
 
                                 <div class="col-md-7">
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
+                                    <form action="{{ route('bulkupload.import') }}" method="POST" id="payment_details_form" autocomplete="off" aria-autocomplete="none" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="h6">Select Account</label>
+                                            <label class="h6">Select Account:</label>
 
 
                                             <select class="custom-select " id="from_account" required>
@@ -62,25 +62,26 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Reference no"/>
+                                            <label>Reference No:</label>
+                                            <input type="text" class="form-control" placeholder="Reference no" name="#"/>
                                         </div>
 
 
                                         <div class="form-group">
                                             <label>Total Amount</label>
-                                            <input type="text" class="form-control" placeholder="Amount"/>
+                                            <input type="text" class="form-control" placeholder="Amount" name="#"/>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Value Date</label>
-                                            <input type="Date" class="form-control" placeholder="Amount"/>
+                                            <input type="Date" class="form-control" name="#"/>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Upload File</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile04">
+                                                    <input type="file" class="custom-file-input" id="inputGroupFile04" name="file">
                                                     <label class="custom-file-label" for="inputGroupFile04">choose an excel file</label>
                                                 </div>
                                             </div>
@@ -104,7 +105,7 @@
 
 
                                         <div class="form-group text-right">
-                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                            <button class="btn btn-primary btn-rounded" type="submit" id="next_button">
                                                 &nbsp; Next &nbsp;</button>
                                         </div>
 
@@ -128,7 +129,7 @@
 
                             </div>
 
-                            <div class="row" id="transaction_summary">
+                            {{-- <div class="row" id="transaction_summary">
 
 
                                 <div class="col-md-12">
@@ -285,7 +286,7 @@
 
 
 
-                            </div>
+                            </div> --}}
 
 
 
@@ -689,73 +690,6 @@
                         alert('CHOOSE EITHER BENEFICIARY OR ONTIME')
                     }
 
-
-
-
-                    /*
-
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-
-                    var purpose = $('#purpose').val()
-
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
-
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
-
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
-                        return false
-                    }else{
-                        //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
-
-                    */
-
-
-                    /**
-                    $.ajax({
-                        type: "POST"
-                        url: "submit-own-account-transfer"
-                        data: {
-                            "send_from": send_from,
-                            "send_to": send_to,
-                            "cashier_id": cashier_id,
-                            "text_area": text_area,
-                            "amount": amount,
-                            "cashier_id": cashier_id
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                        success: function() {
-                            Swal.fire(
-                                'Post Successful',
-                                ' ',
-                                'success'
-                            )
-                        }
-                    })
-
-
-                     */
                 });
 
 

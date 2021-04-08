@@ -267,6 +267,15 @@
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
+
+                    {{-- <div class="col-md-4">
+                        <div class="avatar-md">
+                            <span class="avatar-title bg-soft-info text-info font-15 rounded-circle">
+                                GD<i class="mdi mdi-chevron-down"></i>
+                            </span>
+                        </div>
+
+                    </div> --}}
                     <span class="pro-user-name ml-1">
                         Geneva <i class="mdi mdi-chevron-down"></i>
                     </span>
