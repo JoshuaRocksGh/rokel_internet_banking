@@ -121,7 +121,10 @@
                                         </p> --}}
 
                                         <button type="submit" class="btn btn-secondary btn-rounded waves-effect waves-light"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
-                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="save_beneficiary_summary" >Save Beneficiary</button>
+                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="save_beneficiary_summary_btn" ><span id="confirm_save_beneficiary_text">Save Beneficiary</span>
+                                            {{-- <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                            <span id="spinner-text">Loading...</span> --}}
+                                        </button>
 
                                     </div>
 
@@ -131,7 +134,7 @@
 
 
 
-                                <div class="col-md-5 text-center" style="margin-top: 80px;">
+                                <div class="col-md-5 text-center d-none d-md-block" style="margin-top: 80px;">
 
                                     <img src="{{ asset('assets/images/send.png') }}" class="img-fluid" alt="" >
                                 </div> <!-- end col -->
@@ -221,6 +224,29 @@
                 $('#account_name_error').hide();
                 $('#beneficiary_name_error').hide();
                 $('#beneficiary_email_error').hide();
+                {{-- $('#spinner').hide(),
+                $('#spinner-text').hide(), --}}
+
+
+                function toaster(message, icon )
+                {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
+
+                      Toast.fire({
+                        icon: icon,
+                        title: message
+                      })
+                };
 
                 $('#same_bank_beneficiary_form').submit(function(e){
                 e.preventDefault();
@@ -270,7 +296,7 @@
                 })
 
 
-                $('#save_beneficiary_summary').click(function(e){
+                $('#same_bank_beneficiary_form_summary').submit(function(e){
                     e.preventDefault();
                      var account_number = $('#account_number').val();
                      var account_name = $('#account_name').val();
@@ -283,6 +309,10 @@
                         var transfer_email = ('N');
                     }
 
+                    {{-- $('#spinner').show();
+                    $('#spinner-text').show();
+                    $('#confirm_save_beneficiary_text').hide();
+                    $('#save_beneficiary_summary_btn').attr('disabled',true); --}}
 
                 $.ajax({
                     "type" : "POST",
@@ -292,7 +322,7 @@
                         "account_number" : account_number ,
                         "account_name" : account_name ,
                         "beneficiary_name" : beneficiary_name,
-                        "beneficairy_email" : beneficiary_email,
+                        "beneficiary_email" : beneficiary_email,
                         "send_mail" : transfer_email,
 
                     },
@@ -305,17 +335,19 @@
 
                         console.log(response.responseCode)
                         if(response.responseCode == "000"){
-                            Swal.fire(
-                                'Beneficiary Successfully Added',
-                                '',
-                                'success'
-                              )
+                            toaster(response.message, 'success' );
+                            {{-- $('#spinner').hide();
+                            $('#spinner-text').hide();
+
+                            $('#confirm_save_beneficiary_text').show();
+                            $('#save_beneficiary_summary_btn').attr('disabled',false); --}}
+
                         }else{
-                            Swal.fire(
-                                'Failed to Add Beneficiary',
-                                '',
-                                'error'
-                              )
+                            toaster(response.message, 'error' );
+                            {{-- $('#spinner').hide();
+                            $('#spinner-text').hide();
+                            $('#confirm_save_beneficiary_text').show();
+                            $('#save_beneficiary_summary_btn').attr('disabled',false); --}}
                     }
                 }
 

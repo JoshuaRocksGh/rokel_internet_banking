@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BENEFICIARY\Transfer;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,17 +14,17 @@ class SameBankController extends Controller
 {
     //
 
-    public function same_bank_benefiaciary_(Request $req){
+    public function same_bank_beneficiary_(Request $req){
         $validator = Validator::make($req->all(),[
             'account_number' => 'required' ,
             'account_name' => 'required' ,
             'beneficiary_name' => 'required',
-            'beneficairy_email' => 'required',
-            'send_mail' => 'required',
+            'beneficiary_email' => 'required',
+            //'send_mail' => 'required',
 
         ]);
 
-        // return $req;
+        //return $req;
 
         $base_response = new BaseResponse();
 
@@ -37,10 +38,18 @@ class SameBankController extends Controller
 
         // return $req;
 
+
+        $user = (object) UserAuth::getDetails();
+        //return $user;
+
+        $authToken = $user->userToken;
+        $userID = $user->userId;
+
+
         $data = [
                     "accountDetails" => [
                         "beneficiaryAccount" => $req->account_number,
-                        "beneficiaryAccountCurrency" => "string",
+                        "beneficiaryAccountCurrency" => null,
                         "beneficiaryAcountName" => $req->account_name
                     ],
 
@@ -77,18 +86,20 @@ class SameBankController extends Controller
 
                     "securityDetails" => [
                     "approvedBy" => "string",
-                    "approvedDateTime" => "2021-04-06",
+                    "approvedDateTime" => date('Y-m-d'),
                     "createdBy" => "string",
-                    "createdDateTime" => "2021-04-06",
+                    "createdDateTime" =>  date('Y-m-d'),
                     "entrySource" => "string",
                     "modifyBy" => "string",
-                    "modifyDateTime" => "2021-04-06"
+                    "modifyDateTime" =>  date('Y-m-d')
                     ],
 
                     "transactionType" => "string",
-                    "userID" => "string"
+                    "userID" => $userID
 
         ];
+
+        //return $data;
 
         try{
             $response = Http::post(env('API_BASE_URL') ."beneficiary/addTransferBeneficiary",$data);

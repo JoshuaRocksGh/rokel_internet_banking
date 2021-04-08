@@ -86,7 +86,6 @@ Route::get('/add-beneficiary/own-account-beneficiary', [transferController::clas
 Route::get('/add-beneficiary/same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('same-bank-beneficiary');
 
 Route::get('/add-beneficiary/local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
-Route::post('/add-beneficiary/local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('local-bank-beneficiary-api');
 Route::get('/add-beneficiary/international-bank-beneficiary', [transferController::class, 'international_bank'])->name('international-bank-beneficiary');
 
 
@@ -325,7 +324,8 @@ Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 
 
 
 // Transfers Beneficiary
-Route::post('/add-beneficiary/same-bank-beneficiary', [TransferSameBankController::class, 'same_bank_benefiaciary_'])->name('same-bank-beneficiary');
+Route::post('/add-beneficiary/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_beneficiary_'])->name('same-bank-beneficiary-api');
+Route::post('/add-beneficiary/local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('local-bank-beneficiary-api');
 
 
 Route::post('/add-beneficiary/international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
