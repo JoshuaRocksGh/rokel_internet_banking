@@ -1,6 +1,17 @@
 @extends('layouts.master')
 
 @section('styles')
+
+<!-- third party css -->
+<link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+    type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
+    rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+    type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
+    type="text/css" />
+<!-- third party css end -->
     <style>
 
     </style>
@@ -163,46 +174,103 @@
         <div class=" container-fluid">
             <div class="">
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-12" style="zoom:0.8;">
                         <div id="accordion" class="mb-3">
                             <div class="card mb-1">
+                                <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                                 <div class="card-header" id="headingOne">
                                     <h5 class="m-0">
-                                        <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
+
                                             <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                          <span class="text-primary">  I HAVE</span>
-                                        </a>
+                                          <span class="text-primary"> <b>  I HAVE  ( Currenct & Savings) </b></span>
+
                                     </h5>
                                 </div>
+                            </a>
 
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-                                        tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil
-                                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                                        excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably havent heard of them accusamus labore sustainable VHS.
+
+                                            <div class="table-responsive table-bordered">
+                                                <table id="datatable-buttons" class="table mb-0">
+                                                    <tbody>
+                                                        <tr class="bg-secondary text-white ">
+                                                            <td> <b> Account Number </b> </td>
+                                                            <td> <b> Currency </b> </td>
+                                                            <td> <b> Book Balance </b> </td>
+                                                            <td> <b> Available Balance </b> </td>
+                                                            <td> <b> Overdrawn Limit </b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>  <a href="{{ url('account-enquiry?accountNumber=23390019920019') }}"> <b class="text-primary">23390019920019 </b> </a></td>
+                                                            <td> <b> GHS </b>  </td>
+                                                            <td> <b> 39,900.00  </b> </b></td>
+                                                            <td> <b> 456,990.00  </b>  </td>
+                                                            <td>  <b> 0.00  </b> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>  <a href="{{ url('account-enquiry?accountNumber=23390019920019') }}"> <b class="text-primary" >23390019920019 </b> </a> </td>
+                                                            <td> <b>  GHS  </b>  </td>
+                                                            <td> <b> 39,900.00  </b> </td>
+                                                            <td> <b>  456,990.00  </b> </td>
+                                                            <td>  <b> 0.00  </b> </td>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+
+
                                     </div>
                                 </div>
                             </div>
                             <div class="card mb-1">
+                                <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                                 <div class="card-header" id="headingTwo">
                                     <h5 class="m-0">
-                                        <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="false">
+
                                             <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                            <span class="text-danger">  I OWE</span>
-                                        </a>
+                                            <span class="text-danger"> <b>I OWE (Loans)</b> </span>
+
                                     </h5>
                                 </div>
+                            </a>
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-                                        tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil
-                                        anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
-                                        excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
-                                        you probably haven heard of them accusamus labore sustainable VHS.
+
+                                        <div class="table-responsive table-bordered">
+                                            <table id="datatable-buttons" class="table mb-0">
+                                                <tbody>
+                                                    <tr class="bg-secondary text-white ">
+                                                        <td> <b> Account Number </b> </td>
+                                                        <td> <b> Description </b> </td>
+                                                        <td> <b> Currency </b> </td>
+                                                        <td> <b> Current Balance </b> </td>
+                                                        <td> <b> Arrears </b> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <b class="text-danger">23390019920019 </b></td>
+                                                        <td> <b> GHS </b>  </td>
+                                                        <td> <b> 39,900.00  </b> </b></td>
+                                                        <td> <b> 456,990.00  </b>  </td>
+                                                        <td>  <b> 0.00  </b> </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <b class="text-danger" >23390019920019 </b></td>
+                                                        <td> <b>  GHS  </b>  </td>
+                                                        <td> <b> 39,900.00  </b> </td>
+                                                        <td> <b>  456,990.00  </b> </td>
+                                                        <td>  <b> 0.00  </b> </td>
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end table-responsive -->
+
                                     </div>
                                 </div>
                             </div>
@@ -396,18 +464,20 @@
                 labels: ['I HAVE', 'I OWE'],
                 datasets: [{
                     label: 'MY ACCOUNTS',
-                    data: [12, 19],
+                    data: [19, 12],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 1)',
+
                         'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
                         'rgba(153, 102, 255, 0.2)',
                         'rgba(255, 159, 64, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
+
                         'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
                         'rgba(255, 206, 86, 1)',
                         'rgba(75, 192, 192, 1)',
                         'rgba(153, 102, 255, 1)',
@@ -436,6 +506,27 @@
 
     <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>
 
+
+
+    <!-- third party js -->
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
+    <!-- third party js ends -->
+
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
 
 @endsection
