@@ -38,7 +38,7 @@
                                                 <option value="Cal Bank">Cal Bank</option>
                                                 <option value="FNB Bank">FNB Bank</option>
                                             </select>
-                                            <span class="text-danger" id="select_bank_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+                                            {{-- <span class="text-danger" id="select_bank_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                         </div>
                                         <br>
@@ -46,28 +46,61 @@
                                         <div class="form-group">
                                             <label>Account Number</label>
                                             <input type="number" class="form-control" id="account_number" placeholder="Account Number"  required>
-                                            <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+                                            {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
                                         </div>
                                         <div class="form-group">
                                             <label>Account Name</label>
                                             <input type="text" class="form-control" id="account_name" placeholder="Account Name" required>
-                                            <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                         </div><br>
+                                         </div>
+                                         <div class="form-group">
+                                            <label>Account Currency</label>
+
+                                            <select class="custom-select" id="select_currency" required>
+                                                <option value="">Select Currency</option>
+                                                {{-- <option value="001~SLL">SLL</option>
+                                                <option value="002~USD">USD</option>
+                                                <option value="003~EUR">EUR</option>
+                                                <option value="004~GBP">GBP</option> --}}
+                                            </select>
+                                            {{-- <input type="text" class="form-control" id="account_n" placeholder="Account Name" required> --}}
+                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                         </div>
+                                         <div class="form-group">
+                                            <label>Bank Swift Code</label>
+                                            <input type="text" class="form-control" id="swift_code" placeholder="Bank Swift Code" required>
+                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                         </div>
+                                         <br>
 
 
                                          <label class="purple-color"> Personal Details</label>
                                         <div class="form-group">
                                             <label>Beneficiary Name</label>
                                             <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name" required>
-                                            <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                         </div>
+                                         <div class="form-group">
+                                            <label>Beneficiary Address</label>
+                                            <input type="text" class="form-control" id="beneficiary_address" placeholder="Beneficiary Address" required>
+                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                         </div>
+                                         <div class="form-group">
+                                            <label>Beneficiary Phone Number</label>
+                                            <input type="number" class="form-control" id="beneficiary_number" placeholder="Beneficiary Phone Number" required>
+                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
 
                                          <div class="form-group">
                                             <label>Beneficiary Email</label>
                                             <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Email" required>
-                                            <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
+                                            {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
 
@@ -118,7 +151,21 @@
                                             {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
 
 
-                                         </div><br>
+                                         </div>
+                                         <div class="form-group">
+                                            <label>Account Currency:&emsp;</label><span class="font-weight-light mr-2" id="display_account_currency"> &nbsp</span>
+                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
+
+
+                                         </div>
+                                         <div class="form-group">
+                                            <label>Bank Swift Code:&emsp;</label><span class="font-weight-light mr-2" id="display_swift_code"> &nbsp</span>
+                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
+
+
+                                         </div>
+
+                                         <br>
 
 
                                          {{--  <label class="purple-color"> Personal Details</label>  --}}
@@ -129,6 +176,18 @@
 
                                          </div>
 
+                                         <div class="form-group">
+                                            <label>Beneficiary Address:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_address"> &nbsp</span>
+                                            {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
+
+
+                                         </div>
+                                         <div class="form-group">
+                                            <label>Beneficiary Phone Number:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_phone"> &nbsp</span>
+                                            {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
+
+
+                                         </div>
                                          <div class="form-group">
                                             <label>Beneficiary Email:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_email"> &nbsp</span>
                                             {{-- <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name"> --}}
@@ -247,7 +306,36 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
+
+
+            function get_currency() {
+                $.ajax({
+                    'type': 'GET',
+                    'url': 'get-local-bank-beneficiary-api',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+
+                            $('#select_currency').append($('<option>', {
+                                value: data[index].code + '~' + data[index].currency
+                            }).text(data[index].currency));
+                            {{-- $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance)); --}}
+
+                        });
+
+                    },
+
+                })
+            };
+
             $(document).ready(function(){
+
+
+                setTimeout(function() {
+                    get_currency();
+                }, 3000);
 
                 $('#local_bank_beneficiary_summary').hide();
                 $('#select_bank_error').hide();
@@ -286,7 +374,10 @@
                     var beneficiary_name =  $('#beneficiary_name').val();
                     var beneficiary_email = $('#beneficiary_email').val();
                     var transfer_email = $("#transfer_email input[type='checkbox']:checked").val();
-
+                    var currency = $('#select_currency').val().split('~');
+                    var swift_code = $('#swift_code').val();
+                    var beneficiary_address = $('#beneficiary_address').val();
+                    var beneficiary_phone = $('#beneficiary_number').val();
 
                     var select_bank = $('#select_bank').val();
                     $('#display_selected_bank').text(select_bank);
@@ -309,47 +400,20 @@
                         $('#display_transfer_email').text('Yes');
                      }else {
                         $('#display_transfer_email').text('No');
-                     }
+                     };
 
-{{--
-                    if(select_bank.trim() == '' || select_bank.trim() == undefined){
-                        $('#select_bank_error').show();
+                    var currency = $('#select_currency').val().split('~');
+                    var currency_ = currency[1];
+                    $('#display_account_currency').text(currency_);
 
-                    }else {
-                        $('#select_bank_error').hide();
+                    var swift_code = $('#swift_code').val();
+                    $('#display_swift_code').text(swift_code) ;
 
-                    }
+                    var beneficiary_address = $('#beneficiary_address').val();
+                     $('#display_beneficiary_address').text(beneficiary_address);
 
-                    if(account_number.trim() == '' || account_number.trim() == undefined){
-                        $('#account_number_error').show();
-
-                    }else {
-                        $('#account_number_error').hide();
-
-                    }
-
-                    if(account_name.trim() == '' || account_name.trim() == undefined){
-                        $('#account_name_error').hide();
-
-                    }else{
-                        $('#account_name_error').hide();
-                    }
-
-
-                    if(beneficiary_name.trim() == '' || beneficiary_name.trim() == undefined){
-                        $('#beneficiary_name_error').hide();
-
-                    }else{
-                        $('#beneficiary_name_error').hide();
-                    }
-
-
-                    if(beneficiary_email.trim() == '' || beneficiary_email.trim() == undefined){
-                        $('#beneficiary_email_error').hide();
-
-                    }else{
-                        $('#beneficiarbeneficiary_email_errory_name_error').hide();
-                    }  --}}
+                    var beneficiary_phone = $('#beneficiary_number').val();
+                     $('#display_beneficiary_phone').text(beneficiary_phone);
 
                     if(select_bank.trim() != '' && account_number.trim() != '' && account_name.trim() != '' && beneficiary_name.trim() != ''){
                         $('#local_bank_beneficiary_details').hide();
@@ -387,11 +451,18 @@
                     }else{
                         var transfer_email = ('No');
                     }
-                    console.log(transfer_email),
+                    console.log(transfer_email);
+                    var currency = $('#select_currency').val().split('~');
+                    var currency_ = currency[1];
+                    var beneficiary_number = $('#beneficiary_number').val();
+                    var beneficiary_address = $('#beneficiary_address').val();
+                    var beneficiary_email = $('#beneficiary_email').val();
+                    var swift_code = $('#swift_code').val();
+
 
                     $.ajax({
                         'type' : 'POST' ,
-                        'url' : 'local-bank-beneficiary-api',
+                        'url' : 'add-local-bank-beneficiary-api',
                         "datatype" : "application/json",
                         'data' : {
                             'bank_name' : select_bank ,
@@ -399,7 +470,11 @@
                             'account_name' : account_name ,
                             'beneficiary_name' : beneficiary_name ,
                             'beneficiary_email' : beneficiary_email ,
-                            'send_mail' : transfer_email
+                            'send_mail' : transfer_email ,
+                            "account_currency": currency_,
+                            "number": beneficiary_number,
+                            "beneficiary_address": beneficiary_address,
+                            "bank_swift_code" : swift_code
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

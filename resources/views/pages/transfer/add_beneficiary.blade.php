@@ -40,7 +40,7 @@
 
             <div class="col-md-4" >
                 <div class="card text-white bg-danger text-xs-center">
-                <a href="{{ url('add-beneficiary/same-bank-beneficiary') }}">
+                <a href="{{ url('add-same-bank-beneficiary') }}">
                     <div class="card-body">
                         <h3 class="text-white" >Same Bank</h3>
                         {{--  <i class="mdi mdi-cart-outline text-white" style="font-size: 200px"></i>  --}}
@@ -63,7 +63,7 @@
 
             <div class="col-md-4">
                 <div class="card text-white bg-success text-xs-center">
-                    <a href="{{ url('add-beneficiary/local-bank-beneficiary') }}">
+                    <a href="{{ url('add-local-bank-beneficiary') }}">
                     <div class="card-body">
                         <h3 class="text-white">Other Local Bank</h3>
                         {{--  <i class="fas fa-external-link-alt" style="font-size: 100px"></i>  --}}
