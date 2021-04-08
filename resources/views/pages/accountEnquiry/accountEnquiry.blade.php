@@ -22,7 +22,7 @@
 @section('content')
 
     <div>
-    
+
 
         <div class="row">
             <br>
@@ -44,7 +44,7 @@
                                                 <div class=" p-3 mt-4 mt-lg-0 rounded">
                                                     <h3 class=" mb-3 ">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2>
 
-                                                       
+
 
                                                     <div class="table-responsive table-bordered">
                                                         <table class="table mb-0">
@@ -92,18 +92,18 @@
                                         </div>
                                             <div class="row" >
                                             <div class="col-md-12">
-                                                
+
 
                                                 <span class="text-sm-right float-left">
 
                                                     <form class="form-inline">
-                                                    
+
                                                         {{-- <div class="form-group">
                                                             <strong  class=" header-title ">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </strong>
-                                                           
+
                                                         </div> --}}
 
-          
+
                                                         <div class="form-group mx-sm-3">
                                                             <label for="inputPassword2" class="sr-only">Password</label>
                                                             <input type="password" class="form-control input-lg" id="inputPassword2" placeholder="Password">
@@ -115,24 +115,24 @@
                                                         </div>
                                                         <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Confirm identity</button>
 
-                                                      
 
-                                                    </form> 
 
-                                                    
-                                                </span> 
+                                                    </form>
+
+
+                                                </span>
 
                                                 <span class="text-sm-right float-right">
                                                     <button type="button" class="btn btn-sm btn-light mb-2 mr-1">Print Statement</button>
                                                     <button type="button" class="btn btn-sm btn-light mb-2">Export</button>
-                                                </span> 
-                                          
+                                                </span>
+
 
                                             </div>
                                             </div>
                                             <div class="row" >
                                             <div class="col-md-12" >
-                                               
+
                                                 {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
                                             <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100">
                                                 <thead>
