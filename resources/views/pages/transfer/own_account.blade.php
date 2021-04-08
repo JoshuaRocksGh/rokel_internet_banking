@@ -69,8 +69,8 @@
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
 
-                                                 <option value="Currenct Account~8888888888888~USD~800">
-                                                    Currenct Account ~ 8888888888888 ~ USD</option>
+                                                 <option value="Currenct Account~004004100435270140~USD~800">
+                                                    Currenct Account ~ 004004100435270140 ~ USD</option>
                                             </select>
 
 
@@ -333,9 +333,12 @@
                                             <span> <button class="btn btn-secondary btn-rounded" type="button"
                                                     id="back_button">Back</button> &nbsp; </span>
                                             <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                    id="confirm_button">Confirm Transfer </button></span>
+                                                    id="confirm_button"><span id="confirm_transfer">Confirm Transfer</span>
+                                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                                    <span id="spinner-text">Loading...</span>
+                                                </button></span>
                                             <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
-                                                    id="confirm_button">Print Receipt </button></span>
+                                                    id="print_receipt" onclick="window.print()">Print Receipt </button></span>
                                         </div>
                                     </div>
 
@@ -443,6 +446,10 @@
 
 
             $(document).ready(function() {
+
+                $('#spinner').hide(),
+                $('#spinner-text').hide(),
+                $('#print_receipt').hide();
 
                 setTimeout(function(){
                     from_account();
@@ -699,7 +706,7 @@
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
-                        timer: 3000,
+                        timer: 10000,
                         timerProgressBar: false,
                         didOpen: (toast) => {
                           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -719,14 +726,19 @@
                 $('#confirm_button').click(function(e){
                     e.preventDefault();
 
+                    $('#spinner').show();
+                    $('#spinner-text').show();
+
+                    $('#confirm_transfer').hide(),
+                    $('#confirm_button').attr('disabled',true);
 
                     //user_pin();
-                    let pin = $('#user_pin').val();
+                    {{--  let pin = $('#user_pin').val();
 
                     if ( pin != '1234'){
                         toaster('Incorrect pin entered', 'error')
                         return false;
-                    }
+                    }  --}}
 
                     var from_account = $('#from_account').val().split('~');
                     var to_account = $('#to_account').val().split('~');
@@ -743,6 +755,7 @@
                     var category_ = category[1];
                     var select_frequency_ = select_frequency[1];
                     var purpose = $('#purpose').val();
+                    var pin = $('#user_pin').val();
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
@@ -761,6 +774,7 @@
                             'purpose' : purpose ,
                             'schedule_payment_type' : schedule_payment_contraint_input ,
                             'schedule_payment_date' : schedule_payment_date,
+                            'secPin' : pin
 
                         },
                         headers: {
@@ -769,13 +783,21 @@
                         success:
                         function(response){
 
-                            console.log(response.responseCode)
-                            if(response.responseCode == "000"){
-                                toaster('Transfer Successful', 'success' )
-
+                            {{--  console.log(response.responseCode)  --}}
+                            if(response.responseCode == '000'){
+                                toaster(response.message, 'success' )
+                                $('#confirm_button').hide();
+                                $('#back_button').hide();
+                                $('#print_receipt').show();
                             }else{
 
-                                toaster('Transfer Failed', 'error' )
+                                toaster(response.message, 'error' );
+
+                                $('#spinner').hide();
+                                $('#spinner-text').hide();
+                                $('#print_receipt').hide();
+                                $('#confirm_transfer').show();
+                                $('#confirm_button').attr('disabled',false);
 
                         }
                     }

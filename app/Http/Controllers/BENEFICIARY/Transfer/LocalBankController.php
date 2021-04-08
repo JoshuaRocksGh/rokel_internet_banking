@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BENEFICIARY\Transfer;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class LocalBankController extends Controller
             'account_name' => 'required' ,
             'beneficiary_name'  => 'required' ,
             'beneficiary_email' => 'required'  ,
-            'send_mail' => 'required',
+            //'send_mail' => 'required',
         ]);
 
         // return $req;
@@ -38,15 +39,68 @@ class LocalBankController extends Controller
         // return $req;
 
 
+        $user = (object) UserAuth::getDetails();
+        //return $user;
+
+        $authToken = $user->userToken;
+        $userID = $user->userId;
+        $data = [
+            "accountDetails" => [
+                "beneficiaryAccount" => $req->account_number,
+                "beneficiaryAccountCurrency" => null,
+                "beneficiaryAcountName" => $req->account_name
+            ],
+
+            "addressDetails" => [
+                "address1" => "string",
+                "address2" => "string",
+                "address3" => "string",
+                "city" => "string",
+                "countryOfResidence" => "string"
+            ],
+
+            "bankDetails" => [
+                "bankAddress" => "string",
+                "bankBranch" => "string",
+                "bankCity" => "string",
+                "bankCountry" => "string",
+                "bankName" => $req->bank_name ,
+                "bankSwiftCode" => "string"
+            ],
+
+            "beneID" => "string",
+
+            "beneficiaryDetails" => [
+                "email" => $req->beneficiary_email,
+                "firstName" => "string",
+                "lastName" => "string",
+                "nationality" => "string",
+                "nickname" => $req->beneficiary_name,
+                "otherName" => "string",
+                "sendMail" => $req->transfer_email
+            ],
+
+            "beneficiaryType" => "string",
+
+            "securityDetails" => [
+            "approvedBy" => "string",
+            "approvedDateTime" => date('Y-m-d'),
+            "createdBy" => "string",
+            "createdDateTime" =>  date('Y-m-d'),
+            "entrySource" => "string",
+            "modifyBy" => "string",
+            "modifyDateTime" =>  date('Y-m-d')
+            ],
+
+            "transactionType" => "string",
+            "userID" => $userID
+
+        ];
+
+        //return $data;
+
         try{
-            $response = Http::post('http://localhost/IIE/local-bank-beneficiary.php',[
-                'bank_name' => 'required' ,
-                'account_number' => 'required' ,
-                'account_name' => 'required' ,
-                'beneficiary_name'  => 'required' ,
-                'beneficiary_email' => 'required'  ,
-                'send_mail' => 'required',
-            ]);
+            $response = Http::post(env('API_BASE_URL') ."beneficiary/addTransferBeneficiary",$data);
 
             // return json_decode($response->body());
 

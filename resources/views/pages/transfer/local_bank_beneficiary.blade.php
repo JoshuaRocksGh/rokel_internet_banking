@@ -66,7 +66,7 @@
 
                                          <div class="form-group">
                                             <label>Beneficiary Email</label>
-                                            <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name" required>
+                                            <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Email" required>
                                             <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span>
 
                                          </div>
@@ -164,7 +164,7 @@
 
                                 </div> <!-- end col -->
 
-                                <div class="col-md-5 text-center" style="margin-top: 80px;">
+                                <div class="col-md-5 text-center d-none d-md-block" style="margin-top: 80px;">
 
                                     <img src="{{ asset('assets/images/transfer1.png') }}" class="img-fluid" alt="" >
                                 </div> <!-- end col -->
@@ -256,6 +256,26 @@
                 $('#beneficiary_name_error').hide();
                 $('#beneficiary_email_error').hide();
 
+
+                function toaster(message, icon )
+                {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
+
+                      Toast.fire({
+                        icon: icon,
+                        title: message
+                      })
+                };
 
                 $('#local_bank_beneficiary_details').submit(function(e){
                     e.preventDefault();
@@ -390,17 +410,11 @@
 
                             console.log(response.responseCode);
                             if(response.responseCode == "000"){
-                                Swal.fire(
-                                    'Beneficiary Successfully Added',
-                                    '',
-                                    'success'
-                                  )
+                                toaster(response.message, 'success' );
+
                             }else{
-                                Swal.fire(
-                                    'Failed to Add Beneficiary',
-                                    '',
-                                    'error'
-                                  )
+                                toaster(response.message, 'error' );
+
                         }
                     }
 
