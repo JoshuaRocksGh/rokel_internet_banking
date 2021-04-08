@@ -14,6 +14,59 @@ class LocalBankController extends Controller
 {
     //
 
+    public function currency_list()
+    {
+
+        $user = (object) UserAuth::getDetails();
+        //return $user;
+
+        $authToken = $user->userToken;
+        $userID = $user->userId;
+
+        $base_response = new BaseResponse();
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+
+        $response = Http::get("http://localhost/IIE/currency-code.php",$data);
+
+        //return $response;
+        // return $response->status();
+
+
+    if($response->ok()){    // API response status code is 200
+
+        $result = json_decode($response->body());
+        // return $result->responseCode;
+
+
+        if($result->responseCode == '000'){
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+        }else{   // API responseCode is not 000
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            }
+
+        } else { // API response status code not 200
+
+             return $response->body();
+             DB::table('error_logs')->insert([
+                 'platform' => 'ONLINE_INTERNET_BANKING',
+                 'user_id' => 'AUTH',
+                 'code' => $response->status(),
+                 'message' => $response->body()
+             ]);
+
+            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+        }
+    }
+
     public function local_bank(Request $req)
     {
         $validator = Validator::make($req->all(),[
@@ -22,10 +75,14 @@ class LocalBankController extends Controller
             'account_name' => 'required' ,
             'beneficiary_name'  => 'required' ,
             'beneficiary_email' => 'required'  ,
+            'beneficiary_address' => 'required',
+            'number' => 'required' ,
+            'account_currency' => 'required' ,
+            'bank_swift_code' => 'required'
             //'send_mail' => 'required',
         ]);
 
-        // return $req;
+        //return $req;
 
         $base_response = new BaseResponse();
 
@@ -47,12 +104,12 @@ class LocalBankController extends Controller
         $data = [
             "accountDetails" => [
                 "beneficiaryAccount" => $req->account_number,
-                "beneficiaryAccountCurrency" => null,
+                "beneficiaryAccountCurrency" => $req->account_currency,
                 "beneficiaryAcountName" => $req->account_name
             ],
 
             "addressDetails" => [
-                "address1" => "string",
+                "address1" => $req->beneficiary_address,
                 "address2" => "string",
                 "address3" => "string",
                 "city" => "string",
@@ -65,7 +122,7 @@ class LocalBankController extends Controller
                 "bankCity" => "string",
                 "bankCountry" => "string",
                 "bankName" => $req->bank_name ,
-                "bankSwiftCode" => "string"
+                "bankSwiftCode" => $req->bank_swift_code
             ],
 
             "beneID" => "string",
@@ -93,7 +150,8 @@ class LocalBankController extends Controller
             ],
 
             "transactionType" => "string",
-            "userID" => $userID
+            "userID" => $userID,
+            "telephone" => $req->number
 
         ];
 

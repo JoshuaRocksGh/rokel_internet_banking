@@ -108,6 +108,9 @@
                             <li>
                                 <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>
                             </li>
+                            <li>
+                                <a href="{{ url('beneficiary-list') }}">Beneficiary List</a>
+                            </li>
 
 {{--
                             <li>

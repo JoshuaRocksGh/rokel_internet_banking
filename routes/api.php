@@ -25,12 +25,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/login',[LoginController::class,'login_'])->name('login');
 
-// Route::post('/add-beneficiary/same-bank-beneficiary',[TransferController::class,'same_bank_beneficiary_'])->name('same-bank-beneficiary');
+// Route::post('/add-same-bank-beneficiary',[TransferController::class,'same_bank_beneficiary_'])->name('same-bank-beneficiary');
 Route::get('/own-account-api', [OwnAccountController::class, 'own_account_'])->name('own-account-api');
 Route::post('/own-account-api', [OwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
-Route::post('/add-beneficiary/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_benefiaciary_'])->name('same-bank-beneficiary');
-Route::post('/add-beneficiary/local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('local-bank-beneficiary-api');
+Route::post('/add-same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_benefiaciary_'])->name('same-bank-beneficiary');
+Route::post('/add-local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('local-bank-beneficiary-api');
 
 // TRANSFER BENEFICIARY
 

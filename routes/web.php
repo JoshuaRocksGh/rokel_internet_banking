@@ -84,11 +84,12 @@ Route::get('/reset-success',[ResetPasswordController::class,'reset_success'])->n
 // Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
 Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
-Route::get('/add-beneficiary/same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('same-bank-beneficiary');
+Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('same-bank-beneficiary');
 
-Route::get('/add-beneficiary/local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
+Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
 Route::get('/add-beneficiary/international-bank-beneficiary', [transferController::class, 'international_bank'])->name('international-bank-beneficiary');
 
+Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
 
 // OWN ACCOUNT
 Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('own-account');
@@ -327,9 +328,11 @@ Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiar
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
 
 
-// Transfers Beneficiary
-Route::post('/add-beneficiary/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_beneficiary_'])->name('same-bank-beneficiary-api');
-Route::post('/add-beneficiary/local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('local-bank-beneficiary-api');
+// Transfers Add Beneficiary
+Route::post('/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_beneficiary_'])->name('same-bank-beneficiary-api');
+Route::get('get-currency-list-api', [TransferSameBankController::class, 'currency_list'])->name('get-currency-list-api');
+Route::post('add-local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('add-local-bank-beneficiary-api');
+Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class, 'currency_list'])->name('get-local-bank-beneficiary-api');
 
 
 Route::post('/add-beneficiary/international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');

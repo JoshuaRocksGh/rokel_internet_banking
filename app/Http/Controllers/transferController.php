@@ -45,4 +45,9 @@ class transferController extends Controller
         return view('pages.transfer.international_bank');
     }
 
+    public function beneficiary_list()
+    {
+        return view('pages.transfer.beneficiary_list');
+    }
+
 }
