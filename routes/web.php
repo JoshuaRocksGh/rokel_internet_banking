@@ -31,6 +31,7 @@ use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MaileController;
+use App\Http\Controllers\Payments\BulkUpload\BulkUploadsController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\settingsController;
@@ -194,6 +195,9 @@ Route::get('airtime-payment',[paymentController::class,'airtime_payment'])->name
 
 //route to display the bulk upload payment screen
 Route::get('bulk-upload-payment',[paymentController::class,'bulk_upload_payment'])->name('bulk-upload-payment');
+
+//route to take import of the bulk upload payment screen
+Route::post('bulkupload.import',[BulkUploadsController::class,'import'])->name('bulkupload.import');
 
 //route to display the cardless payment screen
 Route::get('cardless-payment',[paymentController::class,'cardless_payment'])->name('cardless-payment');

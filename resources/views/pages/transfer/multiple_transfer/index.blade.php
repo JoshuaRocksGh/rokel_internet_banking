@@ -6,14 +6,14 @@
         <legend></legend>
 
         <div class="row" ng-app="myShoppingList" ng-controller="myCtrl">
-            <div class="col-12">
+            {{-- <div class="col-12">
                 <ul>
                     <li ng-repeat="x in products">@{{ x }}<span ng-click="removetransfer($index)">×</span></li>
                 </ul>
                 <input ng-model="addMe">
                 <button ng-click="addItem()">Add</button>
                 <p>@{{ errortext }}</p>
-            </div>
+            </div> --}}
 
             <div class="col-12">
                 <div class="card card-background-image">
@@ -147,6 +147,16 @@
                                                 <input type="text" class="form-control" id="purpose"
                                                     placeholder="Enter purpose / narration" required ng-model="transfer.narration">
 
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Upload File</label>
+                                                <div class="input-group">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="inputGroupFile04">
+                                                        <label class="custom-file-label" for="inputGroupFile04">choose an excel file</label>
+                                                    </div>
+                                                </div>
                                             </div>
 
 
@@ -415,7 +425,7 @@
 
                             if (transfer == "" ||transfer == undefined) {
                                 console.log("Empty ")
-                                
+
                             }else{
                                 if ($scope.transfers.indexOf(transfer) == -1) {
                                 transfer.deviceIp = "string"
@@ -423,7 +433,7 @@
                                 transfer.secPin = "string"
                                 transfer.userName = "string"
                                 transfer.authToken = "string"
-    
+
                                     $scope.transfers.unshift(transfer);
                                     $scope.transfer = {}
                                     $('#payment_details_form').reset()
@@ -431,7 +441,7 @@
                                     $scope.errortext = "The item is already in your shopping list.";
                                 }
                             }
-                           
+
 
                         }
                     });

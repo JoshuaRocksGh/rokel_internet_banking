@@ -57,6 +57,8 @@ class paymentController extends Controller
         return view("pages.payments.bulk_upload_payment");
     }
 
+    
+
     //method to return the cardless payment screen
     public function cardless_payment(){
         return view("pages.payments.cardless_payment");

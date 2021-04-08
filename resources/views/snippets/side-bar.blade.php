@@ -7,6 +7,13 @@
         <div class="user-box text-center">
             <img src="../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
                 class="rounded-circle avatar-md">
+                {{-- <div class="col-md-4">
+                    <div class="avatar-md">
+                        <span class="avatar-title bg-soft-secondary text-secondary font-20 rounded-circle">
+                            MD
+                        </span>
+                    </div>
+                </div> --}}
             <div class="dropdown">
                 <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
                     data-toggle="dropdown">Geneva Kennedy</a>
