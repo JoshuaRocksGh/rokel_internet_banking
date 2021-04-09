@@ -114,7 +114,7 @@
 
                                                                 </div>
 
-                                                                <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="bank_details_next_btn">Next <i class="fe-arrow-right"></i></button>
+                                                                <button class="btn btn-primary btn-rounded waves-effect waves-light" type="button" id="bank_details_next_btn">Next <i class="fe-arrow-right"></i></button>
 
                                                             </div> <!-- end col -->
                                                         </div> <!-- end row -->
@@ -132,6 +132,13 @@
                                                                         <label class="form-group" for="name3"> Account Number</label>
 
                                                                         <input type="number" id="acc_number" name="acc_number" class="form-control" placeholder="Account number/BBAN" required>
+                                                                        <br>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-group" for="name3"> Account Name</label>
+
+                                                                        <input type="text" id="acc_name" name="acc_name" class="form-control" placeholder="Account name" required>
                                                                         <br>
                                                                     </div>
 
@@ -216,7 +223,7 @@
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
                                                                         <label class="form-group" for="confirm3">Country of Residence</label>
 
-                                                                        <select class="custom-select" id="residence" name="residence" required>
+                                                                        <select class="custom-select" id="country_of_residence" name="residence" required>
                                                                             <option value="">Country of residence</option>
                                                                             <option value="1">One</option>
                                                                             <option value="2">Two</option>
@@ -241,6 +248,11 @@
                                                                     <div class="col-md-6">
                                                                         <label class="form-group" for="confirm3">Address</label>
                                                                         <input type="text" id="address" name="address" class="form-control" placeholder="Address" required>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label class="form-group" for="confirm3">Telephone</label>
+                                                                        <input type="text" id="telephone" name="address" class="form-control" placeholder="Telephone" required>
                                                                         <br>
                                                                     </div>
                                                                 </div>
@@ -295,6 +307,10 @@
                                                                         <br>
                                                                     </div>
                                                                     <div class="col-md-6">
+                                                                        <label> Account Name: &emsp;</label><span class="font-weight-light mr-2" id="display_account_name"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
                                                                         <label> Currency: &emsp;</label><span class="font-weight-light mr-2" id="display_currency"></span>
                                                                         <br>
                                                                     </div>
@@ -333,6 +349,10 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label>Address: &emsp;</label><span class="font-weight-light mr-2" id="display_address"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Telephone: &emsp;</label><span class="font-weight-light mr-2" id="display_telephone"></span>
                                                                         <br>
                                                                     </div>
                                                                 </div>
@@ -383,6 +403,27 @@
     <script>
         $(document).ready(function(){
 
+
+            function toaster(message, icon )
+            {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+
+                  Toast.fire({
+                    icon: icon,
+                    title: message
+                  })
+            };
+
             $('#details_tab').addClass('active show');
             $('#international_bank_account_details').hide();
             $('#international_bank_beneficiary_details').hide();
@@ -432,6 +473,7 @@
                 e.preventDefault();
 
                 var acc_number = $('#acc_number').val();
+                var acc_name = $('#acc_name').val();
                 var currency = $('#currency').val();
                 var firstname = $('#firstname').val();
                 var lastname = $('#lastname').val();
@@ -492,6 +534,9 @@
                 var acc_number = $('#acc_number').val();
                 $('#display_account_number').text(acc_number);
 
+                var acc_name = $('#acc_name').val();
+                $('#display_account_name').text(acc_name);
+
                 var currency = $('#currency').val();
                 $('#display_currency').text(currency);
 
@@ -513,8 +558,8 @@
                 var nationality = $('#nationality').val();
                 $('#display_nationality').text(nationality);
 
-                var residence = $('#residence').val();
-                $('#display_country_of_residence').text(residence);
+                var country_of_residence = $('#country_of_residence').val();
+                $('#display_country_of_residence').text(country_of_residence);
 
                 var city = $('#city').val();
                 $('#display_city').text(city);
@@ -522,6 +567,8 @@
                 var address = $('#address').val();
                 $('#display_address').text(address);
 
+                var telephone = $('#telephone').val();
+                $('#display_telephone').text(telephone);
 
                 $('#beneficiary_tab').removeClass('active show');
                 $('#summary_tab').addClass('active show');
@@ -564,6 +611,7 @@
                 var swift_code = $('#swift_code').val();
 
                 var acc_number = $('#acc_number').val();
+                var acc_name = $('#acc_name').val();
                 var currency = $('#currency').val();
                 var firstname = $('#firstname').val();
                 var lastname = $('#lastname').val();
@@ -572,9 +620,10 @@
                 var beneficiary_name = $('#beneficiary_name').val();
                 var beneficiary_email = $('#beneficiary_email').val();
                 var nationality = $('#nationality').val();
-                var residence = $('#residence').val();
+                var country_of_residence = $('#country_of_residence').val();
                 var city = $('#city').val();
                 var address = $('#address').val();
+                var telephone = $('#telephone').val();
 
 
                 $.ajax({
@@ -589,6 +638,7 @@
                         'bank_address' : bank_address,
                         'swift_code' : swift_code ,
                         'acc_number' : acc_number ,
+                        'acc_name' : acc_name ,
                         'currency' : currency ,
                         'firstname' : firstname ,
                         'lastname' : lastname ,
@@ -596,9 +646,11 @@
                         'beneficiary_name' : beneficiary_name ,
                         'beneficiary_email' : beneficiary_email ,
                         'nationality' : nationality ,
-                        'residence' : residence ,
+                        'country_of_residence' : country_of_residence ,
                         'city' : city ,
                         'address' : address ,
+                        'telephone' : telephone ,
+
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -608,17 +660,12 @@
 
                         console.log(response.responseCode);
                         if(response.responseCode == "000"){
-                            Swal.fire(
-                                'Beneficiary Successfully Added',
-                                '',
-                                'success'
-                              )
+
+                            toaster(response.message, 'success' );
+
                         }else{
-                            Swal.fire(
-                                'Failed to Add Beneficiary',
-                                '',
-                                'error'
-                              )
+                            toaster(response.message, 'error' );
+
                     }
                 }
 

@@ -86,7 +86,7 @@
 
             <div class="col-md-4">
                 <div class="card text-white bg-info text-xs-center">
-                    <a href="{{ url('add-beneficiary/international-bank-beneficiary') }}">
+                    <a href="{{ url('add-international-bank-beneficiary') }}">
                     <div class="card-body">
                         <h3 class="text-white">International Bank</h3>
                         <i data-feather="globe" class="icons-l card-icon"></i>

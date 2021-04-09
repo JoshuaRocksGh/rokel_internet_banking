@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BENEFICIARY\Transfer;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,7 @@ class InternationalBankController extends Controller
             'bank_address' => 'required',
             'swift_code' => 'required' ,
             'acc_number' => 'required' ,
+            'acc_name' => 'required' ,
             'currency' => 'required' ,
             'firstname' => 'required' ,
             'lastname' => 'required' ,
@@ -29,9 +31,11 @@ class InternationalBankController extends Controller
             'beneficiary_name' => 'required' ,
             'beneficiary_email' => 'required' ,
             'nationality' => 'required' ,
-            'residence' => 'required' ,
+            'country_of_residence' => 'required' ,
             'city' => 'required' ,
             'address' => 'required' ,
+            'telephone' => 'required' ,
+
         ]);
 
         // return $req;
@@ -47,52 +51,80 @@ class InternationalBankController extends Controller
         };
         // return $req;
 
-        $bank_country = $req->bank_country;
-        $bank_city = $req->bank_city;
-        $bank_branch = $req->bank_branch;
-        $bank_name = $req->bank_name;
-        $bank_address = $req->bank_address;
-        $swift_code = $req->swift_code;
-        $acc_number = $req->acc_number;
-        $currency = $req->currency;
-        $firstname = $req->firstname;
-        $lastname = $req->lastname;
-        $middlename = $req->middlename;
-        $beneficiary_name = $req->beneficiary_name;
-        $beneficiary_email = $req->beneficiary_email;
-        $nationality = $req->nationality;
-        $residence = $req->residence;
-        $city = $req->city;
-        $address = $req->address;
+
+
+        $user = (object) UserAuth::getDetails();
+        //return $user;
+
+        $authToken = $user->userToken;
+        $userID = $user->userId;
+
+        $data = [
+            "accountDetails" => [
+                "beneficiaryAccount" => $req->acc_number,
+                "beneficiaryAccountCurrency" => $req->currency,
+            ],
+
+            "addressDetails" => [
+                "address1" => $req->address,
+                "address2" => "string",
+                "address3" => "string",
+                "city" => $req->city,
+                "countryOfResidence" => $req->country_of_residence
+            ],
+
+            "bankDetails" => [
+                "bankAddress" => $req->bank_address,
+                "bankBranch" => $req->bank_branch,
+                "bankCity" => $req->bank_city,
+                "bankCountry" => $req->bank_country,
+                "bankName" => $req->bank_name,
+                "bankSwiftCode" => $req->swift_code
+            ],
+
+            "beneID" => "string",
+
+            "beneficiaryDetails" => [
+                "email" => $req->beneficiary_email,
+                "firstName" => $req->firstname,
+                "lastName" => $req->lastname,
+                "nationality" => $req->nationality,
+                "nickname" => $req->beneficiary_name,
+                "otherName" => $req->middlename,
+                "sendMail" => $req->beneficiary_email
+            ],
+
+            "beneficiaryType" => "string",
+
+            "securityDetails" => [
+            "approvedBy" => "string",
+            "approvedDateTime" => date('Y-m-d'),
+            "createdBy" => "string",
+            "createdDateTime" =>  date('Y-m-d'),
+            "entrySource" => "string",
+            "modifyBy" => "string",
+            "modifyDateTime" =>  date('Y-m-d')
+            ],
+
+            "transactionType" => "string",
+            "userID" => $userID ,
+            "telephone" => $req->telephone ,
+            "beneficiaryAcountName" => $req->acc_name
+
+        ];
+
+        return $data;
 
         try{
-            $response = Http::post('http://localhost/laravel/internet_banking/IIE/international-bank-beneficiary.php',[
+            $response = Http::post(env('API_BASE_URL') ."beneficiary/addTransferBeneficiary",$data);
 
-                'bank_country' => $bank_country ,
-                'bank_city' => $bank_city ,
-                'bank_branch' => $bank_branch ,
-                'bank_name' => $bank_name ,
-                'bank_address' => $bank_address,
-                'swift_code' => $swift_code ,
-                'acc_number' => $acc_number ,
-                'currency' => $currency ,
-                'firstname' => $firstname ,
-                'lastname' => $lastname ,
-                'middlename' => $middlename ,
-                'beneficiary_name' => $beneficiary_name ,
-                'beneficiary_email' => $beneficiary_email ,
-                'nationality' => $nationality ,
-                'residence' => $residence ,
-                'city' => $city ,
-                'address' => $address ,
-            ]);
-
+            //return $response;
             // return json_decode($response->body());
 
             if($response->ok()){ // API response status code is 200
 
                 $result = json_decode($response->body());
-                // return $result;
+                //return $result;
 
                 if($result->responseCode == '000'){
 

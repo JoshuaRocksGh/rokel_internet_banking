@@ -56,7 +56,7 @@
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="{{ url('add-same-bank-beneficiary') }}">Same Bank</a>
                                                     <a class="dropdown-item" href="{{ url('add-local-bank-beneficiary') }}">Other Local Bank </a>
-                                                    <a class="dropdown-item" href="{{ url('add-beneficiary/international-bank-beneficiary') }}">International Bank </a>
+                                                    <a class="dropdown-item" href="{{ url('add-international-bank-beneficiary') }}">International Bank </a>
                                                 </div>
                                             </div>
                                         </span>
