@@ -123,6 +123,13 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label class="">Bank Name</label>
+                                               <input type="email" class="form-control" id="onetime_beneficiary_bank_name"
+                                                  placeholder="Bank Name"
+                                                   required>
+                                           </div>
+
+                                            <div class="form-group">
                                                  <label class="">Account Number</label>
                                                 <input type="text" class="form-control" id="onetime_beneficiary_account_number"
                                                    placeholder="Account Number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
@@ -145,12 +152,7 @@
 
 
 
-                                            <div class="form-group">
-                                                 <label class="">Enter Email</label>
-                                                <input type="email" class="form-control" id="onetime_beneficiary_email"
-                                                   placeholder="Email"
-                                                    required>
-                                            </div>
+
 
 
 
@@ -272,6 +274,9 @@
                                                                 class="d-block font-13 text-primary text-bold display_to_account_name"
                                                                 id="display_to_account_name"> </span>
                                                             <span
+                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                                id="online_display_beneficiary_bank_name"></span>
+                                                            <span
                                                                 class="d-block font-13 text-primary text-bold display_to_account_no"
                                                                 id="display_to_account_no"> </span>
 
@@ -285,10 +290,6 @@
                                                                 &nbsp; | &nbsp;
                                                             <span class="font-13 text-primary h3 online_display_beneficiary_account_currency" id=""> GHS
                                                             </span>
-
-                                                            <span
-                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
-                                                            id="online_display_beneficiary_email">dan@gmail.com</span>
 
                                                             <span
                                                             class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
@@ -663,7 +664,7 @@
                         var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
                         var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
                         var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
-                        var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
+                        var onetime_beneficiary_bank_name = $('#onetime_beneficiary_bank_name').val()
                         var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
 
                         {{-- console.log(onetime_beneficiary_alias_name)
@@ -799,7 +800,7 @@
                         var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
                         var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
                         var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
-                        var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
+                        var onetime_beneficiary_bank_name = $('#onetime_beneficiary_bank_name').val()
                         var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
 
 
@@ -857,6 +858,7 @@
 
                         var from_account_ = from_account[2];
                         var to_account_ = to_account[2];
+                        var account_name = to_account[1];
                         var currency = to_account[3];
                         var category_ = category[0]
                         var bank_name = to_account[0]
@@ -883,6 +885,8 @@
                                 'bank_name' : bank_name ,
                                 'secPin' : user_pin ,
                                 'payment_date' : schedule_payment_date ,
+                                'beneficiaryName' : account_name ,
+                                'naration' : purpose ,
 
                             },headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -893,21 +897,10 @@
 
                                     if(response.responseCode == '000'){
                                         toaster(response.message,'success')
-                                        $('#confirm_button').hide();
-                                        $('#back_button').hide();
-                                        $('#print_receipt').show();
-
 
                                     }else {
                                         toaster(response.message,'error')
 
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#print_receipt').hide();
-
-
-                                        $('#confirm_transfer').show();
-                                        $('#confirm_button').attr('disabled',false);
 
 
                                     }
@@ -916,9 +909,69 @@
 
                     }else{
 
+                        //alert('Hello');
                         var from_account = $('#from_account').val().split('~')
                         var from_account_ = from_account[2];
+                        var alias_name = $('#onetime_beneficiary_alias_name').val();
+                        var to_account = $('#onetime_beneficiary_account_number').val();
+                        var currency = $('#onetime_beneficiary_account_currency').val();
+                        var currency_ = currency[0];
+                        var bank_name = $('#onetime_beneficiary_bank_name').val();
+                        var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val();
+                        var amount = $('#amount').val();
+                        var category = $('#category').val().split('~');
+                        var category_ = category[0];
+                        var naration = $('#purpose').val();
+                        var schedule_date = $('#schedule_payment_date').val();
+                        var user_pin = $('#user_pin').val();
 
+                        console.log(from_account_);
+                        console.log(alias_name);
+                        console.log(to_account);
+                        console.log(currency_);
+                        console.log(bank_name);
+                        console.log(onetime_beneficiary_phone);
+                        console.log(amount);
+                        console.log(category_);
+                        console.log(naration);
+                        console.log(schedule_date);
+
+                        $.ajax({
+                            'type' : 'POST',
+                            'url' : 'international-bank-onetime-api' ,
+                            "datatype" : "application/json",
+                            "data" : {
+                                'from_account' : from_account_ ,
+                                'beneficiary_name' : alias_name ,
+                                'to_account' : to_account ,
+                                'account_currency' : currency_ ,
+                                'bankName' : bank_name ,
+                                'beneficiary_phone' : onetime_beneficiary_phone ,
+                                'amount' : amount ,
+                                'category' : category_ ,
+                                'naration' : naration ,
+                                'schedule_date' : schedule_date ,
+                                'secPin' : user_pin
+
+                            },headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success:
+                                function(response){
+                                    {{--  console.log(response);  --}}
+
+                                    if(response.responseCode == '000'){
+                                        toaster(response.message,'success')
+
+
+                                    }else {
+                                        toaster(response.message,'error')
+
+
+
+                                    }
+                                }
+                        })
 
                     }
                 });
