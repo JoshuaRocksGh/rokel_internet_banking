@@ -91,7 +91,7 @@ class InternationalBankController extends Controller
                 "nationality" => $req->nationality,
                 "nickname" => $req->beneficiary_name,
                 "otherName" => $req->middlename,
-                "sendMail" => $req->beneficiary_email
+                "sendMail" => $req->transfer_email
             ],
 
             "beneficiaryType" => "string",
@@ -113,7 +113,7 @@ class InternationalBankController extends Controller
 
         ];
 
-        return $data;
+        // return $data;
 
         try{
             $response = Http::post(env('API_BASE_URL') ."beneficiary/addTransferBeneficiary",$data);

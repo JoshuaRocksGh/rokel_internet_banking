@@ -120,7 +120,7 @@
                                         </div>
 
                                         <p class="sub-header font-13">
-                                            Providing  beneficairy email  and  checking
+                                            Providing  beneficiary email  and  checking
                                             the box, enables us to send an alert mail to
                                             the beneficiary each time a transfer is made
                                         </p>
