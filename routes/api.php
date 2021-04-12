@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AccountEnquiryController;
 use App\Http\Controllers\API\Authentication\LoginController;
 use App\Http\Controllers\API\Authentication\TransferController;
 use App\Http\Controllers\API\Transfer\OwnAccountController;
@@ -36,5 +37,10 @@ Route::post('/add-local-bank-beneficiary-api', [TransferLocalBankController::cla
 
 
 // Savings Account Creation
+
+// ACCOUNT ENQUIRY
+Route::post('/account-transactions', [AccountEnquiryController::class, 'account_transactions'])->name('account-transactions');
+Route::post('/account-balance-info', [AccountEnquiryController::class, 'account_balance_info'])->name('account-balance-info');
+
 
 
