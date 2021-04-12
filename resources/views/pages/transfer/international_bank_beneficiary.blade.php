@@ -29,7 +29,7 @@
 
                                         <div id="rootwizard">
                                             <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-3">
-                                                <li class="nav-item active" id="details_tab" data-target-form="#accountForm">
+                                                <li class="nav-item" id="details_tab" data-target-form="#accountForm">
                                                     <a href="#first" data-toggle="tab"  class="nav-link rounded-0 pt-2 pb-2">
                                                         <span class="d-none d-sm-inline">Bank Details</span>
                                                     </a>
@@ -63,9 +63,8 @@
                                                                         <label for="form-group">Bank Country</label>
                                                                         <select class="custom-select" id="bank_country" name="bank_country" required>
                                                                             <option value="">Bank Country</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            <option value="Ghana">Ghana</option>
+
                                                                         </select>
                                                                         <br><br>
 
@@ -75,9 +74,8 @@
                                                                         <label for="form-group">Bank City</label>
                                                                         <select class="custom-select" id="bank_city" name="bank_city">
                                                                             <option value="">Bank City</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            <option value="Accra">Accra</option>
+
                                                                         </select>
                                                                     <br><br>
 
@@ -87,9 +85,8 @@
                                                                         <label for="form-group">Bank Branch</label>
                                                                         <select class="custom-select" id="bank_branch" name="bank_branch">
                                                                             <option value="">Bank Branch</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            <option value="High-Street">High Street</option>
+
                                                                         </select>
                                                                         <br><br>
                                                                     </div>
@@ -148,9 +145,8 @@
 
                                                                         <select class="custom-select" id="currency" name="currency" required>
                                                                             <option value="">Currency</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            <option value="GHS">GHS</option>
+
                                                                         </select>
                                                                         <br>
                                                                     </div>
@@ -212,9 +208,8 @@
                                                                         <label class="form-group" for="confirm3">Nationality</label>
                                                                         <select class="custom-select" id="nationality" name="nationality" required>
                                                                             <option value="">Nationality</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            <option value="Ghanaian">Ghanaian</option>
+
                                                                         </select>
                                                                         <br>
                                                                     </div>
@@ -225,9 +220,8 @@
 
                                                                         <select class="custom-select" id="country_of_residence" name="residence" required>
                                                                             <option value="">Country of residence</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            <option value="Ghana">Ghana</option>
+
                                                                         </select>
                                                                         <br><br>
                                                                     </div>
@@ -238,9 +232,8 @@
 
                                                                         <select class="custom-select" id="city" name="city" required>
                                                                             <option value="">City</option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
+                                                                            <option value="Accra">Accra</option>
+
                                                                         </select>
                                                                         <br>
                                                                     </div>
@@ -255,6 +248,24 @@
                                                                         <input type="text" id="telephone" name="address" class="form-control" placeholder="Telephone" required>
                                                                         <br>
                                                                     </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <div class="col-md-10">
+                                                                        <br>
+                                                                        <div class="form-group">
+
+                                                                            <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                                                                <input id="checkbox2" type="checkbox">
+                                                                                <label class="custom-control-label" for="checkbox2">
+                                                                                    Email beneficiary when a transfer is made
+                                                                                </label>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    </div>
+
                                                                 </div>
 
                                                             </div>
@@ -353,6 +364,10 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label>Telephone: &emsp;</label><span class="font-weight-light mr-2" id="display_telephone"></span>
+                                                                        <br>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label>Email Beneficiary: &emsp;</label><span class="font-weight-light mr-2" id="display_transfer_email"></span>
                                                                         <br>
                                                                     </div>
                                                                 </div>
@@ -570,6 +585,13 @@
                 var telephone = $('#telephone').val();
                 $('#display_telephone').text(telephone);
 
+                var transfer_email = $("#transfer_email input[type='checkbox']:checked").val();
+                if (transfer_email == 'on'){
+                    $('#display_transfer_email').text('Yes');
+                 }else {
+                    $('#display_transfer_email').text('No');
+                 };
+
                 $('#beneficiary_tab').removeClass('active show');
                 $('#summary_tab').addClass('active show');
 
@@ -624,7 +646,13 @@
                 var city = $('#city').val();
                 var address = $('#address').val();
                 var telephone = $('#telephone').val();
-
+                var send_email = $("#transfer_email input[type='checkbox']:checked").val();
+                    {{--  console.log(send_email);  --}}
+                    if(send_email == 'on'){
+                        var transfer_email = ('Y');
+                    }else{
+                        var transfer_email = ('N');
+                    }
 
                 $.ajax({
                     'type' : 'POST' ,
@@ -650,7 +678,7 @@
                         'city' : city ,
                         'address' : address ,
                         'telephone' : telephone ,
-
+                        'sendMail' : transfer_email,
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
