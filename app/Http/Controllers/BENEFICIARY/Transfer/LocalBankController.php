@@ -137,7 +137,7 @@ class LocalBankController extends Controller
                 "sendMail" => $req->transfer_email
             ],
 
-            "beneficiaryType" => "string",
+            "beneficiaryType" => "OTB",
 
             "securityDetails" => [
             "approvedBy" => "string",

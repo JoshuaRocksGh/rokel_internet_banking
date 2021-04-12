@@ -6,16 +6,16 @@ body {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-line-pack: center;
-        align-content: center;
+    align-content: center;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     min-height: 100vh;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     font-family: 'Raleway';
 }
 
@@ -82,7 +82,9 @@ input {
     width: 60px;
 }
 
+
 /* CREDIT CARD IMAGE STYLING */
+
 .preload * {
     -webkit-transition: none !important;
     -moz-transition: none !important;
@@ -90,13 +92,14 @@ input {
     -o-transition: none !important;
 }
 
-.container {
+
+/* .container {
     width: 100%;
     max-width: 400px;
     max-height: 251px;
     height: 54vw;
     padding: 20px;
-}
+} */
 
 #ccsingle {
     position: absolute;
@@ -117,7 +120,7 @@ input {
     border-radius: 22px;
 }
 
-#generatecard{
+#generatecard {
     cursor: pointer;
     float: right;
     font-size: 12px;
@@ -126,10 +129,12 @@ input {
     background-color: #909090;
     border-radius: 4px;
     cursor: pointer;
-    float:right;
+    float: right;
 }
 
+
 /* CHANGEABLE CARD ELEMENTS */
+
 .creditcard .lightcolor,
 .creditcard .darkcolor {
     -webkit-transition: fill .5s;
@@ -208,7 +213,9 @@ input {
     fill: #616161;
 }
 
+
 /* FRONT OF CARD */
+
 #svgname {
     text-transform: uppercase;
 }
@@ -261,7 +268,9 @@ input {
     fill: #4C4C4C;
 }
 
+
 /* BACK OF CARD */
+
 #cardback .st0 {
     fill: none;
     stroke: #0F0F0F;
@@ -317,7 +326,9 @@ input {
     font-size: 37.769px;
 }
 
+
 /* FLIP ANIMATION */
+
 .container {
     perspective: 1000px;
 }

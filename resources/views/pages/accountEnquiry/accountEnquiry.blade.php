@@ -54,7 +54,7 @@
 
 
 
-                                                       
+
 
 
 
@@ -151,7 +151,7 @@
                                             <div class="row" >
                                             <div class="col-md-12" >
 
-                                                
+
                                                 <div class="text-center" id="account_transaction_loader">
                                                     <div class="spinner-border avatar-lg" role="status"></div>
                                                 </div>
@@ -251,7 +251,7 @@
 
             $(document).ready(function(){
 
-                
+
                 var account_number = @json($account_number);
                 var start_date = "02-04-2021";
                 var end_date = "30-04-2021";
@@ -268,7 +268,7 @@
                     getAccountBalanceInfo(account_number);
                 })
 
-                
+
                 $("#account_transaction_retry_btn").click(function(){
                     $(".account_transaction_display").hide();
                     $("#account_transaction_retry_btn").hide();
@@ -300,7 +300,7 @@
                         function(response){
                             console.log(response);
                             if(response.responseCode == '000'){
-                            
+
                                 let data = response.data;
 
 
@@ -320,8 +320,8 @@
                                         data[index].CREDIT,
                                         data[index].BALANCE
 
-                                            
-                                        
+
+
                                     ]).draw(false)
 
                                 })
@@ -330,7 +330,7 @@
                                 $("#account_transaction_loader").hide();
                                 $("#account_transaction_retry_btn").hide();
                                 $(".account_transaction_display").show();
-                                
+
                             }else{
                                 $("#account_transaction_loader").hide();
                                 $(".account_transaction_display").hide();
@@ -362,7 +362,7 @@
                         function(response){
                             console.log(response);
                             if(response.responseCode == '000'){
-                            
+
 
 
                                 let account_info =  response.data;

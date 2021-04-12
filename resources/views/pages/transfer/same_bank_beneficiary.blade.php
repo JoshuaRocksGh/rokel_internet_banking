@@ -23,97 +23,116 @@
                             <div class="row" id="transaction_form">
 
 
-                                <div class="col-md-7">
-
+                                <div class="col-md-12">
                                     <form action="#" id="same_bank_beneficiary_form" autocomplete="off"
-                                        aria-autocomplete="off">
-                                        {{-- @csrf --}}
-                                        <div class="form-group">
-                                            <label class="purple-color"> Beneficiary Account Details</label><br>
-                                            <label>Account Number</label>
-                                            <input class="form-control" type="number" class="form-control"
-                                                id="account_number" placeholder="Account Number" required>
-                                            {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Account Name</label>
-                                            <input type="text" class="form-control" id="account_name"
-                                                parsley-trigger="change" placeholder="Account Name" required>
-                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Account Currency</label>
-
-                                            <select class="custom-select" id="select_currency" required>
-                                                <option value="">Select Currency</option>
-                                                {{-- <option value="001~SLL">SLL</option>
-                                                <option value="002~USD">USD</option>
-                                                <option value="003~EUR">EUR</option>
-                                                <option value="004~GBP">GBP</option> --}}
-                                            </select>
-                                            {{-- <input type="text" class="form-control" id="account_currency" parsley-trigger="change"  placeholder="Account " required> --}}
-                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                        </div>
-
-                                        <br>
-                                        <div class="form-group">
-                                            <label class="purple-color">Beneficiary Personal Details</label><br>
-                                            <label>Beneficiary Name</label>
-                                            <input type="text" class="form-control" id="beneficiary_name"
-                                                parsley-trigger="change" placeholder="Beneficiary Name" required>
-                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Beneficiary Mobile Number</label>
-                                            <input type="number" class="form-control" id="beneficiary_mobile_number"
-                                                parsley-trigger="change" placeholder="Beneficiary Mobile Number" required>
-                                            {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Beneficiary Address</label>
-                                            <input type="text" class="form-control" id="beneficiary_address"
-                                                parsley-trigger="change" placeholder="Beneficiary Address" required>
-                                            {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Beneficiary Email</label>
-                                            <input type="email" class="form-control" id="beneficiary_email"
-                                                parsley-trigger="change" placeholder="Beneficiary Email" required>
-                                            {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                        </div>
+                                    aria-autocomplete="off">
+                                    {{-- @csrf --}}
+                                    <div class="row">
 
 
 
 
-                                        <div class="form-group">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
+                                                <label>Account Number</label>
+                                                <input class="form-control" type="number" class="form-control"
+                                                    id="account_number" placeholder="Account Number" required>
+                                                {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                            <div class="checkbox checkbox-primary mb-2" id="transfer_email">
-                                                <input id="checkbox2" type="checkbox">
-                                                <label for="checkbox2">
-                                                    Email beneficiary when a transfer is made
-                                                </label>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Account Name</label>
+                                                <input type="text" class="form-control" id="account_name"
+                                                    parsley-trigger="change" placeholder="Account Name" required>
+                                                {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Account Currency</label>
+
+                                                <select class="custom-select" id="select_currency" required>
+                                                    <option value="">Select Currency</option>
+                                                    {{-- <option value="001~SLL">SLL</option>
+                                                    <option value="002~USD">USD</option>
+                                                    <option value="003~EUR">EUR</option>
+                                                    <option value="004~GBP">GBP</option> --}}
+                                                </select>
+                                                {{-- <input type="text" class="form-control" id="account_currency" parsley-trigger="change"  placeholder="Account " required> --}}
+                                                {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
                                             </div>
 
                                         </div>
 
-                                        <p class="sub-header font-13">
-                                            Providing beneficairy email and checking
+                                        <div class="col-md-6">
 
-                                        </p>
+                                            <div class="form-group">
+                                                {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
+                                                <label>Beneficiary Name</label>
+                                                <input type="text" class="form-control" id="beneficiary_name"
+                                                    parsley-trigger="change" placeholder="Beneficiary Name" required>
+                                                {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                        <button class="btn btn-primary waves-effect waves-light btn-rounded" type="submit"
-                                            id="save_beneficiary">Next</button>
-                                        {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button> --}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Beneficiary Mobile Number</label>
+                                                <input type="number" class="form-control" id="beneficiary_mobile_number"
+                                                    parsley-trigger="change" placeholder="Beneficiary Mobile Number" required>
+                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                    </form>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Beneficiary Address</label>
+                                                <input type="text" class="form-control" id="beneficiary_address"
+                                                    parsley-trigger="change" placeholder="Beneficiary Address" required>
+                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Beneficiary Email</label>
+                                                <input type="email" class="form-control" id="beneficiary_email"
+                                                    parsley-trigger="change" placeholder="Beneficiary Email" required>
+                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                            </div>
+
+
+
+
+                                            <div class="form-group">
+
+                                                <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                                    <input id="checkbox2" type="checkbox">
+                                                    <label for="checkbox2">
+                                                        Email beneficiary when a transfer is made
+                                                    </label>
+                                                </div>
+
+                                            </div>
+
+                                            <p class="sub-header font-13">
+                                                Providing beneficairy email and checking
+
+                                            </p>
+
+                                            <button class="btn btn-primary waves-effect waves-light btn-rounded" type="submit"
+                                                id="save_beneficiary">Next</button>
+                                            {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button> --}}
+
+
+                                        </div>
+
+                                        <br>
+
+
+
+                                    </div>
+
+                                </form>
+
+
 
 
                                     <form action="#" method="POST" id="same_bank_beneficiary_form_summary"
@@ -207,10 +226,6 @@
 
 
 
-                                <div class="col-md-5 text-center d-none d-md-block" style="margin-top: 80px;">
-
-                                    <img src="{{ asset('assets/images/send.png') }}" class="img-fluid" alt="">
-                                </div> <!-- end col -->
 
 
                                 <!-- end row -->
@@ -256,16 +271,19 @@
                         $.each(data, function(index) {
 
                             $('#select_currency').append($('<option>', {
-                                value: data[index].code + '~' + data[index].currency
-                            }).text(data[index].currency));
-                            {{-- $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance)); --}}
-
+                                value: data[index].currCode + '~' + data[index].description
+                            }).text(data[index].isoCode + '~' + data[index].description));
+                            
                         });
 
                     },
 
                 })
             };
+
+
+
+
 
             $(document).ready(function() {
 
@@ -300,6 +318,45 @@
                         title: message
                     })
                 };
+
+                function getAccountDescription(account_no) {
+                    $.ajax({
+                        "type": "POST",
+                        "url": "get-account-description",
+                        "datatype": "application/json",
+                        "data": {
+                            "authToken": "string",
+                            "accountNumber": account_no
+                          },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+
+                        success: function(response) {
+
+                            console.log(response.responseCode)
+                            if (response.responseCode == "000") {
+                                console.log(response.data)
+                                toaster(response.message, 'success');
+                                $('#account_name').val(response.data.accountNumber)
+
+                            } else {
+                                toaster(response.message, 'error');
+                                $('#account_name').val('')
+
+                            }
+                        }
+
+                    })
+                };
+
+
+                $("#account_number").keyup(function() {
+                    let account_no = $(this).val();
+                    if(account_no.length > 10){
+                        getAccountDescription(account_no)
+                    }
+                })
 
                 $('#same_bank_beneficiary_form').submit(function(e) {
                     e.preventDefault();

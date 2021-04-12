@@ -29,7 +29,7 @@ class SameBankController extends Controller
             "userId"    => $userID
         ];
 
-        $response = Http::get("http://localhost/IIE/currency-code.php",$data);
+        $response = Http::get(env('API_BASE_URL') ."/utilities/getCurrencies");
 
         //return $response;
         // return $response->status();
@@ -137,7 +137,7 @@ class SameBankController extends Controller
                         "sendMail" => $req->transfer_email
                     ],
 
-                    "beneficiaryType" => "string",
+                    "beneficiaryType" => "SAB",
 
                     "securityDetails" => [
                     "approvedBy" => "string",

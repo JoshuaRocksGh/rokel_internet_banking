@@ -94,7 +94,7 @@ class InternationalBankController extends Controller
                 "sendMail" => $req->beneficiary_email
             ],
 
-            "beneficiaryType" => "string",
+            "beneficiaryType" => "INTB",
 
             "securityDetails" => [
             "approvedBy" => "string",
