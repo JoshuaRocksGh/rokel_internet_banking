@@ -192,29 +192,19 @@
                                     <div class="card-body">
 
                                             <div class="table-responsive table-bordered">
-                                                <table id="datatable-buttons" class="table mb-0">
-                                                    <tbody>
+                                                <table id="" class="table mb-0 ">
+                                                    <thead>
                                                         <tr class="bg-secondary text-white ">
                                                             <td> <b> Account Number </b> </td>
+                                                            <td> <b> Account Description </b> </td>
+                                                            <td> <b> Product </b> </td>
                                                             <td> <b> Currency </b> </td>
-                                                            <td> <b> Book Balance </b> </td>
                                                             <td> <b> Available Balance </b> </td>
+                                                            <td> <b> Ledger Balance </b> </td>
                                                             <td> <b> Overdrawn Limit </b> </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>  <a href="{{ url('account-enquiry?accountNumber=23390019920019') }}"> <b class="text-primary">23390019920019 </b> </a></td>
-                                                            <td> <b> GHS </b>  </td>
-                                                            <td> <b> 39,900.00  </b> </b></td>
-                                                            <td> <b> 456,990.00  </b>  </td>
-                                                            <td>  <b> 0.00  </b> </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>  <a href="{{ url('account-enquiry?accountNumber=23390019920019') }}"> <b class="text-primary" >23390019920019 </b> </a> </td>
-                                                            <td> <b>  GHS  </b>  </td>
-                                                            <td> <b> 39,900.00  </b> </td>
-                                                            <td> <b>  456,990.00  </b> </td>
-                                                            <td>  <b> 0.00  </b> </td>
-                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="casa_list_display">
 
 
                                                     </tbody>
@@ -227,7 +217,7 @@
                                 </div>
                             </div>
                             <div class="card mb-1">
-                                <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
+                                <a class="text-dark" data-toggle="collapse " href="#collapseTwo" aria-expanded="true">
                                 <div class="card-header" id="headingTwo">
                                     <h5 class="m-0">
 
@@ -237,12 +227,12 @@
                                     </h5>
                                 </div>
                             </a>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="card-body">
 
                                         <div class="table-responsive table-bordered">
                                             <table id="datatable-buttons" class="table mb-0">
-                                                <tbody>
+                                                <thead>
                                                     <tr class="bg-secondary text-white ">
                                                         <td> <b> Account Number </b> </td>
                                                         <td> <b> Description </b> </td>
@@ -250,6 +240,9 @@
                                                         <td> <b> Current Balance </b> </td>
                                                         <td> <b> Arrears </b> </td>
                                                     </tr>
+                                                </thead>
+                                                <tbody class="loans_display">
+
                                                     <tr>
                                                         <td> <b class="text-danger">23390019920019 </b></td>
                                                         <td> <b> GHS </b>  </td>
@@ -457,6 +450,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <script>
+
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'pie',
@@ -497,23 +491,110 @@
             } --}}
         });
 
+        {{-- function get_accounts() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-accounts-api',
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('#security_questions').append($('<option>', {
+                            value: data[index].Q_CODE
+                        }).text(data[index].Q_DESCRIPTION));
+
+                    });
+
+                },
+
+            })
+        }; --}}
+
+
+        function get_accounts(){
+
+            $.ajax({
+                "type": "GET",
+                "url" : "api/get-accounts-api",
+                "datatype" : "application/json",
+
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success:
+                function(response){
+                    console.log(response);
+                    if(response.responseCode == '000'){
+
+                        let data = response.data;
+
+
+
+                        $.each(data, function(index) {
+                            $('.casa_list_display').append(`<tr>
+                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                <td> <b> ${data[index].accountDesc} </b>  </td>
+                                <td> <b> ${data[index].accountType}  </b>  </td>
+                                <td> <b> ${data[index].currency}  </b>  </td>
+                                <td> <b> ${data[index].availableBalance}   </b> </b></td>
+                                <td> <b> ${data[index].ledgerBalance}   </b>  </td>
+                                <td>  <b> 0.00  </b> </td>
+                            </tr>`)
+
+                        })
+
+{{--
+                        $("#account_transaction_loader").hide();
+                        $("#account_transaction_retry_btn").hide();
+                        $(".account_transaction_display").show(); --}}
+
+                    }else{
+                        {{-- $("#account_transaction_loader").hide();
+                        $(".account_transaction_display").hide();
+                        $("#account_transaction_retry_btn").show(); --}}
+                    }
+
+                }
+            })
+        }
+
+
+
+
+
+
+
+        $(document).ready(function() {
+            console.log('kjhlksdfs')
+
+            setTimeout(function() {
+                get_accounts();
+            }, 2000);
+        })
+
+
+
+
     </script>
 
 
-
+{{--
     <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-    <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>  --}}
 
 
 
     <!-- third party js -->
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    {{--  <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">  --}}
     </script>
+
     {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
@@ -526,7 +607,42 @@
     <!-- third party js ends -->
 
     <!-- Datatables init -->
-    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    {{--  <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>  --}}
 
 
 @endsection
+
+
+
+@section('scripts')
+    <script>
+
+        function get_accounts_() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-accounts-api',
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('#security_questions').append($('<option>', {
+                            value: data[index].Q_CODE
+                        }).text(data[index].Q_DESCRIPTION));
+
+                    });
+
+                },
+
+            })
+        };
+
+
+
+
+    </script>
+
+
+@endsection
+

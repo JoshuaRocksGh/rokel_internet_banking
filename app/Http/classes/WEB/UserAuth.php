@@ -8,9 +8,9 @@ class UserAuth
 {
     public static function getDetails()
     {
-        if (Session::has('user')  )
+        if (!is_null(session()->get('user')) )
         {
-            return session('user');
+            return session()->get('user');
         }else{
             return 'hellss';
         }

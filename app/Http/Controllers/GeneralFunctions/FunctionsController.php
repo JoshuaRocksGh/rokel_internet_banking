@@ -11,7 +11,64 @@ use Illuminate\Support\Facades\Http;
 
 class FunctionsController extends Controller
 {
-    
+
+
+    public function get_accounts(){
+        // return 'kjsdf';
+
+        $user = (object) UserAuth::getDetails();
+        // return $user;
+
+        $authToken = $user->userToken;
+        $userID = $user->userId;
+
+        $base_response = new BaseResponse();
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+        // return $data;
+        // return env('API_BASE_URL') ."account/getAccounts";
+
+        $response = Http::post(env('API_BASE_URL') ."account/getAccounts", $data);
+
+        // return $response;
+        // return $response->status();
+
+
+    if($response->ok()){    // API response status code is 200
+
+        $result = json_decode($response->body());
+        // return $result->responseCode;
+
+
+        if($result->responseCode == '000'){
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+        }else{   // API responseCode is not 000
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            }
+
+        } else { // API response status code not 200
+
+             return $response->body();
+             DB::table('error_logs')->insert([
+                 'platform' => 'ONLINE_INTERNET_BANKING',
+                 'user_id' => 'AUTH',
+                 'code' => $response->status(),
+                 'message' => $response->body()
+             ]);
+
+            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+        }
+    }
+
+
     public function currency_list(){
 
         $user = (object) UserAuth::getDetails();
@@ -65,7 +122,7 @@ class FunctionsController extends Controller
     }
 
 
-    
+
     public function security_question(){
 
         $user = (object) UserAuth::getDetails();

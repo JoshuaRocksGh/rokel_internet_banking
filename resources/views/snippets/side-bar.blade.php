@@ -367,7 +367,7 @@
                     <a href="#approvals" data-toggle="collapse">
                         {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
                         <i class="mdi mdi-checkbox-multiple-marked-outline"></i>
-                        <span> Apprpvals  </span>
+                        <span> Approvals  </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="approvals">
