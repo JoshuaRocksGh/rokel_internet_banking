@@ -5,7 +5,7 @@
 
     <div class="auth-fluid">
         <!--Auth fluid left content -->
-        <div class="auth-fluid-form-box">
+        <div class="auth-fluid-form-box" style="background-image: url(http://localhost/laravel/int/public/assets/images/login-bg.jpg);background-repeat: no-repeat; background-size: cover;">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
@@ -27,13 +27,42 @@
                     </div>
 
                     <!-- title-->
-                    <h4 class="mt-0"><b>Reset Password</b></h4>
-                    <p class="text-muted mb-4">Reset your password to access account.</p>
-
+                    <h4 class="mt-0"><b>Change Password</b></h4>
+                    <p class="text-muted mb-1"></p>
+                    <br>
                     <!-- form -->
-                    <form action="#" autocomplete="off" aria-autocomplete="off">
+                    <form action="#" autocomplete="off" aria-autocomplete="off" id="change-password-form">
+
+                        <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert" id="failed_login">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                {{--  <span aria-hidden="true">&times;</span>  --}}
+                            </button>
+                            <i class="mdi mdi-block-helper mr-2"></i>
+                            <span id="error_message"></span>
+                        </div>
+                        
                         <div class="form-group">
-                            <label for="new_password">Enter New Password</label><div class="input-group input-group-merge">
+                            <label for="new_password">Security Question</label>
+                            <div class="input-group input-group-merge">
+                                <select class="form-control" id="security_questions">
+                                    <option value="">Select Security Queston</option>
+                                </select>
+                               
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label for="security_answer">Security Answer</label>
+                            <div class="input-group input-group-merge">
+                                <input type="password" id="security_answer" class="form-control" placeholder="Security Answer">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="new_password">New Password</label>
+                            <div class="input-group input-group-merge">
                                 <input type="password" id="new_password" class="form-control" placeholder="New Password">
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
@@ -42,10 +71,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        
                         <div class="form-group">
-                            <label for="confirm_password">Confirm New Password</label>
+                            <label for="new_pin">New PIN</label>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="confirm_password" class="form-control" placeholder="Confirm Password">
+                                <input type="password" id="new_pin" class="form-control" placeholder="New PIN">
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>
@@ -56,9 +87,11 @@
 
 
                         <div class="form-group mb-0 text-center">
-                            <a href="{{ url('home') }}">
-                                <button class="btn btn-primary btn-block" type="button">Reset Password</button>
-                            </a>
+                            <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="set_password" >Set Pin & Password</span>
+                                <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                <span id="spinner-text">Loading...</span>
+                            </button>
+
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
                         </div>
 
@@ -88,4 +121,101 @@
     <!-- end auth-fluid-->
 
 
+@endsection
+
+
+@section('scripts')
+<script>
+    
+    function get_security_question() {
+        $.ajax({
+            'type': 'GET',
+            'url': 'get-security-question-api',
+            "datatype": "application/json",
+            success: function(response) {
+                console.log(response.data);
+                let data = response.data
+                $.each(data, function(index) {
+
+                    $('#security_questions').append($('<option>', {
+                        value: data[index].Q_CODE
+                    }).text(data[index].Q_DESCRIPTION));
+                    
+                });
+
+            },
+
+        })
+    };
+
+
+
+
+
+    $(document).ready(function() {
+
+        setTimeout(function() {
+            get_security_question();
+        }, 2000);
+
+        $('#failed_login').hide(),
+        $('#spinner').hide(),
+        $('#spinner-text').hide(),
+
+        
+
+        $('#change-password-form').submit(function(e){
+            e.preventDefault();
+            var security_question = $("#security_questions").val();
+            var security_answer = $('#security_answer').val();
+            var new_password = $('#new_password').val();
+            var new_pin = $('#new_pin').val();
+
+            $('#spinner').show(),
+            $('#spinner-text').show(),
+
+            $('#set_password').hide(),
+            $('#submit').attr('disabled',true);
+
+            //var show_error = $('#failed_login').show();
+            $.ajax({
+                "type": "POST",
+                "url" : "post-change-password",
+                "datatype" : "application/json",
+                "data": {
+                    "security_question" : security_question,
+                    "security_answer" : security_answer,
+                    "new_password" : new_password,
+                    "new_pin" : new_pin,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                success:
+                function(response){
+                    console.log(response);
+                    var res = response.data
+                    $('#submit').attr('disabled',false);
+
+                    if(response.responseCode == "000"){
+                      
+                        window.location = 'home';
+
+                    }else {
+                        $('#spinner').hide()
+                        $('#spinner-text').hide()
+
+                        $('#set_password').show()
+                        $('#error_message').text(response.message)
+                        $('#failed_login').show()
+
+                    }
+                }
+            })
+        })
+
+
+    })
+</script>
 @endsection

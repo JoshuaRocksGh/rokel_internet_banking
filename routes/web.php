@@ -74,6 +74,7 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'email_reset_pa
 
 //Route to control the change-password screen
 Route::get('/change-password', [ResetPasswordController::class, 'change_password'])->name('change-password');
+Route::post('/post-change-password', [ResetPasswordController::class, 'post_change_password'])->name('post-change-password');
 
 
 Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
@@ -324,8 +325,10 @@ Route::get('/logout', [LogoutController::class, 'logout_'])->name('logout');
 
 Route::get('/send-email', [MaileController::class, 'send_email'])->name('send-email');
 
+
 // GENERAL FUNCTIONS
 Route::get('get-currency-list-api', [FunctionsController::class, 'currency_list'])->name('get-currency-list-api');
+Route::get('get-security-question-api', [FunctionsController::class, 'security_question'])->name('get-security-question-api');
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -346,5 +349,4 @@ Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class
 Route::post('international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
-
 
