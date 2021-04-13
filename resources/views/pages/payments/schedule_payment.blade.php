@@ -18,304 +18,288 @@
                             </p>
                             <hr>
 
-
-                            <div class="row" id="transaction_form">
-
-
-                                <div class="col-md-7">
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
+                                <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
-                                        <div class="form-group">
-                                            <label class="h6">Status <b style="color:red">*</b></label>
-                                            <input type="text" class="form-control" placeholder="NEW REQUEST" disabled style="color:red"/>
+                                    <div class="row" id="transaction_form">
+
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label class="h6">Status <b style="color:red">*</b></label>
+                                                <input type="text" class="form-control" placeholder="NEW REQUEST" disabled style="color:red"/>
 
 
-                                            <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
-                                                <tbody class="text-primary">
-                                                    <tr class="text-primary">
+                                                <table
+                                                    class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
+                                                    <tbody class="text-primary">
+                                                        <tr class="text-primary">
 
-                                                        <td class="text-primary">
-                                                            <a class="text-body font-weight-semibold display_from_account_name text-primary"></a>
-                                                            <small class="d-block display_from_account_no text-primary"></small>
-                                                        </td>
+                                                            <td class="text-primary">
+                                                                <a class="text-body font-weight-semibold display_from_account_name text-primary"></a>
+                                                                <small class="d-block display_from_account_no text-primary"></small>
+                                                            </td>
 
-                                                        <td class="text-right font-weight-semibold text-primary">
-                                                            <span class="display_from_account_currency text-primary"></span>
-                                                            <span class="display_from_account_amount text-primary"></span>
+                                                            <td class="text-right font-weight-semibold text-primary">
+                                                                <span class="display_from_account_currency text-primary"></span>
+                                                                <span class="display_from_account_amount text-primary"></span>
 
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
+                                                            </td>
+                                                        </tr>
 
 
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="h6">Pay From Account: <b style="color:red">*</b></label>
-                                            <select class="form-control" name="" id="">
-                                                <option value="">-----Select Account-----</option>
-                                                <option value="00300661360013600130139-SLL 52,058,736,905.53-CURRENT ACCOUNT-STAFF">00300661360013600130139-SLL 52,058,736,905.53-CURRENT ACCOUNT-STAF</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="h6">Select Beneficiary: <b style="color:red">*</b></label>
-                                            <select class="form-control" name="" id="">
-                                                <option value="">-----Select Account-----</option>
-                                                <option value="00300661360013600130139-SLL 52,058,736,905.53-CURRENT ACCOUNT-STAFF">00300661360013600130139-SLL 52,058,736,905.53-CURRENT ACCOUNT-STAF</option>
-                                            </select>
-                                        </div>
+                                                    </tbody>
+                                                </table>
 
 
-                                        <div class="form-group">
-                                            <label class="h6">Effective Date From: <b style="color:red">*</b></label>
-                                            <input type="date" class="form-control" name="" id=""/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="h6">Effective Date To: <b style="color:red">*</b></label>
-                                            <input type="date" class="form-control" name="" id=""/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="h6">Frequency: <b style="color:red">*</b></label>
-                                            <select class="form-control" name="" id="">
-                                                <option value="">-----Select Account-----</option>
-                                                <option value="daily">Daily</option>
-                                                <option value="weekly">Weekly</option>
-                                                <option value="fortnightly">Fortnightly</option>
-                                                <option value="monthly">Monthly</option>
-                                                <option value="quarterly">Daily</option>
-                                                <option value="half yearly">Half Yearly</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="h6">Max Default Attempts: <b style="color:red">*</b></label>
-                                            <select class="form-control" name="" id="">
-                                                <option value="">-----Select Account-----</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="h6">Amount/Currency: <b style="color:red">*</b></label>
-                                            <input type="text" class="form-control" name="" id="">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="h6">Transaction Detail: <b style="color:red">*</b></label>
-                                            <input type="text" class="form-control" name="" id="">
-                                        </div>
-
-                                        {{-- <div class="form-group">
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Schedule
-                                                    Payments</label>
                                             </div>
-                                            <legend></legend>
 
-                                            <input type="text" class="form-control" id="schedule_payment_contraint_input">
+                                            <div class="form-group">
+                                                <label class="h6">Pay From Account: <b style="color:red">*</b></label>
+                                                <select class="form-control" name="" id="">
+                                                    <option value="">-----Select Account-----</option>
+                                                    <option value="00300661360013600130139-SLL 52,058,736,905.53-CURRENT ACCOUNT-STAFF">00300661360013600130139-SLL 52,058,736,905.53-CURRENT ACCOUNT-STAF</option>
+                                                </select>
+                                            </div>
 
-                                            <input type="date" class="form-control" id="schedule_payment_date">
-
-                                        </div> --}}
-
-
-
-                                        <div class="form-group text-right">
-                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                                &nbsp; Proceed &nbsp;</button>
-                                        </div>
-
-
-
-
-                                    </form>
-                                </div> <!-- end col -->
+                                            <div class="form-group">
+                                                <label class="h6">Select Beneficiary: <b style="color:red">*</b></label>
+                                                <select class="form-control" name="" id="">
+                                                    <option value="">-----Select Account-----</option>
+                                                    <option value="00300661360013600130139-SLL 52,058,736,905.53-CURRENT ACCOUNT-STAFF">00300661360013600130139-SLL 52,058,736,905.53-CURRENT ACCOUNT-STAF</option>
+                                                </select>
+                                            </div>
 
 
+                                            <div class="form-group">
+                                                <label class="h6">Effective Date From: <b style="color:red">*</b></label>
+                                                <input type="date" class="form-control" name="" id=""/>
+                                            </div>
 
-                                <div class="col-md-5 text-center" style="margin-top: 80px;">
-
-                                    <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt="">
-                                </div> <!-- end col -->
-
-
-                                <!-- end row -->
+                                            <div class="form-group">
+                                                <label class="h6">Effective Date To: <b style="color:red">*</b></label>
+                                                <input type="date" class="form-control" name="" id=""/>
+                                            </div>
 
 
 
-                            </div>
-
-                            <div class="row" id="transaction_summary">
 
 
-                                <div class="col-md-12">
-                                    <div class="border p-3 mt-4 mt-lg-0 rounded">
-                                        <h4 class="header-title mb-3">Transfer Detail Summary</h4>
-
-                                        <div class="table-responsive">
-                                            <table class="table mb-0">
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td>From Account:</td>
-                                                        <td>
-                                                            <span
-                                                                class="font-13 text-primary text-bold display_from_account_type"
-                                                                id="display_from_account_type"></span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                id="display_from_account_name"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                id="display_from_account_no"></span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>To Account:</td>
-                                                        <td>
-
-                                                            <span
-                                                                class="font-13 text-primary text-bold display_to_account_type"
-                                                                id="display_to_account_type"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                id="display_to_account_name"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                id="display_to_account_no"> </span>
 
 
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                id="online_display_beneficiary_alias_name"> Daniel Hammond</span>
+                                        </div> <!-- end col -->
 
-                                                            <span class="font-13 text-primary h3 online_display_beneficiary_account_no"
-                                                                id="">0000333030303 </span>
-                                                                &nbsp; | &nbsp;
-                                                            <span class="font-13 text-primary h3 online_display_beneficiary_account_currency" id=""> GHS
-                                                            </span>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="h6">Frequency: <b style="color:red">*</b></label>
+                                                <select class="form-control" name="" id="">
+                                                    <option value="">-----Select Account-----</option>
+                                                    <option value="daily">Daily</option>
+                                                    <option value="weekly">Weekly</option>
+                                                    <option value="fortnightly">Fortnightly</option>
+                                                    <option value="monthly">Monthly</option>
+                                                    <option value="quarterly">Daily</option>
+                                                    <option value="half yearly">Half Yearly</option>
+                                                </select>
+                                            </div>
 
-                                                            <span
-                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
-                                                            id="online_display_beneficiary_email">dan@gmail.com</span>
+                                            <div class="form-group">
+                                                <label class="h6">Max Default Attempts: <b style="color:red">*</b></label>
+                                                <select class="form-control" name="" id="">
+                                                    <option value="">-----Select Account-----</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
 
-                                                            <span
-                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
-                                                            id="online_display_beneficiary_phone">0554602954</span>
+                                            <div class="form-group">
+                                                <label class="h6">Amount/Currency: <b style="color:red">*</b></label>
+                                                <input type="text" class="form-control" name="" id="">
+                                            </div>
 
-
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Amount:</td>
-                                                        <td>
-                                                            <span class="font-15 text-primary h3 display_currency"
-                                                                id="display_currency"> </span>
-                                                            &nbsp;
-                                                            <span class="font-15 text-primary h3 display_transfer_amount"
-                                                                id="display_transfer_amount"></span>
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                    <tr>
-                                                        <td>Category:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_category"
-                                                                id="display_category"></span>
-
-                                                        </td>
-                                                    </tr>
+                                            <div class="form-group">
+                                                <label class="h6">Transaction Detail: <b style="color:red">*</b></label>
+                                                <input type="text" class="form-control" name="" id="">
+                                            </div>
 
 
-                                                    <tr>
-                                                        <td>Purpose:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_purpose"
-                                                                id="display_purpose"></span>
-                                                        </td>
-                                                    </tr>
 
 
-                                                    <tr>
-                                                        <td>Schedule Payment:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_schedule_payment"
-                                                                id="display_schedule_payment">NO </span>
-                                                                &nbsp; | &nbsp;
-                                                            <span class="font-13 text-primary h3 display_schedule_payment_date" id="display_schedule_payment_date"> N/A
-                                                            </span>
-                                                        </td>
-                                                    </tr>
 
+                                            <div class="form-group text-right">
+                                                <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                                    &nbsp; Proceed &nbsp;</button>
+                                            </div>
 
-                                                    <tr>
-                                                        <td>Transfer Date: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3"
-                                                                id="display_transfer_date">{{  date('d F, Y') }}</span>
-                                                        </td>
-                                                    </tr>
+                                            {{-- <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt=""> --}}
+                                        </div> <!-- end col -->
 
-                                                    <tr>
-                                                        <td>Posted BY: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3"
-                                                                id="display_posted_by">Kwabena Ampah</span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Enter Pin: </td>
-                                                        <td>
-                                                            <div class="form-group">
-                                                                <input type="text" name="user_pin" class="form-control"
-                                                                    id="user_pin"
-                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- end table-responsive -->
-                                        <br>
-                                        <div class="form-group text-center">
-
-                                            <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                    id="back_button">Back</button> &nbsp; </span>
-                                            <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                    id="confirm_button">Confirm Transfer </button></span>
-                                            <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
-                                                    id="confirm_button">Print Receipt </button></span>
-                                        </div>
+                                        <!-- end row -->
                                     </div>
 
-                                </div> <!-- end col -->
+                                </form>
+
+
+                                <div class="row" id="transaction_summary">
+
+
+                                    <div class="col-md-12">
+                                        <div class="border p-3 mt-4 mt-lg-0 rounded">
+                                            <h4 class="header-title mb-3">Transfer Detail Summary</h4>
+
+                                            <div class="table-responsive">
+                                                <table class="table mb-0">
+
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>From Account:</td>
+                                                            <td>
+                                                                <span
+                                                                    class="font-13 text-primary text-bold display_from_account_type"
+                                                                    id="display_from_account_type"></span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                    id="display_from_account_name"> </span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                    id="display_from_account_no"></span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>To Account:</td>
+                                                            <td>
+
+                                                                <span
+                                                                    class="font-13 text-primary text-bold display_to_account_type"
+                                                                    id="display_to_account_type"> </span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                    id="display_to_account_name"> </span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                    id="display_to_account_no"> </span>
+
+
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                    id="online_display_beneficiary_alias_name"> Daniel Hammond</span>
+
+                                                                <span class="font-13 text-primary h3 online_display_beneficiary_account_no"
+                                                                    id="">0000333030303 </span>
+                                                                    &nbsp; | &nbsp;
+                                                                <span class="font-13 text-primary h3 online_display_beneficiary_account_currency" id=""> GHS
+                                                                </span>
+
+                                                                <span
+                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                                id="online_display_beneficiary_email">dan@gmail.com</span>
+
+                                                                <span
+                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
+                                                                id="online_display_beneficiary_phone">0554602954</span>
+
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Amount:</td>
+                                                            <td>
+                                                                <span class="font-15 text-primary h3 display_currency"
+                                                                    id="display_currency"> </span>
+                                                                &nbsp;
+                                                                <span class="font-15 text-primary h3 display_transfer_amount"
+                                                                    id="display_transfer_amount"></span>
+
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Category:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_category"
+                                                                    id="display_category"></span>
+
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Purpose:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_purpose"
+                                                                    id="display_purpose"></span>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Schedule Payment:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_schedule_payment"
+                                                                    id="display_schedule_payment">NO </span>
+                                                                    &nbsp; | &nbsp;
+                                                                <span class="font-13 text-primary h3 display_schedule_payment_date" id="display_schedule_payment_date"> N/A
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Transfer Date: </td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3"
+                                                                    id="display_transfer_date">{{  date('d F, Y') }}</span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Posted BY: </td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3"
+                                                                    id="display_posted_by">Kwabena Ampah</span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Enter Pin: </td>
+                                                            <td>
+                                                                <div class="form-group">
+                                                                    <input type="text" name="user_pin" class="form-control"
+                                                                        id="user_pin"
+                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+                                            <br>
+                                            <div class="form-group text-center">
+
+                                                <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                        id="back_button">Back</button> &nbsp; </span>
+                                                <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
+                                                        id="confirm_button">Confirm Transfer </button></span>
+                                                <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
+                                                        id="confirm_button">Print Receipt </button></span>
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- end col -->
 
 
 
 
 
-                            </div>
+                                </div>
 
 
 

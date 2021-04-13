@@ -18,62 +18,65 @@
                             </p>
                             <hr>
 
+                            <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
+                                    @csrf
+                                 <div class="row" id="transaction_form">
 
-                            <div class="row" id="transaction_form">
+                                    <div class="col-md-6">
 
+                                            <div class="form-group">
+                                                <label class="h6">Status*</label>
+                                                <input type="text" class="form-control" placeholder="Amount" style="color:red"value="NEW REQUEST" disabled/>
+                                            </div>
 
-                                <div class="col-md-7">
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
-                                        @csrf
-
-                                        <div class="form-group">
-                                            <label class="h6">Status*</label>
-                                            <input type="text" class="form-control" placeholder="Amount" style="color:red"value="NEW REQUEST" disabled/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="h6">Select Account</label>
-                                            <select class="custom-select " id="from_account" required>
-                                                <option value="">-----Select Account-----</option>
-                                                <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
-                                                    Current Account ~ 001023468976001 </option>
-
-                                            </select>
+                                            <div class="form-group">
+                                                <label class="h6">Select Account</label>
+                                                <select class="custom-select " id="from_account" required>
+                                                    <option value="">-----Select Account-----</option>
+                                                    <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
+                                                        Current Account ~ 001023468976001 </option>
+                                                </select>
 
 
-                                            <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
-                                                <tbody class="text-primary">
-                                                    <tr class="text-primary">
+                                                <table
+                                                    class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
+                                                    <tbody class="text-primary">
+                                                        <tr class="text-primary">
 
-                                                        <td class="text-primary">
-                                                            <a class="text-body font-weight-semibold display_from_account_name text-primary"></a>
-                                                            <small class="d-block display_from_account_no text-primary"></small>
-                                                        </td>
+                                                            <td class="text-primary">
+                                                                <a class="text-body font-weight-semibold display_from_account_name text-primary"></a>
+                                                                <small class="d-block display_from_account_no text-primary"></small>
+                                                            </td>
 
-                                                        <td class="text-right font-weight-semibold text-primary">
-                                                            <span class="display_from_account_currency text-primary"></span>
-                                                            <span class="display_from_account_amount text-primary"></span>
+                                                            <td class="text-right font-weight-semibold text-primary">
+                                                                <span class="display_from_account_currency text-primary"></span>
+                                                                <span class="display_from_account_amount text-primary"></span>
 
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
+                                                            </td>
+                                                        </tr>
 
 
-                                        </div>
+                                                    </tbody>
+                                                </table>
 
-                                        <div class="form-group">
-                                            <label>From Cheque No:<b style="color:red">*</b></label>
-                                            <input type="text" class="form-control"/>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label>To Cheque No:<b style="color:red">*</b></label>
-                                            <input type="text" class="form-control"/>
-                                        </div>
+                                            </div>
 
+                                            <div class="form-group">
+                                                <label>From Cheque No:<b style="color:red">*</b></label>
+                                                <input type="text" class="form-control"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>To Cheque No:<b style="color:red">*</b></label>
+                                                <input type="text" class="form-control"/>
+                                            </div>
+
+                                    </div> <!-- end col -->
+
+
+
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Date issued:<b style="color:red">*</b></label>
                                             <input type="date" class="form-control"/>
@@ -96,25 +99,13 @@
                                                 &nbsp; PROCEED &nbsp;</button>
                                         </div>
 
+                                        {{-- <img src="{{ asset('assets/images/cheque_book.jpg') }}" class="img-fluid" alt=""> --}}
+                                    </div> <!-- end col -->
 
+                               </div>
+                               <!-- end row -->
 
-
-                                    </form>
-                                </div> <!-- end col -->
-
-
-
-                                <div class="col-md-5 text-center" style="margin-top: 80px;">
-
-                                    <img src="{{ asset('assets/images/cheque_book.jpg') }}" class="img-fluid" alt="">
-                                </div> <!-- end col -->
-
-
-                                <!-- end row -->
-
-
-
-                            </div>
+                            </form>
 
                             <div class="row" id="transaction_summary">
 
