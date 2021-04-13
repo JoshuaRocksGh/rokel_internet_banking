@@ -344,10 +344,7 @@ Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class
 
 
 Route::post('international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
-<<<<<<< HEAD
-=======
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
 
->>>>>>> b33f99d5b80df5873b8ab407a74e85c18a4e6f38
