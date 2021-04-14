@@ -5,7 +5,7 @@
 
     <div class="auth-fluid">
         <!--Auth fluid left content -->
-        <div class="auth-fluid-form-box" style="background-image: url(http://localhost/laravel/int/public/assets/images/login-bg.jpg);background-repeat: no-repeat;
+        <div class="auth-fluid-form-box" style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
             background-size: cover;
         ">
             <div class="align-items-center d-flex h-100">
@@ -73,12 +73,12 @@
 
 
                         <div class="form-group mb-0 text-center">
-                           
+
                                 <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="log_in" >Log In</span>
                                     <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
                                     <span id="spinner-text">Loading...</span>
                                 </button>
-                           
+
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
                         </div>
 
