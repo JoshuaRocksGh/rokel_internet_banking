@@ -22,7 +22,7 @@
 
 
     <!-- Start Content-->
-    <div class="container-fluid card-background-image">
+    <div class="container-fluid ">
     <legend></legend>
         <!-- start page title -->
 
@@ -31,7 +31,7 @@
         <div class="row">
 
             <div class="col-md-5 col-xl-5">
-                <h5 class="page-title">MY ACCOUNTS</h5>
+                <h5 class="page-title">MY ACCOUNTS </h5>
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
 
@@ -517,7 +517,7 @@
 
             $.ajax({
                 "type": "GET",
-                "url" : "api/get-accounts-api",
+                "url" : "get-accounts-api",
                 "datatype" : "application/json",
 
                 headers: {
@@ -545,15 +545,74 @@
 
                         })
 
-{{--
-                        $("#account_transaction_loader").hide();
-                        $("#account_transaction_retry_btn").hide();
-                        $(".account_transaction_display").show(); --}}
+
 
                     }else{
-                        {{-- $("#account_transaction_loader").hide();
-                        $(".account_transaction_display").hide();
-                        $("#account_transaction_retry_btn").show(); --}}
+
+                    }
+
+                }
+            })
+        }
+
+
+
+
+        function get_loans(){
+
+            $.ajax({
+                "type": "GET",
+                "url" : "get-loan-accounts-api",
+                "datatype" : "application/json",
+
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success:
+                function(response){
+                    console.log(response);
+                    if(response.responseCode == '000'){
+
+                        let data = response.data;
+
+
+
+                        $.each(data, function(index) {
+                            $('.casa_list_display').append(`
+
+                            <tr>
+                                <td style="width: 10px;">
+                                    <div class="avatar-sm rounded bg-soft-danger">
+                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="ecommerce-product-detail.html"
+                                        class="text-body font-weight-semibold">Savings Account</a>
+                                    <small class="d-block">${data[index].accountNumber}</small>
+                                </td>
+
+                                <td class="">
+                                    GHS 90,039.00
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                <td> <b> ${data[index].accountDesc} </b>  </td>
+                                <td> <b> ${data[index].accountType}  </b>  </td>
+                                <td> <b> ${data[index].currency}  </b>  </td>
+                                <td> <b> ${data[index].availableBalance}   </b> </b></td>
+                                <td> <b> ${data[index].ledgerBalance}   </b>  </td>
+                                <td>  <b> 0.00  </b> </td>
+                            </tr>`)
+
+                        })
+
+
+
+                    }else{
+
                     }
 
                 }
@@ -565,12 +624,12 @@
 
 
 
-
         $(document).ready(function() {
             console.log('kjhlksdfs')
 
             setTimeout(function() {
                 get_accounts();
+                get_loans()
             }, 2000);
         })
 

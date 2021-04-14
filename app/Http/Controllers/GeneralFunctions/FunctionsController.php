@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\GeneralFunctions;
 
 use App\Http\classes\API\BaseResponse;
-use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,30 +11,10 @@ use Illuminate\Support\Facades\Http;
 class FunctionsController extends Controller
 {
 
-
-    public function get_accounts(){
-        // return 'kjsdf';
-
-        $user = (object) UserAuth::getDetails();
-        // return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+    public function baseResponseApi($response)
+    {
 
         $base_response = new BaseResponse();
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
-
-        $response = Http::post(env('API_BASE_URL') ."account/getAccounts", $data);
-
-        // return $response;
-        // return $response->status();
-
 
     if($response->ok()){    // API response status code is 200
 
@@ -66,16 +45,62 @@ class FunctionsController extends Controller
             return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
         }
+
+    }
+
+
+    public function get_my_loans_accounts(){
+        // return 'kjsdf';
+
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $data = [
+            "authToken" => $authToken,
+        ];
+        // return $data;
+        // return env('API_BASE_URL') ."account/getAccounts";
+
+        $response = Http::post(env('API_BASE_URL') ."loans/getLoans", $data);
+
+        return $this->baseResponseApi($response);
+
+        // return $response;
+        // return $response->status();
+
+    }
+
+
+
+    public function get_accounts(){
+        // return 'kjsdf';
+
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+        // return $data;
+        // return env('API_BASE_URL') ."account/getAccounts";
+
+        $response = Http::post(env('API_BASE_URL') ."account/getAccounts", $data);
+
+        return $this->baseResponseApi($response);
+
+        // return $response;
+        // return $response->status();
+
     }
 
 
     public function currency_list(){
 
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $base_response = new BaseResponse();
 
@@ -125,11 +150,8 @@ class FunctionsController extends Controller
 
     public function security_question(){
 
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $base_response = new BaseResponse();
 

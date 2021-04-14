@@ -102,6 +102,9 @@ class LoginController extends Controller
                         "lastLogin" => $user_detail->lastLogin,
                     ]);
 
+         $authToken = session()->get('userToken');
+$userID = session()->get('userId');
+// return $authToken;
                     // return session()->get('user');
 
                     // return redirect()->route('home');
