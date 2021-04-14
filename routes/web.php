@@ -41,6 +41,7 @@ use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\TradeFinance\TradeFinanceController;
 use App\Http\Controllers\transferController;
+use App\Http\Controllers\Transfers\EditBeneficiaryController;
 use App\Http\Controllers\Transfers\LocalBankController;
 use App\Http\Controllers\Transfers\MultipleTransfersController;
 use App\Http\Controllers\Transfers\OwnAccountController;
@@ -89,6 +90,7 @@ Route::get('/reset-success', [ResetPasswordController::class, 'reset_success'])-
 Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
 Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('same-bank-beneficiary');
+Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'edit_same_bank_beneficary'])->name('edit-beneficiary');
 
 Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
 Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('international-bank-beneficiary');

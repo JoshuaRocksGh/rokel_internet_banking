@@ -67,9 +67,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
 
-                                        {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
-                                        <table id="datatable-buttons"
-                                            class="table table-bordered table-striped dt-responsive nowrap w-100">
+                                        <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100 beneficiary_list_display">
+                                        {{--  <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100">  --}}
                                             <thead>
                                                 <tr class="bg-secondary text-white">
                                                     <th> <b> Alias </b> </th>
@@ -83,7 +82,7 @@
                                             </thead>
 
 
-                                            <tbody>
+                                            <tbody class="beneficiary">
 
                                                 <tr>
                                                     <td> Josh</td>
@@ -105,6 +104,195 @@
                                     </div>
 
                                 </div>
+
+                                {{--  <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Beneficiary Details</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="modal-body p-4">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-1" class="control-label">Firstname</label>
+                                                            <input type="text" class="form-control" id="field-1" placeholder="John">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-2" class="control-label">Lastname</label>
+                                                            <input type="text" class="form-control" id="field-2" placeholder="Doe">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-2" class="control-label">Othername</label>
+                                                            <input type="text" class="form-control" id="field-2" placeholder="Doe">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-3" class="control-label">Beneficiary Type</label>
+                                                            <input type="text" class="form-control" id="field-3" placeholder="Address">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-3" class="control-label">Account Number</label>
+                                                            <input type="text" class="form-control" id="field-3" placeholder="Address">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-3" class="control-label">Account Currency</label>
+                                                            <input type="text" class="form-control" id="field-3" placeholder="Address">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-4" class="control-label">Bank Country</label>
+                                                            <input type="text" class="form-control" id="field-4" placeholder="Boston">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-5" class="control-label">Bank Name</label>
+                                                            <input type="text" class="form-control" id="field-5" placeholder="United States">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="field-6" class="control-label">Swift Code</label>
+                                                            <input type="text" class="form-control" id="field-6" placeholder="123456">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group no-margin">
+                                                            <label for="field-7" class="control-label">Personal Info</label>
+                                                            <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-info waves-effect waves-light">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.modal -->  --}}
+
+                                <!--  Modal content for the Large example -->
+                                        <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myLargeModalLabel">Beneficiary Details</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body p-4">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-1" class="control-label">Firstname</label>
+                                                                    <input type="text" class="form-control" id="firstname_" placeholder="John">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-2" class="control-label">Lastname</label>
+                                                                    <input type="text" class="form-control" id="lastname_" placeholder="Doe">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-2" class="control-label">Othername</label>
+                                                                    <input type="text" class="form-control" id="Othername_" placeholder="Doe">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-3" class="control-label">Beneficiary Type</label>
+                                                                    <input type="text" class="form-control" id="beneficiary_type_" placeholder="Address">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-3" class="control-label">Account Number</label>
+                                                                    <input type="text" class="form-control" id="account_number_" placeholder="Address">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-3" class="control-label">Account Currency</label>
+                                                                    <input type="text" class="form-control" id="account_currency_" placeholder="Address">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-4" class="control-label">Bank Country</label>
+                                                                    <input type="text" class="form-control" id="bank_country_" placeholder="Boston">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-5" class="control-label">Bank Name</label>
+                                                                    <input type="text" class="form-control" id="bank_name_" placeholder="United States">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="field-6" class="control-label">Swift Code</label>
+                                                                    <input type="text" class="form-control" id="swift_code_" placeholder="123456">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group no-margin">
+                                                                    <label for="field-7" class="control-label">Bank Address</label>
+                                                                    {{--  <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>  --}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group no-margin">
+                                                                    <label for="field-7" class="control-label">Beneficiary Address</label>
+                                                                    {{--  <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>  --}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group no-margin">
+                                                                    <label for="field-7" class="control-label">Beneficiary Email</label>
+                                                                    {{--  <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>  --}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">Delete</button>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+
+                                {{--  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal">Center modal</button>  --}}
+                                {{--  <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Responsive Modal</button>  --}}
+                                {{--  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">Large Modal</button>  --}}
+
+
 
 
 
@@ -163,12 +351,39 @@ framework upon which plug-ins can built.
         <script>
 
             function beneficiary_list(){
+                var table = $('.beneficiary_list_display').DataTable();
+                var nodes = table.rows().nodes();
                 $.ajax({
                     'tpye' : 'GET' ,
                     'url' : 'all-beneficiary-list' ,
                     "datatype" : "application/json",
                     success:function(response){
-                        console.log(response.data);
+                        {{--  console.log(response.data);  --}}
+
+                        let data = response.data;
+
+
+
+                                $.each(data, function(index) {
+
+                                    table.row.add([
+                                        data[index].NICKNAME,
+                                        data[index].BEN_ACCOUNT,
+                                        data[index].BEN_ACCOUNT,
+                                        data[index].EMAIL,
+                                        data[index].BANK_NAME,
+
+
+                                        `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}' <span class="fe-edit noti-icon text-primary"></span></a>
+                                        &emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' data-toggle="modal" data-target="#bs-example-modal-lg" <span class="fe-trash noti-icon text-danger"></span></a>`,
+
+
+
+
+                                    ]).draw(false)
+
+                                })
+
                     }
                 })
             }
@@ -177,7 +392,12 @@ framework upon which plug-ins can built.
 
                 setTimeout(function(){
                     beneficiary_list();
-                },2000);
+                },1500);
+
+                $(".beneficiary_data").click(function(){
+                  var beneficary_data =  $(this).data('value');
+                  console.log(beneficary_data);
+                })
             })
         </script>
     @endsection

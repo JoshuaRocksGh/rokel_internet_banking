@@ -68,7 +68,7 @@ class transferController extends Controller
             "userId"    => $userID
         ];
 
-        $response = Http::get(env('API_BASE_URL') ."beneficiary/getTransferBeneficiaries/ALEX");
+        $response = Http::get(env('API_BASE_URL') ."beneficiary/getTransferBeneficiaries/$userID");
 
 
         //return $response;
