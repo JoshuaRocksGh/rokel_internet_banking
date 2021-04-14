@@ -374,8 +374,8 @@ framework upon which plug-ins can built.
                                         data[index].BANK_NAME,
 
 
-                                        `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}' <span class="fe-edit noti-icon text-primary"></span></a>
-                                        &emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' data-toggle="modal" data-target="#bs-example-modal-lg" <span class="fe-trash noti-icon text-danger"></span></a>`,
+                                        `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
+                                        &emsp;&emsp;  <span class="fe-trash noti-icon text-danger " id="beneficiary_data" data-value='${data[index]}'></span>`,
 
 
 
@@ -394,9 +394,11 @@ framework upon which plug-ins can built.
                     beneficiary_list();
                 },1500);
 
-                $(".beneficiary_data").click(function(){
-                  var beneficary_data =  $(this).data('value');
-                  console.log(beneficary_data);
+                $("#beneficiary_data").click(function(e){
+                    e.preventDefault();
+                    alert("ad");
+                  var beneficiary_data =  $(this).data('value');
+                  console.log(beneficiary_data);
                 })
             })
         </script>
