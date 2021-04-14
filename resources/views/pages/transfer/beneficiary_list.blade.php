@@ -160,5 +160,24 @@ framework upon which plug-ins can built.
 
         <!-- Datatables init -->
         <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+        <script>
 
+            function beneficiary_list(){
+                $.ajax({
+                    'tpye' : 'GET' ,
+                    'url' : 'all-beneficiary-list' ,
+                    "datatype" : "application/json",
+                    success:function(response){
+                        console.log(response.data);
+                    }
+                })
+            }
+
+            $(document).ready(function(){
+
+                setTimeout(function(){
+                    beneficiary_list();
+                },2000);
+            })
+        </script>
     @endsection
