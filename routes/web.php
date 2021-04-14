@@ -10,6 +10,8 @@ use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankC
 use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
+use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController as TransferEditBeneficiaryController;
+use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\InternationalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\LocalBankController as TransferLocalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSameBankController;
@@ -90,7 +92,18 @@ Route::get('/reset-success', [ResetPasswordController::class, 'reset_success'])-
 Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
 Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('same-bank-beneficiary');
-Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'edit_same_bank_beneficary'])->name('edit-beneficiary');
+
+//>>>>>>>>>>>>>>>>>>>>>>>> EDIT BENEFICIARY <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Route::get('/edit-beneficiary', [TransferEditBeneficiaryController::class, 'index'])->name('edit-beneficiary');
+
+// -------- SAME BANK -----------
+Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
+// -------- OTHER LOCAL BANK -----------
+Route::get('/edit-other-local-bank-beneficiary', [TransferLocalBankController::class, 'edit_local_bank_beneficiary'])->name('edit-other-local-bank-beneficiary');
+Route::post('/edit-local-bank-api', [EditLocalBankController::class, 'update_local_bank_beneficiary'])->name('edit-local-bank-api');
+// -------- INTENATIONAL BANK -----------
+Route::get('/edit-international-bank-beneficiary', [InternationalBankController::class, 'edit_international_bank_beneficiary'])->name('edit-international-bank-beneficiary');
+
 
 Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
 Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('international-bank-beneficiary');

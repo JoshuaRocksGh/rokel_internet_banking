@@ -13,7 +13,7 @@
 
                         <div class="col-md-8">
                             <p class="sub-header font-18 purple-color" style="cursor: pointer;" onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i>   OTHER LOCAL BANK BENEFICIARY
+                                <i class="fe-arrow-left"></i>  EDIT OTHER LOCAL BANK BENEFICIARY
                             </p>
                             <hr>
 
@@ -330,9 +330,9 @@
                 })
             };
 
-{{--
+
             var bene_id = @json($bene_id);
-            console.log(bene_id);
+            {{--  console.log(bene_id);  --}}
 
             function get_beneficiary_details(){
                 $.ajax({
@@ -347,22 +347,35 @@
                     },
                     success:
                     function(response){
-                        console.log(response);
+                        {{--  console.log(response);  --}}
                         if(response.responseCode == '000'){
 
                         let beneficiary_details = response.data;
                         console.log(beneficiary_details)
+
+                        $('#select_bank').val(beneficiary_details[0].BANK_NAME);
+                        $('#account_name').val(beneficiary_details[0].FIRST_NAME + ' ' + beneficiary_details[0].LAST_NAME);
+                        $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
+                        {{--  $('#account_name').val(beneficiary_details[0].);  --}}
+                        $('#select_currency').val(beneficiary_details[0].BEN_ACCOUNT_CURRENCY);
+                        $('#swift_code').val(beneficiary_details[0].BANK_SWIFT_CODE);
+                        $('#beneficiary_name').val(beneficiary_details[0].NICKNAME);
+                        $('#beneficiary_address').val(beneficiary_details[0].ADDRESS_1);
+                        {{--  $('#beneficiary_number').val(beneficiary_details[0].);  --}}
+                        $('#beneficiary_email').val(beneficiary_details[0].EMAIL);
+                        $('#transfer_email').val(beneficiary_details[0].SEND_MAIL);
+
                         }
                     }
                 })
-            };  --}}
+            };
 
             $(document).ready(function(){
 
 
                 setTimeout(function() {
                     get_currency();
-                    {{--  get_beneficiary_details();  --}}
+                    get_beneficiary_details();
                 }, 2000);
 
                 $('#local_bank_beneficiary_summary').hide();
