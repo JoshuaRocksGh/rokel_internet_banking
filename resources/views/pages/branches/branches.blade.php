@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
+@include('snippets.top_navbar', ['page_title' => 'BRANCHES'])
+
 @section('content')
 
-@include('snippets.top_navbar', ['page_title' => 'BRANCHES'])
+
 
 
 
@@ -152,5 +154,13 @@
 </div>
 <!-- end row -->
 
+
+@endsection
+
+
+@section('scripts')
+    <script>
+
+    </script>
 
 @endsection
