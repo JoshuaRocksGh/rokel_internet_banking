@@ -55,11 +55,8 @@ class transferController extends Controller
 
     public function all_beneficiary_list()
     {
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $base_response = new BaseResponse();
 
