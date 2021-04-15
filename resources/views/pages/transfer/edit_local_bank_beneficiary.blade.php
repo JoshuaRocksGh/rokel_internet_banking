@@ -29,6 +29,7 @@
                                          </div>
                                         <div class="form-group">
                                             <label> Select Bank</label>
+                                            <input type="hidden" value="" id="bank_i">
                                             <select class="custom-select " id="select_bank" required>
                                                 <option value="" >Select Bank</option>
                                                 {{--  <option value="Stanbic Bank">Stanbic Bank</option>
@@ -56,7 +57,7 @@
                                          </div>
                                          <div class="form-group">
                                             <label>Account Currency</label>
-
+                                            <input type="hidden" value="" id="currency_i">
                                             <select class="custom-select" id="select_currency" required>
                                                 <option value="">Select Currency</option>
                                                 {{-- <option value="001~SLL">SLL</option>
@@ -353,30 +354,60 @@
                         if(response.responseCode == '000'){
 
                         let beneficiary_details = response.data;
-                        {{--  console.log(beneficiary_details)  --}}
+                        console.log(beneficiary_details)
 
                         $.each(beneficiary_details, function(index) {
 
-                            $('#select_bank').append($('<option>', {
-                                {{--  value: beneficiary_details[index].Q_CODE  --}}
-                            }).text(beneficiary_details[index].BANK_NAME));
 
-                            $('#select_currency').append($('<option>', {
-                                {{--  value: beneficiary_details[index].Q_CODE  --}}
-                            }).text(beneficiary_details[index].BEN_ACCOUNT_CURRENCY));
+
+                            {{--  $('#select_bank').append($('<option>', {
+                                value: beneficiary_details[index].Q_CODE
+                            }).text(beneficiary_details[index].BANK_NAME));  --}}
+
+                            {{--  $('#select_currency').append($('<option>', {
+                                value: beneficiary_details[index].Q_CODE
+                            }).text(beneficiary_details[index].BEN_ACCOUNT_CURRENCY));  --}}
+
+
 
                         });
-                        $('#select_bank').val(beneficiary_details[0].BANK_NAME);
-                        $('#account_name').val(beneficiary_details[0].FIRST_NAME + ' ' + beneficiary_details[0].LAST_NAME);
+
+                        var ACCOUNT_CURRENCY = beneficiary_details[0].BEN_ACCOUNT_CURRENCY ;
+                        var BANK_NAME_ = beneficiary_details[0].BANK_NAME ;
+
+                        {{--  alert(BANK_NAME_);  --}}
+                        $('#bank_i').val(BANK_NAME_)
+                        $('#currency_i').val(ACCOUNT_CURRENCY)
+
+                        {{--
+
+                        if ( ACCOUNT_CURRENCY == "978"){
+
+                            $('#select_currency').text('EUR~EURO');
+                        }else if(beneficiary_details[0].BEN_ACCOUNT_CURRENCY == "010"){
+                            $('#select_currency').text('SLL~LEONES');
+                            var ACCOUNT_CURRENCY = ('SLL~LEONES')
+                        }else if(beneficiary_details[0].BEN_ACCOUNT_CURRENCY == "840"){
+                            $('#select_currency').text('EUR~EURO');
+                            var ACCOUNT_CURRENCY = ('USD~US DOLLAR');
+                        }else {
+                            $('#select_currency').text('EUR~EURO');
+                            var ACCOUNT_CURRENCY = ('GBP~BRITISH POUNDS');
+                        };  --}}
+
+                        {{--  $('#select_bank').val(beneficiary_details[0].BANK_NAME);  --}}
+                        $('#account_name').val(beneficiary_details[0].NICKNAME);
                         $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
                         {{--  $('#account_name').val(beneficiary_details[0].);  --}}
-                        $('#select_currency').val(beneficiary_details[0].BEN_ACCOUNT_CURRENCY);
+                        {{--  $('#select_currency').val(ACCOUNT_CURRENCY);  --}}
                         $('#swift_code').val(beneficiary_details[0].BANK_SWIFT_CODE);
                         $('#beneficiary_name').val(beneficiary_details[0].NICKNAME);
                         $('#beneficiary_address').val(beneficiary_details[0].ADDRESS_1);
                         {{--  $('#beneficiary_number').val(beneficiary_details[0].);  --}}
                         $('#beneficiary_email').val(beneficiary_details[0].EMAIL);
                         $('#transfer_email').val(beneficiary_details[0].SEND_MAIL);
+
+
 
                         }
                     }
@@ -385,18 +416,42 @@
 
 
             function bank_list() {
+                let name = $('#bank_i').val();
+                {{--  alert(name) ;
+                return false;  --}}
                 $.ajax({
                     'type': 'GET',
                     'url': 'get-bank-list-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        {{--  console.log(response.data);  --}}
+                        console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
 
-                            $('#select_bank').append($('<option>', {
+                            {{--  console.log(data[index].bankCode + '~' + data[index].bankDescription)  --}}
+
+                            if(name == data[index].bankCode){
+
+                                $('#select_bank').append($('<option selected>', {
+                                    value: data[index].bankCode + '~' + data[index].bankDescription
+                                }).text(data[index].bankDescription));
+
+                                {{--  $('#select_bank').append($('<option selected>', {
+                                    value: data[index].bankCode + '~' + data[index].bankDescription
+                                }).text(data[index].bankDescription));  --}}
+                            }
+                            else{
+                                {{--  $('#select_bank').append(`<option >
+                                    ${data[index].bankDescription }
+                                 </option>`)  --}}
+                                 $('#select_bank').append($('<option>', {
+                                    value: data[index].bankDescription
+                                }).text(data[index].bankDescription));
+                            }
+
+                            {{--  $('#select_bank').append($('<option>', {
                                 value: data[index].bankCode + '~' + data[index].bankDescription
-                            }).text(data[index].bankDescription));
+                            }).text(data[index].bankDescription));  --}}
 
                         });
 
@@ -407,18 +462,37 @@
 
 
             function get_currency() {
+                let cur =  $('#currency_i').val();
+
+
+                {{--  alert(cur)
+
+                return false  --}}
                 $.ajax({
                     'type': 'GET',
                     'url': 'get-currency-list-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        {{--  console.log(response.data);  --}}
+                        console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
+                            {{--  console.log(cur)
+                            console.log(data[index].isoCode + '~' + data[index].description )  --}}
 
-                            $('#select_currency').append($('<option>', {
-                                value: data[index].description
-                            }).text(data[index].isoCode + '~' + data[index].description));
+                            if(cur == data[index].currCode){
+
+                                $('#select_currency').append($('<option selected>', {
+                                    value: data[index].currCode + '~' + data[index].description
+                                }).text(data[index].isoCode + '~' + data[index].description));
+                            }else{
+                                $('#select_currency').append(`<option >
+                                    ${data[index].isoCode + '~' + data[index].description }
+                                 </option>`)
+                            }
+
+                            {{--  $('#select_currency').append($('<option selected>', {
+                                value: data[index].currCode + '~' + data[index].description
+                            }).text(data[index].isoCode + '~' + data[index].description));  --}}
 
                         });
 
@@ -431,11 +505,18 @@
 
 
                 setTimeout(function() {
-                    get_currency();
+
                     get_beneficiary_details();
-                    bank_list();
-                    {{--  get_currency();  --}}
+
+
+                    setTimeout(function() {
+                        bank_list();
+                        get_currency();
+                    }, 2000);
+
                 }, 2000);
+
+
 
                 $('#local_bank_beneficiary_summary').hide();
                 $('#select_bank_error').hide();
@@ -540,7 +621,7 @@
 
 
                     var select_bank = $('#select_bank').val().split('~');
-                    var select_bank_ = select_bank[1];
+                    var select_bank_ = select_bank[0];
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
                     var beneficiary_name =  $('#beneficiary_name').val();
@@ -552,9 +633,9 @@
                     }else{
                         var transfer_email = ('No');
                     }
-                    {{--  console.log(transfer_email);  --}}
+                    {{--  console.log(select_bank);  --}}
                     var currency = $('#select_currency').val().split('~');
-                    var currency_ = currency[1];
+                    var currency_ = currency[0];
                     var beneficiary_number = $('#beneficiary_number').val();
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();
@@ -562,6 +643,7 @@
                     var bene_id = @json($bene_id);
                     var bene_type = @json($bene_type);
 
+                    {{--  console.log(select_bank);  --}}
 
                     {{--  console.log(select_bank_);
                     console.log(account_number);
@@ -577,8 +659,12 @@
                     console.log(bene_id);
                     console.log(bene_type);  --}}
 
+                    {{--  console.log(select_bank_);
+                    console.log(currency_);
+                    return false;  --}}
+
                     function redirect_page(){
-                        window.location = "/beneficiary-list";
+                        window.location.href = "{{ url('beneficiary-list') }}";
 
                     };
 
@@ -611,10 +697,10 @@
                             if(response.responseCode == "000"){
                                 toaster(response.message, 'success' );
 
-                                {{--  setTimeout(function(){
+                                setTimeout(function(){
 
                                     redirect_page();
-                                },3000);  --}}
+                                },3000);
 
                             }else{
                                 toaster(response.message, 'error' );

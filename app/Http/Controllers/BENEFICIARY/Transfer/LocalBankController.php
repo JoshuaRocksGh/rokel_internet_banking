@@ -120,7 +120,7 @@ class LocalBankController extends Controller
 
         ];
 
-        return $data;
+        // return $data;
 
         try {
             $response = Http::post(env('API_BASE_URL') . "beneficiary/addTransferBeneficiary", $data);
@@ -350,66 +350,6 @@ class LocalBankController extends Controller
         ];
 
         // return $data;
-
-        // $data = [
-
-        //     "accountDetails" => [
-
-        //         "beneficiaryAcountName" => $req->account_name ,
-        //         "beneficiaryAccount" => $req->account_number,
-        //         "beneficiaryAccountCurrency" => $req->currency_
-
-        //     ],
-
-        //       "addressDetails" => [
-
-        //         "address1" => $req->beneficiary_address,
-        //         "address2" => "string",
-        //         "address3" => "string",
-        //         "city" => "string",
-        //         "countryOfResidence" => "string"
-        //       ],
-
-        //       "bankDetails" => [
-
-        //         "bankAddress" => "string",
-        //         "bankBranch" => "string",
-        //         "bankCity" => "string",
-        //         "bankCountry" => "string",
-        //         "bankName" => $req->select_bank_,
-        //         "bankSwiftCode" => $req->swift_code
-        //       ],
-
-        //       "beneID" => $req->bene_id,
-
-        //       "beneficiaryDetails" => [
-
-        //         "email" => $req->beneficiary_email,
-        //         "firstName" => "string",
-        //         "lastName" => "string",
-        //         "nationality" => "string",
-        //         "nickname" => ,
-        //         "otherName" => "string",
-        //         "sendMail" => "string"
-        //       ],
-
-        //       "beneficiaryType" => "string",
-
-        //       "securityDetails" => [
-
-        //         "approvedBy" => "string",
-        //         "approvedDateTime" => "2021-04-15",
-        //         "createdBy" => "string",
-        //         "createdDateTime" => "2021-04-15",
-        //         "entrySource" => "string",
-        //         "modifyBy" => "string",
-        //         "modifyDateTime" => "2021-04-15"
-        //       ],
-
-        //       "transactionType" => "string",
-        //       "userID" => "string"
-        // ];
-
 
 
         try{
