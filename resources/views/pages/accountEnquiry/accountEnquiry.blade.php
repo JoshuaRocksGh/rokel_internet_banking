@@ -52,15 +52,6 @@
                                                             <button class="btn btn-sm btn-secondary" >retry</button>
                                                         </div>
 
-
-
-
-
-
-
-
-
-
                                                     <div class="table-responsive table-bordered" id="account_balance_info_display">
 
 

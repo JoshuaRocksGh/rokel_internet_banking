@@ -4,14 +4,13 @@ use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountEnquiry\GetAccountDescription;
 use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
+use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountServicesChequeBookRequestController;
 use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
 use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
-use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController as TransferEditBeneficiaryController;
-use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\InternationalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\LocalBankController as TransferLocalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSameBankController;
@@ -22,6 +21,7 @@ use App\Http\Controllers\Cards\CardsController;
 use App\Http\Controllers\Chatbot\FacebookChatbotController;
 use App\Http\Controllers\Chatbot\InstagramChatbotController;
 use App\Http\Controllers\Chatbot\WhatsAppChatbotController;
+use App\Http\Controllers\Cheques\ChequeBookRequestController;
 use App\Http\Controllers\Cheques\ChequesApprovedController;
 use App\Http\Controllers\Cheques\ChequesPendingController;
 use App\Http\Controllers\Cheques\ChequesRejectedController;
@@ -32,7 +32,6 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
 use App\Http\Controllers\GeneralFunctions\FunctionsController;
-use App\Http\Controllers\KobbyController;
 use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
@@ -44,7 +43,6 @@ use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\TradeFinance\TradeFinanceController;
 use App\Http\Controllers\transferController;
-use App\Http\Controllers\Transfers\EditBeneficiaryController;
 use App\Http\Controllers\Transfers\LocalBankController;
 use App\Http\Controllers\Transfers\MultipleTransfersController;
 use App\Http\Controllers\Transfers\OwnAccountController;
@@ -78,7 +76,6 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'email_reset_pa
 
 //Route to control the change-password screen
 Route::get('/change-password', [ResetPasswordController::class, 'change_password'])->name('change-password');
-Route::post('/post-change-password', [ResetPasswordController::class, 'post_change_password'])->name('post-change-password');
 
 
 Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
@@ -93,18 +90,6 @@ Route::get('/reset-success', [ResetPasswordController::class, 'reset_success'])-
 Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
 Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('same-bank-beneficiary');
-
-//>>>>>>>>>>>>>>>>>>>>>>>> EDIT BENEFICIARY <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-Route::get('/edit-beneficiary', [TransferEditBeneficiaryController::class, 'index'])->name('edit-beneficiary');
-
-// -------- SAME BANK -----------
-Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
-// -------- OTHER LOCAL BANK -----------
-Route::get('/edit-other-local-bank-beneficiary', [TransferLocalBankController::class, 'edit_local_bank_beneficiary'])->name('edit-other-local-bank-beneficiary');
-Route::post('/edit-local-bank-api', [EditLocalBankController::class, 'update_local_bank_beneficiary'])->name('edit-local-bank-api');
-// -------- INTENATIONAL BANK -----------
-Route::get('/edit-international-bank-beneficiary', [InternationalBankController::class, 'edit_international_bank_beneficiary'])->name('edit-international-bank-beneficiary');
-
 
 Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
 Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('international-bank-beneficiary');
@@ -195,7 +180,6 @@ Route::get('/settings', [settingsController::class, 'settings'])->name('settings
 
 //route to control the accountEnquiry screen
 Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-enquiry');
-Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
 
 // get account description
 Route::post('get-account-description', [GetAccountDescription::class, 'get_account_description'])->name('get-account-description');
@@ -342,14 +326,8 @@ Route::get('/logout', [LogoutController::class, 'logout_'])->name('logout');
 
 Route::get('/send-email', [MaileController::class, 'send_email'])->name('send-email');
 
-
 // GENERAL FUNCTIONS
 Route::get('get-currency-list-api', [FunctionsController::class, 'currency_list'])->name('get-currency-list-api');
-Route::get('get-bank-list-api', [FunctionsController::class, 'bank_list'])->name('get-bank-list-api');
-Route::get('get-bank-branches-list-api', [FunctionsController::class, 'bank_branches_list'])->name('get-bank-branches-list-api');
-Route::get('get-security-question-api', [FunctionsController::class, 'security_question'])->name('get-security-question-api');
-Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
-Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -366,13 +344,12 @@ Route::post('/same-bank-beneficiary-api', [TransferSameBankController::class, 's
 Route::post('add-local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('add-local-bank-beneficiary-api');
 Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class, 'currency_list'])->name('get-local-bank-beneficiary-api');
 
-// GET LIST OF ALL BENEFICIARIES
-Route::get('/all-beneficiary-list', [transferController::class, 'all_beneficiary_list'])->name('all-beneficiary-list');
-
 
 Route::post('international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
+//route for cheque book request api
+Route::get('cheque-book-request-2',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-2');
 
-Route::get('kobby', [KobbyController::class, 'call_external_api'])->name('kobby');
+//route for atm card
