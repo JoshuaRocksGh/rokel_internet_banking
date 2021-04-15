@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Authentication\TransferController;
 use App\Http\Controllers\API\Transfer\OwnAccountController;
 use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSameBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\LocalBankController as TransferLocalBankController;
+use App\Http\Controllers\GeneralFunctions\FunctionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,7 @@ Route::post('/add-local-bank-beneficiary-api', [TransferLocalBankController::cla
 // ACCOUNT ENQUIRY
 Route::post('/account-transactions', [AccountEnquiryController::class, 'account_transactions'])->name('account-transactions');
 Route::post('/account-balance-info', [AccountEnquiryController::class, 'account_balance_info'])->name('account-balance-info');
+Route::get('/get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
 
 
 

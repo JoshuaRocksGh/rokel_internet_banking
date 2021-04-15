@@ -5,7 +5,7 @@
 
     <div class="auth-fluid">
         <!--Auth fluid left content -->
-        <div class="auth-fluid-form-box" style="background-image: url(http://localhost/laravel/int/public/assets/images/login-bg.jpg);background-repeat: no-repeat;
+        <div class="auth-fluid-form-box" style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
             background-size: cover;
         ">
             <div class="align-items-center d-flex h-100">
@@ -30,8 +30,9 @@
 
 
                     <!-- title-->
+                    <p class="text-muted mb-4"><h3 class="text-primary">Personal Internet Banking.</h3></p>
                     <h4 class="mt-0">Sign In</h4>
-                    <p class="text-muted mb-4"><h3>Personal Internet Banking.</h3></p>
+
 
                     <!-- form -->
                     <form action="POST" id="login_post_form" autocomplete="off" aria-autocomplete="off">
@@ -72,12 +73,12 @@
 
 
                         <div class="form-group mb-0 text-center">
-                            <a href="{{ url('home') }}">
+
                                 <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="log_in" >Log In</span>
                                     <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
                                     <span id="spinner-text">Loading...</span>
                                 </button>
-                            </a>
+
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
                         </div>
 
@@ -93,9 +94,9 @@
 
 
                             <div class="text-center d-sm-none   d-md-none  d-lg-none">
-                                <a  href="{{ url('account-creation') }}" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-book-open mr-1"></i> Open an account</a>
+                                <a  href="{{ url('account-creation') }}" class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i class="fas fa-book-open mr-1"></i> Open an account</a>
                                 &nbsp;
-                                <a  href="{{ url('faq') }}" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-headset mr-1"></i>  FAQs</a>
+                                <a  href="{{ url('faq') }}" class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i class="fas fa-headset mr-1"></i>  FAQs</a>
 
                             </div>
 
@@ -106,9 +107,9 @@
 
 
                             <div class="text-center d-sm-none  d-md-none  d-lg-none">
-                                <a href="{{ url('enquiry') }}" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-desktop mr-1"></i> Make Enquiry</a>
+                                <a href="{{ url('enquiry') }}" class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i class="fas fa-desktop mr-1"></i> Make Enquiry</a>
                                &nbsp;
-                               <a href="{{ url('branches') }}" class="btn btn-outline-success btn-rounded waves-effect waves-light"> <i class="fas fa-map-marked-alt mr-1"></i>  Branches</a>
+                               <a href="{{ url('branches') }}" class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i class="fas fa-map-marked-alt mr-1"></i>  Branches</a>
 
                             </div>
 
@@ -263,7 +264,12 @@
                     $('#submit').attr('disabled',false);
 
                     if(response.responseCode == "000"){
-                        window.location = 'home';
+                        if(response.data.firstTimeLogin == true) {
+                            window.location = 'change-password';
+                        }else{
+                            window.location = 'home';
+                        }
+
 
                     }else {
                         $('#spinner').hide()

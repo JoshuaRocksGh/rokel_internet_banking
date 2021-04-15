@@ -1,44 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\classes\WEB;
 
 use App\Http\classes\API\BaseResponse;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
-class HomeController extends Controller
+class ApiBaseResponse
 {
-    public function index()
+    public static function api_response($response)
     {
-        return view('pages.dashboard.home');
-    }
-
-
-    public function get_accounts(){
-        // return 'kjsdf';
-
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
-        return session()->get('userToken');
 
         $base_response = new BaseResponse();
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
-
-        $response = Http::post(env('API_BASE_URL') ."account/getAccounts", $data);
-
-        // return $response;
-        // return $response->status();
-
 
     if($response->ok()){    // API response status code is 200
 
@@ -70,6 +43,4 @@ class HomeController extends Controller
 
         }
     }
-
-
 }

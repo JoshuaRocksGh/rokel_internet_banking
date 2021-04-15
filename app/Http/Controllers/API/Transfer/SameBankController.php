@@ -15,11 +15,8 @@ class SameBankController extends Controller
     //
     public function beneficiary_payment_from_account(){
 
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $base_response = new BaseResponse();
 

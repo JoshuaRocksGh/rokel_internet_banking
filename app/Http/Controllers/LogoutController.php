@@ -12,7 +12,8 @@ class LogoutController extends Controller
     {
         Auth::logout();
 
-        session()->forget('user');
+        // session()->forget('user');
+        session()->flush();
 
         return redirect()->route('login');
         // return Redirect::route('home');

@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div    <legend></legend>
+<div >  <legend></legend>
 
     <div class="row">
         <div class="col-12">
-            <div class="card" style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;">
-                <div class="card-body">
+            <div class="" >
+                <div class="">
                     <div class="row">
                         <div class="col-md-2"></div>
 
@@ -342,8 +342,9 @@
 
 
         </div>
+    </div>
 
-
+</div>
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script>

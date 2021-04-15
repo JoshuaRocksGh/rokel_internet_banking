@@ -13,7 +13,7 @@
 
                         <div class="col-md-8">
                             <p class="sub-header font-18 purple-color" style="cursor: pointer;" onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i>   OTHER LOCAL BANK BENEFICIARY
+                                <i class="fe-arrow-left"></i>  EDIT OTHER LOCAL BANK BENEFICIARY
                             </p>
                             <hr>
 
@@ -308,6 +308,69 @@
         <script>
 
 
+            function get_currency() {
+                $.ajax({
+                    'type': 'GET',
+                    'url': 'get-local-bank-beneficiary-api',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        {{--  console.log(response.data);  --}}
+                        let data = response.data
+                        $.each(data, function(index) {
+
+                            $('#select_currency').append($('<option>', {
+                                value: data[index].code + '~' + data[index].currency
+                            }).text(data[index].currency));
+                            {{-- $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance)); --}}
+
+                        });
+
+                    },
+
+                })
+            };
+
+
+            var bene_id = @json($bene_id);
+            {{--  console.log(bene_id);  --}}
+
+            function get_beneficiary_details(){
+                $.ajax({
+                    'type' : 'POST',
+                    "datatype": "application/json",
+                    'url' : 'edit-local-bank-api',
+                    'data' : {
+                        'bene_id' : bene_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success:
+                    function(response){
+                        {{--  console.log(response);  --}}
+                        if(response.responseCode == '000'){
+
+                        let beneficiary_details = response.data;
+                        console.log(beneficiary_details)
+
+                        $(('#select_bank'.val(""))).val(beneficiary_details[0].BANK_NAME);
+                        $('#account_name').val(beneficiary_details[0].FIRST_NAME + ' ' + beneficiary_details[0].LAST_NAME);
+                        $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
+                        {{--  $('#account_name').val(beneficiary_details[0].);  --}}
+                        $('#select_currency').val(beneficiary_details[0].BEN_ACCOUNT_CURRENCY);
+                        $('#swift_code').val(beneficiary_details[0].BANK_SWIFT_CODE);
+                        $('#beneficiary_name').val(beneficiary_details[0].NICKNAME);
+                        $('#beneficiary_address').val(beneficiary_details[0].ADDRESS_1);
+                        {{--  $('#beneficiary_number').val(beneficiary_details[0].);  --}}
+                        $('#beneficiary_email').val(beneficiary_details[0].EMAIL);
+                        $('#transfer_email').val(beneficiary_details[0].SEND_MAIL);
+
+                        }
+                    }
+                })
+            };
+
+
             function bank_list() {
                 $.ajax({
                     'type': 'GET',
@@ -328,6 +391,7 @@
 
                 })
             };
+
 
             function get_currency() {
                 $.ajax({
@@ -350,39 +414,14 @@
                 })
             };
 
-{{--
-            var bene_id = @json($bene_id);
-            console.log(bene_id);
-
-            function get_beneficiary_details(){
-                $.ajax({
-                    'type' : 'POST',
-                    "datatype": "application/json",
-                    'url' : 'edit-local-bank-api',
-                    'data' : {
-                        'bene_id' : bene_id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success:
-                    function(response){
-                        console.log(response);
-                        if(response.responseCode == '000'){
-
-                        let beneficiary_details = response.data;
-                        console.log(beneficiary_details)
-                        }
-                    }
-                })
-            };  --}}
-
             $(document).ready(function(){
 
 
                 setTimeout(function() {
                     get_currency();
-                    bank_list();
+                    get_beneficiary_details();
+                    {{--  bank_list();  --}}
+                    {{--  get_currency();  --}}
                 }, 2000);
 
                 $('#local_bank_beneficiary_summary').hide();

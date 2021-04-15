@@ -266,7 +266,7 @@
                     'url': 'get-currency-list-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        {{--  console.log(response.data);  --}}
+                        console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
 
@@ -486,9 +486,6 @@
                     })
 
                 });
-
-                {{--  var bene_id = @json($bene_id) ;
-                console.log($bene_id) ;  --}}
 
             });
 

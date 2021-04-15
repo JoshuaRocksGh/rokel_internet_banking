@@ -18,8 +18,9 @@ class UserAuthenticationMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = (Object) UserAuth::getDetails();
-        if (is_null($user) )
+
+
+        if (!session()->has('userId') )
         {
         // The user is logged in...
             return redirect()->route('login');

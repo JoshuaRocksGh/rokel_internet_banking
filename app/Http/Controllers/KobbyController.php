@@ -1,42 +1,37 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers;
 
 use App\Http\classes\API\BaseResponse;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
-class HomeController extends Controller
+class KobbyController extends Controller
 {
-    public function index()
+    public function call_external_api()
     {
-        return view('pages.dashboard.home');
-    }
-
-
-    public function get_accounts(){
-        // return 'kjsdf';
-
-
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
-
-        return session()->get('userToken');
 
         $base_response = new BaseResponse();
 
         $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
+            // "authToken" => $authToken,
+            // "userId"    => $userID
+
+                "accountNumber" =>  "string",
+                "branch" =>  "string",
+                "deviceIP" =>  "string",
+                "numberOfLeaves" =>  0,
+                "pinCode" =>  "string",
+                "tokenID" =>  "string"
+
         ];
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
 
-        $response = Http::post(env('API_BASE_URL') ."account/getAccounts", $data);
+        $response = Http::post(env('API_BASE_URL') ."request/chequeBook", $data);
 
-        // return $response;
+
+        return $response;
         // return $response->status();
 
 
@@ -59,17 +54,15 @@ class HomeController extends Controller
         } else { // API response status code not 200
 
              return $response->body();
-             DB::table('error_logs')->insert([
-                 'platform' => 'ONLINE_INTERNET_BANKING',
-                 'user_id' => 'AUTH',
-                 'code' => $response->status(),
-                 'message' => $response->body()
-             ]);
+            // DB::table('error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'code' => $response->status(),
+            //     'message' => $response->body()
+            // ]);
 
             return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
         }
     }
-
-
 }

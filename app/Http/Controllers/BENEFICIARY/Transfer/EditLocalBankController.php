@@ -1,40 +1,37 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\BENEFICIARY\Transfer;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
-class HomeController extends Controller
+class EditLocalBankController extends Controller
 {
-    public function index()
+    //
+
+
+    public function update_local_bank_beneficiary(Request $request)
     {
-        return view('pages.dashboard.home');
-    }
 
-
-    public function get_accounts(){
-        // return 'kjsdf';
-
+        $user = (object) UserAuth::getDetails();
+        //return $user;
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        return session()->get('userToken');
-
         $base_response = new BaseResponse();
 
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
+        $bene_id = $request->bene_id ;
 
-        $response = Http::post(env('API_BASE_URL') ."account/getAccounts", $data);
+
+        // http://192.168.1.195:9096/beneficiary/getTransferBeneficiariesById?beneId=20210408135826
+
+
+        $response = Http::get(env('API_BASE_URL') ."beneficiary/getTransferBeneficiariesById?beneId=$bene_id");
 
         // return $response;
         // return $response->status();
@@ -70,6 +67,5 @@ class HomeController extends Controller
 
         }
     }
-
 
 }

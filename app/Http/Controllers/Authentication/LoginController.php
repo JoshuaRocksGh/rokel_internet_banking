@@ -84,22 +84,28 @@ class LoginController extends Controller
                     $user_detail = $result->data;
 
                     // SET USER SESSION
-                    $user = (Object) UserAuth::getDetails();
+                    // $user = (Object) UserAuth::getDetails();
                     // $tokn  = $user->userToken
 
-                    session(['user' => [
+                    session([
                         "userId" => $user_detail->userId,
                         "userAlias" => $user_detail->userAlias,
                         "updateFlag" => $user_detail->updateFlag,
                         "setPin" => $user_detail->setPin,
                         "changePassword" => $user_detail->changePassword,
                         "email" => $user_detail->email,
-                        // "userToken" => $user_detail->userToken,
-                        "userToken" => "15D2A303-98FD-43A6-86E4-F24FC7436069",
+                        "firstTimeLogin" => $user_detail->firstTimeLogin,
+                        "userToken" => $user_detail->userToken,
+                        // "userToken" => "15D2A303-98FD-43A6-86E4-F24FC7436069",
                         "customerNumber" => $user_detail->customerNumber,
                         "updateUrl" => $user_detail->updateUrl,
                         "lastLogin" => $user_detail->lastLogin,
-                    ]]);
+                    ]);
+
+         $authToken = session()->get('userToken');
+$userID = session()->get('userId');
+// return $authToken;
+                    // return session()->get('user');
 
                     // return redirect()->route('home');
 

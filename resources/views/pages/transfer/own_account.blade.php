@@ -6,13 +6,13 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card card-background-image">
+            <div class="">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2"></div>
 
                         <div class="col-md-8">
-                            <p class="sub-header font-18 purple-color">
+                            <p class="sub-header font-18 purple-color text-primary">
                                 MY OWN ACCOUNT TRANSFER
 
                             </p>
@@ -22,7 +22,7 @@
                             <div class="row" id="transaction_form">
 
 
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class="form-group">
@@ -183,7 +183,7 @@
 
 
 
-                                <div class="col-md-5 text-center" style="margin-top: 80px;">
+                                <div class="col-md-6 text-center" style="margin-top: 80px;">
 
                                     <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5">
                                 </div> <!-- end col -->

@@ -89,10 +89,10 @@
 </head>
 
 {{--  <body style="zoom: 0.9;" class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>  --}}
-    <body  class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+    <body style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;" class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
     <!-- Begin page -->
-    <div id="wrapper">
+    <div id="wrapper" >
            @include('sweetalert::alert')
 
             @include('snippets.nav')
@@ -112,52 +112,55 @@
 
 		@yield('scripts')
         {{--  @include('sweetalert::alert')  --}}
+
+        <script>
+            {{--  $(document).userTimeout({
+
+                // ULR to redirect to, to log user out
+                logouturl: 'logout',
+
+                // URL Referer - false, auto or a passed URL
+                referer: false,
+
+                // Name of the passed referal in the URL
+                refererName: 'refer',
+
+                // Toggle for notification of session ending
+                notify: true,
+
+                // Toggle for enabling the countdown timer
+                timer: true,
+
+                // 10 Minutes in Milliseconds, then notification of logout
+                session: 6000,
+
+                // 5 Minutes in Milliseconds, then logout
+                force: 3000,
+
+                // Model Dialog selector (auto, bootstrap, jqueryui)
+                ui: 'auto',
+
+                // Shows alerts
+                debug: false,
+
+                // <a href="https://www.jqueryscript.net/tags.php?/Modal/">Modal</a> Title
+                modalTitle: 'Session Timeout',
+
+                // Modal Body
+                modalBody: 'You\'re being timed out due to inactivity. Please choose to stay signed in or to logoff. Otherwise, you will logged off automatically.',
+
+                // Modal log off button text
+                modalLogOffBtn: 'Log Off',
+
+                // Modal stay logged in button text
+                modalStayLoggedBtn: 'Stay Logged In'
+
+              });  --}}
+        </script>
+
     </body>
     {{--  <script src="bootstrap.min.js"></script>  --}}
     {{--  <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>  --}}
     {{--  <script src="dist/jquery.userTimeout.js"></script>  --}}
-    <script>
-        {{--  $(document).userTimeout({
 
-            // ULR to redirect to, to log user out
-            logouturl: 'logout',
-
-            // URL Referer - false, auto or a passed URL
-            referer: false,
-
-            // Name of the passed referal in the URL
-            refererName: 'refer',
-
-            // Toggle for notification of session ending
-            notify: true,
-
-            // Toggle for enabling the countdown timer
-            timer: true,
-
-            // 10 Minutes in Milliseconds, then notification of logout
-            session: 6000,
-
-            // 5 Minutes in Milliseconds, then logout
-            force: 3000,
-
-            // Model Dialog selector (auto, bootstrap, jqueryui)
-            ui: 'auto',
-
-            // Shows alerts
-            debug: false,
-
-            // <a href="https://www.jqueryscript.net/tags.php?/Modal/">Modal</a> Title
-            modalTitle: 'Session Timeout',
-
-            // Modal Body
-            modalBody: 'You\'re being timed out due to inactivity. Please choose to stay signed in or to logoff. Otherwise, you will logged off automatically.',
-
-            // Modal log off button text
-            modalLogOffBtn: 'Log Off',
-
-            // Modal stay logged in button text
-            modalStayLoggedBtn: 'Stay Logged In'
-
-          });  --}}
-    </script>
 </html>

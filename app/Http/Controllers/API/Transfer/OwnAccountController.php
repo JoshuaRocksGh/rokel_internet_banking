@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\Transfer;
 
 use App\Http\classes\API\BaseResponse;
-use App\Http\classes\WEB\UserAuth;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +15,11 @@ class OwnAccountController extends Controller
     //
     public function own_account_(){
 
-        $user = (object)  UserAuth::getDetails();
+
         // return $user;
 
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $base_response = new BaseResponse();
 
@@ -92,17 +92,14 @@ class OwnAccountController extends Controller
         $user_pin = $req->secPin;
 
         // return $user_pin;
-        if($user_pin != '123456'){
+        // if($user_pin != '123456'){
 
-            return $base_response->api_response('099', 'Incorrect Pin',  null); // return API BASERESPONSE
+        //     return $base_response->api_response('099', 'Incorrect Pin',  null); // return API BASERESPONSE
 
-        }
+        // }
 
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
 
         $from_account = $req->from_account;
