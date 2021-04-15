@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountEnquiry\GetAccountDescription;
 use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
+use App\Http\Controllers\AccountServices\AtmCardRequestController;
 use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountServicesChequeBookRequestController;
 use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
@@ -381,3 +382,4 @@ Route::post('international-bank-onetime-api', [APITransferLocalBankController::c
 Route::get('cheque-book-request-2',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-2');
 
 //route for atm card
+Route::get('atm-card-request', [AtmCardRequestController::class,'atm_card_request'])->name('atm-card-request');
