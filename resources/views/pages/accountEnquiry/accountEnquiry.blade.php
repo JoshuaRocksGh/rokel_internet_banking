@@ -140,9 +140,6 @@
                                             </div>
                                             </div>
                                             <div class="row" >
-                                            <div class="col-md-12" >
-
-
                                                 <div class="text-center" id="account_transaction_loader">
                                                     <div class="spinner-border avatar-lg" role="status"></div>
                                                 </div>
@@ -150,8 +147,12 @@
                                                 <div class="text-center" id="account_transaction_retry_btn">
                                                     <button class="btn btn-sm btn-secondary" >retry</button>
                                                 </div>
+                                            <div class="col-md-12" >
 
-                                                <div class="float-left d-none d-md-inline-block">
+
+
+
+                                                <div class=" d-none d-md-inline-block">
                                                     <div class="btn-group mb-2">
                                                         <button type="button" class="btn btn-xs btn-soft-success  waves-effect waves-light">&nbsp; Credit &nbsp;</button>
                                                         <button type="button" class="btn btn-xs btn-soft-danger  waves-effect waves-light">&nbsp; Debit &nbsp;</button>
@@ -163,17 +164,30 @@
                                                     &nbsp;
 
                                                     <div class="btn-group mb-2">
-                                                        <button type="button" class="btn btn-xs btn-soft-success  waves-effect waves-light">&nbsp; Credit &nbsp;</button>
-                                                        <button type="button" class="btn btn-xs btn-soft-danger  waves-effect waves-light">&nbsp; Debit &nbsp;</button>
-                                                        <button type="button" class="btn btn-xs btn-soft-secondary  waves-effect waves-light">All transaction</button>
+                                                        <input type="text" id="startDate" class="form-control date-picker flatpickr-input input-sm" placeholder="Basic datepicker" readonly="readonly">
+                                                        <input type="text" id="endDate" class="form-control date-picker flatpickr-input input-sm" placeholder="Basic datepicker" readonly="readonly">
+                                                                                                            
                                                     </div>
 
                                                     &nbsp;
-                                                    &nbsp;
-                                                    &nbsp;
+                                                   
+   
+                                                    
 
 
                                                     <div class="btn-group mb-2">
+                                                        <button type="button" class="btn btn-sm btn-secondary" id="date_search"> &nbsp; Search &nbsp;</button> 
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
+                                                        &nbsp;
                                                         <button type="button" class="btn btn-xs btn-soft-danger waves-effect waves-light"> &nbsp; Print PDF &nbsp;</button>
                                                         <button type="button" class="btn btn-xs btn-soft-success waves-effect waves-light">&nbsp; Export Sheet &nbsp;</button>
                                                         <button type="button" class="btn btn-xs btn-secondary">Monthly</button>
@@ -181,6 +195,9 @@
 
                                                 </div>
                                                 <br>
+                                            </div>
+
+                                                <div class="col-md-12" >
 
                                                 {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
                                             <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100 account_transaction_display" >
@@ -259,6 +276,15 @@
 
         <!-- Datatables init -->
         <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+        <script>
+            // creates multiple instances
+           
+            $(".date-picker").flatpickr({
+                altInput: true,
+                altFormat: "j F, Y",
+                dateFormat: "d-m-Y",
+            })
+        </script>
 
         <script>
 
@@ -280,6 +306,12 @@
                     getAccountTransactions(account_number, start_date, end_date, transLimit)
                     getAccountBalanceInfo(account_number);
                 }, 2000);
+
+
+                $('#date_search').click(function(){
+                    
+                })
+
 
                 $("#account_balance_info_retry_btn").click(function(){
                     $("#account_balance_info_display").hide();
