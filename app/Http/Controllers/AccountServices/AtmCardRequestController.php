@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AccountServices;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class AtmCardRequestController extends Controller
             // $response;
             // return $data;
             // return $response->status();
+            $result = new ApiBaseResponse();
             return $this->baseResponseApi($response);
 
 
