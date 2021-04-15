@@ -234,30 +234,14 @@
                                             <table id="datatable-buttons" class="table mb-0">
                                                 <thead>
                                                     <tr class="bg-secondary text-white ">
-                                                        <td> <b> Account Number </b> </td>
+                                                        <td> <b> Facility Number </b> </td>
                                                         <td> <b> Description </b> </td>
                                                         <td> <b> Currency </b> </td>
-                                                        <td> <b> Current Balance </b> </td>
-                                                        <td> <b> Arrears </b> </td>
+                                                        <td> <b> Amount Granted </b> </td>
+                                                        <td> <b> Loan Balance </b> </td>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="loans_display">
-
-                                                    <tr>
-                                                        <td> <b class="text-danger">23390019920019 </b></td>
-                                                        <td> <b> GHS </b>  </td>
-                                                        <td> <b> 39,900.00  </b> </b></td>
-                                                        <td> <b> 456,990.00  </b>  </td>
-                                                        <td>  <b> 0.00  </b> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td> <b class="text-danger" >23390019920019 </b></td>
-                                                        <td> <b>  GHS  </b>  </td>
-                                                        <td> <b> 39,900.00  </b> </td>
-                                                        <td> <b>  456,990.00  </b> </td>
-                                                        <td>  <b> 0.00  </b> </td>
-                                                    </tr>
-
 
                                                 </tbody>
                                             </table>
@@ -578,33 +562,13 @@
 
 
                         $.each(data, function(index) {
-                            $('.casa_list_display').append(`
-
+                            $('.loans_display').append(`
                             <tr>
-                                <td style="width: 10px;">
-                                    <div class="avatar-sm rounded bg-soft-danger">
-                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                    </div>
-                                </td>
-                                <td>
-                                    <a href="ecommerce-product-detail.html"
-                                        class="text-body font-weight-semibold">Savings Account</a>
-                                    <small class="d-block">${data[index].accountNumber}</small>
-                                </td>
-
-                                <td class="">
-                                    GHS 90,039.00
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
-                                <td> <b> ${data[index].accountDesc} </b>  </td>
-                                <td> <b> ${data[index].accountType}  </b>  </td>
-                                <td> <b> ${data[index].currency}  </b>  </td>
-                                <td> <b> ${data[index].availableBalance}   </b> </b></td>
-                                <td> <b> ${data[index].ledgerBalance}   </b>  </td>
-                                <td>  <b> 0.00  </b> </td>
+                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                <td> <b> ${data[index].description} </b>  </td>
+                                <td> <b> ${data[index].isoCode}  </b>  </td>
+                                <td> <b> ${data[index].amountGranted}   </b> </b></td>
+                                <td> <b> ${data[index].loanBalance}   </b>  </td>
                             </tr>`)
 
                         })
