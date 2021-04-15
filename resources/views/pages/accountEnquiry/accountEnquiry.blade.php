@@ -151,7 +151,36 @@
                                                     <button class="btn btn-sm btn-secondary" >retry</button>
                                                 </div>
 
+                                                <div class="float-left d-none d-md-inline-block">
+                                                    <div class="btn-group mb-2">
+                                                        <button type="button" class="btn btn-xs btn-soft-success  waves-effect waves-light">&nbsp; Credit &nbsp;</button>
+                                                        <button type="button" class="btn btn-xs btn-soft-danger  waves-effect waves-light">&nbsp; Debit &nbsp;</button>
+                                                        <button type="button" class="btn btn-xs btn-soft-secondary  waves-effect waves-light">All transaction</button>
+                                                    </div>
 
+                                                    &nbsp;
+                                                    &nbsp;
+                                                    &nbsp;
+
+                                                    <div class="btn-group mb-2">
+                                                        <button type="button" class="btn btn-xs btn-soft-success  waves-effect waves-light">&nbsp; Credit &nbsp;</button>
+                                                        <button type="button" class="btn btn-xs btn-soft-danger  waves-effect waves-light">&nbsp; Debit &nbsp;</button>
+                                                        <button type="button" class="btn btn-xs btn-soft-secondary  waves-effect waves-light">All transaction</button>
+                                                    </div>
+
+                                                    &nbsp;
+                                                    &nbsp;
+                                                    &nbsp;
+
+
+                                                    <div class="btn-group mb-2">
+                                                        <button type="button" class="btn btn-xs btn-soft-danger waves-effect waves-light"> &nbsp; Print PDF &nbsp;</button>
+                                                        <button type="button" class="btn btn-xs btn-soft-success waves-effect waves-light">&nbsp; Export Sheet &nbsp;</button>
+                                                        <button type="button" class="btn btn-xs btn-secondary">Monthly</button>
+                                                    </div>
+
+                                                </div>
+                                                <br>
 
                                                 {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
                                             <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100 account_transaction_display" >
@@ -162,8 +191,7 @@
                                                         <th style="width: 190px;">Transaction Details</th>
                                                         <th>Document Ref</th>
                                                         <th>Batch No</th>
-                                                        <th>Debit</th>
-                                                        <th>Credit</th>
+                                                        <th>Amount</th>
                                                         <th>Balance</th>
                                                     </tr>
                                                 </thead>
@@ -297,6 +325,20 @@
 
 
                                 $.each(data, function(index) {
+                                    let amount = '';
+                                    if(parseFloat(data[index].amount) > 0 ){
+                                        amount = ` <b class='text-success'>
+                                                        <i class="fe-arrow-up text-success mr-1"></i>
+                                                        ${data[index].amount}
+                                                    </b>
+                                                    `
+                                    }else{
+                                        amount = ` <b class='text-danger'>
+                                                        <i class="fe-arrow-down text-danger mr-1"></i>
+                                                        ${data[index].amount}
+                                                    </b>
+                                                    `
+                                    }
 
                                     table.row.add([
                                         data[index].postingSysDate,
@@ -306,12 +348,8 @@
                                         `<a type="button" data-toggle="modal"
                                         data-target="#bs-example-modal-xl"
                                         class="text-primary">${data[index].batchNumber}</a>`,
-                                        data[index].amount,
-                                        data[index].amount,
-                                        data[index].amount,
-                                        data[index].amount
-
-
+                                        amount,
+                                       `#.##`
 
                                     ]).draw(false)
 
