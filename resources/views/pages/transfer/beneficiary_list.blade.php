@@ -367,9 +367,9 @@ framework upon which plug-ins can built.
                                 $.each(data, function(index) {
 
                                     table.row.add([
+                                        data[index].FIRST_NAME,
+                                        data[index].BEN_ACCOUNT,
                                         data[index].NICKNAME,
-                                        data[index].BEN_ACCOUNT,
-                                        data[index].BEN_ACCOUNT,
                                         data[index].EMAIL,
                                         data[index].BANK_NAME,
 

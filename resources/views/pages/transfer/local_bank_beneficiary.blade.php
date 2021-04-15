@@ -487,7 +487,8 @@
                     e.preventDefault();
 
 
-                    var select_bank = $('#select_bank').val();
+                    var select_bank_ = $('#select_bank').val().split('~');
+                    var select_bank = select_bank_[0];
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
                     var beneficiary_name =  $('#beneficiary_name').val();
@@ -499,14 +500,16 @@
                     }else{
                         var transfer_email = ('No');
                     }
-                    console.log(transfer_email);
                     var currency = $('#select_currency').val().split('~');
-                    var currency_ = currency[1];
+                    var currency_ = currency[0];
                     var beneficiary_number = $('#beneficiary_number').val();
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();
                     var swift_code = $('#swift_code').val();
+                    {{--  console.log(currency);  --}}
 
+                    {{--  console.log(select_bank)
+                    return false;  --}}
 
                     $.ajax({
                         'type' : 'POST' ,
