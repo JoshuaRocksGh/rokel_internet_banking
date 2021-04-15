@@ -363,6 +363,10 @@ Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 
 Route::post('/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_beneficiary_'])->name('same-bank-beneficiary-api');
 Route::post('add-local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('add-local-bank-beneficiary-api');
 Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class, 'currency_list'])->name('get-local-bank-beneficiary-api');
+// EDIT BENEFICIARY DATA
+Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::class, 'edit_local_bank'])->name('edit-local-bank-beneficiary-api');
+
+
 
 // GET LIST OF ALL BENEFICIARIES
 Route::get('/all-beneficiary-list', [transferController::class, 'all_beneficiary_list'])->name('all-beneficiary-list');
