@@ -31,12 +31,12 @@
                                             <label> Select Bank</label>
                                             <select class="custom-select " id="select_bank" required>
                                                 <option value="">Select Bank</option>
-                                                <option value="Stanbic Bank">Stanbic Bank</option>
+                                                {{--  <option value="Stanbic Bank">Stanbic Bank</option>
                                                 <option value="GCB Bank">GCB Bank</option>
                                                 <option value="Standard Chartered Bank">Standard Chartered Bank</option>
                                                 <option value="Zenith Bank">Zenith Bank</option>
                                                 <option value="Cal Bank">Cal Bank</option>
-                                                <option value="FNB Bank">FNB Bank</option>
+                                                <option value="FNB Bank">FNB Bank</option>  --}}
                                             </select>
                                             {{-- <span class="text-danger" id="select_bank_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
@@ -353,7 +353,7 @@
                         let beneficiary_details = response.data;
                         console.log(beneficiary_details)
 
-                        $('#select_bank').val(beneficiary_details[0].BANK_NAME);
+                        $(('#select_bank'.val(""))).val(beneficiary_details[0].BANK_NAME);
                         $('#account_name').val(beneficiary_details[0].FIRST_NAME + ' ' + beneficiary_details[0].LAST_NAME);
                         $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
                         {{--  $('#account_name').val(beneficiary_details[0].);  --}}
@@ -370,12 +370,58 @@
                 })
             };
 
+
+            function bank_list() {
+                $.ajax({
+                    'type': 'GET',
+                    'url': 'get-bank-list-api',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+
+                            $('#select_bank').append($('<option>', {
+                                value: data[index].bankCode + '~' + data[index].bankDescription
+                            }).text(data[index].bankDescription));
+
+                        });
+
+                    },
+
+                })
+            };
+
+
+            function get_currency() {
+                $.ajax({
+                    'type': 'GET',
+                    'url': 'get-currency-list-api',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        {{--  console.log(response.data);  --}}
+                        let data = response.data
+                        $.each(data, function(index) {
+
+                            $('#select_currency').append($('<option>', {
+                                value: data[index].currCode + '~' + data[index].description
+                            }).text(data[index].isoCode + '~' + data[index].description));
+
+                        });
+
+                    },
+
+                })
+            };
+
             $(document).ready(function(){
 
 
                 setTimeout(function() {
                     get_currency();
                     get_beneficiary_details();
+                    {{--  bank_list();  --}}
+                    {{--  get_currency();  --}}
                 }, 2000);
 
                 $('#local_bank_beneficiary_summary').hide();
