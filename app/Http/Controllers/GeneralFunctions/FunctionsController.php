@@ -57,7 +57,7 @@ class FunctionsController extends Controller
         $userID = session()->get('userId');
 
         $data = [
-            "authToken" => $authToken,
+            "token" => $authToken,
         ];
         // return $data;
         // return env('API_BASE_URL') ."account/getAccounts";
