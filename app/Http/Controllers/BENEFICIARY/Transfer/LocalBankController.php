@@ -18,10 +18,10 @@ class LocalBankController extends Controller
     {
 
         $user = (object) UserAuth::getDetails();
-        //return $user;
+        // return $user;
 
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $base_response = new BaseResponse();
 
@@ -214,6 +214,7 @@ class LocalBankController extends Controller
 
         $bene_type = $request->query('bene_type');
         $bene_id = $request->query('bene_id');
+
         return view('pages.transfer.edit_local_bank_beneficiary', ['bene_type' => $bene_type, 'bene_id' => $bene_id]);
     }
 
@@ -249,8 +250,9 @@ class LocalBankController extends Controller
         $user = (object) UserAuth::getDetails();
         //return $user;
 
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
         $data = [
             "accountDetails" => [
                 "beneficiaryAccount" => $req->account_number,

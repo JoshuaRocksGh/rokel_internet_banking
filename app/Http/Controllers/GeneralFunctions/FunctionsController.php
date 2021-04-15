@@ -281,7 +281,7 @@ class FunctionsController extends Controller
     }
 
 
-    public function bank_branches(){
+    public function bank_branches_list(){
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
