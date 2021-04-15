@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cheques;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,11 +16,8 @@ class ChequeBookRequestController extends Controller
 
     public function cheque_book_request(){
 
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $base_response = new BaseResponse();
 
@@ -39,35 +37,9 @@ class ChequeBookRequestController extends Controller
         // return $response->status();
 
 
-    if($response->ok()){    // API response status code is 200
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
 
-        $result = json_decode($response->body());
-        // return $result->responseCode;
-
-
-        if($result->responseCode == '000'){
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-        }else{   // API responseCode is not 000
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-            }
-
-        } else { // API response status code not 200
-
-             return $response->body();
-             DB::table('error_logs')->insert([
-                 'platform' => 'ONLINE_INTERNET_BANKING',
-                 'user_id' => 'AUTH',
-                 'code' => $response->status(),
-                 'message' => $response->body()
-             ]);
-
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-        }
     }
 
 
