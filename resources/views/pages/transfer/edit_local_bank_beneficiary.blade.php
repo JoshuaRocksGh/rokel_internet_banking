@@ -30,7 +30,7 @@
                                         <div class="form-group">
                                             <label> Select Bank</label>
                                             <select class="custom-select " id="select_bank" required>
-                                                <option value="">Select Bank</option>
+                                                <option value="" >Select Bank</option>
                                                 {{--  <option value="Stanbic Bank">Stanbic Bank</option>
                                                 <option value="GCB Bank">GCB Bank</option>
                                                 <option value="Standard Chartered Bank">Standard Chartered Bank</option>
@@ -306,7 +306,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
-
+{{--
 
             function get_currency() {
                 $.ajax({
@@ -314,25 +314,27 @@
                     'url': 'get-local-bank-beneficiary-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        {{--  console.log(response.data);  --}}
+                        console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
 
                             $('#select_currency').append($('<option>', {
                                 value: data[index].code + '~' + data[index].currency
                             }).text(data[index].currency));
-                            {{-- $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance)); --}}
+                            $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
                         });
 
                     },
 
                 })
-            };
+            };  --}}
 
 
             var bene_id = @json($bene_id);
-            {{--  console.log(bene_id);  --}}
+            var bene_type = @json($bene_type);
+            {{--  console.log(bene_id);
+            console.log(bene_type);  --}}
 
             function get_beneficiary_details(){
                 $.ajax({
@@ -351,9 +353,20 @@
                         if(response.responseCode == '000'){
 
                         let beneficiary_details = response.data;
-                        console.log(beneficiary_details)
+                        {{--  console.log(beneficiary_details)  --}}
 
-                        $(('#select_bank'.val(""))).val(beneficiary_details[0].BANK_NAME);
+                        $.each(beneficiary_details, function(index) {
+
+                            $('#select_bank').append($('<option>', {
+                                {{--  value: beneficiary_details[index].Q_CODE  --}}
+                            }).text(beneficiary_details[index].BANK_NAME));
+
+                            $('#select_currency').append($('<option>', {
+                                {{--  value: beneficiary_details[index].Q_CODE  --}}
+                            }).text(beneficiary_details[index].BEN_ACCOUNT_CURRENCY));
+
+                        });
+                        $('#select_bank').val(beneficiary_details[0].BANK_NAME);
                         $('#account_name').val(beneficiary_details[0].FIRST_NAME + ' ' + beneficiary_details[0].LAST_NAME);
                         $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
                         {{--  $('#account_name').val(beneficiary_details[0].);  --}}
@@ -377,7 +390,7 @@
                     'url': 'get-bank-list-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        console.log(response.data);
+                        {{--  console.log(response.data);  --}}
                         let data = response.data
                         $.each(data, function(index) {
 
@@ -404,7 +417,7 @@
                         $.each(data, function(index) {
 
                             $('#select_currency').append($('<option>', {
-                                value: data[index].currCode + '~' + data[index].description
+                                value: data[index].description
                             }).text(data[index].isoCode + '~' + data[index].description));
 
                         });
@@ -420,7 +433,7 @@
                 setTimeout(function() {
                     get_currency();
                     get_beneficiary_details();
-                    {{--  bank_list();  --}}
+                    bank_list();
                     {{--  get_currency();  --}}
                 }, 2000);
 
@@ -438,7 +451,7 @@
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
-                        timer: 10000,
+                        timer: 60000,
                         timerProgressBar: false,
                         didOpen: (toast) => {
                           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -526,7 +539,8 @@
                     e.preventDefault();
 
 
-                    var select_bank = $('#select_bank').val();
+                    var select_bank = $('#select_bank').val().split('~');
+                    var select_bank_ = select_bank[1];
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
                     var beneficiary_name =  $('#beneficiary_name').val();
@@ -538,21 +552,42 @@
                     }else{
                         var transfer_email = ('No');
                     }
-                    console.log(transfer_email);
+                    {{--  console.log(transfer_email);  --}}
                     var currency = $('#select_currency').val().split('~');
                     var currency_ = currency[1];
                     var beneficiary_number = $('#beneficiary_number').val();
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();
                     var swift_code = $('#swift_code').val();
+                    var bene_id = @json($bene_id);
+                    var bene_type = @json($bene_type);
 
+
+                    {{--  console.log(select_bank_);
+                    console.log(account_number);
+                    console.log(account_name);
+                    console.log(beneficiary_name);
+                    console.log(beneficiary_email);
+                    console.log(transfer_email);
+                    console.log(currency_);
+                    console.log(beneficiary_number);
+                    console.log(beneficiary_address);
+                    console.log(beneficiary_email);
+                    console.log(swift_code);
+                    console.log(bene_id);
+                    console.log(bene_type);  --}}
+
+                    function redirect_page(){
+                        window.location = "/beneficiary-list";
+
+                    };
 
                     $.ajax({
-                        'type' : 'POST' ,
-                        'url' : 'add-local-bank-beneficiary-api',
+                        'type' : 'PUT' ,
+                        'url' : 'edit-local-bank-beneficiary-api',
                         "datatype" : "application/json",
                         'data' : {
-                            'bank_name' : select_bank ,
+                            'bank_name' : select_bank_ ,
                             'account_number' : account_number ,
                             'account_name' : account_name ,
                             'beneficiary_name' : beneficiary_name ,
@@ -561,7 +596,9 @@
                             "account_currency": currency_,
                             "number": beneficiary_number,
                             "beneficiary_address": beneficiary_address,
-                            "bank_swift_code" : swift_code
+                            "bank_swift_code" : swift_code,
+                            "bene_id" : bene_id,
+                            "bene_type" : bene_type
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -573,6 +610,11 @@
                             console.log(response.responseCode);
                             if(response.responseCode == "000"){
                                 toaster(response.message, 'success' );
+
+                                {{--  setTimeout(function(){
+
+                                    redirect_page();
+                                },3000);  --}}
 
                             }else{
                                 toaster(response.message, 'error' );
