@@ -306,7 +306,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
-
+{{--
 
             function get_currency() {
                 $.ajax({
@@ -314,7 +314,7 @@
                     'url': 'get-local-bank-beneficiary-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        {{--  console.log(response.data);  --}}
+                        console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
 
@@ -328,7 +328,7 @@
                     },
 
                 })
-            };
+            };  --}}
 
 
             var bene_id = @json($bene_id);
@@ -417,7 +417,7 @@
                         $.each(data, function(index) {
 
                             $('#select_currency').append($('<option>', {
-                                value: data[index].currCode + '~' + data[index].description
+                                value: data[index].description
                             }).text(data[index].isoCode + '~' + data[index].description));
 
                         });
@@ -540,7 +540,7 @@
 
 
                     var select_bank = $('#select_bank').val().split('~');
-                    var select_bank_ = select_bank[0];
+                    var select_bank_ = select_bank[1];
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
                     var beneficiary_name =  $('#beneficiary_name').val();
@@ -554,13 +554,14 @@
                     }
                     {{--  console.log(transfer_email);  --}}
                     var currency = $('#select_currency').val().split('~');
-                    var currency_ = currency[0];
+                    var currency_ = currency[1];
                     var beneficiary_number = $('#beneficiary_number').val();
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();
                     var swift_code = $('#swift_code').val();
                     var bene_id = @json($bene_id);
                     var bene_type = @json($bene_type);
+
 
                     {{--  console.log(select_bank_);
                     console.log(account_number);
@@ -610,10 +611,10 @@
                             if(response.responseCode == "000"){
                                 toaster(response.message, 'success' );
 
-                                setTimeout(function(){
+                                {{--  setTimeout(function(){
 
                                     redirect_page();
-                                },3000);
+                                },3000);  --}}
 
                             }else{
                                 toaster(response.message, 'error' );

@@ -11,6 +11,8 @@ use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankC
 use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
+use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
+use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\InternationalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\LocalBankController as TransferLocalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSameBankController;
@@ -328,6 +330,11 @@ Route::get('/send-email', [MaileController::class, 'send_email'])->name('send-em
 
 // GENERAL FUNCTIONS
 Route::get('get-currency-list-api', [FunctionsController::class, 'currency_list'])->name('get-currency-list-api');
+Route::get('get-bank-list-api', [FunctionsController::class, 'bank_list'])->name('get-bank-list-api');
+Route::get('get-bank-branches-list-api', [FunctionsController::class, 'bank_branches_list'])->name('get-bank-branches-list-api');
+Route::get('get-security-question-api', [FunctionsController::class, 'security_question'])->name('get-security-question-api');
+Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
+Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -343,7 +350,22 @@ Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 
 Route::post('/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_beneficiary_'])->name('same-bank-beneficiary-api');
 Route::post('add-local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('add-local-bank-beneficiary-api');
 Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class, 'currency_list'])->name('get-local-bank-beneficiary-api');
+
+// Transfers Add Beneficiary
+Route::post('/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_beneficiary_'])->name('same-bank-beneficiary-api');
+Route::post('add-local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('add-local-bank-beneficiary-api');
+Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class, 'currency_list'])->name('get-local-bank-beneficiary-api');
+
+Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->name('edit-beneficiary');
+
+Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
+// -------- OTHER LOCAL BANK -----------
+Route::get('/edit-other-local-bank-beneficiary', [TransferLocalBankController::class, 'edit_local_bank_beneficiary'])->name('edit-other-local-bank-beneficiary');
+Route::post('/edit-local-bank-api', [EditLocalBankController::class, 'update_local_bank_beneficiary'])->name('edit-local-bank-api');
+// -------- INTENATIONAL BANK -----------
+Route::get('/edit-international-bank-beneficiary', [InternationalBankController::class, 'edit_international_bank_beneficiary'])->name('edit-international-bank-beneficiary');
 // EDIT BENEFICIARY DATA
+Route::get('/all-beneficiary-list', [transferController::class, 'all_beneficiary_list'])->name('all-beneficiary-list');
 Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::class, 'edit_local_bank'])->name('edit-local-bank-beneficiary-api');
 
 
