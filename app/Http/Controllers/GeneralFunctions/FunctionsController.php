@@ -84,6 +84,9 @@ class FunctionsController extends Controller
             "authToken" => $authToken,
             "userId"    => $userID
         ];
+
+        $base_response = new BaseResponse();
+
         // return $data;
         // return env('API_BASE_URL') ."account/getAccounts";
 
@@ -93,6 +96,36 @@ class FunctionsController extends Controller
 
         // return $response;
         // return $response->status();
+
+    if($response->ok()){    // API response status code is 200
+
+        $result = json_decode($response->body());
+        // return $result->responseCode;
+
+
+        if($result->responseCode == '000'){
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+        }else{   // API responseCode is not 000
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            }
+
+        } else { // API response status code not 200
+
+             return $response->body();
+             DB::table('error_logs')->insert([
+                 'platform' => 'ONLINE_INTERNET_BANKING',
+                 'user_id' => 'AUTH',
+                 'code' => $response->status(),
+                 'message' => $response->body()
+             ]);
+
+            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+        }
 
     }
 
@@ -166,7 +199,7 @@ class FunctionsController extends Controller
         // return $response->status();
 
 
-    if($response->ok()){    // API response status code is 200
+        if($response->ok()){    // API response status code is 200
 
         $result = json_decode($response->body());
         // return $result->responseCode;
@@ -198,8 +231,104 @@ class FunctionsController extends Controller
     }
 
 
+    public function bank_list(){
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $base_response = new BaseResponse();
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+
+        $response = Http::get(env('API_BASE_URL') ."/utilities/getBanks");
+
+        //return $response;
+        // return $response->status();
 
 
+        if($response->ok()){    // API response status code is 200
+
+        $result = json_decode($response->body());
+        // return $result->responseCode;
+
+
+        if($result->responseCode == '000'){
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+        }else{   // API responseCode is not 000
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            }
+
+        } else { // API response status code not 200
+
+             return $response->body();
+             DB::table('error_logs')->insert([
+                 'platform' => 'ONLINE_INTERNET_BANKING',
+                 'user_id' => 'AUTH',
+                 'code' => $response->status(),
+                 'message' => $response->body()
+             ]);
+
+            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+        }
+    }
+
+
+    public function bank_branches(){
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $base_response = new BaseResponse();
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+
+        $response = Http::get(env('API_BASE_URL') ."/utilities/getBranches");
+
+        //return $response;
+        // return $response->status();
+
+
+        if($response->ok()){    // API response status code is 200
+
+        $result = json_decode($response->body());
+        // return $result->responseCode;
+
+
+        if($result->responseCode == '000'){
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+        }else{   // API responseCode is not 000
+
+            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            }
+
+        } else { // API response status code not 200
+
+             return $response->body();
+             DB::table('error_logs')->insert([
+                 'platform' => 'ONLINE_INTERNET_BANKING',
+                 'user_id' => 'AUTH',
+                 'code' => $response->status(),
+                 'message' => $response->body()
+             ]);
+
+            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+        }
+    }
 
 
 }

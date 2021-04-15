@@ -487,8 +487,8 @@
 
                 });
 
-                var bene_id = @json($bene_id) ;
-                console.log($bene_id) ;
+                {{--  var bene_id = @json($bene_id) ;
+                console.log($bene_id) ;  --}}
 
             });
 

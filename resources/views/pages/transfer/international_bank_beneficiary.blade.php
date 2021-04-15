@@ -71,6 +71,16 @@
                                                                     </div>
 
                                                                     <div class="col-md-6">
+                                                                        <label for="form-group">Bank Name</label>
+                                                                        <select class="custom-select" id="bank_name" name="bank_name" required>
+                                                                            <option value="">Bank Name</option>
+                                                                            {{--  <option value="High-Street">High Street</option>  --}}
+
+                                                                        </select>
+                                                                        <br><br>
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
                                                                         <label for="form-group">Bank City</label>
                                                                         <select class="custom-select" id="bank_city" name="bank_city">
                                                                             <option value="">Bank City</option>
@@ -85,17 +95,13 @@
                                                                         <label for="form-group">Bank Branch</label>
                                                                         <select class="custom-select" id="bank_branch" name="bank_branch">
                                                                             <option value="">Bank Branch</option>
-                                                                            <option value="High-Street">High Street</option>
+                                                                            {{--  <option value="High-Street">High Street</option>  --}}
 
                                                                         </select>
                                                                         <br><br>
                                                                     </div>
 
-                                                                    <div class="col-md-6">
-                                                                        <label for="form-group">Bank Name</label>
-                                                                        <input type="text" id="bank_name" name="bank_name" class="form-control" placeholder="Bank Name" required>
-                                                                        <br><br>
-                                                                    </div>
+
 
                                                                     <div class="col-md-6">
                                                                         <label for="form-group">Bank Address</label>
@@ -145,7 +151,7 @@
 
                                                                         <select class="custom-select" id="currency" name="currency" required>
                                                                             <option value="">Currency</option>
-                                                                            <option value="GHS">GHS</option>
+                                                                            {{--  <option value="GHS">GHS</option>  --}}
 
                                                                         </select>
                                                                         <br>
@@ -416,8 +422,103 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+
+
+        function get_currency() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-currency-list-api',
+                "datatype": "application/json",
+                success: function(response) {
+                    {{--  console.log(response.data);  --}}
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('#currency').append($('<option>', {
+                            value: data[index].currCode + '~' + data[index].description
+                        }).text(data[index].isoCode + '~' + data[index].description));
+
+                    });
+
+                },
+
+            })
+        }
+
+
+        function bank_list() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-bank-list-api',
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('#bank_name').append($('<option>', {
+                            value: data[index].bankCode + '~' + data[index].bankDescription
+                        }).text(data[index].bankDescription));
+
+                    });
+
+                },
+
+            })
+        };
+
+
+        function bank_list() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-bank-list-api',
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('#bank_name').append($('<option>', {
+                            value: data[index].bankCode + '~' + data[index].bankDescription
+                        }).text(data[index].bankDescription));
+
+                    });
+
+                },
+
+            })
+        };
+
+
+        function bank_branches_list() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-bank-branches-list-api',
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('#bank_branch').append($('<option>', {
+                            value: data[index].branchCode + '~' + data[index].branchDescription
+                        }).text(data[index].branchDescription));
+
+                    });
+
+                },
+
+            })
+        };
+
         $(document).ready(function(){
 
+
+            setTimeout(function() {
+                get_currency();
+                bank_list();
+                bank_branches_list();
+            }, 2000);
 
             function toaster(message, icon )
             {
