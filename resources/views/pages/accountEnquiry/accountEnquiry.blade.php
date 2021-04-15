@@ -253,11 +253,12 @@
 
 
                 var account_number = @json($account_number);
-                var start_date = "02-04-2021";
-                var end_date = "30-04-2021";
+                var start_date = "01-06-2019";
+                var end_date = "01-06-2020";
+                var transLimit = "10";
 
                 setTimeout(function(){
-                    getAccountTransactions(account_number, start_date, end_date);
+                    getAccountTransactions(account_number, start_date, end_date, transLimit)
                     getAccountBalanceInfo(account_number);
                 }, 2000);
 
@@ -278,20 +279,19 @@
 
 
 
-                function getAccountTransactions($account_number, start_date, end_date){
+                function getAccountTransactions(account_number, start_date, end_date, transLimit){
                     var table = $('.account_transaction_display').DataTable();
                     var nodes = table.rows().nodes();
                     $.ajax({
                         "type": "POST",
-                        "url" : "api/account-transactions",
+                        "url" : "account-transaction-history",
                         "datatype" : "application/json",
                         "data": {
                             "accountNumber": account_number,
-                            "authToken": "15D2A303-98FD-43A6-86E4-F24FC7436069",
                             "endDate": end_date,
                             "entrySource": "A",
                             "startDate": start_date,
-                            "transLimit": "string"
+                            "transLimit": transLimit
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -308,17 +308,17 @@
                                 $.each(data, function(index) {
 
                                     table.row.add([
-                                        data[index].POSTING_DATE,
-                                        data[index].VALUE_DATE,
-                                        data[index].TRANSACTION_DETAILS,
-                                        data[index].DOCUMENT_REF,
+                                        data[index].postingSysDate,
+                                        data[index].valueDate,
+                                        data[index].narration,
+                                        data[index].documentReference,
                                         `<a type="button" data-toggle="modal"
                                         data-target="#bs-example-modal-xl"
-                                        class="text-primary">${data[index].BATCH_NO}</a>`,
-                                        data[index].DEBIT,
-                                        data[index].DEBIT,
-                                        data[index].CREDIT,
-                                        data[index].BALANCE
+                                        class="text-primary">${data[index].batchNumber}</a>`,
+                                        data[index].amount,
+                                        data[index].amount,
+                                        data[index].amount,
+                                        data[index].amount
 
 
 

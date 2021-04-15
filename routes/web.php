@@ -32,6 +32,7 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
 use App\Http\Controllers\GeneralFunctions\FunctionsController;
+use App\Http\Controllers\KobbyController;
 use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
@@ -194,6 +195,7 @@ Route::get('/settings', [settingsController::class, 'settings'])->name('settings
 
 //route to control the accountEnquiry screen
 Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-enquiry');
+Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
 
 // get account description
 Route::post('get-account-description', [GetAccountDescription::class, 'get_account_description'])->name('get-account-description');
@@ -372,3 +374,5 @@ Route::post('international-bank-beneficiary-api', [InternationalBankController::
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
+
+Route::get('kobby', [KobbyController::class, 'call_external_api'])->name('kobby');
