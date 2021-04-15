@@ -353,3 +353,4 @@ Route::post('international-bank-onetime-api', [APITransferLocalBankController::c
 Route::get('cheque-book-request-2',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-2');
 
 //route for atm card
+// Route::get('request-atm-card',[]);
