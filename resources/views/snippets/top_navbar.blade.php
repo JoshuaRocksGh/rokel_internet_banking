@@ -29,6 +29,7 @@
                 </a>
             </div>
 
+
             <li class="d-none d-lg-block">
                 <form class="app-search"  autocomplete="off" aria-autocomplete="off">
                     <div class="app-search-box dropdown">
@@ -152,6 +153,7 @@
                 </a>
 
             </li>
+
 
             {{--  <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">

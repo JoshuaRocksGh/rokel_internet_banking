@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Transfer;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,119 +14,55 @@ use Illuminate\Support\Facades\Validator;
 class SameBankController extends Controller
 {
     //
-    public function beneficiary_payment_from_account(){
+    public function beneficiary_payment_from_account()
+    {
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $base_response = new BaseResponse();
+
 
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
         ];
 
-        $response = Http::post(env('API_BASE_URL') ."/account/getAccounts",$data);
+        $response = Http::post(env('API_BASE_URL') . "/account/getAccounts", $data);
 
         //return $response->body();
 
-        //return  $response->body();
-
-
-    if($response->ok()){    // API response status code is 200
-
-        $result = json_decode($response->body());
-        // return $result->responseCode;
-
-
-        if($result->responseCode == '000'){
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-        }else{   // API responseCode is not 000
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-            }
-
-        } else { // API response status code not 200
-
-            DB::table('error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'code' => $response->status(),
-                'message' => $response->body()
-            ]);
-
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-        }
-
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
     public function beneficiary_payment_to_account()
     {
 
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
-
-        $base_response = new BaseResponse();
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
         ];
 
-        $response = Http::get("http://localhost/IIE/same-bank-beneficiary.php",$data);
+        $response = Http::get("http://localhost/IIE/same-bank-beneficiary.php", $data);
 
         //return $response;
-        // return $response->status();
-
-
-    if($response->ok()){    // API response status code is 200
-
-        $result = json_decode($response->body());
-        // return $result->responseCode;
-
-
-        if($result->responseCode == '000'){
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-        }else{   // API responseCode is not 000
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-            }
-
-        } else { // API response status code not 200
-
-             return $response->body();
-            // DB::table('error_logs')->insert([
-            //     'platform' => 'ONLINE_INTERNET_BANKING',
-            //     'user_id' => 'AUTH',
-            //     'code' => $response->status(),
-            //     'message' => $response->body()
-            // ]);
-
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-        }
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
     public function transfer_to_beneficiary(Request $req)
     {
-        $validator = Validator::make($req->all(),[
-            'from_account' => 'required' ,
-            'to_account' => 'required' ,
-            'transfer_amount' => 'required' ,
-            'category' => 'required' ,
+        $validator = Validator::make($req->all(), [
+            'from_account' => 'required',
+            'to_account' => 'required',
+            'transfer_amount' => 'required',
+            'category' => 'required',
             //'select_frequency' => 'required' ,
-            'purpose' => 'required' ,
-            'alias_name' => 'required' ,
+            'purpose' => 'required',
+            'alias_name' => 'required',
             'type' => 'required'
         ]);
 
@@ -136,7 +73,6 @@ class SameBankController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
         // return $req;
 
@@ -147,7 +83,7 @@ class SameBankController extends Controller
         $user_pin = $req->secPin;
 
         // return $user_pin;
-        if($user_pin != '123456'){
+        if ($user_pin != '123456') {
 
             return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
 
@@ -163,28 +99,28 @@ class SameBankController extends Controller
 
         $data = [
 
-            "amount"=> (float) $req->transfer_amount,
-            "authToken"=> $authToken,
+            "amount" => (float) $req->transfer_amount,
+            "authToken" => $authToken,
             "creditAccount" => $req->to_account,
-            "debitAccount"=> $req->from_account,
-            "deviceIp"=> "string",
-            "entrySource"=> "string",
-            "narration"=> $req->purpose,
+            "debitAccount" => $req->from_account,
+            "deviceIp" => "string",
+            "entrySource" => "string",
+            "narration" => $req->purpose,
             //security pin
-            "secPin"=> $user_pin,
-            "userName"=> "string",
-            "category" => $req->category ,
+            "secPin" => $user_pin,
+            "userName" => "string",
+            "category" => $req->category,
             "posted_by" => $userID
 
         ];
 
-        if ($req->type == 'onetime'){
+        if ($req->type == 'onetime') {
             $data['alias_name'] = $req->alias_name;
         }
 
 
-        if(isset($req->select_frequency)){
-            $frequency = explode('~',$req->select_frequency);
+        if (isset($req->select_frequency)) {
+            $frequency = explode('~', $req->select_frequency);
             // return $frequency;
             $selected_frequency_code = $frequency[0];
             $data['schedulePaymentDate'] = $req->schedule_payment_date;
@@ -201,48 +137,16 @@ class SameBankController extends Controller
         // $from_account = $req->from_account;
 
 
-        try{
+        try {
 
-            $response = Http::post(env('API_BASE_URL') ."transfers/sameBank",$data);
+            $response = Http::post(env('API_BASE_URL') . "transfers/sameBank", $data);
 
             // return $response;
-            // return json_decode($response->body();
 
-            if($response->ok()){ // API response status code is 200
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
 
-                $result = json_decode($response->body());
-                // return $result;
-
-                if($result->responseCode == '000'){
-
-                    // $result_data = $result->data;
-                    // return $result_data;
-
-                    return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-
-
-                } else {  // API responseCode is not 000
-
-                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-                }
-
-            } else { // API response status code not 200
-
-                DB::table('error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'code' => $response->status(),
-                    'message' => $response->body()
-                ]);
-
-                return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-            }
-
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
 
             DB::table('error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
@@ -254,22 +158,21 @@ class SameBankController extends Controller
 
 
         }
-
     }
 
 
 
     public function one_time_beneficiary(Request $req)
     {
-        $validator = Validator::make($req->all(),[
-            'from_account' => 'required' ,
-            'alias_name' => 'required' ,
-            'beneficiary_account_number' => 'required' ,
-            'beneficiary_account_currency' => 'required' ,
-            'beneficiary_email' => 'required' ,
-            'amount' => 'required' ,
+        $validator = Validator::make($req->all(), [
+            'from_account' => 'required',
+            'alias_name' => 'required',
+            'beneficiary_account_number' => 'required',
+            'beneficiary_account_currency' => 'required',
+            'beneficiary_email' => 'required',
+            'amount' => 'required',
             'category' => 'required',
-            'purpose' => 'required' ,
+            'purpose' => 'required',
             //'select_frequency' => 'required' ,
             //'naration' => 'required' ,
 
@@ -283,7 +186,6 @@ class SameBankController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
 
         //return $req;
@@ -291,41 +193,36 @@ class SameBankController extends Controller
         $user_pin = $req->secPin;
 
         // return $user_pin;
-        if($user_pin != '123456'){
+        if ($user_pin != '123456') {
 
             return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
 
         }
 
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
-
-
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $data = [
 
-            "amount"=> (float) $req->amount,
-            "authToken"=> $authToken,
+            "amount" => (float) $req->amount,
+            "authToken" => $authToken,
             "creditAccount" => $req->beneficiary_account_number,
-            "debitAccount"=> $req->from_account,
-            "deviceIp"=> "string",
-            "entrySource"=> "string",
-            "narration"=> $req->purpose,
+            "debitAccount" => $req->from_account,
+            "deviceIp" => "string",
+            "entrySource" => "string",
+            "narration" => $req->purpose,
             //security pin
-            "secPin"=> $user_pin,
-            "userName"=> "string",
-            "category" => $req->category ,
+            "secPin" => $user_pin,
+            "userName" => "string",
+            "category" => $req->category,
             "aliasName" => $req->alias_name,
-            'beneficiaryCurrency' => $req->beneficiary_account_currency ,
-            'beneficiaryEmail' => $req->beneficiary_email ,
+            'beneficiaryCurrency' => $req->beneficiary_account_currency,
+            'beneficiaryEmail' => $req->beneficiary_email,
         ];
 
 
-        if(isset($req->select_frequency)){
-            $frequency = explode('~',$req->select_frequency);
+        if (isset($req->select_frequency)) {
+            $frequency = explode('~', $req->select_frequency);
             // return $frequency;
             $selected_frequency_code = $frequency[0];
             $data['schedulePaymentDate'] = $req->schedule_payment_date;
@@ -342,48 +239,17 @@ class SameBankController extends Controller
         // $from_account = $req->from_account;
 
 
-        try{
+        try {
 
-            $response = Http::post(env('API_BASE_URL') ."transfers/sameBank",$data);
+            $response = Http::post(env('API_BASE_URL') . "transfers/sameBank", $data);
 
             // return $response;
             // return json_decode($response->body();
 
-            if($response->ok()){ // API response status code is 200
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
 
-                $result = json_decode($response->body());
-                // return $result;
-
-                if($result->responseCode == '000'){
-
-                    // $result_data = $result->data;
-                    // return $result_data;
-
-                    return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-
-
-                } else {  // API responseCode is not 000
-
-                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-                }
-
-            } else { // API response status code not 200
-
-                DB::table('error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'code' => $response->status(),
-                    'message' => $response->body()
-                ]);
-
-                return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-            }
-
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
 
             DB::table('error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',

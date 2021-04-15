@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AccountEnquiry;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,8 +20,8 @@ class GetAccountDescription extends Controller
         $validator = Validator::make($request->all(),[
             'accountNumber' => 'required' ,
         ]);
-
         $base_response = new BaseResponse();
+
         // VALIDATION
         if ($validator->fails()) {
             return $base_response->api_response('500', $validator->errors(), NULL);
@@ -28,47 +29,20 @@ class GetAccountDescription extends Controller
 
         $account_no = $request->accountNumber;
 
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
         $data = [
-            "authToken" => "15D2A303-98FD-43A6-86E4-F24FC7436069",
-            "userId"    => 'ALEX'
+            "authToken" => $authToken,
+            "userId"    => $userID
         ];
 
 
         $response = Http::post(env('API_BASE_URL') ."/account/getAccounts",$data);
 
-        //return $response->body();
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
 
-        //return  $response->body();
-
-
-    if($response->ok()){    // API response status code is 200
-
-        $result = json_decode($response->body());
-        // return $result->responseCode;
-
-
-        if($result->responseCode == '000'){
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-        }else{   // API responseCode is not 000
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-            }
-
-        } else { // API response status code not 200
-
-            DB::table('error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'code' => $response->status(),
-                'message' => $response->body()
-            ]);
-
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-        }
 
     }
 
@@ -106,35 +80,8 @@ class GetAccountDescription extends Controller
 
         // return $response->body();
 
-
-    if($response->ok()){    // API response status code is 200
-
-        $result = json_decode($response->body());
-        // return $result->responseCode;
-
-
-        if($result->responseCode == '000'){
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-        }else{   // API responseCode is not 000
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-            }
-
-        } else { // API response status code not 200
-
-            DB::table('error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'code' => $response->status(),
-                'message' => $response->body()
-            ]);
-
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-        }
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
 }
