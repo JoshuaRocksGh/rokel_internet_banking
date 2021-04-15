@@ -87,30 +87,7 @@
                                             </select>
                                         </div>
 
-                                        {{-- <div class="form-group">
-                                            <label>Upload File</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="inputGroupFile04">
-                                                    <label class="custom-file-label" for="inputGroupFile04">choose an excel file</label>
-                                                </div>
-                                            </div>
-                                        </div> --}}
 
-                                        {{-- <div class="form-group">
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Schedule
-                                                    Payments</label>
-                                            </div>
-                                            <legend></legend>
-
-                                            <input type="text" class="form-control" id="schedule_payment_contraint_input">
-
-                                            <input type="date" class="form-control" id="schedule_payment_date">
-
-                                        </div> --}}
 
 
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountEnquiry\GetAccountDescription;
 use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
+use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountServicesChequeBookRequestController;
 use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Cards\CardsController;
 use App\Http\Controllers\Chatbot\FacebookChatbotController;
 use App\Http\Controllers\Chatbot\InstagramChatbotController;
 use App\Http\Controllers\Chatbot\WhatsAppChatbotController;
+use App\Http\Controllers\Cheques\ChequeBookRequestController;
 use App\Http\Controllers\Cheques\ChequesApprovedController;
 use App\Http\Controllers\Cheques\ChequesPendingController;
 use App\Http\Controllers\Cheques\ChequesRejectedController;
@@ -347,4 +349,7 @@ Route::post('international-bank-beneficiary-api', [InternationalBankController::
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
+//route for cheque book request api
+Route::get('cheque-book-request-2',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-2');
 
+//route for
