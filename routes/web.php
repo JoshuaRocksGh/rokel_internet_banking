@@ -383,10 +383,10 @@ Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBank
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
 //route for cheque book request api
-Route::get('cheque-book-request-2',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-2');
+Route::get('cheque-book-request-api',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-api');
 
 //route for atm card
-Route::get('atm-card-request', [AtmCardRequestController::class,'atm_card_request'])->name('atm-card-request');
+Route::get('atm-card-request-api', [AtmCardRequestController::class,'atm_card_request'])->name('atm-card-request-api');
 
 //route for statement request
-Route::get('statement-request',[StatementRequestController::class,'statement_request'])->name('statement-request');
+Route::get('statement-request-api',[StatementRequestController::class,'statement_request'])->name('statement-request-api');
