@@ -13,7 +13,7 @@
 
                         <div class="col-md-8">
                             <p class="sub-header font-18 purple-color" style="cursor: pointer;" onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i>  EDIT OTHER LOCAL BANK BENEFICIARY
+                                <i class="fe-arrow-left"></i>  MANAGE OTHER LOCAL BANK BENEFICIARY
                             </p>
                             <hr>
 
@@ -334,8 +334,8 @@
 
             var bene_id = @json($bene_id);
             var bene_type = @json($bene_type);
-            {{--  console.log(bene_id);
-            console.log(bene_type);  --}}
+            console.log(bene_id);
+            console.log(bene_type);
 
             function get_beneficiary_details(){
                 $.ajax({
@@ -344,17 +344,18 @@
                     'url' : 'edit-local-bank-api',
                     'data' : {
                         'bene_id' : bene_id
+
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success:
                     function(response){
-                        {{--  console.log(response);  --}}
+                        console.log(response);
                         if(response.responseCode == '000'){
 
                         let beneficiary_details = response.data;
-                        console.log(beneficiary_details)
+                        {{--  console.log(beneficiary_details)  --}}
 
                         $.each(beneficiary_details, function(index) {
 
@@ -424,7 +425,7 @@
                     'url': 'get-bank-list-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        console.log(response.data);
+                        {{--  console.log(response.data);  --}}
                         let data = response.data
                         $.each(data, function(index) {
 
@@ -473,7 +474,7 @@
                     'url': 'get-currency-list-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        console.log(response.data);
+                        {{--  console.log(response.data);  --}}
                         let data = response.data
                         $.each(data, function(index) {
                             {{--  console.log(cur)

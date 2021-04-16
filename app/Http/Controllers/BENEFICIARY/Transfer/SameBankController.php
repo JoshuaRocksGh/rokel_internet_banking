@@ -39,7 +39,7 @@ class SameBankController extends Controller
     public function same_bank_beneficiary_(Request $req){
         $validator = Validator::make($req->all(),[
             'account_number' => 'required' ,
-            'account_name' => 'required' ,
+            // 'account_name' => 'required' ,
             'beneficiary_name' => 'required',
             'beneficiary_email' => 'required',
             'beneficiary_address' => 'required',
@@ -71,7 +71,7 @@ class SameBankController extends Controller
                     "accountDetails" => [
                         "beneficiaryAccount" => $req->account_number,
                         "beneficiaryAccountCurrency" => $req->account_currency,
-                        "beneficiaryAcountName" => $req->account_name
+                        // "beneficiaryAcountName" => $req->account_name
                     ],
 
                     "addressDetails" => [
@@ -87,7 +87,7 @@ class SameBankController extends Controller
                         "bankBranch" => "string",
                         "bankCity" => "string",
                         "bankCountry" => "string",
-                        "bankName" => "This Bank",
+                        "bankName" => "THIS BANK",
                         "bankSwiftCode" => "string"
                     ],
 
@@ -143,12 +143,14 @@ class SameBankController extends Controller
 
         }
     }
+
+
     public function edit_same_bank_beneficiary(Request $request){
 
         $bene_type = $request->query('bene_type');
         $bene_id = $request->query('bene_id');
 
-        return view('pages.transfer.same_bank_beneficiary', ['bene_type' => $bene_type, 'bene_id' => $bene_id]);
+        return view('pages.transfer.edit_same_bank_beneficiary', ['bene_type' => $bene_type, 'bene_id' => $bene_id]);
 
     }
 

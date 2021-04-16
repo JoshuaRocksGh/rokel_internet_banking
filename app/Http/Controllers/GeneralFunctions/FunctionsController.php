@@ -165,5 +165,26 @@ class FunctionsController extends Controller
         return $this->baseResponseApi($response);
     }
 
+<<<<<<< HEAD
+
+    public function get_beneficiary_list(Request $request)
+    {
+        $bene_type = $request->query('bene_type');
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $base_response = new BaseResponse();
+
+
+        $response = Http::get(env('API_BASE_URL') . "/beneficiary/getTransferBeneficiariestype}?userID=$userID&bankType=$bene_type");
+
+        //return $response;
+        // return $response->status();
+        return $this->baseResponseApi($response);
+    }
+
+=======
     
+>>>>>>> c16f7052fdf9fcc9bb66d398b35f3cc2575b42ab
 }

@@ -375,7 +375,7 @@ framework upon which plug-ins can built.
 
 
                                         `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
-                                        &emsp;&emsp;  <span class="fe-trash noti-icon text-danger " id="beneficiary_data" data-value='${data[index]}'></span>`,
+                                        &emsp;&emsp;  <a id='delete_beneficiary_data'><span class="fe-trash noti-icon text-danger "  data-value='${data[index]}'></span></a>`,
 
 
 
@@ -394,11 +394,11 @@ framework upon which plug-ins can built.
                     beneficiary_list();
                 },1500);
 
-                $("#beneficiary_data").click(function(e){
+                $("#delete_beneficiary_data").click(function(e){
                     e.preventDefault();
-                    alert("ad");
-                  var beneficiary_data =  $(this).data('value');
-                  console.log(beneficiary_data);
+                    alert("DELETE!!!");
+                  {{--  var beneficiary_data =  $(this).data('value');
+                  console.log(beneficiary_data);  --}}
                 })
             })
         </script>
