@@ -20,13 +20,13 @@ class ChequeBookRequestController extends Controller
 
         $accountNumber = $request->accountNumber;
         $numberOfLeaves = $request->numberOfLeaves;
-        $branch = $request->branch;
+        $branchCode = $request->branchCode;
         $pinCode = $request->pinCode;
 
         $data = [
 
                 "accountNumber"=> $accountNumber,
-                "branch" => $branch,
+                "branch" => $branchCode,
                 "deviceIP" => "A",
                 "numberOfLeaves" => $numberOfLeaves,
                 "pinCode" => $pinCode,

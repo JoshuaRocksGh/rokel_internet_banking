@@ -22,9 +22,9 @@
                         <hr>
 
 
-                        <div class="row" id="transaction_form">
+                        <div class="row" >
 
-                            <div class="col-md-7">
+                            <div class="col-md-7" id="request_form_div">
 
                                 <div class="">
 
@@ -121,7 +121,7 @@
                         </div>
 
 
-                        <div class="col-md-5">
+                        <div class="col-md-5 disappear-after-success" id="request_detail_div">
 
                             <table class="table mb-0 table-striped table-bordered">
 
@@ -169,7 +169,7 @@
 
                             <div class="form-group row">
                                 <div class="col-8 offset-4 text-right">
-                                    <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light" id="submit_cheque_request">
+                                    <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="submit_cheque_request">
                                         Submit
                                     </button>
 
@@ -178,6 +178,13 @@
 
 
                         </div> <!-- end col -->
+
+                        <div class="col-md-5 text-center">
+                        {{-- <span class="hh"><span> --}}
+                        <p class="display-4 text-center text-success success-message ">
+
+                        </p>
+                    </div>
 
 
                         <!-- end row -->
@@ -200,6 +207,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
         <script>
@@ -333,8 +341,70 @@
             })
 
             $("#submit_cheque_request").click(function(){
+
+                //MY ACCOUNT
+                let my_account = $('#my_account').val()
+                //Leaflet
+                let leaflet = $('#leaflet').val()
+                //branch
+                let branch = $('#branch').val()
+
+                let pin = $('#pin').val()
+
+
+
+
+
                 if(branch == "" || my_account == "" || leaflet == "" || pin == ""){
-                    toaster(message, icon, timer);
+                    toaster("Please fill all required fieilds", "error", 6000);
+                }else{
+
+                    let branch_info = branch.split("~")
+                    let branchCode = branch_info[0]
+
+                    my_account_info = my_account.split("~")
+                let accountNumber = my_account_info[2].trim()
+
+
+                    $.ajax({
+
+                        'type' : 'POST',
+                        'url' : 'submit-cheque-book-request',
+                        "datatype" : "application/json",
+                        'data' : {
+                            'accountNumber' : accountNumber.trim() ,
+                            'branchCode' : branchCode.trim() ,
+                            'leaflet' : leaflet.trim() ,
+                            'pinCode' : pin.trim()
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success:
+                        function(response){
+
+                             console.log(response)
+
+                            if(response.responseCode == '000'){
+                                toaster(response.message, 'success', 200000 )
+                                $("#request_form_div").hide()
+                                $(".disappear-after-success").hide()
+                                $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
+                                {{-- $(".hh").text(response.message) --}}
+                                $("#request_detail_div").show()
+
+
+                            }else{
+
+                                toaster(response.message, 'error', 9000 );
+
+
+                        }
+                    }
+
+                    })
+
+
                 }
             })
 
