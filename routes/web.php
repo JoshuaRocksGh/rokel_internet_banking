@@ -6,6 +6,7 @@ use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
 use App\Http\Controllers\AccountServices\AtmCardRequestController;
 use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountServicesChequeBookRequestController;
+use App\Http\Controllers\AccountServices\StatementRequestController;
 use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
@@ -381,3 +382,6 @@ Route::get('cheque-book-request-2',[AccountServicesChequeBookRequestController::
 
 //route for atm card
 Route::get('atm-card-request', [AtmCardRequestController::class,'atm_card_request'])->name('atm-card-request');
+
+//route for statement request
+Route::get('statement-request',[StatementRequestController::class,'statement_request'])->name('statement-request');
