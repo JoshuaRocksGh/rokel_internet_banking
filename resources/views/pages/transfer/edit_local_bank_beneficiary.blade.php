@@ -13,7 +13,7 @@
 
                         <div class="col-md-8">
                             <p class="sub-header font-18 purple-color" style="cursor: pointer;" onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i>  EDIT OTHER LOCAL BANK BENEFICIARY
+                                <i class="fe-arrow-left"></i>  MANAGE OTHER LOCAL BANK BENEFICIARY
                             </p>
                             <hr>
 

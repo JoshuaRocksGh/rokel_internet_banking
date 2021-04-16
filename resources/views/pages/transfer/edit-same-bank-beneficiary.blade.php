@@ -15,7 +15,7 @@
                         <div class="col-md-8">
                             <p class="sub-header font-18 purple-color" style="cursor: pointer;"
                                 onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i> SAME BANK BENEFICIARY
+                                <i class="fe-arrow-left"></i> MANAGE SAME BANK BENEFICIARY
                             </p>
                             <hr>
 
