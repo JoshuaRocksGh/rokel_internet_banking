@@ -37,6 +37,15 @@
 <!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
+
+
+<!-- Plugin js-->
+<script src="{{ asset('assets/libs/parsleyjs/parsley.min.js') }}"></script>
+
+<!-- Validation init js-->
+<script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
+
+
 <script type='text/javascript'>
 	function googleTranslateElementInit() {
 		new google.translate.TranslateElement({

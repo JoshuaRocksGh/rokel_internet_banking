@@ -24,7 +24,6 @@ class AtmCardRequestController extends Controller
                     "branch" => "010",
                     "pinCode" => "1234",
                     "tokenID"=> "65128474-13EF-4FDF-881D-F23C9DCD3785"
-
             ];
 
             $response = Http::post(env('API_BASE_URL') . "/request/atmCard", $data);

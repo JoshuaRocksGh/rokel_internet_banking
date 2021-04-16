@@ -280,6 +280,15 @@
                         $('#failed_login').show()
 
                     }
+                },
+                error: function(xhr, status, error){
+                    $('#submit').attr('disabled',false);
+                    $('#spinner').hide()
+                    $('#spinner-text').hide()
+
+                    $('#log_in').show()
+                    $('#error_message').text("Connection Error")
+                    $('#failed_login').show()
                 }
             })
         })
