@@ -144,25 +144,25 @@ class FunctionsController extends Controller
     }
 
 
-    public function bank_list()
-    {
+        public function bank_list()
+        {
 
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
+            $authToken = session()->get('userToken');
+            $userID = session()->get('userId');
 
-        $base_response = new BaseResponse();
+            $base_response = new BaseResponse();
 
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
+            $data = [
+                "authToken" => $authToken,
+                "userId"    => $userID
+            ];
 
-        $response = Http::get(env('API_BASE_URL') . "/utilities/getBanks");
+            $response = Http::get(env('API_BASE_URL') . "/utilities/getBanks");
 
-        //return $response;
-        // return $response->status();
-        return $this->baseResponseApi($response);
-    }
+            //return $response;
+            // return $response->status();
+            return $this->baseResponseApi($response);
+        }
 
 
     public function bank_branches_list()
