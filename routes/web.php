@@ -155,6 +155,7 @@ Route::get('/approvals-pending-transfer-details', [PendingController::class, 'ap
 
 // BRANCH LOCATOR LIST VIEW
 Route::get('branch-locator', [branchLocatorController::class, 'branch_locator'])->name('branch-locator');
+Route::get('get-branches-api', [branchLocatorController::class, 'get_branches_api'])->name('get-branches-api');
 
 // ACCOUNT CREATION
 Route::get('/account-creation', [accountCreationController::class, 'account_creation'])->name('account-creation');
@@ -183,7 +184,8 @@ Route::get('/settings', [settingsController::class, 'settings'])->name('settings
 
 
 //route to control the accountEnquiry screen
-Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-enquiry');
+Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-transaction-history');
+Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
 
 // get account description
 Route::post('get-account-description', [GetAccountDescription::class, 'get_account_description'])->name('get-account-description');

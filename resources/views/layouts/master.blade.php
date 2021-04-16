@@ -110,6 +110,7 @@
 
         @include('snippets.script')
 
+
 		@yield('scripts')
         {{--  @include('sweetalert::alert')  --}}
 
