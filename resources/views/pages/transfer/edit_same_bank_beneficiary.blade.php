@@ -45,20 +45,19 @@
                                             <div class="form-group">
                                                 <label>Account Name</label>
                                                 <input type="text" class="form-control" id="account_name"
-                                                    parsley-trigger="change" placeholder="Account Name" required>
+                                                    parsley-trigger="change" placeholder="Account Name" readonly required>
                                                 {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                             </div>
                                             <div class="form-group">
                                                 <label>Account Currency</label>
+                                                <input type="hidden" class="form-control" readonly value="" id="select_currency">
+                                                <input type="text" class="form-control" readonly value="" id="select_currency_i">
 
-                                                <select class="custom-select" id="select_currency" required>
+                                                {{--  <select class="custom-select" id="select_currency" required>
                                                     <option value="">Select Currency</option>
-                                                    {{-- <option value="001~SLL">SLL</option>
-                                                    <option value="002~USD">USD</option>
-                                                    <option value="003~EUR">EUR</option>
-                                                    <option value="004~GBP">GBP</option> --}}
-                                                </select>
+
+                                                </select>  --}}
                                                 {{-- <input type="text" class="form-control" id="account_currency" parsley-trigger="change"  placeholder="Account " required> --}}
                                                 {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
@@ -260,36 +259,56 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
 
-            function get_currency() {
+
+            var bene_id = @json($bene_id);
+            var bene_type = @json($bene_type);
+            {{--  console.log(bene_id);
+            console.log(bene_type);  --}}
+
+            function get_beneficiary_details(){
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-currency-list-api',
+                    'type' : 'POST' ,
                     "datatype": "application/json",
-                    success: function(response) {
-                        console.log(response.data);
-                        let data = response.data
-                        $.each(data, function(index) {
-
-                            $('#select_currency').append($('<option>', {
-                                value: data[index].currCode + '~' + data[index].description
-                            }).text(data[index].isoCode + '~' + data[index].description));
-
-                        });
-
+                    'url' : 'edit-same-bank-api',
+                    'data' : {
+                        'bene_id' : bene_id
+                    },headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
+                    success:
+                    function(response){
+                        {{--  console.log(response);  --}}
+
+                        if(response.responseCode == '000'){
+                            let beneficiary_details = response.data;
+                            {{--  console.log(beneficiary_details);  --}}
+
+                        $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
+                        $('#account_name').val(beneficiary_details[0].NICKNAME);
+                        $('#select_currency_i').val(beneficiary_details[0].BEN_ACCOUNT_CURRENCY);
+                        $('#beneficiary_name').val(beneficiary_details[0].NICKNAME);
+                        $('#beneficiary_address').val(beneficiary_details[0].ADDRESS_1);
+                        $('#beneficiary_email').val(beneficiary_details[0].EMAIL);
+                        {{--  NICKNAME  --}}
+
+                        $('#save_beneficiary').show('');
+                        let account_no = $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
+
+
+                        }
+                    }
 
                 })
-            };
-
-
-
+            }
 
 
             $(document).ready(function() {
 
-                setTimeout(function() {
-                    get_currency();
-                }, 3000);
+                setTimeout(function(){
+                    get_beneficiary_details();
+                },2000);
+
+                $('#save_beneficiary').hide('')
 
                 $('#same_bank_beneficiary_form_summary').hide();
                 $('#account_number_error').hide();
@@ -336,13 +355,21 @@
 
                             console.log(response.responseCode)
                             if (response.responseCode == "000") {
-                                console.log(response.data)
+                                {{--  console.log(response.data)  --}}
                                 toaster(response.message, 'success');
-                                $('#account_name').val(response.data.accountNumber)
+                                $('#account_name').val(response.data.accountDescription)
+                                $('#select_currency_i').val(response.data.accountCurrencyDescription)
+                                $('#select_currency').val(response.data.accountCurrencyCode  + '~' + response.data.accountCurrencyDescription)
+
+                                $('#save_beneficiary').show('')
 
                             } else {
                                 toaster(response.message, 'error');
                                 $('#account_name').val('')
+                                $('#select_currency_i').val('')
+                                $('#select_currency').val('')
+                                $('#save_beneficiary').hide('')
+
 
                             }
                         }
@@ -356,6 +383,8 @@
                     if(account_no.length > 10){
                         getAccountDescription(account_no)
                     }
+
+
                 })
 
                 $('#same_bank_beneficiary_form').submit(function(e) {
@@ -429,25 +458,44 @@
                     var beneficiary_name = $('#beneficiary_name').val();
                     var currency = $('#select_currency').val().split('~');
                     var currency_ = currency[1];
-                    console.log(currency);
+                    {{--  console.log(currency);  --}}
                     var beneficiary_number = $('#beneficiary_mobile_number').val();
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();
                     var send_email = $("#transfer_email input[type='checkbox']:checked").val();
-                    if (send_email) {
+                    if (send_email == "on") {
                         var transfer_email = ('Y');
                     } else {
                         var transfer_email = ('N');
                     }
+
+                    var bene_id = @json($bene_id);
+                    var bene_type = @json($bene_type);
 
                     {{-- $('#spinner').show();
                     $('#spinner-text').show();
                     $('#confirm_save_beneficiary_text').hide();
                     $('#save_beneficiary_summary_btn').attr('disabled',true); --}}
 
+
+                    function redirect_page(){
+                        window.location.href = "{{ url('beneficiary-list') }}";
+
+                    };
+
+                    console.log(account_number);
+                    console.log(beneficiary_name);
+                    console.log(currency_);
+                    console.log(beneficiary_number);
+                    console.log(beneficiary_address);
+                    console.log(beneficiary_email);
+                    console.log(transfer_email);
+
+
+
                     $.ajax({
-                        "type": "POST",
-                        "url": "same-bank-beneficiary-api",
+                        "type": "PUT",
+                        "url": "edit-same-bank-beneficiary-api",
                         "datatype": "application/json",
                         "data": {
                             "account_number": account_number,
@@ -457,7 +505,9 @@
                             "beneficiary_email": beneficiary_email,
                             "send_mail": transfer_email,
                             "number": beneficiary_number,
-                            "beneficiary_address": beneficiary_address
+                            "beneficiary_address": beneficiary_address,
+                            "beneID" : bene_id ,
+                            "beneficiaryType" : bene_type
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -468,6 +518,12 @@
                             console.log(response.responseCode)
                             if (response.responseCode == "000") {
                                 toaster(response.message, 'success');
+
+                                setTimeout(function(){
+
+                                    redirect_page();
+                                },3000);
+
                                 {{-- $('#spinner').hide();
                             $('#spinner-text').hide();
 
@@ -486,6 +542,9 @@
                     })
 
                 });
+
+                {{--  var bene_id = @json($bene_id) ;
+                console.log($bene_id) ;  --}}
 
             });
 
