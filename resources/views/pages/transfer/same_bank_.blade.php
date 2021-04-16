@@ -228,9 +228,9 @@
 
 
 
-                                <div class="col-md-5 text-center" style="margin-top: 80px;">
-
-                                    <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt="">
+                                <div class="col-md-5 text-center" >
+                                    <img src="{{ asset('land_asset/images/same-bank.gif') }}" class="img-fluid" />
+                                    {{-- <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt=""> --}}
                                 </div> <!-- end col -->
 
 
@@ -496,29 +496,6 @@
             }
 
 
-
-            function get_benerficiary(){
-                $.ajax({
-                    'type': 'GET',
-                    'url' : 'get-beneficiary-list-api?bene_type=SAB',
-                    "datatype" : "application/json",
-                    success:function(response){
-                        console.log(response.data);
-                        let data = response.data
-                        $.each(data, function(index) {
-                        //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-                            $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].NICKNAME+'~'+data[index].BEN_ACCOUNT+'~'+data[index].BEN_ACCOUNT_CURRENCY}).text(data[index].account_type+'~'+data[index].BEN_ACCOUNT+'~'+data[index].NICKNAME+'~'+data[index].BEN_ACCOUNT_CURRENCY));
-
-                        });
-                        {{--  <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
-                            Currenct Account ~ 8888888888888~Joshua Amarfio
-                        </option>  --}}
-                    },
-
-                })
-            }
-
-
             function to_account(){
                 $.ajax({
                     'type': 'GET',
@@ -529,7 +506,7 @@
                         let data = response.data
                         $.each(data, function(index) {
                         //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-                        $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].NICKNAME+'~'+data[index].BEN_ACCOUNT+'~'+data[index].BEN_ACCOUNT_CURRENCY}).text(data[index].account_type+'~'+data[index].BEN_ACCOUNT+'~'+data[index].NICKNAME+'~'+data[index].BEN_ACCOUNT_CURRENCY));
+                        $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].alias_name+'~'+data[index].account_number+'~'+data[index].account_currency}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].alias_name+'~'+data[index].account_currency));
 
                         });
                         {{--  <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
@@ -548,9 +525,8 @@
 
                 setTimeout(function(){
                     from_account();
-                    {{--  to_account();  --}}
-                    get_benerficiary()
-                },2000);
+                    to_account();
+                },3000);
 
                 function toaster(message, icon )
                 {
@@ -570,7 +546,7 @@
                         icon: icon,
                         title: message
                       })
-                };
+                }
 
                 $(".select_onetime").css("display", "none");
                 $(".select_beneficiary").css("display", "block");
