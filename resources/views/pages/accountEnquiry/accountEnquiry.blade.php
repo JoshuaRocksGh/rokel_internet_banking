@@ -39,81 +39,91 @@
 
 
 
-                                        <div class="row" >
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <div class=" p-3 mt-4 mt-lg-0 rounded">
-                                                    <h3 class=" mb-3 ">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h3>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class=" p-3 mt-4 mt-lg-0 rounded">
+                                            <h3 class=" mb-3 ">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h3>
 
-                                                        <div class="text-center" id="account_balance_info_loader">
-                                                            <div class="spinner-border avatar-lg" role="status"></div>
-                                                        </div>
-
-                                                        <div class="text-center" id="account_balance_info_retry_btn">
-                                                            <button class="btn btn-sm btn-secondary" >retry</button>
-                                                        </div>
-
-                                                    <div class="table-responsive table-bordered" id="account_balance_info_display">
-
-
-
-                                                        <table class="table mb-0">
-                                                            <tbody>
-                                                                <tr class="bg-secondary text-white ">
-                                                                    <td>Account No: <span class="account_number_display"></span>  </td>
-                                                                    <td>Account Description: <span class="account_description_display"></span></td>
-                                                                    <td>Currency <span class="account_currency_display"></span> </td>
-                                                                    <td>Producr: <span class="account_product_display"></span> </td>
-
-                                                                </tr>
-                                                                <tr>
-                                                                    <td> <b>Legder balance : </b></td>
-                                                                    <td> <span class="account_ledger_bal_display"></span> </td>
-                                                                    <td>Available Balance</td>
-                                                                    <td>  <span class="account_available_bal_display"></span> </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td> <b>Amount In Arrears :</b> </td>
-                                                                    <td> <span class="account_amount_in_arrears_display"></span> </td>
-                                                                    <td> <b>Overdrawn Limit:</b>
-                                                                    </td>
-                                                                    <td> <span class="account_overdrawn_limit_display"></span> </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td> <b>Accrued Credit Interest:</b> </td>
-                                                                    <td> <span class="account_accrued_credit_interest_display"></span> </td>
-                                                                    <td> <b> Credit Interest Rate:</b> </td>
-                                                                    <td> <span class="account_credit_interest_rate_display"></span> </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td> <b>Accrued Debit Interest:</b> </td>
-                                                                    <td> <span class="account_accrued_debit_interest_display"></span> </td>
-                                                                    <td> <b> Debit Interest Rate:</b> </td>
-                                                                    <td> <span class="account_debit_interest_rate_display"></span> </td>
-                                                                </tr>
-
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <!-- end table-responsive -->
-                                                </div>
-
+                                            <div class="text-center" id="account_balance_info_loader">
+                                                <div class="spinner-grow text-primary avatar-lg" role="status"></div>
                                             </div>
+
+                                            <div class="text-center" id="account_balance_info_retry_btn">
+                                                <button class="btn btn-sm btn-secondary">retry</button>
+                                            </div>
+
+                                            <div class="table-responsive table-bordered" id="account_balance_info_display">
+
+
+
+                                                <table class="table mb-0">
+                                                    <tbody>
+                                                        <tr class="bg-secondary text-white ">
+                                                            <td>Account No: <span class="account_number_display"></span>
+                                                            </td>
+                                                            <td>Account Description: <span
+                                                                    class="account_description_display"></span></td>
+                                                            <td>Currency <span class="account_currency_display"></span>
+                                                            </td>
+                                                            <td>Producr: <span class="account_product_display"></span> </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <b>Legder balance : </b></td>
+                                                            <td> <span class="account_ledger_bal_display"></span> </td>
+                                                            <td>Available Balance</td>
+                                                            <td> <span class="account_available_bal_display"></span> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <b>Amount In Arrears :</b> </td>
+                                                            <td> <span class="account_amount_in_arrears_display"></span>
+                                                            </td>
+                                                            <td> <b>Overdrawn Limit:</b>
+                                                            </td>
+                                                            <td> <span class="account_overdrawn_limit_display"></span> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <b>Accrued Credit Interest:</b> </td>
+                                                            <td> <span
+                                                                    class="account_accrued_credit_interest_display"></span>
+                                                            </td>
+                                                            <td> <b> Credit Interest Rate:</b> </td>
+                                                            <td> <span class="account_credit_interest_rate_display"></span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <b>Accrued Debit Interest:</b> </td>
+                                                            <td> <span
+                                                                    class="account_accrued_debit_interest_display"></span>
+                                                            </td>
+                                                            <td> <b> Debit Interest Rate:</b> </td>
+                                                            <td> <span class="account_debit_interest_rate_display"></span>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
                                         </div>
-                                            <div class="row" >
-                                            <div class="col-md-12">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
 
 
-                                                <span class="text-sm-right float-left">
+                                        <span class="text-sm-right float-left">
 
-                                                    <form class="form-inline">
+                                            <form class="form-inline">
 
-                                                        {{-- <div class="form-group">
+                                                {{-- <div class="form-group">
                                                             <strong  class=" header-title ">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </strong>
 
                                                         </div> --}}
 
 
-                                                        {{--  <div class="form-group mx-sm-3">
+                                                {{-- <div class="form-group mx-sm-3">
                                                             <label for="inputPassword2" class="sr-only">Password</label>
                                                             <input type="password" class="form-control input-lg" id="we" placeholder="Password">
                                                         </div>
@@ -122,109 +132,133 @@
                                                             <label for="inputPassword2" class="sr-only">Password</label>
                                                             <input type="password" class="form-control input-lg" id="sd" placeholder="Password">
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Confirm identity</button>  --}}
+                                                        <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Confirm identity</button> --}}
 
 
 
-                                                    </form>
+                                            </form>
 
 
-                                                </span>
+                                        </span>
 
-                                                <span class="text-sm-right float-right">
-                                                    <button type="button" class="btn btn-sm btn-light mb-2 mr-1">Print Statement</button>
-                                                    <button type="button" class="btn btn-sm btn-light mb-2">Export</button>
-                                                </span>
-
-
-                                            </div>
-                                            </div>
-                                            <div class="row" >
-                                                <div class="text-center" id="account_transaction_loader">
-                                                    <div class="spinner-border avatar-lg" role="status"></div>
-                                                </div>
-
-                                                <div class="text-center" id="account_transaction_retry_btn">
-                                                    <button class="btn btn-sm btn-secondary" >retry</button>
-                                                </div>
-                                            <div class="col-md-12" >
+                                        <span class="text-sm-right float-right">
+                                            <button type="button" class="btn btn-sm btn-light mb-2 mr-1">Print
+                                                Statement</button>
+                                            <button type="button" class="btn btn-sm btn-light mb-2">Export</button>
+                                        </span>
 
 
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-center" id="account_transaction_loader">
+                                            <div class="spinner-grow text-primary avatar-lg" role="status"></div>
+                                        </div>
+
+                                        <div class="text-center" id="account_transaction_retry_btn">
+                                            <button class="btn btn-sm btn-secondary" >retry</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row account_transaction_display">
+
+                                    <div class="col-md-12">
 
 
-                                                <div class=" d-none d-md-inline-block">
-                                                    <div class="btn-group mb-2">
-                                                        <button type="button" class="btn btn-xs btn-soft-success  waves-effect waves-light">&nbsp; Credit &nbsp;</button>
-                                                        <button type="button" class="btn btn-xs btn-soft-danger  waves-effect waves-light">&nbsp; Debit &nbsp;</button>
-                                                        <button type="button" class="btn btn-xs btn-soft-secondary  waves-effect waves-light">All transaction</button>
-                                                    </div>
-
-                                                    &nbsp;
-                                                    &nbsp;
-                                                    &nbsp;
-
-                                                    <div class="btn-group mb-2">
-                                                        <input type="text" id="startDate" class="form-control date-picker flatpickr-input input-sm" placeholder="Basic datepicker" readonly="readonly">
-                                                        <input type="text" id="endDate" class="form-control date-picker flatpickr-input input-sm" placeholder="Basic datepicker" readonly="readonly">
-                                                                                                            
-                                                    </div>
-
-                                                    &nbsp;
-                                                   
-   
-                                                    
 
 
-                                                    <div class="btn-group mb-2">
-                                                        <button type="button" class="btn btn-sm btn-secondary" id="date_search"> &nbsp; Search &nbsp;</button> 
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        &nbsp;
-                                                        <button type="button" class="btn btn-xs btn-soft-danger waves-effect waves-light"> &nbsp; Print PDF &nbsp;</button>
-                                                        <button type="button" class="btn btn-xs btn-soft-success waves-effect waves-light">&nbsp; Export Sheet &nbsp;</button>
-                                                        <button type="button" class="btn btn-xs btn-secondary">Monthly</button>
-                                                    </div>
-
-                                                </div>
-                                                <br>
+                                        <div class=" d-none d-md-inline-block">
+                                            <div class="btn-group mb-2">
+                                                <button type="button"
+                                                    class="btn btn-xs btn-soft-success  waves-effect waves-light">&nbsp;
+                                                    Credit &nbsp;</button>
+                                                <button type="button"
+                                                    class="btn btn-xs btn-soft-danger  waves-effect waves-light">&nbsp;
+                                                    Debit &nbsp;</button>
+                                                <button type="button"
+                                                    class="btn btn-xs btn-soft-secondary  waves-effect waves-light">All
+                                                    transaction</button>
                                             </div>
 
-                                                <div class="col-md-12" >
+                                            &nbsp;
+                                            &nbsp;
+                                            &nbsp;
 
-                                                {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
-                                            <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100 account_transaction_display" >
-                                                <thead>
-                                                    <tr>
-                                                        <th>Posting Date</th>
-                                                        <th>Value Date</th>
-                                                        <th style="width: 190px;">Transaction Details</th>
-                                                        <th>Document Ref</th>
-                                                        <th>Batch No</th>
-                                                        <th>Amount</th>
-                                                        <th>Balance</th>
-                                                    </tr>
-                                                </thead>
+                                            <div class="btn-group mb-2">
+                                                <input type="text" id="startDate"
+                                                    class="form-control date-picker flatpickr-input input-sm"
+                                                    placeholder="Basic datepicker" readonly="readonly">
+                                                <input type="text" id="endDate"
+                                                    class="form-control date-picker flatpickr-input input-sm"
+                                                    placeholder="Basic datepicker" readonly="readonly">
+
+                                            </div>
+
+                                            &nbsp;
 
 
-                                                <tbody id="table-body-display">
 
-                                                </tbody>
-                                            </table>
+
+
+                                            <div class="btn-group mb-2">
+                                                <button type="button" class="btn btn-sm btn-secondary" id="date_search">
+                                                    &nbsp; Search &nbsp;</button>
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                &nbsp;
+                                                <button type="button"
+                                                    class="btn btn-xs btn-soft-danger waves-effect waves-light"> &nbsp;
+                                                    Print PDF &nbsp;</button>
+                                                <button type="button"
+                                                    class="btn btn-xs btn-soft-success waves-effect waves-light">&nbsp;
+                                                    Export Sheet &nbsp;</button>
+                                                <button type="button" class="btn btn-xs btn-secondary">Monthly</button>
                                             </div>
 
                                         </div>
+                                        <br>
+                                    </div>
+
+                                    <div class="col-md-12">
+
+                                        {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
+                                        <table id="datatable-buttons"
+                                            class="table table-bordered table-striped dt-responsive nowrap w-100 ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Posting Date</th>
+                                                    <th>Value Date</th>
+                                                    <th style="width: 190px;">Transaction Details</th>
+                                                    <th>Document Ref</th>
+                                                    <th>Batch No</th>
+                                                    <th>Amount</th>
+                                                    <th>Balance</th>
+                                                </tr>
+                                            </thead>
+
+
+                                            <tbody id="table-body-display">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
 
 
 
-                                        {{-- <h4 class="header-title">Buttons example</h4>
+                                {{-- <h4 class="header-title">Buttons example</h4>
                                             <p class="sub-header font-13">
                                                 The Buttons extension for DataTables provides a common set of options, API
                                                 methods and styling to display buttons on a page
@@ -233,7 +267,7 @@
                                             </p> --}}
 
 
-                                    </div> <!-- end card body-->
+                            </div> <!-- end card body-->
 
 
                         </div>
@@ -278,23 +312,23 @@
         <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
         <script>
             // creates multiple instances
-           
+
             $(".date-picker").flatpickr({
                 altInput: true,
                 altFormat: "j F, Y",
                 dateFormat: "d-m-Y",
             })
+
         </script>
 
         <script>
-
             $("#account_balance_info_display").hide();
             $("#account_balance_info_retry_btn").hide();
 
             $(".account_transaction_display").hide();
             $("#account_transaction_retry_btn").hide();
 
-            $(document).ready(function(){
+            $(document).ready(function() {
 
 
                 var account_number = @json($account_number);
@@ -302,18 +336,18 @@
                 var end_date = "01-06-2020";
                 var transLimit = "10";
 
-                setTimeout(function(){
+                setTimeout(function() {
                     getAccountTransactions(account_number, start_date, end_date, transLimit)
                     getAccountBalanceInfo(account_number);
                 }, 2000);
 
 
-                $('#date_search').click(function(){
-                    
+                $('#date_search').click(function() {
+
                 })
 
 
-                $("#account_balance_info_retry_btn").click(function(){
+                $("#account_balance_info_retry_btn").click(function() {
                     $("#account_balance_info_display").hide();
                     $("#account_balance_info_retry_btn").hide();
                     $("#account_balance_info_loader").show();
@@ -321,22 +355,22 @@
                 })
 
 
-                $("#account_transaction_retry_btn").click(function(){
+                $("#account_transaction_retry_btn").click(function() {
                     $(".account_transaction_display").hide();
                     $("#account_transaction_retry_btn").hide();
                     $("#account_transaction_loader").show();
-                     getAccountTransactions(account_number, start_date, end_date);
+                    getAccountTransactions(account_number, start_date, end_date);
                 })
 
 
 
-                function getAccountTransactions(account_number, start_date, end_date, transLimit){
+                function getAccountTransactions(account_number, start_date, end_date, transLimit) {
                     var table = $('.account_transaction_display').DataTable();
                     var nodes = table.rows().nodes();
                     $.ajax({
                         "type": "POST",
-                        "url" : "account-transaction-history",
-                        "datatype" : "application/json",
+                        "url": "account-transaction-history",
+                        "datatype": "application/json",
                         "data": {
                             "accountNumber": account_number,
                             "endDate": end_date,
@@ -347,10 +381,9 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        success:
-                        function(response){
+                        success: function(response) {
                             console.log(response);
-                            if(response.responseCode == '000'){
+                            if (response.responseCode == '000') {
 
                                 let data = response.data;
 
@@ -358,18 +391,18 @@
 
                                 $.each(data, function(index) {
                                     let amount = '';
-                                    if(parseFloat(data[index].amount) > 0 ){
+                                    if (parseFloat(data[index].amount) > 0) {
                                         amount = ` <b class='text-success'>
-                                                        <i class="fe-arrow-up text-success mr-1"></i>
-                                                        ${data[index].amount}
-                                                    </b>
-                                                    `
-                                    }else{
+                                                            <i class="fe-arrow-up text-success mr-1"></i>
+                                                            ${data[index].amount}
+                                                        </b>
+                                                        `
+                                    } else {
                                         amount = ` <b class='text-danger'>
-                                                        <i class="fe-arrow-down text-danger mr-1"></i>
-                                                        ${data[index].amount}
-                                                    </b>
-                                                    `
+                                                            <i class="fe-arrow-down text-danger mr-1"></i>
+                                                            ${data[index].amount}
+                                                        </b>
+                                                        `
                                     }
 
                                     table.row.add([
@@ -378,10 +411,10 @@
                                         data[index].narration,
                                         data[index].documentReference,
                                         `<a type="button" data-toggle="modal"
-                                        data-target="#bs-example-modal-xl"
-                                        class="text-primary">${data[index].batchNumber}</a>`,
+                                            data-target="#bs-example-modal-xl"
+                                            class="text-primary">${data[index].batchNumber}</a>`,
                                         amount,
-                                       `#.##`
+                                        `#.##`
 
                                     ]).draw(false)
 
@@ -392,22 +425,27 @@
                                 $("#account_transaction_retry_btn").hide();
                                 $(".account_transaction_display").show();
 
-                            }else{
+                            } else {
                                 $("#account_transaction_loader").hide();
                                 $(".account_transaction_display").hide();
                                 $("#account_transaction_retry_btn").show();
                             }
 
+                        },
+                        error: function(xhr, status, error) {
+                            $("#account_transaction_loader").hide();
+                            $(".account_transaction_display").hide();
+                            $("#account_transaction_retry_btn").show();
                         }
                     })
                 }
 
 
-                function getAccountBalanceInfo($account_number){
+                function getAccountBalanceInfo($account_number) {
                     $.ajax({
                         "type": "POST",
-                        "url" : "api/account-balance-info",
-                        "datatype" : "application/json",
+                        "url": "api/account-balance-info",
+                        "datatype": "application/json",
                         "data": {
                             "accountNumber": account_number,
                             "authToken": "15D2A303-98FD-43A6-86E4-F24FC7436069",
@@ -419,14 +457,13 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        success:
-                        function(response){
+                        success: function(response) {
                             console.log(response);
-                            if(response.responseCode == '000'){
+                            if (response.responseCode == '000') {
 
 
 
-                                let account_info =  response.data;
+                                let account_info = response.data;
                                 console.log(account_info)
                                 $('.account_number_display').text(account_info.ACCOUNT_NUMBER)
                                 $('.account_description_display').text(account_info.ACCOUNT_DESCRIPTION)
@@ -435,22 +472,32 @@
 
                                 $('.account_ledger_bal_display').text(account_info.LEGDER_BALANCE)
                                 $('.account_available_bal_display').text(account_info.AVAILABLE_BALANCE)
-                                $('.account_amount_in_arrears_display').text(account_info.AMOUNT_IN_ARREAS)
+                                $('.account_amount_in_arrears_display').text(account_info
+                                    .AMOUNT_IN_ARREAS)
                                 $('.account_overdrawn_limit_display').text(account_info.OVERDRAFT_LIMIT)
-                                $('.account_accrued_credit_interest_display').text(account_info.ACCRUED_CREDIT_INTREST)
-                                $('.account_credit_interest_rate_display').text(account_info.CREDIT_INTEREST_RATE)
-                                $('.account_accrued_debit_interest_display').text(account_info.ACCRUED_DEBIT_INTEREST)
-                                $('.account_debit_interest_rate_display').text(account_info.DEBIT_INTERST_RATE)
+                                $('.account_accrued_credit_interest_display').text(account_info
+                                    .ACCRUED_CREDIT_INTREST)
+                                $('.account_credit_interest_rate_display').text(account_info
+                                    .CREDIT_INTEREST_RATE)
+                                $('.account_accrued_debit_interest_display').text(account_info
+                                    .ACCRUED_DEBIT_INTEREST)
+                                $('.account_debit_interest_rate_display').text(account_info
+                                    .DEBIT_INTERST_RATE)
 
                                 $("#account_balance_info_loader").hide();
                                 $("#account_balance_info_retry_btn").hide();
                                 $("#account_balance_info_display").show();
 
-                            }else{
+                            } else {
                                 $("#account_balance_info_loader").hide();
                                 $("#account_balance_info_display").hide();
                                 $("#account_balance_info_retry_btn").show();
                             }
+                        },
+                        error: function(xhr, status, error) {
+                            $("#account_balance_info_loader").hide();
+                            $("#account_balance_info_display").hide();
+                            $("#account_balance_info_retry_btn").show();
                         }
                     })
                 }

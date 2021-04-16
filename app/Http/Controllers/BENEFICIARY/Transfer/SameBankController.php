@@ -87,7 +87,7 @@ class SameBankController extends Controller
                         "bankBranch" => "string",
                         "bankCity" => "string",
                         "bankCountry" => "string",
-                        "bankName" => "string",
+                        "bankName" => "This Bank",
                         "bankSwiftCode" => "string"
                     ],
 

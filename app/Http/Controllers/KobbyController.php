@@ -30,39 +30,7 @@ class KobbyController extends Controller
 
         $response = Http::post(env('API_BASE_URL') ."request/chequeBook", $data);
 
+        return $result->api_response($response);
 
-        return $response;
-        // return $response->status();
-
-
-    if($response->ok()){    // API response status code is 200
-
-        $result = json_decode($response->body());
-        // return $result->responseCode;
-
-
-        if($result->responseCode == '000'){
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-        }else{   // API responseCode is not 000
-
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-            }
-
-        } else { // API response status code not 200
-
-             return $response->body();
-            // DB::table('error_logs')->insert([
-            //     'platform' => 'ONLINE_INTERNET_BANKING',
-            //     'user_id' => 'AUTH',
-            //     'code' => $response->status(),
-            //     'message' => $response->body()
-            // ]);
-
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-        }
     }
 }

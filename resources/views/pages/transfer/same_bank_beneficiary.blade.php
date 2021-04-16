@@ -45,20 +45,19 @@
                                             <div class="form-group">
                                                 <label>Account Name</label>
                                                 <input type="text" class="form-control" id="account_name"
-                                                    parsley-trigger="change" placeholder="Account Name" required>
+                                                    parsley-trigger="change" placeholder="Account Name" readonly required>
                                                 {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                             </div>
                                             <div class="form-group">
                                                 <label>Account Currency</label>
+                                                <input type="hidden" class="form-control" readonly value="" id="select_currency">
+                                                <input type="text" class="form-control" readonly value="" id="select_currency_i">
 
-                                                <select class="custom-select" id="select_currency" required>
+                                                {{--  <select class="custom-select" id="select_currency" required>
                                                     <option value="">Select Currency</option>
-                                                    {{-- <option value="001~SLL">SLL</option>
-                                                    <option value="002~USD">USD</option>
-                                                    <option value="003~EUR">EUR</option>
-                                                    <option value="004~GBP">GBP</option> --}}
-                                                </select>
+
+                                                </select>  --}}
                                                 {{-- <input type="text" class="form-control" id="account_currency" parsley-trigger="change"  placeholder="Account " required> --}}
                                                 {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
@@ -260,36 +259,11 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
 
-            function get_currency() {
-                $.ajax({
-                    'type': 'GET',
-                    'url': 'get-currency-list-api',
-                    "datatype": "application/json",
-                    success: function(response) {
-                        {{--  console.log(response.data);  --}}
-                        let data = response.data
-                        $.each(data, function(index) {
-
-                            $('#select_currency').append($('<option>', {
-                                value: data[index].currCode + '~' + data[index].description
-                            }).text(data[index].isoCode + '~' + data[index].description));
-
-                        });
-
-                    },
-
-                })
-            };
-
-
-
 
 
             $(document).ready(function() {
 
-                setTimeout(function() {
-                    get_currency();
-                }, 3000);
+                $('#save_beneficiary').hide('')
 
                 $('#same_bank_beneficiary_form_summary').hide();
                 $('#account_number_error').hide();
@@ -338,11 +312,19 @@
                             if (response.responseCode == "000") {
                                 console.log(response.data)
                                 toaster(response.message, 'success');
-                                $('#account_name').val(response.data.accountNumber)
+                                $('#account_name').val(response.data.accountDescription)
+                                $('#select_currency_i').val(response.data.accountCurrencyDescription)
+                                $('#select_currency').val(response.data.accountCurrencyCode  + '~' + response.data.accountCurrencyDescription)
+
+                                $('#save_beneficiary').show('')
 
                             } else {
                                 toaster(response.message, 'error');
                                 $('#account_name').val('')
+                                $('#select_currency_i').val('')
+                                $('#select_currency').val('')
+                                $('#save_beneficiary').hide('')
+
 
                             }
                         }
@@ -356,6 +338,8 @@
                     if(account_no.length > 10){
                         getAccountDescription(account_no)
                     }
+
+
                 })
 
                 $('#same_bank_beneficiary_form').submit(function(e) {

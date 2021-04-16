@@ -63,18 +63,20 @@ class GetAccountDescription extends Controller
 
         $account_no = $request->accountNumber;
 
-        $user = (object)  UserAuth::getDetails();
-        // return $user;
-
-        $authToken = $user->userToken;
-        $userID = $user->userId;
 
         $base_response = new BaseResponse();
 
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+
+
         $data = [
-            "authToken" => "15D2A303-98FD-43A6-86E4-F24FC7436069",
-            "accountNumber"  => $account_no
+            "authToken" => $authToken,
+            "accountNumber"    => $account_no
         ];
+
+        // return $data;
 
         $response = Http::post(env('API_BASE_URL') ."/account/getAccountDescription",$data);
 
