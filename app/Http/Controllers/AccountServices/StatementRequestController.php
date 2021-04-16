@@ -12,26 +12,33 @@ class StatementRequestController extends Controller
 {
     //method to check the statement request for the method
     public function statement_request(){
+
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+        // return $authToken;
 
-        $base_response = new BaseResponse();
+        // $base_response = new BaseResponse();
 
         $data = [
+
                 "accountNumber" => "004001100241700194",
-                "branch" => "010",
-                "pinCode" => "1234",
-                "tokenID"=> "65128474-13EF-4FDF-881D-F23C9DCD3785"
+                "branch"=> "010",
+                "deviceIP"=> "string",
+                "endDate"=> "2021-04-16",
+                "entrySource"=> "C",
+                "pinCode"=> "1234",
+                "startDate"=> "2021-04-16",
+                "statementType"=> "VISA",
+                "tokenID"=> "926832B4-170D-4A6D-952B-2523454FF6F2"
+
         ];
 
-        $response = Http::post(env('API_BASE_URL') . "/request/atmCard", $data);
-
-
-        // $response;
         // return $data;
-        // return $response->status();
+        $response = Http::post(env('API_BASE_URL') . "/request/statment", $data);
+
         $result = new ApiBaseResponse();
-        return $this->baseResponseApi($response);
+
+        return $result->api_response($response);
     }
 
 }

@@ -5,8 +5,7 @@
 
         <!-- User box -->
         <div class="user-box text-center">
-            <img src="../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
-                class="rounded-circle avatar-md">
+            {{-- <img src="../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md"> --}}
                 {{-- <div class="col-md-4">
                     <div class="avatar-md">
                         <span class="avatar-title bg-soft-secondary text-secondary font-20 rounded-circle">
