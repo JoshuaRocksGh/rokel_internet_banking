@@ -338,7 +338,7 @@ Route::get('/send-email', [MaileController::class, 'send_email'])->name('send-em
 // GENERAL FUNCTIONS
 Route::get('get-currency-list-api', [FunctionsController::class, 'currency_list'])->name('get-currency-list-api');
 Route::get('get-bank-list-api', [FunctionsController::class, 'bank_list'])->name('get-bank-list-api');
-Route::get('get-bank-branches-list-api', [FunctionsController::class, 'bank_branches_list'])->name('get-bank-branches-list-api');
+Route::get('get-bank-branches-list-api', [FunctionsController::class, 'branches_list'])->name('get-bank-branches-list-api');
 Route::get('get-security-question-api', [FunctionsController::class, 'security_question'])->name('get-security-question-api');
 Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
 Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
@@ -383,7 +383,7 @@ Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBank
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
 //route for cheque book request api
-Route::get('cheque-book-request-2',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-2');
+Route::get('submit-cheque-book-request',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('submit-cheque-book-request');
 
 //route for atm card
 Route::get('atm-card-request', [AtmCardRequestController::class,'atm_card_request'])->name('atm-card-request');

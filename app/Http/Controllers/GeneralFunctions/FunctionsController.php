@@ -147,16 +147,6 @@ class FunctionsController extends Controller
         public function bank_list()
         {
 
-            $authToken = session()->get('userToken');
-            $userID = session()->get('userId');
-
-            $base_response = new BaseResponse();
-
-            $data = [
-                "authToken" => $authToken,
-                "userId"    => $userID
-            ];
-
             $response = Http::get(env('API_BASE_URL') . "/utilities/getBanks");
 
             //return $response;
@@ -165,18 +155,8 @@ class FunctionsController extends Controller
         }
 
 
-    public function bank_branches_list()
+    public function branches_list()
     {
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
-        $base_response = new BaseResponse();
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
 
         $response = Http::get(env('API_BASE_URL') . "/utilities/getBranches");
 
@@ -184,4 +164,6 @@ class FunctionsController extends Controller
         // return $response->status();
         return $this->baseResponseApi($response);
     }
+
+    
 }
