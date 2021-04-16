@@ -33,7 +33,7 @@ class AtmCardRequestController extends Controller
             // return $data;
             // return $response->status();
             $result = new ApiBaseResponse();
-            return $this->baseResponseApi($response);
+            return  $result->api_response($response);
 
 
     }

@@ -66,8 +66,9 @@
                                             <label>Type of Statement</label>
                                             <select class="custom-select " id="from_account" required>
                                                 <option value="">-----Select statement type-----</option>
-                                                <option value="visa">VISA</option>
-                                                <option value="ordinary">Ordinary</option>
+                                                <option value="VISA">VISA</option>
+                                                <option value="ORDINARY">Ordinary</option>
+                                                <option value="ELECTRONIC">ELECTRONIC</option>
                                             </select>
                                         </div>
 
