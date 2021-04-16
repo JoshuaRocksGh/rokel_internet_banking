@@ -15,7 +15,8 @@ class LogoutController extends Controller
         // session()->forget('user');
         session()->flush();
 
-        return redirect()->route('login');
+        // return redirect()->route('logout');
+        return view('pages.authentication.logout');
         // return Redirect::route('home');
     }
 }

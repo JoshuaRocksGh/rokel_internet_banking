@@ -12,9 +12,12 @@
                     <div class="col-md-1"></div>
 
                     <div class=" card card-body col-md-10">
-                        <p class="sub-header font-18 purple-color">
-                            Cheque book Request
+                        <h2 class="header-title m-t-0 text-primary">CHEQUE BOOK REQUEST</h2>
 
+                        <p class="text-muted font-14 m-b-20">
+                            Parsley is a javascript form validation library. It helps you provide your
+                            users with feedback on their form submission before sending it to your
+                            server.
                         </p>
                         <hr>
 
@@ -24,68 +27,91 @@
                             <div class="col-md-8">
 
                                 <div class="">
-                                    <h4 class="header-title m-t-0">Horizontal Form</h4>
-                                    <p class="text-muted font-14 m-b-20">
-                                        Parsley is a javascript form validation library. It helps you provide your
-                                        users with feedback on their form submission before sending it to your
-                                        server.
-                                    </p>
+
+                                 <table class="table mb-0 table-striped table-bordered">
+
+                                    <tbody>
+                                        <tr class="bg-secondary text-white">
+                                            <td>Request Details</td>
+                                        </tr>
+
+                                        <tr>
+                                        </tr>
+
+                                    </tbody>
+
+
+                                </table>
+
+                                <p>
+
 
                                     <form role="form" class="parsley-examples">
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">Email<span
+                                            <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
                                                     class="text-danger">*</span></label>
                                             <div class="col-7">
-                                                <input type="email" required parsley-type="email" class="form-control"
-                                                    id="inputEmail3" placeholder="Email">
+                                                <select class="custom-select " id="from_account_1" required>
+                                                    <option value="">Select Account</option>
+                                                    <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
+                                                        Current Account ~ 001023468976001 </option>
+
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="hori-pass1" class="col-4 col-form-label">Password<span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input id="hori-pass1" type="password" placeholder="Password" required
-                                                    class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="hori-pass2" class="col-4 col-form-label">Confirm Password
+                                            <label for="hori-pass2" class="col-4 col-form-label">
+                                                Leaflets
                                                 <span class="text-danger">*</span></label>
                                             <div class="col-7">
-                                                <input data-parsley-equalto="#hori-pass1" type="password" required
-                                                    placeholder="Password" class="form-control" id="hori-pass2">
+                                                <select class="custom-select " id="from_account_2" required>
+                                                    <option value="">Select number of leaflets</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="webSite" class="col-4 col-form-label">Web Site<span
-                                                    class="text-danger">*</span></label>
+                                            <label for="webSite" class="col-4 col-form-label">
+                                                <label> Branch</label>
+                                                <span class="text-danger">*</span></label>
                                             <div class="col-7">
-                                                <input type="url" required parsley-type="url" class="form-control"
-                                                    id="webSite" placeholder="URL">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-8 offset-4">
-                                                <div class="checkbox checkbox-purple">
-                                                    <input id="checkbox6" type="checkbox">
-                                                    <label for="checkbox6">
-                                                        Remember me
-                                                    </label>
+                                                <select ect class="custom-select " id="from_account_3" required>
+                                                    <option value="">-----Not Selected-----</option>
+                                                    <option value="Accra">Accra</option>
+                                                    <option value="ADONKIA BRANCH">ADONKIA BRANCH</option>
+                                                    <option value="WILBERFORCE BRANCH">WILBERFORCE BRANCH</option>
+                                                    <option value="PORT LOKKO BRANCH">PORT LOKKO BRANCH</option>
+                                                </select>
+
+
+                                                <div class="form-group row">
+                                                    <div class="col-8 offset-4 text-right">
+                                                <br>
+
+                                                        <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light">
+                                                            Submit
+                                                        </button>
+
+                                                    </div>
                                                 </div>
+
                                             </div>
+
+
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-8 offset-4">
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                    Register
-                                                </button>
-                                                <button type="reset" class="btn btn-secondary waves-effect m-l-5">
-                                                    Cancel
-                                                </button>
-                                            </div>
-                                        </div>
+
+
+
+
+
                                     </form>
+
+                                </p>
+
+
                                 </div> <!-- end card-box -->
 
 
@@ -93,92 +119,41 @@
 
 
                             <div class="col-md-4">
-                                <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
-                                    @csrf
 
-                                    <div class="form-group">
-                                        <label class="h6">Status*</label>
-                                        <input type="text" class="form-control" placeholder="Amount" style="color:red"
-                                            value="NEW REQUEST" disabled />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="h6">Select Account</label>
+                                <table class="table mb-0 table-striped table-bordered">
 
+                                    <tbody>
+                                        <tr class="bg-secondary text-white">
+                                            <td>Request Details</td>
+                                        </tr>
+                                        <tr class="">
+                                            <td>Request Details</td>
 
-                                        <select class="custom-select " id="from_account_1" required>
-                                            <option value="">Select Account</option>
-                                            <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
-                                                Current Account ~ 001023468976001 </option>
+                                        </tr>
+                                        <tr class="">
+                                            <td>Request Details</td>
 
-                                        </select>
+                                        </tr>
+                                        <tr class="">
+                                            <td>Request Details</td>
 
+                                        </tr>
+                                    </tbody>
 
-                                        <table
-                                            class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
-                                            <tbody class="text-primary">
-                                                <tr class="text-primary">
+                                </table>
 
-                                                    <td class="text-primary">
-                                                        <a
-                                                            class="text-body font-weight-semibold display_from_account_name text-primary"></a>
-                                                        <small class="d-block display_from_account_no text-primary"></small>
-                                                    </td>
+                                <br>
 
-                                                    <td class="text-right font-weight-semibold text-primary">
-                                                        <span class="display_from_account_currency text-primary"></span>
-                                                        <span class="display_from_account_amount text-primary"></span>
-
-                                                    </td>
-                                                </tr>
-
-
-                                            </tbody>
-                                        </table>
-
+                                <div class="form-group row">
+                                    <div class="col-8 offset-4 text-right">
+                                        <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light">
+                                            Submit
+                                        </button>
 
                                     </div>
-
-                                    <div class="form-group">
-                                        <label>Select Leaflets</label>
-                                        <select class="custom-select " id="from_account_2" required>
-                                            <option value="">Select number of leaflets</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Collection Branch</label>
-                                        <select class="custom-select " id="from_account_3" required>
-                                            <option value="">-----Not Selected-----</option>
-                                            <option value="Accra">Accra</option>
-                                            <option value="ADONKIA BRANCH">ADONKIA BRANCH</option>
-                                            <option value="WILBERFORCE BRANCH">WILBERFORCE BRANCH</option>
-                                            <option value="PORT LOKKO BRANCH">PORT LOKKO BRANCH</option>
-                                        </select>
-                                    </div>
+                                </div>
 
 
-
-
-
-                                    <div class="form-group text-right">
-                                        <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                            &nbsp; PROCEED &nbsp;</button>
-                                    </div>
-
-
-
-
-                                </form>
-                            </div> <!-- end col -->
-
-
-
-                            <div class="col-md-5 text-center" style="margin-top: 80px;">
-
-                                <img src="{{ asset('assets/images/cheque_book.jpg') }}" class="img-fluid" alt="">
                             </div> <!-- end col -->
 
 

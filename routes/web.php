@@ -73,6 +73,9 @@ Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
+
+// Route::get('/logout', [AuthenticationLoginController::class, 'logout'])->name('logout');
+
 // Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
 //route to control the forgot-password screen for email
