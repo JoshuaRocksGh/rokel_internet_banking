@@ -49,11 +49,11 @@
                                                 <label for="inputEmail3" class="col-5 col-form-label">Account Number<span
                                                         class="text-danger">*</span></label>
                                                 <div class="col-7">
-                                                    <select class="custom-select " id="from_account_1" required>
+                                                    <select class="custom-select " id="account_number" required>
                                                         <option value="">Select Account</option>
-                                                        <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
-                                                            Current Account ~ 001023468976001 </option>
-
+                                                        {{-- <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
+                                                            Current Account ~ 001023468976001 </option> --}}
+                                                            <option value="001023468976001">001023468976001</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -102,7 +102,7 @@
                                                     <div class="col-8 offset-4 text-right">
                                                         <br>
 
-                                                        <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light">
+                                                        <button type="button" id="submit_button"class="btn btn-primary btn-rounded waves-effect waves-light">
                                                             Submit
                                                         </button>
 
@@ -308,416 +308,55 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        $(document).ready(function() {
+        function toaster(message, icon, timer )
+                {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: timer,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
 
-
-            $(".select_onetime").css("display", "none");
-            $(".select_beneficiary").css("display", "block");
-
-            // $(".select_beneficiary").show();
-            //$(".select_onetime").hide();
-
-            var type = $("input[type='radio']:checked").val();
-
-            $(".radio").click(function() {
-
-                var type = $("input[type='radio']:checked").val();
-
-                if (type == 'beneficiary') {
-                    $(".select_onetime").css("display", "none");
-                    $(".select_beneficiary").css("display", "block");
-
-                    // set amonut to empty
-                    $("#amount").val('');
-
-
-                    //$(".select_onetime").hide();
-                    //$(".select_beneficiary").show();
-
+                      Toast.fire({
+                        icon: icon,
+                        title: message
+                      })
                 }
-                if (type == 'onetime') {
+        $(document).ready(function(){
 
-                    $(".select_beneficiary").css("display", "none");
-                    $(".select_onetime").css("display", "block");
-
-                    // set amonut to empty
-                    $("#amount").val('');
-
-                    // $(".select_beneficiary").hide();
-                    //$(".select_onetime").show();
-                }
-
+            $("#account_number").change(function(){
+                var account_number = $("#account_number").val();
+                console.log(account_number);
             });
 
-
-
-            // hide seleect accounts info
-            $(".from_account_display_info").hide()
-            $(".to_account_display_info").hide()
-            $("#schedule_payment_date").hide()
-            $('#schedule_payment_contraint_input').hide()
-            $('.display_schedule_payment_date').text('N/A')
-
-            $("#transaction_form").show()
-            $("#transaction_summary").hide()
-
-            {{-- $("#next_button").click(function(e) {
-                    e.preventDefault()
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
-                }) --}}
-
-            $("#back_button").click(function(e) {
-                e.preventDefault()
-                $("#transaction_summary").hide()
-                $("#transaction_form").show()
-
-            })
-
-            {{-- Event on From Account field --}}
-
-            $("#from_account").change(function() {
-                var from_account = $(this).val()
-                {{-- alert(from_account) --}}
-                if (from_account.trim() == '' || from_account.trim() == undefined) {
-                    {{-- alert('money') --}}
-                    $(".from_account_display_info").hide()
-
-                } else {
-                    from_account_info = from_account.split("~")
-                    {{-- alert('continue') --}}
-
-                    var to_account = $('#to_account').val()
-
-                    if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                        to_account.trim() != '') {
-                        alert('can not transfer to same account')
-                        $(this).val('')
-                    }
-
-                    // set summary values for display
-                    $(".display_from_account_type").text(from_account_info[0].trim())
-                    $(".display_from_account_name").text(from_account_info[1].trim())
-                    $(".display_from_account_no").text(from_account_info[2].trim())
-                    $(".display_from_account_currency").text(from_account_info[3].trim())
-
-                    $(".display_currency").text(from_account_info[3].trim()) // set summary currency
-
-                    $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
-                        .trim())))
-                    {{-- alert('and show' + from_account_info[3].trim()) --}}
-                    $(".from_account_display_info").show()
-                }
-
-
-
-
-                // alert(from_account_info[0]);
+            $("#statementType").change(function(){
+                var statementType = $("#statementType").val();
+                console.log(statementType);
             });
 
-
-            $("#to_account").change(function() {
-                var to_account = $(this).val()
-                {{-- alert(to_account) --}}
-                if (to_account.trim() == '' || to_account.trim() == undefined) {
-
-                    $(".to_account_display_info").hide()
-
-                } else {
-                    to_account_info = to_account.split("~")
-
-
-                    var from_account = $('#from_account').val()
-
-                    if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                        to_account.trim() != '') {
-                        alert('can not transfer to same account')
-                        $(this).val('')
-                    }
-
-                    // set summary values for display
-                    $(".display_to_account_type").text(to_account_info[0].trim())
-                    $(".display_to_account_name").text(to_account_info[1].trim())
-                    $(".display_to_account_no").text(to_account_info[2].trim())
-                    $(".display_to_account_currency").text(to_account_info[3].trim())
-                    $(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4]
-                        .trim())))
-
-                    $(".to_account_display_info").show()
-                }
-
-
-
-
-                // alert(to_account_info[0]);
+            $("#pUBranch").change(function(){
+                var pickUpBranch = $("#pUBranch").val();
+                console.log(pickUpBranch);
             });
 
-
-            $("#amount").keyup(function() {
-
-                var type = $("input[type='radio']:checked").val();
-                //alert(type);
-                //return false;
-
-                if (type == 'beneficiary') {
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-
-                    if (from_account.trim() == '' || to_account.trim() == '') {
-                        alert('Please select source and destination accounts')
-                        $(this).val('')
-                        return false;
-                    } else {
-                        var transfer_amount = $(this).val()
-                        $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
-                    }
-
-                } else if (type == 'onetime') {
-
-                    var from_account = $('#from_account').val()
-                    var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                    var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
-                    var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency')
-                        .val()
-                    var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                    var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-                    console.log(onetime_beneficiary_alias_name)
-                    console.log(onetime_beneficiary_account_number)
-                    console.log(onetime_beneficiary_account_currency)
-
-
-                    if (from_account.trim() == '' || onetime_beneficiary_alias_name.trim() == '' ||
-                        onetime_beneficiary_account_number.trim() == '' ||
-                        onetime_beneficiary_account_currency.trim() == '') {
-                        alert('Please select source and destination accounts')
-                        $(this).val('')
-                        return false;
-                    } else {
-                        //alert('set')
-                        var transfer_amount = $(this).val()
-                        $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
-                    }
-
-                } else {
-                    alert(type + ' 00000000 Select either beneficiary or onetime beneficiary')
-                    $(this).val('')
-                    return false;
-                }
-
-
-
-
-            })
-
-
-            function formatToCurrency(amount) {
-                return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-            };
-
-
-            // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
-            $("input:checkbox").on("change", function() {
-                if ($(this).is(":checked")) {
-                    console.log("Checkbox Checked!");
-                    $("#schedule_payment_date").show()
-                    $(".display_schedule_payment").text('YES')
-                    $('#schedule_payment_contraint_input').val('TRUE')
-
-                } else {
-                    console.log("Checkbox UnChecked!");
-                    $("#schedule_payment_date").val('')
-                    $("#schedule_payment_date").hide()
-                    $('.display_schedule_payment').text('NO')
-                    $('.display_schedule_payment_date').text('N/A')
-
-                    $('#schedule_payment_contraint_input').val('')
-                    $('#schedule_payment_contraint_input').hide()
-                    $('#schedule_payment_date').val('')
-                }
+            $("#startDate").change(function(){
+                var startDate = $("#startDate").val();
+                console.log(startDate);
             });
 
-
-
-
-
-            // NEXT BUTTON CLICK
-            $("#next_button").click(function() {
-
-                var type = $("input[type='radio']:checked").val();
-
-                var from_account = $('#from_account').val()
-                var transfer_amount = $('#amount').val()
-                var category = $('#category').val()
-                var purpose = $('#purpose').val()
-                var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                var schedule_payment_date = $('#schedule_payment_date').val();
-
-                if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' ||
-                    purpose.trim() == '') {
-                    alert('Field must not be empty')
-                    return false
-
-                }
-
-                //set purpose and category values
-                var category_info = category.split("~")
-                $("#display_category").text(category_info[1])
-                $("#display_purpose").text(purpose)
-
-                $("#transaction_form").hide()
-                $("#transaction_summary").show()
-
-
-
-                if (schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == '') {
-                    $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                    alert('Select schedule date for subsequent transfers')
-                    return false;
-                }
-
-                $('.display_schedule_payment_date').text(schedule_payment_date)
-
-                if (type == 'beneficiary') {
-
-                    var to_account = $('#to_account').val()
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() ==
-                        '' || category.trim() == '' || purpose.trim() == '') {
-                        alert('Field must not be empty')
-                        return false
-                    } else {
-                        //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
-
-
-
-
-                } else if (type == 'onetime') {
-
-                    var from_account = $('#from_account').val()
-
-                    // ONETIME BENEFICIARY DETAILS
-                    var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                    var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
-                    var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency')
-                        .val()
-                    var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
-                    var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                    var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-
-                    console.log(onetime_beneficiary_alias_name)
-                    console.log(onetime_beneficiary_account_number)
-                    console.log(onetime_beneficiary_account_currency)
-
-
-                    // END OF ONETIME BENEFICIARY DETAILS
-
-
-                    if (from_account.trim() == '' || onetime_beneficiary_account_number.trim() == '' ||
-                        transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '') {
-                        alert('Field must not be empty')
-                        return false
-                    } else {
-                        //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
-
-
-
-
-                } else {
-                    alert('CHOOSE EITHER BENEFICIARY OR ONTIME')
-                }
-
-
-
-
-                /*
-
-                var from_account = $('#from_account').val()
-                var to_account = $('#to_account').val()
-                var transfer_amount = $('#amount').val()
-                var category = $('#category').val()
-
-                var purpose = $('#purpose').val()
-
-                var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                var schedule_payment_date = $('#schedule_payment_date').val();
-
-                if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                    $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                    alert('Select schedule date for subsequent transfers')
-                    return false;
-                }
-
-
-                $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                    alert('Field must not be empty')
-                    return false
-                }else{
-                    //set purpose and category values
-                    var category_info = category.split("~")
-                    $("#display_category").text(category_info[1])
-                    $("#display_purpose").text(purpose)
-
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
-                }
-
-                */
-
-
-                /**
-                $.ajax({
-                    type: "POST"
-                    url: "submit-own-account-transfer"
-                    data: {
-                        "send_from": send_from,
-                        "send_to": send_to,
-                        "cashier_id": cashier_id,
-                        "text_area": text_area,
-                        "amount": amount,
-                        "cashier_id": cashier_id
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                    success: function() {
-                        Swal.fire(
-                            'Post Successful',
-                            ' ',
-                            'success'
-                        )
-                    }
-                })
-
-
-                 */
+            $("#endDate").change(function(){
+                var endDate = $("#endDate").val();
+                console.log(endDate);
             });
-
 
         });
-
     </script>
+
 @endsection
