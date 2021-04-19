@@ -228,9 +228,9 @@
 
 
 
-                                <div class="col-md-5 text-center" style="margin-top: 80px;">
-
-                                    <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt="">
+                                <div class="col-md-5 text-center" >
+                                    <img src="{{ asset('land_asset/images/same-bank.gif') }}" class="img-fluid" />
+                                    {{-- <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt=""> --}}
                                 </div> <!-- end col -->
 
 
@@ -359,7 +359,7 @@
                                                         <td>Posted BY: </td>
                                                         <td>
                                                             <span class="font-13 text-primary h3"
-                                                                id="display_posted_by">{{ session('user')['userId'] }}</span>
+                                                                id="display_posted_by">{{ session('userId') }}</span>
                                                         </td>
                                                     </tr>
 
@@ -546,7 +546,7 @@
                         icon: icon,
                         title: message
                       })
-                };
+                }
 
                 $(".select_onetime").css("display", "none");
                 $(".select_beneficiary").css("display", "block");

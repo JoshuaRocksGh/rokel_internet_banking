@@ -15,6 +15,7 @@ use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginCo
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
+use App\Http\Controllers\BENEFICIARY\Transfer\EditSameBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\InternationalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\LocalBankController as TransferLocalBankController;
 use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSameBankController;
@@ -96,7 +97,7 @@ Route::get('/reset-success', [ResetPasswordController::class, 'reset_success'])-
 // Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
 Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
-Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('same-bank-beneficiary');
+Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('add-same-bank-beneficiary');
 
 Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
 Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('international-bank-beneficiary');
@@ -338,7 +339,7 @@ Route::get('/send-email', [MaileController::class, 'send_email'])->name('send-em
 // GENERAL FUNCTIONS
 Route::get('get-currency-list-api', [FunctionsController::class, 'currency_list'])->name('get-currency-list-api');
 Route::get('get-bank-list-api', [FunctionsController::class, 'bank_list'])->name('get-bank-list-api');
-Route::get('get-bank-branches-list-api', [FunctionsController::class, 'bank_branches_list'])->name('get-bank-branches-list-api');
+Route::get('get-bank-branches-list-api', [FunctionsController::class, 'branches_list'])->name('get-bank-branches-list-api');
 Route::get('get-security-question-api', [FunctionsController::class, 'security_question'])->name('get-security-question-api');
 Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
 Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
@@ -366,6 +367,8 @@ Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class
 Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->name('edit-beneficiary');
 
 Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
+Route::post('/edit-same-bank-api', [EditSameBankController::class, 'get_same_bank_beneficiary'])->name('edit-same-bank-api');
+Route::put('/edit-same-bank-beneficiary-api', [EditSameBankController::class, 'update_same_bank_beneficiary'])->name('edit-same-bank-beneficiary-api');
 // -------- OTHER LOCAL BANK -----------
 Route::get('/edit-other-local-bank-beneficiary', [TransferLocalBankController::class, 'edit_local_bank_beneficiary'])->name('edit-other-local-bank-beneficiary');
 Route::post('/edit-local-bank-api', [EditLocalBankController::class, 'update_local_bank_beneficiary'])->name('edit-local-bank-api');
@@ -384,7 +387,7 @@ Route::post('international-bank-onetime-api', [APITransferLocalBankController::c
 
 //route for cheque book request api
 Route::get('cheque-book-request-api',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-api');
-
+Route::post('submit-cheque-book-request',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('submit-cheque-book-request');
 //route for atm card
 Route::get('atm-card-request-api', [AtmCardRequestController::class,'atm_card_request'])->name('atm-card-request-api');
 

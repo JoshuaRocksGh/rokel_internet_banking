@@ -83,8 +83,8 @@
                                             <label for="form-group">Select Account</label>
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
-                                                    Currenct Account ~ 004004110449140121 </option>
+                                                {{--  <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
+                                                    Currenct Account ~ 004004110449140121 </option>  --}}
                                             </select>
 
 
@@ -101,7 +101,6 @@
 
                                                         <td class="text-right font-weight-semibold">
                                                             <span class="display_to_account_currency"></span>
-                                                            <span class="display_to_account_amount"></span>
 
                                                         </td>
                                                     </tr>
@@ -470,6 +469,34 @@
         <script>
             $(document).ready(function() {
 
+                setTimeout(function(){
+                    get_benerficiary()
+                },2000)
+
+
+            function get_benerficiary(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'get-beneficiary-list-api?bene_type=OTB',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+                        //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                            $('#to_account').append($('<option>', { value : data[index].BANK_NAME+'~'+data[index].NICKNAME+'~'+data[index].BEN_ACCOUNT+'~'+data[index].BEN_ACCOUNT_CURRENCY}).text(data[index].BANK_NAME+'~'+data[index].NICKNAME+'~'+data[index].BEN_ACCOUNT+'~'+data[index].BEN_ACCOUNT_CURRENCY));
+
+                        });
+
+                        {{--  Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800  --}}
+                        {{--  <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
+                            Currenct Account ~ 8888888888888~Joshua Amarfio
+                        </option>  --}}
+                    },
+
+                })
+            }
+
 
 
                 function toaster(message, icon )
@@ -625,7 +652,6 @@
                         $(".display_to_account_name").text(to_account_info[1].trim())
                         $(".display_to_account_no").text(to_account_info[2].trim())
                         $(".display_to_account_currency").text(to_account_info[3].trim())
-                        $(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
 
                         $(".to_account_display_info").show()
                     }

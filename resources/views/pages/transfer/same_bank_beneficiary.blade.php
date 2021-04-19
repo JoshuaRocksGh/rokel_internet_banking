@@ -429,13 +429,19 @@
                     $('#confirm_save_beneficiary_text').hide();
                     $('#save_beneficiary_summary_btn').attr('disabled',true); --}}
 
+
+                    function redirect_page(){
+                        window.location.href = "{{ url('beneficiary-list') }}";
+
+                    };
+
                     $.ajax({
                         "type": "POST",
                         "url": "same-bank-beneficiary-api",
                         "datatype": "application/json",
                         "data": {
                             "account_number": account_number,
-                            "account_name": account_name,
+                            {{--  "account_name": account_name,  --}}
                             "account_currency": currency_,
                             "beneficiary_name": beneficiary_name,
                             "beneficiary_email": beneficiary_email,
@@ -452,6 +458,12 @@
                             console.log(response.responseCode)
                             if (response.responseCode == "000") {
                                 toaster(response.message, 'success');
+
+                                setTimeout(function(){
+
+                                    redirect_page();
+                                },3000);
+
                                 {{-- $('#spinner').hide();
                             $('#spinner-text').hide();
 

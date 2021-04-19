@@ -189,11 +189,11 @@
 
                                             <div class="btn-group mb-2">
                                                 <input type="text" id="startDate"
-                                                    class="form-control date-picker flatpickr-input input-sm"
-                                                    placeholder="Basic datepicker" readonly="readonly">
+                                                    class="form-control date-picker-startDate flatpickr-input input-sm"
+                                                     readonly="readonly">
                                                 <input type="text" id="endDate"
-                                                    class="form-control date-picker flatpickr-input input-sm"
-                                                    placeholder="Basic datepicker" readonly="readonly">
+                                                    class="form-control date-picker-endDate flatpickr-input input-sm"
+                                                     readonly="readonly">
 
                                             </div>
 
@@ -234,7 +234,7 @@
 
                                         {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
                                         <table id="datatable-buttons"
-                                            class="table table-bordered table-striped dt-responsive nowrap w-100 ">
+                                            class="table table-bordered table-striped dt-responsive nowrap w-100 account_transaction_display_table">
                                             <thead>
                                                 <tr>
                                                     <th>Posting Date</th>
@@ -313,10 +313,20 @@
         <script>
             // creates multiple instances
 
-            $(".date-picker").flatpickr({
+            $(".date-picker-startDate").flatpickr({
                 altInput: true,
                 altFormat: "j F, Y",
                 dateFormat: "d-m-Y",
+                defaultDate: new Date('1 F, Y'),
+                  position: "above"
+            })
+
+            $(".date-picker-endDate").flatpickr({
+                altInput: true,
+                altFormat: "j F, Y",
+                dateFormat: "d-m-Y",
+                defaultDate: new Date('30 F, Y'),
+                position: "above"
             })
 
         </script>
@@ -365,7 +375,7 @@
 
 
                 function getAccountTransactions(account_number, start_date, end_date, transLimit) {
-                    var table = $('.account_transaction_display').DataTable();
+                    var table = $('.account_transaction_display_table').DataTable();
                     var nodes = table.rows().nodes();
                     $.ajax({
                         "type": "POST",
@@ -390,7 +400,7 @@
 
 
                                 $.each(data, function(index) {
-                                    let amount = '';
+                                    let amount = ``;
                                     if (parseFloat(data[index].amount) > 0) {
                                         amount = ` <b class='text-success'>
                                                             <i class="fe-arrow-up text-success mr-1"></i>
@@ -398,12 +408,13 @@
                                                         </b>
                                                         `
                                     } else {
-                                        amount = ` <b class='text-danger'>
+                                        amount = `<b class='text-danger'>
                                                             <i class="fe-arrow-down text-danger mr-1"></i>
                                                             ${data[index].amount}
                                                         </b>
                                                         `
                                     }
+
 
                                     table.row.add([
                                         data[index].postingSysDate,
@@ -413,10 +424,12 @@
                                         `<a type="button" data-toggle="modal"
                                             data-target="#bs-example-modal-xl"
                                             class="text-primary">${data[index].batchNumber}</a>`,
-                                        amount,
-                                        `#.##`
+                                           amount,
+                                            `#.##`
+
 
                                     ]).draw(false)
+
 
                                 })
 

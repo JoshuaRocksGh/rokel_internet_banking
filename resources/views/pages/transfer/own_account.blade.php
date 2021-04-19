@@ -183,9 +183,10 @@
 
 
 
-                                <div class="col-md-6 text-center" style="margin-top: 80px;">
+                                <div class="col-md-6 text-center" >
+                                    <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" />
 
-                                    <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5">
+                                    {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
                                 </div> <!-- end col -->
 
 

@@ -13,19 +13,24 @@ use Illuminate\Support\Facades\Http;
 class ChequeBookRequestController extends Controller
 {
     //function or method to hit the cheque book request api
-    public function cheque_book_request(){
+    public function cheque_book_request(Request $request){
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
+        $accountNumber = $request->accountNumber;
+        $numberOfLeaves = $request->numberOfLeaves;
+        $branchCode = $request->branchCode;
+        $pinCode = $request->pinCode;
+
         $data = [
 
-                "accountNumber"=> "004001100241700194",
-                "branch" => "string",
-                "deviceIP" => "string",
-                "numberOfLeaves" => 25,
-                "pinCode" =>"1234",
-                "tokenID" => "5CF53285-3558-4129-9363-3D2D41E8A5D7"
+                "accountNumber"=> $accountNumber,
+                "branch" => $branchCode,
+                "deviceIP" => "A",
+                "numberOfLeaves" => $numberOfLeaves,
+                "pinCode" => $pinCode,
+                "tokenID" => $authToken
 
         ];
 
