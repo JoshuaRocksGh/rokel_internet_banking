@@ -69,7 +69,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [LandingPageController::class, 'index'])->name('starter');
+// Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 
 Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
@@ -324,13 +324,14 @@ Route::get('Facebook-Chatbot', [FacebookChatbotController::class, 'facebook_chat
 Route::get('Instagram-Chatbot', [InstagramChatbotController::class, 'instagram_chatbot'])->name('Instagram-Chatbot');
 
 Route::middleware(['userAuth'])->group(function () {
-
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
-    // Logout controller
-
-
 });
+
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
+// Logout controller
+
 
 Route::get('/logout', [LogoutController::class, 'logout_'])->name('logout');
 
@@ -386,10 +387,10 @@ Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBank
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
 //route for cheque book request api
-Route::get('cheque-book-request-api',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('cheque-book-request-api');
-Route::post('submit-cheque-book-request',[AccountServicesChequeBookRequestController::class,'cheque_book_request'])->name('submit-cheque-book-request');
+Route::get('cheque-book-request-api', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('cheque-book-request-api');
+Route::post('submit-cheque-book-request', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('submit-cheque-book-request');
 //route for atm card
-Route::get('atm-card-request-api', [AtmCardRequestController::class,'atm_card_request'])->name('atm-card-request-api');
+Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
 
 //route for statement request
-Route::get('statement-request-api',[StatementRequestController::class,'statement_request'])->name('statement-request-api');
+Route::get('statement-request-api', [StatementRequestController::class, 'statement_request'])->name('statement-request-api');
