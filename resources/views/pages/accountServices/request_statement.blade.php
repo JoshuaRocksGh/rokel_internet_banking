@@ -223,26 +223,31 @@
 
             $("#account_number").change(function(){
                 var account_number = $("#account_number").val();
+                $(".display_my_account_no").text(account_number);
                 console.log(account_number);
             });
 
             $("#statementType").change(function(){
                 var statementType = $("#statementType").val();
+                $(".display_type_of_statement").text(statementType);
                 console.log(statementType);
             });
 
             $("#pUBranch").change(function(){
                 var pickUpBranch = $("#pUBranch").val();
+                $(".display_pick_up_branch").text(pickUpBranch);
                 console.log(pickUpBranch);
             });
 
             $("#startDate").change(function(){
                 var startDate = $("#startDate").val();
+                $(".display_trans_startDate").text(startDate);
                 console.log(startDate);
             });
 
             $("#endDate").change(function(){
                 var endDate = $("#endDate").val();
+                $(".display_trans_endDate").text(endDate);
                 console.log(endDate);
             });
 

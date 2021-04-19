@@ -11,13 +11,20 @@ use Illuminate\Support\Facades\Http;
 class StatementRequestController extends Controller
 {
     //method to check the statement request for the method
-    public function statement_request(){
+    public function statement_request(Request $request){
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         // return $authToken;
 
         // $base_response = new BaseResponse();
+
+        $accountNumber = $request->accountNumber;
+        $branchCode = $request->branchCode;
+        $deviceIP = $request->deviceIP;
+        $entrySource = $request->entrySource;
+        $pincode = $request->pinCode;
+        $startDate = $request->startDate;
 
         $data = [
 
@@ -32,6 +39,7 @@ class StatementRequestController extends Controller
                 "tokenID"=> "926832B4-170D-4A6D-952B-2523454FF6F2"
 
         ];
+        return $data;
 
         // return $data;
         $response = Http::post(env('API_BASE_URL') . "/request/statment", $data);
