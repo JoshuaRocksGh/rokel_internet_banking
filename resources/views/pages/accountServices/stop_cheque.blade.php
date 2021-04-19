@@ -2,11 +2,476 @@
 
 @section('content')
 
-<div    <legend></legend>
+    <div>
+        <legend></legend>
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="row">
+                    <div class="col-md-1"></div>
+
+                    <div class=" card card-body col-md-10">
+                        <h2 class="header-title m-t-0 text-primary">STOP REQUEST</h2>
+
+                        <p class="text-muted font-14 m-b-20">
+                            Parsley is a javascript form validation library. It helps you provide your
+                            users with feedback on their form submission before sending it to your
+                            server.
+                        </p>
+                        <hr>
+
+
+                        <div class="row" >
+
+                            <div class="col-md-7" id="request_form_div">
+
+                                <div class="">
+
+                                    <table class="table mb-0 table-striped table-bordered">
+
+                                        <tbody>
+                                            <tr class="bg-secondary text-white">
+                                                <td>Request Details</td>
+                                            </tr>
+
+                                            <tr>
+                                            </tr>
+
+                                        </tbody>
+
+
+                                    </table>
+
+                                    <p>
+
+
+                                    <form role="form" class="parsley-examples" autocomplete="off" aria-autocomplete="off">
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <select class="custom-select " id="my_account" required>
+                                                    <option value="">Select Account</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="hori-pass2" class="col-4 col-form-label">
+                                                Cheque Number: FROM
+                                                <span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                            <input type="text" class="form-control" id="cheque_no_from" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="webSite" class="col-4 col-form-label">
+                                                <label> Cheque Number: TO</label>
+                                                <span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" id="cheque_no_to" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row">
+                                            <label for="hori-pass2" class="col-4 col-form-label">
+                                                Date Issued
+                                                <span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="date" class="form-control" id="date_issued" required>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group row">
+                                            <label for="hori-pass2" class="col-4 col-form-label">
+                                                Amount on Cheque
+                                                <span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" id="amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group row">
+                                            <label for="hori-pass2" class="col-4 col-form-label">
+                                                Enter Your Pin
+                                                <span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                            </div>
+                                        </div>
+
+
+
+                                </form>
+
+                                </p>
+
+
+                            </div> <!-- end card-box -->
+
+
+                        </div>
+
+
+                        <div class="col-md-5 disappear-after-success" id="request_detail_div">
+
+                            <table class="table mb-0 table-striped table-bordered">
+
+                                <tbody>
+                                    <tr class="bg-secondary text-white">
+                                        <td>Request Details</td>
+                                    </tr>
+                                    <tr class="">
+
+                                        <td>
+                                            <a
+                                                class="text-body font-weight-semibold   display_my_account_name"></a>
+                                            <small class="d-block   display_my_account_no"></small>
+                                            <span class="text-right   font-weight-semibold">
+                                                <span class="display_my_account_currency"></span>
+                                            <span class="  display_my_account_amount"></span>
+                                            </span>
+                                        </td>
+
+
+
+                                    </tr>
+                                    <tr class="">
+                                        <td>
+                                            <span class="text-right font-weight-semibold">
+                                              Cheque Number  FROM: &nbsp;
+                                                <span class="display_cheque_no_from"></span>
+                                                &nbsp; TO: &nbsp;
+                                                <span class="display_cheque_no_to"></span>
+
+                                            </span>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="">
+                                        <td>
+                                            <span class="text-right font-weight-semibold">
+                                                <span class="display_date_issued"></span>
+                                            </span>
+                                        </td>
+
+                                    </tr>
+                                     <tr class="">
+                                        <td>
+                                            <span class="text-right font-weight-semibold">
+                                                <span class="display_currency"></span>
+                                                <span class="display_amount"></span>
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <br>
+
+                            <div class="form-group row">
+                                <div class="col-8 offset-4 text-right">
+                                    <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="submit_cheque_request">
+                                        Submit
+                                    </button>
+
+                                </div>
+                            </div>
+
+
+                        </div> <!-- end col -->
+
+                        <div class="col-md-5 text-center">
+
+                        <p class="display-4 text-center text-success success-message ">
+
+                        </p>
+                    </div>
+
+
+                        <!-- end row -->
+
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-1"></div>
+
+            </div> <!-- end card-body -->
+
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+        <script>
+
+            function my_account(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'get-my-account',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+
+                        $('#my_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                        });
+                    },
+
+                })
+            }
+
+
+
+
+
+            function formatToCurrency(amount) {
+                return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+            };
+
+
+            function toaster(message, icon, timer)
+            {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: timer,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+
+                  Toast.fire({
+                    icon: icon,
+                    title: message
+                  })
+            }
+
+
+
+        $(document).ready(function() {
+
+            setTimeout(function(){
+                my_account()
+            }, 1000)
+
+
+
+            $("#my_account").change(function() {
+                var my_account = $(this).val()
+
+                    my_account_info = my_account.split("~")
+                    // set summary values for display
+                    $(".display_my_account_type").text(my_account_info[0].trim())
+                    $(".display_my_account_name").text(my_account_info[1].trim())
+                    $(".display_my_account_no").text(my_account_info[2].trim())
+                    $(".display_my_account_currency").text(my_account_info[3].trim())
+
+                    $(".display_currency").text(my_account_info[3].trim()) // set summary currency
+
+                    $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4]
+                        .trim())))
+
+                        console.log
+
+                    $(".my_account_display_info").show()
+
+            });
+
+
+                $("#cheque_no_to").keyup(function() {
+                    var cheque_no_to = $('#cheque_no_to').val()
+
+
+                    if (cheque_no_to.trim() == '' ) {
+                         toaster("Please cheque number can not be empty", "error", 6000);
+                        $(this).val('')
+                        return false;
+                    } else {
+                        $(".display_cheque_no_to").text(cheque_no_to);
+                    }
+
+                });
+
+
+                $("#cheque_no_from").keyup(function() {
+                    var cheque_no_from = $('#cheque_no_from').val()
+
+
+                    if (cheque_no_from.trim() == '' ) {
+                        toaster("Please cheque number can not be empty", "error", 6000);
+                        $(this).val('')
+                        return false;
+                    } else {
+                        $(".display_cheque_no_from").text(cheque_no_from);
+                    }
+
+                });
+
+
+                $("#amount").keyup(function() {
+                    var amount = $('#amount').val()
+                    var my_account = $('#my_account').val()
+                    console.log(amount)
+
+
+                    {{-- if (my_account.trim() == '' ) {
+                        toaster("Please select source accounts", "error", 6000);
+                        $(this).val('')
+                        return false;
+                    } else {
+                        $(".display_amount").text(formatToCurrency(Number(amount)));
+                    } --}}
+
+                    //delete after use
+                      $(".display_amount").text(formatToCurrency(Number(amount)));
+
+                });
+
+
+
+            $("#date_issued").change(function() {
+                $('.display_date_issued').text("")
+                var date_issued = $(this).val()
+                if(date_issued != ""){
+                    console.log(date_issued)
+                    $('.display_date_issued').text("Date Issued:   " + date_issued)
+                }
+            })
+
+            $("#submit_cheque_request").click(function(){
+
+                //MY ACCOUNT
+                let my_account = $('#my_account').val()
+
+                //date_issued
+                let date_issued = $('#date_issued').val()
+                //cheque_no_from
+                let cheque_no_from = $('#cheque_no_from').val()
+                //cheque_no_to
+                let cheque_no_to = $('#cheque_no_to').val()
+
+                let amount = $('#amount').val()
+
+                //delete after use
+                amount = '67.0'
+
+                let pin = $('#pin').val()
+
+                console.log(my_account)
+                console.log(cheque_no_from)
+                console.log(cheque_no_to)
+                console.log(date_issued)
+                console.log(amount)
+                console.log(pin)
+
+
+                {{-- if(cheque_no_to == "" || cheque_no_from == "" || my_account == "" || date_issued == "" || amount == "" || pin == ""){ --}}
+                if(cheque_no_to == "" || cheque_no_from == "" || date_issued == "" || amount == "" || pin == ""){
+                    toaster("Please fill all required fieilds", "error", 6000);
+                }else{
+
+                    {{-- my_account_info = my_account.split("~")
+                let accountNumber = my_account_info[2].trim() --}}
+
+                let accountNumber = '67890-09876';
+
+
+                    $.ajax({
+
+                        'type' : 'POST',
+                        'url' : 'submit-stop-cheque-book-request',
+                        "datatype" : "application/json",
+                        'data' : {
+                            'accountNumber' : accountNumber.trim() ,
+                            'cheque_no_from' : cheque_no_from.trim() ,
+                            'cheque_no_to' : cheque_no_to.trim(),
+                            'date_issued' : date_issued.trim() ,
+                            'amount' : amount.trim() ,
+                            'pinCode' : pin.trim()
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success:
+                        function(response){
+
+                             console.log(response)
+
+                            if(response.responseCode == '000'){
+                                toaster(response.message, 'success', 200000 )
+                                $("#request_form_div").hide()
+                                $(".disappear-after-success").hide()
+                                $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
+
+                                $("#request_detail_div").show()
+
+
+                            }else{
+
+                                toaster(response.message, 'error', 9000 );
+
+
+                        }
+                    }
+
+                    })
+
+
+                }
+            })
+
+
+        });
+
+    </script>
+@endsection
+
+
+
+
+
+{{--
+
+
+@extends('layouts.master')
+
+@section('content')
+
+<div> <legend></legend>
 
     <div class="row">
         <div class="col-12">
-            <div class="card" style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;">
+            <div class="card" >
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2"></div>
@@ -99,7 +564,6 @@
                                                 &nbsp; PROCEED &nbsp;</button>
                                         </div>
 
-                                        {{-- <img src="{{ asset('assets/images/cheque_book.jpg') }}" class="img-fluid" alt=""> --}}
                                     </div> <!-- end col -->
 
                                </div>
@@ -290,341 +754,5 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function() {
 
-
-                $(".select_onetime").css("display", "none");
-                $(".select_beneficiary").css("display", "block");
-
-               // $(".select_beneficiary").show();
-                //$(".select_onetime").hide();
-
-                var type = $("input[type='radio']:checked").val();
-
-                $(".radio").click(function(){
-
-                    var type = $("input[type='radio']:checked").val();
-
-                    if(type == 'beneficiary'){
-                        $(".select_onetime").css("display", "none");
-                        $(".select_beneficiary").css("display", "block");
-
-                        // set amonut to empty
-                        $("#amount").val('');
-
-
-                        //$(".select_onetime").hide();
-                        //$(".select_beneficiary").show();
-
-                    }
-                    if(type == 'onetime'){
-
-                        $(".select_beneficiary").css("display", "none");
-                        $(".select_onetime").css("display", "block");
-
-                        // set amonut to empty
-                        $("#amount").val('');
-
-                       // $(".select_beneficiary").hide();
-                        //$(".select_onetime").show();
-                    }
-
-                });
-
-
-
-                // hide seleect accounts info
-                $(".from_account_display_info").hide()
-                $(".to_account_display_info").hide()
-                $("#schedule_payment_date").hide()
-                $('#schedule_payment_contraint_input').hide()
-                $('.display_schedule_payment_date').text('N/A')
-
-                $("#transaction_form").show()
-                $("#transaction_summary").hide()
-
-                {{--  $("#next_button").click(function(e) {
-                    e.preventDefault()
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
-                })  --}}
-
-                $("#back_button").click(function(e) {
-                    e.preventDefault()
-                    $("#transaction_summary").hide()
-                    $("#transaction_form").show()
-
-                })
-
-                {{-- Event on From Account field --}}
-
-                $("#from_account").change(function() {
-                    var from_account = $(this).val()
-                    {{-- alert(from_account) --}}
-                    if (from_account.trim() == '' || from_account.trim() == undefined) {
-                        {{-- alert('money') --}}
-                        $(".from_account_display_info").hide()
-
-                    } else {
-                        from_account_info = from_account.split("~")
-                        {{-- alert('continue') --}}
-
-                        var to_account = $('#to_account').val()
-
-                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                            to_account.trim() != '') {
-                            alert('can not transfer to same account')
-                            $(this).val('')
-                        }
-
-                        // set summary values for display
-                        $(".display_from_account_type").text(from_account_info[0].trim())
-                        $(".display_from_account_name").text(from_account_info[1].trim())
-                        $(".display_from_account_no").text(from_account_info[2].trim())
-                        $(".display_from_account_currency").text(from_account_info[3].trim())
-
-                        $(".display_currency").text(from_account_info[3].trim()) // set summary currency
-
-                        $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
-                            .trim())))
-                        {{-- alert('and show' + from_account_info[3].trim()) --}}
-                        $(".from_account_display_info").show()
-                    }
-
-
-
-
-                    // alert(from_account_info[0]);
-                });
-
-
-                $("#to_account").change(function() {
-                    var to_account = $(this).val()
-                    {{-- alert(to_account) --}}
-                    if (to_account.trim() == '' || to_account.trim() == undefined) {
-
-                        $(".to_account_display_info").hide()
-
-                    } else {
-                        to_account_info = to_account.split("~")
-
-
-                        var from_account = $('#from_account').val()
-
-                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                            to_account.trim() != '') {
-                            alert('can not transfer to same account')
-                            $(this).val('')
-                        }
-
-                        // set summary values for display
-                        $(".display_to_account_type").text(to_account_info[0].trim())
-                        $(".display_to_account_name").text(to_account_info[1].trim())
-                        $(".display_to_account_no").text(to_account_info[2].trim())
-                        $(".display_to_account_currency").text(to_account_info[3].trim())
-                        $(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
-
-                        $(".to_account_display_info").show()
-                    }
-
-
-
-
-                    // alert(to_account_info[0]);
-                });
-
-
-                $("#amount").keyup(function() {
-
-                    var type = $("input[type='radio']:checked").val();
-                    //alert(type);
-                    //return false;
-
-                    if(type == 'beneficiary'){
-                        var from_account = $('#from_account').val()
-                        var to_account = $('#to_account').val()
-
-                        if (from_account.trim() == '' || to_account.trim() == '') {
-                            alert('Please select source and destination accounts')
-                            $(this).val('')
-                            return false;
-                        } else {
-                            var transfer_amount = $(this).val()
-                            $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
-                        }
-
-                    }
-                    else if(type == 'onetime'){
-
-                        var from_account = $('#from_account').val()
-                        var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                        var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
-                        var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
-                        var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                        var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-                        console.log(onetime_beneficiary_alias_name)
-                        console.log(onetime_beneficiary_account_number)
-                        console.log(onetime_beneficiary_account_currency)
-
-
-                        if (from_account.trim() == '' || onetime_beneficiary_alias_name.trim() == '' || onetime_beneficiary_account_number.trim() == '' || onetime_beneficiary_account_currency.trim() == '') {
-                            alert('Please select source and destination accounts')
-                            $(this).val('')
-                            return false;
-                        } else {
-                            //alert('set')
-                            var transfer_amount = $(this).val()
-                            $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
-                        }
-
-                    }else{
-                        alert( type + ' 00000000 Select either beneficiary or onetime beneficiary')
-                        $(this).val('')
-                        return false;
-                    }
-
-
-
-
-                })
-
-
-                function formatToCurrency(amount) {
-                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-                };
-
-
-                // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
-                $("input:checkbox").on("change", function() {
-                    if ($(this).is(":checked")) {
-                        console.log("Checkbox Checked!");
-                        $("#schedule_payment_date").show()
-                        $(".display_schedule_payment").text('YES')
-                        $('#schedule_payment_contraint_input').val('TRUE')
-
-                    } else {
-                        console.log("Checkbox UnChecked!");
-                        $("#schedule_payment_date").val('')
-                        $("#schedule_payment_date").hide()
-                        $('.display_schedule_payment').text('NO')
-                        $('.display_schedule_payment_date').text('N/A')
-
-                        $('#schedule_payment_contraint_input').val('')
-                        $('#schedule_payment_contraint_input').hide()
-                        $('#schedule_payment_date').val('')
-                    }
-                });
-
-
-
-
-
-                // NEXT BUTTON CLICK
-                $("#next_button").click(function() {
-
-                    var type = $("input[type='radio']:checked").val();
-
-                    var from_account = $('#from_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-                    var purpose = $('#purpose').val()
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
-
-                    if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
-                        return false
-
-                    }
-
-                    //set purpose and category values
-                    var category_info = category.split("~")
-                    $("#display_category").text(category_info[1])
-                    $("#display_purpose").text(purpose)
-
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
-
-
-
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-                    if(type == 'beneficiary'){
-
-                        var to_account = $('#to_account').val()
-
-                        $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                        if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                            alert('Field must not be empty')
-                            return false
-                        }else{
-                            //set purpose and category values
-                            var category_info = category.split("~")
-                            $("#display_category").text(category_info[1])
-                            $("#display_purpose").text(purpose)
-
-                            $("#transaction_form").hide()
-                            $("#transaction_summary").show()
-                        }
-
-
-
-
-                    }else if(type == 'onetime'){
-
-                        var from_account = $('#from_account').val()
-
-                        // ONETIME BENEFICIARY DETAILS
-                        var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                        var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
-                        var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
-                        var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
-                        var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                        var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-
-                        console.log(onetime_beneficiary_alias_name)
-                        console.log(onetime_beneficiary_account_number)
-                        console.log(onetime_beneficiary_account_currency)
-
-
-                        // END OF ONETIME BENEFICIARY DETAILS
-
-
-                        if (from_account.trim() == '' || onetime_beneficiary_account_number.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                            alert('Field must not be empty')
-                            return false
-                        }else{
-                            //set purpose and category values
-                            var category_info = category.split("~")
-                            $("#display_category").text(category_info[1])
-                            $("#display_purpose").text(purpose)
-
-                            $("#transaction_form").hide()
-                            $("#transaction_summary").show()
-                        }
-
-
-
-
-                    }else{
-                        alert('CHOOSE EITHER BENEFICIARY OR ONTIME')
-                    }
-
-                });
-
-
-            });
-
-        </script>
-    @endsection
+    @endsection --}}

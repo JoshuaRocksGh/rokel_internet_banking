@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountServices\AccountServicesController;
 use App\Http\Controllers\AccountServices\AtmCardRequestController;
 use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountServicesChequeBookRequestController;
 use App\Http\Controllers\AccountServices\StatementRequestController;
+use App\Http\Controllers\AccountServices\StopChequeController;
 use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
@@ -389,6 +390,7 @@ Route::post('international-bank-onetime-api', [APITransferLocalBankController::c
 //route for cheque book request api
 Route::get('cheque-book-request-api', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('cheque-book-request-api');
 Route::post('submit-cheque-book-request', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('submit-cheque-book-request');
+Route::post('submit-stop-cheque-book-request', [StopChequeController::class, 'submit_stop_cheque_book_request'])->name('submit-stop-cheque-book-request');
 //route for atm card
 Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
 
