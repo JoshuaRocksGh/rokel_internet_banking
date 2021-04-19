@@ -46,138 +46,138 @@
                                     <p>
 
 
-                                    <form role="form" class="parsley-examples">
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <select class="custom-select " id="my_account" required>
-                                                    <option value="">Select Account</option>
-                                                </select>
+                                        <form role="form" class="parsley-examples">
+                                            <div class="form-group row">
+                                                <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <select class="custom-select " id="my_account" required>
+                                                        <option value="">Select Account</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group row">
-                                            <label for="hori-pass2" class="col-4 col-form-label">
-                                                Leaflets
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <select class="custom-select " id="leaflet" required>
-                                                    <option value="">-- Select number --</option>
-                                                    <option value="25">25</option>
-                                                    <option value="50">50</option>
-                                                    <option value="100">100</option>
-                                                </select>
+                                            <div class="form-group row">
+                                                <label for="hori-pass2" class="col-4 col-form-label">
+                                                    Leaflets
+                                                    <span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <select class="custom-select " id="leaflet" required>
+                                                        <option value="">-- Select number --</option>
+                                                        <option value="25">25</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group row">
-                                            <label for="webSite" class="col-4 col-form-label">
-                                                <label> Branch</label>
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <select class="custom-select " id="branch" required>
-                                                    <option value="">-- Selected Branch --</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group row">
-                                            <label for="hori-pass2" class="col-4 col-form-label">
-                                                Enter Your Pin
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-                                            </div>
-                                        </div>
-
-                                        {{-- <div class="form-group row">
-
-
-                                                <div class="col-7 offset-4 text-right">
-
-                                                    <button type="button"
-                                                        class="btn btn-primary btn-rounded waves-effect waves-light">
-                                                        Submit
-                                                    </button>
+                                            <div class="form-group row">
+                                                <label for="webSite" class="col-4 col-form-label">
+                                                    <label> Branch</label>
+                                                    <span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <select class="custom-select " id="branch" required>
+                                                        <option value="">-- Selected Branch --</option>
+                                                    </select>
 
                                                 </div>
+                                            </div>
 
 
-                                        </div> --}}
+                                            <div class="form-group row">
+                                                <label for="hori-pass2" class="col-4 col-form-label">
+                                                    Enter Your Pin
+                                                    <span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <input type="text" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                                </div>
+                                            </div>
+
+                                            {{-- <div class="form-group row">
 
 
-                                </form>
+                                                    <div class="col-7 offset-4 text-right">
 
-                                </p>
+                                                        <button type="button"
+                                                            class="btn btn-primary btn-rounded waves-effect waves-light">
+                                                            Submit
+                                                        </button>
 
-
-                            </div> <!-- end card-box -->
-
-
-                        </div>
-
-
-                        <div class="col-md-5 disappear-after-success" id="request_detail_div">
-
-                            <table class="table mb-0 table-striped table-bordered">
-
-                                <tbody>
-                                    <tr class="bg-secondary text-white">
-                                        <td>Request Details</td>
-                                    </tr>
-                                    <tr class="">
-
-                                        <td>
-                                            <a
-                                                class="text-body font-weight-semibold   display_my_account_name"></a>
-                                            <small class="d-block   display_my_account_no"></small>
-                                            <span class="text-right   font-weight-semibold">
-                                                <span class="display_my_account_currency"></span>
-                                            <span class="  display_my_account_amount"></span>
-                                            </span>
-                                        </td>
+                                                    </div>
 
 
+                                            </div> --}}
 
-                                    </tr>
-                                    <tr class="">
-                                        <td>
-                                            <span class="text-right font-weight-semibold">
-                                                <span class="display_leaflet"></span>
-                                            </span>
-                                        </td>
 
-                                    </tr>
-                                    <tr class="">
-                                        <td>
-                                            <span class="text-right font-weight-semibold">
-                                                <span class="display_branch"></span>
-                                            </span>
-                                        </td>
+                                        </form>
 
-                                    </tr>
+                                    </p>
 
-                                </tbody>
 
-                            </table>
+                                </div> <!-- end card-box -->
 
-                            <br>
 
-                            <div class="form-group row">
-                                <div class="col-8 offset-4 text-right">
-                                    <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="submit_cheque_request">
-                                        Submit
-                                    </button>
-
-                                </div>
                             </div>
 
 
-                        </div> <!-- end col -->
+                            <div class="col-md-5 disappear-after-success" id="request_detail_div">
+
+                                <table class="table mb-0 table-striped table-bordered">
+
+                                    <tbody>
+                                        <tr class="bg-secondary text-white">
+                                            <td>Request Details</td>
+                                        </tr>
+                                        <tr class="">
+
+                                            <td>
+                                                <a
+                                                    class="text-body font-weight-semibold   display_my_account_name"></a>
+                                                <small class="d-block   display_my_account_no"></small>
+                                                <span class="text-right   font-weight-semibold">
+                                                    <span class="display_my_account_currency"></span>
+                                                <span class="  display_my_account_amount"></span>
+                                                </span>
+                                            </td>
+
+
+
+                                        </tr>
+                                        <tr class="">
+                                            <td>
+                                                <span class="text-right font-weight-semibold">
+                                                    <span class="display_leaflet"></span>
+                                                </span>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="">
+                                            <td>
+                                                <span class="text-right font-weight-semibold">
+                                                    <span class="display_branch"></span>
+                                                </span>
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                                <br>
+
+                                <div class="form-group row">
+                                    <div class="col-8 offset-4 text-right">
+                                        <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="submit_cheque_request">
+                                            Submit
+                                        </button>
+
+                                    </div>
+                                </div>
+
+
+                            </div> <!-- end col -->
 
                         <div class="col-md-5 text-center">
                         {{-- <span class="hh"><span> --}}
