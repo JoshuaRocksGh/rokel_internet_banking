@@ -12,10 +12,14 @@
                         <div class="col-md-2"></div>
 
                         <div class="col-md-8">
-                            <p class="sub-header font-18 purple-color" style="cursor: pointer;" onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i>   OTHER LOCAL BANK BENEFICIARY
-                            </p>
-                            <hr>
+                            <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i class="fe-arrow-left"></i>  &emsp; OTHER LOCAL BANK BENEFICIARY</h2>
+
+                        <p class="text-muted font-14 m-b-20">
+                            Parsley is a javascript form validation library. It helps you provide your
+                            users with feedback on their form submission before sending it to your
+                            server.
+                        </p>
+                        <hr>
 
 
                             <div class="row" id="transaction_form">

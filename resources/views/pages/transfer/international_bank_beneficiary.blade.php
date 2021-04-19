@@ -10,15 +10,19 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <p class="sub-header font-18 purple-color" style="cursor: pointer;" onclick="window.history.back()">
-                        <i class="fe-arrow-left"></i> INTERNATIONAL BANK BENEFICIARY
-                    </p>
-                    <hr>
+                <div class="card-body card-background-image">
+                    <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i class="fe-arrow-left"></i>  &emsp; INTERNATIONAL BANK BENEFICIARY</h2>
+
+                        <p class="text-muted font-14 m-b-20">
+                            Parsley is a javascript form validation library. It helps you provide your
+                            users with feedback on their form submission before sending it to your
+                            server.
+                        </p>
+                        <hr>
 
 
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-8">
 
 
                             <div class="col-xl-12">
@@ -380,7 +384,7 @@
                                                             </div>
                                                             </div>
 
-                                                        {{--  <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="bank_add_beneficiary_btn">Add Beneficiary <i class="fe-arrow-right"></i></button>  --}}
+                                                        {{--  <button class="btn btn-primary btn-roundFimged waves-effect waves-light" type="submit" id="bank_add_beneficiary_btn">Add Beneficiary <i class="fe-arrow-right"></i></button>  --}}
                                                         <ul class="list-inline wizard mb-0">
                                                             <li class=" list-inline-item"><button class="btn btn-secondary btn-rounded waves-effect waves-light" type="back" id="bank_add_beneficiary_back_btn">Back</button></li>
 
@@ -406,7 +410,7 @@
                         </div> <!-- end col -->
 
 
-                        <div class="col-md-5" style="margin-top: 80px;">
+                        <div class="col-md-4" style="margin-top: 80px;">
                             <img src="{{ asset('assets/images/world.png') }}" class="img-fluid" alt="" >
                        </div> <!-- end col -->
 
@@ -520,13 +524,13 @@
                 bank_branches_list();
             }, 2000);
 
-            function toaster(message, icon )
+            function toaster(message, icon, timer )
             {
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
-                    timer: 10000,
+                    timer: timer,
                     timerProgressBar: false,
                     didOpen: (toast) => {
                       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -556,14 +560,21 @@
                 var swift_code = $('#swift_code').val();
 
 
-                $('#details_tab').removeClass('active show');
-                $('#account_tab').addClass('active show');
+                if (bank_country == '' || bank_country == undefined || bank_city == '' || bank_city == undefined  || bank_branch == '' || bank_branch == undefined  || bank_name == '' || bank_name == undefined  || bank_address == '' || bank_address == undefined  || swift_code == '' || swift_code == undefined )
+                {
+                    toaster('Fields must not be empty' ,'error' , 6000);
+                    {{--  alert();  --}}
 
-                $('#first').removeClass('active show');
-                $('#second').addClass('active show');
+                    return false ;
+                }else{
+                    $('#details_tab').removeClass('active show');
+                    $('#account_tab').addClass('active show');
+                    $('#first').removeClass('active ');
+                    $('#second').addClass('active show');
 
-                $('#international_bank_details').hide();
-                $('#international_bank_account_details').toggle('500');
+                    $('#international_bank_details').hide();
+                    $('#international_bank_account_details').toggle('500');
+                }
 
             })
 
@@ -576,7 +587,7 @@
                 $('#details_tab').addClass('active show');
 
                 $('#second').removeClass('active show');
-                $('#first').addClass('active show');
+                $('#first').addClass('active');
 
                 $('#international_bank_account_details').hide();
                 $('#international_bank_details').toggle('500');
@@ -595,6 +606,18 @@
                 var lastname = $('#lastname').val();
                 var middlename = $('#middlename').val();
 
+                if( acc_number == '' || acc_number == undefined ||
+                acc_name == '' || acc_name == undefined ||
+                currency == '' || currency == undefined ||
+                firstname == '' || firstname == undefined ||
+                lastname == '' || lastname == undefined ||
+                middlename == '' || middlename == undefined
+                ){
+                    toaster('Fields must not be empty' ,'error' , 6000);
+
+                    return false ;
+                }else{
+
 
                 $('#account_tab').removeClass('active show');
                 $('#beneficiary_tab').addClass('active show');
@@ -605,6 +628,7 @@
                 $('#international_bank_account_details').hide();
                 $('#international_bank_beneficiary_details').toggle('500');
 
+                }
 
 
             })
@@ -665,6 +689,7 @@
                 var middlename = $('#middlename').val();
                 $('#display_middlename').text(middlename);
 
+                {{--    --}}
                 var beneficiary_name = $('#beneficiary_name').val();
                 $('#display_beneficiary_name').text(beneficiary_name);
 
@@ -693,14 +718,29 @@
                     $('#display_transfer_email').text('No');
                  };
 
-                $('#beneficiary_tab').removeClass('active show');
-                $('#summary_tab').addClass('active show');
+                 if( beneficiary_name == '' || beneficiary_name == undefined ||
+                    beneficiary_email == '' || beneficiary_email == undefined ||
+                    nationality == '' || nationality == undefined ||
+                    country_of_residence == '' || country_of_residence == undefined ||
+                    city == '' || city == undefined ||
+                    address == '' || address == undefined ||
+                    telephone == '' || telephone == undefined
+                 ){
+                    toaster('Fields must not be empty' ,'error' , 6000);
 
-                $('#third').removeClass('active show');
-                $('#fourth').addClass('active show');
+                    return false ;
+                 }else{
+                    $('#beneficiary_tab').removeClass('active show');
+                    $('#summary_tab').addClass('active show');
 
-                $('#international_bank_beneficiary_details').hide();
-                $('#international_bank_summary').toggle('500');
+                    $('#third').removeClass('active show');
+                    $('#fourth').addClass('active show');
+
+                    $('#international_bank_beneficiary_details').hide();
+                    $('#international_bank_summary').toggle('500');
+                 }
+
+
 
 
             })
@@ -790,10 +830,10 @@
                         console.log(response.responseCode);
                         if(response.responseCode == "000"){
 
-                            toaster(response.message, 'success' );
+                            toaster(response.message, 'success', 10000 );
 
                         }else{
-                            toaster(response.message, 'error' );
+                            toaster(response.message, 'error', 6000 );
 
                     }
                 }
