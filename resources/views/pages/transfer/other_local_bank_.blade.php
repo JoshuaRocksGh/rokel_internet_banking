@@ -41,7 +41,7 @@
 
 
                                             <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
+                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
                                                 <tbody class="text-primary">
                                                     <tr class="text-primary">
 

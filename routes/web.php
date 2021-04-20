@@ -70,7 +70,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Route::get('/', [LandingPageController::class, 'index'])->name('starter');
+Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 
 Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
@@ -101,7 +101,7 @@ Route::get('/add-beneficiary/own-account-beneficiary', [transferController::clas
 Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('add-same-bank-beneficiary');
 
 Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
-Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('international-bank-beneficiary');
+Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('add-international-bank-beneficiary');
 
 Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
 
@@ -328,7 +328,7 @@ Route::middleware(['userAuth'])->group(function () {
 });
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
 // Logout controller
