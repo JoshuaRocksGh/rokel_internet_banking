@@ -804,8 +804,9 @@
                                 $('#confirm_button').attr('disabled',false);
 
                         }
-                        }
-                        })
+                    }
+
+                    })
 
 
                 })

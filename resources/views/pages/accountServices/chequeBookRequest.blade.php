@@ -363,7 +363,7 @@
                     let branchCode = branch_info[0]
 
                     my_account_info = my_account.split("~")
-                let accountNumber = my_account_info[2].trim()
+                    let accountNumber = my_account_info[2].trim()
 
 
                     $.ajax({
@@ -406,7 +406,7 @@
 
 
                 }
-            })
+              })
 
 
         });
