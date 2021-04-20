@@ -70,7 +70,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [LandingPageController::class, 'index'])->name('starter');
+// Route::get('/', [LandingPageController::class, 'index'])->name('starter');
 
 Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
@@ -328,7 +328,7 @@ Route::middleware(['userAuth'])->group(function () {
 });
 
 
-// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
 // Logout controller
