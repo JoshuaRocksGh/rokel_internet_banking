@@ -15,16 +15,16 @@ class LocalBankController extends Controller
     //
     public function international_bank_transfer_beneficiary(Request $req)
     {
-        $validator = Validator::make($req->all(),[
-            'from_account' => 'required' ,
-            'to_account' => 'required' ,
+        $validator = Validator::make($req->all(), [
+            'from_account' => 'required',
+            'to_account' => 'required',
             'bankName' => 'required',
-            'amount' => 'required' ,
-            'category' => 'required' ,
+            'amount' => 'required',
+            'category' => 'required',
             'currency' => 'required',
-            'bank_name' => 'required' ,
-            'secPin' => 'required' ,
-            'beneficiaryName' => 'required' ,
+            'bank_name' => 'required',
+            'secPin' => 'required',
+            'beneficiaryName' => 'required',
             'naration' => 'required'
         ]);
 
@@ -35,7 +35,6 @@ class LocalBankController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
         // return $req;
 
@@ -44,11 +43,11 @@ class LocalBankController extends Controller
         $user_pin = $req->secPin;
 
         //return $user_pin;
-        if($user_pin != '123456'){
+        // if($user_pin != '123456'){
 
-            return $base_response->api_response('999', 'Incorrect Pin',  null); // return API BASERESPONSE
+        //     return $base_response->api_response('999', 'Incorrect Pin',  null); // return API BASERESPONSE
 
-        }
+        // }
 
 
         $user = (object) UserAuth::getDetails();
@@ -59,19 +58,19 @@ class LocalBankController extends Controller
 
         $data = [
 
-                "amount" => (float) $req->amount,
-                "authToken" => $authToken,
-                "bankName" => $req->bank_name,
-                "beneficiaryAddress" => "string",
-                "beneficiaryName" => $req->beneficiaryName ,
-                "creditAccount" => $req->to_account ,
-                "debitAccount" => $req->from_account ,
-                "deviceIp" => "string" ,
-                "secPin" => $user_pin ,
-                "transactionDetails" => $req->naration ,
-                "transactionId" => "string" ,
-                "transferCurrency" => $req->currency ,
-                "payment_date" => $req->payment_date
+            "amount" => (float) $req->amount,
+            "authToken" => $authToken,
+            "bankName" => $req->bank_name,
+            "beneficiaryAddress" => "string",
+            "beneficiaryName" => $req->beneficiaryName,
+            "creditAccount" => $req->to_account,
+            "debitAccount" => $req->from_account,
+            "deviceIp" => "string",
+            "secPin" => $user_pin,
+            "transactionDetails" => $req->naration,
+            "transactionId" => "string",
+            "transferCurrency" => $req->currency,
+            "payment_date" => $req->payment_date
 
         ];
 
@@ -80,7 +79,7 @@ class LocalBankController extends Controller
             'responseCode' => '000'
         ];
 
-        return $response ;
+        return $response;
 
         // try{
 
@@ -142,18 +141,18 @@ class LocalBankController extends Controller
 
     public function international_bank_onetime_transfer(Request $req)
     {
-        $validator = Validator::make($req->all(),[
-            'from_account' => 'required' ,
-            'beneficiary_name' => 'required' ,
-            'to_account' => 'required' ,
-            'bankName' => 'required' ,
-            'account_currency' => 'required' ,
+        $validator = Validator::make($req->all(), [
+            'from_account' => 'required',
+            'beneficiary_name' => 'required',
+            'to_account' => 'required',
+            'bankName' => 'required',
+            'account_currency' => 'required',
             // 'beneficiary_email' => 'required' ,
-            'beneficiary_phone' => 'required' ,
-            'amount' => 'required' ,
-            'category' => 'required' ,
-            'naration' => 'required' ,
-            'secPin' => 'required' ,
+            'beneficiary_phone' => 'required',
+            'amount' => 'required',
+            'category' => 'required',
+            'naration' => 'required',
+            'secPin' => 'required',
             'naration' => 'required'
 
         ]);
@@ -165,7 +164,6 @@ class LocalBankController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
         //return $req;
 
@@ -173,11 +171,11 @@ class LocalBankController extends Controller
         $user_pin = $req->secPin;
 
         //return $user_pin;
-        if($user_pin != '123456'){
+        // if ($user_pin != '123456') {
 
-            return $base_response->api_response('999', 'Incorrect Pin',  null); // return API BASERESPONSE
+        //     return $base_response->api_response('999', 'Incorrect Pin',  null); // return API BASERESPONSE
 
-        }
+        // }
 
 
         $user = (object) UserAuth::getDetails();
@@ -188,19 +186,19 @@ class LocalBankController extends Controller
 
         $data = [
 
-                "amount" => (float) $req->amount ,
-                "authToken" => $authToken,
-                "bankName" => $req->bankName,
-                "beneficiaryAddress" => "string",
-                "beneficiaryName" => $req->alias_name,
-                "creditAccount" => $req->to_account ,
-                "debitAccount" => $req->from_account_ ,
-                "deviceIp" => "string",
-                "secPin" => $user_pin,
-                "transactionDetails" => "string",
-                "transactionId" => "string",
-                "transferCurrency" => $req->currency_ ,
-                "payment_date" => $req->payment_date
+            "amount" => (float) $req->amount,
+            "authToken" => $authToken,
+            "bankName" => $req->bankName,
+            "beneficiaryAddress" => "string",
+            "beneficiaryName" => $req->alias_name,
+            "creditAccount" => $req->to_account,
+            "debitAccount" => $req->from_account_,
+            "deviceIp" => "string",
+            "secPin" => $user_pin,
+            "transactionDetails" => "string",
+            "transactionId" => "string",
+            "transferCurrency" => $req->currency_,
+            "payment_date" => $req->payment_date
 
 
 
@@ -211,7 +209,7 @@ class LocalBankController extends Controller
             'responseCode' => '000'
         ];
 
-        return $response ;
+        return $response;
 
 
         // try{

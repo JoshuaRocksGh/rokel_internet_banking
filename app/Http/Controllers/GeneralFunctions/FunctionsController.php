@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\GeneralFunctions;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -70,7 +71,8 @@ class FunctionsController extends Controller
 
         $response = Http::post(env('API_BASE_URL') . "utilities/getFxRates", $data);
 
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
 
@@ -91,7 +93,8 @@ class FunctionsController extends Controller
 
         $response = Http::post(env('API_BASE_URL') . "loans/getLoans", $data);
 
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
 
         // return $response;
         // return $response->status();
@@ -120,7 +123,8 @@ class FunctionsController extends Controller
 
         $response = Http::post(env('API_BASE_URL') . "account/getAccounts", $data);
 
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
 
         // return $response;
         // return $response->status();
@@ -146,7 +150,8 @@ class FunctionsController extends Controller
 
         //return $response;
         // return $response->status();
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
 
@@ -168,7 +173,8 @@ class FunctionsController extends Controller
 
         //return $response;
         // return $response->status();
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
 
@@ -179,7 +185,8 @@ class FunctionsController extends Controller
 
         //return $response;
         // return $response->status();
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
 
@@ -190,6 +197,7 @@ class FunctionsController extends Controller
 
         //return $response;
         // return $response->status();
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 }

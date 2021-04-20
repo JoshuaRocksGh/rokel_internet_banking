@@ -72,8 +72,8 @@
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
 
-                                                 <option value="Currenct Account~004004100435270140~USD~800">
-                                                    Currenct Account ~ 004004100435270140 ~ USD</option>
+                                                 {{--  <option value="Currenct Account~004004100435270140~USD~800">
+                                                    Currenct Account ~ 004004100435270140 ~ USD</option>  --}}
                                             </select>
 
 

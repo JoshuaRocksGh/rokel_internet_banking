@@ -83,11 +83,11 @@ class SameBankController extends Controller
         $user_pin = $req->secPin;
 
         // return $user_pin;
-        if ($user_pin != '123456') {
+        // if ($user_pin != '123456') {
 
-            return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
+        //     return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
 
-        }
+        // }
 
         $user = (object) UserAuth::getDetails();
         //return $user;
@@ -145,7 +145,6 @@ class SameBankController extends Controller
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);
-
         } catch (\Exception $e) {
 
             DB::table('error_logs')->insert([
@@ -193,11 +192,11 @@ class SameBankController extends Controller
         $user_pin = $req->secPin;
 
         // return $user_pin;
-        if ($user_pin != '123456') {
+        // if ($user_pin != '123456') {
 
-            return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
+        //     return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
 
-        }
+        // }
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -248,7 +247,6 @@ class SameBankController extends Controller
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);
-
         } catch (\Exception $e) {
 
             DB::table('error_logs')->insert([

@@ -668,7 +668,7 @@
 
         $('.element').click(function(){
             alert(tour.framework)
-});
+        });
             console.log('kjhlksdfs')
 
             setTimeout(function() {

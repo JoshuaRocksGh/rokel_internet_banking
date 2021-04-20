@@ -178,6 +178,17 @@
 
                                         </div>
 
+                                        <div class="form-group">
+                                          <input type="checkbox" class="custom-control-inputt" id="invoice_check">  &nbsp; &nbsp;  <label class="h6">Invoice Attachment ?
+                                                <span class="badge badge-primary text-right" style="cursor: pointer" data-toggle="modal" data-target="#centermodal">View</span>
+                                            </label>
+                                            <span class="hide_invoice">
+                                                 <br >
+                                            <input type="file" class="hide_invoice" id="invoice_attachment" required>
+                                            </span>
+
+
+                                        </div>
 
                                         <div class="form-group">
                                             <label class="h6">Naration</label>
@@ -413,6 +424,28 @@
 
                     </div> <!-- end card-body -->
 
+                    //IMAGE MODAL
+
+
+                    <!-- Center modal content -->
+                    <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true" style="zoom: 0.9;">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-primary" id="myCenterModalLabel">Aquiring a Savings Account</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class=" ">
+                                         <img src="" id="display_invoice_attachment" class="img-fluid" />
+                                    </div>
+
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+
 
                     <!-- Modal -->
                     <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
@@ -525,11 +558,41 @@
                 $('#spinner').hide(),
                 $('#spinner-text').hide(),
                 $('#print_receipt').hide(),
+                  $(".hide_invoice").hide()
 
                 setTimeout(function(){
                     from_account();
                     to_account();
                 },3000);
+
+
+                // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
+                $("#invoice_attachment").on("change", function() {
+                    if ($(this).is(":checked")) {
+                      $('.hide_invoice').hide()
+                    } else {
+                       $('.hide_invoice').show()
+                    }
+                });
+
+
+            $('#invoice_attachment').change(function(){
+
+                 var file = $("#invoice_attachment[type=file]").get(0).files[0];
+
+                        if(file){
+                            var reader = new FileReader();
+
+                            reader.onload = function(){
+                                $("#display_invoice_attachment").attr("src", reader.result);
+                            }
+
+                            reader.readAsDataURL(file);
+                        }
+                        {{--  $("#display_invoice_attachment").attr("src", "{{ asset('land_asset/images/same-bank.gif') }}");  --}}
+                        $("#display_invoice_attachment").show();
+            })
+
 
                 function toaster(message, icon )
                 {
@@ -753,7 +816,7 @@
 
 
                 // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
-                $("input:checkbox").on("change", function() {
+                $("#customCheck1").on("change", function() {
                     if ($(this).is(":checked")) {
                         //console.log("Checkbox Checked!");
                         $("#schedule_payment_date").show()
@@ -776,6 +839,23 @@
                         $('#select_frequency_text').hide();
                     }
                 });
+
+
+                // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
+                $("#invoice_check").on("change", function() {
+                    if ($(this).is(":checked")) {
+                        //console.log("Checkbox Checked!");
+                        {{--  alert("dfdf")  --}}
+                        $(".hide_invoice").show()
+
+
+                    } else {
+  {{--  alert("454545")  --}}
+                        $(".hide_invoice").hide()
+
+                    }
+                });
+
 
 
 
@@ -1047,14 +1127,6 @@
                                 console.log(select_frequency);
                                 console.log(schedule_payment_date);
                                 console.log(category);  --}}
-
-                                //$('#online_display_beneficiary_alias_name').text(onetime_beneficiary_alias_name);
-                                //$('#online_display_beneficiary_account_no').text(onetime_beneficiary_account_number);
-                                //$('#online_display_beneficiary_account_currency').text(onetime_beneficiary_account_currency);
-                                //$('#online_display_beneficiary_email').text(onetime_beneficiary_email);
-                                //$('#online_display_beneficiary_phone').text(onetime_beneficiary_phone);
-                                // Summary of Transcation
-
 
                                 $.ajax({
                                     'type' : 'POST' ,

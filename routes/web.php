@@ -12,6 +12,7 @@ use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBan
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
 use App\Http\Controllers\Authentication\ForgotPasswordController;
+use App\Http\Controllers\Authentication\KycController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
@@ -43,6 +44,8 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MaileController;
 use App\Http\Controllers\Payments\BulkUpload\BulkUploadsController;
+use App\Http\Controllers\Payments\CardlessController;
+use App\Http\Controllers\Payments\KorporController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\settingsController;
@@ -134,6 +137,12 @@ Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobi
 Route::get('/payment-add-beneficiary', [paymentController::class, 'add_beneficiary'])->name('payment-add-beneficiary');
 Route::get('/payment-add-beneficiary/mobile-money-beneficiary', [paymentController::class, 'mobile_money_beneficiary'])->name('mobile-money-beneficiary');
 Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentController::class, 'utility_payment_beneficiary'])->name('utility-payment-beneficiary');
+
+//PAYMENTS API ROUTES
+Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
+Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
+Route::get('/submit_kyc', [KycController::class, 'submit_kyc'])->name('submit_kyc');
+
 
 // SAVED BENEFICIARY
 Route::get('/saved-beneficiary', [paymentController::class, 'saved_beneficiary'])->name('saved-beneficiary');
@@ -380,7 +389,6 @@ Route::get('/edit-international-bank-beneficiary', [InternationalBankController:
 // EDIT BENEFICIARY DATA
 Route::get('/all-beneficiary-list', [transferController::class, 'all_beneficiary_list'])->name('all-beneficiary-list');
 Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::class, 'edit_local_bank'])->name('edit-local-bank-beneficiary-api');
-
 
 
 
