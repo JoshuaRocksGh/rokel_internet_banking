@@ -153,6 +153,7 @@
                                             </tr>
                                             <tr class="">
                                                 <td>
+
                                                     <span class="text-right font-weight-semibold">
                                                         <span class="display_trans_endDate"></span>
                                                     </span>
@@ -168,7 +169,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-8 offset-4 text-right">
-                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="submit_cheque_request">
+                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_cheque_request">
                                                 Submit
                                             </button>
 
@@ -250,6 +251,79 @@
                 $(".display_trans_endDate").text(endDate);
                 console.log(endDate);
             });
+
+
+            $('#btn_submit_cheque_request').click(function(e){
+                    e.preventDefault();
+
+                    $('#spinner').show();
+                    $('#spinner-text').show();
+
+                    $('#confirm_button').attr('disabled',true);
+
+
+
+                    //statement request details/get values.
+                    var account_no = $('#account_number').val();
+                    var type_of_statement = $('#statementType').val();
+                    var pUBranch = $('#pUBranch').val();
+                    var transStartDate = $('#startDate').val();
+                    var transEndDate = $('#endDate').val();
+
+
+
+
+                    // //GET VALUES
+                    // var from_account_ = from_account[2];
+                    // var to_account_ = to_account[1];
+                    // var transfer_amount = $('#amount').val();
+                    // var category_ = category[1];
+                    // var select_frequency_ = select_frequency[1];
+                    // var purpose = $('#purpose').val();
+                    // var pin = $('#user_pin').val();
+
+                    // var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                    // var schedule_payment_date = $('#schedule_payment_date').val();
+
+                    $.ajax({
+
+                        'type' : 'POST',
+                        'url' : 'statement-request-api',
+                        "datatype" : "application/json",
+                        'data' : {
+                            'account_no' : account_no,
+                            'type_of_statement' : type_of_statement,
+                            'pick_up_branch' : pUBranch,
+                            'transStartDate' : transStartDate,
+                            'transEndDate' : transEndDate,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success:
+                        function(response){
+
+                            if(response.responseCode == '000'){
+                                toaster(response.message, 'success' )
+                                $('#confirm_button').hide();
+                                $('#back_button').hide();
+                                $('#print_receipt').show();
+                            }else{
+
+                                toaster(response.message, 'error' );
+
+                                $('#spinner').hide();
+                                $('#spinner-text').hide();
+                                $('#print_receipt').hide();
+                                $('#confirm_transfer').show();
+                                $('#confirm_button').attr('disabled',false);
+
+                        }
+                        }
+                        })
+
+
+                })
 
         });
     </script>

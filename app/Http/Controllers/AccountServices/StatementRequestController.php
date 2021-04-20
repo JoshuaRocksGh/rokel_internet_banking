@@ -25,6 +25,8 @@ class StatementRequestController extends Controller
         $entrySource = $request->entrySource;
         $pincode = $request->pinCode;
         $startDate = $request->startDate;
+        $endDate = $request->endDate;
+        $statementType = $request->statementType;
 
         $data = [
 
@@ -39,9 +41,8 @@ class StatementRequestController extends Controller
                 "tokenID"=> "926832B4-170D-4A6D-952B-2523454FF6F2"
 
         ];
-        return $data;
 
-        // return $data;
+        return $data;
         $response = Http::post(env('API_BASE_URL') . "/request/statment", $data);
 
         $result = new ApiBaseResponse();
