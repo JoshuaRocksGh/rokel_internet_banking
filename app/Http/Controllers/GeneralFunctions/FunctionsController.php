@@ -47,6 +47,34 @@ class FunctionsController extends Controller
     }
 
 
+    public function get_fx_rate(Request $request)
+    {
+
+        if ($request->has("rateType")) {
+            $rateType = $request->query("rateType");
+        }
+
+        $rateType = $request->query("rateType");
+
+        if (empty($rateType)) {
+            $rateType = "Transfer rate";
+        }
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $data = [
+            "authToken" => $authToken,
+            "rateType" => $rateType
+        ];
+
+        $response = Http::post(env('API_BASE_URL') . "utilities/getFxRates", $data);
+
+        return $this->baseResponseApi($response);
+    }
+
+
+
     public function get_my_loans_accounts()
     {
         // return 'kjsdf';
@@ -144,15 +172,15 @@ class FunctionsController extends Controller
     }
 
 
-        public function bank_list()
-        {
+    public function bank_list()
+    {
 
-            $response = Http::get(env('API_BASE_URL') . "/utilities/getBanks");
+        $response = Http::get(env('API_BASE_URL') . "/utilities/getBanks");
 
-            //return $response;
-            // return $response->status();
-            return $this->baseResponseApi($response);
-        }
+        //return $response;
+        // return $response->status();
+        return $this->baseResponseApi($response);
+    }
 
 
     public function branches_list()
@@ -164,6 +192,4 @@ class FunctionsController extends Controller
         // return $response->status();
         return $this->baseResponseApi($response);
     }
-
-
 }

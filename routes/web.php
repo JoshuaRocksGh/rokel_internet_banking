@@ -345,6 +345,7 @@ Route::get('get-bank-branches-list-api', [FunctionsController::class, 'branches_
 Route::get('get-security-question-api', [FunctionsController::class, 'security_question'])->name('get-security-question-api');
 Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
 Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
+Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<

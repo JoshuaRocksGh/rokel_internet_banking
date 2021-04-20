@@ -114,6 +114,8 @@
 		@yield('scripts')
         {{--  @include('sweetalert::alert')  --}}
 
+
+
         <script>
             {{--  $(document).userTimeout({
 

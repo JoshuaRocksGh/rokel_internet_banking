@@ -45,7 +45,7 @@
 
 
             <div class="col-md-7 col-xl-7">
-                <h5 class="page-title">QUICK TRANSACTIONS</h5>
+                <h5 class="page-title element">QUICK TRANSACTIONS</h5>
                 <div class="row">
 
                     <div class="col-md-6 col-xl-6">
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="text-right">
-                                        <h3 class="mt-1"><span >&nbsp; Mobile Money</span></h3>
+                                        <h3 class="mt-1" id="mobile-money"><span >&nbsp; Mobile Money</span></h3>
                                         {{--  <p class="text-muted mb-1 text-truncate">Total Revenue</p>  --}}
                                     </div>
                                 </div>
@@ -433,6 +433,18 @@
     <!-- Plugins js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
+
+    <script>
+
+
+
+        // Start the tour - note, no call to .init() is required
+        // tour.start();
+
+    </script>
+
+
+
     <script>
 
         var ctx = document.getElementById('myChart').getContext('2d');
@@ -585,13 +597,84 @@
 
 
 
+        function get_fx_rate(rate_type){
+
+            $.ajax({
+                "type": "GET",
+                "url" : "get-fx-rate-api?rateType=" + rate_type,
+                "datatype" : "application/json",
+
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success:
+                function(response){
+                    console.log(response);
+                    if(response.responseCode == '000'){
+
+                        let data = response.data;
+
+
+{{--
+                        $.each(data, function(index) {
+                            $('.casa_list_display').append(`<tr>
+                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                <td> <b> ${data[index].accountDesc} </b>  </td>
+                                <td> <b> ${data[index].accountType}  </b>  </td>
+                                <td> <b> ${data[index].currency}  </b>  </td>
+                                <td> <b> ${data[index].availableBalance}   </b> </b></td>
+                                <td> <b> ${data[index].ledgerBalance}   </b>  </td>
+                                <td>  <b> 0.00  </b> </td>
+                            </tr>`)
+
+                        })  --}}
+
+
+
+                    }else{
+
+                    }
+
+                }
+            })
+        }
+
+
+
 
 
 
         $(document).ready(function() {
+
+
+        var tour = new Tour({
+            framework: 'bootstrap4',   // or "bootstrap4" depending on your version of bootstrap
+            steps: [
+                {
+                    element: '#mobile-money',
+                    title: 'Title of my step',
+                    content: 'Content of my step'
+                },
+                {
+                    element: '#my-other-element',
+                    title: 'Title of my step',
+                    content: 'Content of my step'
+                }
+            ]
+        });
+
+        tour.init();
+         tour.start();
+
+        $('.element').click(function(){
+            alert(tour.framework)
+});
             console.log('kjhlksdfs')
 
             setTimeout(function() {
+                get_fx_rate("Transfer rate")
+                get_fx_rate("Note rate")
+                get_fx_rate("Cross rate")
                 get_accounts();
                 get_loans()
             }, 2000);
