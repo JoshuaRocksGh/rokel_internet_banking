@@ -23,7 +23,7 @@ class StatementRequestController extends Controller
         $branchCode = $request->pick_up_branch;
         $deviceIP = $request->deviceIP;
         $entrySource = $request->entrySource;
-        $pincode = $request->pinCode;
+        $pincode = $request->pin;
         $startDate = $request->transStartDate;
         $endDate = $request->transEndDate;
         $statementType = $request->type_of_statement;
@@ -35,7 +35,7 @@ class StatementRequestController extends Controller
                 "deviceIP"=> "A",
                 "endDate"=> $endDate,
                 "entrySource"=> "C",
-                "pinCode"=> "1234",
+                "pinCode"=> $pincode,
                 "startDate"=> $startDate,
                 "statementType"=> $statementType,
                 "tokenID"=> $authToken

@@ -97,7 +97,15 @@
 
                                                         </div>
                                                     </div>
+                                                    <div class="form-group row">
+                                                        <label for="hori-pass2" class="col-5 col-form-label">
+                                                            Enter Your Pin
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-7">
+                                                            <input type="password" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
+                                                        </div>
+                                                    </div>
 
 
                                             </form>
@@ -325,6 +333,10 @@
                 console.log(endDate);
             })
 
+            // $("#pin").keyup(function(){
+            //     var pin = $("#pin").val();
+            //     console.log(pin);
+            // })
 
 
             $('#btn_submit_request_statement').click(function(){
@@ -338,15 +350,18 @@
                     let pUBranch = $('#pUBranch').val();
                     let transStartDate = $('#startDate').val();
                     let transEndDate = $('#endDate').val();
+                    let pin = $('#pin').val();
+                    console.log(pin);
 
 
-
-                    if(pUBranch ==""|| my_account =="" || type_of_statement == "" || transStartDate =="" || transEndDate == ""){
+                    if(pUBranch =="" || my_account =="" || type_of_statement == "" || transStartDate =="" || transEndDate == "" || pin ==""){
                         toaster("Please fill all required fields","error", 6000);
                     }
                     else{
+
                         let branch_info = pUBranch.split("~");
                         let branchCode = branch_info[0];
+                        let pin = pin.trim();
 
                         my_account_info = my_account.split("~");
                         let accountNumber = my_account_info[2].trim();
@@ -364,6 +379,7 @@
                             'pick_up_branch' : branchCode.trim(),
                             'transStartDate' : transStartDate.trim(),
                             'transEndDate' : transEndDate.trim(),
+                            'pin': pin.trim()
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
