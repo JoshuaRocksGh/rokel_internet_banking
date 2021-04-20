@@ -19,30 +19,30 @@ class StatementRequestController extends Controller
 
         // $base_response = new BaseResponse();
 
-        $accountNumber = $request->accountNumber;
-        $branchCode = $request->branchCode;
+        $accountNumber = $request->account_no;
+        $branchCode = $request->pick_up_branch;
         $deviceIP = $request->deviceIP;
         $entrySource = $request->entrySource;
         $pincode = $request->pinCode;
-        $startDate = $request->startDate;
-        $endDate = $request->endDate;
-        $statementType = $request->statementType;
+        $startDate = $request->transStartDate;
+        $endDate = $request->transEndDate;
+        $statementType = $request->type_of_statement;
 
         $data = [
 
-                "accountNumber" => "004001100241700194",
-                "branch"=> "010",
-                "deviceIP"=> "string",
-                "endDate"=> "2021-04-16",
+                "accountNumber" => $accountNumber,
+                "branch"=> $branchCode,
+                "deviceIP"=> "A",
+                "endDate"=> $endDate,
                 "entrySource"=> "C",
                 "pinCode"=> "1234",
-                "startDate"=> "2021-04-16",
-                "statementType"=> "VISA",
-                "tokenID"=> "926832B4-170D-4A6D-952B-2523454FF6F2"
+                "startDate"=> $startDate,
+                "statementType"=> $statementType,
+                "tokenID"=> $authToken
 
         ];
 
-        return $data;
+        // return $data;
         $response = Http::post(env('API_BASE_URL') . "/request/statment", $data);
 
         $result = new ApiBaseResponse();

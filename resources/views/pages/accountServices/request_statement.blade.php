@@ -24,7 +24,7 @@
                             <div class="row" >
 
 
-                                <div class="col-md-7" id="request_statement_div">
+                                <div class="col-md-7 disappear-after-success" id="request_statement_div">
 
                                     <div class="">
 
@@ -51,9 +51,9 @@
                                                         <label for="inputEmail3" class="col-5 col-form-label">Account Number<span
                                                                 class="text-danger">*</span></label>
                                                         <div class="col-7">
-                                                            <select class="custom-select " id="account_number" required>
+                                                            <select class="custom-select " id="my_account" required>
                                                                 <option value="">Select Account</option>
-                                                                    <option value="001023468976001">001023468976001</option>
+                                                                    {{-- <option value="001023468976001">001023468976001</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -78,21 +78,22 @@
                                                         <div class="col-7">
                                                             <select ect class="custom-select " id="pUBranch" required>
                                                                 <option value="">-----Not Selected-----</option>
-                                                                <option value="Accra">Accra</option>
+                                                                {{-- <option value="Accra">Accra</option>
                                                                 <option value="ADONKIA BRANCH">ADONKIA BRANCH</option>
                                                                 <option value="WILBERFORCE BRANCH">WILBERFORCE BRANCH</option>
-                                                                <option value="PORT LOKKO BRANCH">PORT LOKKO BRANCH</option>
+                                                                <option value="PORT LOKKO BRANCH">PORT LOKKO BRANCH</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <div for="duration" class="col-4 form-label">
+                                                        <div for="duration" class="col-12 form-label">
                                                             <label>Transaction Period</label>
                                                             <span class="text-danger">*</span>
                                                         </div>
-                                                        <div class="btn-group col-7">
-                                                            <input type="date" id="startDate" />
-                                                            <input type="date" id="endDate" />
+                                                        <div class="btn-group col-12">
+
+                                                            <input type="date" id="startDate" class="form-control"/>
+                                                            <input type="date" id="endDate" class="form-control"/>
 
                                                         </div>
                                                     </div>
@@ -106,7 +107,7 @@
 
                                 </div> <!-- end card-box -->
 
-                                <div class="col-md-5 disappear-after-success" id="request_detail_div">
+                                <div class="col-md-5 " id="request_detail_div">
 
                                     <table class="table mb-0 table-striped table-bordered">
 
@@ -121,6 +122,8 @@
                                                         class="text-body font-weight-semibold   display_my_account_name"></a>
                                                     <small class="d-block   display_my_account_no"></small>
                                                     <span class="text-right   font-weight-semibold">
+                                                        <span class="display_my_account_currency"></span>
+                                                        <span class="  display_my_account_amount"></span>
                                                     </span>
                                                 </td>
 
@@ -169,7 +172,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-8 offset-4 text-right">
-                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_cheque_request">
+                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_request_statement">
                                                 Submit
                                             </button>
 
@@ -179,6 +182,12 @@
 
                                 </div> <!-- end col -->
 
+                                <div class="col-md-5 text-center">
+
+                                    <p class="display-4 text-center text-success success-message ">
+
+                                    </p>
+                                </div>
                             </div>
 
 
@@ -201,89 +210,148 @@
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        function toaster(message, icon, timer)
-                {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: timer,
-                        timerProgressBar: false,
-                        didOpen: (toast) => {
-                          toast.addEventListener('mouseenter', Swal.stopTimer)
-                          toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                      })
 
-                      Toast.fire({
-                        icon: icon,
-                        title: message
-                      })
+        function my_account(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'get-my-account',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+
+                        $('#my_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                        });
+                    },
+
+                })
+            }
+
+            function branches(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'get-bank-branches-list-api',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+
+                        $('#pUBranch').append($('<option>', { value : data[index].branchCode+'~'+data[index].branchDescription}).text(data[index].branchDescription));
+
+                        });
+                    },
+
+                })
+            }
+
+            function toaster(message, icon, timer)
+            {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: timer,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+
+                  Toast.fire({
+                    icon: icon,
+                    title: message
+                  })
+            }
+
+            function formatToCurrency(amount) {
+                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
                 }
+
+
+
+
         $(document).ready(function(){
 
-            $("#account_number").change(function(){
-                var account_number = $("#account_number").val();
-                $(".display_my_account_no").text(account_number);
-                console.log(account_number);
+            setTimeout(function(){
+                branches()
+                my_account()
+            }, 1000)
+
+            $("#my_account").change(function(){
+                var my_account = $(this).val();
+                console.log(my_account_info);
+                var my_account_info = my_account.split("~");
+                $(".display_my_account_no").text(my_account_info[0].trim());
+                $(".display_my_account_name").text(my_account_info[1].trim());
+                $(".display_my_account_no").text(my_account_info[2].trim());
+                $(".display_my_account_currency").text(my_account_info[3].trim());
+                $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4].trim())))
+                console.log(my_account);
             });
 
             $("#statementType").change(function(){
                 var statementType = $("#statementType").val();
                 $(".display_type_of_statement").text(statementType);
                 console.log(statementType);
-            });
+            })
 
             $("#pUBranch").change(function(){
-                var pickUpBranch = $("#pUBranch").val();
-                $(".display_pick_up_branch").text(pickUpBranch);
-                console.log(pickUpBranch);
-            });
+                $('.display_pick_up_branch').text("");
+                var pickUpBranch = $(this).val();
+                if(pickUpBranch != ""){
+
+                    let branch_info = pickUpBranch.split("~")
+                    $(".display_pick_up_branch").text(branch_info[1]);
+                    console.log(branch_info[1]);
+                    console.log(pickUpBranch);
+                    console.log(branch_info[1]);
+               }
+
+            })
 
             $("#startDate").change(function(){
                 var startDate = $("#startDate").val();
-                $(".display_trans_startDate").text(startDate);
+                $(".display_trans_startDate").text("Start Date: "+startDate);
                 console.log(startDate);
-            });
+            })
 
             $("#endDate").change(function(){
                 var endDate = $("#endDate").val();
-                $(".display_trans_endDate").text(endDate);
+                $(".display_trans_endDate").text("End Date: "+endDate);
                 console.log(endDate);
-            });
+            })
 
 
-            $('#btn_submit_cheque_request').click(function(e){
-                    e.preventDefault();
 
-                    $('#spinner').show();
-                    $('#spinner-text').show();
-
-                    $('#confirm_button').attr('disabled',true);
-
+            $('#btn_submit_request_statement').click(function(){
+                // toaster("Please fill all required fields","error", 6000);
+                // return false;
 
 
                     //statement request details/get values.
-                    var account_no = $('#account_number').val();
-                    var type_of_statement = $('#statementType').val();
-                    var pUBranch = $('#pUBranch').val();
-                    var transStartDate = $('#startDate').val();
-                    var transEndDate = $('#endDate').val();
+                    let my_account = $('#my_account').val();
+                    let type_of_statement = $('#statementType').val();
+                    let pUBranch = $('#pUBranch').val();
+                    let transStartDate = $('#startDate').val();
+                    let transEndDate = $('#endDate').val();
 
 
 
+                    if(pUBranch ==""|| my_account =="" || type_of_statement == "" || transStartDate =="" || transEndDate == ""){
+                        toaster("Please fill all required fields","error", 6000);
+                    }
+                    else{
+                        let branch_info = pUBranch.split("~");
+                        let branchCode = branch_info[0];
 
-                    // //GET VALUES
-                    // var from_account_ = from_account[2];
-                    // var to_account_ = to_account[1];
-                    // var transfer_amount = $('#amount').val();
-                    // var category_ = category[1];
-                    // var select_frequency_ = select_frequency[1];
-                    // var purpose = $('#purpose').val();
-                    // var pin = $('#user_pin').val();
+                        my_account_info = my_account.split("~");
+                        let accountNumber = my_account_info[2].trim();
 
-                    // var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    // var schedule_payment_date = $('#schedule_payment_date').val();
+
 
                     $.ajax({
 
@@ -291,11 +359,11 @@
                         'url' : 'statement-request-api',
                         "datatype" : "application/json",
                         'data' : {
-                            'account_no' : account_no,
+                            'account_no' : accountNumber.trim(),
                             'type_of_statement' : type_of_statement,
-                            'pick_up_branch' : pUBranch,
-                            'transStartDate' : transStartDate,
-                            'transEndDate' : transEndDate,
+                            'pick_up_branch' : branchCode.trim(),
+                            'transStartDate' : transStartDate.trim(),
+                            'transEndDate' : transEndDate.trim(),
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -303,27 +371,28 @@
                         success:
                         function(response){
 
+                            console.log(response)
+
                             if(response.responseCode == '000'){
-                                toaster(response.message, 'success' )
-                                $('#confirm_button').hide();
-                                $('#back_button').hide();
-                                $('#print_receipt').show();
-                            }else{
+                                toaster(response.message, 'success',20000 )
+                                $("#request_form_div").hide();
+                                $(".disappear-after-success").hide();
+                                $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
+                                $("request_detail_div").show();
+                                }
+                                else
+                                {
 
-                                toaster(response.message, 'error' );
+                                toaster(response.message, 'error', 9000 );
 
-                                $('#spinner').hide();
-                                $('#spinner-text').hide();
-                                $('#print_receipt').hide();
-                                $('#confirm_transfer').show();
-                                $('#confirm_button').attr('disabled',false);
-
+                                }
                         }
-                        }
-                        })
+                        });
+
+                    }
 
 
-                })
+                });
 
         });
     </script>

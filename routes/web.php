@@ -395,4 +395,4 @@ Route::post('submit-stop-cheque-book-request', [StopChequeController::class, 'su
 Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
 
 //route for statement request
-Route::get('statement-request-api', [StatementRequestController::class, 'statement_request'])->name('statement-request-api');
+Route::post('statement-request-api', [StatementRequestController::class, 'statement_request'])->name('statement-request-api');
