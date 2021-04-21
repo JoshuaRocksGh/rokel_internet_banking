@@ -49,6 +49,7 @@ use App\Http\Controllers\Payments\CardlessController;
 use App\Http\Controllers\Payments\KorporController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
+use App\Http\Controllers\Settings\ChangePinController;
 use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\TradeFinance\TradeFinanceController;
@@ -104,7 +105,7 @@ Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
 Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('add-same-bank-beneficiary');
 
-Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
+Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('add-local-bank-beneficiary');
 Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('add-international-bank-beneficiary');
 
 Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
@@ -142,7 +143,7 @@ Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentContr
 //PAYMENTS API ROUTES
 Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
 Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
-Route::get('/submit_kyc', [KycController::class, 'submit_kyc'])->name('submit_kyc');
+Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
 
 // SAVED BENEFICIARY
@@ -415,3 +416,6 @@ Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_r
 
 //route for statement request
 Route::post('statement-request-api', [StatementRequestController::class, 'statement_request'])->name('statement-request-api');
+
+//route for change-pin-api
+Route::post('change-pin-api',[ChangePinController::class, 'change_pin'])->name('change-pin-api');

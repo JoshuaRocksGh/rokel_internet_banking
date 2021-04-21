@@ -40,18 +40,18 @@
                             <i class="mdi mdi-block-helper mr-2"></i>
                             <span id="error_message"></span>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="new_password">Security Question</label>
                             <div class="input-group input-group-merge">
                                 <select class="form-control" id="security_questions">
                                     <option value="">Select Security Queston</option>
                                 </select>
-                               
+
                             </div>
                         </div>
 
-                        
+
                         <div class="form-group">
                             <label for="security_answer">Security Answer</label>
                             <div class="input-group input-group-merge">
@@ -72,7 +72,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="form-group">
                             <label for="new_pin">New PIN</label>
                             <div class="input-group input-group-merge">
@@ -126,7 +126,7 @@
 
 @section('scripts')
 <script>
-    
+
     function get_security_question() {
         $.ajax({
             'type': 'GET',
@@ -140,7 +140,7 @@
                     $('#security_questions').append($('<option>', {
                         value: data[index].Q_CODE
                     }).text(data[index].Q_DESCRIPTION));
-                    
+
                 });
 
             },
@@ -162,7 +162,7 @@
         $('#spinner').hide(),
         $('#spinner-text').hide(),
 
-        
+
 
         $('#change-password-form').submit(function(e){
             e.preventDefault();
@@ -199,7 +199,7 @@
                     $('#submit').attr('disabled',false);
 
                     if(response.responseCode == "000"){
-                      
+
                         window.location = 'home';
 
                     }else {
