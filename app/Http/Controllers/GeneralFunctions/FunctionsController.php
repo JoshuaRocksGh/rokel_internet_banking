@@ -77,6 +77,17 @@ class FunctionsController extends Controller
 
 
 
+    public function get_correct_fx_rate(Request $request)
+    {
+
+        $response = Http::get(env('API_BASE_URL') . "utilities/getCorrectFxRates");
+
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
+
+
     public function get_my_loans_accounts()
     {
         // return 'kjsdf';

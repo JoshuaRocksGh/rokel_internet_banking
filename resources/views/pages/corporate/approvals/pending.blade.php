@@ -23,7 +23,7 @@
             <br> <br>
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body card-background-image">
+                    <div class="card-body">
 
                         <div class="row">
 
@@ -75,7 +75,7 @@
                                             </p> --}}
 
                                             <table id="datatable-buttons"
-                                                class="table table-striped dt-responsive nowrap w-100">
+                                                class="table table-striped table-bordered dt-responsive nowrap w-100" style="zoom: 0.8;">
                                                 <thead>
                                                     <tr>
                                                         <th>Req-Type</th>

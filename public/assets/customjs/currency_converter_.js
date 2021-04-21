@@ -5,16 +5,15 @@ $(document).ready(function () {
 
         // converter_rates
 
-        console.log(JSON.parse(ret));
+        console.log(JSON.stringify(ret));
 
 
         // ret = $('#hide_fx_rate').val()
-        var converter_rates = JSON.parse(ret)
+        var converter_rates = JSON.stringify(ret)
 
         console.log(converter_rates);
 
         //return false;
-
 
 
         var result = 1;
@@ -36,7 +35,7 @@ $(document).ready(function () {
             console.log(get_con_1)
 
             ret = $('#hide_fx_rate').val()
-            var converter_rates = JSON.parse(ret)
+            var converter_rates = JSON.stringify(ret)
             console.log(converter_rates)
 
 
@@ -99,8 +98,8 @@ $(document).ready(function () {
             console.log(get_con_1)
 
             ret = $('#hide_fx_rate').val()
-            var converter_rates = JSON.parse(ret)
-
+            var converter_rates = JSON.stringify(ret)
+            console.log(converter_rates)
 
 
             if (exch_rate_from = '' || exch_rate_from == undefined || exch_rate_to == '' || exch_rate_to == undefined) {
@@ -113,7 +112,6 @@ $(document).ready(function () {
             for (let index = 0; index < converter_rates.length; index++) {
                 console.log('final = ' + get_con);
                 console.log('final = ' + converter_rates[index].PAIR);
-
                 if (converter_rates[index].PAIR == get_con) {
                     rate = converter_rates[index].MIDRATE;
 

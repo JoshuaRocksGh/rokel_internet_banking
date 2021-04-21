@@ -35,6 +35,7 @@ use App\Http\Controllers\Cheques\ChequesRejectedController;
 use App\Http\Controllers\Corporate\Approvals\PendingController;
 use App\Http\Controllers\Corporate\Approvals\ApprovedController;
 use App\Http\Controllers\Corporate\Approvals\RejectedController;
+use App\Http\Controllers\Corporate\GeneralFunctions\FunctionsController as GeneralFunctionsFunctionsController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
@@ -164,6 +165,7 @@ Route::get('/one-time-payment', [paymentController::class, 'one_time'])->name('o
 
 //  CORPORATE ROUTE
 Route::get('/approvals-pending', [PendingController::class, 'approvals_pending'])->name('approvals-pending');
+Route::get('/get-pending-requests', [GeneralFunctionsFunctionsController::class, 'get_pending_requests'])->name('get-pending-requests');
 Route::get('/approvals-pending-transfer-details', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details');
 
 
@@ -355,6 +357,7 @@ Route::get('get-security-question-api', [FunctionsController::class, 'security_q
 Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
 Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
 Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
+Route::get('get-correct-fx-rate-api', [FunctionsController::class, 'get_correct_fx_rate'])->name('get-correct-fx-rate-api');
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<

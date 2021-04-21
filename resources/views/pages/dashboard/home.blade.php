@@ -171,6 +171,7 @@
                                                 <div>
                                                     <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" required
                                                         placeholder="0.00" id="amount"/>
+                                                        <input type="hidden" value="" id="hide_fx_rate">
                                                 </div>
                                             </div>
                                         </div>
@@ -567,13 +568,12 @@
 @section('scripts')
     <!-- Plugins js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>
+
 
             <!-- Tour page js -->
         <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script>
-
-        <!-- Tour init js-->
-        <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script>
+         <!-- Tour init js-->
+    <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script>
 
     <script>
 
@@ -728,6 +728,29 @@
                     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
                 };
 
+
+                   function get_correct_fx_rate() {
+
+                            $.ajax({
+                                'type': 'GET',
+                                'url': 'get-correct-fx-rate-api',
+                                "datatype": "application/json",
+                                success: function(response) {
+                                    console.log(response.data);
+                                    let data = response.data
+                                    console.log(data)
+
+                                    $('#hide_fx_rate').val(JSON.stringify(data))
+
+                                },
+                                error: function(xhr, status, error){
+                                alert("Failed to correct rates")
+
+                                }
+
+                            })
+                };
+
         function get_fx_rate(rate_type){
 
             $.ajax({
@@ -773,7 +796,7 @@
                               $.each(data, function(index) {
                                 let flag_1 =``
                                 let flag_2 =``
-                                  console.log(data[index].pair);
+                                console.log(data[index].pair);
                                 let pair = data[index].pair.split('/')
                                  flag_1 = `assets/images/flags/${pair[0].trim()}.png`
                                  flag_2 = `assets/images/flags/${pair[1].trim()}.png`
@@ -809,21 +832,27 @@
 
         $(document).ready(function() {
 
+            var converter_rates = []
 
             setTimeout(function() {
                 get_fx_rate("Transfer rate")
                 get_fx_rate("Note rate")
                 get_fx_rate("Cross rate")
+                converter_rates = get_correct_fx_rate()
                 get_currency()
                 get_accounts();
                 get_loans()
             }, 2000);
+
         })
 
 
 
 
     </script>
+
+     <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>
+
 
 
 {{--
