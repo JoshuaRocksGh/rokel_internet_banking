@@ -2,7 +2,7 @@
 <div class="navbar-custom" style="zoom: 0.9;">
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-right mb-0">
-{{--
+
             <li class="d-none d-lg-block">
                 <form class="app-search">
                     <div class="app-search-box dropdown">
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </form>
-            </li>  --}}
+            </li>
 {{--
             <li class="dropdown d-inline-block d-lg-none">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -83,13 +83,13 @@
                     </form>
                 </div>
             </li>  --}}
-{{--
+
             <li class="dropdown d-none d-lg-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
                     <i class="fe-maximize noti-icon"></i>
                 </a>
-            </li>  --}}
-{{--
+            </li>
+
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-grid noti-icon"></i>
@@ -142,8 +142,8 @@
                     </div>
 
                 </div>
-            </li>  --}}
-{{--
+            </li>
+
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ asset('assets/images/flags/us.jpg') }}" alt="user-image" height="16">
@@ -171,7 +171,7 @@
                     </a>
 
                 </div>
-            </li>  --}}
+            </li>
 
             <li class="dropdown notification-list topbar-dropdown d-none d-md-block d-lg-block " >
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -283,6 +283,7 @@
                         </div>
 
                     </div> --}}
+
                     <span class="pro-user-name ml-1">
                         Geneva <i class="mdi mdi-chevron-down"></i>
                     </span>
@@ -373,6 +374,11 @@
             </li>
 
             <li class="dropdown d-none d-xl-block">
+                 <div class="logo-lg-text-light topnav-menu topnav-menu-left m-0 text-white" style="color:white !important;">
+
+                <h3 style="color: white"> Corporate Internet Banking</h3>
+            </div>
+
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     Create New
                     <i class="mdi mdi-chevron-down"></i>
@@ -517,6 +523,8 @@
                 </div>
             </li>
         </ul>
+
+
         <div class="clearfix"></div>
     </div>
 </div>

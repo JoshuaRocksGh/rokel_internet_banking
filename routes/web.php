@@ -12,6 +12,7 @@ use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBan
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
 use App\Http\Controllers\Authentication\ForgotPasswordController;
+use App\Http\Controllers\Authentication\KycController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
@@ -43,6 +44,8 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MaileController;
 use App\Http\Controllers\Payments\BulkUpload\BulkUploadsController;
+use App\Http\Controllers\Payments\CardlessController;
+use App\Http\Controllers\Payments\KorporController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\ChangePinController;
@@ -101,7 +104,7 @@ Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
 Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('add-same-bank-beneficiary');
 
-Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
+Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('add-local-bank-beneficiary');
 Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('add-international-bank-beneficiary');
 
 Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
@@ -135,6 +138,12 @@ Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobi
 Route::get('/payment-add-beneficiary', [paymentController::class, 'add_beneficiary'])->name('payment-add-beneficiary');
 Route::get('/payment-add-beneficiary/mobile-money-beneficiary', [paymentController::class, 'mobile_money_beneficiary'])->name('mobile-money-beneficiary');
 Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentController::class, 'utility_payment_beneficiary'])->name('utility-payment-beneficiary');
+
+//PAYMENTS API ROUTES
+Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
+Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
+Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
+
 
 // SAVED BENEFICIARY
 Route::get('/saved-beneficiary', [paymentController::class, 'saved_beneficiary'])->name('saved-beneficiary');
@@ -346,15 +355,21 @@ Route::get('get-bank-branches-list-api', [FunctionsController::class, 'branches_
 Route::get('get-security-question-api', [FunctionsController::class, 'security_question'])->name('get-security-question-api');
 Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
 Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
+Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
 
 // Transfers
-Route::post('/transfer-to-beneficiary-api', [APITransferSameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary-api');
-Route::post('/transfer-to-beneficiary-api', [APITransferSameBankController::class, 'one_time_beneficiary'])->name('transfer-to-beneficiary-api');
+Route::get('/get-transfer-beneficiary-api', [FunctionsController::class, 'get_transfer_beneficiary'])->name('get-transfer-beneficiary-api');
+Route::post('/transfer-to-beneficiary-api', [SameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary-api');
+Route::post('/transfer-to-same-bank-beneficiary-onetime-api', [SameBankController::class, 'one_time_beneficiary'])->name('transfer-to-same-bank-beneficiary-onetime-api');
 Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
+
+// OTHER LOCAL BANK
+Route::post('/transfer-to-other-bank-beneficiary-api', [LocalBankController::class, 'transfer_to_other_bank_beneficiary_api'])->name('transfer-to-other-bank-beneficiary-api');
+Route::post('/transfer-to-other-bank-onetime-beneficiary-api', [LocalBankController::class, 'transfer_to_other_bank_onetime_beneficiary_api'])->name('transfer-to-other-bank-onetime-beneficiary-api');
 
 
 // // Transfers Add Beneficiary
@@ -383,7 +398,6 @@ Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::clas
 
 
 
-
 Route::post('international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
@@ -394,6 +408,8 @@ Route::post('submit-cheque-book-request', [AccountServicesChequeBookRequestContr
 Route::post('submit-stop-cheque-book-request', [StopChequeController::class, 'submit_stop_cheque_book_request'])->name('submit-stop-cheque-book-request');
 //route for atm card
 Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
+
+
 
 //route for statement request
 Route::post('statement-request-api', [StatementRequestController::class, 'statement_request'])->name('statement-request-api');

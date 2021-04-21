@@ -28,11 +28,12 @@
 
         <!-- end page title -->
 
+
         <div class="row">
 
             <div class="col-md-5 col-xl-5">
                 <h5 class="page-title">MY ACCOUNTS </h5>
-                <div class="widget-rounded-circle card-box">
+                <div class="widget-rounded-circle card-box" >
                     <div class="row">
 
                         <canvas id="myChart" width="400" height="250"></canvas>
@@ -44,123 +45,157 @@
             </div> <!-- end col-->
 
 
-            <div class="col-md-7 col-xl-7">
-                <h5 class="page-title">QUICK TRANSACTIONS</h5>
-                <div class="row">
+                <div class="col-md-7 col-xl-7">
+                    <h5 class="page-title element">QUICK TRANSACTIONS</h5>
+                    <div class="row">
 
-                    <div class="col-md-6 col-xl-6">
-                        <div class="widget-rounded-circle card-box">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-soft-info border-info border">
-                                        <i class="fe-smartphone font-20 avatar-title text-info"></i>
+                        <div class="col-md-7 col-xl-7">
+
+                        <div class="card">
+                            <div class="card-body" >
+
+
+                                <ul class="nav nav-tabs nav-bordered nav-justified">
+                                    <li class="nav-item" id="currency_rates_tour">
+                                        <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                            Cross Rates
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                            Note Rates
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content"  style="overflow-y:scroll !important; height: 285px; min-height:285px; ">
+                                    <div class="tab-pane active" id="home-b2">
+
+
+                                        <p>
+
+                                            <table class="table table-bordered mb-0" style="zoom: 0.8;">
+                                                <thead>
+                                                <tr>
+                                                    <th>Currency</th>
+                                                    <th>SALE(SLL)</th>
+                                                    <th>BUY(SLL)</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="display_cross_rates">
+
+                                                </tbody>
+                                            </table>
+
+                                        </p>
+
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1"><span >&nbsp; Mobile Money</span></h3>
-                                        {{--  <p class="text-muted mb-1 text-truncate">Total Revenue</p>  --}}
+                                    <div class="tab-pane " id="profile-b2">
+
+                                        <p>
+
+                                            <table class="table table-bordered mb-0" style="zoom: 0.8;">
+                                                <thead>
+                                                <tr>
+                                                    <th>Currency</th>
+                                                    <th>SALE(SLL)</th>
+                                                    <th>BUY(SLL)</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="display_note_rates">
+
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </p>
+
+
                                     </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
-                    </div>
 
-                <div class="col-md-6 col-xl-6">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
                                 </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
-                                    {{--  <p class="text-muted mb-1 text-truncate">Todays Sales</p>  --}}
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
+                            </div> <!-- end card-box-->
+                        </div> <!-- end col -->
+
+                        </div>
 
 
-                <div class="col-md-6 col-xl-6">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-info border-info border">
-                                    <i class="fe-smartphone font-20 avatar-title text-info"></i>
-                                </div>
+                <div class="col-md-5 col-xl-5 ">
+                    <div class="card">
+                        <div class="card-header bg-blue py-2 text-white">
+                            <div class="card-widgets">
+                                <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
+                                <a data-toggle="collapse" href="#cardCollpase5" role="button" aria-expanded="false"
+                                    aria-controls="cardCollpase2"><i class="mdi mdi-minus"></i></a>
+
                             </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >&nbsp; Mobile Money</span></h3>
-                                    {{--  <p class="text-muted mb-1 text-truncate">Total Revenue</p>  --}}
-                                </div>
+                            <h5 class="card-title mb-0 text-white" id="currency_converter_tour">Currency Converter</h5>
+                        </div>
+                        <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
+                            <div class="card-body">
+                                <form action="" autocomplete="off" aria-autocomplete="off">
+
+                                    <div class="row" >
+
+                                        <div class="col-xl-6">
+                                            <label for="" class="text-info">From</label>
+                                            <select class="form-control select_currency" id="exch_rate_from">
+                                                <option value="">-- Currency --</option>
+                                                {{--  <option value="EUR">(EUR) EURO</option>
+                                                <option value="SLL">(SLL) LOENE</option>
+                                                <option value="USD">(USD) US DOLLAR</option>
+                                                <option value="GBP">(GBP) BRITISH POUNDS</option>  --}}
+
+
+                                            </select>
+                                        </div>
+
+                                        <div class="col-xl-6">
+                                            <label for="" class="text-info">To</label>
+                                            <select class="form-control select_currency"  id="exch_rate_to">
+                                                    <option value="">-- Currency --</option>
+                                                    {{--  <option value="EUR">(EUR) EURO</option>
+                                                    <option value="SLL">(SLL) LOENE</option>
+                                                    <option value="USD">(USD) US DOLLAR</option>
+                                                    <option value="GBP">(GBP) BRITISH POUNDS</option>  --}}
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xl-12" >
+                                            <div class="form-group">
+                                                <label>Amount</label>
+                                                <div>
+                                                    <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" required
+                                                        placeholder="0.00" id="amount"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <span id="display"></span>
+
+                                        <div class="col-xl-12">
+                                            <div class="form-group">
+                                                <label>Result</label>
+                                                <div>
+                                                    <span id="result"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
                             </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
+                        </div>
+                    </div> <!-- end card-->
                 </div>
 
-                <div class="col-md-6 col-xl-6">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-info border-info border">
-                                    <i class="fe-send font-20 avatar-title text-info"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                   <h3 class="mt-1"><span > &nbsp; All Payments</span></h3>
-                                    {{--  <p class="text-muted mb-1 text-truncate">Conversion</p>  --}}
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
-
-                <div class="col-md-6 col-xl-6">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-rss font-20 avatar-title text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-3"><span > &nbsp;&nbsp; Cardless</span></h3>
-                                    {{--  <p class="text-muted mb-1 text-truncate">Todays Visits</p>  --}}
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
+                    </div>
 
 
-                <div class="col-md-6 col-xl-6">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
-                                    {{--  <p class="text-muted mb-1 text-truncate">Todays Sales</p>  --}}
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
-
-
-
-            </div>
 
 
 
@@ -170,14 +205,13 @@
         </div>
         <!-- end row-->
 
-
-        <div class=" container-fluid">
+        <div class="container-fluid">
             <div class="">
                 <div class="row">
                     <div class="col-xl-12" style="zoom:0.8;">
                         <div id="accordion" class="mb-3">
                             <div class="card mb-1">
-                                <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
+                                <a class="text-dark" data-toggle="collapse"  aria-expanded="true">
                                 <div class="card-header" id="headingOne">
                                     <h5 class="m-0">
 
@@ -217,7 +251,7 @@
                                 </div>
                             </div>
                             <div class="card mb-1">
-                                <a class="text-dark" data-toggle="collapse " href="#collapseTwo" aria-expanded="true">
+                                <a class="text-dark" data-toggle="collapse "  aria-expanded="true">
                                 <div class="card-header" id="headingTwo">
                                     <h5 class="m-0">
 
@@ -260,6 +294,105 @@
 
             </div>
         </div>
+
+
+<div class="container-fluid">
+            <div class="">
+           <div class="row">
+
+
+                <div class="col-md-3 col-xl-3">
+                    <div class="widget-rounded-circle card-box">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
+                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-right">
+                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+
+                <div class="col-md-3 col-xl-3">
+                    <div class="widget-rounded-circle card-box">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="avatar-md rounded-circle bg-soft-info border-info border">
+                                    <i class="fe-smartphone font-20 avatar-title text-info"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-right">
+                                    <h3 class="mt-1"><span >&nbsp; Mobile Money</span></h3>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end widget-rounded-circle-->
+                </div>
+
+                <div class="col-md-3 col-xl-3">
+                    <div class="widget-rounded-circle card-box">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="avatar-md rounded-circle bg-soft-info border-info border">
+                                    <i class="fe-send font-20 avatar-title text-info"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-right">
+                                   <h3 class="mt-1"><span > &nbsp; All Payments</span></h3>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+                <div class="col-md-3 col-xl-3">
+                    <div class="widget-rounded-circle card-box">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
+                                    <i class="fe-rss font-20 avatar-title text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-right">
+                                    <h3 class="mt-3"><span > &nbsp;&nbsp; Cardless</span></h3>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->
+
+{{--
+                <div class="col-md-3 col-xl-3">
+                    <div class="widget-rounded-circle card-box">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
+                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-right">
+                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col-->  --}}
+
+
+
+            </div>
+            </div>
+            </div>
 
 
         <div class="row ">
@@ -421,6 +554,8 @@
         </div>
 
 
+
+
     </div> <!-- container -->
 
 
@@ -432,6 +567,13 @@
 @section('scripts')
     <!-- Plugins js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>
+
+            <!-- Tour page js -->
+        <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script>
+
+        <!-- Tour init js-->
+        <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script>
 
     <script>
 
@@ -474,27 +616,6 @@
                 }
             } --}}
         });
-
-        {{-- function get_accounts() {
-            $.ajax({
-                'type': 'GET',
-                'url': 'get-accounts-api',
-                "datatype": "application/json",
-                success: function(response) {
-                    console.log(response.data);
-                    let data = response.data
-                    $.each(data, function(index) {
-
-                        $('#security_questions').append($('<option>', {
-                            value: data[index].Q_CODE
-                        }).text(data[index].Q_DESCRIPTION));
-
-                    });
-
-                },
-
-            })
-        }; --}}
 
 
         function get_accounts(){
@@ -583,15 +704,117 @@
             })
         }
 
+                   function get_currency() {
+                $.ajax({
+                    'type': 'GET',
+                    'url': 'get-currency-list-api',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+                            $('.select_currency').append($('<option>', {
+                                value: data[index].isoCode
+                            }).text('(' + data[index].isoCode + ') ~ ' + data[index].description));
+                        });
+
+                    },
+
+                })
+            };
+
+
+                function formatToCurrency(amount) {
+                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+                };
+
+        function get_fx_rate(rate_type){
+
+            $.ajax({
+                "type": "GET",
+                "url" : "get-fx-rate-api?rateType=" + rate_type,
+                "datatype" : "application/json",
+
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success:
+                function(response){
+                    console.log(response);
+                    if(response.responseCode == '000'){
+
+                        let data = response.data;
+
+
+                if(response.data.length > 0)
+                    {
+                        if(rate_type == "Note rate"){
+                                   $.each(data, function(index) {
+                                    let flag_1 =``
+                                    let flag_2 =``
+                                    console.log(data[index].pair);
+                                    let pair = data[index].pair.split('/')
+                                    flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                                    flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                                    $('.display_cross_rates').append(`
+                                        <tr>
+                                            <td style="zoom: 0.8;">
+                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                /
+                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+
+                                            </td>
+                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                        </tr>
+                                    `);
+                                  });
+                        }else if(rate_type == "Cross rate"){
+                              $.each(data, function(index) {
+                                let flag_1 =``
+                                let flag_2 =``
+                                  console.log(data[index].pair);
+                                let pair = data[index].pair.split('/')
+                                 flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                                 flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                                $('.display_cross_rates').append(`
+                                    <tr>
+                                        <td style="zoom: 0.8;">
+                                            <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                            /
+                                            <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+
+                                        </td>
+                                        <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                        <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                    </tr>
+                                `);
+                                  });
+                        }
+
+                    }
+
+                    }else{
+
+                    }
+
+                }
+            })
+        }
+
 
 
 
 
 
         $(document).ready(function() {
-            console.log('kjhlksdfs')
+
 
             setTimeout(function() {
+                get_fx_rate("Transfer rate")
+                get_fx_rate("Note rate")
+                get_fx_rate("Cross rate")
+                get_currency()
                 get_accounts();
                 get_loans()
             }, 2000);

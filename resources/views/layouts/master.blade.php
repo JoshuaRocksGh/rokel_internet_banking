@@ -92,14 +92,14 @@
     <body style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;" class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
     <!-- Begin page -->
-    <div id="wrapper" >
+    <div id="wrapper" style="zoom: 0.9;">
            @include('sweetalert::alert')
 
             @include('snippets.nav')
 
         	@include('snippets.side-bar')
 
-            <div class="content-page">
+            <div class="content-page" >
                 <div class="content">
                 	@yield('content')
                 </div>
@@ -113,6 +113,8 @@
 
 		@yield('scripts')
         {{--  @include('sweetalert::alert')  --}}
+
+
 
         <script>
             {{--  $(document).userTimeout({

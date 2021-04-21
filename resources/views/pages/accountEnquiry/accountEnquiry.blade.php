@@ -42,7 +42,7 @@
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <div class=" p-3 mt-4 mt-lg-0 rounded">
-                                            <h3 class=" mb-3 ">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h3>
+                                            <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2>
 
                                             <div class="text-center" id="account_balance_info_loader">
                                                 <div class="spinner-grow text-primary avatar-lg" role="status"></div>
@@ -117,25 +117,6 @@
 
                                             <form class="form-inline">
 
-                                                {{-- <div class="form-group">
-                                                            <strong  class=" header-title ">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </strong>
-
-                                                        </div> --}}
-
-
-                                                {{-- <div class="form-group mx-sm-3">
-                                                            <label for="inputPassword2" class="sr-only">Password</label>
-                                                            <input type="password" class="form-control input-lg" id="we" placeholder="Password">
-                                                        </div>
-
-                                                        <div class="form-group mx-sm-3">
-                                                            <label for="inputPassword2" class="sr-only">Password</label>
-                                                            <input type="password" class="form-control input-lg" id="sd" placeholder="Password">
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light">Confirm identity</button> --}}
-
-
-
                                             </form>
 
 
@@ -151,19 +132,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="text-center" id="account_transaction_loader">
-                                            <div class="spinner-grow text-primary avatar-lg" role="status"></div>
-                                        </div>
-
-                                        <div class="text-center" id="account_transaction_retry_btn">
-                                            <button class="btn btn-sm btn-secondary" >retry</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row account_transaction_display">
+                                <div class="row ">
 
                                     <div class="col-md-12">
 
@@ -229,7 +198,21 @@
                                         </div>
                                         <br>
                                     </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-center" id="account_transaction_loader">
+                                            <div class="spinner-grow text-primary avatar-lg" role="status"></div>
+                                        </div>
+
+                                        <div class="text-center" id="account_transaction_retry_btn">
+                                            <button class="btn btn-sm btn-secondary" >retry</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+ <div class="row">
                                     <div class="col-md-12">
 
                                         {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
@@ -313,21 +296,8 @@
         <script>
             // creates multiple instances
 
-            $(".date-picker-startDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: new Date('1 F, Y'),
-                  position: "above"
-            })
 
-            $(".date-picker-endDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: new Date('30 F, Y'),
-                position: "above"
-            })
+
 
         </script>
 
@@ -336,14 +306,51 @@
             $("#account_balance_info_retry_btn").hide();
 
             $(".account_transaction_display").hide();
+             $(".account_transaction_display_table").hide();
             $("#account_transaction_retry_btn").hide();
 
             $(document).ready(function() {
 
 
+                  let today = new Date();
+            let dd = today.getDate();
+
+            let mm = today.getMonth()+1;
+            const yyyy = today.getFullYear()
+            console.log(mm)
+            console.log(String(mm).length)
+            if(String(mm).length == 1){
+                mm = '0' + mm
+            }
+
+            defaultStartDate = '01-' + mm + '-' + today.getFullYear()
+            defaultEndDate = '30-' + mm + '-' + today.getFullYear()
+
+            console.log(defaultStartDate)
+            console.log(defaultEndDate)
+
+
+            $(".date-picker-startDate").flatpickr({
+                altInput: true,
+                altFormat: "j F, Y",
+                dateFormat: "d-m-Y",
+                defaultDate: [defaultStartDate],
+                  position: "above"
+            })
+
+            $(".date-picker-endDate").flatpickr({
+                altInput: true,
+                altFormat: "j F, Y",
+                dateFormat: "d-m-Y",
+                defaultDate: [defaultEndDate],
+                position: "above"
+            })
+
+
+
                 var account_number = @json($account_number);
-                var start_date = "01-06-2019";
-                var end_date = "01-06-2020";
+                var start_date = defaultStartDate;
+                var end_date = defaultEndDate;
                 var transLimit = "10";
 
                 setTimeout(function() {
@@ -354,6 +361,18 @@
 
                 $('#date_search').click(function() {
 
+                                $(".account_transaction_display").hide();
+             $(".account_transaction_display_table").hide();
+            $("#account_transaction_retry_btn").hide();
+            $("#account_transaction_loader").show();
+
+                   let start_date =  $('#startDate').val()
+                   let end_date =  $('#endDate').val()
+
+                    getAccountTransactions(account_number, start_date, end_date, transLimit)
+
+                   console.log(start_date);
+                   console.log(end_date)
                 })
 
 
@@ -367,6 +386,7 @@
 
                 $("#account_transaction_retry_btn").click(function() {
                     $(".account_transaction_display").hide();
+                     $(".account_transaction_display_table").hide();
                     $("#account_transaction_retry_btn").hide();
                     $("#account_transaction_loader").show();
                     getAccountTransactions(account_number, start_date, end_date);
@@ -397,12 +417,11 @@
 
                                 let data = response.data;
 
-
-
-                                $.each(data, function(index) {
+                                if(data.length > 0){
+                                                                    $.each(data, function(index) {
                                     let amount = ``;
                                     if (parseFloat(data[index].amount) > 0) {
-                                        amount = ` <b class='text-success'>
+                                        amount = `<b class='text-success'>
                                                             <i class="fe-arrow-up text-success mr-1"></i>
                                                             ${data[index].amount}
                                                         </b>
@@ -432,15 +451,20 @@
 
 
                                 })
+                                }else{
+
+                                }
 
 
                                 $("#account_transaction_loader").hide();
                                 $("#account_transaction_retry_btn").hide();
+                                 $(".account_transaction_display_table").show();
                                 $(".account_transaction_display").show();
 
                             } else {
                                 $("#account_transaction_loader").hide();
                                 $(".account_transaction_display").hide();
+                                 $(".account_transaction_display_table").hide();
                                 $("#account_transaction_retry_btn").show();
                             }
 
@@ -448,6 +472,7 @@
                         error: function(xhr, status, error) {
                             $("#account_transaction_loader").hide();
                             $(".account_transaction_display").hide();
+                             $(".account_transaction_display_table").hide();
                             $("#account_transaction_retry_btn").show();
                         }
                     })

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\GeneralFunctions;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -47,6 +48,35 @@ class FunctionsController extends Controller
     }
 
 
+    public function get_fx_rate(Request $request)
+    {
+
+        if ($request->has("rateType")) {
+            $rateType = $request->query("rateType");
+        }
+
+        $rateType = $request->query("rateType");
+
+        if (empty($rateType)) {
+            $rateType = "Transfer rate";
+        }
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $data = [
+            "authToken" => $authToken,
+            "rateType" => $rateType
+        ];
+
+        $response = Http::post(env('API_BASE_URL') . "utilities/getFxRates", $data);
+
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
+
+
     public function get_my_loans_accounts()
     {
         // return 'kjsdf';
@@ -63,7 +93,8 @@ class FunctionsController extends Controller
 
         $response = Http::post(env('API_BASE_URL') . "loans/getLoans", $data);
 
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
 
         // return $response;
         // return $response->status();
@@ -92,7 +123,8 @@ class FunctionsController extends Controller
 
         $response = Http::post(env('API_BASE_URL') . "account/getAccounts", $data);
 
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
 
         // return $response;
         // return $response->status();
@@ -118,7 +150,8 @@ class FunctionsController extends Controller
 
         //return $response;
         // return $response->status();
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
 
@@ -140,19 +173,45 @@ class FunctionsController extends Controller
 
         //return $response;
         // return $response->status();
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 
 
-        public function bank_list()
-        {
 
-            $response = Http::get(env('API_BASE_URL') . "/utilities/getBanks");
+    public function get_transfer_beneficiary(Request $request)
+    {
+        $beneType = $request->beneType;
 
-            //return $response;
-            // return $response->status();
-            return $this->baseResponseApi($response);
-        }
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $base_response = new BaseResponse();
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+
+        $response = Http::get(env('API_BASE_URL') . "/beneficiary/getTransferBeneficiariestype}?userID=$userID&bankType=$beneType");
+
+        //return $response;
+        // return $response->status();
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
+
+    public function bank_list()
+    {
+
+        $response = Http::get(env('API_BASE_URL') . "/utilities/getBanks");
+
+        //return $response;
+        // return $response->status();
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
 
 
     public function branches_list()
@@ -162,8 +221,7 @@ class FunctionsController extends Controller
 
         //return $response;
         // return $response->status();
-        return $this->baseResponseApi($response);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
-
-
 }

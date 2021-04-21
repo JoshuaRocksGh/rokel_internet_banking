@@ -473,14 +473,35 @@
             $(document).ready(function() {
 
                 setTimeout(function(){
+                    from_account()
                     get_benerficiary()
                 },2000)
+
+
+            function from_account(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'get-my-account',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        //console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+                        $('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                        //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                        });
+                    },
+
+                })
+            }
+
 
 
             function get_benerficiary(){
                 $.ajax({
                     'type': 'GET',
-                    'url' : 'get-beneficiary-list-api?bene_type=OTB',
+                    'url' : 'get-transfer-beneficiary-api?beneType=OTB',
                     "datatype" : "application/json",
                     success:function(response){
                         console.log(response.data);
@@ -903,7 +924,7 @@
 
                         $.ajax({
                             'type' : 'POST' ,
-                            'url' : 'international-bank-transfer-beneficiary-api' ,
+                            'url' : 'transfer-to-other-bank-beneficiary-api' ,
                             "datatype" : "application/json",
                             'data' : {
                                 'from_account' : from_account_ ,
@@ -967,7 +988,7 @@
 
                         $.ajax({
                             'type' : 'POST',
-                            'url' : 'international-bank-onetime-api' ,
+                            'url' : 'transfer-to-other-bank-onetime-beneficiary-api' ,
                             "datatype" : "application/json",
                             "data" : {
                                 'from_account' : from_account_ ,
