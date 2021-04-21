@@ -103,7 +103,7 @@ Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
 Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('add-same-bank-beneficiary');
 
-Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('local-bank-beneficiary');
+Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('add-local-bank-beneficiary');
 Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('add-international-bank-beneficiary');
 
 Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
@@ -141,7 +141,7 @@ Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentContr
 //PAYMENTS API ROUTES
 Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
 Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
-Route::get('/submit_kyc', [KycController::class, 'submit_kyc'])->name('submit_kyc');
+Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
 
 // SAVED BENEFICIARY

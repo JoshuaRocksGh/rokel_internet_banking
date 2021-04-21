@@ -200,7 +200,7 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label class="form-label">Proof of Address</label>
-                                                                <input type="text" id="proof_of_address_">
+                                                                <input type="hidden" id="proof_of_address_">
                                                                 <input type="file" class="form-control-file" id="proof_of_address"  required><br>
                                                                 <img class="img-fluid display_selected_id_image" id="display_selected_id_image" src="#" alt="your image" />
 
@@ -824,14 +824,16 @@
 
                        reader.readAsDataURL(file);
 
-                       reader.onload = function () {
+                       reader.onload = function(){
+                           {{-- alert(reader.result) --}}
+                        $(".display_selected_id_image").attr("src", reader.result);
+                        $('#proof_of_address_').val(reader.result)
+                    }
 
-                                var address = $('#proof_of_address_').val(reader.result);
 
-                                //console.log(address);
-                                //console.log(reader.result);//base64encoded string
 
-                            };
+
+
 
                    }
 
@@ -1228,72 +1230,66 @@
                 var tax_identification_number = $('#tax_identification_number').val();
                 var us_citizen = citizen_of_US ;
                 var resident = us_resident ;
+                var prove_of_address = $('#proof_of_address_').val()
 
 
-                    var file = $("#proof_of_address[type=file]").get(0).files[0];
-
-                           if(file){
-                               var reader = new FileReader();
-
-                               reader.onload = function(){
-                                   $(".display_selected_id_image").attr("src", reader.result);
-                               }
-
-                               reader.readAsDataURL(file);
-
-                        };
 
 
-                        console.log(address)
 
 
-                /* var fileInput = $('#proof_of_address').val();
 
-                var reader = new FileReader();
-                reader.readAsDataURL(fileInput.files[0]);
+                $.ajax({
+                    'type' : 'POST' ,
+                    "url" : " submit-kyc" ,
+                    "datatype": "application/json",
+                    "data" : {
+                        'customer_number' : customer_number ,
+                        'title' : title ,
+                        'firstname' : firstname ,
+                        'surname' : surname ,
+                        'Othername' : Othername ,
+                        'telephone_number' : telephone_number ,
+                        'email_address' : email_address ,
+                        'date_of_birth' : date_of_birth ,
+                        'gender' : gender ,
+                        'marital_status' : marital_status ,
+                        'number_of_children' : number_of_children ,
+                        'nationality' : nationality ,
+                        'id_type' : id_type ,
+                        'id_number' : id_number ,
+                        'date_of_issue' : date_of_issue ,
+                        'date_of_expiry' : date_of_expiry ,
+                        'mother_maiden_name' : mother_maiden_name ,
+                        'next_of_kin_name' : next_of_kin_name ,
+                        'next_of_kin_address' : next_of_kin_address ,
+                        'next_of_kin_telephone' : next_of_kin_telephone ,
+                        'country_of_residence' : country_of_residence ,
+                        'years_at_residence' : years_at_residence ,
+                        'city' : city ,
+                        'town' : town ,
+                        'residential_address' : residential_address ,
+                        'postal_address' : postal_address ,
+                        'employment_type' : employment_type ,
+                        'employee_number' : employee_number ,
+                        'employee_code' : employee_code ,
+                        'department' : department ,
+                        'date_of_employment' : date_of_employment ,
+                        'last_update_date' : last_update_date ,
+                        'tax_identification_number' : tax_identification_number ,
+                        'us_citizen' : us_citizen ,
+                        'resident' : resident ,
+                        'prove_of_address' : prove_of_address
 
-                    reader.onload = function () {
-                    console.log(reader.result);//base64encoded string
-                }
-                reader.onerror = function (error) {
-                    console.log('Error: ', error);
-                };
-                console.log(gender);
-                console.log(us_citizen);
-                console.log(resident);
-                console.log(customer_number);
-                console.log(title);
-                console.log(firstname);
-                console.log(surname);
-                console.log(Othername);
-                console.log(telephone_number);
-                console.log(email_address);
-                console.log(date_of_birth);
-                console.log(gender);
-                console.log(marital_status);
-                console.log(number_of_children);
-                console.log(nationality);
-                console.log(id_type);
-                console.log(id_number);
-                console.log(date_of_issue);
-                console.log(date_of_expiry);
-                console.log(mother_maiden_name);
-                console.log(next_of_kin_name);
-                console.log(next_of_kin_telephone);
-                console.log(country_of_residence);
-                console.log(years_at_residence);
-                console.log(city);
-                console.log(town);
-                console.log(residential_address);
-                console.log(postal_address);
-                console.log(employment_type);
-                console.log(employee_number);
-                console.log(employee_code);
-                console.log(department);
-                console.log(date_of_employment);
-                console.log(last_update_date);
-                console.log(tax_identification_number); */
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success:
+                    function(response) {
+                        console.log(response);
+                    }
 
+                })
 
             })
 
