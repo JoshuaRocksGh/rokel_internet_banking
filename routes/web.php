@@ -45,6 +45,7 @@ use App\Http\Controllers\MaileController;
 use App\Http\Controllers\Payments\BulkUpload\BulkUploadsController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
+use App\Http\Controllers\Settings\ChangePinController;
 use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\TradeFinance\TradeFinanceController;
@@ -396,3 +397,6 @@ Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_r
 
 //route for statement request
 Route::post('statement-request-api', [StatementRequestController::class, 'statement_request'])->name('statement-request-api');
+
+//route for change-pin-api
+Route::post('change-pin-api',[ChangePinController::class, 'change_pin'])->name('change-pin-api');

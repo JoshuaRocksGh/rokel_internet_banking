@@ -361,7 +361,6 @@
 
                         let branch_info = pUBranch.split("~");
                         let branchCode = branch_info[0];
-                        let pin = pin.trim();
 
                         my_account_info = my_account.split("~");
                         let accountNumber = my_account_info[2].trim();
@@ -379,7 +378,7 @@
                             'pick_up_branch' : branchCode.trim(),
                             'transStartDate' : transStartDate.trim(),
                             'transEndDate' : transEndDate.trim(),
-                            'pin': pin.trim()
+                            'pin': pin
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
