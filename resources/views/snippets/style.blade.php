@@ -22,7 +22,9 @@
 <link href="{{ asset('assets/css/app-purple-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
 
 
-<link href="{{ asset('assets/libs/bootstrap-tour/css/bootstrap-tour.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Tour css -->
+        <link href="{{ asset('assets/libs/hopscotch/css/hopscotch.min.css') }}" rel="stylesheet" type="text/css" />
+
 
 <!-- icons -->
 <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />

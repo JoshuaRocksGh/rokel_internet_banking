@@ -312,7 +312,7 @@
             function get_currency() {
                 $.ajax({
                     'type': 'GET',
-                    'url': 'get-local-bank-beneficiary-api',
+                    'url': 'get-currency-list-api',
                     "datatype": "application/json",
                     success: function(response) {
                         console.log(response.data);
