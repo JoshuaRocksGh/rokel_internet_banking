@@ -217,7 +217,7 @@
 
                                                             <div class="col-md-6">
                                                                 <label class="form-label">Number of Children</label>
-                                                                <input type="text" class="form-control" id="number_of_children"  required>
+                                                                <input type="number" class="form-control" id="number_of_children"  required>
                                                                 <br>
                                                             </div>
                                                             <div class="col-md-6">
@@ -234,7 +234,7 @@
 
                                                             <div class="col-md-6">
                                                                 <label class="form-label">ID Number</label>
-                                                                <input type="number" class="form-control" id="id_number"  required>
+                                                                <input type="text" class="form-control" id="id_number"  required>
                                                                 <br>
                                                             </div>
 
@@ -717,11 +717,11 @@
             var email_address = $('#email_address').val();
             var date_of_birth = $('#date_of_birth').val();
             var select_gender = $("input[type='radio']:checked").val();
-            var proof_of_address = $('#proof_of_address').val();
+            {{-- var proof_of_address = $('#proof_of_address').val(); --}}
 
 
 
-            console.log(customer_number);
+            /* console.log(customer_number);
             console.log(title);
             console.log(firstname);
             console.log(surname);
@@ -730,7 +730,7 @@
             console.log(email_address);
             console.log(proof_of_address);
             console.log(date_of_birth);
-            console.log(select_gender);
+            console.log(select_gender); */
 
             $('#basic_information_tab').addClass('active show');
             $('#personal_details_tab').addClass('active show');
@@ -743,52 +743,75 @@
         $('#personal_details_back_btn').click(function(e){
             e.preventDefault();
 
-        $('#basic_information_tab').addClass('active show');
-        $('#personal_details_tab').removeClass('active show');
+            $('#basic_information_tab').addClass('active show');
+            $('#personal_details_tab').removeClass('active show');
 
 
-        $('#first').addClass('active show');
-        $('#second').removeClass('active show');
+            $('#first').addClass('active show');
+            $('#second').removeClass('active show');
 
         })
 
         $('#personal_details_next_btn').click(function(e){
             e.preventDefault();
 
-        $('#basic_information_tab').addClass('active show');
-        $('#personal_details_tab').addClass('active show');
-        $('#residential_details_tab').addClass('active show');
+            var marital_status = $('#marital_status').val();
+            var number_of_children = $('#number_of_children').val();
+            var nationality = $('#nationality').val();
+            var id_type = $('#id_type').val();
+            var id_number = $('#id_number').val();
+            var date_of_issue = $('#date_of_issue').val();
+            var date_of_expiry = $('#date_of_expiry').val();
+            var mother_maiden_name = $('#mother_maiden_name').val();
+            var next_of_kin_name = $('#next_of_kin_name').val();
+            var next_of_kin_address = $('#next_of_kin_address').val();
+            var next_of_kin_telephone = $('#next_of_kin_telephone').val();
 
-        $('#first').removeClass('active show');
-        $('#second').removeClass('active show');
-        $('#third').addClass('active show');
+            $('#basic_information_tab').addClass('active show');
+            $('#personal_details_tab').addClass('active show');
+            $('#residential_details_tab').addClass('active show');
+
+            $('#first').removeClass('active show');
+            $('#second').removeClass('active show');
+            $('#third').addClass('active show');
 
         })
 
         $('#residential_details_back_btn').click(function(e){
             e.preventDefault();
 
-        $('#basic_information_tab').addClass('active show');
-        $('#personal_details_tab').addClass('active show');
-        $('#residential_details_tab').removeClass('active show');
+            $('#basic_information_tab').addClass('active show');
+            $('#personal_details_tab').addClass('active show');
+            $('#residential_details_tab').removeClass('active show');
 
-        $('#first').removeClass('active show');
-        $('#second').addClass('active show');
-        $('#third').removeClass('active show');
+            $('#first').removeClass('active show');
+            $('#second').addClass('active show');
+            $('#third').removeClass('active show');
         })
 
         $('#residential_details_next_btn').click(function(e){
             e.preventDefault();
 
-        $('#basic_information_tab').addClass('active show');
-        $('#personal_details_tab').addClass('active show');
-        $('#residential_details_tab').addClass('active show');
-        $('#employment_details_tab').addClass('active show');
+            var country_of_residence = $('#country_of_residence').val();
+            var years_at_residence = $('#years_at_residence').val();
+            var city = $('#city').val();
+            var country_of_residence = $('#country_of_residence').val();
+            var country_of_residence = $('#country_of_residence').val();
+            var country_of_residence = $('#country_of_residence').val();
+            var country_of_residence = $('#country_of_residence').val();
+            var country_of_residence = $('#country_of_residence').val();
+            var country_of_residence = $('#country_of_residence').val();
 
-        $('#first').removeClass('active show');
-        $('#second').removeClass('active show');
-        $('#third').removeClass('active show');
-        $('#fourth').addClass('active show');
+
+            $('#basic_information_tab').addClass('active show');
+            $('#personal_details_tab').addClass('active show');
+            $('#residential_details_tab').addClass('active show');
+            $('#employment_details_tab').addClass('active show');
+
+            $('#first').removeClass('active show');
+            $('#second').removeClass('active show');
+            $('#third').removeClass('active show');
+            $('#fourth').addClass('active show');
 
         })
 
