@@ -84,9 +84,9 @@
 
                                             <select class="custom-select" id="to_account" required>
                                                 <option value="">Select Account</option>
-                                                <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
+                                                {{-- <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
                                                     Currenct Account ~ 8888888888888~Joshua Amarfio
-                                                </option>
+                                                </option> --}}
                                             </select>
 
 
@@ -535,14 +535,14 @@
             function to_account(){
                 $.ajax({
                     'type': 'GET',
-                    'url' : 'get-same-bank-beneficiary',
+                    'url' : 'get-transfer-beneficiary-api?beneType=SAB',
                     "datatype" : "application/json",
                     success:function(response){
                         {{--  console.log(response.data);  --}}
                         let data = response.data
                         $.each(data, function(index) {
                         //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-                        $('#to_account').append($('<option>', { value : data[index].account_type+'~'+data[index].alias_name+'~'+data[index].account_number+'~'+data[index].account_currency}).text(data[index].account_type+'~'+data[index].account_number+'~'+data[index].alias_name+'~'+data[index].account_currency));
+                        $('#to_account').append($('<option>', { value : data[index].BENEF_TYPE+'~'+data[index].NICKNAME+'~'+data[index].BEN_ACCOUNT+'~'+data[index].BEN_ACCOUNT_CURRENCY}).text(data[index].BENEF_TYPE+'~'+data[index].BEN_ACCOUNT+'~'+data[index].NICKNAME+'~'+data[index].BEN_ACCOUNT_CURRENCY));
 
                         });
                         {{--  <option value="Currenct Account~Joshua Amarfio~8888888888888~GHS~800">
@@ -1092,7 +1092,16 @@
 
 
                                     }
-                                }
+                                },
+                error: function(xhr, status, error){
+                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#print_receipt').hide();
+
+
+                                        $('#confirm_transfer').show();
+                                        $('#confirm_button').attr('disabled',false);
+                }
 
                             })
 

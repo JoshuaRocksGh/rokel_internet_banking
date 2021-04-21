@@ -360,10 +360,15 @@ Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
 
 // Transfers
-Route::post('/transfer-to-beneficiary-api', [APITransferSameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary-api');
-Route::post('/transfer-to-beneficiary-api', [APITransferSameBankController::class, 'one_time_beneficiary'])->name('transfer-to-beneficiary-api');
+Route::get('/get-transfer-beneficiary-api', [FunctionsController::class, 'get_transfer_beneficiary'])->name('get-transfer-beneficiary-api');
+Route::post('/transfer-to-beneficiary-api', [SameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary-api');
+Route::post('/transfer-to-same-bank-beneficiary-onetime-api', [SameBankController::class, 'one_time_beneficiary'])->name('transfer-to-same-bank-beneficiary-onetime-api');
 Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
+
+// OTHER LOCAL BANK
+Route::post('/transfer-to-other-bank-beneficiary-api', [LocalBankController::class, 'transfer_to_other_bank_beneficiary_api'])->name('transfer-to-other-bank-beneficiary-api');
+Route::post('/transfer-to-other-bank-onetime-beneficiary-api', [LocalBankController::class, 'transfer_to_other_bank_onetime_beneficiary_api'])->name('transfer-to-other-bank-onetime-beneficiary-api');
 
 
 // // Transfers Add Beneficiary

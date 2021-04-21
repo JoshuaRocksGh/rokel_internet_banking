@@ -178,6 +178,30 @@ class FunctionsController extends Controller
     }
 
 
+
+    public function get_transfer_beneficiary(Request $request)
+    {
+        $beneType = $request->beneType;
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $base_response = new BaseResponse();
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+
+        $response = Http::get(env('API_BASE_URL') . "/beneficiary/getTransferBeneficiariestype}?userID=$userID&bankType=$beneType");
+
+        //return $response;
+        // return $response->status();
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
+
     public function bank_list()
     {
 
