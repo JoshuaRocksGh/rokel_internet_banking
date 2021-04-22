@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-md-2"> </div>
 
-                        <div class="col-md-12 disappear-after-success">
+                        <div class="col-md-12">
                             <div class="">
 
 
@@ -107,10 +107,18 @@
 
                                             </div>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 disappear-after-success">
                                                 <img src="{{ asset('assets/images/change_pin.jpg') }}" class="img-fluid"
                                                     alt="">
                                             </div>
+
+                                            <div class="col-md-6 text-center">
+
+                                                <p class="display-4 text-center text-success success-message ">
+
+                                                </p>
+                                            </div>
+
 
                                         </div> <!-- end col -->
                                         </p>
@@ -343,13 +351,16 @@
 
                                 console.log(response)
 
-                                if(response.responseCode != '000'){
+                                if(response.responseCode == '000'){
                                     toaster(response.message, 'success',20000 )
+                                    // toaster("Password reset successful", 'success',20000 )
                                     // $("#request_form_div").hide();
-                                    // $(".disappear-after-success").hide();
-                                    // $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
+                                    $(".disappear-after-success").hide();
+                                    $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
+                                    $("#spinner").hide();
+                                    $("#spinner-text").hide();
+                                    $("#submit-text").show();
                                     // $("request_detail_div").show();
-                                    $("#old_pin_txtBx").empty("");
                                     }
                                     else
                                     {
