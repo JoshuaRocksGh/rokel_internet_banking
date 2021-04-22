@@ -10,9 +10,9 @@
             <div class="card">
                 <div class="card-body card-background-image">
                     <div class="row">
-                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-10">
 
                             <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i class="fe-arrow-left"></i>  &emsp; SAME BANK BENEFICIARY</h2>
 
@@ -37,26 +37,33 @@
 
 
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <label for=""> Account Details</label>
+                                            <div class="form-group row">
                                                 {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
-                                                <label>Account Number</label>
-                                                <input class="form-control" type="number" class="form-control"
+                                                <label class="col-3">Account Number:<span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <input class="form-control" type="number" class="form-control"
                                                     id="account_number" placeholder="Account Number" required>
+                                                </div>
                                                 {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-
                                             </div>
-                                            <div class="form-group">
-                                                <label>Account Name</label>
-                                                <input type="text" class="form-control" id="account_name"
+                                            <div class="form-group row">
+                                                <label class=" col-3">Account Name:<span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <input type="text" class="form-control" id="account_name"
                                                     parsley-trigger="change" placeholder="Account Name" readonly required>
+                                                </div>
+
                                                 {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                             </div>
-                                            <div class="form-group">
-                                                <label>Account Currency</label>
-                                                <input type="hidden" class="form-control" readonly value="" id="select_currency">
-                                                <input type="text" class="form-control" readonly value="" id="select_currency_i">
+                                            <div class="form-group row">
+                                                <label class="col-3">Account Currency:<span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <input type="hidden" class="form-control" readonly value="" id="select_currency">
+                                                    <input type="text" class="form-control" readonly value="" id="select_currency_i">
+                                                </div>
+
 
                                                 {{--  <select class="custom-select" id="select_currency" required>
                                                     <option value="">Select Currency</option>
@@ -66,37 +73,51 @@
                                                 {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                             </div>
+                                            {{-- <label for=""> Beneficiary Details</label> --}}
+
+                                            <div class="form-group row">
+                                                {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
+                                                <label class="col-3">Beneficiary Name:<span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <input type="text" class="form-control" id="beneficiary_name"
+                                                    parsley-trigger="change" placeholder="Beneficiary Name" required>
+                                                </div>
+
+                                                {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                            </div>
 
                                         </div>
 
                                         <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
-                                                <label>Beneficiary Name</label>
-                                                <input type="text" class="form-control" id="beneficiary_name"
-                                                    parsley-trigger="change" placeholder="Beneficiary Name" required>
-                                                {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Mobile Number</label>
-                                                <input type="number" class="form-control" id="beneficiary_mobile_number"
+                                            <br>
+                                            <div class="form-group row">
+                                                <label class="col-3">Beneficiary Mobile Number:<span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <input type="number" class="form-control" id="beneficiary_mobile_number"
                                                     parsley-trigger="change" placeholder="Beneficiary Mobile Number" required>
+                                                </div>
+
                                                 {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                             </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Address</label>
-                                                <input type="text" class="form-control" id="beneficiary_address"
+                                            <div class="form-group row">
+                                                <label class="col-3">Beneficiary Address:<span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <input type="text" class="form-control" id="beneficiary_address"
                                                     parsley-trigger="change" placeholder="Beneficiary Address" required>
+                                                </div>
+
                                                 {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                             </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Email</label>
-                                                <input type="email" class="form-control" id="beneficiary_email"
+                                            <div class="form-group row">
+                                                <label class="col-3">Beneficiary Email:<span class="text-danger">*</span></label>
+                                                <div class="col-7">
+                                                    <input type="email" class="form-control" id="beneficiary_email"
                                                     parsley-trigger="change" placeholder="Beneficiary Email" required>
+                                                </div>
+
                                                 {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                             </div>
@@ -240,7 +261,7 @@
 
                         </div>
 
-                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
 
                     </div> <!-- end card-body -->
 

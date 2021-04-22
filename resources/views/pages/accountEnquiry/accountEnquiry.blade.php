@@ -141,13 +141,13 @@
 
                                         <div class=" d-none d-md-inline-block">
                                             <div class="btn-group mb-2">
-                                                <button type="button"
+                                                <button type="button" id="credit_transaction"
                                                     class="btn btn-xs btn-soft-success  waves-effect waves-light">&nbsp;
                                                     Credit &nbsp;</button>
-                                                <button type="button"
+                                                <button type="button" id="debit_transaction"
                                                     class="btn btn-xs btn-soft-danger  waves-effect waves-light">&nbsp;
                                                     Debit &nbsp;</button>
-                                                <button type="button"
+                                                <button type="button" id="all_transaction"
                                                     class="btn btn-xs btn-soft-secondary  waves-effect waves-light">All
                                                     transaction</button>
                                             </div>
@@ -353,6 +353,8 @@
                 var end_date = defaultEndDate;
                 var transLimit = "10";
 
+                var tranactions = []
+
                 setTimeout(function() {
                     getAccountTransactions(account_number, start_date, end_date, transLimit)
                     getAccountBalanceInfo(account_number);
@@ -375,6 +377,53 @@
                    console.log(end_date)
                 })
 
+                $("#credit_transaction").click(function(){
+                     $('#table-body-display').empty()
+                     {{-- return false --}}
+
+                    let data = tranactions
+                    var load_data = []
+                     $.each(data, function(index) {
+                        if(parseFloat(data[index].amount) > 0){
+                            {{-- alert(data[index].amount) --}}
+                            load_data.push(data[index])
+                        }else{
+
+                        }
+                     })
+
+
+                     load_data_into_table(load_data)
+                })
+
+
+                $("#all_transaction").click(function(){
+                     $('#table-body-display').empty()
+
+                    let data = tranactions
+
+                     load_data_into_table(tranactions)
+                })
+
+
+                $("#debit_transaction").click(function(){
+                     $('#table-body-display').empty()
+                     {{-- return false --}}
+
+                    let data = tranactions
+                    var load_data = []
+                     $.each(data, function(index) {
+                        if(parseFloat(data[index].amount) < 0){
+                            {{-- alert(data[index].amount) --}}
+                            load_data.push(data[index])
+                        }else{
+
+                        }
+                     })
+                     load_data_into_table(load_data)
+                })
+
+
 
                 $("#account_balance_info_retry_btn").click(function() {
                     $("#account_balance_info_display").hide();
@@ -393,29 +442,22 @@
                 })
 
 
+                function load_data_into_table(data)
+                {
+                {{-- $('#table-body-display').empty() --}}
 
-                function getAccountTransactions(account_number, start_date, end_date, transLimit) {
-                    var table = $('.account_transaction_display_table').DataTable();
+                $("#table-body-display tr").remove();
+                    $(".account_transaction_display").hide();
+             $(".account_transaction_display_table").hide();
+            $("#account_transaction_retry_btn").hide();
+            $("#account_transaction_loader").show();
+
+                    $('#table-body-display').html('')
+                     var table = $('.account_transaction_display_table').DataTable();
                     var nodes = table.rows().nodes();
-                    $.ajax({
-                        "type": "POST",
-                        "url": "account-transaction-history",
-                        "datatype": "application/json",
-                        "data": {
-                            "accountNumber": account_number,
-                            "endDate": end_date,
-                            "entrySource": "A",
-                            "startDate": start_date,
-                            "transLimit": transLimit
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response) {
-                            console.log(response);
-                            if (response.responseCode == '000') {
+                    {{-- table.rows.remove() --}}
+                    table.clear().draw()
 
-                                let data = response.data;
 
                                 if(data.length > 0){
                                                                     $.each(data, function(index) {
@@ -444,7 +486,7 @@
                                             data-target="#bs-example-modal-xl"
                                             class="text-primary">${data[index].batchNumber}</a>`,
                                            amount,
-                                            `#.##`
+                                            `${data[index].runningBalance}`
 
 
                                     ]).draw(false)
@@ -455,6 +497,41 @@
 
                                 }
 
+
+                                $("#account_transaction_loader").hide();
+                                $("#account_transaction_retry_btn").hide();
+                                 $(".account_transaction_display_table").show();
+                                $(".account_transaction_display").show();
+
+                }
+
+
+                function getAccountTransactions(account_number, start_date, end_date, transLimit) {
+                    var table = $('.account_transaction_display_table').DataTable();
+                    var nodes = table.rows().nodes();
+
+
+                    $.ajax({
+                        "type": "POST",
+                        "url": "account-transaction-history",
+                        "datatype": "application/json",
+                        "data": {
+                            "accountNumber": account_number,
+                            "endDate": end_date,
+                            "entrySource": "A",
+                            "startDate": start_date,
+                            "transLimit": transLimit
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.responseCode == '000') {
+
+                                tranactions = response.data
+
+                                load_data_into_table(tranactions)
 
                                 $("#account_transaction_loader").hide();
                                 $("#account_transaction_retry_btn").hide();
