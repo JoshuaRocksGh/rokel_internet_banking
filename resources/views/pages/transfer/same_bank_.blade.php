@@ -89,7 +89,9 @@
 
 
                                             <div class="form-group select_beneficiary">
-                                                <label class="h6">Beneficiary Account</label>
+                                                <label class="h6">Beneficiary Account
+                                                </label>
+                                                <span class="badge badge-primary float-right" style="cursor: pointer"><a href="{{ url('add-same-bank-beneficiary') }}" class="text-white">Create Beneficiary</a> </span>
 
                                                 <select class="custom-select" id="to_account" required>
                                                     <option value="">Select Account</option>
