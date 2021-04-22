@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card card-background-image">
+            <div class=" ">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2"></div>
@@ -424,7 +424,7 @@
 
                     </div> <!-- end card-body -->
 
-                    //IMAGE MODAL
+                    {{-- IMAGE MODAL --}}
 
 
                     <!-- Center modal content -->

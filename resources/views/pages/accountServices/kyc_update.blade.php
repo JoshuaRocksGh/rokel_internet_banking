@@ -4,22 +4,24 @@
 
 <div class="row">
     <div class="col-12">
-        <div class="card card-background-image">
+        <div class=" ">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-1"></div>
-                            <div class="col-md-6">
-                                <h3 class="text-primary">KYC Update</h4>
+                            <div class="col-md-9">
+                                <h3 class="text-primary">KYC Update
+                                    <button type="button" class="btn btn-info btn-sm float-right  mod-open" data-toggle="modal" data-target="#centermodal"> <span class="fe-info mr-1"></span> info</button>
+                                </h4>
+
+                                     <hr>
 
                             </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-info btn-sm  mod-open" data-toggle="modal" data-target="#centermodal"> <span class="fe-info mr-1"></span> info</button>
-                            </div>
-                            <div class="col-md-1"></div>
+
+                            <div class="col-md-2"></div>
                         </div>
-                         <hr>
+
 
                          <div class="row">
                             <div class="col-md-2"></div>
@@ -791,6 +793,37 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+
+            function lovs(){
+                $.ajax({
+                    'type': 'GET',
+                    'url' : 'get-my-account',
+                    "datatype" : "application/json",
+                    success:function(response){
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+
+                        $('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                        $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                        });
+                    },
+                    error: function(xhr, status, error){
+                       alert("API SERVER ERROR ")
+                    }
+
+                })
+            }
+
+
+            $(document).ready(function() {
+                setTimeout(function(){
+                    lovs();
+                },3000);
+            })
+</script>
 
 <script>
     $(document).ready(function(){
