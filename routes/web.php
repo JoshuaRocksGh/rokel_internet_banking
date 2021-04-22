@@ -50,6 +50,7 @@ use App\Http\Controllers\Payments\CardlessController;
 use App\Http\Controllers\Payments\KorporController;
 use App\Http\Controllers\Payments\MobileMoneyController;
 use App\Http\Controllers\Payments\paymentController;
+use App\Http\Controllers\Settings\ChangePasswordController;
 use App\Http\Controllers\Settings\ChangePinController;
 use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
@@ -189,7 +190,10 @@ Route::get('/enquiry', [EnquiryController::class, 'index'])->name('enquiry');
 
 
 // LOAN
-Route::get('/loan-quotation', [LoansController::class, 'loans'])->name('loan-quotation');
+Route::get('/loan-request', [LoansController::class, 'loan_request'])->name('loan-request');
+
+//loan request
+Route::get('/loan-quotation', [LoansController::class, 'loan_quotation'])->name('loan-quotation');
 
 
 // SETTINGS
@@ -425,3 +429,7 @@ Route::post('statement-request-api', [StatementRequestController::class, 'statem
 
 //route for change-pin-api
 Route::post('change-pin-api', [ChangePinController::class, 'change_pin'])->name('change-pin-api');
+
+
+//Route for change-password-api
+Route::post('change-password-api', [ChangePasswordController::class, 'change_password'])->name('change-password-api');

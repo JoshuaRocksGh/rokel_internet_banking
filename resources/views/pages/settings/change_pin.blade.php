@@ -79,7 +79,7 @@
                                                     <div class="form-group">
                                                         <label for="new_password">Security Question</label>
                                                         <div class="input-group input-group-merge">
-                                                            <select class="form-control" id="security_questions">
+                                                            <select class="form-control security_questions">
                                                                 <option value="">Select Security Queston</option>
                                                             </select>
 
@@ -97,9 +97,9 @@
                                                     <div class="form-group text-center">
                                                         <button class="btn btn-primary btn-rounded" type="button"
                                                             id="btn_change_pin">
-                                                        <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
-                                                        <span id="spinner-text">Loading...</span>
-                                                            &nbsp; <span id="submit-text">Submit</span> &nbsp;
+                                                        <span class="spinner-border spinner-border-sm mr-1 spinner" role="status" aria-hidden="true"></span>
+                                                        <span class="spinner-text">Loading...</span>
+                                                            &nbsp; <span class="submit-text">Submit</span> &nbsp;
                                                         </button>
                                                     </div>
 
@@ -141,29 +141,69 @@
 
                                                 <form autocomplete="off" aria-autocomplete="off" id="forgot_password">
 
-                                                    <div class="form-group">
-                                                        <label for="simpleinput">Enter old password</label>
-                                                        <input type="text" id="old_password_txtBx" class="form-control">
-
-                                                    </div>
-
-
 
                                                     <div class="form-group">
-                                                        <label for="simpleinput">Enter new password</label>
-                                                        <input type="text" id="new_password_txtBx" class="form-control">
+                                                        <label for="old_password">Old Password</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <input type="password" id="old_password_txtBx" class="form-control" placeholder="Old Password">
+                                                            <div class="input-group-append" data-password="false">
+                                                                <div class="input-group-text">
+                                                                    <span class="password-eye"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-
 
                                                     <div class="form-group">
-                                                        <label for="simpleinput">Confirm password</label>
-                                                        <input type="text" id="confirm_password_txtBx" class="form-control">
+                                                        <label for="new_password">New Password</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <input type="password" id="new_password_txtBx" class="form-control" placeholder="New Password">
+                                                            <div class="input-group-append" data-password="false">
+                                                                <div class="input-group-text">
+                                                                    <span class="password-eye"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label for="confirm_password">Confirm Password</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <input type="password" id="confirm_password_txtBx" class="form-control" placeholder="Confirm Password">
+                                                            <div class="input-group-append" data-password="false">
+                                                                <div class="input-group-text">
+                                                                    <span class="password-eye"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="new_password">Security Question</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <select class="form-control security_questions">
+                                                                <option value="">Select Security Queston</option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="security_answer">Security Answer</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <input type="text" id="security_answer_Pass_txtBx" class="form-control"
+                                                                placeholder="Security Answer">
+                                                        </div>
+                                                    </div>
+
 
                                                     <div class="form-group text-center">
                                                         <button class="btn btn-primary btn-rounded" type="button"
-                                                            id="next_button">
-                                                            &nbsp; Submit &nbsp;</button>
+                                                            id="btn_change_password">
+                                                        <span class="spinner-border spinner-border-sm mr-1 spinner" role="status" aria-hidden="true"></span>
+                                                        <span class="spinner-text">Loading...</span>
+                                                            &nbsp; <span class="submit-text">Submit</span> &nbsp;
+                                                        </button>
                                                     </div>
 
                                                 </form>
@@ -244,7 +284,7 @@
                     let data = response.data
                     $.each(data, function(index) {
 
-                        $('#security_questions').append($('<option>', {
+                        $('.security_questions').append($('<option>', {
                             value: data[index].Q_CODE
                         }).text(data[index].Q_DESCRIPTION));
 
@@ -278,110 +318,195 @@
 
 
 
+
         $(document).ready(function() {
 
             setTimeout(function() {
                 get_security_question();
             }, 2000);
 
+            //hide the spinner on show
+            $('.spinner').hide()
+            $('.spinner-text').hide()
 
-        //hide the spinner on show
-        $('#spinner').hide()
-        $('#spinner-text').hide()
-
-         $("#old_pin_txtBx").change(function(){
-             let old_pin = $("#old_pin_txtBx").val();
-            console.log(old_pin);
-         });
-
-         $("#new_pin_txtBx").change(function(){
-            let new_pin = $(this).val();
-            console.log(new_pin);
-         });
-
-         $("#confirm_pin_txtBx").change(function(){
-             let confirm_pin = $(this).val();
-             console.log(confirm_pin);
-         });
-
-         $("#security_questions").change(function(){
-            let security_question = $(this).val();
-            console.log(security_question);
-         });
-
-         $("#btn_change_pin").click(function(){
-            // toaster("good", "error", 6000);
-            let security_answer = $("#security_answer_txtBx").val();
-            let new_pin = $("#new_pin_txtBx").val();
-            let confirm_pin = $("#confirm_pin_txtBx").val();
-            let old_pin = $("#old_pin_txtBx").val();
-            let security_question = $("#security_questions").val();
-
-        if(security_answer =="" || new_pin =="" || confirm_pin == "" || old_pin =="" || security_question==""){
-            toaster("Please fill all required fields","error", 6000);
-            }
-        else{
-            if(new_pin != confirm_pin){
-                    // alert(" New pin and confirm must be the same ");
-                    toaster("new pin and confirm pin must be the same", "error", 6000 );
-                }
-
-            else{
-
-                // let security_answer = $("#security_ans")
-                var pin_correct = confirm_pin;
-
-                $('#spinner').show()
-                $('#spinner-text').show()
-                $('#submit-text').hide()
-                $.ajax({
-                            'type' : 'POST',
-                            'url' : 'change-pin-api',
-                            "datatype" : "application/json",
-                            'data' : {
-                                'security_answer' : security_answer.trim(),
-                                'old_pin' : old_pin,
-                                'new_pin' : new_pin,
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success:
-                            function(response){
-
-                                console.log(response)
-
-                                if(response.responseCode == '000'){
-                                    toaster(response.message, 'success',20000 )
-                                    // toaster("Password reset successful", 'success',20000 )
-                                    // $("#request_form_div").hide();
-                                    $(".disappear-after-success").hide();
-                                    $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
-                                    $("#spinner").hide();
-                                    $("#spinner-text").hide();
-                                    $("#submit-text").show();
-                                    // $("request_detail_div").show();
-                                    }
-                                    else
-                                    {
-
-                                    toaster(response.message, 'error', 9000 );
-                                    $("#spinner").hide();
-                                    $("#spinner-text").hide();
-                                    $("#submit-text").show();
-
-                                    }
-                            }
+            $("#old_pin_txtBx").change(function(){
+                let old_pin = $("#old_pin_txtBx").val();
+                console.log(old_pin);
             });
 
-            }
-        }
+            $("#new_pin_txtBx").change(function(){
+                let new_pin = $(this).val();
+                console.log(new_pin);
+            });
+
+            $("#confirm_pin_txtBx").change(function(){
+                let confirm_pin = $(this).val();
+                console.log(confirm_pin);
+            });
+
+            $("#security_questions").change(function(){
+                let security_question = $(this).val();
+                console.log(security_question);
+            });
+
+                $("#old_password_txtBx").change(function(){
+                    console.log($(this).val());
+                });
+
+                $("#new_password_txtBx").change(function(){
+                    console.log($(this).val());
+                });
+
+                $("#confirm_password_txtBx").change(function(){
+                    console.log($(this).val());
+                });
+
+            //change pin event when the the change pin button is pressed.
+            $("#btn_change_pin").click(function(){
+                        // toaster("good", "error", 6000);
+                        let security_answer = $("#security_answer_txtBx").val();
+                        let new_pin = $("#new_pin_txtBx").val();
+                        let confirm_pin = $("#confirm_pin_txtBx").val();
+                        let old_pin = $("#old_pin_txtBx").val();
+                        let security_question = $("#security_questions").val();
+
+                                    if(security_answer =="" || new_pin =="" || confirm_pin == "" || old_pin =="" || security_question==""){
+                                        toaster("Please fill all required fields","error", 6000);
+                                        }
+                                    else{
+                                        if(new_pin != confirm_pin){
+                                                // alert(" New pin and confirm must be the same ");
+                                                toaster("new pin and confirm pin must be the same", "error", 6000 );
+                                            }
+
+                                        else{
+
+                                            // let security_answer = $("#security_ans")
+                                            var pin_correct = confirm_pin;
+
+                                            $('.spinner').show()
+                                            $('.spinner-text').show()
+                                            $('.submit-text').hide()
+                                            $.ajax({
+                                                        'type' : 'POST',
+                                                        'url' : 'change-pin-api',
+                                                        "datatype" : "application/json",
+                                                        'data' : {
+                                                            'security_answer' : security_answer.trim(),
+                                                            'old_pin' : old_pin,
+                                                            'new_pin' : new_pin,
+                                                        },
+                                                        headers: {
+                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                        },
+                                                        success:
+                                                        function(response){
+
+                                                            console.log(response)
+
+                                                            if(response.responseCode == '000'){
+                                                                toaster(response.message, 'success',20000 )
+                                                                // toaster("Password reset successful", 'success',20000 )
+                                                                // $("#request_form_div").hide();
+                                                                $(".disappear-after-success").hide();
+                                                                $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
+                                                                $(".spinner").hide();
+                                                                $(".spinner-text").hide();
+                                                                $(".submit-text").show();
+                                                                // $("request_detail_div").show();
+                                                                }
+                                                                else
+                                                                {
+
+                                                                toaster(response.message, 'error', 9000 );
+                                                                $("#spinner").hide();
+                                                                $("#spinner-text").hide();
+                                                                $("#submit-text").show();
+
+                                                                }
+                                                        }
+                                                });
+
+                                        }
+                                    }
 
 
+
+                });
+
+
+            //change the password with the required
+            $("#btn_change_password").click(function(){
+                let old_password = $("#old_password_txtBx").val();
+                let new_password = $("#new_password_txtBx").val();
+                let confirm_password = $("#confirm_password_txtBx").val();
+                let security_question = $("#security_questions_txtBx").val();
+                let security_answer = $("#security_answer_Pass_txtBx").val();
+
+                if(old_password == "" || new_password == "" || confirm_password =="" || security_question == "" || security_answer == ""){
+                    toaster("fields cannot be empty","error", 6000)
+                }
+                else{
+
+                    if(new_password != confirm_password){
+                        toaster("new password and confirm password must be the same", "error", 5000);
+                     }
+                    else{
+                         var password = confirm_password;
+
+                         $('.spinner').show();
+                         $('.spinner-text').show();
+                         $('.submit-text').hide();
+
+                         $.ajax({
+                                                        'type' : 'POST',
+                                                        'url' : 'change-password-api',
+                                                        "datatype" : "application/json",
+                                                        'data' : {
+                                                            'security_answer' : security_answer.trim(),
+                                                            'old_password' : old_password,
+                                                            'new_password' : password,
+                                                        },
+                                                        headers: {
+                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                        },
+                                                        success:
+                                                        function(response){
+
+                                                            console.log(response)
+
+                                                            if(response.responseCode == '000'){
+                                                                toaster(response.message, 'success',20000 )
+                                                                // toaster("Password reset successful", 'success',20000 )
+                                                                // $("#request_form_div").hide();
+                                                                $(".disappear-after-success").hide();
+                                                                $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
+                                                                $(".spinner").hide();
+                                                                $(".spinner-text").hide();
+                                                                $(".submit-text").show();
+                                                                // $("request_detail_div").show();
+                                                                }
+                                                                else
+                                                                {
+
+                                                                toaster(response.message, 'error', 90000 );
+                                                                $("#spinner").hide();
+                                                                $("#spinner-text").hide();
+                                                                $("#submit-text").show();
+
+                                                                }
+                                                        }
+                                                });
+                    }
+
+                }
 
             });
 
         });
+
+
+
 
     </script>
 @endsection

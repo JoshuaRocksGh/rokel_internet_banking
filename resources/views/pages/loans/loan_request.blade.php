@@ -12,10 +12,10 @@
                     <div class="col-md-1"></div>
 
                     <div class=" card card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">REQUEST A STATEMENT</h2>
+                        <h2 class="header-title m-t-0 text-primary">REQUEST A LOAN</h2>
 
                             <p class="text-muted font-14 m-b-20">
-                                You can request for your statement now.
+                                You can request for your loan now.
                             </p>
 
                             <hr>
@@ -24,7 +24,7 @@
                             <div class="row" >
 
 
-                                <div class="col-md-7 disappear-after-success" id="request_statement_div">
+                                <div class="col-md-7 disappear-after-success" id="loan_request_div">
 
                                     <div class="">
 
@@ -32,7 +32,7 @@
 
                                             <tbody>
                                                 <tr class="bg-secondary text-white">
-                                                    <td>Request Details</td>
+                                                    <td>Loan Request</td>
                                                 </tr>
 
                                                 <tr>
@@ -48,59 +48,79 @@
 
                                             <form role="form" class="parsley-examples">
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-5 col-form-label">Account Number<span
+                                                        <label for="loan_product" class="col-6 col-form-label">Select loan product<span
                                                                 class="text-danger">*</span></label>
-                                                        <div class="col-7">
-                                                            <select class="custom-select " id="my_account" required>
-                                                                <option value="">Select Account</option>
-                                                                    {{-- <option value="001023468976001">001023468976001</option> --}}
+                                                        <div class="col-6">
+                                                            <select class="custom-select" id="loan_product" required>
+                                                                    <option value="">---Select Loan Product---</option>
+                                                                    <option value="Car Loan">Car Loan</option>
+                                                                    <option value="Home Equity Loan">Home Equity Loan</option>
+                                                                    <option value="Business Loan">Business Loan</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="statementType" class="col-5 col-form-label">
-                                                            Type of Statement
+                                                        <label for="loan_amount" class="col-6 col-form-label">
+                                                            Amount
                                                             <span class="text-danger">*</span></label>
-                                                        <div class="col-7">
-                                                            <select class="custom-select " id="statementType" required>
-                                                                <option value="">Select Type of Statement</option>
-                                                                <option value="VISA">VISA</option>
-                                                                <option value="ELECTRONIC">ELECTRONIC</option>
-                                                                <option value="ORDINARY">ORDINARY</option>
-                                                            </select>
+                                                        <div class="col-6">
+                                                            <input type="text" class="form-control" id="loan_amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="pUBranch" class="col-5 col-form-label">
-                                                            <label>Pick Up Branch</label>
+                                                        <label for="tenure_in_months" class="col-6 col-form-label">
+                                                            <label>Tenure in months:</label>
                                                             <span class="text-danger">*</span></label>
-                                                        <div class="col-7">
-                                                            <select ect class="custom-select " id="pUBranch" required>
-                                                                <option value="">-----Not Selected-----</option>
-                                                                {{-- <option value="Accra">Accra</option>
-                                                                <option value="ADONKIA BRANCH">ADONKIA BRANCH</option>
-                                                                <option value="WILBERFORCE BRANCH">WILBERFORCE BRANCH</option>
-                                                                <option value="PORT LOKKO BRANCH">PORT LOKKO BRANCH</option> --}}
+                                                        <div class="col-6">
+                                                            <input type="number" class="form-control" id="loan_period" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="interest_rate_type" class="col-6 col-form-label">
+                                                            <label>Interest Rate Type:</label>
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-6">
+                                                            <select class="custom-select" id="interest_rate_type" required>
+                                                                <option value="">---Select Interest Rate Type---</option>
+                                                                <option value="1">STRAIGHT LINE</option>
+                                                                <option value="2">REDUCING BALANCE</option>
+                                                                <option value="3">AMORTIZATION METHOD</option>
+                                                                <option value="4">REDUCING (FIXED INST'L)</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <div for="duration" class="col-12 form-label">
-                                                            <label>Transaction Period</label>
-                                                            <span class="text-danger">*</span>
+                                                        <label for="principal_repay_freq" class="col-6 col-form-label">
+                                                            <label>Principal Repay Frequency:</label>
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-6">
+                                                            <select class="custom-select" id="interest_rate_type" required>
+                                                                <option value="">-Select Principal Repay Frequency-</option>
+                                                                <option value="1">WEEKLY</option>
+                                                                <option value="2">BI-WEEKLY</option>
+                                                                <option value="3">MONTHLY</option>
+                                                                <option value="4">QUARTERLY</option>
+                                                            </select>
                                                         </div>
-                                                        <div class="btn-group col-12">
-                                                            <input type="date" id="startDate" class="form-control"/>
-                                                            <input type="date" id="endDate" class="form-control"/>
-                                                      </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label for="hori-pass2" class="col-5 col-form-label">
-                                                            Enter Your Pin
+                                                        <label for="hori-pass2" class="col-6 col-form-label">
+                                                            Interest Repay Frequency:
                                                             <span class="text-danger">*</span></label>
-                                                        <div class="col-7">
-                                                            <input type="password" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+                                                        <div class="col-6">
+                                                            <input type="text" class="form-control" id="interest_repay_freq" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div for="interestRatePerMonthOrAnnum" class="col-6 form-label">
+                                                            <label>Interest Rate</label>
+                                                            <span class="text-danger">*</span>
+                                                        </div>
+                                                        <div class="btn-group col-6">
+                                                            <input type="text" id="interest_rate_per_month" class="form-control" disabled="true" placeholder="Rate per month"/>
+                                                            <input type="text" id="interest_rate_per_annum" class="form-control" disabled="true" placeholder="Rate per annum"/>
 
                                                         </div>
                                                     </div>
@@ -109,11 +129,13 @@
                                             </form>
 
                                         </p>
+
+
                                     </div>
 
                                 </div> <!-- end card-box -->
 
-                                <div class="col-md-5 " id="request_detail_div">
+                                <div class="col-md-5 " id="loan_request_detail_div">
 
                                     <table class="table mb-0 table-striped table-bordered">
 
@@ -124,12 +146,8 @@
                                             <tr class="">
 
                                                 <td>
-                                                    <a
-                                                        class="text-body font-weight-semibold   display_my_account_name"></a>
-                                                    <small class="d-block   display_my_account_no"></small>
                                                     <span class="text-right   font-weight-semibold">
-                                                        <span class="display_my_account_currency"></span>
-                                                        <span class="  display_my_account_amount"></span>
+                                                        <span class="  display_loan_product"></span>
                                                     </span>
                                                 </td>
 
@@ -139,7 +157,7 @@
                                             <tr class="">
                                                 <td>
                                                     <span class="text-right font-weight-semibold">
-                                                        <span class="display_type_of_statement"></span>
+                                                        <span class="display_amount"></span>
                                                     </span>
                                                 </td>
 
@@ -147,7 +165,7 @@
                                             <tr class="">
                                                 <td>
                                                     <span class="text-right font-weight-semibold">
-                                                        <span class="display_pick_up_branch"></span>
+                                                        <span class="display_interest_rate_type"></span>
                                                     </span>
                                                 </td>
 
@@ -155,7 +173,7 @@
                                             <tr class="">
                                                 <td>
                                                     <span class="text-right font-weight-semibold">
-                                                        <span class="display_trans_startDate"></span>
+                                                        <span class="display_principal_repay_freq"></span>
                                                     </span>
                                                 </td>
 
@@ -164,11 +182,21 @@
                                                 <td>
 
                                                     <span class="text-right font-weight-semibold">
-                                                        <span class="display_trans_endDate"></span>
+                                                        <span class="display_interest_repay_freq"></span>
                                                     </span>
                                                 </td>
 
                                             </tr>
+                                            <tr class="">
+                                                <td>
+
+                                                    <span class="text-right font-weight-semibold">
+                                                        <span class="display_interest_rate"></span>
+                                                    </span>
+                                                </td>
+
+                                            </tr>
+
 
                                         </tbody>
 
@@ -194,6 +222,32 @@
 
                                     </p>
                                 </div>
+
+                                <div id="collapseOne" class="collapse show col-md-12" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+
+                                            <div class="table-responsive table-bordered">
+                                                <table id="" class="table mb-0 ">
+                                                    <thead>
+                                                        <tr class="bg-secondary text-white ">
+                                                            <td> <b> NO </b> </td>
+                                                            <td> <b> REPAYMENT DATE </b> </td>
+                                                            <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
+                                                            <td> <b> INTEREST REPAYMENT AMOUNT </b> </td>
+                                                            <td> <b> TOTAL REPAYMENT AMOUNT </b> </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="casa_list_display">
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+
+
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -216,42 +270,6 @@
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-
-        function my_account(){
-                $.ajax({
-                    'type': 'GET',
-                    'url' : 'get-my-account',
-                    "datatype" : "application/json",
-                    success:function(response){
-                        console.log(response.data);
-                        let data = response.data
-                        $.each(data, function(index) {
-
-                        $('#my_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-
-                        });
-                    },
-
-                })
-            }
-
-            function branches(){
-                $.ajax({
-                    'type': 'GET',
-                    'url' : 'get-bank-branches-list-api',
-                    "datatype" : "application/json",
-                    success:function(response){
-                        console.log(response.data);
-                        let data = response.data
-                        $.each(data, function(index) {
-
-                        $('#pUBranch').append($('<option>', { value : data[index].branchCode+'~'+data[index].branchDescription}).text(data[index].branchDescription));
-
-                        });
-                    },
-
-                })
-            }
 
             function toaster(message, icon, timer)
             {
@@ -287,18 +305,9 @@
                 my_account()
             }, 1000)
 
-            $("#my_account").change(function(){
-                var my_account = $(this).val();
-                console.log(my_account_info);
-                var my_account_info = my_account.split("~");
-                $(".display_my_account_no").text(my_account_info[0].trim());
-                $(".display_my_account_name").text(my_account_info[1].trim());
-                $(".display_my_account_no").text(my_account_info[2].trim());
-                $(".display_my_account_currency").text(my_account_info[3].trim());
-                $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4].trim())))
-                console.log(my_account);
+            $("#loan_product").change(function(){
+                $("#display_loan_product").text($("#loan_product").val());
             });
-
             $("#statementType").change(function(){
                 var statementType = $("#statementType").val();
                 $(".display_type_of_statement").text(statementType);
@@ -391,7 +400,7 @@
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
                                 $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
-                                $("request_detail_div").show();
+                                $("loan_request_detail_div").show();
                                 }
                                 else
                                 {
