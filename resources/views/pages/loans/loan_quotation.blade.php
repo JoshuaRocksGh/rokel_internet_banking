@@ -12,10 +12,10 @@
                     <div class="col-md-1"></div>
 
                     <div class=" card card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">REQUEST A STATEMENT</h2>
+                        <h2 class="header-title m-t-0 text-primary">LOAN QUOTATION</h2>
 
                             <p class="text-muted font-14 m-b-20">
-                                You can request for your statement now.
+                                LOAN SUMMARY.
                             </p>
 
                             <hr>
@@ -24,7 +24,7 @@
                             <div class="row" >
 
 
-                                <div class="col-md-7 disappear-after-success" id="request_statement_div">
+                                <div class="col-md-12 disappear-after-success" id="loan_request_div">
 
                                     <div class="">
 
@@ -32,7 +32,7 @@
 
                                             <tbody>
                                                 <tr class="bg-secondary text-white">
-                                                    <td>Request Details</td>
+                                                    <td>Loan Summary</td>
                                                 </tr>
 
                                                 <tr>
@@ -48,54 +48,41 @@
 
                                             <form role="form" class="parsley-examples">
                                                     <div class="form-group row">
-                                                        <label for="inputEmail3" class="col-5 col-form-label">Account Number<span
+                                                        <label for="inputEmail3" class="col-5 col-form-label">Facility Number<span
                                                                 class="text-danger">*</span></label>
                                                         <div class="col-7">
-                                                            <select class="custom-select " id="my_account" required>
-                                                                <option value="">Select Account</option>
-                                                                    {{-- <option value="001023468976001">001023468976001</option> --}}
-                                                            </select>
+                                                            <input type="text" class="form-control" id="trans_number" disabled="true" placeholder="9879799998">
+
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="statementType" class="col-5 col-form-label">
-                                                            Type of Statement
+                                                            Iso Code
                                                             <span class="text-danger">*</span></label>
                                                         <div class="col-7">
-                                                            <select class="custom-select " id="statementType" required>
-                                                                <option value="">Select Type of Statement</option>
-                                                                <option value="VISA">VISA</option>
-                                                                <option value="ELECTRONIC">ELECTRONIC</option>
-                                                                <option value="ORDINARY">ORDINARY</option>
-                                                            </select>
+                                                            <input type="text" class="form-control" id="iso_code" disabled="true" placeholder="9879799998">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label for="pUBranch" class="col-5 col-form-label">
-                                                            <label>Pick Up Branch</label>
-                                                            <span class="text-danger">*</span></label>
-                                                        <div class="col-7">
-                                                            <select ect class="custom-select " id="pUBranch" required>
-                                                                <option value="">-----Not Selected-----</option>
-                                                                {{-- <option value="Accra">Accra</option>
-                                                                <option value="ADONKIA BRANCH">ADONKIA BRANCH</option>
-                                                                <option value="WILBERFORCE BRANCH">WILBERFORCE BRANCH</option>
-                                                                <option value="PORT LOKKO BRANCH">PORT LOKKO BRANCH</option> --}}
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div for="duration" class="col-12 form-label">
-                                                            <label>Transaction Period</label>
+                                                        <div for="duration" class="col-5 form-label">
+                                                            <label>Amount Granted</label>
                                                             <span class="text-danger">*</span>
                                                         </div>
-                                                        <div class="btn-group col-12">
-                                                            <input type="date" id="startDate" class="form-control"/>
-                                                            <input type="date" id="endDate" class="form-control"/>
-                                                      </div>
+                                                        <div class="col-7">
+                                                            <input type="text" class="form-control" id="iso_code" disabled="true" placeholder="9879799998">
+                                                        </div>
                                                     </div>
                                                     <div class="form-group row">
+                                                        <label for="pUBranch" class="col-5 col-form-label">
+                                                            <label>Description</label>
+                                                            <span class="text-danger">*</span></label>
+
+                                                        <div class="btn-group col-12">
+                                                            <textarea type="text" class="form-control" id="trans_number" disabled="true" placeholder="9879799998"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="form-group row">
                                                         <label for="hori-pass2" class="col-5 col-form-label">
                                                             Enter Your Pin
                                                             <span class="text-danger">*</span></label>
@@ -103,7 +90,7 @@
                                                             <input type="password" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
 
                                             </form>
@@ -113,7 +100,7 @@
 
                                 </div> <!-- end card-box -->
 
-                                <div class="col-md-5 " id="request_detail_div">
+                                {{-- <div class="col-md-5 " id="loan_request_detail_div">
 
                                     <table class="table mb-0 table-striped table-bordered">
 
@@ -186,7 +173,7 @@
                                     </div>
 
 
-                                </div> <!-- end col -->
+                                </div> <!-- end col --> --}}
 
                                 <div class="col-md-5 text-center">
 
@@ -227,7 +214,7 @@
                         let data = response.data
                         $.each(data, function(index) {
 
-                        $('#my_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                        $('#facility_number').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
 
                         });
                     },
@@ -391,7 +378,7 @@
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
                                 $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
-                                $("request_detail_div").show();
+                                $("loan_request_detail_div").show();
                                 }
                                 else
                                 {
