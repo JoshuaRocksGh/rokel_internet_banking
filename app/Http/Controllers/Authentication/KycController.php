@@ -39,7 +39,7 @@ class KycController extends Controller
             'years_at_residence' => 'required' ,
             'city' => 'required' ,
             'town' => 'required' ,
-            'resident=>al_address' => 'required' ,
+            'residential_address' => 'required' ,
             'postal_address' => 'required' ,
             'employment_type' => 'required' ,
             'employee_number' => 'required' ,
@@ -54,7 +54,7 @@ class KycController extends Controller
 
         ]);
 
-            return $request;
+            // return $request;
 
             $base_response = new BaseResponse();
 
@@ -69,6 +69,8 @@ class KycController extends Controller
         //return $user;
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+
+        // return $userID ;
         // $firstname = $request->firstname;
 
         $data = [
@@ -95,7 +97,7 @@ class KycController extends Controller
             "lastTaxUpdatedDate" => $request->last_update_date,
             "location" => "string",
             "maritalStatus" => $request->marital_status,
-            "mobile1" => "string",
+            "mobile1" => $request->telephone_number,
             "mobile2" => "string",
             "motherMaidenName" => $request->mother_maiden_name,
             "nationality" => $request->nationality,
@@ -133,7 +135,7 @@ class KycController extends Controller
                 // return $data;
 
                 try {
-                    $response =Http::post(env('API_BASE_URL') . "$userID/kycInfo", $data);
+                    $response = Http::post(env('API_BASE_URL') . "user/kycInfo", $data);
 
                     // return json_decode($response->body());
                     $result = new ApiBaseResponse();

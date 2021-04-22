@@ -790,6 +790,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
     $(document).ready(function(){
@@ -808,6 +809,28 @@
 
         $('#basic_information_tab').addClass('active show');
         $('#first').addClass('active show');
+
+
+        function toaster(message, icon , timer )
+        {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                {{-- timer: 10000, --}}
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+
+              Toast.fire({
+                icon: icon,
+                title: message,
+                timer: timer
+              })
+        }
 
 
         $('#proof_of_address').change(function(){
@@ -1030,7 +1053,8 @@
             }else if ($('#gender_female').is(":checked")){
                 var select_gender = ("Female");
             }else {
-                alert("Gender Not Selected");
+                toaster("Gender Not Selected", "error" , 60000);
+
                 return false;
             }
             $('#display_gender_male').text(select_gender);
@@ -1113,7 +1137,8 @@
             }else if ($('#citizen_no').is(":checked")){
                 var citizen_of_US = ("No");
             }else {
-                alert('Select citizenship');
+                toaster('Select citizenship' , 'error', 6000);
+
                 return false;
             }
             $('#display_citizen_of_us').text(citizen_of_US);
@@ -1125,7 +1150,8 @@
             }else if ($('#resident_no').is(":checked")){
                 var us_resident = ("No");
             }else {
-                alert("Select Residency");
+                toaster("Select Residency" , 'error' , 6000);
+
                 return false;
             }
             $('#display_us_resident').text(us_resident);
@@ -1166,7 +1192,7 @@
                 }else if ($('#gender_female').is(":checked")){
                     var select_gender = ("Female");
                 }else {
-                    alert("Gender Not Selected");
+
                     return false;
                 }
 
@@ -1177,7 +1203,7 @@
                 }else if ($('#citizen_no').is(":checked")){
                     var citizen_of_US = ("No");
                 }else {
-                    alert('Select citizenship');
+
                     return false;
                 }
 
@@ -1189,7 +1215,8 @@
                 }else if ($('#resident_no').is(":checked")){
                     var us_resident = ("No");
                 }else {
-                    alert("Select Residency");
+
+
                     return false;
                 }
 
@@ -1287,6 +1314,11 @@
                     success:
                     function(response) {
                         console.log(response);
+                        if(response.responseCode == '000'){
+                            toaster(response.message, 'success', 10000);
+                        }else{
+                            toaster(response.message, 'error' , 6000);
+                        }
                     }
 
                 })
