@@ -29,11 +29,11 @@
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="h6">Payer Account</label>
+                                            <label class="h6">Payer Account<span class="text-danger">*</span></label>
 
 
                                             <select class="custom-select " id="from_account" required>
-                                                <option value="">Select Account</option>
+                                                <option value="">Select Account<span class="text-danger">*</span></option>
                                                 <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
                                                     Current Account ~ 001023468976001 </option>
 
@@ -80,7 +80,7 @@
 
 
                                         <div class="form-group select_beneficiary" >
-                                            <label class="h6">Beneficiary Account</label>
+                                            <label class="h6">Beneficiary Account<span class="text-danger">*</span></label>
                                             <br>
 
                                             <label for="form-group">Select Account</label>
@@ -118,28 +118,28 @@
                                         <div class="select_onetime">
                                         <hr>
                                             <div class="form-group">
-                                                 <label class="">Alias Name</label>
+                                                 <label class="">Alias Name<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" id="onetime_beneficiary_alias_name"
                                                    placeholder="Alias Name"
                                                     required>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="">Bank Name</label>
+                                                <label class="">Bank Name<span class="text-danger">*</span></label>
                                                <input type="email" class="form-control" id="onetime_beneficiary_bank_name"
                                                   placeholder="Bank Name"
                                                    required>
                                            </div>
 
                                             <div class="form-group">
-                                                 <label class="">Account Number</label>
+                                                 <label class="">Account Number<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" id="onetime_beneficiary_account_number"
                                                    placeholder="Account Number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                     required>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="">Select Currency</label>
+                                                <label class="">Select Currency<span class="text-danger">*</span></label>
 
                                                 <select class="custom-select" id="onetime_beneficiary_account_currency" required>
                                                     <option value="">Select Currency</option>
@@ -159,7 +159,7 @@
 
 
                                             <div class="form-group">
-                                                 <label class="">Enter Telephone Number</label>
+                                                 <label class="">Enter Telephone Number<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" id="onetime_beneficiary_phone"
                                                    placeholder="Phone"
                                                     required>
@@ -169,16 +169,16 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="form-group"> Amount</label>
-                                             <label class="">Enter Amount</label>
+                                            {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
+                                             <label class="">Enter Amount<span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="amount" placeholder="Amount: 0.00"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 required>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="h6">Category</label>
-                                            <label for="form-group">Category</label>
+                                            <label class="h6">Category<span class="text-danger">*</span></label>
+                                            {{-- <label for="form-group">Category</label> --}}
                                             <select class="custom-select" id="category" required>
                                                 <option value="">Select Category</option>
                                                 <option value="001~Fees">Fees</option>
@@ -190,7 +190,7 @@
 
 
                                         <div class="form-group">
-                                            <label for="form-group">Enter Naration</label>
+                                            <label for="form-group">Enter Naration<span class="text-danger">*</span></label>
 
                                             <input type="text" class="form-control" id="purpose" placeholder="Enter purpose / narration" required>
 

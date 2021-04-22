@@ -64,7 +64,7 @@
                                                                <label class="purple-color"> Beneficiary Bank Details</label><br><br>
                                                                 <div class="form-group row mb-3">
                                                                     <div class="col-md-6">
-                                                                        <label for="form-group">Bank Country</label>
+                                                                        <label for="form-group">Bank Country<span class="text-danger">*</span></label>
                                                                         <select class="custom-select" id="bank_country" name="bank_country" required>
                                                                             <option value="">Bank Country</option>
                                                                             <option value="Ghana">Ghana</option>
@@ -75,7 +75,7 @@
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label for="form-group">Bank Name</label>
+                                                                        <label for="form-group">Bank Name<span class="text-danger">*</span></label>
                                                                         <select class="custom-select" id="bank_name" name="bank_name" required>
                                                                             <option value="">Bank Name</option>
                                                                             {{--  <option value="High-Street">High Street</option>  --}}
@@ -85,7 +85,7 @@
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label for="form-group">Bank City</label>
+                                                                        <label for="form-group">Bank City<span class="text-danger">*</span></label>
                                                                         <select class="custom-select" id="bank_city" name="bank_city">
                                                                             <option value="">Bank City</option>
                                                                             <option value="Accra">Accra</option>
@@ -96,7 +96,7 @@
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label for="form-group">Bank Branch</label>
+                                                                        <label for="form-group">Bank Branch<span class="text-danger">*</span></label>
                                                                         <select class="custom-select" id="bank_branch" name="bank_branch">
                                                                             <option value="">Bank Branch</option>
                                                                             {{--  <option value="High-Street">High Street</option>  --}}
@@ -108,20 +108,20 @@
 
 
                                                                     <div class="col-md-6">
-                                                                        <label for="form-group">Bank Address</label>
+                                                                        <label for="form-group">Bank Address<span class="text-danger">*</span></label>
                                                                         <input type="text" id="bank_address" name="bank_address" class="form-control" placeholder="Bank Address" required>
                                                                         <br><br>
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label for="form-group">Swift Code</label>
+                                                                        <label for="form-group">Swift Code<span class="text-danger">*</span></label>
                                                                         <input type="text" id="swift_code" name="swift" class="form-control" placeholder="Swift Code" required>
                                                                         <br><br>
                                                                     </div>
 
                                                                 </div>
 
-                                                                <button class="btn btn-primary btn-rounded waves-effect waves-light" type="button" id="bank_details_next_btn">Next <i class="fe-arrow-right"></i></button>
+                                                                <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="bank_details_next_btn">Next <i class="fe-arrow-right"></i></button>
 
                                                             </div> <!-- end col -->
                                                         </div> <!-- end row -->
@@ -136,14 +136,14 @@
 
                                                                 <div class="form-group row mb-3">
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="name3"> Account Number</label>
+                                                                        <label class="form-group" for="name3"> Account Number<span class="text-danger">*</span></label>
 
                                                                         <input type="number" id="acc_number" name="acc_number" class="form-control" placeholder="Account number/BBAN" required>
                                                                         <br>
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="name3"> Account Name</label>
+                                                                        <label class="form-group" for="name3"> Account Name<span class="text-danger">*</span></label>
 
                                                                         <input type="text" id="acc_name" name="acc_name" class="form-control" placeholder="Account name" required>
                                                                         <br>
@@ -151,7 +151,7 @@
 
                                                                     <div class="col-md-6">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
-                                                                        <label class="form-group" for="surname3">Currency</label>
+                                                                        <label class="form-group" for="surname3">Currency<span class="text-danger">*</span></label>
 
                                                                         <select class="custom-select" id="currency" name="currency" required>
                                                                             <option value="">Currency</option>
@@ -162,19 +162,19 @@
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="confirm3">Firstname</label>
+                                                                        <label class="form-group" for="confirm3">Firstname<span class="text-danger">*</span></label>
                                                                         <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Firstname" required>
                                                                         <br>
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="confirm3">Lastname</label>
+                                                                        <label class="form-group" for="confirm3">Lastname<span class="text-danger">*</span></label>
                                                                         <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Lastname" required>
                                                                         <br>
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="confirm3">Middlename</label>
+                                                                        <label class="form-group" for="confirm3">Middlename<span class="text-danger">*</span></label>
                                                                         <input type="text" id="middlename" name="middlename" class="form-control" placeholder="Middlename" required>
                                                                         <br>
                                                                     </div>
@@ -202,20 +202,20 @@
                                                                 <div class="form-group row mb-3">
                                                                     {{--  <label class="col-md-3 col-form-label" for="name3"> First name</label>  --}}
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="confirm3">Beneficiary Name</label>
+                                                                        <label class="form-group" for="confirm3">Beneficiary Name<span class="text-danger">*</span></label>
                                                                         <input type="text" id="beneficiary_name" name="beneficiary_name" class="form-control" placeholder="Beneficiary name" required>
                                                                         <br>
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="confirm3">Beneficiary Email</label>
+                                                                        <label class="form-group" for="confirm3">Beneficiary Email<span class="text-danger">*</span></label>
                                                                         <input type="text" id="beneficiary_email" name="beneficiary_name" class="form-control" placeholder="Beneficiary email" required>
                                                                         <br>
                                                                     </div>
 
                                                                     <div class="col-md-6">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
-                                                                        <label class="form-group" for="confirm3">Nationality</label>
+                                                                        <label class="form-group" for="confirm3">Nationality<span class="text-danger">*</span></label>
                                                                         <select class="custom-select" id="nationality" name="nationality" required>
                                                                             <option value="">Nationality</option>
                                                                             <option value="Ghanaian">Ghanaian</option>
@@ -226,7 +226,7 @@
 
                                                                     <div class="col-md-6">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
-                                                                        <label class="form-group" for="confirm3">Country of Residence</label>
+                                                                        <label class="form-group" for="confirm3">Country of Residence<span class="text-danger">*</span></label>
 
                                                                         <select class="custom-select" id="country_of_residence" name="residence" required>
                                                                             <option value="">Country of residence</option>
@@ -238,7 +238,7 @@
 
                                                                     <div class="col-md-6">
                                                                         {{--  <input type="text" id="surname3" name="surname3" class="form-control" required>  --}}
-                                                                        <label class="form-group" for="confirm3">City</label>
+                                                                        <label class="form-group" for="confirm3">City<span class="text-danger">*</span></label>
 
                                                                         <select class="custom-select" id="city" name="city" required>
                                                                             <option value="">City</option>
@@ -249,12 +249,12 @@
                                                                     </div>
 
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="confirm3">Address</label>
+                                                                        <label class="form-group" for="confirm3">Address<span class="text-danger">*</span></label>
                                                                         <input type="text" id="address" name="address" class="form-control" placeholder="Address" required>
                                                                         <br>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label class="form-group" for="confirm3">Telephone</label>
+                                                                        <label class="form-group" for="confirm3">Telephone<span class="text-danger">*</span></label>
                                                                         <input type="text" id="telephone" name="address" class="form-control" placeholder="Telephone" required>
                                                                         <br>
                                                                     </div>

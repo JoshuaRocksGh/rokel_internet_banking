@@ -28,10 +28,10 @@
             <br>
             <div class="col-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" >
 
 
-                        <div class="row" style="zoom:0.9;">
+                        <div class="row" style="zoom:0.9;" >
 
 
 
@@ -64,7 +64,7 @@
 
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" id="beneficiary_table">
                                     <div class="col-md-12">
 
                                         <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100 beneficiary_list_display">
@@ -82,14 +82,14 @@
                                             </thead>
 
 
-                                            <tbody class="beneficiary">
+                                            {{-- <tbody class="beneficiary">
 
                                                 <tr>
-                                                    <td> Josh</td>
-                                                    <td> 2009003011</td>
-                                                    <td> Joshua Tetteh</td>
-                                                    <td>josh@gmail.com</td>
-                                                    <td>Fidelity Bank Ghana</td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
+                                                    <td> </td>
                                                     <td class="text-center">
                                                         <span class="fe-edit noti-icon text-primary"></span>
                                                         &emsp;&emsp;
@@ -99,96 +99,25 @@
 
                                                 </tr>
 
-                                            </tbody>
+                                            </tbody> --}}
                                         </table>
                                     </div>
 
                                 </div>
 
-                                {{--  <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Beneficiary Details</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            </div>
-                                            <div class="modal-body p-4">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-1" class="control-label">Firstname</label>
-                                                            <input type="text" class="form-control" id="field-1" placeholder="John">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-2" class="control-label">Lastname</label>
-                                                            <input type="text" class="form-control" id="field-2" placeholder="Doe">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-2" class="control-label">Othername</label>
-                                                            <input type="text" class="form-control" id="field-2" placeholder="Doe">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-3" class="control-label">Beneficiary Type</label>
-                                                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-3" class="control-label">Account Number</label>
-                                                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-3" class="control-label">Account Currency</label>
-                                                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-4" class="control-label">Bank Country</label>
-                                                            <input type="text" class="form-control" id="field-4" placeholder="Boston">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-5" class="control-label">Bank Name</label>
-                                                            <input type="text" class="form-control" id="field-5" placeholder="United States">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="field-6" class="control-label">Swift Code</label>
-                                                            <input type="text" class="form-control" id="field-6" placeholder="123456">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group no-margin">
-                                                            <label for="field-7" class="control-label">Personal Info</label>
-                                                            <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-info waves-effect waves-light">Save changes</button>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-center" id="beneficiary_list_loader">
+                                            <div class="spinner-border text-primary avatar-lg" role="status"></div>
+                                        </div>
+                                        <br><br><br><br>
+                                        <div class="text-center" id="beneficiary_list_retry_btn">
+                                            <button class="btn btn-lg btn-secondary" >Retry</button>
                                         </div>
                                     </div>
-                                </div><!-- /.modal -->  --}}
+                                </div>
+
+
 
                                 <!--  Modal content for the Large example -->
                                         <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -199,6 +128,21 @@
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
                                                     <div class="modal-body p-4">
+                                                        <p>
+                                                            <form action="" id="modal_SAB_form">
+                                                                <h2>SAME BANK</h2>
+                                                            </form>
+
+                                                            <form action="" id="modal_OTB_form">
+                                                                <h2>OTHER BANK BANK</h2>
+                                                            </form>
+
+                                                            <form action="" id="modal_INTB_form">
+                                                                <h2>INTERNATIONAL BANK</h2>
+                                                            </form>
+                                                        </p>
+
+{{--
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
@@ -263,22 +207,20 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-group no-margin">
                                                                     <label for="field-7" class="control-label">Bank Address</label>
-                                                                    {{--  <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>  --}}
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group no-margin">
                                                                     <label for="field-7" class="control-label">Beneficiary Address</label>
-                                                                    {{--  <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>  --}}
-                                                                </div>
+                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group no-margin">
                                                                     <label for="field-7" class="control-label">Beneficiary Email</label>
-                                                                    {{--  <textarea class="form-control" id="field-7" placeholder="Write something about yourself"></textarea>  --}}
-                                                                </div>
+                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
@@ -358,47 +300,98 @@ framework upon which plug-ins can built.
                     'url' : 'all-beneficiary-list' ,
                     "datatype" : "application/json",
                     success:function(response){
-                        {{--  console.log(response.data);  --}}
+                         {{-- console.log(response.responseCode); --}}
 
                         let data = response.data;
+                        if(response.responseCode == '000') {
+
+                            $('#beneficiary_table').show();
+                            $('#beneficiary_list_loader').hide();
+                            $('#beneficiary_list_retry_btn').hide();
+                            $.each(data, function(index) {
+                                console.log(data[index])
+
+                                model_data = data[index]
+
+                                table.row.add([
+                                    data[index].FIRST_NAME,
+                                    data[index].BEN_ACCOUNT,
+                                    data[index].NICKNAME,
+                                    data[index].EMAIL,
+                                    data[index].BANK_NAME,
+
+
+                                    `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
+                                    <button class="hell" > sup</button>
+                                    &emsp;&emsp;  <span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-toggle="modal" data-target="#bs-example-modal-lg"  data-value="${ data[index]}"></span>`,
 
 
 
-                                $.each(data, function(index) {
 
-                                    table.row.add([
-                                        data[index].FIRST_NAME,
-                                        data[index].BEN_ACCOUNT,
-                                        data[index].NICKNAME,
-                                        data[index].EMAIL,
-                                        data[index].BANK_NAME,
+                                ]).draw(false)
 
+                            })
 
-                                        `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
-                                        &emsp;&emsp;  <a id='delete_beneficiary_data'><span class="fe-trash noti-icon text-danger "  data-value='${data[index]}'></span></a>`,
-
-
-
-
-                                    ]).draw(false)
-
-                                })
+                        }else{
+                            $('#beneficiary_table').hide();
+                            $('#beneficiary_list_loader').hide();
+                            $('#beneficiary_list_retry_btn').show();
+                        }
 
                     }
                 })
             }
 
+            $('#beneficiary_list_retry_btn').hide();
+            $('#beneficiary_table').hide();
+
+
             $(document).ready(function(){
 
+            $('#beneficiary_list_loader').show();
                 setTimeout(function(){
                     beneficiary_list();
-                },1500);
+                },2000);
 
-                $("#delete_beneficiary_data").click(function(e){
+                $('#beneficiary_list_retry_btn').click(function(e){
                     e.preventDefault();
+                    $('#beneficiary_list_retry_btn').hide();
+                    $('#beneficiary_list_loader').show();
+
+                    {{-- $('#beneficiary_list_loader').show(); --}}
+                        setTimeout(function(){
+                            beneficiary_list();
+                        },2000);
+                })
+
+                $(".hell").click(function(){
+                    alert('hhh')
+                })
+
+                $(".delete_beneficiary_data").click(function(){
+
                     alert("DELETE!!!");
-                  {{--  var beneficiary_data =  $(this).data('value');
-                  console.log(beneficiary_data);  --}}
+                   var beneficiary_data =  $(this).data().value;
+                  console.log(beneficiary_data);
+                  if(beneficiary_data.BENEF_TYPE == 'SAB'){
+
+                      $('#modal_OTB_form').hide()
+                      $('#modal_INTB_form').hide()
+                      $('#modal_SAB_form').show()
+                  }else if(beneficiary_data.BENEF_TYPE == 'OTB'){
+
+                    $('#modal_INTB_form').hide()
+                    $('#modal_SAB_form').hide()
+                    $('#modal_OTB_form').show()
+                  }else if(beneficiary_data.BENEF_TYPE == 'INT'){
+
+                    $('#modal_SAB_form').hide()
+                    $('#modal_OTB_form').hide()
+                    $('#modal_INTB_form').show()
+
+                  }else{
+
+                  }
                 })
             })
         </script>

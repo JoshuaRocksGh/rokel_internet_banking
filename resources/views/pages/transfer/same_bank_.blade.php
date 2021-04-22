@@ -31,7 +31,7 @@
                                             aria-autocomplete="none">
                                             @csrf
                                             <div class="form-group">
-                                                <label class="h6">Payer Account</label>
+                                                <label class="h6">Payer Account<span class="text-danger">*</span></label>
 
 
                                                 <select class="custom-select " id="from_account" required>
@@ -89,8 +89,7 @@
 
 
                                             <div class="form-group select_beneficiary">
-                                                <label class="h6">Beneficiary Account
-                                                </label>
+                                                <label class="h6">Beneficiary Account<span class="text-danger">*</span></label>
                                                 <span class="badge badge-primary float-right" style="cursor: pointer"><a href="{{ url('add-same-bank-beneficiary') }}" class="text-white">Create Beneficiary</a> </span>
 
                                                 <select class="custom-select" id="to_account" required>
@@ -130,14 +129,14 @@
                                             <div class="select_onetime">
                                                 <hr>
                                                 <div class="form-group">
-                                                    <label class="">Beneficiary Name</label>
+                                                    <label class="">Beneficiary Name<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control"
                                                         id="onetime_beneficiary_alias_name" placeholder="Alias Name"
                                                         required>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="">Account Number</label>
+                                                    <label class="">Account Number<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control"
                                                         id="onetime_beneficiary_account_number" placeholder="Account Number"
                                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
@@ -145,7 +144,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="">Account Currency</label>
+                                                    <label class="">Account Currency<span class="text-danger">*</span></label>
 
                                                     <select class="custom-select" id="onetime_beneficiary_account_currency"
                                                         required>
@@ -159,19 +158,19 @@
 
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="">Beneficiary Email</label>
+                                                    <label class="">Beneficiary Email<span class="text-danger">*</span></label>
                                                     <input type="email" class="form-control" id="onetime_beneficiary_email"
                                                         placeholder="Email" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="">Beneficiary Phone Number</label>
+                                                    <label class="">Beneficiary Phone Number<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" id="onetime_beneficiary_phone"
                                                         placeholder="Phone" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="">Amount</label>
+                                                <label class="">Amount<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" id="amount"
                                                     placeholder="Amount: 0.00"
                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
@@ -179,7 +178,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="h6">Category</label>
+                                                <label class="h6">Category<span class="text-danger">*</span></label>
 
                                                 <select class="custom-select" id="category" required>
                                                     <option value="">Select Category</option>
@@ -206,7 +205,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="h6">Naration</label>
+                                                <label class="h6">Naration<span class="text-danger">*</span></label>
 
                                                 <input type="text" class="form-control" id="purpose"
                                                     placeholder="Enter purpose / narration" required>

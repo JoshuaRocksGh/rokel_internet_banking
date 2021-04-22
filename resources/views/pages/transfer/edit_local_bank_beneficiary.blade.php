@@ -6,108 +6,138 @@
 
     <div class="row">
         <div class="col-12">
+            <br>
             <div class="card">
                 <div class="card-body card-background-image">
                     <div class="row">
-                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
 
-                        <div class="col-md-8">
-                            <p class="sub-header font-18 purple-color" style="cursor: pointer;" onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i>  MANAGE OTHER LOCAL BANK BENEFICIARY
-                            </p>
-                            <hr>
+                        <div class="col-md-10">
+                            <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i class="fe-arrow-left"></i>  &emsp; MANAGE OTHER LOCAL BANK BENEFICIARY</h2>
+
+                        <p class="text-muted font-14 m-b-20">
+                            Parsley is a javascript form validation library. It helps you provide your
+                            users with feedback on their form submission before sending it to your
+                            server.
+                        </p>
+                        <hr>
 
 
                             <div class="row" id="transaction_form">
 
 
-                                <div class="col-md-7">
+                                <div class="col-md-6">
 
                                     <form  action="#" id="local_bank_beneficiary_details" autocomplete="off" aria-autocomplete="off">
-                                        <div class="form-group">
+
                                             <label class="purple-color"> Bank Details</label>
-                                         </div>
-                                        <div class="form-group">
-                                            <label> Select Bank</label>
-                                            <input type="hidden" value="" id="bank_i">
-                                            <select class="custom-select " id="select_bank" required>
-                                                <option value="" >Select Bank</option>
-                                                {{--  <option value="Stanbic Bank">Stanbic Bank</option>
-                                                <option value="GCB Bank">GCB Bank</option>
-                                                <option value="Standard Chartered Bank">Standard Chartered Bank</option>
-                                                <option value="Zenith Bank">Zenith Bank</option>
-                                                <option value="Cal Bank">Cal Bank</option>
-                                                <option value="FNB Bank">FNB Bank</option>  --}}
-                                            </select>
+
+                                        <div class="form-group row">
+                                            <label class="col-3"> Select Bank:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="hidden" value="" id="bank_i">
+                                                <select class="custom-select " id="select_bank" required>
+                                                    <option value="" >Select Bank</option>
+                                                    {{--  <option value="Stanbic Bank">Stanbic Bank</option>
+                                                    <option value="GCB Bank">GCB Bank</option>
+                                                    <option value="Standard Chartered Bank">Standard Chartered Bank</option>
+                                                    <option value="Zenith Bank">Zenith Bank</option>
+                                                    <option value="Cal Bank">Cal Bank</option>
+                                                    <option value="FNB Bank">FNB Bank</option>  --}}
+                                                </select>
+                                            </div>
+
                                             {{-- <span class="text-danger" id="select_bank_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                         </div>
-                                        <br>
-                                        <label class="purple-color">  Account Details</label>
-                                        <div class="form-group">
-                                            <label>Account Number</label>
-                                            <input type="number" class="form-control" id="account_number" placeholder="Account Number"  required>
+
+                                        <label class="purple-color"> Account Details</label>
+                                        <div class="form-group row">
+                                            <label class="col-3">Account Number:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="number" class="form-control" id="account_number" placeholder="Account Number"  required>
+                                            </div>
+
                                             {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
                                         </div>
-                                        <div class="form-group">
-                                            <label>Account Name</label>
-                                            <input type="text" class="form-control" id="account_name" placeholder="Account Name" required>
+                                        <div class="form-group row">
+                                            <label class="col-3">Account Name:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" id="account_name" placeholder="Account Name" required>
+                                            </div>
+
                                             {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
-                                         <div class="form-group">
-                                            <label>Account Currency</label>
-                                            <input type="hidden" value="" id="currency_i">
-                                            <select class="custom-select" id="select_currency" required>
-                                                <option value="">Select Currency</option>
-                                                {{-- <option value="001~SLL">SLL</option>
-                                                <option value="002~USD">USD</option>
-                                                <option value="003~EUR">EUR</option>
-                                                <option value="004~GBP">GBP</option> --}}
-                                            </select>
+                                         <div class="form-group row">
+                                            <label class="col-3">Account Currency:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="hidden" value="" id="currency_i">
+                                                <select class="custom-select" id="select_currency" required>
+                                                    <option value="">Select Currency</option>
+                                                    {{-- <option value="001~SLL">SLL</option>
+                                                    <option value="002~USD">USD</option>
+                                                    <option value="003~EUR">EUR</option>
+                                                    <option value="004~GBP">GBP</option> --}}
+                                                </select>
+                                            </div>
+
                                             {{-- <input type="text" class="form-control" id="account_n" placeholder="Account Name" required> --}}
                                             {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
-                                         <div class="form-group">
-                                            <label>Bank Swift Code</label>
-                                            <input type="text" class="form-control" id="swift_code" placeholder="Bank Swift Code" required>
+                                         <div class="form-group row">
+                                            <label class="col-3">Bank Swift Code:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" id="swift_code" placeholder="Bank Swift Code" required>
+                                            </div>
+
                                             {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
-                                         <br>
 
 
+                                    </div>
+                                    <div class="col-md-6">
                                          <label class="purple-color"> Personal Details</label>
-                                        <div class="form-group">
-                                            <label>Beneficiary Name</label>
-                                            <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name" required>
+                                        <div class="form-group row ">
+                                            <label class="col-3">Beneficiary Name:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name" required>
+                                            </div>
+
                                             {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
-                                         <div class="form-group">
-                                            <label>Beneficiary Address</label>
-                                            <input type="text" class="form-control" id="beneficiary_address" placeholder="Beneficiary Address" required>
+                                         <br>
+                                         <div class="form-group row">
+                                            <label class="col-3">Beneficiary Address:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" id="beneficiary_address" placeholder="Beneficiary Address" required>
+                                            </div>
+
                                             {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
-                                         <div class="form-group">
-                                            <label>Beneficiary Phone Number</label>
-                                            <input type="number" class="form-control" id="beneficiary_number" placeholder="Beneficiary Phone Number" required>
+                                         <div class="form-group row">
+                                            <label class="col-3">Beneficiary Phone Number:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="number" class="form-control" id="beneficiary_number" placeholder="Beneficiary Phone Number" required>
+                                            </div>
+
                                             {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
 
-                                         <div class="form-group">
-                                            <label>Beneficiary Email</label>
-                                            <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Email" required>
+                                         <div class="form-group row">
+                                            <label class="col-3">Beneficiary Email:<span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Email" required>
+                                            </div>
+
                                             {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                          </div>
-
-                                        <div class="form-group">
-
-                                        </div><br>
 
                                         <div class="form-group">
 
@@ -139,7 +169,7 @@
                                             <label> Select Bank:&emsp;</label>
                                             <span class="font-weight-light mr-2" id="display_selected_bank"> &nbsp</span>
                                         </div>
-                                        <br>
+
                                         {{--  <label class="purple-color">  Account Details</label>  --}}
                                         <div class="form-group">
                                             <label>Account Number:&emsp;</label><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span>
@@ -198,7 +228,7 @@
 
                                         <div class="form-group">
 
-                                        </div><br>
+                                        </div>
 
                                         <div class="form-group">
 
@@ -224,10 +254,10 @@
 
                                 </div> <!-- end col -->
 
-                                <div class="col-md-5 text-center d-none d-md-block" style="margin-top: 80px;">
+                                {{-- <div class="col-md-5 text-center d-none d-md-block" style="margin-top: 80px;">
 
                                     <img src="{{ asset('assets/images/transfer1.png') }}" class="img-fluid" alt="" >
-                                </div> <!-- end col -->
+                                </div> <!-- end col --> --}}
 
 
                                 <!-- end row -->
@@ -238,7 +268,7 @@
 
                         </div>
 
-                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
 
                     </div> <!-- end card-body -->
 
