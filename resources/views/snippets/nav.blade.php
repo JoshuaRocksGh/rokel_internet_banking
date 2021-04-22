@@ -361,6 +361,10 @@
                 </button>
             </li>
 
+                        <div class="logo-lg-text-light topnav-menu topnav-menu-left m-0 text-center text-white" style="color:white !important;padding-top: 10px;">
+                <h3 style="color: white">      Payment Platform</h3>
+            </div>
+
             <li>
                 <!-- Mobile menu toggle (Horizontal Layout)-->
                 <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#topnav-menu-content">
@@ -373,11 +377,6 @@
                 <!-- End mobile menu toggle-->
             </li>
 
-            <li class="dropdown d-none d-xl-block">
-                 <div class="logo-lg-text-light topnav-menu topnav-menu-left m-0 text-white" style="color:white !important;">
-
-                <h3 style="color: white"> Corporate Internet Banking</h3>
-            </div>
 
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     Create New
