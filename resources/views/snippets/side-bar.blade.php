@@ -288,7 +288,7 @@
                                 <a href="{{ url('loan-quotation') }}">Loan Information</a>
                             </li>
                             <li>
-                                <a href="#">Loan Request</a>
+                                <a href="{{ url('loan-request') }}">Loan Request</a>
                             </li>
                             <li>
                                 <a href="#">Loan Payment</a>
