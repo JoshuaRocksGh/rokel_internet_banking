@@ -29,7 +29,7 @@
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="h6">Transfer From</label>
+                                            <label class="h6">Transfer From<span class="text-danger">*</span></label>
 
 
                                             <select class="custom-select" id="from_account" required>
@@ -66,76 +66,14 @@
 
 
                                         </div>
-                                        <div class="form-group">
-                                            <label class="h6">Transfer To</label>
 
-                                            <select class="custom-select" id="to_account" required>
-                                                <option value="">Select Account</option>
-
-                                                 {{--  <option value="Currenct Account~004004100435270140~USD~800">
-                                                    Currenct Account ~ 004004100435270140 ~ USD</option>  --}}
-                                            </select>
-
-
-                                            <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card" >
-                                                <tbody>
-                                                    <tr>
-
-                                                        <td>
-                                                            <a class="text-body font-weight-semibold display_to_account_type"></a>
-                                                            <small class="d-block display_to_account_name"></small>
-                                                            <small class="d-block display_to_account_no"></small>
-                                                        </td>
-
-                                                        <td class="text-right font-weight-semibold">
-                                                             {{--  <span class="display_to_account_currency"></span>  --}}
-                                                            {{--  <span class="display_to_account_amount"></span>  --}}
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
-
-
-                                        </div>
 
                                         <div class="form-group">
-                                            <label class="">Enter Amount</label>
+                                            <label class="">Enter Amount<span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" id="amount"
                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                     required>
                                         </div>
-
-
-                                        <div class="form-group">
-                                            <label class="">Expense Type</label>
-
-                                            {{-- <label class="h6">Category</label> --}}
-
-                                            <select class="custom-select" id="category" required>
-                                                <option value="">Select Category</option>
-                                                <option value="001~Fees">Fees</option>
-                                                <option value="002~Electronics">Electronics</option>
-                                                <option value="003~Travels">Travels</option>
-                                                <option value="004~Travels">Others</option>
-                                            </select>
-
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="">Expense Narration</label>
-
-                                            {{-- <label class="h6">Category</label> --}}
-
-                                            <input type="text" class="form-control" id="purpose" placeholder="Enter purpose / narration" required>
-
-                                        </div>
-
-
 
 
                                         <div class="form-group">
@@ -170,13 +108,10 @@
                                         </div>
 
 
+                                        <br><br>
 
 
 
-                                        <div class="form-group text-right">
-                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                                &nbsp; Next &nbsp;</button>
-                                        </div>
 
 
 
@@ -186,10 +121,75 @@
 
 
 
-                                <div class="col-md-6 text-center" >
-                                    <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" />
+                                <div class="col-md-6" >
+                                    <div class="form-group">
+                                        <label class="h6">Transfer To<span class="text-danger">*</span></label>
+
+                                        <select class="custom-select" id="to_account" required>
+                                            <option value="">Select Account</option>
+
+                                             {{--  <option value="Currenct Account~004004100435270140~USD~800">
+                                                Currenct Account ~ 004004100435270140 ~ USD</option>  --}}
+                                        </select>
+
+
+                                        <table
+                                            class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card" >
+                                            <tbody>
+                                                <tr>
+
+                                                    <td>
+                                                        <a class="text-body font-weight-semibold display_to_account_type"></a>
+                                                        <small class="d-block display_to_account_name"></small>
+                                                        <small class="d-block display_to_account_no"></small>
+                                                    </td>
+
+                                                    <td class="text-right font-weight-semibold">
+                                                         {{--  <span class="display_to_account_currency"></span>  --}}
+                                                        {{--  <span class="display_to_account_amount"></span>  --}}
+
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="">Expense Type<span class="text-danger">*</span></label>
+
+                                        {{-- <label class="h6">Category</label> --}}
+
+                                        <select class="custom-select" id="category" required>
+                                            <option value="">Select Category</option>
+                                            <option value="001~Fees">Fees</option>
+                                            <option value="002~Electronics">Electronics</option>
+                                            <option value="003~Travels">Travels</option>
+                                            <option value="004~Travels">Others</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="">Expense Narration<span class="text-danger">*</span></label>
+
+                                        {{-- <label class="h6">Category</label> --}}
+
+                                        <input type="text" class="form-control" id="purpose" placeholder="Enter purpose / narration" required>
+
+                                    </div>
+                                    {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
 
                                     {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
+
+                                    <div class="form-group text-right">
+                                        <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                            &nbsp; Next &nbsp;</button>
+                                    </div>
                                 </div> <!-- end col -->
 
 

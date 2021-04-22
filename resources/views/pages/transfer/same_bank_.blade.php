@@ -424,7 +424,7 @@
 
                     </div> <!-- end card-body -->
 
-                    //IMAGE MODAL
+                    {{-- //IMAGE MODAL --}}
 
 
                     <!-- Center modal content -->
