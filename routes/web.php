@@ -207,6 +207,7 @@ Route::post('account-transaction-history', [AccountEnquiryController::class, 'ac
 
 // get account description
 Route::post('get-account-description', [GetAccountDescription::class, 'get_account_description'])->name('get-account-description');
+Route::post('validate-account-no', [FunctionsController::class, 'validate_account_no'])->name('validate-account-no');
 
 //route to control the coperate approval screen
 Route::get('approvals-approved', [ApprovedController::class, 'approvals_approved'])->name('approvals-approved');
@@ -423,4 +424,4 @@ Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_r
 Route::post('statement-request-api', [StatementRequestController::class, 'statement_request'])->name('statement-request-api');
 
 //route for change-pin-api
-Route::post('change-pin-api',[ChangePinController::class, 'change_pin'])->name('change-pin-api');
+Route::post('change-pin-api', [ChangePinController::class, 'change_pin'])->name('change-pin-api');

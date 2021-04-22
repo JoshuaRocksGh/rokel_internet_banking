@@ -45,7 +45,7 @@
                                             <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2>
 
                                             <div class="text-center" id="account_balance_info_loader">
-                                                <div class="spinner-grow text-primary avatar-lg" role="status"></div>
+                                                <div class="spinner-border text-primary avatar-sm" role="status"></div>
                                             </div>
 
                                             <div class="text-center" id="account_balance_info_retry_btn">
@@ -203,12 +203,19 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="text-center" id="account_transaction_loader">
-                                            <div class="spinner-grow text-primary avatar-lg" role="status"></div>
+                                            <div class="spinner-border text-primary avatar-sm" role="status"></div>
                                         </div>
 
-                                        <div class="text-center" id="account_transaction_retry_btn">
+
+                                            <div class="text-center currency_converter_error_area" id="account_transaction_retry_btn">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" > <i class="fe-rotate-ccw"></i> &nbsp;  Please retry</button>
+                                            </div>
+
+                                        {{-- <div class="text-center" id="account_transaction_retry_btn">
                                             <button class="btn btn-sm btn-secondary" >retry</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
 
@@ -308,6 +315,8 @@
             $(".account_transaction_display").hide();
              $(".account_transaction_display_table").hide();
             $("#account_transaction_retry_btn").hide();
+
+
 
             $(document).ready(function() {
 
@@ -438,6 +447,13 @@
                      $(".account_transaction_display_table").hide();
                     $("#account_transaction_retry_btn").hide();
                     $("#account_transaction_loader").show();
+                        let account_number = @json($account_number);
+                        let start_date = $('.date-picker-startDate').val();
+                        let end_date = $('.date-picker-endDate').val();
+                        let transLimit = "10";
+                        console.log(start_date)
+                        console.log(end_date)
+                        console.log(account_number)
                     getAccountTransactions(account_number, start_date, end_date);
                 })
 

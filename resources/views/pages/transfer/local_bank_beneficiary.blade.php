@@ -2,24 +2,27 @@
 
 @section('content')
 
-<div ></div>   <legend></legend>
+    <div></div>
+    <legend></legend>
 
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body card-background-image">
+                <div class="card-body ">
                     <div class="row">
                         <div class="col-md-1"></div>
 
                         <div class="col-md-10">
-                            <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i class="fe-arrow-left"></i>  &emsp; OTHER LOCAL BANK BENEFICIARY</h2>
+                            <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;"
+                                onclick="window.history.back()"><i class="fe-arrow-left"></i> &emsp; OTHER LOCAL BANK
+                                BENEFICIARY</h2>
 
-                        <p class="text-muted font-14 m-b-20">
-                            Parsley is a javascript form validation library. It helps you provide your
-                            users with feedback on their form submission before sending it to your
-                            server.
-                        </p>
-                        <hr>
+                            <p class="text-muted font-14 m-b-20">
+                                Parsley is a javascript form validation library. It helps you provide your
+                                users with feedback on their form submission before sending it to your
+                                server.
+                            </p>
+                            <hr>
 
 
                             <div class="row" id="transaction_form">
@@ -27,21 +30,24 @@
 
                                 <div class="col-md-6">
 
-                                    <form  action="#" id="local_bank_beneficiary_details" autocomplete="off" aria-autocomplete="off">
+                                    <form action="#" id="local_bank_beneficiary_details" autocomplete="off"
+                                        aria-autocomplete="off">
 
-                                            <label class="purple-color"> Bank Details</label>
+                                        <h4 class="text-primary"> Bank Details</h4>
+                                        <hr>
+
 
                                         <div class="form-group row">
-                                            <label class="col-3">Select Bank:<span class="text-danger">*</span></label>
+                                            <label class="col-4">Select Bank: <span class="text-danger">*</span></label>
                                             <div class="col-7">
                                                 <select class="custom-select " id="select_bank" required>
                                                     <option value="">Select Bank</option>
-                                                    {{--  <option value="Stanbic Bank">Stanbic Bank</option>
+                                                    {{-- <option value="Stanbic Bank">Stanbic Bank</option>
                                                     <option value="GCB Bank">GCB Bank</option>
                                                     <option value="Standard Chartered Bank">Standard Chartered Bank</option>
                                                     <option value="Zenith Bank">Zenith Bank</option>
                                                     <option value="Cal Bank">Cal Bank</option>
-                                                    <option value="FNB Bank">FNB Bank</option>  --}}
+                                                    <option value="FNB Bank">FNB Bank</option> --}}
                                                 </select>
                                             </div>
 
@@ -49,26 +55,42 @@
 
                                         </div>
 
-                                        <label class="purple-color"> Account Details</label>
                                         <div class="form-group row">
-                                            <label class="col-3">Account Number:<span class="text-danger">*</span></label>
+                                            <label class="col-4">Bank Swift Code: <span class="text-danger">*</span></label>
                                             <div class="col-7">
-                                                <input type="number" class="form-control" id="account_number" placeholder="Account Number"  required>
+                                                <input type="text" class="form-control" id="swift_code"
+                                                    placeholder="Bank Swift Code" required>
+                                            </div>
+
+                                        </div>
+
+                                        <h4 class="text-primary"> Account Details</h4>
+                                        <hr>
+
+
+                                        <div class="form-group row">
+                                            <label class="col-4">Account Number: <span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <input type="text" class="form-control" id="account_number"
+                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                    placeholder="Account Number" required>
                                             </div>
 
                                             {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-3">Account Name:<span class="text-danger">*</span></label>
+                                            <label class="col-4">Account Name: <span class="text-danger">*</span></label>
                                             <div class="col-7">
-                                                <input type="text" class="form-control" id="account_name" placeholder="Account Name" required>
+                                                <input type="text" class="form-control" id="account_name"
+                                                    placeholder="Account Name" required>
                                             </div>
 
                                             {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                         </div>
-                                         <div class="form-group row">
-                                            <label class="col-3">Account Currency:<span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-4">Account Currency: <span
+                                                    class="text-danger">*</span></label>
                                             <div class="col-7">
                                                 <select class="custom-select" id="select_currency" required>
                                                     <option value="">Select Currency</option>
@@ -82,174 +104,190 @@
                                             {{-- <input type="text" class="form-control" id="account_n" placeholder="Account Name" required> --}}
                                             {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                         </div>
-                                         <div class="form-group row">
-                                            <label class="col-3">Bank Swift Code:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="swift_code" placeholder="Bank Swift Code" required>
-                                            </div>
+                                        </div>
 
-                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-                                         <br>
+                                        <br>
                                 </div>
                                 <div class="col-md-6">
 
-                                         <label class="purple-color">Beneficiary Details</label>
-                                        <div class="form-group row">
-                                            <label class="col-3">Beneficiary Name:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name" required>
-                                            </div>
+                                    <h4 class="text-primary"> Beneficiary Details</h4>
+                                    <hr>
 
-                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-                                         <div class="form-group row">
-                                            <label class="col-3">Beneficiary Address:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="beneficiary_address" placeholder="Beneficiary Address" required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-                                         <div class="form-group row">
-                                            <label class="col-3">Beneficiary Phone Number:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="number" class="form-control" id="beneficiary_number" placeholder="Beneficiary Phone Number" required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-
-                                         <div class="form-group row">
-                                            <label class="col-3">Beneficiary Email:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Email" required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-
-                                        <div class="form-group">
-
+                                    <div class="form-group row">
+                                        <label class="col-4"> Name: <span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" id="beneficiary_name"
+                                                placeholder="Beneficiary Name" required>
                                         </div>
 
-                                        <div class="form-group">
+                                        {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                            <div class="checkbox checkbox-primary mb-2" id="transfer_email">
-                                                <input id="checkbox2" type="checkbox">
-                                                <label class="custom-control-label" for="checkbox2">
-                                                    Email beneficiary when a transfer is made
-                                                </label>
-                                            </div>
-
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-4"> Address: <span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" id="beneficiary_address"
+                                                placeholder="Beneficiary Address" required>
                                         </div>
 
-                                        <p class="sub-header font-13">
-                                            Providing  beneficiary email  and  checking
-                                            the box, enables us to send an alert mail to
-                                            the beneficiary each time a transfer is made
-                                        </p>
-                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="save_beneficiary_next">Next</button>
+                                        {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-4"> Phone : <span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="number" class="form-control" id="beneficiary_number"
+                                                placeholder="Beneficiary Phone Number" required>
+                                        </div>
+
+                                        {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-4"> Email: <span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="email" class="form-control" id="beneficiary_email"
+                                                placeholder="Beneficiary Email" required>
+                                        </div>
+
+                                        {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                    </div>
+
+                                    <div class="form-group">
+
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                            <input id="checkbox2" type="checkbox">
+                                            <label class="custom-control-label" for="checkbox2">
+                                                Email beneficiary when a transfer is made
+                                            </label>
+                                        </div>
+
+                                    </div>
+
+                                    <p class="sub-header font-13">
+                                        Providing beneficiary email and checking
+                                        the box, enables us to send an alert mail to
+                                        the beneficiary each time a transfer is made
+                                    </p>
+                                    <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit"
+                                        id="save_beneficiary_next">Next</button>
                                     </form>
 
 
-                                    <form action="#" method="POST"  id="local_bank_beneficiary_summary" autocomplete="off" aria-autocomplete="off">
+                                    <form action="#" method="POST" id="local_bank_beneficiary_summary" autocomplete="off"
+                                        aria-autocomplete="off">
                                         <div class="card-box">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label class="purple-color"> Bank Details Summary</label>
-                                         </div>
-                                        <div class="form-group">
-                                            <label> Select Bank:&emsp;</label>
-                                            <span class="font-weight-light mr-2" id="display_selected_bank"> &nbsp</span>
-                                        </div>
-                                        <br>
-                                        {{--  <label class="purple-color">  Account Details</label>  --}}
-                                        <div class="form-group">
-                                            <label>Account Number:&emsp;</label><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span>
-                                            {{-- <input type="number" class="form-control" id="account_number" placeholder="Account Number" required> --}}
+                                            @csrf
+                                            <div class="form-group">
+                                                <label class="purple-color"> Bank Details Summary</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label> Select Bank:&emsp;</label>
+                                                <span class="font-weight-light mr-2" id="display_selected_bank">
+                                                    &nbsp</span>
+                                            </div>
+                                            <br>
+                                            {{-- <label class="purple-color">  Account Details</label> --}}
+                                            <div class="form-group">
+                                                <label>Account Number:&emsp;</label><span class="font-weight-light mr-2"
+                                                    id="display_account_number"> &nbsp</span>
+                                                {{-- <input type="number" class="form-control" id="account_number" placeholder="Account Number" required> --}}
 
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Account Name:&emsp;</label><span class="font-weight-light mr-2" id="display_account_name"> &nbsp</span>
-                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Account Name:&emsp;</label><span class="font-weight-light mr-2"
+                                                    id="display_account_name"> &nbsp</span>
+                                                {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
 
 
-                                         </div>
-                                         <div class="form-group">
-                                            <label>Account Currency:&emsp;</label><span class="font-weight-light mr-2" id="display_account_currency"> &nbsp</span>
-                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Account Currency:&emsp;</label><span class="font-weight-light mr-2"
+                                                    id="display_account_currency"> &nbsp</span>
+                                                {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
 
 
-                                         </div>
-                                         <div class="form-group">
-                                            <label>Bank Swift Code:&emsp;</label><span class="font-weight-light mr-2" id="display_swift_code"> &nbsp</span>
-                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bank Swift Code:&emsp;</label><span class="font-weight-light mr-2"
+                                                    id="display_swift_code"> &nbsp</span>
+                                                {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
 
-
-                                         </div>
-
-                                         <br>
-
-
-                                         {{--  <label class="purple-color"> Personal Details</label>  --}}
-                                        <div class="form-group">
-                                            <label>Beneficiary Name:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_name"> &nbsp</span>
-                                            {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
-
-
-                                         </div>
-
-                                         <div class="form-group">
-                                            <label>Beneficiary Address:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_address"> &nbsp</span>
-                                            {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
-
-
-                                         </div>
-                                         <div class="form-group">
-                                            <label>Beneficiary Phone Number:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_phone"> &nbsp</span>
-                                            {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
-
-
-                                         </div>
-                                         <div class="form-group">
-                                            <label>Beneficiary Email:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_email"> &nbsp</span>
-                                            {{-- <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name"> --}}
-
-
-                                         </div>
-
-                                        <div class="form-group">
-
-                                        </div><br>
-
-                                        <div class="form-group">
-
-                                            <div class="">
-                                                {{-- <input id="checkbox2" type="checkbox"> --}}
-                                                <label>Email beneficiary when a transfer is made:&emsp;</label><span class="font-weight-light mr-2" id="display_transfer_email"> &nbsp</span>
 
                                             </div>
 
-                                        </div>
+                                            <br>
 
-                                        {{-- <p class="sub-header font-13">
+
+                                            {{-- <label class="purple-color"> Personal Details</label> --}}
+                                            <div class="form-group">
+                                                <label>Beneficiary Name:&emsp;</label><span class="font-weight-light mr-2"
+                                                    id="display_beneficiary_name"> &nbsp</span>
+                                                {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
+
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Beneficiary Address:&emsp;</label><span
+                                                    class="font-weight-light mr-2" id="display_beneficiary_address">
+                                                    &nbsp</span>
+                                                {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
+
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Beneficiary Phone Number:&emsp;</label><span
+                                                    class="font-weight-light mr-2" id="display_beneficiary_phone">
+                                                    &nbsp</span>
+                                                {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
+
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Beneficiary Email:&emsp;</label><span class="font-weight-light mr-2"
+                                                    id="display_beneficiary_email"> &nbsp</span>
+                                                {{-- <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name"> --}}
+
+
+                                            </div>
+
+                                            <div class="form-group">
+
+                                            </div><br>
+
+                                            <div class="form-group">
+
+                                                <div class="">
+                                                    {{-- <input id="checkbox2" type="checkbox"> --}}
+                                                    <label>Email beneficiary when a transfer is made:&emsp;</label><span
+                                                        class="font-weight-light mr-2" id="display_transfer_email">
+                                                        &nbsp</span>
+
+                                                </div>
+
+                                            </div>
+
+                                            {{-- <p class="sub-header font-13">
                                             Providing  beneficairy email  and  checking
                                             the box, enables us to send an alert mail to
                                             the beneficiary each time a transfer is made
                                         </p> --}}
 
-                                        <button type="submit" class="btn btn-secondary btn-rounded waves-effect waves-light"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
+                                            <button type="submit"
+                                                class="btn btn-secondary btn-rounded waves-effect waves-light"
+                                                id="save_beneficiary_back">Back</button>&emsp;&emsp;
 
-                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="save_beneficiary">Save Beneficiary</button>
-                                    </div>
+                                            <button class="btn btn-primary btn-rounded waves-effect waves-light"
+                                                type="submit" id="save_beneficiary">Save Beneficiary</button>
+                                        </div>
                                     </form>
 
                                 </div> <!-- end col -->
@@ -333,12 +371,11 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
-
-
             function bank_list() {
                 $.ajax({
                     'type': 'GET',
@@ -350,7 +387,8 @@
                         $.each(data, function(index) {
 
                             $('#select_bank').append($('<option>', {
-                                value: data[index].bankCode + '~' + data[index].bankDescription
+                                value: data[index].bankCode + '~' + data[index]
+                                    .bankDescription
                             }).text(data[index].bankDescription));
 
                         });
@@ -366,7 +404,7 @@
                     'url': 'get-currency-list-api',
                     "datatype": "application/json",
                     success: function(response) {
-                        {{--  console.log(response.data);  --}}
+                        {{-- console.log(response.data); --}}
                         let data = response.data
                         $.each(data, function(index) {
 
@@ -381,8 +419,49 @@
                 })
             };
 
-{{--
-            var bene_id = @json($bene_id);
+
+            function validate_account_number(account_no) {
+                $.ajax({
+                    "type": "POST",
+                    "url": "validate-account-no",
+                    "datatype": "application/json",
+                    "data": {
+                        "authToken": "string",
+                        "accountNumber": account_no
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    success: function(response) {
+
+                        console.log(response.responseCode)
+                        if (response.responseCode == "000") {
+                            console.log(response.data)
+                            toaster(response.message, 'success');
+                            $('#account_name').val(response.data.accountDescription)
+                            $('#select_currency_i').val(response.data.accountCurrencyDescription)
+                            $('#select_currency').val(response.data.accountCurrencyCode + '~' +
+                                response.data.accountCurrencyDescription)
+
+                            $('#save_beneficiary').show('')
+
+                        } else {
+                            toaster(response.message, 'error');
+                            $('#account_name').val('')
+                            $('#select_currency_i').val('')
+                            $('#select_currency').val('')
+                            $('#save_beneficiary').hide('')
+
+
+                        }
+                    }
+
+                })
+            };
+
+
+            {{-- var bene_id = @json($bene_id);
             console.log(bene_id);
 
             function get_beneficiary_details(){
@@ -406,9 +485,9 @@
                         }
                     }
                 })
-            };  --}}
+            }; --}}
 
-            $(document).ready(function(){
+            $(document).ready(function() {
 
 
                 setTimeout(function() {
@@ -424,8 +503,17 @@
                 $('#beneficiary_email_error').hide();
 
 
-                function toaster(message, icon )
-                {
+                $("#account_number").keyup(function() {
+                    let account_no = $(this).val();
+                    if (account_no.length > 10) {
+                        validate_account_number(account_no)
+                    }
+
+
+                })
+
+
+                function toaster(message, icon) {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -433,24 +521,24 @@
                         timer: 10000,
                         timerProgressBar: false,
                         didOpen: (toast) => {
-                          toast.addEventListener('mouseenter', Swal.stopTimer)
-                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
-                      })
+                    })
 
-                      Toast.fire({
+                    Toast.fire({
                         icon: icon,
                         title: message
-                      })
+                    })
                 };
 
-                $('#local_bank_beneficiary_details').submit(function(e){
+                $('#local_bank_beneficiary_details').submit(function(e) {
                     e.preventDefault();
 
                     var select_bank = $('#select_bank').val();
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
-                    var beneficiary_name =  $('#beneficiary_name').val();
+                    var beneficiary_name = $('#beneficiary_name').val();
                     var beneficiary_email = $('#beneficiary_email').val();
                     var transfer_email = $("#transfer_email input[type='checkbox']:checked").val();
                     var currency = $('#select_currency').val().split('~');
@@ -467,36 +555,37 @@
                     var account_name = $('#account_name').val();
                     $('#display_account_name').text(account_name);
 
-                    var beneficiary_name =  $('#beneficiary_name').val();
+                    var beneficiary_name = $('#beneficiary_name').val();
                     $('#display_beneficiary_name').text(beneficiary_name);
 
                     var beneficiary_email = $('#beneficiary_email').val();
                     $('#display_beneficiary_email').text(beneficiary_email);
 
                     var transfer_email = $("#transfer_email input[type='checkbox']:checked").val();
-                    {{--  console.log(transfer_email);  --}}
-                    if (transfer_email == 'on'){
+                    {{-- console.log(transfer_email); --}}
+                    if (transfer_email == 'on') {
                         $('#display_transfer_email').text('Yes');
-                     }else {
+                    } else {
                         $('#display_transfer_email').text('No');
-                     };
+                    };
 
                     var currency = $('#select_currency').val().split('~');
                     var currency_ = currency[1];
                     $('#display_account_currency').text(currency_);
 
                     var swift_code = $('#swift_code').val();
-                    $('#display_swift_code').text(swift_code) ;
+                    $('#display_swift_code').text(swift_code);
 
                     var beneficiary_address = $('#beneficiary_address').val();
-                     $('#display_beneficiary_address').text(beneficiary_address);
+                    $('#display_beneficiary_address').text(beneficiary_address);
 
                     var beneficiary_phone = $('#beneficiary_number').val();
-                     $('#display_beneficiary_phone').text(beneficiary_phone);
+                    $('#display_beneficiary_phone').text(beneficiary_phone);
 
-                    if(select_bank.trim() != '' && account_number.trim() != '' && account_name.trim() != '' && beneficiary_name.trim() != ''){
+                    if (select_bank.trim() != '' && account_number.trim() != '' && account_name.trim() !=
+                        '' && beneficiary_name.trim() != '') {
                         $('#local_bank_beneficiary_details').hide();
-                        $("#local_bank_beneficiary_summary" ).toggle( '500' );
+                        $("#local_bank_beneficiary_summary").toggle('500');
 
                     }
 
@@ -504,7 +593,7 @@
                 })
 
                 // GO BACK TO ENTER BENEFICIARY FORM
-                $('#save_beneficiary_back').click(function(e){
+                $('#save_beneficiary_back').click(function(e) {
                     e.preventDefault();
 
                     $('#local_bank_beneficiary_summary').hide();
@@ -514,7 +603,7 @@
 
 
                 // SEND TO API
-                $('#local_bank_beneficiary_summary').submit(function(e){
+                $('#local_bank_beneficiary_summary').submit(function(e) {
                     e.preventDefault();
 
 
@@ -522,13 +611,13 @@
                     var select_bank = select_bank_[0];
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
-                    var beneficiary_name =  $('#beneficiary_name').val();
+                    var beneficiary_name = $('#beneficiary_name').val();
                     var beneficiary_email = $('#beneficiary_email').val();
                     var send_email = $("#transfer_email input[type='checkbox']:checked").val();
-                    {{--  console.log(send_email);  --}}
-                    if(send_email == 'on'){
+                    {{-- console.log(send_email); --}}
+                    if (send_email == 'on') {
                         var transfer_email = ('Yes');
-                    }else{
+                    } else {
                         var transfer_email = ('No');
                     }
                     var currency = $('#select_currency').val().split('~');
@@ -537,43 +626,42 @@
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();
                     var swift_code = $('#swift_code').val();
-                    {{--  console.log(currency);  --}}
+                    {{-- console.log(currency); --}}
 
-                    {{--  console.log(select_bank)
-                    return false;  --}}
+                    {{-- console.log(select_bank)
+                    return false; --}}
 
                     $.ajax({
-                        'type' : 'POST' ,
-                        'url' : 'add-local-bank-beneficiary-api',
-                        "datatype" : "application/json",
-                        'data' : {
-                            'bank_name' : select_bank ,
-                            'account_number' : account_number ,
-                            'account_name' : account_name ,
-                            'beneficiary_name' : beneficiary_name ,
-                            'beneficiary_email' : beneficiary_email ,
-                            'send_mail' : transfer_email ,
+                        'type': 'POST',
+                        'url': 'add-local-bank-beneficiary-api',
+                        "datatype": "application/json",
+                        'data': {
+                            'bank_name': select_bank,
+                            'account_number': account_number,
+                            'account_name': account_name,
+                            'beneficiary_name': beneficiary_name,
+                            'beneficiary_email': beneficiary_email,
+                            'send_mail': transfer_email,
                             "account_currency": currency_,
                             "number": beneficiary_number,
                             "beneficiary_address": beneficiary_address,
-                            "bank_swift_code" : swift_code
+                            "bank_swift_code": swift_code
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
 
-                        success:
-                        function(response){
+                        success: function(response) {
 
                             console.log(response.responseCode);
-                            if(response.responseCode == "000"){
-                                toaster(response.message, 'success' );
+                            if (response.responseCode == "000") {
+                                toaster(response.message, 'success');
 
-                            }else{
-                                toaster(response.message, 'error' );
+                            } else {
+                                toaster(response.message, 'error');
 
+                            }
                         }
-                    }
 
                     })
                 })

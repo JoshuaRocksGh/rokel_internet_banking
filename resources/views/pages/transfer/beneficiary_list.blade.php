@@ -28,6 +28,7 @@
             <br>
             <div class="col-12">
                 <div class="card">
+                    <br><br>
                     <div class="card-body" >
 
 
@@ -35,7 +36,18 @@
 
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+
+                        <h2 class="header-title m-t-0 text-primary">TRANSFER BENEFICIARY LIST</h2>
+                        <p class="text-muted font-14 m-b-20">
+                            Parsley is a javascript form validation library. It helps you provide your
+                            users with feedback on their form submission before sending it to your
+                            server.
+                        </p>
+                        <hr>
+
+
 
 
                                 <div class="row">
@@ -64,7 +76,7 @@
 
                                     </div>
                                 </div>
-                                <div class="row" id="beneficiary_table">
+                                <div class="row" id="beneficiary_table" style="zoom: 0.8;">
                                     <div class="col-md-12">
 
                                         <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100 beneficiary_list_display">
@@ -82,24 +94,6 @@
                                             </thead>
 
 
-                                            {{-- <tbody class="beneficiary">
-
-                                                <tr>
-                                                    <td> </td>
-                                                    <td> </td>
-                                                    <td> </td>
-                                                    <td> </td>
-                                                    <td> </td>
-                                                    <td class="text-center">
-                                                        <span class="fe-edit noti-icon text-primary"></span>
-                                                        &emsp;&emsp;
-                                                        <span class="fe-trash noti-icon text-danger"></span>
-                                                    </td>
-
-
-                                                </tr>
-
-                                            </tbody> --}}
                                         </table>
                                     </div>
 
@@ -142,85 +136,6 @@
                                                             </form>
                                                         </p>
 
-{{--
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-1" class="control-label">Firstname</label>
-                                                                    <input type="text" class="form-control" id="firstname_" placeholder="John">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-2" class="control-label">Lastname</label>
-                                                                    <input type="text" class="form-control" id="lastname_" placeholder="Doe">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-2" class="control-label">Othername</label>
-                                                                    <input type="text" class="form-control" id="Othername_" placeholder="Doe">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-3" class="control-label">Beneficiary Type</label>
-                                                                    <input type="text" class="form-control" id="beneficiary_type_" placeholder="Address">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-3" class="control-label">Account Number</label>
-                                                                    <input type="text" class="form-control" id="account_number_" placeholder="Address">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-3" class="control-label">Account Currency</label>
-                                                                    <input type="text" class="form-control" id="account_currency_" placeholder="Address">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-4" class="control-label">Bank Country</label>
-                                                                    <input type="text" class="form-control" id="bank_country_" placeholder="Boston">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-5" class="control-label">Bank Name</label>
-                                                                    <input type="text" class="form-control" id="bank_name_" placeholder="United States">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group">
-                                                                    <label for="field-6" class="control-label">Swift Code</label>
-                                                                    <input type="text" class="form-control" id="swift_code_" placeholder="123456">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <div class="form-group no-margin">
-                                                                    <label for="field-7" class="control-label">Bank Address</label>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group no-margin">
-                                                                    <label for="field-7" class="control-label">Beneficiary Address</label>
-                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-group no-margin">
-                                                                    <label for="field-7" class="control-label">Beneficiary Email</label>
-                                                                 </div>
-                                                            </div>
-                                                        </div> --}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
@@ -230,27 +145,16 @@
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
 
-                                {{--  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal">Center modal</button>  --}}
-                                {{--  <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Responsive Modal</button>  --}}
-                                {{--  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">Large Modal</button>  --}}
 
 
-
-
-
-                                {{-- <h4 class="header-title">Buttons example</h4>
-<p class="sub-header font-13">
-The Buttons extension for DataTables provides a common set of options, API
-methods and styling to display buttons on a page
-that will interact with a DataTable. The core library provides the based
-framework upon which plug-ins can built.
-</p> --}}
 
 
                             </div> <!-- end card body-->
 
 
                         </div>
+
+                          <div class="col-md-1"></div>
 
 
 

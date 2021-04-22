@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class FunctionsController extends Controller
 {
@@ -190,6 +191,48 @@ class FunctionsController extends Controller
 
 
 
+    public function validate_account_no(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'accountNumber' => 'required',
+        ]);
+
+        $base_response = new BaseResponse();
+        // VALIDATION
+        if ($validator->fails()) {
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        // return $request;
+        $account_no = $request->accountNumber;
+
+
+        $base_response = new BaseResponse();
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+
+
+        $data = [
+            "authToken" => $authToken,
+            "accountNumber"    => $account_no
+        ];
+
+        // return $data;
+
+        $response = Http::post(env('API_BASE_URL') . "/account/validateBBAN", $data);
+
+        // return $response->body();
+
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
+
+
+
     public function get_transfer_beneficiary(Request $request)
     {
         $beneType = $request->beneType;
@@ -206,7 +249,7 @@ class FunctionsController extends Controller
 
         $response = Http::get(env('API_BASE_URL') . "/beneficiary/getTransferBeneficiariestype}?userID=$userID&bankType=$beneType");
 
-        //return $response;
+        // return $response;
         // return $response->status();
         $result = new ApiBaseResponse();
         return $result->api_response($response);

@@ -16,13 +16,13 @@
                         <div class="auth-logo">
                             <a href="index.html" class="logo logo-dark text-center">
                                 <span class="logo-lg">
-                                    <img src="{{  asset("assets/images/" . env('APPLICATION_INFO_LOGO_DARK') )}} " alt="" height="50">
+                                    <img src="{{  asset("assets/images/rokel_logo.png")}} " alt="" height="50">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light text-center">
                                 <span class="logo-lg">
-                                    <img src="{{  asset("assets/images/" . env('APPLICATION_INFO_LOGO_DARK') )}} " alt="" height="50">
+                                    <img src="{{  asset("assets/images/rokel_logo.png")}} " alt="" height="50">
                                 </span>
                             </a>
                         </div>
@@ -30,7 +30,8 @@
 
 
                     <!-- title-->
-                    <p class="text-muted mb-4"><h3 class="text-primary">Personal Internet Banking.</h3></p>
+                    <p class="text-muted mb-4"><h3 class="text-primary"> Internet Banking.</h3></p>
+                    <br><br>
                     <h4 class="mt-0">Sign In</h4>
 
 

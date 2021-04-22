@@ -39,7 +39,7 @@
                         <canvas id="myChart" width="400" height="250"></canvas>
 
                     </div> <!-- end row-->
-                    <h4 class="text-center">TOTAL: GHS 90,000,000.00</h4>
+                    <h4 class="text-center">TOTAL: SLL 90,000,000.00</h4>
                 </div> <!-- end widget-rounded-circle-->
 
             </div> <!-- end col-->
@@ -72,9 +72,22 @@
                                     <div class="tab-pane active" id="home-b2">
 
 
-                                        <p>
+                                            <div class="text-center cross_rates_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
 
-                                            <table class="table table-bordered mb-0" style="zoom: 0.8;">
+
+
+                                            <div class="text-center cross_rates_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_fx_rate('Cross rate')"> <i class="fe-rotate-ccw"></i> &nbsp;  Please retry</button>
+                                            </div>
+
+
+
+
+                                            <table class="table table-bordered mb-0 cross_rate_display_area" style="zoom: 0.8;">
                                                 <thead>
                                                 <tr>
                                                     <th>Currency</th>
@@ -87,14 +100,28 @@
                                                 </tbody>
                                             </table>
 
-                                        </p>
+
 
                                     </div>
                                     <div class="tab-pane " id="profile-b2">
 
-                                        <p>
 
-                                            <table class="table table-bordered mb-0" style="zoom: 0.8;">
+
+                                            <div class="text-center cross_rates_loading_area" >
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center cross_rates_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_fx_rate('Note rate')"> <i class="fe-rotate-ccw"></i> &nbsp;  Please retry</button>
+                                            </div>
+
+
+
+                                            <table class="table table-bordered mb-0 cross_rates_display_area" style="zoom: 0.8;">
                                                 <thead>
                                                 <tr>
                                                     <th>Currency</th>
@@ -108,8 +135,6 @@
 
                                                 </tbody>
                                             </table>
-
-                                        </p>
 
 
                                     </div>
@@ -134,7 +159,23 @@
                         </div>
                         <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
                             <div class="card-body">
-                                <form action="" autocomplete="off" aria-autocomplete="off">
+
+
+
+                                            <div class="text-center currency_converter_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center currency_converter_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_correct_fx_rate()"> <i class="fe-rotate-ccw"></i> &nbsp;  Please retry</button>
+                                            </div>
+
+
+                                <form action="" autocomplete="off" aria-autocomplete="off"  class="currency_converter_display_area">
 
                                     <div class="row" >
 
@@ -226,7 +267,24 @@
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="card-body">
 
-                                            <div class="table-responsive table-bordered">
+
+
+                                            <div class="text-center accounts_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center accounts_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_accounts()"> <i class="fe-rotate-ccw"></i> &nbsp;  Please retry</button>
+                                            </div>
+
+
+
+
+                                            <div class="table-responsive table-bordered accounts_display_area">
                                                 <table id="" class="table mb-0 ">
                                                     <thead>
                                                         <tr class="bg-secondary text-white ">
@@ -265,7 +323,23 @@
                                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="card-body">
 
-                                        <div class="table-responsive table-bordered">
+
+
+                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center loans_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_loans()"> <i class="fe-rotate-ccw"></i> &nbsp;  Please retry</button>
+                                            </div>
+
+
+
+                                        <div class="table-responsive table-bordered loans_display_area">
                                             <table id="datatable-buttons" class="table mb-0">
                                                 <thead>
                                                     <tr class="bg-secondary text-white ">
@@ -573,7 +647,7 @@
             <!-- Tour page js -->
         <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script>
          <!-- Tour init js-->
-    <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
 
     <script>
 
@@ -620,6 +694,10 @@
 
         function get_accounts(){
 
+            $(".accounts_display_area").hide()
+             $(".accounts_error_area").hide()
+             $(".accounts_loading_area").show()
+
             $.ajax({
                 "type": "GET",
                 "url" : "get-accounts-api",
@@ -651,12 +729,26 @@
                         })
 
 
+             $(".accounts_error_area").hide()
+             $(".accounts_loading_area").hide()
+             $(".accounts_display_area").show()
 
                     }else{
 
+                        $(".accounts_error_area").hide()
+                        $(".accounts_loading_area").hide()
+                        $(".accounts_display_area").show()
+
                     }
 
-                }
+                },      error: function(xhr, status, error){
+
+                        $(".accounts_loading_area").hide()
+                        $(".accounts_display_area").hide()
+                        $(".accounts_error_area").show()
+
+
+                            }
             })
         }
 
@@ -664,6 +756,10 @@
 
 
         function get_loans(){
+
+            $(".loans_display_area").hide()
+             $(".loans_error_area").hide()
+             $(".loans_loading_area").show()
 
             $.ajax({
                 "type": "GET",
@@ -694,13 +790,25 @@
 
                         })
 
-
+                        $(".loans_error_area").hide()
+                        $(".loans_loading_area").hide()
+                        $(".loans_display_area").show()
 
                     }else{
 
+                        $(".loans_error_area").hide()
+                        $(".loans_loading_area").hide()
+                        $(".loans_display_area").show()
+
                     }
 
-                }
+            },      error: function(xhr, status, error){
+                        $(".loans_display_area").hide()
+                        $(".loans_loading_area").hide()
+                        $(".loans_error_area").show()
+
+                            }
+
             })
         }
 
@@ -731,6 +839,10 @@
 
                    function get_correct_fx_rate() {
 
+                                $(".currency_converter_display_area").hide()
+                                $(".currency_converter_error_area").hide()
+                                $(".currency_converter_loading_area").show()
+
                             $.ajax({
                                 'type': 'GET',
                                 'url': 'get-correct-fx-rate-api',
@@ -739,12 +851,28 @@
                                     console.log(response.data);
                                     let data = response.data
                                     console.log(data)
+                                    if(response.responseCode == '000'){
 
-                                    $('#hide_fx_rate').val(JSON.stringify(data))
+                                        $(".currency_converter_loading_area").hide()
+                                        $(".currency_converter_error_area").hide()
+                                        $(".currency_converter_display_area").show()
+
+                                        $('#hide_fx_rate').val(JSON.stringify(data))
+
+                                    }else{
+                                        $(".currency_converter_display_area").hide()
+                                        $(".currency_converter_loading_area").hide()
+                                        $(".currency_converter_error_area").show()
+                                    }
+
+
 
                                 },
                                 error: function(xhr, status, error){
-                                alert("Failed to correct rates")
+                                        $(".currency_converter_display_area").hide()
+                                        $(".currency_converter_loading_area").hide()
+                                        $(".currency_converter_error_area").show()
+
 
                                 }
 
@@ -752,6 +880,10 @@
                 };
 
         function get_fx_rate(rate_type){
+
+            $(".cross_rate_display_area").hide()
+             $(".cross_rates_error_area").hide()
+             $(".cross_rates_loading_area").show()
 
             $.ajax({
                 "type": "GET",
@@ -765,6 +897,8 @@
                 function(response){
                     console.log(response);
                     if(response.responseCode == '000'){
+
+
 
                         let data = response.data;
 
@@ -817,27 +951,73 @@
 
                     }
 
+
+             $(".cross_rates_error_area").hide()
+             $(".cross_rates_loading_area").hide()
+             $(".cross_rate_display_area").show()
+
                     }else{
 
+             $(".cross_rates_error_area").hide()
+             $(".cross_rates_loading_area").hide()
+             $(".cross_rate_display_area").show()
                     }
 
-                }
+                },
+                 error: function(xhr, status, error){
+                $(".cross_rate_display_area").hide()
+                $(".cross_rates_loading_area").hide()
+                $(".cross_rates_error_area").show()
+
+
+                                }
             })
         }
 
+{{--
+        function dynamic_display(first, second, third){
+             $(".cross_rate_display_area").hide()
+             $(".cross_rates_error_area").hide()
 
+
+            $('".' + first + '"').hide()
+            $('".' + second + '"').hide()
+            $('".' + third + '"').show()
+        } --}}
 
 
 
 
         $(document).ready(function() {
 
+            {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
+
+             $(".cross_rate_display_area").hide()
+             $(".cross_rates_error_area").hide()
+             $(".cross_rates_loading_area").show()
+
+            $(".loans_display_area").hide()
+             $(".loans_error_area").hide()
+             $(".loans_loading_area").show()
+
+             $(".accounts_display_area").hide()
+             $(".accounts_error_area").hide()
+             $(".accounts_loading_area").show()
+
+            $(".currency_converter_display_area").hide()
+             $(".currency_converter_error_area").hide()
+             $(".currency_converter_loading_area").show()
+
             var converter_rates = []
 
-            setTimeout(function() {
-                get_fx_rate("Transfer rate")
+            function fx_rates(){
+                                get_fx_rate("Transfer rate")
                 get_fx_rate("Note rate")
                 get_fx_rate("Cross rate")
+            }
+
+            setTimeout(function() {
+                fx_rates()
                 converter_rates = get_correct_fx_rate()
                 get_currency()
                 get_accounts();
@@ -890,33 +1070,6 @@
 
 
 @section('scripts')
-    <script>
-
-        function get_accounts_() {
-            $.ajax({
-                'type': 'GET',
-                'url': 'get-accounts-api',
-                "datatype": "application/json",
-                success: function(response) {
-                    console.log(response.data);
-                    let data = response.data
-                    $.each(data, function(index) {
-
-                        $('#security_questions').append($('<option>', {
-                            value: data[index].Q_CODE
-                        }).text(data[index].Q_DESCRIPTION));
-
-                    });
-
-                },
-
-            })
-        };
-
-
-
-
-    </script>
 
 
 @endsection
