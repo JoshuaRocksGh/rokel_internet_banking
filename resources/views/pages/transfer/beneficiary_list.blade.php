@@ -29,16 +29,21 @@
             <div class="col-12">
                 <div class="card">
                     <br><br>
+<<<<<<< HEAD
                     <div class="card-body" >
+=======
+                    <div class="card-body">
+>>>>>>> 7165d3bde24685d0406e1a9766aff83819e2044f
 
 
-                        <div class="row" style="zoom:0.9;" >
+                        <div class="row" style="zoom:0.9;">
 
 
 
                             <div class="col-md-1"></div>
                             <div class="col-md-10">
 
+<<<<<<< HEAD
                         <h2 class="header-title m-t-0 text-primary">TRANSFER BENEFICIARY LIST</h2>
                         <p class="text-muted font-14 m-b-20">
                             Parsley is a javascript form validation library. It helps you provide your
@@ -46,6 +51,15 @@
                             server.
                         </p>
                         <hr>
+=======
+                                <h2 class="header-title m-t-0 text-primary">TRANSFER BENEFICIARY LIST</h2>
+                                <p class="text-muted font-14 m-b-20">
+                                    Parsley is a javascript form validation library. It helps you provide your
+                                    users with feedback on their form submission before sending it to your
+                                    server.
+                                </p>
+                                <hr>
+>>>>>>> 7165d3bde24685d0406e1a9766aff83819e2044f
 
 
 
@@ -66,9 +80,14 @@
                                                     data-toggle="dropdown" aria-expanded="false"> Add Beneficiary <i
                                                         class="mdi mdi-chevron-down"></i> </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{ url('add-same-bank-beneficiary') }}">Same Bank</a>
-                                                    <a class="dropdown-item" href="{{ url('add-local-bank-beneficiary') }}">Other Local Bank </a>
-                                                    <a class="dropdown-item" href="{{ url('add-international-bank-beneficiary') }}">International Bank </a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('add-same-bank-beneficiary') }}">Same Bank</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('add-local-bank-beneficiary') }}">Other Local Bank
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('add-international-bank-beneficiary') }}">International
+                                                        Bank </a>
                                                 </div>
                                             </div>
                                         </span>
@@ -79,8 +98,9 @@
                                 <div class="row" id="beneficiary_table" style="zoom: 0.8;">
                                     <div class="col-md-12">
 
-                                        <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100 beneficiary_list_display">
-                                        {{--  <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100">  --}}
+                                        <table id="datatable-buttons"
+                                            class="table table-bordered table-striped dt-responsive nowrap w-100 beneficiary_list_display">
+                                            {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
                                             <thead>
                                                 <tr class="bg-secondary text-white">
                                                     <th> <b> Alias </b> </th>
@@ -106,13 +126,14 @@
                                         </div>
                                         <br><br><br><br>
                                         <div class="text-center" id="beneficiary_list_retry_btn">
-                                            <button class="btn btn-lg btn-secondary" >Retry</button>
+                                            <button class="btn btn-lg btn-secondary">Retry</button>
                                         </div>
                                     </div>
                                 </div>
 
 
 
+<<<<<<< HEAD
                                 <!--  Modal content for the Large example -->
                                         <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
@@ -145,16 +166,135 @@
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
 
+=======
+                                <!-- Modal content for the Large example -->
+                                <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog"
+                                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myLargeModalLabel">Beneficiary Details</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="modal-body p-4">
+                                                <p>
+                                                    <form action="" id="modal_SAB_form">
+                                                        <h2>SAME BANK</h2>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group row">
+                                                                    <label class="col-6" for="">Account Number:</label>
+                                                                    <span class="col-6"id="account_number"></span>
+                                                                    {{-- <div class="col-6" >
+                                                                        <input class="form-control" type="number" class="form-control"
+                                                                        id="account_number" placeholder="Account Number" required>
+                                                                    </div> --}}
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-6">Account Name:</label>
+                                                                    <span class="col-6" id="account_name"></span>
+                                                                    {{-- <input type="text" class="form-control" id="account_name"
+                                                                        parsley-trigger="change" placeholder="Account Name" readonly required> --}}
+                                                                    {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-6">Account Currency:</label>
+                                                                    <span class="col-6" id="select_currency"></span>
+                                                                    {{-- <input type="hidden" class="form-control" readonly value="" id="select_currency">
+                                                                    <input type="text" class="form-control" readonly value="" id="select_currency_i"> --}}
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
+                                                                    <label class="col-6">Beneficiary Name:</label>
+                                                                    <span class="col-6" id="beneficiary_name"></span>
+                                                                    {{-- <input type="text" class="form-control" id="beneficiary_name"
+                                                                        parsley-trigger="change" placeholder="Beneficiary Name" required> --}}
+                                                                    {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-6">Beneficiary Mobile Number:</label>
+                                                                    <span class="col-6" id="beneficiary_mobile_number"></span>
+                                                                    {{-- <input type="number" class="form-control" id="beneficiary_mobile_number"
+                                                                        parsley-trigger="change" placeholder="Beneficiary Mobile Number" required> --}}
+                                                                    {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-6">Beneficiary Address:</label>
+                                                                    <span class="col-6" id="beneficiary_address"></span>
+                                                                    {{-- <input type="text" class="form-control" id="beneficiary_address"
+                                                                        parsley-trigger="change" placeholder="Beneficiary Address" required> --}}
+                                                                    {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-6">Beneficiary Email:</label>
+                                                                    <span class="col-6" id="beneficiary_email"></span>
+                                                                    {{-- <input type="email" class="form-control" id="beneficiary_email"
+                                                                        parsley-trigger="change" placeholder="Beneficiary Email" required> --}}
+                                                                    {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-6" for="">Email beneficiary when a transfer is made</label>
+                                                                    <div class="col-6"> <span id="transfer_email"></span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                <form action="" id="modal_OTB_form">
+                                                    <h2>OTHER BANK BANK</h2>
+
+                                                </form>
+
+                                                <form action="" id="modal_INTB_form">
+                                                    <h2>INTERNATIONAL BANK</h2>
+                                                </form>
+                                                </p>
+>>>>>>> 7165d3bde24685d0406e1a9766aff83819e2044f
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-info waves-effect"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger waves-effect waves-light"
+                                                    data-dismiss="modal">Delete</button>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
 
 
 
+<<<<<<< HEAD
+=======
 
+
+>>>>>>> 7165d3bde24685d0406e1a9766aff83819e2044f
                             </div> <!-- end card body-->
 
 
                         </div>
 
+<<<<<<< HEAD
                           <div class="col-md-1"></div>
+=======
+                        <div class="col-md-1"></div>
+>>>>>>> 7165d3bde24685d0406e1a9766aff83819e2044f
 
 
 
@@ -195,19 +335,18 @@
         <!-- Datatables init -->
         <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
         <script>
-
-            function beneficiary_list(){
+            function beneficiary_list() {
                 var table = $('.beneficiary_list_display').DataTable();
                 var nodes = table.rows().nodes();
                 $.ajax({
-                    'tpye' : 'GET' ,
-                    'url' : 'all-beneficiary-list' ,
-                    "datatype" : "application/json",
-                    success:function(response){
-                         {{-- console.log(response.responseCode); --}}
+                    'tpye': 'GET',
+                    'url': 'all-beneficiary-list',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        {{-- console.log(response.responseCode); --}}
 
                         let data = response.data;
-                        if(response.responseCode == '000') {
+                        if (response.responseCode == '000') {
 
                             $('#beneficiary_table').show();
                             $('#beneficiary_list_loader').hide();
@@ -227,7 +366,7 @@
 
                                     `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
                                     <button class="hell" > sup</button>
-                                    &emsp;&emsp;  <span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-toggle="modal" data-target="#bs-example-modal-lg"  data-value="${ data[index]}"></span>`,
+                                    &emsp;&emsp; <span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-toggle="modal" data-target="#bs-example-modal-lg" data-value="${ data[index]}"></span>`,
 
 
 
@@ -236,7 +375,7 @@
 
                             })
 
-                        }else{
+                        } else {
                             $('#beneficiary_table').hide();
                             $('#beneficiary_list_loader').hide();
                             $('#beneficiary_list_retry_btn').show();
@@ -250,53 +389,54 @@
             $('#beneficiary_table').hide();
 
 
-            $(document).ready(function(){
+            $(document).ready(function() {
 
-            $('#beneficiary_list_loader').show();
-                setTimeout(function(){
+                $('#beneficiary_list_loader').show();
+                setTimeout(function() {
                     beneficiary_list();
-                },2000);
+                }, 2000);
 
-                $('#beneficiary_list_retry_btn').click(function(e){
+                $('#beneficiary_list_retry_btn').click(function(e) {
                     e.preventDefault();
                     $('#beneficiary_list_retry_btn').hide();
                     $('#beneficiary_list_loader').show();
 
                     {{-- $('#beneficiary_list_loader').show(); --}}
-                        setTimeout(function(){
-                            beneficiary_list();
-                        },2000);
+                    setTimeout(function() {
+                        beneficiary_list();
+                    }, 2000);
                 })
 
-                $(".hell").click(function(){
+                $(".hell").click(function() {
                     alert('hhh')
                 })
 
-                $(".delete_beneficiary_data").click(function(){
+                $(".delete_beneficiary_data").click(function() {
 
                     alert("DELETE!!!");
-                   var beneficiary_data =  $(this).data().value;
-                  console.log(beneficiary_data);
-                  if(beneficiary_data.BENEF_TYPE == 'SAB'){
+                    var beneficiary_data = $(this).data().value;
+                    console.log(beneficiary_data);
+                    if (beneficiary_data.BENEF_TYPE == 'SAB') {
 
-                      $('#modal_OTB_form').hide()
-                      $('#modal_INTB_form').hide()
-                      $('#modal_SAB_form').show()
-                  }else if(beneficiary_data.BENEF_TYPE == 'OTB'){
+                        $('#modal_OTB_form').hide()
+                        $('#modal_INTB_form').hide()
+                        $('#modal_SAB_form').show()
+                    } else if (beneficiary_data.BENEF_TYPE == 'OTB') {
 
-                    $('#modal_INTB_form').hide()
-                    $('#modal_SAB_form').hide()
-                    $('#modal_OTB_form').show()
-                  }else if(beneficiary_data.BENEF_TYPE == 'INT'){
+                        $('#modal_INTB_form').hide()
+                        $('#modal_SAB_form').hide()
+                        $('#modal_OTB_form').show()
+                    } else if (beneficiary_data.BENEF_TYPE == 'INT') {
 
-                    $('#modal_SAB_form').hide()
-                    $('#modal_OTB_form').hide()
-                    $('#modal_INTB_form').show()
+                        $('#modal_SAB_form').hide()
+                        $('#modal_OTB_form').hide()
+                        $('#modal_INTB_form').show()
 
-                  }else{
+                    } else {
 
-                  }
+                    }
                 })
             })
+
         </script>
     @endsection
