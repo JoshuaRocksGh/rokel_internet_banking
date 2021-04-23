@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="">
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-md-1"></div>
@@ -42,16 +42,9 @@
                                             <div class="col-7">
                                                 <select class="custom-select " id="select_bank" required>
                                                     <option value="">Select Bank</option>
-                                                    {{-- <option value="Stanbic Bank">Stanbic Bank</option>
-                                                    <option value="GCB Bank">GCB Bank</option>
-                                                    <option value="Standard Chartered Bank">Standard Chartered Bank</option>
-                                                    <option value="Zenith Bank">Zenith Bank</option>
-                                                    <option value="Cal Bank">Cal Bank</option>
-                                                    <option value="FNB Bank">FNB Bank</option> --}}
+
                                                 </select>
                                             </div>
-
-                                            {{-- <span class="text-danger" id="select_bank_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                         </div>
 
@@ -94,15 +87,9 @@
                                             <div class="col-7">
                                                 <select class="custom-select" id="select_currency" required>
                                                     <option value="">Select Currency</option>
-                                                    {{-- <option value="001~SLL">SLL</option>
-                                                    <option value="002~USD">USD</option>
-                                                    <option value="003~EUR">EUR</option>
-                                                    <option value="004~GBP">GBP</option> --}}
+
                                                 </select>
                                             </div>
-
-                                            {{-- <input type="text" class="form-control" id="account_n" placeholder="Account Name" required> --}}
-                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                         </div>
 
@@ -120,8 +107,6 @@
                                                 placeholder="Beneficiary Name" required>
                                         </div>
 
-                                        {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-4"> Address: <span class="text-danger">*</span></label>
@@ -129,8 +114,6 @@
                                             <input type="text" class="form-control" id="beneficiary_address"
                                                 placeholder="Beneficiary Address" required>
                                         </div>
-
-                                        {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                     </div>
                                     <div class="form-group row">
@@ -140,8 +123,6 @@
                                                 placeholder="Beneficiary Phone Number" required>
                                         </div>
 
-                                        {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
                                     </div>
 
                                     <div class="form-group row">
@@ -150,8 +131,6 @@
                                             <input type="email" class="form-control" id="beneficiary_email"
                                                 placeholder="Beneficiary Email" required>
                                         </div>
-
-                                        {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
                                     </div>
 
@@ -175,6 +154,15 @@
                                         the box, enables us to send an alert mail to
                                         the beneficiary each time a transfer is made
                                     </p>
+
+
+                                    <div class="form-group error_div">
+                                        <div class="alert alert-warning" role="alert">
+                                            <i class="mdi mdi-alert-outline mr-2"></i> <strong>warning</strong>
+                                            <span class="error_message"></span>
+                                        </div>
+                                    </div>
+
                                     <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit"
                                         id="save_beneficiary_next">Next</button>
                                     </form>
@@ -275,11 +263,6 @@
 
                                             </div>
 
-                                            {{-- <p class="sub-header font-13">
-                                            Providing  beneficairy email  and  checking
-                                            the box, enables us to send an alert mail to
-                                            the beneficiary each time a transfer is made
-                                        </p> --}}
 
                                             <button type="submit"
                                                 class="btn btn-secondary btn-rounded waves-effect waves-light"
@@ -290,12 +273,9 @@
                                         </div>
                                     </form>
 
+
+
                                 </div> <!-- end col -->
-
-                                {{-- <div class="col-md-5 text-center d-none d-md-block" style="margin-top: 80px;">
-
-                                    <img src="{{ asset('assets/images/transfer1.png') }}" class="img-fluid" alt="" >
-                                </div> <!-- end col --> --}}
 
 
                                 <!-- end row -->
@@ -436,29 +416,51 @@
                     success: function(response) {
 
                         console.log(response.responseCode)
-                        if (response.responseCode == "000") {
+                        console.log(response.data.flag)
+                        if (response.responseCode == "000" && response.data.flag == 'Y') {
                             console.log(response.data)
-                            toaster(response.message, 'success');
-                            $('#account_name').val(response.data.accountDescription)
-                            $('#select_currency_i').val(response.data.accountCurrencyDescription)
-                            $('#select_currency').val(response.data.accountCurrencyCode + '~' +
-                                response.data.accountCurrencyDescription)
+                            toaster("valid account number entered", 'success', 10000);
+                            $('.error_div').hide()
 
-                            $('#save_beneficiary').show('')
+                            $('#save_beneficiary_next').show()
 
                         } else {
-                            toaster(response.message, 'error');
+                            toaster("Invalid account number entered", 'error', 10000);
+                            $('.error_message').text("Invalid account number entered")
+                            $('.error_div').show()
+
                             $('#account_name').val('')
                             $('#select_currency_i').val('')
                             $('#select_currency').val('')
-                            $('#save_beneficiary').hide('')
-
+                            $('#save_beneficiary_next').hide()
+                            return false
 
                         }
                     }
 
                 })
             };
+
+
+            function toaster(message, icon, timer) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: timer,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: icon,
+                    title: message
+                })
+            };
+
 
 
             {{-- var bene_id = @json($bene_id);
@@ -489,6 +491,8 @@
 
             $(document).ready(function() {
 
+                $('#save_beneficiary_next').hide()
+                $('.error_div').hide()
 
                 setTimeout(function() {
                     get_currency();
@@ -512,25 +516,6 @@
 
                 })
 
-
-                function toaster(message, icon) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 10000,
-                        timerProgressBar: false,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: icon,
-                        title: message
-                    })
-                };
 
                 $('#local_bank_beneficiary_details').submit(function(e) {
                     e.preventDefault();
@@ -655,10 +640,10 @@
 
                             console.log(response.responseCode);
                             if (response.responseCode == "000") {
-                                toaster(response.message, 'success');
+                                toaster(response.message, 'success', 10000);
 
                             } else {
-                                toaster(response.message, 'error');
+                                toaster(response.message, 'error', 10000);
 
                             }
                         }

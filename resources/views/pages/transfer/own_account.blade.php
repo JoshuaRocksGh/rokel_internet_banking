@@ -9,9 +9,9 @@
             <div class="">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-1"></div>
+                        <div class="col-md-2"></div>
 
-                        <div class="col-md-10 card card-body">
+                        <div class="col-md-8  card-body">
                             <h2 class="header-title m-t-0 text-primary">OWN ACCOUNT TRANSFER</h2>
 
                             <p class="text-muted font-14 m-b-20">
@@ -364,7 +364,7 @@
 
                         </div>
 
-                        <div class="col-md-1"></div>
+                        <div class="col-md-2"></div>
 
                     </div> <!-- end card-body -->
 
@@ -476,7 +476,7 @@
 
                 setTimeout(function() {
                     from_account();
-                }, 3000);
+                }, 200);
 
                 function sweet_alert() {
                     const Toast = Swal.mixin({
@@ -688,7 +688,6 @@
                     var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
                     {{-- console.log(schdule_pay); --}}
                     if (from_account_[2] == to_account_[1]) {
-                        {{-- alert('You can not send to same account'); --}}
 
                         toaster('Can not send to same account', 'error', 10000)
                         return false;
@@ -770,11 +769,6 @@
                 $('#confirm_button').click(function(e) {
                     e.preventDefault();
 
-                    $('#spinner').show();
-                    $('#spinner-text').show();
-
-                    $('#confirm_transfer').hide(),
-                        $('#confirm_button').attr('disabled', true);
 
                     //user_pin();
                     {{-- let pin = $('#user_pin').val();
@@ -801,8 +795,25 @@
                     var purpose = $('#purpose').val();
                     var pin = $('#user_pin').val();
 
+
+                    if (from_account_.trim() == '' || to_account_.trim() == '' || transfer_amount
+                        .trim() == '' || category_.trim() == '' || purpose.trim() == '' || pin == ''
+                    ) {
+                        toaster('Field must not be empty', 'error', 10000)
+                        return false;
+                    }
+
+
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
+
+
+                    $('#spinner').show();
+                    $('#spinner-text').show();
+
+                    $('#confirm_transfer').hide(),
+                        $('#confirm_button').attr('disabled', true);
+
 
                     $.ajax({
 

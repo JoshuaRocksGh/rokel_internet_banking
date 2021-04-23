@@ -24,12 +24,11 @@ class LocalBankController extends Controller
         $validator = Validator::make($req->all(), [
             'from_account' => 'required',
             'to_account' => 'required',
-            'bankName' => 'required',
+            'bank_name' => 'required',
             'amount' => 'required',
             'category' => 'required',
             'currency' => 'required',
             'bank_name' => 'required',
-            'secPin' => 'required',
             'beneficiaryName' => 'required',
             'naration' => 'required'
         ]);
@@ -47,13 +46,6 @@ class LocalBankController extends Controller
 
 
         $user_pin = $req->secPin;
-
-        //return $user_pin;
-        // if($user_pin != '123456'){
-
-        //     return $base_response->api_response('999', 'Incorrect Pin',  null); // return API BASERESPONSE
-
-        // }
 
 
         $authToken = session()->get('userToken');
@@ -76,13 +68,6 @@ class LocalBankController extends Controller
             "payment_date" => $req->payment_date
 
         ];
-
-        // return $data ;
-        $response = [
-            'responseCode' => '000'
-        ];
-
-        // return $response;
 
 
 

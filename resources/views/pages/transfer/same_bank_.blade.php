@@ -334,7 +334,7 @@
                                                                 &nbsp; | &nbsp;
                                                                 <span
                                                                     class="font-13 text-primary h3 online_display_beneficiary_account_currency"
-                                                                    id="online_display_beneficiary_account_currency"> GHS
+                                                                    id="online_display_beneficiary_account_currency">
                                                                 </span>
 
                                                                 <span
@@ -1136,7 +1136,8 @@
                             {{-- console.log(pin); --}}
 
                             if (from_account_.trim() == '' || to_account_.trim() == '' || transfer_amount
-                                .trim() == '' || category_.trim() == '' || purpose.trim() == '') {
+                                .trim() == '' || category_.trim() == '' || purpose.trim() == '' || pin == ''
+                            ) {
                                 toaster('Field must not be empty', 'error', 10000)
                                 return false;
                             }
