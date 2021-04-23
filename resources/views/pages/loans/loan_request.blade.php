@@ -95,7 +95,7 @@
                                                             <label>Principal Repay Frequency:</label>
                                                             <span class="text-danger">*</span></label>
                                                         <div class="col-6">
-                                                            <select class="custom-select" id="interest_rate_type" required>
+                                                            <select class="custom-select" id="principal_repay_freq" required>
                                                                 <option value="">-Select Principal Repay Frequency-</option>
                                                                 <option value="1">WEEKLY</option>
                                                                 <option value="2">BI-WEEKLY</option>
@@ -306,8 +306,11 @@
             }, 1000)
 
             $("#loan_product").change(function(){
-                $("#display_loan_product").text($("#loan_product").val());
+                var loan_product = $("#loan_product").val();
+                $(".display_loan_product").text(loan_product);
+                console.log(loan_product);
             });
+
             $("#statementType").change(function(){
                 var statementType = $("#statementType").val();
                 $(".display_type_of_statement").text(statementType);
