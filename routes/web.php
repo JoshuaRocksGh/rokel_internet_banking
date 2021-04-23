@@ -15,6 +15,8 @@ use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\KycController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
+use App\Http\Controllers\BENEFICIARY\Payment\AirtimePaymentController;
+use App\Http\Controllers\BENEFICIARY\Payment\MobileMoneyController as PaymentMobileMoneyController;
 use App\Http\Controllers\BENEFICIARY\Transfer\DeleteBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
@@ -418,6 +420,10 @@ Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::clas
 Route::post('international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
+
+// PAYMENT API'S
+Route::post('mobile-money-api', [PaymentMobileMoneyController::class, 'mobile_money'])->name('mobile-money-api');
+Route::post('airtime-payment-api', [AirtimePaymentController::class, 'airtime_payment'])->name('airtime-payment-api');
 
 //route for cheque book request api
 Route::get('cheque-book-request-api', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('cheque-book-request-api');

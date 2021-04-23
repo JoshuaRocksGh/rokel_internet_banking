@@ -39,9 +39,9 @@
                                                     <select class="custom-select" id="from_account" required>
                                                         <option value="">Select Account</option>
 
-                                                        {{-- <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
+                                                        <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
                                                     Saving Account~001023468976001~GHS~2000
-                                                 </option> --}}
+                                                 </option>
 
                                                     </select>
 
@@ -127,7 +127,7 @@
                                                         <select class="custom-select receipient_number"
                                                             id="receipient_number">
                                                             <option value="">Select Receipient Number</option>
-                                                            <option value="MTN">MTN</option>
+                                                            <option value="0244563254">0244563254</option>
                                                             <option value="VODAFONE">VODAFONE</option>
                                                             <option value="AIRTEL TOGO">AIRTEL TOGO</option>
                                                         </select>
@@ -245,7 +245,7 @@
                                         </div>
 
                                         {{-- SCHEDULE PAYMENTS --}}
-                                        <div class="col-6">
+                                        {{-- <div class="col-6">
 
 
                                             <div class="form-group">
@@ -263,7 +263,7 @@
                                                 <input type="date" class="form-control" id="schedule_payment_date">
 
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group">
 
@@ -366,6 +366,177 @@
 
                             </div>
 
+                            <div class="row" id="transaction_summary">
+
+
+                                <div class="col-md-12">
+                                    <div class=" border p-3 mt-4 mt-lg-0 rounded">
+                                        <h4 class="header-title mb-3">Transfer Detail Summary</h4>
+
+                                        <div class="table-responsive table-striped table-bordered">
+                                            <table class="table mb-0">
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td>From Account:</td>
+                                                        <td>
+                                                            <span
+                                                                class="font-13 text-primary text-bold display_from_account_type"
+                                                                id="display_from_account_type"></span>
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                id="display_from_account_name"> </span>
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                id="display_from_account_no"></span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Receipient Mobile Number:</td>
+                                                        <td>
+
+                                                            <span
+                                                                class="font-13 text-primary text-bold display_to_account_type"
+                                                                id="display_to_receipient_network_type"> </span>
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                id=""> </span>
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                id="display_to_account_no"> </span>
+
+
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                id="online_display_beneficiary_alias_name"> </span>
+
+                                                            <span
+                                                                class="font-13 text-primary h3 online_display_beneficiary_account_no"
+                                                                id="online_display_beneficiary_account_no"> </span>
+                                                            &nbsp; | &nbsp;
+                                                            <span
+                                                                class="font-13 text-primary h3 online_display_beneficiary_account_currency"
+                                                                id="display_to_receipient_number">
+                                                            </span>
+
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                                id="online_display_beneficiary_email"> </span>
+
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
+                                                                id="online_display_beneficiary_phone"> </span>
+
+
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Amount:</td>
+                                                        <td>
+                                                            <span class="font-15 text-primary h3 display_currency"
+                                                                id="display_currency"> </span>
+                                                            &nbsp;
+                                                            <span
+                                                                class="font-15 text-primary h3 display_transfer_amount"
+                                                                id="display_transfer_amount"></span>
+
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td>Category:</td>
+                                                        <td>
+                                                            <span class="font-13 text-primary h3 display_category"
+                                                                id="display_category"></span>
+
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr>
+                                                        <td>Purpose:</td>
+                                                        <td>
+                                                            <span class="font-13 text-primary h3 display_purpose"
+                                                                id="display_purpose"></span>
+                                                        </td>
+                                                    </tr>
+
+
+                                                    {{-- <tr>
+                                                        <td>Schedule Payment:</td>
+                                                        <td>
+                                                            <span
+                                                                class="font-13 text-primary h3 display_schedule_payment"
+                                                                id="display_schedule_payment">NO </span>
+                                                            &nbsp; | &nbsp;
+                                                            <span
+                                                                class="font-13 text-primary h3 display_schedule_payment_date"
+                                                                id="display_schedule_payment_date"> N/A
+                                                            </span>
+                                                        </td>
+                                                    </tr> --}}
+
+
+                                                    <tr>
+                                                        <td>Transfer Date: </td>
+                                                        <td>
+                                                            <span class="font-13 text-primary h3"
+                                                                id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Posted BY: </td>
+                                                        <td>
+                                                            <span class="font-13 text-primary h3"
+                                                                id="display_posted_by">{{ session('userId') }}</span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Enter Pin: </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <input type="text" name="user_pin" class="form-control"
+                                                                    id="user_pin"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end table-responsive -->
+                                        <br>
+                                        <div class="form-group text-center">
+
+                                            <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                    id="back_button">Back</button> &nbsp; </span>
+                                            <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
+                                                    id="confirm_button"><span id="confirm_transfer">Confirm
+                                                        Transfer</span>
+                                                    <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                        id="spinner" aria-hidden="true"></span>
+                                                    <span id="spinner_text">Loading...</span>
+                                                </button></span>
+                                            <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
+                                                    id="print_receipt" onclick="window.print()">Print Receipt
+                                                </button></span>
+                                        </div>
+                                    </div>
+
+                                </div> <!-- end col -->
+
+
+
+
+
+                            </div>
 
 
                         </div>
@@ -386,8 +557,9 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
         <script>
             function from_account() {
                 $.ajax({
@@ -434,6 +606,9 @@
 
                 $("#beneficiary_selected").show();
                 $("#onetime_beneficiary").hide();
+                $("#spinner").hide();
+                $("#print_receipt").hide();
+                $("#spinner_text").hide();
 
                 $(".radio").click(function() {
                     var type = $("input[type='radio']:checked").val();
@@ -506,54 +681,233 @@
 
                 })
 
-                $("#payment_details_form").submit(function(e) {
-                    e.preventDefault();
+                function toaster(message, icon, timer) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
 
-                    $(".radio").click(function() {
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: icon,
+                        title: message,
+                        timer: timer
+                    })
+                };
+
+                $("#next_button").click(function(e) {
+                    e.preventDefault();
 
 
                         var type = $("input[type='radio']:checked").val();
                         console.log(type);
 
                         if (type == "beneficiary") {
-                            var from_account = $("#from_account").val().split();
-                            var from_account_ = from_account;
-                            var amount = $("#amount").val();
-                            var receipient_number = $("#receipient_number").val();
-                            var receipient_network = $("#network_type").val();
-                            var category = $("#category").val();
-                            var naration = $("#purpose").val();
 
-                            console.log(from_account_);
+                            var from_account = $("#from_account").val().split('~');
+                            {{-- var from_account_ = from_account[2]; --}}
+                            $("#display_from_account_type").text();
+                            $("#display_from_account_name").text();
+                            $("#display_from_account_no").text();
+
+                            var amount = $("#amount").val();
+                            $("#display_currency").text();
+                            $("#display_transfer_amount").text(amount);
+
+                            var receipient_number = $("#receipient_number").val();
+                            $("#display_to_receipient_number").text(receipient_number);
+
+                            var receipient_network = $("#network_type").val();
+                            $("#display_to_receipient_network_type").text(receipient_network);
+
+                            var category = $("#category").val().split('~');
+                            var category_ = category[1]
+                            $("#display_category").text(category_);
+
+                            {{-- var category_ = category[0] ; --}}
+                            var naration = $("#purpose").val();
+                            $("#display_purpose").text(naration);
+
+                            {{-- console.log(from_account);
                             console.log(amount);
                             console.log(receipient_number);
                             console.log(receipient_network);
                             console.log(category);
-                            console.log(naration);
+                            console.log(naration); --}}
+
+
+
+                            $("#transaction_form").hide()
+                            $("#transaction_summary").show()
+
 
                         }
 
                         if (type == "onetime") {
-                            var from_account = $("#from_account").val();
-                            var amount = $("#amount").val();
-                            var onetime_receipient_number = $("#onetime_receipient_number").val();
-                            var onetime_receipient_network = $("#onetime_network_type").val();
-                            var category = $("#onetime_category").val();
-                            var naration = $("#onetime_purpose").val();
 
-                            console.log(from_account);
+                            var from_account = $("#from_account").val();
+                            $("#display_from_account_type").text();
+                            $("#display_from_account_name").text();
+                            $("#display_from_account_no").text();
+
+                            var amount = $("#amount").val();
+                            $("#display_currency").text();
+                            $("#display_transfer_amount").text(amount);
+
+                            var onetime_receipient_number = $("#onetime_receipient_number").val();
+                            $("#display_to_receipient_number").text(receipient_number);
+
+                            var onetime_receipient_network = $("#onetime_network_type").val();
+                            $("#display_to_receipient_network_type").text(receipient_network);
+
+                            var category = $("#onetime_category").val();
+                            $("#display_category").text(category);
+
+                            var naration = $("#onetime_purpose").val();
+                            $("#display_purpose").text(naration);
+
+                            {{-- console.log(from_account);
                             console.log(amount);
                             console.log(onetime_receipient_number);
                             console.log(onetime_receipient_network);
                             console.log(category);
-                            console.log(naration);
+                            console.log(naration); --}}
+
+                            $("#transaction_form").hide()
+                            $("#transaction_summary").show()
                         }
 
 
+                        $("#confirm_button").click(function(e){
+                            e.preventDefault();
+
+
+                            var type = $("input[type='radio']:checked").val();
+                            {{-- console.log(type); --}}
+
+                            if (type == "beneficiary"){
+
+                                var from_account = $("#from_account").val().split('~');
+                                var from_account_ = from_account[2];
+                                var currency = from_account[3];
+                                var amount = $("#amount").val();
+                                var receipient_number = $("#receipient_number").val();
+                                var receipient_network = $("#network_type").val();
+                                var category = $("#category").val().split('~');
+                                var category_ = category[0];
+                                var naration = $("#purpose").val();
+                                var user_pin = $("#user_pin").val();
+
+                                {{-- console.log(from_account);
+                                console.log(from_account_);
+                                console.log(currency);
+                                console.log(amount);
+                                console.log(receipient_number);
+                                console.log(receipient_network);
+                                console.log(category_);
+                                console.log(naration);
+                                console.log(user_pin); --}}
+
+
+                                $.ajax({
+                                    "type" : "POST" ,
+                                    "url" : "mobile-money-api",
+                                    "datatype" : "application/json",
+                                    "data" : {
+                                        'from_account' : from_account_ ,
+                                        'amount' : amount ,
+                                        'currency' : currency ,
+                                        'category_' : category_ ,
+                                        'receipient_number' : receipient_number ,
+                                        'receipient_network' : receipient_network ,
+                                        'naration' : naration ,
+                                        'user_pin' : user_pin
+
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response){
+                                        {{-- console.log(response); --}}
+                                        if (response.responseCode == '000'){
+                                            toaster(response.message ,'success', 10000) ;
+                                        }else {
+                                            toaster(response.message ,'error', 6000) ;
+                                        }
+                                    }
+                                })
+
+
+                            }
+
+                            if (type == "onetime"){
+                                {{-- alert('onetime'); --}}
+
+                                var from_account = $("#from_account").val().split('~');
+                                var from_account_ = from_account[2];
+                                var currency = from_account[3];
+                                var amount = $("#amount").val();
+                                var receipient_number = $("#onetime_receipient_number").val();
+                                var receipient_network = $("#onetime_network_type").val();
+                                var category = $("#onetime_category").val().split('~');
+                                var category_ = category[0];
+                                var naration = $("#onetime_purpose").val();
+                                var user_pin = $("#user_pin").val();
+
+                                {{-- console.log(from_account); --}}
+                                console.log(from_account_);
+                                console.log(currency);
+                                console.log(amount);
+                                console.log(receipient_number);
+                                console.log(receipient_network);
+                                console.log(category_);
+                                console.log(naration);
+                                console.log(user_pin);
+
+
+                                $.ajax({
+                                    "type" : "POST" ,
+                                    "url" : "mobile-money-api",
+                                    "datatype" : "application/json",
+                                    "data" : {
+                                        'from_account' : from_account_ ,
+                                        'amount' : amount ,
+                                        'currency' : currency ,
+                                        'category_' : category_ ,
+                                        'receipient_number' : receipient_number ,
+                                        'receipient_network' : receipient_network ,
+                                        'naration' : naration ,
+                                        'user_pin' : user_pin
+
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response){
+                                        {{-- console.log(response); --}}
+                                        if (response.responseCode == '000'){
+                                            toaster(response.message ,'success', 10000) ;
+                                        }else {
+                                            toaster(response.message ,'error', 6000) ;
+                                        }
+                                    }
+                                })
+
+                            }
 
 
 
-                    })
+
+                        })
+
+
+
 
 
                 })
