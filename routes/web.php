@@ -41,7 +41,9 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
 use App\Http\Controllers\GeneralFunctions\FunctionsController;
+use App\Http\Controllers\Loan\LoanProductsController;
 use App\Http\Controllers\Loan\LoansController;
+use App\Http\Controllers\LoanRequestController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MaileController;
@@ -433,3 +435,9 @@ Route::post('change-pin-api', [ChangePinController::class, 'change_pin'])->name(
 
 //Route for change-password-api
 Route::post('change-password-api', [ChangePasswordController::class, 'change_password'])->name('change-password-api');
+
+//Route for loan products api
+Route::get('loan-products-api',[LoanProductsController::class,'loan_products'])->name('loan-products-api');
+
+//Route to send loan request details
+Route::get('loan-request-details',[LoanRequestController::class,'loan_request'])->name('loan-request-details');

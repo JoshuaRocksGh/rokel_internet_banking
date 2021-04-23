@@ -279,6 +279,25 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
 
+            function loan_product() {
+                            $.ajax({
+                                'type': 'GET',
+                                'url': 'loan-products-api',
+                                "datatype": "application/json",
+                                success: function(response) {
+                                    console.log(response.data);
+                                    let data = response.data
+                                    $.each(data, function(index) {
+
+                                        $('#loan_product').append($('<option>', {
+                                            value: data[index].code}).text(data[index].name));
+
+                                    });
+                                },
+
+                            })
+                        }
+
             function toaster(message, icon, timer)
             {
                 const Toast = Swal.mixin({
@@ -309,7 +328,7 @@
         $(document).ready(function(){
 
             setTimeout(function(){
-                branches()
+                loan_product()
                 my_account()
             }, 1000)
 
@@ -378,25 +397,18 @@
                     }
                     else{
 
-                        let branch_info = pUBranch.split("~");
-                        let branchCode = branch_info[0];
-
-                        my_account_info = my_account.split("~");
-                        let accountNumber = my_account_info[2].trim();
-
-
 
                     $.ajax({
 
                         'type' : 'POST',
-                        'url' : 'statement-request-api',
+                        'url' : 'loan-request-details',
                         "datatype" : "application/json",
                         'data' : {
-                            'account_no' : accountNumber.trim(),
-                            'type_of_statement' : type_of_statement,
-                            'pick_up_branch' : branchCode.trim(),
-                            'transStartDate' : transStartDate.trim(),
-                            'transEndDate' : transEndDate.trim(),
+                            'loan_product' : loan_product.trim(),
+                            'loan_amount' : loan_amount,
+                            'tenure_in_months' : tenure_in_months.trim(),
+                            'interest_rate_type' : interest_rate_type,
+                            '' : transEndDate.trim(),
                             'pin': pin
                         },
                         headers: {

@@ -207,15 +207,15 @@
         function my_account(){
                 $.ajax({
                     'type': 'GET',
-                    'url' : 'get-my-account',
+                    'url' : 'get-loan-products-api',
                     "datatype" : "application/json",
                     success:function(response){
                         console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
 
-                        $('#facility_number').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-
+                        $('#loan_product').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                        $('#facility_number').append($());
                         });
                     },
 
