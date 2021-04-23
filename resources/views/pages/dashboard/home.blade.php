@@ -2,16 +2,16 @@
 
 @section('styles')
 
-<!-- third party css -->
-<link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-    type="text/css" />
-<link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
-    rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
-    type="text/css" />
-<link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
-    type="text/css" />
-<!-- third party css end -->
+    <!-- third party css -->
+    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
+        rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <!-- third party css end -->
     <style>
 
     </style>
@@ -23,7 +23,7 @@
 
     <!-- Start Content-->
     <div class="container-fluid ">
-    <legend></legend>
+        <legend></legend>
         <!-- start page title -->
 
         <!-- end page title -->
@@ -33,26 +33,26 @@
 
             <div class="col-md-5 col-xl-5">
                 <h5 class="page-title">MY ACCOUNTS </h5>
-                <div class="widget-rounded-circle card-box" >
+                <div class="widget-rounded-circle card-box">
                     <div class="row">
 
                         <canvas id="myChart" width="400" height="250"></canvas>
 
                     </div> <!-- end row-->
-                    <h4 class="text-center">TOTAL: GHS 90,000,000.00</h4>
+                    <h4 class="text-center">TOTAL: SLL 90,000,000.00</h4>
                 </div> <!-- end widget-rounded-circle-->
 
             </div> <!-- end col-->
 
 
-                <div class="col-md-7 col-xl-7">
-                    <h5 class="page-title element">QUICK TRANSACTIONS</h5>
-                    <div class="row">
+            <div class="col-md-7 col-xl-7">
+                <h5 class="page-title element">QUICK TRANSACTIONS</h5>
+                <div class="row">
 
-                        <div class="col-md-7 col-xl-7">
+                    <div class="col-md-7 col-xl-7">
 
                         <div class="card">
-                            <div class="card-body" >
+                            <div class="card-body">
 
 
                                 <ul class="nav nav-tabs nav-bordered nav-justified">
@@ -68,48 +68,79 @@
                                     </li>
 
                                 </ul>
-                                <div class="tab-content"  style="overflow-y:scroll !important; height: 285px; min-height:285px; ">
+                                <div class="tab-content"
+                                    style="overflow-y:scroll !important; height: 285px; min-height:285px; ">
                                     <div class="tab-pane active" id="home-b2">
 
 
-                                        <p>
+                                        <div class="text-center cross_rates_loading_area" id="account_balance_info_loader">
+                                            <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                        </div>
 
-                                            <table class="table table-bordered mb-0" style="zoom: 0.8;">
-                                                <thead>
+
+
+                                        <div class="text-center cross_rates_error_area">
+                                            <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
+                                                style="width: 180px; height:130px;">
+                                            <legend></legend>
+                                            <button class="btn btn-secondary" onclick="get_fx_rate('Cross rate')"> <i
+                                                    class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                        </div>
+
+
+
+
+                                        <table class="table table-bordered mb-0 cross_rate_display_area" style="zoom: 0.8;">
+                                            <thead>
                                                 <tr>
                                                     <th>Currency</th>
                                                     <th>SALE(SLL)</th>
                                                     <th>BUY(SLL)</th>
                                                 </tr>
-                                                </thead>
-                                                <tbody class="display_cross_rates">
+                                            </thead>
+                                            <tbody class="display_cross_rates">
 
-                                                </tbody>
-                                            </table>
+                                            </tbody>
+                                        </table>
 
-                                        </p>
+
 
                                     </div>
                                     <div class="tab-pane " id="profile-b2">
 
-                                        <p>
 
-                                            <table class="table table-bordered mb-0" style="zoom: 0.8;">
-                                                <thead>
+
+                                        <div class="text-center cross_rates_loading_area">
+                                            <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                        </div>
+
+
+
+                                        <div class="text-center cross_rates_error_area">
+                                            <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
+                                                style="width: 180px; height:130px;">
+                                            <legend></legend>
+                                            <button class="btn btn-secondary" onclick="get_fx_rate('Note rate')"> <i
+                                                    class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                        </div>
+
+
+
+                                        <table class="table table-bordered mb-0 cross_rates_display_area"
+                                            style="zoom: 0.8;">
+                                            <thead>
                                                 <tr>
                                                     <th>Currency</th>
                                                     <th>SALE(SLL)</th>
                                                     <th>BUY(SLL)</th>
                                                 </tr>
-                                                </thead>
-                                                <tbody class="display_note_rates">
+                                            </thead>
+                                            <tbody class="display_note_rates">
 
 
 
-                                                </tbody>
-                                            </table>
-
-                                        </p>
+                                            </tbody>
+                                        </table>
 
 
                                     </div>
@@ -118,115 +149,156 @@
                             </div> <!-- end card-box-->
                         </div> <!-- end col -->
 
-                        </div>
-
-
-                <div class="col-md-5 col-xl-5 ">
-                    <div class="card">
-                        <div class="card-header bg-blue py-2 text-white">
-                            <div class="card-widgets">
-                                <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
-                                <a data-toggle="collapse" href="#cardCollpase5" role="button" aria-expanded="false"
-                                    aria-controls="cardCollpase2"><i class="mdi mdi-minus"></i></a>
-
-                            </div>
-                            <h5 class="card-title mb-0 text-white" id="currency_converter_tour">Currency Converter</h5>
-                        </div>
-                        <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
-                            <div class="card-body">
-                                <form action="" autocomplete="off" aria-autocomplete="off">
-
-                                    <div class="row" >
-
-                                        <div class="col-xl-6">
-                                            <label for="" class="text-info">From</label>
-                                            <select class="form-control select_currency" id="exch_rate_from">
-                                                <option value="">-- Currency --</option>
-                                                {{--  <option value="EUR">(EUR) EURO</option>
-                                                <option value="SLL">(SLL) LOENE</option>
-                                                <option value="USD">(USD) US DOLLAR</option>
-                                                <option value="GBP">(GBP) BRITISH POUNDS</option>  --}}
-
-
-                                            </select>
-                                        </div>
-
-                                        <div class="col-xl-6">
-                                            <label for="" class="text-info">To</label>
-                                            <select class="form-control select_currency"  id="exch_rate_to">
-                                                    <option value="">-- Currency --</option>
-                                                    {{--  <option value="EUR">(EUR) EURO</option>
-                                                    <option value="SLL">(SLL) LOENE</option>
-                                                    <option value="USD">(USD) US DOLLAR</option>
-                                                    <option value="GBP">(GBP) BRITISH POUNDS</option>  --}}
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-xl-12" >
-                                            <div class="form-group">
-                                                <label>Amount</label>
-                                                <div>
-                                                    <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" required
-                                                        placeholder="0.00" id="amount"/>
-                                                        <input type="hidden" value="" id="hide_fx_rate">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <span id="display"></span>
-
-                                        <div class="col-xl-12">
-                                            <div class="form-group">
-                                                <label>Result</label>
-                                                <div>
-                                                    <span id="result"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div> <!-- end card-->
-                </div>
-
                     </div>
 
 
+                    <div class="col-md-5 col-xl-5 ">
+                        <div class="card">
+                            <div class="card-header bg-blue py-2 text-white">
+                                <div class="card-widgets">
+                                    <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
+                                    <a data-toggle="collapse" href="#cardCollpase5" role="button" aria-expanded="false"
+                                        aria-controls="cardCollpase2"><i class="mdi mdi-minus"></i></a>
 
-
-
-
-
-
-        </div>
-        <!-- end row-->
-
-        <div class="container-fluid">
-            <div class="">
-                <div class="row">
-                    <div class="col-xl-12" style="zoom:0.8;">
-                        <div id="accordion" class="mb-3">
-                            <div class="card mb-1">
-                                <a class="text-dark" data-toggle="collapse"  aria-expanded="true">
-                                <div class="card-header" id="headingOne">
-                                    <h5 class="m-0">
-
-                                            <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                          <span class="text-primary"> <b>  I HAVE  ( Currenct & Savings) </b></span>
-
-                                    </h5>
                                 </div>
-                            </a>
+                                <h5 class="card-title mb-0 text-white" id="currency_converter_tour">Currency Converter</h5>
+                            </div>
+                            <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
+                                <div class="card-body">
 
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
 
-                                            <div class="table-responsive table-bordered">
+
+                                    <div class="text-center currency_converter_loading_area"
+                                        id="account_balance_info_loader">
+                                        <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                    </div>
+
+
+
+                                    <div class="text-center currency_converter_error_area">
+                                        <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
+                                            style="width: 180px; height:130px;">
+                                        <legend></legend>
+                                        <button class="btn btn-secondary" onclick="get_correct_fx_rate()"> <i
+                                                class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                    </div>
+
+
+                                    <form action="" autocomplete="off" aria-autocomplete="off"
+                                        class="currency_converter_display_area">
+
+                                        <div class="row">
+
+                                            <div class="col-xl-6">
+                                                <label for="" class="text-info">From</label>
+                                                <select class="form-control select_currency" id="exch_rate_from">
+                                                    <option value="">-- Currency --</option>
+                                                    {{-- <option value="EUR">(EUR) EURO</option>
+                                                <option value="SLL">(SLL) LOENE</option>
+                                                <option value="USD">(USD) US DOLLAR</option>
+                                                <option value="GBP">(GBP) BRITISH POUNDS</option> --}}
+
+
+                                                </select>
+                                            </div>
+
+                                            <div class="col-xl-6">
+                                                <label for="" class="text-info">To</label>
+                                                <select class="form-control select_currency" id="exch_rate_to">
+                                                    <option value="">-- Currency --</option>
+                                                    {{-- <option value="EUR">(EUR) EURO</option>
+                                                    <option value="SLL">(SLL) LOENE</option>
+                                                    <option value="USD">(USD) US DOLLAR</option>
+                                                    <option value="GBP">(GBP) BRITISH POUNDS</option> --}}
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="form-group">
+                                                    <label>Amount</label>
+                                                    <div>
+                                                        <input type="text" class="form-control"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            required placeholder="0.00" id="amount" />
+                                                        <input type="hidden" value="" id="hide_fx_rate">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <span id="display"></span>
+
+                                            <div class="col-xl-12">
+                                                <div class="form-group">
+                                                    <label>Result</label>
+                                                    <div>
+                                                        <span id="result"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div> <!-- end card-->
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+            <!-- end row-->
+
+            <div class="container-fluid">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xl-12" style="zoom:0.8;">
+                            <div id="accordion" class="mb-3">
+                                <div class="card mb-1">
+                                    <a class="text-dark" data-toggle="collapse" aria-expanded="true">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="m-0">
+
+                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
+                                                <span class="text-primary"> <b> I HAVE ( Currenct & Savings) </b></span>
+
+                                            </h5>
+                                        </div>
+                                    </a>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                        data-parent="#accordion">
+                                        <div class="card-body">
+
+
+
+                                            <div class="text-center accounts_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center accounts_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
+                                                    alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_accounts()"> <i
+                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                            </div>
+
+
+
+
+                                            <div class="table-responsive table-bordered accounts_display_area">
                                                 <table id="" class="table mb-0 ">
                                                     <thead>
                                                         <tr class="bg-secondary text-white ">
@@ -248,61 +320,149 @@
                                             <!-- end table-responsive -->
 
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-1">
-                                <a class="text-dark" data-toggle="collapse "  aria-expanded="true">
-                                <div class="card-header" id="headingTwo">
-                                    <h5 class="m-0">
-
-                                            <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                            <span class="text-danger"> <b>I OWE (Loans)</b> </span>
-
-                                    </h5>
-                                </div>
-                            </a>
-                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="card-body">
-
-                                        <div class="table-responsive table-bordered">
-                                            <table id="datatable-buttons" class="table mb-0">
-                                                <thead>
-                                                    <tr class="bg-secondary text-white ">
-                                                        <td> <b> Facility Number </b> </td>
-                                                        <td> <b> Description </b> </td>
-                                                        <td> <b> Currency </b> </td>
-                                                        <td> <b> Amount Granted </b> </td>
-                                                        <td> <b> Loan Balance </b> </td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="loans_display">
-
-                                                </tbody>
-                                            </table>
                                         </div>
-                                        <!-- end table-responsive -->
-
                                     </div>
                                 </div>
-                            </div>
+                                <div class="card mb-1">
+                                    <a class="text-dark" data-toggle="collapse " aria-expanded="true">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="m-0">
 
-                        </div> <!-- end #accordions-->
-                    </div> <!-- end col -->
+                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
+                                                <span class="text-danger"> <b>I OWE (Loans)</b> </span>
+
+                                            </h5>
+                                        </div>
+                                    </a>
+                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                        data-parent="#accordion">
+                                        <div class="card-body">
 
 
-                </div> <!-- end row -->
 
+                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center loans_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
+                                                    alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_loans()"> <i
+                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                            </div>
+
+
+
+                                            <div class="table-responsive table-bordered loans_display_area">
+                                                <table id="datatable-buttons" class="table mb-0">
+                                                    <thead>
+                                                        <tr class="bg-secondary text-white ">
+                                                            <td> <b> Facility Number </b> </td>
+                                                            <td> <b> Description </b> </td>
+                                                            <td> <b> Currency </b> </td>
+                                                            <td> <b> Amount Granted </b> </td>
+                                                            <td> <b> Loan Balance </b> </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="loans_display">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> <!-- end #accordions-->
+                        </div> <!-- end col -->
+
+
+                    </div> <!-- end row -->
+
+                </div>
             </div>
-        </div>
 
 
-<div class="container-fluid">
-            <div class="">
-           <div class="row">
+            <div class="container-fluid">
+                <div class="">
+                    <div class="row">
 
 
-                <div class="col-md-3 col-xl-3">
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
+                                            <i class="fe-log-out font-20 avatar-title text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1"><span>Funds Transactions</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div> <!-- end col-->
+
+
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-soft-info border-info border">
+                                            <i class="fe-smartphone font-20 avatar-title text-info"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1"><span>&nbsp; Mobile Money</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div>
+
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-soft-info border-info border">
+                                            <i class="fe-send font-20 avatar-title text-info"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1"><span> &nbsp; All Payments</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div> <!-- end col-->
+
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
+                                            <i class="fe-rss font-20 avatar-title text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-3"><span> &nbsp;&nbsp; Cardless</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div> <!-- end col-->
+
+                        {{-- <div class="col-md-3 col-xl-3">
                     <div class="widget-rounded-circle card-box">
                         <div class="row">
                             <div class="col-4">
@@ -317,296 +477,225 @@
                             </div>
                         </div> <!-- end row-->
                     </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
+                </div> <!-- end col--> --}}
 
 
-                <div class="col-md-3 col-xl-3">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-info border-info border">
-                                    <i class="fe-smartphone font-20 avatar-title text-info"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >&nbsp; Mobile Money</span></h3>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row ">
+
+
+                <div class="card-body col-md-6 col-xl-6 col-sm-6 col-xs-12">
+
+                    <div class="card border mt-0 rounded">
+                        <h4 class="header-title p-2 mb-0 text-success">I HAVE</h4>
+
+                        <div class="table-responsive" style="height: 275px;">
+                            <table class="table table-centered table-nowrap mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 10px;">
+                                            <div class="avatar-sm rounded bg-soft-info">
+                                                <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('account-enquiry') }}"
+                                                class="text-body font-weight-semibold">Savings Account</a>
+                                            <small class="d-block">01024499300101</small>
+                                        </td>
+
+                                        <td class="">
+                                            GHS 90,039.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px;">
+                                            <div class="avatar-sm rounded bg-soft-info">
+                                                <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="ecommerce-product-detail.html"
+                                                class="text-body font-weight-semibold">Savings Account</a>
+                                            <small class="d-block">01024499300101</small>
+                                        </td>
+
+                                        <td class="">
+                                            GHS 90,039.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px;">
+                                            <div class="avatar-sm rounded bg-soft-info">
+                                                <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="ecommerce-product-detail.html"
+                                                class="text-body font-weight-semibold">Savings Account</a>
+                                            <small class="d-block">01024499300101</small>
+                                        </td>
+
+                                        <td class="">
+                                            GHS 90,039.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px;">
+                                            <div class="avatar-sm rounded bg-soft-info">
+                                                <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="ecommerce-product-detail.html"
+                                                class="text-body font-weight-semibold">Savings Account</a>
+                                            <small class="d-block">01024499300101</small>
+                                        </td>
+
+                                        <td class="">
+                                            GHS 90,039.00
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end table-responsive -->
+
+
+                    </div> <!-- end .border-->
+
+
+
+
+                </div> <!-- end col -->
+
+                <div class="card-body col-md-6 col-xl-6 col-sm-6 col-xs-12">
+
+
+
+                    <div class=" card border mt-0 rounded">
+                        <h4 class="header-title p-2 mb-0 text-danger">I OWE</h4>
+
+                        <div class="table-responsive" style="height: 275px;">
+                            <table class="table table-centered table-nowrap mb-0">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 10px;">
+                                            <div class="avatar-sm rounded bg-soft-danger">
+                                                <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="ecommerce-product-detail.html"
+                                                class="text-body font-weight-semibold">Savings Account</a>
+                                            <small class="d-block">01024499300101</small>
+                                        </td>
+
+                                        <td class="">
+                                            GHS 90,039.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px;">
+                                            <div class="avatar-sm rounded bg-soft-danger">
+                                                <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <a href="ecommerce-product-detail.html"
+                                                class="text-body font-weight-semibold">Red Hoodie for men</a>
+                                            <small class="d-block">01024499300101</small>
+                                        </td>
+                                        <td class="">
+                                            USD 5,700.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 10px;">
+                                            <div class="avatar-sm rounded bg-soft-danger">
+                                                <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="ecommerce-product-detail.html"
+                                                class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
+                                            <small class="d-block">01024499300101</small>
+                                        </td>
+                                        <td class="">
+                                            SLL 888.00
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end table-responsive -->
+                    </div> <!-- end .border-->
+
+
                 </div>
 
-                <div class="col-md-3 col-xl-3">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-info border-info border">
-                                    <i class="fe-send font-20 avatar-title text-info"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                   <h3 class="mt-1"><span > &nbsp; All Payments</span></h3>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
-
-                <div class="col-md-3 col-xl-3">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-rss font-20 avatar-title text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-3"><span > &nbsp;&nbsp; Cardless</span></h3>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
-
-{{--
-                <div class="col-md-3 col-xl-3">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->  --}}
-
-
-
-            </div>
-            </div>
             </div>
 
 
-        <div class="row ">
 
 
-            <div class="card-body col-md-6 col-xl-6 col-sm-6 col-xs-12">
-
-                <div class="card border mt-0 rounded"  >
-                    <h4 class="header-title p-2 mb-0 text-success">I HAVE</h4>
-
-                    <div class="table-responsive" style="height: 275px;">
-                        <table class="table table-centered table-nowrap mb-0">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <div class="avatar-sm rounded bg-soft-info">
-                                            <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="{{ url('account-enquiry') }}"
-                                            class="text-body font-weight-semibold">Savings Account</a>
-                                        <small class="d-block">01024499300101</small>
-                                    </td>
-
-                                    <td class="">
-                                        GHS 90,039.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <div class="avatar-sm rounded bg-soft-info">
-                                            <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="ecommerce-product-detail.html"
-                                            class="text-body font-weight-semibold">Savings Account</a>
-                                        <small class="d-block">01024499300101</small>
-                                    </td>
-
-                                    <td class="">
-                                        GHS 90,039.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <div class="avatar-sm rounded bg-soft-info">
-                                            <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="ecommerce-product-detail.html"
-                                            class="text-body font-weight-semibold">Savings Account</a>
-                                        <small class="d-block">01024499300101</small>
-                                    </td>
-
-                                    <td class="">
-                                        GHS 90,039.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <div class="avatar-sm rounded bg-soft-info">
-                                            <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="ecommerce-product-detail.html"
-                                            class="text-body font-weight-semibold">Savings Account</a>
-                                        <small class="d-block">01024499300101</small>
-                                    </td>
-
-                                    <td class="">
-                                        GHS 90,039.00
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- end table-responsive -->
-
-
-                </div> <!-- end .border-->
+        </div> <!-- container -->
 
 
 
 
-            </div> <!-- end col -->
-
-            <div  class="card-body col-md-6 col-xl-6 col-sm-6 col-xs-12">
+    @endsection
 
 
-
-                <div class=" card border mt-0 rounded">
-                    <h4 class="header-title p-2 mb-0 text-danger">I OWE</h4>
-
-                    <div class="table-responsive" style="height: 275px;">
-                        <table class="table table-centered table-nowrap mb-0">
-                            <tbody>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <div class="avatar-sm rounded bg-soft-danger">
-                                            <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="ecommerce-product-detail.html"
-                                            class="text-body font-weight-semibold">Savings Account</a>
-                                        <small class="d-block">01024499300101</small>
-                                    </td>
-
-                                    <td class="">
-                                        GHS 90,039.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <div class="avatar-sm rounded bg-soft-danger">
-                                            <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <a href="ecommerce-product-detail.html"
-                                            class="text-body font-weight-semibold">Red Hoodie for men</a>
-                                        <small class="d-block">01024499300101</small>
-                                    </td>
-                                    <td class="">
-                                        USD 5,700.00
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 10px;">
-                                        <div class="avatar-sm rounded bg-soft-danger">
-                                            <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="ecommerce-product-detail.html"
-                                            class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
-                                        <small class="d-block">01024499300101</small>
-                                    </td>
-                                    <td class="">
-                                        SLL 888.00
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- end table-responsive -->
-                </div> <!-- end .border-->
+    @section('scripts')
+        <!-- Plugins js-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 
-            </div>
-
-        </div>
-
-
-
-
-    </div> <!-- container -->
-
-
-
-
-@endsection
-
-
-@section('scripts')
-    <!-- Plugins js-->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-
-            <!-- Tour page js -->
+        <!-- Tour page js -->
         <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script>
-         <!-- Tour init js-->
-    <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script>
+        <!-- Tour init js-->
+        {{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
 
-    <script>
+        <script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['I HAVE', 'I OWE'],
+                    datasets: [{
+                        label: 'MY ACCOUNTS',
+                        data: [19, 12],
+                        backgroundColor: [
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['I HAVE', 'I OWE'],
-                datasets: [{
-                    label: 'MY ACCOUNTS',
-                    data: [19, 12],
-                    backgroundColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
 
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            {{-- options: {
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                {{-- options: {
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -615,96 +704,130 @@
                     }]
                 }
             } --}}
-        });
+            });
 
 
-        function get_accounts(){
+            function get_accounts() {
 
-            $.ajax({
-                "type": "GET",
-                "url" : "get-accounts-api",
-                "datatype" : "application/json",
+                $(".accounts_display_area").hide()
+                $(".accounts_error_area").hide()
+                $(".accounts_loading_area").show()
 
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success:
-                function(response){
-                    console.log(response);
-                    if(response.responseCode == '000'){
+                $.ajax({
+                    "type": "GET",
+                    "url": "get-accounts-api",
+                    "datatype": "application/json",
 
-                        let data = response.data;
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.responseCode == '000') {
 
-
-
-                        $.each(data, function(index) {
-                            $('.casa_list_display').append(`<tr>
-                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
-                                <td> <b> ${data[index].accountDesc} </b>  </td>
-                                <td> <b> ${data[index].accountType}  </b>  </td>
-                                <td> <b> ${data[index].currency}  </b>  </td>
-                                <td> <b> ${data[index].availableBalance}   </b> </b></td>
-                                <td> <b> ${data[index].ledgerBalance}   </b>  </td>
-                                <td>  <b> 0.00  </b> </td>
-                            </tr>`)
-
-                        })
+                            let data = response.data;
 
 
 
-                    }else{
+                            $.each(data, function(index) {
+                                $('.casa_list_display').append(`<tr>
+                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                    <td> <b> ${data[index].accountDesc} </b>  </td>
+                                    <td> <b> ${data[index].accountType}  </b>  </td>
+                                    <td> <b> ${data[index].currency}  </b>  </td>
+                                    <td> <b> ${data[index].availableBalance}   </b> </b></td>
+                                    <td> <b> ${data[index].ledgerBalance}   </b>  </td>
+                                    <td>  <b> 0.00  </b> </td>
+                                </tr>`)
+
+                            })
+
+
+                            $(".accounts_error_area").hide()
+                            $(".accounts_loading_area").hide()
+                            $(".accounts_display_area").show()
+
+                        } else {
+
+                            $(".accounts_error_area").hide()
+                            $(".accounts_loading_area").hide()
+                            $(".accounts_display_area").show()
+
+                        }
+
+                    },
+                    error: function(xhr, status, error) {
+
+                        $(".accounts_loading_area").hide()
+                        $(".accounts_display_area").hide()
+                        $(".accounts_error_area").show()
+
+
+                    }
+                })
+            }
+
+
+
+
+            function get_loans() {
+
+                $(".loans_display_area").hide()
+                $(".loans_error_area").hide()
+                $(".loans_loading_area").show()
+
+                $.ajax({
+                    "type": "GET",
+                    "url": "get-loan-accounts-api",
+                    "datatype": "application/json",
+
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.responseCode == '000') {
+
+                            let data = response.data;
+
+
+
+                            $.each(data, function(index) {
+                                $('.loans_display').append(`
+                                <tr>
+                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                    <td> <b> ${data[index].description} </b>  </td>
+                                    <td> <b> ${data[index].isoCode}  </b>  </td>
+                                    <td> <b> ${data[index].amountGranted}   </b> </b></td>
+                                    <td> <b> ${data[index].loanBalance}   </b>  </td>
+                                </tr>`)
+
+                            })
+
+                            $(".loans_error_area").hide()
+                            $(".loans_loading_area").hide()
+                            $(".loans_display_area").show()
+
+                        } else {
+
+                            $(".loans_error_area").hide()
+                            $(".loans_loading_area").hide()
+                            $(".loans_display_area").show()
+
+                        }
+
+                    },
+                    error: function(xhr, status, error) {
+                        $(".loans_display_area").hide()
+                        $(".loans_loading_area").hide()
+                        $(".loans_error_area").show()
 
                     }
 
-                }
-            })
-        }
+                })
+            }
 
-
-
-
-        function get_loans(){
-
-            $.ajax({
-                "type": "GET",
-                "url" : "get-loan-accounts-api",
-                "datatype" : "application/json",
-
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success:
-                function(response){
-                    console.log(response);
-                    if(response.responseCode == '000'){
-
-                        let data = response.data;
-
-
-
-                        $.each(data, function(index) {
-                            $('.loans_display').append(`
-                            <tr>
-                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                <td> <b> ${data[index].description} </b>  </td>
-                                <td> <b> ${data[index].isoCode}  </b>  </td>
-                                <td> <b> ${data[index].amountGranted}   </b> </b></td>
-                                <td> <b> ${data[index].loanBalance}   </b>  </td>
-                            </tr>`)
-
-                        })
-
-
-
-                    }else{
-
-                    }
-
-                }
-            })
-        }
-
-                   function get_currency() {
+            function get_currency() {
                 $.ajax({
                     'type': 'GET',
                     'url': 'get-currency-list-api',
@@ -715,7 +838,8 @@
                         $.each(data, function(index) {
                             $('.select_currency').append($('<option>', {
                                 value: data[index].isoCode
-                            }).text('(' + data[index].isoCode + ') ~ ' + data[index].description));
+                            }).text('(' + data[index].isoCode + ') ~ ' + data[index]
+                                .description));
                         });
 
                     },
@@ -724,62 +848,107 @@
             };
 
 
-                function formatToCurrency(amount) {
-                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-                };
+            function formatToCurrency(amount) {
+                return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+            };
 
 
-                   function get_correct_fx_rate() {
+            function get_correct_fx_rate() {
 
-                            $.ajax({
-                                'type': 'GET',
-                                'url': 'get-correct-fx-rate-api',
-                                "datatype": "application/json",
-                                success: function(response) {
-                                    console.log(response.data);
-                                    let data = response.data
-                                    console.log(data)
+                $(".currency_converter_display_area").hide()
+                $(".currency_converter_error_area").hide()
+                $(".currency_converter_loading_area").show()
 
-                                    $('#hide_fx_rate').val(JSON.stringify(data))
+                $.ajax({
+                    'type': 'GET',
+                    'url': 'get-correct-fx-rate-api',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        console.log(response.data);
+                        let data = response.data
+                        console.log(data)
+                        if (response.responseCode == '000') {
 
-                                },
-                                error: function(xhr, status, error){
-                                alert("Failed to correct rates")
+                            $(".currency_converter_loading_area").hide()
+                            $(".currency_converter_error_area").hide()
+                            $(".currency_converter_display_area").show()
 
-                                }
+                            $('#hide_fx_rate').val(JSON.stringify(data))
 
-                            })
-                };
-
-        function get_fx_rate(rate_type){
-
-            $.ajax({
-                "type": "GET",
-                "url" : "get-fx-rate-api?rateType=" + rate_type,
-                "datatype" : "application/json",
-
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success:
-                function(response){
-                    console.log(response);
-                    if(response.responseCode == '000'){
-
-                        let data = response.data;
+                        } else {
+                            $(".currency_converter_display_area").hide()
+                            $(".currency_converter_loading_area").hide()
+                            $(".currency_converter_error_area").show()
+                        }
 
 
-                if(response.data.length > 0)
-                    {
-                        if(rate_type == "Note rate"){
-                                   $.each(data, function(index) {
-                                    let flag_1 =``
-                                    let flag_2 =``
-                                    console.log(data[index].pair);
-                                    let pair = data[index].pair.split('/')
-                                    flag_1 = `assets/images/flags/${pair[0].trim()}.png`
-                                    flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                    $('.display_cross_rates').append(`
+
+                    },
+                    error: function(xhr, status, error) {
+                        $(".currency_converter_display_area").hide()
+                        $(".currency_converter_loading_area").hide()
+                        $(".currency_converter_error_area").show()
+
+
+                    }
+
+                })
+            };
+
+            function get_fx_rate(rate_type) {
+
+                $(".cross_rate_display_area").hide()
+                $(".cross_rates_error_area").hide()
+                $(".cross_rates_loading_area").show()
+
+                $.ajax({
+                    "type": "GET",
+                    "url": "get-fx-rate-api?rateType=" + rate_type,
+                    "datatype": "application/json",
+
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.responseCode == '000') {
+
+
+
+                            let data = response.data;
+
+
+                            if (response.data.length > 0) {
+                                if (rate_type == "Note rate") {
+                                    $.each(data, function(index) {
+                                        let flag_1 = ``
+                                        let flag_2 = ``
+                                        console.log(data[index].pair);
+                                        let pair = data[index].pair.split('/')
+                                        flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                                        flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                                        $('.display_cross_rates').append(`
+                                            <tr>
+                                                <td style="zoom: 0.8;">
+                                                    <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                    /
+                                                    <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+
+                                                </td>
+                                                <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                            </tr>
+                                        `);
+                                    });
+                                } else if (rate_type == "Cross rate") {
+                                    $.each(data, function(index) {
+                                        let flag_1 = ``
+                                        let flag_2 = ``
+                                        console.log(data[index].pair);
+                                        let pair = data[index].pair.split('/')
+                                        flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                                        flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                                        $('.display_cross_rates').append(`
                                         <tr>
                                             <td style="zoom: 0.8;">
                                                 <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
@@ -791,86 +960,106 @@
                                             <td> <b> ${parseFloat(data[index].sell)} </b> </td>
                                         </tr>
                                     `);
-                                  });
-                        }else if(rate_type == "Cross rate"){
-                              $.each(data, function(index) {
-                                let flag_1 =``
-                                let flag_2 =``
-                                console.log(data[index].pair);
-                                let pair = data[index].pair.split('/')
-                                 flag_1 = `assets/images/flags/${pair[0].trim()}.png`
-                                 flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                $('.display_cross_rates').append(`
-                                    <tr>
-                                        <td style="zoom: 0.8;">
-                                            <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                            /
-                                            <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                    });
+                                }
 
-                                        </td>
-                                        <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                        <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                    </tr>
-                                `);
-                                  });
+                            }
+
+
+                            $(".cross_rates_error_area").hide()
+                            $(".cross_rates_loading_area").hide()
+                            $(".cross_rate_display_area").show()
+
+                        } else {
+
+                            $(".cross_rates_error_area").hide()
+                            $(".cross_rates_loading_area").hide()
+                            $(".cross_rate_display_area").show()
                         }
 
+                    },
+                    error: function(xhr, status, error) {
+                        $(".cross_rate_display_area").hide()
+                        $(".cross_rates_loading_area").hide()
+                        $(".cross_rates_error_area").show()
+
+
                     }
+                })
+            }
 
-                    }else{
+            {{-- function dynamic_display(first, second, third){
+             $(".cross_rate_display_area").hide()
+             $(".cross_rates_error_area").hide()
 
-                    }
 
+            $('".' + first + '"').hide()
+            $('".' + second + '"').hide()
+            $('".' + third + '"').show()
+        } --}}
+
+
+
+
+            $(document).ready(function() {
+
+                {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
+
+                $(".cross_rate_display_area").hide()
+                $(".cross_rates_error_area").hide()
+                $(".cross_rates_loading_area").show()
+
+                $(".loans_display_area").hide()
+                $(".loans_error_area").hide()
+                $(".loans_loading_area").show()
+
+                $(".accounts_display_area").hide()
+                $(".accounts_error_area").hide()
+                $(".accounts_loading_area").show()
+
+                $(".currency_converter_display_area").hide()
+                $(".currency_converter_error_area").hide()
+                $(".currency_converter_loading_area").show()
+
+                var converter_rates = []
+
+                function fx_rates() {
+                    get_fx_rate("Transfer rate")
+                    get_fx_rate("Note rate")
+                    get_fx_rate("Cross rate")
                 }
+
+                setTimeout(function() {
+                    fx_rates()
+                    converter_rates = get_correct_fx_rate()
+                    get_currency()
+                    get_accounts();
+                    get_loans()
+                }, 200);
+
             })
-        }
+
+        </script>
+
+        <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>
 
 
 
-
-
-
-        $(document).ready(function() {
-
-            var converter_rates = []
-
-            setTimeout(function() {
-                get_fx_rate("Transfer rate")
-                get_fx_rate("Note rate")
-                get_fx_rate("Cross rate")
-                converter_rates = get_correct_fx_rate()
-                get_currency()
-                get_accounts();
-                get_loans()
-            }, 2000);
-
-        })
-
-
-
-
-    </script>
-
-     <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>
-
-
-
-{{--
-    <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-    <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script>  --}}
+    <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script> --}}
 
 
 
-    <!-- third party js -->
-    {{--  <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <!-- third party js -->
+        {{-- <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">  --}}
-    </script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"> --}}
+        </script>
 
-    {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
@@ -879,45 +1068,17 @@
     <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
     <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-    <!-- third party js ends -->
+        <!-- third party js ends -->
 
-    <!-- Datatables init -->
-    {{--  <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>  --}}
-
-
-@endsection
+        <!-- Datatables init -->
+        {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
 
 
-
-@section('scripts')
-    <script>
-
-        function get_accounts_() {
-            $.ajax({
-                'type': 'GET',
-                'url': 'get-accounts-api',
-                "datatype": "application/json",
-                success: function(response) {
-                    console.log(response.data);
-                    let data = response.data
-                    $.each(data, function(index) {
-
-                        $('#security_questions').append($('<option>', {
-                            value: data[index].Q_CODE
-                        }).text(data[index].Q_DESCRIPTION));
-
-                    });
-
-                },
-
-            })
-        };
+    @endsection
 
 
 
+    @section('scripts')
 
-    </script>
 
-
-@endsection
-
+    @endsection

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<legend></legend>
+    <legend></legend>
 
     <div class="row">
         <div class="col-12">
@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-2"></div>
 
-                        <div class="col-md-8">
+                        <div class="col-md-8  card-body">
                             <h2 class="header-title m-t-0 text-primary">OWN ACCOUNT TRANSFER</h2>
 
                             <p class="text-muted font-14 m-b-20">
@@ -19,7 +19,7 @@
                                 users with feedback on their form submission before sending it to your
                                 server.
                             </p>
-                        <hr>
+                            <hr>
 
 
                             <div class="row" id="transaction_form">
@@ -35,9 +35,9 @@
                                             <select class="custom-select" id="from_account" required>
                                                 <option value="">Select Account</option>
 
-                                                {{--  <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
+                                                {{-- <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
                                                     Saving Account~001023468976001~GHS~2000
-                                                 </option>  --}}
+                                                 </option> --}}
 
                                             </select>
 
@@ -70,9 +70,9 @@
 
                                         <div class="form-group">
                                             <label class="">Enter Amount<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="amount"
-                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                    required>
+                                            <input type="text" class="form-control" id="amount"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                required>
                                         </div>
 
 
@@ -121,32 +121,33 @@
 
 
 
-                                <div class="col-md-6" >
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="h6">Transfer To<span class="text-danger">*</span></label>
 
                                         <select class="custom-select" id="to_account" required>
                                             <option value="">Select Account</option>
 
-                                             {{--  <option value="Currenct Account~004004100435270140~USD~800">
-                                                Currenct Account ~ 004004100435270140 ~ USD</option>  --}}
+                                            {{-- <option value="Currenct Account~004004100435270140~USD~800">
+                                                Currenct Account ~ 004004100435270140 ~ USD</option> --}}
                                         </select>
 
 
                                         <table
-                                            class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card" >
+                                            class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
                                             <tbody>
                                                 <tr>
 
                                                     <td>
-                                                        <a class="text-body font-weight-semibold display_to_account_type"></a>
+                                                        <a
+                                                            class="text-body font-weight-semibold display_to_account_type"></a>
                                                         <small class="d-block display_to_account_name"></small>
                                                         <small class="d-block display_to_account_no"></small>
                                                     </td>
 
                                                     <td class="text-right font-weight-semibold">
-                                                         {{--  <span class="display_to_account_currency"></span>  --}}
-                                                        {{--  <span class="display_to_account_amount"></span>  --}}
+                                                        {{-- <span class="display_to_account_currency"></span> --}}
+                                                        {{-- <span class="display_to_account_amount"></span> --}}
 
                                                     </td>
                                                 </tr>
@@ -179,7 +180,8 @@
 
                                         {{-- <label class="h6">Category</label> --}}
 
-                                        <input type="text" class="form-control" id="purpose" placeholder="Enter purpose / narration" required>
+                                        <input type="text" class="form-control" id="purpose"
+                                            placeholder="Enter purpose / narration" required>
 
                                     </div>
                                     {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
@@ -278,33 +280,35 @@
                                                         <td>
                                                             <span class="font-13 text-primary h3 display_schedule_payment"
                                                                 id="display_schedule_payment">NO </span>
-                                                                &nbsp; | &nbsp;
-                                                            <span class="font-13 text-primary h3 display_schedule_payment_date" id="display_schedule_payment_date"> N/A
+                                                            &nbsp; | &nbsp;
+                                                            <span
+                                                                class="font-13 text-primary h3 display_schedule_payment_date"
+                                                                id="display_schedule_payment_date"> N/A
 
                                                             </span>
                                                             &nbsp; | &nbsp;
 
-                                                            <span class="font-13 text-primary h3 display_frequency"id="display_frequency">
+                                                            <span class="font-13 text-primary h3 display_frequency"
+                                                                id="display_frequency">
 
                                                             </span>
                                                         </td>
                                                     </tr>
 
-{{--
-                                                    <tr>
+                                                    {{-- <tr>
                                                         <td>Payment Frequency: </td>
                                                         <td>
                                                             <span class="font-13 text-primary h3 display_frequency"
                                                                 id="display_frequency"></span>
                                                         </td>
-                                                    </tr>  --}}
+                                                    </tr> --}}
 
 
                                                     <tr>
                                                         <td>Transfer Date: </td>
                                                         <td>
                                                             <span class="font-13 text-primary h3"
-                                                                id="display_transfer_date">{{  date('d F, Y') }}</span>
+                                                                id="display_transfer_date">{{ date('d F, Y') }}</span>
                                                         </td>
                                                     </tr>
 
@@ -338,11 +342,13 @@
                                                     id="back_button">Back</button> &nbsp; </span>
                                             <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
                                                     id="confirm_button"><span id="confirm_transfer">Confirm Transfer</span>
-                                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                                    <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                        id="spinner" aria-hidden="true"></span>
                                                     <span id="spinner-text">Loading...</span>
                                                 </button></span>
                                             <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
-                                                    id="print_receipt" onclick="window.print()">Print Receipt </button></span>
+                                                    id="print_receipt" onclick="window.print()">Print Receipt
+                                                </button></span>
                                         </div>
                                     </div>
 
@@ -424,23 +430,36 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
-
-            function from_account(){
+            function from_account() {
                 $.ajax({
                     'type': 'GET',
-                    'url' : 'get-my-account',
-                    "datatype" : "application/json",
-                    success:function(response){
+                    'url': 'get-my-account',
+                    "datatype": "application/json",
+                    success: function(response) {
                         console.log(response.data);
                         let data = response.data
                         $.each(data, function(index) {
 
-                        $('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-                        $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+                            $('#from_account').append($('<option>', {
+                                value: data[index].accountType + '~' + data[index]
+                                    .accountDesc + '~' + data[index].accountNumber + '~' +
+                                    data[index].currency + '~' + data[index]
+                                    .availableBalance
+                            }).text(data[index].accountType + '~' + data[index].accountNumber +
+                                '~' + data[index].currency + '~' + data[index].availableBalance
+                            ));
+                            $('#to_account').append($('<option>', {
+                                value: data[index].accountType + '~' + data[index]
+                                    .accountNumber + '~' + data[index].currency + '~' +
+                                    data[index].availableBalance
+                            }).text(data[index].accountType + '~' + data[index].accountNumber +
+                                '~' + data[index].currency + '~' + data[index].availableBalance
+                            ));
 
                         });
                     },
@@ -452,14 +471,14 @@
             $(document).ready(function() {
 
                 $('#spinner').hide(),
-                $('#spinner-text').hide(),
-                $('#print_receipt').hide();
+                    $('#spinner-text').hide(),
+                    $('#print_receipt').hide();
 
-                setTimeout(function(){
+                setTimeout(function() {
                     from_account();
-                },3000);
+                }, 200);
 
-                function sweet_alert(){
+                function sweet_alert() {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -467,15 +486,15 @@
                         timer: 5000,
                         timerProgressBar: false,
                         didOpen: (toast) => {
-                          toast.addEventListener('mouseenter', Swal.stopTimer)
-                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
-                      })
+                    })
 
-                      Toast.fire({
+                    Toast.fire({
                         icon: 'error',
                         title: 'Can not send to same account'
-                      })
+                    })
                 }
 
                 {{-- hide select accounts info --}}
@@ -489,11 +508,11 @@
                 $("#transaction_form").show()
                 $("#transaction_summary").hide()
 
-                {{--  $("#next_button").click(function(e) {
+                {{-- $("#next_button").click(function(e) {
                     e.preventDefault()
                     $("#transaction_form").hide()
                     $("#transaction_summary").show()
-                })  --}}
+                }) --}}
 
                 $("#back_button").click(function(e) {
                     e.preventDefault()
@@ -503,6 +522,8 @@
                 })
 
                 {{-- Event on From Account field --}}
+
+                var amt = 0
 
                 $("#from_account").change(function() {
                     var from_account = $(this).val()
@@ -523,9 +544,9 @@
 
                         if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                             to_account.trim() != '') {
-                            {{--  alert('can not transfer to same account')  --}}
+                            {{-- alert('can not transfer to same account') --}}
 
-                            toaster('Can not send to same account', 'error' )
+                            toaster('Can not send to same account', 'error', 10000)
                             $(this).val('')
                         }
 
@@ -536,6 +557,8 @@
                         $(".display_from_account_currency").text(from_account_info[3].trim())
 
                         $(".display_currency").text(from_account_info[3].trim()) // set summary currency
+
+                        amt = from_account_info[4].trim()
 
                         $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
                             .trim())))
@@ -591,14 +614,24 @@
                     var from_account = $('#from_account').val()
                     var to_account = $('#to_account').val()
 
+                    console.log(amt)
+
 
                     if (from_account.trim() == '' || to_account.trim() == '') {
-                        alert('Please select source and destination accounts')
+
+                        toaster('Please select source and destination accounts', 'error', 10000)
                         $(this).val('')
                         return false;
                     } else {
                         var transfer_amount = $(this).val()
-                        $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)));
+                        if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                            toaster('Insufficient account balance', 'error', 10000)
+                            return false
+                        } else {
+                            $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)));
+                        }
+
+
                     }
 
                 });
@@ -612,14 +645,14 @@
                 // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
                 $("input:checkbox").on("change", function() {
                     if ($(this).is(":checked")) {
-                        {{--  console.log("Checkbox Checked!");  --}}
+                        {{-- console.log("Checkbox Checked!"); --}}
                         $("#schedule_payment_date").show()
                         $("#frequency").show()
                         $(".display_schedule_payment").text('YES')
                         $('#schedule_payment_contraint_input').val('TRUE')
 
                     } else {
-                        {{--  console.log("Checkbox UnChecked!");  --}}
+                        {{-- console.log("Checkbox UnChecked!"); --}}
                         $("#schedule_payment_date").val('')
                         $("#schedule_payment_date").hide()
                         $("#frequency").hide()
@@ -636,9 +669,9 @@
                 {{-- $("#transaction_form").click(function() {}) --}}
 
                 $("#next_button").click(function() {
-                    {{--  var t =  $("#schedule_payment_date").val()
-                    alert(t)  --}}
-                    {{--  return false;  --}}
+                    {{-- var t =  $("#schedule_payment_date").val()
+                    alert(t) --}}
+                    {{-- return false; --}}
                     var from_account = $('#from_account').val()
                     var to_account = $('#to_account').val()
                     var transfer_amount = $('#amount').val()
@@ -653,17 +686,23 @@
                     var from_account_ = $('#from_account').val().split('~');
                     var to_account_ = $('#to_account').val().split('~');
                     var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
-                        {{--  console.log(schdule_pay);  --}}
-                    if(from_account_[2] == to_account_[1]){
-                        {{--  alert('You can not send to same account');  --}}
+                    {{-- console.log(schdule_pay); --}}
+                    if (from_account_[2] == to_account_[1]) {
 
-                        toaster('Can not send to same account', 'error' )
+                        toaster('Can not send to same account', 'error', 10000)
                         return false;
                     }
 
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
+
+                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                        toaster('Insufficient account balance', 'error', 10000)
+                        return false
+                    }
+
+                    if (schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() ==
+                        '') {
                         $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        toaster('Select schedule date for subsequent transfers', 'error' )
+                        toaster('Select schedule date for subsequent transfers', 'error', 10000)
                         {{-- alert('Select schedule date for subsequent transfers') --}}
                         return false;
                     }
@@ -672,11 +711,12 @@
                     $('.display_schedule_payment_date').text(schedule_payment_date)
 
 
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
+                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() ==
+                        '' || category.trim() == '' || purpose.trim() == '') {
                         {{-- alert('Field must not be empty') --}}
-                        toaster('Field must not be empty', 'error' )
+                        toaster('Field must not be empty', 'error', 10000)
                         return false
-                    }else{
+                    } else {
                         //set purpose and category values
                         var category_info = category.split("~")
 
@@ -697,52 +737,46 @@
                     let pin = 1234;
 
                     if ($('#user_pin').val() == pin){
-                        toaster('Field must not be empty', 'error' )
+                        toaster('Field must not be empty', 'error', 10000 )
                     }else{
-                        toaster('Field must not be empty', 'error' )
+                        toaster('Field must not be empty', 'error', 10000 )
                         return false;
                     }
                 } --}}
 
-                function toaster(message, icon )
-                {
+                function toaster(message, icon, timer) {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
-                        timer: 10000,
+                        timer: timer,
                         timerProgressBar: false,
                         didOpen: (toast) => {
-                          toast.addEventListener('mouseenter', Swal.stopTimer)
-                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
                         }
-                      })
+                    })
 
-                      Toast.fire({
+                    Toast.fire({
                         icon: icon,
                         title: message
-                      })
+                    })
                 }
 
 
                 // SUBMIT TO API
 
-                $('#confirm_button').click(function(e){
+                $('#confirm_button').click(function(e) {
                     e.preventDefault();
 
-                    $('#spinner').show();
-                    $('#spinner-text').show();
-
-                    $('#confirm_transfer').hide(),
-                    $('#confirm_button').attr('disabled',true);
 
                     //user_pin();
-                    {{--  let pin = $('#user_pin').val();
+                    {{-- let pin = $('#user_pin').val();
 
                     if ( pin != '1234'){
-                        toaster('Incorrect pin entered', 'error')
+                        toaster('Incorrect pin entered', 'error', 10000 )
                         return false;
-                    }  --}}
+                    } --}}
 
                     var from_account = $('#from_account').val().split('~');
                     var to_account = $('#to_account').val().split('~');
@@ -761,50 +795,66 @@
                     var purpose = $('#purpose').val();
                     var pin = $('#user_pin').val();
 
+
+                    if (from_account_.trim() == '' || to_account_.trim() == '' || transfer_amount
+                        .trim() == '' || category_.trim() == '' || purpose.trim() == '' || pin == ''
+                    ) {
+                        toaster('Field must not be empty', 'error', 10000)
+                        return false;
+                    }
+
+
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
 
+
+                    $('#spinner').show();
+                    $('#spinner-text').show();
+
+                    $('#confirm_transfer').hide(),
+                        $('#confirm_button').attr('disabled', true);
+
+
                     $.ajax({
 
-                        'type' : 'POST',
-                        'url' : 'own-account-api',
-                        "datatype" : "application/json",
-                        'data' : {
-                            'from_account' : from_account_ ,
-                            'to_account' : to_account_ ,
-                            'transfer_amount' : transfer_amount ,
-                            'category' : category_ ,
-                            'select_frequency' : select_frequency_ ,
-                            'purpose' : purpose ,
-                            'schedule_payment_type' : schedule_payment_contraint_input ,
-                            'schedule_payment_date' : schedule_payment_date,
-                            'secPin' : pin
+                        'type': 'POST',
+                        'url': 'own-account-api',
+                        "datatype": "application/json",
+                        'data': {
+                            'from_account': from_account_,
+                            'to_account': to_account_,
+                            'transfer_amount': transfer_amount,
+                            'category': category_,
+                            'select_frequency': select_frequency_,
+                            'purpose': purpose,
+                            'schedule_payment_type': schedule_payment_contraint_input,
+                            'schedule_payment_date': schedule_payment_date,
+                            'secPin': pin
 
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        success:
-                        function(response){
+                        success: function(response) {
 
-                            {{--  console.log(response.responseCode)  --}}
-                            if(response.responseCode == '000'){
-                                toaster(response.message, 'success' )
+                            {{-- console.log(response.responseCode) --}}
+                            if (response.responseCode == '000') {
+                                toaster(response.message, 'success', 10000)
                                 $('#confirm_button').hide();
                                 $('#back_button').hide();
                                 $('#print_receipt').show();
-                            }else{
+                            } else {
 
-                                toaster(response.message, 'error' );
+                                toaster(response.message, 'error', 10000);
 
                                 $('#spinner').hide();
                                 $('#spinner-text').hide();
                                 $('#print_receipt').hide();
                                 $('#confirm_transfer').show();
-                                $('#confirm_button').attr('disabled',false);
+                                $('#confirm_button').attr('disabled', false);
 
+                            }
                         }
-                    }
 
                     })
 
@@ -812,5 +862,5 @@
                 })
             });
 
-    </script>
-@endsection
+        </script>
+    @endsection

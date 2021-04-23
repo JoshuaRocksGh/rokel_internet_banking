@@ -1,12 +1,12 @@
 <!-- ========== Left Sidebar Start ========== -->
-<div class="left-side-menu" style="zoom:1;">
+<div class="left-side-menu" {{-- style="zoom:0.98; background-image: url('assets/images/login-bg.jpg'); background-repeat: no-repeat; background-size: cover;" --}}>
 
     <div class="h-100" data-simplebar>
 
         <!-- User box -->
         <div class="user-box text-center">
             {{-- <img src="../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md"> --}}
-                {{-- <div class="col-md-4">
+            {{-- <div class="col-md-4">
                     <div class="avatar-md">
                         <span class="avatar-title bg-soft-secondary text-secondary font-20 rounded-circle">
                             MD
@@ -50,34 +50,33 @@
         <!--- Sidemenu -->
         <div id="sidebar-menu">
 
-            <ul id="side-menu">
+            <ul id=" side-menu">
 
-                {{--  <li class="menu-title">Navigation</li>  --}}
+                {{-- <li class="menu-title">Navigation</li> --}}
 
                 <li>
                     <a href="{{ url('home') }}">
-                        {{--  <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i>  --}}
+                        {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
                         <i class="mdi mdi-home-outline"></i>
                         <span> Home </span>
                     </a>
                 </li>
 
-{{--
-                <li class="menu-title mt-2">Apps</li>  --}}
+                {{-- <li class="menu-title mt-2">Apps</li> --}}
 
-                {{--  <li>
+                {{-- <li>
                     <a href="apps-calendar.html" data-toggle="collapse">
                         <i class="mdi mdi-calendar"></i>
                         <span> Transfer</span>
                     </a>
-                </li>  --}}
+                </li> --}}
 
-                {{--  <li>
+                {{-- <li>
                     <a href="apps-chat.html">
                         <i class="mdi mdi-forum-outline"></i>
                         <span> Chat </span>
                     </a>
-                </li>  --}}
+                </li> --}}
 
                 <li>
                     <a href="#sidebarTransfer" data-toggle="collapse">
@@ -99,8 +98,13 @@
                             </li>
 
                             <li>
-                                <a href="{{ url('other-local-bank') }}">Other Local Bank</a>
+                                <a href="{{ url('other-local-bank') }}">RTGS</a>
                             </li>
+
+                            <li>
+                                <a href="{{ url('other-local-bank') }}">ACH</a>
+                            </li>
+
                             <li>
                                 <a href="{{ url('international-bank') }}">International Bank</a>
                             </li>
@@ -111,8 +115,7 @@
                                 <a href="{{ url('beneficiary-list') }}">Beneficiary List</a>
                             </li>
 
-{{--
-                            <li>
+                            {{-- <li>
                                 <a href="ecommerce-customers.html">Customers</a>
                             </li>
                             <li>
@@ -129,8 +132,7 @@
                             </li>
                             <li>
                                 <a href="ecommerce-checkout.html">Checkout</a>
-                            </li>
-                              --}}
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
@@ -170,7 +172,7 @@
                             <li>
                                 <a href="{{ url('order-blink-payment') }}">Order Blink Pay </a>
                             </li>
-                            {{--  <li>
+                            {{-- <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
                             </li>
                             <li>
@@ -178,7 +180,7 @@
                             </li>
                             <li>
                                 <a href="{{ url('payment-add-beneficiary') }}">Add Beneficiary</a>
-                            </li>  --}}
+                            </li> --}}
 
                         </ul>
                     </div>
@@ -260,21 +262,20 @@
                         </ul>
                     </div>
                 </li>
-{{--
-                <li>
+                {{-- <li>
                     <a href="apps-social-feed.html">
                         <span class="badge badge-primary float-right">Hot</span>
                         <i class="mdi mdi-rss"></i>
                         <span> Social Feed </span>
                     </a>
-                </li>  --}}
+                </li> --}}
 
-                {{--  <li>
+                {{-- <li>
                     <a href="apps-companies.html">
                         <i class="mdi mdi-domain"></i>
                         <span> Companies </span>
                     </a>
-                </li>  --}}
+                </li> --}}
 
                 <li>
                     <a href="#sidebarLoans" data-toggle="collapse">
@@ -355,7 +356,7 @@
 
                 <li>
                     <a href="{{ url('branch-locator') }}">
-                        {{--  <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i>  --}}
+                        {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
                         <i class="mdi mdi-map-marker-outline"></i>
                         <span> Branch Locator </span>
                     </a>
@@ -364,9 +365,9 @@
 
                 <li>
                     <a href="#approvals" data-toggle="collapse">
-                        {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
+                        {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
                         <i class="mdi mdi-checkbox-multiple-marked-outline"></i>
-                        <span> Approvals  </span>
+                        <span> Approvals </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="approvals">
@@ -390,9 +391,9 @@
 
                 <li>
                     <a href="#sidebarChatbot" data-toggle="collapse">
-                        {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
+                        {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
                         <i class="mdi mdi-chat-processing-outline"></i>
-                        <span> Chatbot  </span>
+                        <span> Chatbot </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarChatbot">
@@ -414,9 +415,9 @@
 
                 <li>
                     <a href="#sidebarSetting" data-toggle="collapse">
-                        {{--  <i class="mdi mdi-account-circle-outline"></i>  --}}
-                         <i class="mdi mdi-cog-outline"></i>
-                        <span> Settings  </span>
+                        {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
+                        <i class="mdi mdi-cog-outline"></i>
+                        <span> Settings </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarSetting">
@@ -450,9 +451,9 @@
                     </a>
                 </li>
 
-                {{--  Start Comment  --}}
+                {{-- Start Comment --}}
 
-                {{--  <li>
+                {{-- <li>
                     <a href="#sidebarLayouts" data-toggle="collapse">
                         <i class="mdi mdi-cellphone-link"></i>
                         <span class="badge badge-info float-right">New</span>
@@ -823,7 +824,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>  --}}
+                </li> --}}
 
 
             </ul>

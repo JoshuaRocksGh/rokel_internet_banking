@@ -8,14 +8,19 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body card-background-image">
+                <div class="card-body ">
                     <div class="row">
                         <div class="col-md-2"></div>
 
                         <div class="col-md-8">
-                            <p class="sub-header font-18 purple-color" style="cursor: pointer;"
-                                onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i> MANAGE SAME BANK BENEFICIARY
+
+                            <h3 class=" m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i
+                                    class="fe-arrow-left"></i> &nbsp; MANAGE BANK BENEFICIARY</h3>
+
+                            <p class="text-muted font-14 m-b-20">
+                                Parsley is a javascript form validation library. It helps you provide your
+                                users with feedback on their form submission before sending it to your
+                                server.
                             </p>
                             <hr>
 
@@ -25,111 +30,120 @@
 
                                 <div class="col-md-12">
                                     <form action="#" id="same_bank_beneficiary_form" autocomplete="off"
-                                    aria-autocomplete="off">
-                                    {{-- @csrf --}}
-                                    <div class="row">
+                                        aria-autocomplete="off">
+                                        {{-- @csrf --}}
+                                        <div class="row">
 
 
 
 
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
-                                                <label>Account Number</label>
-                                                <input class="form-control" type="number" class="form-control"
-                                                    id="account_number" placeholder="Account Number" required>
-                                                {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
+                                                    <label>Account Number</label>
+                                                    <input class="form-control" type="number" class="form-control"
+                                                        id="account_number" placeholder="Account Number" required>
+                                                    {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
 
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account Name</label>
-                                                <input type="text" class="form-control" id="account_name"
-                                                    parsley-trigger="change" placeholder="Account Name" readonly required>
-                                                {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Account Name</label>
+                                                    <input type="text" class="form-control" id="account_name"
+                                                        parsley-trigger="change" placeholder="Account Name" readonly
+                                                        required>
+                                                    {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account Currency</label>
-                                                <input type="hidden" class="form-control" readonly value="" id="select_currency">
-                                                <input type="text" class="form-control" readonly value="" id="select_currency_i">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Account Currency</label>
+                                                    <input type="hidden" class="form-control" readonly value=""
+                                                        id="select_currency">
+                                                    <input type="text" class="form-control" readonly value=""
+                                                        id="select_currency_i">
 
-                                                {{--  <select class="custom-select" id="select_currency" required>
+                                                    {{-- <select class="custom-select" id="select_currency" required>
                                                     <option value="">Select Currency</option>
 
-                                                </select>  --}}
-                                                {{-- <input type="text" class="form-control" id="account_currency" parsley-trigger="change"  placeholder="Account " required> --}}
-                                                {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                                </select> --}}
+                                                    {{-- <input type="text" class="form-control" id="account_currency" parsley-trigger="change"  placeholder="Account " required> --}}
+                                                    {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
-                                                <label>Beneficiary Name</label>
-                                                <input type="text" class="form-control" id="beneficiary_name"
-                                                    parsley-trigger="change" placeholder="Beneficiary Name" required>
-                                                {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Mobile Number</label>
-                                                <input type="number" class="form-control" id="beneficiary_mobile_number"
-                                                    parsley-trigger="change" placeholder="Beneficiary Mobile Number" required>
-                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Address</label>
-                                                <input type="text" class="form-control" id="beneficiary_address"
-                                                    parsley-trigger="change" placeholder="Beneficiary Address" required>
-                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Email</label>
-                                                <input type="email" class="form-control" id="beneficiary_email"
-                                                    parsley-trigger="change" placeholder="Beneficiary Email" required>
-                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                            </div>
-
-
-
-
-                                            <div class="form-group">
-
-                                                <div class="checkbox checkbox-primary mb-2" id="transfer_email">
-                                                    <input id="checkbox2" type="checkbox">
-                                                    <label for="checkbox2">
-                                                        Email beneficiary when a transfer is made
-                                                    </label>
                                                 </div>
 
                                             </div>
 
-                                            <p class="sub-header font-13">
-                                                Providing beneficairy email and checking
+                                            <div class="col-md-6">
 
-                                            </p>
+                                                <div class="form-group">
+                                                    {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
+                                                    <label>Beneficiary Name</label>
+                                                    <input type="text" class="form-control" id="beneficiary_name"
+                                                        parsley-trigger="change" placeholder="Beneficiary Name" required>
+                                                    {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                            <button class="btn btn-primary waves-effect waves-light btn-rounded" type="submit"
-                                                id="save_beneficiary">Next</button>
-                                            {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button> --}}
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Beneficiary Mobile Number</label>
+                                                    <input type="number" class="form-control" id="beneficiary_mobile_number"
+                                                        parsley-trigger="change" placeholder="Beneficiary Mobile Number"
+                                                        required>
+                                                    {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Beneficiary Address</label>
+                                                    <input type="text" class="form-control" id="beneficiary_address"
+                                                        parsley-trigger="change" placeholder="Beneficiary Address" required>
+                                                    {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Beneficiary Email</label>
+                                                    <input type="email" class="form-control" id="beneficiary_email"
+                                                        parsley-trigger="change" placeholder="Beneficiary Email" required>
+                                                    {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                                </div>
+
+
+
+
+                                                <div class="form-group">
+
+                                                    <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                                        <input id="checkbox2" type="checkbox">
+                                                        <label for="checkbox2">
+                                                            Email beneficiary when a transfer is made
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+
+                                                <p class="sub-header font-13">
+                                                    Providing beneficairy email and checking
+
+                                                </p>
+
+                                                <button class="btn btn-primary waves-effect waves-light btn-rounded"
+                                                    type="submit" id="save_beneficiary">Next</button>
+                                                &nbsp; &nbsp;
+
+                                                <button class="btn btn-danger waves-effect waves-light btn-rounded"
+                                                    type="button" id="save_beneficiary"
+                                                    onclick="window.history.back()">Cancel</button>
+                                                {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button> --}}
+
+
+                                            </div>
+
+                                            <br>
+
 
 
                                         </div>
 
-                                        <br>
-
-
-
-                                    </div>
-
-                                </form>
+                                    </form>
 
 
 
@@ -258,41 +272,39 @@
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
-
-
             var bene_id = @json($bene_id);
             var bene_type = @json($bene_type);
-            {{--  console.log(bene_id);
-            console.log(bene_type);  --}}
+            {{-- console.log(bene_id);
+            console.log(bene_type); --}}
 
-            function get_beneficiary_details(){
+            function get_beneficiary_details() {
                 $.ajax({
-                    'type' : 'POST' ,
+                    'type': 'POST',
                     "datatype": "application/json",
-                    'url' : 'edit-same-bank-api',
-                    'data' : {
-                        'bene_id' : bene_id
-                    },headers: {
+                    'url': 'edit-same-bank-api',
+                    'data': {
+                        'bene_id': bene_id
+                    },
+                    headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success:
-                    function(response){
-                        {{--  console.log(response);  --}}
+                    success: function(response) {
+                        {{-- console.log(response); --}}
 
-                        if(response.responseCode == '000'){
+                        if (response.responseCode == '000') {
                             let beneficiary_details = response.data;
-                            {{--  console.log(beneficiary_details);  --}}
+                            {{-- console.log(beneficiary_details); --}}
 
-                        $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
-                        $('#account_name').val(beneficiary_details[0].NICKNAME);
-                        $('#select_currency_i').val(beneficiary_details[0].BEN_ACCOUNT_CURRENCY);
-                        $('#beneficiary_name').val(beneficiary_details[0].NICKNAME);
-                        $('#beneficiary_address').val(beneficiary_details[0].ADDRESS_1);
-                        $('#beneficiary_email').val(beneficiary_details[0].EMAIL);
-                        {{--  NICKNAME  --}}
+                            $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
+                            $('#account_name').val(beneficiary_details[0].NICKNAME);
+                            $('#select_currency_i').val(beneficiary_details[0].BEN_ACCOUNT_CURRENCY);
+                            $('#beneficiary_name').val(beneficiary_details[0].NICKNAME);
+                            $('#beneficiary_address').val(beneficiary_details[0].ADDRESS_1);
+                            $('#beneficiary_email').val(beneficiary_details[0].EMAIL);
+                            {{-- NICKNAME --}}
 
-                        $('#save_beneficiary').show('');
-                        let account_no = $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
+                            $('#save_beneficiary').show('');
+                            let account_no = $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
 
 
                         }
@@ -304,9 +316,9 @@
 
             $(document).ready(function() {
 
-                setTimeout(function(){
+                setTimeout(function() {
                     get_beneficiary_details();
-                },2000);
+                }, 2000);
 
                 $('#save_beneficiary').hide('')
 
@@ -346,7 +358,7 @@
                         "data": {
                             "authToken": "string",
                             "accountNumber": account_no
-                          },
+                        },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
@@ -355,11 +367,12 @@
 
                             console.log(response.responseCode)
                             if (response.responseCode == "000") {
-                                {{--  console.log(response.data)  --}}
+                                {{-- console.log(response.data) --}}
                                 toaster(response.message, 'success');
                                 $('#account_name').val(response.data.accountDescription)
                                 $('#select_currency_i').val(response.data.accountCurrencyDescription)
-                                $('#select_currency').val(response.data.accountCurrencyCode  + '~' + response.data.accountCurrencyDescription)
+                                $('#select_currency').val(response.data.accountCurrencyCode + '~' +
+                                    response.data.accountCurrencyDescription)
 
                                 $('#save_beneficiary').show('')
 
@@ -380,7 +393,7 @@
 
                 $("#account_number").keyup(function() {
                     let account_no = $(this).val();
-                    if(account_no.length > 10){
+                    if (account_no.length > 10) {
                         getAccountDescription(account_no)
                     }
 
@@ -432,7 +445,8 @@
 
 
                     if (account_number.trim() != '' && account_name.trim() != '' && beneficiary_name
-                    .trim() != '' && beneficiary_email.trim() != '' && beneficiary_number.trim() != '' &&
+                        .trim() != '' && beneficiary_email.trim() != '' && beneficiary_number.trim() !=
+                        '' &&
                         beneficiary_address.trim() != '') {
                         $('#same_bank_beneficiary_form').hide();
                         $("#same_bank_beneficiary_form_summary").toggle('500');
@@ -458,7 +472,7 @@
                     var beneficiary_name = $('#beneficiary_name').val();
                     var currency = $('#select_currency').val().split('~');
                     var currency_ = currency[1];
-                    {{--  console.log(currency);  --}}
+                    {{-- console.log(currency); --}}
                     var beneficiary_number = $('#beneficiary_mobile_number').val();
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();
@@ -478,7 +492,7 @@
                     $('#save_beneficiary_summary_btn').attr('disabled',true); --}}
 
 
-                    function redirect_page(){
+                    function redirect_page() {
                         window.location.href = "{{ url('beneficiary-list') }}";
 
                     };
@@ -506,8 +520,8 @@
                             "send_mail": transfer_email,
                             "number": beneficiary_number,
                             "beneficiary_address": beneficiary_address,
-                            "beneID" : bene_id ,
-                            "beneficiaryType" : bene_type
+                            "beneID": bene_id,
+                            "beneficiaryType": bene_type
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -519,10 +533,10 @@
                             if (response.responseCode == "000") {
                                 toaster(response.message, 'success');
 
-                                setTimeout(function(){
+                                setTimeout(function() {
 
                                     redirect_page();
-                                },3000);
+                                }, 3000);
 
                                 {{-- $('#spinner').hide();
                             $('#spinner-text').hide();
@@ -543,8 +557,8 @@
 
                 });
 
-                {{--  var bene_id = @json($bene_id) ;
-                console.log($bene_id) ;  --}}
+                {{-- var bene_id = @json($bene_id) ;
+                console.log($bene_id) ; --}}
 
             });
 
