@@ -6,39 +6,231 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2"></div>
 
                         <div class="col-md-8">
-                            <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
-                                <b> <i class="mdi mdi-arrow-left  font-20 text-primary"></i></b> &nbsp;  MOBILE MONEY
+                            <h2 class="header-title m-t-0 text-primary">MOBILE MONEY PAYMENT</h2>
 
-                            </p>
-                            <hr>
+                                <p class="text-muted font-14 m-b-20">
+                                    Parsley is a javascript form validation library. It helps you provide your
+                                    users with feedback on their form submission before sending it to your
+                                    server.
+                                </p>
+                                <hr>
 
 
                             <div class="row" id="transaction_form">
 
 
-                                <div class="col-md-7">
+                                <div class="col-md-12">
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
+                                        <div class="row">
+                                            {{-- LEFT SIDE COLOUMN --}}
+                                            <div class="col-6">
+                                               <div class="form-group">
+                                                <label class="">Transfer From:<span class="text-danger">*</span></label>
+                                                {{-- <hr> --}}
+
+                                                    <select class="custom-select" id="from_account">
+                                                        <option value="">Select Account</option>
+                                                        <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
+                                                            Saving Account ~ 001023468976001 </option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            {{-- RIGHT SIDE COL0UMN --}}
+
+                                            <div class="col-6">
+
+                                                <div class="form-group">
+                                                    <label class="">Enter Amount:<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="amount"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                        >
+                                                </div>
+
+                                                {{-- <div class="form-group">
+                                                    <label class="h6">Network Type</label>
+
+                                                    <select class="custom-select" id="network_type" required>
+                                                        <option value="">Select Account</option>
+                                                        <option value="MTN">MTN</option>
+                                                        <option value="VODAFONE">VODAFONE</option>
+                                                        <option value="AIRTEL TOGO">AIRTEL TOGO</option>
+                                                    </select>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                        <hr>
                                         <div class="form-group">
-                                            <label class="h6">Transfer From</label>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input radio" type="radio" name="onetime"
+                                                    id="inlineRadio1" value="beneficiary" checked="checked">
+                                                <label class="form-check-label" for="inlineRadio1">Select
+                                                    beneficiary</label>
+                                            </div>
+                                            &nbsp;&nbsp;
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input radio" type="radio" name="onetime"
+                                                    id="inlineRadio2" value="onetime">
+                                                <label class="form-check-label" for="inlineRadio2">Onetime
+                                                    beneficiary</label>
+                                            </div>
+                                        </div>
+                                        <hr>
+
+                                        {{-- SELECTED BENEFICIARY FORM --}}
+                                        <div class="form-group" id="beneficiary_selected">
+                                            <div class="row">
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label class="">Receipient Mobile Number:<span class="text-danger">*</span></label>
+
+                                                        <select class="custom-select receipient_number" id="receipient_number">
+                                                            <option value="">Select Receipient Number</option>
+                                                            <option value="MTN">MTN</option>
+                                                            <option value="VODAFONE">VODAFONE</option>
+                                                            <option value="AIRTEL TOGO">AIRTEL TOGO</option>
+                                                        </select>
+                                                        {{-- <input type="text" class="form-control" id="Receipient_number"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            required> --}}
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="">Category:<span class="text-danger">*</span></label>
+
+                                                        <select class="custom-select category" id="category">
+                                                            <option value="">Select Category</option>
+                                                            <option value="001~Fees">Fees</option>
+                                                            <option value="002~Electronics">Electronics</option>
+                                                            <option value="003~Travels">Travels</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label class="" for="">Receipient Network Type:<span class="text-danger">*</span></label>
+                                                        <select class="custom-select network_type" id="network_type">
+                                                            <option value="">Select Network Type</option>
+                                                            <option value="MTN">MTN</option>
+                                                            <option value="VODAFONE">VODAFONE</option>
+                                                            <option value="AIRTEL TOGO">AIRTEL TOGO</option>
+                                                        </select>
 
 
-                                            <select class="custom-select " id="from_account" required>
-                                                <option value="">Select Account</option>
-                                                <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
-                                                    Saving Account ~ 001023468976001 </option>
+                                                        {{-- <label class="">Receipient Mobile Number</label>
+                                                        <input type="text" class="form-control" id="amount"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            required> --}}
+                                                    </div>
 
-                                            </select>
+                                                    <div class="form-group">
+                                                        <label class="">Enter Naration:<span class="text-danger">*</span></label>
+
+                                                        <input type="text" class="form-control purpose" id="purpose" placeholder="Enter purpose / narration">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- ONETIME BENEFICIARY SCREEN --}}
+                                        <div class="form-group" id="onetime_beneficiary">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label class="">Enter Receipient Mobile Number:<span class="text-danger">*</span></label>
+
+                                                        {{-- <select class="custom-select col-7" id="receipient_number" required>
+                                                            <option value="">Select Receipient Number</option>
+                                                            <option value="MTN">MTN</option>
+                                                            <option value="VODAFONE">VODAFONE</option>
+                                                            <option value="AIRTEL TOGO">AIRTEL TOGO</option>
+                                                        </select> --}}
+                                                        <input type="text" class="form-control" id="onetime_receipient_number" placeholder="Enter Number"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            >
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class=""> Select Category:<span class="text-danger">*</span></label>
+
+                                                        <select class="custom-select" id="onetime_category" >
+                                                            <option value="">Select Category</option>
+                                                            <option value="001~Fees">Fees</option>
+                                                            <option value="002~Electronics">Electronics</option>
+                                                            <option value="003~Travels">Travels</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label class="" for=""> Select Receipient Network Type:<span class="text-danger">*</span></label>
+                                                        <select class="custom-select" id="onetime_network_type">
+                                                            <option value="">Select Network Type</option>
+                                                            <option value="MTN">MTN</option>
+                                                            <option value="VODAFONE">VODAFONE</option>
+                                                            <option value="AIRTEL TOGO">AIRTEL TOGO</option>
+                                                        </select>
+
+
+                                                        {{-- <label class="">Receipient Mobile Number</label>
+                                                        <input type="text" class="form-control" id="amount"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            required> --}}
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="">Enter Naration:<span class="text-danger">*</span></label>
+
+                                                        <input type="text" class="form-control" id="onetime_purpose" placeholder="Enter purpose / narration">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{-- SCHEDULE PAYMENTS --}}
+                                        <div class="col-6">
+
+
+                                            <div class="form-group">
+
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    <label class="custom-control-label" for="customCheck1">Schedule
+                                                        Payments</label>
+                                                </div>
+                                                <legend></legend>
+
+                                                <input type="text" class="form-control" id="schedule_payment_contraint_input">
+
+                                                <input type="date" class="form-control" id="schedule_payment_date">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
 
 
                                             <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info">
+                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
                                                 <tbody>
                                                     <tr class="text-primary">
 
@@ -62,14 +254,7 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <label class="h6">Network Type</label>
 
-                                            <select class="custom-select" id="network_type" required>
-                                                <option value="">Select Account</option>
-                                                <option value="MTN">MTN</option>
-                                                <option value="VODAFONE">VODAFONE</option>
-                                                <option value="AIRTEL TOGO">AIRTEL TOGO</option>
-                                            </select>
 
 
                                             <table
@@ -97,8 +282,8 @@
 
                                         </div>
 
-                                        <hr>
-                                        <div class="form-group">
+                                        {{-- <hr> --}}
+                                        {{-- <div class="form-group">
                                             <div class="mt-3">
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
@@ -109,85 +294,39 @@
                                                     <label class="custom-control-label" for="customRadio2">Onetime</label>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <hr>
+                                        </div> --}}
+                                        {{-- <hr> --}}
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="">Receipient Mobile Number</label>
-                                            <input type="text" class="form-control" id="amount"
+                                            <input type="text" class="form-control" id="Receipient_number"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 required>
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="form-group">
-                                            <select class="custom-select" id="network_type" required>
-                                                <option value="">Select Network Type</option>
-                                                <option value="MTN">MTN</option>
-                                                <option value="VODAFONE">VODAFONE</option>
-                                                <option value="AIRTEL TOGO">AIRTEL TOGO</option>
-                                            </select>
-                                            
 
-                                            <label class="">Receipient Mobile Number</label>
-                                            <input type="text" class="form-control" id="amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                required>
-                                        </div>
 
-                                        <div class="form-group">
+
+
+                                        {{-- <div class="form-group">
                                             <label class="">Enter Amount</label>
                                             <input type="text" class="form-control" id="amount"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="">Enter Amount</label>
-                                            <input type="text" class="form-control" id="amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            {{-- <label class="h6">Category</label> --}}
-
-                                            <select class="custom-select" id="category" required>
-                                                <option value="">Select Category</option>
-                                                <option value="001~Fees">Fees</option>
-                                                <option value="002~Electronics">Electronics</option>
-                                                <option value="003~Travels">Travels</option>
-                                            </select>
-
-                                        </div>
+                                        </div> --}}
 
 
-                                        <div class="form-group">
-                                            {{-- <label class="h6">Category</label> --}}
-
-                                            <input type="text" class="form-control" id="purpose" placeholder="Enter purpose / narration" required>
-
-                                        </div>
 
 
-                                        <div class="form-group">
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Schedule
-                                                    Payments</label>
-                                            </div>
-                                            <legend></legend>
 
-                                            <input type="text" class="form-control" id="schedule_payment_contraint_input">
 
-                                            <input type="date" class="form-control" id="schedule_payment_date">
 
-                                        </div>
 
 
 
                                         <div class="form-group text-right">
-                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                            <button class="btn btn-primary btn-rounded" type="submit" id="next_button">
                                                 &nbsp; Next &nbsp;</button>
                                         </div>
 
@@ -199,10 +338,10 @@
 
 
 
-                                <div class="col-md-5 text-center" style="margin-top: 80px;">
+                                {{-- <div class="col-md-5 text-center" style="margin-top: 80px;">
 
                                     <img src="{{ asset('assets/images/payment-icon-images/mobile_money/mobile_money_logos.jpg') }}" class="img-fluid" alt="">
-                                </div> <!-- end col -->
+                                </div> <!-- end col --> --}}
 
 
                                 <!-- end row -->
@@ -420,7 +559,58 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script>
+
+            function from_account() {
+                $.ajax({
+                    'type': 'GET',
+                    'url': 'get-my-account',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        //console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+                            $('#from_account').append($('<option>', {
+                                value: data[index].accountType + '~' + data[index]
+                                    .accountDesc + '~' + data[index].accountNumber +
+                                    '~' + data[index].currency + '~' + data[index]
+                                    .availableBalance
+                            }).text(data[index].accountType + '~' + data[index]
+                                .accountNumber + '~' + data[index].currency + '~' + data[
+                                    index].availableBalance));
+                            //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                        });
+                    },
+
+                })
+            }
+
+
             $(document).ready(function() {
+
+                setTimeout(function(){
+                    from_account();
+                },3000);
+
+                $("#beneficiary_selected").show();
+                $("#onetime_beneficiary").hide();
+
+                $(".radio").click(function(){
+                    var type = $("input[type='radio']:checked").val();
+
+                    {{-- console.log(type); --}}
+
+                    if (type == "beneficiary"){
+                        $("#beneficiary_selected").show();
+                        $("#onetime_beneficiary").hide();
+                    }
+
+                    if(type == "onetime"){
+                        $("#onetime_beneficiary").show();
+                        $("#beneficiary_selected").hide();
+
+                    }
+                })
 
                 {{-- hide select accounts info --}}
                 $(".from_account_display_info").hide()
@@ -445,26 +635,25 @@
 
                 })
 
-                {{-- Event on From Account field --}}
-
                 $("#from_account").change(function() {
                     var from_account = $(this).val()
-                    {{-- alert(from_account) --}}
+                    {{-- alert(from_account)
                     if (from_account.trim() == '' || from_account.trim() == undefined) {
-                        {{-- alert('money') --}}
+                        alert('money')
                         $(".from_account_display_info").hide()
 
                     } else {
                         from_account_info = from_account.split("~")
-                        {{-- alert('continue') --}}
+                        alert('continue')
 
                         var to_account = $('#to_account').val()
 
                         if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                             to_account.trim() != '') {
+                            toaster('can not transfer to same account', 'error', 10000)
                             alert('can not transfer to same account')
                             $(this).val('')
-                        }
+                        } --}}
 
                         // set summary values for display
                         $(".display_from_account_type").text(from_account_info[0].trim())
@@ -474,164 +663,75 @@
 
                         $(".display_currency").text(from_account_info[3].trim()) // set summary currency
 
-                        $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
+                        amt = from_account_info[4].trim()
+                        $(".display_from_account_amount").text(formatToCurrency(Number(
+                            from_account_info[4]
                             .trim())))
-                        {{-- alert('and show' + from_account_info[3].trim()) --}}
+                        alert('and show' + from_account_info[3].trim())
                         $(".from_account_display_info").show()
+
+
+
+
+
+                    // alert(from_account_info[0]);
+                })
+
+
+                $("#payment_details_form").submit(function(e){
+                    e.preventDefault();
+
+                    {{-- $(".radio").click(function(){
+
+                    }) --}}
+
+                    var type = $("input[type='radio']:checked").val();
+                    console.log(type);
+
+                    if (type == "beneficiary"){
+                        var from_account = $("#from_account").val().split();
+                        var from_account_ = from_account ;
+                        var amount = $("#amount").val();
+                        var receipient_number = $("#receipient_number").val();
+                        var receipient_network = $("#network_type").val();
+                        var category = $("#category").val();
+                        var naration = $("#purpose").val();
+
+                        console.log(from_account_);
+                        console.log(amount);
+                        console.log(receipient_number);
+                        console.log(receipient_network);
+                        console.log(category);
+                        console.log(naration);
+
+                        {{-- $("#transaction_summary").show()
+                        $("#transaction_form").hide() --}}
+
+                    }
+
+                    if (type == "onetime"){
+                        var from_account = $("#from_account").val();
+                        var amount = $("#amount").val();
+                        var onetime_receipient_number = $("#onetime_receipient_number").val();
+                        var onetime_receipient_network = $("#onetime_network_type").val();
+                        var category = $("#onetime_category").val();
+                        var naration = $("#onetime_purpose").val();
+
+                        console.log(from_account);
+                        console.log(amount);
+                        console.log(onetime_receipient_number);
+                        console.log(onetime_receipient_network);
+                        console.log(category);
+                        console.log(naration);
                     }
 
 
 
 
-                    {{-- alert(from_account_info[0]); --}}
-                });
-
-
-                $("#to_account").change(function() {
-                    var to_account = $(this).val()
-                    {{-- alert(to_account) --}}
-                    if (to_account.trim() == '' || to_account.trim() == undefined) {
-                        {{-- alert('money') --}}
-                        $(".to_account_display_info").hide()
-
-                    } else {
-                        to_account_info = to_account.split("~")
-
-
-                        var from_account = $('#from_account').val()
-
-                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                            to_account.trim() != '') {
-                            alert('can not transfer to same account')
-                            $(this).val('')
-                        }
-
-                        // set summary values for display
-                        $(".display_to_account_type").text(to_account_info[0].trim())
-                        $(".display_to_account_name").text(to_account_info[1].trim())
-                        $(".display_to_account_no").text(to_account_info[2].trim())
-                        $(".display_to_account_currency").text(to_account_info[3].trim())
-                        $(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
-
-                        $(".to_account_display_info").show()
-                    }
-
-
-
-
-                    {{-- alert(to_account_info[0]); --}}
-                });
-
-
-                $("#amount").keyup(function() {
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    if (from_account.trim() == '' || to_account.trim() == '') {
-                        alert('Please select source and destination accounts')
-                        $(this).val('')
-                        return false;
-                    } else {
-                        var transfer_amount = $(this).val()
-                        $(".display_transfer_amount").text(formatToCurrency(Number(to_account_info[4]
-                        .trim())))
-                    }
 
                 })
 
 
-                function formatToCurrency(amount) {
-                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-                };
-
-
-                // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
-                $("input:checkbox").on("change", function() {
-                    if ($(this).is(":checked")) {
-                        console.log("Checkbox Checked!");
-                        $("#schedule_payment_date").show()
-                        $(".display_schedule_payment").text('YES')
-                        $('#schedule_payment_contraint_input').val('TRUE')
-
-                    } else {
-                        console.log("Checkbox UnChecked!");
-                        $("#schedule_payment_date").val('')
-                        $("#schedule_payment_date").hide()
-                        $('.display_schedule_payment').text('NO')
-                        $('.display_schedule_payment_date').text('N/A')
-
-                        $('#schedule_payment_contraint_input').val('')
-                        $('#schedule_payment_contraint_input').hide()
-                        $('#schedule_payment_date').val('')
-                    }
-                });
-
-
-                {{-- $("#transaction_form").click(function() {}) --}}
-
-                $("#next_button").click(function() {
-                    {{--  var t =  $("#schedule_payment_date").val()
-                    alert(t)  --}}
-                    {{--  return false;  --}}
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-
-                    var purpose = $('#purpose').val()
-
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
-
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
-
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
-                        return false
-                    }else{
-                        //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
-
-                    /**
-                    $.ajax({
-                        type: "POST"
-                        url: "submit-own-account-transfer"
-                        data: {
-                            "send_from": send_from,
-                            "send_to": send_to,
-                            "cashier_id": cashier_id,
-                            "text_area": text_area,
-                            "amount": amount,
-                            "cashier_id": cashier_id
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                        success: function() {
-                            Swal.fire(
-                                'Post Successful',
-                                ' ',
-                                'success'
-                            )
-                        }
-                    })
-
-
-                     */
-                });
 
 
             });

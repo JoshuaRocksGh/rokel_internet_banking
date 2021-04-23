@@ -73,7 +73,7 @@
                                                             <label>Tenure in months:</label>
                                                             <span class="text-danger">*</span></label>
                                                         <div class="col-6">
-                                                            <input type="number" class="form-control" id="loan_period" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+                                                            <input type="number" class="form-control" id="tenure_in_months" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -95,12 +95,12 @@
                                                             <label>Principal Repay Frequency:</label>
                                                             <span class="text-danger">*</span></label>
                                                         <div class="col-6">
-                                                            <select class="custom-select" id="interest_rate_type" required>
+                                                            <select class="custom-select" id="principal_repay_freq" required>
                                                                 <option value="">-Select Principal Repay Frequency-</option>
-                                                                <option value="1">WEEKLY</option>
-                                                                <option value="2">BI-WEEKLY</option>
-                                                                <option value="3">MONTHLY</option>
-                                                                <option value="4">QUARTERLY</option>
+                                                                <option value="WEEKLY">WEEKLY</option>
+                                                                <option value="BI-WEEKLY">BI-WEEKLY</option>
+                                                                <option value="MONTHLY">MONTHLY</option>
+                                                                <option value="QUARTERLY">QUARTERLY</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -157,7 +157,15 @@
                                             <tr class="">
                                                 <td>
                                                     <span class="text-right font-weight-semibold">
-                                                        <span class="display_amount"></span>
+                                                        <span class="display_loan_amount"></span>
+                                                    </span>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="">
+                                                <td>
+                                                    <span class="text-right font-weight-semibold">
+                                                        <span class="display_tenure_in_months"></span>
                                                     </span>
                                                 </td>
 
@@ -191,7 +199,7 @@
                                                 <td>
 
                                                     <span class="text-right font-weight-semibold">
-                                                        <span class="display_interest_rate"></span>
+                                                        <span class="display_i  "></span>
                                                     </span>
                                                 </td>
 
@@ -206,7 +214,7 @@
 
                                     <div class="form-group row">
                                         <div class="col-8 offset-4 text-right">
-                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_request_statement">
+                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_loan_request">
                                                 Submit
                                             </button>
 
@@ -306,62 +314,66 @@
             }, 1000)
 
             $("#loan_product").change(function(){
-                $("#display_loan_product").text($("#loan_product").val());
+                var loan_product = $("#loan_product").val();
+                $(".display_loan_product").text("Loan Product: "+loan_product);
+                console.log(loan_product);
             });
-            $("#statementType").change(function(){
-                var statementType = $("#statementType").val();
-                $(".display_type_of_statement").text(statementType);
-                console.log(statementType);
+
+            $("#loan_amount").change(function(){
+                var loan_amount = $("#loan_amount").val();
+                $(".display_loan_amount").text("Loan Amount: "+loan_amount);
+                console.log(loan_amount);
             })
 
-            $("#pUBranch").change(function(){
-                $('.display_pick_up_branch').text("");
-                var pickUpBranch = $(this).val();
-                if(pickUpBranch != ""){
-
-                    let branch_info = pickUpBranch.split("~")
-                    $(".display_pick_up_branch").text(branch_info[1]);
-                    console.log(branch_info[1]);
-                    console.log(pickUpBranch);
-                    console.log(branch_info[1]);
-               }
-
+            $("#tenure_in_months").change(function(){
+                var tenure_in_months = $("#tenure_in_months").val();
+                $(".display_tenure_in_months").text("Tenure In Months: "+tenure_in_months);
+                console.log(tenure_in_months);
             })
 
-            $("#startDate").change(function(){
-                var startDate = $("#startDate").val();
-                $(".display_trans_startDate").text("Start Date: "+startDate);
-                console.log(startDate);
+            $("#interest_rate_type").change(function(){
+                var interest_rate_type = $("#interest_rate_type").val();
+                $(".display_interest_rate_type").text("Interest Rate Type: "+interest_rate_type);
+                console.log(interest_rate_type);
             })
 
-            $("#endDate").change(function(){
-                var endDate = $("#endDate").val();
-                $(".display_trans_endDate").text("End Date: "+endDate);
-                console.log(endDate);
+            $("#principal_repay_freq").change(function(){
+                var principal_repay_freq = $("#principal_repay_freq").val();
+                $(".display_principal_repay_freq").text("Principal Repay Frequency: "+principal_repay_freq);
+                console.log(principal_repay_freq);
             })
 
+
+            $("#interest_repay_freq").change(function(){
+                var interest_repay_freq = $("#interest_repay_freq").val();
+                $(".display_interest_repay_freq").text("Interest Repay Frequency: "+interest_repay_freq);
+                console.log(interest_repay_freq);
+            })
             // $("#pin").keyup(function(){
             //     var pin = $("#pin").val();
             //     console.log(pin);
             // })
 
 
-            $('#btn_submit_request_statement').click(function(){
-                // toaster("Please fill all required fields","error", 6000);
-                // return false;
+            $('#btn_submit_loan_request').click(function(){
 
 
-                    //statement request details/get values.
-                    let my_account = $('#my_account').val();
-                    let type_of_statement = $('#statementType').val();
-                    let pUBranch = $('#pUBranch').val();
-                    let transStartDate = $('#startDate').val();
-                    let transEndDate = $('#endDate').val();
-                    let pin = $('#pin').val();
-                    console.log(pin);
+                    //collect loan details
+                    let loan_product = $('#loan_product').val();
+                    let loan_amount = $('#loan_amount').val();
+                    let tenure_in_months = $('#tenure_in_months').val();
+                    let interest_rate_type = $('#interest_rate_type').val();
+                    let principal_repay_freq = $('#principal_repay_freq').val();
+                    let interest_repay_freq = $('#interest_repay_freq').val();
+
+                    console.log('loan product: '+loan_product);
+                    console.log('loan_amount: '+loan_amount);
+                    console.log('interest rate type: '+interest_rate_type);
+                    console.log('principal repay frequency: '+principal_repay_freq);
+                    console.log('Interest repay frequency '+interest_repay_freq);
 
 
-                    if(pUBranch =="" || my_account =="" || type_of_statement == "" || transStartDate =="" || transEndDate == "" || pin ==""){
+                    if(loan_product =="" || loan_amount =="" || tenure_in_months == "" || interest_rate_type =="" || principal_repay_freq == "" || interest_repay_freq ==""){
                         toaster("Please fill all required fields","error", 6000);
                     }
                     else{
