@@ -98,6 +98,10 @@
                             </li>
 
                             <li>
+                                <a href="{{ url('bulk-transfer') }}">Bulk Transfer </a>
+                            </li>
+
+                            <li>
                                 <a href="{{ url('other-local-bank') }}">RTGS</a>
                             </li>
 

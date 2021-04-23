@@ -58,6 +58,7 @@ use App\Http\Controllers\Settings\settingsController;
 use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\TradeFinance\TradeFinanceController;
 use App\Http\Controllers\transferController;
+use App\Http\Controllers\Transfers\BulkUpload\BulkUploadsController as BulkUploadBulkUploadsController;
 use App\Http\Controllers\Transfers\LocalBankController;
 use App\Http\Controllers\Transfers\MultipleTransfersController;
 use App\Http\Controllers\Transfers\OwnAccountController;
@@ -128,6 +129,9 @@ Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submi
 
 // MULTIPLE TRANSFERS
 Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])->name('multiple-transfers');
+
+// BULK TRANSFERS
+Route::get('/bulk-transfer', [BulkUploadBulkUploadsController::class, 'index'])->name('bulk-transfer');
 
 
 // LOCAL BANK
