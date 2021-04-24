@@ -441,7 +441,13 @@ Route::post('change-pin-api', [ChangePinController::class, 'change_pin'])->name(
 Route::post('change-password-api', [ChangePasswordController::class, 'change_password'])->name('change-password-api');
 
 //Route for loan products api
-Route::get('loan-products-api',[LoanProductsController::class,'loan_products'])->name('loan-products-api');
+Route::get('get-loan-products-api',[FunctionsController::class,'get_Loan_products'])->name('get-loan-products-api');
 
 //Route to send loan request details
 Route::get('loan-request-details',[LoanRequestController::class,'loan_request'])->name('loan-request-details');
+
+//route to return interest rate types
+Route::get('get-interest-types-api',[FunctionsController::class,'get_Interest_Types'])->name('get-interest-types-api');
+
+//route to return loan frequencies
+Route::get('get-loan-frequencies-api',[FunctionsController::class,'get_loan_frequencies'])->name('get-loan-frequencies-api');
