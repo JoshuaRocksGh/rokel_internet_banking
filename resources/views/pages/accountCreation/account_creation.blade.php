@@ -35,7 +35,7 @@
                 <a href="#" class="btn btn-outline-primary waves-effect waves-light">Apply</a>
             </div>
         </div>
-        <div class="col-lg-4">
+        {{--  <div class="col-lg-4">
             <div class="card card-body text-xs-right">
                 <i class="mdi mdi-account-plus-outline  mdi-48px" style="margin-left: 40%"></i>
                 <h3 class="card-title" style="text-align: center">FIXED DEPOSIT ACCOUNT</h3>
@@ -44,10 +44,10 @@
                 <a href="#" class="btn btn-outline-primary waves-effect waves-light">Apply</a>
             </div>
         </div>
-    </div>
+    </div>  --}}
 
 
-    <div class="row">
+    {{--  <div class="row">
         <div class="col-lg-4">
             <div class="card card-body">
                 <i class="mdi mdi-account-plus-outline  mdi-48px" style="margin-left: 40%"></i>
@@ -75,7 +75,7 @@
                 <a href="#" class="btn btn-outline-primary waves-effect waves-light">Apply</a>
             </div>
         </div>
-    </div>
+    </div>  --}}
     <br>
 
 

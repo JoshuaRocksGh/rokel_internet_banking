@@ -17,11 +17,10 @@
                             <h3 class=" m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i
                                     class="fe-arrow-left"></i> &nbsp; SAME BANK BENEFICIARY</h3>
 
-                            <p class="text-muted font-14 m-b-20">
-                                Parsley is a javascript form validation library. It helps you provide your
-                                users with feedback on their form submission before sending it to your
-                                server.
+                            <p class="header-title mb-3">
+                                Please Select/Enter Details  <span class="header-title mb-3 float-right" id="marked_fields"><span class="text-danger text-bold">*</span>Marked Fields Are Mandatory!</span>
                             </p>
+
                             <hr>
 
 
@@ -42,8 +41,8 @@
                                                 <hr>
                                                 <div class="form-group row">
                                                     {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
-                                                    <label class="col-4">Account Number: <span
-                                                            class="text-danger">*</span></label>
+                                                    <label class="col-4"><span
+                                                            class="text-danger">*</span>Account Number</label>
                                                     <div class="col-7">
                                                         <input class="form-control" type="text" class="form-control"
                                                             id="account_number"
@@ -53,8 +52,8 @@
 
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class=" col-4">Account Name: <span
-                                                            class="text-danger">*</span></label>
+                                                    <label class=" col-4"> <span
+                                                            class="text-danger">*</span>Account Name</label>
                                                     <div class="col-7">
                                                         <input type="text" class="form-control" id="account_name"
                                                             parsley-trigger="change" placeholder="Account Name" readonly
@@ -63,8 +62,8 @@
 
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-4">Account Currency: <span
-                                                            class="text-danger">*</span></label>
+                                                    <label class="col-4"> <span
+                                                            class="text-danger">*</span>Account Currency</label>
                                                     <div class="col-7">
                                                         <input type="hidden" class="form-control" readonly value=""
                                                             id="select_currency">
@@ -86,8 +85,8 @@
 
                                                 <div class="form-group row">
 
-                                                    <label class="col-4">Beneficiary Name: <span
-                                                            class="text-danger">*</span></label>
+                                                    <label class="col-4"> <span
+                                                            class="text-danger">*</span>Beneficiary Name</label>
                                                     <div class="col-7">
                                                         <input type="text" class="form-control" id="beneficiary_name"
                                                             parsley-trigger="change" placeholder="Beneficiary Name"
@@ -98,8 +97,8 @@
 
 
                                                 <div class="form-group row">
-                                                    <label class="col-4">Beneficiary Phone : <span
-                                                            class="text-danger">*</span></label>
+                                                    <label class="col-4"> <span
+                                                            class="text-danger">*</span>Beneficiary Phone</label>
                                                     <div class="col-7">
                                                         <input type="text" class="form-control"
                                                             id="beneficiary_mobile_number"
@@ -110,8 +109,8 @@
 
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-4">Beneficiary Address: <span
-                                                            class="text-danger">*</span></label>
+                                                    <label class="col-4"> <span
+                                                            class="text-danger">*</span>Beneficiary Address</label>
                                                     <div class="col-7">
                                                         <input type="text" class="form-control" id="beneficiary_address"
                                                             parsley-trigger="change" placeholder="Beneficiary Address"
@@ -120,8 +119,8 @@
 
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-4">Beneficiary Email: <span
-                                                            class="text-danger">*</span></label>
+                                                    <label class="col-4"> <span
+                                                            class="text-danger">*</span>Beneficiary Email</label>
                                                     <div class="col-7">
                                                         <input type="email" class="form-control" id="beneficiary_email"
                                                             parsley-trigger="change" placeholder="Beneficiary Email"
@@ -150,7 +149,7 @@
                                                 </p>
 
                                                 <button class="btn btn-primary waves-effect waves-light btn-rounded"
-                                                    type="submit" id="save_beneficiary">Next</button>
+                                                    type="submit" id="save_beneficiary">Next<i class="fe-arrow-right"></i></button>
 
 
                                             </div>
@@ -178,109 +177,143 @@
 
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
+                            <div class="">
+                                <div class="">
 
-
+                                    <div class="col-2"></div>
                                     <form action="#" method="POST" id="same_bank_beneficiary_form_summary"
                                         autocomplete="off" aria-autocomplete="off">
                                         <div class="card-box">
                                             @csrf
 
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-5">
+                                                    <div class="col-2"></div>
+                                                    <div class="col-8">
+                                                        <div class="form-group text-center">
+                                                            <div class="col-1"></div>
 
-                                                    <div class="form-group">
+                                                            <label class="col-10 text-xs-center">Account Number</label><span
+                                                                class="font-weight-light mr-2 col-10 text-xs-center" id="display_account_number">
+                                                                </span>
+                                                            <div class="col-1"></div>
+                                                        </div>
 
-                                                        <label>Account Number:&emsp;</label><span
-                                                            class="font-weight-light mr-2" id="display_account_number">
-                                                            &nbsp</span>
+                                                        <div class="form-group text-center">
+                                                            <div class="col-1"></div>
+                                                            <label class="col-10 text-xs-center">Account currency</label><span
+                                                                class="font-weight-light mr-2 col-10 text-xs-center" id="display_account_currency">
+                                                                </span>
+                                                            <div class="col-1"></div>
+                                                        </div>
 
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Account Name:&emsp;</label><span
-                                                            class="font-weight-light mr-2" id="display_account_name">
-                                                            &nbsp</span>
+                                                        <div class="form-group text-center">
+                                                            <div class="col-1"></div>
+                                                            <label class="col-10">Beneficiary Mobile Number:</label><span
+                                                                class="font-weight-light mr-2 col-10"
+                                                                id="display_beneficiary_mobile_number">
+                                                                </span>
 
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Account currency:&emsp;</label><span
-                                                            class="font-weight-light mr-2" id="display_account_currency">
-                                                            &nbsp</span>
+                                                            {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
+                                                                <div class="col-1"></div>
+                                                        </div>
 
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                        <div class="form-group text-center">
+                                                            <div class="col-1"></div>
+                                                            <label class="col-10">Beneficiary Email:</label><span
+                                                                class="font-weight-light mr-2 col-10" id="display_beneficiary_email">
+                                                                </span>
 
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-
-                                                    <div class="form-group">
-                                                        {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}} <br>
-                                                        <label>Beneficiary Name:&emsp;</label><span
-                                                            class="font-weight-light mr-2" id="display_beneficiary_name">
-                                                            &nbsp</span>
-
-                                                        {{-- <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required> --}}
-
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Beneficiary Mobile Number:&emsp;</label><span
-                                                            class="font-weight-light mr-2"
-                                                            id="display_beneficiary_mobile_number">
-                                                            &nbsp</span><br>
-
-                                                        {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
-
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Beneficiary Address:&emsp;</label><span
-                                                            class="font-weight-light mr-2" id="display_beneficiary_Address">
-                                                            &nbsp</span><br>
-
-                                                        {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
-
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Beneficiary Email:&emsp;</label><span
-                                                            class="font-weight-light mr-2" id="display_beneficiary_email">
-                                                            &nbsp</span><br>
-
-
-                                                    </div>
-
-
-
-                                                    <div class="form-group">
-
-                                                        <div class="">
-                                                            {{-- <input id="checkbox2" type="checkbox"> --}}
-                                                            <label>Email beneficiary when a transfer is
-                                                                made:&emsp;</label><span class="font-weight-light mr-2"
-                                                                id="display_transfer_email">
-                                                                &nbsp</span>
-
-
+                                                            <div class="col-1"></div>
                                                         </div>
 
                                                     </div>
 
 
+
+
+                                                    <div class="col-2"></div>
+
+                                                </div>
+
+                                                <div class="col-md-5">
+                                                    <div class="col-2"></div>
+                                                    <div class="col-8">
+
+                                                        <div class="form-group text-center">
+                                                            <div class="col-1"></div>
+                                                            <label class="col-10 text-xs-center">Account Name:</label><span
+                                                                class="font-weight-light mr-2 col-10 text-xs-center" id="display_account_name">
+                                                                </span>
+                                                                <div class="col-1"></div>
+                                                        </div>
+
+                                                        <div class="form-group text-center">
+                                                            <div class="col-1"></div>
+                                                            {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
+                                                            <label class="col-10">Beneficiary Name:</label><span
+                                                                class="font-weight-light mr-2 col-10" id="display_beneficiary_name">
+                                                                </span>
+
+                                                            {{-- <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required> --}}
+                                                            <div class="col-1"></div>
+                                                        </div>
+
+                                                        <div class="form-group text-center">
+                                                            <div class="col-1"></div>
+                                                            <label class="col-10">Beneficiary Address:</label><span
+                                                                class="font-weight-light mr-2 col-10" id="display_beneficiary_Address">
+                                                                </span>
+
+                                                            {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
+                                                                <div class="col-1"></div>
+                                                        </div>
+
+                                                        <div class="form-group text-center">
+                                                            <div class="col-1"></div>
+                                                            {{-- <input id="checkbox2" type="checkbox"> --}}
+                                                            <label class="col-10">Email beneficiary when a transfer is
+                                                                made:</label><span class="font-weight-light mr-2 col-10"
+                                                                id="display_transfer_email">
+                                                                </span>
+                                                                <div class="col-1"></div>
+                                                    </div>
+
+                                                    </div>
+                                                    <div class="col-2"></div>
+
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                            </div>
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="col-2"></div>
+                                                <div class="col-8">
+
+
+                                                <div class="text-center">
+
+
                                                     <button type="submit"
                                                         class="btn btn-secondary btn-rounded waves-effect waves-light"
-                                                        id="save_beneficiary_back">Back</button>&emsp;&emsp;
+                                                        id="save_beneficiary_back"><i class="fe-arrow-left"></i>Back</button>&emsp;&emsp;
                                                     <button class="btn btn-primary btn-rounded waves-effect waves-light"
                                                         type="submit" id="save_beneficiary_summary_btn"><span
                                                             id="confirm_save_beneficiary_text">Save Beneficiary</span>
-
+                                                            <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                                            <span id="spinner-text">Loading...</span>
                                                     </button>
                                                 </div>
+                                                </div>
+                                                <div class="col-2"></div>
                                             </div>
 
                                         </div>
 
                                     </form>
+                                    <div class="col-2"></div>
                                 </div>
                             </div>
 
@@ -311,7 +344,10 @@
         <script>
             $(document).ready(function() {
 
-                $('#save_beneficiary').hide('')
+                $('#save_beneficiary').hide('');
+                $('#spinner').hide(),
+                $('#spinner-text').hide(),
+                $('#marked_fields').show();
 
                 $('#same_bank_beneficiary_form_summary').hide();
                 $('#account_number_error').hide();
@@ -394,6 +430,7 @@
                 $('#same_bank_beneficiary_form').submit(function(e) {
                     e.preventDefault();
 
+                    $('#marked_fields').hide();
 
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
@@ -450,6 +487,7 @@
                 $('#save_beneficiary_back').click(function(e) {
                     e.preventDefault(e);
 
+                    $('#marked_fields').show();
                     $("#same_bank_beneficiary_form").toggle('500');
                     $('#same_bank_beneficiary_form_summary').hide();
 
@@ -458,6 +496,13 @@
 
                 $('#same_bank_beneficiary_form_summary').submit(function(e) {
                     e.preventDefault();
+
+                    $('#spinner').show();
+                    $('#spinner-text').show();
+                    $('#confirm_save_beneficiary_text').hide();
+                    $('#save_beneficiary_summary_btn').attr('disabled',true);
+
+
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
                     var beneficiary_name = $('#beneficiary_name').val();
@@ -511,7 +556,7 @@
                                 setTimeout(function() {
 
                                     redirect_page();
-                                }, 3000);
+                                }, 2000);
 
                                 {{-- $('#spinner').hide();
                             $('#spinner-text').hide();
@@ -520,11 +565,12 @@
                             $('#save_beneficiary_summary_btn').attr('disabled',false); --}}
 
                             } else {
+
                                 toaster(response.message, 'error');
-                                {{-- $('#spinner').hide();
-                            $('#spinner-text').hide();
-                            $('#confirm_save_beneficiary_text').show();
-                            $('#save_beneficiary_summary_btn').attr('disabled',false); --}}
+                                $('#spinner').hide();
+                                $('#spinner-text').hide();
+                                $('#confirm_save_beneficiary_text').show();
+                                $('#save_beneficiary_summary_btn').attr('disabled',false);
                             }
                         }
 
