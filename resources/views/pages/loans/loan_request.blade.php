@@ -146,7 +146,7 @@
 
                                         <tbody>
                                             <tr class="bg-secondary text-white">
-                                                <td>Request Details</td>
+                                                <td>Loan Request Summary</td>
                                             </tr>
                                             <tr class="">
 
@@ -232,11 +232,20 @@
                                 <div class="col-md-5 text-center">
 
                                     <p class="display-4 text-center text-success success-message ">
-
+                                        <img src="{{ asset("land_asset/images/statement_success.gif") }}" />
                                     </p>
                                 </div>
 
                                 <div id="collapseOne" class="collapse show col-md-12" aria-labelledby="headingOne" data-parent="#accordion">
+
+                                    <div class="form-group row appear-button">
+                                        <div class="col-8 offset-4 text-right">
+                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_request">
+                                                New Loan Quotation
+                                            </button>
+
+                                        </div>
+                                    </div>
                                     <div class="card-body">
 
                                             <div class="table-responsive table-bordered">
@@ -251,8 +260,13 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody class="casa_list_display">
-
-
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>22nd April 2020</td>
+                                                            <td>200</td>
+                                                            <td>20</td>
+                                                            <td>200</td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -375,6 +389,9 @@
                 interest_repay_frequency()
             }, 1000)
 
+            $(".success-message").hide();
+            $(".appear-button").hide();
+
             $("#loan_product").change(function(){
                 var loan_product = $("#loan_product").val();
                 var optionText = $("#loan_product option:selected").text();
@@ -470,8 +487,15 @@
                                 toaster(response.message, 'success', 20000 )
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
-                                $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
-                                $("loan_request_detail_div").show();
+                                // $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />');
+                                // $(".success-message").hide(30000);
+                                $("#loan_request_detail_div").show();
+                                $(".success-message").show();
+                                $("#loan_request_detail_div").hide(2000);
+                                $(".success-message").hide(2000);
+                                $(".appear-button").show();
+
+
                                 }
                                 else
                                 {
@@ -479,6 +503,15 @@
                                 toaster(response.message, 'error', 9000 );
 
                                 }
+                        },
+                        error: function(xhr, status, error){
+                            $('#submit').attr('disabled',false);
+                            $('#spinner').hide()
+                            $('#spinner-text').hide()
+
+                            $('#log_in').show()
+                            $('#error_message').text("Connection Error")
+                            $('#failed_login').show()
                         }
                         });
 
