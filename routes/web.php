@@ -15,6 +15,8 @@ use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\KycController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
+use App\Http\Controllers\BENEFICIARY\Payment\AirtimePaymentController;
+use App\Http\Controllers\BENEFICIARY\Payment\MobileMoneyController as PaymentMobileMoneyController;
 use App\Http\Controllers\BENEFICIARY\Transfer\DeleteBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
@@ -421,6 +423,10 @@ Route::post('international-bank-beneficiary-api', [InternationalBankController::
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
 Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
+// PAYMENT API'S
+Route::post('mobile-money-api', [PaymentMobileMoneyController::class, 'mobile_money'])->name('mobile-money-api');
+Route::post('airtime-payment-api', [AirtimePaymentController::class, 'airtime_payment'])->name('airtime-payment-api');
+
 //route for cheque book request api
 Route::get('cheque-book-request-api', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('cheque-book-request-api');
 Route::post('submit-cheque-book-request', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('submit-cheque-book-request');
@@ -439,15 +445,3 @@ Route::post('change-pin-api', [ChangePinController::class, 'change_pin'])->name(
 
 //Route for change-password-api
 Route::post('change-password-api', [ChangePasswordController::class, 'change_password'])->name('change-password-api');
-
-//Route for loan products api
-Route::get('get-loan-products-api',[FunctionsController::class,'get_Loan_products'])->name('get-loan-products-api');
-
-//Route to send loan request details
-Route::get('loan-request-details',[LoanRequestController::class,'loan_request'])->name('loan-request-details');
-
-//route to return interest rate types
-Route::get('get-interest-types-api',[FunctionsController::class,'get_Interest_Types'])->name('get-interest-types-api');
-
-//route to return loan frequencies
-Route::get('get-loan-frequencies-api',[FunctionsController::class,'get_loan_frequencies'])->name('get-loan-frequencies-api');
