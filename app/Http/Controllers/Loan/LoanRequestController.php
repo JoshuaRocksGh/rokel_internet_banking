@@ -40,7 +40,7 @@ class LoanRequestController extends Controller
 
         ];
 
-        return $data;
+        // return $data;
         $response = Http::post(env('API_BASE_URL') . "/loans/loanQuotation", $data);
 
         $result = new ApiBaseResponse();
