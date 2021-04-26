@@ -278,4 +278,17 @@ class FunctionsController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
+
+
+    public function lovs_list()
+    {
+        $response = Http::get(env('API_BASE_URL') . "account/lovs");
+
+
+
+        // return $response;
+        // return $response->status();
+        $result = new ApiBaseResponse();
+        // return $result->api_response($response);
+    }
 }
