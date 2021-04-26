@@ -130,7 +130,7 @@ class LocalBankController extends Controller
             return $result->api_response($response);
         } catch (\Exception $e) {
 
-            DB::table('error_logs')->insert([
+            DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
                 'message' => (string) $e->getMessage()
@@ -246,7 +246,7 @@ class LocalBankController extends Controller
             return $result->api_response($response);
         } catch (\Exception $e) {
 
-            DB::table('error_logs')->insert([
+            DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
                 'message' => (string) $e->getMessage()
@@ -261,17 +261,17 @@ class LocalBankController extends Controller
 
     public function edit_local_bank(Request $req)
     {
-        $validator = Validator::make($req->all(),[
-            'bank_name' => 'required' ,
-            'account_number' => 'required' ,
-            'account_name' => 'required' ,
-            'beneficiary_name'  => 'required' ,
-            'beneficiary_email' => 'required'  ,
+        $validator = Validator::make($req->all(), [
+            'bank_name' => 'required',
+            'account_number' => 'required',
+            'account_name' => 'required',
+            'beneficiary_name'  => 'required',
+            'beneficiary_email' => 'required',
             'beneficiary_address' => 'required',
-            'number' => 'required' ,
-            'account_currency' => 'required' ,
+            'number' => 'required',
+            'account_currency' => 'required',
             'bank_swift_code' => 'required',
-            'bene_id' => 'required' ,
+            'bene_id' => 'required',
             'bene_type' => 'required'
             //'send_mail' => 'required',
         ]);
@@ -285,7 +285,6 @@ class LocalBankController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
         // return $req;
 
@@ -315,7 +314,7 @@ class LocalBankController extends Controller
                 "bankBranch" => "string",
                 "bankCity" => "string",
                 "bankCountry" => "string",
-                "bankName" => $req->bank_name ,
+                "bankName" => $req->bank_name,
                 "bankSwiftCode" => $req->bank_swift_code
             ],
 
@@ -334,13 +333,13 @@ class LocalBankController extends Controller
             "beneficiaryType" => $req->bene_type,
 
             "securityDetails" => [
-            "approvedBy" => "string",
-            "approvedDateTime" => date('Y-m-d'),
-            "createdBy" => "string",
-            "createdDateTime" =>  date('Y-m-d'),
-            "entrySource" => "string",
-            "modifyBy" => "string",
-            "modifyDateTime" =>  date('Y-m-d')
+                "approvedBy" => "string",
+                "approvedDateTime" => date('Y-m-d'),
+                "createdBy" => "string",
+                "createdDateTime" =>  date('Y-m-d'),
+                "entrySource" => "string",
+                "modifyBy" => "string",
+                "modifyDateTime" =>  date('Y-m-d')
             ],
 
             "transactionType" => "string",
@@ -352,17 +351,17 @@ class LocalBankController extends Controller
         // return $data;
 
 
-        try{
-            $response = Http::put(env('API_BASE_URL') ."/beneficiary/updateTransferBeneficiary",$data);
+        try {
+            $response = Http::put(env('API_BASE_URL') . "/beneficiary/updateTransferBeneficiary", $data);
 
             // return json_decode($response->body());
 
-            if($response->ok()){ // API response status code is 200
+            if ($response->ok()) { // API response status code is 200
 
                 $result = json_decode($response->body());
                 // return $result;
 
-                if($result->responseCode == '000'){
+                if ($result->responseCode == '000') {
 
                     // $result_data = $result->data;
                     // return $result_data;
@@ -373,13 +372,12 @@ class LocalBankController extends Controller
 
                 } else {  // API responseCode is not 000
 
-                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+                    return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
                 }
-
             } else { // API response status code not 200
 
-                DB::table('error_logs')->insert([
+                DB::table('tb_error_logs')->insert([
                     'platform' => 'ONLINE_INTERNET_BANKING',
                     'user_id' => 'AUTH',
                     'code' => $response->status(),
@@ -389,10 +387,9 @@ class LocalBankController extends Controller
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
             }
+        } catch (\Exception $e) {
 
-        }catch(\Exception $e){
-
-            DB::table('error_logs')->insert([
+            DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
                 'message' => (string) $e->getMessage()
@@ -403,5 +400,4 @@ class LocalBankController extends Controller
 
         }
     }
-
 }

@@ -18,13 +18,13 @@ class AirtimePaymentController extends Controller
 
         $validator = Validator::make($request->all(),  [
 
-            'from_account' => 'required' ,
-            'currency' => 'required' ,
-            'amount' => 'required' ,
-            'receipient_number' => 'required' ,
-            'category_' => 'required' ,
-            'receipient_network' => 'required' ,
-            'naration' => 'required' ,
+            'from_account' => 'required',
+            'currency' => 'required',
+            'amount' => 'required',
+            'receipient_number' => 'required',
+            'category_' => 'required',
+            'receipient_network' => 'required',
+            'naration' => 'required',
             'user_pin' => 'required'
         ]);
 
@@ -38,7 +38,6 @@ class AirtimePaymentController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
 
         // return $request;
@@ -59,38 +58,37 @@ class AirtimePaymentController extends Controller
 
         $data = [
 
-            'from_account' => $request->from_account ,
-            'currency' => $request->currency ,
-            'amount' => $request->amount ,
-            'receipient_number' => $request->receipient_number ,
-            'category_' => $request->category_ ,
-            'receipient_network' => $request->receipient_network ,
-            'naration' => $request->naration ,
-            'user_pin' => $request->user_pin ,
-            'authToke' => $authToken ,
+            'from_account' => $request->from_account,
+            'currency' => $request->currency,
+            'amount' => $request->amount,
+            'receipient_number' => $request->receipient_number,
+            'category_' => $request->category_,
+            'receipient_network' => $request->receipient_network,
+            'naration' => $request->naration,
+            'user_pin' => $request->user_pin,
+            'authToke' => $authToken,
             'userID' => $userID
         ];
 
         // return $data ;
 
         $response = [
-            'responseCode' => "000" ,
+            'responseCode' => "000",
             'message' => "Mobile Money transfer Successful"
         ];
 
-        return $response ;
+        return $response;
 
-        try{
-            $response = Http::post(env('API_BASE_URL') ."beneficiary/addTransferBeneficiary",$data);
+        try {
+            $response = Http::post(env('API_BASE_URL') . "beneficiary/addTransferBeneficiary", $data);
 
             // return json_decode($response->body());
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);
+        } catch (\Exception $e) {
 
-        }catch(\Exception $e){
-
-            DB::table('error_logs')->insert([
+            DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
                 'message' => (string) $e->getMessage()

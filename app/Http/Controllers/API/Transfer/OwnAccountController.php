@@ -123,7 +123,7 @@ class OwnAccountController extends Controller
 
         } catch (\Exception $e) {
 
-            DB::table('error_logs')->insert([
+            DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
                 'message' => (string) $e->getMessage()

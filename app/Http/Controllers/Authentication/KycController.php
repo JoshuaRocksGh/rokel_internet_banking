@@ -14,49 +14,49 @@ class KycController extends Controller
 {
     public function submit_kyc(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
 
-            'customer_number' => 'required' ,
-            'title' => 'required' ,
-            'firstname' => 'required' ,
-            'surname' => 'required' ,
-            'Othername' => 'required' ,
-            'telephone_number' => 'required' ,
-            'date_of_birth' => 'required' ,
-            'gender' => 'required' ,
-            'marital_status' => 'required' ,
-            'number_of_children' => 'required' ,
-            'nationality' => 'required' ,
-            'id_type' => 'required' ,
-            'id_number' => 'required' ,
-            'date_of_issue' => 'required' ,
-            'date_of_expiry' => 'required' ,
-            'mother_maiden_name' => 'required' ,
-            'next_of_kin_name' => 'required' ,
-            'next_of_kin_address' => 'required' ,
-            'next_of_kin_telephone' => 'required' ,
-            'country_of_residence' => 'required' ,
-            'years_at_residence' => 'required' ,
-            'city' => 'required' ,
-            'town' => 'required' ,
-            'residential_address' => 'required' ,
-            'postal_address' => 'required' ,
-            'employment_type' => 'required' ,
-            'employee_number' => 'required' ,
-            'employee_code' => 'required' ,
-            'department' => 'required' ,
-            'date_of_employment' => 'required' ,
-            'last_update_date' => 'required' ,
-            'tax_identification_number' => 'required' ,
-            'us_citizen' => 'required' ,
-            'resident' => 'required' ,
+            'customer_number' => 'required',
+            'title' => 'required',
+            'firstname' => 'required',
+            'surname' => 'required',
+            'Othername' => 'required',
+            'telephone_number' => 'required',
+            'date_of_birth' => 'required',
+            'gender' => 'required',
+            'marital_status' => 'required',
+            'number_of_children' => 'required',
+            'nationality' => 'required',
+            'id_type' => 'required',
+            'id_number' => 'required',
+            'date_of_issue' => 'required',
+            'date_of_expiry' => 'required',
+            'mother_maiden_name' => 'required',
+            'next_of_kin_name' => 'required',
+            'next_of_kin_address' => 'required',
+            'next_of_kin_telephone' => 'required',
+            'country_of_residence' => 'required',
+            'years_at_residence' => 'required',
+            'city' => 'required',
+            'town' => 'required',
+            'residential_address' => 'required',
+            'postal_address' => 'required',
+            'employment_type' => 'required',
+            'employee_number' => 'required',
+            'employee_code' => 'required',
+            'department' => 'required',
+            'date_of_employment' => 'required',
+            'last_update_date' => 'required',
+            'tax_identification_number' => 'required',
+            'us_citizen' => 'required',
+            'resident' => 'required',
             'prove_of_address' => 'required'
 
         ]);
 
-            // return $request;
+        // return $request;
 
-            $base_response = new BaseResponse();
+        $base_response = new BaseResponse();
 
 
         // VALIDATION
@@ -132,25 +132,25 @@ class KycController extends Controller
         // $result = new ApiBaseResponse();
         // return $result->api_response($response);
 
-                // return $data;
+        // return $data;
 
-                try {
-                    $response = Http::post(env('API_BASE_URL') . "user/kycInfo", $data);
+        try {
+            $response = Http::post(env('API_BASE_URL') . "user/kycInfo", $data);
 
-                    // return json_decode($response->body());
-                    $result = new ApiBaseResponse();
-                    return $result->api_response($response);
-                } catch (\Exception $e) {
+            // return json_decode($response->body());
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        } catch (\Exception $e) {
 
-                    DB::table('error_logs')->insert([
-                        'platform' => 'ONLINE_INTERNET_BANKING',
-                        'user_id' => 'AUTH',
-                        'message' => (string) $e->getMessage()
-                    ]);
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
 
-                    return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
 
-                }
+        }
     }
 }

@@ -23,13 +23,13 @@ class EditSameBankController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $bene_id = $request->bene_id ;
+        $bene_id = $request->bene_id;
 
 
         // http://192.168.1.195:9096/beneficiary/getTransferBeneficiariesById?beneId=20210408135826
 
 
-        $response = Http::get(env('API_BASE_URL') ."beneficiary/getTransferBeneficiariesById?beneId=$bene_id");
+        $response = Http::get(env('API_BASE_URL') . "beneficiary/getTransferBeneficiariesById?beneId=$bene_id");
 
         // return $response;
         // return $response->status();
@@ -40,16 +40,16 @@ class EditSameBankController extends Controller
 
     public function update_same_bank_beneficiary(Request $req)
     {
-        $validator = Validator::make($req->all(),[
-            'account_number' => 'required' ,
-            'account_name' => 'required' ,
+        $validator = Validator::make($req->all(), [
+            'account_number' => 'required',
+            'account_name' => 'required',
             'beneficiary_name' => 'required',
             'beneficiary_email' => 'required',
             'beneficiary_address' => 'required',
-            'number' => 'required' ,
-            'account_currency' => 'required' ,
-            'beneID' => 'required' ,
-            'beneficiaryType' => 'required' ,
+            'number' => 'required',
+            'account_currency' => 'required',
+            'beneID' => 'required',
+            'beneficiaryType' => 'required',
             //'send_mail' => 'required',
 
         ]);
@@ -63,7 +63,6 @@ class EditSameBankController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
 
         // return $req;
@@ -73,71 +72,70 @@ class EditSameBankController extends Controller
 
 
         $data = [
-                    "accountDetails" => [
-                        "beneficiaryAccount" => $req->account_number,
-                        "beneficiaryAccountCurrency" => $req->account_currency,
-                        "beneficiaryAcountName" => $req->account_name
-                    ],
+            "accountDetails" => [
+                "beneficiaryAccount" => $req->account_number,
+                "beneficiaryAccountCurrency" => $req->account_currency,
+                "beneficiaryAcountName" => $req->account_name
+            ],
 
-                    "addressDetails" => [
-                        "address1" => $req->beneficiary_address,
-                        "address2" => "string",
-                        "address3" => "string",
-                        "city" => "string",
-                        "countryOfResidence" => "string"
-                    ],
+            "addressDetails" => [
+                "address1" => $req->beneficiary_address,
+                "address2" => "string",
+                "address3" => "string",
+                "city" => "string",
+                "countryOfResidence" => "string"
+            ],
 
-                    "bankDetails" => [
-                        "bankAddress" => "string",
-                        "bankBranch" => "string",
-                        "bankCity" => "string",
-                        "bankCountry" => "string",
-                        "bankName" => "THIS BANK",
-                        "bankSwiftCode" => "string"
-                    ],
+            "bankDetails" => [
+                "bankAddress" => "string",
+                "bankBranch" => "string",
+                "bankCity" => "string",
+                "bankCountry" => "string",
+                "bankName" => "THIS BANK",
+                "bankSwiftCode" => "string"
+            ],
 
-                    "beneID" => $req->beneID,
+            "beneID" => $req->beneID,
 
-                    "beneficiaryDetails" => [
-                        "email" => $req->beneficiary_email,
-                        "firstName" => "string",
-                        "lastName" => "string",
-                        "nationality" => "string",
-                        "nickname" => $req->beneficiary_name,
-                        "otherName" => "string",
-                        "sendMail" => $req->transfer_email
-                    ],
+            "beneficiaryDetails" => [
+                "email" => $req->beneficiary_email,
+                "firstName" => "string",
+                "lastName" => "string",
+                "nationality" => "string",
+                "nickname" => $req->beneficiary_name,
+                "otherName" => "string",
+                "sendMail" => $req->transfer_email
+            ],
 
-                    "beneficiaryType" => $req->beneficiaryType,
+            "beneficiaryType" => $req->beneficiaryType,
 
-                    "securityDetails" => [
-                    "approvedBy" => "string",
-                    "approvedDateTime" => date('Y-m-d'),
-                    "createdBy" => "string",
-                    "createdDateTime" =>  date('Y-m-d'),
-                    "entrySource" => "string",
-                    "modifyBy" => "string",
-                    "modifyDateTime" =>  date('Y-m-d')
-                    ],
+            "securityDetails" => [
+                "approvedBy" => "string",
+                "approvedDateTime" => date('Y-m-d'),
+                "createdBy" => "string",
+                "createdDateTime" =>  date('Y-m-d'),
+                "entrySource" => "string",
+                "modifyBy" => "string",
+                "modifyDateTime" =>  date('Y-m-d')
+            ],
 
-                    "transactionType" => "string",
-                    "userID" => $userID ,
-                    "telephone" => $req->number
+            "transactionType" => "string",
+            "userID" => $userID,
+            "telephone" => $req->number
 
         ];
 
         // return $data;
 
-        try{
-            $response = Http::put(env('API_BASE_URL') ."beneficiary/updateTransferBeneficiary",$data);
+        try {
+            $response = Http::put(env('API_BASE_URL') . "beneficiary/updateTransferBeneficiary", $data);
 
             // return json_decode($response->body());
             $result = new ApiBaseResponse();
             return $result->api_response($response);
+        } catch (\Exception $e) {
 
-        }catch(\Exception $e){
-
-            DB::table('error_logs')->insert([
+            DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
                 'message' => (string) $e->getMessage()
@@ -148,5 +146,4 @@ class EditSameBankController extends Controller
 
         }
     }
-
 }

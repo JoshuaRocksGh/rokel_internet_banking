@@ -48,7 +48,9 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="media">
-                                        <img class="d-flex mr-2 rounded-circle" src="{{ asset('assets/images/users/user-2.jpg') }}" alt="Generic placeholder image" height="32">
+                                        <img class="d-flex mr-2 rounded-circle"
+                                            src="{{ asset('assets/images/users/user-2.jpg') }}"
+                                            alt="Generic placeholder image" height="32">
                                         <div class="media-body">
                                             <h5 class="m-0 font-14">Erwin E. Brown</h5>
                                             <span class="font-12 mb-0">UI Designer</span>
@@ -59,7 +61,9 @@
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <div class="media">
-                                        <img class="d-flex mr-2 rounded-circle" src="{{ asset('assets/images/users/user-5.jpg') }}" alt="Generic placeholder image" height="32">
+                                        <img class="d-flex mr-2 rounded-circle"
+                                            src="{{ asset('assets/images/users/user-5.jpg') }}"
+                                            alt="Generic placeholder image" height="32">
                                         <div class="media-body">
                                             <h5 class="m-0 font-14">Jacob Deo</h5>
                                             <span class="font-12 mb-0">Developer</span>
@@ -72,8 +76,7 @@
                     </div>
                 </form>
             </li>
-{{--
-            <li class="dropdown d-inline-block d-lg-none">
+            {{-- <li class="dropdown d-inline-block d-lg-none">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-search noti-icon"></i>
                 </a>
@@ -82,16 +85,18 @@
                         <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
                     </form>
                 </div>
-            </li>  --}}
+            </li> --}}
 
             <li class="dropdown d-none d-lg-inline-block">
-                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen"
+                    href="#">
                     <i class="fe-maximize noti-icon"></i>
                 </a>
             </li>
 
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
-                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-grid noti-icon"></i>
                 </a>
                 <div class="dropdown-menu dropdown-lg dropdown-menu-right">
@@ -145,43 +150,50 @@
             </li>
 
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
-                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ asset('assets/images/flags/us.jpg') }}" alt="user-image" height="16">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('assets/images/flags/germany.jpg') }}" alt="user-image" class="mr-1" height="12"> <span class="align-middle">German</span>
+                        <img src="{{ asset('assets/images/flags/germany.jpg') }}" alt="user-image" class="mr-1"
+                            height="12"> <span class="align-middle">German</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('assets/images/flags/italy.jpg') }}" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Italian</span>
+                        <img src="{{ asset('assets/images/flags/italy.jpg') }}" alt="user-image" class="mr-1"
+                            height="12"> <span class="align-middle">Italian</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('assets/images/flags/spain.jpg') }}" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Spanish</span>
+                        <img src="{{ asset('assets/images/flags/spain.jpg') }}" alt="user-image" class="mr-1"
+                            height="12"> <span class="align-middle">Spanish</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Russian</span>
+                        <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image" class="mr-1"
+                            height="12"> <span class="align-middle">Russian</span>
                     </a>
 
                 </div>
             </li>
 
-            <li class="dropdown notification-list topbar-dropdown d-none d-md-block d-lg-block " >
-                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <li class="dropdown notification-list topbar-dropdown d-none d-md-block d-lg-block ">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
                     <span class="" id='google_translate_element'></span>
 
                 </a>
             </li>
 
             <li class="dropdown notification-list topbar-dropdown">
-                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-bell noti-icon"></i>
                     <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
                 </a>
@@ -203,7 +215,9 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item active">
                             <div class="notify-icon">
-                                <img src="{{ asset('assets/images/users/user-1.jpg') }}" class="img-fluid rounded-circle" alt="" /> </div>
+                                <img src="{{ asset('assets/images/users/user-1.jpg') }}"
+                                    class="img-fluid rounded-circle" alt="" />
+                            </div>
                             <p class="notify-details">Cristina Pride</p>
                             <p class="text-muted mb-0 user-msg">
                                 <small>Hi, How are you? What about our next meeting</small>
@@ -223,7 +237,9 @@
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
                             <div class="notify-icon">
-                                <img src="{{ asset('assets/images/users/user-4.jpg') }}" class="img-fluid rounded-circle" alt="" /> </div>
+                                <img src="{{ asset('assets/images/users/user-4.jpg') }}"
+                                    class="img-fluid rounded-circle" alt="" />
+                            </div>
                             <p class="notify-details">Karen Robinson</p>
                             <p class="text-muted mb-0 user-msg">
                                 <small>Wow ! this admin looks good and awesome design</small>
@@ -272,7 +288,8 @@
             </li>
 
             <li class="dropdown notification-list topbar-dropdown">
-                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
 
                     {{-- <div class="col-md-4">
@@ -285,7 +302,7 @@
                     </div> --}}
 
                     <span class="pro-user-name ml-1">
-                        Geneva <i class="mdi mdi-chevron-down"></i>
+                        {{ session()->get('userAlias') }} <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -323,7 +340,7 @@
                 </div>
             </li>
 
-            <li class="dropdown notification-list" >
+            <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-settings noti-icon"></i>
                 </a>
@@ -335,21 +352,21 @@
         <div class="logo-box">
             <a href="#" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    img src="{{  asset('assets/images/favicon.ico')}} " alt="" height="40">
+                    img src="{{ asset('assets/images/favicon.ico') }} " alt="" height="40">
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
                 </span>
                 <span class="logo-lg">
-                    <img src="{{  asset('assets/images/rokel_logo.png') }} " alt="" height="40">
+                    <img src="{{ asset('assets/images/rokel_logo.png') }} " alt="" height="40">
                     <!-- <span class="logo-lg-text-light">U</span> -->
                 </span>
             </a>
 
             <a href="#" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="{{  asset('assets/images/favicon.ico') }}" alt="" height="22">
+                    <img src="{{ asset('assets/images/favicon.ico') }}" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                     <img src="{{  asset('assets/images/rokel_logo.png' )}} " alt="" height="40">
+                    <img src="{{ asset('assets/images/rokel_logo.png') }} " alt="" height="40">
                 </span>
             </a>
         </div>

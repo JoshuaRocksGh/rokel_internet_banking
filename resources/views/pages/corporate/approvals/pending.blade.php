@@ -28,8 +28,9 @@
                         <div class="row">
 
                             <div class="col-md-12">
-                                <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
-                                    <b>  PENDING  </b>
+
+                                <p class="sub-header font-18 purple-color" style="cursor: pointer">
+                                <h2 class="header-title m-t-0 text-primary">PENDING</h2>
 
                                 </p>
                                 <hr>
@@ -41,7 +42,7 @@
                                 <ul class="nav nav-pills navtab-bg nav-justified">
                                     <li class="nav-item">
                                         <a href="#transfer_tab" data-toggle="tab" aria-expanded="false"
-                                            class="nav-link active">
+                                            class="nav-link active transfer_tab_btn">
                                             Transfers
                                         </a>
                                     </li>
@@ -75,7 +76,8 @@
                                             </p> --}}
 
                                             <table id="datatable-buttons"
-                                                class="table table-striped table-bordered dt-responsive nowrap w-100" style="zoom: 0.8;">
+                                                class="table table-striped table-bordered dt-responsive nowrap w-100 pending_transaction_request"
+                                                style="zoom: 0.8;">
                                                 <thead>
                                                     <tr>
                                                         <th>Req-Type</th>
@@ -88,113 +90,7 @@
                                                 </thead>
 
 
-                                                <tbody>
 
-                                                    <tr>
-                                                        <td>914</td>
-                                                        <td>Pending</td>
-                                                        <td>AL HAMD ENTERPRISES</td>
-                                                        <td>15-04-2020 12:15:52</td>
-                                                        <td>004008210057725128</td>
-                                                        <td>
-                                                            <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1001</td>
-                                                        <td>Pending</td>
-                                                        <td>AL HAMD ENTERPRISES</td>
-                                                        <td>12-04-2020 12:15:52</td>
-                                                        <td>004008210057725123</td>
-                                                        <td>
-                                                            <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                        <tr>
-                                                            <td>914</td>
-                                                            <td>Pending</td>
-                                                            <td>AL HAMD ENTERPRISES</td>
-                                                            <td>15-04-2020 12:15:52</td>
-                                                            <td>004008210057725128</td>
-                                                            <td>
-                                                                <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                    target="_blank">
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-primary">View</button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                    <tr>
-                                                        <td>1001</td>
-                                                        <td>Pending</td>
-                                                        <td>AL HAMD ENTERPRISES</td>
-                                                        <td>12-04-2020 12:15:52</td>
-                                                        <td>004008210057725123</td>
-                                                        <td>
-                                                            <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                        <tr>
-                                                            <td>914</td>
-                                                            <td>Pending</td>
-                                                            <td>AL HAMD ENTERPRISES</td>
-                                                            <td>15-04-2020 12:15:52</td>
-                                                            <td>004008210057725128</td>
-                                                            <td>
-                                                                <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                    target="_blank">
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-primary">View</button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    <tr>
-                                                        <td>1001</td>
-                                                        <td>Pending</td>
-                                                        <td>AL HAMD ENTERPRISES</td>
-                                                        <td>12-04-2020 12:15:52</td>
-                                                        <td>004008210057725123</td>
-                                                        <td>
-                                                            <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                        <tr>
-                                                            <td>914</td>
-                                                            <td>Pending</td>
-                                                            <td>AL HAMD ENTERPRISES</td>
-                                                            <td>15-04-2020 12:15:52</td>
-                                                            <td>004008210057725128</td>
-                                                            <td>
-                                                                <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-pending-transfer-details') }}"
-                                                                    target="_blank">
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-primary">View</button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                </tbody>
                                             </table>
 
 
@@ -606,7 +502,7 @@
                                                                     type="button" id="confirm_button">Confirm Transfer
                                                                 </button></span>
                                                             <span>&nbsp; <button class="btn btn-light btn-rounded"
-                                                                    type="button" id="confirm_button">Print Receipt
+                                                                    type="button" id="receipt_button">Print Receipt
                                                                 </button></span>
                                                         </div>
                                                     </div>
@@ -671,6 +567,104 @@
             <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
             <script>
+                function get_corporate_requests(customerNumber, requestStatus) {
+                    var table = $('.pending_transaction_request').DataTable();
+                    var nodes = table.rows().nodes();
+
+                    $(".loans_display_area").hide()
+                    $(".loans_error_area").hide()
+                    $(".loans_loading_area").show()
+
+                    $.ajax({
+                        "type": "GET",
+                        "url": "get-pending-requests?customerNumber=" + customerNumber + '&requestStatus=' +
+                            requestStatus,
+                        "datatype": "application/json",
+
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.responseCode == '000') {
+
+                                let data = response.data;
+
+                                table.clear().draw()
+
+
+                                $.each(data, function(index) {
+                                    let request_type = ''
+                                    if (data[index].REQUEST_TYPE == 'OWN') {
+                                        request_type = 'Own Account Transfer'
+                                    } else if (data[index].REQUEST_TYPE == 'SAM') {
+                                        request_type = 'Same Bank Transfer'
+                                    } else if (data[index].REQUEST_TYPE == 'OBT') {
+                                        request_type = 'ACH Transfer'
+                                    } else if (data[index].REQUEST_TYPE == 'RTGS') {
+                                        request_type = 'RTGS Transfer'
+                                    } else if (data[index].REQUEST_TYPE == 'INT') {
+                                        request_type = 'International Bank Transfer'
+                                    } else {
+                                        request_type = 'Others'
+                                    }
+
+
+                                    table.row.add([
+
+                                        request_type,
+                                        'o',
+                                        data[index].POST_DATE,
+                                        data[index].POSTEDBY,
+                                        data[index].ACCOUNT_NO,
+                                        `
+                                                                             <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                                                target="_blank">
+                                                                                <button type="button"
+                                                                                    class="btn btn-sm btn-primary">View</button>
+                                                                            </a>
+                                                                            `
+
+                                    ]).draw(false)
+
+
+                                })
+
+                                $(".loans_error_area").hide()
+                                $(".loans_loading_area").hide()
+                                $(".loans_display_area").show()
+
+                            } else {
+
+                                $(".loans_error_area").hide()
+                                $(".loans_loading_area").hide()
+                                $(".loans_display_area").show()
+
+                            }
+
+                        },
+                        error: function(xhr, status, error) {
+                            $(".loans_display_area").hide()
+                            $(".loans_loading_area").hide()
+                            $(".loans_error_area").show()
+
+                        }
+
+                    })
+
+
+                }
+
+                $(document).ready(function() {
+
+                    var customer_no = '057725'
+                    var request_status = 'P'
+
+                    $('.transfer_tab_btn').click(function() {
+                        get_corporate_requests(customer_no, 'P')
+                    })
+                    get_corporate_requests(customer_no, request_status)
+                })
 
             </script>
 
