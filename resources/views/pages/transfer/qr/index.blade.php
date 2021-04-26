@@ -171,6 +171,10 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+        var qr;
+
+    </script>
 
 
     <script>
