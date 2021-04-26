@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Loan;
 
+use App\Http\Controllers\Controller;
 use App\Http\classes\WEB\ApiBaseResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -9,7 +10,8 @@ use Illuminate\Support\Facades\Http;
 class LoanRequestController extends Controller
 {
     //
-    public function send_loan_request(Request $request){
+    public function send_loan_request(Request $request)
+    {
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -26,15 +28,15 @@ class LoanRequestController extends Controller
         $interestRepayFrequency = $request->interest_repay_freq;
         $data = [
 
-                "amount"=>$loanAmount,
-                "authToken"=> $authToken,
-                "deviceIp"=> "A",
-                "entrySource"=> "I",
-                "interestRepayFrequency"=> $interestRepayFrequency,
-                "interestType"=>$interestRateType,
-                "loanProduct"=> $loanProduct,
-                "principalRepayFrequency"=>$principalRepayFreq,
-                "tenure"=>$tenureInMonths
+            "amount" => $loanAmount,
+            "authToken" => $authToken,
+            "deviceIp" => "A",
+            "entrySource" => "I",
+            "interestRepayFrequency" => $interestRepayFrequency,
+            "interestType" => $interestRateType,
+            "loanProduct" => $loanProduct,
+            "principalRepayFrequency" => $principalRepayFreq,
+            "tenure" => $tenureInMonths
 
         ];
 
