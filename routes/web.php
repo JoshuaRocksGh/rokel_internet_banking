@@ -64,6 +64,7 @@ use App\Http\Controllers\Transfers\BulkUpload\BulkUploadsController as BulkUploa
 use App\Http\Controllers\Transfers\LocalBankController;
 use App\Http\Controllers\Transfers\MultipleTransfersController;
 use App\Http\Controllers\Transfers\OwnAccountController;
+use App\Http\Controllers\Transfers\QR\GenerateQRController;
 use App\Http\Controllers\Transfers\SameBankController;
 use Illuminate\Support\Facades\Route;
 
@@ -132,8 +133,14 @@ Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submi
 // MULTIPLE TRANSFERS
 Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])->name('multiple-transfers');
 
+
+// QR TRANSFERS
+Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
+
 // BULK TRANSFERS
 Route::get('/bulk-transfer', [BulkUploadBulkUploadsController::class, 'index'])->name('bulk-transfer');
+Route::get('/get-bulk-upload-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_list'])->name('get-bulk-upload-list-api');
+
 
 
 // LOCAL BANK
@@ -373,6 +380,7 @@ Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->na
 Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
 Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 Route::get('get-correct-fx-rate-api', [FunctionsController::class, 'get_correct_fx_rate'])->name('get-correct-fx-rate-api');
+Route::get('get-lovs-list-api', [FunctionsController::class, 'lovs_list'])->name('get-lovs-list-api');
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<

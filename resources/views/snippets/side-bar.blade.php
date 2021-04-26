@@ -93,8 +93,9 @@
                                 <a href="{{ url('same-bank') }}">Same Bank</a>
                             </li>
 
+
                             <li>
-                                <a href="{{ url('multiple-transfers') }}">Multiple Transfers </a>
+                                <a href="{{ url('qr-transfer') }}">QR </a>
                             </li>
 
                             <li>

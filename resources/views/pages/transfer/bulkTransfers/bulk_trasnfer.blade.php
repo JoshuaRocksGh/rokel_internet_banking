@@ -1,5 +1,27 @@
 @extends('layouts.master')
 
+
+@section('styles')
+
+    <!-- third party css -->
+    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
+        rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <!-- third party css end -->
+
+    <style>
+
+    </style>
+
+@endsection
+
+
+
 @section('content')
 
     <div>
@@ -11,7 +33,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
 
-                    <div class=" card card-body col-md-10">
+                    <div class="  card-body col-md-10">
                         <h2 class="header-title m-t-0 text-primary">BULK UPLOAD TRANSFER</h2>
 
                         <p class="text-muted font-14 m-b-20">
@@ -22,177 +44,146 @@
                         </p>
 
 
+                        <form role="form" class="parsley-examples" id="bulk_upload_form">
+                            <div class="row">
 
-                        <div class="row">
-
-                            <div class="col-md-7" id="request_form_div">
-
-                                <div class="">
-
-                                    <table class="table mb-0 table-striped table-bordered">
-
-                                        <tbody>
-                                            <tr class="bg-secondary text-white">
-                                                <td>Request Details</td>
-                                            </tr>
-
-                                            <tr>
-                                            </tr>
-
-                                        </tbody>
+                                <div class="col-md-4">
 
 
-                                    </table>
-
-                                    <p>
-
-
-                                    <form role="form" class="parsley-examples">
-                                        <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
-                                                    class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <select class="custom-select " id="my_account" required>
-                                                    <option value="">Select Account</option>
-                                                </select>
-                                            </div>
+                                    <div class="form-group ">
+                                        <div class="col-12">
+                                            <label for="inputEmail3" class="col-12 col-form-label">MY Account<span
+                                                    class="text-danger"> *</span></label>
+                                            <select class="custom-select " id="my_account" required>
+                                                <option value="">Select Account</option>
+                                            </select>
                                         </div>
-
-                                        <div class="form-group row">
-                                            <label for="hori-pass2" class="col-4 col-form-label">
-                                                Leaflets
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <select class="custom-select " id="leaflet" required>
-                                                    <option value="">-- Select number --</option>
-                                                    <option value="25">25</option>
-                                                    <option value="50">50</option>
-                                                    <option value="100">100</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="webSite" class="col-4 col-form-label">
-                                                <label> Branch</label>
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <select class="custom-select " id="branch" required>
-                                                    <option value="">-- Selected Branch --</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group row">
-                                            <label for="hori-pass2" class="col-4 col-form-label">
-                                                Enter Your Pin
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="pin"
-                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-                                            </div>
-                                        </div>
-
-                                        {{-- <div class="form-group row">
-
-
-                                                    <div class="col-7 offset-4 text-right">
-
-                                                        <button type="button"
-                                                            class="btn btn-primary btn-rounded waves-effect waves-light">
-                                                            Submit
-                                                        </button>
-
-                                                    </div>
-
-
-                                            </div> --}}
-
-
-                                    </form>
-
-                                    </p>
-
-
-                                </div> <!-- end card-box -->
-
-
-                            </div>
-
-
-                            <div class="col-md-5 disappear-after-success" id="request_detail_div">
-
-                                <table class="table mb-0 table-striped table-bordered">
-
-                                    <tbody>
-                                        <tr class="bg-secondary text-white">
-                                            <td>Request Details</td>
-                                        </tr>
-                                        <tr class="">
-
-                                            <td>
-                                                <a class="text-body font-weight-semibold   display_my_account_name"></a>
-                                                <small class="d-block   display_my_account_no"></small>
-                                                <span class="text-right   font-weight-semibold">
-                                                    <span class="display_my_account_currency"></span>
-                                                    <span class="  display_my_account_amount"></span>
-                                                </span>
-                                            </td>
-
-
-
-                                        </tr>
-                                        <tr class="">
-                                            <td>
-                                                <span class="text-right font-weight-semibold">
-                                                    <span class="display_leaflet"></span>
-                                                </span>
-                                            </td>
-
-                                        </tr>
-                                        <tr class="">
-                                            <td>
-                                                <span class="text-right font-weight-semibold">
-                                                    <span class="display_branch"></span>
-                                                </span>
-                                            </td>
-
-                                        </tr>
-
-                                    </tbody>
-
-                                </table>
-
-                                <br>
-
-                                <div class="form-group row">
-                                    <div class="col-8 offset-4 text-right">
-                                        <button type="button"
-                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                            id="submit_cheque_request">
-                                            Submit
-                                        </button>
-
                                     </div>
+
+
+                                    <div class="form-group ">
+                                        <div class="col-12">
+                                            <label for="inputEmail3" class="col-12 col-form-label">Bank Type<span
+                                                    class="text-danger"> *</span></label>
+                                            <select class="custom-select " id="bank_type" required>
+                                                <option value=""> ---Select Type --</option>
+                                                <option value="SAB"> Same Bank </option>
+                                                <option value="OTB"> Other Bank </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
 
-                            </div> <!-- end col -->
+                                <div class="col-md-4" id="">
 
-                            <div class="col-md-5 text-center">
-                                {{-- <span class="hh"><span> --}}
-                                <p class="display-4 text-center text-success success-message ">
 
-                                </p>
+                                    <div class="form-group ">
+                                        <div class="col-12">
+                                            <label for="inputEmail3" class="col-12 col-form-label">Bulk Amount<span
+                                                    class="text-danger"> *</span></label>
+                                            <input type="text" id="bulk_amount"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                class="form-control input-sm" required>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group ">
+                                        <div class="col-12">
+                                            <label for="inputEmail3" class="col-12 col-form-label">Reference Number<span
+                                                    class="text-danger"> *</span></label>
+                                            <input type="text" id="reference_no" class="form-control input-sm" required>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="col-md-4" id="">
+
+
+                                    <div class="form-group ">
+                                        <div class="col-12">
+                                            <label for="inputEmail3" class="col-12 col-form-label">Value Date<span
+                                                    class="text-danger"> *</span></label>
+                                            <input type="text" id="value_date"
+                                                class="form-control date-picker-valueDate flatpickr-input input-sm"
+                                                required>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group ">
+                                        <div class="col-12">
+                                            <label for="inputEmail3" class="col-12 col-form-label">File<span
+                                                    class="text-danger"> *</span></label>
+                                            <input type="file" id="excel_file" class=" input-sm" required>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+                                <!-- end row -->
+
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-8 offset-4 text-right">
+                                            <button type="submit"
+                                                class="btn btn-primary btn-sm btn-rounded waves-effect waves-light disappear-after-success"
+                                                id="submit_cheque_request">
+                                                Submit Upload
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
-                            <!-- end row -->
+                        </form>
+
+                        <div class="row card" id="beneficiary_table" style="zoom: 0.8;">
+                            <br>
+                            <div class="col-md-12">
+
+                                <table id="datatable-buttons"
+                                    class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
+
+                                    <thead>
+                                        <tr class="bg-secondary text-white">
+                                            <th> <b> Batch </b> </th>
+                                            <th> <b>Reference </b> </th>
+                                            <th> <b> Debit Account </b> </th>
+                                            <th> <b> Bulk Amount </b> </th>
+                                            <th> <b> Value date </b> </th>
+                                            <th> <b> Bank Type </b> </th>
+                                            <th> <b> Status </b> </th>
+                                            <th class="text-center"> <b>Actions </b> </th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="">
+
+                                    </tbody>
 
 
+                                </table>
+                            </div>
 
                         </div>
 
@@ -208,11 +199,31 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@endsection
 
 
+@section('scripts')
+
+
+    <!-- third party js -->
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+<script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
+    <!-- third party js ends -->
+
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script>
         function my_account() {
             $.ajax({
@@ -237,28 +248,85 @@
             })
         }
 
+        var bulk_upload_array_list = []
 
 
-        function branches() {
+        function bulk_upload_list(customer_no, status) {
+            var table = $('.bulk_upload_list').DataTable();
+            var nodes = table.rows().nodes();
             $.ajax({
-                'type': 'GET',
-                'url': 'get-bank-branches-list-api',
+                'tpye': 'GET',
+                'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
                 "datatype": "application/json",
                 success: function(response) {
                     console.log(response.data);
-                    let data = response.data
-                    $.each(data, function(index) {
 
-                        $('#branch').append($('<option>', {
-                            value: data[index].branchCode + '~' + data[index]
-                                .branchDescription
-                        }).text(data[index].branchDescription));
 
-                    });
-                },
+                    if (response.responseCode == '000') {
+                        bulk_upload_array_list = response.data;
+                        {{-- $('#beneficiary_table').show();
+                        $('#beneficiary_list_loader').hide();
+                        $('#beneficiary_list_retry_btn').hide(); --}}
 
+                        data = bulk_upload_array_list
+
+                        $.each(data, function(index) {
+                            console.log(data[index])
+
+                            let status = ''
+                            let bank_type = ''
+
+                            if (data[index].STATUS == 'A') {
+                                status =
+                                    `<span class="badge badge-success"> &nbsp; Approved &nbsp; </span> `
+                            } else if (data[index].STATUS == 'R') {
+                                status =
+                                    `<span class="badge badge-danger"> &nbsp; Rejected &nbsp; </span> `
+                            } else {
+                                status =
+                                    `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
+                            }
+
+                            if (data[index].BANK_CODE == 'I') {
+                                bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
+                            } else {
+                                bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
+                            }
+
+                            let batch =
+                                `<a href="{{ url('bulkFile/${data[index].BATCH_NO}') }}">${data[index].BATCH_NO}</a>`
+
+                            let action = `<span class="btn-group mb-2">
+                                                                <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
+                                                                 &nbsp;
+                                                                 <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                                                 </span>  `
+
+                            table.row.add([
+                                batch,
+                                data[index].REF_NO,
+                                data[index].ACCOUNT_NO,
+                                data[index].TOTAL_AMOUNT,
+                                bank_type,
+                                data[index].VALUE_DATE,
+                                status,
+                                action
+
+
+                            ]).draw(false)
+
+                        })
+
+                    } else {
+                        $('#beneficiary_table').hide();
+                        $('#beneficiary_list_loader').hide();
+                        $('#beneficiary_list_retry_btn').show();
+                    }
+
+                }
             })
         }
+
 
 
 
@@ -290,136 +358,41 @@
 
         $(document).ready(function() {
 
+
+            let today = new Date();
+            let dd = today.getDate();
+
+            let mm = today.getMonth() + 1;
+            const yyyy = today.getFullYear()
+            console.log(mm)
+            console.log(String(mm).length)
+            if (String(mm).length == 1) {
+                mm = '0' + mm
+            }
+
+            defaultDate = dd + mm + '-' + today.getFullYear()
+            console.log(defaultDate)
+
+
+
+            $(".date-picker-valueDate").flatpickr({
+                altInput: true,
+                altFormat: "j F, Y",
+                dateFormat: "d-m-Y",
+                defaultDate: [defaultDate],
+                position: "below"
+            })
+
             setTimeout(function() {
-                branches()
+                bulk_upload_list("057725", "P")
                 my_account()
             }, 1000)
 
 
 
-            $("#my_account").change(function() {
-                var my_account = $(this).val()
-
-                my_account_info = my_account.split("~")
-                // set summary values for display
-                $(".display_my_account_type").text(my_account_info[0].trim())
-                $(".display_my_account_name").text(my_account_info[1].trim())
-                $(".display_my_account_no").text(my_account_info[2].trim())
-                $(".display_my_account_currency").text(my_account_info[3].trim())
-
-                $(".display_currency").text(my_account_info[3].trim()) // set summary currency
-
-                $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4]
-                    .trim())))
-
-                console.log
-                {{-- alert('and show' + my_account_info[3].trim()) --}}
-                $(".my_account_display_info").show()
-
-
-
-
-
-                // alert(my_account_info[0]);
-            });
-
-
-            $("#leaflet").change(function() {
-                $('.display_leaflet').text("")
-                var leaflet = $(this).val()
-                if (leaflet != "") {
-                    $('.display_leaflet').text("Leaflet: " + leaflet)
-                }
-
-
-            })
-
-
-
-
-            $("#branch").change(function() {
-                $('.display_branch').text("")
-                var branch = $(this).val()
-                if (branch != "") {
-                    let branch_info = branch.split("~")
-                    console.log(branch)
-                    $('.display_branch').text("Pickup Branch: " + branch_info[1])
-                }
-
-
-            })
-
-            $("#submit_cheque_request").click(function() {
-
-                //MY ACCOUNT
-                let my_account = $('#my_account').val()
-                //Leaflet
-                let leaflet = $('#leaflet').val()
-                //branch
-                let branch = $('#branch').val()
-
-                let pin = $('#pin').val()
-
-
-
-
-
-                if (branch == "" || my_account == "" || leaflet == "" || pin == "") {
-                    toaster("Please fill all required fieilds", "error", 6000);
-                } else {
-
-                    let branch_info = branch.split("~")
-                    let branchCode = branch_info[0]
-
-                    my_account_info = my_account.split("~")
-                    let accountNumber = my_account_info[2].trim()
-
-
-                    $.ajax({
-
-                        'type': 'POST',
-                        'url': 'submit-cheque-book-request',
-                        "datatype": "application/json",
-                        'data': {
-                            'accountNumber': accountNumber.trim(),
-                            'branchCode': branchCode.trim(),
-                            'leaflet': leaflet.trim(),
-                            'pinCode': pin
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response) {
-
-                            console.log(response)
-
-                            if (response.responseCode == '000') {
-                                toaster(response.message, 'success', 200000)
-                                $("#request_form_div").hide()
-                                $(".disappear-after-success").hide()
-                                $(".success-message").html(
-                                    '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
-                                )
-                                {{-- $(".hh").text(response.message) --}}
-                                $("#request_detail_div").show()
-
-
-                            } else {
-
-                                toaster(response.message, 'error', 9000);
-
-
-                            }
-                        }
-
-                    })
-
-
-                }
-            })
-
 
         });
 
     </script>
+
 @endsection
