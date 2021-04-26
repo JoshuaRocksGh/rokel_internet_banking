@@ -392,31 +392,82 @@
 
                                 <div class="tab-pane fade" id="summary-v-pills-payment" role="tabpanel" aria-labelledby="custom-v-pills-bio-details-tab">
                                     <div>
-                                               <h5 class="mb-3 mt-1 bg-light p-2">Personal Details Summary</h5>
-                                                <div class="">
+                                               <h5 class="mb-3 mt-1 bg-light p-2">Personal Details</h5>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="row">
 
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Title: </b> <span class="font-weight-semibold mr-3" id="display_title"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Surname: </b> <span class="font-weight-semibold mr-3" id="display_surname"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Firstname: </b> <span class="font-weight-semibold mr-3" id="display_firstname"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Gender: </b> <span class="font-weight-semibold mr-3" id="display_select_gender"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Date of Birth: </b> <span class="font-weight-semibold mr-3" id="display_DOB"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Place of Birth: </b> <span class="font-weight-semibold mr-3" id="display_birth_place"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Country: </b> <span class="font-weight-semibold mr-3" id="display_country"> &nbsp</span></span></p>
+                                                            <p class="col-6"><span class="font-weight-light">Title:</span> </p>  <span class="font-weight-semibold col-6" id="display_title"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light">Surname:</span></p> <span class="font-weight-semibold col-6" id="display_surname"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light">Firstname:</span></p> <span class="font-weight-semibold col-6" id="display_firstname"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light"> Gender:</span></p> <span class="font-weight-semibold col-6" id="display_select_gender"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light"> Date of Birth:</span></p> <span class="font-weight-semibold col-6" id="display_DOB"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                        <p class="col-6"><span class="font-weight-light"> Place of Birth:</span></p><span class="font-weight-semibold col-6" id="display_birth_place"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                        <p class="col-6"><span class="font-weight-light"> Country: </span></p><span class="font-weight-semibold col-6" id="display_country"></span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <h5 class="mb-3 mt-4 bg-light p-2"> Contact & ID Details Summary</h5>
-                                                <div id=" ">
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Mobile Number: </b> <span class="font-weight-semibold mr-3" id="display_mobile_number"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Email: </b> <span class="font-weight-semibold mr-3" id="display_email"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> City: </b> <span class="font-weight-semibold mr-3" id="display_city"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Town: </b> <span class="font-weight-semibold mr-3" id="display_town"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Residential Address: </b> <span class="font-weight-semibold mr-3" id="display_residential_address"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> ID Type: </b> <span class="font-weight-semibold mr-3" id="display_id_type"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> ID Number: </b> <span class="font-weight-semibold mr-3" id="display_id_number"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Date Issued: </b> <span class="font-weight-semibold mr-3" id="display_issue_date"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> Date of Expiry: </b> <span class="font-weight-semibold mr-3" id="display_expiry_date"> &nbsp</span></span></p>
-                                                    <p class="mb-1"><span class="font-weight-light mr-2"> <b> ID image: </b>  <br> <img class="img-fluid display_selected_id_image" id="previewImg" src="#" alt="your image" /><span class="font-weight-semibold mr-3" id="display_title"> &nbsp</span></span></p>
+                                                <h5 class="mb-3 mt-4 bg-light p-2"> Contact & ID Details</h5>
+                                                <div id="row">
+                                                    <div class="col-12">
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light">Mobile Number:</span></p> <span class="font-weight-semibold col-6" id="display_mobile_number"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light">Email:</span></p> <span class="font-weight-semibold col-6" id="display_email"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light">City:</span></p> <span class="font-weight-semibold col-6" id="display_city"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light">Town:</span></p> <span class="font-weight-semibold col-6" id="display_town"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light"> Residential Address:</span></p><span class="font-weight-semibold col-6" id="display_residential_address"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light ">ID Type:<span></p></span><span class="font-weight-semibold col-6" id="display_id_type"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light ">ID Number:<span></p><span class="font-weight-semibold col-6" id="display_id_number"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light ">Date Issued:<span></p><span class="font-weight-semibold col-6" id="display_issue_date"></span>
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <p class="col-6"><span class="font-weight-light ">Date of Expiry:<span></p><span class="font-weight-semibold col-6" id="display_expiry_date"></span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="mb-1"><span class="font-weight-light "> <b> ID image: </b>  <br> <img class="img-fluid display_selected_id_image" id="previewImg" src="#" alt="your image" /><span class="font-weight-semibold mr-3" id="display_title"> &nbsp</span>
                                                 </div>
-                                                <h5 class="mb-3 mt-4 bg-light p-2"> Bio Details Summary</h5>
+                                                <h5 class="mb-3 mt-4 bg-light p-2"> Bio Details</h5>
                                                 <div>
                                                     <p class="mb-1"><span class="font-weight-light mr-2"><b> Passport Picture: </b>  <br> <img class="img-fluid display_passport_picture previewImg1" id="_passport_picture_summary" src="#" alt="your image" /><span class="font-weight-semibold mr-3" id="display_title"> &nbsp</span></span></p>
                                                     <p class="mb-1"><span class="font-weight-light mr-2"> <b> Selfie Image: </b>  <br> <img class="img-fluid display_selfie previewImg2" id="selfie_picture_summary" src="#" alt="your image" /><span class="font-weight-semibold mr-3" id="display_title"> &nbsp</span></span></p>
@@ -473,16 +524,116 @@
 
 <script>
 
+    {{--  function get_lovs() {
+
+        $(".accounts_display_area").hide()
+        $(".accounts_error_area").hide()
+        $(".accounts_loading_area").show()
+
+        $.ajax({
+            "type": "GET",
+            "url": "get-accounts-api",
+            "datatype": "application/json",
+
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                console.log(response);
+                if (response.responseCode == '000') {
+
+                    let data = response.data.;
+
+                    let custerlist =
+
+
+
+                    $.each(data, function(index) {
+                        $('.casa_list_display').append(`<tr>
+                            <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                            <td> <b> ${data[index].accountDesc} </b>  </td>
+                            <td> <b> ${data[index].accountType}  </b>  </td>
+                            <td> <b> ${data[index].currency}  </b>  </td>
+                            <td> <b> ${data[index].availableBalance}   </b> </b></td>
+                            <td> <b> ${data[index].ledgerBalance}   </b>  </td>
+                            <td>  <b> 0.00  </b> </td>
+                        </tr>`)
+
+                    })
+
+
+
+                    $(".accounts_error_area").hide()
+                    $(".accounts_loading_area").hide()
+                    $(".accounts_display_area").show()
+
+                } else {
+
+                    $(".accounts_error_area").hide()
+                    $(".accounts_loading_area").hide()
+                    $(".accounts_display_area").show()
+
+                }
+
+            },
+            error: function(xhr, status, error) {
+
+                $(".accounts_loading_area").hide()
+                $(".accounts_display_area").hide()
+                $(".accounts_error_area").show()
+
+
+            }
+        })
+    }  --}}
+
+    function lovs_list() {
+        $.ajax({
+            'type': 'GET',
+            'url': '../get-lovs-list-api',
+            "datatype": "application/json",
+            success: function(response) {
+                console.log(response);
+                {{--  let data = response.data  --}}
+                {{--  $.each(data, function(index) {
+
+                    $('#from_account').append($('<option>', {
+                        value: data[index].accountType + '~' + data[index]
+                            .accountDesc + '~' + data[index].accountNumber + '~' +
+                            data[index].currency + '~' + data[index]
+                            .availableBalance
+                    }).text(data[index].accountType + '~' + data[index].accountNumber +
+                        '~' + data[index].currency + '~' + data[index].availableBalance
+                    ));
+                    $('#to_account').append($('<option>', {
+                        value: data[index].accountType + '~' + data[index]
+                            .accountNumber + '~' + data[index].currency + '~' +
+                            data[index].availableBalance
+                    }).text(data[index].accountType + '~' + data[index].accountNumber +
+                        '~' + data[index].currency + '~' + data[index].availableBalance
+                    ));
+
+                });  --}}
+            },
+
+        })
+    }
+
     $(document).ready(function(){
+
+        setTimeout(function(){
+            lovs_list();
+        }, 1000);
+
 
     //    $('#previewImg').hide();
     $('.display_selected_id_image').hide();
     $(".display_passport_picture").hide();
     $('.display_selfie').hide();
 
-    $("#v-pills-tab").click(function(e){
+    {{--  $("#v-pills-tab").click(function(e){
         return false;
-    });
+    });  --}}
 
     setTimeout(function() {
             $(".mod-open").trigger('click');
@@ -662,13 +813,13 @@
                 $('#display_residential_address').text(residential_address);
 
                 var id_type = $('#id_type').val();
-                $('#dislay_id_type').text(id_type);
+                $('#display_id_type').text(id_type);
 
                 var id_number = $('#id_number').val();
                 $('#display_id_number').text(id_number);
 
                 var issue_date = $("#issue_date").datepicker().val();
-//                $('#display_issue_date').text(issue_date);
+                $('#display_issue_date').text(issue_date);
 
                 var expiry_date = $("#expiry_date").datepicker().val();
                 $('#display_expiry_date').text(expiry_date);
@@ -687,7 +838,7 @@
                         }
 
 
-            })
+                })
 
             // Bio Details
 

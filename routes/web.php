@@ -378,6 +378,7 @@ Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->na
 Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
 Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 Route::get('get-correct-fx-rate-api', [FunctionsController::class, 'get_correct_fx_rate'])->name('get-correct-fx-rate-api');
+Route::get('get-lovs-list-api', [FunctionsController::class, 'lovs_list'])->name('get-lovs-list-api');
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
