@@ -50,7 +50,7 @@
                                     {{-- <p class="p-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
                                 erat a ante.</p> --}}
                                     <br>
-                                    <footer class="p-text">Someone famous in <cite title="Source Title">Source Title</cite>
+                                    <footer class="p-text">Add Beneficiaries Within This Bank Here!
                                     </footer>
                                 </blockquote>
                             </div>
@@ -74,7 +74,7 @@
                                     {{-- <p class="p-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
                                 erat a ante.</p> --}}
                                     <br>
-                                    <footer class="p-text">Someone famous in <cite title="Source Title">Source Title</cite>
+                                    <footer class="p-text">Add Beneficiaries From Other Banks Here!</cite>
                                     </footer>
                                 </blockquote>
                             </div>
@@ -93,7 +93,7 @@
                                     {{-- <p class="p-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
                                 erat a ante.</p> --}}
                                     <br>
-                                    <footer class="p-text">Someone famous in <cite title="Source Title">Source Title</cite>
+                                    <footer class="p-text">Add International Bank Beneficiaries Here!
                                     </footer>
                                 </blockquote>
                             </div>

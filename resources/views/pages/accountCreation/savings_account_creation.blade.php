@@ -33,7 +33,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title text-primary" id="myCenterModalLabel">Aquiring a Savings Account</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                                 </div>
                                 <div class="modal-body">
                                     <div class=" ">
@@ -480,6 +480,9 @@
     $(".display_passport_picture").hide();
     $('.display_selfie').hide();
 
+    $("#v-pills-tab").click(function(e){
+        return false;
+    });
 
     setTimeout(function() {
             $(".mod-open").trigger('click');

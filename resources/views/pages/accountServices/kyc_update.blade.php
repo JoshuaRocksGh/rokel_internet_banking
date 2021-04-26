@@ -13,7 +13,7 @@
                             <div class="col-md-9">
                                 <h3 class="text-primary">KYC Update
                                     <button type="button" class="btn btn-info btn-sm float-right  mod-open" data-toggle="modal" data-target="#centermodal"> <span class="fe-info mr-1"></span> info</button>
-                                </h4>
+                                </h3>
 
                                      <hr>
 
@@ -210,7 +210,7 @@
                                                             </div>
 
                                                         </div> <!-- end row -->
-                                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="basic_information_next_btn">Next <i class="fe-arrow-right"></i></button>
+                                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="basic_information_next_btn"><i class="fe-arrow-right"></i>Next </button>
 
                                                     </form>
                                                 </div>

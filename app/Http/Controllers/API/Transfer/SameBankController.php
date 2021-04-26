@@ -16,6 +16,41 @@ class SameBankController extends Controller
     //
     public function beneficiary_payment_from_account()
     {
+        // return [
+        //     'responseCode' => '000',
+        //     'message' => 'my accounts',
+        //     'data' => [
+        //         'accountType' => 'Current Account',
+        //         'accountDesc' => 'Joshua Tetteh',
+        //         'accountNumber' => '67838765434567',
+        //         'currency' => 'SLL',
+        //         'availableBalance' => '3000899',
+        //     ],
+        //     [
+        //         'accountType' => 'Current Account',
+        //         'accountDesc' => 'Joshua Tetteh',
+        //         'accountNumber' => '67838765434567',
+        //         'currency' => 'SLL',
+        //         'availableBalance' => '3000899',
+        //     ],
+        //     [
+        //         'accountType' => 'Current Account',
+        //         'accountDesc' => 'Joshua Tetteh',
+        //         'accountNumber' => '67838765434567',
+        //         'currency' => 'SLL',
+        //         'availableBalance' => '3000899',
+        //     ],
+        //     [
+        //         'accountType' => 'Current Account',
+        //         'accountDesc' => 'Joshua Tetteh',
+        //         'accountNumber' => '67838765434567',
+        //         'currency' => 'SLL',
+        //         'availableBalance' => '3000899',
+        //     ]
+
+        // ];
+
+
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
