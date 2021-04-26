@@ -397,7 +397,7 @@
             $("#interest_rate_type").change(function(){
                 var interest_rate_type = $("#interest_rate_type").val();
                 var optionText = $("#interest_rate_type option:selected").text();
-                $(".display_interest_rate_type").text("Interest Rate Type: "+interest_rate_type);
+                $(".display_interest_rate_type").text("Interest Rate Type: "+optionText);
                 console.log(interest_rate_type);
             })
 
@@ -411,7 +411,8 @@
 
             $("#interest_repay_freq").change(function(){
                 var interest_repay_freq = $("#interest_repay_freq").val();
-                $(".display_interest_repay_freq").text("Interest Repay Frequency: "+interest_repay_freq);
+                var optionText = $("#principal_repay_freq option:selected").text();
+                $(".display_interest_repay_freq").text("Interest Repay Frequency: "+optionText);
                 console.log(interest_repay_freq);
             })
             // $("#pin").keyup(function(){

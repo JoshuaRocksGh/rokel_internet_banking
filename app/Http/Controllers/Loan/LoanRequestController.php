@@ -19,26 +19,26 @@ class LoanRequestController extends Controller
 
         $loanProduct = $request->loan_product;
         $loanAmount = $request->loan_amount;
-        $entrySource = $request->entrySource;
+        // $entrySource = $request->entrySource;
         $tenureInMonths = $request->tenure_in_months;
         $interestRateType = $request->interest_rate_type;
         $principalRepayFreq = $request->principal_repay_freq;
         $interestRepayFrequency = $request->interest_repay_freq;
         $data = [
 
-                "amount"=>"string",
-                "authToken"=> "string",
-                "deviceIp"=> "string",
-                "entrySource"=> "string",
-                "interestRepayFrequency"=> "string",
-                "interestType"=>"string",
-                "loanProduct"=> "string",
-                "principalRepayFrequency"=>"string",
-                "tenure"=>"string"
+                "amount"=>$loanAmount,
+                "authToken"=> $authToken,
+                "deviceIp"=> "A",
+                "entrySource"=> "I",
+                "interestRepayFrequency"=> $interestRepayFrequency,
+                "interestType"=>$interestRateType,
+                "loanProduct"=> $loanProduct,
+                "principalRepayFrequency"=>$principalRepayFreq,
+                "tenure"=>$tenureInMonths
 
         ];
 
-        // return $data;
+        return $data;
         $response = Http::post(env('API_BASE_URL') . "/loans/loanQuotation", $data);
 
         $result = new ApiBaseResponse();
