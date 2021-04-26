@@ -31,7 +31,7 @@ class ApiBaseResponse
         } else { // API response status code not 200
 
             return $response->body();
-            DB::table('error_logs')->insert([
+            DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
                 'code' => $response->status(),

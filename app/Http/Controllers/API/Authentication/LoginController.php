@@ -29,7 +29,6 @@ class LoginController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
 
         // return $req;
@@ -70,7 +69,7 @@ class LoginController extends Controller
                         // dd($id);
                     } catch (\Exception $th) {
                         //  return $th->getMessage();
-                         DB::table('error_logs')->insert([
+                         DB::table('tb_error_logs')->insert([
                             'platform' => 'ONLINE_INTERNET_BANKING',
                             'user_id' => 'AUTH',
                             'message' => (string) $th->getMessage()
@@ -108,7 +107,7 @@ class LoginController extends Controller
                 }
             } else { // API response status code not 200
 
-                DB::table('error_logs')->insert([
+                DB::table('tb_error_logs')->insert([
                     'platform' => 'ONLINE_INTERNET_BANKING',
                     'user_id' => 'AUTH',
                     'code' => $response->status(),
@@ -120,13 +119,13 @@ class LoginController extends Controller
             }
         } catch (\Exception $e) {
 
-                DB::table('error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'message' => (string) $e->getMessage()
-                ]);
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
 
-                return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
 
 

@@ -276,10 +276,10 @@
                             let status = ''
                             let bank_type = ''
 
-                            if (data[index].STATUS == 'A') {
+                            if (data[index].status == 'A') {
                                 status =
                                     `<span class="badge badge-success"> &nbsp; Approved &nbsp; </span> `
-                            } else if (data[index].STATUS == 'R') {
+                            } else if (data[index].status == 'R') {
                                 status =
                                     `<span class="badge badge-danger"> &nbsp; Rejected &nbsp; </span> `
                             } else {
@@ -287,28 +287,28 @@
                                     `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
                             }
 
-                            if (data[index].BANK_CODE == 'I') {
+                            if (data[index].bank_code == 'I') {
                                 bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
                             } else {
                                 bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
                             }
 
                             let batch =
-                                `<a href="{{ url('bulkFile/${data[index].BATCH_NO}') }}">${data[index].BATCH_NO}</a>`
+                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}</a>`
 
                             let action = `<span class="btn-group mb-2">
-                                                                <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
-                                                                 &nbsp;
-                                                                 <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
-                                                                 </span>  `
+                                                                                    <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
+                                                                                     &nbsp;
+                                                                                     <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                                                                     </span>  `
 
                             table.row.add([
                                 batch,
-                                data[index].REF_NO,
-                                data[index].ACCOUNT_NO,
-                                data[index].TOTAL_AMOUNT,
+                                data[index].ref_no,
+                                data[index].account_no,
+                                data[index].total_amount,
                                 bank_type,
-                                data[index].VALUE_DATE,
+                                data[index].value_date,
                                 status,
                                 action
 

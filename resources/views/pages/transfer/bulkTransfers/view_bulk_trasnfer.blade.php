@@ -34,98 +34,41 @@
                     <div class="col-md-1"></div>
 
                     <div class="  card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">BULK UPLOAD TRANSFER</h2>
-
-                        <p class="text-muted font-14 m-b-20">
+                        <h2 class="header-title m-t-0 text-primary">DETAIL OF BULK UPLOAD</h2>
+                        <hr>
+                        {{-- <p class="text-muted font-14 m-b-20">
                             Parsley is a javascript form validation library. It helps you provide your
                             users with feedback on their form submission before sending it to your
                             server.
                             <hr>
-                        </p>
+                        </p> --}}
 
 
                         <form role="form" class="parsley-examples" id="bulk_upload_form">
                             <div class="row">
 
-                                <div class="col-md-4">
 
+                                <div class="col-md-6">
+                                    <h4 class="mb-2">Batch Number : <span class="text-muted mr-2"></span> <b
+                                            class="text-primary display_batch_no"></b>
+                                    </h4>
 
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">MY Account<span
-                                                    class="text-danger"> *</span></label>
-                                            <select class="custom-select " id="my_account" required>
-                                                <option value="">Select Account</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Bank Type<span
-                                                    class="text-danger"> *</span></label>
-                                            <select class="custom-select " id="bank_type" required>
-                                                <option value=""> ---Select Type --</option>
-                                                <option value="SAB"> Same Bank </option>
-                                                <option value="OTB"> Other Bank </option>
-                                            </select>
-                                        </div>
-                                    </div>
-
+                                    <h4 class="mb-2">Narration : <span class="text-muted mr-2"></span> <b
+                                            class="text-primary display_narrations"></b>
+                                    </h4>
 
                                 </div>
 
 
-                                <div class="col-md-4" id="">
 
+                                <div class="col-md-6">
+                                    <h4 class="mb-2">Account Number : <span class="text-muted mr-2"></span> <b
+                                            class="text-primary display_debit_account_no"></b>
+                                    </h4>
 
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Bulk Amount<span
-                                                    class="text-danger"> *</span></label>
-                                            <input type="text" id="bulk_amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                class="form-control input-sm" required>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Reference Number<span
-                                                    class="text-danger"> *</span></label>
-                                            <input type="text" id="reference_no" class="form-control input-sm" required>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-
-                                <div class="col-md-4" id="">
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Value Date<span
-                                                    class="text-danger"> *</span></label>
-                                            <input type="text" id="value_date"
-                                                class="form-control date-picker-valueDate flatpickr-input input-sm"
-                                                required>
-
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">File<span
-                                                    class="text-danger"> *</span></label>
-                                            <input type="file" id="excel_file" class=" input-sm" required>
-                                        </div>
-                                    </div>
-
+                                    <h4 class="mb-2">Bulk Amount : <span class="text-muted mr-2"></span> <b
+                                            class="text-primary display_total_amount"></b>
+                                    </h4>
 
                                 </div>
 
@@ -142,9 +85,16 @@
                                 <div class="col-md-12">
                                     <div class="form-group row">
                                         <div class="col-8 offset-4 text-right">
-                                            <button type="submit"
+
+                                            <button type="button"
+                                                class="btn btn-danger btn-sm btn-rounded waves-effect waves-light disappear-after-success"
+                                                id="reject_upload_btn">
+                                                Reject Upload
+                                            </button>
+
+                                            <button type="button"
                                                 class="btn btn-primary btn-sm btn-rounded waves-effect waves-light disappear-after-success"
-                                                id="submit_cheque_request">
+                                                id="approve_upload_btn">
                                                 Submit Upload
                                             </button>
 
@@ -165,15 +115,10 @@
 
                                     <thead>
                                         <tr class="bg-secondary text-white">
-                                            <th> <b> Batch </b> </th>
-                                            <th> <b>Reference </b> </th>
-                                            <th> <b> Debit Account </b> </th>
-                                            <th> <b> Bulk Amount </b> </th>
-                                            <th> <b> Value date </b> </th>
-                                            <th> <b> Bank Type </b> </th>
-                                            <th> <b> Status </b> </th>
-                                            <th class="text-center"> <b>Actions </b> </th>
-
+                                            <th>No</th>
+                                            <th>Credit Acc</th>
+                                            <th>Amount</th>
+                                            <th>Name</th>
                                         </tr>
                                     </thead>
 
@@ -204,6 +149,7 @@
 
 @section('scripts')
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- third party js -->
     <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
@@ -250,16 +196,22 @@
 
         var bulk_upload_array_list = []
 
+        function formatToCurrency(amount) {
+            return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        };
 
-        function bulk_upload_list(customer_no, status) {
+
+
+
+        function bulk_upload_detail_list(customer_no, batch_no) {
             var table = $('.bulk_upload_list').DataTable();
             var nodes = table.rows().nodes();
             $.ajax({
                 'tpye': 'GET',
-                'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
+                'url': 'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
                 "datatype": "application/json",
                 success: function(response) {
-                    console.log(response.data);
+                    {{-- console.log(response.data); --}}
 
 
                     if (response.responseCode == '000') {
@@ -270,8 +222,13 @@
 
                         data = bulk_upload_array_list
 
+                        $('.display_batch_no').text(data[0].BATCH_NO)
+                        $('.display_narrations').text(data[0].TRANS_DESC)
+                        $('.display_debit_account_no').text(data[0].BBAN)
+                        $('.display_total_amount').text(formatToCurrency(parseFloat(data[0].TOTAL_AMOUNT)))
+
                         $.each(data, function(index) {
-                            console.log(data[index])
+                            {{-- console.log(data[index]) --}}
 
                             let status = ''
                             let bank_type = ''
@@ -296,21 +253,18 @@
                             let batch =
                                 `<a href="{{ url('bulkFile/${data[index].BATCH_NO}') }}">${data[index].BATCH_NO}</a>`
 
-                            let action = `<span class="btn-group mb-2">
-                                                                    <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
-                                                                     &nbsp;
-                                                                     <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
-                                                                     </span>  `
+                            let action =
+                                `<span class="btn-group mb-2">
+                                                                                                                                                                                                                                                                                                                                                                <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
+                                                                                                                                                                                                                                                                                                                                                                 &nbsp;
+                                                                                                                                                                                                                                                                                                                                                                 <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                                                                                                                                                                                                                                                                                                                                                 </span>  `
 
                             table.row.add([
-                                batch,
-                                data[index].REF_NO,
-                                data[index].ACCOUNT_NO,
-                                data[index].TOTAL_AMOUNT,
-                                bank_type,
-                                data[index].VALUE_DATE,
-                                status,
-                                action
+                                data[index].ID,
+                                data[index].BBAN,
+                                formatToCurrency(parseFloat(data[index].AMOUNT)),
+                                data[index].NAME,
 
 
                             ]).draw(false)
@@ -354,9 +308,99 @@
             })
         }
 
+        function post_bulk_transaction(batch_no) {
+
+            Swal.showLoading()
+
+            $.ajax({
+
+                'type': 'POST',
+                'url': 'post-bulk-transaction-api',
+                "datatype": "application/json",
+                'data': {
+                    'batch_no': batch_no.trim()
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+
+                    console.log(response)
+
+                    if (response.responseCode == '000') {
+                        toaster(response.message, 'success', 20000)
+                        Swal.fire(
+                            response.message,
+                            //'Your file has been deleted.',
+                            'success'
+                        )
+                    } else {
+                        toaster(response.message, 'error', 9000);
+                        Swal.fire(
+                            response.message,
+                            //'Your file has been deleted.',
+                            'error'
+                        )
+
+                    }
+                }
+            });
+        }
+
+
+
+        function submit_upload(batch_no) {
+
+            const ipAPI = 'post-bulk-transaction-api?batch_no=' + batch_no
+
+            Swal.queue([{
+                title: 'Are you sure',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Submit!',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return fetch(ipAPI)
+                        .then(response => response.json())
+                        .then((data) => {
+                            if (data.responseCode == '000') {
+                                Swal.insertQueueStep({
+                                    icon: 'success',
+                                    title: data.message
+                                })
+
+                                setTimeout(function() {
+                                    window.location = "{{ url('bulk-transfer') }}"
+                                }, 2000)
+                            } else {
+                                Swal.insertQueueStep({
+                                    icon: 'error',
+                                    title: data.message
+                                })
+                            }
+                            {{-- Swal.insertQueueStep(data.ip) --}}
+                        })
+                        .catch(() => {
+                            Swal.insertQueueStep({
+                                icon: 'error',
+                                title: 'API SERVER ERROR'
+                            })
+                        })
+                }
+            }])
+
+
+        }
+
 
 
         $(document).ready(function() {
+
+            var customer_no = "057725"
+            {{-- var customer_no = @json($customer_no) --}}
+            var batch_no = @json($batch_no)
 
 
             let today = new Date();
@@ -374,6 +418,12 @@
             console.log(defaultDate)
 
 
+            $('#approve_upload_btn').click(function() {
+
+                submit_upload(batch_no)
+            })
+
+
 
             $(".date-picker-valueDate").flatpickr({
                 altInput: true,
@@ -384,7 +434,7 @@
             })
 
             setTimeout(function() {
-                bulk_upload_list("057725", "P")
+                bulk_upload_detail_list(customer_no, batch_no)
                 my_account()
             }, 1000)
 

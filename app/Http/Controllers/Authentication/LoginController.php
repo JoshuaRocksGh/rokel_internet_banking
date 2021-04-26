@@ -36,7 +36,6 @@ class LoginController extends Controller
         if ($validator->fails()) {
 
             return $base_response->api_response('500', $validator->errors(), NULL);
-
         };
 
         // return $req;
@@ -102,9 +101,9 @@ class LoginController extends Controller
                         "lastLogin" => $user_detail->lastLogin,
                     ]);
 
-         $authToken = session()->get('userToken');
-$userID = session()->get('userId');
-// return $authToken;
+                    $authToken = session()->get('userToken');
+                    $userID = session()->get('userId');
+                    // return $authToken;
                     // return session()->get('user');
 
                     // return redirect()->route('home');
@@ -126,7 +125,7 @@ $userID = session()->get('userId');
                         // dd($id);
                     } catch (\Exception $th) {
                         //  return $th->getMessage();
-                         DB::table('error_logs')->insert([
+                         DB::table('tb_error_logs')->insert([
                             'platform' => 'ONLINE_INTERNET_BANKING',
                             'user_id' => 'AUTH',
                             'message' => (string) $th->getMessage()
@@ -146,7 +145,7 @@ $userID = session()->get('userId');
                 }
             } else { // API response status code not 200
 
-                DB::table('error_logs')->insert([
+                DB::table('tb_error_logs')->insert([
                     'platform' => 'ONLINE_INTERNET_BANKING',
                     'user_id' => 'AUTH',
                     'code' => $response->status(),
@@ -158,17 +157,16 @@ $userID = session()->get('userId');
             }
         } catch (\Exception $e) {
 
-                DB::table('error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'message' => (string) $e->getMessage()
-                ]);
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
 
-                return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
 
 
         }
     }
-
 }
