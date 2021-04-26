@@ -232,7 +232,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <b>Mobile Number</b>
-                                                        <input class="form-control" type="number" placeholder="Mobile number" id="mobile_number" required/>
+                                                        <input class="form-control" type="" placeholder="Mobile number" id="mobile_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" required/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -481,7 +481,12 @@
                                             <ul class="list-inline wizard mb-0">
                                                 <li class=" list-inline-item"><button type="button"  class="btn btn-secondary btn-rounded" id="bio-previous-btn" data-toggle="pill" href="#custom-v-pills-bio-details" role="tab" aria-controls="custom-v-pills-bio-details"><i class="fe-arrow-left"></i> Previous</button></li>
 
-                                                <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded float-right " type="button" id="confirm_submit"> <i class="fe-checked"></i> Confirm & Submit</button></li>
+                                                <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded float-right " type="button" id="confirm_submit">
+                                                    <span id="confirm_submit_text">Confirm & Submit</span>
+                                                    <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                        id="spinner" aria-hidden="true"></span>
+                                                    <span id="spinner-text">Loading...</span>
+                                                </button></li>
                                             </ul>
 {{--
                                             <div class="row mt-4">
@@ -516,8 +521,10 @@
 
 </div>
 {{--
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  --}}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 @endsection
 
@@ -598,7 +605,7 @@
             success: function(response) {
                 console.log(response);
                 let title_list = response.data.titleList;
-                let country_lists = response.data.nationalityList
+                let country_list = response.data.nationalityList
                 let id_list = response.data.documentTypeList
 
                 console.log(id_list);
@@ -639,6 +646,10 @@
 
     $(document).ready(function(){
 
+        $('#spinner').hide(),
+        $('#spinner-text').hide(),
+        $('#print_receipt').hide();
+
         setTimeout(function(){
             lovs_list();
         }, 1000);
@@ -649,9 +660,9 @@
     $(".display_passport_picture").hide();
     $('.display_selfie').hide();
 
-    {{--  $("#v-pills-tab").click(function(e){
+    $("#v-pills-tab").click(function(e){
         return false;
-    });  --}}
+    });
 
     setTimeout(function() {
             $(".mod-open").trigger('click');
@@ -911,8 +922,28 @@
 
                         }
 
-                        $(".display_selfie").show()
+                        $(".display_selfie").show();
             })
+
+
+            function toaster(message, icon, timer) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: timer,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: icon,
+                    title: message
+                })
+            }
 
             $("#confirm_submit").click(function(e){
                 e.preventDefault();
@@ -978,6 +1009,32 @@
                 var signed_selfie_paper = $('#selfie_upload_').val();
 
 
+                /* console.log(title);
+                console.log(surname);
+                console.log(firstname);
+                console.log(gender);
+                console.log(birthday);
+                console.log(birth_place);
+                console.log(country);
+                console.log(mobile_number);
+                console.log(email);
+                console.log(city);
+                console.log(town);
+                console.log(residential_address);
+                console.log(id_type);
+                console.log(id_number);
+                console.log(issue_date);
+                console.log(expiry_date);
+                console.log(id_iamge);
+                console.log(passport_picture);
+                console.log(signed_selfie_paper) */
+
+                $('#spinner').show();
+                    $('#spinner-text').show();
+
+                    $('#confirm_submit_text').hide(),
+                    $('#confirm_submit').attr('disabled', true);
+
                 $.ajax({
                     "type" : "POST" ,
                     "url" : "../savings-account-creation-api" ,
@@ -989,7 +1046,7 @@
                         "gender" : gender ,
                         "birthday" : birthday ,
                         "birth_place" : birth_place ,
-                        "country" : country_ ,
+                        "country" : country ,
                         "mobile_number" : mobile_number ,
                         "email" : email ,
                         "city" : city ,
@@ -1002,11 +1059,28 @@
                         "id_iamge" : id_iamge ,
                         "passport_picture" : passport_picture ,
                         "signed_selfie_paper" :signed_selfie_paper
+
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: alert("Success");
+                    success:
+                    function(response) {
+                        console.log(response);
+                        if(response.responseCode == '000'){
+                            toaster(response.message, 'success', 10000);
+
+                        }else{
+                            toaster(response.message, 'error' , 6000);
+
+                            $('#spinner').hide();
+                            $('#spinner-text').hide();
+                            $('#confirm_submit_text').show(),
+                            {{--  $('#print_receipt').hide();  --}}
+                            {{--  $('#confirm_transfer').show();  --}}
+                            $('#confirm_submit').attr('disabled', false);
+                        }
+                    }
                 })
 
             })

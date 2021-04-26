@@ -16,9 +16,11 @@
                                 <h2 class="header-title m-t-0 text-primary">SAME BANK TRANSFER</h2>
 
                                 <p class="text-muted font-14 m-b-20">
-                                    Parsley is a javascript form validation library. It helps you provide your
-                                    users with feedback on their form submission before sending it to your
-                                    server.
+                                    <span>
+                                        <b class="text-danger">Please Note: </b>
+                                        <b>This offers you the opportunity to transfer funds between your own
+                                            account and other local banks</b>
+                                    </span>.
                                 </p>
                                 <hr>
 
@@ -155,11 +157,11 @@
                                                     <select class="custom-select" id="onetime_beneficiary_account_currency"
                                                         required>
                                                         <option value="">Select Currency</option>
-                                                        <option value="GHS">GHS</option>
+                                                        {{--  <option value="GHS">GHS</option>
                                                         <option value="USD">USD</option>
                                                         <option value="EURO">EURO</option>
                                                         <option value="SLL">SLL</option>
-                                                        <option value="GBP">GBP</option>
+                                                        <option value="GBP">GBP</option>  --}}
                                                     </select>
 
                                                 </div>
@@ -558,6 +560,27 @@
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
             <script>
+
+                function get_currency(){
+                    $.ajax({
+                        "type" : "GET" ,
+                        "url" : "get-currency-list-api" ,
+                        "datatype": "application/json",
+                        success: function(response) {
+                            {{--  console.log(response);  --}}
+
+                            let data = response.data
+                            console.log(data);
+                            $.each(data, function(index){
+                                $('#onetime_beneficiary_account_currency').append($('<option>', {
+                                    value: data[index].isoCode
+                                }).text(data[index].isoCode + '~' + data[index]
+                                    .description));
+                            })
+                        }
+                    })
+                }
+
                 function from_account() {
                     $.ajax({
                         'type': 'GET',
@@ -633,6 +656,7 @@
                     setTimeout(function() {
                         from_account();
                         to_account();
+                        get_currency();
                     }, 3000);
 
 

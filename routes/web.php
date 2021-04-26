@@ -43,6 +43,7 @@ use App\Http\Controllers\Corporate\GeneralFunctions\FunctionsController as Gener
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
+use App\Http\Controllers\FixedDeposit\FixedDepositAccountController;
 use App\Http\Controllers\GeneralFunctions\FunctionsController;
 use App\Http\Controllers\Loan\LoanProductsController;
 use App\Http\Controllers\Loan\LoanRequestController;
@@ -446,6 +447,8 @@ Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_r
 // ROUTE FOR ACCOUNT CREATION
 Route::post('savings-account-creation-api', [SavingsAccountCreationController::class, 'savings_account_creation'])->name('savings-account-creation-api');
 
+// FIXED DEPOSIT ACCOUNT
+Route::get('fixed-deposit-account-api', [FixedDepositAccountController::class, 'fixed_deposit_account'])->name('fixed-deposit-account-api');
 
 //route for statement request
 Route::post('statement-request-api', [StatementRequestController::class, 'statement_request'])->name('statement-request-api');

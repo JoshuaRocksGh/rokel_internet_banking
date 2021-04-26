@@ -210,7 +210,7 @@
                                                             </div>
 
                                                         </div> <!-- end row -->
-                                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="basic_information_next_btn"><i class="fe-arrow-right"></i>Next </button>
+                                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="basic_information_next_btn">Next<i class="fe-arrow-right"></i> </button>
 
                                                     </form>
                                                 </div>

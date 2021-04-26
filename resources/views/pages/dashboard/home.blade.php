@@ -357,7 +357,7 @@
 
 
                                             <div class="table-responsive table-bordered loans_display_area">
-                                                <table id="datatable-buttons" class="table mb-0">
+                                                <table id="datatable-buttons fixed_deposit_list" class="table mb-0">
                                                     <thead>
                                                         <tr class="bg-secondary text-white ">
                                                             <td> <b> Facility Number </b> </td>
@@ -372,6 +372,65 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+
+
+                                            <!-- end table-responsive -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-1">
+                                    <a class="text-dark" data-toggle="collapse " aria-expanded="true">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="m-0">
+
+                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
+                                                <span class="text-success"> <b>Fixed Deposit</b> </span>
+
+                                            </h5>
+                                        </div>
+                                    </a>
+                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                        data-parent="#accordion">
+                                        <div class="card-body">
+
+
+
+                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center loans_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
+                                                    alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="fixed_deposit()"> <i
+                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                            </div>
+
+
+
+                                            <div class="table-responsive table-bordered fixed_deposit_display_area">
+                                                <table id="datatable-buttons fixed_deposit_account" class="table mb-0">
+                                                    <thead>
+                                                        <tr class="bg-secondary text-white ">
+                                                            <td> <b> Source Account </b> </td>
+                                                            <td> <b> Amount </b> </td>
+                                                            <td> <b> Tenure </b> </td>
+                                                            <td> <b> Interest Rate</b> </td>
+                                                            <td> <b> Rollover </b> </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="fixed_deposit_account">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
                                             <!-- end table-responsive -->
 
                                         </div>
@@ -706,6 +765,69 @@
             } --}}
             });
 
+            function fixed_deposit(){
+                {{--  var table = $('.fixed_deposit_list').DataTable();
+                var nodes = table.rows().nodes();  --}}
+
+                $.ajax({
+
+                    "type" : "GET" ,
+                    "url" : "fixed-deposit-account-api" ,
+                    "datatype": "application/json",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response){
+                        {{--  console.log(response);  --}}
+
+
+                        if(response.responseCode == '000'){
+
+                            let data = response.data;
+                            {{--  let rollover = response.data[0].rollover;
+                            if(rollover == 'Y'){
+                                rollover_ = "Yes" ;
+                            }else if (rollover == 'N'){
+                                rollover_ = "No" ;
+                            }else{
+                                rollover_ = null ;
+                            }  --}}
+
+                            if(response.data.length > 0){
+                                console.log(response.data.length );
+                                $.each(data, function(index) {
+                                $('.fixed_deposit_account').append(`<tr>
+                                    <td><b> ${data[index].sourceAccount} </b></td>
+                                    <td><b> ${data[index].dealAmount} </b></td>
+                                    <td><b> ${data[index].tenure} </b></td>
+                                    <td><b> ${data[index].fixedInterestRate} </b></td>
+                                    <td><b> ${rollover_ } </b></td>
+                                </tr>`)
+
+
+                                })
+                            }else{
+                                alert("Empty");
+                                {{--  $('.fixed_deposit_display_area').hide();  --}}
+                                $.each(data, function(index) {
+                                    $('.fixed_deposit_account').append(`<tr>
+
+                                        <td><b> No Data </b></td>
+                                    </tr>`)
+
+
+                                    })
+
+                            }
+
+
+                        }
+
+
+
+                    }
+                })
+            }
 
             function get_accounts() {
 
@@ -1034,7 +1156,8 @@
                     converter_rates = get_correct_fx_rate()
                     get_currency()
                     get_accounts();
-                    get_loans()
+                    get_loans();
+                    fixed_deposit();
                 }, 200);
 
             })
