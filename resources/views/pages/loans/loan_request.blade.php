@@ -377,13 +377,14 @@
 
             $("#loan_product").change(function(){
                 var loan_product = $("#loan_product").val();
-                $(".display_loan_product").text("Loan Product: "+loan_product);
+                var optionText = $("#loan_product option:selected").text();
+                $(".display_loan_product").text("Loan Product: "+optionText);
                 console.log(loan_product);
             });
 
             $("#loan_amount").change(function(){
                 var loan_amount = $("#loan_amount").val();
-                $(".display_loan_amount").text("Loan Amount: "+loan_amount);
+                $(".display_loan_amount").text("Loan Amount: SLL "+loan_amount);
                 console.log(loan_amount);
             })
 
@@ -395,13 +396,15 @@
 
             $("#interest_rate_type").change(function(){
                 var interest_rate_type = $("#interest_rate_type").val();
+                var optionText = $("#interest_rate_type option:selected").text();
                 $(".display_interest_rate_type").text("Interest Rate Type: "+interest_rate_type);
                 console.log(interest_rate_type);
             })
 
             $("#principal_repay_freq").change(function(){
                 var principal_repay_freq = $("#principal_repay_freq").val();
-                $(".display_principal_repay_freq").text("Principal Repay Frequency: "+principal_repay_freq);
+                var optionText = $("#principal_repay_freq option:selected").text();
+                $(".display_principal_repay_freq").text("Principal Repay Frequency: "+optionText);
                 console.log(principal_repay_freq);
             })
 
@@ -429,7 +432,7 @@
                     let interest_repay_freq = $('#interest_repay_freq').val();
 
                     console.log('loan product: '+loan_product);
-                    console.log('loan_amount: '+loan_amount);
+                    console.log('loan amount: '+loan_amount);
                     console.log('interest rate type: '+interest_rate_type);
                     console.log('principal repay frequency: '+principal_repay_freq);
                     console.log('Interest repay frequency '+interest_repay_freq);

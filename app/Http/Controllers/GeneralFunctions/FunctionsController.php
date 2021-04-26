@@ -296,6 +296,7 @@ class FunctionsController extends Controller
 
         $response = Http::get(env('API_BASE_URL') . "/loans/loanProducts", $data);
 
+
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
