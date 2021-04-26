@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountCreation\SavingsAccountCreationController;
 use App\Http\Controllers\AccountEnquiry\AccountEnquiryController;
 use App\Http\Controllers\AccountEnquiry\GetAccountDescription;
 use App\Http\Controllers\AccountServices\accountCreationController;
@@ -440,6 +441,8 @@ Route::post('submit-stop-cheque-book-request', [StopChequeController::class, 'su
 //route for atm card
 Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
 
+// ROUTE FOR ACCOUNT CREATION
+Route::post('savings-account-creation-api', [SavingsAccountCreationController::class, 'savings_account_creation'])->name('savings-account-creation-api');
 
 
 //route for statement request

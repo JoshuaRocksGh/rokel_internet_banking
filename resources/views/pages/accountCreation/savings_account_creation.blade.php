@@ -122,10 +122,10 @@
 
                                                             <select class="custom-select title" id="title" required>
                                                                 <option value="">Title</option>
-                                                                <option value="Mr">Mr</option>
+                                                                {{--  <option value="Mr">Mr</option>
                                                                 <option value="Mrs">Mrs</option>
                                                                 <option value="Dr">Dr</option>
-                                                                <option value="Miss">Miss</option>
+                                                                <option value="Miss">Miss</option>  --}}
                                                             </select>
 
                                                     </div>
@@ -196,8 +196,8 @@
                                                         <label>Country</label>
                                                         <select data-toggle="select2" title="Country" class="form-control country" id="country" required>
                                                             <option value="">Select Country</option>
-                                                            <option value="AF~Afghanistan">Afghanistan</option>
-                                                            <option value="AL~Albania">Albania</option>
+                                                            {{--  <option value="AF~Afghanistan">Afghanistan</option>
+                                                            <option value="AL~Albania">Albania</option>  --}}
 
                                                         </select>
                                                     </div>
@@ -273,10 +273,10 @@
                                                         <b>ID Type</b>
                                                             <select class="custom-select" id="id_type" required>
                                                                 <option value="">ID Type</option>
-                                                                <option value="Passport">Passport</option>
+                                                                {{--  <option value="Passport">Passport</option>
                                                                 <option value="Driver license">Driver license</option>
                                                                 <option value="Voter ID">Voter ID</option>
-                                                                <option value="4">Ghana Card</option>
+                                                                <option value="4">Ghana Card</option>  --}}
                                                             </select>
                                                     </div>
                                                 </div>
@@ -303,6 +303,7 @@
                                                 <div class="form-group mb-3">
                                                     <b for="example-fileinput">Upload Image of Selected ID</b>
                                                     <input type="file" id="image_upload" class="form-control-file" required><br>
+                                                    <input type="hidden" id="image_upload_">
                                                     <img class="img-fluid display_selected_id_image" id="display_selected_id_image" src="#" alt="your image" />
                                                 </div>
 
@@ -346,6 +347,7 @@
                                             <div class="form-group mb-3">
                                                 <b for="example-fileinput">Picture(Passport)</b>
                                                 <input type="file" id="passport_picture" class="form-control-file" required><br>
+                                                <input type="hidden" id="passport_picture_">
                                                 <img class="img-fluid img_display display_passport_picture previewImg1" id="previewImg1" src="#" alt="your image" />
                                             </div>
 
@@ -355,6 +357,7 @@
                                             <div class="form-group mb-3">
                                                 <b for="example-fileinput">Selfie with a signed paper</b>
                                                 <input type="file" id="selfie_upload" class="form-control-file" required><br>
+                                                <input type="hidden" id="selfie_upload_">
                                                 <img class="img-fluid img_display display_selfie previewImg2" id="previewImg2" src="#" alt="your image" />
                                             </div>
                                             <!-- Cash on Delivery box-->
@@ -478,7 +481,7 @@
                                             <ul class="list-inline wizard mb-0">
                                                 <li class=" list-inline-item"><button type="button"  class="btn btn-secondary btn-rounded" id="bio-previous-btn" data-toggle="pill" href="#custom-v-pills-bio-details" role="tab" aria-controls="custom-v-pills-bio-details"><i class="fe-arrow-left"></i> Previous</button></li>
 
-                                                <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded float-right " type="button"> <i class="fe-checked"></i> Confirm & Submit</button></li>
+                                                <li class="list-inline-item float-right"><button class="btn btn-primary btn-rounded float-right " type="button" id="confirm_submit"> <i class="fe-checked"></i> Confirm & Submit</button></li>
                                             </ul>
 {{--
                                             <div class="row mt-4">
@@ -594,27 +597,42 @@
             "datatype": "application/json",
             success: function(response) {
                 console.log(response);
-                {{--  let data = response.data  --}}
-                {{--  $.each(data, function(index) {
+                let title_list = response.data.titleList;
+                let country_lists = response.data.nationalityList
+                let id_list = response.data.documentTypeList
 
-                    $('#from_account').append($('<option>', {
-                        value: data[index].accountType + '~' + data[index]
-                            .accountDesc + '~' + data[index].accountNumber + '~' +
-                            data[index].currency + '~' + data[index]
-                            .availableBalance
-                    }).text(data[index].accountType + '~' + data[index].accountNumber +
-                        '~' + data[index].currency + '~' + data[index].availableBalance
-                    ));
-                    $('#to_account').append($('<option>', {
-                        value: data[index].accountType + '~' + data[index]
-                            .accountNumber + '~' + data[index].currency + '~' +
-                            data[index].availableBalance
-                    }).text(data[index].accountType + '~' + data[index].accountNumber +
-                        '~' + data[index].currency + '~' + data[index].availableBalance
+                console.log(id_list);
+
+                $.each(title_list, function(index) {
+
+                    $('#title').append($('<option>', {
+                        value: title_list[index].description
+                    }).text(title_list[index].description
                     ));
 
-                });  --}}
+
+
+                });
+
+                $.each(country_list, function(index) {
+
+                    $('#country').append($('<option>', {
+                        value: country_list[index].description
+                    }).text(country_list[index].description
+                    ));
+
+                });
+
+                $.each(id_list, function(index) {
+
+                    $('#id_type').append($('<option>', {
+                        value: id_list[index].description
+                    }).text(id_list[index].description
+                    ));
+
+                });
             },
+
 
         })
     }
@@ -689,6 +707,13 @@
                        }
 
                        reader.readAsDataURL(file);
+
+                       reader.onload = function(){
+                        {{--  alert(reader.result)  --}}
+                        $(".display_selected_id_image").attr("src", reader.result);
+                        $('#image_upload_').val(reader.result)
+
+                       }
                    }
 
                 $('.display_selected_id_image').show();
@@ -854,6 +879,13 @@
                             }
 
                             reader.readAsDataURL(file);
+
+                            reader.onload = function(){
+                                {{--  alert(reader.result)  --}}
+
+                                $(".display_passport_picture").attr("src", reader.result);
+                                $('#passport_picture_').val(reader.result)
+                            }
                         }
                         $(".display_passport_picture").show();
             })
@@ -870,9 +902,113 @@
                             }
 
                             reader.readAsDataURL(file);
+
+                            reader.onload = function(){
+                                {{--  alert(reader.result)  --}}
+                                $(".display_selfie").attr("src", reader.result);
+                                $('#selfie_upload_').val(reader.result)
+                         }
+
                         }
 
                         $(".display_selfie").show()
+            })
+
+            $("#confirm_submit").click(function(e){
+                e.preventDefault();
+
+
+                // Personal Details
+                var title = $('#title').val();
+                $('#display_title').text(title);
+
+                var surname = $('#surname').val();
+                $('#display_surname').text(surname);
+
+                var firstname = $('#firstname').val();
+                $('#display_firstname').text(firstname);
+
+                var gender = $("#select_gender input[type='radio']:checked").val();
+                $('#display_select_gender').text(gender);
+
+                var birthday = $("#DOB").datepicker().val();
+                $('#display_DOB').text(birthday);
+
+                var birth_place = $('#birth_place').val();
+                $('#display_birth_place').text(birth_place);
+
+                var country = $('#country').val();
+                var country_info = country.split("~")
+                $('#display_country').text(country_info[1]);
+                var country_ = country[1];
+
+
+                // Contact & ID Details
+                var mobile_number = $('#mobile_number').val();
+                $('#display_mobile_number').text(mobile_number);
+
+                var email = $('#email').val();
+                $('#display_email').text(email);
+
+                var city = $('#city').val();
+                $('#display_city').text(city);
+
+                var town = $('#town').val();
+                $('#display_town').text(town);
+
+                var residential_address = $('#residential_address').val();
+                $('#display_residential_address').text(residential_address);
+
+                var id_type = $('#id_type').val();
+                $('#display_id_type').text(id_type);
+
+                var id_number = $('#id_number').val();
+                $('#display_id_number').text(id_number);
+
+                var issue_date = $("#issue_date").datepicker().val();
+                $('#display_issue_date').text(issue_date);
+
+                var expiry_date = $("#expiry_date").datepicker().val();
+                $('#display_expiry_date').text(expiry_date);
+
+                var id_iamge = $('#image_upload_').val();
+
+                var passport_picture = $('#passport_picture_').val();
+
+                var signed_selfie_paper = $('#selfie_upload_').val();
+
+
+                $.ajax({
+                    "type" : "POST" ,
+                    "url" : "../savings-account-creation-api" ,
+                    "datatype": "application/json",
+                    "data" : {
+                        "title" : title ,
+                        "surname" : surname ,
+                        "firstname" : firstname ,
+                        "gender" : gender ,
+                        "birthday" : birthday ,
+                        "birth_place" : birth_place ,
+                        "country" : country_ ,
+                        "mobile_number" : mobile_number ,
+                        "email" : email ,
+                        "city" : city ,
+                        "town" : town ,
+                        "residential_address" : residential_address ,
+                        "id_type" : id_type ,
+                        "id_number" : id_number ,
+                        "issue_date" : issue_date ,
+                        "expiry_date" : expiry_date ,
+                        "id_iamge" : id_iamge ,
+                        "passport_picture" : passport_picture ,
+                        "signed_selfie_paper" :signed_selfie_paper
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: alert("Success");
+                })
+
             })
     })
 
