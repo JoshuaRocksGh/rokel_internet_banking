@@ -279,73 +279,6 @@ class FunctionsController extends Controller
         return $result->api_response($response);
     }
 
-<<<<<<< HEAD
-    //public function beneficiary_payment_from_account()
-    public function get_Loan_products()
-        {
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
-
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-
-
-        $response = Http::get(env('API_BASE_URL') . "/loans/loanProducts", $data);
-
-
-        $result = new ApiBaseResponse();
-        return $result->api_response($response);
-    }
-
-    //method to return the interest types
-    public function get_Interest_Types()
-        {
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
-
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-
-
-        $response = Http::get(env('API_BASE_URL') . "/loans/interestTypes", $data);
-
-        $result = new ApiBaseResponse();
-        return $result->api_response($response);
-    }
-
-    //method to return the interest types
-    public function get_loan_frequencies()
-        {
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
-
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-
-
-        $response = Http::get(env('API_BASE_URL') . "/loans/loanFrequencies", $data);
-
-        $result = new ApiBaseResponse();
-        return $result->api_response($response);
-    }
-
-}
-=======
 
     public function lovs_list()
     {
@@ -374,5 +307,71 @@ class FunctionsController extends Controller
 
         }
     }
+
+    public function get_Loan_products()
+    {
+
+    $authToken = session()->get('userToken');
+    $userID = session()->get('userId');
+
+
+
+    $data = [
+        "authToken" => $authToken,
+        "userId"    => $userID
+    ];
+
+
+    $response = Http::get(env('API_BASE_URL') . "/loans/loanProducts", $data);
+
+
+    $result = new ApiBaseResponse();
+    return $result->api_response($response);
 }
->>>>>>> 04d2010933c33f8ac9ac0393325e3a9a0760e6fc
+
+//method to return the interest types
+public function get_Interest_Types()
+    {
+
+    $authToken = session()->get('userToken');
+    $userID = session()->get('userId');
+
+
+
+    $data = [
+        "authToken" => $authToken,
+        "userId"    => $userID
+    ];
+
+
+    $response = Http::get(env('API_BASE_URL') . "/loans/interestTypes", $data);
+
+    $result = new ApiBaseResponse();
+    return $result->api_response($response);
+}
+
+//method to return the interest types
+public function get_loan_frequencies()
+    {
+
+    $authToken = session()->get('userToken');
+    $userID = session()->get('userId');
+
+
+
+    $data = [
+        "authToken" => $authToken,
+        "userId"    => $userID
+    ];
+
+
+    $response = Http::get(env('API_BASE_URL') . "/loans/loanFrequencies", $data);
+
+    $result = new ApiBaseResponse();
+    return $result->api_response($response);
+}
+
+
+}
+
+
