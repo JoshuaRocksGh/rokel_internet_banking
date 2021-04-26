@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{--  @include('snippets.top_navbar', ['page_title' => 'OWN ACCOUNT TRANSFER '])  --}}
+
     <legend></legend>
 
     <div class="row">
