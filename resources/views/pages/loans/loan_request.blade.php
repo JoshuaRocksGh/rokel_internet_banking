@@ -236,18 +236,24 @@
                                     </p>
                                 </div>
 
+
+
                                 <div id="collapseOne" class="collapse show col-md-12" aria-labelledby="headingOne" data-parent="#accordion">
-
-                                    <div class="form-group row appear-button">
-                                        <div class="col-8 offset-4 text-right">
-                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_request">
-                                                New Loan Quotation
-                                            </button>
-
-                                        </div>
-                                    </div>
                                     <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group row">
+                                                    <div class="col-8 offset-4 text-right">
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-sm btn-rounded waves-effect waves-light "
+                                                            id="btn_submit_new_loan_request">
+                                                            New Loan Request
+                                                        </button>
 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                             <div class="table-responsive table-bordered">
                                                 <table id="" class="table mb-0 ">
                                                     <thead>
@@ -483,7 +489,7 @@
 
                             console.log(response)
 
-                            if(response.responseCode == '000'){
+                            if(response.responseCode != '000'){
                                 toaster(response.message, 'success', 20000 )
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
@@ -491,8 +497,8 @@
                                 // $(".success-message").hide(30000);
                                 $("#loan_request_detail_div").show();
                                 $(".success-message").show();
-                                $("#loan_request_detail_div").hide(2000);
-                                $(".success-message").hide(2000);
+                                $("#loan_request_detail_div").hide(20000);
+                                $(".success-message").hide(20000);
                                 $(".appear-button").show();
 
 
@@ -519,6 +525,13 @@
 
 
                 });
+
+                $("#btn_submit_new_loan_request").click(function(){
+                    $(".disappear-after-success").toggle();
+
+                });
+
+
 
         });
     </script>
