@@ -159,10 +159,10 @@
                                             <div class="btn-group mb-2">
                                                 <input type="text" id="startDate"
                                                     class="form-control date-picker-startDate flatpickr-input input-sm"
-                                                     readonly="readonly">
+                                                    readonly="readonly">
                                                 <input type="text" id="endDate"
                                                     class="form-control date-picker-endDate flatpickr-input input-sm"
-                                                     readonly="readonly">
+                                                    readonly="readonly">
 
                                             </div>
 
@@ -207,11 +207,14 @@
                                         </div>
 
 
-                                            <div class="text-center currency_converter_error_area" id="account_transaction_retry_btn">
-                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt="" style="width: 180px; height:130px;">
-                                                <legend></legend>
-                                                <button class="btn btn-secondary" > <i class="fe-rotate-ccw"></i> &nbsp;  Please retry</button>
-                                            </div>
+                                        <div class="text-center currency_converter_error_area"
+                                            id="account_transaction_retry_btn">
+                                            <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
+                                                style="width: 180px; height:130px;">
+                                            <legend></legend>
+                                            <button class="btn btn-secondary"> <i class="fe-rotate-ccw"></i> &nbsp; Please
+                                                retry</button>
+                                        </div>
 
                                         {{-- <div class="text-center" id="account_transaction_retry_btn">
                                             <button class="btn btn-sm btn-secondary" >retry</button>
@@ -219,7 +222,7 @@
                                     </div>
                                 </div>
 
- <div class="row">
+                                <div class="row">
                                     <div class="col-md-12">
 
                                         {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
@@ -234,6 +237,7 @@
                                                     <th>Batch No</th>
                                                     <th>Amount</th>
                                                     <th>Balance</th>
+                                                    <th>Attachment</th>
                                                 </tr>
                                             </thead>
 
@@ -303,9 +307,6 @@
         <script>
             // creates multiple instances
 
-
-
-
         </script>
 
         <script>
@@ -313,7 +314,7 @@
             $("#account_balance_info_retry_btn").hide();
 
             $(".account_transaction_display").hide();
-             $(".account_transaction_display_table").hide();
+            $(".account_transaction_display_table").hide();
             $("#account_transaction_retry_btn").hide();
 
 
@@ -321,39 +322,39 @@
             $(document).ready(function() {
 
 
-                  let today = new Date();
-            let dd = today.getDate();
+                let today = new Date();
+                let dd = today.getDate();
 
-            let mm = today.getMonth()+1;
-            const yyyy = today.getFullYear()
-            console.log(mm)
-            console.log(String(mm).length)
-            if(String(mm).length == 1){
-                mm = '0' + mm
-            }
+                let mm = today.getMonth() + 1;
+                const yyyy = today.getFullYear()
+                console.log(mm)
+                console.log(String(mm).length)
+                if (String(mm).length == 1) {
+                    mm = '0' + mm
+                }
 
-            defaultStartDate = '01-' + mm + '-' + today.getFullYear()
-            defaultEndDate = '30-' + mm + '-' + today.getFullYear()
+                defaultStartDate = '01-' + mm + '-' + today.getFullYear()
+                defaultEndDate = '30-' + mm + '-' + today.getFullYear()
 
-            console.log(defaultStartDate)
-            console.log(defaultEndDate)
+                console.log(defaultStartDate)
+                console.log(defaultEndDate)
 
 
-            $(".date-picker-startDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: [defaultStartDate],
-                  position: "above"
-            })
+                $(".date-picker-startDate").flatpickr({
+                    altInput: true,
+                    altFormat: "j F, Y",
+                    dateFormat: "d-m-Y",
+                    defaultDate: [defaultStartDate],
+                    position: "above"
+                })
 
-            $(".date-picker-endDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: [defaultEndDate],
-                position: "above"
-            })
+                $(".date-picker-endDate").flatpickr({
+                    altInput: true,
+                    altFormat: "j F, Y",
+                    dateFormat: "d-m-Y",
+                    defaultDate: [defaultEndDate],
+                    position: "above"
+                })
 
 
 
@@ -372,64 +373,64 @@
 
                 $('#date_search').click(function() {
 
-                                $(".account_transaction_display").hide();
-             $(".account_transaction_display_table").hide();
-            $("#account_transaction_retry_btn").hide();
-            $("#account_transaction_loader").show();
+                    $(".account_transaction_display").hide();
+                    $(".account_transaction_display_table").hide();
+                    $("#account_transaction_retry_btn").hide();
+                    $("#account_transaction_loader").show();
 
-                   let start_date =  $('#startDate').val()
-                   let end_date =  $('#endDate').val()
+                    let start_date = $('#startDate').val()
+                    let end_date = $('#endDate').val()
 
                     getAccountTransactions(account_number, start_date, end_date, transLimit)
 
-                   console.log(start_date);
-                   console.log(end_date)
+                    console.log(start_date);
+                    console.log(end_date)
                 })
 
-                $("#credit_transaction").click(function(){
-                     $('#table-body-display').empty()
-                     {{-- return false --}}
+                $("#credit_transaction").click(function() {
+                    $('#table-body-display').empty()
+                    {{-- return false --}}
 
                     let data = tranactions
                     var load_data = []
-                     $.each(data, function(index) {
-                        if(parseFloat(data[index].amount) > 0){
+                    $.each(data, function(index) {
+                        if (parseFloat(data[index].amount) > 0) {
                             {{-- alert(data[index].amount) --}}
                             load_data.push(data[index])
-                        }else{
+                        } else {
 
                         }
-                     })
+                    })
 
 
-                     load_data_into_table(load_data)
+                    load_data_into_table(load_data)
                 })
 
 
-                $("#all_transaction").click(function(){
-                     $('#table-body-display').empty()
+                $("#all_transaction").click(function() {
+                    $('#table-body-display').empty()
 
                     let data = tranactions
 
-                     load_data_into_table(tranactions)
+                    load_data_into_table(tranactions)
                 })
 
 
-                $("#debit_transaction").click(function(){
-                     $('#table-body-display').empty()
-                     {{-- return false --}}
+                $("#debit_transaction").click(function() {
+                    $('#table-body-display').empty()
+                    {{-- return false --}}
 
                     let data = tranactions
                     var load_data = []
-                     $.each(data, function(index) {
-                        if(parseFloat(data[index].amount) < 0){
+                    $.each(data, function(index) {
+                        if (parseFloat(data[index].amount) < 0) {
                             {{-- alert(data[index].amount) --}}
                             load_data.push(data[index])
-                        }else{
+                        } else {
 
                         }
-                     })
-                     load_data_into_table(load_data)
+                    })
+                    load_data_into_table(load_data)
                 })
 
 
@@ -444,80 +445,90 @@
 
                 $("#account_transaction_retry_btn").click(function() {
                     $(".account_transaction_display").hide();
-                     $(".account_transaction_display_table").hide();
+                    $(".account_transaction_display_table").hide();
                     $("#account_transaction_retry_btn").hide();
                     $("#account_transaction_loader").show();
-                        let account_number = @json($account_number);
-                        let start_date = $('.date-picker-startDate').val();
-                        let end_date = $('.date-picker-endDate').val();
-                        let transLimit = "10";
-                        console.log(start_date)
-                        console.log(end_date)
-                        console.log(account_number)
+                    let account_number = @json($account_number);
+                    let start_date = $('.date-picker-startDate').val();
+                    let end_date = $('.date-picker-endDate').val();
+                    let transLimit = "10";
+                    console.log(start_date)
+                    console.log(end_date)
+                    console.log(account_number)
                     getAccountTransactions(account_number, start_date, end_date);
                 })
 
 
-                function load_data_into_table(data)
-                {
-                {{-- $('#table-body-display').empty() --}}
+                function load_data_into_table(data) {
+                    {{-- $('#table-body-display').empty() --}}
 
-                $("#table-body-display tr").remove();
+                    $("#table-body-display tr").remove();
                     $(".account_transaction_display").hide();
-             $(".account_transaction_display_table").hide();
-            $("#account_transaction_retry_btn").hide();
-            $("#account_transaction_loader").show();
+                    $(".account_transaction_display_table").hide();
+                    $("#account_transaction_retry_btn").hide();
+                    $("#account_transaction_loader").show();
 
                     $('#table-body-display').html('')
-                     var table = $('.account_transaction_display_table').DataTable();
+                    var table = $('.account_transaction_display_table').DataTable();
                     var nodes = table.rows().nodes();
                     {{-- table.rows.remove() --}}
                     table.clear().draw()
 
 
-                                if(data.length > 0){
-                                                                    $.each(data, function(index) {
-                                    let amount = ``;
-                                    if (parseFloat(data[index].amount) > 0) {
-                                        amount = `<b class='text-success'>
-                                                            <i class="fe-arrow-up text-success mr-1"></i>
-                                                            ${data[index].amount}
-                                                        </b>
-                                                        `
-                                    } else {
-                                        amount = `<b class='text-danger'>
-                                                            <i class="fe-arrow-down text-danger mr-1"></i>
-                                                            ${data[index].amount}
-                                                        </b>
-                                                        `
-                                    }
+                    if (data.length > 0) {
+                        $.each(data, function(index) {
+                            let amount = ``;
+                            if (parseFloat(data[index].amount) > 0) {
+                                amount = `<b class='text-success'>
+                                                                                        <i class="fe-arrow-up text-success mr-1"></i>
+                                                                                        ${data[index].amount}
+                                                                                    </b>
+                                                                                    `
+                            } else {
+                                amount = `<b class='text-danger'>
+                                                                                        <i class="fe-arrow-down text-danger mr-1"></i>
+                                                                                        ${data[index].amount}
+                                                                                    </b>
+                                                                                    `
+                            }
+
+                            let attachment = ``
+
+                            if (data[index].imageCheck == "0") {
+                                attachment =
+                                    `<i  class="fe-minus text-secondary">`
+                            } else {
+                                attachment =
+                                    `<i class="fe-file-text text-danger">`
+                            }
 
 
-                                    table.row.add([
-                                        data[index].postingSysDate,
-                                        data[index].valueDate,
-                                        data[index].narration,
-                                        data[index].documentReference,
-                                        `<a type="button" data-toggle="modal"
-                                            data-target="#bs-example-modal-xl"
-                                            class="text-primary">${data[index].batchNumber}</a>`,
-                                           amount,
-                                            `${data[index].runningBalance}`
+                            table.row.add([
+                                data[index].postingSysDate,
+                                data[index].valueDate,
+                                data[index].narration,
+                                data[index].documentReference,
+                                `<a type="button" data-toggle="modal"
+                                                                        data-target="#bs-example-modal-xl"
+                                                                        class="text-primary">${data[index].batchNumber}</a>`,
+                                amount,
+                                `${data[index].runningBalance}`,
+                                `${attachment}`
 
 
-                                    ]).draw(false)
+                            ]).draw(false)
 
 
-                                })
-                                }else{
+                        })
+                    } else {
 
-                                }
+                    }
 
 
-                                $("#account_transaction_loader").hide();
-                                $("#account_transaction_retry_btn").hide();
-                                 $(".account_transaction_display_table").show();
-                                $(".account_transaction_display").show();
+                    $("#account_transaction_loader").hide();
+                    $("#account_transaction_retry_btn").hide();
+                    $(".account_transaction_display_table").show();
+                    $(".account_transaction_display").show();
 
                 }
 
@@ -551,13 +562,13 @@
 
                                 $("#account_transaction_loader").hide();
                                 $("#account_transaction_retry_btn").hide();
-                                 $(".account_transaction_display_table").show();
+                                $(".account_transaction_display_table").show();
                                 $(".account_transaction_display").show();
 
                             } else {
                                 $("#account_transaction_loader").hide();
                                 $(".account_transaction_display").hide();
-                                 $(".account_transaction_display_table").hide();
+                                $(".account_transaction_display_table").hide();
                                 $("#account_transaction_retry_btn").show();
                             }
 
@@ -565,7 +576,7 @@
                         error: function(xhr, status, error) {
                             $("#account_transaction_loader").hide();
                             $(".account_transaction_display").hide();
-                             $(".account_transaction_display_table").hide();
+                            $(".account_transaction_display_table").hide();
                             $("#account_transaction_retry_btn").show();
                         }
                     })

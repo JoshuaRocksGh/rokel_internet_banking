@@ -14,12 +14,14 @@
                         <div class="col-md-2"></div>
 
                         <div class="col-md-8  card-body">
-                            <h2 class="header-title m-t-0 text-primary">OWN ACCOUNT TRANSFER</h2>
+                            <h3 class=" m-t-0 text-primary">OWN ACCOUNT TRANSFER</h3>
 
                             <p class="text-muted font-14 m-b-20">
-                                Parsley is a javascript form validation library. It helps you provide your
-                                users with feedback on their form submission before sending it to your
-                                server.
+                                <span>
+                                    <b class="text-danger">Please Note: </b>
+                                    <b>Direct to bank offers you the opportunity to transfer funcds between your own
+                                        accounts</b>
+                                </span>.
                             </p>
                             <hr>
 
@@ -88,11 +90,9 @@
                                             <legend></legend>
 
 
-                                            <div class="form-group" id="frequency">
+
+                                            {{-- <div class="form-group" id="frequency">
                                                 <label class="">Payment Frequency</label>
-
-                                                {{-- <label class="h6">Category</label> --}}
-
                                                 <select class="custom-select" id="select_frequency" required>
                                                     <option value="">Select Frequency</option>
                                                     <option value="001~Weekly">Weekly</option>
@@ -103,7 +103,9 @@
 
                                             </div>
 
-                                            <input type="text" class="form-control" id="schedule_payment_contraint_input">
+                                            <input type="text" class="form-control" id="schedule_payment_contraint_input"> --}}
+
+                                            <label class="">Value Date</label>
 
                                             <input type="date" class="form-control" id="schedule_payment_date">
 
