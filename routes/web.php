@@ -44,6 +44,8 @@ use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
 use App\Http\Controllers\GeneralFunctions\FunctionsController;
+use App\Http\Controllers\Loan\LoanProductsController;
+use App\Http\Controllers\Loan\LoanRequestController;
 use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
@@ -454,3 +456,15 @@ Route::post('change-pin-api', [ChangePinController::class, 'change_pin'])->name(
 
 //Route for change-password-api
 Route::post('change-password-api', [ChangePasswordController::class, 'change_password'])->name('change-password-api');
+
+//Route for loan products api
+Route::get('get-loan-products-api', [FunctionsController::class, 'get_Loan_products'])->name('get-loan-products-api');
+
+//Route to send loan request details
+Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_request'])->name('loan-request-details');
+
+//route to return interest rate types
+Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_Types'])->name('get-interest-types-api');
+
+//route to return loan frequencies
+Route::get('get-loan-frequencies-api', [FunctionsController::class, 'get_loan_frequencies'])->name('get-loan-frequencies-api');

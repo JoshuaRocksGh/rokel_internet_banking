@@ -18,6 +18,8 @@ class BulkUploadsController extends Controller
     public function get_bulk_upload_list(Request $request)
     {
 
+        /*
+
         $data = '{
   "responseCode": "000",
   "message": "Available bulk files",
@@ -44,15 +46,19 @@ class BulkUploadsController extends Controller
 }';
         return json_decode($data, true);
 
+        */
 
-        $customer_no = $request->query("customer_no");
+        // return json_encode(session()->get());
+
+        $customerNumber = $request->query("customer_no");
         // return $customer_no;
 
+        // $authToken = session()->get('customerNumber');
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
         // return env('API_BASE_URL') . "corporate/getBulkUploadFile?customerNumber=$customer_no";
-        $response = Http::get(env('API_BASE_URL') . "corporate/getBulkUploadFile?customerNumber=$customer_no");
+        $response = Http::get(env('API_BASE_URL') . "corporate/getBulkUploadFiles?customerNumber=$customerNumber");
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);

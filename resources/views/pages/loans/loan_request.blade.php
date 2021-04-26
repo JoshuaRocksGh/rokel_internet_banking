@@ -53,9 +53,9 @@
                                                         <div class="col-6">
                                                             <select class="custom-select" id="loan_product" required>
                                                                     <option value="">---Select Loan Product---</option>
-                                                                    <option value="Car Loan">Car Loan</option>
+                                                                    {{-- <option value="Car Loan">Car Loan</option>
                                                                     <option value="Home Equity Loan">Home Equity Loan</option>
-                                                                    <option value="Business Loan">Business Loan</option>
+                                                                    <option value="Business Loan">Business Loan</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -83,10 +83,10 @@
                                                         <div class="col-6">
                                                             <select class="custom-select" id="interest_rate_type" required>
                                                                 <option value="">---Select Interest Rate Type---</option>
-                                                                <option value="1">STRAIGHT LINE</option>
+                                                                {{-- <option value="1">STRAIGHT LINE</option>
                                                                 <option value="2">REDUCING BALANCE</option>
                                                                 <option value="3">AMORTIZATION METHOD</option>
-                                                                <option value="4">REDUCING (FIXED INST'L)</option>
+                                                                <option value="4">REDUCING (FIXED INST'L)</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -95,12 +95,12 @@
                                                             <label>Principal Repay Frequency:</label>
                                                             <span class="text-danger">*</span></label>
                                                         <div class="col-6">
-                                                            <select class="custom-select" id="principal_repay_freq" required>
+                                                            <select class="custom-select loan_frequencies" id="principal_repay_freq" required>
                                                                 <option value="">-Select Principal Repay Frequency-</option>
-                                                                <option value="WEEKLY">WEEKLY</option>
+                                                                {{-- <option value="WEEKLY">WEEKLY</option>
                                                                 <option value="BI-WEEKLY">BI-WEEKLY</option>
                                                                 <option value="MONTHLY">MONTHLY</option>
-                                                                <option value="QUARTERLY">QUARTERLY</option>
+                                                                <option value="QUARTERLY">QUARTERLY</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -109,8 +109,13 @@
                                                             Interest Repay Frequency:
                                                             <span class="text-danger">*</span></label>
                                                         <div class="col-6">
-                                                            <input type="text" class="form-control" id="interest_repay_freq" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
+                                                            <select class="custom-select loan_frequencies" id="interest_repay_freq" required>
+                                                                <option value="">-Select Principal Repay Frequency-</option>
+                                                                {{-- <option value="WEEKLY">WEEKLY</option>
+                                                                <option value="BI-WEEKLY">BI-WEEKLY</option>
+                                                                <option value="MONTHLY">MONTHLY</option>
+                                                                <option value="QUARTERLY">QUARTERLY</option> --}}
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -199,7 +204,7 @@
                                                 <td>
 
                                                     <span class="text-right font-weight-semibold">
-                                                        <span class="display_i  "></span>
+                                                        <span class="display_interest_rate"></span>
                                                     </span>
                                                 </td>
 
@@ -279,6 +284,62 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
 
+            function loan_product() {
+                            $.ajax({
+                                'type': 'GET',
+                                'url': 'get-loan-products-api',
+                                "datatype": "application/json",
+                                success: function(response) {
+                                    console.log(response.data);
+                                    let data = response.data
+                                    $.each(data, function(index) {
+
+                                        $('#loan_product').append($('<option>', {
+                                            value: data[index].code}).text(data[index].name));
+
+                                    });
+                                },
+
+                            })
+                        }
+
+                        function loan_frequencies() {
+                            $.ajax({
+                                'type': 'GET',
+                                'url': 'get-loan-frequencies-api',
+                                "datatype": "application/json",
+                                success: function(response) {
+                                    console.log(response.data);
+                                    let data = response.data
+                                    $.each(data, function(index) {
+
+                                        $('.loan_frequencies').append($('<option>', {
+                                            value: data[index].code}).text(data[index].name));
+
+                                    });
+                                },
+
+                            })
+                        }
+
+                        function interest_repay_frequency() {
+                            $.ajax({
+                                'type': 'GET',
+                                'url': 'get-interest-types-api',
+                                "datatype": "application/json",
+                                success: function(response) {
+                                    console.log(response.data);
+                                    let data = response.data
+                                    $.each(data, function(index) {
+
+                                        $('#interest_rate_type').append($('<option>', {
+                                            value: data[index].code}).text(data[index].name));
+
+                                    });
+                                },
+
+                            })
+                        }
             function toaster(message, icon, timer)
             {
                 const Toast = Swal.mixin({
@@ -309,19 +370,21 @@
         $(document).ready(function(){
 
             setTimeout(function(){
-                branches()
-                my_account()
+                loan_product()
+                loan_frequencies()
+                interest_repay_frequency()
             }, 1000)
 
             $("#loan_product").change(function(){
                 var loan_product = $("#loan_product").val();
-                $(".display_loan_product").text("Loan Product: "+loan_product);
+                var optionText = $("#loan_product option:selected").text();
+                $(".display_loan_product").text("Loan Product: "+optionText);
                 console.log(loan_product);
             });
 
             $("#loan_amount").change(function(){
                 var loan_amount = $("#loan_amount").val();
-                $(".display_loan_amount").text("Loan Amount: "+loan_amount);
+                $(".display_loan_amount").text("Loan Amount: SLL "+loan_amount);
                 console.log(loan_amount);
             })
 
@@ -333,20 +396,23 @@
 
             $("#interest_rate_type").change(function(){
                 var interest_rate_type = $("#interest_rate_type").val();
-                $(".display_interest_rate_type").text("Interest Rate Type: "+interest_rate_type);
+                var optionText = $("#interest_rate_type option:selected").text();
+                $(".display_interest_rate_type").text("Interest Rate Type: "+optionText);
                 console.log(interest_rate_type);
             })
 
             $("#principal_repay_freq").change(function(){
                 var principal_repay_freq = $("#principal_repay_freq").val();
-                $(".display_principal_repay_freq").text("Principal Repay Frequency: "+principal_repay_freq);
+                var optionText = $("#principal_repay_freq option:selected").text();
+                $(".display_principal_repay_freq").text("Principal Repay Frequency: "+optionText);
                 console.log(principal_repay_freq);
             })
 
 
             $("#interest_repay_freq").change(function(){
                 var interest_repay_freq = $("#interest_repay_freq").val();
-                $(".display_interest_repay_freq").text("Interest Repay Frequency: "+interest_repay_freq);
+                var optionText = $("#principal_repay_freq option:selected").text();
+                $(".display_interest_repay_freq").text("Interest Repay Frequency: "+optionText);
                 console.log(interest_repay_freq);
             })
             // $("#pin").keyup(function(){
@@ -367,7 +433,7 @@
                     let interest_repay_freq = $('#interest_repay_freq').val();
 
                     console.log('loan product: '+loan_product);
-                    console.log('loan_amount: '+loan_amount);
+                    console.log('loan amount: '+loan_amount);
                     console.log('interest rate type: '+interest_rate_type);
                     console.log('principal repay frequency: '+principal_repay_freq);
                     console.log('Interest repay frequency '+interest_repay_freq);
@@ -378,26 +444,19 @@
                     }
                     else{
 
-                        let branch_info = pUBranch.split("~");
-                        let branchCode = branch_info[0];
-
-                        my_account_info = my_account.split("~");
-                        let accountNumber = my_account_info[2].trim();
-
-
 
                     $.ajax({
 
                         'type' : 'POST',
-                        'url' : 'statement-request-api',
+                        'url' : 'loan-request-details',
                         "datatype" : "application/json",
                         'data' : {
-                            'account_no' : accountNumber.trim(),
-                            'type_of_statement' : type_of_statement,
-                            'pick_up_branch' : branchCode.trim(),
-                            'transStartDate' : transStartDate.trim(),
-                            'transEndDate' : transEndDate.trim(),
-                            'pin': pin
+                            'loan_product' : loan_product,
+                            'loan_amount' : loan_amount,
+                            'tenure_in_months' : tenure_in_months,
+                            'interest_rate_type' : interest_rate_type,
+                            'principal_repay_freq' : principal_repay_freq,
+                            'interest_repay_freq' : interest_repay_freq
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

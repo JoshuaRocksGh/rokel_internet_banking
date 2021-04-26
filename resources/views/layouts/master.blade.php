@@ -65,7 +65,7 @@
         /* Works on Firefox */
         * {
             scrollbar-width: thin;
-            scrollbar-color: rgb(188, 108, 214) rgb(217, 217, 216);
+            scrollbar-color: rgb(43, 20, 148) rgb(217, 217, 216);
         }
 
         /* Works on Chrome, Edge, and Safari */
@@ -78,7 +78,7 @@
         }
 
         *::-webkit-scrollbar-thumb {
-            background-color: rgb(188, 108, 214);
+            background-color: rgb(43, 20, 148);
             border-radius: 20px;
             border: 3px solid rgb(217, 217, 216);
         }
@@ -88,6 +88,33 @@
         }
 
     </style>
+
+
+    <style>
+        @media print {
+            .hide_on_print {
+                display: none
+            }
+        }
+
+        @font-face {
+            font-family: 'password';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+        }
+
+        input.key {
+            font-family: 'password';
+            width: 100px;
+            height: 26px;
+        }
+
+    </style>
+
+
+
+    @yield('styles')
 
 
 </head>

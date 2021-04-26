@@ -1,5 +1,32 @@
 @extends('layouts.master')
 
+@section('styles')
+
+    <style>
+        @media print {
+            .hide_on_print {
+                display: none
+            }
+        }
+
+        @font-face {
+            font-family: 'password';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+        }
+
+        input.key {
+            font-family: 'password';
+            width: 100px;
+            height: 26px;
+        }
+
+    </style>
+
+
+@endsection
+
 @section('content')
 
 {{--  @include('snippets.top_navbar', ['page_title' => 'OWN ACCOUNT TRANSFER '])  --}}
@@ -30,7 +57,7 @@
 
 
                                 <div class="col-md-6">
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
+                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
                                         @csrf
                                         <div class="form-group">
                                             <label class="h6">Transfer From<span class="text-danger">*</span></label>
@@ -101,9 +128,9 @@
                                                     <option value="004~Quaterly">Quaterly</option>
                                                 </select>
 
-                                            </div>
+                                            </div> --}}
 
-                                            <input type="text" class="form-control" id="schedule_payment_contraint_input"> --}}
+                                            <input type="text" class="form-control" id="schedule_payment_contraint_input">
 
                                             <label class="">Value Date</label>
 
@@ -185,7 +212,7 @@
                                         {{-- <label class="h6">Category</label> --}}
 
                                         <input type="text" class="form-control" id="purpose"
-                                            placeholder="Enter purpose / narration" required>
+                                            placeholder="Enter purpose / narration" autocomplete="off" required>
 
                                     </div>
                                     {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
@@ -284,13 +311,13 @@
                                                         <td>
                                                             <span class="font-13 text-primary h3 display_schedule_payment"
                                                                 id="display_schedule_payment">NO </span>
-                                                            &nbsp; | &nbsp;
+                                                            &nbsp;
                                                             <span
                                                                 class="font-13 text-primary h3 display_schedule_payment_date"
                                                                 id="display_schedule_payment_date"> N/A
 
                                                             </span>
-                                                            &nbsp; | &nbsp;
+                                                            &nbsp;
 
                                                             <span class="font-13 text-primary h3 display_frequency"
                                                                 id="display_frequency">
@@ -317,21 +344,21 @@
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Posted BY: </td>
+                                                        <td>Posted By: </td>
                                                         <td>
                                                             <span class="font-13 text-primary h3"
                                                                 id="display_posted_by">Kwabena Ampah</span>
                                                         </td>
                                                     </tr>
 
-                                                    <tr>
+                                                    <tr class="hide_on_print">
                                                         <td>Enter Pin: </td>
                                                         <td>
-                                                            <div class="form-group">
-                                                                <input type="text" name="user_pin" class="form-control"
-                                                                    id="user_pin"
-                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                            </div>
+
+                                                            <input type="text" name="user_pin" class="form-control key"
+                                                                id="user_pin"
+                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+
                                                         </td>
                                                     </tr>
 
@@ -350,8 +377,8 @@
                                                         id="spinner" aria-hidden="true"></span>
                                                     <span id="spinner-text">Loading...</span>
                                                 </button></span>
-                                            <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
-                                                    id="print_receipt" onclick="window.print()">Print Receipt
+                                            <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                    type="button" id="print_receipt" onclick="window.print()">Print Receipt
                                                 </button></span>
                                         </div>
                                     </div>
@@ -680,7 +707,7 @@
                     var to_account = $('#to_account').val()
                     var transfer_amount = $('#amount').val()
                     var category = $('#category').val()
-                    var select_frequency_ = $('#select_frequency').val()
+                    {{-- var select_frequency_ = $('#select_frequency').val() --}}
                     var purpose = $('#purpose').val()
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
@@ -712,7 +739,7 @@
                     }
 
 
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
+                    $('.display_schedule_payment_date').text('| ' + schedule_payment_date)
 
 
                     if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() ==
@@ -724,10 +751,10 @@
                         //set purpose and category values
                         var category_info = category.split("~")
 
-                        var select_frequency_info = select_frequency_.split("~")
+                        {{-- var select_frequency_info = select_frequency_.split("~") --}}
 
                         $("#display_category").text(category_info[1])
-                        $("#display_frequency").text(select_frequency_info[1])
+                        {{-- $("#display_frequency").text(select_frequency_info[1]) --}}
                         $("#display_purpose").text(purpose)
 
                         $("#transaction_form").hide()
@@ -785,7 +812,7 @@
                     var from_account = $('#from_account').val().split('~');
                     var to_account = $('#to_account').val().split('~');
                     var category = $('#category').val().split('~');
-                    var select_frequency = $('#select_frequency').val().split('~')
+                    {{-- var select_frequency = $('#select_frequency').val().split('~') --}}
 
 
 
@@ -795,7 +822,7 @@
                     var to_account_ = to_account[1];
                     var transfer_amount = $('#amount').val();
                     var category_ = category[1];
-                    var select_frequency_ = select_frequency[1];
+                    {{-- var select_frequency_ = select_frequency[1]; --}}
                     var purpose = $('#purpose').val();
                     var pin = $('#user_pin').val();
 
@@ -829,8 +856,7 @@
                             'to_account': to_account_,
                             'transfer_amount': transfer_amount,
                             'category': category_,
-                            'select_frequency': select_frequency_,
-                            'purpose': purpose,
+                            {{-- 'select_frequency': select_frequency_, --}} 'purpose': purpose,
                             'schedule_payment_type': schedule_payment_contraint_input,
                             'schedule_payment_date': schedule_payment_date,
                             'secPin': pin
@@ -843,7 +869,7 @@
 
                             {{-- console.log(response.responseCode) --}}
                             if (response.responseCode == '000') {
-                                toaster(response.message, 'success', 10000)
+                                toaster(response.message, 'success', 20000)
                                 $('#confirm_button').hide();
                                 $('#back_button').hide();
                                 $('#print_receipt').show();
