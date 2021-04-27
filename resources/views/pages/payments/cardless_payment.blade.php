@@ -29,10 +29,10 @@
                                             <label class="h6">Select Account</label>
 
 
-                                            <select class="custom-select" id="from_account" required>
+                                            <select class="custom-select " id="from_account" required>
                                                 <option value="">Select Account</option>
-                                                {{-- <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
-                                                    Current Account ~ 001023468976001 </option> --}}
+                                                <option value="CA - PERSONAL ~kwabeane Ampah~001023468976001~GHS~2000">
+                                                    Current Account ~ 001023468976001 </option>
 
                                             </select>
 
@@ -64,11 +64,11 @@
 
                                         <div class="form-group">
 
-                                            {{-- <div class="form-check form-check-inline">
+                                            <div class="form-check form-check-inline">
                                                 <input class="form-check-input radio" type="radio" name="onetime" id="inlineRadio1" value="beneficiary" checked="checked">
                                                 <label class="form-check-label" for="inlineRadio1">Select beneficiary</label>
                                             </div>
-                                            &nbsp;&nbsp; --}}
+                                            &nbsp;&nbsp;
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input radio" type="radio" name="onetime" id="inlineRadio2" value="onetime">
                                                 <label class="form-check-label" for="inlineRadio2">Onetime beneficiary</label>
@@ -460,83 +460,46 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script>
-            function from_account() {
-                $.ajax({
-                    'type': 'GET',
-                    'url': 'get-my-account',
-                    "datatype": "application/json",
-                    success: function(response) {
-                        console.log(response.data);
-                        let data = response.data
-                        $.each(data, function(index) {
-
-                            $('#from_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountDesc + '~' + data[index].accountNumber + '~' +
-                                    data[index].currency + '~' + data[index]
-                                    .availableBalance
-                            }).text(data[index].accountType + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
-                            ));
-                            $('#to_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountNumber + '~' + data[index].currency + '~' +
-                                    data[index].availableBalance
-                            }).text(data[index].accountType + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
-                            ));
-
-                        });
-                    },
-
-                })
-            }
-
-
             $(document).ready(function() {
 
 
-                $(".select_onetime").css("display", "none");
-                $(".select_beneficiary").css("display", "block");
-
-                setTimeout(function() {
-                    from_account();
-                }, 200);
+                // $(".select_onetime").css("display", "none");
+                // $(".select_beneficiary").css("display", "block");
 
                // $(".select_beneficiary").show();
                 //$(".select_onetime").hide();
 
-                var type = $("input[type='radio']:checked").val();
+                // var type = $("input[type='radio']:checked").val();
 
-                $(".radio").click(function(){
+                // $(".radio").click(function(){
 
-                    var type = $("input[type='radio']:checked").val();
+                //     var type = $("input[type='radio']:checked").val();
 
-                    if(type == 'beneficiary'){
-                        $(".select_onetime").css("display", "none");
-                        $(".select_beneficiary").css("display", "block");
+                //     if(type == 'beneficiary'){
+                //         $(".select_onetime").css("display", "none");
+                //         $(".select_beneficiary").css("display", "block");
 
-                        // set amonut to empty
-                        $("#amount").val('');
+                //         // set amonut to empty
+                //         $("#amount").val('');
 
 
-                        //$(".select_onetime").hide();
-                        //$(".select_beneficiary").show();
+                //         //$(".select_onetime").hide();
+                //         //$(".select_beneficiary").show();
 
-                    }
-                    if(type == 'onetime'){
+                //     }
+                //     if(type == 'onetime'){
 
-                        $(".select_beneficiary").css("display", "none");
-                        $(".select_onetime").css("display", "block");
+                //         $(".select_beneficiary").css("display", "none");
+                //         $(".select_onetime").css("display", "block");
 
-                        // set amonut to empty
-                        $("#amount").val('');
+                //         // set amonut to empty
+                //         $("#amount").val('');
 
-                       // $(".select_beneficiary").hide();
-                        //$(".select_onetime").show();
-                    }
+                //        // $(".select_beneficiary").hide();
+                //         //$(".select_onetime").show();
+                //     }
 
-                });
+                // });
 
 
 

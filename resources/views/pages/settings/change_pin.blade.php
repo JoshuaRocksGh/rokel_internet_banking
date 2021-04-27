@@ -227,7 +227,7 @@
                                             Enter your email address and we will send you an email with instructions to
                                             reset your pin.
                                         </p>
-                                        <div class=" ">
+                                        <div class="">
                                             <div class="col-md-12">
                                                 <form action="" autocomplete="off" aria-autocomplete="off" id="reset_pin_form">
 
@@ -419,9 +419,9 @@
                                                                 {
 
                                                                 toaster(response.message, 'error', 9000 );
-                                                                $("#spinner").hide();
-                                                                $("#spinner-text").hide();
-                                                                $("#submit-text").show();
+                                                                $(".spinner").hide();
+                                                                $(".spinner-text").hide();
+                                                                $(".submit-text").show();
 
                                                                 }
                                                         }
