@@ -53,9 +53,6 @@
                                                         <div class="col-6">
                                                             <select class="custom-select" id="loan_product" required>
                                                                     <option value="">---Select Loan Product---</option>
-                                                                    {{-- <option value="Car Loan">Car Loan</option>
-                                                                    <option value="Home Equity Loan">Home Equity Loan</option>
-                                                                    <option value="Business Loan">Business Loan</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -83,10 +80,6 @@
                                                         <div class="col-6">
                                                             <select class="custom-select" id="interest_rate_type" required>
                                                                 <option value="">---Select Interest Rate Type---</option>
-                                                                {{-- <option value="1">STRAIGHT LINE</option>
-                                                                <option value="2">REDUCING BALANCE</option>
-                                                                <option value="3">AMORTIZATION METHOD</option>
-                                                                <option value="4">REDUCING (FIXED INST'L)</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -97,10 +90,6 @@
                                                         <div class="col-6">
                                                             <select class="custom-select loan_frequencies" id="principal_repay_freq" required>
                                                                 <option value="">-Select Principal Repay Frequency-</option>
-                                                                {{-- <option value="WEEKLY">WEEKLY</option>
-                                                                <option value="BI-WEEKLY">BI-WEEKLY</option>
-                                                                <option value="MONTHLY">MONTHLY</option>
-                                                                <option value="QUARTERLY">QUARTERLY</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -111,10 +100,6 @@
                                                         <div class="col-6">
                                                             <select class="custom-select loan_frequencies" id="interest_repay_freq" required>
                                                                 <option value="">-Select Principal Repay Frequency-</option>
-                                                                {{-- <option value="WEEKLY">WEEKLY</option>
-                                                                <option value="BI-WEEKLY">BI-WEEKLY</option>
-                                                                <option value="MONTHLY">MONTHLY</option>
-                                                                <option value="QUARTERLY">QUARTERLY</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -220,9 +205,10 @@
                                     <div class="form-group row">
                                         <div class="col-8 offset-4 text-right">
                                             <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_loan_request">
-                                                Submit
+                                                <span class="spinner-border spinner-border-sm mr-1 spinner" role="status" aria-hidden="true"></span>
+                                                <span class="spinner-text">Loading...</span>
+                                                &nbsp; <span class="submit-text">Submit</span>&nbsp;
                                             </button>
-
                                         </div>
                                     </div>
 
@@ -389,6 +375,8 @@
 
         $(document).ready(function(){
 
+            $(".spinner-text").hide();
+            $(".spinner").hide();
             setTimeout(function(){
                 loan_product()
                 loan_frequencies()
@@ -446,7 +434,6 @@
 
             $('#btn_submit_loan_request').click(function(){
 
-
                     //collect loan details
                     let loan_product = $('#loan_product').val();
                     let loan_amount = $('#loan_amount').val();
@@ -466,6 +453,10 @@
                         toaster("Please fill all required fields","error", 6000);
                     }
                     else{
+                    $(".submit-text").hide();
+                    $(".spinner-border").show();
+                    $(".spinner-text").show();
+
 
 
                     $.ajax({
@@ -489,7 +480,7 @@
 
                             console.log(response)
 
-                            if(response.responseCode != '000'){
+                            if(response.responseCode == '000'){
                                 toaster(response.message, 'success', 20000 )
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
@@ -497,8 +488,8 @@
                                 // $(".success-message").hide(30000);
                                 $("#loan_request_detail_div").show();
                                 $(".success-message").show();
-                                $("#loan_request_detail_div").hide(20000);
-                                $(".success-message").hide(20000);
+                                $("#loan_request_detail_div").hide();
+                                $(".success-message").hide();
                                 $(".appear-button").show();
 
 
@@ -507,6 +498,9 @@
                                 {
 
                                 toaster(response.message, 'error', 9000 );
+                                toaster('resubmit your loan request','error', 9000);
+                                $('#spinner').hide()
+                                $('#spinner-text').hide()
 
                                 }
                         },
