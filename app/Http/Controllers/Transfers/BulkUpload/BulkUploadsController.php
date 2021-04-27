@@ -16,6 +16,26 @@ class BulkUploadsController extends Controller
         return view('pages.transfer.bulkTransfers.bulk_trasnfer');
     }
 
+    public function download_same_bank()
+    {
+        $pathToFile = public_path() . '/assets/images/bulk_payment_same_bank.xlsx';
+
+        $header = array(
+            'Content-Type' => 'application/xlsx'
+        );
+        return response()->download($pathToFile, 'Bulk_Payment_Same_bank_File.xlsx');
+    }
+
+    public function download_other_bank()
+    {
+        $pathToFile = public_path() . '/assets/images/bulk_payment_other_bank.xlsx';
+
+        $header = array(
+            'Content-Type' => 'application/xlsx'
+        );
+        return response()->download($pathToFile, 'Bulk_Payment_Other_bank_File.xlsx');
+    }
+
 
     public function get_bulk_upload_list(Request $request)
     {
