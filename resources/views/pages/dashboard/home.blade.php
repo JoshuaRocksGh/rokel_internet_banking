@@ -264,7 +264,7 @@
                         <div class="col-xl-12" style="zoom:0.8;">
                             <div id="accordion" class="mb-3">
                                 <div class="card mb-1">
-                                    <a class="text-dark" data-toggle="collapse" aria-expanded="true">
+                                    <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="m-0">
 
@@ -277,7 +277,8 @@
 
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                         data-parent="#accordion">
-                                        <div class="card-body">
+                                        <div class="card-body i_have_display_no_data text-center"></div>
+                                        <div class="card-body i_have_display">
 
 
 
@@ -324,7 +325,7 @@
                                     </div>
                                 </div>
                                 <div class="card mb-1">
-                                    <a class="text-dark" data-toggle="collapse " aria-expanded="true">
+                                    <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">
 
@@ -336,7 +337,8 @@
                                     </a>
                                     <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
                                         data-parent="#accordion">
-                                        <div class="card-body">
+                                        <div class="card-body i_owe_display_no_data text-center"></div>
+                                        <div class="card-body i_owe_display">
 
 
 
@@ -381,7 +383,7 @@
                                 </div>
 
                                 <div class="card mb-1">
-                                    <a class="text-dark" data-toggle="collapse " aria-expanded="true">
+                                    <a class="text-dark" data-toggle="collapse " href="#collapseThree" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">
 
@@ -391,9 +393,11 @@
                                             </h5>
                                         </div>
                                     </a>
-                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
                                         data-parent="#accordion">
-                                        <div class="card-body">
+                                        <div class="card-body fd_display_no_data text-center text-danger"> NO FIXED DEPOSITE
+                                        </div>
+                                        <div class="card-body fd_display">
 
 
 
@@ -544,8 +548,7 @@
                 </div>
             </div>
 
-
-            <div class="row ">
+            {{-- <div class="row ">
 
 
                 <div class="card-body col-md-6 col-xl-6 col-sm-6 col-xs-12">
@@ -701,8 +704,7 @@
 
                 </div>
 
-            </div>
-
+            </div> --}}
 
 
 
@@ -765,58 +767,62 @@
             } --}}
             });
 
-            function fixed_deposit(){
-                {{--  var table = $('.fixed_deposit_list').DataTable();
-                var nodes = table.rows().nodes();  --}}
+            function fixed_deposit() {
+                {{-- var table = $('.fixed_deposit_list').DataTable();
+                var nodes = table.rows().nodes(); --}}
 
                 $.ajax({
 
-                    "type" : "GET" ,
-                    "url" : "fixed-deposit-account-api" ,
+                    "type": "GET",
+                    "url": "fixed-deposit-account-api",
                     "datatype": "application/json",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function(response){
-                        {{--  console.log(response);  --}}
+                    success: function(response) {
+                        {{-- console.log(response); --}}
 
 
-                        if(response.responseCode == '000'){
+                        if (response.responseCode == '000') {
 
                             let data = response.data;
-                            {{--  let rollover = response.data[0].rollover;
+                            {{-- let rollover = response.data[0].rollover;
                             if(rollover == 'Y'){
                                 rollover_ = "Yes" ;
                             }else if (rollover == 'N'){
                                 rollover_ = "No" ;
                             }else{
                                 rollover_ = null ;
-                            }  --}}
+                            } --}}
 
-                            if(response.data.length > 0){
-                                console.log(response.data.length );
+                            if (response.data == null) {
+                                console.log(response.data + " oooooooo")
+                                alert("sdd")
+                                $(".fd_display").hide()
+                                $(".fd_display_no_data").show()
+                                return false;
+                            }
+
+                            if (response.data.length > 0) {
+                                console.log(response.data.length);
                                 $.each(data, function(index) {
-                                $('.fixed_deposit_account').append(`<tr>
-                                    <td><b> ${data[index].sourceAccount} </b></td>
-                                    <td><b> ${data[index].dealAmount} </b></td>
-                                    <td><b> ${data[index].tenure} </b></td>
-                                    <td><b> ${data[index].fixedInterestRate} </b></td>
-                                    <td><b> ${rollover_ } </b></td>
-                                </tr>`)
+                                    $('.fixed_deposit_account').append(`<tr>
+                                                                                                    <td><b> ${data[index].sourceAccount} </b></td>
+                                                                                                    <td><b> ${data[index].dealAmount} </b></td>
+                                                                                                    <td><b> ${data[index].tenure} </b></td>
+                                                                                                    <td><b> ${data[index].fixedInterestRate} </b></td>
+                                                                                                    <td><b> ${rollover_ } </b></td>
+                                                                                                </tr>`)
 
 
                                 })
-                            }else{
-                                alert("Empty");
-                                {{--  $('.fixed_deposit_display_area').hide();  --}}
-                                $.each(data, function(index) {
-                                    $('.fixed_deposit_account').append(`<tr>
 
-                                        <td><b> No Data </b></td>
-                                    </tr>`)
-
-
-                                    })
+                                $(".fd_display").show()
+                                $(".fd_display_no_data").hide()
+                            } else {
+                                alert("jkj")
+                                $(".fd_display").hide()
+                                $(".fd_display_no_data").show()
 
                             }
 
@@ -853,14 +859,14 @@
 
                             $.each(data, function(index) {
                                 $('.casa_list_display').append(`<tr>
-                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
-                                    <td> <b> ${data[index].accountDesc} </b>  </td>
-                                    <td> <b> ${data[index].accountType}  </b>  </td>
-                                    <td> <b> ${data[index].currency}  </b>  </td>
-                                    <td> <b> ${data[index].availableBalance}   </b> </b></td>
-                                    <td> <b> ${data[index].ledgerBalance}   </b>  </td>
-                                    <td>  <b> 0.00  </b> </td>
-                                </tr>`)
+                                                                                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                                                                                    <td> <b> ${data[index].accountDesc} </b>  </td>
+                                                                                                    <td> <b> ${data[index].accountType}  </b>  </td>
+                                                                                                    <td> <b> ${data[index].currency}  </b>  </td>
+                                                                                                    <td> <b> ${data[index].availableBalance}   </b> </b></td>
+                                                                                                    <td> <b> ${data[index].ledgerBalance}   </b>  </td>
+                                                                                                    <td>  <b> 0.00  </b> </td>
+                                                                                                </tr>`)
 
                             })
 
@@ -916,13 +922,13 @@
 
                             $.each(data, function(index) {
                                 $('.loans_display').append(`
-                                <tr>
-                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                    <td> <b> ${data[index].description} </b>  </td>
-                                    <td> <b> ${data[index].isoCode}  </b>  </td>
-                                    <td> <b> ${data[index].amountGranted}   </b> </b></td>
-                                    <td> <b> ${data[index].loanBalance}   </b>  </td>
-                                </tr>`)
+                                                                                                <tr>
+                                                                                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                                                                                    <td> <b> ${data[index].description} </b>  </td>
+                                                                                                    <td> <b> ${data[index].isoCode}  </b>  </td>
+                                                                                                    <td> <b> ${data[index].amountGranted}   </b> </b></td>
+                                                                                                    <td> <b> ${data[index].loanBalance}   </b>  </td>
+                                                                                                </tr>`)
 
                             })
 
@@ -1050,17 +1056,17 @@
                                         flag_1 = `assets/images/flags/${pair[0].trim()}.png`
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(`
-                                            <tr>
-                                                <td style="zoom: 0.8;">
-                                                    <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                    /
-                                                    <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                            <tr>
+                                                                                                                <td style="zoom: 0.8;">
+                                                                                                                    <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                    /
+                                                                                                                    <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                                </td>
-                                                <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                            </tr>
-                                        `);
+                                                                                                                </td>
+                                                                                                                <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                                <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                            </tr>
+                                                                                                        `);
                                     });
                                 } else if (rate_type == "Cross rate") {
                                     $.each(data, function(index) {
@@ -1071,17 +1077,17 @@
                                         flag_1 = `assets/images/flags/${pair[0].trim()}.png`
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(`
-                                        <tr>
-                                            <td style="zoom: 0.8;">
-                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                /
-                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                        <tr>
+                                                                                                            <td style="zoom: 0.8;">
+                                                                                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                /
+                                                                                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                            </td>
-                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                        </tr>
-                                    `);
+                                                                                                            </td>
+                                                                                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                        </tr>
+                                                                                                    `);
                                     });
                                 }
 
@@ -1126,6 +1132,11 @@
             $(document).ready(function() {
 
                 {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
+
+                $(".i_have_display_no_data").hide()
+                $(".i_owe_display_no_data").hide()
+                $(".fd_display_no_data").hide()
+                $(".fd_display").hide()
 
                 $(".cross_rate_display_area").hide()
                 $(".cross_rates_error_area").hide()
