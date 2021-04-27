@@ -17,7 +17,8 @@
         "laravel/ui": "^3.2",
         "maatwebsite/excel": "^3.1",
         "realrashid/sweet-alert": "^3.2",
-        "stevebauman/location": "^6.1"
+        "stevebauman/location": "^6.1",
+        "yajra/laravel-oci8": "^8.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

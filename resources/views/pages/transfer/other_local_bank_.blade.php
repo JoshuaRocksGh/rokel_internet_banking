@@ -70,7 +70,7 @@
 
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group hide-for-demo-purpose">
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input radio" type="radio" name="onetime"
@@ -89,7 +89,7 @@
 
 
                                             <div class="form-group select_beneficiary">
-                                                <label class="h6">Beneficiary Account<span
+                                                <label class="h4 text-primary">Beneficiary Account<span
                                                         class="text-danger">*</span></label>
                                                 <br>
 
@@ -499,6 +499,7 @@
 
             <script>
                 $(document).ready(function() {
+                    $('.hide-for-demo-purpose').hide()
                     $('#spinner').hide(),
                         $('#spinner-text').hide(),
                         $('#print_receipt').hide(),

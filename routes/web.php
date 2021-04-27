@@ -141,6 +141,8 @@ Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-tra
 
 // BULK TRANSFERS
 Route::get('/bulk-transfer', [BulkUploadBulkUploadsController::class, 'index'])->name('bulk-transfer');
+Route::get('/download_same_bank_file', [BulkUploadBulkUploadsController::class, 'download_same_bank'])->name('download-same-bank-file');
+Route::get('/download_other_bank_file', [BulkUploadBulkUploadsController::class, 'download_other_bank'])->name('download-other-bank-file');
 Route::get('/view-bulk-transfer', [BulkUploadBulkUploadsController::class, 'view_bulk_transfer'])->name('view-bulk-transfer');
 Route::get('/get-bulk-upload-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_list'])->name('get-bulk-upload-list-api');
 Route::get('/get-bulk-upload-detail-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_file_details'])->name('get-bulk-upload-detail-list-api');
@@ -151,6 +153,8 @@ Route::get('/post-bulk-transaction-api', [BulkUploadBulkUploadsController::class
 
 // LOCAL BANK
 Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
+Route::get('/rtgs', [LocalBankController::class, 'other_local_bank'])->name('rtgs');
+Route::get('/ach', [LocalBankController::class, 'other_local_bank'])->name('ach');
 
 
 //international bank transfer
