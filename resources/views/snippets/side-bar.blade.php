@@ -440,7 +440,7 @@
                                 <a href="{{ url('biometric-setup') }}">Biometric Setup</a>
                             </li>
                             <li>
-                                <a href="{{ url('change-pin') }}">Change PIN</a>
+                                <a href="{{ url('change-pin') }}">Pin Setup</a>
                             </li>
 
 
