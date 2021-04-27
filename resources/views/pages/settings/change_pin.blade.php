@@ -320,7 +320,7 @@
 
 
 
-
+            //jquery validate the fields values.
             $(document).ready(function() {
 
                 setTimeout(function() {
@@ -331,10 +331,11 @@
                 $('#spinner').hide();
                 $('#spinner-text').hide();
 
+                //hide the spinner on show for the change password screen
+                $('#spinner_pass').hide();
+                $('#spinner-text_pass').hide();
 
-                $('#spinner_1').hide();
-                $('#spinner-text_1').hide();
-
+                //for testing
                 $("#old_pin_txtBx").change(function() {
                     let old_pin = $("#old_pin_txtBx").val();
                     console.log(old_pin);
@@ -366,36 +367,40 @@
                 $("#confirm_password_txtBx").change(function() {
                     console.log($(this).val());
                 });
+                //end of for testing
 
                 //change pin event when the the change pin button is pressed.
                 $("#btn_change_pin").click(function() {
 
+                    //show the loading ui to engage user
                     $('.submit-text').hide();
                     $('#spinner').show();
                     $('#spinner-text').show();
-                    // toaster("good", "error", 6000);
+
+                    //variables to be used declared
                     let security_answer = $("#security_answer_txtBx").val();
                     let new_pin = $("#new_pin_txtBx").val();
                     let confirm_pin = $("#confirm_pin_txtBx").val();
                     let old_pin = $("#old_pin_txtBx").val();
                     let security_question = $(".security_questions").val();
 
+                    //check if user is entering all the fields that are required
                     if (security_answer == "" || new_pin == "" || confirm_pin == "" || old_pin == "" ||
                         security_question == "") {
                         toaster("Please fill all required fields", "error", 6000);
                     } else {
                         if (new_pin != confirm_pin) {
-                            // alert(" New pin and confirm must be the same ");
+                            //alert user to ensure new pin is same as confirm pin
                             toaster("new pin and confirm pin must be the same", "error", 6000);
                             $('.submit-text').show();
                             $('#spinner').hide();
                             $('#spinner-text').hide();
                         } else {
 
-                            // let security_answer = $("#security_ans")
-                            var pin_correct = confirm_pin;
+                            //assign confirm pin to new pin changed by the user.
+                            let pin_correct = confirm_pin;
 
-
+                            //code to pass variables' values to the api
                             $.ajax({
                                 'type': 'POST',
                                 'url': 'change-pin-api',
@@ -413,14 +418,19 @@
                                     console.log(response)
 
                                     if (response.responseCode == '000') {
+
+                                        //alert user if the change pin process is successful
                                         toaster(response.message, 'success', 20000)
-                                        // toaster("Password reset successful", 'success',20000 )
-                                        // $("#request_form_div").hide();
+
+                                        //hide the request for if pin is changed successfully
                                         $(".disappear-after-success").hide();
+
+                                        //show this gif/image if the change pin process is successful
                                         $(".success-message").html(
                                             '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
                                             )
 
+                                            //uis to keep user engaged.
                                             $('.submit-text').show();
                                             $('#spinner').hide();
                                             $('#spinner-text').hide();
@@ -429,10 +439,10 @@
                                             $("#confirm_pin_txtBx").val('');
                                             $("#old_pin_txtBx").val('');
                                             $('select option[value=""]').attr("selected",true);
-                                        // $("request_detail_div").show();
 
                                     } else {
 
+                                        //alert the user if the change pin process failed
                                         toaster(response.message, 'error', 9000);
                                         $('.submit-text').show();
                                         $('#spinner').hide();
@@ -449,30 +459,40 @@
                 });
 
 
-                //change the password with the required
+                //change the password with the required fields' values
                 $("#btn_change_password").click(function() {
 
-                    $('#spinner_1').show();
-                    $('#spinner-text_1').show();
-                    $('#spinner-text').hide();
+                    //ui code to keep use engaged in the change password process
+                    $('#spinner_pass').show();
+                    $('#spinner-text_pass').show();
+                    $('.submit-text_pass').hide();
                     let old_password = $("#old_password_txtBx").val();
                     let new_password = $("#new_password_txtBx").val();
                     let confirm_password = $("#confirm_password_txtBx").val();
                     let security_question = $(".security_questions_txtBx").val();
                     let security_answer = $("#security_answer_Pass_txtBx").val();
 
+                    //check if the user entered all the fields required
                     if (old_password == "" || new_password == "" || confirm_password == "" ||
                         security_question == "" || security_answer == "") {
                         toaster("fields cannot be empty", "error", 6000)
                     } else {
 
+                        //check if confirm and new passwords are equal
                         if (new_password != confirm_password) {
+
+                            //alert for user
                             toaster("new password and confirm password must be the same", "error", 5000);
+                                            $('#spinner_pass').hide();
+                                            $('#spinner-text_pass').hide();
+                                            $('.submit-text_pass').show();
                         } else {
+
+                            //assign confirm password to password field
                             var password = confirm_password;
 
 
-
+                            //ajax code to pass values to the api
                             $.ajax({
                                 'type': 'POST',
                                 'url': 'change-password-api',
@@ -491,30 +511,38 @@
 
                                     if (response.responseCode == '000') {
                                         toaster(response.message, 'success', 20000)
-                                        // toaster("Password reset successful", 'success',20000 )
-                                        // $("#request_form_div").hide();
+
+                                        //uis to keep user engaged
                                         $(".disappear-after-success").hide();
                                         $(".success-message").html(
                                             '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
                                             )
+                                            $('#spinner_pass').hide();
+                                            $('#spinner-text_pass').hide();
+                                            $('.submit-text_pass').show();
+                                        //end of user engagement code
 
-                                            $('#spinner_1').hide();
-                                            $('#spinner-text_1').hide();
-                                            $('.spinner-text').show();
-
+                                        //default values for fields
                                         $("#old_password_txtBx").val('');
                                         $("#new_password_txtBx").val('');
                                         $("#confirm_password_txtBx").val('');
-                                        $(".security_questions_txtBx").val('');
+                                        $('select option[value=""]').attr("selected",true);
                                         $("#security_answer_Pass_txtBx").val('');
-                                        // $("request_detail_div").show();
                                     } else {
-
+                                        //alert user on status of change password
                                         toaster(response.message, 'error', 90000);
 
-                                        $('#spinner_1').show();
-                                        $('#spinner-text_1').show();
-                                        $('.spinner-text').hide();
+                                        //uis to engage user in the process
+                                        $('#spinner_pass').hide();
+                                        $('#spinner-text_pass').hide();
+                                        $('.submit-text_pass').show();
+
+                                        //default values for fields
+                                        $("#old_password_txtBx").val('');
+                                        $("#new_password_txtBx").val('');
+                                        $("#confirm_password_txtBx").val('');
+                                        $('select option[value=""]').attr("selected",true);
+                                        $("#security_answer_Pass_txtBx").val('');
                                     }
                                 }
                             });
