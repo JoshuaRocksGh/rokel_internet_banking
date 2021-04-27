@@ -62,7 +62,7 @@
 
                                         </div>
 
-                                        {{-- <div class="form-group">
+                                        <div class="form-group">
 
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input radio" type="radio" name="onetime" id="inlineRadio1" value="beneficiary" checked="checked">
@@ -73,10 +73,10 @@
                                                 <input class="form-check-input radio" type="radio" name="onetime" id="inlineRadio2" value="onetime">
                                                 <label class="form-check-label" for="inlineRadio2">Onetime beneficiary</label>
                                             </div>
-                                        </div> --}}
+                                        </div>
 
 
-                                        {{-- <div class="form-group select_beneficiary" >
+                                        <div class="form-group select_beneficiary" >
                                             <label class="h6">Select Beneficiary</label>
 
                                             <select class="custom-select" id="to_account" required>
@@ -109,7 +109,7 @@
                                             </table>
 
 
-                                        </div> --}}
+                                        </div>
 
                                         <div class="select_onetime">
 
@@ -463,43 +463,43 @@
             $(document).ready(function() {
 
 
-            //     $(".select_onetime").css("display", "none");
-            //     $(".select_beneficiary").css("display", "block");
+                $(".select_onetime").css("display", "none");
+                $(".select_beneficiary").css("display", "block");
 
-            //    // $(".select_beneficiary").show();
-            //     //$(".select_onetime").hide();
+               // $(".select_beneficiary").show();
+                //$(".select_onetime").hide();
 
-            //     var type = $("input[type='radio']:checked").val();
+                var type = $("input[type='radio']:checked").val();
 
-            //     $(".radio").click(function(){
+                $(".radio").click(function(){
 
-            //         var type = $("input[type='radio']:checked").val();
+                    var type = $("input[type='radio']:checked").val();
 
-            //         if(type == 'beneficiary'){
-            //             $(".select_onetime").css("display", "none");
-            //             $(".select_beneficiary").css("display", "block");
+                    if(type == 'beneficiary'){
+                        $(".select_onetime").css("display", "none");
+                        $(".select_beneficiary").css("display", "block");
 
-            //             // set amonut to empty
-            //             $("#amount").val('');
+                        // set amonut to empty
+                        $("#amount").val('');
 
 
-            //             //$(".select_onetime").hide();
-            //             //$(".select_beneficiary").show();
+                        //$(".select_onetime").hide();
+                        //$(".select_beneficiary").show();
 
-            //         }
-            //         if(type == 'onetime'){
+                    }
+                    if(type == 'onetime'){
 
-            //             $(".select_beneficiary").css("display", "none");
-            //             $(".select_onetime").css("display", "block");
+                        $(".select_beneficiary").css("display", "none");
+                        $(".select_onetime").css("display", "block");
 
-            //             // set amonut to empty
-            //             $("#amount").val('');
+                        // set amonut to empty
+                        $("#amount").val('');
 
-            //            // $(".select_beneficiary").hide();
-            //             //$(".select_onetime").show();
-            //         }
+                       // $(".select_beneficiary").hide();
+                        //$(".select_onetime").show();
+                    }
 
-            //     });
+                });
 
 
 
