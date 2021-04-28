@@ -23,7 +23,7 @@
                             <hr>
 
 
-                            <div class="row" id="transaction_form">
+                            <div class="row" id="cardless_payment_form">
 
 
                                 <div class="col-md-6">
@@ -112,8 +112,7 @@
                                     <div class="form-group">
                                         <label class="h6">Beneficiary Name<span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" id="beneficiary_name" required>
-                                        </div>
-
+                                    </div>
 
 
                                         <table
