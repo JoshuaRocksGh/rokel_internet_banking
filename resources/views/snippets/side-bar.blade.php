@@ -393,10 +393,9 @@
                     </div>
                 </li>
 
-
-                <li>
+                {{-- <li>
                     <a href="#sidebarChatbot" data-toggle="collapse">
-                        {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
+
                         <i class="mdi mdi-chat-processing-outline"></i>
                         <span> Chatbot </span>
                         <span class="menu-arrow"></span>
@@ -414,8 +413,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-
+                </li> --}}
 
 
                 <li>

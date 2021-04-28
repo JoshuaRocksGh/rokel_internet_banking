@@ -152,7 +152,7 @@
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('assets/images/flags/us.jpg') }}" alt="user-image" height="16">
+                    <img src="{{ asset('assets/images/flags/GHS.png') }}" alt="user-image" height="16">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
 

@@ -33,6 +33,12 @@ class LocalBankController extends Controller
             'naration' => 'required'
         ]);
 
+        // return [
+        //     'responseCode' => '000',
+        //     'message' => 'Money transferred successfully',
+        //     'data' => null
+        // ];
+
 
         $base_response = new BaseResponse();
 
