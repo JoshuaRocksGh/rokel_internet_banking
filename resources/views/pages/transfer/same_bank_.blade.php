@@ -133,7 +133,8 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="h6">Category: <span class="text-danger">*</span></label>
+                                                    <label class="h6">Expense Category: <span
+                                                            class="text-danger">*</span></label>
 
                                                     <select class="custom-select" id="category" required>
                                                         <option value="">---Not Selected---</option>
@@ -184,18 +185,7 @@
                                                             Payments</label>
                                                     </div>
                                                     <legend></legend>
-                                                    {{-- <div class="form-group" id="frequency">
-                                                    <label class="" id="select_frequency_text">Payment Frequency</label>
 
-                                                    <select class="custom-select" id="select_frequency" required>
-                                                        <option value="">Select Frequency</option>
-                                                        <option value="001~Weekly">Weekly</option>
-                                                        <option value="002~Bi-Weekly">Bi-Weekly</option>
-                                                        <option value="003~Monthly">Monthly</option>
-                                                        <option value="004~Quaterly">Quaterly</option>
-                                                    </select>
-
-                                                </div> --}}
 
                                                     <input type="text" class="form-control"
                                                         id="schedule_payment_contraint_input">
@@ -210,7 +200,7 @@
 
 
                                             <div class="col-md-6">
-                                                <div class="form-group select_beneficiary">
+                                                <div class="form-group mt-0 select_beneficiary">
                                                     <label class="h6">Beneficiary Account: <span
                                                             class="text-danger">*</span></label>
                                                     <span class="badge badge-primary float-right" style="cursor: pointer"><a
