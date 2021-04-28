@@ -6,8 +6,8 @@
     <div class="auth-fluid">
         <!--Auth fluid left content -->
         <div class="auth-fluid-form-box" style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
-                    background-size: cover;
-                ">
+                            background-size: cover;
+                        ">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
@@ -54,7 +54,7 @@
 
                             <label for="user_id">User ID<span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="user_id" required placeholder="Enter your email"
-                                parsley-trigger="change" required>
+                                parsley-trigger="change" autocomplete="none" required>
 
                         </div>
 
@@ -66,7 +66,7 @@
                             <label for="password">Password<span class="text-danger">*</span></label>
                             <div class="input-group input-group-merge">
                                 <input type="password" id="password" class="form-control" placeholder="Enter your password"
-                                    required>
+                                    required autocomplete="none">
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>
