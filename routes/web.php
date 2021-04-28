@@ -153,8 +153,8 @@ Route::get('/post-bulk-transaction-api', [BulkUploadBulkUploadsController::class
 
 // LOCAL BANK
 Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
-Route::get('/rtgs', [LocalBankController::class, 'other_local_bank'])->name('rtgs');
-Route::get('/ach', [LocalBankController::class, 'other_local_bank'])->name('ach');
+Route::get('/rtgs', [LocalBankController::class, 'rtgs'])->name('rtgs');
+Route::get('/ach', [LocalBankController::class, 'ach'])->name('ach');
 
 
 //international bank transfer

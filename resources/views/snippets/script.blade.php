@@ -29,7 +29,9 @@
         <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
 
 <!-- Dashboar 1 init js-->
-<script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script> --}}
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
 <!-- Init js-->

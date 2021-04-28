@@ -19,6 +19,16 @@ class LocalBankController extends Controller
         return view('pages.transfer.other_local_bank_');
     }
 
+    public function ach()
+    {
+        return view('pages.transfer.ach');
+    }
+
+    public function rtgs()
+    {
+        return view('pages.transfer.rtgs');
+    }
+
     public function transfer_to_other_bank_beneficiary_api(Request $req)
     {
         $validator = Validator::make($req->all(), [
