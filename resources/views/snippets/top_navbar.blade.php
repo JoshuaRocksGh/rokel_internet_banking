@@ -30,7 +30,7 @@
             </div>
 
 
-            <li class="d-none d-lg-block">
+            {{--  <li class="d-none d-lg-block">
                 <form class="app-search"  autocomplete="off" aria-autocomplete="off">
                     <div class="app-search-box dropdown">
                         <div class="input-group">
@@ -45,7 +45,7 @@
 
                     </div>
                 </form>
-            </li>
+            </li>  --}}
 {{--
             <li class="dropdown d-inline-block d-lg-none">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
