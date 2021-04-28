@@ -42,8 +42,8 @@
                             <p class="text-muted font-14 m-b-20">
                                 <span>
                                     <b class="text-danger">Please Note: </b>
-                                    <b>Use the platform to make payment without a card</b>
-                                </span>.
+                                    <b>Use the platform to make payment without a card.</b>
+                                </span>
                             </p>
                             <hr>
 

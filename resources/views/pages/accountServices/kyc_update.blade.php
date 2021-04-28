@@ -15,8 +15,13 @@
                                     <button type="button" class="btn btn-info btn-sm float-right  mod-open" data-toggle="modal" data-target="#centermodal"> <span class="fe-info mr-1"></span> info</button>
                                 </h3>
 
+                                <p class="text-muted font-14 m-b-20">
+                                    <span>
+                                        <b class="text-danger">Please Note: </b>
+                                        <b>KYC (Know Your Customer) is today a significant element in the fight against financial crime and money laundering, and customer identification is the most critical aspect as it is the first step to better perform in the other stages of the process.</b>
+                                    </span>.
+                                </p>
                                      <hr>
-
                             </div>
 
                             <div class="col-md-2"></div>

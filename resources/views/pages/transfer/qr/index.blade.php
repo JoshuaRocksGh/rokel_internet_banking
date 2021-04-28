@@ -15,9 +15,7 @@
                         <h2 class="header-title m-t-0 text-primary">GENERATE QR TO RECIEVE PAYMENT</h2>
 
                         <p class="text-muted font-14 m-b-20">
-                            Parsley is a javascript form validation library. It helps you provide your
-                            users with feedback on their form submission before sending it to your
-                            server.
+                            Generate a qr in order to scan and make payment.
                         </p>
                         <hr>
 

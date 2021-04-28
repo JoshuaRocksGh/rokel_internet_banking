@@ -42,7 +42,7 @@
                             <p class="text-muted font-14 m-b-20">
                                 <span>
                                     <b class="text-danger">Please Note: </b>
-                                    <b>Direct to bank offers you the opportunity to transfer funcds between your own
+                                    <b>Own account transfer offers you the opportunity to transfer funds between your own
                                         accounts</b>
                                 </span>.
                             </p>

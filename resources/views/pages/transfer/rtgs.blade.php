@@ -47,9 +47,8 @@
                                 <h2 class="header-title m-t-0 text-primary">RTGS TRANSFER</h2>
 
                                 <p class="text-muted font-14 m-b-20">
-                                    Parsley is a javascript form validation library. It helps you provide your
-                                    users with feedback on their form submission before sending it to your
-                                    server.
+
+                                    Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the instantaneous transfer of money.
                                     <hr>
                                 </p>
 

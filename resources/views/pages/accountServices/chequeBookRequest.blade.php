@@ -15,9 +15,7 @@
                         <h2 class="header-title m-t-0 text-primary">CHEQUE BOOK REQUEST</h2>
 
                         <p class="text-muted font-14 m-b-20">
-                            Parsley is a javascript form validation library. It helps you provide your
-                            users with feedback on their form submission before sending it to your
-                            server.
+                            Request for a cheque book using this platform.
                         </p>
                         <hr>
 
