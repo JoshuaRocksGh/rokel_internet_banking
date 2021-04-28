@@ -1129,38 +1129,13 @@
             $(document).ready(function() {
 
                 {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
+splay_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
 
-                $(".cross_rate_display_area").hide()
-                $(".cross_rates_error_area").hide()
-                $(".cross_rates_loading_area").show()
-
-                $(".loans_display_area").hide()
-                $(".loans_error_area").hide()
-                $(".loans_loading_area").show()
-
-                $(".accounts_display_area").hide()
-                $(".accounts_error_area").hide()
-                $(".accounts_loading_area").show()
-
-                $(".currency_converter_display_area").hide()
-                $(".currency_converter_error_area").hide()
-                $(".currency_converter_loading_area").show()
-
-                var converter_rates = []
-
-                function fx_rates() {
-                    get_fx_rate("Transfer rate")
-                    get_fx_rate("Note rate")
-                    get_fx_rate("Cross rate")
-                }
-
-                setTimeout(function() {
-                    fx_rates()
-                    converter_rates = get_correct_fx_rate()
-                    get_currency()
-                    get_accounts();
-                    get_loans();
-                    fixed_deposit();
+                $(".i_have_display_no_data").hide()
+                $(".i_owe_display_no_data").hide()
+                $(".fd_display_no_data").hide()
+                $(".fd_display").hide()
+ fixed_deposit();
                 }, 200);
 
             })

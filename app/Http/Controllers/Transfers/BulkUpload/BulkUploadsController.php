@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Transfers\BulkUpload;
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -14,6 +15,61 @@ class BulkUploadsController extends Controller
     public function index()
     {
         return view('pages.transfer.bulkTransfers.bulk_trasnfer');
+    }
+
+    public function download_same_bank()
+    {
+        $pathToFile = public_path() . '/assets/images/bulk_payment_same_bank.xlsx';
+
+        $header = array(
+            'Content-Type' => 'application/xlsx'
+        );
+        return response()->download($pathToFile, 'Bulk_Payment_Same_bank_File.xlsx');
+    }
+
+    public function download_other_bank()
+    {
+        $pathToFile = public_path() . '/assets/images/bulk_payment_other_bank.xlsx';
+
+        $header = array(
+            'Content-Type' => 'application/xlsx'
+        );
+        return response()->download($pathToFile, 'Bulk_Payment_Other_bank_File.xlsx');
+    }
+
+    public function upload_file(Request $request)
+    {
+        $documentRef = time();
+        $account_no = $request->account_no;
+        $bank_code = $request->bank_type;
+        $trans_ref_no = $request->trans_ref_no;
+        $total_amount = $request->total_amount;
+        $value_date = $request->value_date;
+
+        $this->validate($request, [
+            'select_file' => 'required|mimes:xls,xlsx',
+            'account_no' => 'required',
+            'bank_code' => 'required',
+            'trans_ref_no' => 'required',
+            'total_amount' => 'required',
+            'value_date' => 'required',
+        ]);
+
+        $path = $request->file('select_file')->getRealPath();
+
+        $file = $request->file('select_file');
+        $ext = $file->getClientOriginalExtension();
+        $name = strtoupper($documentRef) . '~' . strtoupper($trans_ref_no) . '~' . strtoupper($total_amount) . '.' . $ext;
+
+        $post_date = Carbon::now();
+        $post_date = $post_date->toDateTimeString();
+
+        $pathToFile = public_path() . '/assets/images/bulk_payment_other_bank.xlsx';
+
+        $header = array(
+            'Content-Type' => 'application/xlsx'
+        );
+        return response()->download($pathToFile, 'Bulk_Payment_Other_bank_File.xlsx');
     }
 
 

@@ -37,12 +37,38 @@
 
                             <div class="col-md-12">
 
+                                <dl class="row">
+                                    <dt class="col-sm-3">Description lists</dt>
+                                    <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
 
+                                    <dt class="col-sm-3">Euismod</dt>
+                                    <dd class="col-sm-9">
+                                        <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+                                        </p>
+                                        <p>Donec id elit non mi porta gravida at eget metus.</p>
+                                    </dd>
+
+                                    <dt class="col-sm-3">Malesuada porta</dt>
+                                    <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+
+                                    <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+                                    <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
+                                        nibh, ut fermentum massa justo sit amet risus.</dd>
+
+                                    <dt class="col-sm-3">Nesting</dt>
+                                    <dd class="col-sm-9">
+                                        <dl class="row">
+                                            <dt class="col-sm-4">Nested definition list</dt>
+                                            <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue
+                                                blandit nunc.</dd>
+                                        </dl>
+                                    </dd>
+                                </dl>
 
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         <div class=" p-3 mt-4 mt-lg-0 rounded">
-                                            <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2>
+                                            {{-- <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2> --}}
 
                                             <div class="text-center" id="account_balance_info_loader">
                                                 <div class="spinner-border text-primary avatar-sm" role="status"></div>
@@ -480,16 +506,16 @@
                             let amount = ``;
                             if (parseFloat(data[index].amount) > 0) {
                                 amount = `<b class='text-success'>
-                                                                                        <i class="fe-arrow-up text-success mr-1"></i>
-                                                                                        ${data[index].amount}
-                                                                                    </b>
-                                                                                    `
+                                                                                                    <i class="fe-arrow-up text-success mr-1"></i>
+                                                                                                    ${data[index].amount}
+                                                                                                </b>
+                                                                                                `
                             } else {
                                 amount = `<b class='text-danger'>
-                                                                                        <i class="fe-arrow-down text-danger mr-1"></i>
-                                                                                        ${data[index].amount}
-                                                                                    </b>
-                                                                                    `
+                                                                                                    <i class="fe-arrow-down text-danger mr-1"></i>
+                                                                                                    ${data[index].amount}
+                                                                                                </b>
+                                                                                                `
                             }
 
                             let attachment = ``
@@ -509,8 +535,8 @@
                                 data[index].narration,
                                 data[index].documentReference,
                                 `<a type="button" data-toggle="modal"
-                                                                        data-target="#bs-example-modal-xl"
-                                                                        class="text-primary">${data[index].batchNumber}</a>`,
+                                                                                    data-target="#bs-example-modal-xl"
+                                                                                    class="text-primary">${data[index].batchNumber}</a>`,
                                 amount,
                                 `${data[index].runningBalance}`,
                                 `${attachment}`

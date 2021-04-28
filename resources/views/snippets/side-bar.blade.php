@@ -103,11 +103,11 @@
                             </li>
 
                             <li>
-                                <a href="{{ url('other-local-bank') }}">RTGS</a>
+                                <a href="{{ url('rtgs') }}">RTGS</a>
                             </li>
 
                             <li>
-                                <a href="{{ url('other-local-bank') }}">ACH</a>
+                                <a href="{{ url('ach') }}">ACH</a>
                             </li>
 
                             <li>
@@ -393,10 +393,9 @@
                     </div>
                 </li>
 
-
-                <li>
+                {{-- <li>
                     <a href="#sidebarChatbot" data-toggle="collapse">
-                        {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
+
                         <i class="mdi mdi-chat-processing-outline"></i>
                         <span> Chatbot </span>
                         <span class="menu-arrow"></span>
@@ -414,8 +413,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-
+                </li> --}}
 
 
                 <li>
@@ -440,7 +438,7 @@
                                 <a href="{{ url('biometric-setup') }}">Biometric Setup</a>
                             </li>
                             <li>
-                                <a href="{{ url('change-pin') }}">Change PIN</a>
+                                <a href="{{ url('change-pin') }}">Pin Setup</a>
                             </li>
 
 

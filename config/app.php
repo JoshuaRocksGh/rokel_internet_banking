@@ -176,6 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
+
 
     ],
 
@@ -230,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Excel' => \Maatwebsite\Excel\Facades\Excel::class,
+        'Location' => 'Stevebauman\Location\Facades\Location',
 
     ],
 

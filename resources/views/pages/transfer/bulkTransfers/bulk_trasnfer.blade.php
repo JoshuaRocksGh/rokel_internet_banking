@@ -37,9 +37,13 @@
                         <h2 class="header-title m-t-0 text-primary">BULK UPLOAD TRANSFER</h2>
 
                         <p class="text-muted font-14 m-b-20">
-                            Parsley is a javascript form validation library. It helps you provide your
-                            users with feedback on their form submission before sending it to your
-                            server.
+                            <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
+                                    Note:&nbsp;&nbsp;</b> <span class="">You can download template for upload (<span
+                                        class="text-danger"><a href="{{ url('download_same_bank_file') }}"
+                                            class="text-danger"> Same Bank</a></span>) and
+                                    (<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other
+                                            ACH Bank </a> </span>)</span> </span>
+
                             <hr>
                         </p>
 
@@ -297,10 +301,10 @@
                                 `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}</a>`
 
                             let action = `<span class="btn-group mb-2">
-                                                                                    <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
-                                                                                     &nbsp;
-                                                                                     <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
-                                                                                     </span>  `
+                                                                                                                <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
+                                                                                                                 &nbsp;
+                                                                                                                 <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                                                                                                 </span>  `
 
                             table.row.add([
                                 batch,
