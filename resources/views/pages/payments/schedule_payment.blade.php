@@ -216,7 +216,7 @@
                                             </div>
 
 
-                                            <div class="form-group">
+                                            <div class="form-group maximum_attempts">
                                                 <label class="h6">Maximum Default Attempts<span class="text-danger">*</span></label>
 
 
@@ -348,15 +348,12 @@
                                             </div>
 
 
-                                            <div class="form-group row">
+                                            <div class="form-group row maximum_attempts">
                                                 <label class="h5 col-12">Maximum Default Attempts:</label>
 
                                                 <span class="col-12" id="diaply_select_default_attempts"></span>
 
-                                            {{--  <div class="form-group row">
-                                                <label for="" class="col-md-12"> From Account: <span class="text-danger">*</span> </label>
-                                                <input class="col-md-12"    type="text" placeholder="Enter Account Number">
-                                            </div>  --}}
+                                            
                                             </div>
 
                                             <div class="form-group row">
@@ -545,6 +542,7 @@
 
             $(".from_account_display_info").hide();
             $(".to_account_display_info").hide();
+            $(".maximum_attempts").hide();
 
             function sweet_alert() {
                 const Toast = Swal.mixin({
@@ -570,6 +568,8 @@
             $('#schedule_payment_form_summary').hide();
             $('#schedule_payment_form').hide();
             $('#display_view_list').hide();
+            $(".maximum_attempts").hide();
+
 
             $("#centermodal").attr("disabled", false);
 
@@ -662,6 +662,20 @@
 
             });
 
+            $("#effective_date_to").change(function(e){
+                let date_from = $('#effective_date_from').val();
+                let date_to = $(this).val();
+
+                if ( date_from == date_to) {
+
+                    $(".maximum_attempts").show();
+
+                }else {
+                    
+                    $(".maximum_attempts").hide();
+                }
+            })
+
             $('#next_button').click(function(e){
                 e.preventDefault();
 
@@ -726,7 +740,7 @@
 
                 $.ajax({
                     "type" : "POST" ,
-                    "url" : "scheduled-payment-api" ,
+                    "url" : "schedule-payment-api" ,
                     "datatype": "application/json",
                     "data" : {
                         'from_account' : from_account ,

@@ -28,7 +28,7 @@ class SchedulePaymentController extends Controller
 
         ]);
 
-        return $request;
+        // return $request;
 
         $base_response = new BaseResponse();
 
@@ -47,10 +47,22 @@ class SchedulePaymentController extends Controller
 
         $data = [
 
-
+            "accountNumber" => $request->from_account,
+            "acctLink" => "string",
+            "approvalTerminal" => "string",
+            "approvedBy" => "string",
+            "dueAmount" => $request->amount,
+            "dueDate" => $request->effective_date_from,
+            "postedBy" => $userID,
+            "terminalId" => "string",
+            "terminationDate" => $request->effective_data_to,
+            "transactionDetails" => $request->transaction_details ,
+            "beneficiaryAccount" => $request->beneficiary_account,
+            "frequency" => $request->frequency,
+            "maximumAttempts" => $request->maximum_attempts
         ];
 
-        // return $data;
+        return $data;
 
         try {
             $response = Http::post(env('API_BASE_URL') . "transfers/scheduledPayment", $data);

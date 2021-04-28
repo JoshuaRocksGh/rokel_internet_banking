@@ -46,7 +46,7 @@ class SavingsAccountCreationController extends Controller
         // VALIDATION
         if ($validator->fails()) {
 
-            return $base_response->api_response('500', $validator->errors(), NULL);
+            return $base_response->api_response('500', $validator->errors(), "");
         };
 
         // $authToken = session()->get('userToken');
@@ -56,42 +56,42 @@ class SavingsAccountCreationController extends Controller
         $data = [
 
                 "city" => $request->city,
-                "companyName" => null,
-                "constitutionCode" => null,
-                "corporateTin" => null,
-                "createdAccountNumber" => null,
-                "createdCustomerNumber" => null,
-                "custCategory" => null,
-                "custType" => null,
-                "dateOfIncorporation" => null,
-                "docRef" => null,
-                "domicileCountry" => null,
-                "fingerPrint" => null,
-                "kycDoc" => null,
-                "mandate" => null,
-                "natureOfBusiness" => null,
-                "noCrTrans" => null,
-                "noDbTrans" => null,
-                "occupation" => null,
-                "postedBy" => null,
-                "preferredLanguage" => null,
-                "proofOfAddress" => null,
-                "reason" => null,
+                "companyName" => "",
+                "constitutionCode" => "",
+                "corporateTin" => "",
+                "createdAccountNumber" => "",
+                "createdCustomerNumber" => "",
+                "custCategory" => "",
+                "custType" => "",
+                "dateOfIncorporation" => "",
+                "docRef" => "",
+                "domicileCountry" => "",
+                "fingerPrint" => "",
+                "kycDoc" => "",
+                "mandate" => "",
+                "natureOfBusiness" => "",
+                "noCrTrans" => "",
+                "noDbTrans" => "",
+                "occupation" => "",
+                "postedBy" => "",
+                "preferredLanguage" => "",
+                "proofOfAddress" => "",
+                "reason" => "",
                 "relationDetails" =>
 
                 [
 
-                    "approvalPanel" => null,
+                    "approvalPanel" => "",
                     "countryOfResidence" => $request->country,
                     "dob" => $request->birthday,
                     "documentExpiry" => $request->expiry_date,
                     "documentId" => $request->id_type,
-                    "documentType" => null,
+                    "documentType" => "",
                     "email" => $request->email,
                     "firstName" => $request->firstname,
                     "homeAddress" => $request->residential_address,
-                    "homeAddress1" => null,
-                    "issueAuthority" => null,
+                    "homeAddress1" => "",
+                    "issueAuthority" => "",
                     "issueDate" => $request->issue_date,
                     "lastName" => $request->surname,
                     "nationality" => $request->country,
@@ -100,29 +100,29 @@ class SavingsAccountCreationController extends Controller
                     "picture" => $request->passport_picture,
                     "placeOfBirth" => $request->birth_place,
                     "sex" => $request->gender,
-                    "signature" => null,
-                    "staffCategory" => null,
-                    "suffix" => null,
-                    "tin" => null,
+                    "signature" => "",
+                    "staffCategory" => "",
+                    "suffix" => "",
+                    "tin" => "",
                     "title" => $request->title,
                     "workAddress" => "string"
 
                 ],
 
-                "relationshipManagerCode" => null,
-                "residenceStatus" => null,
-                "rfId" => null,
-                "riskCode" => null,
-                "sourceOfFunds" => null,
-                "sourceOfWorth" => null,
-                "subProduct" => null,
-                "subSector" => null,
-                "subSegment" => null,
-                "terminal" => null,
-                "totalCrTrans" => null,
-                "totalDbTrans" => null,
-                "userBranch" => null,
-                "worthValue" => null,
+                "relationshipManagerCode" => "",
+                "residenceStatus" => "",
+                "rfId" => "",
+                "riskCode" => "",
+                "sourceOfFunds" => "",
+                "sourceOfWorth" => "",
+                "subProduct" => "",
+                "subSector" => "",
+                "subSegment" => "",
+                "terminal" => "",
+                "totalCrTrans" => "",
+                "totalDbTrans" => "",
+                "userBranch" => "",
+                "worthValue" => "",
                 "idImage" => $request->id_iamge,
                 "signedPaper" => $request->signed_selfie_paper ,
 
@@ -132,13 +132,13 @@ class SavingsAccountCreationController extends Controller
 
         // return $data ;
 
-        $response = [
-            "responseCode" => "000" ,
-            "message" => "Account Successfully Created",
+        // $response = [
+        //     "responseCode" => "000" ,
+        //     "message" => "Account Successfully Created",
 
-        ];
+        // ];
 
-        return $response;
+        // return $response;
         try {
 
             $response = Http::post(env('API_BASE_URL') . "/account/openAccount", $data);
@@ -155,7 +155,7 @@ class SavingsAccountCreationController extends Controller
                 'message' => (string) $e->getMessage()
             ]);
 
-            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', $e->getMessage(),  ""); // return API BASERESPONSE
 
 
         }
