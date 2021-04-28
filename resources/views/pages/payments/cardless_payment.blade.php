@@ -1,8 +1,33 @@
 @extends('layouts.master')
 
+@section('styles')
+
+    <style>
+        @media print {
+            .hide_on_print {
+                display: none
+            }
+        }
+
+        @font-face {
+            font-family: 'password';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+        }
+
+        input.key {
+            font-family: 'password';
+            width: 100px;
+            height: 26px;
+        }
+
+    </style>
+
+
+@endsection
+
 @section('content')
-
-
 
     <div class="row">
         <div class="col-12">
@@ -17,7 +42,7 @@
                             <p class="text-muted font-14 m-b-20">
                                 <span>
                                     <b class="text-danger">Please Note: </b>
-                                    <b>This platform is used for making cardless payment transactions.</b>
+                                    <b>Use the platform to make payment without a card</b>
                                 </span>.
                             </p>
                             <hr>
@@ -30,7 +55,7 @@
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="h6">Select Account<span class="text-danger">*</span></label>
+                                            <label class="h6">Pay From<span class="text-danger">*</span></label>
 
 
                                             <select class="custom-select" id="from_account" required>
@@ -86,6 +111,20 @@
                                             </div>
                                             <legend></legend>
 
+
+
+                                            {{-- <div class="form-group" id="frequency">
+                                                <label class="">Payment Frequency</label>
+                                                <select class="custom-select" id="select_frequency" required>
+                                                    <option value="">Select Frequency</option>
+                                                    <option value="001~Weekly">Weekly</option>
+                                                    <option value="002~Bi-Weekly">Bi-Weekly</option>
+                                                    <option value="003~Monthly">Monthly</option>
+                                                    <option value="004~Quaterly">Quaterly</option>
+                                                </select>
+
+                                            </div> --}}
+
                                             <input type="text" class="form-control" id="schedule_payment_contraint_input">
 
                                             <label class="">Value Date</label>
@@ -111,23 +150,26 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="h6">Beneficiary Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="beneficiary_name" required>
-                                    </div>
+
+                                        <input type="text" class="form-control" id="purpose"
+                                            placeholder="Enter purpose / narration" autocomplete="off" required>
 
 
                                         <table
-                                            class="table-responsive table table-centered table-nowrap mb-0 to_beneficiary_name_display_info card">
+                                            class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
                                             <tbody>
                                                 <tr>
 
                                                     <td>
                                                         <a
-                                                            class="text-body font-weight-semibold display_to_beneficiary_name_type"></a>
-                                                        <small class="d-block display_to_beneficiary_name"></small>
+                                                            class="text-body font-weight-semibold display_to_account_type"></a>
+                                                        <small class="d-block display_to_account_name"></small>
                                                         <small class="d-block display_to_account_no"></small>
                                                     </td>
 
                                                     <td class="text-right font-weight-semibold">
+                                                        {{-- <span class="display_to_account_currency"></span> --}}
+                                                        {{-- <span class="display_to_account_amount"></span> --}}
 
                                                     </td>
                                                 </tr>
@@ -181,7 +223,7 @@
 
                             </div>
 
-                            <div class="row" id="transaction_summary">
+                            <div class="row" id="cardless_payment_summary">
 
 
                                 <div class="col-md-12">
@@ -409,12 +451,11 @@
 
 
         </div>
-    </div>
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
             function from_account() {
@@ -449,7 +490,10 @@
                 })
             }
 
+
+
             $(document).ready(function() {
+
                 $('#spinner').hide(),
                     $('#spinner-text').hide(),
                     $('#print_receipt').hide();
@@ -477,70 +521,33 @@
                     })
                 }
 
-                // $(".select_onetime").css("display", "none");
-                // $(".select_beneficiary").css("display", "block");
-
-               // $(".select_beneficiary").show();
-                //$(".select_onetime").hide();
-
-                // var type = $("input[type='radio']:checked").val();
-
-                // $(".radio").click(function(){
-
-                //     var type = $("input[type='radio']:checked").val();
-
-                //     if(type == 'beneficiary'){
-                //         $(".select_onetime").css("display", "none");
-                //         $(".select_beneficiary").css("display", "block");
-
-                //         // set amonut to empty
-                //         $("#amount").val('');
-
-
-                //         //$(".select_onetime").hide();
-                //         //$(".select_beneficiary").show();
-
-                //     }
-                //     if(type == 'onetime'){
-
-                //         $(".select_beneficiary").css("display", "none");
-                //         $(".select_onetime").css("display", "block");
-
-                //         // set amonut to empty
-                //         $("#amount").val('');
-
-                //        // $(".select_beneficiary").hide();
-                //         //$(".select_onetime").show();
-                //     }
-
-                // });
-
-
-
-                // hide seleect accounts info
+                {{-- hide select accounts info --}}
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
                 $("#schedule_payment_date").hide()
+                $("#frequency").hide()
                 $('#schedule_payment_contraint_input').hide()
                 $('.display_schedule_payment_date').text('N/A')
 
-                $("#transaction_form").show()
+                $("#cardless_payment_form").show()
                 $("#cardless_payment_summary").hide()
 
-                {{--  $("#next_button").click(function(e) {
+                {{-- $("#next_button").click(function(e) {
                     e.preventDefault()
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
-                })  --}}
+                    $("#cardless_payment_form").hide()
+                    $("#cardless_payment_summary").show()
+                }) --}}
 
                 $("#back_button").click(function(e) {
                     e.preventDefault()
-                    $("#transaction_summary").hide()
-                    $("#transaction_form").show()
+                    $("#cardless_payment_summary").hide()
+                    $("#cardless_payment_form").show()
 
                 })
 
                 {{-- Event on From Account field --}}
+
+                var amt = 0
 
                 $("#from_account").change(function() {
                     var from_account = $(this).val()
@@ -553,11 +560,17 @@
                         from_account_info = from_account.split("~")
                         {{-- alert('continue') --}}
 
+                        // Sweet alert function
+
+
+
                         var to_account = $('#to_account').val()
 
                         if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                             to_account.trim() != '') {
-                            alert('can not transfer to same account')
+                            {{-- alert('can not transfer to same account') --}}
+
+                            toaster('Can not send to same account', 'error', 10000)
                             $(this).val('')
                         }
 
@@ -569,6 +582,8 @@
 
                         $(".display_currency").text(from_account_info[3].trim()) // set summary currency
 
+                        amt = from_account_info[4].trim()
+
                         $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
                             .trim())))
                         {{-- alert('and show' + from_account_info[3].trim()) --}}
@@ -578,7 +593,7 @@
 
 
 
-                    // alert(from_account_info[0]);
+                    {{-- alert(from_account_info[0]); --}}
                 });
 
 
@@ -586,7 +601,7 @@
                     var to_account = $(this).val()
                     {{-- alert(to_account) --}}
                     if (to_account.trim() == '' || to_account.trim() == undefined) {
-
+                        {{-- alert('money') --}}
                         $(".to_account_display_info").hide()
 
                     } else {
@@ -606,7 +621,8 @@
                         $(".display_to_account_name").text(to_account_info[1].trim())
                         $(".display_to_account_no").text(to_account_info[2].trim())
                         $(".display_to_account_currency").text(to_account_info[3].trim())
-                        $(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
+                        // alert(to_account_info[0].trim())
+                        //$(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
 
                         $(".to_account_display_info").show()
                     }
@@ -614,64 +630,35 @@
 
 
 
-                    // alert(to_account_info[0]);
+                    {{-- alert(to_account_info[0]); --}}
                 });
 
 
                 $("#amount").keyup(function() {
+                    var from_account = $('#from_account').val()
+                    var to_account = $('#to_account').val()
 
-                    var type = $("input[type='radio']:checked").val();
-                    //alert(type);
-                    //return false;
-
-                    if(type == 'beneficiary'){
-                        var from_account = $('#from_account').val()
-                        var to_account = $('#to_account').val()
-
-                        if (from_account.trim() == '' || to_account.trim() == '') {
-                            alert('Please select source and destination accounts')
-                            $(this).val('')
-                            return false;
-                        } else {
-                            var transfer_amount = $(this).val()
-                            $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
-                        }
-
-                    }
-                    else if(type == 'onetime'){
-
-                        var from_account = $('#from_account').val()
-                        var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                        var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
-                        var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
-                        var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                        var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-                        console.log(onetime_beneficiary_alias_name)
-                        console.log(onetime_beneficiary_account_number)
-                        console.log(onetime_beneficiary_account_currency)
+                    console.log(amt)
 
 
-                        if (from_account.trim() == '' || onetime_beneficiary_alias_name.trim() == '' || onetime_beneficiary_account_number.trim() == '' || onetime_beneficiary_account_currency.trim() == '') {
-                            alert('Please select source and destination accounts')
-                            $(this).val('')
-                            return false;
-                        } else {
-                            //alert('set')
-                            var transfer_amount = $(this).val()
-                            $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
-                        }
+                    if (from_account.trim() == '' || to_account.trim() == '') {
 
-                    }else{
-                        alert( type + ' 00000000 Select either beneficiary or onetime beneficiary')
+                        toaster('Please select source and destination accounts', 'error', 10000)
                         $(this).val('')
                         return false;
+                    } else {
+                        var transfer_amount = $(this).val()
+                        if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                            toaster('Insufficient account balance', 'error', 10000)
+                            return false
+                        } else {
+                            $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)));
+                        }
+
+
                     }
 
-
-
-
-                })
+                });
 
 
                 function formatToCurrency(amount) {
@@ -682,15 +669,17 @@
                 // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
                 $("input:checkbox").on("change", function() {
                     if ($(this).is(":checked")) {
-                        console.log("Checkbox Checked!");
+                        {{-- console.log("Checkbox Checked!"); --}}
                         $("#schedule_payment_date").show()
+                        $("#frequency").show()
                         $(".display_schedule_payment").text('YES')
                         $('#schedule_payment_contraint_input').val('TRUE')
 
                     } else {
-                        console.log("Checkbox UnChecked!");
+                        {{-- console.log("Checkbox UnChecked!"); --}}
                         $("#schedule_payment_date").val('')
                         $("#schedule_payment_date").hide()
+                        $("#frequency").hide()
                         $('.display_schedule_payment').text('NO')
                         $('.display_schedule_payment_date').text('N/A')
 
@@ -701,179 +690,199 @@
                 });
 
 
+                {{-- $("#cardless_payment_form").click(function() {}) --}}
 
-
-
-                // NEXT BUTTON CLICK
                 $("#next_button").click(function() {
-
-                    var type = $("input[type='radio']:checked").val();
-
-                    var from_account = $('#from_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-                    var purpose = $('#purpose').val()
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
-
-                    if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
-                        return false
-
-                    }
-
-                    //set purpose and category values
-                    var category_info = category.split("~")
-                    $("#display_category").text(category_info[1])
-                    $("#display_purpose").text(purpose)
-
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
-
-
-
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-                    if(type == 'beneficiary'){
-
-                        var to_account = $('#to_account').val()
-
-                        $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                        if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                            alert('Field must not be empty')
-                            return false
-                        }else{
-                            //set purpose and category values
-                            var category_info = category.split("~")
-                            $("#display_category").text(category_info[1])
-                            $("#display_purpose").text(purpose)
-
-                            $("#transaction_form").hide()
-                            $("#transaction_summary").show()
-                        }
-
-
-
-
-                    }else if(type == 'onetime'){
-
-                        var from_account = $('#from_account').val()
-
-                        // ONETIME BENEFICIARY DETAILS
-                        var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                        var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
-                        var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
-                        var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
-                        var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                        var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-
-                        console.log(onetime_beneficiary_alias_name)
-                        console.log(onetime_beneficiary_account_number)
-                        console.log(onetime_beneficiary_account_currency)
-
-
-                        // END OF ONETIME BENEFICIARY DETAILS
-
-
-                        if (from_account.trim() == '' || onetime_beneficiary_account_number.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                            alert('Field must not be empty')
-                            return false
-                        }else{
-                            //set purpose and category values
-                            var category_info = category.split("~")
-                            $("#display_category").text(category_info[1])
-                            $("#display_purpose").text(purpose)
-
-                            $("#transaction_form").hide()
-                            $("#transaction_summary").show()
-                        }
-
-
-
-
-                    }else{
-                        alert('CHOOSE EITHER BENEFICIARY OR ONTIME')
-                    }
-
-
-
-
-                    /*
-
+                    {{-- var t =  $("#schedule_payment_date").val()
+                    alert(t) --}}
+                    {{-- return false; --}}
                     var from_account = $('#from_account').val()
                     var to_account = $('#to_account').val()
                     var transfer_amount = $('#amount').val()
                     var category = $('#category').val()
-
+                    {{-- var select_frequency_ = $('#select_frequency').val() --}}
                     var purpose = $('#purpose').val()
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
 
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
+
+                    var from_account_ = $('#from_account').val().split('~');
+                    var to_account_ = $('#to_account').val().split('~');
+                    var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
+                    {{-- console.log(schdule_pay); --}}
+                    if (from_account_[2] == to_account_[1]) {
+
+                        toaster('Can not send to same account', 'error', 10000)
                         return false;
                     }
 
 
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
+                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                        toaster('Insufficient account balance', 'error', 10000)
                         return false
-                    }else{
-                        //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
                     }
 
-                    */
+                    if (schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() ==
+                        '') {
+                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
+                        toaster('Select schedule date for subsequent transfers', 'error', 10000)
+                        {{-- alert('Select schedule date for subsequent transfers') --}}
+                        return false;
+                    }
 
 
-                    /**
-                    $.ajax({
-                        type: "POST"
-                        url: "submit-own-account-transfer"
-                        data: {
-                            "send_from": send_from,
-                            "send_to": send_to,
-                            "cashier_id": cashier_id,
-                            "text_area": text_area,
-                            "amount": amount,
-                            "cashier_id": cashier_id
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                        success: function() {
-                            Swal.fire(
-                                'Post Successful',
-                                ' ',
-                                'success'
-                            )
-                        }
-                    })
+                    $('.display_schedule_payment_date').text('| ' + schedule_payment_date)
 
 
-                     */
+                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() ==
+                        '' || category.trim() == '' || purpose.trim() == '') {
+                        {{-- alert('Field must not be empty') --}}
+                        toaster('Field must not be empty', 'error', 10000)
+                        return false
+                    } else {
+                        //set purpose and category values
+                        var category_info = category.split("~")
+
+                        {{-- var select_frequency_info = select_frequency_.split("~") --}}
+
+                        $("#display_category").text(category_info[1])
+                        {{-- $("#display_frequency").text(select_frequency_info[1]) --}}
+                        $("#display_purpose").text(purpose)
+
+                        $("#cardless_payment_form").hide()
+                        $("#cardless_payment_summary").show()
+                    }
+
                 });
 
 
+                {{-- function user_pin(){
+                    let pin = 1234;
+
+                    if ($('#user_pin').val() == pin){
+                        toaster('Field must not be empty', 'error', 10000 )
+                    }else{
+                        toaster('Field must not be empty', 'error', 10000 )
+                        return false;
+                    }
+                } --}}
+
+                function toaster(message, icon, timer) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: timer,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+
+                    Toast.fire({
+                        icon: icon,
+                        title: message
+                    })
+                }
+
+
+                // SUBMIT TO API
+
+                $('#confirm_button').click(function(e) {
+                    e.preventDefault();
+
+
+                    //user_pin();
+                    {{-- let pin = $('#user_pin').val();
+
+                    if ( pin != '1234'){
+                        toaster('Incorrect pin entered', 'error', 10000 )
+                        return false;
+                    } --}}
+
+                    var from_account = $('#from_account').val().split('~');
+                    var to_account = $('#to_account').val().split('~');
+                    var category = $('#category').val().split('~');
+                    {{-- var select_frequency = $('#select_frequency').val().split('~') --}}
+
+
+
+
+                    //GET VALUES
+                    var from_account_ = from_account[2];
+                    var to_account_ = to_account[1];
+                    var transfer_amount = $('#amount').val();
+                    var category_ = category[1];
+                    {{-- var select_frequency_ = select_frequency[1]; --}}
+                    var purpose = $('#purpose').val();
+                    var pin = $('#user_pin').val();
+
+
+                    if (from_account_.trim() == '' || to_account_.trim() == '' || transfer_amount
+                        .trim() == '' || category_.trim() == '' || purpose.trim() == '' || pin == ''
+                    ) {
+                        toaster('Field must not be empty', 'error', 10000)
+                        return false;
+                    }
+
+
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                    var schedule_payment_date = $('#schedule_payment_date').val();
+
+
+                    $('#spinner').show();
+                    $('#spinner-text').show();
+
+                    $('#confirm_transfer').hide(),
+                        $('#confirm_button').attr('disabled', true);
+
+
+                    $.ajax({
+
+                        'type': 'POST',
+                        'url': 'own-account-api',
+                        "datatype": "application/json",
+                        'data': {
+                            'from_account': from_account_,
+                            'to_account': to_account_,
+                            'transfer_amount': transfer_amount,
+                            'category': category_,
+                            {{-- 'select_frequency': select_frequency_, --}} 'purpose': purpose,
+                            'schedule_payment_type': schedule_payment_contraint_input,
+                            'schedule_payment_date': schedule_payment_date,
+                            'secPin': pin
+
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+
+                            {{-- console.log(response.responseCode) --}}
+                            if (response.responseCode == '000') {
+                                toaster(response.message, 'success', 20000)
+                                $('#confirm_button').hide();
+                                $('#back_button').hide();
+                                $('#print_receipt').show();
+                            } else {
+
+                                toaster(response.message, 'error', 10000);
+
+                                $('#spinner').hide();
+                                $('#spinner-text').hide();
+                                $('#print_receipt').hide();
+                                $('#confirm_transfer').show();
+                                $('#confirm_button').attr('disabled', false);
+
+                            }
+                        }
+
+                    })
+
+
+                })
             });
 
         </script>
