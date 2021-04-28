@@ -136,19 +136,21 @@
                                                     <label class="h6">Expense Category: <span
                                                             class="text-danger">*</span></label>
 
+
                                                     <select class="custom-select" id="category" required>
                                                         <option value="">---Not Selected---</option>
-                                                        <option value="Travel">Travel</option>
-                                                        <option value="Petty Cash">Petty Cash</option>
-                                                        <option value="Salary">Salary</option>
-                                                        <option value="Groceries">Groceries</option>
-                                                        <option value="Allowances">Allowances</option>
-                                                        <option value="Medical">Medical</option>
-                                                        <option value="Vendor Payment">Vendor Payment</option>
-                                                        <option value="Insurance">Insurance</option>
-                                                        <option value="Tax">Tax</option>
-                                                        <option value="Others">Others</option>
+                                                        <option value="01~Travel">Travel</option>
+                                                        <option value="02~Petty Cash">Petty Cash</option>
+                                                        <option value="03~Salary">Salary</option>
+                                                        <option value="04~Groceries">Groceries</option>
+                                                        <option value="05~Allowances">Allowances</option>
+                                                        <option value="06~Medical">Medical</option>
+                                                        <option value="07~Vendor Payment">Vendor Payment</option>
+                                                        <option value="08~Insurance">Insurance</option>
+                                                        <option value="09~Tax">Tax</option>
+                                                        <option value="10~Others">Others</option>
                                                     </select>
+
 
                                                 </div>
 

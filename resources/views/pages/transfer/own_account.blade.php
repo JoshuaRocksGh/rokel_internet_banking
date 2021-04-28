@@ -114,21 +114,10 @@
 
 
 
-                                            {{-- <div class="form-group" id="frequency">
-                                                <label class="">Payment Frequency</label>
-                                                <select class="custom-select" id="select_frequency" required>
-                                                    <option value="">Select Frequency</option>
-                                                    <option value="001~Weekly">Weekly</option>
-                                                    <option value="002~Bi-Weekly">Bi-Weekly</option>
-                                                    <option value="003~Monthly">Monthly</option>
-                                                    <option value="004~Quaterly">Quaterly</option>
-                                                </select>
-
-                                            </div> --}}
 
                                             <input type="text" class="form-control" id="schedule_payment_contraint_input">
 
-                                            <label class="">Value Date</label>
+                                            {{-- <label class="">Value Date</label> --}}
 
                                             <input type="date" class="form-control" id="schedule_payment_date">
 
@@ -191,12 +180,19 @@
 
                                         {{-- <label class="h6">Category</label> --}}
 
+
                                         <select class="custom-select" id="category" required>
-                                            <option value="">Select Category</option>
-                                            <option value="001~Fees">Fees</option>
-                                            <option value="002~Electronics">Electronics</option>
-                                            <option value="003~Travels">Travels</option>
-                                            <option value="004~Travels">Others</option>
+                                            <option value="">---Not Selected---</option>
+                                            <option value="01~Travel">Travel</option>
+                                            <option value="02~Petty Cash">Petty Cash</option>
+                                            <option value="03~Salary">Salary</option>
+                                            <option value="04~Groceries">Groceries</option>
+                                            <option value="05~Allowances">Allowances</option>
+                                            <option value="06~Medical">Medical</option>
+                                            <option value="07~Vendor Payment">Vendor Payment</option>
+                                            <option value="08~Insurance">Insurance</option>
+                                            <option value="09~Tax">Tax</option>
+                                            <option value="10~Others">Others</option>
                                         </select>
 
                                     </div>
@@ -234,6 +230,8 @@
                                 <div class="col-md-12">
                                     <div class="border card p-3 mt-4 mt-lg-0 rounded">
                                         <h4 class="header-title mb-3">Transfer Detail Summary</h4>
+
+                                        <p class="display-4 text-center text-success success-message "></p>
 
                                         <div class="table-responsive">
                                             <table class="table mb-0 table-bordered table-striped">
@@ -463,8 +461,8 @@
 
 
         {{-- <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> --}}
+        {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
 
         <script>
             function from_account() {
@@ -498,6 +496,27 @@
 
                 })
             }
+
+
+            function toaster(message, icon, timer) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: timer,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: icon,
+                    title: message
+                })
+            }
+
 
 
 
@@ -777,25 +796,6 @@
                     }
                 } --}}
 
-                function toaster(message, icon, timer) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: timer,
-                        timerProgressBar: false,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
-
-                    Toast.fire({
-                        icon: icon,
-                        title: message
-                    })
-                }
-
 
                 // SUBMIT TO API
 
@@ -872,9 +872,14 @@
                             {{-- console.log(response.responseCode) --}}
                             if (response.responseCode == '000') {
                                 toaster(response.message, 'success', 20000)
+                                toaster(response.message, 'success', 1000)
                                 $('#confirm_button').hide();
                                 $('#back_button').hide();
                                 $('#print_receipt').show();
+
+                                $(".success-message").html(
+                                    '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
+                                )
                             } else {
 
                                 toaster(response.message, 'error', 10000);

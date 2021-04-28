@@ -44,7 +44,7 @@
                             <div class="col-md-2"></div>
 
                             <div class="col-md-8">
-                                <h2 class="header-title m-t-0 text-primary">OTHER LOCAL BANK TRANSFER</h2>
+                                <h2 class="header-title m-t-0 text-primary">ACH TRANSFER</h2>
 
                                 <p class="text-muted font-14 m-b-20">
                                     Parsley is a javascript form validation library. It helps you provide your
