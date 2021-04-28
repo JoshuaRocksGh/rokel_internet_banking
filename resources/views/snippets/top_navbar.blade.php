@@ -7,7 +7,7 @@
             <div class="logo-box">
                 <a href="#" class="logo logo-dark text-center">
                     <span class="logo-sm">
-                        img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_SMALL') )}} " alt="" height="40">
+                        <img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_SMALL') )}} " alt="" height="40">
                         <!-- <span class="logo-lg-text-light">UBold</span> -->
                     </span>
                     <span class="logo-lg">
@@ -23,9 +23,9 @@
 
                         </button>
                     </span>
-                    <span class="logo-lg">
+                <span class="logo-lg">
                         <img src="{{  asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT') )}} " alt="" height="40">
-                   </span>
+                    </span>
                 </a>
             </div>
 
@@ -149,7 +149,7 @@
 
             <li class="dropdown notification-list topbar-dropdown">
                 <a onclick="window.history.back()" class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <span class="font-20">   <b>  {{ $page_title }} </b> </span>
+                    <span class="font-20">   <b>  {{ $page_title }}</b> </span>
                 </a>
 
             </li>

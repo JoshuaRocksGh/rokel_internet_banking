@@ -7,7 +7,7 @@
                 <form class="app-search">
                     <div class="app-search-box dropdown">
                         <div class="input-group">
-                            <input type="search" class="form-control" placeholder="Search..." id="top-search">
+                            <input type="search" class="form-control" placeholder="Search ...." id="top-search">
                             <div class="input-group-append">
                                 <button class="btn" type="submit">
                                     <i class="fe-search"></i>
@@ -379,21 +379,27 @@
             </li>
 
 
-            <li>
-                <!-- Mobile menu toggle (Horizontal Layout)-->
-                <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#topnav-menu-content">
-                    <div class="lines">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+            <li class="dropdown notification-list topbar-dropdown">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
+
+                    {{-- <div class="col-md-4">
+                        <div class="avatar-md">
+                            <span class="avatar-title bg-soft-info text-info font-15 rounded-circle">
+                                GD<i class="mdi mdi-chevron-down"></i>
+                            </span>
+                        </div>
+
+                    </div> --}}
+
+                    <span class="font-20" style="color:white">
+                       Personal Internet Banking
+                    </span>
                 </a>
-                <!-- End mobile menu toggle-->
             </li>
 
 
         </ul>
-
 
         <div class="clearfix"></div>
     </div>

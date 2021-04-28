@@ -226,25 +226,43 @@
 
                                         <p>
                                         <p class="text" style="text-align: center">
-                                            Enter your email address and we will send you an email with instructions to
-                                            reset your pin.
+                                            Enter the fields below to Change your pin.
                                         </p>
                                         <div class="">
-                                            <div class="col-md-12">
-                                                <form action="" autocomplete="off" aria-autocomplete="off"
-                                                    id="reset_pin_form">
+                                            <div class="col-md-6">
+                                                <form autocomplete="off" aria-autocomplete="off" id="forgot_password">
+
+
 
                                                     <div class="form-group">
-                                                        <label for="simpleinput">Email Address</label>
-                                                        <input type="text" id="email_address_txtBx" class="form-control">
+                                                        <label for="new_password">Security Question</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <select class="form-control security_questions">
+                                                                <option value="">Select Security Queston</option>
+                                                            </select>
 
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group text-center">
-                                                        <button class="btn btn-primary " type="button" id=" ">
-                                                            &nbsp; Reset Pin &nbsp;</button>
+
+                                                    <div class="form-group">
+                                                        <label for="security_answer">Security Answer</label>
+                                                        <div class="input-group input-group-merge">
+                                                            <input type="text" id="security_answer_Pass_txtBx"
+                                                                class="form-control" placeholder="Security Answer">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group mb-0 text-center">
+                                                        <button class="btn btn-primary btn-rounded" type="button" id="btn_change_password_reset_pin"><span class="submit-text_reset_pn">Submit</span>
+                                                            <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner_reset_pin" aria-hidden="true"></span>
+                                                            <span id="spinner-text_reset_pin">Loading...</span>
+                                                        </button>
                                                     </div>
 
                                                 </form>
+
                                             </div>
                                         </div> <!-- end col -->
                                         </p>
@@ -335,6 +353,11 @@
                 $('#spinner_pass').hide();
                 $('#spinner-text_pass').hide();
 
+                //hide the spinner on show for the reset pin screen.
+                $('#spinner_reset_pin').hide();
+                $('#spinner-text_reset_pin').hide();
+
+
                 //for testing
                 $("#old_pin_txtBx").change(function() {
                     let old_pin = $("#old_pin_txtBx").val();
@@ -388,6 +411,9 @@
                     if (security_answer == "" || new_pin == "" || confirm_pin == "" || old_pin == "" ||
                         security_question == "") {
                         toaster("Please fill all required fields", "error", 6000);
+                        $('.submit-text').show();
+                        $('#spinner').hide();
+                        $('#spinner-text').hide();
                     } else {
                         if (new_pin != confirm_pin) {
                             //alert user to ensure new pin is same as confirm pin
@@ -475,7 +501,10 @@
                     //check if the user entered all the fields required
                     if (old_password == "" || new_password == "" || confirm_password == "" ||
                         security_question == "" || security_answer == "") {
-                        toaster("fields cannot be empty", "error", 6000)
+                        toaster("fields cannot be empty", "error", 6000);
+                        $('.submit-text_pass').show();
+                            $('#spinner_pass').hide();
+                            $('#spinner-text_pass').hide();
                     } else {
 
                         //check if confirm and new passwords are equal
