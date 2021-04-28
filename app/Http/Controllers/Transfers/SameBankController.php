@@ -33,11 +33,11 @@ class SameBankController extends Controller
             'type' => 'required'
         ]);
 
-        return [
-            'responseCode' => '000',
-            'message' => 'Money transferred successfully',
-            'data' => null
-        ];
+        // return [
+        //     'responseCode' => '000',
+        //     'message' => 'Money transferred successfully',
+        //     'data' => null
+        // ];
 
 
         $base_response = new BaseResponse();

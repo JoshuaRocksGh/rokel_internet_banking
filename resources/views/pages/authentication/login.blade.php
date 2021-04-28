@@ -6,8 +6,8 @@
     <div class="auth-fluid">
         <!--Auth fluid left content -->
         <div class="auth-fluid-form-box" style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
-            background-size: cover;
-        ">
+                    background-size: cover;
+                ">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
@@ -16,13 +16,13 @@
                         <div class="auth-logo">
                             <a href="index.html" class="logo logo-dark text-center">
                                 <span class="logo-lg">
-                                    <img src="{{  asset("assets/images/rokel_logo.png")}} " alt="" height="50">
+                                    <img src="{{ asset('assets/images/rokel_logo.png') }} " alt="" height="50">
                                 </span>
                             </a>
 
                             <a href="index.html" class="logo logo-light text-center">
                                 <span class="logo-lg">
-                                    <img src="{{  asset("assets/images/rokel_logo.png")}} " alt="" height="50">
+                                    <img src="{{ asset('assets/images/rokel_logo.png') }} " alt="" height="50">
                                 </span>
                             </a>
                         </div>
@@ -30,7 +30,9 @@
 
 
                     <!-- title-->
-                    <p class="text-muted mb-4"><h3 class="text-primary"> Internet Banking.</h3></p>
+                    <p class="text-muted mb-4">
+                    <h2 class="text-primary"> Personal Banking.</h2>
+                    </p>
                     <br><br>
                     <h4 class="mt-0">Sign In</h4>
 
@@ -39,9 +41,10 @@
                     <form action="POST" id="login_post_form" autocomplete="off" aria-autocomplete="off">
                         @csrf
 
-                        <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert" id="failed_login">
+                        <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"
+                            role="alert" id="failed_login">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                {{--  <span aria-hidden="true">&times;</span>  --}}
+                                {{-- <span aria-hidden="true">&times;</span> --}}
                             </button>
                             <i class="mdi mdi-block-helper mr-2"></i>
                             <span id="error_message"></span>
@@ -50,7 +53,8 @@
                         <div class="form-group">
 
                             <label for="user_id">User ID<span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" id="user_id" required placeholder="Enter your email" parsley-trigger="change" required>
+                            <input class="form-control" type="text" id="user_id" required placeholder="Enter your email"
+                                parsley-trigger="change" required>
 
                         </div>
 
@@ -61,7 +65,8 @@
                                     password?</small></a>
                             <label for="password">Password<span class="text-danger">*</span></label>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                                <input type="password" id="password" class="form-control" placeholder="Enter your password"
+                                    required>
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>
@@ -75,10 +80,12 @@
 
                         <div class="form-group mb-0 text-center">
 
-                                <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="log_in" >Log In</span>
-                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
-                                    <span id="spinner-text">Loading...</span>
-                                </button>
+                            <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="log_in">Log
+                                    In</span>
+                                <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
+                                    aria-hidden="true"></span>
+                                <span id="spinner-text">Loading...</span>
+                            </button>
 
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
                         </div>
@@ -90,37 +97,46 @@
 
                     <!-- Footer-->
 
-                        <br><br><br>
-                        <div class="row ">
+                    <br><br><br>
+                    <div class="row ">
 
 
-                            <div class="text-center d-sm-none   d-md-none  d-lg-none">
-                                <a  href="{{ url('account-creation') }}" class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i class="fas fa-book-open mr-1"></i> Open an account</a>
-                                &nbsp;
-                                <a  href="{{ url('faq') }}" class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i class="fas fa-headset mr-1"></i>  FAQs</a>
-
-                            </div>
-
-
-                        </div>
-                        <br>
-                        <div class="row ">
-
-
-                            <div class="text-center d-sm-none  d-md-none  d-lg-none">
-                                <a href="{{ url('enquiry') }}" class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i class="fas fa-desktop mr-1"></i> Make Enquiry</a>
-                               &nbsp;
-                               <a href="{{ url('branches') }}" class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i class="fas fa-map-marked-alt mr-1"></i>  Branches</a>
-
-                            </div>
+                        <div class="text-center d-sm-none   d-md-none  d-lg-none">
+                            <a href="{{ url('account-creation') }}"
+                                class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i
+                                    class="fas fa-book-open mr-1"></i> Open an account</a>
+                            &nbsp;
+                            <a href="{{ url('faq') }}"
+                                class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i
+                                    class="fas fa-headset mr-1"></i> FAQs</a>
 
                         </div>
+
+
+                    </div>
+                    <br>
+                    <div class="row ">
+
+
+                        <div class="text-center d-sm-none  d-md-none  d-lg-none">
+                            <a href="{{ url('enquiry') }}"
+                                class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i
+                                    class="fas fa-desktop mr-1"></i> Make Enquiry</a>
+                            &nbsp;
+                            <a href="{{ url('branches') }}"
+                                class="btn btn-outline-primary btn-rounded waves-effect waves-light"> <i
+                                    class="fas fa-map-marked-alt mr-1"></i> Branches</a>
+
+                        </div>
+
+                    </div>
 
 
                     <footer class="footer footer-alt">
 
-                            <p class="text-muted">Dont have an account? <a href="auth-register-2.html" class="text-muted ml-1"><b>Sign Up</b></a></p>
-                        </footer>
+                        <p class="text-muted">Dont have an account? <a href="auth-register-2.html"
+                                class="text-muted ml-1"><b>Sign Up</b></a></p>
+                    </footer>
 
 
                 </div> <!-- end .card-body -->
@@ -140,11 +156,13 @@
 
 
                                 <i class="fas fa-book-open text-primary font-22" style="font-size: 100px;"></i>
-                                <h4 class="mt-3 font-16"><a href="{{ url('account-creation') }}" class="text-dark">Open An Account</a>
+                                <h4 class="mt-3 font-16"><a href="{{ url('account-creation') }}" class="text-dark">Open An
+                                        Account</a>
                                 </h4>
 
                                 <a href="{{ url('account-creation') }}" class="p-text">
-                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
+                                    <button type="button"
+                                        class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
                                 </a>
 
                             </div> <!-- end .padding -->
@@ -155,10 +173,12 @@
                         <div class="text-center card-box">
                             <div class="pt-2 pb-2">
                                 <i class=" fas fa-desktop text-primary font-22" style="font-size: 100px;"></i>
-                                <h4 class="mt-3 font-16"><a href="{{ url('enquiry') }}" class="text-dark">Enquiries/Complaints</a>
+                                <h4 class="mt-3 font-16"><a href="{{ url('enquiry') }}"
+                                        class="text-dark">Enquiries/Complaints</a>
                                 </h4>
                                 <a href="{{ url('enquiry') }}" class="p-text">
-                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
+                                    <button type="button"
+                                        class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
                                 </a>
 
                             </div> <!-- end .padding -->
@@ -182,7 +202,8 @@
                                 <h4 class="mt-3 font-16"><a href="{{ url('faq') }}" class="text-dark">FAQ</a></h4>
 
                                 <a href="{{ url('faq') }}" class="p-text">
-                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
+                                    <button type="button"
+                                        class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
                                 </a>
 
                             </div> <!-- end .padding -->
@@ -197,14 +218,14 @@
 
                                 <h4 class="mt-3 font-16">Branches</h4>
                                 <a href="{{ url('branches') }}" class="text-dark">
-                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
-                                    Here</button>
-                                </a>
-
-                                {{--  <a href="{{ url('branches') }}" class="text-dark">
                                     <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
                                         Here</button>
-                                    </a>  --}}
+                                </a>
+
+                                {{-- <a href="{{ url('branches') }}" class="text-dark">
+                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
+                                        Here</button>
+                                    </a> --}}
 
                             </div> <!-- end .padding -->
                         </div> <!-- end card-box-->
@@ -226,76 +247,75 @@
 
 @section('scripts')
 
-<script>
-    $(document).ready(function(){
+    <script>
+        $(document).ready(function() {
 
-        $('#failed_login').hide(),
-        $('#spinner').hide(),
-        $('#spinner-text').hide(),
+            $('#failed_login').hide(),
+                $('#spinner').hide(),
+                $('#spinner-text').hide(),
 
 
 
-        $('#login_post_form').submit(function(e){
-            e.preventDefault();
-            var email = $("#user_id").val();
-            var password = $('#password').val();
-            $('#spinner').show(),
-            $('#spinner-text').show(),
+                $('#login_post_form').submit(function(e) {
+                    e.preventDefault();
+                    var email = $("#user_id").val();
+                    var password = $('#password').val();
+                    $('#spinner').show(),
+                        $('#spinner-text').show(),
 
-            $('#log_in').hide(),
-            $('#submit').attr('disabled',true);
+                        $('#log_in').hide(),
+                        $('#submit').attr('disabled', true);
 
-            //var show_error = $('#failed_login').show();
-            $.ajax({
-                "type": "POST",
-                "url" : "login",
-                "datatype" : "application/json",
-                "data": {
-                    "user_id" : email,
-                    "password" : password,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
+                    //var show_error = $('#failed_login').show();
+                    $.ajax({
+                        "type": "POST",
+                        "url": "login",
+                        "datatype": "application/json",
+                        "data": {
+                            "user_id": email,
+                            "password": password,
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
 
-                success:
-                function(response){
-                    console.log(response);
-                    var res = response.data
-                    $('#submit').attr('disabled',false);
+                        success: function(response) {
+                            console.log(response);
+                            var res = response.data
+                            $('#submit').attr('disabled', false);
 
-                    if(response.responseCode == "000"){
-                        if(response.data.firstTimeLogin == true) {
-                            window.location = 'change-password';
-                        }else{
-                            window.location = 'home';
+                            if (response.responseCode == "000") {
+                                if (response.data.firstTimeLogin == true) {
+                                    window.location = 'change-password';
+                                } else {
+                                    window.location = 'home';
+                                }
+
+
+                            } else {
+                                $('#spinner').hide()
+                                $('#spinner-text').hide()
+
+                                $('#log_in').show()
+                                $('#error_message').text(response.message)
+                                $('#failed_login').show()
+
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            $('#submit').attr('disabled', false);
+                            $('#spinner').hide()
+                            $('#spinner-text').hide()
+
+                            $('#log_in').show()
+                            $('#error_message').text("Connection Error")
+                            $('#failed_login').show()
                         }
-
-
-                    }else {
-                        $('#spinner').hide()
-                        $('#spinner-text').hide()
-
-                        $('#log_in').show()
-                        $('#error_message').text(response.message)
-                        $('#failed_login').show()
-
-                    }
-                },
-                error: function(xhr, status, error){
-                    $('#submit').attr('disabled',false);
-                    $('#spinner').hide()
-                    $('#spinner-text').hide()
-
-                    $('#log_in').show()
-                    $('#error_message').text("Connection Error")
-                    $('#failed_login').show()
-                }
-            })
+                    })
+                })
         })
-    })
 
-</script>
+    </script>
 
 
 @endsection
