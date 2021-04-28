@@ -81,10 +81,12 @@ class LoginController extends Controller
                     */
 
                     $user_detail = $result->data;
+                    $customerType = $user_detail->customerType;
 
-                    // SET USER SESSION
-                    // $user = (Object) UserAuth::getDetails();
-                    // $tokn  = $user->userToken
+                    if ($customerType != "I") {
+                        return  $base_response->api_response("422", "Corporate users not allowed",  null);
+                    }
+
 
                     session([
                         "userId" => $user_detail->userId,
@@ -95,10 +97,14 @@ class LoginController extends Controller
                         "email" => $user_detail->email,
                         "firstTimeLogin" => $user_detail->firstTimeLogin,
                         "userToken" => $user_detail->userToken,
-                        // "userToken" => "15D2A303-98FD-43A6-86E4-F24FC7436069",
                         "customerNumber" => $user_detail->customerNumber,
                         "updateUrl" => $user_detail->updateUrl,
                         "lastLogin" => $user_detail->lastLogin,
+                        // "customerType" => $user_detail->customerType,
+                        // "checkerMaker" => $user_detail->checkerMaker,
+                        "customerType" => 'C',
+                        "checkerMaker" => 'M',
+
                     ]);
 
                     $authToken = session()->get('userToken');
