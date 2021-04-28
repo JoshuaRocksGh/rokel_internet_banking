@@ -56,7 +56,6 @@ class SameBankController extends Controller
         $userID = session()->get('userId');
 
 
-
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID

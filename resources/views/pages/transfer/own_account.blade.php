@@ -29,11 +29,10 @@
 
 @section('content')
 
-    WN ACCOUNT TRANSFER ']) --}}
 
     {{-- @include('snippets.top_navbar', ['page_title' => 'OWN ACCOUNT TRANSFER ']) --}}
 
-    class="row">
+    <div class="row">
     <div class="col-12">
         <div class="">
             <div class="card-body">
@@ -43,16 +42,6 @@
                     <div class="col-md-8  card-body">
                         <h3 class=" m-t-0 text-primary">OWN ACCOUNT TRANSFER</h3>
 
-<<<<<<< HEAD
-                            <p class="text-muted font-14 m-b-20">
-                                <span>
-                                    <b class="text-danger">Please Note: </b>
-                                    <b>This offers you the opportunity to transfer funds between your own
-                                        accounts</b>
-                                </span>.
-                            </p>
-                            <hr>
-=======
                         <p class="text-muted font-14 m-b-20">
                             <span>
                                 <b class="text-danger">Please Note: </b>
@@ -61,7 +50,6 @@
                             </span>.
                         </p>
                         <hr>
->>>>>>> a3046b11b4f37691e3f691ea2f95842b0e0122f2
 
 
                         <div class="row" id="transaction_form">
@@ -231,7 +219,7 @@
 
                                 <div class="form-group text-right">
                                     <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                        &nbsp; Next &nbsp;</button>
+                                        &nbsp; Next <i class="fe-arrow-right"></i>&nbsp;</button>
                                 </div>
                             </div> <!-- end col -->
 
@@ -466,6 +454,7 @@
 
 
     </div>
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="

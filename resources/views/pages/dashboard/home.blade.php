@@ -784,17 +784,18 @@
                         if(response.responseCode == '000'){
 
                             let data = response.data;
-                            {{--  let rollover = response.data[0].rollover;
-                            if(rollover == 'Y'){
-                                rollover_ = "Yes" ;
-                            }else if (rollover == 'N'){
-                                rollover_ = "No" ;
-                            }else{
-                                rollover_ = null ;
-                            }  --}}
+
 
                             if(response.data.length > 0){
                                 console.log(response.data.length );
+                                let rollover = response.data[0].rollover;
+                                if(rollover == 'Y'){
+                                    rollover_ = "Yes" ;
+                                }else if (rollover == 'N'){
+                                    rollover_ = "No" ;
+                                }else{
+                                    rollover_ = null ;
+                                }
                                 $.each(data, function(index) {
                                 $('.fixed_deposit_account').append(`<tr>
                                     <td><b> ${data[index].sourceAccount} </b></td>
@@ -807,9 +808,11 @@
 
                                 })
                             }else{
-                                alert("Empty");
+                                {{--  alert("Empty");  --}}
                                 {{--  $('.fixed_deposit_display_area').hide();  --}}
                                 $.each(data, function(index) {
+                                    alert("Empty");
+
                                     $('.fixed_deposit_account').append(`<tr>
 
                                         <td><b> No Data </b></td>
