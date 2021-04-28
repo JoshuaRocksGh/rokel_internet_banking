@@ -1,5 +1,36 @@
 @extends('layouts.master')
 
+
+
+@section('styles')
+
+    <style>
+        @media print {
+            .hide_on_print {
+                display: none
+            }
+        }
+
+        @font-face {
+            font-family: 'password';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+        }
+
+        input.key {
+            font-family: 'password';
+            width: 100px;
+            height: 26px;
+        }
+
+    </style>
+
+
+@endsection
+
+
+
 @section('content')
 
     <div <legend>
@@ -272,8 +303,10 @@
                                         <div class="border p-3 mt-4 mt-lg-0 rounded card">
                                             <h4 class="header-title mb-3">Transfer Detail Summary</h4>
 
+                                            <p class="display-4 text-center text-success success-message "></p>
+
                                             <div class="table-responsive">
-                                                <table class="table mb-0">
+                                                <table class="table mb-0 table-bordered table-striped">
 
                                                     <tbody>
                                                         <tr>
@@ -381,11 +414,11 @@
                                                         <tr>
                                                             <td>Enter Pin: </td>
                                                             <td>
-                                                                <div class="form-group">
-                                                                    <input type="text" name="user_pin" class="form-control"
-                                                                        id="user_pin"
-                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                                </div>
+
+                                                                <input type="text" name="user_pin"
+                                                                    class="form-control key hide_on_print" id="user_pin"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+
                                                             </td>
                                                         </tr>
 
@@ -406,8 +439,9 @@
                                                             id="spinner" aria-hidden="true"></span>
                                                         <span id="spinner-text">Loading...</span>
                                                     </button></span>
-                                                <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
-                                                        id="print_receipt" onclick="window.print()">Print Receipt
+                                                <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                        type="button" id="print_receipt" onclick="window.print()">Print
+                                                        Receipt
                                                     </button></span>
                                             </div>
                                         </div>
@@ -812,7 +846,7 @@
                             }
 
                         } else {
-                            alert(type + ' 00000000 Select either beneficiary or onetime beneficiary')
+                            {{-- alert(type + ' 00000000 Select either beneficiary or onetime beneficiary') --}}
                             $(this).val('')
                             return false;
                         }
@@ -1059,6 +1093,10 @@
                                         $('#back_button').hide();
                                         $('#print_receipt').show();
 
+                                        $(".success-message").html(
+                                            '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
+                                        )
+
                                     } else {
                                         toaster(response.message, 'error', 10000)
 
@@ -1152,13 +1190,27 @@
                                 success: function(response) {
                                     {{-- console.log(response); --}}
 
-                                    if (response.responseCode == '000') {
-                                        toaster(response.message, 'success')
 
+                                    if (response.responseCode == '000') {
+                                        toaster(response.message, 'success', 1000)
+                                        $('#confirm_button').hide();
+                                        $('#back_button').hide();
+                                        $('#print_receipt').show();
+
+                                        $(".success-message").html(
+                                            '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
+                                        )
 
                                     } else {
-                                        toaster(response.message, 'error')
+                                        toaster(response.message, 'error', 10000)
 
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#print_receipt').hide();
+
+
+                                        $('#confirm_transfer').show();
+                                        $('#confirm_button').attr('disabled', false);
 
 
                                     }
