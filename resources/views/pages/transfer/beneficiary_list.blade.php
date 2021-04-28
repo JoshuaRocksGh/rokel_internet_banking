@@ -310,7 +310,7 @@
 
 
                                     `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
-                                                    <button class="hell" > sup</button>
+
                                                     &emsp;&emsp; <span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-toggle="modal" data-target="#bs-example-modal-lg" data-value="${ data[index]}"></span>`,
 
 

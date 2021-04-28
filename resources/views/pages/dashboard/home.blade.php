@@ -807,12 +807,12 @@
                                 console.log(response.data.length);
                                 $.each(data, function(index) {
                                     $('.fixed_deposit_account').append(`<tr>
-                                                                                                    <td><b> ${data[index].sourceAccount} </b></td>
-                                                                                                    <td><b> ${data[index].dealAmount} </b></td>
-                                                                                                    <td><b> ${data[index].tenure} </b></td>
-                                                                                                    <td><b> ${data[index].fixedInterestRate} </b></td>
-                                                                                                    <td><b> ${rollover_ } </b></td>
-                                                                                                </tr>`)
+                                                                                                        <td><b> ${data[index].sourceAccount} </b></td>
+                                                                                                        <td><b> ${data[index].dealAmount} </b></td>
+                                                                                                        <td><b> ${data[index].tenure} </b></td>
+                                                                                                        <td><b> ${data[index].fixedInterestRate} </b></td>
+                                                                                                        <td><b> ${rollover_ } </b></td>
+                                                                                                    </tr>`)
 
 
                                 })
@@ -859,14 +859,14 @@
 
                             $.each(data, function(index) {
                                 $('.casa_list_display').append(`<tr>
-                                                                                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
-                                                                                                    <td> <b> ${data[index].accountDesc} </b>  </td>
-                                                                                                    <td> <b> ${data[index].accountType}  </b>  </td>
-                                                                                                    <td> <b> ${data[index].currency}  </b>  </td>
-                                                                                                    <td> <b> ${data[index].availableBalance}   </b> </b></td>
-                                                                                                    <td> <b> ${data[index].ledgerBalance}   </b>  </td>
-                                                                                                    <td>  <b> 0.00  </b> </td>
-                                                                                                </tr>`)
+                                                                                                        <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                                                                                        <td> <b> ${data[index].accountDesc} </b>  </td>
+                                                                                                        <td> <b> ${data[index].accountType}  </b>  </td>
+                                                                                                        <td> <b> ${data[index].currency}  </b>  </td>
+                                                                                                        <td> <b> ${data[index].availableBalance}   </b> </b></td>
+                                                                                                        <td> <b> ${data[index].ledgerBalance}   </b>  </td>
+                                                                                                        <td>  <b> 0.00  </b> </td>
+                                                                                                    </tr>`)
 
                             })
 
@@ -922,13 +922,13 @@
 
                             $.each(data, function(index) {
                                 $('.loans_display').append(`
-                                                                                                <tr>
-                                                                                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                                                                                    <td> <b> ${data[index].description} </b>  </td>
-                                                                                                    <td> <b> ${data[index].isoCode}  </b>  </td>
-                                                                                                    <td> <b> ${data[index].amountGranted}   </b> </b></td>
-                                                                                                    <td> <b> ${data[index].loanBalance}   </b>  </td>
-                                                                                                </tr>`)
+                                                                                                    <tr>
+                                                                                                        <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                                                                                        <td> <b> ${data[index].description} </b>  </td>
+                                                                                                        <td> <b> ${data[index].isoCode}  </b>  </td>
+                                                                                                        <td> <b> ${data[index].amountGranted}   </b> </b></td>
+                                                                                                        <td> <b> ${data[index].loanBalance}   </b>  </td>
+                                                                                                    </tr>`)
 
                             })
 
@@ -1056,6 +1056,27 @@
                                         flag_1 = `assets/images/flags/${pair[0].trim()}.png`
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(`
+                                                                                                                <tr>
+                                                                                                                    <td style="zoom: 0.8;">
+                                                                                                                        <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                        /
+                                                                                                                        <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+
+                                                                                                                    </td>
+                                                                                                                    <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                                    <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                                </tr>
+                                                                                                            `);
+                                    });
+                                } else if (rate_type == "Cross rate") {
+                                    $.each(data, function(index) {
+                                        let flag_1 = ``
+                                        let flag_2 = ``
+                                        console.log(data[index].pair);
+                                        let pair = data[index].pair.split('/')
+                                        flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                                        flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                                        $('.display_cross_rates').append(`
                                                                                                             <tr>
                                                                                                                 <td style="zoom: 0.8;">
                                                                                                                     <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
@@ -1067,27 +1088,6 @@
                                                                                                                 <td> <b> ${parseFloat(data[index].sell)} </b> </td>
                                                                                                             </tr>
                                                                                                         `);
-                                    });
-                                } else if (rate_type == "Cross rate") {
-                                    $.each(data, function(index) {
-                                        let flag_1 = ``
-                                        let flag_2 = ``
-                                        console.log(data[index].pair);
-                                        let pair = data[index].pair.split('/')
-                                        flag_1 = `assets/images/flags/${pair[0].trim()}.png`
-                                        flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                        $('.display_cross_rates').append(`
-                                                                                                        <tr>
-                                                                                                            <td style="zoom: 0.8;">
-                                                                                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                                                                                /
-                                                                                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
-
-                                                                                                            </td>
-                                                                                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                                                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                                                                                        </tr>
-                                                                                                    `);
                                     });
                                 }
 

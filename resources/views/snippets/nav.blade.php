@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
-            <li class="d-none d-lg-block">
+            {{--  <li class="d-none d-lg-block">
                 <form class="app-search">
                     <div class="app-search-box dropdown">
                         <div class="input-group">
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </form>
-            </li>
+            </li>  --}}
             {{-- <li class="dropdown d-inline-block d-lg-none">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-search noti-icon"></i>
@@ -87,14 +87,14 @@
                 </div>
             </li> --}}
 
-            <li class="dropdown d-none d-lg-inline-block">
+            {{--  <li class="dropdown d-none d-lg-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen"
                     href="#">
                     <i class="fe-maximize noti-icon"></i>
                 </a>
-            </li>
+            </li>  --}}
 
-            <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+            {{--  <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-grid noti-icon"></i>
@@ -147,7 +147,7 @@
                     </div>
 
                 </div>
-            </li>
+            </li>  --}}
 
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
@@ -191,7 +191,7 @@
                 </a>
             </li>
 
-            <li class="dropdown notification-list topbar-dropdown">
+            {{--  <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-bell noti-icon"></i>
@@ -285,7 +285,7 @@
                     </a>
 
                 </div>
-            </li>
+            </li>  --}}
 
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
@@ -340,11 +340,11 @@
                 </div>
             </li>
 
-            <li class="dropdown notification-list">
+            {{--  <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-settings noti-icon"></i>
                 </a>
-            </li>
+            </li>  --}}
 
         </ul>
 

@@ -142,11 +142,11 @@
                                                                 {{-- <input type="text" class="form-control" id="title"  required> --}}
                                                                 <select class="custom-select " id="title" required>
                                                                     <option selected>Select Title</option>
-                                                                    <option value="Mr">Mr</option>
+                                                                    {{--  <option value="Mr">Mr</option>
                                                                     <option value="Mrs">Mrs</option>
                                                                     <option value="Dr">Dr</option>
                                                                     <option value="Miss">Miss</option>
-                                                                    <option value="Professor">Professor</option>
+                                                                    <option value="Professor">Professor</option>  --}}
                                                                 </select>
                                                                 <br>
                                                             </div>
@@ -232,10 +232,10 @@
                                                                 {{-- <input type="text" class="form-control" id="marital_status"  required> --}}
                                                                 <select class="custom-select " id="marital_status"  required>
                                                                     <option selected>Select Marital Status</option>
-                                                                    <option value="Single">Single</option>
+                                                                    {{--  <option value="Single">Single</option>
                                                                     <option value="Married">Married</option>
                                                                     <option value="Divorced">Divorced</option>
-                                                                    <option value="Widowed">Widowed</option>
+                                                                    <option value="Widowed">Widowed</option>  --}}
 
                                                                 </select>
                                                                 <br>
@@ -246,6 +246,12 @@
                                                                 <input type="number" class="form-control" id="number_of_children"  required>
                                                                 <br>
                                                             </div>
+
+                                                            <div class="col-md-6">
+                                                                <label class="form-label">Number of Dependents</label>
+                                                                <input type="number" class="form-control" id="number_of_dependents"  required>
+                                                                <br>
+                                                            </div>
                                                             <div class="col-md-6">
                                                                 <label class="form-label">Nationality</label>
                                                                 <input type="text" class="form-control" id="nationality"  required>
@@ -254,7 +260,15 @@
 
                                                             <div class="col-md-6">
                                                                 <label class="form-label">ID Type</label>
-                                                                <input type="text" class="form-control" id="id_type"  required>
+                                                                <select class="custom-select " id="id_type"  required>
+                                                                    <option selected>ID Type</option>
+                                                                    {{--  <option value="Single">Single</option>
+                                                                    <option value="Married">Married</option>
+                                                                    <option value="Divorced">Divorced</option>
+                                                                    <option value="Widowed">Widowed</option>  --}}
+
+                                                                </select>
+                                                                {{--  <input type="text" class="form-control"  required>  --}}
                                                                 <br>
                                                             </div>
 
@@ -324,7 +338,15 @@
 
                                                             <div class="col-md-6">
                                                                 <label class="form-label">Country of Residence</label>
-                                                                <input type="text" class="form-control" id="country_of_residence"  required>
+                                                                <select class="custom-select " id="country_of_residence"  required>
+                                                                    <option selected>Select Country</option>
+                                                                    {{--  <option value="Single">Single</option>
+                                                                    <option value="Married">Married</option>
+                                                                    <option value="Divorced">Divorced</option>
+                                                                    <option value="Widowed">Widowed</option>  --}}
+
+                                                                </select>
+                                                                {{--  <input type="text" class="form-control"   required>  --}}
                                                                 <br>
                                                             </div>
 
@@ -376,7 +398,15 @@
 
                                                             <div class="col-md-6">
                                                                 <label class="form-label">Employment Type</label>
-                                                                <input type="text" class="form-control" id="employment_type"  required>
+                                                                <select class="custom-select " id="employment_type"  required>
+                                                                    <option selected>Select Employment Type</option>
+                                                                    {{--  <option value="Single">Single</option>
+                                                                    <option value="Married">Married</option>
+                                                                    <option value="Divorced">Divorced</option>
+                                                                    <option value="Widowed">Widowed</option>  --}}
+
+                                                                </select>
+                                                                {{--  <input type="text" class="form-control"   required>  --}}
                                                                 <br>
                                                             </div>
 
@@ -598,6 +628,13 @@
                                                     <br>
                                                 </div>
                                                 <div class="col-md-6">
+                                                    <label class="form-label">Number of Dependents:&emsp;
+                                                        <span id="display_number_of_dependents"></span>
+
+                                                    </label>
+                                                    <br>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <label class="form-label">Nationality:&emsp;
                                                         <span id="display_nationality"></span>
 
@@ -800,7 +837,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
-            function lovs(){
+            function accounts(){
                 $.ajax({
                     'type': 'GET',
                     'url' : 'get-my-account',
@@ -823,9 +860,80 @@
             }
 
 
+    function lovs_list() {
+        $.ajax({
+            'type': 'GET',
+            'url': 'get-lovs-list-api',
+            "datatype": "application/json",
+            success: function(response) {
+                console.log(response);
+                let title_list = response.data.titleList;
+                let country_list = response.data.nationalityList;
+                let id_list = response.data.documentTypeList;
+                let material_Status_list = response.data.maritalStatusList;
+                let occupation_list = response.data.occupationList;
+
+                console.log(occupation_list);
+
+                $.each(title_list, function(index) {
+
+                    $('#title').append($('<option>', {
+                        value: title_list[index].description
+                    }).text(title_list[index].description
+                    ));
+
+
+
+                });
+
+                $.each(material_Status_list, function(index) {
+
+                    $('#marital_status').append($('<option>', {
+                        value: material_Status_list[index].description
+                    }).text(material_Status_list[index].description
+                    ));
+
+                });
+
+                $.each(id_list, function(index) {
+
+
+                    $('#id_type').append($('<option>', {
+                        value: id_list[index].description
+                    }).text(id_list[index].description
+                    ));
+
+                });
+
+                $.each(country_list, function(index) {
+
+                    $('#country_of_residence').append($('<option>', {
+                        value: country_list[index].description
+                    }).text(country_list[index].description
+                    ));
+
+                });
+
+                $.each(occupation_list, function(index) {
+
+                    $('#employment_type').append($('<option>', {
+                        value: occupation_list[index].description
+                    }).text(occupation_list[index].description
+                    ));
+
+                });
+
+            },
+
+
+        })
+    }
+
+
             $(document).ready(function() {
                 setTimeout(function(){
-                    lovs();
+                    accounts();
+                    lovs_list();
                 },3000);
             })
 </script>
@@ -839,6 +947,11 @@
         $('#third').hide();
         $('#fourth').hide();
         $('#sixth').hide(); --}}
+
+        {{--  $('.nav-item').click(function(e){
+            e.preventDefault();
+            return false;
+        })  --}}
 
 
         setTimeout(function() {
@@ -1103,6 +1216,9 @@
             var number_of_children = $('#number_of_children').val();
             $('#display_number_of_children').text(number_of_children);
 
+            var number_of_dependents = $('#number_of_dependents').val();
+            $('#display_number_of_dependents').text(number_of_dependents);
+
             var nationality = $('#nationality').val();
             $('#display_nationality').text(nationality);
 
@@ -1237,9 +1353,9 @@
 
                 if ($('#citizen_yes').is(":checked"))
                 {
-                    var citizen_of_US = ('Yes');
+                    var citizen_of_US = ('Y');
                 }else if ($('#citizen_no').is(":checked")){
-                    var citizen_of_US = ("No");
+                    var citizen_of_US = ("N");
                 }else {
 
                     return false;
@@ -1249,9 +1365,9 @@
 
                 if ($('#resident_yes').is(":checked"))
                 {
-                    var us_resident = ('Yes');
+                    var us_resident = ('Y');
                 }else if ($('#resident_no').is(":checked")){
-                    var us_resident = ("No");
+                    var us_resident = ("N");
                 }else {
 
 
@@ -1271,6 +1387,7 @@
                 var gender = select_gender;
                 var marital_status = $('#marital_status').val();
                 var number_of_children = $('#number_of_children').val();
+                var number_of_dependents = $('#number_of_dependents').val();
                 var nationality = $('#nationality').val();
                 var id_type = $('#id_type').val();
                 var id_number = $('#id_number').val();
@@ -1319,6 +1436,7 @@
                         'gender' : gender ,
                         'marital_status' : marital_status ,
                         'number_of_children' : number_of_children ,
+                        'number_of_dependents' : number_of_dependents,
                         'nationality' : nationality ,
                         'id_type' : id_type ,
                         'id_number' : id_number ,

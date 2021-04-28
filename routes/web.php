@@ -68,6 +68,7 @@ use App\Http\Controllers\Transfers\MultipleTransfersController;
 use App\Http\Controllers\Transfers\OwnAccountController;
 use App\Http\Controllers\Transfers\QR\GenerateQRController;
 use App\Http\Controllers\Transfers\SameBankController;
+use App\Http\Controllers\Transfers\SchedulePayment\SchedulePaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -444,6 +445,7 @@ Route::post('international-bank-onetime-api', [APITransferLocalBankController::c
 // PAYMENT API'S
 Route::post('mobile-money-api', [PaymentMobileMoneyController::class, 'mobile_money'])->name('mobile-money-api');
 Route::post('airtime-payment-api', [AirtimePaymentController::class, 'airtime_payment'])->name('airtime-payment-api');
+Route::post('schedule-payment-api', [SchedulePaymentController::class, 'schedule_payment'])->name('schedule-payment-api');
 
 //route for cheque book request api
 Route::get('cheque-book-request-api', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('cheque-book-request-api');
