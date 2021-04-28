@@ -1,8 +1,33 @@
 @extends('layouts.master')
 
+@section('styles')
+
+    <style>
+        @media print {
+            .hide_on_print {
+                display: none
+            }
+        }
+
+        @font-face {
+            font-family: 'password';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+        }
+
+        input.key {
+            font-family: 'password';
+            width: 100px;
+            height: 26px;
+        }
+
+    </style>
+
+
+@endsection
+
 @section('content')
-
-
 
     <div class="row">
         <div class="col-12">
@@ -17,7 +42,7 @@
                             <p class="text-muted font-14 m-b-20">
                                 <span>
                                     <b class="text-danger">Please Note: </b>
-                                    <b>This platform is used for making cardless payment transactions.</b>
+                                    <b>Use the platform to make payment without a card</b>
                                 </span>.
                             </p>
                             <hr>
@@ -30,16 +55,11 @@
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="h6">Select Account<span class="text-danger">*</span></label>
+                                            <label class="h6">Pay From<span class="text-danger">*</span></label>
 
 
                                             <select class="custom-select" id="from_account" required>
                                                 <option value="">Select Account</option>
-
-                                                {{-- <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
-                                                    Saving Account~001023468976001~GHS~2000
-                                                 </option> --}}
-
                                             </select>
 
 
@@ -109,26 +129,23 @@
 
 
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="h6">Beneficiary Name<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="beneficiary_name" required>
-                                    </div>
 
+
+                                    <div class="form-group">
+                                        <label class="">Reciever Name<span class="text-danger">*</span></label>
+
+                                        <input type="text" class="form-control" id="reciever_name"
+                                        placeholder="Reciever Name" autocomplete="off" required>
 
                                         <table
-                                            class="table-responsive table table-centered table-nowrap mb-0 to_beneficiary_name_display_info card">
+                                            class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
                                             <tbody>
                                                 <tr>
 
                                                     <td>
                                                         <a
-                                                            class="text-body font-weight-semibold display_to_beneficiary_name_type"></a>
-                                                        <small class="d-block display_to_beneficiary_name"></small>
-                                                        <small class="d-block display_to_account_no"></small>
-                                                    </td>
-
-                                                    <td class="text-right font-weight-semibold">
-
+                                                            class="text-body font-weight-semibold"></a>
+                                                        <small class="d-block display_reciever_name"></small>
                                                     </td>
                                                 </tr>
 
@@ -136,32 +153,24 @@
                                             </tbody>
                                         </table>
 
-
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="">Expense Type<span class="text-danger">*</span></label>
+                                        <label class="h6">Reciever Phone Number<span class="text-danger">*</span></label>
 
-                                        {{-- <label class="h6">Category</label> --}}
-
-                                        <select class="custom-select" id="category" required>
-                                            <option value="">Select Category</option>
-                                            <option value="001~Fees">Fees</option>
-                                            <option value="002~Electronics">Electronics</option>
-                                            <option value="003~Travels">Travels</option>
-                                            <option value="004~Travels">Others</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="reciever_phoneNum"
+                                            placeholder="Reciever Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
 
                                     </div>
 
 
                                     <div class="form-group">
-                                        <label class="">Expense Narration<span class="text-danger">*</span></label>
+                                        <label class="">Reciever Address<span class="text-danger">*</span></label>
 
                                         {{-- <label class="h6">Category</label> --}}
 
-                                        <input type="text" class="form-control" id="purpose"
-                                            placeholder="Enter purpose / narration" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="reciever_address"
+                                            placeholder="Reciever Address" autocomplete="off" required>
 
                                     </div>
                                     {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
@@ -181,12 +190,12 @@
 
                             </div>
 
-                            <div class="row" id="transaction_summary">
+                            <div class="row" id="cardless_payment_summary">
 
 
                                 <div class="col-md-12">
                                     <div class="border card p-3 mt-4 mt-lg-0 rounded">
-                                        <h4 class="header-title mb-3">Transfer Detail Summary</h4>
+                                        <h4 class="header-title mb-3">Cardless Payment Summary</h4>
 
                                         <div class="table-responsive">
                                             <table class="table mb-0 table-bordered table-striped">
@@ -208,22 +217,6 @@
                                                     </tr>
 
                                                     <tr>
-                                                        <td>To Account:</td>
-                                                        <td>
-
-                                                            <span
-                                                                class="font-13 text-primary text-bold display_to_account_type"
-                                                                id="display_to_account_type"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                id="display_to_account_name"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                id="display_to_account_no"> </span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
                                                         <td>Amount:</td>
                                                         <td>
                                                             <span class="font-15 text-primary h3 display_currency"
@@ -235,22 +228,21 @@
                                                         </td>
                                                     </tr>
 
-
                                                     <tr>
-                                                        <td>Category:</td>
+                                                        <td>Reciever Name:</td>
                                                         <td>
-                                                            <span class="font-13 text-primary h3 display_category"
-                                                                id="display_category"></span>
-
+                                                            <span
+                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                id="display_to_account_no"> </span>
                                                         </td>
                                                     </tr>
 
-
                                                     <tr>
-                                                        <td>Purpose:</td>
+                                                        <td>Reciever Phone Number:</td>
                                                         <td>
-                                                            <span class="font-13 text-primary h3 display_purpose"
-                                                                id="display_purpose"></span>
+                                                            <span class="font-13 text-primary h3 display_category"
+                                                                id="display_reciever_phoneNum"></span>
+
                                                         </td>
                                                     </tr>
 
@@ -275,20 +267,11 @@
                                                         </td>
                                                     </tr>
 
-                                                    {{-- <tr>
-                                                        <td>Payment Frequency: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_frequency"
-                                                                id="display_frequency"></span>
-                                                        </td>
-                                                    </tr> --}}
-
-
                                                     <tr>
-                                                        <td>Transfer Date: </td>
+                                                        <td>Payment Date: </td>
                                                         <td>
                                                             <span class="font-13 text-primary h3"
-                                                                id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                                id="display_payment_date">{{ date('d F, Y') }}</span>
                                                         </td>
                                                     </tr>
 
@@ -296,8 +279,8 @@
                                                         <td>Posted By: </td>
                                                         <td>
                                                             <span class="font-13 text-primary h3"
-                                                                id="display_posted_by">Kwabena
-                                                                Ampah</span>
+                                                                id="display_posted_by">
+                                                            {{ session()->get('userAlias') }}</span>
                                                         </td>
                                                     </tr>
 
@@ -349,59 +332,6 @@
 
                     </div> <!-- end card-body -->
 
-
-                    <!-- Modal -->
-                    <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
-                        aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
-                                    @csrf
-                                    <div class="modal-header">
-                                        <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
-                                            Details</h4>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">×</button>
-                                    </div>
-
-                                    <div class="modal-body">
-
-                                        From: <span class="font-13 text-primary" id="display_from_account"> &nbsp
-                                        </span><br><br>
-                                        To: <span class="font-13 text-muted" id="display_to_account"> &nbsp </span><br><br>
-                                        Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp
-                                        </span><br><br>
-                                        Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp </span><br><br>
-                                        Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp
-                                        </span><br><br>
-                                        Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee">
-                                        </span><br><br>
-                                        Total: <span class="font-13 text-muted" id="display_total"> &nbsp </span><br><br>
-
-                                        <div class="form-group">
-                                            <label class="font-16 purple-color">Enter Pin</label>
-                                            <input type="text" class="form-control" id="pin" data-toggle="input-mask"
-                                                placeholder="enter pin" required
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-                                        </div>
-
-                                    </div>
-
-
-
-                                    <div class="modal-footer">
-                                        <button type="send" id="send" class="btn btn-primary" data-target="#multiple-two"
-                                            data-toggle="modal" data-dismiss="modal">Send</button>
-                                    </div>
-                                </form>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-
-
-
-
                 </div> <!-- end col -->
 
             </div> <!-- end row -->
@@ -409,12 +339,11 @@
 
 
         </div>
-    </div>
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
             function from_account() {
@@ -435,13 +364,6 @@
                             }).text(data[index].accountType + '~' + data[index].accountNumber +
                                 '~' + data[index].currency + '~' + data[index].availableBalance
                             ));
-                            $('#to_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountNumber + '~' + data[index].currency + '~' +
-                                    data[index].availableBalance
-                            }).text(data[index].accountType + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
-                            ));
 
                         });
                     },
@@ -449,7 +371,10 @@
                 })
             }
 
+
+
             $(document).ready(function() {
+
                 $('#spinner').hide(),
                     $('#spinner-text').hide(),
                     $('#print_receipt').hide();
@@ -477,220 +402,115 @@
                     })
                 }
 
-                // $(".select_onetime").css("display", "none");
-                // $(".select_beneficiary").css("display", "block");
-
-               // $(".select_beneficiary").show();
-                //$(".select_onetime").hide();
-
-                // var type = $("input[type='radio']:checked").val();
-
-                // $(".radio").click(function(){
-
-                //     var type = $("input[type='radio']:checked").val();
-
-                //     if(type == 'beneficiary'){
-                //         $(".select_onetime").css("display", "none");
-                //         $(".select_beneficiary").css("display", "block");
-
-                //         // set amonut to empty
-                //         $("#amount").val('');
-
-
-                //         //$(".select_onetime").hide();
-                //         //$(".select_beneficiary").show();
-
-                //     }
-                //     if(type == 'onetime'){
-
-                //         $(".select_beneficiary").css("display", "none");
-                //         $(".select_onetime").css("display", "block");
-
-                //         // set amonut to empty
-                //         $("#amount").val('');
-
-                //        // $(".select_beneficiary").hide();
-                //         //$(".select_onetime").show();
-                //     }
-
-                // });
-
-
-
-                // hide seleect accounts info
+                {{-- hide select accounts info --}}
                 $(".from_account_display_info").hide()
                 $(".to_account_display_info").hide()
                 $("#schedule_payment_date").hide()
+                $("#frequency").hide()
                 $('#schedule_payment_contraint_input').hide()
                 $('.display_schedule_payment_date').text('N/A')
 
-                $("#transaction_form").show()
+                $("#cardless_payment_form").show()
                 $("#cardless_payment_summary").hide()
 
-                {{--  $("#next_button").click(function(e) {
-                    e.preventDefault()
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
-                })  --}}
+                $("#next_button").click(function(e) {
+                    e.preventDefault();
+
+                    //go to the cardless payment summary page...
+                    // let from_account = $('#from_account').val();
+                    let from_account_ = $('#from_account').val().split('~');
+                    let amount = $('#amount').val();
+                    let reciever_name = $('#reciever_name').val();
+                    let reciever_phoneNum = $('#reciever_phoneNum').val();
+                    let reciever_address = $('#reciever_address').val();
+
+                    let schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                    let schedule_payment_date = $('#schedule_payment_date').val();
+
+
+
+                    let schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
+
+
+
+                    $('.display_schedule_payment_date').text('| ' + schedule_payment_date)
+
+
+                    if (from_account == '' || amount =='' || reciever_name == '' || reciever_phoneNum == '' || reciever_address =='') {
+                        toaster('Field must not be empty', 'error', 10000)
+                        return false
+                    } else {
+                        //set purpose and category values
+                        var category_info = category.split("~")
+
+                        {{-- var select_frequency_info = select_frequency_.split("~") --}}
+
+                        $("#display_category").text(category_info[1])
+                        {{-- $("#display_frequency").text(select_frequency_info[1]) --}}
+                        $("#display_purpose").text(purpose)
+
+                        $("#cardless_payment_form").hide()
+                        $("#cardless_payment_summary").show()
+                    }
+
+                    $("#cardless_payment_form").hide();
+                    $("#cardless_payment_summary").show();
+                });
 
                 $("#back_button").click(function(e) {
                     e.preventDefault()
-                    $("#transaction_summary").hide()
-                    $("#transaction_form").show()
+                    $("#cardless_payment_summary").hide();
+                    $("#cardless_payment_form").show();
 
                 })
 
-                {{-- Event on From Account field --}}
+                //for testing process
+                $('#from_account').change(function(){
+                    var from_account = $('#from_account').val();
+                    console.log(from_account);
+                    alert(from_account);
+                });
 
-                $("#from_account").change(function() {
-                    var from_account = $(this).val()
-                    {{-- alert(from_account) --}}
-                    if (from_account.trim() == '' || from_account.trim() == undefined) {
-                        {{-- alert('money') --}}
-                        $(".from_account_display_info").hide()
+                $('#amount').change(function(){
+                    var amount = $('#amount').val();
+                    console.log(amount);
+                });
 
-                    } else {
-                        from_account_info = from_account.split("~")
-                        {{-- alert('continue') --}}
+                $('#reciever_name').change(function(){
+                    var reciever_name = $('#reciever_name').val();
+                    console.log(reciever_name);
+                });
 
-                        var to_account = $('#to_account').val()
+                $('#reciever_phoneNum').change(function(){
+                    var reciever_phoneNum = $('#reciever_phoneNum').val();
+                    console.log(reciever_phoneNum);
+                });
 
-                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                            to_account.trim() != '') {
-                            alert('can not transfer to same account')
-                            $(this).val('')
-                        }
-
-                        // set summary values for display
-                        $(".display_from_account_type").text(from_account_info[0].trim())
-                        $(".display_from_account_name").text(from_account_info[1].trim())
-                        $(".display_from_account_no").text(from_account_info[2].trim())
-                        $(".display_from_account_currency").text(from_account_info[3].trim())
-
-                        $(".display_currency").text(from_account_info[3].trim()) // set summary currency
-
-                        $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
-                            .trim())))
-                        {{-- alert('and show' + from_account_info[3].trim()) --}}
-                        $(".from_account_display_info").show()
-                    }
-
-
-
-
-                    // alert(from_account_info[0]);
+                $('#reciever_address').change(function(){
+                    var reciever_address = $('#reciever_address').val();
+                    console.log(reciever_address);
                 });
 
 
-                $("#to_account").change(function() {
-                    var to_account = $(this).val()
-                    {{-- alert(to_account) --}}
-                    if (to_account.trim() == '' || to_account.trim() == undefined) {
-
-                        $(".to_account_display_info").hide()
-
-                    } else {
-                        to_account_info = to_account.split("~")
+                //end of testing process
 
 
-                        var from_account = $('#from_account').val()
-
-                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                            to_account.trim() != '') {
-                            alert('can not transfer to same account')
-                            $(this).val('')
-                        }
-
-                        // set summary values for display
-                        $(".display_to_account_type").text(to_account_info[0].trim())
-                        $(".display_to_account_name").text(to_account_info[1].trim())
-                        $(".display_to_account_no").text(to_account_info[2].trim())
-                        $(".display_to_account_currency").text(to_account_info[3].trim())
-                        $(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
-
-                        $(".to_account_display_info").show()
-                    }
-
-
-
-
-                    // alert(to_account_info[0]);
-                });
-
-
-                $("#amount").keyup(function() {
-
-                    var type = $("input[type='radio']:checked").val();
-                    //alert(type);
-                    //return false;
-
-                    if(type == 'beneficiary'){
-                        var from_account = $('#from_account').val()
-                        var to_account = $('#to_account').val()
-
-                        if (from_account.trim() == '' || to_account.trim() == '') {
-                            alert('Please select source and destination accounts')
-                            $(this).val('')
-                            return false;
-                        } else {
-                            var transfer_amount = $(this).val()
-                            $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
-                        }
-
-                    }
-                    else if(type == 'onetime'){
-
-                        var from_account = $('#from_account').val()
-                        var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                        var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
-                        var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
-                        var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                        var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-                        console.log(onetime_beneficiary_alias_name)
-                        console.log(onetime_beneficiary_account_number)
-                        console.log(onetime_beneficiary_account_currency)
-
-
-                        if (from_account.trim() == '' || onetime_beneficiary_alias_name.trim() == '' || onetime_beneficiary_account_number.trim() == '' || onetime_beneficiary_account_currency.trim() == '') {
-                            alert('Please select source and destination accounts')
-                            $(this).val('')
-                            return false;
-                        } else {
-                            //alert('set')
-                            var transfer_amount = $(this).val()
-                            $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
-                        }
-
-                    }else{
-                        alert( type + ' 00000000 Select either beneficiary or onetime beneficiary')
-                        $(this).val('')
-                        return false;
-                    }
-
-
-
-
-                })
-
-
-                function formatToCurrency(amount) {
-                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-                };
 
 
                 // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
                 $("input:checkbox").on("change", function() {
                     if ($(this).is(":checked")) {
-                        console.log("Checkbox Checked!");
+                        {{-- console.log("Checkbox Checked!"); --}}
                         $("#schedule_payment_date").show()
+                        $("#frequency").show()
                         $(".display_schedule_payment").text('YES')
                         $('#schedule_payment_contraint_input').val('TRUE')
 
                     } else {
-                        console.log("Checkbox UnChecked!");
+                        {{-- console.log("Checkbox UnChecked!"); --}}
                         $("#schedule_payment_date").val('')
                         $("#schedule_payment_date").hide()
+                        $("#frequency").hide()
                         $('.display_schedule_payment').text('NO')
                         $('.display_schedule_payment_date').text('N/A')
 
@@ -701,178 +521,13 @@
                 });
 
 
+                {{-- $("#cardless_payment_form").click(function() {}) --}}
 
-
-
-                // NEXT BUTTON CLICK
                 $("#next_button").click(function() {
 
-                    var type = $("input[type='radio']:checked").val();
-
-                    var from_account = $('#from_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-                    var purpose = $('#purpose').val()
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
-
-                    if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
-                        return false
-
-                    }
-
-                    //set purpose and category values
-                    var category_info = category.split("~")
-                    $("#display_category").text(category_info[1])
-                    $("#display_purpose").text(purpose)
-
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
 
 
-
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-                    if(type == 'beneficiary'){
-
-                        var to_account = $('#to_account').val()
-
-                        $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                        if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                            alert('Field must not be empty')
-                            return false
-                        }else{
-                            //set purpose and category values
-                            var category_info = category.split("~")
-                            $("#display_category").text(category_info[1])
-                            $("#display_purpose").text(purpose)
-
-                            $("#transaction_form").hide()
-                            $("#transaction_summary").show()
-                        }
-
-
-
-
-                    }else if(type == 'onetime'){
-
-                        var from_account = $('#from_account').val()
-
-                        // ONETIME BENEFICIARY DETAILS
-                        var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                        var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
-                        var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency').val()
-                        var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
-                        var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                        var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
-
-
-                        console.log(onetime_beneficiary_alias_name)
-                        console.log(onetime_beneficiary_account_number)
-                        console.log(onetime_beneficiary_account_currency)
-
-
-                        // END OF ONETIME BENEFICIARY DETAILS
-
-
-                        if (from_account.trim() == '' || onetime_beneficiary_account_number.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                            alert('Field must not be empty')
-                            return false
-                        }else{
-                            //set purpose and category values
-                            var category_info = category.split("~")
-                            $("#display_category").text(category_info[1])
-                            $("#display_purpose").text(purpose)
-
-                            $("#transaction_form").hide()
-                            $("#transaction_summary").show()
-                        }
-
-
-
-
-                    }else{
-                        alert('CHOOSE EITHER BENEFICIARY OR ONTIME')
-                    }
-
-
-
-
-                    /*
-
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-
-                    var purpose = $('#purpose').val()
-
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
-
-                    if(schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() == ''){
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
-
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '' || purpose.trim() == '' ) {
-                        alert('Field must not be empty')
-                        return false
-                    }else{
-                        //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
-
-                    */
-
-
-                    /**
-                    $.ajax({
-                        type: "POST"
-                        url: "submit-own-account-transfer"
-                        data: {
-                            "send_from": send_from,
-                            "send_to": send_to,
-                            "cashier_id": cashier_id,
-                            "text_area": text_area,
-                            "amount": amount,
-                            "cashier_id": cashier_id
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                        success: function() {
-                            Swal.fire(
-                                'Post Successful',
-                                ' ',
-                                'success'
-                            )
-                        }
-                    })
-
-
-                     */
                 });
-
 
             });
 
