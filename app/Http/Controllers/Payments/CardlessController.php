@@ -29,19 +29,30 @@ class CardlessController extends Controller
         $userID = session()->get('userId');
 
         $data = [
-            "amount" => '10.0',
-            "debitAccount" => '23456786543',
-            "deviceIP" => 'ftrt',
-            "fee" => 'authToken',
-            "pinCode" => 'authToken',
-            "receiverAddress" => 'authToken',
-            "receiverName" => 'authToken',
-            "receiverPhone" => 'authToken',
-            "senderName" => 'authToken',
-            "tokenID" => 'authToken'
+            // "amount" => '10.0',
+            // "debitAccount" => '23456786543',
+            // "deviceIP" => 'ftrt',
+            // "fee" => 'authToken',
+            // "pinCode" => 'authToken',
+            // "receiverAddress" => 'authToken',
+            // "receiverName" => 'authToken',
+            // "receiverPhone" => 'authToken',
+            // "senderName" => 'authToken',
+            // "tokenID" => 'authToken'
+                "amount"=>"1",
+                "debitAccount"=>"004001100241700194",
+                "deviceIP"=> "A",
+                "fee"=> "",
+                "pinCode"=> "1234",
+                "receiverAddress"=> "P.0 BOX 259 AD",
+                "receiverName"=> "Josh",
+                "receiverPhone"=> "0549380507",
+                "senderName"=>"ATO",
+                "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
         ];
+        return $data;
 
-        $response = Http::post(env('API_BASE_URL') . "payment/cardless", $data);
+        $response = Http::get(env('API_BASE_URL') . "payment/cardless", $data);
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
