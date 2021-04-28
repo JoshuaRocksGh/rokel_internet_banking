@@ -467,7 +467,7 @@
                                                             <td>Posted BY: </td>
                                                             <td>
                                                                 <span class="font-13 text-primary h3"
-                                                                    id="display_posted_by">Kwabena Ampah</span>
+                                                                    id="display_posted_by">{{ session()->get('userAlias') }}</span>
                                                             </td>
                                                         </tr>
 

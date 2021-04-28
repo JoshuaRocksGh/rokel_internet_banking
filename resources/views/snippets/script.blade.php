@@ -35,8 +35,8 @@
 
 
 <!-- Init js-->
-<script src="{{ asset('assets/libs/pages/form-pickers.init.js') }}"></script>
-<script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script>
+{{-- <script src="{{ asset('assets/libs/pages/form-pickers.init.js') }}"></script>
+<script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script> --}}
 
 
 
