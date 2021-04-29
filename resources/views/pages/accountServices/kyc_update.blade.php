@@ -134,6 +134,8 @@
 
                                                             <div class="col-md-6">
                                                                 <label class="form-label">Title</label>
+                                                                <input type="hidden" value="" id="title_">
+
                                                                 {{-- <input type="text" class="form-control" id="title"  required> --}}
                                                                 <select class="custom-select " id="title" required>
                                                                     <option selected>Select Title</option>
@@ -352,8 +354,8 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">City</label>
-                                                                <input type="text" class="form-control" id="city"  required>
+                                                                <label class="form-label">Building Name</label>
+                                                                <input type="text" class="form-control" id="bullding_name"  required>
                                                                 <br>
                                                             </div>
 
@@ -706,8 +708,8 @@
                                                     <br>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">City:&emsp;
-                                                        <span id="display_city"></span>
+                                                    <label class="form-label">Building Name:&emsp;
+                                                        <span id="display_building_name"></span>
                                                     </label>
 
                                                     <br>
@@ -832,13 +834,123 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
+    function get_kyc_detatails(){
+        $.ajax({
+            "type" : "GET" ,
+            "url" : "get-kyc-details" ,
+            "datatype" : "application/json",
+            success: function(response){
+                {{--  console.log(response.data);  --}}
+
+                if(response.responseCode == '000'){
+
+                    let kyc_details = response.data ;
+                    console.log(kyc_details) ;
+
+                    $.each(kyc_details, function(index){
+
+                    })
+
+                    var TITLE = kyc_details[0].TITLE;
+                    var GENDER = kyc_details[0].GENDER;
+                    var DOB = kyc_details[0].DATE_OF_BIRTH;
+                    var US_CITIZEN = kyc_details[0].US_PERMANENT_VISA_CARD;
+                    var US_RESIDENT = kyc_details[0].US_RESIDENT;
+
+                    console.log(GENDER);
+
+
+                    $('#title_').val(TITLE)
+
+
+
+                    $('#customer_number').val(kyc_details[0].CUSTOMER_NUMBER);
+                    $('#firstname').val(kyc_details[0].FIRST_NAME);
+                    $('#surname').val(kyc_details[0].SURNAME);
+                    $('#Othername').val(kyc_details[0].OTHER_NAME);
+                    $('#telephone_number').val(kyc_details[0].MOBILE1);
+                    $('#email_address').val(kyc_details[0].EMAIL_ADDRESS);
+                    $('#date_of_birth').val(kyc_details[0].DATE_OF_BIRTH);
+                    if(GENDER == 'M'){
+                        $("#gender_male").prop("checked", true);
+                    }else if (GENDER = 'F') {
+                        $("#gender_female").prop("checked", true);
+                    }else{
+                        return false ;
+                    }
+
+                    // DISPLAY PROOF OF ADDRESS
+
+                    // DISPLAY MARITAL STATUS
+
+                    $('#number_of_children').val(kyc_details[0].NUMBER_OF_CHILDREN);
+                    $('#number_of_dependents').val(kyc_details[0].NUMBER_OF_DEPENDANTS);
+                    $('#nationality').val(kyc_details[0].NATIONALITY);
+
+
+                    // DISPLAY ID TYPE
+                    // DISPLAY ID ISSUE DTAE
+                    // DISPLAY ID EXPIRY DATE
+
+                    $('#mother_maiden_name').val(kyc_details[0].MOTHERS_MAIDEN_NAME);
+                    $('#next_of_kin_name').val(kyc_details[0].NEXT_OF_KIN);
+                    $('#next_of_kin_address').val(kyc_details[0].NEXT_OF_KIN_ADDRESS);
+                    $('#next_of_kin_telephone').val(kyc_details[0].NEXT_OF_KIN_PHONE);
+
+                    // DISPLAY COUNTRY OF RESIDENCE
+
+                    $('#years_at_residence').val(kyc_details[0].NUMBER_OF_YRS_OF_RESIDENCE);
+                    $('#postal_address').val(kyc_details[0].POSTAL_ADDRESS);
+
+
+                    // WORK ON THE TOWN INPUT FIELD
+
+                    $('#residential_address').val(kyc_details[0].RESIDENTIAL_ADDRESS);
+                    $('#employee_code').val(kyc_details[0].EMPLOYER_CODE);
+                    $('#department').val(kyc_details[0].DEPARTMENT);
+
+                    // DISPLAY EMPLOYMENT TYPE
+
+                    // DISPLAY EMPLOYMENT DATE
+
+                    $('#tax_identification_number').val(kyc_details[0].TIN);
+
+                    // DISPLAY LAST TAX UPDATED
+
+                    if(US_CITIZEN == 'Y'){
+                        $("#citizen_yes").prop("checked", true);
+                    }else if (US_CITIZEN = 'N') {
+                        $("#citizen_no").prop("checked", true);
+                    }else{
+                        return false ;
+                    }
+
+                    if(US_RESIDENT == 'Y'){
+                        $("#resident_yes").prop("checked", true);
+                    }else if (US_RESIDENT = 'N') {
+                        $("#resident_no").prop("checked", true);
+                    }else{
+                        return false ;
+                    }
+
+
+
+
+
+
+                }
+            }
+
+        })
+    }
+
             function accounts(){
                 $.ajax({
                     'type': 'GET',
                     'url' : 'get-my-account',
                     "datatype" : "application/json",
                     success:function(response){
-                        console.log(response.data);
+                        {{--  console.log(response.data);  --}}
                         let data = response.data
                         $.each(data, function(index) {
 
@@ -856,6 +968,9 @@
 
 
     function lovs_list() {
+        let name = $('#title_').val();
+
+        {{--  console.log(name);  --}}
         $.ajax({
             'type': 'GET',
             'url': 'get-lovs-list-api',
@@ -868,18 +983,27 @@
                 let material_Status_list = response.data.maritalStatusList;
                 let occupation_list = response.data.occupationList;
 
-                console.log(occupation_list);
+                {{--  console.log(title_list);  --}}
 
-                $.each(title_list, function(index) {
+                {{--  let data = title_list[0].description ;
+                alert(data);  --}}
 
-                    $('#title').append($('<option>', {
-                        value: title_list[index].description
-                    }).text(title_list[index].description
-                    ));
+                $.each(title_list, function(index){
+                    let data = title_list[index].description;
+                    console.log(data);
 
-
-
+                    if(name == title_list[index].description){
+                        {{--  alert('not equal');  --}}
+                        $('#title').append($('<option selected>', {
+                            value: title_list[index].description
+                        }).text(title_list[index].description));
+                    }else {
+                        $('#title').append($('<option>', {
+                            value: title_list[index].description
+                        }).text(title_list[index].description));
+                    }
                 });
+
 
                 $.each(material_Status_list, function(index) {
 
@@ -927,9 +1051,14 @@
 
             $(document).ready(function() {
                 setTimeout(function(){
-                    accounts();
-                    lovs_list();
-                },3000);
+                    get_kyc_detatails();
+
+                    setTimeout(function(){
+                        accounts();
+                        lovs_list();
+                    },2000)
+
+                },2000);
             })
 </script>
 
@@ -1098,7 +1227,7 @@
 
             var country_of_residence = $('#country_of_residence').val();
             var years_at_residence = $('#years_at_residence').val();
-            var city = $('#city').val();
+            var building_name = $('#building_name').val();
             var town = $('#town').val();
             var residential_address = $('#residential_address').val();
             var postal_address = $('#postal_address').val();
@@ -1247,8 +1376,8 @@
             var years_at_residence = $('#years_at_residence').val();
             $('#display_years_at_residence').text(years_at_residence);
 
-            var city = $('#city').val();
-            $('#display_city').text(city);
+            var building_name = $('#building_name').val();
+            $('#display_building_name').text(building_name);
 
             var town = $('#town').val();
             $('#display_town').text(town);
@@ -1394,7 +1523,7 @@
                 var next_of_kin_telephone = $('#next_of_kin_telephone').val();
                 var country_of_residence = $('#country_of_residence').val();
                 var years_at_residence = $('#years_at_residence').val();
-                var city = $('#city').val();
+                var building_name = $('#building_name').val();
                 var town = $('#town').val();
                 var residential_address = $('#residential_address').val();
                 var postal_address = $('#postal_address').val();
@@ -1443,7 +1572,7 @@
                         'next_of_kin_telephone' : next_of_kin_telephone ,
                         'country_of_residence' : country_of_residence ,
                         'years_at_residence' : years_at_residence ,
-                        'city' : city ,
+                        'building_name' : building_name ,
                         'town' : town ,
                         'residential_address' : residential_address ,
                         'postal_address' : postal_address ,
