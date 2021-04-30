@@ -371,6 +371,25 @@
                 })
             }
 
+            function toaster(message, icon, timer) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: timer,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: icon,
+                title: message
+            })
+        }
+
 
 
             $(document).ready(function() {
@@ -383,7 +402,7 @@
                     from_account();
                 }, 200);
 
-                function sweet_alert() {
+                function sweet_alert(message, icon, timer) {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -397,8 +416,8 @@
                     })
 
                     Toast.fire({
-                        icon: 'error',
-                        title: 'Can not send to same account'
+                        icon: icon,
+                        title: message
                     })
                 }
 
@@ -412,6 +431,42 @@
 
                 $("#cardless_payment_form").show()
                 $("#cardless_payment_summary").hide()
+
+                //show card after the from_account value changes
+                $("#from_account").change(function() {
+                    var from_account = $(this).val()
+                    {{-- alert(from_account) --}}
+                    if (from_account.trim() == '' || from_account.trim() == undefined) {
+                        {{-- alert('money') --}}
+                        $(".from_account_display_info").hide()
+
+                    } else {
+                        from_account_info = from_account.split("~")
+                        {{-- alert('continue') --}}
+
+
+                        var to_account = $('#to_account').val()
+
+                        // set summary values for display
+                        $(".display_from_account_type").text(from_account_info[0].trim())
+                        $(".display_from_account_name").text(from_account_info[1].trim())
+                        $(".display_from_account_no").text(from_account_info[2].trim())
+                        $(".display_from_account_currency").text(from_account_info[3].trim())
+
+                        $(".display_currency").text(from_account_info[3].trim()) // set summary currency
+
+                        amt = from_account_info[4].trim()
+
+                        $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
+                            .trim())))
+                        $(".from_account_display_info").show()
+                    }
+
+
+
+
+                    {{-- alert(from_account_info[0]); --}}
+                });
 
                 $("#next_button").click(function(e) {
                     e.preventDefault();
