@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
 use App\Http\Controllers\AccountServices\AtmCardRequestController;
 use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountServicesChequeBookRequestController;
+use App\Http\Controllers\AccountServices\KYC\KycController as KYCKycController;
 use App\Http\Controllers\AccountServices\StatementRequestController;
 use App\Http\Controllers\AccountServices\StopChequeController;
 use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
@@ -424,7 +425,8 @@ Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->na
 //DELETE BENEFICIARY
 Route::get('/delete-beneficiary', [DeleteBeneficiaryController::class, 'index'])->name('delete-beneficiary');
 
-Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
+Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_be
+neficiary'])->name('edit-same-bank-beneficiary');
 Route::post('/edit-same-bank-api', [EditSameBankController::class, 'get_same_bank_beneficiary'])->name('edit-same-bank-api');
 Route::put('/edit-same-bank-beneficiary-api', [EditSameBankController::class, 'update_same_bank_beneficiary'])->name('edit-same-bank-beneficiary-api');
 // -------- OTHER LOCAL BANK -----------
@@ -451,6 +453,10 @@ Route::post('schedule-payment-api', [SchedulePaymentController::class, 'schedule
 Route::get('cheque-book-request-api', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('cheque-book-request-api');
 Route::post('submit-cheque-book-request', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('submit-cheque-book-request');
 Route::post('submit-stop-cheque-book-request', [StopChequeController::class, 'submit_stop_cheque_book_request'])->name('submit-stop-cheque-book-request');
+
+// KYC EDIT
+Route::get('get-kyc-details', [KYCKycController::class, 'kyc_update'])->name('get-kyc-details');
+
 //route for atm card
 Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
 

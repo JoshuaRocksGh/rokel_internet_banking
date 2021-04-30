@@ -38,7 +38,7 @@ class KycController extends Controller
             'next_of_kin_telephone' => 'required',
             'country_of_residence' => 'required',
             'years_at_residence' => 'required',
-            'city' => 'required',
+            'building_name' => 'required',
             'town' => 'required',
             'residential_address' => 'required',
             'postal_address' => 'required',
@@ -77,7 +77,7 @@ class KycController extends Controller
         $data = [
             "accountSign" => null,
             "authToken" => $authToken,
-            "buildingName" => null,
+            "buildingName" => $request->building_name,
             "contactMethod" => null,
             "customerNumber" => $request->customer_number,
             "dateOfBirth" => $request->date_of_birth,
