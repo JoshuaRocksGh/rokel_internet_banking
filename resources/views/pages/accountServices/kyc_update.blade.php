@@ -128,12 +128,12 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label class="form-label">Customer Number</label>
-                                                                <input type="text" class="form-control" id="customer_number"  required>
+                                                                <input type="text" class="form-control" id="customer_number" readonly required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Title</label>
+                                                                <label class="form-label">Title<span class="text-danger">*</span></label>
                                                                 <input type="hidden" value="" id="title_">
 
                                                                 {{-- <input type="text" class="form-control" id="title"  required> --}}
@@ -149,44 +149,44 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Firstname</label>
+                                                                <label class="form-label">Firstname<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="firstname"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Surname</label>
+                                                                <label class="form-label">Surname<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="surname"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Othername</label>
+                                                                <label class="form-label">Othername<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="Othername"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Telephone Number</label>
+                                                                <label class="form-label">Telephone Number<span class="text-danger">*</span></label>
                                                                 <input type="number" class="form-control" id="telephone_number"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Email Address</label>
+                                                                <label class="form-label">Email Address<span class="text-danger">*</span></label>
                                                                 <input type="email" class="form-control" id="email_address"  required>
                                                                 <br>
                                                             </div>
 
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Date of Birth</label>
+                                                                <label class="form-label">Date of Birth<span class="text-danger">*</span></label>
                                                                 <input type="date" class="form-control" id="date_of_birth"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Select Gender</label>
+                                                                <label class="form-label">Select Gender<span class="text-danger">*</span></label>
                                                                 <div class="form-group">
 
                                                                     <div class="form-check form-check-inline">
@@ -203,7 +203,7 @@
                                                                 <br>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Proof of Address</label>
+                                                                <label class="form-label">Proof of Address<span class="text-danger">*</span></label>
                                                                 <input type="hidden" id="proof_of_address_">
                                                                 <input type="file" class="form-control-file" id="proof_of_address"  required><br>
                                                                 <img class="img-fluid display_selected_id_image" id="display_selected_id_image" src="#" alt="your image" />
@@ -225,7 +225,7 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Marital Status</label>
+                                                                <label class="form-label">Marital Status<span class="text-danger">*</span></label>
                                                                 {{-- <input type="text" class="form-control" id="marital_status"  required> --}}
                                                                 <select class="custom-select " id="marital_status"  required>
                                                                     <option selected>Select Marital Status</option>
@@ -239,24 +239,32 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Number of Children</label>
+                                                                <label class="form-label">Number of Children<span class="text-danger">*</span></label>
                                                                 <input type="number" class="form-control" id="number_of_children"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Number of Dependents</label>
+                                                                <label class="form-label">Number of Dependents<span class="text-danger">*</span></label>
                                                                 <input type="number" class="form-control" id="number_of_dependents"  required>
                                                                 <br>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Nationality</label>
-                                                                <input type="text" class="form-control" id="nationality"  required>
+                                                                <label class="form-label">Nationality<span class="text-danger">*</span></label>
+                                                                {{-- <input type="text" class="form-control" id="nationality"  required> --}}
+                                                                <select class="custom-select " id="nationality"  required>
+                                                                    <option selected>Nationality</option>
+                                                                    {{--  <option value="Single">Single</option>
+                                                                    <option value="Married">Married</option>
+                                                                    <option value="Divorced">Divorced</option>
+                                                                    <option value="Widowed">Widowed</option>  --}}
+
+                                                                </select>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">ID Type</label>
+                                                                <label class="form-label">ID Type<span class="text-danger">*</span></label>
                                                                 <select class="custom-select " id="id_type"  required>
                                                                     <option selected>ID Type</option>
                                                                     {{--  <option value="Single">Single</option>
@@ -270,25 +278,25 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">ID Number</label>
+                                                                <label class="form-label">ID Number<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="id_number"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Date of Issue</label>
+                                                                <label class="form-label">Date of Issue<span class="text-danger">*</span></label>
                                                                 <input type="date" class="form-control" id="date_of_issue"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Date of Expiry</label>
+                                                                <label class="form-label">Date of Expiry<span class="text-danger">*</span></label>
                                                                 <input type="date" class="form-control" id="date_of_expiry"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Mother Maiden Name</label>
+                                                                <label class="form-label">Mother Maiden Name<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="mother_maiden_name"  required>
                                                                 <br>
                                                             </div>
@@ -298,19 +306,19 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Next of Kin Name</label>
+                                                                <label class="form-label">Next of Kin Name<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="next_of_kin_name"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Next of Kin Address</label>
+                                                                <label class="form-label">Next of Kin Address<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="next_of_kin_address"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Next of Kin Telephone</label>
+                                                                <label class="form-label">Next of Kin Telephone<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="next_of_kin_telephone"  required>
                                                                 <br>
                                                             </div>
@@ -334,7 +342,7 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Country of Residence</label>
+                                                                <label class="form-label">Country of Residence<span class="text-danger">*</span></label>
                                                                 <select class="custom-select " id="country_of_residence"  required>
                                                                     <option selected>Select Country</option>
                                                                     {{--  <option value="Single">Single</option>
@@ -348,31 +356,31 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Number of years at residence</label>
+                                                                <label class="form-label">Number of years at residence<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="years_at_residence"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Building Name</label>
-                                                                <input type="text" class="form-control" id="bullding_name"  required>
+                                                                <label class="form-label">Building Name<span class="text-danger">*</span></label>
+                                                                <input type="text" class="form-control" id="building_name"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Town</label>
+                                                                <label class="form-label">Town<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="town"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Residential Address</label>
+                                                                <label class="form-label">Residential Address<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="residential_address"  required>
                                                                 <br>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Postal Address</label>
+                                                                <label class="form-label">Postal Address<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="postal_address"  required>
                                                                 <br>
                                                             </div>
@@ -394,7 +402,7 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Employment Type</label>
+                                                                <label class="form-label">Employment Type<span class="text-danger">*</span></label>
                                                                 <select class="custom-select " id="employment_type"  required>
                                                                     <option selected>Select Employment Type</option>
                                                                     {{--  <option value="Single">Single</option>
@@ -468,7 +476,7 @@
 
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Are you a citizen of US?</label>
+                                                                <label class="form-label">Are you a citizen of US?<span class="text-danger">*</span></label>
                                                                 {{-- <input type="text" class="form-control" id="city"  required> --}}
                                                                 <div class="form-group">
 
@@ -486,7 +494,7 @@
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">US Resident</label>
+                                                                <label class="form-label">US Resident<span class="text-danger">*</span></label>
                                                                 {{-- <input type="text" class="form-control" id="town"  required> --}}
                                                                 <div class="form-group">
 
@@ -832,781 +840,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script>
-
-    function get_kyc_detatails(){
-        $.ajax({
-            "type" : "GET" ,
-            "url" : "get-kyc-details" ,
-            "datatype" : "application/json",
-            success: function(response){
-                {{--  console.log(response.data);  --}}
-
-                if(response.responseCode == '000'){
-
-                    let kyc_details = response.data ;
-                    console.log(kyc_details) ;
-
-                    $.each(kyc_details, function(index){
-
-                    })
-
-                    var TITLE = kyc_details[0].TITLE;
-                    var GENDER = kyc_details[0].GENDER;
-                    var DOB = kyc_details[0].DATE_OF_BIRTH;
-                    var US_CITIZEN = kyc_details[0].US_PERMANENT_VISA_CARD;
-                    var US_RESIDENT = kyc_details[0].US_RESIDENT;
-
-                    console.log(GENDER);
-
-
-                    $('#title_').val(TITLE)
-
-
-
-                    $('#customer_number').val(kyc_details[0].CUSTOMER_NUMBER);
-                    $('#firstname').val(kyc_details[0].FIRST_NAME);
-                    $('#surname').val(kyc_details[0].SURNAME);
-                    $('#Othername').val(kyc_details[0].OTHER_NAME);
-                    $('#telephone_number').val(kyc_details[0].MOBILE1);
-                    $('#email_address').val(kyc_details[0].EMAIL_ADDRESS);
-                    $('#date_of_birth').val(kyc_details[0].DATE_OF_BIRTH);
-                    if(GENDER == 'M'){
-                        $("#gender_male").prop("checked", true);
-                    }else if (GENDER = 'F') {
-                        $("#gender_female").prop("checked", true);
-                    }else{
-                        return false ;
-                    }
-
-                    // DISPLAY PROOF OF ADDRESS
-
-                    // DISPLAY MARITAL STATUS
-
-                    $('#number_of_children').val(kyc_details[0].NUMBER_OF_CHILDREN);
-                    $('#number_of_dependents').val(kyc_details[0].NUMBER_OF_DEPENDANTS);
-                    $('#nationality').val(kyc_details[0].NATIONALITY);
-
-
-                    // DISPLAY ID TYPE
-                    // DISPLAY ID ISSUE DTAE
-                    // DISPLAY ID EXPIRY DATE
-
-                    $('#mother_maiden_name').val(kyc_details[0].MOTHERS_MAIDEN_NAME);
-                    $('#next_of_kin_name').val(kyc_details[0].NEXT_OF_KIN);
-                    $('#next_of_kin_address').val(kyc_details[0].NEXT_OF_KIN_ADDRESS);
-                    $('#next_of_kin_telephone').val(kyc_details[0].NEXT_OF_KIN_PHONE);
-
-                    // DISPLAY COUNTRY OF RESIDENCE
-
-                    $('#years_at_residence').val(kyc_details[0].NUMBER_OF_YRS_OF_RESIDENCE);
-                    $('#postal_address').val(kyc_details[0].POSTAL_ADDRESS);
-
-
-                    // WORK ON THE TOWN INPUT FIELD
-
-                    $('#residential_address').val(kyc_details[0].RESIDENTIAL_ADDRESS);
-                    $('#employee_code').val(kyc_details[0].EMPLOYER_CODE);
-                    $('#department').val(kyc_details[0].DEPARTMENT);
-
-                    // DISPLAY EMPLOYMENT TYPE
-
-                    // DISPLAY EMPLOYMENT DATE
-
-                    $('#tax_identification_number').val(kyc_details[0].TIN);
-
-                    // DISPLAY LAST TAX UPDATED
-
-                    if(US_CITIZEN == 'Y'){
-                        $("#citizen_yes").prop("checked", true);
-                    }else if (US_CITIZEN = 'N') {
-                        $("#citizen_no").prop("checked", true);
-                    }else{
-                        return false ;
-                    }
-
-                    if(US_RESIDENT == 'Y'){
-                        $("#resident_yes").prop("checked", true);
-                    }else if (US_RESIDENT = 'N') {
-                        $("#resident_no").prop("checked", true);
-                    }else{
-                        return false ;
-                    }
-
-
-
-
-
-
-                }
-            }
-
-        })
-    }
-
-            function accounts(){
-                $.ajax({
-                    'type': 'GET',
-                    'url' : 'get-my-account',
-                    "datatype" : "application/json",
-                    success:function(response){
-                        {{--  console.log(response.data);  --}}
-                        let data = response.data
-                        $.each(data, function(index) {
-
-                        $('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-                        $('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
-
-                        });
-                    },
-                    error: function(xhr, status, error){
-                       alert("API SERVER ERROR ")
-                    }
-
-                })
-            }
-
-
-    function lovs_list() {
-        let name = $('#title_').val();
-
-        {{--  console.log(name);  --}}
-        $.ajax({
-            'type': 'GET',
-            'url': 'get-lovs-list-api',
-            "datatype": "application/json",
-            success: function(response) {
-                console.log(response);
-                let title_list = response.data.titleList;
-                let country_list = response.data.nationalityList;
-                let id_list = response.data.documentTypeList;
-                let material_Status_list = response.data.maritalStatusList;
-                let occupation_list = response.data.occupationList;
-
-                {{--  console.log(title_list);  --}}
-
-                {{--  let data = title_list[0].description ;
-                alert(data);  --}}
-
-                $.each(title_list, function(index){
-                    let data = title_list[index].description;
-                    console.log(data);
-
-                    if(name == title_list[index].description){
-                        {{--  alert('not equal');  --}}
-                        $('#title').append($('<option selected>', {
-                            value: title_list[index].description
-                        }).text(title_list[index].description));
-                    }else {
-                        $('#title').append($('<option>', {
-                            value: title_list[index].description
-                        }).text(title_list[index].description));
-                    }
-                });
-
-
-                $.each(material_Status_list, function(index) {
-
-                    $('#marital_status').append($('<option>', {
-                        value: material_Status_list[index].description
-                    }).text(material_Status_list[index].description
-                    ));
-
-                });
-
-                $.each(id_list, function(index) {
-
-
-                    $('#id_type').append($('<option>', {
-                        value: id_list[index].description
-                    }).text(id_list[index].description
-                    ));
-
-                });
-
-                $.each(country_list, function(index) {
-
-                    $('#country_of_residence').append($('<option>', {
-                        value: country_list[index].description
-                    }).text(country_list[index].description
-                    ));
-
-                });
-
-                $.each(occupation_list, function(index) {
-
-                    $('#employment_type').append($('<option>', {
-                        value: occupation_list[index].description
-                    }).text(occupation_list[index].description
-                    ));
-
-                });
-
-            },
-
-
-        })
-    }
-
-
-            $(document).ready(function() {
-                setTimeout(function(){
-                    get_kyc_detatails();
-
-                    setTimeout(function(){
-                        accounts();
-                        lovs_list();
-                    },2000)
-
-                },2000);
-            })
-</script>
-
-<script>
-    $(document).ready(function(){
-
-        $('.display_selected_id_image').hide();
-
-        {{-- $('#second').hide();
-        $('#third').hide();
-        $('#fourth').hide();
-        $('#sixth').hide(); --}}
-
-        {{--  $('.nav-item').click(function(e){
-            e.preventDefault();
-            return false;
-        })  --}}
-
-
-        setTimeout(function() {
-            $(".mod-open").trigger('click');
-        },3000);
-
-        $('#basic_information_tab').addClass('active show');
-        $('#first').addClass('active show');
-
-
-        function toaster(message, icon , timer )
-        {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                {{-- timer: 10000, --}}
-                timerProgressBar: false,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-
-              Toast.fire({
-                icon: icon,
-                title: message,
-                timer: timer
-              })
-        }
-
-
-        $('#proof_of_address').change(function(){
-
-            //console.log('changed');
-            var file = $("#proof_of_address[type=file]").get(0).files[0];
-
-                   if(file){
-                       var reader = new FileReader();
-
-                       reader.onload = function(){
-                           $(".display_selected_id_image").attr("src", reader.result);
-                       }
-
-                       reader.readAsDataURL(file);
-
-                       reader.onload = function(){
-                           {{-- alert(reader.result) --}}
-                        $(".display_selected_id_image").attr("src", reader.result);
-                        $('#proof_of_address_').val(reader.result)
-                    }
-
-
-
-
-
-
-                   }
-
-                $('.display_selected_id_image').show();
-            })
-
-        $('#basic_information_next_btn').click(function(e){
-            e.preventDefault();
-
-            var customer_number = $('#customer_number').val();
-            var title = $('#title').val();
-            var firstname = $('#firstname').val();
-            var surname = $('#surname').val();
-            var Othername = $('#Othername').val();
-            var telephone_number = $('#telephone_number').val();
-            var email_address = $('#email_address').val();
-            var date_of_birth = $('#date_of_birth').val();
-            var select_gender = $("input[type='radio']:checked").val();
-            {{-- var proof_of_address = $('#proof_of_address').val(); --}}
-
-
-
-            /* console.log(customer_number);
-            console.log(title);
-            console.log(firstname);
-            console.log(surname);
-            console.log(Othername);
-            console.log(telephone_number);
-            console.log(email_address);
-            console.log(proof_of_address);
-            console.log(date_of_birth);
-            console.log(select_gender); */
-
-            $('#basic_information_tab').addClass('active show');
-            $('#personal_details_tab').addClass('active show');
-            $('#first').removeClass('active show');
-            $('#second').addClass('active show');
-
-
-        })
-
-        $('#personal_details_back_btn').click(function(e){
-            e.preventDefault();
-
-            $('#basic_information_tab').addClass('active show');
-            $('#personal_details_tab').removeClass('active show');
-
-
-            $('#first').addClass('active show');
-            $('#second').removeClass('active show');
-
-        })
-
-        $('#personal_details_next_btn').click(function(e){
-            e.preventDefault();
-
-            var marital_status = $('#marital_status').val();
-            var number_of_children = $('#number_of_children').val();
-            var nationality = $('#nationality').val();
-            var id_type = $('#id_type').val();
-            var id_number = $('#id_number').val();
-            var date_of_issue = $('#date_of_issue').val();
-            var date_of_expiry = $('#date_of_expiry').val();
-            var mother_maiden_name = $('#mother_maiden_name').val();
-            var next_of_kin_name = $('#next_of_kin_name').val();
-            var next_of_kin_address = $('#next_of_kin_address').val();
-            var next_of_kin_telephone = $('#next_of_kin_telephone').val();
-
-            $('#basic_information_tab').addClass('active show');
-            $('#personal_details_tab').addClass('active show');
-            $('#residential_details_tab').addClass('active show');
-
-            $('#first').removeClass('active show');
-            $('#second').removeClass('active show');
-            $('#third').addClass('active show');
-
-        })
-
-        $('#residential_details_back_btn').click(function(e){
-            e.preventDefault();
-
-            $('#basic_information_tab').addClass('active show');
-            $('#personal_details_tab').addClass('active show');
-            $('#residential_details_tab').removeClass('active show');
-
-            $('#first').removeClass('active show');
-            $('#second').addClass('active show');
-            $('#third').removeClass('active show');
-        })
-
-        $('#residential_details_next_btn').click(function(e){
-            e.preventDefault();
-
-            var country_of_residence = $('#country_of_residence').val();
-            var years_at_residence = $('#years_at_residence').val();
-            var building_name = $('#building_name').val();
-            var town = $('#town').val();
-            var residential_address = $('#residential_address').val();
-            var postal_address = $('#postal_address').val();
-
-
-            $('#basic_information_tab').addClass('active show');
-            $('#personal_details_tab').addClass('active show');
-            $('#residential_details_tab').addClass('active show');
-            $('#employment_details_tab').addClass('active show');
-
-            $('#first').removeClass('active show');
-            $('#second').removeClass('active show');
-            $('#third').removeClass('active show');
-            $('#fourth').addClass('active show');
-
-        })
-
-        $('#employment_details_back_btn').click(function(e){
-            e.preventDefault();
-
-
-        $('#residential_details_tab').addClass('active show');
-        $('#employment_details_tab').removeClass('active show');
-
-
-        $('#third').addClass('active show');
-        $('#fourth').removeClass('active show');
-
-        })
-
-        $('#employment_details_next_btn').click(function(e){
-            e.preventDefault();
-
-            var employment_type = $('#employment_type').val();
-            var employee_number = $('#employee_number').val();
-            var employee_code = $('#employee_code').val();
-            var department = $('#department').val();
-            var date_of_employment = $('#date_of_employment').val();
-
-
-            $('#basic_information_tab').addClass('active show');
-            $('#personal_details_tab').addClass('active show');
-            $('#residential_details_tab').addClass('active show');
-            $('#employment_details_tab').addClass('active show');
-            $('#tax_information_tab').addClass('active show');
-
-            $('#fourth').removeClass('active show');
-            $('#sixth').addClass('active show');
-
-        })
-
-        $('#tax_information_back_btn').click(function(e){
-            e.preventDefault();
-
-
-            $('#basic_information_tab').addClass('active show');
-            $('#personal_details_tab').addClass('active show');
-            $('#residential_details_tab').addClass('active show');
-            $('#employment_details_tab').addClass('active show');
-            $('#tax_information_tab').removeClass('active show');
-
-            $('#fourth').addClass('active show');
-            $('#sixth').removeClass('active show');
-
-        })
-
-        $('#tax_information_next_btn').click(function(e){
-            e.preventDefault();
-
-
-            var customer_number = $('#customer_number').val();
-            $('#display_customer_number').text(customer_number);
-
-            var title = $('#title').val();
-            $('#display_title').text(title);
-
-            var firstname = $('#firstname').val();
-            $('#display_firstname').text(firstname);
-
-            var surname = $('#surname').val();
-            $('#display_surname').text(surname);
-
-            var Othername = $('#Othername').val();
-            $('#display_othername').text(Othername);
-
-            var telephone_number = $('#telephone_number').val();
-            $('#display_telephone_number').text(telephone_number);
-
-            var email_address = $('#email_address').val();
-            $('#display_email_address').text(email_address);
-
-            var date_of_birth = $('#date_of_birth').val();
-            $('#display_date_of_birth').text(date_of_birth);
-
-            if ($('#gender_male').is(":checked"))
-            {
-                var select_gender = ('Male');
-            }else if ($('#gender_female').is(":checked")){
-                var select_gender = ("Female");
-            }else {
-                toaster("Gender Not Selected", "error" , 60000);
-
-                return false;
-            }
-            $('#display_gender_male').text(select_gender);
-
-            var marital_status = $('#marital_status').val();
-            $('#display_marital_status').text(marital_status);
-
-            var number_of_children = $('#number_of_children').val();
-            $('#display_number_of_children').text(number_of_children);
-
-            var number_of_dependents = $('#number_of_dependents').val();
-            $('#display_number_of_dependents').text(number_of_dependents);
-
-            var nationality = $('#nationality').val();
-            $('#display_nationality').text(nationality);
-
-            var id_type = $('#id_type').val();
-            $('#display_id_type').text(id_type);
-
-            var id_number = $('#id_number').val();
-            $('#display_id_number').text(id_number);
-
-            var date_of_issue = $('#date_of_issue').val();
-            $('#display_date_of_issue').text(date_of_issue);
-
-            var date_of_expiry = $('#date_of_expiry').val();
-            $('#display_date_of_expiry').text(date_of_expiry);
-
-            var mother_maiden_name = $('#mother_maiden_name').val();
-            $('#display_mother_maiden_name').text(mother_maiden_name);
-
-            var next_of_kin_name = $('#next_of_kin_name').val();
-            $('#display_next_of_kin_name').text(next_of_kin_name);
-
-            var next_of_kin_address = $('#next_of_kin_address').val();
-            $('#display_next_of_kin_address').text(next_of_kin_address);
-
-            var next_of_kin_telephone = $('#next_of_kin_telephone').val();
-            $('#display_next_of_kin_telephone').text(next_of_kin_telephone);
-
-            var country_of_residence = $('#country_of_residence').val();
-            $('#display_country_of_residence').text(country_of_residence);
-
-            var years_at_residence = $('#years_at_residence').val();
-            $('#display_years_at_residence').text(years_at_residence);
-
-            var building_name = $('#building_name').val();
-            $('#display_building_name').text(building_name);
-
-            var town = $('#town').val();
-            $('#display_town').text(town);
-
-            var residential_address = $('#residential_address').val();
-            $('#display_residential_address').text(residential_address);
-
-            var postal_address = $('#postal_address').val();
-            $('#display_postal_address').text(postal_address);
-
-            var employment_type = $('#employment_type').val();
-            $('#display_employment_type').text(employment_type);
-
-            var employee_number = $('#employee_number').val();
-            $('#display_employee_number').text(employee_number);
-
-            var employee_code = $('#employee_code').val();
-            $('#display_employee_code').text(employee_code);
-
-            var department = $('#department').val();
-            $('#display_department').text(department);
-
-            var date_of_employment = $('#date_of_employment').val();
-            $('#display_date_of_employment').text(date_of_employment);
-
-            var last_update_date = $('#last_update_date').val();
-            $('#display_last_update_date').text(last_update_date);
-
-            var tax_identification_number = $('#tax_identification_number').val();
-            $('#display_tax_identification_number').text(tax_identification_number);
-
-            if ($('#citizen_yes').is(":checked"))
-            {
-                var citizen_of_US = ('Yes');
-            }else if ($('#citizen_no').is(":checked")){
-                var citizen_of_US = ("No");
-            }else {
-                toaster('Select citizenship' , 'error', 6000);
-
-                return false;
-            }
-            $('#display_citizen_of_us').text(citizen_of_US);
-
-
-            if ($('#resident_yes').is(":checked"))
-            {
-                var us_resident = ('Yes');
-            }else if ($('#resident_no').is(":checked")){
-                var us_resident = ("No");
-            }else {
-                toaster("Select Residency" , 'error' , 6000);
-
-                return false;
-            }
-            $('#display_us_resident').text(us_resident);
-
-
-            /* console.log(select_gender);
-            console.log(citizen_of_US);
-            console.log(us_resident); */
-
-            {{-- var proof_of_address = $('#proof_of_address').val(); display_proof_of_address --}}
-
-            $('#proof_of_address').change(function(){
-
-                var file = $("#proof_of_address[type=file]").get(0).files[0];
-
-                    if(file){
-                        var reader = new FileReader();
-
-                        reader.onload = function(){
-                            $(".display_selected_id_image").attr("src", reader.result);
-                        }
-
-                        reader.readAsDataURL(file);
-
-                    }
-
-                    $('.display_selected_id_image').show();
-            })
-
-        })
-
-            $('#kyc_confirm_btn').click(function(e){
-                e.preventDefault();
-
-                if ($('#gender_male').is(":checked"))
-                {
-                    var select_gender = ('Male');
-                }else if ($('#gender_female').is(":checked")){
-                    var select_gender = ("Female");
-                }else {
-
-                    return false;
-                }
-
-
-                if ($('#citizen_yes').is(":checked"))
-                {
-                    var citizen_of_US = ('Y');
-                }else if ($('#citizen_no').is(":checked")){
-                    var citizen_of_US = ("N");
-                }else {
-
-                    return false;
-                }
-
-
-
-                if ($('#resident_yes').is(":checked"))
-                {
-                    var us_resident = ('Y');
-                }else if ($('#resident_no').is(":checked")){
-                    var us_resident = ("N");
-                }else {
-
-
-                    return false;
-                }
-
-
-
-                var customer_number = $('#customer_number').val();
-                var title = $('#title').val();
-                var firstname = $('#firstname').val();
-                var surname = $('#surname').val();
-                var Othername = $('#Othername').val();
-                var telephone_number = $('#telephone_number').val();
-                var email_address = $('#email_address').val();
-                var date_of_birth = $('#date_of_birth').val();
-                var gender = select_gender;
-                var marital_status = $('#marital_status').val();
-                var number_of_children = $('#number_of_children').val();
-                var number_of_dependents = $('#number_of_dependents').val();
-                var nationality = $('#nationality').val();
-                var id_type = $('#id_type').val();
-                var id_number = $('#id_number').val();
-                var date_of_issue = $('#date_of_issue').val();
-                var date_of_expiry = $('#date_of_expiry').val();
-                var mother_maiden_name = $('#mother_maiden_name').val();
-                var next_of_kin_name = $('#next_of_kin_name').val();
-                var next_of_kin_address = $('#next_of_kin_address').val();
-                var next_of_kin_telephone = $('#next_of_kin_telephone').val();
-                var country_of_residence = $('#country_of_residence').val();
-                var years_at_residence = $('#years_at_residence').val();
-                var building_name = $('#building_name').val();
-                var town = $('#town').val();
-                var residential_address = $('#residential_address').val();
-                var postal_address = $('#postal_address').val();
-                var employment_type = $('#employment_type').val();
-                var employee_number = $('#employee_number').val();
-                var employee_code = $('#employee_code').val();
-                var department = $('#department').val();
-                var date_of_employment = $('#date_of_employment').val();
-                var last_update_date = $('#last_update_date').val();
-                var tax_identification_number = $('#tax_identification_number').val();
-                var us_citizen = citizen_of_US ;
-                var resident = us_resident ;
-                var prove_of_address = $('#proof_of_address_').val()
-
-
-
-
-
-
-
-                $.ajax({
-                    'type' : 'POST' ,
-                    "url" : " submit-kyc" ,
-                    "datatype": "application/json",
-                    "data" : {
-                        'customer_number' : customer_number ,
-                        'title' : title ,
-                        'firstname' : firstname ,
-                        'surname' : surname ,
-                        'Othername' : Othername ,
-                        'telephone_number' : telephone_number ,
-                        'email_address' : email_address ,
-                        'date_of_birth' : date_of_birth ,
-                        'gender' : gender ,
-                        'marital_status' : marital_status ,
-                        'number_of_children' : number_of_children ,
-                        'number_of_dependents' : number_of_dependents,
-                        'nationality' : nationality ,
-                        'id_type' : id_type ,
-                        'id_number' : id_number ,
-                        'date_of_issue' : date_of_issue ,
-                        'date_of_expiry' : date_of_expiry ,
-                        'mother_maiden_name' : mother_maiden_name ,
-                        'next_of_kin_name' : next_of_kin_name ,
-                        'next_of_kin_address' : next_of_kin_address ,
-                        'next_of_kin_telephone' : next_of_kin_telephone ,
-                        'country_of_residence' : country_of_residence ,
-                        'years_at_residence' : years_at_residence ,
-                        'building_name' : building_name ,
-                        'town' : town ,
-                        'residential_address' : residential_address ,
-                        'postal_address' : postal_address ,
-                        'employment_type' : employment_type ,
-                        'employee_number' : employee_number ,
-                        'employee_code' : employee_code ,
-                        'department' : department ,
-                        'date_of_employment' : date_of_employment ,
-                        'last_update_date' : last_update_date ,
-                        'tax_identification_number' : tax_identification_number ,
-                        'us_citizen' : us_citizen ,
-                        'resident' : resident ,
-                        'prove_of_address' : prove_of_address
-
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success:
-                    function(response) {
-                        console.log(response);
-                        if(response.responseCode == '000'){
-                            toaster(response.message, 'success', 10000);
-                        }else{
-                            toaster(response.message, 'error' , 6000);
-                        }
-                    }
-
-                })
-
-            })
-
-    })
-</script>
+<script src="{{ asset('assets/customjs/kyc_update.js') }}"></script>
 
 @endsection
 
