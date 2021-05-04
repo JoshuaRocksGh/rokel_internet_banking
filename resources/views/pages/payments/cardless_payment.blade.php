@@ -222,8 +222,8 @@
                                                             <span class="font-15 text-primary h3 display_currency"
                                                                 id="display_currency"> </span>
                                                             &nbsp;
-                                                            <span class="font-15 text-primary h3 display_transfer_amount"
-                                                                id="display_transfer_amount"></span>
+                                                            <span class="font-15 text-primary h3 display_amount"
+                                                                id="display_amount"></span>
 
                                                         </td>
                                                     </tr>
@@ -232,15 +232,15 @@
                                                         <td>Reciever Name:</td>
                                                         <td>
                                                             <span
-                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                id="display_to_account_no"> </span>
+                                                                class="d-block font-13 text-primary text-bold display_reciever_name"
+                                                                id="display_reciever_name"> </span>
                                                         </td>
                                                     </tr>
 
                                                     <tr>
                                                         <td>Reciever Phone Number:</td>
                                                         <td>
-                                                            <span class="font-13 text-primary h3 display_category"
+                                                            <span class="font-13 text-primary h3 display_reciever_phoneNum"
                                                                 id="display_reciever_phoneNum"></span>
 
                                                         </td>
@@ -436,16 +436,15 @@
                 $("#from_account").change(function() {
                     var from_account = $(this).val()
                     {{-- alert(from_account) --}}
-                    if (from_account.trim() == '' || from_account.trim() == undefined) {
+                    if (from_account == '' || from_account.trim() == undefined) {
                         {{-- alert('money') --}}
-                        $(".from_account_display_info").hide()
+                        // $(".from_account_display_info").hide()
 
                     } else {
                         from_account_info = from_account.split("~")
-                        {{-- alert('continue') --}}
 
 
-                        var to_account = $('#to_account').val()
+                        // var to_account = $('#to_account').val()
 
                         // set summary values for display
                         $(".display_from_account_type").text(from_account_info[0].trim())
@@ -468,13 +467,17 @@
                     {{-- alert(from_account_info[0]); --}}
                 });
 
+                function formatToCurrency(amount) {
+                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+                };
+
                 $("#next_button").click(function(e) {
                     e.preventDefault();
 
                     //go to the cardless payment summary page...
                     // let from_account = $('#from_account').val();
-                    let from_account_ = $('#from_account').val().split('~');
-                    let amount = $('#amount').val();
+                    let from_account = $('#from_account').val().split('~');
+                    let transfer_amount = $('#amount').val();
                     let reciever_name = $('#reciever_name').val();
                     let reciever_phoneNum = $('#reciever_phoneNum').val();
                     let reciever_address = $('#reciever_address').val();
@@ -495,21 +498,21 @@
                         toaster('Field must not be empty', 'error', 10000)
                         return false
                     } else {
-                        //set purpose and category values
-                        var category_info = category.split("~")
-
-                        {{-- var select_frequency_info = select_frequency_.split("~") --}}
-
-                        $("#display_category").text(category_info[1])
-                        {{-- $("#display_frequency").text(select_frequency_info[1]) --}}
-                        $("#display_purpose").text(purpose)
+                        amt = from_account_info[4].trim();
+                        if( amt < transfer_amount){
+                            toaster('Insufficient account balance', 'error', 9000);
+                            return false
+                        }
 
                         $("#cardless_payment_form").hide()
-                        $("#cardless_payment_summary").show()
+                        $("#cardless_payment_summary").show();
                     }
 
                     $("#cardless_payment_form").hide();
                     $("#cardless_payment_summary").show();
+
+
+
                 });
 
                 $("#back_button").click(function(e) {
@@ -517,7 +520,7 @@
                     $("#cardless_payment_summary").hide();
                     $("#cardless_payment_form").show();
 
-                })
+                });
 
                 //for testing process
                 $('#from_account').change(function(){
@@ -576,13 +579,7 @@
                 });
 
 
-                {{-- $("#cardless_payment_form").click(function() {}) --}}
 
-                $("#next_button").click(function() {
-
-
-
-                });
 
             });
 
