@@ -15,43 +15,42 @@ class KycController extends Controller
     public function submit_kyc(Request $request)
     {
         $validator = Validator::make($request->all(), [
-
-            'customer_number' => 'required',
-            'title' => 'required',
-            'firstname' => 'required',
-            'surname' => 'required',
-            'Othername' => 'required',
-            'telephone_number' => 'required',
-            'date_of_birth' => 'required',
-            'gender' => 'required',
-            'marital_status' => 'required',
-            'number_of_children' => 'required',
-            'number_of_dependents' => 'required' ,
-            'nationality' => 'required',
-            'id_type' => 'required',
-            'id_number' => 'required',
-            'date_of_issue' => 'required',
-            'date_of_expiry' => 'required',
-            'mother_maiden_name' => 'required',
-            'next_of_kin_name' => 'required',
-            'next_of_kin_address' => 'required',
-            'next_of_kin_telephone' => 'required',
-            'country_of_residence' => 'required',
-            'years_at_residence' => 'required',
-            'building_name' => 'required',
-            'town' => 'required',
-            'residential_address' => 'required',
-            'postal_address' => 'required',
-            'employment_type' => 'required',
-            'employee_number' => 'required',
-            'employee_code' => 'required',
-            'department' => 'required',
-            'date_of_employment' => 'required',
-            'last_update_date' => 'required',
-            'tax_identification_number' => 'required',
-            'us_citizen' => 'required',
-            'resident' => 'required',
-            'prove_of_address' => 'required'
+            // 'customer_number' => 'required',
+            // 'title' => 'required',
+            // 'firstname' => 'required',
+            // 'surname' => 'required',
+            // 'Othername' => 'required',
+            // 'telephone_number' => 'required',
+            // 'date_of_birth' => 'required',
+            // 'gender' => 'required',
+            // 'marital_status' => 'required',
+            // 'number_of_children' => 'required',
+            // 'number_of_dependents' => 'required' ,
+            // 'nationality' => 'required',
+            // 'id_type' => 'required',
+            // 'id_number' => 'required',
+            // 'date_of_issue' => 'required',
+            // 'date_of_expiry' => 'required',
+            // 'mother_maiden_name' => 'required',
+            // 'next_of_kin_name' => 'required',
+            // 'next_of_kin_address' => 'required',
+            // 'next_of_kin_telephone' => 'required',
+            // 'country_of_residence' => 'required',
+            // 'years_at_residence' => 'required',
+            // 'building_name' => 'required',
+            // 'town' => 'required',
+            // 'residential_address' => 'required',
+            // 'postal_address' => 'required',
+            // 'employment_type' => 'required',
+            // 'employee_number' => 'required',
+            // 'employee_code' => 'required',
+            // 'department' => 'required',
+            // 'date_of_employment' => 'required',
+            // 'last_update_date' => 'required',
+            // 'tax_identification_number' => 'required',
+            // 'us_citizen' => 'required',
+            // 'resident' => 'required',
+            // 'prove_of_address' => 'required'
 
         ]);
 
@@ -125,7 +124,7 @@ class KycController extends Controller
             "usPermanentVisaCard" => $request->us_citizen,
             "usResident" => $request->resident
         ];
-
+        // return $data;
 
 
         // $response = Http::post(env('API_BASE_URL') . "$userID/kycInfo", $data);
@@ -133,7 +132,18 @@ class KycController extends Controller
         // $result = new ApiBaseResponse();
         // return $result->api_response($response);
 
-        // return $data;
+        return $this->generate_doc_id($request->prove_of_address);
+
+        if($this->generate_doc_id($request->prove_of_address) == null ){
+            return ('jhgfghjkl');
+
+        }else{
+
+
+            $data['proofAddressDocId'] = $this->generate_doc_id($request->prove_of_address);
+
+           return $this->generate_doc_id($request->prove_of_address);
+
 
         try {
             $response = Http::post(env('API_BASE_URL') . "user/kycInfo", $data);
@@ -149,7 +159,57 @@ class KycController extends Controller
                 'message' => (string) $e->getMessage()
             ]);
 
-            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            return $result->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+
+
+        }
+    }
+    }
+
+    public function generate_doc_id ($image_Base64)
+    {
+
+        $data = [
+
+            "image" => $image_Base64 ,
+            "id" => "1506362378",
+            "file" => "dfdfd" ,
+            "customerno" => "amama" ,
+            "dept" => "9000010" ,
+            "filename" => "Channels" ,
+            "cat" => "4444" ,
+            "description" => "For ELijah" ,
+            "category" => "asas" ,
+            "expiryDate" => "asas" ,
+            "docType" => "asas" ,
+            "comment" => "asas" ,
+            "enteredBy" => "111" ,
+            "approve" => "0" ,
+            "department" => "asasa" ,
+            "contentType" => "asas" ,
+        ];
+
+        try {
+
+            $response = Http::post(env('API_BASE_IMAGE_URL') . "DocumentManage/api/documentmanage/uploaddoc", $data);
+
+            $result = json_decode($response->body());
+
+            $image_id = $result->data;
+
+            return $result;
+
+
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return null;
+
 
 
         }
