@@ -147,6 +147,7 @@
                 console.log(response);
                 let title_list = response.data.titleList;
                 let country_list = response.data.nationalityList;
+                var nationality_list = response.data.nationalityList;
                 let id_list = response.data.documentTypeList;
                 let marital_Status_list = response.data.maritalStatusList;
                 let occupation_list = response.data.occupationList;
@@ -306,7 +307,7 @@
                 $('.display_selected_id_image').show();
             })
 
-        $('#basic_information_next_btn').click(function(e){
+        $('#basic_information').submit(function(e){
             e.preventDefault();
 
             var customer_number = $('#customer_number').val();
@@ -353,7 +354,7 @@
 
         })
 
-        $('#personal_details_next_btn').click(function(e){
+        $('#personal_details').submit(function(e){
             e.preventDefault();
 
             var marital_status = $('#marital_status').val();
@@ -390,7 +391,7 @@
             $('#third').removeClass('active show');
         })
 
-        $('#residential_details_next_btn').click(function(e){
+        $('#residential_details').submit(function(e){
             e.preventDefault();
 
             var country_of_residence = $('#country_of_residence').val();
@@ -426,7 +427,7 @@
 
         })
 
-        $('#employment_details_next_btn').click(function(e){
+        $('#employment_details').submit(function(e){
             e.preventDefault();
 
             var employment_type = $('#employment_type').val();
@@ -462,7 +463,7 @@
 
         })
 
-        $('#tax_information_next_btn').click(function(e){
+        $('#tax_information').submit(function(e){
             e.preventDefault();
 
 
@@ -471,6 +472,7 @@
 
             var title = $('#title').val().split('~');
             var title_ = title[0]
+            console.log(title_);
             $('#display_title').text(title_);
 
             var firstname = $('#firstname').val();
@@ -505,6 +507,7 @@
 
             var marital_status = $('#marital_status').val().split('~');
             var marital_status_ = marital_status[0];
+            console.log(marital_status_);
             $('#display_marital_status').text(marital_status_);
 
             var number_of_children = $('#number_of_children').val();
@@ -515,11 +518,13 @@
 
             var nationality = $('#nationality').val().split('~');
             var nationality_ = nationality[0];
-            $('#display_nationality').text(nationality);
+            console.log(nationality_);
+            $('#display_nationality').text(nationality_);
 
             var id_type = $('#id_type').val().split('~');
             var id_type_ = id_type[0];
-            $('#display_id_type').text(id_type);
+            console.log(id_type_);
+            $('#display_id_type').text(id_type_);
 
             var id_number = $('#id_number').val();
             $('#display_id_number').text(id_number);
@@ -560,9 +565,10 @@
             var postal_address = $('#postal_address').val();
             $('#display_postal_address').text(postal_address);
 
-            var employment_type = $('#employment_type').val();
+            var employment_type = $('#employment_type').val().split('~');
             var employment_type_ = employment_type[0];
-            $('#display_employment_type').text(employment_type);
+            console.log(employment_type_);
+            $('#display_employment_type').text(employment_type_);
 
             var employee_number = $('#employee_number').val();
             $('#display_employee_number').text(employee_number);
