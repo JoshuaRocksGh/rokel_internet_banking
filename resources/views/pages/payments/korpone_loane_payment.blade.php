@@ -559,7 +559,7 @@
                                     $.ajax({
 
                                         'type': 'POST',
-                                        'url': 'initiate-cardless',
+                                        'url': 'initiate-korpor',
                                         "datatype": "application/json",
                                         'data': {
                                             'amount': transfer_amount,
