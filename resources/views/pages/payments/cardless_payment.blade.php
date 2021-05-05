@@ -97,7 +97,7 @@
                                         </div>
 
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
 
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
@@ -112,7 +112,7 @@
 
                                             <input type="date" class="form-control" id="schedule_payment_date">
 
-                                        </div>
+                                        </div> --}}
 
 
                                         <br><br>
@@ -132,10 +132,10 @@
 
 
                                     <div class="form-group">
-                                        <label class="">Reciever Name<span class="text-danger">*</span></label>
+                                        <label class="">Receiver Name<span class="text-danger">*</span></label>
 
-                                        <input type="text" class="form-control" id="reciever_name"
-                                        placeholder="Reciever Name" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="receiver_name"
+                                        placeholder="receiver Name" autocomplete="off" required>
 
                                         <table
                                             class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
@@ -145,7 +145,7 @@
                                                     <td>
                                                         <a
                                                             class="text-body font-weight-semibold"></a>
-                                                        <small class="d-block display_reciever_name"></small>
+                                                        <small class="d-block display_receiver_name"></small>
                                                     </td>
                                                 </tr>
 
@@ -156,21 +156,21 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="h6">Reciever Phone Number<span class="text-danger">*</span></label>
+                                        <label class="h6">Receiver Phone Number<span class="text-danger">*</span></label>
 
-                                        <input type="text" class="form-control" id="reciever_phoneNum"
-                                            placeholder="Reciever Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                        <input type="text" class="form-control" id="receiver_phoneNum"
+                                            placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
 
                                     </div>
 
 
                                     <div class="form-group">
-                                        <label class="">Reciever Address<span class="text-danger">*</span></label>
+                                        <label class="">Receiver Address<span class="text-danger">*</span></label>
 
                                         {{-- <label class="h6">Category</label> --}}
 
-                                        <input type="text" class="form-control" id="reciever_address"
-                                            placeholder="Reciever Address" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="receiver_address"
+                                            placeholder="receiver Address" autocomplete="off" required>
 
                                     </div>
                                     {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
@@ -229,25 +229,25 @@
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Reciever Name:</td>
+                                                        <td>Receiver Name:</td>
                                                         <td>
                                                             <span
-                                                                class="d-block font-13 text-primary text-bold display_reciever_name"
-                                                                id="display_reciever_name"> </span>
+                                                                class="d-block font-13 text-primary text-bold display_receiver_name"
+                                                                id="display_receiver_name"> </span>
                                                         </td>
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Reciever Phone Number:</td>
+                                                        <td>Receiver Phone Number:</td>
                                                         <td>
-                                                            <span class="font-13 text-primary h3 display_reciever_phoneNum"
-                                                                id="display_reciever_phoneNum"></span>
+                                                            <span class="font-13 text-primary h3 display_receiver_phoneNum"
+                                                                id="display_receiver_phoneNum"></span>
 
                                                         </td>
                                                     </tr>
 
 
-                                                    <tr>
+                                                    {{-- <tr>
                                                         <td>Schedule Payment:</td>
                                                         <td>
                                                             <span class="font-13 text-primary h3 display_schedule_payment"
@@ -265,7 +265,7 @@
 
                                                             </span>
                                                         </td>
-                                                    </tr>
+                                                    </tr> --}}
 
                                                     <tr>
                                                         <td>Payment Date: </td>
@@ -288,7 +288,7 @@
                                                         <td>Enter Pin: </td>
                                                         <td>
 
-                                                            <input type="text" name="user_pin" class="form-control key"
+                                                            <input type="text" class="form-control key"
                                                                 id="user_pin"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 
@@ -305,7 +305,7 @@
                                             <span> <button class="btn btn-secondary btn-rounded" type="button"
                                                     id="back_button">Back</button> &nbsp; </span>
                                             <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                    id="confirm_button"><span id="confirm_transfer">Confirm Transfer</span>
+                                                    id="confirm_button"><span id="confirm_payment">Confirm Payment</span>
                                                     <span class="spinner-border spinner-border-sm mr-1" role="status"
                                                         id="spinner" aria-hidden="true"></span>
                                                     <span id="spinner-text">Loading...</span>
@@ -464,8 +464,10 @@
 
 
 
-                    {{-- alert(from_account_info[0]); --}}
+
                 });
+
+
 
                 function formatToCurrency(amount) {
                     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
@@ -478,34 +480,40 @@
                     // let from_account = $('#from_account').val();
                     let from_account = $('#from_account').val().split('~');
                     let transfer_amount = $('#amount').val();
-                    let reciever_name = $('#reciever_name').val();
-                    let reciever_phoneNum = $('#reciever_phoneNum').val();
-                    let reciever_address = $('#reciever_address').val();
-
-                    let schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    let schedule_payment_date = $('#schedule_payment_date').val();
-
+                    let receiver_name = $('#receiver_name').val();
+                    let receiver_phoneNum = $('#receiver_phoneNum').val();
+                    let receiver_address = $('#receiver_address').val();
+                    let sender_name = @json(session()->get('userAlias'));
+                    let user_pin = $('#user_pin').val();
 
 
-                    let schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
-
-
-
-                    $('.display_schedule_payment_date').text('| ' + schedule_payment_date)
-
-
-                    if (from_account == '' || amount =='' || reciever_name == '' || reciever_phoneNum == '' || reciever_address =='') {
+                    if (from_account == '' || amount =='' || receiver_name == '' || receiver_phoneNum == '' || receiver_address =='') {
                         toaster('Field must not be empty', 'error', 10000)
                         return false
                     } else {
+
+                        //hide the payment form and show the summary form
+                        $("#cardless_payment_form").hide()
+                        $("#cardless_payment_summary").show();
+
                         amt = from_account_info[4].trim();
                         if( amt < transfer_amount){
                             toaster('Insufficient account balance', 'error', 9000);
                             return false
                         }
+                        else{
 
-                        $("#cardless_payment_form").hide()
-                        $("#cardless_payment_summary").show();
+                            //display this is the payment summary
+                            $("#display_amount").text(transfer_amount);
+                            $("#display_receiver_name").text(receiver_name);
+                            $("#display_receiver_address").text(receiver_name);
+                            $("#display_receiver_phoneNum").text(receiver_phoneNum);
+
+
+
+                        }
+
+
                     }
 
                     $("#cardless_payment_form").hide();
@@ -515,6 +523,7 @@
 
                 });
 
+
                 $("#back_button").click(function(e) {
                     e.preventDefault()
                     $("#cardless_payment_summary").hide();
@@ -522,11 +531,78 @@
 
                 });
 
+
+
+                $('#confirm_button').click(function(){
+                    let from_account = $('#from_account').val().split('~');
+                    from_account = from_account[2];
+                    let transfer_amount = $('#amount').val();
+                    let receiver_name = $('#receiver_name').val();
+                    let receiver_phoneNum = $('#receiver_phoneNum').val();
+                    let receiver_address = $('#receiver_address').val();
+                    let sender_name = @json(session()->get('userAlias'));
+                    let user_pin = $('#user_pin').val();
+                    console.log(sender_name);
+
+
+                                if(user_pin == ""){
+                                    toaster('enter your pin', 'error', 9000);
+                                    console.log("Error is from here.");
+                                    return false;
+                                }
+                                else{
+
+                                    $('#spinner').show(),
+                                    $('#spinner-text').show(),
+                                    $('#print_receipt').hide();
+                                    $('#confirm_payment').hide();
+                                    $.ajax({
+
+                                        'type': 'POST',
+                                        'url': 'initiate-cardless',
+                                        "datatype": "application/json",
+                                        'data': {
+                                            'amount': transfer_amount,
+                                            'debit_account': from_account,
+                                            'pin_code': user_pin,
+                                            'receiver_address': receiver_address.trim(),
+                                            'receiver_name': receiver_name.trim(),
+                                            'receiver_phone': receiver_phoneNum,
+                                            'sender_name': sender_name.trim()
+                                        },
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function(response) {
+
+                                            console.log(response)
+
+                                            if (response.responseCode != '000') {
+                                                toaster(response.message, 'success', 20000);
+                                                $('#confirm_button').hide();
+                                                $('#back_button').hide();
+                                                $('#print_receipt').hide();
+                                                $('.hide_on_print').hide();
+                                            } else {
+
+                                                toaster(response.message, 'error', 9000);
+
+                                                $('#spinner').hide();
+                                                $('#spinner-text').hide();
+                                                $('#print_receipt').hide();
+                                                $('#confirm_payment').show();
+                                                $('#confirm_button').attr('disabled', false);
+                                            }
+                                        }
+                                        });
+                                    }
+                });
+
                 //for testing process
                 $('#from_account').change(function(){
                     var from_account = $('#from_account').val();
                     console.log(from_account);
-                    alert(from_account);
+                    // alert(from_account);
                 });
 
                 $('#amount').change(function(){
@@ -534,49 +610,26 @@
                     console.log(amount);
                 });
 
-                $('#reciever_name').change(function(){
-                    var reciever_name = $('#reciever_name').val();
-                    console.log(reciever_name);
+                $('#receiver_name').change(function(){
+                    var receiver_name = $('#receiver_name').val();
+                    console.log(receiver_name);
                 });
 
-                $('#reciever_phoneNum').change(function(){
-                    var reciever_phoneNum = $('#reciever_phoneNum').val();
-                    console.log(reciever_phoneNum);
+                $('#receiver_phoneNum').change(function(){
+                    var receiver_phoneNum = $('#receiver_phoneNum').val();
+                    console.log(receiver_phoneNum);
                 });
 
-                $('#reciever_address').change(function(){
-                    var reciever_address = $('#reciever_address').val();
-                    console.log(reciever_address);
+                $('#receiver_address').change(function(){
+                    var receiver_address = $('#receiver_address').val();
+                    console.log(receiver_address);
                 });
 
-
+                $('#user_pin').change(function(){
+                    var user_pin = $('#user_pin').val();
+                    console.log(user_pin);
+                });
                 //end of testing process
-
-
-
-
-                // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
-                $("input:checkbox").on("change", function() {
-                    if ($(this).is(":checked")) {
-                        {{-- console.log("Checkbox Checked!"); --}}
-                        $("#schedule_payment_date").show()
-                        $("#frequency").show()
-                        $(".display_schedule_payment").text('YES')
-                        $('#schedule_payment_contraint_input').val('TRUE')
-
-                    } else {
-                        {{-- console.log("Checkbox UnChecked!"); --}}
-                        $("#schedule_payment_date").val('')
-                        $("#schedule_payment_date").hide()
-                        $("#frequency").hide()
-                        $('.display_schedule_payment').text('NO')
-                        $('.display_schedule_payment_date').text('N/A')
-
-                        $('#schedule_payment_contraint_input').val('')
-                        $('#schedule_payment_contraint_input').hide()
-                        $('#schedule_payment_date').val('')
-                    }
-                });
 
 
 

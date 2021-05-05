@@ -170,7 +170,7 @@ Route::get('/payment-add-beneficiary/mobile-money-beneficiary', [paymentControll
 Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentController::class, 'utility_payment_beneficiary'])->name('utility-payment-beneficiary');
 
 //PAYMENTS API ROUTES
-Route::get('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
+Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
 Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
 Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
