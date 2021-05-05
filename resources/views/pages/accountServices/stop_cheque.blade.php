@@ -12,12 +12,10 @@
                     <div class="col-md-1"></div>
 
                     <div class=" card card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">STOP REQUEST</h2>
+                        <h2 class="header-title m-t-0 text-primary">STOP CHEQUE REQUEST</h2>
 
                         <p class="text-muted font-14 m-b-20">
-                            Parsley is a javascript form validation library. It helps you provide your
-                            users with feedback on their form submission before sending it to your
-                            server.
+                            A cheque stop payment letter is a letter that is written by a person who has issued a cheque and intends to stop payment on that cheque, to their bank.
                         </p>
                         <hr>
 

@@ -12,6 +12,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="text-primary">Add Transfer Beneficiary</h3>
+                    <p class="text-muted font-14 m-b-20">
+                        <span>
+                            <b class="text-danger">Please Note: </b>
+                            <b>Add the persons you want to be transacting with using the links below.</b>
+                        </span>
+                    </p>
                     <hr>
                 </div>
             </div>
