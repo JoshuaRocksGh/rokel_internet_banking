@@ -38,44 +38,216 @@
 
         <div class="row">
             <div class="col-12">
-                <div class="">
+                <div class="card" style="background-image: linear-gradient(to bottom right, white, lightblue);">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2"></div>
 
-                            <div class="col-md-8">
-                                <h2 class="header-title m-t-0 text-primary">RTGS TRANSFER</h2>
+
+                            <div class="col-md-12">
+
+                                <!-- start page title -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box">
+                                            <div class="page-title-left">
+                                                <ol class="breadcrumb m-0">
+                                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tranfer</a>
+                                                    </li>
+                                                    <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li>
+                                                    <li class="breadcrumb-item active text-danger">RTGS Form</li>
+                                                </ol>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h1 class="header-title text-primary" style="font-size: 24px"><img
+                                        src="{{ asset('assets/images/logoRKB.png') }}" alt="logo"
+                                        style="zoom: 0.05">&emsp; RTGS TRANSFER</h1>
 
                                 <p class="text-muted font-14 m-b-20">
 
-                                    Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the instantaneous transfer of money.
-                                    <hr>
+                                    {{-- Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the
+                                    instantaneous transfer of money. --}}
+                                    <hr style="border: 1px solid">
                                 </p>
 
 
 
-                                <p class="row" id="transaction_form">
+                                <div class="row" id="transaction_form">
 
 
-                                <div class="col-md-12">
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
+                                <div class="card col-md-8 rtgs_card" style="margin-left: 50px">
+
+                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none"
+                                        style="zoom: 1">
                                         @csrf
+                                        <div class="">
 
-                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <br><br><br>
+                                                <div class="row">
+                                                    <div class="col-md-1"></div>
 
-                                            <div class="col-md-6">
+                                                    <div class="col-md-10">
 
+                                                        <div class="form-group row mb-3">
+                                                            <label class="h6 col-4 text-right"><span class="text-danger">*</span>Payer Account </label>
+
+
+                                                        <select class="custom-select col-8 " id="from_account" required>
+                                                            <option value="">Select Account<span class="text-danger">*</span>
+                                                            </option>
+
+
+                                                        </select>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-4"></div>
+                                                            <div class="col-8">
+                                                                <div class="form-group hide-for-demo-purpose">
+
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input radio" type="radio" name="onetime"
+                                                                            id="inlineRadio1" value="beneficiary" checked="checked">
+                                                                        <label class="form-check-label" for="inlineRadio1">Select
+                                                                            beneficiary</label>
+                                                                    </div>
+                                                                    &nbsp;&nbsp;
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input radio" type="radio" name="onetime"
+                                                                            id="inlineRadio2" value="onetime">
+                                                                        <label class="form-check-label" for="inlineRadio2">Onetime
+                                                                            beneficiary</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-4 text-right">
+                                                                <br>
+                                                                <label class=""><span class="text-danger">*</span>Select Account</label>
+
+
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <span class="badge badge-primary float-right" style="cursor: pointer"><a
+                                                                    href="{{ url('add-local-bank-beneficiary') }}"
+                                                                    class="text-white">Create Beneficiary</a> </span>
+                                                                    <br>
+                                                                <select class="custom-select" id="to_account" required>
+                                                                    <option value="">Select Account</option>
+                                                                    {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
+                                                                Currenct Account ~ 004004110449140121 </option> --}}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
+                                                            <label class="col-4 text-right"><span class="text-danger">*</span>Enter Amount </label>
+                                                            <input type="text" class="form-control col-8" id="amount"
+                                                                placeholder="Amount: 0.00"
+                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                required>
+                                                        </div>
+                                                        <div class="form-group row ">
+                                                            <label class="h6 col-4 text-right"><span class="text-danger">*</span>Expense Category </label>
+                                                            {{-- <label for="form-group">Category</label> --}}
+
+
+                                                            <select class="custom-select col-8" id="category" required>
+                                                                <option value="">---Not Selected---</option>
+                                                                <option value="01~Travel">Travel</option>
+                                                                <option value="02~Petty Cash">Petty Cash</option>
+                                                                <option value="03~Salary">Salary</option>
+                                                                <option value="04~Groceries">Groceries</option>
+                                                                <option value="05~Allowances">Allowances</option>
+                                                                <option value="06~Medical">Medical</option>
+                                                                <option value="07~Vendor Payment">Vendor Payment</option>
+                                                                <option value="08~Insurance">Insurance</option>
+                                                                <option value="09~Tax">Tax</option>
+                                                                <option value="10~Others">Others</option>
+                                                            </select>
+
+
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-4"></div>
+                                                            <div class="col-8">
+
+                                                                <div class="form-group mb-0">
+                                                                    <input type="checkbox" class="custom-control-inputt" id="invoice_check">
+                                                                    &nbsp; &nbsp; <label class="h6">Invoice Attachment ?
+                                                                        <span class="badge badge-primary text-right" style="cursor: pointer"
+                                                                            data-toggle="modal" data-target="#centermodal">View</span>
+                                                                    </label>
+                                                                    <span class="hide_invoice">
+                                                                        <br>
+                                                                        <input type="file" class="hide_invoice" id="invoice_attachment"
+                                                                            required>
+                                                                    </span>
+
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-4 text-right"><span class="text-danger">*</span>Enter Naration</label>
+
+                                                            <input type="text" class="form-control col-8" id="purpose"
+                                                                placeholder="Enter purpose / narration" required>
+
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-4"></div>
+                                                            <div class="col-8">
+
+                                                                <div class="form-group">
+
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input"
+                                                                            id="customCheck1">
+                                                                        <label class="custom-control-label" >Schedule
+                                                                            Payments</label>
+                                                                    </div>
+                                                                    <legend></legend>
+
+                                                                    <input type="text" class="form-control"
+                                                                        id="schedule_payment_contraint_input">
+
+                                                                    <input type="date" class="form-control" id="schedule_payment_date">
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                    </div>
+
+                                                    <div class="col-md-1"></div>
+                                                </div>
                                                 <div class="form-group">
-                                                    <label class="h6">Payer Account <span
+                                                    {{--  <label class="h6">Payer Account <span
                                                             class="text-danger">*</span></label>
 
 
-                                                    <select class="custom-select " id="from_account" required>
+                                                    <select class="custom-select" id="from_account" required>
                                                         <option value="">Select Account<span class="text-danger">*</span>
                                                         </option>
 
 
-                                                    </select>
+                                                    </select>  --}}
 
 
                                                     <table
@@ -106,112 +278,6 @@
 
                                                 </div>
 
-                                                <div class="form-group hide-for-demo-purpose">
-
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input radio" type="radio" name="onetime"
-                                                            id="inlineRadio1" value="beneficiary" checked="checked">
-                                                        <label class="form-check-label" for="inlineRadio1">Select
-                                                            beneficiary</label>
-                                                    </div>
-                                                    &nbsp;&nbsp;
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input radio" type="radio" name="onetime"
-                                                            id="inlineRadio2" value="onetime">
-                                                        <label class="form-check-label" for="inlineRadio2">Onetime
-                                                            beneficiary</label>
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="form-group">
-                                                    {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
-                                                    <label class="">Enter Amount <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="amount"
-                                                        placeholder="Amount: 0.00"
-                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                        required>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="h6">Expense Category <span
-                                                            class="text-danger">*</span></label>
-                                                    {{-- <label for="form-group">Category</label> --}}
-
-
-                                                    <select class="custom-select" id="category" required>
-                                                        <option value="">---Not Selected---</option>
-                                                        <option value="01~Travel">Travel</option>
-                                                        <option value="02~Petty Cash">Petty Cash</option>
-                                                        <option value="03~Salary">Salary</option>
-                                                        <option value="04~Groceries">Groceries</option>
-                                                        <option value="05~Allowances">Allowances</option>
-                                                        <option value="06~Medical">Medical</option>
-                                                        <option value="07~Vendor Payment">Vendor Payment</option>
-                                                        <option value="08~Insurance">Insurance</option>
-                                                        <option value="09~Tax">Tax</option>
-                                                        <option value="10~Others">Others</option>
-                                                    </select>
-
-
-                                                </div>
-
-
-                                                <div class="form-group mb-0">
-                                                    <input type="checkbox" class="custom-control-inputt" id="invoice_check">
-                                                    &nbsp; &nbsp; <label class="h6">Invoice Attachment ?
-                                                        <span class="badge badge-primary text-right" style="cursor: pointer"
-                                                            data-toggle="modal" data-target="#centermodal">View</span>
-                                                    </label>
-                                                    <span class="hide_invoice">
-                                                        <br>
-                                                        <input type="file" class="hide_invoice" id="invoice_attachment"
-                                                            required>
-                                                    </span>
-
-
-                                                </div>
-
-
-
-                                                <div class="form-group mt-1">
-                                                    <label for="form-group">Enter Naration<span
-                                                            class="text-danger">*</span></label>
-
-                                                    <input type="text" class="form-control" id="purpose"
-                                                        placeholder="Enter purpose / narration" required>
-
-                                                </div>
-
-
-
-                                                <div class="form-group">
-
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            id="customCheck1">
-                                                        <label class="custom-control-label" for="customCheck1">Schedule
-                                                            Payments</label>
-                                                    </div>
-                                                    <legend></legend>
-
-                                                    <input type="text" class="form-control"
-                                                        id="schedule_payment_contraint_input">
-
-                                                    <input type="date" class="form-control" id="schedule_payment_date">
-
-                                                </div>
-
-
-
-                                            </div>
-
-
-
-                                            <div class="col-md-6">
-
-
 
 
                                                 <div class="form-group mt-1 select_beneficiary">
@@ -219,15 +285,7 @@
                                                             class="text-danger">*</span></label>
                                                     <br> --}}
 
-                                                    <label for="form-group">Select Account</label>
-                                                    <span class="badge badge-primary float-right" style="cursor: pointer"><a
-                                                            href="{{ url('add-local-bank-beneficiary') }}"
-                                                            class="text-white">Create Beneficiary</a> </span>
-                                                    <select class="custom-select" id="to_account" required>
-                                                        <option value="">Select Account</option>
-                                                        {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
-                                                    Currenct Account ~ 004004110449140121 </option> --}}
-                                                    </select>
+
 
 
                                                     <table
@@ -342,6 +400,12 @@
                                     </form>
                                 </div> <!-- end col -->
 
+                                <div class="card col-md-3" style="margin-left: 5px">
+                                    <h4>Hello</h4>
+                                </div>
+
+
+
 
                                 {{-- <div class="col-md-5 text-center" style="margin-top: 80px;">
 
@@ -353,7 +417,7 @@
 
 
 
-                                </p>
+                                </div>
 
                                 <div class="row" id="transaction_summary">
 
@@ -517,7 +581,7 @@
 
                             </div>
 
-                            <div class="col-md-2"></div>
+                            {{--  <div class="col-md-1"></div>  --}}
 
                         </div> <!-- end card-body -->
 

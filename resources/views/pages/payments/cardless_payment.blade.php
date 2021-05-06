@@ -135,7 +135,7 @@
                                         <label class="">Receiver Name<span class="text-danger">*</span></label>
 
                                         <input type="text" class="form-control" id="receiver_name"
-                                        placeholder="receiver Name" autocomplete="off" required>
+                                            placeholder="receiver Name" autocomplete="off" required>
 
                                         <table
                                             class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
@@ -143,8 +143,7 @@
                                                 <tr>
 
                                                     <td>
-                                                        <a
-                                                            class="text-body font-weight-semibold"></a>
+                                                        <a class="text-body font-weight-semibold"></a>
                                                         <small class="d-block display_receiver_name"></small>
                                                     </td>
                                                 </tr>
@@ -159,7 +158,9 @@
                                         <label class="h6">Receiver Phone Number<span class="text-danger">*</span></label>
 
                                         <input type="text" class="form-control" id="receiver_phoneNum"
-                                            placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                            placeholder="receiver Phone Number" autocomplete="off"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                            required>
 
                                     </div>
 
@@ -278,9 +279,8 @@
                                                     <tr>
                                                         <td>Posted By: </td>
                                                         <td>
-                                                            <span class="font-13 text-primary h3"
-                                                                id="display_posted_by">
-                                                            {{ session()->get('userAlias') }}</span>
+                                                            <span class="font-13 text-primary h3" id="display_posted_by">
+                                                                {{ session()->get('userAlias') }}</span>
                                                         </td>
                                                     </tr>
 
@@ -288,8 +288,7 @@
                                                         <td>Enter Pin: </td>
                                                         <td>
 
-                                                            <input type="text" class="form-control key"
-                                                                id="user_pin"
+                                                            <input type="text" class="form-control key" id="user_pin"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 
                                                         </td>
@@ -372,23 +371,23 @@
             }
 
             function toaster(message, icon, timer) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: timer,
-                timerProgressBar: false,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: timer,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
 
-            Toast.fire({
-                icon: icon,
-                title: message
-            })
-        }
+                Toast.fire({
+                    icon: icon,
+                    title: message
+                })
+            }
 
 
 
@@ -487,7 +486,8 @@
                     let user_pin = $('#user_pin').val();
 
 
-                    if (from_account == '' || amount =='' || receiver_name == '' || receiver_phoneNum == '' || receiver_address =='') {
+                    if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
+                        '' || receiver_address == '') {
                         toaster('Field must not be empty', 'error', 10000)
                         return false
                     } else {
@@ -497,11 +497,10 @@
                         $("#cardless_payment_summary").show();
 
                         amt = from_account_info[4].trim();
-                        if( amt < transfer_amount){
+                        if (amt < transfer_amount) {
                             toaster('Insufficient account balance', 'error', 9000);
                             return false
-                        }
-                        else{
+                        } else {
 
                             //display this is the payment summary
                             $("#display_amount").text(transfer_amount);
@@ -533,7 +532,7 @@
 
 
 
-                $('#confirm_button').click(function(){
+                $('#confirm_button').click(function() {
                     let from_account = $('#from_account').val().split('~');
                     from_account = from_account[2];
                     let transfer_amount = $('#amount').val();
@@ -545,87 +544,86 @@
                     console.log(sender_name);
 
 
-                                if(user_pin == ""){
-                                    toaster('enter your pin', 'error', 9000);
-                                    console.log("Error is from here.");
-                                    return false;
-                                }
-                                else{
+                    if (user_pin == "") {
+                        toaster('enter your pin', 'error', 9000);
+                        console.log("Error is from here.");
+                        return false;
+                    } else {
 
-                                    $('#spinner').show(),
-                                    $('#spinner-text').show(),
+                        $('#spinner').show(),
+                            $('#spinner-text').show(),
+                            $('#print_receipt').hide();
+                        $('#confirm_payment').hide();
+                        $.ajax({
+
+                            'type': 'POST',
+                            'url': 'initiate-cardless',
+                            "datatype": "application/json",
+                            'data': {
+                                'amount': transfer_amount,
+                                'debit_account': from_account,
+                                'pin_code': user_pin,
+                                'receiver_address': receiver_address.trim(),
+                                'receiver_name': receiver_name.trim(),
+                                'receiver_phone': receiver_phoneNum,
+                                'sender_name': sender_name.trim()
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+
+                                console.log(response)
+
+                                if (response.responseCode == '000') {
+                                    toaster(response.message, 'success', 20000);
+                                    $('#confirm_button').hide();
+                                    $('#back_button').hide();
                                     $('#print_receipt').hide();
-                                    $('#confirm_payment').hide();
-                                    $.ajax({
+                                    $('.hide_on_print').hide();
+                                } else {
 
-                                        'type': 'POST',
-                                        'url': 'initiate-cardless',
-                                        "datatype": "application/json",
-                                        'data': {
-                                            'amount': transfer_amount,
-                                            'debit_account': from_account,
-                                            'pin_code': user_pin,
-                                            'receiver_address': receiver_address.trim(),
-                                            'receiver_name': receiver_name.trim(),
-                                            'receiver_phone': receiver_phoneNum,
-                                            'sender_name': sender_name.trim()
-                                        },
-                                        headers: {
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        success: function(response) {
+                                    toaster(response.message, error, 9000);
 
-                                            console.log(response)
-
-                                            if (response.responseCode != '000') {
-                                                toaster(response.message, 'success', 20000);
-                                                $('#confirm_button').hide();
-                                                $('#back_button').hide();
-                                                $('#print_receipt').hide();
-                                                $('.hide_on_print').hide();
-                                            } else {
-
-                                                toaster(response.message, 'error', 9000);
-
-                                                $('#spinner').hide();
-                                                $('#spinner-text').hide();
-                                                $('#print_receipt').hide();
-                                                $('#confirm_payment').show();
-                                                $('#confirm_button').attr('disabled', false);
-                                            }
-                                        }
-                                        });
-                                    }
+                                    $('#spinner').hide();
+                                    $('#spinner-text').hide();
+                                    $('#print_receipt').hide();
+                                    $('#confirm_payment').show();
+                                    $('#confirm_button').attr('disabled', false);
+                                }
+                            }
+                        });
+                    }
                 });
 
                 //for testing process
-                $('#from_account').change(function(){
+                $('#from_account').change(function() {
                     var from_account = $('#from_account').val();
                     console.log(from_account);
                     // alert(from_account);
                 });
 
-                $('#amount').change(function(){
+                $('#amount').change(function() {
                     var amount = $('#amount').val();
                     console.log(amount);
                 });
 
-                $('#receiver_name').change(function(){
+                $('#receiver_name').change(function() {
                     var receiver_name = $('#receiver_name').val();
                     console.log(receiver_name);
                 });
 
-                $('#receiver_phoneNum').change(function(){
+                $('#receiver_phoneNum').change(function() {
                     var receiver_phoneNum = $('#receiver_phoneNum').val();
                     console.log(receiver_phoneNum);
                 });
 
-                $('#receiver_address').change(function(){
+                $('#receiver_address').change(function() {
                     var receiver_address = $('#receiver_address').val();
                     console.log(receiver_address);
                 });
 
-                $('#user_pin').change(function(){
+                $('#user_pin').change(function() {
                     var user_pin = $('#user_pin').val();
                     console.log(user_pin);
                 });
