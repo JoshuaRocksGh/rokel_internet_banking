@@ -53,7 +53,7 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
-            background: #87CEFA;
+            background:#ccc5b1;
             color: #00008B;
             text-align: center;
             font-family: 'Roboto', sans-serif;

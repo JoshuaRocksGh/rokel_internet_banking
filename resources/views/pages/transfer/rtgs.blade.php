@@ -33,12 +33,11 @@
 
 @section('content')
 
-    <div <legend>
-        </legend>
+    <div>
 
         <div class="row">
             <div class="col-12">
-                <div class="card" style="background-image: linear-gradient(to bottom right, white, lightblue);">
+
                     <div class="card-body">
                         <div class="row">
 
@@ -75,13 +74,13 @@
 
 
 
-                                <div class="row" id="transaction_form">
+                                <div class="row" id="transaction_form" >
 
 
-                                <div class="card col-md-8 rtgs_card" style="margin-left: 50px">
+                                <div  class=" col-md-8 rtgs_card" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none"
-                                        style="zoom: 1">
+                                        style="zoom: 0.9">
                                         @csrf
                                         <div class="">
 
@@ -93,10 +92,10 @@
                                                     <div class="col-md-10">
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="h6 col-4 text-right"><span class="text-danger">*</span>Payer Account </label>
+                                                            <label class="h6 col-md-4 "><span class="text-danger">*</span>Payer Account </label>
 
 
-                                                        <select class="custom-select col-8 " id="from_account" required>
+                                                        <select class="custom-select col-md-8 " id="from_account" required>
                                                             <option value="">Select Account<span class="text-danger">*</span>
                                                             </option>
 
@@ -105,8 +104,8 @@
                                                         </div>
 
                                                         <div class="row">
-                                                            <div class="col-4"></div>
-                                                            <div class="col-8">
+
+                                                            <div class="col-12">
                                                                 <div class="form-group hide-for-demo-purpose">
 
                                                                     <div class="form-check form-check-inline">
@@ -126,25 +125,89 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="form-group row">
-                                                            <div class="col-4 text-right">
-                                                                <br>
-                                                                <label class=""><span class="text-danger">*</span>Select Account</label>
-
-
+                                                        <div class="form-group row" id="pay_from_account">
+                                                            <div class="col-md-4">
+                                                               <label class=""><span class="text-danger">*</span>Select Account</label>
                                                             </div>
-                                                            <div class="col-8">
-                                                                <span class="badge badge-primary float-right" style="cursor: pointer"><a
-                                                                    href="{{ url('add-local-bank-beneficiary') }}"
-                                                                    class="text-white">Create Beneficiary</a> </span>
-                                                                    <br>
+                                                            <div class="col-md-8">
+
                                                                 <select class="custom-select" id="to_account" required>
                                                                     <option value="">Select Account</option>
                                                                     {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
                                                                 Currenct Account ~ 004004110449140121 </option> --}}
                                                                 </select>
+                                                                <br>
+
+                                                                <span class="badge badge-primary float-right" style="cursor: pointer"><a
+                                                                    href="{{ url('add-local-bank-beneficiary') }}"
+                                                                    class="text-white">Create Beneficiary</a> </span>
                                                             </div>
                                                         </div>
+
+                                                        <div class="select_onetime">
+
+
+                                                        <div class="form-group row">
+                                                            {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
+                                                            <label class="col-4 text-right">Alias Name <span
+                                                                class="text-danger">*</span></label>
+                                                          <input type="text" class="form-control col-7"
+                                                                id="onetime_beneficiary_alias_name" placeholder="Alias Name"
+                                                                required>
+                                                        </div>
+
+
+                                                            <div class="form-group row">
+                                                                {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
+                                                                <label class="col-4 text-right"><span class="text-danger">*</span> Bank Name </label>
+                                                                <input type="email" class="form-control"
+                                                                    id="onetime_beneficiary_bank_name" placeholder="Bank Name"
+                                                                    required>
+                                                            </div>
+
+
+                                                            <div class="form-group">
+                                                                <label class="">Account Number <span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" class="form-control"
+                                                                    id="onetime_beneficiary_account_number"
+                                                                    placeholder="Account Number"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                    required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="">Select Currency <span
+                                                                        class="text-danger">*</span></label>
+
+                                                                <select class="custom-select"
+                                                                    id="onetime_beneficiary_account_currency" required>
+                                                                    <option value="">Select Currency</option>
+                                                                    <option value="GHS">GHS</option>
+                                                                    <option value="USD">USD</option>
+                                                                    <option value="EURO">EURO</option>
+                                                                    <option value="SLL">SLL</option>
+                                                                    <option value="GBP">GBP</option>
+                                                                </select>
+
+                                                            </div>
+
+
+
+
+
+
+
+                                                            <div class="form-group">
+                                                                <label class="">Enter Telephone Number <span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" class="form-control"
+                                                                    id="onetime_beneficiary_phone" placeholder="Phone" required>
+                                                            </div>
+                                                            <hr>
+
+                                                        </div>
+
 
                                                         <div class="form-group row">
                                                             {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
@@ -312,64 +375,6 @@
 
                                                 </div>
 
-                                                <div class="select_onetime">
-
-                                                    <div class="form-group">
-                                                        <label class="">Alias Name <span
-                                                                class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control"
-                                                            id="onetime_beneficiary_alias_name" placeholder="Alias Name"
-                                                            required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="">Bank Name <span class="text-danger">*</span></label>
-                                                        <input type="email" class="form-control"
-                                                            id="onetime_beneficiary_bank_name" placeholder="Bank Name"
-                                                            required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="">Account Number <span
-                                                                class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control"
-                                                            id="onetime_beneficiary_account_number"
-                                                            placeholder="Account Number"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                            required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="">Select Currency <span
-                                                                class="text-danger">*</span></label>
-
-                                                        <select class="custom-select"
-                                                            id="onetime_beneficiary_account_currency" required>
-                                                            <option value="">Select Currency</option>
-                                                            <option value="GHS">GHS</option>
-                                                            <option value="USD">USD</option>
-                                                            <option value="EURO">EURO</option>
-                                                            <option value="SLL">SLL</option>
-                                                            <option value="GBP">GBP</option>
-                                                        </select>
-
-                                                    </div>
-
-
-
-
-
-
-
-                                                    <div class="form-group">
-                                                        <label class="">Enter Telephone Number <span
-                                                                class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control"
-                                                            id="onetime_beneficiary_phone" placeholder="Phone" required>
-                                                    </div>
-                                                    <hr>
-
-                                                </div>
 
 
 
@@ -400,7 +405,7 @@
                                     </form>
                                 </div> <!-- end col -->
 
-                                <div class="card col-md-3" style="margin-left: 5px">
+                                <div class=" col-md-3" style="margin-left:20px; background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <h4>Hello</h4>
                                 </div>
 
@@ -667,9 +672,6 @@
 
                     </div> <!-- end col -->
 
-                </div> <!-- end row -->
-
-
 
             </div>
 
@@ -836,6 +838,7 @@
 
                             // set amonut to empty
                             $("#amount").val('');
+                            $("#pay_from_account").show();
 
 
                             //$(".select_onetime").hide();
@@ -849,6 +852,7 @@
 
                             // set amonut to empty
                             $("#amount").val('');
+                            $("#pay_from_account").hide();
 
                             // $(".select_beneficiary").hide();
                             //$(".select_onetime").show();

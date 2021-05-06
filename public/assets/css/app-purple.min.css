@@ -39,7 +39,7 @@ body {
 }
 
 #sidebar-menu>ul>li>a {
-    color: #6e768e;
+    color: #fff;
     display: block;
     padding: 12px 20px;
     position: relative;
@@ -51,8 +51,9 @@ body {
 #sidebar-menu>ul>li>a:active,
 #sidebar-menu>ul>li>a:focus,
 #sidebar-menu>ul>li>a:hover {
-    color: #4fc6e1;
-    text-decoration: none
+    color: #fff;
+    background-color: #ccc5b1;
+    /* text-decoration: non */
 }
 
 #sidebar-menu>ul>li>a>span {
@@ -85,7 +86,7 @@ body {
 }
 
 #sidebar-menu>ul>li>a.mm-active {
-    color: #4fc6e1
+    color: #fff
 }
 
 #sidebar-menu>ul>li ul {
@@ -122,20 +123,23 @@ body {
 
 .nav-second-level li a {
     padding: 8px 20px;
-    color: #6e768e;
+    color: #fff;
     display: block;
     position: relative;
     transition: all .4s;
-    font-size: 13px
+    font-size: 13px;
+
 }
 
 .nav-second-level li a:focus,
 .nav-second-level li a:hover {
-    color: #4fc6e1
+    color: #fff;
+    background-color: #ccc5b1;
 }
 
 .nav-second-level li.active>a {
-    color: #4fc6e1
+    color: #fff ;
+    background-color: #ccc5b1;
 }
 
 .menu-arrow {
@@ -220,7 +224,7 @@ body[data-sidebar-size=condensed] .left-side-menu #sidebar-menu>ul>li>a {
 body[data-sidebar-size=condensed] .left-side-menu #sidebar-menu>ul>li>a:active,
 body[data-sidebar-size=condensed] .left-side-menu #sidebar-menu>ul>li>a:focus,
 body[data-sidebar-size=condensed] .left-side-menu #sidebar-menu>ul>li>a:hover {
-    color: #4fc6e1
+    color: #fff
 }
 
 body[data-sidebar-size=condensed] .left-side-menu #sidebar-menu>ul>li>a i {
@@ -438,18 +442,18 @@ body[data-sidebar-color=dark] .left-side-menu {
 }
 
 body[data-sidebar-color=dark] .left-side-menu #sidebar-menu>ul>li>a {
-    color: #9097a7
+    color: #fff
 }
 
 body[data-sidebar-color=dark] .left-side-menu #sidebar-menu>ul>li>a:active,
 body[data-sidebar-color=dark] .left-side-menu #sidebar-menu>ul>li>a:focus,
 body[data-sidebar-color=dark] .left-side-menu #sidebar-menu>ul>li>a:hover {
-    color: #c8cddc
+    color: #fff
 }
 
 body[data-sidebar-color=dark] .left-side-menu #sidebar-menu>ul>li>a.mm-active {
     color: #fff;
-    background-color: #3d4751
+    background-color: #fff
 }
 
 body[data-sidebar-color=dark] .left-side-menu #sidebar-menu .menu-title {
@@ -527,7 +531,7 @@ body[data-sidebar-color=gradient] .left-side-menu {
 
 body[data-sidebar-color=brand] .left-side-menu #sidebar-menu>ul>li>a,
 body[data-sidebar-color=gradient] .left-side-menu #sidebar-menu>ul>li>a {
-    color: rgba(255, 255, 255, .7)
+    color:#fff;
 }
 
 body[data-sidebar-color=brand] .left-side-menu #sidebar-menu>ul>li>a:active,
@@ -536,13 +540,13 @@ body[data-sidebar-color=brand] .left-side-menu #sidebar-menu>ul>li>a:hover,
 body[data-sidebar-color=gradient] .left-side-menu #sidebar-menu>ul>li>a:active,
 body[data-sidebar-color=gradient] .left-side-menu #sidebar-menu>ul>li>a:focus,
 body[data-sidebar-color=gradient] .left-side-menu #sidebar-menu>ul>li>a:hover {
-    color: rgba(255, 255, 255, .9)
+    color:#fff ;
 }
 
 body[data-sidebar-color=brand] .left-side-menu #sidebar-menu>ul>li>a.mm-active,
 body[data-sidebar-color=gradient] .left-side-menu #sidebar-menu>ul>li>a.mm-active {
     color: #fff;
-    background-color: rgba(255, 255, 255, .07)
+    background-color: #fff ;
 }
 
 body[data-sidebar-color=brand] .left-side-menu #sidebar-menu .menu-title,
@@ -678,7 +682,7 @@ body[data-sidebar-showuser=true] .user-box {
 }
 
 body[data-sidebar-icon=twotones] #sidebar-menu>ul>li>a i {
-    color: #4a81d4
+    color: #fff
 }
 
 body[data-sidebar-icon=twotones] #sidebar-menu>ul>li>a svg {
@@ -686,7 +690,7 @@ body[data-sidebar-icon=twotones] #sidebar-menu>ul>li>a svg {
     height: 18px;
     margin-left: 3px;
     margin-right: 10px;
-    color: #4a81d4;
+    color: #fff;
     fill: rgba(74, 129, 212, .2)
 }
 
@@ -736,8 +740,9 @@ body[data-sidebar-icon=twotones] #sidebar-menu>ul>li>a svg {
 }
 
 .navbar-custom {
-    background-color: #0561ad;
-    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, .16), 0 2px 6px 0 rgba(0, 0, 0, .12);
+    /* background-color: #3366FF; */
+    background-image: linear-gradient(to right, #3366FF, #00CCFF);
+    /* box-shadow: 0 2px 6px -2px rgba(0, 0, 0, .16), 0 2px 6px 0 rgba(0, 0, 0, .12); */
     padding: 0 10px 0 0;
     position: fixed;
     left: 0;
@@ -4016,10 +4021,10 @@ body.authentication-bg-pattern {
 
 /*!
  * Waves v0.7.6
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014-2018 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
  * https://github.com/fians/Waves/blob/master/LICENSE */
 
 .waves-effect {
