@@ -1,5 +1,5 @@
 <!-- ========== Left Sidebar Start ========== -->
-<div class="left-side-menu" {{-- style="zoom:0.98; background-image: url('assets/images/login-bg.jpg'); background-repeat: no-repeat; background-size: cover;" --}}>
+<div class="left-side-menu" style="background-image: linear-gradient( #3366FF, #00CCFF);">
 
     <div class="h-100" data-simplebar>
 
