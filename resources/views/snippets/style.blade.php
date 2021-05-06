@@ -40,8 +40,24 @@
 {{-- <link rel="stylesheet" href="{{ asset('assets/css/c_cards.css') }}"/> --}}
 
 
-{{-- <style>
-        .btn-primary {
+<style>
+        {{--  .btn-primary {
             box-shadow: 0 0 0 0 rgb(6 55 195 / 70%) !important;
-        }
-    </style> --}}
+        }  --}}
+
+        .rtgs_card::after{
+            position: absolute;
+            content: 'Please Select/Enter Details';
+            top: -5px;
+            {{--  right: -14px;  --}}
+            left: -14px;
+            padding: 0.5rem;
+            width: 20rem;
+            background: #87CEFA;
+            color: #00008B;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
+
+          }
+</style>

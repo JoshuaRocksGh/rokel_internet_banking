@@ -48,11 +48,14 @@ class CardlessController extends Controller
         $receiverName = $request->receiver_name;
         $receiverPhone = $request->receiver_phone;
         $senderName = $request->sender_name;
-        $deviceIP = $_SERVER['REMOTE_ADDR'];
+        // $deviceIP = $_SERVER['REMOTE_ADDR'];
         $fee = $request->fee;
 
 
-        return $deviceIP ;
+        // return $deviceIP ;
+        $user_ip_address =$request->ip();
+
+        return $user_ip_address ;
 
         $data = [
                 // "amount"=>$amount,
@@ -77,7 +80,8 @@ class CardlessController extends Controller
                 "tokenID"=> $authToken
 
             ];
-        // return $data;
+
+
 
 
 
