@@ -13,32 +13,33 @@ class KorporController extends Controller
     public function initiate_korpor(Request $request)
     {
 
-        // $amount =$request->amount;
-        // $debitAccount =$request->debitAccount;
+        $amount =$request->transfer_amount;
+        $debitAccount =$request->from_account;
         // $deviceIP =$request->deviceIP;
         // $fee =$request->fee;
-        // $pinCode =$request->pinCode;
-        // $receiverAddress =$request->receiverAddress;
-        // $receiverPhone = $request->receiverPhone;
-        // $senderName = $request->senderName;
-        // $tokenID = $request->tokenID;
-        // $senderName = $request->senderName;
-        // $senderName = $request->senderName;
+        $pinCode =$request->pinCode;
+        $receiverAddress =$request->receiverAddress;
+        $receiverName = $request->receiver_name;
+        $receiverPhone = $request->receiverPhone;
+        $senderName = $request->senderName;
+        $tokenID = $request->tokenID;
+        $senderName = $request->senderName;
+
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
         $data = [
-            "amount" => '10.0',
-            "debitAccount" => '23456786543',
-            "deviceIP" => 'ftrt',
-            "fee" => 'authToken',
-            "pinCode" => 'authToken',
-            "receiverAddress" => 'authToken',
+            "amount" => $amount,
+            "debitAccount" => $debitAccount,
+            "deviceIP" => "A",
+            "fee" => "",
+            "pinCode" => $pinCode,
+            "receiverAddress" => $receiverAddress,
             "receiverName" => 'authToken',
-            "receiverPhone" => 'authToken',
+            "receiverPhone" => $receiverPhone,
             "senderName" => 'authToken',
-            "tokenID" => 'authToken'
+            "tokenID" => $userID
         ];
 
         $response = Http::post(env('API_BASE_URL') . "payment/korpor", $data);

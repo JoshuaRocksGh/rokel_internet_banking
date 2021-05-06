@@ -195,7 +195,7 @@
 
                                 <div class="col-md-12">
                                     <div class="border card p-3 mt-4 mt-lg-0 rounded">
-                                        <h4 class="header-title mb-3">Cardless Payment Summary</h4>
+                                        <h4 class="header-title mb-3">Korpor Payment Summary</h4>
 
                                         <div class="table-responsive">
                                             <table class="table mb-0 table-bordered table-striped">
