@@ -905,7 +905,7 @@
                     labels: ['Savings deposit', 'Electricity Payment', 'Water Bill Payment', 'Airtime Payment'],
                     datasets: [{
                         label: 'MY ACCOUNTS',
-                        data: [19, 12, 30, 100, ],
+                        data: [19, 12, 30, 100],
                         backgroundColor: [
 
                             'rgba(54, 162, 235, 1)',
@@ -927,6 +927,8 @@
                         borderWidth: 1
                     }]
                 },
+                actions:
+
                 {{-- options: {
                 scales: {
                     yAxes: [{
