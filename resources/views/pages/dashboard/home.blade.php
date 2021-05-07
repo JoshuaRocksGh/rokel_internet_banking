@@ -39,19 +39,269 @@
                         <canvas id="myChart" width="400" height="250"></canvas>
 
                     </div> <!-- end row-->
-                    {{--  <h4 class="text-center">TOTAL: SLL 90,000,000.00</h4>  --}}
+                    <h4 class="text-center">TOTAL: SLL 90,000,000.00</h4>
                 </div> <!-- end widget-rounded-circle-->
 
             </div> <!-- end col--> --}}
 
 
+
             <div class="col-md-12 col-xl-12" >
-                <h5 class="page-title element">QUICK TRANSACTIONS</h5>
+                {{-- <h5 class="page-title element">ACCOUNTS</h5> --}}
                 <div class="row">
 
-                    <div class="col-md-7 col-xl-7" >
+                    <div class="col-md-5 col-xl-5">
 
-                        <div class="card">
+                        {{-- <div class="col-xl-4 col-lg-5"> --}}
+
+                            <div class="card">
+                                <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+
+                                    <h5 class="card-title font-16 mb-3">Accounts</h5>
+
+                                    <ul class="nav nav-pills navtab-bg nav-justified">
+                                        <li class="nav-item">
+                                            <a href="#i_have" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                                I HAVE
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#i_owe" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                                I OWE
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#investments" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                Investments
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane show active" id="i_have" >
+
+
+                                            <div class="border mt-0 rounded"  >
+                                                <h4 class="header-title p-2 mb-0 text-success">MY CURRENT & SAVINGS</h4>
+
+                                                <div class="table-responsive" style="height: 275px;">
+                                                    <table class="table table-centered table-nowrap mb-0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="{{ url('account-enquiry') }}"
+                                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+
+                                                                <td class="text-right">
+                                                                    GHS 90,039.00
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+
+                                                                <td class="text-right">
+                                                                    GHS 90,039.00
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+
+                                                                <td class="text-right">
+                                                                    GHS 90,039.00
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+
+                                                                <td class="text-right">
+                                                                    GHS 90,039.00
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    USD 5,700.00
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    SLL 888.00
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- end table-responsive -->
+                                            </div> <!-- end .border-->
+
+                                        </div>
+                                        <div class="tab-pane" id="i_owe">
+                                            <div class="border mt-0 rounded">
+                                                <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
+
+                                                <div class="table-responsive" style="height: 275px;">
+                                                    <table class="table table-centered table-nowrap mb-0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-danger">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+
+                                                                <td class="text-right">
+                                                                    GHS 90,039.00
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-danger">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    USD 5,700.00
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-danger">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    SLL 888.00
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- end table-responsive -->
+                                            </div> <!-- end .border-->
+
+
+                                        </div>
+                                        <div class="tab-pane" id="investments" >
+                                            <div class="border mt-0 rounded"  >
+                                                <h4 class="header-title p-2 mb-0 text-success">INVESTMENTS</h4>
+
+                                                <div class="table-responsive" style="height: 275px;">
+                                                    <table class="table table-centered table-nowrap mb-0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="{{ url('account-enquiry') }}"
+                                                                        class="text-body font-weight-semibold">Fixed Account</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+
+                                                                <td class="text-right">
+                                                                    GHS 90,039.00
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="width: 10px;">
+                                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="ecommerce-product-detail.html"
+                                                                        class="text-body font-weight-semibold">Savings Account</a>
+                                                                    <small class="d-block">01024499300101</small>
+                                                                </td>
+
+                                                                <td class="text-right">
+                                                                    GHS 90,039.00
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- end table-responsive -->
+                                            </div> <!-- end .border-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {{-- </div> --}}
+                        {{-- <div class="card">
                             <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
 
@@ -147,115 +397,34 @@
 
                                 </div>
                             </div> <!-- end card-box-->
-                        </div> <!-- end col -->
+                        </div> <!-- end col --> --}}
 
                     </div>
 
-
-                    <div class="col-md-5 col-xl-5 ">
+                    <div class="col-md-7 col-xl-7">
                         <div class="card">
-                            <div class="card-header bg-blue py-2 text-white">
-                                <div class="card-widgets">
-                                    <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
-                                    <a data-toggle="collapse" href="#cardCollpase5" role="button" aria-expanded="false"
-                                        aria-controls="cardCollpase2"><i class="mdi mdi-minus"></i></a>
+                            <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
-                                </div>
-                                <h5 class="card-title mb-0 text-white" id="currency_converter_tour">Currency Converter</h5>
-                            </div>
-                            <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
-                                <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                <h5 class="card-title font-16 mb-3">30 Day View Of Transactions</h5>
 
+                                <div class="col-md-6 col-xl-6">
+                                    {{-- <div class="widget-rounded-circle card-box"> --}}
+                                    <div class="row">
 
+                                            <canvas id="myChart" width="400" height="300"></canvas>
 
-                                    <div class="text-center currency_converter_loading_area"
-                                        id="account_balance_info_loader">
-                                        <div class="spinner-border text-secondary avatar-sm " role="status"></div>
-                                    </div>
-
-
-
-                                    <div class="text-center currency_converter_error_area">
-                                        <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
-                                            style="width: 180px; height:130px;">
-                                        <legend></legend>
-                                        <button class="btn btn-secondary" onclick="get_correct_fx_rate()"> <i
-                                                class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
-                                    </div>
-
-
-                                    <form action="" autocomplete="off" aria-autocomplete="off"
-                                        class="currency_converter_display_area">
-
-                                        <div class="row">
-
-                                            <div class="col-xl-6">
-                                                <label for="" class="text-info">From</label>
-                                                <select class="form-control select_currency" id="exch_rate_from">
-                                                    <option value="">-- Currency --</option>
-                                                    {{-- <option value="EUR">(EUR) EURO</option>
-                                                <option value="SLL">(SLL) LOENE</option>
-                                                <option value="USD">(USD) US DOLLAR</option>
-                                                <option value="GBP">(GBP) BRITISH POUNDS</option> --}}
-
-
-                                                </select>
-                                            </div>
-
-                                            <div class="col-xl-6">
-                                                <label for="" class="text-info">To</label>
-                                                <select class="form-control select_currency" id="exch_rate_to">
-                                                    <option value="">-- Currency --</option>
-                                                    {{-- <option value="EUR">(EUR) EURO</option>
-                                                    <option value="SLL">(SLL) LOENE</option>
-                                                    <option value="USD">(USD) US DOLLAR</option>
-                                                    <option value="GBP">(GBP) BRITISH POUNDS</option> --}}
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Amount</label>
-                                                    <div>
-                                                        <input type="text" class="form-control"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                            required placeholder="0.00" id="amount" />
-                                                        <input type="hidden" value="" id="hide_fx_rate">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <span id="display"></span>
-
-                                            <div class="col-xl-12">
-                                                <div class="form-group">
-                                                    <label>Result</label>
-                                                    <div>
-                                                        <span id="result"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </form>
+                                        {{-- </div> <!-- end row--> --}}
+                                    </div> <!-- end widget-rounded-circle-->
                                 </div>
                             </div>
-                        </div> <!-- end card-->
+                        </div>
                     </div>
 
                 </div>
 
-
-
-
-
-
-
-
             </div>
+
+
             <!-- end row-->
 
             <div class="container-fluid">
@@ -325,6 +494,63 @@
                                     </div>
                                 </div>
                                 <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="m-0">
+
+                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
+                                                <span class="text-danger"> <b>I OWE (Loans)</b> </span>
+
+                                            </h5>
+                                        </div>
+                                    </a>
+                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                        data-parent="#accordion">
+                                        <div class="card-body i_owe_display_no_data text-center"></div>
+                                        <div class="card-body i_owe_display">
+
+
+
+                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center loans_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
+                                                    alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_loans()"> <i
+                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                            </div>
+
+
+
+                                            <div class="table-responsive table-bordered loans_display_area">
+                                                <table id="datatable-buttons fixed_deposit_list" class="table mb-0">
+                                                    <thead>
+                                                        <tr class="bg-secondary text-white ">
+                                                            <td> <b> Facility Number </b> </td>
+                                                            <td> <b> Description </b> </td>
+                                                            <td> <b> Currency </b> </td>
+                                                            <td> <b> Amount Granted </b> </td>
+                                                            <td> <b> Loan Balance </b> </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="loans_display">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                            <!-- end table-responsive -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <a class="text-dark" data-toggle="collapse " href="#collapseThree" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">
@@ -382,63 +608,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
-                                        <div class="card-header" id="headingTwo">
-                                            <h5 class="m-0">
 
-                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                                <span class="text-danger"> <b>I OWE (Loans)</b> </span>
-
-                                            </h5>
-                                        </div>
-                                    </a>
-                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
-                                        data-parent="#accordion">
-                                        <div class="card-body i_owe_display_no_data text-center"></div>
-                                        <div class="card-body i_owe_display">
-
-
-
-                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
-                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
-                                            </div>
-
-
-
-                                            <div class="text-center loans_error_area">
-                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
-                                                    alt="" style="width: 180px; height:130px;">
-                                                <legend></legend>
-                                                <button class="btn btn-secondary" onclick="get_loans()"> <i
-                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
-                                            </div>
-
-
-
-                                            <div class="table-responsive table-bordered loans_display_area">
-                                                <table id="datatable-buttons fixed_deposit_list" class="table mb-0">
-                                                    <thead>
-                                                        <tr class="bg-secondary text-white ">
-                                                            <td> <b> Facility Number </b> </td>
-                                                            <td> <b> Description </b> </td>
-                                                            <td> <b> Currency </b> </td>
-                                                            <td> <b> Amount Granted </b> </td>
-                                                            <td> <b> Loan Balance </b> </td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="loans_display">
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-
-                                            <!-- end table-responsive -->
-
-                                        </div>
-                                    </div>
-                                </div>
 
 
 
@@ -730,12 +900,12 @@
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
-                type: 'doughnut',
+                type: 'pie',
                 data: {
-                    labels: ['I HAVE', 'I OWE'],
+                    labels: ['Savings deposit', 'Electricity Payment', 'Water Bill Payment', 'Airtime Payment'],
                     datasets: [{
                         label: 'MY ACCOUNTS',
-                        data: [19, 12],
+                        data: [19, 12, 30, 100, ],
                         backgroundColor: [
 
                             'rgba(54, 162, 235, 1)',
@@ -797,7 +967,7 @@
                             } --}}
 
                             if (response.data == null) {
-                                console.log(response.data + " oooooooo")
+                                console.log(response.data + "oooooooo")
                                 alert("sdd")
                                 $(".fd_display").hide()
                                 $(".fd_display_no_data").show()
@@ -868,7 +1038,6 @@
                                                                                                         <td> <b> ${data[index].ledgerBalance}   </b>  </td>
                                                                                                         <td> <b> ${data[index].availableBalance}   </b></td>
                                                                                                     </tr>`)
-
                             })
 
 

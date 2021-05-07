@@ -65,6 +65,7 @@
                         <div class="col-md-7">
                             <img src="{{ asset('assets/images/map.jpg') }}" class="img-fluid" alt="" >
                         </div> <!-- end col -->
+                        {{-- <div id="gmaps-basic" class="gmaps"></div> --}}
                     </div>
 
 

@@ -9,6 +9,223 @@
 @section('content')
 
 
+<!-- copied code begining-->
+<div class="col-md-12 col-xl-12" >
+    <h5 class="page-title element">QUICK TRANSACTIONS</h5>
+    <div class="row">
+
+        <div class="col-md-7 col-xl-7" >
+
+            <div class="card">
+                <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+
+
+                    <ul class="nav nav-tabs nav-bordered nav-justified">
+                        <li class="nav-item" id="currency_rates_tour">
+                            <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                Cross Rates
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#profile-b2" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                Note Rates
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content"
+                        style="overflow-y:scroll !important; height: 285px; min-height:285px; ">
+                        <div class="tab-pane active" id="home-b2">
+
+
+                            <div class="text-center cross_rates_loading_area" id="account_balance_info_loader">
+                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                            </div>
+
+
+
+                            <div class="text-center cross_rates_error_area">
+                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
+                                    style="width: 180px; height:130px;">
+                                <legend></legend>
+                                <button class="btn btn-secondary" onclick="get_fx_rate('Cross rate')"> <i
+                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                            </div>
+
+
+
+
+                            <table class="table table-bordered mb-0 cross_rate_display_area" style="zoom: 0.8;">
+                                <thead>
+                                    <tr>
+                                        <th>Currency</th>
+                                        <th>SALE(SLL)</th>
+                                        <th>BUY(SLL)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="display_cross_rates">
+
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+                        <div class="tab-pane " id="profile-b2">
+
+
+
+                            <div class="text-center cross_rates_loading_area">
+                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                            </div>
+
+
+
+                            <div class="text-center cross_rates_error_area">
+                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
+                                    style="width: 180px; height:130px;">
+                                <legend></legend>
+                                <button class="btn btn-secondary" onclick="get_fx_rate('Note rate')"> <i
+                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                            </div>
+
+
+
+                            <table class="table table-bordered mb-0 cross_rates_display_area"
+                                style="zoom: 0.8;">
+                                <thead>
+                                    <tr>
+                                        <th>Currency</th>
+                                        <th>SALE(SLL)</th>
+                                        <th>BUY(SLL)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="display_note_rates">
+
+
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+
+                    </div>
+                </div> <!-- end card-box-->
+            </div> <!-- end col -->
+
+        </div>
+
+
+        <div class="col-md-5 col-xl-5 ">
+            <div class="card">
+                <div class="card-header bg-blue py-2 text-white">
+                    <div class="card-widgets">
+                        <a href="javascript:;" data-toggle="reload"><i class="mdi mdi-refresh"></i></a>
+                        <a data-toggle="collapse" href="#cardCollpase5" role="button" aria-expanded="false"
+                            aria-controls="cardCollpase2"><i class="mdi mdi-minus"></i></a>
+
+                    </div>
+                    <h5 class="card-title mb-0 text-white" id="currency_converter_tour">Currency Converter</h5>
+                </div>
+                <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
+                    <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+
+
+
+                        <div class="text-center currency_converter_loading_area"
+                            id="account_balance_info_loader">
+                            <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                        </div>
+
+
+
+                        <div class="text-center currency_converter_error_area">
+                            <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
+                                style="width: 180px; height:130px;">
+                            <legend></legend>
+                            <button class="btn btn-secondary" onclick="get_correct_fx_rate()"> <i
+                                    class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                        </div>
+
+
+                        <form action="" autocomplete="off" aria-autocomplete="off"
+                            class="currency_converter_display_area">
+
+                            <div class="row">
+
+                                <div class="col-xl-6">
+                                    <label for="" class="text-info">From</label>
+                                    <select class="form-control select_currency" id="exch_rate_from">
+                                        <option value="">-- Currency --</option>
+                                        {{-- <option value="EUR">(EUR) EURO</option>
+                                    <option value="SLL">(SLL) LOENE</option>
+                                    <option value="USD">(USD) US DOLLAR</option>
+                                    <option value="GBP">(GBP) BRITISH POUNDS</option> --}}
+
+
+                                    </select>
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <label for="" class="text-info">To</label>
+                                    <select class="form-control select_currency" id="exch_rate_to">
+                                        <option value="">-- Currency --</option>
+                                        {{-- <option value="EUR">(EUR) EURO</option>
+                                        <option value="SLL">(SLL) LOENE</option>
+                                        <option value="USD">(USD) US DOLLAR</option>
+                                        <option value="GBP">(GBP) BRITISH POUNDS</option> --}}
+                                    </select>
+                                </div>
+
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label>Amount</label>
+                                        <div>
+                                            <input type="text" class="form-control"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                required placeholder="0.00" id="amount" />
+                                            <input type="hidden" value="" id="hide_fx_rate">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span id="display"></span>
+
+                                <div class="col-xl-12">
+                                    <div class="form-group">
+                                        <label>Result</label>
+                                        <div>
+                                            <span id="result"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+<!-- copied code end -->
+
+
+
 
     <!-- Start Content-->
     <div class="container-fluid">
