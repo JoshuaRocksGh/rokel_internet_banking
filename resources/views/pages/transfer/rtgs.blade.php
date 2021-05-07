@@ -38,44 +38,203 @@
         <div class="row">
             <div class="col-12">
 
-                    <div class="card-body">
-                        <div class="row">
+                <div class="card-body">
+                    <div class="row">
 
 
-                            <div class="col-md-12">
+                        <div class="col-md-12">
 
-                                <!-- start page title -->
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="page-title-box">
-                                            <div class="page-title-left">
-                                                <ol class="breadcrumb m-0">
-                                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Tranfer</a>
-                                                    </li>
-                                                    {{--  <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li>  --}}
-                                                    <li class="breadcrumb-item active text-danger">RTGS</li>
-                                                </ol>
-                                            </div>
-
+                            <!-- start page title -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="page-title-box">
+                                        <div class="page-title-left">
+                                            <ol class="breadcrumb m-0">
+                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Tranfer</a>
+                                                </li>
+                                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li> --}}
+                                                <li class="breadcrumb-item active text-danger">RTGS</li>
+                                            </ol>
                                         </div>
+
                                     </div>
                                 </div>
+                            </div>
 
-                                <h1 class="header-title text-primary" style="font-size: 24px"><img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp; RTGS TRANSFER</h1>
+                            <h1 class="header-title text-primary" style="font-size: 24px"><img
+                                    src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                                RTGS TRANSFER</h1>
 
-                                <p class="text-muted font-14 m-b-20">
+                            <p class="text-muted font-14 m-b-20">
 
-                                    {{-- Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the
+                                {{-- Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the
                                     instantaneous transfer of money. --}}
-                                    <hr style="border: 1px solid">
-                                </p>
+                                <hr style="border: 1px solid">
+                            </p>
 
 
 
-                                <div class="row" id="transaction_form" >
+                            <div class="row">
+
+                                <div class="col-md-8 rtgs_summary_card" id="transaction_summary"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <br><br><br>
+
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 table-bordered table-striped">
+
+                                                    <tbody>
+                                                        <tr class="success_gif">
+                                                            <td class="text-center bg-white" colspan="2">
+                                                                <img src="{{ asset('land_asset/images/statement_success.gif') }}" style="zoom: 0.5" alt="">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>From Account:</td>
+                                                            <td>
+                                                                <span
+                                                                    class="font-13 text-primary text-bold display_from_account_type"
+                                                                    id="display_from_account_type"></span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                    id="display_from_account_name"> </span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                    id="display_from_account_no"></span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>To Account:</td>
+                                                            <td>
+
+                                                                <span
+                                                                    class="font-13 text-primary text-bold display_to_account_type"
+                                                                    id="display_to_account_type"> </span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                    id="display_to_account_name"> </span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                                    id="online_display_beneficiary_bank_name"></span>
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                    id="display_to_account_no"> </span>
 
 
-                                <div  class=" col-md-8 rtgs_card" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Amount:</td>
+                                                            <td>
+                                                                <span class="font-15 text-primary h3 display_currency"
+                                                                    id="display_currency"> </span>
+                                                                &nbsp;
+                                                                <span
+                                                                    class="font-15 text-primary h3 display_transfer_amount"
+                                                                    id="display_transfer_amount"></span>
+
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Category:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_category"
+                                                                    id="display_category"></span>
+
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Purpose:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_purpose"
+                                                                    id="display_purpose"></span>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Schedule Payment:</td>
+                                                            <td>
+                                                                <span
+                                                                    class="font-13 text-primary h3 display_schedule_payment"
+                                                                    id="display_schedule_payment">NO </span>
+                                                                &nbsp; | &nbsp;
+                                                                <span
+                                                                    class="font-13 text-primary h3 display_schedule_payment_date"
+                                                                    id="display_schedule_payment_date"> N/A
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Transfer Date: </td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3"
+                                                                    id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Posted BY: </td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3"
+                                                                    id="display_posted_by">{{ session()->get('userAlias') }}</span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Enter Pin: </td>
+                                                            <td>
+
+                                                                <input type="text" name="user_pin"
+                                                                    class="form-control key hide_on_print" id="user_pin"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+
+                                                            </td>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+                                            <br>
+                                            <div class="form-group text-center">
+
+                                                <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                        id="back_button">Back</button> &nbsp; </span>
+                                                <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
+                                                        id="confirm_button"><span id="confirm_transfer">Confirm
+                                                            Transfer</span>
+                                                        <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                            id="spinner" aria-hidden="true"></span>
+                                                        <span id="spinner-text">Loading...</span>
+                                                    </button></span>
+                                                <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                        type="button" id="print_receipt" onclick="window.print()">Print
+                                                        Receipt
+                                                    </button></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1s"></div>
+                                    </div>
+
+                                </div>
+
+                                <div class=" col-md-8 rtgs_card" id="transaction_form"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none"
                                         style="zoom: 0.9">
@@ -90,15 +249,18 @@
                                                     <div class="col-md-10">
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="h6 col-md-4 "><span class="text-danger">*</span>Payer Account </label>
+                                                            <label class="h6 col-md-4 "><span
+                                                                    class="text-danger">*</span>Payer Account </label>
 
 
-                                                        <select class="custom-select col-md-8 " id="from_account" required>
-                                                            <option value="">Select Account<span class="text-danger">*</span>
-                                                            </option>
+                                                            <select class="custom-select col-md-8 " id="from_account"
+                                                                required>
+                                                                <option value="">Select Account<span
+                                                                        class="text-danger">*</span>
+                                                                </option>
 
 
-                                                        </select>
+                                                            </select>
                                                         </div>
 
                                                         <div class="row">
@@ -107,21 +269,27 @@
                                                                 <div class="form-group hide-for-demo-purpose">
 
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input radio" type="radio" name="onetime"
-                                                                            id="inlineRadio1" value="beneficiary" checked="checked">
-                                                                        <label class="form-check-label" for="inlineRadio1">Select
+                                                                        <input class="form-check-input radio" type="radio"
+                                                                            name="onetime" id="inlineRadio1"
+                                                                            value="beneficiary" checked="checked">
+                                                                        <label class="form-check-label"
+                                                                            for="inlineRadio1">Select
                                                                             beneficiary</label>
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input radio" type="radio" name="onetime"
-                                                                            id="inlineRadio2" value="onetime">
-                                                                        <label class="form-check-label" for="inlineRadio2">Onetime
+                                                                        <input class="form-check-input radio" type="radio"
+                                                                            name="onetime" id="inlineRadio2"
+                                                                            value="onetime">
+                                                                        <label class="form-check-label"
+                                                                            for="inlineRadio2">Onetime
                                                                             beneficiary</label>
                                                                     </div>
-                                                                    <span class="badge badge-primary float-right" style="cursor: pointer"><a
-                                                                        href="{{ url('add-local-bank-beneficiary') }}"
-                                                                        class="text-white">Create Beneficiary</a> </span>
+                                                                    <span class="badge badge-primary float-right"
+                                                                        style="cursor: pointer"><a
+                                                                            href="{{ url('add-local-bank-beneficiary') }}"
+                                                                            class="text-white">Create Beneficiary</a>
+                                                                    </span>
                                                                 </div>
 
                                                             </div>
@@ -130,7 +298,8 @@
                                                         <div class="form-group row" id="pay_from_account">
 
                                                             <div class="col-md-4">
-                                                               <label class=""><span class="text-danger">*</span>Select Account</label>
+                                                                <label class=""><span class="text-danger">*</span>Select
+                                                                    Account</label>
                                                             </div>
                                                             <div class="col-md-8">
 
@@ -148,26 +317,29 @@
                                                         <div class="select_onetime">
 
 
-                                                        <div class="form-group row">
-                                                            {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
-                                                            <label class="col-4 "><span class="text-danger">*</span>Alias Name </label>
-                                                          <input type="text" class="form-control col-8"
-                                                                id="onetime_beneficiary_alias_name" placeholder="Alias Name"
-                                                                required>
-                                                        </div>
-
-
-                                                            <div class="form-group row">
+                                                            <div class="form-group row mb-3">
                                                                 {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
-                                                                <label class="col-4 "><span class="text-danger">*</span> Bank Name </label>
-                                                                <input type="email" class="form-control col-8"
-                                                                    id="onetime_beneficiary_bank_name" placeholder="Bank Name"
-                                                                    required>
+                                                                <label class="col-md-4 "><span
+                                                                        class="text-danger">*</span>Alias Name </label>
+                                                                <input type="text" class="form-control col-md-8"
+                                                                    id="onetime_beneficiary_alias_name"
+                                                                    placeholder="Alias Name" required>
+                                                            </div>
+
+
+                                                            <div class="form-group row mb-3">
+                                                                {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
+                                                                <label class="col-md-4 "><span class="text-danger">*</span>
+                                                                    Bank Name </label>
+                                                                <input type="email" class="form-control col-md-8"
+                                                                    id="onetime_beneficiary_bank_name"
+                                                                    placeholder="Bank Name" required>
                                                             </div>
 
 
                                                             <div class="form-group row">
-                                                                <label class="col-md-4"><span class="text-danger">*</span> Account Number </label>
+                                                                <label class="col-md-4"><span class="text-danger">*</span>
+                                                                    Account Number </label>
                                                                 <input type="text" class="form-control col-md-8"
                                                                     id="onetime_beneficiary_account_number"
                                                                     placeholder="Account Number"
@@ -176,7 +348,8 @@
                                                             </div>
 
                                                             <div class="form-group row">
-                                                                <label class="col-md-4"><span class="text-danger">*</span>Select Currency </label>
+                                                                <label class="col-md-4"><span
+                                                                        class="text-danger">*</span>Select Currency </label>
 
                                                                 <select class="custom-select col-md-8"
                                                                     id="onetime_beneficiary_account_currency" required>
@@ -197,9 +370,12 @@
 
 
                                                             <div class="form-group row">
-                                                                <label class="col-md-4"><span class="text-danger">*</span>Enter Telephone Number </label>
+                                                                <label class="col-md-4"><span
+                                                                        class="text-danger">*</span>Enter Telephone Number
+                                                                </label>
                                                                 <input type="text" class="form-control col-md-8"
-                                                                    id="onetime_beneficiary_phone" placeholder="Phone" required>
+                                                                    id="onetime_beneficiary_phone" placeholder="Phone"
+                                                                    required>
                                                             </div>
                                                             <hr>
 
@@ -208,18 +384,20 @@
 
                                                         <div class="form-group row">
                                                             {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
-                                                            <label class="col-md-4 "><span class="text-danger">*</span>Enter Amount </label>
+                                                            <label class="col-md-4 "><span class="text-danger">*</span>Enter
+                                                                Amount </label>
                                                             <input type="text" class="form-control col-md-8" id="amount"
                                                                 placeholder="Amount: 0.00"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                 required>
                                                         </div>
-                                                        <div class="form-group row ">
-                                                            <label class="h6 col-4 "><span class="text-danger">*</span>Expense Category </label>
+                                                        <div class="form-group row mb-3">
+                                                            <label class="h6 col-md-4 "><span
+                                                                    class="text-danger">*</span>Expense Category </label>
                                                             {{-- <label for="form-group">Category</label> --}}
 
 
-                                                            <select class="custom-select col-8" id="category" required>
+                                                            <select class="custom-select col-md-8" id="category" required>
                                                                 <option value="">---Not Selected---</option>
                                                                 <option value="01~Travel">Travel</option>
                                                                 <option value="02~Petty Cash">Petty Cash</option>
@@ -241,15 +419,17 @@
                                                             <div class="col-8">
 
                                                                 <div class="form-group mb-0">
-                                                                    <input type="checkbox" class="custom-control-inputt" id="invoice_check">
+                                                                    <input type="checkbox" class="custom-control-inputt"
+                                                                        id="invoice_check">
                                                                     &nbsp; &nbsp; <label class="h6">Invoice Attachment ?
-                                                                        <span class="badge badge-primary " style="cursor: pointer"
-                                                                            data-toggle="modal" data-target="#centermodal">View</span>
+                                                                        <span class="badge badge-primary "
+                                                                            style="cursor: pointer" data-toggle="modal"
+                                                                            data-target="#centermodal">View</span>
                                                                     </label>
                                                                     <span class="hide_invoice">
                                                                         <br>
-                                                                        <input type="file" class="hide_invoice" id="invoice_attachment"
-                                                                            required>
+                                                                        <input type="file" class="hide_invoice"
+                                                                            id="invoice_attachment" required>
                                                                     </span>
 
 
@@ -258,10 +438,11 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="form-group row">
-                                                            <label class="col-4 "><span class="text-danger">*</span>Enter Naration</label>
+                                                        <div class="form-group row mb-3">
+                                                            <label class="col-md-4 "><span class="text-danger">*</span>Enter
+                                                                Naration</label>
 
-                                                            <input type="text" class="form-control col-8" id="purpose"
+                                                            <input type="text" class="form-control col-md-8" id="purpose"
                                                                 placeholder="Enter purpose / narration" required>
 
                                                         </div>
@@ -275,7 +456,7 @@
                                                                     <div class="custom-control custom-checkbox">
                                                                         <input type="checkbox" class="custom-control-input"
                                                                             id="customCheck1">
-                                                                        <label class="custom-control-label" >Schedule
+                                                                        <label class="custom-control-label">Schedule
                                                                             Payments</label>
                                                                     </div>
                                                                     <legend></legend>
@@ -283,7 +464,8 @@
                                                                     <input type="text" class="form-control"
                                                                         id="schedule_payment_contraint_input">
 
-                                                                    <input type="date" class="form-control" id="schedule_payment_date">
+                                                                    <input type="date" class="form-control"
+                                                                        id="schedule_payment_date">
 
                                                                 </div>
 
@@ -298,7 +480,7 @@
                                                     <div class="col-md-1"></div>
                                                 </div>
                                                 <div class="form-group">
-                                                    {{--  <label class="h6">Payer Account <span
+                                                    {{-- <label class="h6">Payer Account <span
                                                             class="text-danger">*</span></label>
 
 
@@ -307,10 +489,10 @@
                                                         </option>
 
 
-                                                    </select>  --}}
+                                                    </select> --}}
 
 
-                                                    {{--  <table
+                                                    {{-- <table
                                                         class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
                                                         <tbody class="text-primary">
                                                             <tr class="text-primary">
@@ -333,7 +515,7 @@
 
 
                                                         </tbody>
-                                                    </table>  --}}
+                                                    </table> --}}
 
 
                                                 </div>
@@ -348,7 +530,7 @@
 
 
 
-                                                    {{--  <table
+                                                    {{-- <table
                                                         class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
                                                         <tbody>
                                                             <tr>
@@ -367,7 +549,7 @@
 
 
                                                         </tbody>
-                                                    </table>  --}}
+                                                    </table> --}}
 
 
                                                 </div>
@@ -394,6 +576,7 @@
                                         <div class="form-group text-right yes_beneficiary">
                                             <button class="btn btn-primary btn-rounded" type="button" id="next_button">
                                                 &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
+                                            {{-- <button type="button" id="hide_button">hide</button> --}}
                                         </div>
 
 
@@ -402,25 +585,38 @@
                                     </form>
                                 </div> <!-- end col -->
 
-                                {{--  LEFT CARD  --}}
+                                {{-- LEFT CARD --}}
 
-                                <div class=" col-md-3 rtgs_card_left" style=" margin-left:20px; background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <div class="col-md-12">
+                                <div class=" col-md-3 rtgs_card_right mb-3 "
+                                    style=" margin-left:20px; background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+
+                                    <div class="col-md-12 ">
                                         <br><br>
-                                        <h6 class="">Available Balance:&emsp;<span class="text-primary display_from_account_name"></span></h6>
-                                        <h6 class="">Sender Account:&emsp;<span class="text-primary display_from_account_no"></span></h6>
-                                        <h6 class="">Available Balance:&emsp;<span class="text-primary display_from_account_amount"></span></h6>
-                                        <h6 class="">Account Currency:&emsp;<span class="text-primary display_from_account_currency"></span></h6>
+                                        <h6 class="">Sender Name:&emsp;<span
+                                                class="text-primary display_from_account_name"></span></h6>
+                                        <h6 class="">Sender Account:&emsp;<span
+                                                class="text-primary display_from_account_no"></span></h6>
+                                        <h6 class="">Available Balance:&emsp;<span
+                                                class="text-primary display_from_account_amount"></span></h6>
+                                        <h6 class="">Account Currency:&emsp;<span
+                                                class="text-primary display_from_account_currency"></span></h6>
                                         <br>
-                                        <h6 class="">Receiver Name:&emsp;<span class="text-primary display_to_account_name"></span></h6>
-                                        <h6 class="">Receiver Account:&emsp;<span class="text-primary display_to_account_no"></span></h6>
-                                        <h6 class="">Account Currency:&emsp;<span class="text-primary display_to_account_currency"></span></h6>
+                                        <h6 class="">Receiver Name:&emsp;<span
+                                                class="text-primary display_to_account_name"></span></h6>
+                                        <h6 class="">Receiver Account:&emsp;<span
+                                                class="text-primary display_to_account_no"></span></h6>
+                                        <h6 class="">Account Currency:&emsp;<span
+                                                class="text-primary display_to_account_currency"></span></h6>
                                         <br>
-                                        <h6 class="text-primary">Transaction Fee:&emsp;<span class="text-danger text-bold">0.10% of transfer amount</span></h6>
-                                        <br><br><br><br>
-                                        <h6 class="text-primary">Please Note:&emsp;<span class="text-danger">RTGS Tranfers should be above (SLL 50,000,000.00)</span></h6>
+                                        <h6 class="text-primary">Transaction Fee:&emsp;<span
+                                                class="text-danger text-bold">0.10% of transfer amount</span></h6>
+                                        <br><br>
+                                        <h6 class="text-primary">Please Note:&emsp;<span class="text-danger">RTGS Tranfers
+                                                should be above (SLL 50,000,000.00)</span></h6>
                                     </div>
                                 </div>
+
+
 
 
 
@@ -435,9 +631,9 @@
 
 
 
-                                </div>
+                            </div>
 
-                                <div class="row" id="transaction_summary">
+                            {{-- <div class="row" id="transaction_summary">
 
 
                                     <div class="col-md-12">
@@ -593,97 +789,95 @@
 
 
 
+                                </div> --}}
+
+
+
+                        </div>
+
+                        {{-- <div class="col-md-1"></div> --}}
+
+                    </div> <!-- end card-body -->
+
+
+
+                    <!-- Center modal content -->
+                    <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true"
+                        style="zoom: 0.9;">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-primary" id="myCenterModalLabel">Aquiring a Savings
+                                        Account</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
                                 </div>
+                                <div class="modal-body">
+                                    <div class=" ">
+                                        <img src="" id="display_invoice_attachment" class="img-fluid" />
+                                    </div>
+
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
 
 
 
-                            </div>
-
-                            {{--  <div class="col-md-1"></div>  --}}
-
-                        </div> <!-- end card-body -->
-
-
-
-                        <!-- Center modal content -->
-                        <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true"
-                            style="zoom: 0.9;">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                    <!-- Modal -->
+                    <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
                                     <div class="modal-header">
-                                        <h4 class="modal-title text-primary" id="myCenterModalLabel">Aquiring a Savings
-                                            Account</h4>
+                                        <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
+                                            Details</h4>
                                         <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">Ã—</button>
+                                            aria-hidden="true">×</button>
                                     </div>
+
                                     <div class="modal-body">
-                                        <div class=" ">
-                                            <img src="" id="display_invoice_attachment" class="img-fluid" />
-                                        </div>
 
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
+                                        From: <span class="font-13 text-primary" id="display_from_account"> &nbsp
+                                        </span><br><br>
+                                        To: <span class="font-13 text-muted" id="display_to_account"> &nbsp
+                                        </span><br><br>
+                                        Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp
+                                        </span><br><br>
+                                        Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp
+                                        </span><br><br>
+                                        Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp
+                                        </span><br><br>
+                                        Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee">
+                                        </span><br><br>
+                                        Total: <span class="font-13 text-muted" id="display_total"> &nbsp
+                                        </span><br><br>
 
-
-
-                        <!-- Modal -->
-                        <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
-                            aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
-                                                Details</h4>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">×</button>
-                                        </div>
-
-                                        <div class="modal-body">
-
-                                            From: <span class="font-13 text-primary" id="display_from_account"> &nbsp
-                                            </span><br><br>
-                                            To: <span class="font-13 text-muted" id="display_to_account"> &nbsp
-                                            </span><br><br>
-                                            Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp
-                                            </span><br><br>
-                                            Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp
-                                            </span><br><br>
-                                            Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp
-                                            </span><br><br>
-                                            Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee">
-                                            </span><br><br>
-                                            Total: <span class="font-13 text-muted" id="display_total"> &nbsp
-                                            </span><br><br>
-
-                                            {{--  <div class="form-group">
+                                        {{-- <div class="form-group">
                                                 <label class="font-16 purple-color">Enter Pin</label>
                                                 <input type="text" class="form-control" id="user_pin"
                                                     data-toggle="input-mask" placeholder="enter pin" required
                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
-                                            </div>  --}}
+                                            </div> --}}
 
-                                        </div>
-
-
-
-                                        <div class="modal-footer">
-                                            <button type="send" id="send" class="btn btn-primary"
-                                                data-target="#multiple-two" data-toggle="modal"
-                                                data-dismiss="modal">Send</button>
-                                        </div>
-                                    </form>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
+                                    </div>
 
 
 
+                                    <div class="modal-footer">
+                                        <button type="send" id="send" class="btn btn-primary" data-target="#multiple-two"
+                                            data-toggle="modal" data-dismiss="modal">Send</button>
+                                    </div>
+                                </form>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
 
-                    </div> <!-- end col -->
+
+
+
+                </div> <!-- end col -->
 
 
             </div>
@@ -700,13 +894,80 @@
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
             <script>
+                function from_account() {
+                    $.ajax({
+                        'type': 'GET',
+                        'url': 'get-my-account',
+                        "datatype": "application/json",
+                        success: function(response) {
+                            {{-- console.log(response.data); --}}
+                            let data = response.data
+                            $.each(data, function(index) {
+                                $('#from_account').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[
+                                            index].accountDesc + '~' + data[
+                                            index].accountNumber + '~' + data[
+                                            index].currency + '~' + data[index]
+                                        .availableBalance
+                                }).text(data[index].accountNumber + '~' + data[index].currency +
+                                    '~' + data[index].availableBalance));
+                                //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                            });
+                        },
+
+                    })
+                }
+
+                function get_benerficiary() {
+                    $.ajax({
+                        'type': 'GET',
+                        'url': 'get-transfer-beneficiary-api?beneType=OTB',
+                        "datatype": "application/json",
+                        success: function(response) {
+                            console.log(response.data);
+                            let data = response.data
+
+                            if (response.data.length > 0) {
+                                $('.yes_beneficiary').show()
+                                $('.no_beneficiary').hide()
+
+                                $.each(data, function(index) {
+                                    //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                                    $('#to_account').append($('<option>', {
+                                        value: data[index].BANK_NAME + '~' +
+                                            data[
+                                                index].NICKNAME + '~' + data[
+                                                index]
+                                            .BEN_ACCOUNT + '~' + data[index]
+                                            .BEN_ACCOUNT_CURRENCY
+                                    }).text(data[index].NICKNAME + '~' + data[index].BANK_NAME +
+                                        '~' + data[index].BEN_ACCOUNT + '~' + data[index]
+                                        .BEN_ACCOUNT_CURRENCY));
+
+                                });
+
+                            } else {
+                                $('.yes_beneficiary').hide()
+                                $('.no_beneficiary').show()
+                            }
+
+
+                        },
+
+                    })
+                }
+
                 $(document).ready(function() {
+
                     {{-- $('.hide-for-demo-purpose').hide() --}}
                     $('#spinner').hide(),
                         $('#spinner-text').hide(),
                         $('#print_receipt').hide(),
                         $(".hide_invoice").hide()
                     $('.no_beneficiary').hide()
+                    $("#transaction_summary_").hide();
+                    $(".success_gif").hide();
 
                     setTimeout(function() {
                         from_account()
@@ -738,79 +999,9 @@
 
                             reader.readAsDataURL(file);
                         }
-                        {{-- $("#display_invoice_attachment").attr("src", {{ asset('land_asset/images/same-bank.gif') }}); --}}
+                        {{--  $("#display_invoice_attachment").attr("src", {{ asset('land_asset/images/same-bank.gif') }});  --}}
                         $("#display_invoice_attachment").show();
                     })
-
-
-
-                    function from_account() {
-                        $.ajax({
-                            'type': 'GET',
-                            'url': 'get-my-account',
-                            "datatype": "application/json",
-                            success: function(response) {
-                                {{--  console.log(response.data);  --}}
-                                let data = response.data
-                                $.each(data, function(index) {
-                                    $('#from_account').append($('<option>', {
-                                        value: data[index].accountType + '~' + data[
-                                                index].accountDesc + '~' + data[
-                                                index].accountNumber + '~' + data[
-                                                index].currency + '~' + data[index]
-                                            .availableBalance
-                                    }).text(data[index].accountType + '~' + data[index]
-                                        .accountNumber + '~' + data[index].currency +
-                                        '~' + data[index].availableBalance));
-                                    //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
-
-                                });
-                            },
-
-                        })
-                    }
-
-
-
-                    function get_benerficiary() {
-                        $.ajax({
-                            'type': 'GET',
-                            'url': 'get-transfer-beneficiary-api?beneType=OTB',
-                            "datatype": "application/json",
-                            success: function(response) {
-                                console.log(response.data);
-                                let data = response.data
-
-                                if (response.data.length > 0) {
-                                    $('.yes_beneficiary').show()
-                                    $('.no_beneficiary').hide()
-
-                                    $.each(data, function(index) {
-                                        //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-                                        $('#to_account').append($('<option>', {
-                                            value: data[index].BANK_NAME + '~' +
-                                                data[
-                                                    index].NICKNAME + '~' + data[
-                                                    index]
-                                                .BEN_ACCOUNT + '~' + data[index]
-                                                .BEN_ACCOUNT_CURRENCY
-                                        }).text(data[index].BANK_NAME + '~' + data[
-                                                index].NICKNAME + '~' + data[index].BEN_ACCOUNT +
-                                            '~' + data[index].BEN_ACCOUNT_CURRENCY));
-
-                                    });
-
-                                } else {
-                                    $('.yes_beneficiary').hide()
-                                    $('.no_beneficiary').show()
-                                }
-
-
-                            },
-
-                        })
-                    }
-
 
 
                     function toaster(message, icon) {
@@ -1103,7 +1294,10 @@
                         }
                     });
 
-
+                    {{-- $("#hide_button").click(function(){
+                        $("#transaction_form").hide();
+                        $("#transaction_summary_").toggle(500);
+                    }) --}}
 
 
                     // NEXT BUTTON CLICK
@@ -1300,25 +1494,30 @@
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 success: function(response) {
-                                    {{-- console.log(response); --}}
+                                    console.log(response);
 
                                     if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 1000)
+                                        {{--  toaster(response.message, 'success', 1000)  --}}
                                         $('#confirm_button').hide();
                                         $('#back_button').hide();
                                         $('#print_receipt').show();
+                                        $(".rtgs_card_right").hide();
+                                        $(".success_gif").show();
 
-                                        $(".success-message").html(
-                                            '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
-                                        )
-
+                                        Swal.fire(
+                                                response.message,
+                                                '',
+                                                'success'
+                                            );
+s
                                     } else {
                                         toaster(response.message, 'error', 10000)
 
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#print_receipt').hide();
-
+                                        $(".success_gif").hide();
+                                        $(".rtgs_card_right").show();
 
                                         $('#confirm_transfer').show();
                                         $('#confirm_button').attr('disabled', false);
@@ -1403,18 +1602,22 @@
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 success: function(response) {
-                                    {{-- console.log(response); --}}
+                                    console.log(response);
 
 
                                     if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 1000)
+                                        {{--  toaster(response.message, 'success', 1000)  --}}
                                         $('#confirm_button').hide();
                                         $('#back_button').hide();
                                         $('#print_receipt').show();
+                                        $(".success_gif").show();
+                                        $(".rtgs_card_right").hide();
 
-                                        $(".success-message").html(
-                                            '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
-                                        )
+                                        Swal.fire(
+                                                response.message,
+                                                '',
+                                                'success'
+                                            );
 
                                     } else {
                                         toaster(response.message, 'error', 10000)
@@ -1422,7 +1625,8 @@
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#print_receipt').hide();
-
+                                        $(".success_gif").hide();
+                                        $(".rtgs_card_right").show();
 
                                         $('#confirm_transfer').show();
                                         $('#confirm_button').attr('disabled', false);

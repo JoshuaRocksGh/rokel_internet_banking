@@ -301,7 +301,7 @@ body[data-sidebar-size=condensed] .left-side-menu #sidebar-menu>ul ul {
     padding: 5px 0;
     z-index: 9999;
     display: none;
-    background-color: #fff
+    background-color: #00CCFF
 }
 
 body[data-sidebar-size=condensed] .left-side-menu #sidebar-menu>ul ul li:hover>.collapse {

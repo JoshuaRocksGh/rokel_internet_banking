@@ -49,6 +49,7 @@ class LocalBankController extends Controller
         //     'data' => null
         // ];
 
+        // return $req;
 
         $base_response = new BaseResponse();
 
@@ -72,21 +73,21 @@ class LocalBankController extends Controller
             "amount" => (float) $req->amount,
             "authToken" => $authToken,
             "bankName" => $req->bank_name,
-            "beneficiaryAddress" => "string",
+            "beneficiaryAddress" => null,
             "beneficiaryName" => $req->beneficiaryName,
             "creditAccount" => $req->to_account,
             "debitAccount" => $req->from_account,
-            "deviceIp" => "string",
+            "deviceIp" => null,
             "secPin" => $user_pin,
             "transactionDetails" => $req->naration,
-            "transactionId" => "string",
+            "transactionId" => null,
             "transferCurrency" => $req->currency,
             "payment_date" => $req->payment_date
 
         ];
 
 
-
+        // return $data ;
         try {
 
             $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
@@ -135,12 +136,12 @@ class LocalBankController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        //return $req;
+        return $req;
 
 
         $user_pin = $req->secPin;
 
-        //return $user_pin;
+        // return $user_pin;
         // if ($user_pin != '123456') {
 
         //     return $base_response->api_response('999', 'Incorrect Pin',  null); // return API BASERESPONSE
@@ -156,14 +157,14 @@ class LocalBankController extends Controller
             "amount" => (float) $req->amount,
             "authToken" => $authToken,
             "bankName" => $req->bankName,
-            "beneficiaryAddress" => "string",
+            "beneficiaryAddress" => null,
             "beneficiaryName" => $req->alias_name,
             "creditAccount" => $req->to_account,
             "debitAccount" => $req->from_account_,
-            "deviceIp" => "string",
+            "deviceIp" => null,
             "secPin" => $user_pin,
-            "transactionDetails" => "string",
-            "transactionId" => "string",
+            "transactionDetails" => null,
+            "transactionId" => null,
             "transferCurrency" => $req->currency_,
             "payment_date" => $req->payment_date
 

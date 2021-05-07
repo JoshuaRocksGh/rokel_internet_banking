@@ -71,7 +71,7 @@
 
           }
 
-          .rtgs_card_left{
+          .rtgs_card_right{
             box-shadow:
             0 2.8px 2.2px rgba(0, 0, 0, 0.034),
             0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -82,7 +82,7 @@
           ;
           }
 
-          .rtgs_card_left::after {
+          .rtgs_card_right::after {
             position: absolute;
             content: 'Related Information';
             top: -5px;
@@ -95,5 +95,31 @@
             text-align: center;
             font-family: 'Roboto', sans-serif;
             box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
+          }
+
+          .rtgs_summary_card::after {
+            position: absolute;
+            content: 'Transfer Summary';
+            top: -5px;
+            {{--  right: -14px;  --}}
+            left: -14px;
+            padding: 0.5rem;
+            width: 20rem;
+            background:#ccc5b1;
+            color: #00008B;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
+          }
+
+          .rtgs_summary_card {
+            box-shadow:
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12);
+
           }
 </style>
