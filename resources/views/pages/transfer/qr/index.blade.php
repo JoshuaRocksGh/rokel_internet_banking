@@ -13,10 +13,6 @@
 
                     <div class=" card card-body col-md-10">
                         <h2 class="header-title m-t-0 text-primary">GENERATE QR TO RECIEVE PAYMENT</h2>
-
-                        <p class="text-muted font-14 m-b-20">
-                            Generate a qr in order to scan and make payment.
-                        </p>
                         <hr>
 
 

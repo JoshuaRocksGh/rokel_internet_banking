@@ -13,10 +13,6 @@
 
                     <div class=" card card-body col-md-10">
                         <h2 class="header-title m-t-0 text-primary">CHEQUE BOOK REQUEST</h2>
-
-                        <p class="text-muted font-14 m-b-20">
-                            Request for a cheque book using this platform.
-                        </p>
                         <hr>
 
 

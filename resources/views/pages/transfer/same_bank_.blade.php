@@ -43,22 +43,6 @@
 
                             <div class="col-md-8">
                                 <h2 class="header-title m-t-0 text-primary">SAME BANK TRANSFER</h2>
-
-                                <p class="text-muted font-14 m-b-20">
-
-                                    <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
-                                            Note:&nbsp;&nbsp;</b> <span class="text-primary">Same Bank Transfer offers you
-                                            the
-                                            opportunity to transfer funds from any of your accounts to another individuals
-                                            account with the bank. In other to make such transfer you will first have to
-                                            setup a beneficiary.
-                                            To setup a beneficiary, please go to the beneficiary menu and provide the
-                                            required information.</span> </span>
-                                    <hr>
-                                </p>
-
-
-
                                 <p class="row" id="transaction_form">
 
 

@@ -13,10 +13,6 @@
 
                     <div class=" card card-body col-md-10">
                         <h2 class="header-title m-t-0 text-primary">STOP CHEQUE REQUEST</h2>
-
-                        <p class="text-muted font-14 m-b-20">
-                            A cheque stop payment letter is a letter that is written by a person who has issued a cheque and intends to stop payment on that cheque, to their bank.
-                        </p>
                         <hr>
 
 

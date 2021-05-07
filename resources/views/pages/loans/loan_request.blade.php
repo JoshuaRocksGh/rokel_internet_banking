@@ -13,11 +13,6 @@
 
                     <div class=" card card-body col-md-10">
                         <h2 class="header-title m-t-0 text-primary">LOAN QUOTATION</h2>
-
-                            <p class="text-muted font-14 m-b-20">
-                                Enter the required fields below to plan for your loan request.
-                            </p>
-
                             <hr>
 
 

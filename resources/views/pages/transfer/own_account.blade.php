@@ -38,14 +38,6 @@
 
                         <div class="col-md-8  card-body">
                             <h3 class=" m-t-0 text-primary">OWN ACCOUNT TRANSFER</h3>
-
-                            <p class="text-muted font-14 m-b-20">
-                                <span>
-                                    <b class="text-danger">Please Note: </b>
-                                    <b>Own account transfer offers you the opportunity to transfer funds between your own
-                                        accounts</b>
-                                </span>.
-                            </p>
                             <hr>
 
 
