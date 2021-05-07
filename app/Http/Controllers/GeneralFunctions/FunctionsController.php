@@ -246,6 +246,7 @@ class FunctionsController extends Controller
             "authToken" => $authToken,
             "userId"    => $userID
         ];
+        // return env('API_BASE_URL') . "/beneficiary/getTransferBeneficiariestype}?userID=$userID&bankType=$beneType";
 
         $response = Http::get(env('API_BASE_URL') . "/beneficiary/getTransferBeneficiariestype}?userID=$userID&bankType=$beneType");
 
