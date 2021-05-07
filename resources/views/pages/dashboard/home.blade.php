@@ -45,14 +45,14 @@
             </div> <!-- end col--> --}}
 
 
-            <div class="col-md-12 col-xl-12">
+            <div class="col-md-12 col-xl-12" >
                 <h5 class="page-title element">QUICK TRANSACTIONS</h5>
                 <div class="row">
 
-                    <div class="col-md-7 col-xl-7">
+                    <div class="col-md-7 col-xl-7" >
 
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
 
                                 <ul class="nav nav-tabs nav-bordered nav-justified">
@@ -164,7 +164,7 @@
                                 <h5 class="card-title mb-0 text-white" id="currency_converter_tour">Currency Converter</h5>
                             </div>
                             <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
-                                <div class="card-body">
+                                <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
 
 
@@ -263,7 +263,7 @@
                     <div class="row">
                         <div class="col-xl-12" style="zoom:0.8;">
                             <div id="accordion" class="mb-3">
-                                <div class="card mb-1">
+                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="m-0">
@@ -324,7 +324,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mb-1">
+                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <a class="text-dark" data-toggle="collapse " href="#collapseThree" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">
@@ -382,7 +382,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mb-1">
+                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">

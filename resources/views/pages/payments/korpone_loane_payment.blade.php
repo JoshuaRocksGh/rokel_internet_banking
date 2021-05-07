@@ -38,13 +38,6 @@
 
                         <div class="col-md-8  card-body">
                             <h3 class=" m-t-0 text-primary">KORPOR PAYMENT</h3>
-
-                            <p class="text-muted font-14 m-b-20">
-                                <span>
-                                    <b class="text-danger">Please Note: </b>
-                                    <b>Use the platform to make payment using the korpor.</b>
-                                </span>
-                            </p>
                             <hr>
 
 

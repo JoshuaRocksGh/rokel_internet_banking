@@ -57,9 +57,11 @@
         }
 
         .card-background-image {
+
             background-image: url("{{ asset('assets/images/login-bg.jpg') }}");
             background-repeat: no-repeat;
             background-size: cover;
+
         }
 
         /* Works on Firefox */
