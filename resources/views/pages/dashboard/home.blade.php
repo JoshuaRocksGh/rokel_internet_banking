@@ -39,7 +39,7 @@
                         <canvas id="myChart" width="400" height="250"></canvas>
 
                     </div> <!-- end row-->
-                    <h4 class="text-center">TOTAL: SLL 90,000,000.00</h4>
+                    {{--  <h4 class="text-center">TOTAL: SLL 90,000,000.00</h4>  --}}
                 </div> <!-- end widget-rounded-circle-->
 
             </div> <!-- end col-->
@@ -729,7 +729,7 @@
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: ['I HAVE', 'I OWE'],
                     datasets: [{

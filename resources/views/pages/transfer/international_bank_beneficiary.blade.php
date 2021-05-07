@@ -146,8 +146,7 @@
 
                                                                     <button
                                                                         class="btn btn-primary btn-rounded waves-effect waves-light"
-                                                                        type="submit" id="bank_details_next_btn">Next <i
-                                                                            class="fe-arrow-right"></i></button>
+                                                                        type="submit" id="bank_details_next_btn">Next <i class="fe-arrow-right"></i></button>
 
                                                                 </div> <!-- end col -->
                                                             </div> <!-- end row -->
