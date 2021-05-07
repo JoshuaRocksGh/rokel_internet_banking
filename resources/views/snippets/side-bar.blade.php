@@ -433,9 +433,9 @@
                             <li>
                                 <a href="{{ url('forgot-transaction-pin') }}">Forgot Transaction PIN</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('biometric-setup') }}">Biometric Setup</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ url('change-pin') }}">Pin Setup</a>
                             </li>

@@ -13,11 +13,6 @@
 
                     <div class=" card card-body col-md-10">
                         <h2 class="header-title m-t-0 text-primary">REQUEST A STATEMENT</h2>
-
-                        <p class="text-muted font-14 m-b-20">
-                            You can request for your statement now.
-                        </p>
-
                         <hr>
 
 

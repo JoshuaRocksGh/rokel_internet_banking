@@ -31,7 +31,7 @@
 
         <div class="row">
 
-            <div class="col-md-5 col-xl-5">
+            {{-- <div class="col-md-5 col-xl-5">
                 <h5 class="page-title">MY ACCOUNTS </h5>
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
@@ -42,17 +42,17 @@
                     {{--  <h4 class="text-center">TOTAL: SLL 90,000,000.00</h4>  --}}
                 </div> <!-- end widget-rounded-circle-->
 
-            </div> <!-- end col-->
+            </div> <!-- end col--> --}}
 
 
-            <div class="col-md-7 col-xl-7">
+            <div class="col-md-12 col-xl-12" >
                 <h5 class="page-title element">QUICK TRANSACTIONS</h5>
                 <div class="row">
 
-                    <div class="col-md-7 col-xl-7">
+                    <div class="col-md-7 col-xl-7" >
 
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
 
                                 <ul class="nav nav-tabs nav-bordered nav-justified">
@@ -164,7 +164,7 @@
                                 <h5 class="card-title mb-0 text-white" id="currency_converter_tour">Currency Converter</h5>
                             </div>
                             <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
-                                <div class="card-body">
+                                <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
 
 
@@ -263,7 +263,7 @@
                     <div class="row">
                         <div class="col-xl-12" style="zoom:0.8;">
                             <div id="accordion" class="mb-3">
-                                <div class="card mb-1">
+                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="m-0">
@@ -307,9 +307,9 @@
                                                             <td> <b> Account Description </b> </td>
                                                             <td> <b> Product </b> </td>
                                                             <td> <b> Currency </b> </td>
-                                                            <td> <b> Available Balance </b> </td>
-                                                            <td> <b> Ledger Balance </b> </td>
                                                             <td> <b> Overdrawn Limit </b> </td>
+                                                            <td> <b> Ledger Balance </b> </td>
+                                                            <td> <b> Available Balance </b> </td>
                                                         </tr>
                                                     </thead>
                                                     <tbody class="casa_list_display">
@@ -324,7 +324,65 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mb-1">
+                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <a class="text-dark" data-toggle="collapse " href="#collapseThree" aria-expanded="true">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="m-0">
+
+                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
+                                                <span class="text-success"> <b>Investments</b> </span>
+
+                                            </h5>
+                                        </div>
+                                    </a>
+                                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                                        data-parent="#accordion">
+                                        <div class="card-body fd_display_no_data text-center text-danger"> NO INVESTMENTS
+                                        </div>
+                                        <div class="card-body fd_display">
+
+
+
+                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center loans_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
+                                                    alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="fixed_deposit()"> <i
+                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                            </div>
+
+
+
+                                            <div class="table-responsive table-bordered fixed_deposit_display_area">
+                                                <table id="datatable-buttons fixed_deposit_account" class="table mb-0">
+                                                    <thead>
+                                                        <tr class="bg-secondary text-white ">
+                                                            <td> <b> Source Account </b> </td>
+                                                            <td> <b> Amount </b> </td>
+                                                            <td> <b> Tenure </b> </td>
+                                                            <td> <b> Interest Rate</b> </td>
+                                                            <td> <b> Rollover </b> </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="fixed_deposit_account">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                            <!-- end table-responsive -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">
@@ -382,64 +440,7 @@
                                     </div>
                                 </div>
 
-                                <div class="card mb-1">
-                                    <a class="text-dark" data-toggle="collapse " href="#collapseThree" aria-expanded="true">
-                                        <div class="card-header" id="headingTwo">
-                                            <h5 class="m-0">
 
-                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                                <span class="text-success"> <b>Fixed Deposit</b> </span>
-
-                                            </h5>
-                                        </div>
-                                    </a>
-                                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
-                                        data-parent="#accordion">
-                                        <div class="card-body fd_display_no_data text-center text-danger"> NO FIXED DEPOSITE
-                                        </div>
-                                        <div class="card-body fd_display">
-
-
-
-                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
-                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
-                                            </div>
-
-
-
-                                            <div class="text-center loans_error_area">
-                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
-                                                    alt="" style="width: 180px; height:130px;">
-                                                <legend></legend>
-                                                <button class="btn btn-secondary" onclick="fixed_deposit()"> <i
-                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
-                                            </div>
-
-
-
-                                            <div class="table-responsive table-bordered fixed_deposit_display_area">
-                                                <table id="datatable-buttons fixed_deposit_account" class="table mb-0">
-                                                    <thead>
-                                                        <tr class="bg-secondary text-white ">
-                                                            <td> <b> Source Account </b> </td>
-                                                            <td> <b> Amount </b> </td>
-                                                            <td> <b> Tenure </b> </td>
-                                                            <td> <b> Interest Rate</b> </td>
-                                                            <td> <b> Rollover </b> </td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="fixed_deposit_account">
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-
-                                            <!-- end table-responsive -->
-
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div> <!-- end #accordions-->
                         </div> <!-- end col -->
@@ -863,9 +864,9 @@
                                                                                                         <td> <b> ${data[index].accountDesc} </b>  </td>
                                                                                                         <td> <b> ${data[index].accountType}  </b>  </td>
                                                                                                         <td> <b> ${data[index].currency}  </b>  </td>
-                                                                                                        <td> <b> ${data[index].availableBalance}   </b> </b></td>
-                                                                                                        <td> <b> ${data[index].ledgerBalance}   </b>  </td>
                                                                                                         <td>  <b> 0.00  </b> </td>
+                                                                                                        <td> <b> ${data[index].ledgerBalance}   </b>  </td>
+                                                                                                        <td> <b> ${data[index].availableBalance}   </b></td>
                                                                                                     </tr>`)
 
                             })

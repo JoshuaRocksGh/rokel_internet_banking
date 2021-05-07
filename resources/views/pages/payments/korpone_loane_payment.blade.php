@@ -38,13 +38,6 @@
 
                         <div class="col-md-8  card-body">
                             <h3 class=" m-t-0 text-primary">KORPOR PAYMENT</h3>
-
-                            <p class="text-muted font-14 m-b-20">
-                                <span>
-                                    <b class="text-danger">Please Note: </b>
-                                    <b>Use the platform to make payment using the korpor.</b>
-                                </span>
-                            </p>
                             <hr>
 
 
@@ -195,7 +188,7 @@
 
                                 <div class="col-md-12">
                                     <div class="border card p-3 mt-4 mt-lg-0 rounded">
-                                        <h4 class="header-title mb-3">Cardless Payment Summary</h4>
+                                        <h4 class="header-title mb-3">Korpor Payment Summary</h4>
 
                                         <div class="table-responsive">
                                             <table class="table mb-0 table-bordered table-striped">

@@ -38,13 +38,6 @@
 
                         <div class="col-md-8  card-body">
                             <h3 class=" m-t-0 text-primary">CARDLESS PAYMENT</h3>
-
-                            <p class="text-muted font-14 m-b-20">
-                                <span>
-                                    <b class="text-danger">Please Note: </b>
-                                    <b>Use the platform to make payment without a card.</b>
-                                </span>
-                            </p>
                             <hr>
 
 
@@ -97,6 +90,58 @@
                                         </div>
 
 
+                                        <div class="form-group">
+                                            <label class="">Receiver Name<span class="text-danger">*</span></label>
+
+                                            <input type="text" class="form-control" id="receiver_name"
+                                                placeholder="receiver Name" autocomplete="off" required>
+
+                                            <table
+                                                class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
+                                                <tbody>
+                                                    <tr>
+
+                                                        <td>
+                                                            <a class="text-body font-weight-semibold"></a>
+                                                            <small class="d-block display_receiver_name"></small>
+                                                        </td>
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="h6">Receiver Phone Number<span class="text-danger">*</span></label>
+
+                                            <input type="text" class="form-control" id="receiver_phoneNum"
+                                                placeholder="receiver Phone Number" autocomplete="off"
+                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                required>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="">Receiver Address<span class="text-danger">*</span></label>
+
+                                            {{-- <label class="h6">Category</label> --}}
+
+                                            <input type="text" class="form-control" id="receiver_address"
+                                                placeholder="receiver Address" autocomplete="off" required>
+
+                                        </div>
+                                        {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
+
+                                        {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
+
+                                        <div class="form-group text-right">
+                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                                &nbsp; Next &nbsp;</button>
+                                        </div>
+
                                         {{-- <div class="form-group">
 
                                             <div class="custom-control custom-checkbox">
@@ -131,57 +176,7 @@
                                 <div class="col-md-6">
 
 
-                                    <div class="form-group">
-                                        <label class="">Receiver Name<span class="text-danger">*</span></label>
 
-                                        <input type="text" class="form-control" id="receiver_name"
-                                            placeholder="receiver Name" autocomplete="off" required>
-
-                                        <table
-                                            class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
-                                            <tbody>
-                                                <tr>
-
-                                                    <td>
-                                                        <a class="text-body font-weight-semibold"></a>
-                                                        <small class="d-block display_receiver_name"></small>
-                                                    </td>
-                                                </tr>
-
-
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="h6">Receiver Phone Number<span class="text-danger">*</span></label>
-
-                                        <input type="text" class="form-control" id="receiver_phoneNum"
-                                            placeholder="receiver Phone Number" autocomplete="off"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                            required>
-
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="">Receiver Address<span class="text-danger">*</span></label>
-
-                                        {{-- <label class="h6">Category</label> --}}
-
-                                        <input type="text" class="form-control" id="receiver_address"
-                                            placeholder="receiver Address" autocomplete="off" required>
-
-                                    </div>
-                                    {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
-
-                                    {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
-
-                                    <div class="form-group text-right">
-                                        <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                            &nbsp; Next &nbsp;</button>
-                                    </div>
                                 </div> <!-- end col -->
 
 

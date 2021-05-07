@@ -46,11 +46,6 @@
                             <div class="col-md-8">
                                 <h2 class="header-title m-t-0 text-primary">ACH TRANSFER</h2>
 
-                                <p class="text-muted font-14 m-b-20">
-                                    An ACH transfer (a.k.a. direct deposit) is a method of sending funds from one bank to another using the Automated Clearing House (ACH) network. To process an ACH transfer, a request is made from the payor's bank account. Then, funds are sent via the ACH network to a recipient's bank.
-                                    <hr>
-                                </p>
-
 
 
                                 <p class="row" id="transaction_form">
