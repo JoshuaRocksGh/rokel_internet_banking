@@ -76,7 +76,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-8 rtgs_summary_card" id="transaction_summary"
+                                <div class="col-md-8 rtgs_summary_card m-2" id="transaction_summary"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <div class="row">
                                         <div class="col-md-1"></div>
@@ -233,11 +233,10 @@
 
                                 </div>
 
-                                <div class=" col-md-8 rtgs_card" id="transaction_form"
+                                <div class=" col-md-8 rtgs_card m-2" id="transaction_form"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none"
-                                        style="zoom: 0.9">
+                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class="">
 
@@ -246,7 +245,7 @@
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
 
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-9">
 
                                                         <div class="form-group row mb-3">
                                                             <label class="h6 col-md-4 "><span
@@ -587,8 +586,8 @@
 
                                 {{-- LEFT CARD --}}
 
-                                <div class=" col-md-3 rtgs_card_right mb-3 "
-                                    style=" margin-left:20px; background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                <div class=" col-md-3 rtgs_card_right m-2 d-none d-sm-block"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
                                     <div class="col-md-12 ">
                                         <br><br>
