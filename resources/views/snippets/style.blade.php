@@ -55,13 +55,13 @@
 
     .rtgs_card::after {
         position: absolute;
-        content: 'Please Select / Enter Details';
+        content: 'Please Select/Enter Details';
         top: -5px;
         {{-- right: -14px; --}} left: -14px;
         padding: 0.5rem;
         width: 20rem;
         background: #a19472;
-        color: white;
+        color: #fff;
         text-align: center;
         font-family: 'Roboto', sans-serif;
         box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
@@ -86,7 +86,7 @@
         padding: 0.5rem;
         width: 10rem;
         background: #a19472;
-        color: white;
+        color: #fff;
         text-align: center;
         font-family: 'Roboto', sans-serif;
         box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
