@@ -55,12 +55,24 @@
           ;
         }
 
+        .rtgs_card::before {
+            position: absolute;
+            content: '';
+            background: #a19472;
+            height: 28px;
+            width: 28px;
+            top: 15px;
+            left: -15px;
+            transform: rotate(40deg);
+
+        }
+
         .rtgs_card::after{
             position: absolute;
             content: 'Please Select/Enter Details';
             top: -5px;
             {{--  right: -14px;  --}}
-            left: -14px;
+            left: -20px;
             padding: 0.5rem;
             width: 20rem;
             background:#a19472;
@@ -90,7 +102,7 @@
             left: -14px;
             padding: 0.5rem;
             width: 10rem;
-            background:#a19472;
+            background: #a19472;
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
@@ -105,8 +117,8 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
-            background:#ccc5b1;
-            color: #00008B;
+            background: #a19472;
+            color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
             box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
@@ -121,5 +133,15 @@
             0 41.8px 33.4px rgba(0, 0, 0, 0.086),
             0 100px 80px rgba(0, 0, 0, 0.12);
 
+          }
+
+          .select_onetime{
+            border: 2px solid #a19472 ;
+          padding-top: 5px;
+            padding-left: 15px;
+            margin-right: -40px;
+            padding-right: 40px;
+            margin-left: -20px;
+            border-radius: 15px;
           }
 </style>
