@@ -411,7 +411,7 @@
                                     {{-- <div class="widget-rounded-circle card-box"> --}}
                                     <div class="row">
 
-                                            <canvas id="myChart" width="400" height="300"></canvas>
+                                            <canvas id="myChart" width="500" height="450"></canvas>
 
                                         {{-- </div> <!-- end row--> --}}
                                     </div> <!-- end widget-rounded-circle-->
@@ -902,7 +902,7 @@
             var myChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ['Savings deposit', 'Electricity Payment', 'Water Bill Payment', 'Airtime Payment'],
+                    // labels: ['Savings deposit', 'Electricity Payment', 'Water Bill Payment', 'Airtime Payment'],
                     datasets: [{
                         label: 'MY ACCOUNTS',
                         data: [19, 12, 30, 100],
@@ -927,17 +927,18 @@
                         borderWidth: 1
                     }]
                 },
-                actions:
 
-                {{-- options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
+
+                 options: {
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: 'rgb(255, 99, 132)'
+                            }
                         }
-                    }]
+                    }
                 }
-            } --}}
             });
 
             function fixed_deposit() {

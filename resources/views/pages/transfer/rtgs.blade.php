@@ -50,7 +50,7 @@
                                     <div class="page-title-box">
                                         <div class="page-title-left">
                                             <ol class="breadcrumb m-0">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Tranfer</a>
+                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Transfer</a>
                                                 </li>
                                                 {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li> --}}
                                                 <li class="breadcrumb-item active text-danger">RTGS</li>
