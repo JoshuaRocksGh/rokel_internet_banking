@@ -168,7 +168,7 @@
                                     class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
 
                                     <thead>
-                                        <tr class="bg-secondary text-white">
+                                        <tr class="custom-color-gold text-white">
                                             <th> <b> Batch </b> </th>
                                             <th> <b>Reference </b> </th>
                                             <th> <b> Debit Account </b> </th>
@@ -300,11 +300,12 @@
                             let batch =
                                 `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}</a>`
 
-                            let action = `<span class="btn-group mb-2">
-                                                                                                                <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
-                                                                                                                 &nbsp;
-                                                                                                                 <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
-                                                                                                                 </span>  `
+                            let action =
+                                `<span class="btn-group mb-2">
+                                                                                                                    <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
+                                                                                                                     &nbsp;
+                                                                                                                     <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                                                                                                     </span>  `
 
                             table.row.add([
                                 batch,

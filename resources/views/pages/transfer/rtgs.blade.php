@@ -89,7 +89,8 @@
                                                     <tbody>
                                                         <tr class="success_gif">
                                                             <td class="text-center bg-white" colspan="2">
-                                                                <img src="{{ asset('land_asset/images/statement_success.gif') }}" style="zoom: 0.5" alt="">
+                                                                <img src="{{ asset('land_asset/images/statement_success.gif') }}"
+                                                                    style="zoom: 0.5" alt="">
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -163,7 +164,7 @@
                                                         </tr>
 
 
-                                                        <tr class="schedule_payment_summary">
+                                                        <tr>
                                                             <td>Schedule Payment:</td>
                                                             <td>
                                                                 <span
@@ -248,13 +249,14 @@
                                                     <div class="col-md-9">
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4 "><span
+                                                            <label class="h6 col-md-4 "><span
                                                                     class="text-danger">*</span>Payer Account </label>
 
 
-                                                            <select class="form-control col-md-8 " id="from_account"
+                                                            <select class="custom-select col-md-8 " id="from_account"
                                                                 required>
-                                                                <option value="">Select Account
+                                                                <option value="">Select Account<span
+                                                                        class="text-danger">*</span>
                                                                 </option>
 
 
@@ -293,20 +295,23 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="form-group row" id="pay_from_account">
 
-                                                        <div class="form-group row mb-3" id="pay_from_account">
+                                                            <div class="col-md-4">
+                                                                <label class=""><span class="text-danger">*</span>Select
+                                                                    Account</label>
+                                                            </div>
+                                                            <div class="col-md-8">
 
-                                                                <label class="col-md-4"><span class="text-danger">*</span>Beneficiary Account</label>
-
-                                                                <select class="form-control col-md-8" id="to_account" required>
-                                                                    <option value="">Beneficiary Account</option>
+                                                                <select class="custom-select" id="to_account" required>
+                                                                    <option value="">Select Account</option>
                                                                     {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
                                                                 Currenct Account ~ 004004110449140121 </option> --}}
                                                                 </select>
                                                                 <br>
 
 
-
+                                                            </div>
                                                         </div>
 
                                                         <div class="select_onetime">
@@ -321,30 +326,15 @@
                                                                     placeholder="Alias Name" required>
                                                             </div>
 
+
                                                             <div class="form-group row mb-3">
-
-                                                                <label class="col-md-4"><span class="text-danger">*</span>Bank Name</label>
-
-                                                                <select class="form-control col-md-8" id="onetime_beneficiary_bank_name" required>
-                                                                    <option value="">Bank Name</option>
-                                                                    {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
-                                                                Currenct Account ~ 004004110449140121 </option> --}}
-                                                                </select>
-                                                                <br>
-
-
-
-                                                        </div>
-
-
-                                                            {{--  <div class="form-group row mb-3">
-                                                                <label for="form-group"> Amount<span class="text-danger">*</span></label>
+                                                                {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
                                                                 <label class="col-md-4 "><span class="text-danger">*</span>
                                                                     Bank Name </label>
                                                                 <input type="email" class="form-control col-md-8"
                                                                     id="onetime_beneficiary_bank_name"
                                                                     placeholder="Bank Name" required>
-                                                            </div>  --}}
+                                                            </div>
 
 
                                                             <div class="form-group row">
@@ -364,11 +354,11 @@
                                                                 <select class="custom-select col-md-8"
                                                                     id="onetime_beneficiary_account_currency" required>
                                                                     <option value="">Select Currency</option>
-                                                                    {{--  <option value="GHS">GHS</option>
+                                                                    <option value="GHS">GHS</option>
                                                                     <option value="USD">USD</option>
                                                                     <option value="EURO">EURO</option>
                                                                     <option value="SLL">SLL</option>
-                                                                    <option value="GBP">GBP</option>  --}}
+                                                                    <option value="GBP">GBP</option>
                                                                 </select>
 
                                                             </div>
@@ -466,7 +456,7 @@
                                                                     <div class="custom-control custom-checkbox">
                                                                         <input type="checkbox" class="custom-control-input"
                                                                             id="customCheck1">
-                                                                        <label class="custom-control-label" for="customCheck1">Schedule
+                                                                        <label class="custom-control-label">Schedule
                                                                             Payments</label>
                                                                     </div>
                                                                     <legend></legend>
@@ -495,7 +485,8 @@
 
 
                                                     <select class="custom-select" id="from_account" required>
-                                                        <option value="">Select Account</option>
+                                                        <option value="">Select Account<span class="text-danger">*</span>
+                                                        </option>
 
 
                                                     </select> --}}
@@ -574,12 +565,7 @@
 
 
 
-                                        <div class="form-group no_beneficiary">
-                                            <div class="alert alert-warning" role="alert">
-                                                <i class="mdi mdi-alert-outline mr-2"></i> <strong>warning</strong> No
-                                                beneficiary found
-                                            </div>
-                                        </div>
+
 
 
                                         <div class="form-group text-right yes_beneficiary">
@@ -594,7 +580,6 @@
                                     </form>
                                 </div> <!-- end col -->
 
-                                {{--  <button class="m-2 btn btn-info d-none d-sm-block">Related Information</button>  --}}
                                 {{-- LEFT CARD --}}
 
                                 <div class=" col-md-3 rtgs_card_right m-2 d-none d-sm-block"
@@ -639,7 +624,7 @@
 
                                 <!-- end row -->
 
-                                <button class="m-2 btn btn-info d-block d-sm-none">Related Information</button>
+
 
                             </div>
 
@@ -904,51 +889,6 @@
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
             <script>
-
-                function bank_list() {
-                    $.ajax({
-                        'type': 'GET',
-                        'url': 'get-bank-list-api',
-                        "datatype": "application/json",
-                        success: function(response) {
-                            console.log(response.data);
-                            let data = response.data
-                            $.each(data, function(index) {
-
-                                $('#onetime_beneficiary_bank_name').append($('<option>', {
-                                    value: data[index].bankCode + '~' + data[index]
-                                        .bankDescription
-                                }).text(data[index].bankDescription));
-
-                            });
-
-                        },
-
-                    })
-                };
-
-                function get_currency() {
-                    $.ajax({
-                        'type': 'GET',
-                        'url': 'get-currency-list-api',
-                        "datatype": "application/json",
-                        success: function(response) {
-                            {{-- console.log(response.data); --}}
-                            let data = response.data
-                            $.each(data, function(index) {
-
-                                $('#onetime_beneficiary_account_currency').append($('<option>', {
-                                    value: data[index].isoCode + '~' + data[index].description
-                                }).text(data[index].description));
-
-                            });
-
-                        },
-
-                    })
-                };
-
-
                 function from_account() {
                     $.ajax({
                         'type': 'GET',
@@ -1023,13 +963,10 @@
                     $('.no_beneficiary').hide()
                     $("#transaction_summary_").hide();
                     $(".success_gif").hide();
-                    {{--  $(".schedule_payment_summary").hide();  --}}
 
                     setTimeout(function() {
-                        from_account();
-                        get_benerficiary();
-                        bank_list();
-                        get_currency();
+                        from_account()
+                        get_benerficiary()
                     }, 2000)
 
 
@@ -1057,7 +994,7 @@
 
                             reader.readAsDataURL(file);
                         }
-                        {{--  $("#display_invoice_attachment").attr("src", {{ asset('land_asset/images/same-bank.gif') }});  --}}
+                        {{-- $("#display_invoice_attachment").attr("src", {{ asset('land_asset/images/same-bank.gif') }}); --}}
                         $("#display_invoice_attachment").show();
                     })
 
@@ -1313,8 +1250,7 @@
                     // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
                     $("#customCheck1").on("change", function() {
                         if ($(this).is(":checked")) {
-                            console.log("Checkbox Checked!");
-                            {{--  $('.schedule_payment_summary').show();  --}}
+                            {{-- console.log("Checkbox Checked!"); --}}
                             $("#schedule_payment_date").show(),
                                 $(".display_schedule_payment").text('YES'),
                                 $('#schedule_payment_contraint_input').val('TRUE'),
@@ -1323,7 +1259,6 @@
 
                         } else {
                             {{-- console.log("Checkbox UnChecked!"); --}}
-                            {{--  $(".schedule_payment_summary").hide();  --}}
                             $("#schedule_payment_date").val('')
                             $("#schedule_payment_date").hide()
                             $('.display_schedule_payment').text('NO')
@@ -1360,22 +1295,6 @@
                     }) --}}
 
 
-
-                    $("#onetime_beneficiary_alias_name").keyup(function(){
-                        var alias_name = $(this).val();
-                        $(".display_to_account_name").text(alias_name);
-                    })
-
-                    $("#onetime_beneficiary_account_number").keyup(function(){
-                        var beneficiary_account_number = $(this).val();
-                        $(".display_to_account_no").text(beneficiary_account_number);
-                    })
-
-                    $("#onetime_beneficiary_account_currency").change(function(){
-                        var beneficiary_account_currency = $(this).val();
-                        $(".display_to_account_currency").text(beneficiary_account_currency);
-                    })
-
                     // NEXT BUTTON CLICK
                     $("#next_button").click(function() {
 
@@ -1408,24 +1327,6 @@
                         $("#transaction_summary").show()
                         $('#print_button').hide();
 
-                        {{--  $("#customCheck1").on("change", function(){
-                            if ($(this).is(":checked")){
-                                console.log("checked");
-                            }else {
-                                console.log("unchecked")
-                            }
-                        });  --}}
-
-                        if($('#customCheck1').is(':checked')){
-                            console.log("checked");
-                            {{--  $(".schedule_payment_summary").show();  --}}
-                            {{--  $("#transaction_summary").parents("#schedule_payment_summary").hide();  --}}
-                            {{--  $("table tr:nth-child(6)").hide();  --}}
-                        }else {
-                            console.log("unchecked");
-                            {{--  $(".schedule_payment_summary").hide();  --}}
-
-                        }
 
 
                         if (schedule_payment_contraint_input.trim() != '' && schedule_payment_date
@@ -1591,7 +1492,7 @@
                                     console.log(response);
 
                                     if (response.responseCode == '000') {
-                                        {{--  toaster(response.message, 'success', 1000)  --}}
+                                        {{-- toaster(response.message, 'success', 1000) --}}
                                         $('#confirm_button').hide();
                                         $('#back_button').hide();
                                         $('#print_receipt').show();
@@ -1599,11 +1500,11 @@
                                         $(".success_gif").show();
 
                                         Swal.fire(
-                                                response.message,
-                                                '',
-                                                'success'
-                                            );
-s
+                                            response.message,
+                                            '',
+                                            'success'
+                                        );
+                                        s
                                     } else {
                                         toaster(response.message, 'error', 10000)
 
@@ -1700,7 +1601,7 @@ s
 
 
                                     if (response.responseCode == '000') {
-                                        {{--  toaster(response.message, 'success', 1000)  --}}
+                                        {{-- toaster(response.message, 'success', 1000) --}}
                                         $('#confirm_button').hide();
                                         $('#back_button').hide();
                                         $('#print_receipt').show();
@@ -1708,10 +1609,10 @@ s
                                         $(".rtgs_card_right").hide();
 
                                         Swal.fire(
-                                                response.message,
-                                                '',
-                                                'success'
-                                            );
+                                            response.message,
+                                            '',
+                                            'success'
+                                        );
 
                                     } else {
                                         toaster(response.message, 'error', 10000)
