@@ -37,7 +37,7 @@
 
                             <div class="col-md-12">
 
-                                <dl class="row">
+                                {{-- <dl class="row">
                                     <dt class="col-sm-3">Description lists</dt>
                                     <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
 
@@ -63,7 +63,8 @@
                                                 blandit nunc.</dd>
                                         </dl>
                                     </dd>
-                                </dl>
+                                </dl> --}}
+
 
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -84,7 +85,7 @@
 
                                                 <table class="table mb-0">
                                                     <tbody>
-                                                        <tr class="bg-secondary text-white ">
+                                                        <tr class="custom-color-gold text-white ">
                                                             <td>Account No: <span class="account_number_display"></span>
                                                             </td>
                                                             <td>Account Description: <span
@@ -255,7 +256,7 @@
                                         <table id="datatable-buttons"
                                             class="table table-bordered table-striped dt-responsive nowrap w-100 account_transaction_display_table">
                                             <thead>
-                                                <tr>
+                                                <tr class="custom-color-gold">
                                                     <th>Posting Date</th>
                                                     <th>Value Date</th>
                                                     <th style="width: 190px;">Transaction Details</th>
@@ -506,16 +507,16 @@
                             let amount = ``;
                             if (parseFloat(data[index].amount) > 0) {
                                 amount = `<b class='text-success'>
-                                                                                                    <i class="fe-arrow-up text-success mr-1"></i>
-                                                                                                    ${data[index].amount}
-                                                                                                </b>
-                                                                                                `
+                                                                                                                <i class="fe-arrow-up text-success mr-1"></i>
+                                                                                                                ${data[index].amount}
+                                                                                                            </b>
+                                                                                                            `
                             } else {
                                 amount = `<b class='text-danger'>
-                                                                                                    <i class="fe-arrow-down text-danger mr-1"></i>
-                                                                                                    ${data[index].amount}
-                                                                                                </b>
-                                                                                                `
+                                                                                                                <i class="fe-arrow-down text-danger mr-1"></i>
+                                                                                                                ${data[index].amount}
+                                                                                                            </b>
+                                                                                                            `
                             }
 
                             let attachment = ``
@@ -535,8 +536,8 @@
                                 data[index].narration,
                                 data[index].documentReference,
                                 `<a type="button" data-toggle="modal"
-                                                                                    data-target="#bs-example-modal-xl"
-                                                                                    class="text-primary">${data[index].batchNumber}</a>`,
+                                                                                                data-target="#bs-example-modal-xl"
+                                                                                                class="text-primary">${data[index].batchNumber}</a>`,
                                 amount,
                                 `${data[index].runningBalance}`,
                                 `${attachment}`

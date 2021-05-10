@@ -317,6 +317,7 @@
 
 
 
+<<<<<<< HEAD
                                                                 <div class="form-group row mb-3">
                                                                     {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
                                                                     <label class="col-md-4 "><span
@@ -327,6 +328,18 @@
                                                                 </div>
 
                                                                 <div class="form-group row mb-3">
+=======
+                                                                <label class="col-md-4"><span
+                                                                        class="text-danger">*</span>Bank Name</label>
+
+                                                                <select class="form-control col-md-8"
+                                                                    id="onetime_beneficiary_bank_name" required>
+                                                                    <option value="">Bank Name</option>
+                                                                    {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
+                                                                Currenct Account ~ 004004110449140121 </option> --}}
+                                                                </select>
+                                                                <br>
+>>>>>>> a9ec692c13ca0a5c6b2812df9a1e1f76e264075d
 
                                                                     <label class="col-md-4"><span
                                                                             class="text-danger">*</span>Bank Name</label>
@@ -339,10 +352,17 @@
                                                                     </select>
                                                                     <br>
 
+<<<<<<< HEAD
                                                                 </div>
 
 
                                                                 {{-- <div class="form-group row mb-3">
+=======
+                                                            </div>
+
+
+                                                            {{-- <div class="form-group row mb-3">
+>>>>>>> a9ec692c13ca0a5c6b2812df9a1e1f76e264075d
                                                                 <label for="form-group"> Amount<span class="text-danger">*</span></label>
                                                                 <label class="col-md-4 "><span class="text-danger">*</span>
                                                                     Bank Name </label>
@@ -352,6 +372,7 @@
                                                             </div> --}}
 
 
+<<<<<<< HEAD
                                                                 <div class="form-group row">
                                                                     <label class="col-md-4"><span
                                                                             class="text-danger">*</span>
@@ -362,21 +383,48 @@
                                                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                         required>
                                                                 </div>
+=======
+                                                            <div class="form-group row">
+                                                                <label class="col-md-4"><span class="text-danger">*</span>
+                                                                    Account Number </label>
+                                                                <input type="text" class="form-control col-md-8"
+                                                                    id="onetime_beneficiary_account_number"
+                                                                    placeholder="Account Number"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                    required>
+                                                            </div>
+>>>>>>> a9ec692c13ca0a5c6b2812df9a1e1f76e264075d
 
                                                                 <div class="form-group row">
                                                                     <label class="col-md-4"><span
                                                                             class="text-danger">*</span>Select Currency
                                                                     </label>
 
+<<<<<<< HEAD
                                                                     <select class="custom-select col-md-8"
                                                                         id="onetime_beneficiary_account_currency" required>
                                                                         <option value="">Select Currency</option>
                                                                         {{-- <option value="GHS">GHS</option>
+=======
+                                                                <select class="custom-select col-md-8"
+                                                                    id="onetime_beneficiary_account_currency" required>
+                                                                    <option value="">Select Currency</option>
+                                                                    {{-- <option value="GHS">GHS</option>
+>>>>>>> a9ec692c13ca0a5c6b2812df9a1e1f76e264075d
                                                                     <option value="USD">USD</option>
                                                                     <option value="EURO">EURO</option>
                                                                     <option value="SLL">SLL</option>
                                                                     <option value="GBP">GBP</option> --}}
+<<<<<<< HEAD
                                                                     </select>
+=======
+                                                                </select>
+
+                                                            </div>
+
+
+
+>>>>>>> a9ec692c13ca0a5c6b2812df9a1e1f76e264075d
 
                                                                 </div>
 

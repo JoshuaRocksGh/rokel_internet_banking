@@ -1,5 +1,5 @@
 <!-- ========== Left Sidebar Start ========== -->
-<div class="left-side-menu" style="background-image: linear-gradient( #3366FF, #00CCFF);">
+<div class="left-side-menu" style="background-image: linear-gradient( #3484a3, #00CCFF);">
 
     <div class="h-100" data-simplebar>
 

@@ -32,6 +32,13 @@
             color: white;
         }
 
+        .custom-color-gold {
+            background-color: #a19472;
+        }
+
+        .custom-text-color-gold {
+            color: #a19472;
+        }
 
 
         .btn-primary {

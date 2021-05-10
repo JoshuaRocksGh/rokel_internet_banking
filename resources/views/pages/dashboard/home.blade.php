@@ -46,263 +46,305 @@
 
 
 
-            <div class="col-md-12 col-xl-12" >
+            <div class="col-md-12 col-xl-12">
                 {{-- <h5 class="page-title element">ACCOUNTS</h5> --}}
                 <div class="row">
+
+
+                    <div class="col-md-7 col-xl-7">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <h5 class="card-title font-16 mb-3">30 Day View Of Transactions</h5>
+
+                                <div class="col-md-6 col-xl-6">
+                                    {{-- <div class="widget-rounded-circle card-box"> --}}
+                                    <div class="row">
+
+                                        <canvas id="myChart" width="500" height="450"></canvas>
+
+                                        {{-- </div> <!-- end row--> --}}
+                                    </div> <!-- end widget-rounded-circle-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="col-md-5 col-xl-5">
 
                         {{-- <div class="col-xl-4 col-lg-5"> --}}
 
-                            <div class="card">
-                                <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                        {{-- <div class="card">
+                            <div class="card-body">
 
-                                    <h5 class="card-title font-16 mb-3">Accounts</h5>
+                                <h5 class="card-title font-16 mb-3">Accounts</h5>
 
-                                    <ul class="nav nav-pills navtab-bg nav-justified">
-                                        <li class="nav-item">
-                                            <a href="#i_have" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                                I HAVE
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#i_owe" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                                I OWE
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#investments" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                                Investments
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane show active" id="i_have" >
-
-
-                                            <div class="border mt-0 rounded"  >
-                                                <h4 class="header-title p-2 mb-0 text-success">MY CURRENT & SAVINGS</h4>
-
-                                                <div class="table-responsive" style="height: 275px;">
-                                                    <table class="table table-centered table-nowrap mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="{{ url('account-enquiry') }}"
-                                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-
-                                                                <td class="text-right">
-                                                                    GHS 90,039.00
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-
-                                                                <td class="text-right">
-                                                                    GHS 90,039.00
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-
-                                                                <td class="text-right">
-                                                                    GHS 90,039.00
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-
-                                                                <td class="text-right">
-                                                                    GHS 90,039.00
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                    </div>
-                                                                </td>
-
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-                                                                <td class="text-right">
-                                                                    USD 5,700.00
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-                                                                <td class="text-right">
-                                                                    SLL 888.00
-                                                                </td>
-                                                            </tr>
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <!-- end table-responsive -->
-                                            </div> <!-- end .border-->
-
-                                        </div>
-                                        <div class="tab-pane" id="i_owe">
-                                            <div class="border mt-0 rounded">
-                                                <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
-
-                                                <div class="table-responsive" style="height: 275px;">
-                                                    <table class="table table-centered table-nowrap mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-
-                                                                <td class="text-right">
-                                                                    GHS 90,039.00
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                    </div>
-                                                                </td>
-
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Red Hoodie for men</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-                                                                <td class="text-right">
-                                                                    USD 5,700.00
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
-                                                                <td class="text-right">
-                                                                    SLL 888.00
-                                                                </td>
-                                                            </tr>
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <!-- end table-responsive -->
-                                            </div> <!-- end .border-->
+                                <ul class="nav nav-pills navtab-bg nav-justified">
+                                    <li class="nav-item">
+                                        <a href="#i_have" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                            I HAVE
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#i_owe" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                            I OWE
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#investments" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                            INVESTMENT
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" id="i_have">
 
 
-                                        </div>
-                                        <div class="tab-pane" id="investments" >
-                                            <div class="border mt-0 rounded"  >
-                                                <h4 class="header-title p-2 mb-0 text-success">INVESTMENTS</h4>
+                                        <div class="border mt-0 rounded">
+                                            <h4 class="header-title p-2 mb-0 text-success">MY CURRENT & SAVINGS</h4>
 
-                                                <div class="table-responsive" style="height: 275px;">
-                                                    <table class="table table-centered table-nowrap mb-0">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="{{ url('account-enquiry') }}"
-                                                                        class="text-body font-weight-semibold">Fixed Account</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
+                                            <div class="table-responsive" style="height: 275px;">
+                                                <table class="table table-centered table-nowrap mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-info">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="{{ url('account-enquiry') }}"
+                                                                    class="text-body font-weight-semibold">Savings
+                                                                    Account</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
 
-                                                                <td class="text-right">
-                                                                    GHS 90,039.00
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="width: 10px;">
-                                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <a href="ecommerce-product-detail.html"
-                                                                        class="text-body font-weight-semibold">Savings Account</a>
-                                                                    <small class="d-block">01024499300101</small>
-                                                                </td>
+                                                            <td class="text-right">
+                                                                GHS 90,039.00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-info">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Savings
+                                                                    Account</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
 
-                                                                <td class="text-right">
-                                                                    GHS 90,039.00
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <!-- end table-responsive -->
-                                            </div> <!-- end .border-->
-                                        </div>
+                                                            <td class="text-right">
+                                                                GHS 90,039.00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-info">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Savings
+                                                                    Account</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+
+                                                            <td class="text-right">
+                                                                GHS 90,039.00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-info">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Savings
+                                                                    Account</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+
+                                                            <td class="text-right">
+                                                                GHS 90,039.00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-info">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                </div>
+                                                            </td>
+
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Red Hoodie for
+                                                                    men</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                USD 5,700.00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-info">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Designer Awesome
+                                                                    T-Shirt</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                SLL 888.00
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+                                        </div> <!-- end .border-->
+
+                                    </div>
+                                    <div class="tab-pane" id="i_owe">
+                                        <div class="border mt-0 rounded">
+                                            <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
+
+                                            <div class="table-responsive" style="height: 275px;">
+                                                <table class="table table-centered table-nowrap mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-danger">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Savings
+                                                                    Account</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+
+                                                            <td class="text-right">
+                                                                GHS 90,039.00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-danger">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                                </div>
+                                                            </td>
+
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Red Hoodie for
+                                                                    men</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                USD 5,700.00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-danger">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Designer Awesome
+                                                                    T-Shirt</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                SLL 888.00
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+                                        </div> <!-- end .border-->
+
+
+                                    </div>
+                                    <div class="tab-pane" id="investments">
+                                        <div class="border mt-0 rounded">
+                                            <h4 class="header-title p-2 mb-0 text-success">INVESTMENTS</h4>
+
+                                            <div class="table-responsive" style="height: 275px;">
+                                                <table class="table table-centered table-nowrap mb-0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-info">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="{{ url('account-enquiry') }}"
+                                                                    class="text-body font-weight-semibold">Fixed Account</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+
+                                                            <td class="text-right">
+                                                                GHS 90,039.00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width: 10px;">
+                                                                <div class="avatar-sm rounded bg-soft-info">
+                                                                    <i
+                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="ecommerce-product-detail.html"
+                                                                    class="text-body font-weight-semibold">Savings
+                                                                    Account</a>
+                                                                <small class="d-block">01024499300101</small>
+                                                            </td>
+
+                                                            <td class="text-right">
+                                                                GHS 90,039.00
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+                                        </div> <!-- end .border-->
                                     </div>
                                 </div>
                             </div>
+                        </div> --}}
+
                         {{-- </div> --}}
-                        {{-- <div class="card">
-                            <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                        <div class="card">
+                            <div class="card-body">
 
 
                                 <ul class="nav nav-tabs nav-bordered nav-justified">
@@ -397,28 +439,10 @@
 
                                 </div>
                             </div> <!-- end card-box-->
-                        </div> <!-- end col --> --}}
+                        </div> <!-- end col -->
 
                     </div>
 
-                    <div class="col-md-7 col-xl-7">
-                        <div class="card">
-                            <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-
-                                <h5 class="card-title font-16 mb-3">30 Day View Of Transactions</h5>
-
-                                <div class="col-md-6 col-xl-6">
-                                    {{-- <div class="widget-rounded-circle card-box"> --}}
-                                    <div class="row">
-
-                                            <canvas id="myChart" width="500" height="450"></canvas>
-
-                                        {{-- </div> <!-- end row--> --}}
-                                    </div> <!-- end widget-rounded-circle-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
@@ -432,13 +456,15 @@
                     <div class="row">
                         <div class="col-xl-12" style="zoom:0.8;">
                             <div id="accordion" class="mb-3">
-                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
                                     <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="m-0">
 
                                                 <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                                <span class="text-primary"> <b> I HAVE ( Currenct & Savings) </b></span>
+                                                <span class="text-primary"> <b> I HAVE ( Current & Savings) </b></span>
+                                                <span class="text-primary float-right"> <b> 90,000,000.00
+                                                    </b></span>
 
                                             </h5>
                                         </div>
@@ -471,7 +497,7 @@
                                             <div class="table-responsive table-bordered accounts_display_area">
                                                 <table id="" class="table mb-0 ">
                                                     <thead>
-                                                        <tr class="bg-secondary text-white ">
+                                                        <tr class="bg-info text-white ">
                                                             <td> <b> Account Number </b> </td>
                                                             <td> <b> Account Description </b> </td>
                                                             <td> <b> Product </b> </td>
@@ -493,7 +519,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
                                     <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">
@@ -530,7 +556,7 @@
                                             <div class="table-responsive table-bordered loans_display_area">
                                                 <table id="datatable-buttons fixed_deposit_list" class="table mb-0">
                                                     <thead>
-                                                        <tr class="bg-secondary text-white ">
+                                                        <tr class="bg-info text-white ">
                                                             <td> <b> Facility Number </b> </td>
                                                             <td> <b> Description </b> </td>
                                                             <td> <b> Currency </b> </td>
@@ -550,13 +576,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mb-1" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
                                     <a class="text-dark" data-toggle="collapse " href="#collapseThree" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">
 
                                                 <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                                <span class="text-success"> <b>Investments</b> </span>
+                                                <span class="text-success"> <b>INVESTMENTS</b> </span>
 
                                             </h5>
                                         </div>
@@ -588,7 +614,7 @@
                                             <div class="table-responsive table-bordered fixed_deposit_display_area">
                                                 <table id="datatable-buttons fixed_deposit_account" class="table mb-0">
                                                     <thead>
-                                                        <tr class="bg-secondary text-white ">
+                                                        <tr class="custom-color-gold text-white ">
                                                             <td> <b> Source Account </b> </td>
                                                             <td> <b> Amount </b> </td>
                                                             <td> <b> Tenure </b> </td>
@@ -628,16 +654,33 @@
 
 
                         <div class="col-md-3 col-xl-3">
-                            <div class="widget-rounded-circle card-box">
+                            <div class="widget-rounded-circle card-box bg-info">
                                 <div class="row">
                                     <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                            <i class="fe-log-out font-20 avatar-title text-primary"></i>
+                                        <div class="avatar-md rounded-circle bg-white ">
+                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
                                         </div>
                                     </div>
                                     <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-1"><span>Funds Transactions</span></h3>
+                                            <h3 class="mt-1 text-white"><span>Funds Transactions</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div> <!-- end col-->
+
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box bg-warning">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white">
+                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span> &nbsp; All Payments</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->
@@ -646,50 +689,34 @@
 
 
                         <div class="col-md-3 col-xl-3">
-                            <div class="widget-rounded-circle card-box">
-                                <div class="row">
+                            <div class="widget-rounded-circle card-box bg-danger">
+                                <div class=" row">
                                     <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-soft-info border-info border">
-                                            <i class="fe-smartphone font-20 avatar-title text-info"></i>
+                                        <div class="avatar-md rounded-circle bg-white ">
+                                            <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
                                         </div>
                                     </div>
                                     <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-1"><span>&nbsp; Mobile Money</span></h3>
+                                            <h3 class="mt-1 text-white"><span>&nbsp; Mobile Money</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->
                             </div> <!-- end widget-rounded-circle-->
                         </div>
 
-                        <div class="col-md-3 col-xl-3">
-                            <div class="widget-rounded-circle card-box">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-soft-info border-info border">
-                                            <i class="fe-send font-20 avatar-title text-info"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1"><span> &nbsp; All Payments</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </div> <!-- end col-->
 
                         <div class="col-md-3 col-xl-3">
-                            <div class="widget-rounded-circle card-box">
+                            <div class="widget-rounded-circle card-box custom-color-gold">
                                 <div class="row">
                                     <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                            <i class="fe-rss font-20 avatar-title text-primary"></i>
+                                        <div class="avatar-md rounded-circle bg-white">
+                                            <i class="fe-rss font-20 avatar-title custom-text-color-gold"></i>
                                         </div>
                                     </div>
                                     <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-3"><span> &nbsp;&nbsp; Cardless</span></h3>
+                                            <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->
@@ -929,7 +956,7 @@
                 },
 
 
-                 options: {
+                options: {
                     plugins: {
                         legend: {
                             display: true,
@@ -940,6 +967,10 @@
                     }
                 }
             });
+
+            {{-- function formatToCurrency(amount) {
+                return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+            }; --}}
 
             function fixed_deposit() {
                 {{-- var table = $('.fixed_deposit_list').DataTable();
@@ -980,13 +1011,15 @@
                             if (response.data.length > 0) {
                                 console.log(response.data.length);
                                 $.each(data, function(index) {
-                                    $('.fixed_deposit_account').append(`<tr>
-                                                                                                        <td><b> ${data[index].sourceAccount} </b></td>
-                                                                                                        <td><b> ${data[index].dealAmount} </b></td>
-                                                                                                        <td><b> ${data[index].tenure} </b></td>
-                                                                                                        <td><b> ${data[index].fixedInterestRate} </b></td>
-                                                                                                        <td><b> ${rollover_ } </b></td>
-                                                                                                    </tr>`)
+                                    $('.fixed_deposit_account').append(
+                                        `<tr>
+                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${data[index].sourceAccount} </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${data[index].dealAmount} </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${data[index].tenure} </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${data[index].fixedInterestRate} </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${rollover_ } </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                            </tr>`
+                                    )
 
 
                                 })
@@ -1032,15 +1065,17 @@
 
 
                             $.each(data, function(index) {
-                                $('.casa_list_display').append(`<tr>
-                                                                                                        <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
-                                                                                                        <td> <b> ${data[index].accountDesc} </b>  </td>
-                                                                                                        <td> <b> ${data[index].accountType}  </b>  </td>
-                                                                                                        <td> <b> ${data[index].currency}  </b>  </td>
-                                                                                                        <td>  <b> 0.00  </b> </td>
-                                                                                                        <td> <b> ${data[index].ledgerBalance}   </b>  </td>
-                                                                                                        <td> <b> ${data[index].availableBalance}   </b></td>
-                                                                                                    </tr>`)
+                                $('.casa_list_display').append(
+                                    `<tr>
+                                                                                                                                                                                                                                                                                                                                                                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].accountDesc} </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].accountType}  </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].currency}  </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td>  <b> 0.00  </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                            </tr>`
+                                )
                             })
 
 
@@ -1094,14 +1129,16 @@
 
 
                             $.each(data, function(index) {
-                                $('.loans_display').append(`
-                                                                                                    <tr>
-                                                                                                        <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                                                                                        <td> <b> ${data[index].description} </b>  </td>
-                                                                                                        <td> <b> ${data[index].isoCode}  </b>  </td>
-                                                                                                        <td> <b> ${data[index].amountGranted}   </b> </b></td>
-                                                                                                        <td> <b> ${data[index].loanBalance}   </b>  </td>
-                                                                                                    </tr>`)
+                                $('.loans_display').append(
+                                    `
+                                                                                                                                                                                                                                                                                                                                                                                            <tr>
+                                                                                                                                                                                                                                                                                                                                                                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].description} </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].isoCode}  </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                            </tr>`
+                                )
 
                             })
 
@@ -1228,18 +1265,20 @@
                                         let pair = data[index].pair.split('/')
                                         flag_1 = `assets/images/flags/${pair[0].trim()}.png`
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                        $('.display_cross_rates').append(`
-                                                                                                                <tr>
-                                                                                                                    <td style="zoom: 0.8;">
-                                                                                                                        <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                                                                                        /
-                                                                                                                        <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                        $('.display_cross_rates').append(
+                                            `
+                                                                                                                                                                                                                                                                                                                                                                                                        <tr>
+                                                                                                                                                                                                                                                                                                                                                                                                            <td style="zoom: 0.8;">
+                                                                                                                                                                                                                                                                                                                                                                                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                                                                                                                                                                                /
+                                                                                                                                                                                                                                                                                                                                                                                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                                                                                                    </td>
-                                                                                                                    <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                                                                                    <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                                                                                                </tr>
-                                                                                                            `);
+                                                                                                                                                                                                                                                                                                                                                                                                            </td>
+                                                                                                                                                                                                                                                                                                                                                                                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                        </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                    `
+                                        );
                                     });
                                 } else if (rate_type == "Cross rate") {
                                     $.each(data, function(index) {
@@ -1249,18 +1288,20 @@
                                         let pair = data[index].pair.split('/')
                                         flag_1 = `assets/images/flags/${pair[0].trim()}.png`
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                        $('.display_cross_rates').append(`
-                                                                                                            <tr>
-                                                                                                                <td style="zoom: 0.8;">
-                                                                                                                    <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                                                                                    /
-                                                                                                                    <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                        $('.display_cross_rates').append(
+                                            `
+                                                                                                                                                                                                                                                                                                                                                                                                    <tr>
+                                                                                                                                                                                                                                                                                                                                                                                                        <td style="zoom: 0.8;">
+                                                                                                                                                                                                                                                                                                                                                                                                            <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                                                                                                                                                                            /
+                                                                                                                                                                                                                                                                                                                                                                                                            <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                                                                                                </td>
-                                                                                                                <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                                                                                <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                                                                                            </tr>
-                                                                                                        `);
+                                                                                                                                                                                                                                                                                                                                                                                                        </td>
+                                                                                                                                                                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                    </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                `
+                                        );
                                     });
                                 }
 
