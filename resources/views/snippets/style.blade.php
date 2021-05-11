@@ -105,8 +105,8 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
-            background:#ccc5b1;
-            color: #00008B;
+            background:#a19472;
+            color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
             box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
