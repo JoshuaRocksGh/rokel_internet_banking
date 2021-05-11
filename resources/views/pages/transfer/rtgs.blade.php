@@ -319,11 +319,11 @@
                                                         <div class="select_onetime">
                                                             <div class="row">
                                                                 <div class="col-md-4"></div>
-                                                                <div class="col-md-8 card card-body">
+                                                                <div class="col-md-8 card card-body" >
                                                                     <div class="form-group row mb-3">
                                                                         {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
                                                                         <label class="col-md-4 "><span
-                                                                                class="text-danger">*</span>Alias Name </label>
+                                                                                class="text-danger">*</span>Receiver Name </label>
                                                                         <input type="text" class="form-control col-md-8"
                                                                             id="onetime_beneficiary_alias_name"
                                                                             placeholder="Alias Name" required>
@@ -618,7 +618,7 @@
                                 <div class=" col-md-3 rtgs_card_right m-2 d-none d-sm-block"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); zoom: 0.9 ;">
 
-                                    <div class="col-md-12 ">
+                                    <div class=" col-md-12 ">
                                         <br><br>
                                         <div class="row">
                                             <h6 class="col-md-5">Sender Name:</h6>
@@ -674,7 +674,7 @@
 
                                 <!-- end row -->
 
-                                <button class="m-2 btn btn-info d-block d-sm-none">Related Information</button>
+                                {{--  <button class="m-2 btn btn-info d-block d-sm-none">Related Information</button>  --}}
 
                             </div>
 
