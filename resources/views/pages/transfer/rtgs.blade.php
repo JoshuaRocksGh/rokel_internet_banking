@@ -465,11 +465,10 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4 "><span class="text-danger">*</span>Enter
-                                                                Purpose of Transfer</label>
+                                                            <label class="col-md-4 "><span class="text-danger">*</span>Purpose of Transfer</label>
 
                                                                     <input type="text" class="form-control col-md-8"
-                                                                        id="purpose" placeholder="Enter purpose / narration"
+                                                                        id="purpose" placeholder="Enter purpose of transaction"
                                                                         required>
 
                                                         </div>
