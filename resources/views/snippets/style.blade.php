@@ -63,7 +63,7 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
-            background:#a19472;
+            background:#0561ad;
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
@@ -90,7 +90,7 @@
             left: -14px;
             padding: 0.5rem;
             width: 10rem;
-            background:#a19472;
+            background:#0561ad;
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
@@ -105,7 +105,7 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
-            background:#a19472;
+            background:#0561ad;
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;

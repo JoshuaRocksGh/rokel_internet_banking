@@ -34,191 +34,255 @@
             <div class="">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-2"></div>
+                        <div class="col-md-12">
 
-                        <div class="col-md-8  card-body">
-                            <h3 class=" m-t-0 text-primary">OWN ACCOUNT TRANSFER</h3>
-                            <hr>
+                            <!-- start page title -->
 
-
-                            <div class="row" id="transaction_form">
-
-
-                                <div class="col-md-6">
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label class="h6">Transfer From<span class="text-danger">*</span></label>
-
-
-                                            <select class="custom-select" id="from_account" required>
-                                                <option value="">Select Account</option>
-
-                                                {{-- <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
-                                                    Saving Account~001023468976001~GHS~2000
-                                                 </option> --}}
-
-                                            </select>
-
-
-                                            <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
-                                                <tbody class="">
-                                                    <tr>
-
-                                                        <td>
-                                                            <a
-                                                                class="text-body font-weight-semibold display_from_account_name"></a>
-                                                            <small class="d-block display_from_account_no"></small>
-                                                        </td>
-
-                                                        <td class="text-right font-weight-semibold">
-                                                            <span class="display_from_account_currency"></span>
-                                                            <span class="display_from_account_amount"></span>
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
-
-
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="page-title-box">
+                                        <div class="page-title-left">
+                                            <ol class="breadcrumb m-0">
+                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Transfer</a>
+                                                </li>
+                                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li> --}}
+                                                <li class="breadcrumb-item active text-danger">Own Account</li>
+                                            </ol>
                                         </div>
 
+                                    </div>
+                                </div>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label class="">Enter Amount<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                required>
-                                        </div>
+                            <h1 class="header-title text-primary" style="font-size: 24px"><img
+                                    src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                                OWN ACCOUNT TRANSFER</h1>
+
+                            <p class="text-muted font-14 m-b-20">
+
+                                {{-- Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the
+                                instantaneous transfer of money. --}}
+                                <hr style="border: 1px solid">
+                            </p>
+
+                            <div class="row">
 
 
-                                        <div class="form-group">
+                            <div class="col-md-8 rtgs_card m-2"
+                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Schedule
-                                                    Payments</label>
+                                <div class="" id="transaction_form">
+
+
+
+                                        <form action="#" id="payment_details_form" autocomplete="off"
+                                            aria-autocomplete="off">
+                                            @csrf
+                                            <div class="col-md-12">
+                                                <br><br><br>
+                                                <div class="row">
+
+
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-10">
+
+                                                        <div class="form-group row mb-3">
+                                                            <label class="col-md-4"><span
+                                                                    class="text-danger">*</span>Transfer From</label>
+                                                            <select class="form-control col-md-8" id="from_account"
+                                                                required>
+                                                                <option value="">Select Account</option>
+
+                                                                {{-- <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
+                                                            Saving Account~001023468976001~GHS~2000
+                                                         </option> --}}
+
+                                                            </select>
+
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label class="col-md-4"><span  class="text-danger">*</span>Transfer To</label>
+                                                            <select class="custom-select col-md-8" id="to_account" required>
+                                                                <option value="">Select Account</option>
+
+                                                                {{-- <option value="Currenct Account~004004100435270140~USD~800">
+                                                            Currenct Account ~ 004004100435270140 ~ USD</option> --}}
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label class="col-md-4"><span class="text-danger">*</span>Enter Amount</label>
+                                                            <input type="text" class="form-control col-md-8" id="amount"
+                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                required>
+                                                        </div>
+                                                        <div class="form-group row mb-3">
+                                                            <label class="col-md-4"><span class="text-danger">*</span>Expense Type</label>
+
+                                                            {{-- <label class="h6">Category</label> --}}
+
+                                                            <select class="custom-select col-md-8" id="category" required>
+                                                                <option value="">Select Category</option>
+                                                                <option value="001~Fees">Fees</option>
+                                                                <option value="002~Electronics">Electronics</option>
+                                                                <option value="003~Travels">Travels</option>
+                                                                <option value="004~Travels">Others</option>
+                                                            </select>
+
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label class="col-md-4"><span class="text-danger">*</span>Purpose of Transfer</label>
+
+                                                            <input type="text" class="form-control col-md-8" id="purpose"
+                                                                placeholder="Enter purpose of transfer" autocomplete="off"
+                                                                required>
+
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4"></div>
+                                                            <div class="col-md-8">
+
+                                                                <div class="form-group">
+
+                                                                    <div class="custom-control custom-checkbox col-md-8">
+                                                                        <input type="checkbox" class="custom-control-input"
+                                                                            id="customCheck1">
+                                                                        <label class="custom-control-label"
+                                                                            for="customCheck1">Schedule
+                                                                            Payments</label>
+                                                                    </div>
+                                                                    <legend></legend>
+
+                                                                    <input type="text" class="form-control"
+                                                                        id="schedule_payment_contraint_input">
+
+                                                                    <label class="">Value Date</label>
+
+                                                                    <input type="date" class="form-control"
+                                                                        id="schedule_payment_date">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group text-right">
+                                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                                                &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-1"></div>
+
+
+
+                                                </div>
                                             </div>
-                                            <legend></legend>
+
+                                        </form>
 
 
-
-                                            {{-- <div class="form-group" id="frequency">
-                                                <label class="">Payment Frequency</label>
-                                                <select class="custom-select" id="select_frequency" required>
-                                                    <option value="">Select Frequency</option>
-                                                    <option value="001~Weekly">Weekly</option>
-                                                    <option value="002~Bi-Weekly">Bi-Weekly</option>
-                                                    <option value="003~Monthly">Monthly</option>
-                                                    <option value="004~Quaterly">Quaterly</option>
-                                                </select>
-
-                                            </div> --}}
-
-                                            <input type="text" class="form-control" id="schedule_payment_contraint_input">
-
-                                            <label class="">Value Date</label>
-
-                                            <input type="date" class="form-control" id="schedule_payment_date">
-
-                                        </div>
+                                </div>
 
 
-                                        <br><br>
+                            </div>
 
+                            <div class="col-md-3 rtgs_card_right m-2 d-none d-sm-block"
+                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); zoom: 0.9 ;">
 
-
-
-
-
-
-                                    </form>
-                                </div> <!-- end col -->
-
-
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="h6">Transfer To<span class="text-danger">*</span></label>
-
-                                        <select class="custom-select" id="to_account" required>
-                                            <option value="">Select Account</option>
-
-                                            {{-- <option value="Currenct Account~004004100435270140~USD~800">
-                                                Currenct Account ~ 004004100435270140 ~ USD</option> --}}
-                                        </select>
-
-
-                                        <table
-                                            class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
-                                            <tbody>
-                                                <tr>
-
-                                                    <td>
-                                                        <a
-                                                            class="text-body font-weight-semibold display_to_account_type"></a>
-                                                        <small class="d-block display_to_account_name"></small>
-                                                        <small class="d-block display_to_account_no"></small>
-                                                    </td>
-
-                                                    <td class="text-right font-weight-semibold">
-                                                        {{-- <span class="display_to_account_currency"></span> --}}
-                                                        {{-- <span class="display_to_account_amount"></span> --}}
-
-                                                    </td>
-                                                </tr>
-
-
-                                            </tbody>
-                                        </table>
-
-
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="">Expense Type<span class="text-danger">*</span></label>
-
-                                        {{-- <label class="h6">Category</label> --}}
-
-                                        <select class="custom-select" id="category" required>
-                                            <option value="">Select Category</option>
-                                            <option value="001~Fees">Fees</option>
-                                            <option value="002~Electronics">Electronics</option>
-                                            <option value="003~Travels">Travels</option>
-                                            <option value="004~Travels">Others</option>
-                                        </select>
-
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label class="">Expense Narration<span class="text-danger">*</span></label>
-
-                                        {{-- <label class="h6">Category</label> --}}
-
-                                        <input type="text" class="form-control" id="purpose"
-                                            placeholder="Enter purpose / narration" autocomplete="off" required>
-
-                                    </div>
-                                    {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
-
-                                    {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
-
-                                    <div class="form-group text-right">
-                                        <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                            &nbsp; Next &nbsp;</button>
-                                    </div>
-                                </div> <!-- end col -->
-
-
-                                <!-- end row -->
+                            </div>
 
 
 
                             </div>
+
+                        </div>
+
+                        <div class="">
+
+                            {{-- <table
+                            class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
+                            <tbody class="">
+                                <tr>
+
+                                    <td>
+                                        <a
+                                            class="text-body font-weight-semibold display_from_account_name"></a>
+                                        <small class="d-block display_from_account_no"></small>
+                                    </td>
+
+                                    <td class="text-right font-weight-semibold">
+                                        <span class="display_from_account_currency"></span>
+                                        <span class="display_from_account_amount"></span>
+
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table> --}}
+                        </div>
+
+
+
+                        <div class="">
+                            <div class="form-group">
+
+
+
+
+
+                                {{-- <table
+                                class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
+                                <tbody>
+                                    <tr>
+
+                                        <td>
+                                            <a
+                                                class="text-body font-weight-semibold display_to_account_type"></a>
+                                            <small class="d-block display_to_account_name"></small>
+                                            <small class="d-block display_to_account_no"></small>
+                                        </td>
+
+                                        <td class="text-right font-weight-semibold">
+                                            {{-- <span class="display_to_account_currency"></span> --}}
+                                {{-- <span class="display_to_account_amount"></span> --}}
+
+                                </td>
+                                </tr>
+
+
+                                </tbody>
+                                </table>
+
+
+                            </div>
+
+
+
+
+
+                            {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
+
+                            {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
+
+
+                        </div> <!-- end col -->
+
+
+                        <!-- end row -->
+
+
+
+                        <div class="col-md-8  card-body">
+                            {{--  <h3 class=" m-t-0 text-primary">OWN ACCOUNT TRANSFER</h3>s  --}}
+                            <hr>
+
+
 
                             <div class="row" id="transaction_summary">
 
