@@ -375,6 +375,7 @@ Route::middleware(['userAuth'])->group(function () {
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/get-expenses',[HomeController::class,'get_expenses'])->name('get-expenses');
 Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
 // Logout controller
 
@@ -389,6 +390,7 @@ Route::get('get-bank-list-api', [FunctionsController::class, 'bank_list'])->name
 Route::get('get-bank-branches-list-api', [FunctionsController::class, 'branches_list'])->name('get-bank-branches-list-api');
 Route::get('get-security-question-api', [FunctionsController::class, 'security_question'])->name('get-security-question-api');
 Route::get('get-accounts-api', [FunctionsController::class, 'get_accounts'])->name('get-accounts-api');
+Route::get('get-expenses',[FunctionsController::class,'get_expenses'])->name('get-expenses');
 Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_accounts'])->name('get-loan-accounts-api');
 Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 Route::get('get-correct-fx-rate-api', [FunctionsController::class, 'get_correct_fx_rate'])->name('get-correct-fx-rate-api');

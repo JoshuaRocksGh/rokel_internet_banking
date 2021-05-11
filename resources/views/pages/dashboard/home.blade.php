@@ -452,7 +452,7 @@
 
                                                 <i class="mdi mdi-help-circle mr-1 text-primary"></i>
                                                 <span class="text-primary"> <b> I HAVE ( Current & Savings) </b></span>
-                                                <span class="text-primary float-right"> <b> 90,000,000.00
+                                                <span class="text-primary float-right"> <b>SLL 90,000,000.00
                                                     </b></span>
 
                                             </h5>
@@ -920,11 +920,17 @@
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                 ['Expense', 'Amount'],
-                ['Vendor payment',     11],
-                ['Travel',      2],
-                ['Petty Cash',  2],
-                ['Cash Withdrawal', 2],
-                ['School Fees',    7]
+                ['Vendor payment',     100],
+                ['Travel',      200],
+                ['Petty Cash',  300],
+                ['Salary', 900],
+                ['Groceries',    50],
+                ['Allowances',    80],
+                ['Medical',    50],
+                ['Insurance',    950],
+                ['Tax',    95],
+                ['Others',    40],
+
                 ]);
 
                 var options = {
