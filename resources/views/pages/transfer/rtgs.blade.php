@@ -246,7 +246,7 @@
                                                 <div class="row">
                                                     <div class="col-md-1"></div>
 
-                                                    <div class="col-md-9">
+                                                    <div class="col-md-10">
 
                                                         <div class="form-group row mb-3">
                                                             <label class="col-md-4 "><span class="text-danger">*</span>Payer
@@ -465,11 +465,10 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4 "><span class="text-danger">*</span>Enter
-                                                                Purpose of Transfer</label>
+                                                            <label class="col-md-4 "><span class="text-danger">*</span>Purpose of Transfer</label>
 
                                                                     <input type="text" class="form-control col-md-8"
-                                                                        id="purpose" placeholder="Enter purpose / narration"
+                                                                        id="purpose" placeholder="Enter purpose of transaction"
                                                                         required>
 
                                                         </div>
@@ -501,7 +500,11 @@
                                                         </div>
 
 
-
+                                                        <div class="form-group text-right yes_beneficiary">
+                                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                                                &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
+                                                            {{-- <button type="button" id="hide_button">hide</button> --}}
+                                                        </div>
 
                                                     </div>
 
@@ -600,11 +603,7 @@
                                         </div>
 
 
-                                        <div class="form-group text-right yes_beneficiary">
-                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                                &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
-                                            {{-- <button type="button" id="hide_button">hide</button> --}}
-                                        </div>
+                                        
 
 
 

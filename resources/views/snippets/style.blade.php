@@ -63,7 +63,11 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
+<<<<<<< HEAD
             background:#0561AD;
+=======
+            background:#0561ad;
+>>>>>>> 49a3faa3804597714585e737dce6959333c1c0b8
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
@@ -104,7 +108,11 @@
             left: -14px;
             padding: 0.5rem;
             width: 10rem;
+<<<<<<< HEAD
             background:#0561AD;
+=======
+            background:#0561ad;
+>>>>>>> 49a3faa3804597714585e737dce6959333c1c0b8
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
@@ -119,7 +127,11 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
+<<<<<<< HEAD
             background:#0561AD;
+=======
+            background:#0561ad;
+>>>>>>> 49a3faa3804597714585e737dce6959333c1c0b8
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
