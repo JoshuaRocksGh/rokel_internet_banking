@@ -13,20 +13,7 @@
         type="text/css" />
     <!-- third party css end -->
     <style>
-        #piechart_3d::after {
-            position: absolute;
-            content: 'SPENDING ANALYSIS';
-            top: -5px;
-            {{-- right: -14px; --}} left: -14px;
-            padding: 0.5rem;
-            width: 20rem;
-            background: #4fc6e1;
-            color: #fff;
-            text-align: center;
-            font-family: 'Roboto', sans-serif;
-            box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
 
-        }
 
     </style>
 @endsection
@@ -467,9 +454,9 @@
                                                 <i class="mdi mdi-help-circle mr-1 text-primary"></i>
                                                 <span class="text-primary"> <b> I HAVE ( Current & Savings) </b></span>
                                                 <span class="text-primary float-right">
-                                                    <b style="font-size:12px ">SLL</b>
-                                                    <b> 90,000,000.00
-                                                    </b></span>
+                                                    <b class="i_have_currency" style="font-size:12px ">SLL</b>
+                                                    <b class="i_have_amount"></b>
+                                                </span>
 
                                             </h5>
                                         </div>
@@ -674,7 +661,7 @@
                                     </div>
                                     <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>Funds Transactions</span></h3>
+                                            <h3 class="mt-1 text-white"><span>Airtime Purchase</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->
@@ -691,7 +678,7 @@
                                     </div>
                                     <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span> &nbsp; All Payments</span></h3>
+                                            <h3 class="mt-1 text-white"><span> &nbsp; Other Bank Transfer</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->
@@ -1102,6 +1089,9 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </tr>`
                                 )
+                            })
+                            $.each(data, function(index){
+                                $('.i_have_amount').text(${formatToCurrency(parseFloat(data[index].availableBalance))});
                             })
 
 

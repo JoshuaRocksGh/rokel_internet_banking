@@ -63,7 +63,7 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
-            background:#a19472;
+            background:#0561AD;
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
@@ -81,6 +81,20 @@
             0 100px 80px rgba(0, 0, 0, 0.12)
           ;
           }
+          #piechart_3d::after {
+            position: absolute;
+            content: 'SPENDING ANALYSIS';
+            top: -5px;
+            {{-- right: -14px; --}} left: -14px;
+            padding: 0.5rem;
+            width: 20rem;
+            background: #0561AD;
+            color: #fff;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
+
+        }
 
           .rtgs_card_right::after {
             position: absolute;
@@ -90,7 +104,7 @@
             left: -14px;
             padding: 0.5rem;
             width: 10rem;
-            background:#a19472;
+            background:#0561AD;
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;
@@ -105,7 +119,7 @@
             left: -14px;
             padding: 0.5rem;
             width: 20rem;
-            background:#a19472;
+            background:#0561AD;
             color: #fff;
             text-align: center;
             font-family: 'Roboto', sans-serif;

@@ -84,7 +84,7 @@ class OwnAccountController extends Controller
         // 'schedule_payment_date' : schedule_payment_date,
         // 'secPin' : pin
 
-
+            return $req;
         $data = [
 
             "amount" => $req->transfer_amount,
@@ -95,7 +95,7 @@ class OwnAccountController extends Controller
             "deviceIp" => "string",
             "entrySource" => "string",
             "narration" => $req->purpose,
-            "secPin" => $user_pin,
+            "secPin" => $req->secPin,
             "userName" => "string",
             "category" => $req->category,
 
