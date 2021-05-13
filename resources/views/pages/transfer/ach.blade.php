@@ -41,10 +41,38 @@
                 <div class="">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2"></div>
+                            {{--  <div class="col-md-2"></div>  --}}
 
-                            <div class="col-md-8">
-                                <h2 class="header-title m-t-0 text-primary">ACH TRANSFER</h2>
+                            <div class="col-md-12">
+
+                                <!-- start page title -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="page-title-box">
+                                        <div class="page-title-left">
+                                            <ol class="breadcrumb m-0">
+                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Transfer</a>
+                                                </li>
+                                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li> --}}
+                                                <li class="breadcrumb-item active text-danger">ACH</li>
+                                            </ol>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h1 class="header-title text-primary" style="font-size: 24px"><img
+                                src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                            ACH TRANSFER</h1>
+
+                        <p class="text-muted font-14 m-b-20">
+
+                            {{-- Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the
+                                instantaneous transfer of money. --}}
+                            <hr style="border: 1px solid">
+                        </p>
+                                {{--  <h2 class="header-title m-t-0 text-primary">ACH TRANSFER</h2>  --}}
 
 
 
@@ -511,7 +539,7 @@
 
                             </div>
 
-                            <div class="col-md-2"></div>
+                            {{--  <div class="col-md-2"></div>  --}}
 
                         </div> <!-- end card-body -->
 
