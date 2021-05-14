@@ -145,7 +145,7 @@
         <!-- end auth-fluid-form-box-->
 
         <!-- Auth fluid right content -->
-        <div class="auth-fluid-right text-center">
+        <div class="auth-fluid-right text-center bg-auth">
             <div class="auth-user-testimonial">
                 <div class="row">
                     <div class="col-lg-2"></div>
