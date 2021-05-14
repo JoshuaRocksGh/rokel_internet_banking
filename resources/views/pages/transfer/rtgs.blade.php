@@ -427,14 +427,24 @@
                                                         </div> --}}
 
 
+
                                                         <div class="form-group row">
                                                             {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
-                                                            <label class="col-md-4 "><span class="text-danger">*</span>Enter
-                                                                Amount </label>
-                                                            <input type="text" class="form-control col-md-8" id="amount"
+                                                            <label class="col-md-4 "><span class="text-danger">*</span>Enter Amount </label>
+                                                                <span class="input-group col-md-8">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text" id="basic-addon1"></span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control " id="amount"
+                                                                    placeholder="Amount: 0.00"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                    required>
+                                                                </span>
+
+                                                            {{-- <input type="text" class="form-control col-md-8" id="amount"
                                                                 placeholder="Amount: 0.00"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required>
+                                                                required> --}}
                                                         </div>
                                                         <div class="form-group row mb-3">
                                                             <label class="h6 col-md-4 "><span
@@ -1602,6 +1612,7 @@
                             $(".display_from_account_name").text(from_account_info[1].trim())
                             $(".display_from_account_no").text(from_account_info[2].trim())
                             $(".display_from_account_currency").text(from_account_info[3].trim())
+                            $("#basic-addon1").text(from_account_info[3].trim())
 
                             $(".display_currency").text(from_account_info[3].trim()) // set summary currency
 
