@@ -62,7 +62,6 @@
           border-right: 13px solid #0561ad;
           border-top: 13px solid #0561ad;
           border-bottom: 13px solid transparent;
-          {{--  transform : rotate(45deg);  --}}
         }
 
         .rtgs_card::after{
@@ -75,7 +74,6 @@
           background: #0561ad;
           color: #fff;
           text-align: center;
-          font-family: 'Roboto', sans-serif;
           box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
 
           }
@@ -93,6 +91,7 @@
 
           .rtgs_card_right::before{
             position: absolute;
+            display: block;
             content: '';
             top: 30px;
             left: -25px;

@@ -409,8 +409,13 @@
 
 
 
+<<<<<<< HEAD
                                        </div>
                                    
+=======
+                                      </div>
+                                           
+>>>>>>> 4aa39d91f0ff771529fb30da07bc6cc9fb091d7d
                                             {{-- <div class="col-md-2"></div> --}}
                                             
 
