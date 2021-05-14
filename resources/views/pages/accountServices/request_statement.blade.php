@@ -2,7 +2,39 @@
 
 @section('content')
 
-    <div>
+    <div class="">
+
+        <div class="container-fluid">
+            <br>
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-primary">
+                        <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                        STATEMENT REQUEST
+
+                    </h4>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <h6>
+
+                        <span class="flaot-right">
+                            <b class="text-primary"> Account Services </b> &nbsp; > &nbsp; <b class="text-danger">STATEMENT REQUEST</b>
+
+
+                        </span>
+
+                    </h6>
+
+                </div>
+
+                <div class="col-md-12 ">
+                    <hr class="text-primary" style="margin: 0px;">
+                </div>
+
+            </div>
+        </div>
         <legend></legend>
 
         <div class="row">
@@ -11,10 +43,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
 
-                    <div class=" card card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">REQUEST A STATEMENT</h2>
-                        <hr>
-
+                    <div class=" card card-body col-md-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
 
                         <div class="row">
 
@@ -26,7 +55,7 @@
                                     <table class="table mb-0 table-striped table-bordered">
 
                                         <tbody>
-                                            <tr class="bg-secondary text-white">
+                                            <tr class="bg-blue text-white">
                                                 <td>Request Details</td>
                                             </tr>
 
@@ -114,7 +143,7 @@
                                 <table class="table mb-0 table-striped table-bordered">
 
                                     <tbody>
-                                        <tr class="bg-secondary text-white">
+                                        <tr class="bg-blue text-white">
                                             <td>Request Details</td>
                                         </tr>
                                         <tr class="">
@@ -176,7 +205,9 @@
                                         <button type="button"
                                             class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
                                             id="btn_submit_request_statement">
-                                            Submit
+                                            <span class="submit-text">Submit</span>
+                                            <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                            <span id="spinner-text">Loading...</span>
                                         </button>
 
                                     </div>
@@ -193,10 +224,6 @@
 
 
                     </div>
-
-
-
-
 
                     <div class="col-md-1"></div>
 
@@ -288,6 +315,9 @@
                 my_account()
             }, 1000)
 
+            $('#spinner').hide();
+            $('#spinner-text').hide();
+
             $("#my_account").change(function() {
                 var my_account = $(this).val();
                 console.log(my_account_info);
@@ -342,6 +372,10 @@
                 // toaster("Please fill all required fields","error", 6000);
                 // return false;
 
+                //hide the spinner on for this screen
+                $('#spinner').hide();
+                $('#spinner-text').hide();
+
 
                 //statement request details/get values.
                 let my_account = $('#my_account').val();
@@ -357,6 +391,12 @@
                     transEndDate == "" || pin == "") {
                     toaster("Please fill all required fields", "error", 6000);
                 } else {
+
+                    //hide the texts on the button on press
+                    $('#spinner').show();
+                    $('#spinner-text').show();
+                    $('.submit-text').hide();
+
 
                     let branch_info = pUBranch.split("~");
                     let branchCode = branch_info[0];
@@ -386,17 +426,16 @@
 
                             console.log(response)
 
-                            if (response.responseCode == '000') {
+                            if (response.responseCode != '000') {
                                 toaster(response.message, 'success', 20000)
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
-                                $(".success-message").html(
-                                    '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
-                                )
+                                $(".success-message").html('<img src="{{ asset('land_asset/images/statement_success.gif') }}" />')
                                 $("request_detail_div").show();
                             } else {
 
                                 toaster(response.message, 'error', 9000);
+
 
                             }
                         }

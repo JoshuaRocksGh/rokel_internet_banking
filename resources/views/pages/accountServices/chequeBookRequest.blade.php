@@ -35,18 +35,17 @@
 
             </div>
         </div>
+        <legend></legend>
 
-        <div class="row card-body">
+        <div class="row">
 
             <div class="col-12">
 
                 <div class="row">
 
-                    <div col="col-1"></div>
-                        <div class="card card-body col-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
-                            <h2 class="header-title m-t-0 text-primary">CHEQUE BOOK REQUEST</h2>
-                            <hr>
+                    <div col="col-md-1"></div>
 
+                        <div class="card card-body col-md-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
 
                             <div class="row" >
 
@@ -57,7 +56,7 @@
                                         <table class="table mb-0 table-striped table-bordered">
 
                                             <tbody>
-                                                <tr class="bg-secondary text-white">
+                                                <tr class="bg-blue text-white">
                                                     <td>Request Details</td>
                                                 </tr>
 
@@ -152,8 +151,8 @@
                                     <table class="table mb-0 table-striped table-bordered">
 
                                         <tbody>
-                                            <tr class="bg-secondary text-white">
-                                                <td>Request Details</td>
+                                            <tr class="bg-blue text-white">
+                                                <td>Request Summary</td>
                                             </tr>
                                             <tr class="">
 
@@ -204,25 +203,18 @@
 
 
                                 </div> <!-- end col -->
+
+                                <div class="col-md-5 text-center">
+                                    {{-- <span class="hh"><span> --}}
+                                    <p class="display-4 text-center text-success success-message "></p>
+                                </div>
+
                             </div>
-                            <div class="col-md-5 text-center">
-                                {{-- <span class="hh"><span> --}}
-                                <p class="display-4 text-center text-success success-message ">
-
-                                </p>
-                            </div>
-
-
-                            <!-- end row -->
-
-
-
-
 
 
                         </div>
 
-                    <div class="col-1"></div>
+                    <div class="col-md-1"></div>
                 </div> <!-- end card-body -->
 
             </div>

@@ -2,7 +2,39 @@
 
 @section('content')
 
-    <div>
+    <div class="">
+
+        <div class="container-fluid">
+            <br>
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-primary">
+                        <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                        LOAN REQUEST
+
+                    </h4>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <h6>
+
+                        <span class="flaot-right">
+                            <b class="text-primary"> LOANS </b> &nbsp; > &nbsp; <b class="text-danger">LOAN REQUEST</b>
+
+
+                        </span>
+
+                    </h6>
+
+                </div>
+
+                <div class="col-md-12 ">
+                    <hr class="text-primary" style="margin: 0px;">
+                </div>
+
+            </div>
+        </div>
         <legend></legend>
 
         <div class="row">
@@ -11,10 +43,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
 
-                    <div class=" card card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">LOAN QUOTATION</h2>
-                            <hr>
-
+                    <div class=" card card-body col-md-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
 
                             <div class="row" >
 
@@ -27,7 +56,7 @@
 
                                             <tbody>
                                                 <tr class="bg-secondary text-white">
-                                                    <td>Loan Request</td>
+                                                    <td>Loan Request Form</td>
                                                 </tr>
 
                                                 <tr>
@@ -200,8 +229,8 @@
                                     <div class="form-group row">
                                         <div class="col-8 offset-4 text-right">
                                             <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_loan_request">
-                                                <span class="spinner-border spinner-border-sm mr-1 spinner" role="status" aria-hidden="true"></span>
-                                                <span class="spinner-text">Loading...</span>
+                                                <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
+                                                <span id="spinner-text">Loading...</span>
                                                 &nbsp; <span class="submit-text">Submit</span>&nbsp;
                                             </button>
                                         </div>
@@ -370,8 +399,8 @@
 
         $(document).ready(function(){
 
-            $(".spinner-text").hide();
-            $(".spinner").hide();
+            $("#spinner-text").hide();
+            $("#spinner").hide();
             setTimeout(function(){
                 loan_product()
                 loan_frequencies()
@@ -450,7 +479,7 @@
                     else{
                     $(".submit-text").hide();
                     $(".spinner-border").show();
-                    $(".spinner-text").show();
+                    $("#spinner-text").show();
 
 
 
