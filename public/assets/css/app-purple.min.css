@@ -2907,7 +2907,7 @@ body.authentication-bg-pattern {
     min-height: 100vh;
     flex-direction: row;
     align-items: stretch;
-    background: url(../images/bg-auth.jpg) center;
+    background: url(../images/bg-auth.jpeg) center;
     background-size: cover
 }
 
