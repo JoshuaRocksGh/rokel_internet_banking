@@ -66,7 +66,7 @@
 
         .rtgs_card::after{
           position: absolute;
-          content: 'Please Select/Enter Details';
+          content: 'Please fill the form below';
           top: -5px;
           left: -25px;
           padding: 0.5rem;
