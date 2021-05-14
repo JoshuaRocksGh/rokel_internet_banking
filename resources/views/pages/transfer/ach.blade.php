@@ -409,6 +409,7 @@
 
 
 
+<<<<<<< HEAD
                                     </div>
 
 
@@ -508,6 +509,113 @@
                                         <button class="btn btn-primary btn-rounded" type="button" id="next_button">
                                             &nbsp; NEXT &nbsp;</button>
                                     </div>
+=======
+                                       </div>
+
+                                            {{-- <div class="col-md-2"></div> --}}
+
+
+
+
+                                            <div class="select_onetime">
+                                                <h5 class="text-primary">Beneficiary Details</h5>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-4">Nickname <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control col-md-8"
+                                                        id="onetime_beneficiary_alias_name" placeholder="Nickname" required>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-4">Bank Name <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="email" class="form-control col-md-8"
+                                                        id="onetime_beneficiary_bank_name" placeholder="Bank Name" required>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-4">Account Number <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control col-md-8"
+                                                        id="onetime_beneficiary_account_number" placeholder="Account Number"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                        required>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-4">Select Currency <span
+                                                            class="text-danger">*</span></label>
+
+                                                    <select class="custom-select col-md-8"
+                                                        id="onetime_beneficiary_account_currency" required>
+                                                        <option value="">Select Currency</option>
+                                                        <option value="GHS">GHS</option>
+                                                        <option value="USD">USD</option>
+                                                        <option value="EURO">EURO</option>
+                                                        <option value="SLL">SLL</option>
+                                                        <option value="GBP">GBP</option>
+                                                    </select>
+
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-4">Enter Telephone Number <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control col-md-8"
+                                                        id="onetime_beneficiary_phone" placeholder="Phone" required>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class=" col-md-4">Enter Amount <span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" class="form-control  col-md-8" id="amount"
+                                                    placeholder="Amount: 0.00"
+                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                    required>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="h6  col-md-4">Expense Category <span
+                                                        class="text-danger">*</span></label>
+                                                {{-- <label for="form-group">Category</label> --}}
+
+
+                                                <select class="custom-select  col-md-8" id="category" required>
+                                                    <option value="">---Not Selected---</option>
+                                                    <option value="01~Travel">Travel</option>
+                                                    <option value="02~Petty Cash">Petty Cash</option>
+                                                    <option value="03~Salary">Salary</option>
+                                                    <option value="04~Groceries">Groceries</option>
+                                                    <option value="05~Allowances">Allowances</option>
+                                                    <option value="06~Medical">Medical</option>
+                                                    <option value="07~Vendor Payment">Vendor Payment</option>
+                                                    <option value="08~Insurance">Insurance</option>
+                                                    <option value="09~Tax">Tax</option>
+                                                    <option value="10~Others">Others</option>
+                                                </select>
+
+
+                                            </div>
+
+                                            <div class="form-group row mt-1">
+                                                <label for="form-group" class=" col-md-4">Expense Purpose <span
+                                                        class="text-danger">*</span></label>
+
+                                                <input type="text" class="form-control  col-md-8" id="purpose"
+                                                    placeholder="Enter purpose / narration" required>
+
+                                            </div>
+
+
+                                            <div class="form-group text-right">
+                                                <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                                    &nbsp; NEXT &nbsp;</button>
+                                            </div>
+>>>>>>> e890aec034963c4e3ef6ca19c4eedaadf5da7bce
 
                                 </form>
                             </div>

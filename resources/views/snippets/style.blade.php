@@ -65,23 +65,8 @@
         }
 
         .rtgs_card::after{
-<<<<<<< HEAD
-
-            position: absolute;
-            content: 'Please Select/Enter Details';
-            top: -5px;
-            {{--  right: -14px;  --}}
-            left: -14px;
-            padding: 0.5rem;
-            width: 20rem;
-            background:#0561ad;
-            color: #fff;
-            text-align: center;
-            font-family: 'Roboto', sans-serif;
-            box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
-=======
           position: absolute;
-          content: 'Please Select/Enter Details';
+          content: 'Please fill the form below';
           top: -5px;
           left: -25px;
           padding: 0.5rem;
@@ -90,7 +75,6 @@
           color: #fff;
           text-align: center;
           box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
->>>>>>> a92357224e8155d421d682c163bac10acebb72de
 
           }
 
@@ -104,21 +88,6 @@
             0 100px 80px rgba(0, 0, 0, 0.12)
           ;
           }
-          #piechart_3d::after {
-            position: absolute;
-            content: 'SPENDING ANALYSIS';
-            top: -5px;
-            {{-- right: -14px; --}}
-            left: -14px;
-            padding: 0.5rem;
-            width: 20rem;
-            background: #0561AD;
-            color: #fff;
-            text-align: center;
-            font-family: 'Roboto', sans-serif;
-            box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
-
-        }
 
           .rtgs_card_right::before{
             position: absolute;
