@@ -655,7 +655,7 @@
                                                             <label class="col-md-4 "><span class="text-danger">*</span>Payer
                                                                 Account </label>
 
-
+ 
                                                             <select class="form-control col-md-8 " id="onetime_from_account"
                                                                 required>
                                                                 <option value="">Select Account
@@ -699,21 +699,21 @@
                                                         </div> --}}
 
 
-                                                        <div class="form-group row mb-3" id="ontime_pay_from_account">
+                                                        {{-- <div class="form-group row mb-3" id="ontime_pay_from_account">
 
                                                             <label class="col-md-4"><span
                                                                     class="text-danger">*</span>Beneficiary Account</label>
+                                                                    
 
                                                             <select class="form-control col-md-8" id="ontime_to_account" required>
                                                                 <option value="">Beneficiary Account</option>
-                                                                {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
-                                                                Currenct Account ~ 004004110449140121 </option> --}}
+                                                                
                                                             </select>
                                                             <br>
 
 
 
-                                                        </div>
+                                                        </div> --}}
 
                                                         <div class="form-group row mb-3">
                                                             {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
@@ -738,6 +738,7 @@
                                                             </select>
                                                             <br>
                                                         </div>
+
                                                         <div class="form-group row mb-3">
                                                             <label class="col-md-4"><span
                                                                     class="text-danger">*</span>
@@ -1981,6 +1982,17 @@
                             return false
                         }
                     });
+
+                    $("#onetime_next_button").click(function(){
+                        var onetime_from_account_ = $("#onetime_from_account").val();
+                        var onetime_receiver_name = $("#onetime_beneficiary_alias_name").val();
+                        var onetime_bank_name = $("#onetime_beneficiary_bank_name").val();
+                        var onetime_account_number = $("#onetime_beneficiary_account_number").val();
+                        var onetime_account_currency = $("#onetime_beneficiary_account_currency").val();
+                        var onetime_telephone = $("#onetime_beneficiary_phone").val();
+                        var onetime_amount = $("#onetime_amount").val();
+                        var onetime_expense_category = $("#onetime_amount").val();
+                    })
 
 
                     var user_pin = $('#user_pin').val();
