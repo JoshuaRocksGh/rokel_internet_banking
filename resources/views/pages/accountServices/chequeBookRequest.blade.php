@@ -2,25 +2,152 @@
 
 @section('content')
 
-    <div>
-        <legend></legend>
+    <div class="">
 
-        <div class="row">
+        <div class="container-fluid">
+            <br>
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-primary">
+                        <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                        CHEQUE BOOK REQUEST
+
+                    </h4>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <h6>
+
+                        <span class="flaot-right">
+                            <b class="text-primary"> Account Services </b> &nbsp; > &nbsp; <b class="text-danger">CHEQUE BOOK REQUEST</b>
+
+
+                        </span>
+
+                    </h6>
+
+                </div>
+
+                <div class="col-md-12 ">
+                    <hr class="text-primary" style="margin: 0px;">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row card-body">
+
             <div class="col-12">
 
                 <div class="row">
-                    <div class="col-md-1"></div>
 
-                    <div class=" card card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">CHEQUE BOOK REQUEST</h2>
-                        <hr>
+                    <div col="col-1"></div>
+                        <div class="card card-body col-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
+                            <h2 class="header-title m-t-0 text-primary">CHEQUE BOOK REQUEST</h2>
+                            <hr>
 
 
-                        <div class="row" >
+                            <div class="row" >
 
-                            <div class="col-md-7" id="request_form_div">
+                                <div class="col-md-7" id="request_form_div">
 
-                                <div class="">
+                                    <div class="">
+
+                                        <table class="table mb-0 table-striped table-bordered">
+
+                                            <tbody>
+                                                <tr class="bg-secondary text-white">
+                                                    <td>Request Details</td>
+                                                </tr>
+
+                                                <tr>
+                                                </tr>
+
+                                            </tbody>
+
+
+                                        </table>
+
+                                        <p>
+
+
+                                            <form role="form" class="parsley-examples">
+                                                <div class="form-group row">
+                                                    <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="col-7">
+                                                        <select class="custom-select " id="my_account" required>
+                                                            <option value="">Select Account</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="hori-pass2" class="col-4 col-form-label">
+                                                        Leaflets
+                                                        <span class="text-danger">*</span></label>
+                                                    <div class="col-7">
+                                                        <select class="custom-select " id="leaflet" required>
+                                                            <option value="">-- Select number --</option>
+                                                            <option value="25">25</option>
+                                                            <option value="50">50</option>
+                                                            <option value="100">100</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="webSite" class="col-4 col-form-label">
+                                                        <label> Branch</label>
+                                                        <span class="text-danger">*</span></label>
+                                                    <div class="col-7">
+                                                        <select class="custom-select " id="branch" required>
+                                                            <option value="">-- Selected Branch --</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <label for="hori-pass2" class="col-4 col-form-label">
+                                                        Enter Your Pin
+                                                        <span class="text-danger">*</span></label>
+                                                    <div class="col-7">
+                                                        <input type="text" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                                    </div>
+                                                </div>
+
+                                                {{-- <div class="form-group row">
+
+
+                                                        <div class="col-7 offset-4 text-right">
+
+                                                            <button type="button"
+                                                                class="btn btn-primary btn-rounded waves-effect waves-light">
+                                                                Submit
+                                                            </button>
+
+                                                        </div>
+
+
+                                                </div> --}}
+
+
+                                            </form>
+
+                                        </p>
+
+
+                                    </div> <!-- end card-box -->
+
+
+                                </div>
+
+
+                                <div class="col-md-5 disappear-after-success" id="request_detail_div">
 
                                     <table class="table mb-0 table-striped table-bordered">
 
@@ -28,174 +155,78 @@
                                             <tr class="bg-secondary text-white">
                                                 <td>Request Details</td>
                                             </tr>
+                                            <tr class="">
 
-                                            <tr>
+                                                <td>
+                                                    <a
+                                                        class="text-body font-weight-semibold   display_my_account_name"></a>
+                                                    <small class="d-block   display_my_account_no"></small>
+                                                    <span class="text-right   font-weight-semibold">
+                                                        <span class="display_my_account_currency"></span>
+                                                    <span class="  display_my_account_amount"></span>
+                                                    </span>
+                                                </td>
+
+
+
+                                            </tr>
+                                            <tr class="">
+                                                <td>
+                                                    <span class="text-right font-weight-semibold">
+                                                        <span class="display_leaflet"></span>
+                                                    </span>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="">
+                                                <td>
+                                                    <span class="text-right font-weight-semibold">
+                                                        <span class="display_branch"></span>
+                                                    </span>
+                                                </td>
+
                                             </tr>
 
                                         </tbody>
 
-
                                     </table>
 
-                                    <p>
+                                    <br>
+
+                                    <div class="form-group row">
+                                        <div class="col-8 offset-4 text-right">
+                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="submit_cheque_request">
+                                                Submit
+                                            </button>
+
+                                        </div>
+                                    </div>
 
 
-                                        <form role="form" class="parsley-examples">
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
-                                                        class="text-danger">*</span></label>
-                                                <div class="col-7">
-                                                    <select class="custom-select " id="my_account" required>
-                                                        <option value="">Select Account</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                </div> <!-- end col -->
+                            </div>
+                            <div class="col-md-5 text-center">
+                                {{-- <span class="hh"><span> --}}
+                                <p class="display-4 text-center text-success success-message ">
 
-                                            <div class="form-group row">
-                                                <label for="hori-pass2" class="col-4 col-form-label">
-                                                    Leaflets
-                                                    <span class="text-danger">*</span></label>
-                                                <div class="col-7">
-                                                    <select class="custom-select " id="leaflet" required>
-                                                        <option value="">-- Select number --</option>
-                                                        <option value="25">25</option>
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <label for="webSite" class="col-4 col-form-label">
-                                                    <label> Branch</label>
-                                                    <span class="text-danger">*</span></label>
-                                                <div class="col-7">
-                                                    <select class="custom-select " id="branch" required>
-                                                        <option value="">-- Selected Branch --</option>
-                                                    </select>
-
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-group row">
-                                                <label for="hori-pass2" class="col-4 col-form-label">
-                                                    Enter Your Pin
-                                                    <span class="text-danger">*</span></label>
-                                                <div class="col-7">
-                                                    <input type="text" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-                                                </div>
-                                            </div>
-
-                                            {{-- <div class="form-group row">
-
-
-                                                    <div class="col-7 offset-4 text-right">
-
-                                                        <button type="button"
-                                                            class="btn btn-primary btn-rounded waves-effect waves-light">
-                                                            Submit
-                                                        </button>
-
-                                                    </div>
-
-
-                                            </div> --}}
-
-
-                                        </form>
-
-                                    </p>
-
-
-                                </div> <!-- end card-box -->
-
-
+                                </p>
                             </div>
 
 
-                            <div class="col-md-5 disappear-after-success" id="request_detail_div">
-
-                                <table class="table mb-0 table-striped table-bordered">
-
-                                    <tbody>
-                                        <tr class="bg-secondary text-white">
-                                            <td>Request Details</td>
-                                        </tr>
-                                        <tr class="">
-
-                                            <td>
-                                                <a
-                                                    class="text-body font-weight-semibold   display_my_account_name"></a>
-                                                <small class="d-block   display_my_account_no"></small>
-                                                <span class="text-right   font-weight-semibold">
-                                                    <span class="display_my_account_currency"></span>
-                                                <span class="  display_my_account_amount"></span>
-                                                </span>
-                                            </td>
+                            <!-- end row -->
 
 
 
-                                        </tr>
-                                        <tr class="">
-                                            <td>
-                                                <span class="text-right font-weight-semibold">
-                                                    <span class="display_leaflet"></span>
-                                                </span>
-                                            </td>
-
-                                        </tr>
-                                        <tr class="">
-                                            <td>
-                                                <span class="text-right font-weight-semibold">
-                                                    <span class="display_branch"></span>
-                                                </span>
-                                            </td>
-
-                                        </tr>
-
-                                    </tbody>
-
-                                </table>
-
-                                <br>
-
-                                <div class="form-group row">
-                                    <div class="col-8 offset-4 text-right">
-                                        <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="submit_cheque_request">
-                                            Submit
-                                        </button>
-
-                                    </div>
-                                </div>
-
-
-                            </div> <!-- end col -->
-
-                        <div class="col-md-5 text-center">
-                        {{-- <span class="hh"><span> --}}
-                        <p class="display-4 text-center text-success success-message ">
-
-                        </p>
-                    </div>
-
-
-                        <!-- end row -->
 
 
 
-                    </div>
+                        </div>
 
+                    <div class="col-1"></div>
+                </div> <!-- end card-body -->
 
-                </div>
-
-                <div class="col-md-1"></div>
-
-            </div> <!-- end card-body -->
-
+            </div>
         </div>
-    </div>
 
     </div>
 
@@ -406,4 +437,5 @@
         });
 
     </script>
+
 @endsection
