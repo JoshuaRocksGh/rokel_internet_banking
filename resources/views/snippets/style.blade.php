@@ -62,10 +62,10 @@
           border-right: 13px solid #0561ad;
           border-top: 13px solid #0561ad;
           border-bottom: 13px solid transparent;
-          {{--  transform : rotate(45deg);  --}}
         }
 
         .rtgs_card::after{
+<<<<<<< HEAD
 
             position: absolute;
             content: 'Please Select/Enter Details';
@@ -79,6 +79,18 @@
             text-align: center;
             font-family: 'Roboto', sans-serif;
             box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
+=======
+          position: absolute;
+          content: 'Please Select/Enter Details';
+          top: -5px;
+          left: -25px;
+          padding: 0.5rem;
+          width: 20rem;
+          background: #0561ad;
+          color: #fff;
+          text-align: center;
+          box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
+>>>>>>> a92357224e8155d421d682c163bac10acebb72de
 
           }
 
