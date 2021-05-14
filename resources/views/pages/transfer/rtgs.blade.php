@@ -234,7 +234,7 @@
                                                     </button></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-1s"></div>
+                                        <div class="col-md-1"></div>
                                     </div>
 
                                 </div>
@@ -243,28 +243,31 @@
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br><br>
                                  
+                                    <div class="row container">
+                                        <div class="col-md-2"></div>
+                                            <div class="col-md-3">
+                                            <label class="text-primary" > <b>Beneficiary Type</b> </label>
+                                        </div>
+                                        <div class="col-md-7">
 
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="onetime_beneficiary_form">
+                                                <label class="custom-control-label " for="onetime_beneficiary_form"> <b>Onetime </b> </label>
+                                            </div>
+                                            <span class="badge badge-primary float-right" style="cursor: pointer"><a
+                                                href="{{ url('add-local-bank-beneficiary') }}" class="text-white">Create
+                                                Beneficiary</a>
+                                        </span>
+                                        </div>
+
+                                    </div>
 
                                     <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class="row container">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-10">
-                                                <div class="row mb-2">
-                                                    <div class="col-md-4"></div>
-                                                    <div class="col-md-8">
-            
-                                                        <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="onetime_beneficiary_form">
-                                                            <label class="custom-control-label text-primary" for="onetime_beneficiary_form"> <b>Onetime Beneficiary</b> </label>
-                                                        </div>
-                                                        <span class="badge badge-primary float-right" style="cursor: pointer"><a
-                                                            href="{{ url('add-local-bank-beneficiary') }}" class="text-white">Create
-                                                            Beneficiary</a>
-                                                    </span>
-                                                    </div>
-            
-                                                </div>
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-8">
+                                               
                                                 {{-- <br><br><br> --}}
                                                 <div class="row">
                                                     {{-- <div class="col-md-1"></div> --}}
@@ -284,38 +287,7 @@
                                                             </select>
                                                         </div>
 
-                                                        {{-- <div class="row">
-
-                                                            <div class="col-md-4">
-                                                                <label>Type of Beneficiary</label>
-                                                            </div>
-
-                                                            <div class="col-md-8">
-                                                                <div class="form-group hide-for-demo-purpose row">
-
-                                                                    <div class="form-check form-check-inline ">
-                                                                        <input class="form-check-input radio" type="radio"
-                                                                            name="onetime" id="inlineRadio1"
-                                                                            value="beneficiary" checked="checked">
-                                                                        <label class="form-check-label"
-                                                                            for="inlineRadio1">Select
-                                                                            beneficiary</label>
-                                                                    </div>
-                                                                    &nbsp;&nbsp;
-                                                                    <div class="form-check form-check-inline ">
-                                                                        <input class="form-check-input radio" type="radio"
-                                                                            name="onetime" id="inlineRadio2"
-                                                                            value="onetime">
-                                                                        <label class="form-check-label"
-                                                                            for="inlineRadio2">Onetime
-                                                                            beneficiary</label>
-                                                                    </div>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div> --}}
+                                                  
 
 
                                                         <div class="form-group row mb-3" id="pay_from_account">
@@ -338,15 +310,11 @@
                                                         <div class="form-group row">
                                                           
                                                             <b class="col-md-4 text-primary"> Amount &nbsp; <span class="text-danger">*</span></b>
-                                                                <div class="input-group col-md-8">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text" id="basic-addon1"></span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control " id="amount"
-                                                                    placeholder="Amount: 0.00"
+                                                             
+
+                                                                    <input type="text" class="form-control col-md-8" id="amount_"
                                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                     required>
-                                                                </div>
 
                                                            
                                                         </div>
@@ -371,30 +339,7 @@
 
 
                                                         </div>
-{{--  
-                                                        <div class="row">
-                                                            <div class="col-4"></div>
-                                                            <div class="col-8">
 
-                                                                <div class="form-group mb-0">
-                                                                    <input type="checkbox" class="custom-control-inputt"
-                                                                        id="invoice_check">
-                                                                    &nbsp; &nbsp; <label class="h6">Invoice Attachment ?
-                                                                        <span class="badge badge-primary "
-                                                                            style="cursor: pointer" data-toggle="modal"
-                                                                            data-target="#centermodal">View</span>
-                                                                    </label>
-                                                                    <span class="hide_invoice">
-                                                                        <br>
-                                                                        <input type="file" class="hide_invoice"
-                                                                            id="invoice_attachment" required>
-                                                                    </span>
-
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>  --}}
 
                                                         <div class="form-group row mb-3">
                                                             <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp; <span class="text-danger">*</span></b>
@@ -413,31 +358,7 @@
 
                                                         </div>
 
-                                                        {{--  <div class="row">
-                                                            <div class="col-4"></div>
-                                                            <div class="col-8">
-
-                                                                <div class="form-group">
-
-                                                                    <div class="custom-control custom-checkbox">
-                                                                        <input type="checkbox" class="custom-control-input"
-                                                                            id="customCheck1">
-                                                                        <label class="custom-control-label"
-                                                                            for="customCheck1">Schedule
-                                                                            Payments</label>
-                                                                    </div>
-                                                                    <legend></legend>
-
-                                                                    <input type="text" class="form-control"
-                                                                        id="schedule_payment_contraint_input">
-
-                                                                    <input type="date" class="form-control"
-                                                                        id="schedule_payment_date">
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>  --}}
+                                                      
 
 
                                                         <div class="form-group text-right yes_beneficiary">
@@ -558,9 +479,9 @@
                                             <div class="col-md-12">
                                                 {{-- <br><br><br> --}}
                                                 <div class="row">
-                                                    {{-- <div class="col-md-1"></div> --}}
+                                                    <div class="col-md-2"></div>
 
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-8">
 
                                                         <div class="form-group row mb-3">
                                                             <label class="col-md-4 text-primary"> Payer Account &nbsp; <span class="text-danger">*</span> </label>
@@ -735,7 +656,7 @@
 
                                                     </div>
 
-                                                    {{-- <div class="col-md-1"></div> --}}
+                                                    <div class="col-md-2"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     {{-- <label class="h6">Payer Account <span
@@ -1310,7 +1231,7 @@
                             if (from_account.trim() == '' || to_account.trim() == '') {
                                 toaster('Please select source and destination accounts', 'error')
                                 {{-- alert('Please select source and destination accounts') --}}
-                                $(this).val('')
+                                {{--  $(this).val('')  --}}
                                 return false;
                             } else {
                                 var transfer_amount = $(this).val()
