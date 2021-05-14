@@ -1,5 +1,19 @@
 @extends('layouts.master')
 
+@section('styles')
+
+<!-- third party css -->
+<link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
+rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
+type="text/css" />
+<!-- third party css end -->
+@endsection
+
 @section('content')
 
     <div class="">
@@ -265,9 +279,9 @@
                                             </div>
                                         </div>
                                             <div class="table-responsive table-bordered">
-                                                <table id="" class="table mb-0 ">
+                                                <table  class="table mb-0 loan_payment_schedule">
                                                     <thead>
-                                                        <tr class="bg-secondary text-white ">
+                                                        <tr class="bg-blue text-white ">
                                                             <td> <b> NO </b> </td>
                                                             <td> <b> REPAYMENT DATE </b> </td>
                                                             <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
@@ -275,15 +289,7 @@
                                                             <td> <b> TOTAL REPAYMENT AMOUNT </b> </td>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="casa_list_display">
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>22nd April 2020</td>
-                                                            <td>200</td>
-                                                            <td>20</td>
-                                                            <td>200</td>
-                                                        </tr>
-                                                    </tbody>
+
                                                 </table>
                                             </div>
                                             <!-- end table-responsive -->
@@ -308,10 +314,32 @@
         </div>
 
     </div>
+@endsection
 
+@section('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- third party js -->
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    </script>
+            {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
+            <!-- third party js ends -->
+
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script>
 
             function loan_product() {
@@ -466,6 +494,9 @@
                     let principal_repay_freq = $('#principal_repay_freq').val();
                     let interest_repay_freq = $('#interest_repay_freq').val();
 
+                    var table = $('.loan_payment_schedule').DataTable();
+                    var nodes = table.rows().nodes();
+
                     console.log('loan product: '+loan_product);
                     console.log('loan amount: '+loan_amount);
                     console.log('interest rate type: '+interest_rate_type);
@@ -501,7 +532,7 @@
                         },
                         success:
                         function(response){
-
+                            var data = response.data.loanSchedule
                             console.log(response)
 
                             if(response.responseCode == '000'){
@@ -517,6 +548,31 @@
                                 $(".appear-button").show();
 
 
+
+
+                                // // console.log(data); return false;
+                                // let data = data.loanSchedule;
+
+                                var count = count +1;
+                                $.each(data, function(index) {
+                                console.log(data[index]);
+
+                                // count++;
+
+
+                                model_data = data[index]
+
+                                table.row.add([
+                                    index+1,
+                                    data[index].repaymentDate,
+                                    data[index].principalRepayment,
+                                    data[index].interestRepayment,
+                                    data[index].totalRepayment
+
+
+                                ]).draw(false)
+
+                            })
                                 }
                                 else
                                 {
