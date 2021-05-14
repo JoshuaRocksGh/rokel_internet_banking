@@ -69,7 +69,7 @@ type="text/css" />
                                         <table class="table mb-0 table-striped table-bordered">
 
                                             <tbody>
-                                                <tr class="bg-secondary text-white">
+                                                <tr class="bg-blue text-white">
                                                     <td>Loan Request Form</td>
                                                 </tr>
 
@@ -168,7 +168,7 @@ type="text/css" />
                                     <table class="table mb-0 table-striped table-bordered">
 
                                         <tbody>
-                                            <tr class="bg-secondary text-white">
+                                            <tr class="bg-blue text-white">
                                                 <td>Loan Request Summary</td>
                                             </tr>
                                             <tr class="">

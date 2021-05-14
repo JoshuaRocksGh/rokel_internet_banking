@@ -62,7 +62,7 @@ class HomeController extends Controller
         // return $response->status();
         // $result = new ApiBaseResponse();
         // return $result->api_response($response);
-        return $data;die;
+
         return [
             'responseCode' => '000',
             'message' => 'spending analysis',

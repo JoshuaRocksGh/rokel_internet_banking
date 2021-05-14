@@ -83,8 +83,6 @@ class OwnAccountController extends Controller
         // 'schedule_payment_type' : schedule_payment_contraint_input ,
         // 'schedule_payment_date' : schedule_payment_date,
         // 'secPin' : pin
-
-            return $req;
         $data = [
 
             "amount" => $req->transfer_amount,

@@ -14,6 +14,7 @@
     <!-- third party css end -->
     <style>
 
+
     </style>
 @endsection
 
@@ -52,20 +53,9 @@
 
 
                     <div class="col-md-7 col-xl-7">
-                        <div class="card">
-                            <div class="card-body">
+                        <div class="">
+                            <div id="piechart_3d" style="width: 700px; height: 380px;">
 
-                                <h5 class="card-title font-16 mb-3">30 Day View Of Transactions</h5>
-
-                                <div class="col-md-6 col-xl-6">
-                                    {{-- <div class="widget-rounded-circle card-box"> --}}
-                                    <div class="row">
-
-                                        <canvas id="myChart" width="500" height="450"></canvas>
-
-                                        {{-- </div> <!-- end row--> --}}
-                                    </div> <!-- end widget-rounded-circle-->
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -463,14 +453,16 @@
 
                                                 <i class="mdi mdi-help-circle mr-1 text-primary"></i>
                                                 <span class="text-primary"> <b> I HAVE ( Current & Savings) </b></span>
-                                                <span class="text-primary float-right"> <b> 90,000,000.00
-                                                    </b></span>
+                                                <span class="text-primary float-right">
+                                                    <b class="i_have_currency" style="font-size:12px ">SLL</b>
+                                                    <b class="i_have_amount"></b>
+                                                </span>
 
                                             </h5>
                                         </div>
                                     </a>
 
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    <div id=" collapseOne" class="collapse show" aria-labelledby="headingOne"
                                         data-parent="#accordion">
                                         <div class="card-body i_have_display_no_data text-center"></div>
                                         <div class="card-body i_have_display">
@@ -487,8 +479,9 @@
                                                 <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
                                                     alt="" style="width: 180px; height:130px;">
                                                 <legend></legend>
-                                                <button class="btn btn-secondary" onclick="get_accounts()"> <i
-                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                                <button class="btn btn-secondary" onclick="get_accounts()">
+                                                    <i class="fe-rotate-ccw"></i> &nbsp; Please
+                                                    retry</button>
                                             </div>
 
 
@@ -526,6 +519,11 @@
 
                                                 <i class="mdi mdi-help-circle mr-1 text-primary"></i>
                                                 <span class="text-danger"> <b>I OWE (Loans)</b> </span>
+
+                                                <span class="text-primary float-right " style="text-align: right">
+                                                    <b style="font-size:12px ">SLL</b>
+                                                    <b> 0.00
+                                                    </b></span>
 
                                             </h5>
                                         </div>
@@ -582,7 +580,13 @@
                                             <h5 class="m-0">
 
                                                 <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                                <span class="text-success"> <b>INVESTMENTS</b> </span>
+                                                <span class="text-success"> <b>INVESTMENTS</b> <span class="text-danger">
+                                                        (NO INVESTMENT FOUND)</span> </span>
+
+                                                <span class="text-primary float-right " style="text-align: right">
+                                                    <b style="font-size:12px ">SLL</b>
+                                                    <b> 0.00
+                                                    </b></span>
 
                                             </h5>
                                         </div>
@@ -663,7 +667,7 @@
                                     </div>
                                     <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>Funds Transactions</span></h3>
+                                            <h3 class="mt-1 text-white"><span>Airtime Purchase</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->
@@ -680,7 +684,7 @@
                                     </div>
                                     <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span> &nbsp; All Payments</span></h3>
+                                            <h3 class="mt-1 text-white"><span> &nbsp; Other Bank Transfer</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->
@@ -924,49 +928,64 @@
         <!-- Tour init js-->
         {{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
 
-        <script>
-            var ctx = document.getElementById('myChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    // labels: ['Savings deposit', 'Electricity Payment', 'Water Bill Payment', 'Airtime Payment'],
-                    datasets: [{
-                        label: 'MY ACCOUNTS',
-                        data: [19, 12, 30, 100],
-                        backgroundColor: [
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            google.charts.load("current", {
+                packages: ["corechart"]
+            });
+            google.charts.setOnLoadCallback(drawChart);
 
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Expense', 'Amount'],
+                    ['Vendor payment', 100],
+                    ['Travel', 200],
+                    ['Petty Cash', 300],
+                    ['Salary', 900],
+                    ['Groceries', 50],
+                    ['Allowances', 80],
+                    ['Medical', 50],
+                    ['Insurance', 950],
+                    ['Tax', 95],
+                    ['Others', 40],
 
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
+                ]);
 
-
-                options: {
-                    plugins: {
-                        legend: {
-                            display: true,
-                            labels: {
-                                color: 'rgb(255, 99, 132)'
-                            }
+                var options = {
+                    title: 'SPENDING ANALYSIS',
+                    is3D: true,
+                    chartArea: {
+                        left: 10,
+                        width: '80%',
+                        height: '75%'
+                    },
+                    legend: {
+                        position: 'right',
+                        textStyle: {
+                            color: 'blue',
+                            fontSize: 16
                         }
                     }
-                }
-            });
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                chart.draw(data, options);
+            }
+
+        </script>
+
+        <script>
+            // function(e, legendItem, legend) {
+            //     const index = legendItem.datasetIndex;
+            //     const ci = legend.chart;
+            //     if (ci.isDatasetVisible(index)) {
+            //         ci.hide(index);
+            //         legendItem.hidden = true;
+            //     } else {
+            //         ci.show(index);
+            //         legendItem.hidden = false;
+            //     }
+            // }
 
             {{-- function formatToCurrency(amount) {
                 return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
@@ -1013,12 +1032,12 @@
                                 $.each(data, function(index) {
                                     $('.fixed_deposit_account').append(
                                         `<tr>
-                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${data[index].sourceAccount} </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${data[index].dealAmount} </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${data[index].tenure} </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${data[index].fixedInterestRate} </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td><b> ${rollover_ } </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                            </tr>`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${data[index].sourceAccount} </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${data[index].dealAmount} </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${data[index].tenure} </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${data[index].fixedInterestRate} </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${rollover_ } </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </tr>`
                                     )
 
 
@@ -1067,15 +1086,18 @@
                             $.each(data, function(index) {
                                 $('.casa_list_display').append(
                                     `<tr>
-                                                                                                                                                                                                                                                                                                                                                                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].accountDesc} </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].accountType}  </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].currency}  </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td>  <b> 0.00  </b> </td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                            </tr>`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].accountDesc} </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].accountType}  </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].currency}  </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td>  <b> 0.00  </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </tr>`
                                 )
+                            })
+                            $.each(data, function(index){
+                                $('.i_have_amount').text(${formatToCurrency(parseFloat(data[index].availableBalance))});
                             })
 
 
@@ -1131,13 +1153,13 @@
                             $.each(data, function(index) {
                                 $('.loans_display').append(
                                     `
-                                                                                                                                                                                                                                                                                                                                                                                            <tr>
-                                                                                                                                                                                                                                                                                                                                                                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].description} </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${data[index].isoCode}  </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                            </tr>`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].description} </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].isoCode}  </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </tr>`
                                 )
 
                             })
@@ -1267,17 +1289,17 @@
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(
                                             `
-                                                                                                                                                                                                                                                                                                                                                                                                        <tr>
-                                                                                                                                                                                                                                                                                                                                                                                                            <td style="zoom: 0.8;">
-                                                                                                                                                                                                                                                                                                                                                                                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                                                                                                                                                                                                                                                                                                                                                                                /
-                                                                                                                                                                                                                                                                                                                                                                                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <td style="zoom: 0.8;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    /
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                                                                                                                                                                                                                                                                                                                                                                                            </td>
-                                                                                                                                                                                                                                                                                                                                                                                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                                                                                                                                                                                                                                                                                                                                                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                                                                                                                                                                                                                                                                                                                                                                                        </tr>
-                                                                                                                                                                                                                                                                                                                                                                                                    `
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `
                                         );
                                     });
                                 } else if (rate_type == "Cross rate") {
@@ -1290,17 +1312,17 @@
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(
                                             `
-                                                                                                                                                                                                                                                                                                                                                                                                    <tr>
-                                                                                                                                                                                                                                                                                                                                                                                                        <td style="zoom: 0.8;">
-                                                                                                                                                                                                                                                                                                                                                                                                            <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                                                                                                                                                                                                                                                                                                                                                                            /
-                                                                                                                                                                                                                                                                                                                                                                                                            <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <td style="zoom: 0.8;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                                                                                                                                                                                                                                                                                                                                                                                        </td>
-                                                                                                                                                                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                                                                                                                                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                                                                                                                                                                                                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                                                                                                                                                                                                                `
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </tr>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `
                                         );
                                     });
                                 }
