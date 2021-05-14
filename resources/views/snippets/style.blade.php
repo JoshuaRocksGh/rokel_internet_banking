@@ -110,6 +110,7 @@
 
           .rtgs_card_right::before{
             position: absolute;
+            display: block;
             content: '';
             top: 30px;
             left: -25px;
