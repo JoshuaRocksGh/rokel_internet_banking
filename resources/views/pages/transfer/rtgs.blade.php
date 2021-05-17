@@ -242,7 +242,7 @@
                                 <div class=" col-md-7 rtgs_card m-2" id="transaction_form"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br><br>
-                                 
+
                                     <div class="row container">
                                         <div class="col-md-2"></div>
                                             <div class="col-md-3">
@@ -267,7 +267,7 @@
                                         <div class="row container">
                                             <div class="col-md-2"></div>
                                             <div class="col-md-8">
-                                               
+
                                                 {{-- <br><br><br> --}}
                                                 <div class="row">
                                                     {{-- <div class="col-md-1"></div> --}}
@@ -287,7 +287,23 @@
                                                             </select>
                                                         </div>
 
-                                                  
+                                                        <div class="form-group row">
+
+                                                            <b class="col-md-4 text-primary"> Transfer Type &nbsp; <span class="text-danger">*</span></b>
+
+                                                            <div class="col-md-8">
+                                                                <div class="radio radio-primary form-check-inline col-md-5">
+                                                                    <input type="radio" id="ach_beneficiary" value="ACH" name="transfer_beneficiary" checked>
+                                                                    <label for="ach_beneficiary">ACH</label>
+                                                                </div>
+                                                                <div class="radio radio-primary form-check-inline col-md-5">
+                                                                    <input type="radio" id="rtgs_beneficiary" value="RTGS" name="transfer_beneficiary">
+                                                                    <label for="rtgs_beneficiary">RTGS</label>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
 
 
                                                         <div class="form-group row mb-3" id="pay_from_account">
@@ -305,18 +321,18 @@
 
                                                         </div>
 
-                                                    
+
 
                                                         <div class="form-group row">
-                                                          
+
                                                             <b class="col-md-4 text-primary"> Amount &nbsp; <span class="text-danger">*</span></b>
-                                                             
+
 
                                                                     <input type="text" class="form-control col-md-8" id="amount_"
                                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                     required>
 
-                                                           
+
                                                         </div>
                                                         <div class="form-group row mb-3">
                                                             <b class=" col-md-4 text-primary">Expense Category &nbsp; <span class="text-danger">*</span></b>
@@ -350,7 +366,7 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary ">Future Payment &nbsp; 
+                                                            <b class="col-md-4 text-primary ">Future Payment &nbsp;
                                                                 {{--  <span class="text-danger">*</span>  --}}
                                                             </b>
 
@@ -358,7 +374,7 @@
 
                                                         </div>
 
-                                                      
+
 
 
                                                         <div class="form-group text-right yes_beneficiary">
@@ -496,11 +512,6 @@
                                                             </select>
                                                         </div>
 
-                                                      
-
-
-                                                    
-
                                                         <div class="form-group row mb-3">
                                                             <b class="col-md-4 text-primary">Receiver Name <span class="text-danger">*</span>  </b>
                                                             <input type="text" class="form-control col-md-8"
@@ -528,6 +539,23 @@
                                                                 placeholder="Account Number"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                 required>
+                                                        </div>
+
+                                                        <div class="form-group row">
+
+                                                            <b class="col-md-4 text-primary"> Transfer Type &nbsp; <span class="text-danger">*</span></b>
+
+                                                            <div class="col-md-8">
+                                                                <div class="radio radio-primary form-check-inline col-md-5">
+                                                                    <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked>
+                                                                    <label for="inlineRadio1">ACH</label>
+                                                                </div>
+                                                                <div class="radio radio-primary form-check-inline col-md-5">
+                                                                    <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                                                                    <label for="inlineRadio2">RTGS</label>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
 
                                                         <div class="form-group row mb-3">
@@ -765,7 +793,54 @@
                                 <div class=" col-md-4 rtgs_card_right m-2 d-none d-sm-block"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
-                                    <div class=" col-md-12 card card-body ">
+                                    <div class=" col-md-12 card card-body rtgs_transfer_summary">
+                                        {{-- <br><br> --}}
+                                        <div class="row">
+                                            <h6 class="col-md-5">Sender Name:</h6>
+                                            <span class="text-primary display_from_account_name col-md-7"></span>
+
+                                            <h6 class="col-md-5">Sender Account:</h6>
+                                            <span class="text-primary display_from_account_no col-md-7"></span>
+
+                                            <h6 class="col-md-5">Available Balance:</h6>
+                                            <span class="text-primary display_from_account_amount col-md-7"></span>
+
+                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_from_account_currency col-md-7"></span>
+                                        </div>
+
+                                        <hr>
+                                        <div class="row">
+                                            <h6 class="col-md-5">Receiver Name:</h6>
+                                            <span class="text-primary display_to_account_name col-md-7"></span>
+
+                                            <h6 class="col-md-5">Receiver Account:</h6>
+                                            <span class="text-primary display_to_account_no col-md-7"></span>
+
+                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_to_account_currency col-md-7"></span>
+                                            <br>
+                                            <button type="button" class="btn btn-warning btn-xs waves-effect waves-light beneficiary_deatils col-md-3 text-primary"
+                                                data-toggle="modal" data-target="#standard-modal">
+                                                More Info</button>
+                                        </div>
+                                        <hr>
+
+                                        <div class="row">
+                                            <h6 class="text-primary col-md-4">Transaction Fee:</h6>
+                                            <span class="text-danger text-bold col-md-8">0.10% of transfer amount</span>
+                                        </div>
+
+                                        <hr>
+                                        <div class="row">
+                                            <h6 class="text-primary col-md-4">Please Note:</h6>
+                                            <span class="text-danger col-md-8">RTGS Tranfers should be above (SLL
+                                                50,000,000.00)</span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class=" col-md-12 card card-body ach_transfer_summary">
                                         {{-- <br><br> --}}
                                         <div class="row">
                                             <h6 class="col-md-5">Sender Name:</h6>
@@ -792,18 +867,22 @@
                                             <h6 class="col-md-5">Account Currency:</h6>
                                             <span class="text-primary display_to_account_currency col-md-7"></span>
                                         </div>
+                                        <br>
+                                        <button type="button" class="btn btn-warning btn-xs waves-effect waves-light beneficiary_deatils col-md-3 text-primary"
+                                            data-toggle="modal" data-target="#standard-modal">
+                                            More Info</button>
                                         <hr>
 
                                         <div class="row">
                                             <h6 class="text-primary col-md-4">Transaction Fee:</h6>
-                                            <span class="text-danger text-bold col-md-8">0.10% of transfer amount</span>
+                                            <span class="text-danger text-bold col-md-8">0.08% of transfer amount</span>
                                         </div>
 
                                         <hr>
                                         <div class="row">
                                             <h6 class="text-primary col-md-4">Please Note:</h6>
-                                            <span class="text-danger col-md-8">RTGS Tranfers should be above (SLL
-                                                50,000,000.00)</span>
+                                            <span class="text-danger col-md-8">ACH Tranfers should be above (SLL
+                                                30,000,000.00)</span>
                                         </div>
 
                                     </div>
@@ -826,7 +905,7 @@
 
                             </div>
 
-                        
+
 
 
                         </div>
@@ -836,9 +915,70 @@
                     </div> <!-- end card-body -->
 
 
+                    <!-- Standard modal content -->
+                                        <div id="standard-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title" id="standard-modalLabel">Beneficiary Details</h3>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-md-12">
+                                                            <h4>Bank Details</h4>
 
 
-                </div> <!-- end col -->
+                                                            <div class="form-group row">
+                                                                <label class="col-md-5">Bank Name:</label>
+                                                                <span class="col-md-7" id="beneficiary_details_bank_name"></span>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-md-5">Bank Swift Code:</label>
+                                                                <span class="col-md-7" id="beneficiary_details_bank_swift_code"></span>
+                                                            </div>
+                                                            <hr>
+
+                                                            <h4>Account Details</h4>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-md-5">Account Name:</label>
+                                                                <span class="col-md-7" id="beneficiary_details_account_name"></span>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-md-5">Account Number:</label>
+                                                                <span class="col-md-7" id="beneficiary_details_account_number"></span>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-md-5">Account Currency:</label>
+                                                                <span class="col-md-7" id="beneficiary_details_account_currency"></span>
+                                                            </div>
+                                                            <hr>
+
+                                                            <h4>Beneficiary Details </h4>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-5">Beneficiary Name:</label>
+                                                                <span class="col-md-7" id="beneficiary_details_name"></span>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-5">Beneficiary Address:</label>
+                                                                <span class="col-md-7" id="beneficiary_details_address"></span>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-md-5">Beneficiary Telephone:</label>
+                                                                <span class="col-md-7" id="beneficiary_details_telephone"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                                        {{--  <button type="button" class="btn btn-primary">Save changes</button>  --}}
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
 
 
             </div>
@@ -976,6 +1116,9 @@
                     $(".success_gif").hide();
                     $(".onetime_beneficiary").hide()
                     {{-- $(".schedule_payment_summary").hide(); --}}
+                    $(".rtgs_transfer_summary").hide();
+                    $(".ach_transfer_summary").show();
+                    $(".beneficiary_deatils").hide();
 
                     setTimeout(function() {
                         from_account();
@@ -1077,7 +1220,7 @@
 
                         var type = $("input[type='radio']:checked").val();
 
-                        if (type == 'beneficiary') {
+                        if (type == '') {
                             $(".select_onetime").css("display", "none");
                             $(".select_beneficiary").css("display", "block");
 
@@ -1104,6 +1247,31 @@
                         }
 
                     });
+
+
+                    var beneficiary_type = $("input[type='radio']:checked").val();
+                    console.log(beneficiary_type);
+
+                    $(".radio").click(function(){
+                        var beneficiary_type = $("input[type='radio']:checked").val();
+
+                        if (beneficiary_type == "ACH"){
+                            console.log("ACH Transfer");
+                            $(".rtgs_transfer_summary").hide();
+                            $(".ach_transfer_summary").toggle(500);
+                        }
+
+                        if(beneficiary_type == "RTGS"){
+                            console.log("RTGS Transfer");
+                            $(".ach_transfer_summary").hide();
+                            $(".rtgs_transfer_summary").toggle(500);
+                        }
+                    })
+
+                    $("#to_account").change(function(){
+                        console.log("value changed");
+                        $(".beneficiary_deatils").show();
+                    })
 
 
 
@@ -1348,7 +1516,6 @@
                             $('#select_frequency_text').hide();
                         }
                     });
-
 
 
                     // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
