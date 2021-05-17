@@ -2,28 +2,51 @@
 
 @section('content')
 
-    <div></div>
-    <legend></legend>
+
+
+<div class="container-fluid">
+    <br>
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="text-primary">
+                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                SAME BANK BENEFICIARY
+            </h4>
+        </div>
+
+        <div class="col-md-6 text-right">
+            <h6>
+
+                <span class="flaot-right">
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank Beneficiary</b>
+
+
+                </span>
+
+            </h6>
+
+        </div>
+
+        <div class="col-md-12 ">
+            <hr class="text-primary" style="margin: 0px;">
+        </div>
+
+    </div>
+</div>
 
     <div class="row">
         <div class="col-12">
             <div class="">
+
                 <div class="card-body ">
                     <div class="row">
+
                         <div class="col-md-1"></div>
 
-                        <div class="col-md-10">
-
-                            <h3 class=" m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i
-                                    class="fe-arrow-left"></i> &nbsp; SAME BANK BENEFICIARY</h3>
-
-                            <p class="header-title mb-3">
-                                Please Select/Enter Details  <span class="header-title mb-3 float-right" id="marked_fields"><span class="text-danger text-bold">*</span>Marked Fields Are Mandatory!</span>
-                            </p>
-
-                            <hr>
-
-
+                        <div class="col-md-10 rtgs_card m-2"
+                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                            <br><br><br>
                             <div class="row" id="transaction_form">
 
 
@@ -176,6 +199,14 @@
 
 
                             </div>
+                        </div>
+
+                        <div class="col-md-10">
+
+
+
+
+
 
                             <div class="">
                                 <div class="">

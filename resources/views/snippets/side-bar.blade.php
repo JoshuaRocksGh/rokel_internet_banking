@@ -102,12 +102,12 @@
                             </li>
 
                             <li>
-                                <a href="{{ url('rtgs') }}">RTGS</a>
+                                <a href="{{ url('local-bank') }}">Local Bank</a>
                             </li>
 
-                            <li>
+                            {{--  <li>
                                 <a href="{{ url('ach') }}">ACH</a>
-                            </li>
+                            </li>  --}}
 
                             <li>
                                 <a href="{{ url('international-bank') }}">International Bank</a>
