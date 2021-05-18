@@ -422,7 +422,7 @@
                             toaster("valid account number entered", 'success', 10000);
                             $('.error_div').hide()
 
-                            $('#save_beneficiary_next').show()
+                            {{--  $('#save_beneficiary_next').show()  --}}
 
                         } else {
                             toaster("Invalid account number entered", 'error', 10000);
@@ -432,8 +432,8 @@
                             $('#account_name').val('')
                             $('#select_currency_i').val('')
                             $('#select_currency').val('')
-                            $('#save_beneficiary_next').hide()
-                            return false
+                            {{--  $('#save_beneficiary_next').hide()  --}}
+                            {{--  return false  --}}
 
                         }
                     }
@@ -491,7 +491,7 @@
 
             $(document).ready(function() {
 
-                $('#save_beneficiary_next').hide()
+                {{--  $('#save_beneficiary_next').hide()  --}}
                 $('.error_div').hide()
 
                 setTimeout(function() {

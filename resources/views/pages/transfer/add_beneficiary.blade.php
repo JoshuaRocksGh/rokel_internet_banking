@@ -9,48 +9,39 @@
 
         <div class="card-body ">
 
-            <div class="row">
-                <div class="col-md-12">
+            <div class="container-fluid">
+                <br>
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="text-primary">
+                            <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                            ADD BENEFICIARY
+                        </h4>
+                    </div>
 
-                    <!-- start page title -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="page-title-box">
-                                        <div class="page-title-left">
-                                            <ol class="breadcrumb m-0">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Transfer</a>
-                                                </li>
-                                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li> --}}
-                                                <li class="breadcrumb-item active text-danger">Add Beneficiary</li>
-                                            </ol>
-                                        </div>
+                    <div class="col-md-6 text-right">
+                        <h6>
 
-                                    </div>
-                                </div>
-                            </div>
+                            <span class="flaot-right">
+                                <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Add Beneficiary</b>
 
-                            <h1 class="header-title text-primary" style="font-size: 24px"><img
-                                src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                            ADD TRANSFER BENEFICIARY</h1>
 
-                        <p class="text-muted font-14 m-b-20">
+                            </span>
 
-                            {{-- Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the
-                                instantaneous transfer of money. --}}
-                            <hr style="border: 1px solid">
-                        </p>
-                    <h3 class="text-primary">Add Transfer Beneficiary</h3>
-                    <p class="text-muted font-14 m-b-20">
-                        <span>
-                            <b class="text-danger">Please Note: </b>
-                            <b>Add the persons you want to be transacting with using the links below.</b>
-                        </span>
-                    </p>
-                    <hr>
+                        </h6>
+
+                    </div>
+
+                    <div class="col-md-12 ">
+                        <hr class="text-primary" style="margin: 0px;">
+                    </div>
+
                 </div>
             </div>
-
-            <div class="row">
+            <br><br><br>
+            <div class="container row">
+                <div class="col-md-2"></div>
                 {{-- <div class="col-md-3" >
                     <div class="card text-white bg-warning text-xs-center">
                     <a href="{{ url('add-beneficiary/own-account-beneficiary') }}">
@@ -71,7 +62,7 @@
                 </div> <!-- end col --> --}}
 
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card text-white bg-danger text-xs-center">
                         <a href="{{ url('add-same-bank-beneficiary') }}">
                             <div class="card-body">
@@ -94,7 +85,7 @@
 
 
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card text-white bg-success text-xs-center">
                         <a href="{{ url('add-local-bank-beneficiary') }}">
                             <div class="card-body">
@@ -117,7 +108,7 @@
                 </div> <!-- end col -->
 
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card text-white bg-info text-xs-center">
                         <a href="{{ url('add-international-bank-beneficiary') }}">
                             <div class="card-body">
@@ -135,6 +126,7 @@
                     </div> <!-- end card-box-->
                 </div> <!-- end col -->
 
+                <div class="col-md-1"></div>
             </div>
         </div>
     </div>
