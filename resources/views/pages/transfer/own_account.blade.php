@@ -46,7 +46,7 @@
             <h6>
 
                 <span class="flaot-right">
-                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">RTGS</b>
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Own Account</b>
 
 
                 </span>

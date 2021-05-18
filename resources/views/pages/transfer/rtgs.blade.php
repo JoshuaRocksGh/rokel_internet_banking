@@ -296,8 +296,7 @@
 
                                                         <div class="form-group row">
 
-                                                            <b class="col-md-4 text-primary"> Transfer Type &nbsp; <span
-                                                                    class="text-danger">*</span></b>
+                                                            <b class="col-md-4 text-primary"><span class="text-danger">*</span> Transfer Type &nbsp; </b>
 
                                                             <div class="col-md-8">
                                                                 <div class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
@@ -318,8 +317,8 @@
 
                                                         <div class="form-group row mb-3" id="pay_from_account">
 
-                                                            <b class="col-md-4 text-primary">Beneficiary Account &nbsp;
-                                                                <span class="text-danger">*</span></b>
+                                                            <b class="col-md-4 text-primary"><span class="text-danger">*</span> Beneficiary Account &nbsp;
+                                                                </b>
 
                                                             <select class="form-control col-md-8" id="to_account" required>
                                                                 <option value="">Beneficiary Account</option>
@@ -336,8 +335,7 @@
 
                                                         <div class="form-group row">
 
-                                                            <b class="col-md-4 text-primary"> Amount &nbsp; <span
-                                                                    class="text-danger">*</span></b>
+                                                            <b class="col-md-4 text-primary"><span class="text-danger">*</span> Amount &nbsp; </b>
 
 
                                                             <input type="text" class="form-control col-md-8" id="amount_"
@@ -347,8 +345,7 @@
 
                                                         </div>
                                                         <div class="form-group row mb-3">
-                                                            <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
-                                                                    class="text-danger">*</span></b>
+                                                            <b class=" col-md-4 text-primary"><span class="text-danger">*</span> Expense Category &nbsp; </b>
                                                             {{-- <label for="form-group">Category</label> --}}
 
 
@@ -371,8 +368,8 @@
 
 
                                                         <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
-                                                                <span class="text-danger">*</span></b>
+                                                            <b class="col-md-4 text-primary "><span class="text-danger">*</span> Purpose of Transfer &nbsp;
+                                                                </b>
 
                                                             <input type="text" class="form-control col-md-8" id="purpose"
                                                                 placeholder="Enter purpose of transaction" required>
@@ -556,8 +553,8 @@
 
                                                         <div class="form-group row mb-3">
 
-                                                            <label class="col-md-4 text-primary"> Account Number <span
-                                                                    class="text-danger">*</span> </label>
+                                                            <b class="col-md-4 text-primary"> Account Number <span
+                                                                    class="text-danger">*</span> </b>
                                                             <input type="text" class="form-control col-md-8"
                                                                 id="onetime_beneficiary_account_number"
                                                                 placeholder="Account Number"
@@ -595,9 +592,9 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span class="text-danger">*</span>Select
+                                                            <b class="col-md-4 text-primary"><span class="text-danger">*</span>Select
                                                                 Currency
-                                                            </label>
+                                                            </b>
 
                                                             <select class="custom-select col-md-8"
                                                                 id="onetime_beneficiary_account_currency" required>
@@ -608,18 +605,18 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span class="text-danger">*</span>Enter
+                                                            <b class="col-md-4 text-primary"><span class="text-danger">*</span>Enter
                                                                 Telephone
                                                                 Number
-                                                            </label>
+                                                            </b>
                                                             <input type="text" class="form-control col-md-8"
                                                                 id="onetime_beneficiary_phone" placeholder="Phone" required>
                                                         </div>
 
                                                         <div class="form-group row">
                                                             {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
-                                                            <label class="col-md-4 "><span class="text-danger">*</span>Enter
-                                                                Amount </label>
+                                                            <b class="col-md-4 text-primary"><span class="text-danger">*</span>Enter
+                                                                Amount </b>
                                                             <input type="text" class="form-control col-md-8"
                                                                 id="onetime_amount" placeholder="Amount: 0.00"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
@@ -627,8 +624,8 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="h6 col-md-4 "><span
-                                                                    class="text-danger">*</span>Expense Category </label>
+                                                            <b class="col-md-4 text-primary"><span
+                                                                    class="text-danger">*</span>Expense Category </b>
                                                             {{-- <label for="form-group">Category</label> --}}
 
 
@@ -675,8 +672,8 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4 "><span
-                                                                    class="text-danger">*</span>Purpose of Transfer</label>
+                                                            <b class="col-md-4 text-primary"><span
+                                                                    class="text-danger">*</span>Purpose of Transfer</b>
 
                                                             <input type="text" class="form-control col-md-8"
                                                                 id="onetime_purpose"
@@ -877,8 +874,8 @@
 
                                     </div>
 
-                                    <div class=" col-md-12 card card-body ach_transfer_summary">
-                                        {{-- <br><br> --}}
+                                    {{--  <div class=" col-md-12 card card-body ach_transfer_summary">
+                                        <br><br>
                                         <div class="row">
                                             <h6 class="col-md-5">Account Description:</h6>
                                             <span class="text-primary display_from_account_name col-md-7"></span>
@@ -924,7 +921,7 @@
                                                 30,000,000.00)</span>
                                         </div>
 
-                                    </div>
+                                    </div>  --}}
                                 </div>
 
 
@@ -1179,7 +1176,7 @@
                         $(".success_gif").hide();
                         $(".onetime_beneficiary").hide()
                         {{-- $(".schedule_payment_summary").hide(); --}}
-                        $(".rtgs_transfer_summary").hide();
+                        {{--  $(".rtgs_transfer_summary").hide();  --}}
                         $(".ach_transfer_summary").show();
                         $(".beneficiary_details").hide();
 
@@ -1323,13 +1320,13 @@
 
                             if(beneficiary_type == "ACH"){
                                 console.log("ACH Transfer");
-                                $(".rtgs_transfer_summary").hide();
-                                $(".ach_transfer_summary").toggle(500);
+                                {{--  $(".rtgs_transfer_summary").hide();
+                                $(".ach_transfer_summary").toggle(500);  --}}
                             }
                             if(beneficiary_type == "RTGS"){
                                 console.log("RTGS Transfer");
-                                $(".ach_transfer_summary").hide();
-                                $(".rtgs_transfer_summary").toggle(500);
+                                {{--  $(".ach_transfer_summary").hide();
+                                $(".rtgs_transfer_summary").toggle(500);  --}}
                             }
 
                         })
