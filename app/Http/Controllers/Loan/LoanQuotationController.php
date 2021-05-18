@@ -7,10 +7,10 @@ use App\Http\classes\WEB\ApiBaseResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class LoanRequestController extends Controller
+class LoanQuotationController extends Controller
 {
     //
-    public function send_loan_request(Request $request)
+    public function send_loan_request_quote(Request $request)
     {
 
         $authToken = session()->get('userToken');
@@ -22,29 +22,29 @@ class LoanRequestController extends Controller
         $loanProduct = $request->loan_product;
         $loanAmount = $request->loan_amount;
         // $entrySource = $request->entrySource;
-        $loan_duration = $request->loan_duration;
-        $interest_rate_type= $request->interest_rate_type;
-        $principal_repay_freq = $request->principal_repay_freq;
-        $interest_repay_freq = $request->interest_repay_freq;
-        $loan_purpose = $request->loan_purpose;
-        $disbursement_account = $request->disbursement_account;
+        $tenureInMonths = $request->tenure_in_months;
+        $interestRateType = $request->interest_rate_type;
+        $principalRepayFreq = $request->principal_repay_freq;
+        $interestRepayFrequency = $request->interest_repay_freq;
         $data = [
 
             "amount" => $loanAmount,
             "authToken" => $authToken,
             "deviceIp" => "A",
             "entrySource" => "I",
-            "interestRepayFrequency" => $interest_repay_freq,
-            "interestType" => $interest_rate_type,
+            "interestRepayFrequency" => $interestRepayFrequency,
+            "interestType" => $interestRateType,
             "loanProduct" => $loanProduct,
-            "principalRepayFrequency" => $principal_repay_freq,
-            "tenure" => $loan_duration
+            "principalRepayFrequency" => $principalRepayFreq,
+            "tenure" => $tenureInMonths
 
         ];
 
-        // return $data;
-        $response = Http::post(env('API_BASE_URL') . "/loans/loanOrigination", $data);
 
+        //for debugging purposes
+        return $data;
+        $response = Http::post(env('API_BASE_URL') . "/loans/loanQuotation", $data);
+        // return $response;die();
         $result = new ApiBaseResponse();
 
         return $result->api_response($response);

@@ -48,6 +48,7 @@ use App\Http\Controllers\FixedDeposit\FixedDepositAccountController;
 use App\Http\Controllers\GeneralFunctions\FunctionsController;
 use App\Http\Controllers\Loan\LoanProductsController;
 use App\Http\Controllers\Loan\LoanRequestController;
+use App\Http\Controllers\Loan\LoanQuotationController;
 use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
@@ -460,7 +461,7 @@ Route::post('submit-stop-cheque-book-request', [StopChequeController::class, 'su
 Route::get('get-kyc-details', [KYCKycController::class, 'kyc_update'])->name('get-kyc-details');
 
 //route for atm card
-Route::get('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
+Route::post('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
 
 // ROUTE FOR ACCOUNT CREATION
 Route::post('savings-account-creation-api', [SavingsAccountCreationController::class, 'savings_account_creation'])->name('savings-account-creation-api');
@@ -483,6 +484,9 @@ Route::get('get-loan-products-api', [FunctionsController::class, 'get_Loan_produ
 
 //Route to send loan request details
 Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_request'])->name('loan-request-details');
+
+//Route to send loan request details of quotation
+Route::post('loan-quotation-details',[LoanQuotationController::class,'send_loan_request_quote'])->name('loan-quotation-details');
 
 //route to return interest rate types
 Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_Types'])->name('get-interest-types-api');

@@ -426,7 +426,7 @@
 
                             console.log(response)
 
-                            if (response.responseCode != '000') {
+                            if (response.responseCode == '000') {
                                 toaster(response.message, 'success', 20000)
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();

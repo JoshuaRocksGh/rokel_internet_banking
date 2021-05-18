@@ -290,7 +290,7 @@
                     <div class="collapse" id="sidebarLoans">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('loan-quotation') }}">Loan Information</a>
+                                <a href="{{ url('loan-quotation') }}">Loan Quotation</a>
                             </li>
                             <li>
                                 <a href="{{ url('loan-request') }}">Loan Request</a>
