@@ -28,6 +28,10 @@ class LocalBankController extends Controller
     {
         return view('pages.transfer.rtgs');
     }
+    public function rtgs_()
+    {
+        return view('pages.transfer.rtgs_new');
+    }
 
     public function transfer_to_other_bank_beneficiary_api(Request $req)
     {
