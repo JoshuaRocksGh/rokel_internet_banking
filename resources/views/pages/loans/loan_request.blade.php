@@ -566,8 +566,8 @@ type="text/css" />
 
                             console.log(response);
 
-                            if(response.responseCode != '000'){
-                                toaster("Loan request successful and is pending approval with application number as "+ response.message, 'success', 20000 )
+                            if(response.responseCode == '000'){
+                                toaster("Loan request successful. Approval pending with application number as "+ response.message, 'success', 20000 )
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
 
