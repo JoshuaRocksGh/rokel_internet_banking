@@ -63,7 +63,14 @@
                         </div> <!-- end col -->
 
                         <div class="col-md-7">
-                            <img src="{{ asset('assets/images/map.jpg') }}" class="img-fluid" alt="" >
+                            {{-- <img src="{{ asset('assets/images/map.jpg') }}" class="img-fluid" alt="" > --}}
+                            <div class="col-lg-6">
+                                <div class="card-box">
+                                    <h4 class="header-title mb-3">Overlays</h4>
+
+                                    <div id="gmaps-overlay" class="gmaps"></div>
+                                </div> <!-- end card-box-->
+                            </div>
                         </div> <!-- end col -->
                         {{-- <div id="gmaps-basic" class="gmaps"></div> --}}
                     </div>
@@ -96,77 +103,91 @@
 
 
 @section('scripts')
-    <script>
+<!-- Vendor js -->
+<script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
-        $("#branches_info_display").hide();
-        $("#branches_info_retry_btn").hide();
+<!-- google maps api -->
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyDsucrEdmswqYrw0f6ej3bf4M4suDeRgNA"></script>
 
-    function get_branches() {
-        $.ajax({
-            'type': 'GET',
-            'url': 'get-branches-api',
-            "datatype": "application/json",
-            success: function(response) {
-                console.log(response.data);
-                let data = response.data
+<!-- gmap js-->
+<script src="{{ asset('assets/libs/gmaps/gmaps.min.js') }}"></script>
 
-                if(response.responseCode == '000'){
+<!-- Init js-->
+<script src="{{ asset('assets/js/pages/google-maps.init.js') }}"></script>
 
-                    let data = response.data;
+<!-- App js -->
+<script src="{{ asset('assets/js/app.min.js') }}"></script>
+<script>
 
+    $("#branches_info_display").hide();
+    $("#branches_info_retry_btn").hide();
 
-                $.each(data, function(index) {
-                    $('#branches_display').append(`
+function get_branches() {
+    $.ajax({
+        'type': 'GET',
+        'url': 'get-branches-api',
+        "datatype": "application/json",
+        success: function(response) {
+            console.log(response.data);
+            let data = response.data
 
-                    <tr data-value='${data[index]}'>
-                        <td style="width: 10px;">
-                            <div class="avatar-sm rounded bg-soft-info">
-                                <i class="dripicons-map font-12 avatar-title text-info"></i>
-                            </div>
-                        </td>
-                        <td>
-                            <a href="ecommerce-product-detail.html"
-                                class="text-body font-weight-semibold">${data[index].branchDescription}</a>
-                            <small class="d-block">0302720885</small>
-                            <small class="d-block">8:00-16:00 Mon-Fri</small>
-                        </td>
+            if(response.responseCode == '000'){
 
-                    </tr>
-
-                    `)
+                let data = response.data;
 
 
-                });
+            $.each(data, function(index) {
+                $('#branches_display').append(`
+
+                <tr data-value='${data[index]}'>
+                    <td style="width: 10px;">
+                        <div class="avatar-sm rounded bg-soft-info">
+                            <i class="dripicons-map font-12 avatar-title text-info"></i>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="ecommerce-product-detail.html"
+                            class="text-body font-weight-semibold">${data[index].branchDescription}</a>
+                        <small class="d-block">0302720885</small>
+                        <small class="d-block">8:00-16:00 Mon-Fri</small>
+                    </td>
+
+                </tr>
+
+                `)
+
+
+            });
 
 
 
-                $("#branches_info_loader").hide();
-                $("#branches_info_retry_btn").hide();
-                $("#branches_info_display").show();
+            $("#branches_info_loader").hide();
+            $("#branches_info_retry_btn").hide();
+            $("#branches_info_display").show();
 
 
-                }else{
-                     $("#branches_info_loader").hide();
-                     $("#branches_info_display").hide();
-                    $("#branches_info_retry_btn").show();
-                }
+            }else{
+                    $("#branches_info_loader").hide();
+                    $("#branches_info_display").hide();
+                $("#branches_info_retry_btn").show();
+            }
 
 
-            },
+        },
 
-        })
-    };
-
-    $(document).ready(function() {
-
-        setTimeout(function() {
-            get_branches();
-        }, 2000);
     })
+};
+
+$(document).ready(function() {
+
+    setTimeout(function() {
+        get_branches();
+    }, 2000);
+})
 
 
 
-    </script>
+</script>
 
 @endsection
 

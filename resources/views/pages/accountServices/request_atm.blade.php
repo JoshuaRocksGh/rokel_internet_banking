@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
 
-                <div class=" card card-body col-md-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
+                <div class=" card card-body col-md-10">
 
                     <div class="row">
 
@@ -185,7 +185,7 @@
 
                         </div> <!-- end col -->
 
-                        <div class="col-md-5 text-center">
+                        <div class="col-md-7 text-center">
 
                             <p class="display-4 text-center text-success success-message "></p>
                         </div>
@@ -298,11 +298,14 @@
                 console.log(my_account);
             });
 
-            $("#statementType").change(function() {
-                var statementType = $("#statementType").val();
-                $(".display_type_of_statement").text(statementType);
-                console.log(statementType);
+            $("#cardType").change(function() {
+                var cardType = $("#cardType").val();
+                var optionText = $("#cardType option:selected").text();
+                $(".display_type_of_card").text("Card Type: "+ optionText);
+                console.log("Card Type: "+ optionText);
             })
+
+
 
             $("#pUBranch").change(function() {
                 $('.display_pick_up_branch').text("");
@@ -318,17 +321,17 @@
 
             })
 
-            $("#startDate").change(function() {
-                var startDate = $("#startDate").val();
-                $(".display_trans_startDate").text("Start Date: " + startDate);
-                console.log(startDate);
-            })
+            // $("#startDate").change(function() {
+            //     var startDate = $("#startDate").val();
+            //     $(".display_trans_startDate").text("Start Date: " + startDate);
+            //     console.log(startDate);
+            // })
 
-            $("#endDate").change(function() {
-                var endDate = $("#endDate").val();
-                $(".display_trans_endDate").text("End Date: " + endDate);
-                console.log(endDate);
-            })
+            // $("#endDate").change(function() {
+            //     var endDate = $("#endDate").val();
+            //     $(".display_trans_endDate").text("End Date: " + endDate);
+            //     console.log(endDate);
+            // })
 
             // $("#pin").keyup(function(){
             //     var pin = $("#pin").val();
@@ -347,16 +350,15 @@
 
                 //statement request details/get values.
                 let my_account = $('#my_account').val();
-                let type_of_statement = $('#statementType').val();
+                let type_of_card = $('#cardType').val();
                 let pUBranch = $('#pUBranch').val();
-                let transStartDate = $('#startDate').val();
-                let transEndDate = $('#endDate').val();
+                // let transStartDate = $('#startDate').val();
+                // let transEndDate = $('#endDate').val();
                 let pin = $('#pin').val();
                 console.log(pin);
 
 
-                if (pUBranch == "" || my_account == "" || type_of_statement == "" || transStartDate == "" ||
-                    transEndDate == "" || pin == "") {
+                if (pUBranch == "" || my_account == "" || type_of_card == "" || pin == "") {
                     toaster("Please fill all required fields", "error", 6000);
                 } else {
 
@@ -368,6 +370,7 @@
 
                     let branch_info = pUBranch.split("~");
                     let branchCode = branch_info[0];
+                    let type_of_card = $('#cardType').val();
 
                     my_account_info = my_account.split("~");
                     let accountNumber = my_account_info[2].trim();
@@ -377,14 +380,12 @@
                     $.ajax({
 
                         'type': 'POST',
-                        'url': 'statement-request-api',
+                        'url': 'atm-card-request-api',
                         "datatype": "application/json",
                         'data': {
                             'account_no': accountNumber.trim(),
-                            'type_of_statement': type_of_statement,
+                            'type_of_card': type_of_card,
                             'pick_up_branch': branchCode.trim(),
-                            'transStartDate': transStartDate.trim(),
-                            'transEndDate': transEndDate.trim(),
                             'pin': pin
                         },
                         headers: {
@@ -394,7 +395,7 @@
 
                             console.log(response)
 
-                            if (response.responseCode != '000') {
+                            if (response.responseCode == '000') {
                                 toaster(response.message, 'success', 20000)
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
@@ -403,6 +404,9 @@
                             } else {
 
                                 toaster(response.message, 'error', 9000);
+                                $('#spinner').hide()
+                                $('#spinner-text').hide()
+                                $(".submit-text").show()
 
 
                             }

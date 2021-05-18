@@ -1,8 +1,54 @@
 @extends('layouts.master')
 
+@section('styles')
+
+<!-- third party css -->
+<link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
+rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+type="text/css" />
+<link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
+type="text/css" />
+<!-- third party css end -->
+@endsection
+
 @section('content')
 
-    <div>
+    <div class="">
+
+        <div class="container-fluid">
+            <br>
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-primary">
+                        <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                        LOAN QUOTATION
+
+                    </h4>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <h6>
+
+                        <span class="flaot-right">
+                            <b class="text-primary"> LOANS </b> &nbsp; > &nbsp; <b class="text-danger">LOAN REQUEST</b>
+
+
+                        </span>
+
+                    </h6>
+
+                </div>
+
+                <div class="col-md-12 ">
+                    <hr class="text-primary" style="margin: 0px;">
+                </div>
+
+            </div>
+        </div>
         <legend></legend>
 
         <div class="row">
@@ -11,15 +57,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>
 
-                    <div class=" card card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">REQUEST A LOAN</h2>
-
-                            <p class="text-muted font-14 m-b-20">
-                                You can request for your loan now.
-                            </p>
-
-                            <hr>
-
+                    <div class=" card card-body col-md-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
 
                             <div class="row" >
 
@@ -28,11 +66,11 @@
 
                                     <div class="">
 
-                                        <table class="table mb-0 table-striped table-bordered ">
+                                        <table class="table mb-0 table-striped table-bordered">
 
                                             <tbody>
-                                                <tr class="bg-secondary text-white">
-                                                    <td>Loan Request</td>
+                                                <tr class="bg-blue text-white">
+                                                    <td>Loan Quotation Form</td>
                                                 </tr>
 
                                                 <tr>
@@ -53,9 +91,6 @@
                                                         <div class="col-6">
                                                             <select class="custom-select" id="loan_product" required>
                                                                     <option value="">---Select Loan Product---</option>
-                                                                    {{-- <option value="Car Loan">Car Loan</option>
-                                                                    <option value="Home Equity Loan">Home Equity Loan</option>
-                                                                    <option value="Business Loan">Business Loan</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -83,10 +118,6 @@
                                                         <div class="col-6">
                                                             <select class="custom-select" id="interest_rate_type" required>
                                                                 <option value="">---Select Interest Rate Type---</option>
-                                                                {{-- <option value="1">STRAIGHT LINE</option>
-                                                                <option value="2">REDUCING BALANCE</option>
-                                                                <option value="3">AMORTIZATION METHOD</option>
-                                                                <option value="4">REDUCING (FIXED INST'L)</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -97,10 +128,6 @@
                                                         <div class="col-6">
                                                             <select class="custom-select loan_frequencies" id="principal_repay_freq" required>
                                                                 <option value="">-Select Principal Repay Frequency-</option>
-                                                                {{-- <option value="WEEKLY">WEEKLY</option>
-                                                                <option value="BI-WEEKLY">BI-WEEKLY</option>
-                                                                <option value="MONTHLY">MONTHLY</option>
-                                                                <option value="QUARTERLY">QUARTERLY</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -111,10 +138,6 @@
                                                         <div class="col-6">
                                                             <select class="custom-select loan_frequencies" id="interest_repay_freq" required>
                                                                 <option value="">-Select Principal Repay Frequency-</option>
-                                                                {{-- <option value="WEEKLY">WEEKLY</option>
-                                                                <option value="BI-WEEKLY">BI-WEEKLY</option>
-                                                                <option value="MONTHLY">MONTHLY</option>
-                                                                <option value="QUARTERLY">QUARTERLY</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -145,8 +168,8 @@
                                     <table class="table mb-0 table-striped table-bordered">
 
                                         <tbody>
-                                            <tr class="bg-secondary text-white">
-                                                <td>Loan Request Summary</td>
+                                            <tr class="bg-blue text-white">
+                                                <td>Loan Quotation Summary</td>
                                             </tr>
                                             <tr class="">
 
@@ -220,9 +243,10 @@
                                     <div class="form-group row">
                                         <div class="col-8 offset-4 text-right">
                                             <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_loan_request">
-                                                Submit
+                                                <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
+                                                <span id="spinner-text">Loading...</span>
+                                                &nbsp; <span class="submit-text">Submit</span>&nbsp;
                                             </button>
-
                                         </div>
                                     </div>
 
@@ -255,9 +279,9 @@
                                             </div>
                                         </div>
                                             <div class="table-responsive table-bordered">
-                                                <table id="datatable-buttons" class="table mb-0 loan_quotation_repayment" >
+                                                <table  class="table mb-0 loan_payment_schedule">
                                                     <thead>
-                                                        <tr class="bg-secondary text-white ">
+                                                        <tr class="bg-blue text-white ">
                                                             <td> <b> NO </b> </td>
                                                             <td> <b> REPAYMENT DATE </b> </td>
                                                             <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
@@ -265,15 +289,7 @@
                                                             <td> <b> TOTAL REPAYMENT AMOUNT </b> </td>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="casa_list_display">
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>22nd April 2020</td>
-                                                            <td>200</td>
-                                                            <td>20</td>
-                                                            <td>200</td>
-                                                        </tr>
-                                                    </tbody>
+
                                                 </table>
                                             </div>
                                             <!-- end table-responsive -->
@@ -298,34 +314,32 @@
         </div>
 
     </div>
-
 @endsection
 
-
 @section('scripts')
-
-     <!-- third party js -->
-     <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-     <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-     <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-     <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-     </script>
-     {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
- <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
- <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
- <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
- <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
- <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
- <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
- <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
- <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-     <!-- third party js ends -->
-
-     <!-- Datatables init -->
-     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- third party js -->
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    </script>
+            {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
+            <!-- third party js ends -->
+
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script>
 
             function loan_product() {
@@ -413,10 +427,8 @@
 
         $(document).ready(function(){
 
-
-            var table = $('.loan_quotation_repayment').DataTable();
-            var nodes = table.rows().nodes();
-
+            $("#spinner-text").hide();
+            $("#spinner").hide();
             setTimeout(function(){
                 loan_product()
                 loan_frequencies()
@@ -482,6 +494,9 @@
                     let principal_repay_freq = $('#principal_repay_freq').val();
                     let interest_repay_freq = $('#interest_repay_freq').val();
 
+                    var table = $('.loan_payment_schedule').DataTable();
+                    var nodes = table.rows().nodes();
+
                     console.log('loan product: '+loan_product);
                     console.log('loan amount: '+loan_amount);
                     console.log('interest rate type: '+interest_rate_type);
@@ -493,12 +508,16 @@
                         toaster("Please fill all required fields","error", 6000);
                     }
                     else{
+                    $(".submit-text").hide();
+                    $(".spinner-border").show();
+                    $("#spinner-text").show();
+
 
 
                     $.ajax({
 
                         'type' : 'POST',
-                        'url' : 'loan-request-details',
+                        'url' : 'loan-quotation-details',
                         "datatype" : "application/json",
                         'data' : {
                             'loan_product' : loan_product,
@@ -513,53 +532,55 @@
                         },
                         success:
                         function(response){
-
+                            var data = response.data.loanSchedule
                             console.log(response)
 
-                            if(response.responseCode != '000'){
+                            if(response.responseCode == '000'){
                                 toaster(response.message, 'success', 20000 )
-
-
-            $.each(data, function(index) {
-                            console.log(data[index])
-
-
-
-                            // table.row.add([
-                            //     batch,
-                            //     data[index].REF_NO,
-                            //     data[index].ACCOUNT_NO,
-                            //     data[index].TOTAL_AMOUNT,
-                            //     bank_type,
-                            //     data[index].VALUE_DATE,
-                            //     status,
-                            //     action
-
-
-                            // ]).draw(false)
-
-                        })
-
-
-
-
-
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
                                 // $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />');
                                 // $(".success-message").hide(30000);
                                 $("#loan_request_detail_div").show();
                                 $(".success-message").show();
-                                $("#loan_request_detail_div").hide(20000);
-                                $(".success-message").hide(20000);
+                                $("#loan_request_detail_div").hide();
+                                $(".success-message").hide();
                                 $(".appear-button").show();
 
 
+
+
+                                // // console.log(data); return false;
+                                // let data = data.loanSchedule;
+
+                                var count = count +1;
+                                $.each(data, function(index) {
+                                console.log(data[index]);
+
+                                // count++;
+
+
+                                model_data = data[index]
+
+                                table.row.add([
+                                    index+1,
+                                    data[index].repaymentDate,
+                                    data[index].principalRepayment,
+                                    data[index].interestRepayment,
+                                    data[index].totalRepayment
+
+
+                                ]).draw(false)
+
+                            })
                                 }
                                 else
                                 {
 
                                 toaster(response.message, 'error', 9000 );
+                                toaster('resubmit your loan request','error', 9000);
+                                $('#spinner').hide()
+                                $('#spinner-text').hide()
 
                                 }
                         },

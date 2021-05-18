@@ -245,11 +245,11 @@
                                     <br><br><br>
 
                                     <div class="row container">
-                                        <div class="col-md-2"></div>
+                                        <div class="col-md-1"></div>
                                         <div class="col-md-3">
                                             <label class="text-primary"> <b>Beneficiary Type</b> </label>
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-6">
 
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input"
@@ -262,6 +262,7 @@
                                                     class="text-white">Create
                                                     Beneficiary</a>
                                             </span>
+                                            <br>
                                         </div>
 
                                     </div>
@@ -270,8 +271,8 @@
                                         aria-autocomplete="none">
                                         @csrf
                                         <div class="row container">
-                                            <div class="col-md-2"></div>
-                                            <div class="col-md-8">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-9">
 
                                                 {{-- <br><br><br> --}}
                                                 <div class="row">
@@ -280,7 +281,8 @@
                                                     <div class="col-md-12">
 
                                                         <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary"><span class="text-danger">*</span> Payer Account &nbsp;  </b>
+                                                            <b class="col-md-4 text-primary">My Account &nbsp; <span
+                                                                    class="text-danger">*</span> </b>
 
 
                                                             <select class="form-control col-md-8 " id="from_account"
@@ -384,9 +386,6 @@
 
                                                         </div>
 
-
-
-
                                                         <div class="form-group text-right yes_beneficiary">
                                                             <button class="btn btn-primary btn-rounded" type="button"
                                                                 id="next_button">
@@ -394,12 +393,25 @@
                                                             {{-- <button type="button" id="hide_button">hide</button> --}}
                                                         </div>
 
+                                                        <div class="form-group row mb-3 no_beneficiary">
+                                                            <b class="col-md-4 text-primary ">
+                                                                {{-- <span class="text-danger">*</span> --}}
+                                                            </b>
+                                                                <div class="alert alert-warning form-control col-md-8" role="alert">
+                                                                    <i class="mdi mdi-alert-outline mr-2"></i> <strong>warning</strong> No
+                                                                    beneficiary
+                                                                    <legend></legend>
+                                                                </div>
+
+                                                        </div>
+
+
                                                     </div>
 
                                                     {{-- <div class="col-md-1"></div> --}}
                                                 </div>
                                                 <div class="form-group">
-                                                    {{-- <label class="h6">Payer Account <span
+                                                    {{-- <label class="h6">My Account <span
                                                             class="text-danger">*</span></label>
 
 
@@ -483,12 +495,6 @@
 
 
 
-                                        <div class="form-group no_beneficiary">
-                                            <div class="alert alert-warning" role="alert">
-                                                <i class="mdi mdi-alert-outline mr-2"></i> <strong>warning</strong> No
-                                                beneficiary found
-                                            </div>
-                                        </div>
 
 
 
@@ -511,8 +517,8 @@
                                                     <div class="col-md-8">
 
                                                         <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary"> Payer Account &nbsp; <span
-                                                                    class="text-danger">*</span> </b>
+                                                            <label class="col-md-4 text-primary"> My Account &nbsp; <span
+                                                                    class="text-danger">*</span> </label>
 
 
                                                             <select class="form-control col-md-8 " id="onetime_from_account"
@@ -714,7 +720,7 @@
                                                     <div class="col-md-2"></div>
                                                 </div>
                                                 <div class="form-group">
-                                                    {{-- <label class="h6">Payer Account <span
+                                                    {{-- <label class="h6">My Account <span
                                                             class="text-danger">*</span></label>
 
 
@@ -848,7 +854,7 @@
                                             <span class="text-primary display_to_account_currency col-md-7"></span>
                                             <br>
                                             <button type="button"
-                                                class="btn btn-warning btn-xs waves-effect waves-light beneficiary_deatils col-md-3 text-primary"
+                                                class="btn btn-warning btn-xs waves-effect waves-light beneficiary_details col-md-3 text-primary"
                                                 data-toggle="modal" data-target="#standard-modal">
                                                 More Info</button>
                                         </div>
@@ -871,17 +877,18 @@
                                     {{--  <div class=" col-md-12 card card-body ach_transfer_summary">
                                         <br><br>
                                         <div class="row">
-                                            <h6 class="col-md-5">Sender Name:</h6>
+                                            <h6 class="col-md-5">Account Description:</h6>
                                             <span class="text-primary display_from_account_name col-md-7"></span>
 
-                                            <h6 class="col-md-5">Sender Account:</h6>
+                                            <h6 class="col-md-5">Account Number:</h6>
                                             <span class="text-primary display_from_account_no col-md-7"></span>
 
                                             <h6 class="col-md-5">Available Balance:</h6>
+
                                             <span class="text-primary display_from_account_amount col-md-7"></span>
 
-                                            <h6 class="col-md-5">Account Currency:</h6>
-                                            <span class="text-primary display_from_account_currency col-md-7"></span>
+                                            {{--  <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_from_account_currency col-md-7"></span>  --}}
                                         </div>
 
                                         <hr>
@@ -897,7 +904,7 @@
                                         </div>
                                         <br>
                                         <button type="button"
-                                            class="btn btn-warning btn-xs waves-effect waves-light beneficiary_deatils col-md-3 text-primary"
+                                            class="btn btn-warning btn-xs waves-effect waves-light beneficiary_details col-md-3 text-primary"
                                             data-toggle="modal" data-target="#standard-modal">
                                             More Info</button>
                                         <hr>
@@ -959,22 +966,39 @@
 
 
                                         <div class="form-group row">
-                                            <label class="col-md-5">Bank Name:</label>
+                                            <label class="col-md-5">Name:</label>
                                             <span class="col-md-7" id="beneficiary_details_bank_name"></span>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-5">Bank Swift Code:</label>
+                                            <label class="col-md-5">Swift Code:</label>
                                             <span class="col-md-7" id="beneficiary_details_bank_swift_code"></span>
                                         </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-5">Country:</label>
+                                            <span class="col-md-7" id="beneficiary_details_bank_country"></span>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-5">City:</label>
+                                            <span class="col-md-7" id="beneficiary_details_bank_city"></span>
+                                        </div>
+
+
+                                        <div class="form-group row">
+                                            <label class="col-md-5">Branch:</label>
+                                            <span class="col-md-7" id="beneficiary_details_bank_branch"></span>
+                                        </div>
+
                                         <hr>
 
                                         <h4 class="text-primary">Account Details</h4>
 
-                                        <div class="form-group row">
+                                        {{--  <div class="form-group row">
                                             <label class="col-md-5">Account Name:</label>
                                             <span class="col-md-7" id="beneficiary_details_account_name"></span>
-                                        </div>
+                                        </div>  --}}
 
                                         <div class="form-group row">
                                             <label class="col-md-5">Account Number:</label>
@@ -982,23 +1006,27 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-5">Account Currency:</label>
+                                            <label class="col-md-5">Currency:</label>
                                             <span class="col-md-7" id="beneficiary_details_account_currency"></span>
                                         </div>
                                         <hr>
 
                                         <h4 class="text-primary">Beneficiary Details </h4>
                                         <div class="form-group row">
-                                            <label class="col-md-5">Beneficiary Name:</label>
+                                            <label class="col-md-5">Nickname:</label>
                                             <span class="col-md-7" id="beneficiary_details_name"></span>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-5">Beneficiary Address:</label>
+                                            <label class="col-md-5">Address:</label>
                                             <span class="col-md-7" id="beneficiary_details_address"></span>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-5">Beneficiary Telephone:</label>
+                                            <label class="col-md-5">Telephone:</label>
                                             <span class="col-md-7" id="beneficiary_details_telephone"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-5">Email:</label>
+                                            <span class="col-md-7" id="beneficiary_details_email"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -1085,9 +1113,9 @@
                                                 index].accountNumber + '~' + data[
                                                 index].currency + '~' + data[index]
                                             .availableBalance
-                                    }).text(data[index].accountNumber + '~' + data[index]
+                                    }).text(data[index].accountNumber + ' - ' + data[index]
                                         .currency +
-                                        '~' + data[index].availableBalance));
+                                        ' - ' + formatToCurrency(Number(data[index].availableBalance))));
                                     //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
                                 });
@@ -1114,13 +1142,13 @@
                                         $('#to_account').append($('<option>', {
                                             value: data[index].BANK_NAME + '~' +
                                                 data[
-                                                    index].NICKNAME + '~' + data[
+                                                    index].NICKNAME.toUpperCase() + '~' + data[
                                                     index]
                                                 .BEN_ACCOUNT + '~' + data[index]
-                                                .BEN_ACCOUNT_CURRENCY + '~' + data[index]
-                                        }).text(data[index].NICKNAME + '~' + data[index]
-                                            .BANK_NAME +
-                                            '~' + data[index].BEN_ACCOUNT + '~' + data[index]
+                                                .BEN_ACCOUNT_CURRENCY + '~' + JSON.stringify(data[index])
+                                        }).text(data[index].NICKNAME.toUpperCase() + ' - ' + data[index]
+                                            .BANK_NAME.toUpperCase() +
+                                            ' - ' + data[index].BEN_ACCOUNT + ' - ' + data[index]
                                             .BEN_ACCOUNT_CURRENCY));
 
                                     });
@@ -1150,7 +1178,7 @@
                         {{-- $(".schedule_payment_summary").hide(); --}}
                         {{--  $(".rtgs_transfer_summary").hide();  --}}
                         $(".ach_transfer_summary").show();
-                        $(".beneficiary_deatils").hide();
+                        $(".beneficiary_details").hide();
 
                         setTimeout(function() {
                             from_account();
@@ -1350,11 +1378,11 @@
                         })  --}}
 
 
-
+{{--
                         $("#to_account").change(function() {
                             console.log("value changed");
-                            $(".beneficiary_deatils").show();
-                        })
+                            $(".beneficiary_details").show();
+                        })  --}}
 
 
 
@@ -1389,7 +1417,21 @@
                         var amt = 0
                         $("#from_account").change(function() {
                             var from_account = $(this).val()
-                            {{-- alert(from_account) --}}
+                             var from_account_info = from_account.split("~")
+                            // set summary values for display
+                                $(".display_from_account_type").text(from_account_info[0].trim())
+                                $(".display_from_account_name").text(from_account_info[1].trim())
+                                $(".display_from_account_no").text(from_account_info[2].trim())
+                               // $(".display_from_account_currency").text(formatToCurrency(Number(from_account_info[4].trim())) + ' ' + from_account_info[3].trim())
+                                $(".display_from_account_amount").text(from_account_info[3].trim() + ' ' +  formatToCurrency(Number(from_account_info[4].trim())))
+                                $("#basic-addon1").text(from_account_info[3].trim())
+
+                                $(".display_currency").text(from_account_info[3]
+                                .trim()) // set summary currency
+
+                                amt = from_account_info[4].trim()
+                            {{--  alert(from_account)  --}}
+                            return false;
                             if (from_account.trim() == '' || from_account.trim() == undefined) {
                                 {{-- alert('money') --}}
                                 $(".from_account_display_info").hide()
@@ -1443,8 +1485,10 @@
                             if (to_account.trim() == '' || to_account.trim() == undefined) {
 
                                 $(".to_account_display_info").hide()
+                                $(".beneficiary_details").hide();
 
                             } else {
+                                $(".beneficiary_details").show();
                                 to_account_info = to_account.split("~")
 
                                 console.log()
@@ -1464,16 +1508,22 @@
                                 $(".display_to_account_no").text(to_account_info[2].trim())
                                 $(".display_to_account_currency").text(to_account_info[3].trim())
 
-                                {{-- console.log( JSON.parse(to_account_info[4].trim())) --}}
+                                console.log( JSON.parse(to_account_info[4].trim()))
+                                let bene_details = JSON.parse(to_account_info[4].trim());
+                                // return false;
 
-                                $("#beneficiary_details_bank_name").text(to_account_info[0].trim());
-                                {{-- $("#beneficiary_details_bank_swift_code").text(to_account_info[0].trim()); --}}
-                                $("#beneficiary_details_account_name").text(to_account_info[0].trim());
-                                $("#beneficiary_details_account_number").text(to_account_info[0].trim());
-                                $("#beneficiary_details_account_currency").text(to_account_info[0].trim());
-                                $("#beneficiary_details_name").text(to_account_info[0].trim());
-                                $("#beneficiary_details_address").text(to_account_info[0].trim());
-                                $("#beneficiary_details_telephone").text(to_account_info[0].trim());
+                                $("#beneficiary_details_bank_name").text(bene_details.BANK_NAME ?? " ~ ");
+                                $("#beneficiary_details_bank_swift_code").text(bene_details.BANK_SWIFT_CODE ?? " ~ ");
+                                $("#beneficiary_details_bank_country").text(bene_details.BANK_COUNTRY ?? " ~ ");
+                                $("#beneficiary_details_bank_city").text(bene_details.BANK_CITY ?? " ~ ");
+                                $("#beneficiary_details_bank_branch").text(bene_details.BANK_BRANCH ?? " ~ ");
+                                {{--  $("#beneficiary_details_account_name").text(bene_details.NICKNAME  ?? " ~ ");  --}}
+                                $("#beneficiary_details_account_number").text(bene_details.BEN_ACCOUNT  ?? " ~ ");
+                                $("#beneficiary_details_account_currency").text(bene_details.BEN_ACCOUNT_CURRENCY  ?? " ~ ");
+                                $("#beneficiary_details_name").text(bene_details.NICKNAME  ?? " ~ ");
+                                $("#beneficiary_details_address").text(bene_details.ADDRESS_1 ?? " ~ ");
+                                $("#beneficiary_details_telephone").text(bene_details.PHONE ?? " ~ ");
+                                $("#beneficiary_details_email").text(bene_details.EMAIL ?? " ~ ");
 
 
                                 $(".to_account_display_info").show()

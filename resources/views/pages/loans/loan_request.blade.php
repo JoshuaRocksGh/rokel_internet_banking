@@ -57,12 +57,12 @@ type="text/css" />
                 <div class="row">
                     <div class="col-md-1"></div>
 
-                    <div class=" card card-body col-md-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
+                    <div class=" card card-body col-md-10" >
 
                             <div class="row" >
 
 
-                                <div class="col-md-7 disappear-after-success" id="loan_request_div">
+                                <div class="col-md-7 disappear-after-success" id="loan_request_div" >
 
                                     <div class="">
 
@@ -99,16 +99,7 @@ type="text/css" />
                                                             Amount
                                                             <span class="text-danger">*</span></label>
                                                         <div class="col-6">
-                                                            <input type="text" class="form-control" id="loan_amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="tenure_in_months" class="col-6 col-form-label">
-                                                            <label>Tenure in months:</label>
-                                                            <span class="text-danger">*</span></label>
-                                                        <div class="col-6">
-                                                            <input type="number" class="form-control" id="tenure_in_months" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+                                                            <input type="text" class="form-control" id="loan_amount" placeholder="Enter Amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -141,19 +132,35 @@ type="text/css" />
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <div for="interestRatePerMonthOrAnnum" class="col-6 form-label">
-                                                            <label>Interest Rate</label>
-                                                            <span class="text-danger">*</span>
+                                                    {{-- <div class="form-group row">
+                                                        <label for="inputEmail3" class="col-6 col-form-label">Disbursement Account<span
+                                                                class="text-danger">*</span></label>
+                                                        <div class="col-6">
+                                                            <select class="custom-select" id="my_account" required>
+                                                                <option value="">Select Disbursement Account</option>
+                                                            </select>
                                                         </div>
-                                                        <div class="btn-group col-6">
-                                                            <input type="text" id="interest_rate_per_month" class="form-control" disabled="true" placeholder="Rate per month"/>
-                                                            <input type="text" id="interest_rate_per_annum" class="form-control" disabled="true" placeholder="Rate per annum"/>
+                                                    </div> --}}
 
+
+                                                    <div class="form-group row">
+                                                        <label for="loan_duration" class="col-6 col-form-label">
+                                                            <label>Loan Duration:</label>
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-6">
+                                                            <input type="number" class="form-control" id="loan_duration" placeholder="Enter number of months" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
                                                         </div>
                                                     </div>
 
 
+                                                    <div class="form-group row">
+                                                        <label for="loan_purpose" class="col-6 col-form-label">
+                                                            <label>Loan Purpose:</label>
+                                                            <span class="text-danger">*</span></label>
+                                                        <div class="col-6">
+                                                            <input type="text" class="form-control" id="loan_purpose" placeholder="Enter loan purpose" >
+                                                        </div>
+                                                    </div>
                                             </form>
 
                                         </p>
@@ -163,7 +170,7 @@ type="text/css" />
 
                                 </div> <!-- end card-box -->
 
-                                <div class="col-md-5 " id="loan_request_detail_div">
+                                <div class="col-md-5 " id="loan_request_detail_div" >
 
                                     <table class="table mb-0 table-striped table-bordered">
 
@@ -175,12 +182,9 @@ type="text/css" />
 
                                                 <td>
                                                     <span class="text-right   font-weight-semibold">
-                                                        <span class="  display_loan_product"></span>
+                                                        <span class="display_loan_product"></span>
                                                     </span>
                                                 </td>
-
-
-
                                             </tr>
                                             <tr class="">
                                                 <td>
@@ -188,15 +192,6 @@ type="text/css" />
                                                         <span class="display_loan_amount"></span>
                                                     </span>
                                                 </td>
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_tenure_in_months"></span>
-                                                    </span>
-                                                </td>
-
                                             </tr>
                                             <tr class="">
                                                 <td>
@@ -223,11 +218,30 @@ type="text/css" />
                                                 </td>
 
                                             </tr>
+                                            {{-- <tr class="">
+                                                <td>
+                                                    <a class="text-body font-weight-semibold   display_my_account_name"></a>
+                                                    <small class="d-block font-weight-semibold  display_my_account_no"></small>
+                                                    <span class="text-right   font-weight-semibold"> --}}
+                                                        {{-- <span class="display_my_account_currency"></span>
+                                                        <span class="  display_my_account_amount"></span>
+                                                    </span>
+                                                </td>
+                                            </tr> --}}
                                             <tr class="">
                                                 <td>
-
                                                     <span class="text-right font-weight-semibold">
-                                                        <span class="display_interest_rate"></span>
+                                                        <span class="display_loan_duration"></span>
+                                                    </span>
+                                                </td>
+
+                                            </tr>
+
+
+                                            <tr class="">
+                                                <td>
+                                                    <span class="text-right font-weight-semibold">
+                                                        <span class="display_loan_purpose"></span>
                                                     </span>
                                                 </td>
 
@@ -253,50 +267,13 @@ type="text/css" />
 
                                 </div> <!-- end col -->
 
-                                <div class="col-md-5 text-center">
+                                <div class="col-md-7 text-center">
 
-                                    <p class="display-4 text-center text-success success-message ">
+                                    <p class="display-4 text-center text-success success-message" style="background-color: wihie;">
                                         <img src="{{ asset("land_asset/images/statement_success.gif") }}" />
                                     </p>
                                 </div>
 
-
-
-                                <div id="collapseOne" class="collapse show col-md-12" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group row">
-                                                    <div class="col-8 offset-4 text-right">
-                                                        <button type="submit"
-                                                            class="btn btn-primary btn-sm btn-rounded waves-effect waves-light "
-                                                            id="btn_submit_new_loan_request">
-                                                            New Loan Request
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                            <div class="table-responsive table-bordered">
-                                                <table  class="table mb-0 loan_payment_schedule">
-                                                    <thead>
-                                                        <tr class="bg-blue text-white ">
-                                                            <td> <b> NO </b> </td>
-                                                            <td> <b> REPAYMENT DATE </b> </td>
-                                                            <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
-                                                            <td> <b> INTEREST REPAYMENT AMOUNT </b> </td>
-                                                            <td> <b> TOTAL REPAYMENT AMOUNT </b> </td>
-                                                        </tr>
-                                                    </thead>
-
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-
-
-                                    </div>
-                                </div>
                             </div>
 
 
@@ -317,31 +294,79 @@ type="text/css" />
 @endsection
 
 @section('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+
+        <!-- link for the jquery side of the page.-->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <!-- third party js -->
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-    </script>
-            {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-            <!-- third party js ends -->
+        <!-- link for the alerts that prompts users-->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <!-- Datatables init -->
-    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script>
 
+        // function to get accounts owned by the user
+        // function my_account() {
+        //     $.ajax({
+        //         'type': 'GET',
+        //         'url': 'get-my-account',
+        //         "datatype": "application/json",
+        //         success: function(response) {
+        //             console.log(response.data);
+        //             let data = response.data
+        //             $.each(data, function(index) {
+
+        //                 $('#my_account').append($('<option>', {
+        //                     value: data[index].accountType + '~' + data[index].accountDesc +
+        //                         '~' + data[index].accountNumber + '~' + data[index]
+        //                         .currency + '~' + data[index].availableBalance
+        //                 }).text(data[index].accountType + '~' + data[index].accountNumber +
+        //                     '~' + data[index].currency + '~' + data[index].availableBalance));
+
+        //             });
+        //         },
+
+        //     })
+        // }
+
+        function loan_frequencies() {
+                            $.ajax({
+                                'type': 'GET',
+                                'url': 'get-loan-frequencies-api',
+                                "datatype": "application/json",
+                                success: function(response) {
+                                    console.log(response.data);
+                                    let data = response.data
+                                    $.each(data, function(index) {
+
+                                        $('.loan_frequencies').append($('<option>', {
+                                            value: data[index].code}).text(data[index].name));
+
+                                    });
+                                },
+
+                            })
+                        }
+
+        function interest_repay_frequency() {
+                            $.ajax({
+                                'type': 'GET',
+                                'url': 'get-interest-types-api',
+                                "datatype": "application/json",
+                                success: function(response) {
+                                    console.log(response.data);
+                                    let data = response.data
+                                    $.each(data, function(index) {
+
+                                        $('#interest_rate_type').append($('<option>', {
+                                            value: data[index].code}).text(data[index].name));
+
+                                    });
+                                },
+
+                            })
+                        }
+
+            //function to get the loan products accessible to the customer of the bank.
             function loan_product() {
                             $.ajax({
                                 'type': 'GET',
@@ -361,43 +386,7 @@ type="text/css" />
                             })
                         }
 
-                        function loan_frequencies() {
-                            $.ajax({
-                                'type': 'GET',
-                                'url': 'get-loan-frequencies-api',
-                                "datatype": "application/json",
-                                success: function(response) {
-                                    console.log(response.data);
-                                    let data = response.data
-                                    $.each(data, function(index) {
-
-                                        $('.loan_frequencies').append($('<option>', {
-                                            value: data[index].code}).text(data[index].name));
-
-                                    });
-                                },
-
-                            })
-                        }
-
-                        function interest_repay_frequency() {
-                            $.ajax({
-                                'type': 'GET',
-                                'url': 'get-interest-types-api',
-                                "datatype": "application/json",
-                                success: function(response) {
-                                    console.log(response.data);
-                                    let data = response.data
-                                    $.each(data, function(index) {
-
-                                        $('#interest_rate_type').append($('<option>', {
-                                            value: data[index].code}).text(data[index].name));
-
-                                    });
-                                },
-
-                            })
-                        }
+            // function to set the layout of the prompts that pops up for the user
             function toaster(message, icon, timer)
             {
                 const Toast = Swal.mixin({
@@ -431,8 +420,10 @@ type="text/css" />
             $("#spinner").hide();
             setTimeout(function(){
                 loan_product()
+                // my_account()
                 loan_frequencies()
                 interest_repay_frequency()
+
             }, 1000)
 
             $(".success-message").hide();
@@ -445,18 +436,29 @@ type="text/css" />
                 console.log(loan_product);
             });
 
+            // $("#my_account").change(function() {
+            //     var my_account = $(this).val();
+            //     console.log(my_account_info);
+            //     var my_account_info = my_account.split("~");
+            //     // $(".display_my_account_no").text(my_account_info[0].trim());
+            //     $(".display_my_account_name").text("Account Name: "+my_account_info[1].trim());
+            //     $(".display_my_account_no").text("Account Number: "+my_account_info[2].trim());
+            //     // $(".display_my_account_currency").text(my_account_info[3].trim());
+            //     // $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4].trim())))
+            //     console.log(my_account);
+            // });
+
             $("#loan_amount").change(function(){
                 var loan_amount = $("#loan_amount").val();
                 $(".display_loan_amount").text("Loan Amount: SLL "+loan_amount);
                 console.log(loan_amount);
             })
 
-            $("#tenure_in_months").change(function(){
-                var tenure_in_months = $("#tenure_in_months").val();
-                $(".display_tenure_in_months").text("Tenure In Months: "+tenure_in_months);
-                console.log(tenure_in_months);
+            $("#loan_duration").change(function(){
+                var loan_duration = $("#loan_duration").val();
+                $(".display_loan_duration").text("Loan Duration In Months: "+loan_duration);
+                console.log(loan_duration);
             })
-
             $("#interest_rate_type").change(function(){
                 var interest_rate_type = $("#interest_rate_type").val();
                 var optionText = $("#interest_rate_type option:selected").text();
@@ -478,6 +480,27 @@ type="text/css" />
                 $(".display_interest_repay_freq").text("Interest Repay Frequency: "+optionText);
                 console.log(interest_repay_freq);
             })
+
+            $("#loan_purpose").change(function(){
+                var loan_purpose = $("#loan_purpose").val();
+                $(".display_loan_purpose").text("Loan Purpose: "+loan_purpose);
+                console.log(loan_purpose);
+            })
+
+            // $("#principal_repay_freq").change(function(){
+            //     var principal_repay_freq = $("#principal_repay_freq").val();
+            //     var optionText = $("#principal_repay_freq option:selected").text();
+            //     $(".display_principal_repay_freq").text("Principal Repay Frequency: "+optionText);
+            //     console.log(principal_repay_freq);
+            // })
+
+
+            // $("#interest_repay_freq").change(function(){
+            //     var interest_repay_freq = $("#interest_repay_freq").val();
+            //     var optionText = $("#principal_repay_freq option:selected").text();
+            //     $(".display_interest_repay_freq").text("Interest Repay Frequency: "+optionText);
+            //     console.log(interest_repay_freq);
+            // })
             // $("#pin").keyup(function(){
             //     var pin = $("#pin").val();
             //     console.log(pin);
@@ -488,29 +511,35 @@ type="text/css" />
 
                     //collect loan details
                     let loan_product = $('#loan_product').val();
+                    // let disbursement_account = $("#my_account").val();
                     let loan_amount = $('#loan_amount').val();
-                    let tenure_in_months = $('#tenure_in_months').val();
+                    let loan_duration = $('#loan_duration').val();
                     let interest_rate_type = $('#interest_rate_type').val();
                     let principal_repay_freq = $('#principal_repay_freq').val();
                     let interest_repay_freq = $('#interest_repay_freq').val();
+                    let loan_purpose = $('#loan_purpose').val();
 
-                    var table = $('.loan_payment_schedule').DataTable();
-                    var nodes = table.rows().nodes();
 
                     console.log('loan product: '+loan_product);
                     console.log('loan amount: '+loan_amount);
+                    console.log('loan purpose: '+loan_purpose);
+                    console.log('loan duration: '+loan_duration);
                     console.log('interest rate type: '+interest_rate_type);
                     console.log('principal repay frequency: '+principal_repay_freq);
                     console.log('Interest repay frequency '+interest_repay_freq);
 
-
-                    if(loan_product =="" || loan_amount =="" || tenure_in_months == "" || interest_rate_type =="" || principal_repay_freq == "" || interest_repay_freq ==""){
+                    // disbursement_account = "" ||
+                    if(loan_product =="" ||  loan_amount =="" || loan_duration == "" || interest_rate_type=="" || principal_repay_freq =="" ||interest_repay_freq=="" || loan_purpose ==""){
                         toaster("Please fill all required fields","error", 6000);
                     }
                     else{
                     $(".submit-text").hide();
                     $(".spinner-border").show();
                     $("#spinner-text").show();
+
+                    // my_account_info = disbursement_account.split("~");
+                    // let accountNumber = my_account_info[2].trim();
+                    // console.log(accountNumber);
 
 
 
@@ -521,66 +550,42 @@ type="text/css" />
                         "datatype" : "application/json",
                         'data' : {
                             'loan_product' : loan_product,
+                            // 'disbursement_account' : accountNumber,
                             'loan_amount' : loan_amount,
-                            'tenure_in_months' : tenure_in_months,
+                            'loan_duration' : loan_duration,
                             'interest_rate_type' : interest_rate_type,
-                            'principal_repay_freq' : principal_repay_freq,
-                            'interest_repay_freq' : interest_repay_freq
+                            'principal_repay_freq': principal_repay_freq,
+                            'interest_repay_freq' : interest_repay_freq,
+                            'loan_purpose' : loan_purpose
+
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        success:
-                        function(response){
-                            var data = response.data.loanSchedule
-                            console.log(response)
+                        success:function(response) {
 
-                            if(response.responseCode == '000'){
-                                toaster(response.message, 'success', 20000 )
+                            console.log(response);
+
+                            if(response.responseCode != '000'){
+                                toaster("Loan request successful and is pending approval with application number as "+ response.message, 'success', 20000 )
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
-                                // $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />');
-                                // $(".success-message").hide(30000);
+
                                 $("#loan_request_detail_div").show();
                                 $(".success-message").show();
-                                $("#loan_request_detail_div").hide();
-                                $(".success-message").hide();
-                                $(".appear-button").show();
+                                // $("#loan_request_detail_div").hide();
+                                // // $(".success-message").hide();
+                                // $(".appear-button").show();
 
-
-
-
-                                // // console.log(data); return false;
-                                // let data = data.loanSchedule;
-
-                                var count = count +1;
-                                $.each(data, function(index) {
-                                console.log(data[index]);
-
-                                // count++;
-
-
-                                model_data = data[index]
-
-                                table.row.add([
-                                    index+1,
-                                    data[index].repaymentDate,
-                                    data[index].principalRepayment,
-                                    data[index].interestRepayment,
-                                    data[index].totalRepayment
-
-
-                                ]).draw(false)
-
-                            })
                                 }
                                 else
                                 {
 
                                 toaster(response.message, 'error', 9000 );
-                                toaster('resubmit your loan request','error', 9000);
+                                toaster('kindly check your input and resubmit your loan request','error', 90000);
                                 $('#spinner').hide()
                                 $('#spinner-text').hide()
+                                $(".submit-text").show()
 
                                 }
                         },
