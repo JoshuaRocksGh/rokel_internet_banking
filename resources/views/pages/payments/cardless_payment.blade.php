@@ -30,6 +30,37 @@
 @section('content')
 
     <div class="row">
+
+        <div class="container-fluid">
+            <br>
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-primary">
+                        <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                        CARDLESS
+                    </h4>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <h6>
+
+                        <span class="flaot-right">
+                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Cardless Payment</b>
+
+
+                        </span>
+
+                    </h6>
+
+                </div>
+
+                <div class="col-md-12 ">
+                    <hr class="text-primary" style="margin: 0px;">
+                </div>
+
+            </div>
+        </div>
         <div class="col-12">
             <div class="">
                 <div class="card-body">
@@ -37,288 +68,351 @@
                         <div class="col-md-2"></div>
 
                         <div class="col-md-8  card-body">
-                            <h3 class=" m-t-0 text-primary">CARDLESS PAYMENT</h3>
-                            <hr>
 
+                            <ul class="nav nav-tabs nav-bordered nav-justified">
+                                <li class="nav-item">
+                                    <a href="#cardless_initiation_tab" data-toggle="tab" aria-expanded="false"
+                                        class="nav-link active transfer_tab_btn">
+                                        PAY CARDLESS
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#cardless_history_tab" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                        CARDLESS HISTORY
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane show active card-box" id="cardless_initiation_tab" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <div class="row" id="cardless_payment_form">
 
-                            <div class="row" id="cardless_payment_form">
 
+                                        <div class="col-md-6">
+                                            <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label class="h6">Pay From<span class="text-danger">*</span></label>
 
-                                <div class="col-md-6">
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label class="h6">Pay From<span class="text-danger">*</span></label>
 
+                                                    <select class="custom-select" id="from_account" required>
+                                                        <option value="">Select Account</option>
+                                                    </select>
 
-                                            <select class="custom-select" id="from_account" required>
-                                                <option value="">Select Account</option>
-                                            </select>
 
+                                                    <table
+                                                        class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
+                                                        <tbody class="">
+                                                            <tr>
 
-                                            <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
-                                                <tbody class="">
-                                                    <tr>
+                                                                <td>
+                                                                    <a
+                                                                        class="text-body font-weight-semibold display_from_account_name"></a>
+                                                                    <small class="d-block display_from_account_no"></small>
+                                                                </td>
 
-                                                        <td>
-                                                            <a
-                                                                class="text-body font-weight-semibold display_from_account_name"></a>
-                                                            <small class="d-block display_from_account_no"></small>
-                                                        </td>
+                                                                <td class="text-right font-weight-semibold">
+                                                                    <span class="display_from_account_currency"></span>
+                                                                    <span class="display_from_account_amount"></span>
 
-                                                        <td class="text-right font-weight-semibold">
-                                                            <span class="display_from_account_currency"></span>
-                                                            <span class="display_from_account_amount"></span>
+                                                                </td>
+                                                            </tr>
 
-                                                        </td>
-                                                    </tr>
 
+                                                        </tbody>
+                                                    </table>
 
-                                                </tbody>
-                                            </table>
 
+                                                </div>
 
-                                        </div>
 
+                                                <div class="form-group">
+                                                    <label class="">Enter Amount<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="amount"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                        required>
+                                                </div>
 
-                                        <div class="form-group">
-                                            <label class="">Enter Amount<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                required>
-                                        </div>
 
+                                                <div class="form-group">
+                                                    <label class="">Receiver Name<span class="text-danger">*</span></label>
 
-                                        <div class="form-group">
-                                            <label class="">Receiver Name<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="receiver_name"
+                                                        placeholder="receiver Name" autocomplete="off" required>
 
-                                            <input type="text" class="form-control" id="receiver_name"
-                                                placeholder="receiver Name" autocomplete="off" required>
+                                                    <table
+                                                        class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
+                                                        <tbody>
+                                                            <tr>
 
-                                            <table
-                                                class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
-                                                <tbody>
-                                                    <tr>
+                                                                <td>
+                                                                    <a class="text-body font-weight-semibold"></a>
+                                                                    <small class="d-block display_receiver_name"></small>
+                                                                </td>
+                                                            </tr>
 
-                                                        <td>
-                                                            <a class="text-body font-weight-semibold"></a>
-                                                            <small class="d-block display_receiver_name"></small>
-                                                        </td>
-                                                    </tr>
 
+                                                        </tbody>
+                                                    </table>
 
-                                                </tbody>
-                                            </table>
+                                                </div>
 
-                                        </div>
+                                                <div class="form-group">
+                                                    <label class="h6">Receiver Phone Number<span class="text-danger">*</span></label>
 
-                                        <div class="form-group">
-                                            <label class="h6">Receiver Phone Number<span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="receiver_phoneNum"
+                                                        placeholder="receiver Phone Number" autocomplete="off"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                        required>
 
-                                            <input type="text" class="form-control" id="receiver_phoneNum"
-                                                placeholder="receiver Phone Number" autocomplete="off"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                required>
+                                                </div>
 
-                                        </div>
 
+                                                <div class="form-group">
+                                                    <label class="">Receiver Address<span class="text-danger">*</span></label>
 
-                                        <div class="form-group">
-                                            <label class="">Receiver Address<span class="text-danger">*</span></label>
+                                                    {{-- <label class="h6">Category</label> --}}
 
-                                            {{-- <label class="h6">Category</label> --}}
+                                                    <input type="text" class="form-control" id="receiver_address"
+                                                        placeholder="receiver Address" autocomplete="off" required>
 
-                                            <input type="text" class="form-control" id="receiver_address"
-                                                placeholder="receiver Address" autocomplete="off" required>
+                                                </div>
+                                                {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
 
-                                        </div>
-                                        {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
+                                                {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
 
-                                        {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
+                                                <div class="form-group text-right">
+                                                    <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                                        &nbsp; Next &nbsp;</button>
+                                                </div>
 
-                                        <div class="form-group text-right">
-                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                                &nbsp; Next &nbsp;</button>
-                                        </div>
+                                                {{-- <div class="form-group">
 
-                                        {{-- <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                        <label class="custom-control-label" for="customCheck1">Schedule
+                                                            Payments</label>
+                                                    </div>
+                                                    <legend></legend>
 
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Schedule
-                                                    Payments</label>
-                                            </div>
-                                            <legend></legend>
+                                                    <input type="text" class="form-control" id="schedule_payment_contraint_input">
 
-                                            <input type="text" class="form-control" id="schedule_payment_contraint_input">
+                                                    <label class="">Value Date</label>
 
-                                            <label class="">Value Date</label>
+                                                    <input type="date" class="form-control" id="schedule_payment_date">
 
-                                            <input type="date" class="form-control" id="schedule_payment_date">
+                                                </div> --}}
 
-                                        </div> --}}
 
+                                                <br><br>
 
-                                        <br><br>
 
 
 
 
 
 
+                                            </form>
+                                        </div> <!-- end col -->
 
-                                    </form>
-                                </div> <!-- end col -->
 
 
+                                        <div class="col-md-6">
 
-                                <div class="col-md-6">
 
 
+                                        </div> <!-- end col -->
 
-                                </div> <!-- end col -->
 
+                                        <!-- end row -->
 
-                                <!-- end row -->
 
 
-
-                            </div>
-
-                            <div class="row" id="cardless_payment_summary">
-
-
-                                <div class="col-md-12">
-                                    <div class="border card p-3 mt-4 mt-lg-0 rounded">
-                                        <h4 class="header-title mb-3">Cardless Payment Summary</h4>
-
-                                        <div class="table-responsive">
-                                            <table class="table mb-0 table-bordered table-striped">
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td>From Account:</td>
-                                                        <td>
-                                                            <span
-                                                                class="font-13 text-primary text-bold display_from_account_type"
-                                                                id="display_from_account_type"></span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                id="display_from_account_name"> </span>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                id="display_from_account_no"></span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Amount:</td>
-                                                        <td>
-                                                            <span class="font-15 text-primary h3 display_currency"
-                                                                id="display_currency"> </span>
-                                                            &nbsp;
-                                                            <span class="font-15 text-primary h3 display_amount"
-                                                                id="display_amount"></span>
-
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Receiver Name:</td>
-                                                        <td>
-                                                            <span
-                                                                class="d-block font-13 text-primary text-bold display_receiver_name"
-                                                                id="display_receiver_name"> </span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Receiver Phone Number:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_receiver_phoneNum"
-                                                                id="display_receiver_phoneNum"></span>
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                    {{-- <tr>
-                                                        <td>Schedule Payment:</td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3 display_schedule_payment"
-                                                                id="display_schedule_payment">NO </span>
-                                                            &nbsp;
-                                                            <span
-                                                                class="font-13 text-primary h3 display_schedule_payment_date"
-                                                                id="display_schedule_payment_date"> N/A
-
-                                                            </span>
-                                                            &nbsp;
-
-                                                            <span class="font-13 text-primary h3 display_frequency"
-                                                                id="display_frequency">
-
-                                                            </span>
-                                                        </td>
-                                                    </tr> --}}
-
-                                                    <tr>
-                                                        <td>Payment Date: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3"
-                                                                id="display_payment_date">{{ date('d F, Y') }}</span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Posted By: </td>
-                                                        <td>
-                                                            <span class="font-13 text-primary h3" id="display_posted_by">
-                                                                {{ session()->get('userAlias') }}</span>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr class="hide_on_print">
-                                                        <td>Enter Pin: </td>
-                                                        <td>
-
-                                                            <input type="text" class="form-control key" id="user_pin"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-
-                                                        </td>
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- end table-responsive -->
-                                        <br>
-                                        <div class="form-group text-center">
-                                            <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                    id="back_button">Back</button> &nbsp; </span>
-                                            <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                    id="confirm_button"><span id="confirm_payment">Confirm Payment</span>
-                                                    <span class="spinner-border spinner-border-sm mr-1" role="status"
-                                                        id="spinner" aria-hidden="true"></span>
-                                                    <span id="spinner-text">Loading...</span>
-                                                </button></span>
-                                            <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
-                                                    type="button" id="print_receipt" onclick="window.print()">Print Receipt
-                                                </button></span>
-                                        </div>
                                     </div>
 
-                                </div> <!-- end col -->
+                                    <div class="row" id="cardless_payment_summary">
 
 
+                                        <div class="col-md-12">
+                                            <div class="border card p-3 mt-4 mt-lg-0 rounded">
+                                                <h4 class="header-title mb-3">Cardless Payment Summary</h4>
+
+                                                <div class="table-responsive">
+                                                    <table class="table mb-0 table-bordered table-striped">
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>From Account:</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="font-13 text-primary text-bold display_from_account_type"
+                                                                        id="display_from_account_type"></span>
+                                                                    <span
+                                                                        class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                        id="display_from_account_name"> </span>
+                                                                    <span
+                                                                        class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                        id="display_from_account_no"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Amount:</td>
+                                                                <td>
+                                                                    <span class="font-15 text-primary h3 display_currency"
+                                                                        id="display_currency"> </span>
+                                                                    &nbsp;
+                                                                    <span class="font-15 text-primary h3 display_amount"
+                                                                        id="display_amount"></span>
+
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Receiver Name:</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="d-block font-13 text-primary text-bold display_receiver_name"
+                                                                        id="display_receiver_name"> </span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Receiver Phone Number:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_receiver_phoneNum"
+                                                                        id="display_receiver_phoneNum"></span>
+
+                                                                </td>
+                                                            </tr>
 
 
+                                                            {{-- <tr>
+                                                                <td>Schedule Payment:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_schedule_payment"
+                                                                        id="display_schedule_payment">NO </span>
+                                                                    &nbsp;
+                                                                    <span
+                                                                        class="font-13 text-primary h3 display_schedule_payment_date"
+                                                                        id="display_schedule_payment_date"> N/A
 
+                                                                    </span>
+                                                                    &nbsp;
+
+                                                                    <span class="font-13 text-primary h3 display_frequency"
+                                                                        id="display_frequency">
+
+                                                                    </span>
+                                                                </td>
+                                                            </tr> --}}
+
+                                                            <tr>
+                                                                <td>Payment Date: </td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3"
+                                                                        id="display_payment_date">{{ date('d F, Y') }}</span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Posted By: </td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3" id="display_posted_by">
+                                                                        {{ session()->get('userAlias') }}</span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr class="hide_on_print">
+                                                                <td>Enter Pin: </td>
+                                                                <td>
+
+                                                                    <input type="text" class="form-control key" id="user_pin"
+                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- end table-responsive -->
+                                                <br>
+                                                <div class="form-group text-center">
+                                                    <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                            id="back_button">Back</button> &nbsp; </span>
+                                                    <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
+                                                            id="confirm_button"><span id="confirm_payment">Confirm Payment</span>
+                                                            <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                                id="spinner" aria-hidden="true"></span>
+                                                            <span id="spinner-text">Loading...</span>
+                                                        </button></span>
+                                                    <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                            type="button" id="print_receipt" onclick="window.print()">Print Receipt
+                                                        </button></span>
+                                                </div>
+                                            </div>
+
+                                        </div> <!-- end col -->
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane card-box" id="cardless_history_tab" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <table class="table table-centered table-nowrap mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url('account-enquiry') }}"
+                                                        class="text-body font-weight-semibold">Money Mobile</a>
+                                                    <small class="d-block">Tuesday, 18 May 2021</small>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    GHS 90,039.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url('account-enquiry') }}"
+                                                        class="text-body font-weight-semibold">Money Mobile</a>
+                                                    <small class="d-block">Tuesday, 18 May 2021</small>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    GHS 90,039.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 10px;">
+                                                    <div class="avatar-sm rounded bg-soft-info">
+                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url('account-enquiry') }}"
+                                                        class="text-body font-weight-semibold">Money Mobile</a>
+                                                    <small class="d-block">Tuesday, 18 May 2021</small>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    GHS 90,039.00
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-
-
 
                         </div>
 
@@ -578,7 +672,7 @@
                                     $('.hide_on_print').hide();
                                 } else {
 
-                                    toaster(response.message, error, 9000);
+                                    toaster(response.message, 'error', 9000);
 
                                     $('#spinner').hide();
                                     $('#spinner-text').hide();

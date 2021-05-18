@@ -106,7 +106,7 @@
                                                                     class="font-13 text-primary text-bold display_from_account_type"
                                                                     id="display_from_account_type"></span>
                                                                 <span
-                                                                    class="d-block font-13 text-primary text-bold display_from_account_name"> </span>
+                                                                    class="d-block font-13 text-primary text-bold" id="display_from_account_name"> </span>
                                                                     {{-- id="display_from_account_name" --}}
                                                                 <span
                                                                     class="d-block font-13 text-primary text-bold display_from_account_no"
@@ -828,7 +828,7 @@
                                         {{-- <br><br> --}}
                                         <div class="row">
                                             <h6 class="col-md-5">Sender Name:</h6>
-                                            <span class="text-primary display_from_account_name col-md-7"></span>
+                                            <span class="text-primary col-md-7 display_from_account_name"></span>
 
                                             <h6 class="col-md-5">Sender Account:</h6>
                                             <span class="text-primary display_from_account_no col-md-7"></span>
@@ -1177,6 +1177,8 @@
                         $("#onetime_beneficiary_form").click(function() {
                             if ($(this).is(":checked")) {
                                 console.log("Checkbox is checked.");
+                                var type = 'onetime';
+
 
                                 $("#onetime_payment_details_form").toggle(500);
                                 $("#payment_details_form").hide();
@@ -1391,36 +1393,37 @@
 
                         var amt = 0
                         $("#from_account").change(function() {
-                            let from_account = $(this).val()
-                            let from_account_info = from_account.split("~");
-                            // console.log(from_account_info);
+                            var from_account = $(this).val()
+                            var from_account_info = from_account.split("~");
+                            console.log(from_account_info);
                             {{-- alert(from_account) --}}
                             if (from_account.trim() == '' || from_account.trim() == undefined) {
                                 {{-- alert('money') --}}
                                 $(".from_account_display_info").hide()
 
                             } else {
-                                // from_account_info = from_account.split("~")
-                                let from_account = $(this).val()
-                                let from_account_info = from_account.split("~");
+
+                                //values for the related field screen;
+                                from_account_type = from_account_info[0];
+                                console.log("name "+ from_account_type);
+                                //  from_account_info = from_account.split("~")
                                 // alert(from_account_info);
                                 {{-- alert('continue') --}}
                                 // alert(from_account_info);
 
                                 var to_account = $('#to_account').val()
-                                conole.log(to_account);
+                                // conole.log(to_account);
 
-                                if ((from_account.trim() == to_account.trim()) && from_account.trim() !=
-                                    '' &&
-                                    to_account.trim() != '') {
+                                if ((from_account.trim() == to_account.trim()) && from_account.trim() !='' &&to_account.trim() != '') {
                                     toaster('can not transfer to same account', 'error')
                                     {{-- alert('can not transfer to same account') --}}
                                     $(this).val('')
                                 }
 
                                 // set summary values for display
+
                                 $(".display_from_account_type").text(from_account_info[0].trim());
-                                $(".display_from_account_name").text(from_account_info[1].trim())
+                                $(".display_from_account_name").text(from_account_info[1].trim());
                                 $(".display_from_account_no").text(from_account_info[2].trim())
                                 $(".display_from_account_currency").text(from_account_info[3].trim())
                                 $("#basic-addon1").text(from_account_info[3].trim())
@@ -1444,7 +1447,7 @@
                         $("#to_account").change(function() {
                             var to_account = $(this).val()
                             var to_account_info = to_account.split("~");
-                            console.log(to_account_info);
+                            // console.log(to_account_info);
                             {{-- console.log(to_account); --}}
                             if (to_account.trim() == '' || to_account.trim() == undefined) {
 
@@ -1494,7 +1497,7 @@
 
                         $("#amount").keyup(function() {
 
-                            var type = $("input[type='radio']:checked").val();
+                            var type = $("input[type='checkbox']:checked").val();
                             //alert(type);
                             //return false;
 
@@ -1509,16 +1512,14 @@
                                     {{-- $(this).val('') --}}
                                     return false;
                                 } else {
-                                    var transfer_amount = $(this).val()
+                                    var transfer_amount = $("#amount").val()
 
                                     if (parseFloat(amt) < parseFloat(transfer_amount)) {
                                         toaster('Insufficient account balance', 'error', 10000)
                                         return false;
                                     }
 
-                                    $(".display_transfer_amount").text(formatToCurrency(Number(
-                                        transfer_amount
-                                        .trim())))
+                                    $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)))
                                 }
 
                             } else if (type == 'onetime') {
@@ -1581,9 +1582,9 @@
                             if ($(this).is(":checked")) {
                                 {{-- console.log("Checkbox Checked!"); --}}
                                 {{-- $('.schedule_payment_summary').show(); --}}
-                                $("#schedule_payment_date").show(),
-                                    $(".display_schedule_payment").text('YES'),
-                                    $('#schedule_payment_contraint_input').val('TRUE'),
+                                $("#schedule_payment_date").show()
+                                    $(".display_schedule_payment").text('YES')
+                                    $('#schedule_payment_contraint_input').val('TRUE')
                                     $('#select_frequency').show();
                                 $('#select_frequency_text').show();
 
@@ -1677,20 +1678,18 @@
 
                         // NEXT BUTTON CLICK
                         $("#next_button").click(function() {
-
+                            $(".rtgs_card_right").hide();
+                            $("#rtgs_card_right").hide();
                             var type = $("input[type='radio']:checked").val();
 
                             var from_account = $('#from_account').val()
                             var transfer_amount = $('#amount').val()
                             var category = $('#category').val()
                             var purpose = $('#purpose').val()
-                            var schedule_payment_contraint_input = $('#schedule_payment_contraint_input')
-                                .val()
+                            var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                             var schedule_payment_date = $('#schedule_payment_date').val();
 
-                            if (from_account.trim() == '' || transfer_amount.trim() == '' || category
-                            .trim() ==
-                                '' || purpose.trim() == '') {
+                            if (from_account.trim() == '' || transfer_amount == '' || category.trim() =='' || purpose.trim() == '') {
                                 toaster('Field must not be empty', 'error');
                                 return false
 
@@ -1729,9 +1728,7 @@
                             }
 
 
-                            if (schedule_payment_contraint_input.trim() != '' && schedule_payment_date
-                                .trim() ==
-                                '') {
+                            if (schedule_payment_contraint_input != '' && schedule_payment_date =='') {
                                 $('.display_schedule_payment_date').text('N/A') // shedule date NULL
                                 toaster('Select schedule date for subsequent transfers', 'error')
                                 {{-- alert('Select schedule date for subsequent transfers') --}}
@@ -1770,8 +1767,7 @@
                                 var from_account = $('#from_account').val()
 
                                 // ONETIME BENEFICIARY DETAILS
-                                var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name')
-                                    .val()
+                                var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
                                 var onetime_beneficiary_account_number = $(
                                     '#onetime_beneficiary_account_number').val()
                                 var onetime_beneficiary_account_currency = $(

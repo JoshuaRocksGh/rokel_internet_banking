@@ -446,7 +446,7 @@
                     <div class="row">
                         <div class="col-xl-12" style="zoom:0.8;">
                             <div id="accordion" class="mb-3">
-                                <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
+                                <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
                                     <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="m-0">
@@ -462,7 +462,7 @@
                                         </div>
                                     </a>
 
-                                    <div id=" collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                         data-parent="#accordion">
                                         <div class="card-body i_have_display_no_data text-center"></div>
                                         <div class="card-body i_have_display">
@@ -512,7 +512,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
+                                <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
                                     <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="m-0">
@@ -549,10 +549,11 @@
                                                         class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
                                             </div>
 
-
+                                            <h4 class="text-center text-danger loan_no_data_found"> <b> NO LOANS FOUND </b></h4>
 
                                             <div class="table-responsive table-bordered loans_display_area">
-                                                <table id="datatable-buttons fixed_deposit_list" class="table mb-0">
+
+                                                <table id="datatable-buttons loan_list" class="table mb-0">
                                                     <thead>
                                                         <tr class="bg-info text-white ">
                                                             <td> <b> Facility Number </b> </td>
@@ -574,14 +575,15 @@
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
-                                    <a class="text-dark" data-toggle="collapse " href="#collapseThree" aria-expanded="true">
-                                        <div class="card-header" id="headingTwo">
+                                    <a class="text-dark" data-toggle="collapse" href="#collapseThree" aria-expanded="true">
+                                        <div class="card-header" id="headingThree">
                                             <h5 class="m-0">
 
                                                 <i class="mdi mdi-help-circle mr-1 text-primary"></i>
-                                                <span class="text-success"> <b>INVESTMENTS</b> <span class="text-danger">
-                                                        (NO INVESTMENT FOUND)</span> </span>
+                                                <span class="text-success"> <b>MY INVESTMENTS </b> </span>
 
                                                 <span class="text-primary float-right " style="text-align: right">
                                                     <b style="font-size:12px ">SLL</b>
@@ -593,19 +595,18 @@
                                     </a>
                                     <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
                                         data-parent="#accordion">
-                                        <div class="card-body fd_display_no_data text-center text-danger"> NO INVESTMENTS
-                                        </div>
-                                        <div class="card-body fd_display">
+                                        <div class="card-body my_investment_display_no_data text-center"></div>
+                                        <div class="card-body my_investment_display">
 
 
 
-                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
+                                            <div class="text-center my_investment_loading_area" id="account_balance_info_loader">
                                                 <div class="spinner-border text-secondary avatar-sm " role="status"></div>
                                             </div>
 
 
 
-                                            <div class="text-center loans_error_area">
+                                            <div class="text-center my_investment_error_area">
                                                 <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
                                                     alt="" style="width: 180px; height:130px;">
                                                 <legend></legend>
@@ -613,10 +614,10 @@
                                                         class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
                                             </div>
 
+                                            <h4 class="text-center text-danger my_investment_no_data_found"> <b> NO INVESTMENT FOUND </b></h4>
 
-
-                                            <div class="table-responsive table-bordered fixed_deposit_display_area">
-                                                <table id="datatable-buttons fixed_deposit_account" class="table mb-0">
+                                            <div class="table-responsive table-bordered my_investment_display_area">
+                                                <table id="datatable-buttons my_investment_list" class="table mb-0">
                                                     <thead>
                                                         <tr class="custom-color-gold text-white ">
                                                             <td> <b> Source Account </b> </td>
@@ -626,7 +627,7 @@
                                                             <td> <b> Rollover </b> </td>
                                                         </tr>
                                                     </thead>
-                                                    <tbody class="fixed_deposit_account">
+                                                    <tbody class="my_investment_account">
 
                                                     </tbody>
                                                 </table>
@@ -638,7 +639,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
 
 
@@ -992,8 +992,11 @@
             }; --}}
 
             function fixed_deposit() {
-                {{-- var table = $('.fixed_deposit_list').DataTable();
-                var nodes = table.rows().nodes(); --}}
+
+                $('.my_investment_loading_area').show()
+                $('.my_investment_error_area').hide()
+                $('.my_investment_no_data_found').hide()
+                $('.my_investment_display_area').hide()
 
                 $.ajax({
 
@@ -1010,20 +1013,12 @@
                         if (response.responseCode == '000') {
 
                             let data = response.data;
-                            {{-- let rollover = response.data[0].rollover;
-                            if(rollover == 'Y'){
-                                rollover_ = "Yes" ;
-                            }else if (rollover == 'N'){
-                                rollover_ = "No" ;
-                            }else{
-                                rollover_ = null ;
-                            } --}}
 
                             if (response.data == null) {
-                                console.log(response.data + "oooooooo")
-                                alert("sdd")
-                                $(".fd_display").hide()
-                                $(".fd_display_no_data").show()
+                                $('.my_investment_loading_area').hide()
+                                $('.my_investment_error_area').hide()
+                                $('.my_investment_no_data_found').show()
+                                $('.my_investment_display_area').hide()
                                 return false;
                             }
 
@@ -1032,29 +1027,46 @@
                                 $.each(data, function(index) {
                                     $('.fixed_deposit_account').append(
                                         `<tr>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${data[index].sourceAccount} </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${data[index].dealAmount} </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${data[index].tenure} </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${data[index].fixedInterestRate} </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td><b> ${rollover_ } </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </tr>`
+                                            <td><b> ${data[index].sourceAccount} </b></td>
+                                            <td><b> ${data[index].dealAmount} </b></td>
+                                            <td><b> ${data[index].tenure} </b></td>
+                                            <td><b> ${data[index].fixedInterestRate} </b></td>
+                                            <td><b> ${rollover_ } </b></td>
+                                        </tr>`
                                     )
 
 
                                 })
 
-                                $(".fd_display").show()
-                                $(".fd_display_no_data").hide()
+                                $('.my_investment_loading_area').hide()
+                                $('.my_investment_error_area').hide()
+                                $('.my_investment_no_data_found').hide()
+                                $('.my_investment_display_area').show()
                             } else {
-                                alert("jkj")
-                                $(".fd_display").hide()
-                                $(".fd_display_no_data").show()
+                                $('.my_investment_loading_area').hide()
+                                $('.my_investment_error_area').hide()
+                                $('.my_investment_no_data_found').show()
+                                $('.my_investment_display_area').hide()
 
                             }
 
 
+                        }else{
+                            $('.my_investment_loading_area').hide()
+                                $('.my_investment_error_area').show()
+                                $('.my_investment_no_data_found').hide()
+                                $('.my_investment_display_area').hide()
                         }
 
+
+
+                    },
+                    error: function(xhr, status, error) {
+
+                        $('.my_investment_loading_area').hide()
+                        $('.my_investment_error_area').show()
+                        $('.my_investment_no_data_found').hide()
+                        $('.my_investment_display_area').hide()
 
 
                     }
@@ -1081,24 +1093,25 @@
 
                             let data = response.data;
 
-
+                            let i_have_total = 0
 
                             $.each(data, function(index) {
+                                i_have_total += parseFloat(data[index].availableBalance)
                                 $('.casa_list_display').append(
                                     `<tr>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].accountDesc} </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].accountType}  </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].currency}  </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td>  <b> 0.00  </b> </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </tr>`
+                                        <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+                                        <td> <b> ${data[index].accountDesc} </b>  </td>
+                                        <td> <b> ${data[index].accountType}  </b>  </td>
+                                        <td> <b> ${data[index].currency}  </b>  </td>
+                                        <td>  <b> 0.00  </b> </td>
+                                        <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td>
+                                        <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
+                                    </tr>`
                                 )
                             })
-                            $.each(data, function(index){
-                                $('.i_have_amount').text(${formatToCurrency(parseFloat(data[index].availableBalance))});
-                            })
+
+                            $('.i_have_amount').text(formatToCurrency(parseFloat(i_have_total)));
+
 
 
                             $(".accounts_error_area").hide()
@@ -1130,6 +1143,7 @@
 
             function get_loans() {
 
+                $(".loan_no_data_found").hide()
                 $(".loans_display_area").hide()
                 $(".loans_error_area").hide()
                 $(".loans_loading_area").show()
@@ -1144,35 +1158,56 @@
                     },
                     success: function(response) {
                         console.log(response);
+                        {{--  alert(response.data)
+                                return false  --}}
+
+                                {{--  if(!response.data){
+                                    alert(response.data + " ooooo")
+                                }else{
+                                    alert(response.data + " ii")
+                                }
+                                return false  --}}
                         if (response.responseCode == '000') {
 
-                            let data = response.data;
+                            var data = response.data;
+
+                            if(!response.data){
+                                alert(response.data)
+                                return false
+
+                                $('.loan_no_data_found').show()
+                                $(".loans_display_area").hide()
+                            }else{
+                                $.each(data, function(index) {
+                                    $('.loans_display').append(
+                                        `
+                                    <tr>
+                                        <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                        <td> <b> ${data[index].description} </b>  </td>
+                                        <td> <b> ${data[index].isoCode}  </b>  </td>
+                                        <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                        <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
+                                    </tr>`
+                                    )
+
+                                })
+
+
+                            }
 
 
 
-                            $.each(data, function(index) {
-                                $('.loans_display').append(
-                                    `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <tr>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].description} </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${data[index].isoCode}  </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </tr>`
-                                )
-
-                            })
-
+                        }else if(response.responseCode == '00'){
+                            $(".loan_no_data_found").show()
                             $(".loans_error_area").hide()
                             $(".loans_loading_area").hide()
-                            $(".loans_display_area").show()
-
-                        } else {
-
-                            $(".loans_error_area").hide()
+                            $(".loans_display_area").hide()
+                        }
+                        else {
+                        $(".loan_no_data_found").hide()
+                            {{--  $(".loans_error_area").hide()
                             $(".loans_loading_area").hide()
-                            $(".loans_display_area").show()
+                            $(".loans_display_area").show()  --}}
 
                         }
 
@@ -1369,8 +1404,10 @@
 
                 {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
 
-                $(".i_have_display_no_data").hide()
+                $('.loan_no_data_found').hide()
                 $(".i_owe_display_no_data").hide()
+
+                $(".i_have_display_no_data").hide()
                 $(".fd_display_no_data").hide()
                 $(".fd_display").hide()
 
@@ -1411,7 +1448,7 @@
 
         </script>
 
-        <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>
+        {{--  <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>  --}}
 
 
 

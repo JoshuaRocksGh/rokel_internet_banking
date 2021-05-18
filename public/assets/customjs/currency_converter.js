@@ -1,10 +1,12 @@
-$(document).ready(function () {
+$(document).ready(function() {
     var ret = []
-    setTimeout(function () {
+    setTimeout(function() {
         ret = $('#hide_fx_rate').val()
 
         // converter_rates
 
+        // console.log(ret)
+        // return false
         console.log(JSON.parse(ret));
 
 
@@ -25,7 +27,7 @@ $(document).ready(function () {
         var multiply;
         var divided;
 
-        $('#exch_rate_from').change(function (e) {
+        $('#exch_rate_from').change(function(e) {
             e.preventDefault();
             var exch_rate_from = $('#exch_rate_from').val();
             var exch_rate_to = $('#exch_rate_to').val();
@@ -88,7 +90,7 @@ $(document).ready(function () {
 
         });
 
-        $('#exch_rate_to').change(function (e) {
+        $('#exch_rate_to').change(function(e) {
             e.preventDefault();
             var exch_rate_from = $('#exch_rate_from').val();
             var exch_rate_to = $('#exch_rate_to').val();
@@ -156,7 +158,7 @@ $(document).ready(function () {
         });
 
 
-        $('#amount').keyup(function (e) {
+        $('#amount').keyup(function(e) {
             e.preventDefault();
             console.log('typing..')
             var exch_rate_from = $('#exch_rate_from').val();

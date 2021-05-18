@@ -83,9 +83,9 @@ class LoginController extends Controller
                     $user_detail = $result->data;
                     $customerType = $user_detail->customerType;
 
-                    if ($customerType != "I") {
-                        return  $base_response->api_response("422", "Corporate users not allowed",  null);
-                    }
+                    // if ($customerType != "I") {
+                    //     return  $base_response->api_response("422", "Corporate users not allowed",  null);
+                    // }
 
 
                     session([
