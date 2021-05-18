@@ -2,6 +2,38 @@
 
 @section('content')
 
+<div class="container-fluid">
+    <br>
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="text-primary">
+                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                INTERNATIONAL BANK BENEFICIARY
+
+            </h4>
+        </div>
+
+        <div class="col-md-6 text-right">
+            <h6>
+
+                <span class="flaot-right">
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp;<b class="text-primary"> Add Beneficiary </b> &nbsp; > &nbsp; <b class="text-danger">International Bank Beneficiary</b>
+
+
+                </span>
+
+            </h6>
+
+        </div>
+
+        <div class="col-md-12 ">
+            <hr class="text-primary" style="margin: 0px;">
+        </div>
+
+    </div>
+</div>
+
     <!-- Start Content-->
     <div class="container-fluid">
         <br><br>
@@ -11,24 +43,16 @@
             <div class="col-12">
                 <div class="">
                     <div class="card-body">
-                        <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;"
-                            onclick="window.history.back()"><i class="fe-arrow-left"></i> &emsp; INTERNATIONAL BANK
-                            BENEFICIARY</h2>
 
-                        <p class="text-muted font-14 m-b-20">
-                            Parsley is a javascript form validation library. It helps you provide your
-                            users with feedback on their form submission before sending it to your
-                            server.
-                        </p>
-                        <hr>
 
 
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
 
 
-                                <div class="col-xl-12">
-                                    <div class="card">
+                                <div class="">
+                                    <div class="card ">
                                         <div class="card-body">
 
 
@@ -557,13 +581,7 @@
 
                             </div> <!-- end col -->
 
-
-                            <div class="col-md-4" style="margin-top: 80px;">
-                                <img src="{{ asset('assets/images/world.png') }}" class="img-fluid" alt="">
-                            </div> <!-- end col -->
-
-
-
+                            <div class="col-md-1"></div>
                         </div>
                         <!-- end row -->
                     </div> <!-- end card-body -->
