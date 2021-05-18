@@ -31,8 +31,37 @@
 
 @section('content')
 
-    <div>
-        <legend></legend>
+<div class="container-fluid">
+    <br>
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="text-primary">
+                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                SAME BANK TRANSFER
+
+            </h4>
+        </div>
+
+        <div class="col-md-6 text-right">
+            <h6>
+
+                <span class="flaot-right">
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank</b>
+
+
+                </span>
+
+            </h6>
+
+        </div>
+
+        <div class="col-md-12 ">
+            <hr class="text-primary" style="margin: 0px;">
+        </div>
+
+    </div>
+</div>
 
         <div class="row">
             <div class="col-12">
@@ -41,43 +70,12 @@
                         <div class="row">
                             <div class="col-md-12">
 
-                                <!-- start page title -->
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="page-title-box">
-                                            <div class="page-title-left">
-                                                <ol class="breadcrumb m-0">
-                                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Transfer</a>
-                                                    </li>
-                                                    {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li> --}}
-                                                    <li class="breadcrumb-item active text-danger">Same Bank</li>
-                                                </ol>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <h1 class="header-title text-primary" style="font-size: 24px"><img
-                                        src="{{ asset('assets/images/logoRKB.png') }}" alt="logo"
-                                        style="zoom: 0.05">&emsp;
-                                    SAME BANK TRANSFER</h1>
-
-                                <p class="text-muted font-14 m-b-20">
-
-                                    {{-- Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the
-                                instantaneous transfer of money. --}}
-                                    <hr style="border: 1px solid">
-                                </p>
-
 
                                 <div class="row">
 
                                     {{-- SUMMARY FORM GOES HERE --}}
 
-                                    <div class=" col-md-8 rtgs_card m-2" id="transaction_form"
+                                    <div class=" col-md-7 rtgs_card m-2" id="transaction_form"
                                         style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
                                         <form action="#" id="payment_details_form" autocomplete="off"
@@ -417,12 +415,13 @@
 
 
                                 </div>
-                                <div class=" col-md-3 rtgs_card_right m-2 d-none d-sm-block"
+                                <div class=" col-md-4 rtgs_card_right m-2 d-none d-sm-block"
                                         style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); zoom: 0.9 ;">
 
-                                        <div class=" col-md-12 ">
+                                        <div class=" col-md-12  ">
                                             <br><br>
-                                            <div class="row">
+                                            <div class="card card-body">
+                                            <div class="row ">
                                                 <h6 class="col-md-5">Sender Name:</h6>
                                                 <span class="text-primary display_from_account_name col-md-7"></span>
 
@@ -460,7 +459,7 @@
                                                 <span class="text-danger col-md-7">RTGS Tranfers should be above (SLL
                                                     50,000,000.00)</span>
                                             </div>
-
+                                        </div>
                                         </div>
                                     </div>
 

@@ -2,9 +2,38 @@
 
 @section('content')
 
-    <div></div>
-    <legend></legend>
 
+<div class="container-fluid">
+    <br>
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="text-primary">
+                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                OTHER LOCAL BANK BENEFICIARY
+
+            </h4>
+        </div>
+
+        <div class="col-md-6 text-right">
+            <h6>
+
+                <span class="flaot-right">
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Other Local Bank Beneficiary</b>
+
+
+                </span>
+
+            </h6>
+
+        </div>
+
+        <div class="col-md-12 ">
+            <hr class="text-primary" style="margin: 0px;">
+        </div>
+
+    </div>
+</div>
     <div class="row">
         <div class="col-12">
             <div class="">
@@ -12,19 +41,11 @@
                     <div class="row">
                         <div class="col-md-1"></div>
 
-                        <div class="col-md-10">
-                            <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;"
-                                onclick="window.history.back()"><i class="fe-arrow-left"></i> &emsp; OTHER LOCAL BANK
-                                BENEFICIARY</h2>
-
-                            <p class="text-muted font-14 m-b-20">
-                                Parsley is a javascript form validation library. It helps you provide your
-                                users with feedback on their form submission before sending it to your
-                                server.
-                            </p>
-                            <hr>
+                        <div class="col-md-10 rtgs_card m-2"
+                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
 
+                            <br><br><br>
                             <div class="row" id="transaction_form">
 
 
@@ -163,8 +184,8 @@
                                         </div>
                                     </div>
 
-                                    <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit"
-                                        id="save_beneficiary_next">Next</button>
+                                    <button class="btn btn-primary btn-rounded waves-effect waves-light float-right" type="submit"
+                                        id="save_beneficiary_next">&nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
                                     </form>
 
 
