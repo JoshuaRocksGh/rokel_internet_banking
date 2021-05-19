@@ -78,7 +78,7 @@
                             <div class="row">
 
 
-                            <div class="col-md-8 rtgs_card m-2"
+                            <div class="col-md-7 rtgs_card m-2"
                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
                                 <div class="" id="transaction_form">
@@ -201,9 +201,13 @@
 
                             </div>
 
-                            <div class="col-md-3 rtgs_card_right m-2 d-none d-sm-block"
+                            <div class="col-md-4 rtgs_card_right m-2 d-none d-sm-block"
                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); zoom: 0.9 ;">
+                                <br><br>
 
+                                <div class="col-md-12 card card-body rtgs_transfer_summary">
+
+                                </div>
                             </div>
 
 

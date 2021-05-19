@@ -492,16 +492,6 @@
 
                                         </div>
 
-
-
-
-
-
-
-
-
-
-
                                     </form>
 
                                     <form action="#" class="onetime_beneficiary" id="onetime_payment_details_form"
@@ -509,12 +499,12 @@
                                         @csrf
                                         <div class="">
 
-                                            <div class="col-md-12">
+                                            <div class="">
                                                 {{-- <br><br><br> --}}
-                                                <div class="row">
-                                                    <div class="col-md-2"></div>
+                                                <div class="row container">
+                                                    <div class="col-md-1"></div>
 
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-9">
 
                                                         <div class="form-group row mb-3">
                                                             <label class="col-md-4 text-primary"> My Account &nbsp; <span
@@ -717,7 +707,7 @@
 
                                                     </div>
 
-                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-1"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     {{-- <label class="h6">My Account <span
@@ -823,7 +813,7 @@
                                 {{-- <button class="m-2 btn btn-info d-none d-sm-block">Related Information</button> --}}
                                 {{-- LEFT CARD --}}
 
-                                <div class=" col-md-4 rtgs_card_right m-2 d-none d-sm-block"
+                                <div class=" col-md-4 rtgs_card_right m-2 d-none d-sm-block "
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
                                     <div class=" col-md-12 card card-body rtgs_transfer_summary">
@@ -887,8 +877,8 @@
 
                                             <span class="text-primary display_from_account_amount col-md-7"></span>
 
-                                            {{--  <h6 class="col-md-5">Account Currency:</h6>
-                                            <span class="text-primary display_from_account_currency col-md-7"></span>  --}}
+                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_from_account_currency col-md-7"></span>
                                         </div>
 
                                         <hr>
@@ -921,13 +911,8 @@
                                                 30,000,000.00)</span>
                                         </div>
 
-                                    </div>  --}}
+                                    </div>   --}}
                                 </div>
-
-
-
-
-
 
                                 {{-- <div class="col-md-5 text-center" style="margin-top: 80px;">
 
