@@ -15,20 +15,13 @@
             font-family: 'password';
             font-style: normal;
             font-weight: 400;
-            font-size: 40px;
             src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
         }
 
         input.key {
             font-family: 'password';
-            width: 300px;
-            height: 80px;
-            font-size: 100px;
-        }
-
-        .table_over_flow {
-            overflow-y: hidden;
-
+            width: 100px;
+            height: 26px;
         }
 
     </style>
@@ -89,15 +82,15 @@
 
                             <div class="row">
 
-                                <div class="col-md-7 rtgs_summary_card m-2" id="transaction_summary"
+                                <div class="col-md-8 rtgs_summary_card m-2" id="transaction_summary"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <div class="row">
                                         <div class="col-md-1"></div>
-                                        <div class="col-md-10 ">
+                                        <div class="col-md-10">
                                             <br><br><br>
 
-                                            <div class="table-responsive card table_over_flow">
-                                                <table class="table mb-0 table-bordered table-striped  ">
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 table-bordered table-striped">
 
                                                     <tbody>
                                                         <tr class="success_gif">
@@ -113,8 +106,8 @@
                                                                     class="font-13 text-primary text-bold display_from_account_type"
                                                                     id="display_from_account_type"></span>
                                                                 <span
-                                                                    class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                    id="display_from_account_name"> </span>
+                                                                    class="d-block font-13 text-primary text-bold" id="display_from_account_name"> </span>
+                                                                    {{-- id="display_from_account_name" --}}
                                                                 <span
                                                                     class="d-block font-13 text-primary text-bold display_from_account_no"
                                                                     id="display_from_account_no"></span>
@@ -177,6 +170,19 @@
                                                         </tr>
 
 
+                                                        <tr class="schedule_payment_summary">
+                                                            <td>Schedule Payment:</td>
+                                                            <td>
+                                                                <span
+                                                                    class="font-13 text-primary h3 display_schedule_payment"
+                                                                    id="display_schedule_payment">NO </span>
+                                                                &nbsp; | &nbsp;
+                                                                <span
+                                                                    class="font-13 text-primary h3 display_schedule_payment_date"
+                                                                    id="display_schedule_payment_date"> N/A
+                                                                </span>
+                                                            </td>
+                                                        </tr>
 
 
                                                         <tr>
@@ -195,7 +201,7 @@
                                                             </td>
                                                         </tr>
 
-                                                        {{--  <tr>
+                                                        <tr>
                                                             <td>Enter Pin: </td>
                                                             <td>
 
@@ -204,89 +210,25 @@
                                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 
                                                             </td>
-                                                        </tr>  --}}
-
-                                                        <tr>
-
-                                                            <td colspan="2">
-
-                                                                <div class="alert alert-info form-control col-md-12"
-                                                                role="alert">
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input"
-                                                                        id="onetime_beneficiary_form">
-                                                                    <label class="custom-control-label " for="onetime_beneficiary_form">
-                                                                        <b>
-                                                                           By accepting, you aggree with terms and conditions
-
-                                                                        </b>
-                                                                     </label>
-                                                                </div>
-
-
-                                                            </div>
-                                                            </td>
                                                         </tr>
-
-
 
 
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <!-- end table-responsive -->
-
-
-                                    <!-- Center modal content -->
-                                    <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h3 class="modal-title text-center text-primary" id="myCenterModalLabel ">ENTER TRANSACTION PIN</h3>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                   
-                                                </div>
-                                                <div class="modal-body">
-                                                   
-                                                  <div class="row">
-                                                    <div class="col-md-2"></div>
-                                                    <div class="col-md-9  text-center">
-                                                        <form action="#" autocomplete="off" aria-autocomplete="off">
-                                                            <input type="text" name="user_pin" maxlength="4"
-                                                        class="form-control key hide_on_print" id="user_pin"
-                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                        </form>
-
-                                                    </div>
-                                                    <div class="col-md-1"></div>
-                                                  </div>
-                                                </div>
-                                                <br>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
-                                    <!-- /.modal -->
-
-
-
                                             <br>
                                             <div class="form-group text-center">
 
                                                 <span> <button class="btn btn-secondary btn-rounded" type="button"
                                                         id="back_button">Back</button> &nbsp; </span>
-                                                <span>
-                                                    &nbsp;
-                                                    <button class="btn btn-primary btn-rounded" type="button"
-                                                        id="confirm_modal_button" data-toggle="modal" data-target="#centermodal">
-                                                        <span id="confirm_transfer">Confirm Transfer</span>
+                                                <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
+                                                        id="confirm_button"><span id="confirm_transfer">Confirm
+                                                            Transfer</span>
                                                         <span class="spinner-border spinner-border-sm mr-1" role="status"
                                                             id="spinner" aria-hidden="true"></span>
                                                         <span id="spinner-text">Loading...</span>
-                                                    </button>
-                                                </span>
-
+                                                    </button></span>
                                                 <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
                                                         type="button" id="print_receipt" onclick="window.print()">Print
                                                         Receipt
@@ -303,11 +245,11 @@
                                     <br><br><br>
 
                                     <div class="row container">
-                                        <div class="col-md-1"></div>
+                                        <div class="col-md-2"></div>
                                         <div class="col-md-3">
                                             <label class="text-primary"> <b>Beneficiary Type</b> </label>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-7">
 
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input"
@@ -320,7 +262,6 @@
                                                     class="text-white">Create
                                                     Beneficiary</a>
                                             </span>
-                                            <br>
                                         </div>
 
                                     </div>
@@ -329,8 +270,8 @@
                                         aria-autocomplete="none">
                                         @csrf
                                         <div class="row container">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-8">
 
                                                 {{-- <br><br><br> --}}
                                                 <div class="row">
@@ -339,13 +280,13 @@
                                                     <div class="col-md-12">
 
                                                         <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">My Account &nbsp; <span
+                                                            <b class="col-md-4 text-primary">Payer Account &nbsp; <span
                                                                     class="text-danger">*</span> </b>
 
 
                                                             <select class="form-control col-md-8 " id="from_account"
                                                                 required>
-                                                                <option value=""> -- Select Your Account --
+                                                                <option value="">Select Account
                                                                 </option>
 
 
@@ -358,14 +299,12 @@
                                                                     class="text-danger">*</span></b>
 
                                                             <div class="col-md-8">
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
+                                                                <div class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
                                                                     <input type="radio" id="ach_beneficiary" value="ACH"
                                                                         name="transfer_beneficiary" checked>
                                                                     <label for="ach_beneficiary">ACH</label>
                                                                 </div>
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
+                                                                <div class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
                                                                     <input type="radio" id="rtgs_beneficiary" value="RTGS"
                                                                         name="transfer_beneficiary">
                                                                     <label for="rtgs_beneficiary">RTGS</label>
@@ -382,7 +321,7 @@
                                                                 <span class="text-danger">*</span></b>
 
                                                             <select class="form-control col-md-8" id="to_account" required>
-                                                                <option value=""> -- Select Beneficiary --</option>
+                                                                <option value="">Beneficiary Account</option>
                                                                 {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
                                                                 Currenct Account ~ 004004110449140121 </option> --}}
                                                             </select>
@@ -396,28 +335,21 @@
 
                                                         <div class="form-group row">
 
-                                                            <b class="col-4 text-primary"> Amount &nbsp; <span
+                                                            <b class="col-md-4 text-primary"> Amount &nbsp; <span
                                                                     class="text-danger">*</span></b>
 
-                                                            <div class="col-2">
-                                                                <div class="input-group mb-2">
-                                                                    <div class="input-group-prepend" style="margin-right:-1px;">
-                                                                        <div class="input-group-text display_currency">###</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
 
-                                                            <input type="text" class="form-control col-6" id="amount"
+                                                            <input type="text" class="form-control col-md-8" id="amount_"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                 required>
 
 
                                                         </div>
-
                                                         <div class="form-group row mb-3">
                                                             <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
                                                                     class="text-danger">*</span></b>
                                                             {{-- <label for="form-group">Category</label> --}}
+
 
                                                             <select class="custom-select col-md-8" id="category" required>
                                                                 <option value="">---Not Selected---</option>
@@ -448,7 +380,7 @@
 
                                                         <div class="form-group row mb-3">
                                                             <b class="col-md-4 text-primary ">Future Payment &nbsp;
-
+                                                                {{-- <span class="text-danger">*</span> --}}
                                                             </b>
 
                                                             <input type="date" class="form-control col-md-8"
@@ -456,33 +388,30 @@
 
                                                         </div>
 
+
+
+
                                                         <div class="form-group text-right yes_beneficiary">
                                                             <button class="btn btn-primary btn-rounded" type="button"
                                                                 id="next_button">
                                                                 &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
-
+                                                            {{-- <button type="button" id="hide_button">hide</button> --}}
                                                         </div>
-
-                                                        <div class="form-group row mb-3 no_beneficiary">
-                                                            <b class="col-md-4 text-primary ">
-
-                                                            </b>
-                                                            <div class="alert alert-warning form-control col-md-8"
-                                                                role="alert">
-                                                                <i class="mdi mdi-alert-outline mr-2"></i>
-                                                                <strong>warning</strong> No
-                                                                beneficiary
-                                                                <legend></legend>
-                                                            </div>
-
-                                                        </div>
-
 
                                                     </div>
 
+                                                    {{-- <div class="col-md-1"></div> --}}
                                                 </div>
                                                 <div class="form-group">
+                                                    {{-- <label class="h6">Payer Account <span
+                                                            class="text-danger">*</span></label>
 
+
+                                                    <select class="custom-select" id="from_account" required>
+                                                        <option value="">Select Account</option>
+
+
+                                                    </select> --}}
 
 
                                                     {{-- <table
@@ -555,6 +484,22 @@
 
                                         </div>
 
+
+
+
+                                        <div class="form-group no_beneficiary">
+                                            <div class="alert alert-warning" role="alert">
+                                                <i class="mdi mdi-alert-outline mr-2"></i> <strong>warning</strong> No
+                                                beneficiary found
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
                                     </form>
 
                                     <form action="#" class="onetime_beneficiary" id="onetime_payment_details_form"
@@ -562,15 +507,15 @@
                                         @csrf
                                         <div class="">
 
-                                            <div class="">
+                                            <div class="col-md-12">
                                                 {{-- <br><br><br> --}}
-                                                <div class="row container">
-                                                    <div class="col-md-1"></div>
+                                                <div class="row">
+                                                    <div class="col-md-2"></div>
 
-                                                    <div class="col-md-9">
+                                                    <div class="col-md-8">
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4 text-primary"> My Account &nbsp; <span
+                                                            <label class="col-md-4 text-primary"> Payer Account &nbsp; <span
                                                                     class="text-danger">*</span> </label>
 
 
@@ -621,27 +566,25 @@
                                                                     class="text-danger">*</span></b>
 
                                                             <div class="col-md-8">
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 onetime_beneficiary_type">
+                                                                <div class="radio radio-primary form-check-inline col-md-5 onetime_beneficiary_type">
                                                                     <input type="radio" id="ach_onetime" value="ACH"
                                                                         name="onetime_transfer_beneficiary" checked>
                                                                     <label for="ach_onetime">ACH</label>
                                                                 </div>
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 onetime_beneficiary_type">
+                                                                <div class="radio radio-primary form-check-inline col-md-5 onetime_beneficiary_type">
                                                                     <input type="radio" id="rtgs_onetime" value="RTGS"
                                                                         name="onetime_transfer_beneficiary">
                                                                     <label for="rtgs_onetime">RTGS</label>
                                                                 </div>
 
-                                                                {{-- <div class="radio radio-info form-check-inline onetime_beneficiary_type">
+                                                                {{--  <div class="radio radio-info form-check-inline onetime_beneficiary_type">
                                                                     <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked>
                                                                     <label for="inlineRadio1"> Inline One </label>
                                                                 </div>
                                                                 <div class="radio form-check-inline">
                                                                     <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
                                                                     <label for="inlineRadio2"> Inline Two </label>
-                                                                </div> --}}
+                                                                </div>  --}}
                                                             </div>
 
                                                         </div>
@@ -736,6 +679,32 @@
 
                                                         </div>
 
+                                                        <div class="row">
+                                                            <div class="col-4"></div>
+                                                            <div class="col-8">
+
+                                                                <div class="form-group">
+
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input"
+                                                                            id="onetime_customCheck1">
+                                                                        <label class="custom-control-label"
+                                                                            for="onetime_customCheck1">Schedule
+                                                                            Payments</label>
+                                                                    </div>
+                                                                    <legend></legend>
+
+                                                                    {{-- <input type="text" class="form-control"
+                                                                        id="onetime_schedule_payment_contraint_input"> --}}
+
+                                                                    <input type="date" class="form-control"
+                                                                        id="onetime_schedule_payment_date">
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
 
                                                         <div class="form-group text-right yes_beneficiary">
                                                             <button class="btn btn-primary btn-rounded" type="button"
@@ -746,10 +715,10 @@
 
                                                     </div>
 
-                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-2"></div>
                                                 </div>
                                                 <div class="form-group">
-                                                    {{-- <label class="h6">My Account <span
+                                                    {{-- <label class="h6">Payer Account <span
                                                             class="text-danger">*</span></label>
 
 
@@ -852,82 +821,110 @@
                                 {{-- <button class="m-2 btn btn-info d-none d-sm-block">Related Information</button> --}}
                                 {{-- LEFT CARD --}}
 
-
-                                <div class=" col-md-4 rtgs_card_right m-2 d-none d-sm-block "
-
-                                <div class=" col-md-4 other_card_right rtgs_card_right m-2 d-none d-sm-block"
-                                    id="related_information_display"
-
+                                <div class=" col-md-4 rtgs_card_right m-2 d-none d-sm-block"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
-
-                                    <div class=" col-md-12 card card-body ach_transfer_summary">
+                                    <div class=" col-md-12 card card-body rtgs_transfer_summary">
                                         {{-- <br><br> --}}
                                         <div class="row">
-                                            <h6 class="col-md-5">Account Description:</h6>
-                                            <span class="text-primary display_from_account_name col-md-7"></span>
+                                            <h6 class="col-md-5">Sender Name:</h6>
+                                            <span class="text-primary col-md-7 display_from_account_name"></span>
 
-                                            <h6 class="col-md-5">Account Number:</h6>
+                                            <h6 class="col-md-5">Sender Account:</h6>
                                             <span class="text-primary display_from_account_no col-md-7"></span>
 
                                             <h6 class="col-md-5">Available Balance:</h6>
-
                                             <span class="text-primary display_from_account_amount col-md-7"></span>
-
 
                                             <h6 class="col-md-5">Account Currency:</h6>
                                             <span class="text-primary display_from_account_currency col-md-7"></span>
-
-                                            {{-- <h6 class="col-md-5">Account Currency:</h6>
-                                            <span class="text-primary display_from_account_currency col-md-7"></span> --}}
-
                                         </div>
 
                                         <hr>
                                         <div class="row">
                                             <h6 class="col-md-5">Receiver Name:</h6>
-                                            <h6 class="text-primary display_to_account_name col-md-7"></h6>
+                                            <span class="text-primary display_to_account_name col-md-7"></span>
 
                                             <h6 class="col-md-5">Receiver Account:</h6>
-                                            <h6 class="text-primary display_to_account_no col-md-7"></h6>
+                                            <span class="text-primary display_to_account_no col-md-7"></span>
 
                                             <h6 class="col-md-5">Account Currency:</h6>
-                                            <h6 class="text-primary display_to_account_currency col-md-7"></h6>
+                                            <span class="text-primary display_to_account_currency col-md-7"></span>
+                                            <br>
+                                            <button type="button"
+                                                class="btn btn-warning btn-xs waves-effect waves-light beneficiary_deatils col-md-3 text-primary"
+                                                data-toggle="modal" data-target="#standard-modal">
+                                                More Info</button>
                                         </div>
-                                        <br>
-                                        <button type="button"
-                                            class="btn btn-warning btn-xs waves-effect waves-light beneficiary_details col-md-3 text-primary"
-                                            data-toggle="modal" data-target="#standard-modal">
-                                            More Info</button>
-                                        <hr style="margin-top: 2px; margin-bottom: 5px; ">
-
-                                        <div class="row">
-                                            <h6 class="text-primary col-md-4">Transfer Amount:</h6>
-                                            <h6 class="text-danger text-bold col-md-8 ">
-                                                <span class="display_currency"></span>
-                                                &nbsp;
-                                                <span class="display_transfer_amount"></span>
-                                            </h6>
-                                        </div>
-                                        <hr style="margin-top: 2px; margin-bottom: 5px; ">
+                                        <hr>
 
                                         <div class="row">
                                             <h6 class="text-primary col-md-4">Transaction Fee:</h6>
-                                            <h6 class="text-danger text-bold col-md-8">0.08% of transfer amount</h6>
+                                            <span class="text-danger text-bold col-md-8">0.10% of transfer amount</span>
                                         </div>
 
                                         <hr>
                                         <div class="row">
                                             <h6 class="text-primary col-md-4">Please Note:</h6>
-                                            <h6 class="text-danger col-md-8">ACH Tranfers should be above (SLL
-                                                30,000,000.00)</h6>
+                                            <span class="text-danger col-md-8">RTGS Tranfers should be above (SLL
+                                                50,000,000.00)</span>
                                         </div>
 
+                                    </div>
 
-                                    </div>   
+                                    <div class=" col-md-12 card card-body ach_transfer_summary">
+                                        {{-- <br><br> --}}
+                                        <div class="row">
+                                            <h6 class="col-md-5">Sender Name:</h6>
+                                            <span class="text-primary display_from_account_name col-md-7"></span>
+
+                                            <h6 class="col-md-5">Sender Account:</h6>
+                                            <span class="text-primary display_from_account_no col-md-7"></span>
+
+                                            <h6 class="col-md-5">Available Balance:</h6>
+                                            <span class="text-primary display_from_account_amount col-md-7"></span>
+
+                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_from_account_currency col-md-7"></span>
+                                        </div>
+
+                                        <hr>
+                                        <div class="row">
+                                            <h6 class="col-md-5">Receiver Name:</h6>
+                                            <span class="text-primary display_to_account_name col-md-7"></span>
+
+                                            <h6 class="col-md-5">Receiver Account:</h6>
+                                            <span class="text-primary display_to_account_no col-md-7"></span>
+
+                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_to_account_currency col-md-7"></span>
+                                        </div>
+                                        <br>
+                                        <button type="button"
+                                            class="btn btn-warning btn-xs waves-effect waves-light beneficiary_deatils col-md-3 text-primary"
+                                            data-toggle="modal" data-target="#standard-modal">
+                                            More Info</button>
+                                        <hr>
+
+                                        <div class="row">
+                                            <h6 class="text-primary col-md-4">Transaction Fee:</h6>
+                                            <span class="text-danger text-bold col-md-8">0.08% of transfer amount</span>
+                                        </div>
+
+                                        <hr>
+                                        <div class="row">
+                                            <h6 class="text-primary col-md-4">Please Note:</h6>
+                                            <span class="text-danger col-md-8">ACH Tranfers should be above (SLL
+                                                30,000,000.00)</span>
+                                        </div>
 
                                     </div>
                                 </div>
+
+
+
+
+
 
                                 {{-- <div class="col-md-5 text-center" style="margin-top: 80px;">
 
@@ -966,39 +963,22 @@
 
 
                                         <div class="form-group row">
-                                            <label class="col-md-5">Name:</label>
+                                            <label class="col-md-5">Bank Name:</label>
                                             <span class="col-md-7" id="beneficiary_details_bank_name"></span>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-5">Swift Code:</label>
+                                            <label class="col-md-5">Bank Swift Code:</label>
                                             <span class="col-md-7" id="beneficiary_details_bank_swift_code"></span>
                                         </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-5">Country:</label>
-                                            <span class="col-md-7" id="beneficiary_details_bank_country"></span>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-md-5">City:</label>
-                                            <span class="col-md-7" id="beneficiary_details_bank_city"></span>
-                                        </div>
-
-
-                                        <div class="form-group row">
-                                            <label class="col-md-5">Branch:</label>
-                                            <span class="col-md-7" id="beneficiary_details_bank_branch"></span>
-                                        </div>
-
                                         <hr>
 
                                         <h4 class="text-primary">Account Details</h4>
 
-                                        {{-- <div class="form-group row">
+                                        <div class="form-group row">
                                             <label class="col-md-5">Account Name:</label>
                                             <span class="col-md-7" id="beneficiary_details_account_name"></span>
-                                        </div> --}}
+                                        </div>
 
                                         <div class="form-group row">
                                             <label class="col-md-5">Account Number:</label>
@@ -1006,27 +986,23 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-md-5">Currency:</label>
+                                            <label class="col-md-5">Account Currency:</label>
                                             <span class="col-md-7" id="beneficiary_details_account_currency"></span>
                                         </div>
                                         <hr>
 
                                         <h4 class="text-primary">Beneficiary Details </h4>
                                         <div class="form-group row">
-                                            <label class="col-md-5">Nickname:</label>
+                                            <label class="col-md-5">Beneficiary Name:</label>
                                             <span class="col-md-7" id="beneficiary_details_name"></span>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-5">Address:</label>
+                                            <label class="col-md-5">Beneficiary Address:</label>
                                             <span class="col-md-7" id="beneficiary_details_address"></span>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-5">Telephone:</label>
+                                            <label class="col-md-5">Beneficiary Telephone:</label>
                                             <span class="col-md-7" id="beneficiary_details_telephone"></span>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-5">Email:</label>
-                                            <span class="col-md-7" id="beneficiary_details_email"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -1053,10 +1029,6 @@
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
                 <script>
-                    function formatToCurrency(amount) {
-                        return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-                    };
-
                     function bank_list() {
                         $.ajax({
                             'type': 'GET',
@@ -1117,10 +1089,9 @@
                                                 index].accountNumber + '~' + data[
                                                 index].currency + '~' + data[index]
                                             .availableBalance
-                                    }).text(data[index].accountNumber + ' - ' + data[index]
+                                    }).text(data[index].accountNumber + '~' + data[index]
                                         .currency +
-                                        ' - ' + formatToCurrency(Number(data[index]
-                                            .availableBalance))));
+                                        '~' + data[index].availableBalance));
                                     //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
                                 });
@@ -1128,7 +1099,6 @@
 
                         })
                     }
-
 
                     function get_benerficiary() {
                         $.ajax({
@@ -1139,37 +1109,29 @@
                                 console.log(response.data);
                                 let data = response.data
 
-                                if(!response.data){
+                                if (response.data.length > 0) {
+                                    $('.yes_beneficiary').show()
+                                    $('.no_beneficiary').hide()
 
-                                }else{
-                                    if (response.data.length > 0) {
-                                        $('.yes_beneficiary').show()
-                                        $('.no_beneficiary').hide()
-    
-                                        $.each(data, function(index) {
-                                            //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
-                                            $('#to_account').append($('<option>', {
-                                                value: data[index].BANK_NAME + '~' +
-                                                    data[
-                                                        index].NICKNAME.toUpperCase() + '~' +
-                                                    data[
-                                                        index]
-                                                    .BEN_ACCOUNT + '~' + data[index]
-                                                    .BEN_ACCOUNT_CURRENCY + '~' + JSON
-                                                    .stringify(data[index])
-                                            }).text(data[index].NICKNAME.toUpperCase() + ' - ' +
-                                                data[index]
-                                                .BANK_NAME.toUpperCase() +
-                                                ' - ' + data[index].BEN_ACCOUNT + ' - ' + data[
+                                    $.each(data, function(index) {
+                                        //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                                        $('#to_account').append($('<option>', {
+                                            value: data[index].BANK_NAME + '~' +
+                                                data[
+                                                    index].NICKNAME + '~' + data[
                                                     index]
-                                                .BEN_ACCOUNT_CURRENCY));
-    
-                                        });
-    
-                                    } else {
-                                        $('.yes_beneficiary').hide()
-                                        $('.no_beneficiary').show()
-                                    }
+                                                .BEN_ACCOUNT + '~' + data[index]
+                                                .BEN_ACCOUNT_CURRENCY + '~' + data[index]
+                                        }).text(data[index].NICKNAME + '~' + data[index]
+                                            .BANK_NAME +
+                                            '~' + data[index].BEN_ACCOUNT + '~' + data[index]
+                                            .BEN_ACCOUNT_CURRENCY));
+
+                                    });
+
+                                } else {
+                                    $('.yes_beneficiary').hide()
+                                    $('.no_beneficiary').show()
                                 }
 
 
@@ -1180,20 +1142,19 @@
 
                     $(document).ready(function() {
 
+                        {{-- $('.hide-for-demo-purpose').hide() --}}
                         $('#spinner').hide(),
                             $('#spinner-text').hide(),
                             $('#print_receipt').hide(),
                             $(".hide_invoice").hide()
                         $('.no_beneficiary').hide()
-                        $("#transaction_summary").hide();
+                        $("#transaction_summary_").hide();
                         $(".success_gif").hide();
                         $(".onetime_beneficiary").hide()
-
-
+                        {{-- $(".schedule_payment_summary").hide(); --}}
+                        $(".rtgs_transfer_summary").hide();
                         $(".ach_transfer_summary").show();
-                        $(".beneficiary_details").hide();
-
-
+                        $(".beneficiary_deatils").hide();
 
                         setTimeout(function() {
                             from_account();
@@ -1202,11 +1163,22 @@
                             get_currency();
                         }, 2000)
 
-                     
+                        // ONETIME BENEFICIARY CHECKBOX
+
+                        {{-- $('input[type="checkbox"]').click(function(){
+                        if($(this).is(":checked")){
+                            console.log("Checkbox is checked.");
+                        }
+                        else if($(this).is(":not(:checked)")){
+                            console.log("Checkbox is unchecked.");
+                        }
+                    }); --}}
 
                         $("#onetime_beneficiary_form").click(function() {
                             if ($(this).is(":checked")) {
                                 console.log("Checkbox is checked.");
+                                var type = 'onetime';
+
 
                                 $("#onetime_payment_details_form").toggle(500);
                                 $("#payment_details_form").hide();
@@ -1217,9 +1189,42 @@
                             }
                         })
 
-                     
+                        {{-- $(".customCheck1").is("change", function() {
+                        if ($(this).is(":checked")) {
+                            alert("YES");
+                        }else {
+                            alert("No");
+                        }
+                    }); --}}
 
 
+
+                        // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
+                        $("#invoice_attachment").on("change", function() {
+                            if ($(this).is(":checked")) {
+                                $('.hide_invoice').hide()
+                            } else {
+                                $('.hide_invoice').show()
+                            }
+                        });
+
+
+                        $('#invoice_attachment').change(function() {
+
+                            var file = $("#invoice_attachment[type=file]").get(0).files[0];
+
+                            if (file) {
+                                var reader = new FileReader();
+
+                                reader.onload = function() {
+                                    $("#display_invoice_attachment").attr("src", reader.result);
+                                }
+
+                                reader.readAsDataURL(file);
+                            }
+                            {{-- $("#display_invoice_attachment").attr("src", {{ asset('land_asset/images/same-bank.gif') }}); --}}
+                            $("#display_invoice_attachment").show();
+                        })
 
 
                         function toaster(message, icon) {
@@ -1249,21 +1254,327 @@
 
                         var type = $("input[type='radio']:checked").val();
 
+                        $(".radio").click(function() {
+
+                            var type = $("input[type='radio']:checked").val();
+
+                            if (type == '') {
+                                $(".select_onetime").css("display", "none");
+                                $(".select_beneficiary").css("display", "block");
+
+                                // set amonut to empty
+                                $("#amount").val('');
+                                $("#pay_from_account").show();
+
+
+                                //$(".select_onetime").hide();
+                                //$(".select_beneficiary").show();
+
+                            }
+                            if (type == 'onetime') {
+
+                                $(".select_beneficiary").css("display", "none");
+                                $(".select_onetime").css("display", "block");
+
+                                // set amonut to empty
+                                $("#amount").val('');
+                                $("#pay_from_account").hide();
+
+                                // $(".select_beneficiary").hide();
+                                //$(".select_onetime").show();
+                            }
+
+                        });
+
+
+                        {{--  var beneficiary_type = $("input[type='radio']:checked").val();  --}}
+                        {{--  console.log(beneficiary_type);  --}}
+
                         var beneficiary_type = $('input[name="transfer_beneficiary"]:checked').val();
                         console.log(beneficiary_type);
 
+                        $(".beneficiary_type").click(function(){
+                            var beneficiary_type = $('input[name="transfer_beneficiary"]:checked').val();
 
-                      
-                        
-                      
+                            if(beneficiary_type == "ACH"){
+                                console.log("ACH Transfer");
+                                $(".rtgs_transfer_summary").hide();
+                                $(".ach_transfer_summary").toggle(500);
+                            }
+                            if(beneficiary_type == "RTGS"){
+                                console.log("RTGS Transfer");
+                                $(".ach_transfer_summary").hide();
+                                $(".rtgs_transfer_summary").toggle(500);
+                            }
+
+                        })
+
+                        {{--  $(".onetime_beneficiary_type").click(function(){
+                            var beneficiary_type = $('input[name="onetime_transfer_beneficiary"]:checked').val();
+
+                            if(beneficiary_type == "ACH"){
+                                console.log("ACH Onetime Transfer");
+                                $(".rtgs_transfer_summary").hide();
+                                $(".ach_transfer_summary").toggle(500);
+                            }
+                            if(beneficiary_type == "RTGS"){
+                                console.log("RTGS Onetime Transfer");
+                                $(".ach_transfer_summary").hide();
+                                $(".rtgs_transfer_summary").toggle(500);
+                            }
+
+                        })  --}}
 
 
-                        $("#amount").keyup(function() {
-                            let amount = $("#amount").val()
-                            $('.display_transfer_amount').text(formatToCurrency(parseFloat(amount)))
+                        {{--  $(".radio").click(function() {
+                            var beneficiary_type = $("input[type='radio']:checked").val();
+
+                            if (beneficiary_type == "ACH") {
+                                console.log("ACH Transfer");
+                                $(".rtgs_transfer_summary").hide();
+                                $(".ach_transfer_summary").toggle(500);
+                            }
+
+                            if (beneficiary_type == "RTGS") {
+                                console.log("RTGS Transfer");
+                                $(".ach_transfer_summary").hide();
+                                $(".rtgs_transfer_summary").toggle(500);
+                            }
+                        })  --}}
+
+                        {{--  $("#onetime_beneficiary_form").click(function() {
+                            if ($(this).is(":checked")) {
+                                console.log("Checkbox is checked.");
+
+                                $("#onetime_payment_details_form").toggle(500);
+                                $("#payment_details_form").hide();
+                            } else if ($(this).is(":not(:checked)")) {
+                                console.log("Checkbox is unchecked.");
+                                $("#payment_details_form").toggle(500);
+                                $("#onetime_payment_details_form").hide();
+                            }
+                        })  --}}
+
+
+
+                        $("#to_account").change(function() {
+                            console.log("value changed");
+                            $(".beneficiary_deatils").show();
                         })
 
 
+
+                        // hide seleect accounts info
+                        $(".from_account_display_info").hide()
+                        $(".to_account_display_info").hide()
+                        $("#schedule_payment_date").hide()
+                        $("#onetime_schedule_payment_date").hide()
+                        $('#schedule_payment_contraint_input').hide()
+                        $('.display_schedule_payment_date').text('N/A')
+                            $('#select_frequency').hide()
+                            $('#select_frequency_text').hide()
+                            $("#transaction_form").show()
+                        $("#transaction_summary").hide()
+
+                        {{-- $("#next_button").click(function(e) {
+                    e.preventDefault()
+                    $("#transaction_form").hide()
+                    $("#transaction_summary").show()
+                }) --}}
+
+                        $("#back_button").click(function(e) {
+                            e.preventDefault()
+                            $("#transaction_summary").hide()
+                            $("#transaction_form").show()
+
+                        })
+
+                        {{-- Event on From Account field --}}
+
+                        var amt = 0
+                        $("#from_account").change(function() {
+                            var from_account = $(this).val()
+                            var from_account_info = from_account.split("~");
+                            console.log(from_account_info);
+                            {{-- alert(from_account) --}}
+                            if (from_account.trim() == '' || from_account.trim() == undefined) {
+                                {{-- alert('money') --}}
+                                $(".from_account_display_info").hide()
+
+                            } else {
+
+                                //values for the related field screen;
+                                from_account_type = from_account_info[0];
+                                console.log("name "+ from_account_type);
+                                //  from_account_info = from_account.split("~")
+                                // alert(from_account_info);
+                                {{-- alert('continue') --}}
+                                // alert(from_account_info);
+
+                                var to_account = $('#to_account').val()
+                                // conole.log(to_account);
+
+                                if ((from_account.trim() == to_account.trim()) && from_account.trim() !='' &&to_account.trim() != '') {
+                                    toaster('can not transfer to same account', 'error')
+                                    {{-- alert('can not transfer to same account') --}}
+                                    $(this).val('')
+                                }
+
+                                // set summary values for display
+
+                                $(".display_from_account_type").text(from_account_info[0].trim());
+                                $(".display_from_account_name").text(from_account_info[1].trim());
+                                $(".display_from_account_no").text(from_account_info[2].trim())
+                                $(".display_from_account_currency").text(from_account_info[3].trim())
+                                $("#basic-addon1").text(from_account_info[3].trim())
+
+                                $(".display_currency").text(from_account_info[3].trim()) // set summary currency
+
+                                amt = from_account_info[4].trim()
+
+                                $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4].trim())))
+                                {{-- alert('and show' + from_account_info[3].trim()) --}}
+                                $(".from_account_display_info").show()
+                            }
+
+
+
+
+                            // alert(from_account_info[0]);
+                        });
+
+
+                        $("#to_account").change(function() {
+                            var to_account = $(this).val()
+                            var to_account_info = to_account.split("~");
+                            // console.log(to_account_info);
+                            {{-- console.log(to_account); --}}
+                            if (to_account.trim() == '' || to_account.trim() == undefined) {
+
+                                $(".to_account_display_info").hide()
+
+                            } else {
+                                to_account_info = to_account.split("~")
+
+                                console.log()
+                                var from_account = $('#from_account').val()
+
+                                if ((from_account.trim() == to_account.trim()) && from_account.trim() !=
+                                    '' &&
+                                    to_account.trim() != '') {
+                                    toaster('can not transfer to same account', 'error')
+                                    {{-- alert('can not transfer to same account') --}}
+                                    $(this).val('')
+                                }
+
+                                // set summary values for display
+                                $(".display_to_account_type").text(to_account_info[0].trim())
+                                $(".display_to_account_name").text(to_account_info[1].trim())
+                                $(".display_to_account_no").text(to_account_info[2].trim())
+                                $(".display_to_account_currency").text(to_account_info[3].trim())
+
+                                {{-- console.log( JSON.parse(to_account_info[4].trim())) --}}
+
+                                $("#beneficiary_details_bank_name").text(to_account_info[0].trim());
+                                {{-- $("#beneficiary_details_bank_swift_code").text(to_account_info[0].trim()); --}}
+                                $("#beneficiary_details_account_name").text(to_account_info[0].trim());
+                                $("#beneficiary_details_account_number").text(to_account_info[0].trim());
+                                $("#beneficiary_details_account_currency").text(to_account_info[0].trim());
+                                $("#beneficiary_details_name").text(to_account_info[0].trim());
+                                $("#beneficiary_details_address").text(to_account_info[0].trim());
+                                $("#beneficiary_details_telephone").text(to_account_info[0].trim());
+
+
+                                $(".to_account_display_info").show()
+                            }
+
+
+
+
+                            // alert(to_account_info[0]);
+                        });
+
+
+                        $("#amount").keyup(function() {
+
+                            var type = $("input[type='checkbox']:checked").val();
+                            //alert(type);
+                            //return false;
+
+
+                            if (type == 'beneficiary') {
+                                var from_account = $('#from_account').val()
+                                var to_account = $('#to_account').val()
+
+                                if (from_account.trim() == '' || to_account.trim() == '') {
+                                    toaster('Please select source and destination accounts', 'error')
+                                    {{-- alert('Please select source and destination accounts') --}}
+                                    {{-- $(this).val('') --}}
+                                    return false;
+                                } else {
+                                    var transfer_amount = $("#amount").val()
+
+                                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                                        toaster('Insufficient account balance', 'error', 10000)
+                                        return false;
+                                    }
+
+                                    $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)))
+                                }
+
+                            } else if (type == 'onetime') {
+
+                                var from_account = $('#from_account').val()
+                                var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name')
+                                    .val()
+                                var onetime_beneficiary_account_number = $(
+                                    '#onetime_beneficiary_account_number').val()
+                                var onetime_beneficiary_account_currency = $(
+                                    '#onetime_beneficiary_account_currency').val()
+                                var onetime_beneficiary_bank_name = $('#onetime_beneficiary_bank_name')
+                                .val()
+                                var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
+
+                                {{-- console.log(onetime_beneficiary_alias_name)
+                        console.log(onetime_beneficiary_account_number)
+                        console.log(onetime_beneficiary_account_currency) --}}
+
+
+                                if (from_account.trim() == '' || onetime_beneficiary_alias_name.trim() ==
+                                    '' ||
+                                    onetime_beneficiary_account_number.trim() == '' ||
+                                    onetime_beneficiary_account_currency.trim() == '') {
+                                    toaster('Please select source and destination accounts', 'error')
+                                    {{-- alert('Please select source and destination accounts') --}}
+                                    $(this).val('')
+                                    return false;
+                                } else {
+                                    //alert('set')
+                                    var transfer_amount = $(this).val()
+                                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                                        toaster('Insufficient account balance', 'error', 10000)
+                                        return false;
+                                    }
+                                    $(".display_transfer_amount").text(formatToCurrency(Number(
+                                        transfer_amount
+                                        .trim())))
+                                }
+
+                            } else {
+                                {{-- alert(type + ' 00000000 Select either beneficiary or onetime beneficiary') --}}
+                                $(this).val('')
+                                return false;
+                            }
+
+
+
+
+                        })
+
+
+                        function formatToCurrency(amount) {
+                            return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+                        };
 
 
                         // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
@@ -1271,9 +1582,9 @@
                             if ($(this).is(":checked")) {
                                 {{-- console.log("Checkbox Checked!"); --}}
                                 {{-- $('.schedule_payment_summary').show(); --}}
-                                $("#schedule_payment_date").show(),
-                                    $(".display_schedule_payment").text('YES'),
-                                    $('#schedule_payment_contraint_input').val('TRUE'),
+                                $("#schedule_payment_date").show()
+                                    $(".display_schedule_payment").text('YES')
+                                    $('#schedule_payment_contraint_input').val('TRUE')
                                     $('#select_frequency').show();
                                 $('#select_frequency_text').show();
 
@@ -1320,8 +1631,33 @@
                         });
 
 
-                    
+                        // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
+                        $("#invoice_check").on("change", function() {
+                            if ($(this).is(":checked")) {
+                                //console.log("Checkbox Checked!");
+                                {{-- alert("dfdf") --}}
+                                $(".hide_invoice").show()
 
+
+                            } else {
+                                {{-- alert("454545") --}}
+                                $(".hide_invoice").hide()
+
+                            }
+                        });
+
+                        $("#onetime_invoice_check").on("change", function() {
+                            if ($(this).is(":checked")) {
+                                $(".hide_invoice").show()
+                            } else {
+                                $(".hide_invoice").hide()
+                            }
+                        })
+
+                        {{-- $("#hide_button").click(function(){
+                        $("#transaction_form").hide();
+                        $("#transaction_summary_").toggle(500);
+                    }) --}}
 
 
 
@@ -1342,27 +1678,21 @@
 
                         // NEXT BUTTON CLICK
                         $("#next_button").click(function() {
-
+                            $(".rtgs_card_right").hide();
+                            $("#rtgs_card_right").hide();
                             var type = $("input[type='radio']:checked").val();
 
                             var from_account = $('#from_account').val()
-                            var to_account = $('#to_account').val()
                             var transfer_amount = $('#amount').val()
                             var category = $('#category').val()
                             var purpose = $('#purpose').val()
-                            var schedule_payment_contraint_input = $('#schedule_payment_contraint_input')
-                                .val()
+                            var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                             var schedule_payment_date = $('#schedule_payment_date').val();
 
-                            var category_info = category.split("~")
-                            $("#display_category").text(category_info[1])
-                            $("#display_purpose").text(purpose)
-
-                            if (from_account == '' || to_account == '' || transfer_amount == '' ||
-                                category_info ==
-                                '' || purpose == '') {
+                            if (from_account.trim() == '' || transfer_amount == '' || category.trim() =='' || purpose.trim() == '') {
                                 toaster('Field must not be empty', 'error');
                                 return false
+
                             }
 
                             if (parseFloat(amt) < parseFloat(transfer_amount)) {
@@ -1370,43 +1700,124 @@
                                 return false;
                             }
                             //set purpose and category values
-
+                            var category_info = category.split("~")
+                            $("#display_category").text(category_info[1])
+                            $("#display_purpose").text(purpose)
 
                             $("#transaction_form").hide()
-                            {{-- $(".other_card_right").hide() --}}
-                            $("#related_information_display").hide()
                             $("#transaction_summary").show()
                             $('#print_button').hide();
 
+                            {{-- $("#customCheck1").on("change", function(){
+                            if ($(this).is(":checked")){
+                                console.log("checked");
+                            }else {
+                                console.log("unchecked")
+                            }
+                        }); --}}
+
+                            if ($('#customCheck1').is(':checked')) {
+                                {{-- console.log("checked"); --}}
+                                {{-- $(".schedule_payment_summary").show(); --}}
+                                {{-- $("#transaction_summary").parents("#schedule_payment_summary").hide(); --}}
+                                {{-- $("table tr:nth-child(6)").hide(); --}}
+                            } else {
+                                console.log("unchecked");
+                                {{-- $(".schedule_payment_summary").hide(); --}}
+
+                            }
+
+
+                            if (schedule_payment_contraint_input != '' && schedule_payment_date =='') {
+                                $('.display_schedule_payment_date').text('N/A') // shedule date NULL
+                                toaster('Select schedule date for subsequent transfers', 'error')
+                                {{-- alert('Select schedule date for subsequent transfers') --}}
+                                return false
+                            }
+
+                            $('.display_schedule_payment_date').text(schedule_payment_date)
+
+                            if (type == 'beneficiary') {
+
+                                var to_account = $('#to_account').val()
+
+                                $('.display_schedule_payment_date').text(schedule_payment_date)
+
+
+                                if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount
+                                    .trim() == '' || category.trim() == '' || purpose.trim() == '') {
+                                    toaster('Field must not be empty', 'error');
+
+                                    return false
+                                } else {
+                                    //set purpose and category values
+                                    var category_info = category.split("~")
+                                    $("#display_category").text(category_info[1])
+                                    $("#display_purpose").text(purpose)
+
+                                    $("#transaction_form").hide()
+                                    $("#transaction_summary").show()
+                                }
 
 
 
 
+                            } else if (type == 'onetime') {
 
-                        });
+                                var from_account = $('#from_account').val()
+
+                                // ONETIME BENEFICIARY DETAILS
+                                var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
+                                var onetime_beneficiary_account_number = $(
+                                    '#onetime_beneficiary_account_number').val()
+                                var onetime_beneficiary_account_currency = $(
+                                    '#onetime_beneficiary_account_currency').val()
+                                var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
+                                var onetime_beneficiary_bank_name = $('#onetime_beneficiary_bank_name')
+                                    .val()
+                                var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
 
 
 
-                        //
-                        $('#confirm_modal_button').click(function(){
-                            $('#user_pin').attr('readonly', false);
-                            $('#user_pin').val('')
-                        })
+                                // END OF ONETIME BENEFICIARY DETAILS
 
-                        //
-                        $('#user_pin').keyup(function(e) {
-                            let trans_pin = $('#user_pin').val()
-                            if(trans_pin.length == 4){
-                                $(this).attr('readonly', true);
-                                Swal.fire(
-                                    "YOU ENTERED 4 PINS",
-                                    '',
-                                    'success'
-                                );
-                            }else{
-                              
+
+                                if (from_account.trim() == '' || onetime_beneficiary_account_number
+                                    .trim() ==
+                                    '' || transfer_amount.trim() == '' || category.trim() == '' || purpose
+                                    .trim() == '') {
+                                    toaster('Field must not be empty', 'error');
+
+                                    return false;
+                                } else {
+                                    //set purpose and category values
+                                    var category_info = category.split("~")
+                                    $("#display_category").text(category_info[1])
+                                    $("#display_purpose").text(purpose)
+
+                                    $("#transaction_form").hide()
+                                    $("#transaction_summary").show()
+                                }
+
+
+
+
+                            } else {
+                                toaster('CHOOSE EITHER BENEFICIARY OR ONTIME');
+                                return false
                             }
                         });
+
+                        $("#onetime_next_button").click(function() {
+                            var onetime_from_account_ = $("#onetime_from_account").val();
+                            var onetime_receiver_name = $("#onetime_beneficiary_alias_name").val();
+                            var onetime_bank_name = $("#onetime_beneficiary_bank_name").val();
+                            var onetime_account_number = $("#onetime_beneficiary_account_number").val();
+                            var onetime_account_currency = $("#onetime_beneficiary_account_currency").val();
+                            var onetime_telephone = $("#onetime_beneficiary_phone").val();
+                            var onetime_amount = $("#onetime_amount").val();
+                            var onetime_expense_category = $("#onetime_amount").val();
+                        })
 
 
                         var user_pin = $('#user_pin').val();
@@ -1416,6 +1827,8 @@
                             e.preventDefault();
 
                             var type = $("input[type='radio']:checked").val();
+                            {{-- console.log(type); --}}
+
 
 
                             if (type == 'beneficiary') {
@@ -1425,7 +1838,11 @@
                                 var transfer_amount = $('#amount').val()
                                 var category = $('#category').val().split('~')
                                 var purpose = $('#purpose').val()
-                               
+                                var schedule_payment_contraint_input = $(
+                                        '#schedule_payment_contraint_input')
+                                    .val()
+                                var schedule_payment_date = $('#schedule_payment_date').val();
+
 
                                 var from_account_ = from_account[2];
                                 var to_account_ = to_account[2];
@@ -1451,7 +1868,14 @@
                                     $('#confirm_button').attr('disabled', true);
 
 
-                             
+                                {{-- console.log(from_account_);
+                        console.log(to_account);
+                        console.log(transfer_amount);
+                        console.log(category_);
+                        console.log(purpose);
+                        console.log(schedule_payment_contraint_input);
+                        console.log(schedule_payment_date); --}}
+
                                 $.ajax({
                                     'type': 'POST',
                                     'url': 'transfer-to-other-bank-beneficiary-api',
@@ -1463,7 +1887,7 @@
                                         'category': category_,
                                         'currency': currency,
                                         'bank_name': bank_name,
-                                       'secPin': user_pin,
+                                        'secPin': user_pin,
                                         'payment_date': schedule_payment_date,
                                         'beneficiaryName': account_name,
                                         'naration': purpose,
@@ -1483,7 +1907,24 @@
                                             $(".rtgs_card_right").hide();
                                             $(".success_gif").show();
 
-                                         
+                                            Swal.fire(
+                                                response.message,
+                                                '',
+                                                'success'
+                                            );
+                                            s
+                                        } else {
+                                            toaster(response.message, 'error', 10000)
+
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#print_receipt').hide();
+                                            $(".success_gif").hide();
+                                            $(".rtgs_card_right").show();
+
+                                            $('#confirm_transfer').show();
+                                            $('#confirm_button').attr('disabled', false);
+
 
                                         }
                                     },
@@ -1531,7 +1972,7 @@
                                 if (from_account_.trim() == '' || to_account_.trim() == '' ||
                                     transfer_amount
                                     .trim() == '' || currency_ == '' || alias_name == '' || category_
-                                    .trim() ==
+                                .trim() ==
                                     '' || purpose.trim() == '' ||
                                     user_pin == '') {
                                     toaster('Field must not be empty', 'error', 10000)
