@@ -49,7 +49,7 @@ type="text/css" />
 
             </div>
         </div>
-        <legend></legend>
+
 
         <div class="row">
             <div class="col-12">
