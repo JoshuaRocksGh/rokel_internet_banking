@@ -373,4 +373,15 @@ class FunctionsController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
+
+    // method to return expense types
+    public function get_expenses()
+    {
+        $response = Http::get(env('API_BASE_URL') . "/utilities/expenseTypes");
+
+        //return $response;
+        // return $response->status();
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
 }
