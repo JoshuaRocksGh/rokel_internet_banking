@@ -19,7 +19,7 @@
             <h6>
 
                 <span class="flaot-right">
-                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank Beneficiary</b>
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-primary"> Add Beneficiary </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank Beneficiary</b>
 
 
                 </span>
@@ -47,10 +47,10 @@
                         <div class="col-md-10 rtgs_card m-2"
                             style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                             <br><br><br>
-                            <div class="row" id="transaction_form">
+                            <div class="row " id="transaction_form">
 
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 ">
                                     <form action="#" id="same_bank_beneficiary_form" autocomplete="off"
                                         aria-autocomplete="off">
                                         {{-- @csrf --}}
