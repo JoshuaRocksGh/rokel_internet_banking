@@ -35,167 +35,186 @@
 
         </div>
     </div>
-    {{-- page title --}}
+
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12">
+            <div class="card-body">
+                <div class="row">
 
-            <div class="row">
-                <div class="col-md-1"></div>
+                    <div class="col-md-12">
+                        <div class="row">
+                        <div class=" col-md-7 rtgs_card m-2" id="request_form_div"
+                                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                            <br><br><br>
 
-                <div class=" card card-body col-md-10">
+                                            <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                aria-autocomplete="none">
+                                                @csrf
+                                                <div class="row container">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-9">
 
-                    <div class="row">
+                                                        {{-- <br><br><br> --}}
+                                                        <div class="row">
+                                                            {{-- <div class="col-md-1"></div> --}}
 
+                                                            <div class="col-md-12">
 
-                        <div class="col-md-7 disappear-after-success" id="request_statement_div">
-
-                            <div class="">
-
-                                <table class="table mb-0 table-striped table-bordered">
-
-                                    <tbody>
-                                        <tr class="bg-blue text-white">
-                                            <td>Request Details</td>
-                                        </tr>
-
-                                        <tr>
-                                        </tr>
-
-                                    </tbody>
-
-
-                                </table>
-
-                                <p>
+                                                                <div class="form-group row mb-3">
+                                                                    <b class="col-md-4 text-primary">My Account &nbsp; <span
+                                                                            class="text-danger">*</span> </b>
 
 
-                                <form role="form" class="parsley-examples">
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-5 col-form-label">Account Number<span
-                                                class="text-danger">*</span></label>
-                                        <div class="col-7">
-                                            <select class="custom-select " id="my_account" required>
-                                                <option value="">Select Account</option>
-                                                {{-- <option value="001023468976001">001023468976001</option> --}}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="cardType" class="col-5 col-form-label">
-                                            Type of Card
-                                            <span class="text-danger">*</span></label>
-                                        <div class="col-7">
-                                            <select class="custom-select " id="cardType" required>
-                                                <option value="">Select Type of Statement</option>
-                                                <option value="VISA CARD">VISA CARD</option>
-                                                <option value="MASTER CARD">MASTER CARD</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="pUBranch" class="col-5 col-form-label">
-                                            <label>Pick Up Branch</label>
-                                            <span class="text-danger">*</span></label>
-                                        <div class="col-7">
-                                            <select ect class="custom-select " id="pUBranch" required>
-                                                <option value="">-----Not Selected-----</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="hori-pass2" class="col-5 col-form-label">
-                                            Enter Your Pin
-                                            <span class="text-danger">*</span></label>
-                                        <div class="col-7">
-                                            <input type="password" class="form-control" id="pin"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-                                        </div>
-                                    </div>
+                                                                    <select class="form-control col-md-8 " id="my_account"
+                                                                        required>
+                                                                        <option value="">Select Account
+                                                                        </option>
 
 
-                                </form>
-
-                                </p>
-                            </div>
-
-                        </div> <!-- end card-box -->
-
-                        <div class="col-md-5 " id="request_detail_div">
-
-                            <table class="table mb-0 table-striped table-bordered">
-
-                                <tbody>
-                                    <tr class="bg-blue text-white">
-                                        <td>Request Details</td>
-                                    </tr>
-                                    <tr class="">
-
-                                        <td>
-                                            <a class="text-body font-weight-semibold   display_my_account_name"></a>
-                                            <small class="d-block   display_my_account_no"></small>
-                                            <span class="text-right   font-weight-semibold">
-                                                <span class="display_my_account_currency"></span>
-                                                <span class="  display_my_account_amount"></span>
-                                            </span>
-                                        </td>
+                                                                    </select>
+                                                                </div>
 
 
 
-                                    </tr>
-                                    <tr class="">
-                                        <td>
-                                            <span class="text-right font-weight-semibold">
-                                                <span class="display_type_of_card"></span>
-                                            </span>
-                                        </td>
+                                                                <div class="form-group row mb-3" id="pay_from_account">
 
-                                    </tr>
-                                    <tr class="">
-                                        <td>
-                                            <span class="text-right font-weight-semibold">
-                                                <span class="display_pick_up_branch"></span>
-                                            </span>
-                                        </td>
+                                                                    <b class="col-md-4 text-primary">Type Of Card &nbsp;
+                                                                        <span class="text-danger">*</span></b>
 
-                                    </tr>
+                                                                    <select class="form-control col-md-8" id="cardType" required>
+                                                                        <option value="">Select Type of Card</option>
+                                                                        <option value="0">Visa Card</option>
+                                                                        <option value="1">Master Card</option>
+                                                                    </select>
+                                                                    <br>
 
 
 
-                                </tbody>
+                                                                </div>
 
-                            </table>
 
-                            <br>
 
-                            <div class="form-group row">
-                                <div class="col-8 offset-4 text-right">
-                                    <button type="button"
-                                        class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                        id="btn_submit_request_statement">
-                                        <span class="submit-text">Submit</span>
-                                        <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
-                                        <span id="spinner-text">Loading...</span>
-                                    </button>
+                                                                <div class="form-group row">
 
-                                </div>
-                            </div>
+                                                                    <b class="col-md-4 text-primary"> Pick Up Branch &nbsp; <span
+                                                                            class="text-danger">*</span></b>
+
+
+                                                                            <select class="form-control col-md-8" id="pUBranch" placeholder="Select Pick Up Branch" required>
+                                                                                <option value="">Select Pick Up Branch</option>
+                                                                            </select>
+                                                                            <br>
+
+                                                                </div>
+                                                                <div class="form-group row">
+
+                                                                    <b class="col-md-4 text-primary" for="pin" >
+                                                                        Enter Your Pin
+                                                                        <span class="text-danger">*</span></b>
+                                                                        <input type="password" class="form-control col-md-8" id="pin"
+                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                </div>
+
+                                                                <div class="form-group text-right yes_beneficiary">
+                                                                    <button type="button"
+                                                                    class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                    id="btn_submit_request_statement">
+                                                                    <span class="submit-text">Submit</span>
+                                                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                                                    <span id="spinner-text">Loading...</span>
+                                                                </button>
+                                                                </div>
+
+
+                                                            </div>
+
+                                                            {{-- <div class="col-md-1"></div> --}}
+                                                        </div>
+
+
+
+
+
+
+
+
+
+                                                    </div>
+                                                    <div class="col-md-1"></div>
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+
+
+                                            </form>
 
 
                         </div> <!-- end col -->
 
-                        <div class="col-md-7 text-center">
+                        <div class="col-md-4 rtgs_card_right m-2 d-none d-sm-block"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <br><br>
+                                    <div class=" col-md-12 card card-body rtgs_transfer_summary">
+                                        {{-- <br><br> --}}
+                                        <div class="row">
+                                            <h6 class="col-md-5">Account Name:</h6>
+                                            <span class="text-primary display_my_account_name col-md-7"></span>
 
-                            <p class="display-4 text-center text-success success-message "></p>
+                                            <h6 class="col-md-5">Account Number:</h6>
+                                            <span class="text-primary display_my_account_no col-md-7"></span>
+
+                                            <h6 class="col-md-5">Available Balance:</h6>
+                                            <span class="text-primary display_my_account_amount col-md-7"></span>
+
+                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_my_account_currency col-md-7"></span>
+
+                                            <h6 class="col-md-5">Type Of Card:</h6>
+                                            <span class="text-primary display_type_of_card col-md-7"></span>
+
+                                            <h6 class="col-md-5">Pick Up Branch:</h6>
+                                            <span class="text-primary display_pick_up_branch col-md-7"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+
+                                <div class="col-md-4 text-center success_message" id="request_detail_div" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card-body">
+                                                <p class="display-4 text-center text-success success-message "></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
                         </div>
                     </div>
-
-
                 </div>
-
-                <div class="col-md-1"></div>
-
             </div>
         </div>
     </div>
@@ -285,6 +304,7 @@
 
             $('#spinner').hide();
             $('#spinner-text').hide();
+            $('#request_detail_div').hide();
 
             $("#my_account").change(function() {
                 var my_account = $(this).val();
@@ -301,7 +321,7 @@
             $("#cardType").change(function() {
                 var cardType = $("#cardType").val();
                 var optionText = $("#cardType option:selected").text();
-                $(".display_type_of_card").text("Card Type: "+ optionText);
+                $(".display_type_of_card").text(optionText);
                 console.log("Card Type: "+ optionText);
             })
 
@@ -400,7 +420,7 @@
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
                                 $(".success-message").html('<img src="{{ asset('land_asset/images/statement_success.gif') }}" />')
-                                $("request_detail_div").show();
+                                $("#request_detail_div").show();
                             } else {
 
                                 toaster(response.message, 'error', 9000);

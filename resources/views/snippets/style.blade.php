@@ -79,6 +79,31 @@
 
           }
 
+          .success_message::before{
+          position: absolute;
+          content: '';
+          top: 30px;
+          left: -25px;
+          border-left: 13px solid transparent;
+          border-right: 13px solid #0561ad;
+          border-top: 13px solid #0561ad;
+          border-bottom: 13px solid transparent;
+        }
+
+        .success_message::after{
+          position: absolute;
+          content: 'Request Successful';
+          top: -5px;
+          left: -25px;
+          padding: 0.5rem;
+          width: 20rem;
+          background: #0561ad;
+          color: #fff;
+          text-align: center;
+          box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
+
+          }
+
           .rtgs_card_right{
             box-shadow:
             0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -89,6 +114,7 @@
             0 100px 80px rgba(0, 0, 0, 0.12);
             height: 100%;
           }
+
 
           .rtgs_card_right::before{
             position: absolute;
@@ -101,6 +127,21 @@
             border-top: 13px solid #0561ad;
             border-bottom: 13px solid transparent;
             {{--  transform : rotate(45deg);  --}}
+          }
+
+          .success_card_right::after {
+            position: absolute;
+            content: 'Request Successful';
+            top: -5px;
+            {{--  right: -14px;  --}}
+            left: -25px;
+            padding: 0.5rem;
+            width: 10rem;
+            background:#0561ad;
+            color: #fff;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
           }
 
           .rtgs_card_right::after {
