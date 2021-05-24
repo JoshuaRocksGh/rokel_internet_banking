@@ -384,5 +384,32 @@ class FunctionsController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
+
+    public function get_loan_purpose()
+    {
+        // return 'kjsdf';
+
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+
+        $base_response = new BaseResponse();
+
+        // return $data;
+        // return env('API_BASE_URL') ."account/getAccounts";
+
+        $response = Http::get(env('API_BASE_URL') . "/loans/purpose", $data);
+
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+
+        // return $response;
+        // return $response->status();
+    }
 }
 
