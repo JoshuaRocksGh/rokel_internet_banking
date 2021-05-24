@@ -162,12 +162,13 @@
 
                         </div> <!-- end col -->
 
-                        <div class="col-md-4 rtgs_card_right m-2 d-none d-sm-block"
+                        <div class="col-md-4 rtgs_card_right m-2" id="atm_request_summary"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
-                                    <div class=" col-md-12 card card-body rtgs_transfer_summary">
+                                    <div class=" col-md-12 card card-body">
                                         {{-- <br><br> --}}
                                         <div class="row">
+                                            <span class="col-md-12 success-message"></span>
                                             <h6 class="col-md-5">Account Name:</h6>
                                             <span class="text-primary display_my_account_name col-md-7"></span>
 
@@ -181,38 +182,117 @@
                                             <span class="text-primary display_my_account_currency col-md-7"></span>
 
                                             <h6 class="col-md-5">Type Of Card:</h6>
-                                            <span class="text-primary display_type_of_card col-md-7"></span>
+                                            <span class="text-success display_type_of_card col-md-7"></span>
 
                                             <h6 class="col-md-5">Pick Up Branch:</h6>
-                                            <span class="text-primary display_pick_up_branch col-md-7"></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-                                &nbsp;
-
-                                <div class="col-md-4 text-center success_message" id="request_detail_div" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="card-body">
-                                                <p class="display-4 text-center text-success success-message "></p>
-                                            </div>
+                                            <span class="text-success display_pick_up_branch col-md-7"></span>
                                         </div>
                                     </div>
 
-                                </div>
+                                    <div class="form-group text-center display_button">
 
-
+                                        <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                id="back_button" >Back</button> &nbsp; </span>
+                                        <span>&nbsp;
+                                        <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                type="button" id="print_receipt" onclick="window.print()">Print
+                                                Receipt
+                                            </button></span>
+                                    </div>
                         </div>
+
+                        {{-- <div class="col-md-8 text-center success_message" id="request_detail_div" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10">
+                                            <br><br><br>
+
+                                            <div class="table-responsive">
+                                                <table class="table mb-0 table-bordered table-striped">
+
+                                                    <tbody>
+                                                        <tr class="success_gif">
+                                                            <td class="text-center bg-white" colspan="2">
+                                                                <img src="{{ asset('land_asset/images/statement_success.gif') }}"
+                                                                     alt="">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Account Name:</td>
+                                                            <td>
+                                                                <span
+                                                                    class="font-13 text-primary text-bold display_my_account_name"></span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Account Number:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary text-bold display_my_account_no"></span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Available Balance:</td>
+                                                            <td>
+                                                                <span class="font-15 text-primary h3 display_my_account_amount"> </span>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Account Currency:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_my_account_currency"></span>
+
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Type Of Card:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_type_of_card"></span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pick Up Branch:</td>
+                                                            <td>
+                                                                <span
+                                                                    class="font-13 text-success h3 display_pick_up_branch"></span>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Request Date: </td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3">{{ date('d F, Y') }}</span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Posted BY: </td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3">{{ session()->get('userAlias') }}</span>
+                                                            </td>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+                                            <br>
+
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+
+                                </div>
+
+
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -305,6 +385,7 @@
             $('#spinner').hide();
             $('#spinner-text').hide();
             $('#request_detail_div').hide();
+            $('.display_button').hide();
 
             $("#my_account").change(function() {
                 var my_account = $(this).val();
@@ -419,8 +500,11 @@
                                 toaster(response.message, 'success', 20000)
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
-                                $(".success-message").html('<img src="{{ asset('land_asset/images/statement_success.gif') }}" />')
-                                $("#request_detail_div").show();
+                                $(".success-message").html('<img src="{{ asset('land_asset/images/statement_success.gif') }}" style="zoom: 0.5"/>')
+                                // $("#atm_request_summary").hide();
+                                // $("#request_detail_div").show();
+                                $(".display_button").show();
+
                             } else {
 
                                 toaster(response.message, 'error', 9000);

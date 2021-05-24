@@ -494,3 +494,6 @@ Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_
 
 //route to return loan frequencies
 Route::get('get-loan-frequencies-api', [FunctionsController::class, 'get_loan_frequencies'])->name('get-loan-frequencies-api');
+
+//route to return loan purposes
+Route::get('get-loan-purpose-api',[FunctionsController::class,'get_loan_purpose'])->name('get-loan-purpose-api');

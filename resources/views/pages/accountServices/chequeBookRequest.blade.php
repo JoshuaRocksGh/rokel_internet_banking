@@ -35,189 +35,169 @@
 
             </div>
         </div>
-        <legend></legend>
+
 
         <div class="row">
 
             <div class="col-12">
 
-                <div class="row">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class=" col-md-7 rtgs_card m-2" id="request_form_div"
+                                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                            <br><br><br>
 
-                    <div col="col-md-1"></div>
+                                            <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                aria-autocomplete="none">
+                                                @csrf
+                                                <div class="row container">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-9">
 
-                        <div class="card card-body col-md-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
+                                                        {{-- <br><br><br> --}}
+                                                        <div class="row">
+                                                            {{-- <div class="col-md-1"></div> --}}
 
-                            <div class="row" >
+                                                            <div class="col-md-12">
 
-                                <div class="col-md-7" id="request_form_div">
-
-                                    <div class="">
-
-                                        <table class="table mb-0 table-striped table-bordered">
-
-                                            <tbody>
-                                                <tr class="bg-blue text-white">
-                                                    <td>Request Details</td>
-                                                </tr>
-
-                                                <tr>
-                                                </tr>
-
-                                            </tbody>
-
-
-                                        </table>
-
-                                        <p>
+                                                                <div class="form-group row mb-3">
+                                                                    <b class="col-md-6 text-primary">My Account &nbsp; <span
+                                                                            class="text-danger">*</span> </b>
 
 
-                                            <form role="form" class="parsley-examples">
-                                                <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
-                                                            class="text-danger">*</span></label>
-                                                    <div class="col-7">
-                                                        <select class="custom-select " id="my_account" required>
-                                                            <option value="">Select Account</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                                    <select class="form-control col-md-6 " id="my_account"
+                                                                        required>
+                                                                        <option value="">Select Account</option>
+                                                                    </select>
+                                                                </div>
 
-                                                <div class="form-group row">
-                                                    <label for="hori-pass2" class="col-4 col-form-label">
-                                                        Leaflets
-                                                        <span class="text-danger">*</span></label>
-                                                    <div class="col-7">
-                                                        <select class="custom-select " id="leaflet" required>
-                                                            <option value="">-- Select number --</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                                <div class="form-group row">
 
-                                                <div class="form-group row">
-                                                    <label for="webSite" class="col-4 col-form-label">
-                                                        <label> Branch</label>
-                                                        <span class="text-danger">*</span></label>
-                                                    <div class="col-7">
-                                                        <select class="custom-select " id="branch" required>
-                                                            <option value="">-- Selected Branch --</option>
-                                                        </select>
+                                                                    <b class="col-md-6 text-primary" for="leaflet" >
+                                                                        Leftlets
+                                                                        <span class="text-danger">*</span></b>
 
-                                                    </div>
-                                                </div>
+                                                                            <select class="form-control col-md-6" id="leaflet" required>
+                                                                                <option value="">-- Select number --</option>
+                                                                                <option value="25">25</option>
+                                                                                <option value="50">50</option>
+                                                                                <option value="100">100</option>
+                                                                            </select>
+                                                                </div>
 
+                                                                <div class="form-group row">
 
-                                                <div class="form-group row">
-                                                    <label for="hori-pass2" class="col-4 col-form-label">
-                                                        Enter Your Pin
-                                                        <span class="text-danger">*</span></label>
-                                                    <div class="col-7">
-                                                        <input type="text" class="form-control" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+                                                                    <b class="col-md-6 text-primary">Branch
+                                                                        <span class="text-danger">*</span></b>
 
-                                                    </div>
-                                                </div>
+                                                                        <select class="form-control col-md-6" id="branch" required>
+                                                                            <option value="">-- Selected Branch --</option>
+                                                                        </select>
+                                                                </div>
 
-                                                {{-- <div class="form-group row">
+                                                                <div class="form-group row">
+                                                                    <b class="col-md-6 text-primary">Enter Pin
+                                                                        <span class="text-danger">*</span></b>
+
+                                                                        <input type="text" class="form-control col-md-6" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
 
-                                                        <div class="col-7 offset-4 text-right">
+                                                                </div>
 
-                                                            <button type="button"
-                                                                class="btn btn-primary btn-rounded waves-effect waves-light">
-                                                                Submit
-                                                            </button>
 
+
+
+                                                                <div class="form-group text-right ">
+                                                                    <button type="button"
+                                                                    class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                    id="submit_cheque_request">
+                                                                    <span class="submit-text">Submit</span>
+                                                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                                                    <span id="spinner-text">Loading...</span>
+                                                                </button>
+                                                                </div>
+
+
+                                                            </div>
+
+                                                            {{-- <div class="col-md-1"></div> --}}
                                                         </div>
 
 
-                                                </div> --}}
+
+
+
+
+
+
+
+                                                    </div>
+                                                    <div class="col-md-1"></div>
+
+                                                </div>
+
+
+
+
+
+
+
+
+
 
 
                                             </form>
 
-                                        </p>
-
-
-                                    </div> <!-- end card-box -->
-
-
-                                </div>
-
-
-                                <div class="col-md-5 disappear-after-success" id="request_detail_div">
-
-                                    <table class="table mb-0 table-striped table-bordered">
-
-                                        <tbody>
-                                            <tr class="bg-blue text-white">
-                                                <td>Request Summary</td>
-                                            </tr>
-                                            <tr class="">
-
-                                                <td>
-                                                    <a
-                                                        class="text-body font-weight-semibold   display_my_account_name"></a>
-                                                    <small class="d-block   display_my_account_no"></small>
-                                                    <span class="text-right   font-weight-semibold">
-                                                        <span class="display_my_account_currency"></span>
-                                                    <span class="  display_my_account_amount"></span>
-                                                    </span>
-                                                </td>
-
-
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_leaflet"></span>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_branch"></span>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
-
-                                        </tbody>
-
-                                    </table>
-
-                                    <br>
-
-                                    <div class="form-group row">
-                                        <div class="col-8 offset-4 text-right">
-                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="submit_cheque_request">
-                                                Submit
-                                            </button>
-
-                                        </div>
-                                    </div>
-
 
                                 </div> <!-- end col -->
 
-                                <div class="col-md-5 text-center">
-                                    {{-- <span class="hh"><span> --}}
-                                    <p class="display-4 text-center text-success success-message "></p>
+                                <div class="col-md-4 rtgs_card_right m-2" id="atm_request_summary"
+                                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                            <br><br>
+                                            <div class=" col-md-12 card card-body">
+                                                {{-- <br><br> --}}
+                                                <div class="row">
+                                                    <span class="col-md-12 success-message"></span>
+                                                    <h6 class="col-md-5">Account Name:</h6>
+                                                    <span class="text-primary display_my_account_name col-md-7"></span>
+
+                                                    <h6 class="col-md-5">Account Number:</h6>
+                                                    <span class="text-primary display_my_account_no col-md-7"></span>
+
+                                                    <h6 class="col-md-5">Available Balance:</h6>
+                                                    <span class="text-primary display_my_account_amount col-md-7"></span>
+
+                                                    <h6 class="col-md-5">Account Currency:</h6>
+                                                    <span class="text-primary display_my_account_currency col-md-7"></span>
+
+                                                    <h6 class="col-md-5">Number Of Leaves:</h6>
+                                                    <span class="text-success display_leaflet col-md-7"></span>
+
+                                                    <h6 class="col-md-5">Pick Up Branch:</h6>
+                                                    <span class="text-success display_branch col-md-7"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group text-center display_button_print">
+
+                                                <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                        id="back_button" >Back</button> &nbsp; </span>
+                                                <span>&nbsp;
+                                                <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                        type="button" id="print_receipt" onclick="window.print()">Print
+                                                        Receipt
+                                                    </button></span>
+                                            </div>
                                 </div>
 
                             </div>
-
-
                         </div>
-
-                    <div class="col-md-1"></div>
-                </div> <!-- end card-body -->
-
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
 
     </div>
@@ -298,6 +278,10 @@
 
         $(document).ready(function() {
 
+            //hide spinner on display of the main screen..
+            $(".display_button_print").hide();
+            $("#spinner").hide();
+            $("#spinner-text").hide();
             setTimeout(function(){
                 branches()
                 my_account()
@@ -336,7 +320,7 @@
                 $('.display_leaflet').text("")
                 var leaflet = $(this).val()
                 if(leaflet != ""){
-                    $('.display_leaflet').text("Leaflet: " + leaflet)
+                    $('.display_leaflet').text(leaflet)
                 }
 
 
@@ -351,13 +335,16 @@
                 if(branch != ""){
                     let branch_info = branch.split("~")
                     console.log(branch)
-                    $('.display_branch').text("Pickup Branch: " + branch_info[1])
+                    $('.display_branch').text(branch_info[1])
                 }
 
 
             })
 
             $("#submit_cheque_request").click(function(){
+
+                //show button features after the submit button has been pressed..
+
 
                 //MY ACCOUNT
                 let my_account = $('#my_account').val()
@@ -383,6 +370,12 @@
                     let accountNumber = my_account_info[2].trim()
 
 
+                    $(".submit-text").hide();
+                    $("#spinner").show();
+                    $("#spinner-text").show();
+
+
+
                     $.ajax({
 
                         'type' : 'POST',
@@ -406,9 +399,10 @@
                                 toaster(response.message, 'success', 200000 )
                                 $("#request_form_div").hide()
                                 $(".disappear-after-success").hide()
-                                $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />')
+                                $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" style="zoom: 0.5"/>')
                                 {{-- $(".hh").text(response.message) --}}
                                 $("#request_detail_div").show()
+                                $(".display_button_print").show();
 
 
                             }else{
