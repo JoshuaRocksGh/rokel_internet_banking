@@ -16,11 +16,6 @@
             src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
         }
 
-        input.key {
-            font-family: 'password';
-            width: 100px;
-            height: 26px;
-        }
 
     </style>
 
@@ -30,37 +25,37 @@
 @section('content')
 
 
-<div class="container-fluid">
-    <br>
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-md-6">
-            <h4 class="text-primary">
-                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                OWN ACCOUNT TRANSFER
+    <div class="container-fluid">
+        <br>
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-primary">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    OWN ACCOUNT TRANSFER
 
-            </h4>
+                </h4>
+            </div>
+
+            <div class="col-md-6 text-right">
+                <h6>
+
+                    <span class="flaot-right">
+                        <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Own Account</b>
+
+
+                    </span>
+
+                </h6>
+
+            </div>
+
+            <div class="col-md-12 ">
+                <hr class="text-primary" style="margin: 0px;">
+            </div>
+
         </div>
-
-        <div class="col-md-6 text-right">
-            <h6>
-
-                <span class="flaot-right">
-                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Own Account</b>
-
-
-                </span>
-
-            </h6>
-
-        </div>
-
-        <div class="col-md-12 ">
-            <hr class="text-primary" style="margin: 0px;">
-        </div>
-
     </div>
-</div>
 
 
 
@@ -77,11 +72,226 @@
 
                             <div class="row">
 
+                                <div class="col-md-7 rtgs_summary_card m-2" id="transaction_summary"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-10 ">
+                                            <br><br><br>
 
-                            <div class="col-md-7 rtgs_card m-2"
-                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                            <div class="table-responsive card table_over_flow">
+                                                <table class="table mb-0 table-bordered table-striped  ">
 
-                                <div class="" id="transaction_form">
+                                                    <tbody>
+                                                        <tr class="success_gif">
+                                                            <td class="text-center bg-white" colspan="2">
+                                                                <img src="{{ asset('land_asset/images/statement_success.gif') }}"
+                                                                    style="zoom: 0.5" alt="">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>From Account:</td>
+                                                            <td>
+                                                                {{-- <span class="font-13 text-primary text-bold display_from_account_type"
+                                                                    id="display_from_account_type"></span> --}}
+                                                                <span class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                    id="display_from_account_name"> </span>
+                                                                <span class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                    id="display_from_account_no"></span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>To Account:</td>
+                                                            <td>
+
+                                                                {{-- <span class="font-13 text-primary text-bold display_to_account_type"
+                                                                    id="display_to_account_type"> </span> --}}
+                                                                <span class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                    id="display_to_account_name"> </span>
+                                                                {{-- <span class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                                    id="online_display_beneficiary_bank_name"></span> --}}
+                                                                <span class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                    id="display_to_account_no"> </span>
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Amount:</td>
+                                                            <td>
+                                                                <span class="font-15 text-primary h3 display_currency"
+                                                                    id="display_currency"> </span>
+                                                                &nbsp;
+                                                                <span
+                                                                    class="font-15 text-primary h3 display_transfer_amount"
+                                                                    id="display_transfer_amount"></span>
+
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Purpose:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_purpose"
+                                                                    id="display_purpose"></span>
+                                                            </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Category:</td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3 display_category"
+                                                                    id="display_category"></span>
+
+                                                            </td>
+                                                        </tr>
+
+
+
+
+
+
+
+                                                        <tr>
+                                                            <td>Transfer Date: </td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3"
+                                                                    id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Posted BY: </td>
+                                                            <td>
+                                                                <span class="font-13 text-primary h3"
+                                                                    id="display_posted_by">{{ session()->get('userAlias') }}</span>
+                                                            </td>
+                                                        </tr>
+
+                                                        {{-- <tr>
+                                                        <td>Enter Pin: </td>
+                                                        <td>
+
+                                                            <input type="text" name="user_pin"
+                                                                class="form-control key hide_on_print" id="user_pin"
+                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+
+                                                        </td>
+                                                    </tr> --}}
+
+                                                        <tr>
+
+                                                            <td colspan="2">
+
+                                                                <div class="alert alert-info form-control col-md-12"
+                                                                    role="alert">
+                                                                    <div class="custom-control custom-checkbox">
+                                                                        <input type="checkbox" class="custom-control-input" name="terms_and_conditions"
+                                                                            name="terms_and_conditions"
+                                                                            id="terms_and_conditions">
+                                                                        <label class="custom-control-label "
+                                                                            for="terms_and_conditions">
+                                                                            <b>
+                                                                                By clicking, you agree with terms and
+                                                                                conditions
+
+                                                                            </b>
+                                                                        </label>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+
+
+                                            <!-- Center modal content -->
+                                            <div class="modal fade" id="centermodal" tabindex="-1" role="dialog"
+                                                aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title text-center text-primary"
+                                                                id="myCenterModalLabel ">ENTER TRANSACTION PIN</h3>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">×</button>
+
+                                                        </div>
+                                                        <div class="modal-body transfer_pin_modal">
+
+                                                            <div class="row">
+                                                                <div class="col-md-2"></div>
+                                                                <div class="col-md-9  text-center">
+                                                                    <form action="#" autocomplete="off"
+                                                                        aria-autocomplete="off">
+                                                                        <input type="text" name="user_pin" maxlength="4"
+                                                                            class="form-control key hide_on_print"
+                                                                            id="user_pin"
+                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                                        <br>
+                                                                        <button
+                                                                            class="btn btn-soft-primary waves-effect waves-light"
+                                                                            type="button" id="transfer_pin"
+                                                                            data-dismiss="modal">Submit</button>
+                                                                    </form>
+
+                                                                </div>
+                                                                <div class="col-md-1"></div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                            <!-- /.modal -->
+
+
+
+                                            <br>
+                                            <div class="form-group text-center">
+
+                                                <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                        id="back_button">Back</button> &nbsp; </span>
+                                                <span>
+                                                    &nbsp;
+                                                    <button class="btn btn-primary btn-rounded " type="button"
+                                                        id="confirm_modal_button" data-toggle="modal"
+                                                        data-target="#centermodal">
+                                                        <span id="confirm_transfer">Confirm Transfer</span>
+                                                        <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                            id="spinner" aria-hidden="true"></span>
+                                                        <span id="spinner-text">Loading...</span>
+                                                    </button>
+                                                </span>
+
+                                                <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                        type="button" id="print_receipt" onclick="window.print()">Print
+                                                        Receipt
+                                                    </button></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-7 rtgs_card m-2" id="transaction_form"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+
+                                    <div class=" container" >
 
 
 
@@ -94,11 +304,11 @@
 
 
                                                     <div class="col-md-1"></div>
-                                                    <div class="col-md-10">
+                                                    <div class="col-md-9">
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span
-                                                                    class="text-danger">*</span>Transfer From</label>
+                                                            <label class="col-md-4"><b class="text-primary">Transfer From
+                                                                    &nbsp; </b> <span class="text-danger">*</span></label>
                                                             <select class="form-control col-md-8" id="from_account"
                                                                 required>
                                                                 <option value="">Select Account</option>
@@ -112,8 +322,9 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span  class="text-danger">*</span>Transfer To</label>
-                                                            <select class="custom-select col-md-8" id="to_account" required>
+                                                            <label class="col-md-4"><b class="text-primary">Transfer To
+                                                                    &nbsp;</b><span class="text-danger">*</span></label>
+                                                            <select class="form-control col-md-8" id="to_account" required>
                                                                 <option value="">Select Account</option>
 
                                                                 {{-- <option value="Currenct Account~004004100435270140~USD~800">
@@ -122,32 +333,54 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span class="text-danger">*</span>Enter Amount</label>
-                                                            <input type="text" class="form-control col-md-8" id="amount"
+                                                            <label class="col-md-4"><b class="text-primary">Enter Amount
+                                                                    &nbsp;</b><span class="text-danger">*</span></label>
+
+                                                            <div class="col-2">
+                                                                <div class="input-group mb-2">
+                                                                    <div class="input-group-prepend"
+                                                                        style="margin-right:-1px;">
+                                                                        <div
+                                                                            class="input-group-text display_from_account_currency">
+                                                                            CUR</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <input type="text" class="form-control col-md-6" id="amount"
+                                                                placeholder="Amount: 0.00"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                 required>
                                                         </div>
-                                                        <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span class="text-danger">*</span>Expense Type</label>
-
-                                                            {{-- <label class="h6">Category</label> --}}
-
-                                                            <select class="custom-select col-md-8" id="category" required>
-                                                                <option value="">Select Category</option>
-                                                                <option value="001~Fees">Fees</option>
-                                                                <option value="002~Electronics">Electronics</option>
-                                                                <option value="003~Travels">Travels</option>
-                                                                <option value="004~Travels">Others</option>
-                                                            </select>
-
-                                                        </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span class="text-danger">*</span>Purpose of Transfer</label>
+                                                            <label class="col-md-4"><b class="text-primary">Purpose of
+                                                                    Transfer &nbsp</b><span
+                                                                    class="text-danger">*</span></label>
 
                                                             <input type="text" class="form-control col-md-8" id="purpose"
                                                                 placeholder="Enter purpose of transfer" autocomplete="off"
                                                                 required>
+
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <label class="col-md-4"><b class="text-primary">Expense Category
+                                                                    &nbsp;</b><span class="text-danger">*</span></label>
+
+                                                            {{-- <label class="h6">Category</label> --}}
+
+                                                            <select class="form-control col-md-8" id="category" required>
+                                                                <option value="">Select Category</option>
+                                                                {{-- <option value="001~Fees">Fees</option>
+                                                                <option value="002~Electronics">Electronics</option>
+                                                                <option value="003~Travels">Travels</option>
+                                                                <option value="004~Travels">Others</option> --}}
+                                                            </select>
+
+                                                        </div>
+
+                                                        <div class="form-group">
 
                                                         </div>
 
@@ -181,7 +414,8 @@
 
 
                                                         <div class="form-group text-right">
-                                                            <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                                            <button class="btn btn-primary btn-rounded" type="button"
+                                                                id="next_button">
                                                                 &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
                                                         </div>
                                                     </div>
@@ -196,19 +430,58 @@
                                         </form>
 
 
+                                    </div>
+
+
                                 </div>
 
+                                <div class="col-md-4 rtgs_card_right m-2 d-none d-sm-block" id="related_information_display"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <br><br>
 
-                            </div>
+                                    <div class="col-md-12 card card-body rtgs_transfer_summary">
+                                        <div class="row">
+                                            <h6 class="col-md-5">Account Description:</h6>
+                                            <span class="text-primary display_from_account_name col-md-7"></span>
 
-                            <div class="col-md-4 rtgs_card_right m-2 d-none d-sm-block"
-                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); zoom: 0.9 ;">
-                                <br><br>
+                                            <h6 class="col-md-5">Account Number:</h6>
+                                            <span class="text-primary display_from_account_no col-md-7"></span>
 
-                                <div class="col-md-12 card card-body rtgs_transfer_summary">
+                                            <h6 class="col-md-5">Available Balance:</h6>
 
+                                            <span class="text-primary display_from_account_amount col-md-7"></span>
+
+
+                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_from_account_currency col-md-7"></span>
+
+                                            {{-- <h6 class="col-md-5">Account Currency:</h6>
+                                            <span class="text-primary display_from_account_currency col-md-7"></span> --}}
+                                        </div>
+
+                                        <hr>
+                                        <div class="row">
+                                            <h6 class="col-md-5">Account Number:</h6>
+                                            <h6 class="text-primary display_to_account_no col-md-7"></h6>
+
+                                            <h6 class="col-md-5">Account Balance:</h6>
+                                            <h6 class="text-primary display_to_account_amount col-md-7"></h6>
+
+                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <h6 class="text-primary display_to_account_currency col-md-7"></h6>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <h6 class="text-primary col-md-5">Transfer Amount:</h6>
+                                            <h6 class="text-danger text-bold col-md-7 ">
+                                                <span class="display_from_account_currency"></span>
+                                                &nbsp;
+                                                <span class="display_transfer_amount"></span>
+                                            </h6>
+                                        </div>
+
+                                    </div>
                                 </div>
-                            </div>
 
 
 
@@ -293,12 +566,12 @@
 
 
                         <div class="col-md-8  card-body">
-                            {{--  <h3 class=" m-t-0 text-primary">OWN ACCOUNT TRANSFER</h3>s  --}}
+                            {{-- <h3 class=" m-t-0 text-primary">OWN ACCOUNT TRANSFER</h3>s --}}
                             <hr>
 
 
 
-                            <div class="row" id="transaction_summary">
+                            {{-- <div class="row" id="transaction_summary">
 
 
                                 <div class="col-md-12">
@@ -392,13 +665,13 @@
                                                         </td>
                                                     </tr>
 
-                                                    {{-- <tr>
+                                                    <tr>
                                                         <td>Payment Frequency: </td>
                                                         <td>
                                                             <span class="font-13 text-primary h3 display_frequency"
                                                                 id="display_frequency"></span>
                                                         </td>
-                                                    </tr> --}}
+                                                    </tr>
 
 
                                                     <tr>
@@ -456,7 +729,7 @@
 
 
 
-                            </div>
+                            </div> --}}
 
 
 
@@ -548,14 +821,14 @@
                                     .accountDesc + '~' + data[index].accountNumber + '~' +
                                     data[index].currency + '~' + data[index]
                                     .availableBalance
-                            }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            }).text(data[index].accountNumber +
                                 '~' + data[index].currency + '~' + data[index].availableBalance
                             ));
                             $('#to_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
+                                value:  data[index].accountType + '~' + data[index].accountDesc + '~' + data[index]
                                     .accountNumber + '~' + data[index].currency + '~' +
                                     data[index].availableBalance
-                            }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            }).text(data[index].accountNumber +
                                 '~' + data[index].currency + '~' + data[index].availableBalance
                             ));
 
@@ -565,16 +838,38 @@
                 })
             }
 
+            function expenseTypes() {
+                $.ajax({
+                    "type": "GET",
+                    "url": "get-expenses",
+                    "datatype": "application/json",
+                    success: function(response) {
+                        console.log(response.data);
+                        let data = response.data;
 
+                        $.each(data, function(index) {
+
+                            $("#category").append($('<option>', {
+                                value: data[index].expenseCode + '~' + data[index]
+                                    .expenseName
+                            }).text(data[index].expenseName))
+
+                        });
+                    },
+                })
+            }
 
             $(document).ready(function() {
 
+                $("#transaction_summary").hide();
+                $(".success_gif").hide();
                 $('#spinner').hide(),
                     $('#spinner-text').hide(),
                     $('#print_receipt').hide();
 
                 setTimeout(function() {
                     from_account();
+                    expenseTypes();
                 }, 200);
 
                 function sweet_alert() {
@@ -625,7 +920,7 @@
                 var amt = 0
 
                 $("#from_account").change(function() {
-                    var from_account = $(this).val()
+                    var from_account = $(this).val();
                     {{-- alert(from_account) --}}
                     if (from_account.trim() == '' || from_account.trim() == undefined) {
                         {{-- alert('money') --}}
@@ -633,7 +928,7 @@
 
                     } else {
                         from_account_info = from_account.split("~")
-                        {{-- alert('continue') --}}
+                        console.log(from_account_info);
 
                         // Sweet alert function
 
@@ -650,12 +945,12 @@
                         }
 
                         // set summary values for display
-                        $(".display_from_account_type").text(from_account_info[0].trim())
-                        $(".display_from_account_name").text(from_account_info[1].trim())
-                        $(".display_from_account_no").text(from_account_info[2].trim())
-                        $(".display_from_account_currency").text(from_account_info[3].trim())
+                        $(".display_from_account_type").text(from_account_info[0])
+                        $(".display_from_account_name").text(from_account_info[1])
+                        $(".display_from_account_no").text(from_account_info[2])
+                        $(".display_from_account_currency").text(from_account_info[3])
 
-                        $(".display_currency").text(from_account_info[3].trim()) // set summary currency
+                        $(".display_currency").text(from_account_info[3]) // set summary currency
 
                         amt = from_account_info[4].trim()
 
@@ -674,6 +969,7 @@
 
                 $("#to_account").change(function() {
                     var to_account = $(this).val()
+                    {{-- console.log(to_account); --}}
                     {{-- alert(to_account) --}}
                     if (to_account.trim() == '' || to_account.trim() == undefined) {
                         {{-- alert('money') --}}
@@ -681,21 +977,22 @@
 
                     } else {
                         to_account_info = to_account.split("~")
-
+                        console.log(to_account_info);
 
                         var from_account = $('#from_account').val()
 
                         if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                             to_account.trim() != '') {
-                            alert('can not transfer to same account')
+                            {{-- alert('can not transfer to same account') --}}
                             $(this).val('')
                         }
 
                         // set summary values for display
-                        $(".display_to_account_type").text(to_account_info[0].trim())
-                        $(".display_to_account_name").text(to_account_info[1].trim())
-                        $(".display_to_account_no").text(to_account_info[2].trim())
-                        $(".display_to_account_currency").text(to_account_info[3].trim())
+                        $(".display_to_account_type").text(to_account_info[0])
+                        $(".display_to_account_name").text(to_account_info[1])
+                        $(".display_to_account_no").text(to_account_info[2])
+                        $(".display_to_account_amount").text(to_account_info[4])
+                        $(".display_to_account_currency").text(to_account_info[3])
                         // alert(to_account_info[0].trim())
                         //$(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
 
@@ -707,6 +1004,8 @@
 
                     {{-- alert(to_account_info[0]); --}}
                 });
+
+
 
 
                 $("#amount").keyup(function() {
@@ -732,6 +1031,9 @@
 
 
                     }
+
+                    let amount = $("#amount").val()
+                    $('.display_transfer_amount').text(formatToCurrency(parseFloat(amount)))
 
                 });
 
@@ -767,25 +1069,37 @@
 
                 {{-- $("#transaction_form").click(function() {}) --}}
 
-                $("#next_button").click(function() {
-                    {{-- var t =  $("#schedule_payment_date").val()
-                    alert(t) --}}
-                    {{-- return false; --}}
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-                    {{-- var select_frequency_ = $('#select_frequency').val() --}}
-                    var purpose = $('#purpose').val()
+                {{-- $("#next_button").click(function() {
 
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                    $("#transaction_summary").show();
+                    $("#transaction_form").hide();
+
+                    var t =  $("#schedule_payment_date").val()
+                    alert(t)
+                    return false;
+                    var from_account_ = $('#from_account').val().split("~");
+                    var from_account = $('#from_account');
+
+                    var to_account_ = $('#to_account').val().split('~');
+                    var to_account = $('#to_account').val();
+
+                    var transfer_amount = $('#amount').val();
+
+                    var category = $('#category').val().split("~");
+                    $("#display_category").text(category[1]);
+
+                    var select_frequency_ = $('#select_frequency').val()
+                    var purpose = $('#purpose').val();
+                    $("#display_purpose").text(purpose);
+
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
+
                     var schedule_payment_date = $('#schedule_payment_date').val();
 
-
-                    var from_account_ = $('#from_account').val().split('~');
-                    var to_account_ = $('#to_account').val().split('~');
                     var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
-                    {{-- console.log(schdule_pay); --}}
+                    console.log(schdule_pay);
+
+
                     if (from_account_[2] == to_account_[1]) {
 
                         toaster('Can not send to same account', 'error', 10000)
@@ -802,7 +1116,7 @@
                         '') {
                         $('.display_schedule_payment_date').text('N/A') // shedule date NULL
                         toaster('Select schedule date for subsequent transfers', 'error', 10000)
-                        {{-- alert('Select schedule date for subsequent transfers') --}}
+                        alert('Select schedule date for subsequent transfers')
                         return false;
                     }
 
@@ -812,36 +1126,63 @@
 
                     if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() ==
                         '' || category.trim() == '' || purpose.trim() == '') {
-                        {{-- alert('Field must not be empty') --}}
+                        alert('Field must not be empty')
                         toaster('Field must not be empty', 'error', 10000)
                         return false
                     } else {
                         //set purpose and category values
                         var category_info = category.split("~")
 
-                        {{-- var select_frequency_info = select_frequency_.split("~") --}}
+                        var select_frequency_info = select_frequency_.split("~")
 
                         $("#display_category").text(category_info[1])
-                        {{-- $("#display_frequency").text(select_frequency_info[1]) --}}
+                        $("#display_frequency").text(select_frequency_info[1])
                         $("#display_purpose").text(purpose)
 
                         $("#transaction_form").hide()
                         $("#transaction_summary").show()
                     }
 
-                });
+                }); --}}
 
+                $("#next_button").click(function(e){
+                    e.preventDefault();
 
-                {{-- function user_pin(){
-                    let pin = 1234;
+                    var from_account_ = $('#from_account').val().split("~");
+                    console.log(from_account_);
+                    var from_account = from_account_[2];
 
-                    if ($('#user_pin').val() == pin){
-                        toaster('Field must not be empty', 'error', 10000 )
-                    }else{
-                        toaster('Field must not be empty', 'error', 10000 )
-                        return false;
+                    var to_account_ = $('#to_account').val().split('~');
+                    console.log(to_account_);
+                    var to_account = to_account_[2];
+
+                    var transfer_amount = $('#amount').val();
+
+                    var category = $('#category').val().split("~");
+                    $("#display_category").text(category[1]);
+
+                    var purpose = $('#purpose').val();
+                    $("#display_purpose").text(purpose);
+
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
+
+                    var schedule_payment_date = $('#schedule_payment_date').val();
+
+                    var select_frequency_ = $('#select_frequency').val();
+
+                    if(from_account == '' || to_account == '' || transfer_amount == '' ||
+                    category == '' || purpose == ''){
+                        {{-- alert('Field must not be empty') --}}
+                        toaster('Field must not be empty', 'error', 10000)
+                        return false
+                    }else {
+                        $("#transaction_summary").show();
+                        $("#transaction_form").hide();
                     }
-                } --}}
+                })
+
+
+
 
                 function toaster(message, icon, timer) {
                     const Toast = Swal.mixin({
@@ -865,53 +1206,43 @@
 
                 // SUBMIT TO API
 
-                $('#confirm_button').click(function(e) {
+                $('#confirm_modal_button').click(function(e) {
                     e.preventDefault();
 
+                    if($("#terms_and_conditions").is(":checked")){
 
-                    //user_pin();
-                    {{-- let pin = $('#user_pin').val();
+                        $("#transfer_pin").click(function(e){
+                            e.preventDefault();
 
-                    if ( pin != '1234'){
-                        toaster('Incorrect pin entered', 'error', 10000 )
-                        return false;
-                    } --}}
-
-                    var from_account = $('#from_account').val().split('~');
-                    var to_account = $('#to_account').val().split('~');
-                    var category = $('#category').val().split('~');
-                    {{-- var select_frequency = $('#select_frequency').val().split('~') --}}
+                            $('#confirm_transfer').hide()
+                            $('#spinner').show();
+                            $('#spinner-text').show();
+                            $("#confirm_modal_button").prop('disabled', true);
 
 
+                            var from_account_ = $('#from_account').val().split("~");
+                            console.log(from_account_);
+                            var from_account = from_account_[2];
 
+                            var to_account_ = $('#to_account').val().split('~');
+                            console.log(to_account_);
+                            var to_account = to_account_[2];
 
-                    //GET VALUES
-                    var from_account_ = from_account[2];
-                    var to_account_ = to_account[1];
-                    var transfer_amount = $('#amount').val();
-                    var category_ = category[1];
-                    {{-- var select_frequency_ = select_frequency[1]; --}}
-                    var purpose = $('#purpose').val();
-                    var pin = $('#user_pin').val();
+                            var transfer_amount = $('#amount').val();
 
+                            var category = $('#category').val().split("~");
+                            $("#display_category").text(category[1]);
 
-                    if (from_account_.trim() == '' || to_account_.trim() == '' || transfer_amount
-                        .trim() == '' || category_.trim() == '' || purpose.trim() == '' || pin == ''
-                    ) {
-                        toaster('Field must not be empty', 'error', 10000)
-                        return false;
-                    }
+                            var purpose = $('#purpose').val();
+                            $("#display_purpose").text(purpose);
 
+                            var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
 
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
+                            var schedule_payment_date = $('#schedule_payment_date').val();
 
+                            var select_frequency_ = $('#select_frequency').val();
 
-                    $('#spinner').show();
-                    $('#spinner-text').show();
-
-                    $('#confirm_transfer').hide(),
-                        $('#confirm_button').attr('disabled', true);
+                            var sec_pin = $('#user_pin').val();
 
 
                     $.ajax({
@@ -920,41 +1251,66 @@
                         'url': 'own-account-api',
                         "datatype": "application/json",
                         'data': {
-                            'from_account': from_account_,
-                            'to_account': to_account_,
+                            'from_account': from_account,
+                            'to_account': to_account,
                             'transfer_amount': transfer_amount,
-                            'category': category_,
-                            {{-- 'select_frequency': select_frequency_, --}} 'purpose': purpose,
+                            'category': category,
+                            'purpose': purpose,
                             'schedule_payment_type': schedule_payment_contraint_input,
                             'schedule_payment_date': schedule_payment_date,
-                            'secPin': pin
+                            'secPin': sec_pin
 
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         success: function(response) {
-
+                            console.log();
                             {{-- console.log(response.responseCode) --}}
                             if (response.responseCode == '000') {
-                                toaster(response.message, 'success', 20000)
-                                $('#confirm_button').hide();
-                                $('#back_button').hide();
-                                $('#print_receipt').show();
+                                $("#related_information_display").removeClass("d-none d-sm-block");
+                                    Swal.fire(
+                                        response.message,
+                                        '',
+                                        'success'
+                                    );
+                                    $('#confirm_modal_button').hide();
+                                    $('#spinner').hide();
+                                    $('#spinner-text').hide();
+                                    $('#back_button').hide();
+                                    $('#print_receipt').show();
+
+
+                                    $(".rtgs_card_right").hide();
+                                    $(".success_gif").show();
+
                             } else {
 
                                 toaster(response.message, 'error', 10000);
 
+                                {{-- $('#confirm_modal_button').show(); --}}
+                                $("#confirm_transfer").show();
+                                $("#confirm_modal_button").prop('disabled', false);
                                 $('#spinner').hide();
                                 $('#spinner-text').hide();
+                                $('#back_button').show();
                                 $('#print_receipt').hide();
-                                $('#confirm_transfer').show();
-                                $('#confirm_button').attr('disabled', false);
+                                {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                $("#related_information_display").show();
+                                $(".success_gif").hide();
+
 
                             }
                         }
 
                     })
+
+                        })
+                    }else{
+                        toaster('Accept terms & conditions to continue', 'error', 6000)
+                        console.log("UNCHECKED");
+                        return false;
+                    }
 
 
                 })
