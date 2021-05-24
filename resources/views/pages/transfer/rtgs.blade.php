@@ -213,7 +213,7 @@
                                                                 <div class="alert alert-info form-control col-md-12"
                                                                     role="alert">
                                                                     <div class="custom-control custom-checkbox">
-                                                                        <input type="checkbox" class="custom-control-input"
+                                                                        <input type="checkbox" class="custom-control-input" name="terms_and_conditions"
                                                                             id="terms_and_conditions">
                                                                         <label class="custom-control-label "
                                                                             for="terms_and_conditions">
@@ -311,7 +311,7 @@
 
                                 </div>
 
-                                <div class=" col-md-7 rtgs_card m-2" id="transaction_form"
+                                <div class="col-md-7 rtgs_card m-2" id="transaction_form"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br><br>
 
@@ -377,17 +377,20 @@
                                                                     class="text-danger">*</span></b>
 
                                                             <div class="col-md-8">
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
+                                                                <div class="radio radio-primary form-check-inline m-1 col-md-2 beneficiary_type">
                                                                     <input type="radio" id="ach_beneficiary" value="ACH"
                                                                         name="transfer_beneficiary" checked>
                                                                     <label for="ach_beneficiary">ACH</label>
                                                                 </div>
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
+                                                                <div class="radio radio-primary form-check-inline m-1 col-md-2 beneficiary_type">
                                                                     <input type="radio" id="rtgs_beneficiary" value="RTGS"
                                                                         name="transfer_beneficiary">
                                                                     <label for="rtgs_beneficiary">RTGS</label>
+                                                                </div>
+                                                                <div class="radio radio-primary form-check-inline m-1 beneficiary_type">
+                                                                    <input type="radio" id="instant_payment_beneficiary" value="INSTANT_PAYMENT"
+                                                                        name="transfer_beneficiary">
+                                                                    <label for="instant_payment_beneficiary">INSTANT PAYMENT</label>
                                                                 </div>
 
                                                             </div>
@@ -630,18 +633,21 @@
                                                             </div> --}}
 
                                                             <div class="col-md-8" id="onetime_beneficiary_radio">
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
+                                                                <div class="radio radio-primary form-check-inline m-1 col-md-2 beneficiary_type">
                                                                     <input type="radio" id="ach_beneficiary_onetime"
                                                                         value="ACH" name="transfer_beneficiary_ontime"
                                                                         checked>
                                                                     <label for="ach_beneficiary">ACH</label>
                                                                 </div>
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 beneficiary_type">
+                                                                <div class="radio radio-primary form-check-inline m-1 col-md-2 beneficiary_type">
                                                                     <input type="radio" id="rtgs_beneficiary_onetime"
                                                                         value="RTGS" name="transfer_beneficiary_ontime">
                                                                     <label for="rtgs_beneficiary">RTGS</label>
+                                                                </div>
+                                                                <div class="radio radio-primary form-check-inline m-1 beneficiary_type">
+                                                                    <input type="radio" id="instant_payment_onetime"
+                                                                        value="INSTANT_PAYMENT" name="transfer_beneficiary_ontime">
+                                                                    <label for="instant_payment_ontime">INSTANT PAYMENT</label>
                                                                 </div>
 
                                                             </div>
@@ -1316,6 +1322,7 @@
                         $(".display_from_account_no").text(from_account_details[2]);
                         $(".display_from_account_amount").text(from_account_details[4]);
                         $(".display_from_account_currency").text(from_account_details[3]);
+                        $("#display_currency").text(from_account_details[3]);
 
                     })
 
@@ -1365,7 +1372,13 @@
                         }
                     })
 
-
+                    {{-- function sweet_alert(){
+                        Swal.fire(
+                        'Good job!',
+                        'You clicked the button!',
+                        'success'
+                        )
+                    } --}}
 
 
                     {{-- var transfer_type = $("input[name='transfer_beneficiary_ontime']:checked").val();
@@ -1509,16 +1522,18 @@
                         var purpose = $('#purpose').val()
                         var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                         var schedule_payment_date = $('#schedule_payment_date').val();
+                        var beneficiary_type = $('input[name="transfer_beneficiary"]:checked').val();
+                        console.log(beneficiary_type);
 
                         var category_info = category.split("~")
                         $("#display_category").text(category_info[1])
                         $("#display_purpose").text(purpose)
 
-                        {{-- if (from_account == '' || to_account == '' || transfer_amount == '' ||
+                        if (from_account == '' || to_account == '' || transfer_amount == '' ||
                                 category_info == '' || purpose == '') {
                                 toaster('Field must not be empty', 'error');
                                 return false
-                            } --}}
+                            }
 
                         if (parseFloat(transfer_amount) < parseFloat(transfer_amount)) {
                             toaster('Insufficient account balance', 'error', 10000)
@@ -1580,8 +1595,8 @@
                         {{-- console.log(transfer_purpose); --}}
                         $("#display_purpose").text(transfer_purpose);
 
-                        var selValue = $("input[name='transfer_beneficiary_ontime']:checked").val();
-                        console.log(selValue);
+                        var beneficiary_type = $("input[name='transfer_beneficiary_ontime']:checked").val();
+                        console.log(beneficiary_type);
 
                         if (onetime_from_account_ == '' || beneficiary_name == '' || bank_name == '' ||
                             account_number == '' || beneficiary_currency == '' || onetime_amount == '' ||
@@ -1622,240 +1637,265 @@
 
 
                     //
+
+
                     $('#confirm_modal_button').click(function() {
-                        $('#user_pin').attr('readonly', false);
-                        $('#user_pin').val('')
+                        {{-- $('#user_pin').attr('readonly', false);
+                        $('#user_pin').val('') --}}
                         {{-- $("#confirm_modal_button").prop('disabled', true); --}}
-                    })
+
+                        if ($("#terms_and_conditions").is(':checked')){
+                            {{-- console.log("checked"); --}}
+
+                            $("#transfer_pin").click(function(e) {
+                                e.preventDefault();
+
+                                $("#back_button").hide();
+                                $('#confirm_transfer').hide()
+                                $('#spinner').show();
+                                $('#spinner-text').show();
+                                $("#confirm_modal_button").prop('disabled', true);
 
 
 
-                    $("#transfer_pin").click(function(e) {
-                        e.preventDefault();
 
-                        $("#back_button").hide();
-                        $('#confirm_transfer').hide()
-                        $('#spinner').show();
-                        $('#spinner-text').show();
-                        $("#confirm_modal_button").prop('disabled', true);
+                                if ($('#customCheck1').is(':checked')) {
+                                    console.log("onetime beneficiary");
 
+                                    var onetime_from_account_ = $("#onetime_from_account").val().split("~");
+                                    console.log(onetime_from_account_);
+                                    var onetime_from_account = onetime_from_account_[2];
+                                    {{-- $("#display_from_account_name").text(); --}}
+                                    {{-- $("#display_from_account_no").text(); --}}
 
+                                    var beneficiary_type = $('input[name="transfer_beneficiary"]:checked').val();
+                                    console.log(beneficiary_type);
 
-                        if ($('#customCheck1').is(':checked')) {
-                            console.log("onetime beneficiary");
+                                    var beneficiary_name = $("#onetime_beneficiary_alias_name").val();
+                                    console.log(beneficiary_name);
+                                    {{-- $("#display_to_account_name").text(); --}}
 
-                            var onetime_from_account_ = $("#onetime_from_account").val().split("~");
-                            console.log(onetime_from_account_);
-                            var onetime_from_account = onetime_from_account_[2];
-                            {{-- $("#display_from_account_name").text(); --}}
-                            {{-- $("#display_from_account_no").text(); --}}
+                                    var bank_name_ = $("#onetime_beneficiary_bank_name").val().split("~");
+                                    var bank_name = bank_name_[1];
+                                    console.log(bank_name);
+                                    {{-- $("#online_display_beneficiary_bank_name").text(); --}}
 
-                            var beneficiary_type = $('input[name="transfer_beneficiary"]:checked').val();
-                            console.log(beneficiary_type);
+                                    var account_number = $("#onetime_beneficiary_account_number").val();
+                                    console.log(account_number);
+                                    {{-- $("#display_to_account_no").text(); --}}
 
-                            var beneficiary_name = $("#onetime_beneficiary_alias_name").val();
-                            console.log(beneficiary_name);
-                            {{-- $("#display_to_account_name").text(); --}}
+                                    var beneficiary_currency_ = $("#onetime_beneficiary_account_currency").val()
+                                        .split("~");
+                                    var beneficiary_currency = beneficiary_currency_[0];
+                                    console.log(beneficiary_currency);
+                                    {{-- $("#display_currency").text(); --}}
 
-                            var bank_name_ = $("#onetime_beneficiary_bank_name").val().split("~");
-                            var bank_name = bank_name_[1];
-                            console.log(bank_name);
-                            {{-- $("#online_display_beneficiary_bank_name").text(); --}}
+                                    var onetime_amount = $("#onetime_amount").val();
+                                    console.log(onetime_amount);
+                                    $("#display_transfer_amount").text();
 
-                            var account_number = $("#onetime_beneficiary_account_number").val();
-                            console.log(account_number);
-                            {{-- $("#display_to_account_no").text(); --}}
+                                    var beneficiary_email = $("#onetime_beneficiary_phone").val();
+                                    console.log(beneficiary_email);
 
-                            var beneficiary_currency_ = $("#onetime_beneficiary_account_currency").val()
-                                .split("~");
-                            var beneficiary_currency = beneficiary_currency_[0];
-                            console.log(beneficiary_currency);
-                            {{-- $("#display_currency").text(); --}}
+                                    var expense_category_ = $("#onetime_category").val().split("~");
+                                    var expense_category = expense_category_[1];
+                                    console.log(expense_category);
 
-                            var onetime_amount = $("#onetime_amount").val();
-                            console.log(onetime_amount);
-                            $("#display_transfer_amount").text();
+                                    $("#display_category").text(expense_category);
 
-                            var beneficiary_email = $("#onetime_beneficiary_phone").val();
-                            console.log(beneficiary_email);
+                                    var transfer_purpose = $("#onetime_purpose").val();
+                                    console.log(transfer_purpose);
+                                    $("#display_purpose").text(transfer_purpose);
 
-                            var expense_category_ = $("#onetime_category").val().split("~");
-                            var expense_category = expense_category_[1];
-                            console.log(expense_category);
+                                    var transfer_type = $("input[name='transfer_beneficiary_ontime']:checked").val();
+                                    console.log(transfer_type);
 
-                            $("#display_category").text(expense_category);
+                                    var sec_pin = $('#user_pin').val()
 
-                            var transfer_purpose = $("#onetime_purpose").val();
-                            console.log(transfer_purpose);
-                            $("#display_purpose").text(transfer_purpose);
+                                    $.ajax({
+                                        "type": "POST",
+                                        "url": "onetime-beneficiary-local-bank-api",
+                                        "dataType": "application/json",
+                                        "data": {
+                                            "from_account": onetime_from_account,
+                                            "beneficiary_type": transfer_type,
+                                            "beneficiary_name": beneficiary_name,
+                                            "bank_name": bank_name,
+                                            "to_account": account_number,
+                                            "currency": beneficiary_currency,
+                                            "amount": onetime_amount,
+                                            "email": beneficiary_email,
+                                            "category": expense_category,
+                                            "purpose": transfer_purpose,
+                                            "sec_pin": sec_pin
+                                        },
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function(response) {
+                                            console.log(response);
 
-                            var transfer_type = $("input[name='transfer_beneficiary_ontime']:checked")
-                        .val();
-                            console.log(transfer_type);
+                                            if (response.responseCode == '000') {
+                                                {{-- toaster(response.message, 'success', 1000) --}}
+                                                $("#related_information_display").removeClass("d-none d-sm-block");
+                                                Swal.fire(
+                                                    response.message,
+                                                    '',
+                                                    'success'
+                                                );
+                                                $('#confirm_modal_button').hide();
+                                                $('#spinner').hide();
+                                                $('#spinner-text').hide();
+                                                $('#back_button').hide();
+                                                $('#print_receipt').show();
 
-                            var sec_pin = $('#user_pin').val()
-
-                            $.ajax({
-                                "type": "POST",
-                                "url": "onetime-beneficiary-local-bank-api",
-                                "dataType": "application/json",
-                                "data": {
-                                    "from_account": onetime_from_account,
-                                    "beneficiary_type": transfer_type,
-                                    "beneficiary_name": beneficiary_name,
-                                    "bank_name": bank_name,
-                                    "to_account": account_number,
-                                    "currency": beneficiary_currency,
-                                    "amount": onetime_amount,
-                                    "email": beneficiary_email,
-                                    "category": expense_category,
-                                    "purpose": transfer_purpose,
-                                    "sec_pin": sec_pin
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                success: function(response) {
-                                    console.log(response);
-
-                                    if (response.responseCode == '000') {
-                                        {{-- toaster(response.message, 'success', 1000) --}}
-                                        $("#related_information_display").removeClass("d-none d-sm-block");
-                                        $('#confirm_modal_button').hide();
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#back_button').hide();
-                                        $('#print_receipt').show();
-
-                                        $(".rtgs_card_right").hide();
-                                        $(".success_gif").show();
+                                                $(".rtgs_card_right").hide();
+                                                $(".success_gif").show();
 
 
 
-                                    } else {
-                                        {{-- toaster(response.message, 'error', 10000) --}}
+                                            } else {
+                                                {{-- toaster(response.message, 'error', 10000) --}}
 
-                                        $('#confirm_modal_button').show();
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#back_button').show();
-                                        $('#print_receipt').hide();
-                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                        $("#related_information_display").show();
-                                        $(".success_gif").hide();
-
-
-                                        {{-- $('#confirm_transfer').show(); --}}
-                                        {{-- $('#confirm_button').attr('disabled', false); --}}
+                                                $('#confirm_modal_button').show();
+                                                $('#spinner').hide();
+                                                $('#spinner-text').hide();
+                                                $('#back_button').show();
+                                                $('#print_receipt').hide();
+                                                {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                                $("#related_information_display").show();
+                                                $(".success_gif").hide();
 
 
-                                    }
-                                },
+                                                {{-- $('#confirm_transfer').show(); --}}
+                                                {{-- $('#confirm_button').attr('disabled', false); --}}
+
+
+                                            }
+                                        },
+                                    })
+
+
+                                } else {
+
+                                    console.log("saved beneficiary");
+
+                                    var from_account_ = $("#from_account").val().split("~");
+
+                                    var from_account = from_account_[2];
+                                    console.log(from_account);
+
+                                    var to_account_ = $("#to_account").val().split("~");
+                                    console.log(to_account_);
+                                    var bank_name = to_account_[0];
+                                    var to_account = to_account_[2];
+                                    var beneficiary_address = to_account_[4]
+                                    var beneficiary_name = to_account_[1]
+                                    console.log(to_account);
+                                    console.log(bank_name);
+                                    console.log(beneficiary_address);
+                                    console.log(beneficiary_name);
+
+
+                                    var amount = $("#amount").val();
+                                    console.log(amount)
+
+                                    var currency = to_account_[3];
+                                    console.log(currency)
+
+                                    var category_ = $("#category").val().split("~")
+                                    var category = category_[1];
+                                    console.log(category)
+
+                                    var purpose = $("#purpose").val();
+                                    console.log(purpose);
+
+                                    var future_payement = $("#future_payement").val();
+                                    console.log(future_payement);
+
+                                    var beneficiary_type = $('input[name="transfer_beneficiary"]:checked').val();
+                                    console.log(beneficiary_type);
+
+                                    var sec_pin = $('#user_pin').val()
+
+                                    $.ajax({
+                                        'type': 'POST',
+                                        'url': 'saved-beneficiary-local-bank-transfer-api',
+                                        "datatype": "application/json",
+                                        "data": {
+                                            "from_account": from_account,
+                                            "bank_name": bank_name,
+                                            "beneficiary_name": beneficiary_name,
+                                            "beneficiary_address": beneficiary_address,
+                                            "to_account": to_account,
+                                            "amount": amount,
+                                            "currency": currency,
+                                            "category": category,
+                                            "purpose": purpose,
+                                            "future_payement": future_payement,
+                                            "beneficiary_type": beneficiary_type,
+                                            "sec_pin": sec_pin
+                                        },
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function(response) {
+                                            console.log(response);
+
+                                            if (response.responseCode == '000') {
+                                                {{-- toaster(response.message, 'success', 1000) --}}
+                                                $('#confirm_modal_button').hide();
+                                                Swal.fire(
+                                                response.message,
+                                                '',
+                                                'success'
+                                                );
+                                                $('#spinner').hide();
+                                                $('#spinner-text').hide();
+                                                $('#back_button').hide();
+                                                $('#print_receipt').show();
+                                                $("#related_information_display").removeClass("d-none d-sm-block");
+                                                $(".rtgs_card_right").hide();
+                                                $(".success_gif").show();
+
+
+
+
+                                            } else {
+                                                {{-- toaster(response.message, 'error', 10000) --}}
+
+                                                $('#confirm_modal_button').show();
+                                                $('#spinner').hide();
+                                                $('#spinner-text').hide();
+                                                $('#print_receipt').hide();
+                                                $(".success_gif").hide();
+                                                {{-- $("#related_information_display").removeClass("d-none d-sm-block"); --}}
+                                                $(".rtgs_card_right").show();
+
+                                                {{-- $('#confirm_transfer').show(); --}}
+                                                {{-- $('#confirm_button').attr('disabled', false); --}}
+
+
+                                            }
+                                        },
+                                    })
+
+                                }
+
                             })
 
-
-                        } else {
-
-                            console.log("saved beneficiary");
-
-                            var from_account_ = $("#from_account").val().split("~");
-
-                            var from_account = from_account_[2];
-                            console.log(from_account);
-
-                            var to_account_ = $("#to_account").val().split("~");
-                            console.log(to_account_);
-                            var bank_name = to_account_[0];
-                            var to_account = to_account_[2];
-                            var beneficiary_address = to_account_[4]
-                            var beneficiary_name = to_account_[1]
-                            console.log(to_account);
-                            console.log(bank_name);
-                            console.log(beneficiary_address);
-                            console.log(beneficiary_name);
-
-
-                            var amount = $("#amount").val();
-                            console.log(amount)
-
-                            var currency = to_account_[3];
-                            console.log(currency)
-
-                            var category_ = $("#category").val().split("~")
-                            var category = category_[1];
-                            console.log(category)
-
-                            var purpose = $("#purpose").val();
-                            console.log(purpose);
-
-                            var future_payement = $("#future_payement").val();
-                            console.log(future_payement);
-
-                            var beneficiary_type = $('input[name="transfer_beneficiary"]:checked').val();
-                            console.log(beneficiary_type);
-
-                            var sec_pin = $('#user_pin').val()
-
-                            $.ajax({
-                                'type': 'POST',
-                                'url': 'saved-beneficiary-local-bank-transfer-api',
-                                "datatype": "application/json",
-                                "data": {
-                                    "from_account": from_account,
-                                    "bank_name": bank_name,
-                                    "beneficiary_name": beneficiary_name,
-                                    "beneficiary_address": beneficiary_address,
-                                    "to_account": to_account,
-                                    "amount": amount,
-                                    "currency": currency,
-                                    "category": category,
-                                    "purpose": purpose,
-                                    "future_payement": future_payement,
-                                    "beneficiary_type": beneficiary_type,
-                                    "sec_pin": sec_pin
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                success: function(response) {
-                                    console.log(response);
-
-                                    if (response.responseCode == '000') {
-                                        {{-- toaster(response.message, 'success', 1000) --}}
-                                        $('#confirm_modal_button').hide();
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#back_button').hide();
-                                        $('#print_receipt').show();
-                                        $("#related_information_display").removeClass("d-none d-sm-block");
-                                        $(".rtgs_card_right").hide();
-                                        $(".success_gif").show();
-
-
-
-
-                                    } else {
-                                        {{-- toaster(response.message, 'error', 10000) --}}
-
-                                        $('#confirm_modal_button').show();
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#print_receipt').hide();
-                                        $(".success_gif").hide();
-                                        {{-- $("#related_information_display").removeClass("d-none d-sm-block"); --}}
-                                        $(".rtgs_card_right").show();
-
-                                        {{-- $('#confirm_transfer').show(); --}}
-                                        {{-- $('#confirm_button').attr('disabled', false); --}}
-
-
-                                    }
-                                },
-                            })
+                        }else {
+                            toaster('Accept terms & conditions to continue', 'error', 6000)
+                            {{-- $("#myCenterModalLabel").hide(); --}}
+                            return false;
 
                         }
-
                     })
+
+
+
+
+
 
                     //
 

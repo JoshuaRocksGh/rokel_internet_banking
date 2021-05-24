@@ -144,6 +144,7 @@
             box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
           }
 
+
           .rtgs_card_right::after {
             position: absolute;
             content: 'Related Information';
@@ -159,12 +160,23 @@
             box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
           }
 
+          .rtgs_summary_card::before{
+            position: absolute;
+            content: '';
+            top: 30px;
+            left: -25px;
+            border-left: 13px solid transparent;
+            border-right: 13px solid #0561ad;
+            border-top: 13px solid #0561ad;
+            border-bottom: 13px solid transparent;
+          }
+
           .rtgs_summary_card::after {
             position: absolute;
             content: 'Transfer Summary';
             top: -5px;
             {{--  right: -14px;  --}}
-            left: -14px;
+            left: -25px;
             padding: 0.5rem;
             width: 20rem;
             background:#0561ad;

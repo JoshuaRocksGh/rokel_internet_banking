@@ -115,10 +115,17 @@
             src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
         }
 
+
         input.key {
             font-family: 'password';
-            width: 100px;
-            height: 26px;
+            width: 300px;
+            height: 80px;
+            font-size: 100px;
+        }
+
+        .table_over_flow {
+            overflow-y: hidden;
+
         }
 
     </style>
