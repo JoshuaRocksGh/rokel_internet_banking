@@ -16,7 +16,6 @@
             src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
         }
 
-
     </style>
 
 
@@ -94,9 +93,11 @@
                                                             <td>
                                                                 {{-- <span class="font-13 text-primary text-bold display_from_account_type"
                                                                     id="display_from_account_type"></span> --}}
-                                                                <span class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_from_account_name"
                                                                     id="display_from_account_name"> </span>
-                                                                <span class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_from_account_no"
                                                                     id="display_from_account_no"></span>
                                                             </td>
                                                         </tr>
@@ -107,11 +108,13 @@
 
                                                                 {{-- <span class="font-13 text-primary text-bold display_to_account_type"
                                                                     id="display_to_account_type"> </span> --}}
-                                                                <span class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_to_account_name"
                                                                     id="display_to_account_name"> </span>
                                                                 {{-- <span class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
                                                                     id="online_display_beneficiary_bank_name"></span> --}}
-                                                                <span class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                <span
+                                                                    class="d-block font-13 text-primary text-bold display_to_account_no"
                                                                     id="display_to_account_no"> </span>
 
                                                             </td>
@@ -188,7 +191,8 @@
                                                                 <div class="alert alert-info form-control col-md-12"
                                                                     role="alert">
                                                                     <div class="custom-control custom-checkbox">
-                                                                        <input type="checkbox" class="custom-control-input" name="terms_and_conditions"
+                                                                        <input type="checkbox" class="custom-control-input"
+                                                                            name="terms_and_conditions"
                                                                             name="terms_and_conditions"
                                                                             id="terms_and_conditions">
                                                                         <label class="custom-control-label "
@@ -291,7 +295,7 @@
                                 <div class="col-md-7 rtgs_card m-2" id="transaction_form"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
-                                    <div class=" container" >
+                                    <div class=" container">
 
 
 
@@ -380,11 +384,14 @@
 
                                                         </div>
 
-                                                        <div class="form-group">
-
+                                                        <div class="form-group row">
+                                                            <label class="col-md-4"><b class="text-primary">Future
+                                                                    Payment</b> </label>
+                                                            <input class="form-control col-md-8" type="date"
+                                                                id="future_payment">
                                                         </div>
 
-                                                        <div class="row">
+                                                        {{-- <div class="row">
                                                             <div class="col-md-4"></div>
                                                             <div class="col-md-8">
 
@@ -409,7 +416,7 @@
 
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
 
 
 
@@ -825,7 +832,8 @@
                                 '~' + data[index].currency + '~' + data[index].availableBalance
                             ));
                             $('#to_account').append($('<option>', {
-                                value:  data[index].accountType + '~' + data[index].accountDesc + '~' + data[index]
+                                value: data[index].accountType + '~' + data[index]
+                                    .accountDesc + '~' + data[index]
                                     .accountNumber + '~' + data[index].currency + '~' +
                                     data[index].availableBalance
                             }).text(data[index].accountNumber +
@@ -859,6 +867,7 @@
                 })
             }
 
+
             $(document).ready(function() {
 
                 $("#transaction_summary").hide();
@@ -870,7 +879,19 @@
                 setTimeout(function() {
                     from_account();
                     expenseTypes();
+
                 }, 200);
+
+                var now = new Date();
+
+                var day = ("0" + now.getDate()).slice(-2);
+                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+                var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+                $('#future_payment').text(today);
+
+                {{-- $( "#future_date" ).datepicker({ defaultDate: new Date() }); --}}
 
                 function sweet_alert() {
                     const Toast = Swal.mixin({
@@ -1145,7 +1166,7 @@
 
                 }); --}}
 
-                $("#next_button").click(function(e){
+                $("#next_button").click(function(e) {
                     e.preventDefault();
 
                     var from_account_ = $('#from_account').val().split("~");
@@ -1170,12 +1191,12 @@
 
                     var select_frequency_ = $('#select_frequency').val();
 
-                    if(from_account == '' || to_account == '' || transfer_amount == '' ||
-                    category == '' || purpose == ''){
+                    if (from_account == '' || to_account == '' || transfer_amount == '' ||
+                        category == '' || purpose == '') {
                         {{-- alert('Field must not be empty') --}}
                         toaster('Field must not be empty', 'error', 10000)
                         return false
-                    }else {
+                    } else {
                         $("#transaction_summary").show();
                         $("#transaction_form").hide();
                     }
@@ -1209,9 +1230,9 @@
                 $('#confirm_modal_button').click(function(e) {
                     e.preventDefault();
 
-                    if($("#terms_and_conditions").is(":checked")){
+                    if ($("#terms_and_conditions").is(":checked")) {
 
-                        $("#transfer_pin").click(function(e){
+                        $("#transfer_pin").click(function(e) {
                             e.preventDefault();
 
                             $('#confirm_transfer').hide()
@@ -1236,7 +1257,8 @@
                             var purpose = $('#purpose').val();
                             $("#display_purpose").text(purpose);
 
-                            var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
+                            var schedule_payment_contraint_input = $(
+                                '#schedule_payment_contraint_input').val();
 
                             var schedule_payment_date = $('#schedule_payment_date').val();
 
@@ -1245,68 +1267,71 @@
                             var sec_pin = $('#user_pin').val();
 
 
-                    $.ajax({
+                            $.ajax({
 
-                        'type': 'POST',
-                        'url': 'own-account-api',
-                        "datatype": "application/json",
-                        'data': {
-                            'from_account': from_account,
-                            'to_account': to_account,
-                            'transfer_amount': transfer_amount,
-                            'category': category,
-                            'purpose': purpose,
-                            'schedule_payment_type': schedule_payment_contraint_input,
-                            'schedule_payment_date': schedule_payment_date,
-                            'secPin': sec_pin
+                                'type': 'POST',
+                                'url': 'own-account-api',
+                                "datatype": "application/json",
+                                'data': {
+                                    'from_account': from_account,
+                                    'to_account': to_account,
+                                    'transfer_amount': transfer_amount,
+                                    'category': category,
+                                    'purpose': purpose,
+                                    'schedule_payment_type': schedule_payment_contraint_input,
+                                    'schedule_payment_date': schedule_payment_date,
+                                    'secPin': sec_pin
 
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response) {
-                            console.log();
-                            {{-- console.log(response.responseCode) --}}
-                            if (response.responseCode == '000') {
-                                $("#related_information_display").removeClass("d-none d-sm-block");
-                                    Swal.fire(
-                                        response.message,
-                                        '',
-                                        'success'
-                                    );
-                                    $('#confirm_modal_button').hide();
-                                    $('#spinner').hide();
-                                    $('#spinner-text').hide();
-                                    $('#back_button').hide();
-                                    $('#print_receipt').show();
-
-
-                                    $(".rtgs_card_right").hide();
-                                    $(".success_gif").show();
-
-                            } else {
-
-                                toaster(response.message, 'error', 10000);
-
-                                {{-- $('#confirm_modal_button').show(); --}}
-                                $("#confirm_transfer").show();
-                                $("#confirm_modal_button").prop('disabled', false);
-                                $('#spinner').hide();
-                                $('#spinner-text').hide();
-                                $('#back_button').show();
-                                $('#print_receipt').hide();
-                                {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                $("#related_information_display").show();
-                                $(".success_gif").hide();
+                                },
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                        'content')
+                                },
+                                success: function(response) {
+                                    console.log();
+                                    {{-- console.log(response.responseCode) --}}
+                                    if (response.responseCode == '000') {
+                                        $("#related_information_display").removeClass(
+                                            "d-none d-sm-block");
+                                        Swal.fire(
+                                            response.message,
+                                            '',
+                                            'success'
+                                        );
+                                        $('#confirm_modal_button').hide();
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#back_button').hide();
+                                        $('#print_receipt').show();
 
 
-                            }
-                        }
+                                        $(".rtgs_card_right").hide();
+                                        $(".success_gif").show();
 
-                    })
+                                    } else {
+
+                                        toaster(response.message, 'error', 10000);
+
+                                        {{-- $('#confirm_modal_button').show(); --}}
+                                        $("#confirm_transfer").show();
+                                        $("#confirm_modal_button").prop('disabled',
+                                            false);
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#back_button').show();
+                                        $('#print_receipt').hide();
+                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                        $("#related_information_display").show();
+                                        $(".success_gif").hide();
+
+
+                                    }
+                                }
+
+                            })
 
                         })
-                    }else{
+                    } else {
                         toaster('Accept terms & conditions to continue', 'error', 6000)
                         console.log("UNCHECKED");
                         return false;
