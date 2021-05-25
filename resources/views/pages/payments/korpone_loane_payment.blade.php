@@ -571,7 +571,7 @@
 
                                             console.log(response)
 
-                                            if (response.responseCode != '000') {
+                                            if (response.responseCode == '000') {
                                                 toaster(response.message, 'success', 20000);
                                                 $('#confirm_button').hide();
                                                 $('#back_button').hide();
