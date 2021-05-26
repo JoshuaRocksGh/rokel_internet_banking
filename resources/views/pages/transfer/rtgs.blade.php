@@ -453,7 +453,7 @@
                                                                     class="text-danger">*</span></b>
                                                             {{-- <label for="form-group">Category</label> --}}
 
-                                                            <select class="custom-select col-md-8" id="category" required>
+                                                            <select class="form-control col-md-8" id="category" required>
                                                                 <option value="">---Not Selected---</option>
                                                                 {{-- <option value="01~Travel">Travel</option>
                                                                 <option value="02~Petty Cash">Petty Cash</option>
