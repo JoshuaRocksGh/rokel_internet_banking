@@ -1,5 +1,97 @@
 @extends('layouts.master')
 
+<style>
+        .box{
+        border: 1px solid black;
+        height: 240px;
+        width: 400px;
+        margin: 50px auto;
+        margin-top: 90px;
+        background: url(map.jpg);
+        background-size: cover;
+        border-radius: 8px;
+        box-shadow: 2px 4px 18px 5px;
+        color: currentColor;
+        opacity: 0.8;
+    }
+
+    .box:hover{
+        box-shadow: 3px 6px 28px 7px;
+    }
+
+    img{
+        position: absolute;
+        left: 70%;
+        top: 25%;
+    }
+
+    .chip{
+        position: absolute;
+        left: 36.5%;
+        top: 26%;
+    }
+
+
+    h{
+        font-family: kelly slab,cursive;
+        color: wheat;
+        font-size: 28px;
+        position: absolute;
+        left: 37%;
+        top:36%;
+        letter-spacing: 6px;
+    }
+
+    h1{
+        font-family: kelly slab,cursive;
+        color: wheat;
+        font-size:12px;
+        position: absolute;
+        left: 37%;
+        top:40%;
+        font-weight: normal;
+        opacity: 0.2;
+    }
+
+    h4{
+        width: 10px;
+        font-family: kelly slab,cursive;
+        color: wheat;
+        font-size:12px;
+        position: absolute;
+        left:50%;
+        top:40%;
+        font-weight: normal;
+        line-height:-10px;
+        opacity: 0.3;
+    }
+
+    t{
+        font-family: kelly slab,cursive;
+        color: wheat;
+        position: absolute;
+        left:52%;
+        top:43.4%;
+        letter-spacing:2px;
+
+    }
+
+    h2{
+        font-family: kelly slab,cursive;
+        color: wheat;
+        font-weight: normal;
+        position: absolute;
+        left: 37%;
+        top:42%;
+        letter-spacing: 3px;
+    }
+    .mastercard{
+        position: absolute;
+        left: 57%;
+        top: 40%;
+    }
+</style>
+
 
 @section('scripts')
 
@@ -50,8 +142,39 @@
                                     </div>
 
                                     <div class="col-md-6">
+                                        <div class="box">
+                                            <img src="visa_design/visa04.png" height="100" width="100"/>
 
-                                        <div class="container preload">
+                                                <div class="chip">
+
+                                                <img src="visa_design/chip.png" height="60" width="70">
+                                                </div>
+
+                                                <div class="number">
+                                                <h>7901 8973 6625 7879</h>
+                                                    <h1>8356</h1>
+                                                </div>
+
+                                                <div class="number02">
+                                                <h4>good thru</h4>
+                                                    <t>06/26</t>
+
+                                                </div>
+
+                                                <div class="name">
+
+                                                <h2>Joshua Amarfio</h2>
+                                                </div>
+
+                                                <div class="mastercard">
+                                                <img src="visa_design/mastercard.png" height="80" width="80">
+                                                </div>
+
+
+
+                                            </div>
+
+                                        {{-- <div class="container preload">
                                             <div class="creditcard">
                                                 <div class="front">
                                                     <div id="ccsingle"></div>
@@ -148,7 +271,7 @@
                                                     </svg>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                     </div>
 

@@ -408,6 +408,9 @@
                             }else{
 
                                 toaster(response.message, 'error', 9000 );
+                                $('#spinner').hide()
+                                $('#spinner-text').hide()
+                                $(".submit-text").show()
 
 
                         }
