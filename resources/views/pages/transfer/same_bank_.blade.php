@@ -344,7 +344,7 @@
                                         <div class="col-md-1"></div>
                                     </form>
 
-                                    <form action="#" class="onetime_beneficiary" id="onetime_payment_details_form"
+                                    {{--  <form action="#" class="onetime_beneficiary" id="onetime_payment_details_form"
                                         autocomplete="off" aria-autocomplete="none">
                                         @csrf
 
@@ -392,11 +392,11 @@
                                                             <select class="custom-select col-md-8"
                                                                 id="onetime_beneficiary_account_currency" required>
                                                                 <option value="">Select Currency</option>
-                                                                {{-- <option value="GHS">GHS</option>
+                                                                <option value="GHS">GHS</option>
                                                                         <option value="USD">USD</option>
                                                                         <option value="EURO">EURO</option>
                                                                         <option value="SLL">SLL</option>
-                                                                        <option value="GBP">GBP</option> --}}
+                                                                        <option value="GBP">GBP</option>
                                                             </select>
 
                                                         </div>
@@ -426,7 +426,7 @@
 
                                                             <select class="form-control col-md-8" id="onetime_category" required>
                                                                 <option value="">---Not Selected---</option>
-                                                                {{-- <option value="01~Travel">Travel</option>
+                                                                <option value="01~Travel">Travel</option>
                                                                             <option value="02~Petty Cash">Petty Cash</option>
                                                                             <option value="03~Salary">Salary</option>
                                                                             <option value="04~Groceries">Groceries</option>
@@ -436,7 +436,7 @@
                                                                             </option>
                                                                             <option value="08~Insurance">Insurance</option>
                                                                             <option value="09~Tax">Tax</option>
-                                                                            <option value="10~Others">Others</option> --}}
+                                                                            <option value="10~Others">Others</option>
                                                             </select>
 
 
@@ -463,7 +463,7 @@
                                                     <div class="col-md-1"></div>
                                                 </div>
 
-                                    </form>
+                                    </form>  --}}
 
 
 

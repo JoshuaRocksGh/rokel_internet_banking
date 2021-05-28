@@ -1294,8 +1294,8 @@
                                         $("#related_information_display").removeClass(
                                             "d-none d-sm-block");
                                         Swal.fire(
-                                            response.message,
                                             '',
+                                            response.message,
                                             'success'
                                         );
                                         $('#confirm_modal_button').hide();

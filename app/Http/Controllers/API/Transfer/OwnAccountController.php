@@ -58,12 +58,12 @@ class OwnAccountController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        $response = [
-            "responseCode" => "000",
-            "message" => "Transfer Successful"
-        ];
+        // $response = [
+        //     "responseCode" => "000",
+        //     "message" => "Transfer Successful"
+        // ];
 
-        return $response ;
+        // return $response ;
 
         // return $req;
 
