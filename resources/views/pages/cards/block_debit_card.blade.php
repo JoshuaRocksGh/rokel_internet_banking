@@ -1,101 +1,5 @@
 @extends('layouts.master')
 
-<style>
-        .box{
-        border: 1px solid black;
-        height: 240px;
-        width: 400px;
-        margin: 50px auto;
-        margin-top: 90px;
-        background: url(map.jpg);
-        background-size: cover;
-        border-radius: 8px;
-        box-shadow: 2px 4px 18px 5px;
-        color: currentColor;
-        opacity: 0.8;
-    }
-
-    .box:hover{
-        box-shadow: 3px 6px 28px 7px;
-    }
-
-    img{
-        position: absolute;
-        left: 70%;
-        top: 25%;
-    }
-
-    .chip{
-        position: absolute;
-        left: 36.5%;
-        top: 26%;
-    }
-
-
-    h{
-        font-family: kelly slab,cursive;
-        color: wheat;
-        font-size: 28px;
-        position: absolute;
-        left: 37%;
-        top:36%;
-        letter-spacing: 6px;
-    }
-
-    h1{
-        font-family: kelly slab,cursive;
-        color: wheat;
-        font-size:12px;
-        position: absolute;
-        left: 37%;
-        top:40%;
-        font-weight: normal;
-        opacity: 0.2;
-    }
-
-    h4{
-        width: 10px;
-        font-family: kelly slab,cursive;
-        color: wheat;
-        font-size:12px;
-        position: absolute;
-        left:50%;
-        top:40%;
-        font-weight: normal;
-        line-height:-10px;
-        opacity: 0.3;
-    }
-
-    t{
-        font-family: kelly slab,cursive;
-        color: wheat;
-        position: absolute;
-        left:52%;
-        top:43.4%;
-        letter-spacing:2px;
-
-    }
-
-    h2{
-        font-family: kelly slab,cursive;
-        color: wheat;
-        font-weight: normal;
-        position: absolute;
-        left: 37%;
-        top:42%;
-        letter-spacing: 3px;
-    }
-    .mastercard{
-        position: absolute;
-        left: 57%;
-        top: 40%;
-    }
-</style>
-
-
-@section('scripts')
-
-@endsection
 
 @section('content')
 
@@ -117,11 +21,11 @@
                                         <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                             @csrf
                                             <div class="form-group">
-                                                <select class="custom-select" id="from_account" required>
+                                                <select class="custom-select" id="cardValue" required>
                                                     <option value="">Select Card</option>
-                                                    <option value="">Visa Card - 144786676896768</option>
-                                                    <option value="">Credit Card - 144786676896768</option>
-                                                    <option value="">Debit Card - 144786676896768</option>
+                                                    <option value="1447866768967681">Visa Card-144786676896768</option>
+                                                    <option value="144786676896768">Credit Card - 144786676896768</option>
+                                                    <option value="144786676896768">Debit Card - 144786676896768</option>
 
                                                 </select>
                                             </div>
@@ -143,31 +47,31 @@
 
                                     <div class="col-md-6">
                                         <div class="box">
-                                            <img src="visa_design/visa04.png" height="100" width="100"/>
+                                            <img class="visa_logo" src="{{ asset("land_asset/images/visa04.png") }}" height="100" width="100"/>
 
                                                 <div class="chip">
 
-                                                <img src="visa_design/chip.png" height="60" width="70">
+                                                <img src="{{ asset("land_asset/images/chip.png") }}" height="60" width="70">
                                                 </div>
 
                                                 <div class="number">
-                                                <h>7901 8973 6625 7879</h>
-                                                    <h1>8356</h1>
+                                                <h class="card_digits">Card Number</h>
+                                                    <h1 class="coded">8356</h1>
                                                 </div>
 
                                                 <div class="number02">
-                                                <h4>good thru</h4>
-                                                    <t>06/26</t>
+                                                <h4 class="good_thru">good thru</h4>
+                                                    <t class="expiry">06/26</t>
 
                                                 </div>
 
                                                 <div class="name">
 
-                                                <h2>Joshua Amarfio</h2>
+                                                <h2 class="card_holder">{{ session()->get('userAlias') }}</h2>
                                                 </div>
 
                                                 <div class="mastercard">
-                                                <img src="visa_design/mastercard.png" height="80" width="80">
+                                                <img src="{{ asset("land_asset/images/mastercard.png") }}" height="80" width="80">
                                                 </div>
 
 
@@ -294,7 +198,57 @@
 
 
 @section('scripts')
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 <script>
+
+// format for cc number on card
+function cc_format(value) {
+    var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+    var matches = v.match(/\d{4,16}/g);
+    var match = matches && matches[0] || '';
+    var parts = []
+
+    for (i=0, len=match.length; i<len; i+=4) {
+        parts.push(match.substring(i, i+4))
+    }
+
+    if (parts.length) {
+        console.log(parts.join(''));
+        return parts.join(' ');
+
+    } else {
+        console.log("am here");
+        console.log(value);
+        return value;
+
+    }
+}
+console.log('good');
+
+$(document).ready(function(){
+    //code to change code digits
+    console.log('Loading complete');
+    $("#cardValue").change(function() {
+                var cardValue = $("#cardValue").val();
+                var optionValue = $("#cardValue option:selected").val();
+                console.log(cc_format(optionValue));
+                $(".card_digits").text(cc_format(optionValue));
+                console.log(optionValue);
+            });
+
+    var value = $("#cardValue option:selected").val();
+    console.log(value);
+
+    var num = cc_format(value);
+    console.log(num);
+
+});
 
 </script>
 

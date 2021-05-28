@@ -65,6 +65,7 @@
           border-bottom: 13px solid transparent;
         }
 
+
         .rtgs_card::after{
           position: absolute;
           content: 'Please fill the form below';
@@ -279,4 +280,97 @@
             height: 100%;
             box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
         }
+
+            /* styles for activate and block card */
+            .box{
+                border: 1px solid black;
+                height: 240px;
+                width: 400px;
+                margin: 50px auto;
+                margin-top: 90px;
+                background-color: #0561ad;
+                background-size: cover;
+                border-radius: 8px;
+                box-shadow: 2px 4px 18px 5px;
+                color: currentColor;
+                opacity: 0.8;
+            }
+
+            .box:hover{
+                box-shadow: 3px 6px 28px 7px;
+            }
+
+            .visa_logo{
+                position: absolute;
+                left: 76%;
+                top:23%;
+            }
+
+            .chip{
+                position: absolute;
+                left: 9.4%;
+                top: 46%;
+            }
+
+
+            .card_digits {
+                font-family: kelly slab,cursive;
+                color: wheat;
+                font-size: 23px;
+                position: absolute;
+                left: 9%;
+                top:60%;
+                letter-spacing: 6px;
+            }
+
+            .coded {
+                font-family: kelly slab,cursive;
+                color: wheat;
+                font-size:12px;
+                position: absolute;
+                left: 10%;
+                top:65%;
+                font-weight: normal;
+                opacity: 0.2;
+            }
+
+            .good_thru {
+                width: 10px;
+                display: none;
+                font-family: kelly slab,cursive;
+                color: wheat;
+                font-size:15px;
+                position: absolute;
+                left:70%;
+                top:50%;
+                font-weight: normal;
+                line-height:-10px;
+                opacity: 0.3;
+            }
+
+            .expiry{
+                font-family: kelly slab,cursive;
+                color: wheat;
+                position: absolute;
+                left: 65%;
+                top: 73.4%;
+                letter-spacing:2px;
+
+            }
+
+            .card_holder {
+                font-family: kelly slab,cursive;
+                color: wheat;
+                font-weight: normal;
+                position: absolute;
+                left: 10%;
+                top: 75%;
+                letter-spacing: 3px;
+            }
+
+            .mastercard{
+                position: absolute;
+                left: 81%;
+                top: 65%;
+            }
 </style>

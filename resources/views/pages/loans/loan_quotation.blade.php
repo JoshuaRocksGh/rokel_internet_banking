@@ -580,10 +580,10 @@ type="text/css" />
 
                 });
 
-                $("#btn_submit_new_loan_request").click(function(){
-                    $(".disappear-after-success").toggle();
+                // $("#btn_submit_new_loan_request").click(function(){
+                //     $(".disappear-after-success").toggle();
 
-                });
+                // });
 
 
 
