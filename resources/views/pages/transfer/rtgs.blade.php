@@ -346,7 +346,7 @@
 
                                                             <div class="form-group mb-3">
                                                                 <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" id="checkmeout0">
+                                                                    <input type="checkbox" class="custom-control-input" id="checkmeout0" name="onetime_check" value="CHECKED">
                                                                     <label class="custom-control-label" for="checkmeout0"><b class="text-primary">Onetime Transfer </b> </label>
                                                                 </div>
                                                             </div>
@@ -401,30 +401,36 @@
                                                         <b class="col-md-4 text-primary"> Transfer Type &nbsp; <span class="text-danger">*</span></b>
 
                                                         <div class="row col-md-8 ">
-                                                            <div
+                                                            {{-- <div
                                                                 class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                <input type="radio" id="normal_transfer_type" value="NORMAL"
-                                                                    name="transfer_type" checked>
-                                                                <label for="normal_transfer_type">Normal</label>
-                                                            </div>
-                                                            <div
+                                                                <input type="radio" id="normal_transfer_type" value="NORMAL" name="transfer_type">
+                                                                <label for="inlineRadio1">Normal</label>
+                                                            </div> --}}
+                                                            {{-- <div
                                                                 class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
                                                                 <input type="radio" id="invioce_transfer_type"
                                                                     value="INVOICE" name="transfer_type">
-                                                                <label for="invioce_transfer_type">Invoice</label>
+                                                                <label for="inlineRadio2">Invoice</label>
+                                                            </div> --}}
+                                                            <div class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
+                                                                <input type="radio" id="inlineRadio1" value="NORMAL" name="radioInline" checked>
+                                                                <label for="inlineRadio1"> Normal </label>
                                                             </div>
-
+                                                            <div class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
+                                                                <input type="radio" id="inlineRadio2" value="INVOICE" name="radioInline">
+                                                                <label for="inlineRadio2"> Invoice</label>
+                                                            </div>
 
                                                         </div>
 
                                                     </div>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row attach_invoice">
                                                         <b class="text-primary col-md-4">Attach Invoice</b>
 
                                                         <div class="custom-file col-md-8 attach_file">
                                                             <input type="file" class="custom-file-input"
-                                                                id="inputGroupFile04">
+                                                                id="beneficiary_inputGroupFile04">
                                                             <label class="custom-file-label" for="inputGroupFile04">Choose
                                                                 file</label>
                                                         </div>
@@ -514,14 +520,26 @@
                                                 <div id="onetime_beneficiary_form">
                                                     <div class="row mb-2">
                                                         <b class="text-primary col-md-4">Transfer Bank &nbsp; <span class="text-danger">*</span></b>
-                                                        <input class="form-control col-md-8 " type="text"
-                                                            id="onetime_beneficiary_bank_name" >
+                                                        {{-- <input class="form-control col-md-8 " type="text" id="onetime_beneficiary_bank_name" > --}}
+                                                        <select class="form-control col-md-8" id="onetime_beneficiary_bank_name" required>
+                                                            <option value="">---Not Selected---</option>
+
+                                                        </select>
                                                     </div>
 
                                                     <div class="row mb-2">
                                                         <b class="text-primary col-md-4">Beneficiary A/C Number &nbsp; <span class="text-danger">*</span></b>
-                                                        <input class="form-control col-md-8" type="text"
-                                                            id="onetime_beneficiary_account_number" >
+                                                        <input class="form-control col-md-8" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                            id="onetime_beneficiary_account_number" required>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <b class="text-primary col-md-4">Beneficiary A/C Currency &nbsp; <span class="text-danger">*</span></b>
+                                                        {{-- <input class="form-control col-md-8" type="text"
+                                                            id="onetime_beneficiary_account_currency" required> --}}
+                                                            <select class="form-control col-md-8" id="onetime_beneficiary_account_currency" required>
+                                                                <option value="">---Not Selected---</option>
+
+                                                            </select>
                                                     </div>
 
                                                     <div class="row mb-2">
@@ -532,7 +550,7 @@
 
                                                     <div class="row mb-2">
                                                         <b class="text-primary col-md-4">Beneficiary Email &nbsp; <span class="text-danger">*</span></b>
-                                                        <input class="form-control col-md-8" type="text"
+                                                        <input class="form-control col-md-8" type="email"
                                                             id="onetime_beneficiary_email" >
                                                     </div>
                                                     <hr>
@@ -543,17 +561,24 @@
                                                         <b class="col-md-4 text-primary"> Transfer Type &nbsp; <span class="text-danger">*</span></b>
 
                                                         <div class="row col-md-8 ">
-                                                            <div
+                                                            {{-- <div
                                                                 class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                <input type="radio" id="onetime_normal_transfer_type" value="NORMAL"
-                                                                    name="transfer_type" checked>
+                                                                <input type="radio" id="onetime_normal_transfer_type" value="NORMAL" name="radioInline" checked>
                                                                 <label for="onetime_normal_transfer_type">Normal</label>
                                                             </div>
                                                             <div
                                                                 class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
                                                                 <input type="radio" id="onetime_invioce_transfer_type"
-                                                                    value="INVOICE" name="transfer_type">
+                                                                    value="INVOICE" name="radioInline">
                                                                 <label for="onetime_invioce_transfer_type">Invoice</label>
+                                                            </div> --}}
+                                                            <div class="radio radio-primary form-check-inline m-1 col-md-5 onetime_transfer_type">
+                                                                <input type="radio" id="onetime_inlineRadio1" value="NORMAL" name="onetime_radioInline" checked>
+                                                                <label for="inlineRadio1"> Normal </label>
+                                                            </div>
+                                                            <div class="radio  radio-primary form-check-inline m-1 col-md-5 onetime_transfer_type">
+                                                                <input type="radio" id="onetime_inlineRadio2" value="INVOICE" name="onetime_radioInline">
+                                                                <label for="inlineRadio2"> Invoice</label>
                                                             </div>
 
 
@@ -561,7 +586,7 @@
 
                                                     </div>
 
-                                                    <div class="form-group row">
+                                                    <div class="form-group row attach_invoice">
                                                         <b class="text-primary col-md-4">Attach Invoice</b>
 
                                                         <div class="custom-file col-md-8 attach_file">
@@ -621,8 +646,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
-                                                                class="text-danger">*</span></b>
+                                                        <b class=" col-md-4 text-primary">Expense Category &nbsp; <span class="text-danger">*</span></b>
 
 
                                                         <select class="form-control col-md-8" id="onetime_category" required>
@@ -645,8 +669,7 @@
                                                     <div class="form-group row mb-2">
                                                         <b class="col-md-4 text-primary ">Value Date &nbsp;</b>
 
-                                                        <input type="date" class="form-control col-md-8"
-                                                            id="onetime_future_payement" required>
+                                                        <input type="date" class="form-control col-md-8" id="onetime_future_payement" required>
 
                                                     </div>
 
@@ -1428,7 +1451,7 @@
                     $('.transfer_mode_note').hide();
                     $('#inputGroupFile04').attr("disabled", true);
                     $("#onetime_beneficiary_form").hide();
-
+                    $(".attach_invoice").hide();
                     {{-- $(".ach_transfer_summary").show(); --}}
                     $(".beneficiary_details").hide();
                     {{-- $(".select_beneficiary").toggle(500); --}}
@@ -1446,6 +1469,8 @@
                         expenseTypes_onetime();
                     }, 2000)
 
+
+                    {{-- $("input[type=radio][name='transfer_type']:checked").val() --}}
                     // POPULATE THE RELATED INFORMATION CARD ON CHANGE OF ACCOUNT
 
                     $("#from_account").change(function() {
@@ -1455,7 +1480,7 @@
                         $(".display_from_account_no").text(from_account_details[2]);
                         $(".display_from_account_amount").text(from_account_details[4]);
                         $(".display_from_account_currency").text(from_account_details[3]);
-                        $("#display_currency").text(from_account_details[3]);
+                        $(".display_currency").text(from_account_details[3]);
 
                     })
 
@@ -1493,7 +1518,16 @@
                         $("#beneficiary_details_name").text(to_account_details[1]);
                         $("#beneficiary_details_address").text(to_account_details[4]);
                         $("#beneficiary_details_email").text(to_account_details[6]);
-                    })
+                    });
+
+                    $("#onetime_beneficiary_account_name").keyup(function(){
+                        var account_name = $(this).val();
+                        $(".display_to_account_name").text(account_name);
+                    });
+
+                    {{-- #("onetime_beneficiary_email").keyup(function(){
+
+                    }) --}}
 
                     $("#checkmeout0").click(function() {
                         if ($(this).is(":checked")) {
@@ -1583,24 +1617,44 @@
                     // $(".select_beneficiary").show();
                     //$(".select_onetime").hide();
 
-                    var type = $("input[type='radio']:checked").val();
+                    {{-- var type = $("input[type='radio']:checked").val(); --}}
 
-                    var transfer_type = $('input[name="transfer_type"]:checked').val();
-                    console.log(transfer_type);
+                    {{-- var transfer_type = $('input[name="transfer_type"]:checked').val();
+                    console.log(transfer_type); --}}
 
                     $('.transfer_type').on("change", function(e) {
                         e.preventDefault();
 
-                        var transfer_type = $('input[name="transfer_type"]:checked').val();
+                        var transfer_type = $('input[name="radioInline"]:checked').val();
                         console.log(transfer_type);
                         if (transfer_type == 'INVOICE') {
-                            console.log('disable');
-                            $('.attach_file').prop("disabled", true);
+                            {{-- console.log('disable'); --}}
+
+                            $(".attach_invoice").toggle(500);
                         } else {
-                            console.log('enable');
+                            {{-- console.log('enable'); --}}
+                            $(".attach_invoice").hide();
                             return false;
                         }
                     });
+
+                    $('.onetime_transfer_type').on("change", function(e) {
+                        e.preventDefault();
+
+                        var transfer_type = $('input[name="onetime_radioInline"]:checked').val();
+                        console.log(transfer_type);
+                        if (transfer_type == 'INVOICE') {
+                            {{-- console.log('disable'); --}}
+
+                            $(".attach_invoice").toggle(500);
+                        } else {
+                            {{-- console.log('enable'); --}}
+                            $(".attach_invoice").hide();
+                            return false;
+                        }
+                    });
+
+
 
                     $("#amount").keyup(function() {
                         let amount = $("#amount").val()
@@ -1701,17 +1755,107 @@
                     // NEXT BUTTON CLICK
                     $("#next_button").click(function() {
 
+                        var onetime_transfer = $("input[type='checkbox']:checked").val();
+                        console.log(onetime_transfer)
+
+                        if ( onetime_transfer == "CHECKED"){
+                            console.log("onetime beneficiary");
+                            var from_account = $('#from_account').val().split('~');
+                            console.log(from_account);
+
+                            var onetime_bank_name = $("#onetime_beneficiary_bank_name").val();
+                            console.log(onetime_bank_name);
+
+                            var to_account = $("#onetime_beneficiary_account_number").val();
+                            console.log(to_account);
+
+                            var onetime_bene_name = $("#onetime_beneficiary_account_name").val();
+                            console.log(onetime_bene_name);
+                            $(".display_to_account_name").text(onetime_bene_name);
+
+                            var onetime_bene_email = $("#onetime_beneficiary_email").val();
+                            console.log(onetime_bene_email);
+
+                            var onetime_invoice = $("#onetime_inputGroupFile04").val();
+                            console.log(onetime_invoice);
+
+                            var onetime_beneficiary_type = $('#onetime_transfer_mode').val();
+                            console.log(onetime_beneficiary_type);
+
+                            var transfer_amount = $('#onetime_amount').val();
+                            console.log(transfer_amount);
+
+                            var category_info = $('#onetime_category').val().split('~');
+                            console.log(category_info);
+
+                            $(".display_category").text(category_info[1]);
+
+
+                            var purpose = $('#onetime_purpose').val();
+                            console.log(purpose);
+                            $(".display_purpose").text(purpose);
+
+                            var value_date = $("#onetime_future_payement").val();
+                            console.log(value_date);
+
+
+
+                            if (from_account == '' || to_account == '' || transfer_amount == '' ||
+                            category_info == '' || purpose == '') {
+                            toaster('Field must not be empty', 'error');
+                            return false
+                            }
+
+                            if (parseFloat(transfer_amount) < parseFloat(transfer_amount)) {
+                                toaster('Insufficient account balance', 'error', 10000)
+                                return false;
+                            }
+                            //set purpose and category values
+
+
+                            $("#transaction_form").hide()
+                            {{-- $(".other_card_right").hide() --}}
+                            $("#related_information_display").hide()
+                            $("#transaction_summary").show()
+                            $('#print_button').hide();
+
+
+
+                        }else {
+                            console.log("saved benefciary");
+
+
+
                         {{-- var type = $("input[type='radio']:checked").val(); --}}
 
-                        var from_account = $('#from_account').val()
-                        var to_account = $('#to_account').val()
-                        var transfer_amount = $('#amount').val()
-                        var category = $('#category').val()
-                        var purpose = $('#purpose').val()
+                        var from_account = $('#from_account').val().split('~')
+                        console.log(from_account);
+
+                        var to_account = $('#to_account').val().split('~');
+                        console.log(to_account);
+
+                        var beneficiary_type = $("#transfer_mode").val();
+                        console.log(beneficiary_type);
+
+                        var transfer_amount = $('#amount').val();
+                        console.log(transfer_amount);
+
+                        var category = $('#category').val();
+                        console.log(category);
+
+                        var purpose = $('#purpose').val();
+                        console.log(purpose);
+
+                        var value_date = $("#future_payement").val();
+                        console.log(value_date);
+
+                        var invoice = $("#beneficiary_inputGroupFile04").val();
+                        console.log(invoice);
+
                         var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                         var schedule_payment_date = $('#schedule_payment_date').val();
-                        var beneficiary_type = $('input[name="transfer_beneficiary"]:checked').val();
-                        console.log(beneficiary_type);
+
+                        {{-- console.log(beneficiary_type); --}}
 
                         var category_info = category.split("~")
                         $("#display_category").text(category_info[1])
@@ -1730,11 +1874,13 @@
                         //set purpose and category values
 
 
-                        $("#transaction_form").hide()
-                        {{-- $(".other_card_right").hide() --}}
-                        $("#related_information_display").hide()
-                        $("#transaction_summary").show()
-                        $('#print_button').hide();
+                            $("#transaction_form").hide()
+                            {{-- $(".other_card_right").hide() --}}
+                            $("#related_information_display").hide()
+                            $("#transaction_summary").show()
+                            $('#print_button').hide();
+                        }
+
 
                     });
 
@@ -1845,9 +1991,10 @@
                                 $("#confirm_modal_button").prop('disabled', true);
 
 
+                                {{-- var onetime_transfer = $("input[type='checkbox']:checked").val();
+                                console.log(onetime_transfer) --}}
 
-
-                                if ($('#customCheck1').is(':checked')) {
+                                if ($('#checkmeout0').is(':checked')) {
                                     console.log("onetime beneficiary");
 
                                     var onetime_from_account_ = $("#onetime_from_account").val()
@@ -2012,8 +2159,9 @@
                                     var future_payement = $("#future_payement").val();
                                     console.log(future_payement);
 
-                                    var beneficiary_type = $(
-                                        'input[name="transfer_beneficiary"]:checked').val();
+                                    var beneficiary_type_ = $("#transfer_mode").val().split('~');
+
+                                    var beneficiary_type = beneficiary_type_[1];
                                     console.log(beneficiary_type);
 
                                     var sec_pin = $('#user_pin').val()
@@ -2047,8 +2195,8 @@
                                                 {{-- toaster(response.message, 'success', 1000) --}}
                                                 $('#confirm_modal_button').hide();
                                                 Swal.fire(
-                                                    response.message,
                                                     '',
+                                                    response.message,
                                                     'success'
                                                 );
                                                 $('#spinner').hide();

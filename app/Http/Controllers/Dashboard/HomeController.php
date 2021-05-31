@@ -13,6 +13,14 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $authToken = session()->get('userToken');
+        // return $authToken ;
+        $query = "SELECT a.cust_no as custnum, cus_ac_no as acct_link, NVL (ACCOUNT_DESCRP, customer_name) as acctdescrp, cleared_bal as avbal, book_bal as lgbal, get_curriso (get_acctcurrcode (cus_ac_no)) as curr, acc_type as actype FROM  TBLCUSTOMERACCINFO_V a LEFT OUTER JOIN mbank_acct_desc b ON a.cus_ac_no = B.ACCT_LINK WHERE A.CUST_NO = '$authToken' AND info_type IN ('1', '2')" ;
+
+        // return $query ;
+        // $accounts = DB::select(DB::raw($query));
+        // return $accounts ;
+
         return view('pages.dashboard.home');
     }
 

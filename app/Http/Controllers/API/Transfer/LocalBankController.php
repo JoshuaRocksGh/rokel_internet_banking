@@ -329,7 +329,7 @@ class LocalBankController extends Controller
             }
         };
 
-        if($beneficiary_type == "INSTANT_PAYMENT"){
+        if($beneficiary_type == "INSTANT"){
             // return $beneficiary_type ;
 
 
