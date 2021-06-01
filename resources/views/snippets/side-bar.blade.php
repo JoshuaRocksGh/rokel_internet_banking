@@ -57,29 +57,36 @@
                     <a href="{{ url('home') }}">
                         {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
                         <i class="mdi mdi-home-outline"></i>
-                        <span> Home </span>
+                        <span> Dashboard</span>
                     </a>
                 </li>
 
                 {{-- <li class="menu-title mt-2">Apps</li> --}}
 
-                {{-- <li>
-                    <a href="apps-calendar.html" data-toggle="collapse">
-                        <i class="mdi mdi-calendar"></i>
-                        <span> Transfer</span>
+                <li>
+                    <a href="#" data-toggle="collapse">
+                        <i class="mdi mdi-book-account-outline"></i>
+                        <span> My Account</span>
                     </a>
-                </li> --}}
+                </li>
 
-                {{-- <li>
-                    <a href="apps-chat.html">
-                        <i class="mdi mdi-forum-outline"></i>
-                        <span> Chat </span>
+                <li>
+                    <a href="{{ url('cardless-payment') }}">
+                        <i class="mdi mdi-card-account-details-star-outline"></i>
+                        <span> Cardless</span>
                     </a>
-                </li> --}}
+                </li>
+
+                <li>
+                    <a href="{{  url('qr-transfer') }}">
+                        <i class="mdi mdi-qrcode-remove"></i>
+                        <span> QR</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="#sidebarTransfer" data-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
+                        <i class="mdi mdi-rotate-3d-variant"></i>
                         <span> Transfer </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -93,9 +100,9 @@
                             </li>
 
 
-                            <li>
+                            {{--  <li>
                                 <a href="{{ url('qr-transfer') }}">QR </a>
-                            </li>
+                            </li>  --}}
 
                             <li>
                                 <a href="{{ url('bulk-transfer') }}">Bulk Transfer </a>
@@ -155,9 +162,9 @@
                             <li>
                                 <a href="{{ url('airtime-payment') }}">Airtime</a>
                             </li>
-                            <li>
+                            {{--  <li>
                                 <a href="{{ url('cardless-payment') }}">Cardless</a>
-                            </li>
+                            </li>  --}}
                             <li>
                                 <a href="{{ url('korpone-loane-payment') }}">Korpor / Salone Link</a>
                             </li>
@@ -189,6 +196,46 @@
                         </ul>
                     </div>
 
+                </li>
+
+                <li>
+                    <a href="#sidebarLoans" data-toggle="collapse">
+                        <i class="mdi mdi-briefcase-check-outline"></i>
+                        <span> My Loans </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLoans">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ url('loan-quotation') }}">Loan Quotation</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('loan-request') }}">Loan Request</a>
+                            </li>
+                            <li>
+                                <a href="#">Loan Payment</a>
+                            </li>
+                            {{-- <li>
+                                <a href="project-create.html">Create Project</a>
+                            </li> --}}
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="apps-companies.html">
+                        <i class="mdi mdi-domain"></i>
+                        <span> My Investments </span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ url('kyc-update') }}">
+                        {{--  <span class="badge badge-primary float-right">Hot</span>  --}}
+                        <i class="mdi mdi-contacts-outline"></i>
+                        <span> KYC Services </span>
+                    </a>
                 </li>
 
                 <li>
@@ -257,73 +304,20 @@
                             <li>
                                 <a href="{{ url('stop-fd') }}">Stop FD</a>
                             </li>
-                            <li>
+                            {{--  <li>
                                 <a href="{{ url('kyc-update') }}">KYC Update</a>
-                            </li>
+                            </li>  --}}
                             <li>
                                 <a href="{{ url('request-atm') }}">Request ATM</a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                {{-- <li>
-                    <a href="apps-social-feed.html">
-                        <span class="badge badge-primary float-right">Hot</span>
-                        <i class="mdi mdi-rss"></i>
-                        <span> Social Feed </span>
-                    </a>
-                </li> --}}
 
-                {{-- <li>
-                    <a href="apps-companies.html">
-                        <i class="mdi mdi-domain"></i>
-                        <span> Companies </span>
-                    </a>
-                </li> --}}
-
-                <li>
-                    <a href="#sidebarLoans" data-toggle="collapse">
-                        <i class="mdi mdi-briefcase-check-outline"></i>
-                        <span> Loans </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarLoans">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('loan-quotation') }}">Loan Quotation</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('loan-request') }}">Loan Request</a>
-                            </li>
-                            <li>
-                                <a href="#">Loan Payment</a>
-                            </li>
-                            {{-- <li>
-                                <a href="project-create.html">Create Project</a>
-                            </li> --}}
-                        </ul>
-                    </div>
-                </li>
-
-
-                <li>
-                    <a href="#sidebarTradeFinance" data-toggle="collapse">
-                        <i class="mdi mdi-briefcase-check-outline"></i>
-                        <span> Trade Finance </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarTradeFinance">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('lc-origination') }}">LC Origination</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
                 <li>
                     <a href="#sidebarTasks" data-toggle="collapse">
                         <i class="mdi mdi-credit-card-multiple-outline"></i>
-                        <span> Cards </span>
+                        <span> Card Services </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarTasks">
@@ -340,6 +334,27 @@
                         </ul>
                     </div>
                 </li>
+
+
+
+
+
+
+                <li>
+                    <a href="#sidebarTradeFinance" data-toggle="collapse">
+                        <i class="mdi mdi-briefcase-check-outline"></i>
+                        <span> Trade Finance </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarTradeFinance">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ url('lc-origination') }}">LC Origination</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
                 <li>
                     <a href="#sidebarContacts" data-toggle="collapse">
@@ -589,12 +604,7 @@
                     </div>
                 </li>
 
-                <li>
-                    <a href="widgets.html">
-                        <i class="mdi mdi-gift-outline"></i>
-                        <span> Widgets </span>
-                    </a>
-                </li>
+
 
                 <li>
                     <a href="#sidebarIcons" data-toggle="collapse">
