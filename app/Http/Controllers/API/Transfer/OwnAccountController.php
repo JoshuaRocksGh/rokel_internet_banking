@@ -42,10 +42,9 @@ class OwnAccountController extends Controller
             'to_account' => 'required',
             'transfer_amount' => 'required',
             'category' => 'required',
-            // 'select_frequency' => 'required' ,
             'purpose' => 'required',
-            // 'schedule_payment_type' => 'required' ,
-            // 'schedule_payment_date' => 'required',
+            'secPin' => 'required'
+
 
         ]);
         // return $req ;
@@ -58,9 +57,17 @@ class OwnAccountController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
+
+        // $response = [
+        //     "responseCode" => "000",
+        //     "message" => "Transfer Successful"
+        // ];
+
+        // return $response ;
+
         // return $req;
 
-        $user_pin = $req->secPin;
+        // $user_pin = $req->secPin;
 
         // return $user_pin;
         // if($user_pin != '123456'){
@@ -73,7 +80,7 @@ class OwnAccountController extends Controller
         $userID = session()->get('userId');
 
 
-        $from_account = $req->from_account;
+        // $from_account = $req->from_account;
         // 'from_account' : from_account_ ,
         // 'to_account' : to_account_ ,
         // 'transfer_amount' : transfer_amount ,
@@ -88,13 +95,13 @@ class OwnAccountController extends Controller
             "amount" => $req->transfer_amount,
             "authToken" => $authToken,
             "creditAccount" => $req->to_account,
-            "currency" => "string",
+            "currency" => null,
             "debitAccount" => $req->from_account,
-            "deviceIp" => "string",
-            "entrySource" => "string",
+            "deviceIp" => null,
+            "entrySource" => null,
             "narration" => $req->purpose,
             "secPin" => $req->secPin,
-            "userName" => "string",
+            "userName" => null,
             "category" => $req->category,
 
 

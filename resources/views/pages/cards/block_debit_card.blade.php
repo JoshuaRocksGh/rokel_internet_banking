@@ -1,10 +1,6 @@
 @extends('layouts.master')
 
 
-@section('scripts')
-
-@endsection
-
 @section('content')
 
 <div class="row">
@@ -25,11 +21,11 @@
                                         <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                             @csrf
                                             <div class="form-group">
-                                                <select class="custom-select" id="from_account" required>
+                                                <select class="custom-select" id="cardValue" required>
                                                     <option value="">Select Card</option>
-                                                    <option value="">Visa Card - 144786676896768</option>
-                                                    <option value="">Credit Card - 144786676896768</option>
-                                                    <option value="">Debit Card - 144786676896768</option>
+                                                    <option value="1447866768967681">Visa Card-144786676896768</option>
+                                                    <option value="144786676896768">Credit Card - 144786676896768</option>
+                                                    <option value="144786676896768">Debit Card - 144786676896768</option>
 
                                                 </select>
                                             </div>
@@ -50,8 +46,39 @@
                                     </div>
 
                                     <div class="col-md-6">
+                                        <div class="box">
+                                            <img class="visa_logo" src="{{ asset("land_asset/images/visa04.png") }}" height="100" width="100"/>
 
-                                        <div class="container preload">
+                                                <div class="chip">
+
+                                                <img src="{{ asset("land_asset/images/chip.png") }}" height="60" width="70">
+                                                </div>
+
+                                                <div class="number">
+                                                <h class="card_digits">Card Number</h>
+                                                    <h1 class="coded">8356</h1>
+                                                </div>
+
+                                                <div class="number02">
+                                                <h4 class="good_thru">good thru</h4>
+                                                    <t class="expiry">06/26</t>
+
+                                                </div>
+
+                                                <div class="name">
+
+                                                <h2 class="card_holder">{{ session()->get('userAlias') }}</h2>
+                                                </div>
+
+                                                <div class="mastercard">
+                                                <img src="{{ asset("land_asset/images/mastercard.png") }}" height="80" width="80">
+                                                </div>
+
+
+
+                                            </div>
+
+                                        {{-- <div class="container preload">
                                             <div class="creditcard">
                                                 <div class="front">
                                                     <div id="ccsingle"></div>
@@ -148,7 +175,7 @@
                                                     </svg>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                     </div>
 
@@ -171,7 +198,57 @@
 
 
 @section('scripts')
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 <script>
+
+// format for cc number on card
+function cc_format(value) {
+    var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+    var matches = v.match(/\d{4,16}/g);
+    var match = matches && matches[0] || '';
+    var parts = []
+
+    for (i=0, len=match.length; i<len; i+=4) {
+        parts.push(match.substring(i, i+4))
+    }
+
+    if (parts.length) {
+        console.log(parts.join(''));
+        return parts.join(' ');
+
+    } else {
+        console.log("am here");
+        console.log(value);
+        return value;
+
+    }
+}
+console.log('good');
+
+$(document).ready(function(){
+    //code to change code digits
+    console.log('Loading complete');
+    $("#cardValue").change(function() {
+                var cardValue = $("#cardValue").val();
+                var optionValue = $("#cardValue option:selected").val();
+                console.log(cc_format(optionValue));
+                $(".card_digits").text(cc_format(optionValue));
+                console.log(optionValue);
+            });
+
+    var value = $("#cardValue option:selected").val();
+    console.log(value);
+
+    var num = cc_format(value);
+    console.log(num);
+
+});
 
 </script>
 

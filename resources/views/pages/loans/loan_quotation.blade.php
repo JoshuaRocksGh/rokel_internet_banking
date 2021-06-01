@@ -49,269 +49,243 @@ type="text/css" />
 
             </div>
         </div>
-        <legend></legend>
+
 
         <div class="row">
             <div class="col-12">
-
+                <div class="card-body">
                 <div class="row">
-                    <div class="col-md-1"></div>
+                    <div class="col-md-12">
+                        <div class="row">
+                        <div class=" col-md-7 rtgs_card m-2" id="request_form_div"
+                                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                            <br><br><br>
 
-                    <div class=" card card-body col-md-10" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); ">
+                                            <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                aria-autocomplete="none">
+                                                @csrf
+                                                <div class="row container">
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-9">
 
-                            <div class="row" >
+                                                        {{-- <br><br><br> --}}
+                                                        <div class="row">
+                                                            {{-- <div class="col-md-1"></div> --}}
 
+                                                            <div class="col-md-12">
 
-                                <div class="col-md-7 disappear-after-success" id="loan_request_div">
-
-                                    <div class="">
-
-                                        <table class="table mb-0 table-striped table-bordered">
-
-                                            <tbody>
-                                                <tr class="bg-blue text-white">
-                                                    <td>Loan Quotation Form</td>
-                                                </tr>
-
-                                                <tr>
-                                                </tr>
-
-                                            </tbody>
-
-
-                                        </table>
-
-                                        <p>
+                                                                <div class="form-group row mb-3">
+                                                                    <b class="col-md-6 text-primary">Loan Product &nbsp; <span
+                                                                            class="text-danger">*</span> </b>
 
 
-                                            <form role="form" class="parsley-examples">
-                                                    <div class="form-group row">
-                                                        <label for="loan_product" class="col-6 col-form-label">Select loan product<span
-                                                                class="text-danger">*</span></label>
-                                                        <div class="col-6">
-                                                            <select class="custom-select" id="loan_product" required>
-                                                                    <option value="">---Select Loan Product---</option>
-                                                            </select>
+                                                                    <select class="form-control col-md-6 " id="loan_product"
+                                                                        required>
+                                                                        <option value="">Select Loan Product</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group row">
+
+                                                                    <b class="col-md-6 text-primary" for="loan_amount" >
+                                                                        Amount
+                                                                        <span class="text-danger">*</span></b>
+                                                                        <input type="text" class="form-control col-md-6" id="loan_amount"
+                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+
+                                                                    <b class="col-md-6 text-primary" for="tenure_in_months" >
+                                                                        Tenure In Months
+                                                                        <span class="text-danger">*</span></b>
+                                                                        <input type="text" class="form-control col-md-6" id="tenure_in_months"
+                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+                                                                </div>
+
+
+                                                                <div class="form-group row mb-3" id="pay_from_account">
+
+                                                                    <b class="col-md-6 text-primary">Interest Rate Type &nbsp;
+                                                                        <span class="text-danger">*</span></b>
+
+                                                                    <select class="form-control col-md-6" id="interest_rate_type" required>
+                                                                        <option value="">Select Interest Rate Type</option>
+                                                                    </select>
+
+                                                                </div>
+
+
+
+                                                                <div class="form-group row">
+
+                                                                    <b class="col-md-6 text-primary"> Principal Repay Frequency &nbsp; <span
+                                                                            class="text-danger">*</span></b>
+
+
+                                                                            <select class="form-control col-md-6 loan_frequencies" id="principal_repay_freq" placeholder="Select Pick Up Branch" required>
+                                                                                <option value="">Select Principal Repay Frequency</option>
+                                                                            </select>
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+
+                                                                    <b class="col-md-6 text-primary"> Interest Repay Frequency &nbsp; <span
+                                                                            class="text-danger">*</span></b>
+
+
+                                                                            <select class="form-control col-md-6 loan_frequencies" id="interest_repay_freq" placeholder="Select Pick Up Branch" required>
+                                                                                <option value="">Select Interest Repay Frequency</option>
+                                                                            </select>
+
+                                                                </div>
+
+
+
+
+                                                                <div class="form-group text-right yes_beneficiary">
+                                                                    <button type="button"
+                                                                    class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                    id="btn_submit_loan_request">
+                                                                    <span class="submit-text">Submit</span>
+                                                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                                                    <span id="spinner-text">Loading...</span>
+                                                                </button>
+                                                                </div>
+
+
+                                                            </div>
+
+                                                            {{-- <div class="col-md-1"></div> --}}
                                                         </div>
+
+
+
+
+
+
+
+
+
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <label for="loan_amount" class="col-6 col-form-label">
-                                                            Amount
-                                                            <span class="text-danger">*</span></label>
-                                                        <div class="col-6">
-                                                            <input type="text" class="form-control" id="loan_amount" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-                                                        </div>
-                                                    </div>
+                                                    <div class="col-md-1"></div>
 
-                                                    <div class="form-group row">
-                                                        <label for="tenure_in_months" class="col-6 col-form-label">
-                                                            <label>Tenure in months:</label>
-                                                            <span class="text-danger">*</span></label>
-                                                        <div class="col-6">
-                                                            <input type="number" class="form-control" id="tenure_in_months" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="interest_rate_type" class="col-6 col-form-label">
-                                                            <label>Interest Rate Type:</label>
-                                                            <span class="text-danger">*</span></label>
-                                                        <div class="col-6">
-                                                            <select class="custom-select" id="interest_rate_type" required>
-                                                                <option value="">---Select Interest Rate Type---</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="principal_repay_freq" class="col-6 col-form-label">
-                                                            <label>Principal Repay Frequency:</label>
-                                                            <span class="text-danger">*</span></label>
-                                                        <div class="col-6">
-                                                            <select class="custom-select loan_frequencies" id="principal_repay_freq" required>
-                                                                <option value="">-Select Principal Repay Frequency-</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="hori-pass2" class="col-6 col-form-label">
-                                                            Interest Repay Frequency:
-                                                            <span class="text-danger">*</span></label>
-                                                        <div class="col-6">
-                                                            <select class="custom-select loan_frequencies" id="interest_repay_freq" required>
-                                                                <option value="">-Select Principal Repay Frequency-</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div for="interestRatePerMonthOrAnnum" class="col-6 form-label">
-                                                            <label>Interest Rate</label>
-                                                            <span class="text-danger">*</span>
-                                                        </div>
-                                                        <div class="btn-group col-6">
-                                                            <input type="text" id="interest_rate_per_month" class="form-control" disabled="true" placeholder="Rate per month"/>
-                                                            <input type="text" id="interest_rate_per_annum" class="form-control" disabled="true" placeholder="Rate per annum"/>
+                                                </div>
 
-                                                        </div>
-                                                    </div>
+
+
+
+
+
+
+
+
 
 
                                             </form>
 
-                                        </p>
 
+                        </div> <!-- end col -->
 
-                                    </div>
-
-                                </div> <!-- end card-box -->
-
-                                <div class="col-md-5 " id="loan_request_detail_div">
-
-                                    <table class="table mb-0 table-striped table-bordered">
-
-                                        <tbody>
-                                            <tr class="bg-blue text-white">
-                                                <td>Loan Quotation Summary</td>
-                                            </tr>
-                                            <tr class="">
-
-                                                <td>
-                                                    <span class="text-right   font-weight-semibold">
-                                                        <span class="  display_loan_product"></span>
-                                                    </span>
-                                                </td>
-
-
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_loan_amount"></span>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_tenure_in_months"></span>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_interest_rate_type"></span>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_principal_repay_freq"></span>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_interest_repay_freq"></span>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
-                                            <tr class="">
-                                                <td>
-
-                                                    <span class="text-right font-weight-semibold">
-                                                        <span class="display_interest_rate"></span>
-                                                    </span>
-                                                </td>
-
-                                            </tr>
-
-
-                                        </tbody>
-
-                                    </table>
-
-                                    <br>
-
-                                    <div class="form-group row">
-                                        <div class="col-8 offset-4 text-right">
-                                            <button type="button" class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success" id="btn_submit_loan_request">
-                                                <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
-                                                <span id="spinner-text">Loading...</span>
-                                                &nbsp; <span class="submit-text">Submit</span>&nbsp;
-                                            </button>
-                                        </div>
-                                    </div>
-
-
-                                </div> <!-- end col -->
-
-                                <div class="col-md-5 text-center">
-
-                                    <p class="display-4 text-center text-success success-message ">
-                                        <img src="{{ asset("land_asset/images/statement_success.gif") }}" />
-                                    </p>
-                                </div>
-
-
-
-                                <div id="collapseOne" class="collapse show col-md-12" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="card-body">
+                        <div class="col-md-4 rtgs_card_right m-2" id="atm_request_summary"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <br><br>
+                                    <div class="card card-body">
+                                        {{-- <br><br> --}}
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group row">
-                                                    <div class="col-8 offset-4 text-right">
-                                                        <button type="submit"
-                                                            class="btn btn-primary btn-sm btn-rounded waves-effect waves-light "
-                                                            id="btn_submit_new_loan_request">
-                                                            New Loan Request
-                                                        </button>
+                                            <span class="col-md-12 success-message"></span>
+                                            <h6 class="col-md-5">Loan Product:</h6>
+                                            <span class="text-primary display_loan_product col-md-7"></span>
+                                            <br> <br>
+                                            <h6 class="col-md-5">Amount(SLL):</h6>
+                                            <span class="text-primary display_loan_amount col-md-7"></span>
 
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <h6 class="col-md-5">Tenure In Months:</h6>
+                                            <span class="text-primary display_tenure_in_months col-md-7"></span>
+
+                                            <h6 class="col-md-5">Interest Rate Type:</h6>
+                                            <span class="text-primary display_interest_rate_type col-md-7"></span>
+
+                                            <h6 class="col-md-5">Principal Repay Frequency:</h6>
+                                            <span class="text-primary display_principal_repay_freq col-md-7"></span>
+
+                                            <h6 class="col-md-5">Interest Repay Frequency:</h6>
+                                            <span class="text-success display_interest_repay_freq col-md-7"></span>
                                         </div>
-                                            <div class="table-responsive table-bordered">
-                                                <table  class="table mb-0 loan_payment_schedule">
-                                                    <thead>
-                                                        <tr class="bg-blue text-white ">
-                                                            <td> <b> NO </b> </td>
-                                                            <td> <b> REPAYMENT DATE </b> </td>
-                                                            <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
-                                                            <td> <b> INTEREST REPAYMENT AMOUNT </b> </td>
-                                                            <td> <b> TOTAL REPAYMENT AMOUNT </b> </td>
-                                                        </tr>
-                                                    </thead>
-
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-
-
                                     </div>
-                                </div>
-                            </div>
 
+                                    <div class="form-group text-center display_button_print">
+
+                                        <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                id="back_button" onclick="window.location.reload()">Back</button> &nbsp; </span>
+                                        <span>&nbsp;
+                                        <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                type="button" id="print_receipt" onclick="window.print()">Print
+                                                Receipt
+                                            </button></span>
+                                    </div>
+                        </div>
+
+                        <div class="col-md-5 text-center card-body success-message" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+
+                            <p class="display-4 text-center text-success">
+                                <img width="305px" height="505px" src="{{ asset("land_asset/images/rcb_cashless.jpeg") }}" />
+                            </p>
+                        </div>
 
                     </div>
 
-
-
-
-
-                    <div class="col-md-1"></div>
-
                 </div> <!-- end card-body -->
+                </div>
+            </div>
 
+            <div class="card" id="payment_schedule">
+            <div  class="show col-md-12" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-4 text-left">
+                                <b class="text-primary font-20">Loan Payment Schedule</b>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-8 offset-4 text-right">
+                                    <button type="submit"
+                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light " onclick="window.location.reload()">
+                                        New Loan Request
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="table-responsive table-bordered">
+                            <table  class="table mb-0 loan_payment_schedule">
+                                <thead>
+                                    <tr class="bg-blue text-white ">
+                                        <td> <b> NO </b> </td>
+                                        <td> <b> REPAYMENT DATE </b> </td>
+                                        <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
+                                        <td> <b> INTEREST REPAYMENT AMOUNT </b> </td>
+                                        <td> <b> TOTAL REPAYMENT AMOUNT </b> </td>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                        <!-- end table-responsive -->
+
+
+                </div>
             </div>
         </div>
+    </div>
+
+
 
     </div>
 @endsection
@@ -429,6 +403,8 @@ type="text/css" />
 
             $("#spinner-text").hide();
             $("#spinner").hide();
+            $(".display_button_print").hide();
+            $("#payment_schedule").hide();
             setTimeout(function(){
                 loan_product()
                 loan_frequencies()
@@ -441,33 +417,33 @@ type="text/css" />
             $("#loan_product").change(function(){
                 var loan_product = $("#loan_product").val();
                 var optionText = $("#loan_product option:selected").text();
-                $(".display_loan_product").text("Loan Product: "+optionText);
+                $(".display_loan_product").text(optionText);
                 console.log(loan_product);
             });
 
             $("#loan_amount").change(function(){
                 var loan_amount = $("#loan_amount").val();
-                $(".display_loan_amount").text("Loan Amount: SLL "+loan_amount);
+                $(".display_loan_amount").text(loan_amount);
                 console.log(loan_amount);
             })
 
             $("#tenure_in_months").change(function(){
                 var tenure_in_months = $("#tenure_in_months").val();
-                $(".display_tenure_in_months").text("Tenure In Months: "+tenure_in_months);
+                $(".display_tenure_in_months").text(tenure_in_months);
                 console.log(tenure_in_months);
             })
 
             $("#interest_rate_type").change(function(){
                 var interest_rate_type = $("#interest_rate_type").val();
                 var optionText = $("#interest_rate_type option:selected").text();
-                $(".display_interest_rate_type").text("Interest Rate Type: "+optionText);
+                $(".display_interest_rate_type").text(optionText);
                 console.log(interest_rate_type);
             })
 
             $("#principal_repay_freq").change(function(){
                 var principal_repay_freq = $("#principal_repay_freq").val();
                 var optionText = $("#principal_repay_freq option:selected").text();
-                $(".display_principal_repay_freq").text("Principal Repay Frequency: "+optionText);
+                $(".display_principal_repay_freq").text(optionText);
                 console.log(principal_repay_freq);
             })
 
@@ -475,7 +451,7 @@ type="text/css" />
             $("#interest_repay_freq").change(function(){
                 var interest_repay_freq = $("#interest_repay_freq").val();
                 var optionText = $("#principal_repay_freq option:selected").text();
-                $(".display_interest_repay_freq").text("Interest Repay Frequency: "+optionText);
+                $(".display_interest_repay_freq").text(optionText);
                 console.log(interest_repay_freq);
             })
             // $("#pin").keyup(function(){
@@ -532,11 +508,12 @@ type="text/css" />
                         },
                         success:
                         function(response){
-                            var data = response.data.loanSchedule
-                            console.log(response)
+
 
                             if(response.responseCode == '000'){
                                 toaster(response.message, 'success', 20000 )
+                                var data = response.data.loanSchedule
+                                console.log(response)
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
                                 // $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />');
@@ -546,6 +523,8 @@ type="text/css" />
                                 $("#loan_request_detail_div").hide();
                                 $(".success-message").hide();
                                 $(".appear-button").show();
+                                $("#atm_request_summary").hide();
+                                $("#payment_schedule").show();
 
 
 
@@ -581,6 +560,7 @@ type="text/css" />
                                 toaster('resubmit your loan request','error', 9000);
                                 $('#spinner').hide()
                                 $('#spinner-text').hide()
+                                $('.submit-text').show();
 
                                 }
                         },
@@ -600,10 +580,10 @@ type="text/css" />
 
                 });
 
-                $("#btn_submit_new_loan_request").click(function(){
-                    $(".disappear-after-success").toggle();
+                // $("#btn_submit_new_loan_request").click(function(){
+                //     $(".disappear-after-success").toggle();
 
-                });
+                // });
 
 
 

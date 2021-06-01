@@ -18,10 +18,13 @@ class ChangePinController extends Controller
         $old_pin = $request->old_pin;
         $security_answer = $request->security_answer;
 
+        $mac = exec('getmac');
+        $macaddress = strtok($mac, '');
+
         $data = [
 
                 "authToken"=> $authToken,
-                "deviceId"=> "A",
+                "deviceId"=> $macaddress,
                 "newPin"=> $new_pin,
                 "oldPin"=> $old_pin,
                 "securityAnswer"=> $security_answer

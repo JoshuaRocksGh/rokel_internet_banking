@@ -19,7 +19,7 @@
             <h6>
 
                 <span class="flaot-right">
-                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Other Local Bank Beneficiary</b>
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-primary"> Add Beneficiary </b> &nbsp; > &nbsp; <b class="text-danger">Other Local Bank Beneficiary</b>
 
 
                 </span>
@@ -34,6 +34,7 @@
 
     </div>
 </div>
+
     <div class="row">
         <div class="col-12">
             <div class="">
@@ -46,7 +47,7 @@
 
 
                             <br><br><br>
-                            <div class="row" id="transaction_form">
+                            <div class="row m-2" id="transaction_form">
 
 
                                 <div class="col-md-6">
@@ -137,14 +138,14 @@
                                         </div>
 
                                     </div>
-                                    <div class="form-group row">
+                                    {{--  <div class="form-group row">
                                         <label class="col-4"> Phone : <span class="text-danger">*</span></label>
                                         <div class="col-7">
                                             <input type="number" class="form-control" id="beneficiary_number"
                                                 placeholder="Beneficiary Phone Number" required>
                                         </div>
 
-                                    </div>
+                                    </div>  --}}
 
                                     <div class="form-group row">
                                         <label class="col-4"> Email: <span class="text-danger">*</span></label>
@@ -388,8 +389,7 @@
                         $.each(data, function(index) {
 
                             $('#select_bank').append($('<option>', {
-                                value: data[index].bankCode + '~' + data[index]
-                                    .bankDescription
+                                value: data[index].bankCode + '~' + data[index].bankDescription
                             }).text(data[index].bankDescription));
 
                         });
@@ -410,7 +410,7 @@
                         $.each(data, function(index) {
 
                             $('#select_currency').append($('<option>', {
-                                value: data[index].currCode + '~' + data[index].description
+                                value: data[index].currCode + '~' + data[index].isoCode + '~' + data[index].description
                             }).text(data[index].isoCode + '~' + data[index].description));
 
                         });
@@ -527,6 +527,16 @@
                 $('#beneficiary_name_error').hide();
                 $('#beneficiary_email_error').hide();
 
+                $("#select_bank").change(function(){
+                    var bank_name = $(this).val().split("~");
+                    console.log(bank_name);
+                })
+
+                $("#select_currency").change(function(){
+                    var currency = $(this).val().split("~");
+                    console.log(currency);
+
+                })
 
                 $("#account_number").keyup(function() {
                     let account_no = $(this).val();
@@ -552,8 +562,8 @@
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_phone = $('#beneficiary_number').val();
 
-                    var select_bank = $('#select_bank').val();
-                    $('#display_selected_bank').text(select_bank);
+                    var select_bank = $('#select_bank').val().split("~");
+                    $('#display_selected_bank').text(select_bank[1]);
 
                     var account_number = $('#account_number').val();
                     $('#display_account_number').text(account_number);
@@ -614,7 +624,7 @@
 
 
                     var select_bank_ = $('#select_bank').val().split('~');
-                    var select_bank = select_bank_[0];
+                    var select_bank = select_bank_[1];
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
                     var beneficiary_name = $('#beneficiary_name').val();
@@ -627,7 +637,7 @@
                         var transfer_email = ('No');
                     }
                     var currency = $('#select_currency').val().split('~');
-                    var currency_ = currency[0];
+                    var currency_ = currency[1];
                     var beneficiary_number = $('#beneficiary_number').val();
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();

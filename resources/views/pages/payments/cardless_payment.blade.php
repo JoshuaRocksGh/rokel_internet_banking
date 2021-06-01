@@ -29,7 +29,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="">
 
         <div class="container-fluid">
             <br>
@@ -61,149 +61,136 @@
 
             </div>
         </div>
-        <div class="col-12">
-            <div class="">
+
+        <div class="row">
+            <div class="col-12">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-2"></div>
 
-                        <div class="col-md-8  card-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                            <div class=" col-md-7 rtgs_card m-2" id="request_form_div"
+                                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                                <br><br><br>
 
-                            <ul class="nav nav-tabs nav-bordered nav-justified">
-                                <li class="nav-item">
-                                    <a href="#cardless_initiation_tab" data-toggle="tab" aria-expanded="false"
-                                        class="nav-link active transfer_tab_btn">
-                                        PAY CARDLESS
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#cardless_history_tab" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                        CARDLESS HISTORY
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane show active card-box" id="cardless_initiation_tab" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <div class="row" id="cardless_payment_form">
+                                                <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                    aria-autocomplete="none">
+                                                    @csrf
+                                                    <div class="row container">
+                                                        <div class="col-md-1"></div>
+                                                        <div class="col-md-9">
 
+                                                            {{-- <br><br><br> --}}
+                                                            <div class="row">
+                                                                {{-- <div class="col-md-1"></div> --}}
 
-                                        <div class="col-md-6">
-                                            <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label class="h6">Pay From<span class="text-danger">*</span></label>
+                                                                <div class="col-md-12">
+
+                                                                    <div class="form-group row mb-3">
+                                                                        <b class="col-md-5 text-primary">Pay From&nbsp; <span
+                                                                                class="text-danger">*</span> </b>
 
 
-                                                    <select class="custom-select" id="from_account" required>
-                                                        <option value="">Select Account</option>
-                                                    </select>
+                                                                        <select class="form-control col-md-7 " id="from_account"
+                                                                            required>
+                                                                            <option value="">Select Account
+                                                                            </option>
 
 
-                                                    <table
-                                                        class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
-                                                        <tbody class="">
-                                                            <tr>
-
-                                                                <td>
-                                                                    <a
-                                                                        class="text-body font-weight-semibold display_from_account_name"></a>
-                                                                    <small class="d-block display_from_account_no"></small>
-                                                                </td>
-
-                                                                <td class="text-right font-weight-semibold">
-                                                                    <span class="display_from_account_currency"></span>
-                                                                    <span class="display_from_account_amount"></span>
-
-                                                                </td>
-                                                            </tr>
+                                                                        </select>
+                                                                    </div>
 
 
-                                                        </tbody>
-                                                    </table>
+
+                                                                    <div class="form-group row mb-3" id="pay_from_account">
+
+                                                                        <b class="col-md-5 text-primary">Amount&nbsp;
+                                                                            <span class="text-danger">*</span></b>
 
 
-                                                </div>
+                                                                        <input type="text" class="form-control col-md-7" id="amount"
+                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                            required>
+                                                                        <br>
 
 
-                                                <div class="form-group">
-                                                    <label class="">Enter Amount<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="amount"
-                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                        required>
-                                                </div>
+
+                                                                    </div>
 
 
-                                                <div class="form-group">
-                                                    <label class="">Receiver Name<span class="text-danger">*</span></label>
 
-                                                    <input type="text" class="form-control" id="receiver_name"
-                                                        placeholder="receiver Name" autocomplete="off" required>
+                                                                    <div class="form-group row">
 
-                                                    <table
-                                                        class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
-                                                        <tbody>
-                                                            <tr>
-
-                                                                <td>
-                                                                    <a class="text-body font-weight-semibold"></a>
-                                                                    <small class="d-block display_receiver_name"></small>
-                                                                </td>
-                                                            </tr>
+                                                                        <b class="col-md-5 text-primary"> Receiver Name &nbsp; <span
+                                                                                class="text-danger">*</span></b>
 
 
-                                                        </tbody>
-                                                    </table>
+                                                                                <input type="text" class="form-control col-md-7" id="receiver_name"
+                                                                                placeholder="enter receiver name" autocomplete="off" required>
+                                                                                <br>
 
-                                                </div>
+                                                                    </div>
 
-                                                <div class="form-group">
-                                                    <label class="h6">Receiver Phone Number<span class="text-danger">*</span></label>
+                                                                    <div class="form-group row">
 
-                                                    <input type="text" class="form-control" id="receiver_phoneNum"
-                                                        placeholder="receiver Phone Number" autocomplete="off"
-                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                        required>
+                                                                        <b class="col-md-5 text-primary"> Receiver's Phone Number: &nbsp; <span
+                                                                                class="text-danger">*</span></b>
 
-                                                </div>
+                                                                                <input type="text" class="form-control col-md-7" id="receiver_phoneNum" placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                                                                <br>
+
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+
+                                                                        <b class="col-md-5 text-primary"> Receiver's Address: &nbsp; <span
+                                                                                class="text-danger">*</span></b>
+
+                                                                                <input type="text" class="form-control col-md-7" id="receiver_address" placeholder="receiver Address" autocomplete="off" required>
+                                                                                <br>
+
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+
+                                                                        <b class="col-md-5 text-primary" for="pin" >
+                                                                            Enter Your Pin
+                                                                            <span class="text-danger">*</span></b>
+                                                                            <input type="password" class="form-control col-md-7" id="pin"
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
 
-                                                <div class="form-group">
-                                                    <label class="">Receiver Address<span class="text-danger">*</span></label>
 
-                                                    {{-- <label class="h6">Category</label> --}}
+                                                                    </div>
 
-                                                    <input type="text" class="form-control" id="receiver_address"
-                                                        placeholder="receiver Address" autocomplete="off" required>
+                                                                    <div class="form-group text-right ">
+                                                                        <button type="button"
+                                                                        class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                        id="confirm_button">
+                                                                        <span class="submit-text">Submit</span>
+                                                                        <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
+                                                                        <span id="spinner-text">Loading...</span>
+                                                                    </button>
+                                                                    </div>
 
-                                                </div>
-                                                {{-- <img src="{{ asset("land_asset/images/own-account-img.PNG") }}" /> --}}
 
-                                                {{-- <img src="{{ asset('assets/images/wallet1.jpg') }}" class="img-fluid" alt="" style="opacity: 0.5"> --}}
+                                                                </div>
 
-                                                <div class="form-group text-right">
-                                                    <button class="btn btn-primary btn-rounded" type="button" id="next_button">
-                                                        &nbsp; Next &nbsp;</button>
-                                                </div>
+                                                                {{-- <div class="col-md-1"></div> --}}
+                                                            </div>
 
-                                                {{-- <div class="form-group">
 
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                        <label class="custom-control-label" for="customCheck1">Schedule
-                                                            Payments</label>
+
+
+
+
+
+
+
+                                                        </div>
+                                                        <div class="col-md-1"></div>
+
                                                     </div>
-                                                    <legend></legend>
-
-                                                    <input type="text" class="form-control" id="schedule_payment_contraint_input">
-
-                                                    <label class="">Value Date</label>
-
-                                                    <input type="date" class="form-control" id="schedule_payment_date">
-
-                                                </div> --}}
-
-
-                                                <br><br>
 
 
 
@@ -211,124 +198,133 @@
 
 
 
-                                            </form>
-                                        </div> <!-- end col -->
 
 
 
-                                        <div class="col-md-6">
+
+                                                </form>
 
 
+                            </div> <!-- end col -->
 
-                                        </div> <!-- end col -->
+                            <div class="col-md-4 rtgs_card_right m-2" id="atm_request_summary"
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                        <br><br>
+                                        <div class=" col-md-12 card card-body">
+                                            {{-- <br><br> --}}
+                                            <div class="row">
+                                                <span class="col-md-12 success-message"></span>
+                                                <h6 class="col-md-5">Account Name:</h6>
+                                                <span class="text-primary display_from_account_name col-md-7"></span>
+
+                                                <h6 class="col-md-5">Account Number:</h6>
+                                                <span class="text-primary display_from_account_no col-md-7"></span>
+
+                                                <h6 class="col-md-5">Available Balance:</h6>
+                                                <span class="text-primary display_from_account_amount col-md-7"></span>
+
+                                                <h6 class="col-md-5">Account Currency:</h6>
+                                                <span class="text-primary display_currency col-md-7"></span>
+
+                                                <h6 class="col-md-5">Amount:</h6>
+                                                <span class="text-primary display_amount col-md-7"></span>
 
 
-                                        <!-- end row -->
+                                                <h6 class="col-md-5">Receiver's Name: </h6>
+                                                <span class="text-success display_receiver_name col-md-7"></span>
 
+                                                <h6 class="col-md-5">Receiver's Phone Number:</h6>
+                                                <span class="text-success display_receiver_phoneNum col-md-7"></span>
 
+                                                <h6 class="col-md-5">Receiver's Address:</h6>
+                                                <span class="text-success display_receiver_address col-md-7"></span>
+                                            </div>
+                                        </div>
 
-                                    </div>
+                                        <div class="form-group text-center display_button_print">
 
-                                    <div class="row" id="cardless_payment_summary">
+                                            <span>&nbsp;
+                                            <span>&nbsp; <button class="btn btn-light btn-rounded"
+                                                    type="button" id="print_receipt" onclick="window.print()">Print
+                                                    Receipt
+                                                </button></span>
+                                        </div>
+                            </div>
 
-
-                                        <div class="col-md-12">
-                                            <div class="border card p-3 mt-4 mt-lg-0 rounded">
-                                                <h4 class="header-title mb-3">Cardless Payment Summary</h4>
+                            {{-- <div class="col-md-8 text-center success_message" id="request_detail_div" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <br><br><br>
 
                                                 <div class="table-responsive">
                                                     <table class="table mb-0 table-bordered table-striped">
 
                                                         <tbody>
+                                                            <tr class="success_gif">
+                                                                <td class="text-center bg-white" colspan="2">
+                                                                    <img src="{{ asset('land_asset/images/statement_success.gif') }}"
+                                                                         alt="">
+                                                                </td>
+                                                            </tr>
                                                             <tr>
-                                                                <td>From Account:</td>
+                                                                <td>Account Name:</td>
                                                                 <td>
                                                                     <span
-                                                                        class="font-13 text-primary text-bold display_from_account_type"
-                                                                        id="display_from_account_type"></span>
+                                                                        class="font-13 text-primary text-bold display_my_account_name"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Account Number:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary text-bold display_my_account_no"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Available Balance:</td>
+                                                                <td>
+                                                                    <span class="font-15 text-primary h3 display_my_account_amount"> </span>
+                                                                </td>
+                                                            </tr>
+
+
+                                                            <tr>
+                                                                <td>Account Currency:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_my_account_currency"></span>
+
+                                                                </td>
+                                                            </tr>
+
+
+                                                            <tr>
+                                                                <td>Type Of Card:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_type_of_card"></span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Pick Up Branch:</td>
+                                                                <td>
                                                                     <span
-                                                                        class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                        id="display_from_account_name"> </span>
-                                                                    <span
-                                                                        class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                        id="display_from_account_no"></span>
+                                                                        class="font-13 text-success h3 display_pick_up_branch"></span>
+                                                                </td>
+                                                            </tr>
+
+
+                                                            <tr>
+                                                                <td>Request Date: </td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3">{{ date('d F, Y') }}</span>
                                                                 </td>
                                                             </tr>
 
                                                             <tr>
-                                                                <td>Amount:</td>
+                                                                <td>Posted BY: </td>
                                                                 <td>
-                                                                    <span class="font-15 text-primary h3 display_currency"
-                                                                        id="display_currency"> </span>
-                                                                    &nbsp;
-                                                                    <span class="font-15 text-primary h3 display_amount"
-                                                                        id="display_amount"></span>
-
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Receiver Name:</td>
-                                                                <td>
-                                                                    <span
-                                                                        class="d-block font-13 text-primary text-bold display_receiver_name"
-                                                                        id="display_receiver_name"> </span>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Receiver Phone Number:</td>
-                                                                <td>
-                                                                    <span class="font-13 text-primary h3 display_receiver_phoneNum"
-                                                                        id="display_receiver_phoneNum"></span>
-
-                                                                </td>
-                                                            </tr>
-
-
-                                                            {{-- <tr>
-                                                                <td>Schedule Payment:</td>
-                                                                <td>
-                                                                    <span class="font-13 text-primary h3 display_schedule_payment"
-                                                                        id="display_schedule_payment">NO </span>
-                                                                    &nbsp;
-                                                                    <span
-                                                                        class="font-13 text-primary h3 display_schedule_payment_date"
-                                                                        id="display_schedule_payment_date"> N/A
-
-                                                                    </span>
-                                                                    &nbsp;
-
-                                                                    <span class="font-13 text-primary h3 display_frequency"
-                                                                        id="display_frequency">
-
-                                                                    </span>
-                                                                </td>
-                                                            </tr> --}}
-
-                                                            <tr>
-                                                                <td>Payment Date: </td>
-                                                                <td>
-                                                                    <span class="font-13 text-primary h3"
-                                                                        id="display_payment_date">{{ date('d F, Y') }}</span>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td>Posted By: </td>
-                                                                <td>
-                                                                    <span class="font-13 text-primary h3" id="display_posted_by">
-                                                                        {{ session()->get('userAlias') }}</span>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr class="hide_on_print">
-                                                                <td>Enter Pin: </td>
-                                                                <td>
-
-                                                                    <input type="text" class="form-control key" id="user_pin"
-                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-
+                                                                    <span class="font-13 text-primary h3">{{ session()->get('userAlias') }}</span>
                                                                 </td>
                                                             </tr>
 
@@ -338,95 +334,23 @@
                                                 </div>
                                                 <!-- end table-responsive -->
                                                 <br>
-                                                <div class="form-group text-center">
-                                                    <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                            id="back_button">Back</button> &nbsp; </span>
-                                                    <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                            id="confirm_button"><span id="confirm_payment">Confirm Payment</span>
-                                                            <span class="spinner-border spinner-border-sm mr-1" role="status"
-                                                                id="spinner" aria-hidden="true"></span>
-                                                            <span id="spinner-text">Loading...</span>
-                                                        </button></span>
-                                                    <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
-                                                            type="button" id="print_receipt" onclick="window.print()">Print Receipt
-                                                        </button></span>
-                                                </div>
-                                            </div>
 
-                                        </div> <!-- end col -->
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                        </div>
+
                                     </div>
 
-                                </div>
 
-                                <div class="tab-pane card-box" id="cardless_history_tab" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <table class="table table-centered table-nowrap mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ url('account-enquiry') }}"
-                                                        class="text-body font-weight-semibold">Money Mobile</a>
-                                                    <small class="d-block">Tuesday, 18 May 2021</small>
-                                                </td>
-
-                                                <td class="text-right">
-                                                    GHS 90,039.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 10px;">
-                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ url('account-enquiry') }}"
-                                                        class="text-body font-weight-semibold">Money Mobile</a>
-                                                    <small class="d-block">Tuesday, 18 May 2021</small>
-                                                </td>
-
-                                                <td class="text-right">
-                                                    GHS 90,039.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 10px;">
-                                                    <div class="avatar-sm rounded bg-soft-info">
-                                                        <i class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ url('account-enquiry') }}"
-                                                        class="text-body font-weight-semibold">Money Mobile</a>
-                                                    <small class="d-block">Tuesday, 18 May 2021</small>
-                                                </td>
-
-                                                <td class="text-right">
-                                                    GHS 90,039.00
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
+                            </div> --}}
                         </div>
-
-                        <div class="col-md-2"></div>
-
-                    </div> <!-- end card-body -->
-
-                </div> <!-- end col -->
-
-            </div> <!-- end row -->
-
-
-
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+    </div>
 
 
         <script src="https://code.jquery.com/jquery-3.6.0.js"
@@ -482,9 +406,12 @@
 
             $(document).ready(function() {
 
-                $('#spinner').hide(),
-                    $('#spinner-text').hide(),
-                    $('#print_receipt').hide();
+                    $("#spinner").hide();
+                    $("#spinner-text").hide();
+                    // $('#print_receipt').hide();
+
+                    $(".display_button_print").hide();
+
 
                 setTimeout(function() {
                     from_account();
@@ -555,24 +482,101 @@
 
                 });
 
+                $("#receiver_name").change(function(){
+                    var receiver_name = $("#receiver_name").val();
+                    $(".display_receiver_name").text(receiver_name);
+                });
+
+                $("#receiver_phoneNum").change(function(){
+                    var receiver_phoneNum = $("#receiver_phoneNum").val();
+                    $(".display_receiver_phoneNum").text(receiver_phoneNum);
+                });
+
+                $("#receiver_address").change(function(){
+                    var receiver_address = $("#receiver_address").val();
+                    $(".display_receiver_address").text(receiver_address);
+                })
+
+                $("#amount").change(function(){
+                    var amount = $("#amount").val();
+                    $(".display_amount").text(amount);
+                });
 
 
                 function formatToCurrency(amount) {
                     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-                };
+                }
 
-                $("#next_button").click(function(e) {
-                    e.preventDefault();
+                // $("#next_button").click(function(e) {
+                //     e.preventDefault();
 
-                    //go to the cardless payment summary page...
-                    // let from_account = $('#from_account').val();
+                //     //go to the cardless payment summary page...
+                //     // let from_account = $('#from_account').val();
+                //     let from_account = $('#from_account').val().split('~');
+                //     let transfer_amount = $('#amount').val();
+                //     let receiver_name = $('#receiver_name').val();
+                //     let receiver_phoneNum = $('#receiver_phoneNum').val();
+                //     let receiver_address = $('#receiver_address').val();
+                //     let sender_name = @json(session()->get('userAlias'));
+                //     let user_pin = $('#user_pin').val();
+
+
+                //     if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
+                //         '' || receiver_address == '') {
+                //         toaster('Field must not be empty', 'error', 10000)
+                //         return false
+                //     } else {
+
+                //         //hide the payment form and show the summary form
+                //         $("#cardless_payment_form").hide()
+                //         $("#cardless_payment_summary").show();
+
+                //         amt = from_account_info[4].trim();
+                //         if (amt < transfer_amount) {
+                //             toaster('Insufficient account balance', 'error', 9000);
+                //             return false
+                //         } else {
+
+                //             //display this is the payment summary
+                //             $("#display_amount").text(transfer_amount);
+                //             $("#display_receiver_name").text(receiver_name);
+                //             $("#display_receiver_address").text(receiver_name);
+                //             $("#display_receiver_phoneNum").text(receiver_phoneNum);
+
+
+
+                //         }
+
+
+                //     }
+
+                //     $("#cardless_payment_form").hide();
+                //     $("#cardless_payment_summary").show();
+
+
+
+                // });
+
+
+                // $("#back_button").click(function(e) {
+                //     e.preventDefault()
+                //     $("#cardless_payment_summary").hide();
+                //     $("#cardless_payment_form").show();
+
+                // });
+
+
+
+                $('#confirm_button').click(function() {
                     let from_account = $('#from_account').val().split('~');
+                    from_account = from_account[2];
                     let transfer_amount = $('#amount').val();
                     let receiver_name = $('#receiver_name').val();
                     let receiver_phoneNum = $('#receiver_phoneNum').val();
                     let receiver_address = $('#receiver_address').val();
                     let sender_name = @json(session()->get('userAlias'));
                     let user_pin = $('#user_pin').val();
+                    console.log(sender_name);
 
 
                     if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
@@ -601,87 +605,54 @@
 
                         }
 
+                            if (user_pin == "") {
+                                toaster('enter your pin', 'error', 9000);
+                                console.log("Error is from here.");
+                                return false;
+                            } else {
 
-                    }
+                                    $('#spinner').show(),
+                                    $('#spinner-text').show(),
+                                    // $('#print_receipt').hide();
+                                    $('.submit-text').hide();
+                                $.ajax({
 
-                    $("#cardless_payment_form").hide();
-                    $("#cardless_payment_summary").show();
+                                    'type': 'POST',
+                                    'url': 'initiate-cardless',
+                                    "datatype": "application/json",
+                                    'data': {
+                                        'amount': transfer_amount,
+                                        'debit_account': from_account,
+                                        'pin_code': user_pin,
+                                        'receiver_address': receiver_address.trim(),
+                                        'receiver_name': receiver_name.trim(),
+                                        'receiver_phone': receiver_phoneNum,
+                                        'sender_name': sender_name.trim()
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
 
+                                        console.log(response)
 
+                                        if (response.responseCode != '000') {
+                                            toaster(response.message, 'success', 20000);
+                                            $("#request_form_div").hide();
+                                            $('.display_button_print').show();
+                                        } else {
 
-                });
+                                            toaster(response.message, 'error', 9000);
 
-
-                $("#back_button").click(function(e) {
-                    e.preventDefault()
-                    $("#cardless_payment_summary").hide();
-                    $("#cardless_payment_form").show();
-
-                });
-
-
-
-                $('#confirm_button').click(function() {
-                    let from_account = $('#from_account').val().split('~');
-                    from_account = from_account[2];
-                    let transfer_amount = $('#amount').val();
-                    let receiver_name = $('#receiver_name').val();
-                    let receiver_phoneNum = $('#receiver_phoneNum').val();
-                    let receiver_address = $('#receiver_address').val();
-                    let sender_name = @json(session()->get('userAlias'));
-                    let user_pin = $('#user_pin').val();
-                    console.log(sender_name);
-
-
-                    if (user_pin == "") {
-                        toaster('enter your pin', 'error', 9000);
-                        console.log("Error is from here.");
-                        return false;
-                    } else {
-
-                        $('#spinner').show(),
-                            $('#spinner-text').show(),
-                            $('#print_receipt').hide();
-                        $('#confirm_payment').hide();
-                        $.ajax({
-
-                            'type': 'POST',
-                            'url': 'initiate-cardless',
-                            "datatype": "application/json",
-                            'data': {
-                                'amount': transfer_amount,
-                                'debit_account': from_account,
-                                'pin_code': user_pin,
-                                'receiver_address': receiver_address.trim(),
-                                'receiver_name': receiver_name.trim(),
-                                'receiver_phone': receiver_phoneNum,
-                                'sender_name': sender_name.trim()
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response) {
-
-                                console.log(response)
-
-                                if (response.responseCode == '000') {
-                                    toaster(response.message, 'success', 20000);
-                                    $('#confirm_button').hide();
-                                    $('#back_button').hide();
-                                    $('#print_receipt').hide();
-                                    $('.hide_on_print').hide();
-                                } else {
-
-                                    toaster(response.message, 'error', 9000);
-
-                                    $('#spinner').hide();
-                                    $('#spinner-text').hide();
-                                    $('#print_receipt').hide();
-                                    $('#confirm_payment').show();
-                                    $('#confirm_button').attr('disabled', false);
-                                }
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('.submit-text').show();
+                                            // $('#confirm_payment').show();
+                                            // $('#confirm_button').attr('disabled', false);
+                                        }
+                                    }
+                                });
                             }
-                        });
                     }
                 });
 

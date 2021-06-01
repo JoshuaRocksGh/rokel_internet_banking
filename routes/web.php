@@ -409,8 +409,8 @@ Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiar
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
 
 // OTHER LOCAL BANK
-Route::post('/transfer-to-other-bank-beneficiary-api', [LocalBankController::class, 'transfer_to_other_bank_beneficiary_api'])->name('transfer-to-other-bank-beneficiary-api');
-Route::post('/transfer-to-other-bank-onetime-beneficiary-api', [LocalBankController::class, 'transfer_to_other_bank_onetime_beneficiary_api'])->name('transfer-to-other-bank-onetime-beneficiary-api');
+Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');
+Route::post('/onetime-beneficiary-local-bank-api', [APITransferLocalBankController::class, 'onetime_beneficiary_transfer'])->name('onetime-beneficiary-local-bank-api');
 
 
 // // Transfers Add Beneficiary
@@ -494,3 +494,6 @@ Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_
 
 //route to return loan frequencies
 Route::get('get-loan-frequencies-api', [FunctionsController::class, 'get_loan_frequencies'])->name('get-loan-frequencies-api');
+
+//route to return loan purposes
+Route::get('get-loan-purpose-api',[FunctionsController::class,'get_loan_purpose'])->name('get-loan-purpose-api');
