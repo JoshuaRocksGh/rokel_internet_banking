@@ -46,7 +46,7 @@
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Cardless Payment</b>
+                            {{--  <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Cardless Payment</b>  --}}
 
 
                         </span>

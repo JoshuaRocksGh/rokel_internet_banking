@@ -406,7 +406,7 @@ class LocalBankController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        // return $req;
+        // return $request;
 
         // return $request ;
 
@@ -418,7 +418,7 @@ class LocalBankController extends Controller
         // return $beneficiary_type ;
 
         if($beneficiary_type == "ACH"){
-            return $beneficiary_type ;
+            // return $beneficiary_type ;
 
             $data = [
                 "amount" => (float)$request->amount,
@@ -438,7 +438,7 @@ class LocalBankController extends Controller
                 "email" => $request->email,
             ];
 
-            return $data ;
+            // return $data ;
 
                 $response = [
                     "responseCode" => "000",
@@ -471,7 +471,7 @@ class LocalBankController extends Controller
         };
 
         if($beneficiary_type == "RTGS"){
-            return $beneficiary_type ;
+            // return $beneficiary_type ;
 
 
             $data = [
@@ -492,7 +492,7 @@ class LocalBankController extends Controller
                 "email" => $request->email,
             ];
 
-            return $data ;
+            // return $data ;
 
                 $response = [
                     "responseCode" => "000",
@@ -524,8 +524,8 @@ class LocalBankController extends Controller
             }
         };
 
-        if($beneficiary_type == "INSTANT_PAYMENT"){
-            return $beneficiary_type ;
+        if($beneficiary_type == "INSTANT"){
+            // return $beneficiary_type ;
 
 
             $data = [
@@ -546,7 +546,7 @@ class LocalBankController extends Controller
                 "email" => $request->email,
             ];
 
-            return $data ;
+            // return $data ;
 
                 $response = [
                     "responseCode" => "000",

@@ -3,7 +3,39 @@
 @section('content')
 
     <div>
-        <legend></legend>
+
+
+        <div class="container-fluid">
+            <br>
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-primary">
+                        <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                        GENERATE QR
+                    </h4>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <h6>
+
+                        <span class="flaot-right">
+                            {{--  <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Local Bank</b>  --}}
+
+
+                        </span>
+
+                    </h6>
+
+                </div>
+
+                <div class="col-md-12 ">
+                    <hr class="text-primary" style="margin: 0px;">
+                </div>
+
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-12">
@@ -11,34 +43,6 @@
                     <div class="row">
 
                         <div class="col-md-12">
-
-                            <!-- start page title -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="page-title-box">
-                                        <div class="page-title-left">
-                                            <ol class="breadcrumb m-0">
-                                                <li class="breadcrumb-item"><a href="javascript: void(0);">Transfer</a>
-                                                </li>
-                                                {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">RTGS</a></li> --}}
-                                                <li class="breadcrumb-item active text-danger">QR</li>
-                                            </ol>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h1 class="header-title text-primary" style="font-size: 24px"><img
-                                src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                            GENERATE QR</h1>
-
-                        <p class="text-muted font-14 m-b-20">
-
-                            {{-- Real Time Gross Settlement(RTGS) refers to a funds transfer system that allows for the
-                                instantaneous transfer of money. --}}
-                            <hr style="border: 1px solid">
-                        </p>
 
                         <div class="row">
 
@@ -56,7 +60,7 @@
                                             <table class="table mb-0 table-striped table-bordered">
 
                                                 <tbody>
-                                                    <tr class="bg-secondary text-white">
+                                                    <tr class="bg-primary text-white">
                                                         <td>QR Content</td>
                                                     </tr>
 
@@ -139,7 +143,7 @@
                                         <table class="table mb-0 table-striped table-bordered">
 
                                             <tbody>
-                                                <tr class="bg-secondary text-white">
+                                                <tr class="bg-primary text-white">
                                                     <td>QR Image</td>
                                                 </tr>
                                                 <tr class="">

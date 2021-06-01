@@ -56,7 +56,7 @@
                 <div class="col-md-6">
                     <h4 class="text-primary">
                         <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                        ACCOUNT ENQUIRY
+                        ACCOUNT STATEMENT
                     </h4>
                 </div>
 
