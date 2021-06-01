@@ -295,9 +295,9 @@
                             <li>
                                 <a href="{{ url('loan-request') }}">Loan Request</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#">Loan Payment</a>
-                            </li>
+                            </li> --}}
                             {{-- <li>
                                 <a href="project-create.html">Create Project</a>
                             </li> --}}
@@ -329,14 +329,14 @@
                     <div class="collapse" id="sidebarTasks">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('block-debit-card') }}">Block Debit Card</a>
+                                <a href="{{ url('manage-cards') }}">Manage Cards</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('replace-card') }}">Replace Card</a>
                             </li>
                             <li>
                                 <a href="{{ url('activate-card') }}">Activate Card</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>

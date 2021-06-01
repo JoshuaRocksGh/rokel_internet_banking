@@ -302,13 +302,13 @@
 
             .visa_logo{
                 position: absolute;
-                left: 76%;
+                left: 65%;
                 top:23%;
             }
 
             .chip{
                 position: absolute;
-                left: 9.4%;
+                left: 24.4%;
                 top: 46%;
             }
 
@@ -318,7 +318,7 @@
                 color: wheat;
                 font-size: 23px;
                 position: absolute;
-                left: 9%;
+                left: 24.4%;
                 top:60%;
                 letter-spacing: 6px;
             }
@@ -352,7 +352,7 @@
                 font-family: kelly slab,cursive;
                 color: wheat;
                 position: absolute;
-                left: 65%;
+                left: 55%;
                 top: 73.4%;
                 letter-spacing:2px;
 
@@ -363,14 +363,14 @@
                 color: wheat;
                 font-weight: normal;
                 position: absolute;
-                left: 10%;
-                top: 75%;
+                left: 24.4%;
+                top: 73%;
                 letter-spacing: 3px;
             }
 
             .mastercard{
                 position: absolute;
-                left: 81%;
-                top: 65%;
+                left: 67%;
+                top: 68%;
             }
 </style>

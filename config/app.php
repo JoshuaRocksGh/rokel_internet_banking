@@ -177,7 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
-        Yajra\Oci8\Oci8ServiceProvider::class,
+        // Yajra\Oci8\Oci8ServiceProvider::class,
 
 
     ],

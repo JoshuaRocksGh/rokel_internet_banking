@@ -333,7 +333,7 @@ Route::get('stop-cheque', [AccountServicesController::class, 'stop_cheque'])->na
 Route::get('activate-card', [CardsController::class, 'activate_card'])->name('activate-card');
 
 //route to display the block debit card screen
-Route::get('block-debit-card', [CardsController::class, 'block_debit_card'])->name('block-debit-card');
+Route::get('manage-cards', [CardsController::class, 'block_debit_card'])->name('manage-cards');
 
 //route to display the replace card screen
 Route::get('replace-card', [CardsController::class, 'replace_card'])->name('replace-card');
