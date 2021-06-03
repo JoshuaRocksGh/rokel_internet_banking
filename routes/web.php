@@ -412,6 +412,9 @@ Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 
 Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');
 Route::post('/onetime-beneficiary-local-bank-api', [APITransferLocalBankController::class, 'onetime_beneficiary_transfer'])->name('onetime-beneficiary-local-bank-api');
 
+// INTERNATIONAL BANK TRANSFER
+Route::post('/international-bank-transfer-api', [APITransferInternationalBankController::class, 'international_bank_transfer'])->name('international-bank-transfer-api');
+
 
 // // Transfers Add Beneficiary
 // Route::post('/same-bank-beneficiary-api', [TransferSameBankController::class, 'same_bank_beneficiary_'])->name('same-bank-beneficiary-api');

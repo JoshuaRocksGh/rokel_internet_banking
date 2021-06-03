@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Validator;
 class InternationalBankController extends Controller
 {
     //
-    public function international_bank_(Request $req)
+    public function international_bank_(Request $request)
     {
-        $validator = Validator::make($req->all(), [
+        $validator = Validator::make($request->all(), [
             'bank_country' => 'required',
             'bank_city' => 'required',
             'bank_branch' => 'required',
@@ -38,7 +38,7 @@ class InternationalBankController extends Controller
 
         ]);
 
-        // return $req;
+        // return $request;
 
         $base_response = new BaseResponse();
 
@@ -55,60 +55,60 @@ class InternationalBankController extends Controller
         $user = (object) UserAuth::getDetails();
         //return $user;
 
-        $authToken = $user->userToken;
-        $userID = $user->userId;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
         $data = [
             "accountDetails" => [
-                "beneficiaryAccount" => $req->acc_number,
-                "beneficiaryAccountCurrency" => $req->currency,
+                "beneficiaryAccount" => $request->acc_number,
+                "beneficiaryAccountCurrency" => $request->currency,
             ],
 
             "addressDetails" => [
-                "address1" => $req->address,
-                "address2" => "string",
-                "address3" => "string",
-                "city" => $req->city,
-                "countryOfResidence" => $req->country_of_residence
+                "address1" => $request->address,
+                "address2" => null,
+                "address3" => null,
+                "city" => $request->city,
+                "countryOfResidence" => $request->country_of_residence
             ],
 
             "bankDetails" => [
-                "bankAddress" => $req->bank_address,
-                "bankBranch" => $req->bank_branch,
-                "bankCity" => $req->bank_city,
-                "bankCountry" => $req->bank_country,
-                "bankName" => $req->bank_name,
-                "bankSwiftCode" => $req->swift_code
+                "bankAddress" => $request->bank_address,
+                "bankBranch" => $request->bank_branch,
+                "bankCity" => $request->bank_city,
+                "bankCountry" => $request->bank_country,
+                "bankName" => $request->bank_name,
+                "bankSwiftCode" => $request->swift_code
             ],
 
-            "beneID" => "string",
+            "beneID" => null,
 
             "beneficiaryDetails" => [
-                "email" => $req->beneficiary_email,
-                "firstName" => $req->firstname,
-                "lastName" => $req->lastname,
-                "nationality" => $req->nationality,
-                "nickname" => $req->beneficiary_name,
-                "otherName" => $req->middlename,
-                "sendMail" => $req->transfer_email
+                "email" => $request->beneficiary_email,
+                "firstName" => $request->firstname,
+                "lastName" => $request->lastname,
+                "nationality" => $request->nationality,
+                "nickname" => $request->beneficiary_name,
+                "otherName" => $request->middlename,
+                "sendMail" => $request->transfer_email
             ],
 
             "beneficiaryType" => "INTB",
 
             "securityDetails" => [
-                "approvedBy" => "string",
+                "approvedBy" => null,
                 "approvedDateTime" => date('Y-m-d'),
-                "createdBy" => "string",
+                "createdBy" => null,
                 "createdDateTime" =>  date('Y-m-d'),
-                "entrySource" => "string",
-                "modifyBy" => "string",
+                "entrySource" => null,
+                "modifyBy" => null,
                 "modifyDateTime" =>  date('Y-m-d')
             ],
 
-            "transactionType" => "string",
+            "transactionType" => null,
             "userID" => $userID,
-            "telephone" => $req->telephone,
-            "beneficiaryAcountName" => $req->acc_name
+            "telephone" => $request->telephone,
+            "beneficiaryAcountName" => $request->acc_name
 
         ];
 
