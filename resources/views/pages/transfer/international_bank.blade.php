@@ -83,7 +83,108 @@
                         style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                         <br><br><br>
 
-                        <form action=""></form>
+                        <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                            aria-autocomplete="none">
+                            @csrf
+                            <div class="row container">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+
+                                    <div class="row mb-2">
+                                        <b class="col-md-12 text-primary mb-1">Account from which the money will
+                                            be tansfered
+                                            &nbsp; <span class="text-danger">*</span> </b>
+
+                                        <select class="form-control" id="from_account" required>
+                                            <option value=""> -- Select Your Account --
+                                            </option>
+
+
+                                        </select>
+
+
+                                    </div>
+                                    <hr>
+                                    <div class="row mb-2">
+                                        <div class="col-md-4">
+                                            {{--  <label class="custom-control-label " for="customCheck1"><b class="text-primary">Onetime Transfer </b> </label>
+                                            <input type="checkbox" class="custom-control-input"
+                                                name="onetime_beneficiary_type" id="customCheck1">  --}}
+
+
+                                                <div class="form-group mb-3">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="checkmeout0" name="onetime_check" value="CHECKED">
+                                                        <label class="custom-control-label" for="checkmeout0"><b class="text-primary">Onetime Transfer </b> </label>
+                                                    </div>
+                                                </div>
+
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="row">
+                                                <b class="text-primary col-md-4 bene_details">Beneficiary
+                                                    &nbsp;<span class="text-danger">*</span></b>
+                                                <select class="form-control col-md-8 bene_details"
+                                                    id="to_account" required>
+                                                    <option value=""><b>-- Select Beneficiary --</b> </option>
+                                                    {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
+                                                Currenct Account ~ 004004110449140121 </option> --}}
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <hr>
+                                    <div id="saved_benefciary_form">
+                                        <div class="row mb-2">
+                                            <b class="text-primary col-md-4">Country</b>
+                                            <input class="form-control col-md-8 " type="text"
+                                                id="beneficiary_country_name" readonly>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <b class="text-primary col-md-4">Bank Name</b>
+                                            <input class="form-control col-md-8 " type="text"
+                                                id="beneficiary_bank_name" readonly>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <b class="text-primary col-md-4">Swift Code</b>
+                                            <input class="form-control col-md-8 " type="text"
+                                                id="beneficiary_swift_code" readonly>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <b class="text-primary col-md-4">Beneficiary Name</b>
+                                            <input class="form-control col-md-8 " type="text"
+                                                id="beneficiary_account_name" readonly>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <b class="text-primary col-md-4">Beneficiary Address</b>
+                                            <input class="form-control col-md-8 " type="text"
+                                                id="beneficiary_address" readonly>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <b class="text-primary col-md-4">Beneficiary Email</b>
+                                            <input class="form-control col-md-8 " type="text"
+                                                id="beneficiary_email" readonly>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <b class="text-primary col-md-4">Beneficiary Telephone</b>
+                                            <input class="form-control col-md-8 " type="text"
+                                                id="beneficiary_telephone" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+
+
+                        </form>
                         </div>
 
 
