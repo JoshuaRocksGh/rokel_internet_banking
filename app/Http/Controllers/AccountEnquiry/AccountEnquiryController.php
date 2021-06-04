@@ -16,6 +16,10 @@ class AccountEnquiryController extends Controller
         return view('pages.accountEnquiry.accountEnquiry', ['account_number' => $account_number]);
     }
 
+    public function list_of_accounts(){
+        return view('pages.accountEnquiry.listOfAccounts');
+    }
+
     public function account_transaction_history(Request $request)
     {
         $accountNumber = $request->accountNumber;

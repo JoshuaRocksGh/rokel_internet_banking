@@ -238,6 +238,7 @@ Route::get('/settings', [settingsController::class, 'settings'])->name('settings
 //route to control the accountEnquiry screen
 Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-transaction-history');
 Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
+Route::get('list-of-accounts',[AccountEnquiryController::class,'list_of_accounts'])->name('list-of-accounts');
 
 // get account description
 Route::post('get-account-description', [GetAccountDescription::class, 'get_account_description'])->name('get-account-description');
