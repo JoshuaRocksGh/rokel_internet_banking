@@ -160,7 +160,7 @@
         @include('snippets.side-bar')
 
         <div class="content-page">
-            <div class="content">
+            <div class="content" style="zoom: 0.9 ;">
                 @yield('content')
             </div>
 
