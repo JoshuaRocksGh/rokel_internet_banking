@@ -75,7 +75,7 @@
                                 <i class="fa fa-info-circle text-muted float-right" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
                                     <h4 class="ribbon ribbon-blue float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4>
                                     <br><br>
-                                    <a href="{{ url('') }}"><h2 class="text-primary my-3" style="font-size: 25px">SLL <span>100,000,000000000</span></h2></a>
+                                    <a href="{{ url('list-of-accounts') }}"><h2 class="text-primary my-3" style="font-size: 25px">SLL <span class="i_have_amount">Total Balance</span></h2></a>
                                     <br>
                                     <p class="text-primary mb-0">Click the amount to see your accounts. <span class="float-right"><i class="fa fa-caret-up text-success mr-1"></i>10.25%</span></p>
 
@@ -178,7 +178,7 @@
                                 {{-- <img class="card-img-top img-fluid" src="../assets/images/small/img-5.jpg" alt="Card image cap"> --}}
                                 <div class="card-body">
 
-                                    <h5 class="card-title text-white">My Card</h5>
+                                    <h5 class="card-title text-white">My Cards</h5>
                                     <br>
                                     <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
                                     <p class="card-text">
@@ -279,11 +279,11 @@
 
                         <div class="col-md-3 col-xl-3">
                             <a href="{{ url('cardless-payment') }}">
-                            <div class="widget-rounded-circle card-box custom-color-gold" style="border-radius: 20px;">
+                            <div class="widget-rounded-circle card-box custom-color-gold bg-success" style="border-radius: 20px;">
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="avatar-md rounded-circle bg-white">
-                                            <i class="fe-rss font-20 avatar-title custom-text-color-gold"></i>
+                                            <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
                                         </div>
                                     </div>
                                     <div class="col-8">
