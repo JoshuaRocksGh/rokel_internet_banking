@@ -45,469 +45,22 @@
 
             </div> <!-- end col--> --}}
 
-            {{-- <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 col-xl-3">
-                        <div class="card-box">
-                            <i class="fa fa-info-circle text-muted float-right" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                            <h4 class="mt-0 font-16">Income Status</h4>
-                            <h2 class="text-primary my-3 text-center">$<span data-plugin="counterup">31,570</span></h2>
-                            <p class="text-muted mb-0">Total income: $22506 <span class="float-right"><i class="fa fa-caret-up text-success mr-1"></i>10.25%</span></p>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
 
-
-
-            <!-- end row-->
-
-
-
-            <div class="container-fluid">
-                <div class="">
-                    <div class="row">
-
-
-                        <div class="col-lg-4">
-                            <div class="card-box ribbon-box" style="border-radius: 20px;">
-                                {{-- <div class="ribbon ribbon-blue float-left"><i class="mdi mdi-access-point mr-1"></i> Balance</div> --}}
-                                <i class="fa fa-info-circle text-muted float-right" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                                    <h4 class="ribbon ribbon-blue float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4>
-                                    <br><br>
-                                    <a href="{{ url('') }}"><h2 class="text-primary my-3" style="font-size: 25px">SLL <span>100,000,000000000</span></h2></a>
-                                    <br>
-                                    <p class="text-primary mb-0">Click the amount to see your accounts. <span class="float-right"><i class="fa fa-caret-up text-success mr-1"></i>10.25%</span></p>
-
-                                {{-- <div class="ribbon ribbon-blue float-left"><i class="mdi mdi-access-point mr-1"></i> Balance</div>
-                                <h5 class="text-blue float-right mt-0">Balance</h5>
-                                <div class="ribbon-content">
-                                    <p class="mb-0 text-primary" style="font-size: 30px;" href="{{ url('account-enquiry') }}">SLL 4,000000308</p>
-                                    <br><br><br>
-                                    <h5 class="text-primary ">Updated according to the total amount in your balance. Click on amount to see your list of accounts</h5>
-                                </div> --}}
-                            </div>
-                        </div>
-                        {{-- <div class="col-md-4 col-xl-4">
-                            <div class=" card-box">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h4 class=" font-15">Balance</h4> --}}
-
-                                        {{-- <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
-                                        </div> --}}
-                                    {{-- </div>
-                                    <div class="col-8">
-                                        <i class="fa fa-info-circle text-muted float-right" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                                        <div class="text-right">
-                                            <h3 class=" text-white"><span></span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                                <div class="row">
-                                    <h2 class="text-primary my-3 text-center">SLL <span>31,570</span></h2>
-                                </div>
-                                <div class="row">
-                                    <h6 class="text-primary font-7">Updated approximatelyy every 15 minutes</h6>
-                                </div>
-                            </div> <!-- end widget-rounded-circle-->
-                        </div> <!-- end col--> --}}
-
-                        <div class="col-md-4 col-xl-4">
-                            <div class="card" style="border-radius: 20px">
-
-                            {{-- <div class="widget-rounded-circle card-box bg-warning">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white">
-                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span> &nbsp; Other Bank Transfer</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle--> --}}
-
-                            {{-- <div class="row mt-4 text-center">
-                                <div class="col-4">
-                                    <p class="text-muted font-14 mb-1 text-truncate">Target</p>
-                                    <h4><i class="fe-arrow-down text-danger mr-1"></i>$3.8k</h4>
-                                </div>
-                                <div class="col-4">
-                                    <p class="text-muted font-14 mb-1 text-truncate">Last week</p>
-                                    <h4><i class="fe-arrow-up text-success mr-1"></i>$1.1k</h4>
-                                </div>
-                                <div class="col-4">
-                                    <p class="text-muted font-14 mb-1 text-truncate">Last Month</p>
-                                    <h4><i class="fe-arrow-down text-danger mr-1"></i>$25k</h4>
-                                </div>
-                            </div> --}}
-                            <div class="mt-3 chartjs-chart">
-                                <canvas id="projections-actuals-chart" data-colors="#0561ad,#e3eaef" height="170px"></canvas>
-                            </div>
-                        </div>
-                        </div> <!-- end col-->
-
-
-                        {{-- <div class="col-md-3 col-xl-3">
-                            <div class="widget-rounded-circle card-box bg-danger">
-                                <div class=" row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>&nbsp; Mobile Money</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </div> --}}
-
-
-                        <div class="col-md-4">
-                            <a href="{{ url('manage-cards') }}">
-                            <div class="card" style="background-color: #0561ad; border-radius: 20px;">
-
-                                {{-- <img class="card-img-top img-fluid" src="../assets/images/small/img-5.jpg" alt="Card image cap"> --}}
-                                <div class="card-body">
-
-                                    <h5 class="card-title text-white">My Card</h5>
-                                    <br>
-                                    <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
-                                    <p class="card-text">
-                                        <p class="text-white mb-0" style="font-size: 20px;">Joshua Amarfio <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
-
-                                    </p>
-                                </div>
-                            </div> <!-- end card-box-->
-                            </a>
-                        </div>
-                        {{-- <div class="col-md-3 col-xl-3">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col--> --}}
-
-
-
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="container-fluid">
-                <div class="">
-                    <div class="row">
-
-
-                        <div class="col-md-3 col-xl-3">
-                            <a href="{{ url('mobile-money') }}"><div class="widget-rounded-circle card-box" style="border-radius: 20px; background-color: #0561ad">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                            <div class="text-right">
-                                                <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </a>
-                        </div> <!-- end col-->
-
-                        <div class="col-md-3 col-xl-3">
-                            <a href="{{ url('airtime-payment') }}">
-                            <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white">
-                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                            </a>
-                        </div> <!-- end col-->
-
-
-                        <div class="col-md-3 col-xl-3">
-                            <a href="{{ url('korpone-loane-payment') }}">
-                            <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
-                                <div class=" row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                            </a>
-                        </div>
-
-
-                        <div class="col-md-3 col-xl-3">
-                            <a href="{{ url('cardless-payment') }}">
-                            <div class="widget-rounded-circle card-box custom-color-gold" style="border-radius: 20px;">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white">
-                                            <i class="fe-rss font-20 avatar-title custom-text-color-gold"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                            </a>
-                        </div> <!-- end col-->
-
-                        {{-- <div class="col-md-3 col-xl-3">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col--> --}}
-
-
-
-                    </div>
-                </div>
-            </div>
 
             <div class="col-md-12 col-xl-12">
                 {{-- <h5 class="page-title element">ACCOUNTS</h5> --}}
                 <div class="row">
 
 
-                    <div class="col-md-4 col-xl-4">
-                        <div class="card" style="border-radius: 20px;">
-                            <div class="border mt-0 rounded">
-                                <h4 class="header-title p-2 mb-0 text-dark" style="font-weight: bolder">Latest Transactions</h4>
+                    <div class="col-md-7 col-xl-7">
+                        <div class="">
+                            <div id="piechart_3d" style="width: 700px; height: 380px;">
 
-                                <div class="table-responsive" style="height: 360px; zoom:0.9">
-                                    <table class="table table-centered table-nowrap mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="avatar-sm rounded bg-soft-blue">
-                                                        <i class="fe-arrow-down-left font-4 avatar-title text-blue"></i>
-                                                    </div>
-                                                    {{-- <div class="avatar-md rounded-circle bg-white ">
-                                                        <span class="fe-arrow-down-left noti-icon text-danger"></span>
-                                                    &nbsp;&nbsp;
-                                                    </div> --}}
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Deposit</a>
-                                                    <small class="d-block">02/03/2021</small>
-                                                </td>
-
-                                                <td class="text-right font-weight-semibold text-primary">
-                                                    SLL 90,039.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">RTGS Transfer</a>
-                                                    <small class="d-block">03/01/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 5,700.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                    <td >
-                                                        <div class="avatar-sm rounded bg-soft-danger">
-                                                            <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                        </div>
-                                                    </td>
-
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
-                            </div> <!-- end .border-->
-
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 col-xl-4">
-                        <div class="card" style="border-radius: 20px;">
-                            <div class="border mt-0 rounded">
-                                <h4 class="header-title p-2 mb-0 text-dark" style="font-weight: bolder">Expense Categories</h4>
-
-                                <div class="table-responsive" style="height: 360px; min-height:285px; zoom:0.9">
-                                    <table class="table table-centered table-nowrap mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-down-left font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Food and Groceries</a>
-                                                    <small class="d-block">02/03/2021</small>
-                                                </td>
-
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 90,039.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Electricity</a>
-                                                    <small class="d-block">03/01/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 5,700.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                    <td >
-                                                        <div class="avatar-sm rounded bg-soft-danger">
-                                                            <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                        </div>
-                                                    </td>
-
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Personal</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Fees</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Gifts and Donations</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Travel</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
-                            </div> <!-- end .border-->
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-xl-4">
+                    <div class="col-md-5 col-xl-5">
 
                         {{-- <div class="col-xl-4 col-lg-5"> --}}
 
@@ -780,9 +333,10 @@
                         </div> --}}
 
                         {{-- </div> --}}
-                        <div class="card" style="border-radius: 20px;">
-                            <div class="border mt-0 rounded">
-                                <h4 class="header-title p-2 mb-0 text-dark" style="font-weight: bolder">Forex Rates</h4>
+                        <div class="card">
+                            <div class="card-body">
+
+
                                 <ul class="nav nav-tabs nav-bordered nav-justified">
                                     <li class="nav-item" id="currency_rates_tour">
                                         <a href="#home-b2" data-toggle="tab" aria-expanded="false" class="nav-link active">
@@ -874,7 +428,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> <!-- end card-box-->
                         </div> <!-- end col -->
 
                     </div>
@@ -882,6 +436,318 @@
 
                 </div>
 
+            </div>
+
+
+            <!-- end row-->
+
+            <div class="container-fluid">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xl-12" style="zoom:0.8;">
+                            <div id="accordion" class="mb-3">
+                                <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
+                                    <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="m-0">
+
+                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
+                                                <span class="text-primary"> <b> I HAVE ( Current & Savings) </b></span>
+                                                <span class="text-primary float-right">
+                                                    <b class="i_have_currency" style="font-size:12px ">SLL</b>
+                                                    <b class="i_have_amount"></b>
+                                                </span>
+
+                                            </h5>
+                                        </div>
+                                    </a>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                        data-parent="#accordion">
+                                        <div class="card-body i_have_display_no_data text-center"></div>
+                                        <div class="card-body i_have_display">
+
+
+
+                                            <div class="text-center accounts_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center accounts_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
+                                                    alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_accounts()">
+                                                    <i class="fe-rotate-ccw"></i> &nbsp; Please
+                                                    retry</button>
+                                            </div>
+
+
+
+
+                                            <div class="table-responsive table-bordered accounts_display_area">
+                                                <table id="" class="table mb-0 ">
+                                                    <thead>
+                                                        <tr class="bg-info text-white ">
+                                                            <td> <b> Account Number </b> </td>
+                                                            <td> <b> Account Description </b> </td>
+                                                            <td> <b> Product </b> </td>
+                                                            <td> <b> Currency </b> </td>
+                                                            <td> <b> Overdrawn Limit </b> </td>
+                                                            <td> <b> Ledger Balance </b> </td>
+                                                            <td> <b> Available Balance </b> </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="casa_list_display">
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!-- end table-responsive -->
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
+                                    <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="m-0">
+
+                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
+                                                <span class="text-danger"> <b>I OWE (Loans)</b> </span>
+
+                                                <span class="text-primary float-right " style="text-align: right">
+                                                    <b style="font-size:12px ">SLL</b>
+                                                    <b> 0.00
+                                                    </b></span>
+
+                                            </h5>
+                                        </div>
+                                    </a>
+                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                                        data-parent="#accordion">
+                                        <div class="card-body i_owe_display_no_data text-center"></div>
+                                        <div class="card-body i_owe_display">
+
+
+
+                                            <div class="text-center loans_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center loans_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
+                                                    alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="get_loans()"> <i
+                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                            </div>
+
+                                            <h4 class="text-center text-danger loan_no_data_found"> <b> NO LOANS FOUND </b></h4>
+
+                                            <div class="table-responsive table-bordered loans_display_area">
+
+                                                <table id="datatable-buttons loan_list" class="table mb-0">
+                                                    <thead>
+                                                        <tr class="bg-info text-white ">
+                                                            <td> <b> Facility Number </b> </td>
+                                                            <td> <b> Description </b> </td>
+                                                            <td> <b> Currency </b> </td>
+                                                            <td> <b> Amount Granted </b> </td>
+                                                            <td> <b> Loan Balance </b> </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="loans_display">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                            <!-- end table-responsive -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
+                                    <a class="text-dark" data-toggle="collapse" href="#collapseThree" aria-expanded="true">
+                                        <div class="card-header" id="headingThree">
+                                            <h5 class="m-0">
+
+                                                <i class="mdi mdi-help-circle mr-1 text-primary"></i>
+                                                <span class="text-success"> <b>MY INVESTMENTS </b> </span>
+
+                                                <span class="text-primary float-right " style="text-align: right">
+                                                    <b style="font-size:12px ">SLL</b>
+                                                    <b> 0.00
+                                                    </b></span>
+
+                                            </h5>
+                                        </div>
+                                    </a>
+                                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                                        data-parent="#accordion">
+                                        <div class="card-body my_investment_display_no_data text-center"></div>
+                                        <div class="card-body my_investment_display">
+
+
+
+                                            <div class="text-center my_investment_loading_area" id="account_balance_info_loader">
+                                                <div class="spinner-border text-secondary avatar-sm " role="status"></div>
+                                            </div>
+
+
+
+                                            <div class="text-center my_investment_error_area">
+                                                <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid"
+                                                    alt="" style="width: 180px; height:130px;">
+                                                <legend></legend>
+                                                <button class="btn btn-secondary" onclick="fixed_deposit()"> <i
+                                                        class="fe-rotate-ccw"></i> &nbsp; Please retry</button>
+                                            </div>
+
+                                            <h4 class="text-center text-danger my_investment_no_data_found"> <b> NO INVESTMENT FOUND </b></h4>
+
+                                            <div class="table-responsive table-bordered my_investment_display_area">
+                                                <table id="datatable-buttons my_investment_list" class="table mb-0">
+                                                    <thead>
+                                                        <tr class="custom-color-gold text-white ">
+                                                            <td> <b> Source Account </b> </td>
+                                                            <td> <b> Amount </b> </td>
+                                                            <td> <b> Tenure </b> </td>
+                                                            <td> <b> Interest Rate</b> </td>
+                                                            <td> <b> Rollover </b> </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="my_investment_account">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                            <!-- end table-responsive -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div> <!-- end #accordions-->
+                        </div> <!-- end col -->
+
+
+                    </div> <!-- end row -->
+
+                </div>
+            </div>
+
+
+            <div class="container-fluid">
+                <div class="">
+                    <div class="row">
+
+
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box bg-info">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white ">
+                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span>Airtime Purchase</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div> <!-- end col-->
+
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box bg-warning">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white">
+                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span> &nbsp; Other Bank Transfer</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div> <!-- end col-->
+
+
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box bg-danger">
+                                <div class=" row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white ">
+                                            <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span>&nbsp; Mobile Money</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div>
+
+
+                        <div class="col-md-3 col-xl-3">
+                            <div class="widget-rounded-circle card-box custom-color-gold">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white">
+                                            <i class="fe-rss font-20 avatar-title custom-text-color-gold"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div> <!-- end col-->
+
+                        {{-- <div class="col-md-3 col-xl-3">
+                    <div class="widget-rounded-circle card-box">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
+                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-right">
+                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end widget-rounded-circle-->
+                </div> <!-- end col--> --}}
+
+
+
+                    </div>
+                </div>
             </div>
 
             {{-- <div class="row ">
@@ -1061,24 +927,6 @@
         <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script>
         <!-- Tour init js-->
         {{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
-
-        <!-- Chart JS -->
-        <script src="{{ asset('assets/libs/chart.js/Chart.bundle.min.js') }}"></script>
-
-        <script src="{{ asset('assets/libs/moment/min/moment.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/jquery.scrollto/jquery.scrollTo.min.js') }}"></script>
-
-        <!-- Chat app -->
-        <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script>
-
-        <!-- Todo app -->
-        <script src="{{ asset('assets/js/pages/jquery.todo.js') }}"></script>
-
-        <!-- Dashboard init JS -->
-        <script src="{{ asset('assets/js/pages/dashboard-3.init.js') }}"></script>
-
-        <!-- App js-->
-        <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
@@ -1539,15 +1387,15 @@
                 })
             }
 
-                    //     {{-- function dynamic_display(first, second, third){
-                    //      $(".cross_rate_display_area").hide()
-                    //      $(".cross_rates_error_area").hide()
+            {{-- function dynamic_display(first, second, third){
+             $(".cross_rate_display_area").hide()
+             $(".cross_rates_error_area").hide()
 
 
-                    //     $('".' + first + '"').hide()
-                    //     $('".' + second + '"').hide()
-                    //     $('".' + third + '"').show()
-                    // } --}}
+            $('".' + first + '"').hide()
+            $('".' + second + '"').hide()
+            $('".' + third + '"').show()
+        } --}}
 
 
 
@@ -1600,38 +1448,44 @@
 
         </script>
 
-                {{--  <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>  --}}
+        {{--  <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>  --}}
 
 
 
-                {{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-            <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script> --}}
 
 
 
-                <!-- third party js -->
-                {{-- <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"> --}}
-                {{-- </script> --}}
+        <!-- third party js -->
+        {{-- <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"> --}}
+        </script>
 
-                {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-                <!-- third party js ends -->
+        {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
+        <!-- third party js ends -->
 
-                <!-- Datatables init -->
-                {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
-                <!-- Vendor js -->
+        <!-- Datatables init -->
+        {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
+
+
+    @endsection
+
+
+
+    @section('scripts')
 
 
     @endsection
