@@ -10,6 +10,7 @@ use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountS
 use App\Http\Controllers\AccountServices\KYC\KycController as KYCKycController;
 use App\Http\Controllers\AccountServices\StatementRequestController;
 use App\Http\Controllers\AccountServices\StopChequeController;
+use App\Http\Controllers\API\Transfer\InternationalBankController as TransferInternationalBankController;
 use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
@@ -411,6 +412,9 @@ Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 
 // OTHER LOCAL BANK
 Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');
 Route::post('/onetime-beneficiary-local-bank-api', [APITransferLocalBankController::class, 'onetime_beneficiary_transfer'])->name('onetime-beneficiary-local-bank-api');
+
+// INTERNATIONAL BANK TRANSFER
+Route::post('/international-bank-transfer-api', [TransferInternationalBankController::class, 'international_bank_transfer'])->name('international-bank-transfer-api');
 
 
 // // Transfers Add Beneficiary

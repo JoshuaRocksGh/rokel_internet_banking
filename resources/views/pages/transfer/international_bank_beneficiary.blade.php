@@ -128,11 +128,11 @@
                                                             aria-autocomplete="off">
                                                             <div class="row">
                                                                 <div class="col-12">
-                                                                    <label class="purple-color"> Beneficiary Bank
-                                                                        Details</label><br><br>
+                                                                    <b class="text-primary"> Beneficiary Bank
+                                                                        Details</b><br><br>
                                                                     <div class="form-group row mb-3">
                                                                         <div class="col-md-6">
-                                                                            <label for="form-group">Bank Country<span
+                                                                            <label for="form-group" class="text-primary">Bank Country &nbsp;  <span
                                                                                     class="text-danger">*</span></label>
                                                                             <select class="custom-select" id="bank_country"
                                                                                 name="bank_country" required>
@@ -145,7 +145,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label for="form-group">Bank Name<span
+                                                                            <label for="form-group" class="text-primary">Bank Name &nbsp; <span
                                                                                     class="text-danger">*</span></label>
                                                                             <select class="custom-select" id="bank_name"
                                                                                 name="bank_name" required>
@@ -157,7 +157,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label for="form-group">Bank City<span
+                                                                            <label for="form-group" class="text-primary">Bank City &nbsp; <span
                                                                                     class="text-danger">*</span></label>
                                                                             <select class="custom-select" id="bank_city"
                                                                                 name="bank_city">
@@ -170,7 +170,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label for="form-group">Bank Branch<span
+                                                                            <label for="form-group" class="text-primary">Bank Branch &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <select class="custom-select" id="bank_branch"
                                                                                 name="bank_branch">
@@ -184,7 +184,7 @@
 
 
                                                                         <div class="col-md-6">
-                                                                            <label for="form-group">Bank Address<span
+                                                                            <label for="form-group" class="text-primary">Bank Address &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <input type="text" id="bank_address"
                                                                                 name="bank_address" class="form-control"
@@ -193,7 +193,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label for="form-group">Swift Code<span
+                                                                            <label for="form-group" class="text-primary">Swift Code &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <input type="text" id="swift_code" name="swift"
                                                                                 class="form-control"
@@ -204,8 +204,8 @@
                                                                     </div>
 
                                                                     <button
-                                                                        class="btn btn-primary btn-rounded waves-effect waves-light"
-                                                                        type="submit" id="bank_details_next_btn">Next <i class="fe-arrow-right"></i></button>
+                                                                        class="btn btn-primary btn-rounded waves-effect waves-light float-right"
+                                                                        type="submit" id="bank_details_next_btn">&nbsp; Next &nbsp;<i class="fe-arrow-right"></i></button>
 
                                                                 </div> <!-- end col -->
                                                             </div> <!-- end row -->
@@ -218,24 +218,21 @@
                                                             aria-autocomplete="off">
                                                             <div class="row">
                                                                 <div class="col-12">
-                                                                    <label class="purple-color"> Beneficiary Account
-                                                                        Details</label><br><br>
+                                                                    <b class="text-primary"> Beneficiary Account
+                                                                        Details</b><br><br>
 
                                                                     <div class="form-group row mb-3">
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group" for="name3"> Account
-                                                                                Number<span
+                                                                            <label class="form-group text-primary"> Account Number &nbsp;<span
                                                                                     class="text-danger">*</span></label>
 
-                                                                            <input type="number" id="acc_number"
-                                                                                name="acc_number" class="form-control"
-                                                                                placeholder="Account number/BBAN" required>
+                                                                            <input type="text" id="acc_number" name="acc_number" class="form-control"
+                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Account number/BBAN" required>
                                                                             <br>
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group" for="name3"> Account
-                                                                                Name<span
+                                                                            <label class="form-group text-primary"> Account Name &nbsp;<span
                                                                                     class="text-danger">*</span></label>
 
                                                                             <input type="text" id="acc_name" name="acc_name"
@@ -246,8 +243,7 @@
 
                                                                         <div class="col-md-6">
                                                                             {{-- <input type="text" id="surname3" name="surname3" class="form-control" required> --}}
-                                                                            <label class="form-group"
-                                                                                for="surname3">Currency<span
+                                                                            <label class="form-group text-primary" >Currency &nbsp;<span
                                                                                     class="text-danger">*</span></label>
 
                                                                             <select class="custom-select" id="currency"
@@ -260,9 +256,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group"
-                                                                                for="confirm3">Firstname<span
-                                                                                    class="text-danger">*</span></label>
+                                                                            <label class="form-group text-primary" >Firstname &nbsp;<span class="text-danger">*</span></label>
                                                                             <input type="text" id="firstname"
                                                                                 name="firstname" class="form-control"
                                                                                 placeholder="Firstname" required>
@@ -270,8 +264,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group"
-                                                                                for="confirm3">Lastname<span
+                                                                            <label class="form-group text-primary">Lastname &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <input type="text" id="lastname" name="lastname"
                                                                                 class="form-control" placeholder="Lastname"
@@ -280,8 +273,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group"
-                                                                                for="confirm3">Middlename<span
+                                                                            <label class="form-group text-primary" >Middlename &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <input type="text" id="middlename"
                                                                                 name="middlename" class="form-control"
@@ -298,12 +290,12 @@
                                                                 <li class=" list-inline-item"><button
                                                                         class="btn btn-secondary btn-rounded waves-effect waves-light"
                                                                         type="button"
-                                                                        id="account_deatils_back_btn">Back</button></li>
+                                                                        id="account_deatils_back_btn"> &nbsp;<i class="mdi mdi-reply-all"></i> Back &nbsp;</button></li>
 
                                                                 <li class="list-inline-item float-right"><button
                                                                         class="btn btn-primary btn-rounded waves-effect waves-light"
                                                                         id="account_details_next_btn"
-                                                                        type="submit">Next</button></li>
+                                                                        type="submit"> &nbsp; Next &nbsp;<i class="fe-arrow-right"></i></button></li>
                                                             </ul>
                                                         </form>
                                                     </div>
@@ -314,15 +306,14 @@
                                                             aria-autocomplete="off">
                                                             <div class="row">
                                                                 <div class="col-12">
-                                                                    <label class="purple-color"> Beneficiary Personal
-                                                                        Details</label><br><br>
+                                                                    <b class="text-primary"> Beneficiary Personal
+                                                                        Details</b><br><br>
 
 
                                                                     <div class="form-group row mb-3">
                                                                         {{-- <label class="col-md-3 col-form-label" for="name3"> First name</label> --}}
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group"
-                                                                                for="confirm3">Beneficiary Name<span
+                                                                            <label class="form-group text-primary">Beneficiary Name &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <input type="text" id="beneficiary_name"
                                                                                 name="beneficiary_name" class="form-control"
@@ -331,8 +322,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group"
-                                                                                for="confirm3">Beneficiary Email<span
+                                                                            <label class="form-group text-primary" >Beneficiary Email &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <input type="text" id="beneficiary_email"
                                                                                 name="beneficiary_name" class="form-control"
@@ -342,8 +332,7 @@
 
                                                                         <div class="col-md-6">
                                                                             {{-- <input type="text" id="surname3" name="surname3" class="form-control" required> --}}
-                                                                            <label class="form-group"
-                                                                                for="confirm3">Nationality<span
+                                                                            <label class="form-group text-primary">Nationality &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <select class="custom-select" id="nationality"
                                                                                 name="nationality" required>
@@ -356,8 +345,7 @@
 
                                                                         <div class="col-md-6">
                                                                             {{-- <input type="text" id="surname3" name="surname3" class="form-control" required> --}}
-                                                                            <label class="form-group" for="confirm3">Country
-                                                                                of Residence<span
+                                                                            <label class="form-group text-primary">Country of Residence &nbsp;<span
                                                                                     class="text-danger">*</span></label>
 
                                                                             <select class="custom-select"
@@ -373,8 +361,7 @@
 
                                                                         <div class="col-md-6">
                                                                             {{-- <input type="text" id="surname3" name="surname3" class="form-control" required> --}}
-                                                                            <label class="form-group"
-                                                                                for="confirm3">City<span
+                                                                            <label class="form-group text-primary">City &nbsp;<span
                                                                                     class="text-danger">*</span></label>
 
                                                                             <select class="custom-select" id="city"
@@ -387,8 +374,7 @@
                                                                         </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group"
-                                                                                for="confirm3">Address<span
+                                                                            <label class="form-group text-primary">Address &nbsp;<span
                                                                                     class="text-danger">*</span></label>
                                                                             <input type="text" id="address" name="address"
                                                                                 class="form-control" placeholder="Address"
@@ -396,9 +382,7 @@
                                                                             <br>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label class="form-group"
-                                                                                for="confirm3">Telephone<span
-                                                                                    class="text-danger">*</span></label>
+                                                                            <label class="form-group text-primary">Telephone &nbsp;<span class="text-danger">*</span></label>
                                                                             <input type="text" id="telephone" name="address"
                                                                                 class="form-control" placeholder="Telephone"
                                                                                 required>
@@ -436,12 +420,12 @@
                                                                 <li class=" list-inline-item"><button
                                                                         class="btn btn-secondary btn-rounded waves-effect waves-light"
                                                                         type="back"
-                                                                        id="beneficiary_details_back_btn">Back</button></li>
+                                                                        id="beneficiary_details_back_btn">&nbsp;<i class="mdi mdi-reply-all"></i> Back &nbsp;</button></li>
 
                                                                 <li class="list-inline-item float-right"><button
                                                                         class="btn btn-primary btn-rounded waves-effect waves-light"
                                                                         type="submit"
-                                                                        id="beneficiary_details_submit_btn">Submit</button>
+                                                                        id="beneficiary_details_submit_btn"> &nbsp; Submit &nbsp;</button>
                                                                 </li>
                                                             </ul>
                                                         </form>
@@ -452,134 +436,160 @@
                                                             class="form-horizontal" autocomplete="off"
                                                             aria-autocomplete="off">
                                                             @csrf
-                                                            <div class="row">
+                                                            <div class="row card card-body">
                                                                 <div class="col-12">
-                                                                    <label class="purple-color"> Summary</label><br><br>
+                                                                    <b class="text-primary"> Summary</b><br><br>
                                                                     <div class="form-group row mb-3">
 
                                                                         <div class="col-md-6">
-                                                                            <label> Bank Country: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_bank_country"></span>
-                                                                            <br>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Bank Country: </label>
+                                                                                <span class="font-weight-bold text-primary col-md-6"
+                                                                                    id="display_bank_country"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Bank branch:</label>
+                                                                                <span class="font-weight-bold text-primary col-md-6"
+                                                                                    id="display_bank_branch"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Bank Address:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_bank_address"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Account Number:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_account_number"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Currency:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_currency"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Lastname:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_lastname"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Beneficiary Name:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_beneficiary_name"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Nationality:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_nationality"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> City:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_city"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6 ">Telephone:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_telephone"></span>
+                                                                                <br>
+                                                                            </div>
+
                                                                         </div>
 
-                                                                        <div class="col-md-6">
-                                                                            <label> Bank City: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_bank_city"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Bank branch: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_bank_branch"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Bank Name: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_bank_name"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Bank Address: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_bank_address"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Swift Code: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_swift_code"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Account Number: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_account_number"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Account Name: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_account_name"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Currency: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_currency"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Firstname: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_firstname"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Lastname: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_lastname"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Middlename: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_middlename"></span>
-                                                                            <br>
-                                                                        </div>
 
                                                                         <div class="col-md-6">
-                                                                            <label> Beneficiary Name: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_beneficiary_name"></span>
-                                                                            <br>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Bank City:</label>
+                                                                                <span class=" col-md-6 font-weight-bold text-primary"
+                                                                                    id="display_bank_city"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Bank Name:</label>
+                                                                                <span class="font-weight-bold text-primary col-md-6"
+                                                                                    id="display_bank_name"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Swift Code:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_swift_code"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Account Name: </label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_account_name"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Firstname:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_firstname"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Middlename:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_middlename"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6"> Beneficiary Email:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_beneficiary_email"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6">Country of Residence:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_country_of_residence"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6">Address:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_address"></span>
+                                                                                <br>
+                                                                            </div>
+
+                                                                            <div class="col-md-12 row">
+                                                                                <label class="col-md-6">Email Beneficiary:</label>
+                                                                                <span class="font-weight-bold col-md-6 text-primary"
+                                                                                    id="display_transfer_email"></span>
+                                                                                <br>
+                                                                            </div>
+
                                                                         </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Beneficiary Email: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_beneficiary_email"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Nationality: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_nationality"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> Country of Residence:
-                                                                                &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_country_of_residence"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label> City: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_city"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label>Address: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_address"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label>Telephone: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_telephone"></span>
-                                                                            <br>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label>Email Beneficiary: &emsp;</label><span
-                                                                                class="font-weight-light mr-2"
-                                                                                id="display_transfer_email"></span>
-                                                                            <br>
-                                                                        </div>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -589,7 +599,7 @@
                                                                 <li class=" list-inline-item"><button
                                                                         class="btn btn-secondary btn-rounded waves-effect waves-light"
                                                                         type="back"
-                                                                        id="bank_add_beneficiary_back_btn">Back</button>
+                                                                        id="bank_add_beneficiary_back_btn">&nbsp;<i class="mdi mdi-reply-all"></i> Back &nbsp;</button>
                                                                 </li>
 
                                                                 <li class="list-inline-item float-right"><button
@@ -639,7 +649,7 @@
                         $.each(data, function(index) {
 
                             $('#currency').append($('<option>', {
-                                value: data[index].currCode + '~' + data[index].description
+                                value: data[index].isoCode + '~' + data[index].description
                             }).text(data[index].isoCode + '~' + data[index].description));
 
                         });
@@ -661,8 +671,7 @@
                         $.each(data, function(index) {
 
                             $('#bank_name').append($('<option>', {
-                                value: data[index].bankCode + '~' + data[index]
-                                    .bankDescription
+                                value: data[index].bankCode + '~' + data[index].bankDescription
                             }).text(data[index].bankDescription));
 
                         });
@@ -684,8 +693,7 @@
                         $.each(data, function(index) {
 
                             $('#bank_name').append($('<option>', {
-                                value: data[index].bankCode + '~' + data[index]
-                                    .bankDescription
+                                value: data[index].bankCode + '~' + data[index].bankDescription
                             }).text(data[index].bankDescription));
 
                         });
@@ -707,8 +715,7 @@
                         $.each(data, function(index) {
 
                             $('#bank_branch').append($('<option>', {
-                                value: data[index].branchCode + '~' + data[index]
-                                    .branchDescription
+                                value: data[index].branchCode + '~' + data[index].branchDescription
                             }).text(data[index].branchDescription));
 
                         });
@@ -727,10 +734,10 @@
                     bank_branches_list();
                 }, 2000);
 
-                $("#rootwizard").click(function(e){
+                {{-- $("#rootwizard").click(function(e){
                     e.preventDefault();
                     return false;
-                })
+                }) --}}
 
                 function toaster(message, icon, timer) {
                     const Toast = Swal.mixin({
@@ -776,9 +783,9 @@
 
                         return false;
                     } else {
-                        $('#details_tab').removeClass('active show');
+                        $('#details_tab').addClass('active show');
                         $('#account_tab').addClass('active show');
-                        $('#first').removeClass('active ');
+                        $('#first').addClass('active show');
                         $('#second').addClass('active show');
 
                         $('#international_bank_details').hide();
@@ -828,10 +835,10 @@
                     } else {
 
 
-                        $('#account_tab').removeClass('active show');
+                        $('#account_tab').addClass('active show');
                         $('#beneficiary_tab').addClass('active show');
 
-                        $('#second').removeClass('active show');
+                        $('#second').addClass('active show');
                         $('#third').addClass('active show');
 
                         $('#international_bank_account_details').hide();
@@ -864,14 +871,17 @@
 
                     var bank_country = $('#bank_country').val();
                     $('#display_bank_country').text(bank_country);
+                    console.log()
 
                     var bank_city = $('#bank_city').val();
                     $('#display_bank_city').text(bank_city);
 
-                    var bank_branch = $('#bank_branch').val();
+                    var bank_branch_ = $('#bank_branch').val().split('~');
+                    var bank_branch = bank_branch_[1];
                     $('#display_bank_branch').text(bank_branch);
 
-                    var bank_name = $('#bank_name').val();
+                    var bank_name_ = $('#bank_name').val().split('~');
+                    var bank_name = bank_name_[1]
                     $('#display_bank_name').text(bank_name);
 
                     var bank_address = $('#bank_address').val();
@@ -887,6 +897,7 @@
                     $('#display_account_name').text(acc_name);
 
                     var currency = $('#currency').val();
+                    {{-- var currency = currency_[1] --}}
                     $('#display_currency').text(currency);
 
                     var firstname = $('#firstname').val();
@@ -939,10 +950,10 @@
 
                         return false;
                     } else {
-                        $('#beneficiary_tab').removeClass('active show');
+                        $('#beneficiary_tab').addClass('active show');
                         $('#summary_tab').addClass('active show');
 
-                        $('#third').removeClass('active show');
+                        $('#third').addClass('active show');
                         $('#fourth').addClass('active show');
 
                         $('#international_bank_beneficiary_details').hide();
@@ -977,14 +988,17 @@
 
                     var bank_country = $('#bank_country').val();
                     var bank_city = $('#bank_city').val();
-                    var bank_branch = $('#bank_branch').val();
-                    var bank_name = $('#bank_name').val();
+                    var bank_branch_ = $('#bank_branch').val().split('~');
+                    var bank_branch = bank_branch_[1];
+                    var bank_name_ = $('#bank_name').val().split('~');
+                    var bank_name = bank_name_[1];
                     var bank_address = $('#bank_address').val();
                     var swift_code = $('#swift_code').val();
 
                     var acc_number = $('#acc_number').val();
                     var acc_name = $('#acc_name').val();
-                    var currency = $('#currency').val();
+                    var currency_ = $('#currency').val().split('~');
+                    var currency = currency_[0];
                     var firstname = $('#firstname').val();
                     var lastname = $('#lastname').val();
                     var middlename = $('#middlename').val();
@@ -1003,6 +1017,33 @@
                     } else {
                         var transfer_email = ('N');
                     }
+
+                    function redirect_page() {
+                        window.location.href = "{{ url('beneficiary-list') }}";
+
+                    };
+
+                    console.log(bank_country);
+                    console.log(bank_city);
+                    console.log(bank_branch);
+                    console.log(bank_name);
+                    console.log(bank_address);
+                    console.log(swift_code);
+                    console.log(acc_number);
+                    console.log(acc_name);
+                    console.log(currency);
+                    console.log(firstname);
+                    console.log(lastname);
+                    console.log(middlename);
+                    console.log(beneficiary_name);
+                    console.log(beneficiary_email);
+                    console.log(nationality);
+                    console.log(country_of_residence);
+                    console.log(city);
+                    console.log(address);
+                    console.log(telephone);
+                    console.log(send_email);
+                    {{-- console.log(bank_country); --}}
 
                     $.ajax({
                         'type': 'POST',
@@ -1039,6 +1080,10 @@
                             if (response.responseCode == "000") {
 
                                 toaster(response.message, 'success', 10000);
+                                setTimeout(function() {
+
+                                    redirect_page();
+                                }, 2000);
 
                             } else {
                                 toaster(response.message, 'error', 6000);

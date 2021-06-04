@@ -1438,9 +1438,9 @@
                     {{-- $("#related_information_display").addClass("d-none d-sm-block") --}}
                     {{-- $(".rtgs_card_right").hide(); --}}
                     $('#spinner').hide(),
-                        $('#spinner-text').hide(),
-                        $('#print_receipt').hide(),
-                        $(".hide_invoice").hide()
+                    $('#spinner-text').hide(),
+                    $('#print_receipt').hide(),
+                    $(".hide_invoice").hide()
                     $('.no_beneficiary').hide()
                     $("#transaction_summary").hide();
                     $(".success_gif").hide();

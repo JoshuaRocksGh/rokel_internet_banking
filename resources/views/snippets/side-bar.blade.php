@@ -86,7 +86,7 @@
                         <i class="mdi mdi-card-account-details-star-outline"></i>
                         <span> Cardless</span>
                     </a>
-                    <div class="collapse" id="sidebarTransfer">
+                    {{-- <div class="collapse" id="sidebarTransfer">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ url('own-account') }}">Own Account</a>
@@ -95,12 +95,12 @@
                                 <a href="{{ url('same-bank') }}">Same Bank</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
 
                 <li>
                     <a href="{{  url('qr-transfer') }}">
-                        <i class="mdi mdi-qrcode-remove"></i>
+                        <i class="mdi mdi-qrcode-scan"></i>
                         <span> QR</span>
                     </a>
                 </li>
