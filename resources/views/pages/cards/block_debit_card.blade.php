@@ -3,195 +3,354 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="card card-background-image">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
+
+<div class="">
+
+    <div class="container-fluid">
+        <br>
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-primary">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    MANAGE CARDS
+
+                </h4>
+            </div>
+
+            <div class="col-md-6 text-right">
+                <h6>
+
+                    <span class="flaot-right">
+                        <b class="text-primary"> Account Services </b> &nbsp; > &nbsp; <b class="text-danger">MANAGE CARDS</b>
 
 
-                            <h3 class="text-primary">Block Card</h4>
-                                <hr>
+                    </span>
 
-                                <div class="row">
-                                    <div class="col-md-6">
+                </h6>
 
-                                        <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
-                                            @csrf
-                                            <div class="form-group">
-                                                <select class="custom-select" id="cardValue" required>
-                                                    <option value="">Select Card</option>
-                                                    <option value="1447866768967681">Visa Card-144786676896768</option>
-                                                    <option value="144786676896768">Credit Card - 144786676896768</option>
-                                                    <option value="144786676896768">Debit Card - 144786676896768</option>
+            </div>
 
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <select class="custom-select" id="from_account" required>
-                                                    <option value="">Select Action</option>
-                                                    <option value="">Block Card</option>
-                                                    <option value="">Unblock Card</option>
-
-                                                </select>
-                                            </div>
-
-
-                                        </form>
-
-
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="box">
-                                            <img class="visa_logo" src="{{ asset("land_asset/images/visa04.png") }}" height="100" width="100"/>
-
-                                                <div class="chip">
-
-                                                <img src="{{ asset("land_asset/images/chip.png") }}" height="60" width="70">
-                                                </div>
-
-                                                <div class="number">
-                                                <h class="card_digits">Card Number</h>
-                                                    <h1 class="coded">8356</h1>
-                                                </div>
-
-                                                <div class="number02">
-                                                <h4 class="good_thru">good thru</h4>
-                                                    <t class="expiry">06/26</t>
-
-                                                </div>
-
-                                                <div class="name">
-
-                                                <h2 class="card_holder">{{ session()->get('userAlias') }}</h2>
-                                                </div>
-
-                                                <div class="mastercard">
-                                                <img src="{{ asset("land_asset/images/mastercard.png") }}" height="80" width="80">
-                                                </div>
-
-
-
-                                            </div>
-
-                                        {{-- <div class="container preload">
-                                            <div class="creditcard">
-                                                <div class="front">
-                                                    <div id="ccsingle"></div>
-                                                    <svg version="1.1" id="cardfront" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                        x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
-                                                        <g id="Front">
-                                                            <g id="CardBackground">
-                                                                <g id="Page-1_1_">
-                                                                    <g id="amex_1_">
-                                                                        <path id="Rectangle-1_1_" class="lightcolor grey" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
-                                                                C0,17.9,17.9,0,40,0z" />
-                                                                    </g>
-                                                                </g>
-                                                                <path class="darkcolor greydark" d="M750,431V193.2c-217.6-57.5-556.4-13.5-750,24.9V431c0,22.1,17.9,40,40,40h670C732.1,471,750,453.1,750,431z" />
-                                                            </g>
-                                                            <text transform="matrix(1 0 0 1 60.106 295.0121)" id="svgnumber" class="st2 st3 st4">0123 4567 8910 1112</text>
-                                                            <text transform="matrix(1 0 0 1 54.1064 428.1723)" id="svgname" class="st2 st5 st6">JOHN DOE</text>
-                                                            <text transform="matrix(1 0 0 1 54.1074 389.8793)" class="st7 st5 st8">cardholder name</text>
-                                                            <text transform="matrix(1 0 0 1 479.7754 388.8793)" class="st7 st5 st8">expiration</text>
-                                                            <text transform="matrix(1 0 0 1 65.1054 241.5)" class="st7 st5 st8">card number</text>
-                                                            <g>
-                                                                <text transform="matrix(1 0 0 1 574.4219 433.8095)" id="svgexpire" class="st2 st5 st9">01/23</text>
-                                                                <text transform="matrix(1 0 0 1 479.3848 417.0097)" class="st2 st10 st11">VALID</text>
-                                                                <text transform="matrix(1 0 0 1 479.3848 435.6762)" class="st2 st10 st11">THRU</text>
-                                                                <polygon class="st2" points="554.5,421 540.4,414.2 540.4,427.9 		" />
-                                                            </g>
-                                                            <g id="cchip">
-                                                                <g>
-                                                                    <path class="st2" d="M168.1,143.6H82.9c-10.2,0-18.5-8.3-18.5-18.5V74.9c0-10.2,8.3-18.5,18.5-18.5h85.3
-                                                            c10.2,0,18.5,8.3,18.5,18.5v50.2C186.6,135.3,178.3,143.6,168.1,143.6z" />
-                                                                </g>
-                                                                <g>
-                                                                    <g>
-                                                                        <rect x="82" y="70" class="st12" width="1.5" height="60" />
-                                                                    </g>
-                                                                    <g>
-                                                                        <rect x="167.4" y="70" class="st12" width="1.5" height="60" />
-                                                                    </g>
-                                                                    <g>
-                                                                        <path class="st12" d="M125.5,130.8c-10.2,0-18.5-8.3-18.5-18.5c0-4.6,1.7-8.9,4.7-12.3c-3-3.4-4.7-7.7-4.7-12.3
-                                                                c0-10.2,8.3-18.5,18.5-18.5s18.5,8.3,18.5,18.5c0,4.6-1.7,8.9-4.7,12.3c3,3.4,4.7,7.7,4.7,12.3
-                                                                C143.9,122.5,135.7,130.8,125.5,130.8z M125.5,70.8c-9.3,0-16.9,7.6-16.9,16.9c0,4.4,1.7,8.6,4.8,11.8l0.5,0.5l-0.5,0.5
-                                                                c-3.1,3.2-4.8,7.4-4.8,11.8c0,9.3,7.6,16.9,16.9,16.9s16.9-7.6,16.9-16.9c0-4.4-1.7-8.6-4.8-11.8l-0.5-0.5l0.5-0.5
-                                                                c3.1-3.2,4.8-7.4,4.8-11.8C142.4,78.4,134.8,70.8,125.5,70.8z" />
-                                                                    </g>
-                                                                    <g>
-                                                                        <rect x="82.8" y="82.1" class="st12" width="25.8" height="1.5" />
-                                                                    </g>
-                                                                    <g>
-                                                                        <rect x="82.8" y="117.9" class="st12" width="26.1" height="1.5" />
-                                                                    </g>
-                                                                    <g>
-                                                                        <rect x="142.4" y="82.1" class="st12" width="25.8" height="1.5" />
-                                                                    </g>
-                                                                    <g>
-                                                                        <rect x="142" y="117.9" class="st12" width="26.2" height="1.5" />
-                                                                    </g>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                        <g id="Back">
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                                <div class="back">
-                                                    <svg version="1.1" id="cardback" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                        x="0px" y="0px" viewBox="0 0 750 471" style="enable-background:new 0 0 750 471;" xml:space="preserve">
-                                                        <g id="Front">
-                                                            <line class="st0" x1="35.3" y1="10.4" x2="36.7" y2="11" />
-                                                        </g>
-                                                        <g id="Back">
-                                                            <g id="Page-1_2_">
-                                                                <g id="amex_2_">
-                                                                    <path id="Rectangle-1_2_" class="darkcolor greydark" d="M40,0h670c22.1,0,40,17.9,40,40v391c0,22.1-17.9,40-40,40H40c-22.1,0-40-17.9-40-40V40
-                                                            C0,17.9,17.9,0,40,0z" />
-                                                                </g>
-                                                            </g>
-                                                            <rect y="61.6" class="st2" width="750" height="78" />
-                                                            <g>
-                                                                <path class="st3" d="M701.1,249.1H48.9c-3.3,0-6-2.7-6-6v-52.5c0-3.3,2.7-6,6-6h652.1c3.3,0,6,2.7,6,6v52.5
-                                                        C707.1,246.4,704.4,249.1,701.1,249.1z" />
-                                                                <rect x="42.9" y="198.6" class="st4" width="664.1" height="10.5" />
-                                                                <rect x="42.9" y="224.5" class="st4" width="664.1" height="10.5" />
-                                                                <path class="st5" d="M701.1,184.6H618h-8h-10v64.5h10h8h83.1c3.3,0,6-2.7,6-6v-52.5C707.1,187.3,704.4,184.6,701.1,184.6z" />
-                                                            </g>
-                                                            <text transform="matrix(1 0 0 1 621.999 227.2734)" id="svgsecurity" class="st6 st7">985</text>
-                                                            <g class="st8">
-                                                                <text transform="matrix(1 0 0 1 518.083 280.0879)" class="st9 st6 st10">security code</text>
-                                                            </g>
-                                                            <rect x="58.1" y="378.6" class="st11" width="375.5" height="13.5" />
-                                                            <rect x="58.1" y="405.6" class="st11" width="421.7" height="13.5" />
-                                                            <text transform="matrix(1 0 0 1 59.5073 228.6099)" id="svgnameback" class="st12 st13">John Doe</text>
-                                                        </g>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-
-                                    </div>
-
-                                </div>
-
-
-
-                    </div>
-
-                </div>
+            <div class="col-md-12 ">
+                <hr class="text-primary" style="margin: 0px;">
             </div>
 
         </div>
+    </div>
 
+
+
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        {{-- <div class="row">
+                            <div class="col-md-12">
+
+
+                                <span class="text-sm-right float-left">
+
+
+                                </span>
+
+                                <span class="text-sm-right float-right">
+
+                                    <div class="btn-group drop-left">
+                                        <button type="button" class="btn btn-primary dropdown-toggle btn-rounded"
+                                            data-toggle="dropdown" aria-expanded="false"> Select Account <i
+                                                class="mdi mdi-chevron-down"></i> </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item"
+                                                href="{{ url('add-same-bank-beneficiary') }}">Same Bank</a>
+                                            <a class="dropdown-item"
+                                                href="{{ url('add-local-bank-beneficiary') }}">Other Local Bank
+                                            </a>
+                                            <a class="dropdown-item"
+                                                href="{{ url('add-international-bank-beneficiary') }}">International
+                                                Bank </a>
+                                        </div>
+                                    </div>
+                                </span>
+
+
+                            </div>
+                        </div> --}}
+
+
+                        <div class="cards_table row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <div class="p-3 mt-4 mt-lg-0 rounded">
+                                        <br>
+
+                                        <table id="datatable-buttons"
+                                            class="table table-bordered bg-white  table-striped dt-responsive nowrap w-100 beneficiary_list_display">
+                                            {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
+                                            <thead>
+                                                <tr class="bg-primary text-white">
+                                                    <th> <b> Account Number </b> </th>
+                                                    <th> <b> Card Number </b> </th>
+                                                    <th><b>Card Type</b></th>
+                                                    <th> <b> Card Start </b> </th>
+                                                    <th> <b> Card Expiry </b> </th>
+                                                    <th> <b> Card Status </b> </th>
+                                                    <th> <b>Actions</b></th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="">
+                                                    <td>004001216997442165</td>
+                                                    <td>1447866768967681</td>
+                                                    <td>Visa</td>
+                                                    <td>01/05/2021</td>
+                                                    <td>01/06/2023</td>
+                                                    <td>Blocked</td>
+                                                    <td>
+                                                        <a href="" title="block" data-toggle="modal" data-target=".full-width-modal"><span class="fe-slash noti-icon text-danger"></span></a>&nbsp;&nbsp;
+                                                        <a href="" title="activate" data-toggle="modal" data-target=".full-width-modal"><span class="fe-toggle-right noti-icon text-success"></span></a>&nbsp;&nbsp;
+                                                        <a href="" title="replace"><span class="fe-repeat noti-icon text-primary"></span></a>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr class="">
+                                                    <td>004001216997442276</td>
+                                                    <td>1447866768967570</td>
+                                                    <td>Credit Card</td>
+                                                    <td>01/05/2020</td>
+                                                    <td>01/06/2022</td>
+                                                    <td>Active</td>
+                                                    <td>
+                                                        <a href="" title="block" data-toggle="modal" data-target=".full-width-modal"><span class="fe-slash noti-icon text-danger"></span></a>&nbsp;&nbsp;
+                                                        <a href="" title="activate"><span class="fe-toggle-right noti-icon text-success"></span></a>&nbsp;&nbsp;
+                                                        <a href="" title="replace"><span class="fe-repeat noti-icon text-primary"></span></a>
+
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+
+
+                                        </table>
+
+                                    </div>
+
+
+                                    </div>
+                        </div>
+
+                        <div id="" class="modal fade full-width-modal" tabindex="-1" role="dialog" aria-labelledby="fullWidthModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-full-width">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="fullWidthModalLabel">Modal Heading</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row" >
+
+                                            <div class=" col-md-4 rtgs_card m-2" id="card_processing_request"
+                                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                                        <br><br><br>
+
+                                                        <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                            aria-autocomplete="none">
+                                                            @csrf
+                                                            <div class="row container">
+                                                                <div class="col-md-1"></div>
+                                                                <div class="col-md-9">
+
+                                                                    {{-- <br><br><br> --}}
+                                                                    <div class="row">
+                                                                        {{-- <div class="col-md-1"></div> --}}
+
+                                                                        <div class="col-md-12">
+
+                                                                            <div class="form-group row mb-3">
+                                                                                <b class="col-md-12 text-primary">My Account &nbsp; <span
+                                                                                        class="text-danger">*</span> </b>
+
+
+                                                                                <select class="form-control col-md-12 " id="my_account"
+                                                                                    required>
+                                                                                    <option value="">Select Account</option>
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="form-group row">
+
+                                                                                <b class="col-md-12 text-primary" for="leaflet" >
+                                                                                    Select Card
+                                                                                    <span class="text-danger">*</span></b>
+
+                                                                                        <select class="form-control col-md-12" id="cardValue" required>
+                                                                                            <option value="">Select Card</option>
+                                                                                            <option value="1447866768967681">Visa Card-1447866768967681</option>
+                                                                                            <option value="144786676896768">Credit Card - 144786676896768</option>
+                                                                                            <option value="144786676896768">Debit Card - 144786676896768</option>
+                                                                                        </select>
+                                                                            </div>
+
+                                                                            <div class="form-group row">
+
+                                                                                <b class="col-md-12 text-primary">Branch
+                                                                                    <span class="text-danger">*</span></b>
+
+                                                                                    <select class="form-control col-md-12" id="pUBranch" required>
+                                                                                        <option value="">-- Selected Branch --</option>
+                                                                                    </select>
+                                                                            </div>
+
+                                                                            <div class="form-group row">
+                                                                                <b class="col-md-6 text-primary">Enter Pin
+                                                                                    <span class="text-danger">*</span></b>
+
+                                                                                    <input type="text" class="form-control col-md-6" id="pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+                                                                            </div>
+
+
+
+
+                                                                            <div class="form-group row text-right ">
+                                                                                <button type="button"
+                                                                                class=" col-md-4 btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                                id="submit_blockCard_request">
+                                                                                    <span class="block-text">Block</span>
+                                                                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner-1" aria-hidden="true"></span>
+                                                                                    <span id="spinner-text-block">Loading...</span>
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                class="col-md-4 btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                                id="submit_activateCard_request">
+                                                                                <span class="activate-text">Activate</span>
+                                                                                <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
+                                                                                <span id="spinner-text">Loading...</span>
+                                                                            </button>
+                                                                            <button type="button"
+                                                                                class="col-md-4 btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                                id="submit_replaceCard_request">
+                                                                                <span class="replace-text">Replace</span>
+                                                                                <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner-r" aria-hidden="true"></span>
+                                                                                <span id="spinner-text-replace">Loading...</span>
+                                                                            </button>
+                                                                            </div>
+
+
+                                                                        </div>
+
+                                                                        {{-- <div class="col-md-1"></div> --}}
+                                                                    </div>
+
+
+
+
+
+
+
+
+
+                                                                </div>
+                                                                <div class="col-md-1"></div>
+
+                                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+                                                        </form>
+
+
+                                            </div> <!-- end col -->
+
+
+                                            <div class="col-md-7 rtgs_card_right m-2" id="card_processing_page"
+                                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                                        <br><br>
+                                                        <div class=" col-md-12 card card-body">
+                                                            {{-- <br><br> --}}
+                                                            <div class="row">
+                                                                <div class="box">
+                                                                    <img class="visa_logo" src="{{ asset("land_asset/images/visa04.png") }}" height="100" width="100"/>
+
+                                                                        <div class="chip">
+
+                                                                        <img src="{{ asset("land_asset/images/chip.png") }}" height="60" width="70">
+                                                                        </div>
+
+                                                                        <div class="number">
+                                                                        <h class="card_digits">Card Number</h>
+                                                                            <h1 class="coded">8356</h1>
+                                                                        </div>
+
+                                                                        <div class="number02">
+                                                                        <h4 class="good_thru">good thru</h4>
+                                                                            <t class="expiry">06/26</t>
+
+                                                                        </div>
+
+                                                                        <div class="name">
+
+                                                                        <h2 class="card_holder">{{ session()->get('userAlias') }}</h2>
+                                                                        </div>
+
+                                                                        <div class="mastercard">
+                                                                        <img src="{{ asset("land_asset/images/favicon.ico") }}" height="60" width="80">
+                                                                        </div>
+
+
+
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {{-- <div class="form-group text-center display_button_print">
+
+                                                            <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                                    id="back_button" >Back</button> &nbsp; </span>
+                                                            <span>&nbsp;
+                                                            <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                                    type="button" id="print_receipt" onclick="window.print()">Print
+                                                                    Receipt
+                                                                </button></span>
+                                                        </div> --}}
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 
 
 @endsection
@@ -207,6 +366,28 @@
 
 <script>
 
+function my_account() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-my-account',
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('#my_account').append($('<option>', {
+                            value: data[index].accountType + '~' + data[index].accountDesc +
+                                '~' + data[index].accountNumber + '~' + data[index]
+                                .currency + '~' + data[index].availableBalance
+                        }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            '~' + data[index].currency + '~' + data[index].availableBalance));
+
+                    });
+                },
+
+            })
+        }
 // format for cc number on card
 function cc_format(value) {
     var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
@@ -229,9 +410,72 @@ function cc_format(value) {
 
     }
 }
+
+function branches() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-bank-branches-list-api',
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('#pUBranch').append($('<option>', {
+                            value: data[index].branchCode + '~' + data[index]
+                                .branchDescription
+                        }).text(data[index].branchDescription));
+
+                    });
+                },
+
+            })
+        }
+
+        function toaster(message, icon, timer) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: timer,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: icon,
+                title: message
+            })
+        }
 console.log('good');
 
 $(document).ready(function(){
+
+
+
+
+    $('#card_processing_request').hide();
+    $('#spinner').hide();
+    $('#spinner-text').hide();
+    $('#spinner-1').hide();
+    $('#spinner-text-block').hide();
+    $('#spinner-r').hide();
+    $('#spinner-text-replace').hide();
+    $('#card_processing_page').hide();
+    $('.display_button').hide();
+    setTimeout(function() {
+                branches()
+                my_account()
+            }, 1000);
+
+            $(".full-width-modal").click(function(){
+        $('#card_processing_request').show();
+        $('#card_processing_page').show();
+    });
+
     //code to change code digits
     console.log('Loading complete');
     $("#cardValue").change(function() {
@@ -241,6 +485,11 @@ $(document).ready(function(){
                 $(".card_digits").text(cc_format(optionValue));
                 console.log(optionValue);
             });
+
+    $("#submit_blockCard_request").click(function(){
+        let cardNumber = $("#cardValue").val();
+        // let branch =
+    });
 
     var value = $("#cardValue option:selected").val();
     console.log(value);

@@ -10,6 +10,7 @@ use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountS
 use App\Http\Controllers\AccountServices\KYC\KycController as KYCKycController;
 use App\Http\Controllers\AccountServices\StatementRequestController;
 use App\Http\Controllers\AccountServices\StopChequeController;
+use App\Http\Controllers\API\Transfer\InternationalBankController as TransferInternationalBankController;
 use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
 use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
 use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
@@ -237,6 +238,7 @@ Route::get('/settings', [settingsController::class, 'settings'])->name('settings
 //route to control the accountEnquiry screen
 Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-transaction-history');
 Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
+Route::get('list-of-accounts',[AccountEnquiryController::class,'list_of_accounts'])->name('list-of-accounts');
 
 // get account description
 Route::post('get-account-description', [GetAccountDescription::class, 'get_account_description'])->name('get-account-description');
@@ -333,7 +335,7 @@ Route::get('stop-cheque', [AccountServicesController::class, 'stop_cheque'])->na
 Route::get('activate-card', [CardsController::class, 'activate_card'])->name('activate-card');
 
 //route to display the block debit card screen
-Route::get('block-debit-card', [CardsController::class, 'block_debit_card'])->name('block-debit-card');
+Route::get('manage-cards', [CardsController::class, 'block_debit_card'])->name('manage-cards');
 
 //route to display the replace card screen
 Route::get('replace-card', [CardsController::class, 'replace_card'])->name('replace-card');
@@ -411,6 +413,9 @@ Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 
 // OTHER LOCAL BANK
 Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');
 Route::post('/onetime-beneficiary-local-bank-api', [APITransferLocalBankController::class, 'onetime_beneficiary_transfer'])->name('onetime-beneficiary-local-bank-api');
+
+// INTERNATIONAL BANK TRANSFER
+Route::post('/international-bank-transfer-api', [TransferInternationalBankController::class, 'international_bank_transfer'])->name('international-bank-transfer-api');
 
 
 // // Transfers Add Beneficiary

@@ -1438,9 +1438,9 @@
                     {{-- $("#related_information_display").addClass("d-none d-sm-block") --}}
                     {{-- $(".rtgs_card_right").hide(); --}}
                     $('#spinner').hide(),
-                        $('#spinner-text').hide(),
-                        $('#print_receipt').hide(),
-                        $(".hide_invoice").hide()
+                    $('#spinner-text').hide(),
+                    $('#print_receipt').hide(),
+                    $(".hide_invoice").hide()
                     $('.no_beneficiary').hide()
                     $("#transaction_summary").hide();
                     $(".success_gif").hide();
@@ -1761,44 +1761,44 @@
                         if ( onetime_transfer == "CHECKED"){
                             console.log("onetime beneficiary");
                             var from_account = $('#from_account').val().split('~');
-                            console.log(from_account);
+                            {{--  console.log(from_account);  --}}
 
                             var onetime_bank_name = $("#onetime_beneficiary_bank_name").val();
-                            console.log(onetime_bank_name);
+                            {{--  console.log(onetime_bank_name);  --}}
 
                             var to_account = $("#onetime_beneficiary_account_number").val();
-                            console.log(to_account);
+                            {{--  console.log(to_account);  --}}
 
                             var onetime_bene_name = $("#onetime_beneficiary_account_name").val();
-                            console.log(onetime_bene_name);
+                            {{--  console.log(onetime_bene_name);  --}}
                             $(".display_to_account_name").text(onetime_bene_name);
 
                             var onetime_bene_email = $("#onetime_beneficiary_email").val();
-                            console.log(onetime_bene_email);
+                            {{--  console.log(onetime_bene_email);  --}}
 
                             var onetime_invoice = $("#onetime_inputGroupFile04").val();
-                            console.log(onetime_invoice);
+                            {{--  console.log(onetime_invoice);  --}}
 
                             var onetime_beneficiary_type = $('#onetime_transfer_mode').val();
                             console.log(onetime_beneficiary_type);
 
                             var transfer_amount = $('#onetime_amount').val();
-                            console.log(transfer_amount);
+                            {{--  console.log(transfer_amount);  --}}
 
                             var category_info = $('#onetime_category').val().split('~');
-                            console.log(category_info);
+                            {{--  console.log(category_info);  --}}
 
                             $(".display_category").text(category_info[1]);
 
 
                             var purpose = $('#onetime_purpose').val();
-                            console.log(purpose);
+                            {{--  console.log(purpose);  --}}
                             $(".display_purpose").text(purpose);
 
                             var value_date = $("#onetime_future_payement").val();
-                            console.log(value_date);
+                            {{--  console.log(value_date);  --}}
 
-
+                            // upload invoice file
 
                             if (from_account == '' || to_account == '' || transfer_amount == '' ||
                             category_info == '' || purpose == '') {
@@ -1996,62 +1996,51 @@
 
                                 if ($('#checkmeout0').is(':checked')) {
                                     console.log("onetime beneficiary");
-
-                                    var onetime_from_account_ = $("#onetime_from_account").val()
-                                        .split("~");
-                                    console.log(onetime_from_account_);
+                                    var onetime_from_account_ = $('#from_account').val().split('~');
                                     var onetime_from_account = onetime_from_account_[2];
-                                    {{-- $("#display_from_account_name").text(); --}}
-                                    {{-- $("#display_from_account_no").text(); --}}
+                                    console.log(onetime_from_account);
 
-                                    var beneficiary_type = $(
-                                        'input[name="transfer_beneficiary"]:checked').val();
-                                    console.log(beneficiary_type);
-
-                                    var beneficiary_name = $("#onetime_beneficiary_alias_name")
-                                        .val();
-                                    console.log(beneficiary_name);
-                                    {{-- $("#display_to_account_name").text(); --}}
-
-                                    var bank_name_ = $("#onetime_beneficiary_bank_name").val()
-                                        .split("~");
-                                    var bank_name = bank_name_[1];
+                                    var bank_name_ = $("#onetime_beneficiary_bank_name").val().split('~');
+                                    var bank_name = bank_name_[0];
                                     console.log(bank_name);
-                                    {{-- $("#online_display_beneficiary_bank_name").text(); --}}
 
-                                    var account_number = $("#onetime_beneficiary_account_number")
-                                        .val();
+                                    var account_number = $("#onetime_beneficiary_account_number").val();
                                     console.log(account_number);
-                                    {{-- $("#display_to_account_no").text(); --}}
 
-                                    var beneficiary_currency_ = $(
-                                            "#onetime_beneficiary_account_currency").val()
-                                        .split("~");
+                                    var beneficiary_currency_ = $("#onetime_beneficiary_account_currency").val().split('~');
                                     var beneficiary_currency = beneficiary_currency_[0];
-                                    console.log(beneficiary_currency);
-                                    {{-- $("#display_currency").text(); --}}
+                                    console.log(beneficiary_currency_)
 
-                                    var onetime_amount = $("#onetime_amount").val();
-                                    console.log(onetime_amount);
-                                    $("#display_transfer_amount").text();
+                                    var beneficiary_name = $("#onetime_beneficiary_account_name").val();
+                                    console.log(beneficiary_name);
+                                    {{--  $(".display_to_account_name").text(onetime_bene_name);  --}}
 
-                                    var beneficiary_email = $("#onetime_beneficiary_phone").val();
+                                    var beneficiary_email = $("#onetime_beneficiary_email").val();
                                     console.log(beneficiary_email);
 
-                                    var expense_category_ = $("#onetime_category").val().split("~");
+                                    var onetime_invoice = $("#onetime_inputGroupFile04").val();
+                                    console.log(onetime_invoice);
+
+                                    var transfer_type_ = $('#onetime_transfer_mode').val().split('~');
+                                    var transfer_type = transfer_type_[1];
+                                    console.log(transfer_type);
+
+                                    var onetime_amount = $('#onetime_amount').val();
+                                    console.log(onetime_amount);
+
+                                    var expense_category_ = $('#onetime_category').val().split('~');
                                     var expense_category = expense_category_[1];
                                     console.log(expense_category);
 
-                                    $("#display_category").text(expense_category);
+                                    {{--  $(".display_category").text(category_info[1]);  --}}
 
-                                    var transfer_purpose = $("#onetime_purpose").val();
+
+                                    var transfer_purpose = $('#onetime_purpose').val();
                                     console.log(transfer_purpose);
-                                    $("#display_purpose").text(transfer_purpose);
+                                    {{--  $(".display_purpose").text(transfer_purpose);  --}}
 
-                                    var transfer_type = $(
-                                            "input[name='transfer_beneficiary_ontime']:checked")
-                                        .val();
-                                    console.log(transfer_type);
+                                    var value_date = $("#onetime_future_payement").val();
+                                    console.log(value_date);
 
                                     var sec_pin = $('#user_pin').val()
 
@@ -2073,27 +2062,25 @@
                                             "sec_pin": sec_pin
                                         },
                                         headers: {
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
-                                                .attr('content')
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
                                         success: function(response) {
                                             console.log(response);
 
-                                            if (response.responseCode == '000') {
+                                            if (response.responseCode == "000") {
                                                 {{-- toaster(response.message, 'success', 1000) --}}
-                                                $("#related_information_display")
-                                                    .removeClass("d-none d-sm-block");
+                                                {{--  $("#related_information_display").removeClass("d-none d-sm-block");  --}}
+                                                $('#confirm_modal_button').hide();
                                                 Swal.fire(
-                                                    response.message,
                                                     '',
+                                                    response.message,
                                                     'success'
                                                 );
-                                                $('#confirm_modal_button').hide();
                                                 $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#back_button').hide();
                                                 $('#print_receipt').show();
-
+                                                $("#related_information_display").removeClass("d-none d-sm-block");
                                                 $(".rtgs_card_right").hide();
                                                 $(".success_gif").show();
 
@@ -2105,13 +2092,10 @@
                                                 $('#confirm_modal_button').show();
                                                 $('#spinner').hide();
                                                 $('#spinner-text').hide();
-                                                $('#back_button').show();
                                                 $('#print_receipt').hide();
-                                                {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                                $("#related_information_display")
-                                                    .show();
                                                 $(".success_gif").hide();
-
+                                                {{-- $("#related_information_display").removeClass("d-none d-sm-block"); --}}
+                                                $(".rtgs_card_right").show();
 
                                                 {{-- $('#confirm_transfer').show(); --}}
                                                 {{-- $('#confirm_button').attr('disabled', false); --}}
@@ -2203,8 +2187,7 @@
                                                 $('#spinner-text').hide();
                                                 $('#back_button').hide();
                                                 $('#print_receipt').show();
-                                                $("#related_information_display")
-                                                    .removeClass("d-none d-sm-block");
+                                                $("#related_information_display").removeClass("d-none d-sm-block");
                                                 $(".rtgs_card_right").hide();
                                                 $(".success_gif").show();
 
