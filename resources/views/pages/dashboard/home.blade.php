@@ -182,7 +182,7 @@
                                     <br>
                                     <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
                                     <p class="card-text">
-                                        <p class="text-white mb-0" style="font-size: 20px;">Joshua Amarfio <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
+                                        <p class="text-white mb-0" style="font-size: 20px;">{{ session()->get('userAlias') }} <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
 
                                     </p>
                                 </div>
