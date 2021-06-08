@@ -62,156 +62,156 @@
             </div>
         </div>
 
-        <div class="card-box">
+            <div class="card-box">
 
-            <ul class="nav nav-pills navtab-bg nav-justified">
-                <li class="nav-item">
-                    <a href="#home1" data-toggle="tab" aria-expanded="false" class="nav-link send_korpor">
-                        Send Korpor
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#profile1" data-toggle="tab" aria-expanded="true" class="nav-link active">
-                        Reverse Korpor
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#messages1" data-toggle="tab" aria-expanded="false" class="nav-link">
-                        Redeem Korpor
-                    </a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane" id="home1">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card-body">
-                                <div class="row">
+                <ul class="nav nav-pills navtab-bg nav-justified">
+                    <li class="nav-item">
+                        <a href="#send_korpor_page" data-toggle="tab" aria-expanded="false" class="nav-link send_korpor_tab">
+                            Send Korpor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#profile1" data-toggle="tab" aria-expanded="true" class="nav-link active reverse_korpor_tab">
+                            Reverse Korpor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#messages1" data-toggle="tab" aria-expanded="false" class="nav-link redeem_korpor_tab">
+                            Redeem Korpor
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="send_korpor_page">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-body">
+                                    <div class="row">
 
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                        <div class=" col-md-7 rtgs_card m-2" id="request_form_div"
-                                                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                                            <br><br><br>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                            <div class=" col-md-7 rtgs_card m-2" id="request_form_div"
+                                                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                                                <br><br><br>
 
-                                                            <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
-                                                                aria-autocomplete="none">
-                                                                @csrf
-                                                                <div class="row container">
-                                                                    <div class="col-md-1"></div>
-                                                                    <div class="col-md-9">
+                                                                <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                                    aria-autocomplete="none">
+                                                                    @csrf
+                                                                    <div class="row container">
+                                                                        <div class="col-md-1"></div>
+                                                                        <div class="col-md-9">
 
-                                                                        {{-- <br><br><br> --}}
-                                                                        <div class="row">
-                                                                            {{-- <div class="col-md-1"></div> --}}
+                                                                            {{-- <br><br><br> --}}
+                                                                            <div class="row">
+                                                                                {{-- <div class="col-md-1"></div> --}}
 
-                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-12">
 
-                                                                                <div class="form-group row mb-3">
-                                                                                    <b class="col-md-5 text-primary">Pay From&nbsp; <span
-                                                                                            class="text-danger">*</span> </b>
-
-
-                                                                                    <select class="form-control col-md-7 " id="from_account"
-                                                                                        required>
-                                                                                        <option value="">Select Account
-                                                                                        </option>
+                                                                                    <div class="form-group row mb-3">
+                                                                                        <b class="col-md-5 text-primary">Pay From&nbsp; <span
+                                                                                                class="text-danger">*</span> </b>
 
 
-                                                                                    </select>
+                                                                                        <select class="form-control col-md-7 " id="from_account"
+                                                                                            required>
+                                                                                            <option value="">Select Account
+                                                                                            </option>
+
+
+                                                                                        </select>
+                                                                                    </div>
+
+
+
+                                                                                    <div class="form-group row mb-3" id="pay_from_account">
+
+                                                                                        <b class="col-md-5 text-primary">Amount&nbsp;
+                                                                                            <span class="text-danger">*</span></b>
+
+
+                                                                                        <input type="text" class="form-control col-md-7" id="amount"
+                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                            required>
+                                                                                        <br>
+
+
+
+                                                                                    </div>
+
+
+
+                                                                                    <div class="form-group row">
+
+                                                                                        <b class="col-md-5 text-primary"> Receiver Name &nbsp; <span
+                                                                                                class="text-danger">*</span></b>
+
+
+                                                                                                <input type="text" class="form-control col-md-7" id="receiver_name"
+                                                                                                placeholder="enter receiver name" autocomplete="off" required>
+                                                                                                <br>
+
+                                                                                    </div>
+
+                                                                                    <div class="form-group row">
+
+                                                                                        <b class="col-md-5 text-primary"> Receiver's Phone Number: &nbsp; <span
+                                                                                                class="text-danger">*</span></b>
+
+                                                                                                <input type="text" class="form-control col-md-7" id="receiver_phoneNum" placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                                                                                <br>
+
+                                                                                    </div>
+
+                                                                                    <div class="form-group row">
+
+                                                                                        <b class="col-md-5 text-primary"> Receiver's Address: &nbsp; <span
+                                                                                                class="text-danger">*</span></b>
+
+                                                                                                <input type="text" class="form-control col-md-7" id="receiver_address" placeholder="receiver Address" autocomplete="off" required>
+                                                                                                <br>
+
+                                                                                    </div>
+
+                                                                                    <div class="form-group row">
+
+                                                                                        <b class="col-md-5 text-primary" for="pin" >
+                                                                                            Enter Your Pin
+                                                                                            <span class="text-danger">*</span></b>
+                                                                                            <input type="password" class="form-control col-md-7" id="user_pin"
+                                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                                    </div>
+
+                                                                                    <div class="form-group text-right ">
+                                                                                        <button type="button"
+                                                                                        class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                                        id="confirm_button">
+                                                                                        <span class="submit-text">Submit</span>
+                                                                                        <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
+                                                                                        <span id="spinner-text">Loading...</span>
+                                                                                    </button>
+                                                                                    </div>
+
+
                                                                                 </div>
 
-
-
-                                                                                <div class="form-group row mb-3" id="pay_from_account">
-
-                                                                                    <b class="col-md-5 text-primary">Amount&nbsp;
-                                                                                        <span class="text-danger">*</span></b>
-
-
-                                                                                    <input type="text" class="form-control col-md-7" id="amount"
-                                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                                        required>
-                                                                                    <br>
-
-
-
-                                                                                </div>
-
-
-
-                                                                                <div class="form-group row">
-
-                                                                                    <b class="col-md-5 text-primary"> Receiver Name &nbsp; <span
-                                                                                            class="text-danger">*</span></b>
-
-
-                                                                                            <input type="text" class="form-control col-md-7" id="receiver_name"
-                                                                                            placeholder="enter receiver name" autocomplete="off" required>
-                                                                                            <br>
-
-                                                                                </div>
-
-                                                                                <div class="form-group row">
-
-                                                                                    <b class="col-md-5 text-primary"> Receiver's Phone Number: &nbsp; <span
-                                                                                            class="text-danger">*</span></b>
-
-                                                                                            <input type="text" class="form-control col-md-7" id="receiver_phoneNum" placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
-                                                                                            <br>
-
-                                                                                </div>
-
-                                                                                <div class="form-group row">
-
-                                                                                    <b class="col-md-5 text-primary"> Receiver's Address: &nbsp; <span
-                                                                                            class="text-danger">*</span></b>
-
-                                                                                            <input type="text" class="form-control col-md-7" id="receiver_address" placeholder="receiver Address" autocomplete="off" required>
-                                                                                            <br>
-
-                                                                                </div>
-
-                                                                                <div class="form-group row">
-
-                                                                                    <b class="col-md-5 text-primary" for="pin" >
-                                                                                        Enter Your Pin
-                                                                                        <span class="text-danger">*</span></b>
-                                                                                        <input type="password" class="form-control col-md-7" id="user_pin"
-                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-
-
-                                                                                </div>
-
-                                                                                <div class="form-group text-right ">
-                                                                                    <button type="button"
-                                                                                    class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                                                    id="confirm_button">
-                                                                                    <span class="submit-text">Submit</span>
-                                                                                    <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
-                                                                                    <span id="spinner-text">Loading...</span>
-                                                                                </button>
-                                                                                </div>
-
-
+                                                                                {{-- <div class="col-md-1"></div> --}}
                                                                             </div>
 
-                                                                            {{-- <div class="col-md-1"></div> --}}
+
+
+
+
+
+
+
+
                                                                         </div>
-
-
-
-
-
-
-
-
+                                                                        <div class="col-md-1"></div>
 
                                                                     </div>
-                                                                    <div class="col-md-1"></div>
-
-                                                                </div>
 
 
 
@@ -223,168 +223,108 @@
 
 
 
-                                                            </form>
+                                                                </form>
 
 
-                                        </div> <!-- end col -->
+                                            </div> <!-- end col -->
 
-                                        <div class="col-md-4 rtgs_card_right m-2" id="atm_request_summary"
-                                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                                    <br><br>
-                                                    <div class=" col-md-12 card card-body">
-                                                        {{-- <br><br> --}}
-                                                        <div class="row">
-                                                            <span class="col-md-12 success-message"></span>
-                                                            <h6 class="col-md-5">Account Name:</h6>
-                                                            <span class="text-primary display_from_account_name col-md-7"></span>
+                                            <div class="col-md-4 rtgs_card_right m-2" id="atm_request_summary"
+                                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                                        <br><br>
+                                                        <div class=" col-md-12 card card-body">
+                                                            {{-- <br><br> --}}
+                                                            <div class="row">
+                                                                <span class="col-md-12 success-message"></span>
+                                                                <h6 class="col-md-5">Account Name:</h6>
+                                                                <span class="text-primary display_from_account_name col-md-7"></span>
 
-                                                            <h6 class="col-md-5">Account Number:</h6>
-                                                            <span class="text-primary display_from_account_no col-md-7"></span>
+                                                                <h6 class="col-md-5">Account Number:</h6>
+                                                                <span class="text-primary display_from_account_no col-md-7"></span>
 
-                                                            <h6 class="col-md-5">Available Balance:</h6>
-                                                            <span class="text-primary display_from_account_amount col-md-7"></span>
+                                                                <h6 class="col-md-5">Available Balance:</h6>
+                                                                <span class="text-primary display_from_account_amount col-md-7"></span>
 
-                                                            <h6 class="col-md-5">Account Currency:</h6>
-                                                            <span class="text-primary display_currency col-md-7"></span>
+                                                                <h6 class="col-md-5">Account Currency:</h6>
+                                                                <span class="text-primary display_currency col-md-7"></span>
 
-                                                            <h6 class="col-md-5">Amount:</h6>
-                                                            <span class="text-primary display_amount col-md-7"></span>
-
-
-                                                            <h6 class="col-md-5">Receiver's Name: </h6>
-                                                            <span class="text-success display_receiver_name col-md-7"></span>
-
-                                                            <h6 class="col-md-5">Receiver's Phone Number:</h6>
-                                                            <span class="text-success display_receiver_phoneNum col-md-7"></span>
-
-                                                            <h6 class="col-md-5">Receiver's Address:</h6>
-                                                            <span class="text-success display_receiver_address col-md-7"></span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group text-center display_button_print">
-
-                                                        <span>&nbsp;
-                                                        <span>&nbsp; <button class="btn btn-light btn-rounded"
-                                                                type="button" id="print_receipt" onclick="window.print()">Print
-                                                                Receipt
-                                                            </button></span>
-                                                    </div>
-                                        </div>
-
-                                        {{-- <div class="col-md-8 text-center success_message" id="request_detail_div" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                                    <div class="row">
-                                                        <div class="col-md-1"></div>
-                                                        <div class="col-md-10">
-                                                            <br><br><br>
-
-                                                            <div class="table-responsive">
-                                                                <table class="table mb-0 table-bordered table-striped">
-
-                                                                    <tbody>
-                                                                        <tr class="success_gif">
-                                                                            <td class="text-center bg-white" colspan="2">
-                                                                                <img src="{{ asset('land_asset/images/statement_success.gif') }}"
-                                                                                     alt="">
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>Account Name:</td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="font-13 text-primary text-bold display_my_account_name"></span>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                        <tr>
-                                                                            <td>Account Number:</td>
-                                                                            <td>
-                                                                                <span class="font-13 text-primary text-bold display_my_account_no"></span>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                        <tr>
-                                                                            <td>Available Balance:</td>
-                                                                            <td>
-                                                                                <span class="font-15 text-primary h3 display_my_account_amount"> </span>
-                                                                            </td>
-                                                                        </tr>
+                                                                <h6 class="col-md-5">Amount:</h6>
+                                                                <span class="text-primary display_amount col-md-7"></span>
 
 
-                                                                        <tr>
-                                                                            <td>Account Currency:</td>
-                                                                            <td>
-                                                                                <span class="font-13 text-primary h3 display_my_account_currency"></span>
+                                                                <h6 class="col-md-5">Receiver's Name: </h6>
+                                                                <span class="text-success display_receiver_name col-md-7"></span>
 
-                                                                            </td>
-                                                                        </tr>
+                                                                <h6 class="col-md-5">Receiver's Phone Number:</h6>
+                                                                <span class="text-success display_receiver_phoneNum col-md-7"></span>
 
-
-                                                                        <tr>
-                                                                            <td>Type Of Card:</td>
-                                                                            <td>
-                                                                                <span class="font-13 text-primary h3 display_type_of_card"></span>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>Pick Up Branch:</td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="font-13 text-success h3 display_pick_up_branch"></span>
-                                                                            </td>
-                                                                        </tr>
-
-
-                                                                        <tr>
-                                                                            <td>Request Date: </td>
-                                                                            <td>
-                                                                                <span class="font-13 text-primary h3">{{ date('d F, Y') }}</span>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                        <tr>
-                                                                            <td>Posted BY: </td>
-                                                                            <td>
-                                                                                <span class="font-13 text-primary h3">{{ session()->get('userAlias') }}</span>
-                                                                            </td>
-                                                                        </tr>
-
-
-                                                                    </tbody>
-                                                                </table>
+                                                                <h6 class="col-md-5">Receiver's Address:</h6>
+                                                                <span class="text-success display_receiver_address col-md-7"></span>
                                                             </div>
-                                                            <!-- end table-responsive -->
-                                                            <br>
-
                                                         </div>
-                                                        <div class="col-md-1"></div>
-                                                    </div>
 
-                                                </div>
+                                                        <div class="form-group text-center display_button_print">
 
-
-                                        </div> --}}
+                                                            <span>&nbsp;
+                                                            <span>&nbsp; <button class="btn btn-light btn-rounded"
+                                                                    type="button" id="print_receipt" onclick="window.print()">Print
+                                                                    Receipt
+                                                                </button></span>
+                                                        </div>
+                                            </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane" id="reverse_korpor_page">
+                        <div class="row">
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="height: 100%;">
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="carousel-item active">
+                                                    <img class="d-block img-fluid" style="min-height: 100%" src="{{ asset('assets/images/ads/sim_korpor_ad.jpeg') }}" alt="First slide">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="d-block img-fluid" style="height: 100%" src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}" alt="Second slide">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="d-block img-fluid" style="min-height"src="{{ asset('assets/images/ads/sim_korpor_ad_3.jpeg') }}" alt="Third slide">
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="redeem_korpor_page">
+
+                    </div>
                 </div>
-                <div class="tab-pane show active" id="profile1">
-                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                    <p class="mb-0">Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                </div>
-                <div class="tab-pane" id="messages1">
-                    <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                    <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                </div>
+
             </div>
-        </div> <!-- end card-box-->
+    </div><!-- end card-box-->
 
 
 
 
-    </div>
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -476,9 +416,21 @@
                 $('#schedule_payment_contraint_input').hide()
                 $('.display_schedule_payment_date').text('N/A')
 
-                $("#profile1").click(function(){
-                    $(".send_korpor").hide();
+                // $("#profile1").click(function(){
+                //     // $(".send_korpor").hide();
+                // });
+
+                $(".reverse_korpor_tab").click(function(){
+                    $("#send_korpor_page").hide();
+                    $("#reverse_korpor_page").show();
                 });
+
+                $(".send_korpor_tab").click(function(){
+                    $("#send_korpor_page").show();
+                    $("#reverse_korpor_page").hide();
+
+                });
+
 
                 //show card after the from_account value changes
                 $("#from_account").change(function() {
@@ -601,8 +553,9 @@
 
 
                 $('#confirm_button').click(function() {
-                    let from_account = $('#from_account').val().split('~');
-                    from_account = from_account[2];
+                    let from_account = from_account_info[2].trim();
+                    // $('#from_account').val().split('~');
+                    // from_account = from_account[2].trim;
                     let transfer_amount = $('#amount').val();
                     let receiver_name = $('#receiver_name').val();
                     let receiver_phoneNum = $('#receiver_phoneNum').val();
@@ -614,7 +567,7 @@
 
                     if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
                         '' || receiver_address == '') {
-                        toaster('Field must not be empty', 'error', 10000)
+                        toaster('Fields must not be empty', 'error', 10000)
                         return false
                     } else {
 
@@ -659,8 +612,7 @@
                                         'pin_code': user_pin,
                                         'receiver_address': receiver_address.trim(),
                                         'receiver_name': receiver_name.trim(),
-                                        'receiver_phone': receiver_phoneNum,
-                                        'sender_name': sender_name.trim()
+                                        'receiver_phone': receiver_phoneNum
                                     },
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -669,7 +621,7 @@
 
                                         console.log(response)
 
-                                        if (response.responseCode != '000') {
+                                        if (response.responseCode == '000') {
                                             toaster(response.message, 'success', 20000);
                                             $("#request_form_div").hide();
                                             $('.display_button_print').show();
