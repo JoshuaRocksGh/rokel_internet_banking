@@ -61,6 +61,8 @@
                     </a>
                 </li>
 
+
+
                 {{-- <li class="menu-title mt-2">Apps</li> --}}
 
                 <li>
@@ -259,6 +261,14 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+
+                <li>
+                    <a href="#">
+                        {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+                        <i class="mdi mdi-printer-pos"></i>
+                        <span> POS</span>
+                    </a>
                 </li>
 
 

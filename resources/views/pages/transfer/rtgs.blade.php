@@ -1115,8 +1115,8 @@
                                     });
 
                                 } else {
-                                    $('.yes_beneficiary').hide()
-                                    $('.no_beneficiary').show()
+                                    // $('.yes_beneficiary').hide()
+                                    // $('.no_beneficiary').show()
                                 }
                             }
 
