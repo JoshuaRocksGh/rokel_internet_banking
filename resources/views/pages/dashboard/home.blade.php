@@ -72,10 +72,11 @@
                         <div class="col-lg-4">
                             <div class="card-box ribbon-box" style="border-radius: 20px;">
                                 {{-- <div class="ribbon ribbon-blue float-left"><i class="mdi mdi-access-point mr-1"></i> Balance</div> --}}
-                                <i class="fa fa-info-circle text-muted float-right" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
+                                <i class="fas fa-eye  float-right eye-open" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
+                                <i class="fa fa-eye-slash  float-right eye-close" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
                                     <h4 class="ribbon ribbon-blue float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4>
                                     <br><br>
-                                    <a href="{{ url('list-of-accounts') }}"><h2 class="text-primary my-3" style="font-size: 25px">SLL <span class="i_have_amount">Total Balance</span></h2></a>
+                                    <a href="{{ url('list-of-accounts') }}"><h2 class="text-primary my-3" style="font-size: 25px">SLL <span class="i_have_amount open-money"></span> <span class="i_have_amount_ close-money">***********</span></h2></a>
                                     <br>
                                     <p class="text-primary mb-0">Click the amount to see your accounts. <span class="float-right"><i class="fa fa-caret-up text-success mr-1"></i>10.25%</span></p>
 
@@ -1188,6 +1189,33 @@
             //         legendItem.hidden = false;
             //     }
             // }
+            $(document).ready(function(){
+                $('.close-money').show()
+                $('.open-money').hide()
+
+                $('.eye-open').hide()
+                $('.eye-close').show()
+
+                $('.eye-open').click(function(){
+
+                    $('.eye-open').hide()
+                    $('.eye-close').show()
+
+                    $('.open-money').hide()
+                    $('.close-money').show()
+
+                })
+
+                $('.eye-close').click(function(){
+
+                    $('.eye-close').hide()
+                    $('.eye-open').show()
+
+                    $('.open-money').show()
+                    $('.close-money').hide()
+                })
+
+            })
 
             {{-- function formatToCurrency(amount) {
                 return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");

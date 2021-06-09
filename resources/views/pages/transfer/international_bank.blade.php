@@ -118,17 +118,17 @@
                                                         <td>
 
                                                             <span
-                                                                class="font-13 text-primary text-bold display_to_account_type"
-                                                                id="display_to_account_type"> </span>
-                                                            <span
                                                                 class="d-block font-13 text-primary text-bold display_to_account_name"
                                                                 id="display_to_account_name"> </span>
                                                             <span
-                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
-                                                                id="online_display_beneficiary_bank_name"></span>
+                                                                class="d-block font-13 text-primary text-bold display_to_bank_name"
+                                                                id="display_to_bank_name"></span>
                                                             <span
                                                                 class="d-block font-13 text-primary text-bold display_to_account_no"
                                                                 id="display_to_account_no"> </span>
+                                                            <span
+                                                                class="font-13 text-primary text-bold display_to_account_country"
+                                                                id="display_to_account_country"> </span>
 
 
 
@@ -467,7 +467,7 @@
                                                     <b class="text-primary col-md-4"> Type of Charges &nbsp;<span
                                                             class="text-danger">*</span></b>
 
-                                                    <select class="form-control col-md-8 " id="transfer_mode" required>
+                                                    <select class="form-control col-md-8 " id="charges_type" required>
                                                         <option value=""> -- Select Transfer Mode -- </option>
                                                         <option value="001~OUR">OUR</option>
                                                         <option value="002~SHARE">SHARE</option>
@@ -477,15 +477,29 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-4"></div>
-                                                    <span class="col-md-8 transfer_mode_note"><b>Note:</b> &emsp;
-                                                        <span class="text-danger" id="ach_transfer_mode">Transfer will
+                                                    <span class="col-md-8 charges_type_note"><b>Note:</b> &emsp;
+                                                        <span class="text-danger" id="our_charges_type">Transfer will
                                                             go through Automatic Clearing House</span>
-                                                        <span class="text-danger" id="rtgs_transfer_mode">Transfer will
+                                                        <span class="text-danger" id="share_charges_type">Transfer will
                                                         </span>
-                                                        <span class="text-danger" id="instant_transfer_mode">Transfer
+                                                        <span class="text-danger" id="yours_charges_type">Transfer
                                                             will be Instant</span>
                                                     </span>
                                                 </div>
+
+                                                <div class="form-group row mb-3">
+                                                    <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
+                                                            class="text-danger">*</span></b>
+
+
+                                                    <select class="form-control col-md-8" id="category" required>
+                                                        <option value="">---Not Selected---</option>
+
+                                                    </select>
+
+
+                                                </div>
+
                                                 <div class="form-group row mb-3">
                                                     <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
                                                         <span class="text-danger">*</span></b>
@@ -643,9 +657,9 @@
                                     index].accountNumber + '~' + data[
                                     index].currency + '~' + data[index]
                                 .availableBalance
-                        }).text(data[index].accountType + '' + ' || ' + '' + data[index]
-                            .accountNumber + '' + ' || ' + '' + data[index]
-                            .currency + '' + ' || ' + '' + formatToCurrency(Number(data[index]
+                        }).text(data[index].accountType + '' + ' - ' + '' + data[index]
+                            .accountNumber + '' + ' - ' + '' + data[index]
+                            .currency + '' + ' - ' + '' + formatToCurrency(Number(data[index]
                                 .availableBalance))));
                         //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
@@ -682,12 +696,13 @@
                                         data[index].NICKNAME + '~' +
                                         data[index].ADDRESS_1 + '~' +
                                         data[index].BANK_SWIFT_CODE + '~' +
-                                        data[index].EMAIL + '~' + JSON
+                                        data[index].EMAIL + '~' +
+                                        data[index].BEN_ACCOUNT_CURRENCY + '~' + JSON
                                         .stringify(data[index])
-                                }).text(data[index].NICKNAME.toUpperCase() + ' || ' +
+                                }).text(data[index].NICKNAME.toUpperCase() + ' - ' +
                                     data[index]
                                     .BANK_NAME.toUpperCase() +
-                                    ' || ' + data[index].BEN_ACCOUNT + ' || ' + data[
+                                    ' - ' + data[index].BEN_ACCOUNT + ' - ' + data[
                                         index]
                                     .BEN_ACCOUNT_CURRENCY));
 
@@ -704,6 +719,28 @@
             })
         }
 
+        function expenseTypes() {
+            $.ajax({
+                "type": "GET",
+                "url": "get-expenses",
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data;
+
+                    $.each(data, function(index) {
+
+                        $("#category").append($('<option>', {
+                            value: data[index].expenseCode + '~' + data[index]
+                                .expenseName
+                        }).text(data[index].expenseName))
+
+                    });
+                },
+            })
+        }
+
+
         $(document).ready(function() {
 
             $('#spinner').hide(),
@@ -715,11 +752,16 @@
             $(".attach_invoice").hide();
             $('.transfer_mode_note').hide();
             $('.no_beneficiary').hide();
+            $('#our_charges_type').hide();
+            $('#share_charges_type').hide();
+            $('#yours_charges_type').hide();
+            $('.charges_type_note').hide();
 
 
             setTimeout(function() {
                 from_account();
                 get_benerficiary();
+                expenseTypes();
             }, 2000);
 
 
@@ -760,7 +802,8 @@
                 $(".display_to_account_name").text(to_account_details[4]);
                 $(".display_to_bank_name").text(to_account_details[0]);
                 $(".display_to_account_no").text(to_account_details[2]);
-                $(".display_to_account_currency").text(to_account_details[3]);
+                $(".display_to_account_currency").text(to_account_details[8]);
+                $(".display_to_account_country").text(to_account_details[1])
                 //
                 $("#beneficiary_country_name").val(to_account_details[1]);
                 $("#beneficiary_bank_name").val(to_account_details[0]);
@@ -812,6 +855,38 @@
 
 
                 }
+            });
+            $("#charges_type").change(function(){
+                var transfer_charges_ = $(this).val().split('~');
+                {{-- console.log(transfer_charges); --}}
+                let transfer_charges = transfer_charges_[1];
+
+                if ('OUR' == transfer_charges){
+
+                    $('.charges_type_note').show();
+                    $('#our_charges_type').show();
+                    $('#share_charges_type').hide();
+                    $('#yours_charges_type').hide();
+
+                }else if ('SHARE' == transfer_charges){
+
+                    $('.charges_type_note').show();
+                    $('#share_charges_type').show();
+                    $('#our_charges_type').hide();
+                    $('#yours_charges_type').hide();
+
+                }else if ('YOURS' == transfer_charges){
+
+                    $('.charges_type_note').show();
+                    $('#yours_charges_type').show();
+                    $('#share_charges_type').hide();
+                    $('#our_charges_type').hide();
+
+
+                }else {
+                    return false;
+                }
+
             })
 
             $('.transfer_type').on("change", function(e) {
@@ -833,8 +908,31 @@
             $("#next_button").click(function(e){
                 e.preventDefault();
 
-                $("#transaction_summary").toggle(500);
-                $("#transaction_form").hide()
+                var from_account = $('#from_account').val();
+
+                var to_account = $('#to_account').val();
+
+                var amount = $('#amount').val();
+
+                var charges_type = $('#charges_type').val();
+
+                var purpose = $('#purpose').val();
+
+                var category_ = $('#category').val().split('~');
+                var category = category_[1];
+
+
+                if (from_account == '' || to_account == '' || amount == '' ||
+                    charges_type == '' || purpose == '' || category == '') {
+                    toaster('Field must not be empty', 'error');
+                    return false
+                }else {
+
+                    $('#display_category').text(category);
+                    $('#display_purpose').text(purpose);
+                    $("#transaction_summary").toggle(500);
+                    $("#transaction_form").hide()
+                }
 
             });
 
@@ -884,8 +982,7 @@
                             console.log(response);
 
                             if (response.responseCode == "000") {
-                                {{-- toaster(response.message, 'success', 1000) --}}
-                                {{--  $("#related_information_display").removeClass("d-none d-sm-block");  --}}
+
                                 $('#confirm_modal_button').hide();
                                 Swal.fire(
                                     '',
@@ -903,18 +1000,18 @@
 
 
                             } else {
-                                {{-- toaster(response.message, 'error', 10000) --}}
+
 
                                 $('#confirm_modal_button').show();
                                 $('#spinner').hide();
                                 $('#spinner-text').hide();
                                 $('#print_receipt').hide();
                                 $(".success_gif").hide();
-                                {{-- $("#related_information_display").removeClass("d-none d-sm-block"); --}}
+
                                 $(".rtgs_card_right").show();
 
-                                {{-- $('#confirm_transfer').show(); --}}
-                                {{-- $('#confirm_button').attr('disabled', false); --}}
+
+
 
 
                             }
@@ -924,10 +1021,10 @@
                 }else{
 
                     toaster('Accept terms & conditions to continue', 'error', 6000)
-                    {{-- $("#myCenterModalLabel").hide(); --}}
+
                     return false;
                 }
-            })
+            });
 
         })
 

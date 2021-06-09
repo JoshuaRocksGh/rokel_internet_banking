@@ -692,8 +692,8 @@
                             data[index].narration,
                             data[index].documentReference,
                             `<a type="button" data-toggle="modal"
-                                                                                        data-target="#bs-example-modal-xl"
-                                                                                        class="text-primary">${data[index].batchNumber}</a>`,
+                                data-target="#bs-example-modal-xl"
+                                class="text-primary">${data[index].batchNumber}</a>`,
                             amount,
                             `${data[index].runningBalance}`,
                             `${attachment}`
