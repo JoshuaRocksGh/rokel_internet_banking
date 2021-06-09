@@ -77,10 +77,10 @@
 
                                             <form role="form" class="parsley-examples">
                                                 <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-4 col-form-label">MY Account<span
+                                                    <label for="inputEmail3" class="col-4 col-form-label text-primary">MY Account &nbsp;<span
                                                             class="text-danger">*</span></label>
                                                     <div class="col-8">
-                                                        <select class="custom-select " id="my_account" required>
+                                                        <select class="custom-select text-primary" id="my_account" required>
                                                             <option value="">Select Account</option>
                                                         </select>
                                                     </div>
@@ -88,8 +88,8 @@
 
 
                                                 <div class="form-group row">
-                                                    <label for="hori-pass2" class="col-4 col-form-label">
-                                                        Enter Amount
+                                                    <label for="hori-pass2" class="col-4 col-form-label text-primary">
+                                                        Enter Amount &nbsp;
                                                         <span class="text-danger">*</span></label>
                                                     <div class="col-8">
                                                         <input type="text" class="form-control" id="pin"
