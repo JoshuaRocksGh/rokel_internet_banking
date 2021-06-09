@@ -142,7 +142,7 @@
                                     </div>
 
 
-                                    </div>
+                            </div>
                         </div>
 
                         <div id="" class="modal fade full-width-modal" tabindex="-1" role="dialog" aria-labelledby="fullWidthModalLabel" aria-hidden="true">

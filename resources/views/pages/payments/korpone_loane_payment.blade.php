@@ -67,7 +67,7 @@
                 <ul class="nav nav-pills navtab-bg nav-justified">
                     <li class="nav-item">
                         <a href="#send_korpor_page" data-toggle="tab" aria-expanded="false" class="nav-link send_korpor_tab">
-                            Send Korpor
+                            Send E-Korpor
                         </a>
                     </li>
                     <li class="nav-item">
@@ -78,6 +78,11 @@
                     <li class="nav-item">
                         <a href="#messages1" data-toggle="tab" aria-expanded="false" class="nav-link redeem_korpor_tab">
                             Redeem Korpor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#korpor_trans_page" data-toggle="tab" aria-expanded="false" class="nav-link korpor_trans_tab">
+                            Korpor Transactions
                         </a>
                     </li>
                 </ul>
@@ -280,42 +285,250 @@
                     </div>
                     <div class="tab-pane" id="reverse_korpor_page">
                         <div class="row">
-                        <div class="col-md-6">
+                                <div class="col-12">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 rtgs_card m-2" id="request_form_div"
+                                                                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                                                                <br><br><br>
 
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="height: 100%;">
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="carousel-item active">
-                                                    <img class="d-block img-fluid" style="min-height: 100%" src="{{ asset('assets/images/ads/sim_korpor_ad.jpeg') }}" alt="First slide">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="d-block img-fluid" style="height: 100%" src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}" alt="Second slide">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img class="d-block img-fluid" style="min-height"src="{{ asset('assets/images/ads/sim_korpor_ad_3.jpeg') }}" alt="Third slide">
-                                                </div>
+                                                                                <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                                                    aria-autocomplete="none">
+                                                                                    @csrf
+
+                                                                                <div class="col-md-12">
+                                                                                            {{-- <br><br><br> --}}
+                                                                                            <div class="row">
+                                                                                                {{-- <div class="col-md-1"></div> --}}
+
+                                                                                                <div class="col-md-12">
+
+                                                                                                    <div class="form-group row mb-3">
+                                                                                                        <b class="col-md-5 text-primary">Pay From&nbsp; <span
+                                                                                                                class="text-danger">*</span> </b>
+
+
+                                                                                                        <select class="form-control col-md-7 " id="from_account"
+                                                                                                            required>
+                                                                                                            <option value="">Select Account
+                                                                                                            </option>
+
+
+                                                                                                        </select>
+                                                                                                    </div>
+
+
+
+                                                                                                    <div class="form-group row mb-3" id="pay_from_account">
+
+                                                                                                        <b class="col-md-5 text-primary">Amount&nbsp;
+                                                                                                            <span class="text-danger">*</span></b>
+
+
+                                                                                                        <input type="text" class="form-control col-md-7" id="amount"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                                            required>
+                                                                                                        <br>
+
+
+
+                                                                                                    </div>
+
+
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Receiver Name &nbsp; <span
+                                                                                                                class="text-danger">*</span></b>
+
+
+                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_name"
+                                                                                                                placeholder="enter receiver name" autocomplete="off" required>
+                                                                                                                <br>
+
+                                                                                                    </div>
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Receiver's Phone Number: &nbsp; <span
+                                                                                                                class="text-danger">*</span></b>
+
+                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_phoneNum" placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                                                                                                <br>
+
+                                                                                                    </div>
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Receiver's Address: &nbsp; <span
+                                                                                                                class="text-danger">*</span></b>
+
+                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_address" placeholder="receiver Address" autocomplete="off" required>
+                                                                                                                <br>
+
+                                                                                                    </div>
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary" for="pin" >
+                                                                                                            Enter Your Pin
+                                                                                                            <span class="text-danger">*</span></b>
+                                                                                                            <input type="password" class="form-control col-md-7" id="user_pin"
+                                                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                                                    </div>
+
+                                                                                                    <div class="form-group text-right ">
+                                                                                                        <button type="button"
+                                                                                                        class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                                                        id="confirm_button">
+                                                                                                        <span class="submit-text">Submit</span>
+                                                                                                        <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
+                                                                                                        <span id="spinner-text">Loading...</span>
+                                                                                                    </button>
+                                                                                                    </div>
+
+
+                                                                                                </div>
+
+                                                                                                {{-- <div class="col-md-1"></div> --}}
+                                                                                            </div>
+
+                                                                                </div>
+                                                                                </form>
+
                                             </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
+                                            <div class="col-md-5">
+                                                <br><br>
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="min-height: 120px; max-height: auto;">
+                                                                    <div class="carousel-inner" role="listbox">
+                                                                        <div class="carousel-item active">
+                                                                            <img class="d-block img-fluid" style="min-height: 100%" src="{{ asset('assets/images/ads/sim_korpor_ad.jpeg') }}" alt="First slide">
+                                                                        </div>
+                                                                        <div class="carousel-item">
+                                                                            <img class="d-block img-fluid" style="height: auto;" src="{{ asset('assets/images/ads/sim_korpor_ad_4.jpeg') }}" alt="Second slide">
+                                                                        </div>
+                                                                        <div class="carousel-item">
+                                                                            <img class="d-block img-fluid" style="min-height" src="{{ asset('assets/images/ads/sim_korpor_ad_3.jpeg') }}" alt="Third slide">
+                                                                        </div>
+                                                                    </div>
+                                                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                        <span class="sr-only">Previous</span>
+                                                                    </a>
+                                                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                        <span class="sr-only">Next</span>
+                                                                    </a>
+                                                                </div>
+
+
+                                                        </div>
+                                                    </div>
+                                            </div>
                                         </div>
-
-
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="redeem_korpor_page">
+                        <div class="cards_table row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <div class="p-3 mt-4 mt-lg-0 rounded">
+                                        <br>
 
+                                        <table id="datatable-buttons"
+                                        class="table table-bordered bg-white  table-striped dt-responsive nowrap w-100 beneficiary_list_display">
+                                        {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
+                                        <thead>
+                                            <tr class="bg-primary text-white">
+                                                <th> <b> Reference No </b> </th>
+                                                <th> <b> Receiver Name </b> </th>
+                                                <th><b>Receiver Address</b></th>
+                                                <th><b>Receiver's Phone</b></th>
+                                                <th> <b> Amount </b> </th>
+                                                <th> <b>Status </b> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="">
+                                                <td>004001216997442165</td>
+                                                <td>Joshua Amarfio</td>
+                                                <td>Visa</td>
+                                                <td>0549380507</td>
+                                                <td>2000</td>
+                                                <td>Reversed</td>
+                                            </tr>
+                                            <tr class="">
+                                                <td>004001216997442276</td>
+                                                <td>Kwabena</td>
+                                                <td>Credit Card</td>
+                                                <td>02497909798</td>
+                                                <td>30000</td>
+                                                <td>Successful</td>
+                                            </tr>
+                                        </tbody>
+
+
+                                    </table>
+
+                                    </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="korpor_trans_page">
+                        <div class="col-md-12">
+                        <div class="cards_table row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    <div class="p-3 mt-4 mt-lg-0 rounded">
+                                        <br>
+
+                                        <table id="datatable-buttons"
+                                            class="table table-bordered bg-white  table-striped dt-responsive nowrap w-100 beneficiary_list_display">
+                                            {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
+                                            <thead>
+                                                <tr class="bg-primary text-white">
+                                                    <th> <b> Reference No </b> </th>
+                                                    <th> <b> Receiver Name </b> </th>
+                                                    <th><b>Receiver Address</b></th>
+                                                    <th> <b> Amount </b> </th>
+                                                    <th> <b>Status </b> </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="">
+                                                    <td>004001216997442165</td>
+                                                    <td>1447866768967681</td>
+                                                    <td>Visa</td>
+                                                    <td>2000</td>
+                                                    <td>Blocked</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td>004001216997442276</td>
+                                                    <td>1447866768967570</td>
+                                                    <td>Credit Card</td>
+                                                    <td>30000</td>
+                                                    <td>Active</td>
+                                                </tr>
+                                            </tbody>
+
+
+                                        </table>
+
+                                    </div>
+
+
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
 
@@ -420,17 +633,37 @@
                 //     // $(".send_korpor").hide();
                 // });
 
+
                 $(".reverse_korpor_tab").click(function(){
                     $("#send_korpor_page").hide();
                     $("#reverse_korpor_page").show();
+                    $("#redeem_korpor_page").hide();
+                    $("#korpor_trans_page").hide();
                 });
+
 
                 $(".send_korpor_tab").click(function(){
                     $("#send_korpor_page").show();
                     $("#reverse_korpor_page").hide();
-
+                    $("#redeem_korpor_page").hide();
+                    $("#korpor_trans_page").hide();
                 });
 
+
+                $(".korpor_trans_tab").click(function(){
+                    $("#send_korpor_page").hide();
+                    $("#reverse_korpor_page").hide();
+                    $("#redeem_korpor_page").show();
+                    $("#korpor_trans_page").hide();
+                });
+
+
+                $(".redeem_korpor_tab").click(function(){
+                    $("#send_korpor_page").hide();
+                    $("#reverse_korpor_page").hide();
+                    $("#redeem_korpor_page").show();
+                    $("#korpor_trans_page").hide();
+                });
 
                 //show card after the from_account value changes
                 $("#from_account").change(function() {
