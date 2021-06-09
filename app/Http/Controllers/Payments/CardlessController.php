@@ -43,7 +43,7 @@ class CardlessController extends Controller
 
         $amount = $request->amount;
         $debitAccount = $request->debit_account;
-        $pinCode = $request->user_pin;
+        $pinCode = $request->pin_code;
         $receiverAddress = $request->receiver_address;
         $receiverName = $request->receiver_name;
         $receiverPhone = $request->receiver_phone;
@@ -55,7 +55,7 @@ class CardlessController extends Controller
         // return $deviceIP ;
         $user_ip_address =$request->ip();
 
-        return $user_ip_address ;
+        // return $user_ip_address ;
 
         $data = [
                 // "amount"=>$amount,
@@ -70,8 +70,8 @@ class CardlessController extends Controller
                 // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
                 "amount"=> $amount,
                 "debitAccount"=> $debitAccount,
-                "deviceIP"=> "A",
-                "fee"=> null,
+                "deviceIP"=> $user_ip_address,
+                "fee"=> '0',
                 "pinCode"=> $pinCode,
                 "receiverAddress"=> $receiverAddress,
                 "receiverName"=> $receiverName,
@@ -80,6 +80,8 @@ class CardlessController extends Controller
                 "tokenID"=> $authToken
 
             ];
+
+            // return $data;
 
 
 

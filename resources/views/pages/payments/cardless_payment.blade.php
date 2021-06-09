@@ -156,7 +156,7 @@
                                                                         <b class="col-md-5 text-primary" for="pin" >
                                                                             Enter Your Pin
                                                                             <span class="text-danger">*</span></b>
-                                                                            <input type="password" class="form-control col-md-7" id="pin"
+                                                                            <input type="password" class="form-control col-md-7" id="user_pin"
                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
 
@@ -482,6 +482,40 @@
 
                 });
 
+                 //for testing process
+                 $('#from_account').change(function() {
+                    var from_account = $('#from_account').val();
+                    console.log(from_account);
+                    // alert(from_account);
+                });
+
+                $('#amount').change(function() {
+                    var amount = $('#amount').val();
+                    console.log(amount);
+                });
+
+                $('#receiver_name').change(function() {
+                    var receiver_name = $('#receiver_name').val();
+                    console.log(receiver_name);
+                });
+
+                $('#receiver_phoneNum').change(function() {
+                    var receiver_phoneNum = $('#receiver_phoneNum').val();
+                    console.log(receiver_phoneNum);
+                });
+
+                $('#receiver_address').change(function() {
+                    var receiver_address = $('#receiver_address').val();
+                    console.log(receiver_address);
+                });
+
+                $('#user_pin').change(function() {
+                    var user_pin = $('#user_pin').val();
+                    console.log(user_pin);
+                });
+                //end of testing process
+
+
                 $("#receiver_name").change(function(){
                     var receiver_name = $("#receiver_name").val();
                     $(".display_receiver_name").text(receiver_name);
@@ -568,8 +602,7 @@
 
 
                 $('#confirm_button').click(function() {
-                    let from_account = $('#from_account').val().split('~');
-                    from_account = from_account[2];
+                    let from_account = from_account_info[2].trim();
                     let transfer_amount = $('#amount').val();
                     let receiver_name = $('#receiver_name').val();
                     let receiver_phoneNum = $('#receiver_phoneNum').val();
@@ -636,7 +669,7 @@
 
                                         console.log(response)
 
-                                        if (response.responseCode != '000') {
+                                        if (response.responseCode == '000') {
                                             toaster(response.message, 'success', 20000);
                                             $("#request_form_div").hide();
                                             $('.display_button_print').show();
@@ -656,38 +689,7 @@
                     }
                 });
 
-                //for testing process
-                $('#from_account').change(function() {
-                    var from_account = $('#from_account').val();
-                    console.log(from_account);
-                    // alert(from_account);
-                });
 
-                $('#amount').change(function() {
-                    var amount = $('#amount').val();
-                    console.log(amount);
-                });
-
-                $('#receiver_name').change(function() {
-                    var receiver_name = $('#receiver_name').val();
-                    console.log(receiver_name);
-                });
-
-                $('#receiver_phoneNum').change(function() {
-                    var receiver_phoneNum = $('#receiver_phoneNum').val();
-                    console.log(receiver_phoneNum);
-                });
-
-                $('#receiver_address').change(function() {
-                    var receiver_address = $('#receiver_address').val();
-                    console.log(receiver_address);
-                });
-
-                $('#user_pin').change(function() {
-                    var user_pin = $('#user_pin').val();
-                    console.log(user_pin);
-                });
-                //end of testing process
 
 
 

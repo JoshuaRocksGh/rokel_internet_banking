@@ -613,12 +613,12 @@
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-md-4"></div>
-                                                        <span class="col-md-8 transfer_mode_note"><b>Note:</b> &emsp;
-                                                            <span class="text-danger" id="ach_transfer_mode">Transfer will
+                                                        <span class="col-md-8 onetime_transfer_mode_note"><b>Note:</b> &emsp;
+                                                            <span class="text-danger" id="onetime_ach_transfer_mode">Transfer will
                                                                 go through Automatic Clearing House</span>
-                                                            <span class="text-danger" id="rtgs_transfer_mode">Transfer will
+                                                            <span class="text-danger" id="onetime_rtgs_transfer_mode">Transfer will
                                                             </span>
-                                                            <span class="text-danger" id="instant_transfer_mode">Transfer
+                                                            <span class="text-danger" id="onetime_instant_transfer_mode">Transfer
                                                                 will be Instant</span>
                                                         </span>
                                                     </div>
@@ -722,306 +722,7 @@
                                         </div>
                                     </form>
 
-                                    {{--  <form action="#" class="onetime_beneficiary" id="onetime_payment_details_form"
-                                        autocomplete="off" aria-autocomplete="none">
-                                        @csrf
-                                        <div class="">
 
-                                            <div class="">
-                                                <br><br><br>
-                                                <div class="row container">
-                                                    <div class="col-md-1"></div>
-
-                                                    <div class="col-md-9">
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary"> My Account &nbsp; <span
-                                                                    class="text-danger">*</span> </b>
-
-
-                                                            <select class="form-control col-md-8 " id="onetime_from_account"
-                                                                required>
-                                                                <option value="">Select Account
-                                                                </option>
-
-
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="form-group row">
-
-                                                            <b class="col-md-4 text-primary"> Transfer Type &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-
-                                                            <div class="col-md-8">
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 onetime_beneficiary_type">
-                                                                    <input type="radio" id="ach_onetime" value="ACH"
-                                                                        name="onetime_transfer_beneficiary" checked>
-                                                                    <label for="ach_onetime">ACH</label>
-                                                                </div>
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline col-md-5 onetime_beneficiary_type">
-                                                                    <input type="radio" id="rtgs_onetime" value="RTGS"
-                                                                        name="onetime_transfer_beneficiary">
-                                                                    <label for="rtgs_onetime">RTGS</label>
-                                                                </div>
-
-
-                                                            </div>
-
-                                                            <div class="col-md-8" id="onetime_beneficiary_radio">
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline m-1 col-md-2 beneficiary_type">
-                                                                    <input type="radio" id="ach_beneficiary_onetime"
-                                                                        value="ACH" name="transfer_beneficiary_ontime"
-                                                                        checked>
-                                                                    <label for="ach_beneficiary">ACH</label>
-                                                                </div>
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline m-1 col-md-2 beneficiary_type">
-                                                                    <input type="radio" id="rtgs_beneficiary_onetime"
-                                                                        value="RTGS" name="transfer_beneficiary_ontime">
-                                                                    <label for="rtgs_beneficiary">RTGS</label>
-                                                                </div>
-                                                                <div
-                                                                    class="radio radio-primary form-check-inline m-1 beneficiary_type">
-                                                                    <input type="radio" id="instant_payment_onetime"
-                                                                        value="INSTANT_PAYMENT"
-                                                                        name="transfer_beneficiary_ontime">
-                                                                    <label for="instant_payment_ontime">INSTANT
-                                                                        PAYMENT</label>
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">Receiver Name &nbsp;<span
-                                                                    class="text-danger">*</span> </b>
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_beneficiary_alias_name" placeholder="Alias Name"
-                                                                required>
-                                                        </div>
-                                                        <div class="form-group row mb-3">
-
-                                                            <b class="col-md-4  text-primary"> Bank Name &nbsp; <span
-                                                                    class="text-danger">*</span> </b>
-
-                                                            <select class="form-control col-md-8"
-                                                                id="onetime_beneficiary_bank_name" required>
-                                                                <option value="">Bank Name</option>
-                                                                <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
-                                                            Currenct Account ~ 004004110449140121 </option>
-                                                            </select>
-                                                            <br>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-
-                                                            <b class="col-md-4 text-primary"> Account Number &nbsp; <span
-                                                                    class="text-danger">*</span> </b>
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_beneficiary_account_number"
-                                                                placeholder="Account Number"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required>
-                                                        </div>
-
-
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">Select
-                                                                Currency &nbsp;<span class="text-danger">*</span>
-                                                            </b>
-
-                                                            <select class="custom-select col-md-8"
-                                                                id="onetime_beneficiary_account_currency" required>
-                                                                <option value="">Select Currency</option>
-
-                                                            </select>
-
-                                                        </div>
-
-                                                        <div class="form-group row">
-                                                            <label for="form-group"> Amount<span class="text-danger">*</span></label>
-                                                            <b class="col-md-4 text-primary">Enter Amount &nbsp; <span
-                                                                    class="text-danger text-primary">*</span> </b>
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_amount" placeholder="Amount: 0.00"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">Enter Email &nbsp; <span
-                                                                    class="text-danger">*</span>
-                                                            </b>
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_beneficiary_phone" placeholder="Email" required>
-                                                        </div>
-
-
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">Expense Category &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-                                                            <label for="form-group">Category</label>
-
-
-                                                            <select class="custom-select col-md-8" id="onetime_category"
-                                                                required>
-                                                                <option value="">---Not Selected---</option>
-                                                                <option value="01~Travel">Travel</option>
-                                                                <option value="02~Petty Cash">Petty Cash</option>
-                                                                <option value="03~Salary">Salary</option>
-                                                                <option value="04~Groceries">Groceries</option>
-                                                                <option value="05~Allowances">Allowances</option>
-                                                                <option value="06~Medical">Medical</option>
-                                                                <option value="07~Vendor Payment">Vendor Payment</option>
-                                                                <option value="08~Insurance">Insurance</option>
-                                                                <option value="09~Tax">Tax</option>
-                                                                <option value="10~Others">Others</option>
-                                                            </select>
-
-
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-4"></div>
-                                                            <div class="col-8">
-
-                                                                <div class="form-group mb-0">
-                                                                    <input type="checkbox" class="custom-control-inputt"
-                                                                        id="onetime_invoice_check">
-                                                                    &nbsp; &nbsp; <label class="h6">Invoice Attachment ?
-                                                                        <span class="badge badge-primary "
-                                                                            style="cursor: pointer" data-toggle="modal"
-                                                                            data-target="#centermodal">View</span>
-                                                                    </label>
-                                                                    <span class="hide_invoice">
-                                                                        <br>
-                                                                        <input type="file" class="hide_invoice"
-                                                                            id="onetime_invoice_attachment" required>
-                                                                    </span>
-
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">Purpose of Transfer &nbsp;
-                                                                <span class="text-danger">*</span></b>
-
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_purpose"
-                                                                placeholder="Enter purpose of transaction" required>
-
-                                                        </div>
-
-
-                                                        <div class="form-group text-right yes_beneficiary">
-                                                            <button class="btn btn-primary btn-rounded" type="button"
-                                                                id="onetime_next_button">
-                                                                &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
-                                                            <button type="button" id="hide_button">hide</button>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="col-md-1"></div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="h6">My Account <span
-                                                            class="text-danger">*</span></label>
-
-
-                                                    <select class="custom-select" id="from_account" required>
-                                                        <option value="">Select Account</option>
-
-
-                                                    </select>
-
-
-                                                    <table
-                                                        class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
-                                                        <tbody class="text-primary">
-                                                            <tr class="text-primary">
-
-                                                                <td class="text-primary">
-                                                                    <a
-                                                                        class="text-body font-weight-semibold display_from_account_name text-primary"></a>
-                                                                    <small
-                                                                        class="d-block display_from_account_no text-primary"></small>
-                                                                </td>
-
-                                                                <td class=" font-weight-semibold text-primary">
-                                                                    <span
-                                                                        class="display_from_account_currency text-primary"></span>
-                                                                    <span
-                                                                        class="display_from_account_amount text-primary"></span>
-
-                                                                </td>
-                                                            </tr>
-
-
-                                                        </tbody>
-                                                    </table>
-
-
-                                                </div>
-
-
-
-                                                <div class="form-group mt-1 select_beneficiary">
-                                                    <label class="h4 text-primary">Beneficiary Account <span
-                                                            class="text-danger">*</span></label>
-                                                    <br>
-
-
-
-
-                                                    <table
-                                                        class="table-responsive table table-centered table-nowrap mb-0 to_account_display_info card">
-                                                        <tbody>
-                                                            <tr>
-
-                                                                <td>
-                                                                    <a
-                                                                        class="text-body font-weight-semibold display_to_account_name"></a>
-                                                                    <small class="d-block display_to_account_no"></small>
-                                                                </td>
-
-                                                                <td class=" font-weight-semibold">
-                                                                    <span class="display_to_account_currency"></span>
-
-                                                                </td>
-                                                            </tr>
-
-
-                                                        </tbody>
-                                                    </table>
-
-
-                                                </div>
-
-
-
-
-                                            </div>
-
-
-                                        </div>
-                                        <div class="form-group no_beneficiary">
-                                            <div class="alert alert-warning" role="alert">
-                                                <i class="mdi mdi-alert-outline mr-2"></i> <strong>warning</strong> No
-                                                beneficiary found
-                                            </div>
-                                        </div>
-                                    </form>  --}}
                                 </div> <!-- end col -->
 
                                 {{-- <button class="m-2 btn btn-info d-none d-sm-block">Related Information</button> --}}
@@ -1090,12 +791,12 @@
                                             <h6 class="text-danger text-bold col-md-7">0.08% of transfer amount</h6>
                                         </div>
 
-                                        <hr>
+                                        {{-- <hr>
                                         <div class="row">
                                             <h6 class="text-primary col-md-5">Please Note:</h6>
                                             <h6 class="text-danger col-md-7">ACH Tranfers should be above (SLL
                                                 30,000,000.00)</h6>
-                                        </div>
+                                        </div> --}}
 
 
                                     </div>
@@ -1334,9 +1035,9 @@
                                             index].accountNumber + '~' + data[
                                             index].currency + '~' + data[index]
                                         .availableBalance
-                                }).text(data[index].accountType + '' + ' || ' + '' + data[index]
-                                    .accountNumber + '' + ' || ' + '' + data[index]
-                                    .currency + '' + ' || ' + '' + formatToCurrency(Number(data[
+                                }).text(data[index].accountType + '' + ' - ' + '' + data[index]
+                                    .accountNumber + '' + ' - ' + '' + data[index]
+                                    .currency + '' + ' - ' + '' + formatToCurrency(Number(data[
                                             index]
                                         .availableBalance))));
                                 //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
@@ -1404,18 +1105,18 @@
                                                 data[index].BANK_SWIFT_CODE + '~' +
                                                 data[index].EMAIL + '~' + JSON
                                                 .stringify(data[index])
-                                        }).text(data[index].NICKNAME.toUpperCase() + ' || ' +
+                                        }).text(data[index].NICKNAME.toUpperCase() + ' - ' +
                                             data[index]
                                             .BANK_NAME.toUpperCase() +
-                                            ' || ' + data[index].BEN_ACCOUNT + ' || ' + data[
+                                            ' - ' + data[index].BEN_ACCOUNT + ' - ' + data[
                                                 index]
                                             .BEN_ACCOUNT_CURRENCY));
 
                                     });
 
                                 } else {
-                                    $('.yes_beneficiary').hide()
-                                    $('.no_beneficiary').show()
+                                    // $('.yes_beneficiary').hide()
+                                    // $('.no_beneficiary').show()
                                 }
                             }
 
@@ -1449,6 +1150,10 @@
                     $('#rtgs_transfer_mode').hide();
                     $('#instant_transfer_mode').hide();
                     $('.transfer_mode_note').hide();
+                    $('#onetime_ach_transfer_mode').hide();
+                    $('#onetime_rtgs_transfer_mode').hide();
+                    $('#onetime_instant_transfer_mode').hide();
+                    $('.onetime_transfer_mode_note').hide();
                     $('#inputGroupFile04').attr("disabled", true);
                     $("#onetime_beneficiary_form").hide();
                     $(".attach_invoice").hide();
@@ -1579,6 +1284,33 @@
                             return false;
                         }
                     });
+
+                    $('#onetime_transfer_mode').change(function() {
+                        var transfer_mode_ = $(this).val().split('~');
+                        {{-- console.log(transfer_mode[1]); --}}
+                        let transfer_mode = transfer_mode_[1];
+
+                        if ('ACH' == transfer_mode) {
+                            $('.onetime_transfer_mode_note').show();
+                            $('#onetime_ach_transfer_mode').show();
+                            $('#onetime_rtgs_transfer_mode').hide();
+                            $('#onetime_instant_transfer_mode').hide();
+                        } else if ('RTGS' == transfer_mode) {
+                            $('.onetime_transfer_mode_note').show();
+                            $('#onetime_rtgs_transfer_mode').show();
+                            $('#onetime_ach_transfer_mode').hide();
+                            $('#onetime_instant_transfer_mode').hide();
+                        } else if ('INSTANT' == transfer_mode) {
+                            $('.onetime_transfer_mode_note').show();
+                            $('#onetime_instant_transfer_mode').show();
+                            $('#onetime_rtgs_transfer_mode').hide();
+                            $('#onetime_ach_transfer_mode').hide();
+
+                        } else {
+                            return false;
+                        }
+                    });
+
 
                     {{-- function sweet_alert(){
                         Swal.fire(
