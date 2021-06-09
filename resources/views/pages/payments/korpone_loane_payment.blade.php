@@ -439,98 +439,53 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="redeem_korpor_page">
-                        <div class="cards_table row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <div class="p-3 mt-4 mt-lg-0 rounded">
-                                        <br>
 
-                                        <table id="datatable-buttons"
-                                        class="table table-bordered bg-white  table-striped dt-responsive nowrap w-100 beneficiary_list_display">
-                                        {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
-                                        <thead>
-                                            <tr class="bg-primary text-white">
-                                                <th> <b> Reference No </b> </th>
-                                                <th> <b> Receiver Name </b> </th>
-                                                <th><b>Receiver Address</b></th>
-                                                <th><b>Receiver's Phone</b></th>
-                                                <th> <b> Amount </b> </th>
-                                                <th> <b>Status </b> </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="">
-                                                <td>004001216997442165</td>
-                                                <td>Joshua Amarfio</td>
-                                                <td>Visa</td>
-                                                <td>0549380507</td>
-                                                <td>2000</td>
-                                                <td>Reversed</td>
-                                            </tr>
-                                            <tr class="">
-                                                <td>004001216997442276</td>
-                                                <td>Kwabena</td>
-                                                <td>Credit Card</td>
-                                                <td>02497909798</td>
-                                                <td>30000</td>
-                                                <td>Successful</td>
-                                            </tr>
-                                        </tbody>
-
-
-                                    </table>
-
-                                    </div>
-
-
-                            </div>
-                        </div>
                     </div>
                     <div class="tab-pane" id="korpor_trans_page">
                         <div class="col-md-12">
-                        <div class="cards_table row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <div class="p-3 mt-4 mt-lg-0 rounded">
-                                        <br>
+                            <div class="cards_table row">
+                                <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                        <div class="p-3 mt-4 mt-lg-0 rounded">
+                                            <br>
 
-                                        <table id="datatable-buttons"
-                                            class="table table-bordered bg-white  table-striped dt-responsive nowrap w-100 beneficiary_list_display">
-                                            {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
-                                            <thead>
-                                                <tr class="bg-primary text-white">
-                                                    <th> <b> Reference No </b> </th>
-                                                    <th> <b> Receiver Name </b> </th>
-                                                    <th><b>Receiver Address</b></th>
-                                                    <th> <b> Amount </b> </th>
-                                                    <th> <b>Status </b> </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="">
-                                                    <td>004001216997442165</td>
-                                                    <td>1447866768967681</td>
-                                                    <td>Visa</td>
-                                                    <td>2000</td>
-                                                    <td>Blocked</td>
-                                                </tr>
-                                                <tr class="">
-                                                    <td>004001216997442276</td>
-                                                    <td>1447866768967570</td>
-                                                    <td>Credit Card</td>
-                                                    <td>30000</td>
-                                                    <td>Active</td>
-                                                </tr>
-                                            </tbody>
-
-
-                                        </table>
-
-                                    </div>
+                                            <table id="datatable-buttons"
+                                                class="table table-bordered bg-white  table-striped dt-responsive nowrap w-100 beneficiary_list_display">
+                                                {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
+                                                <thead>
+                                                    <tr class="bg-primary text-white">
+                                                        <th> <b> Reference No </b> </th>
+                                                        <th> <b> Receiver Name </b> </th>
+                                                        <th><b>Receiver Address</b></th>
+                                                        <th> <b> Amount </b> </th>
+                                                        <th> <b>Status </b> </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="">
+                                                        <td>004001216997442165</td>
+                                                        <td>1447866768967681</td>
+                                                        <td>Visa</td>
+                                                        <td>2000</td>
+                                                        <td>Blocked</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>004001216997442276</td>
+                                                        <td>1447866768967570</td>
+                                                        <td>Credit Card</td>
+                                                        <td>30000</td>
+                                                        <td>Active</td>
+                                                    </tr>
+                                                </tbody>
 
 
+                                            </table>
+
+                                        </div>
+
+
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>

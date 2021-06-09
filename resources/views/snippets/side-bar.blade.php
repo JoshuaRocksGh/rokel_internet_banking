@@ -57,7 +57,7 @@
                     <a href="{{ url('home') }}">
                         {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
                         <i class="mdi mdi-home-outline"></i>
-                        <span> Dashboard</span>
+                        <span> Home</span>
                     </a>
                 </li>
 
@@ -79,27 +79,43 @@
                             <li>
                                 <a href="{{ url('request-statement') }}">Statement Request</a>
                             </li>
+                            <li>
+                                <a href="#budgeting" data-toggle="collapse">
+                                    <i class="mdi mdi-book-account-outline"></i>
+                                    <span> Budgeting </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="budgeting">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{ url('budgeting-spending-statics') }}">Spending Statistics</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                            {{-- <li>
+                                <a href="#sidebarBudgeting" data-toggle="collapse">
+                                    <span>Budgeting</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarBudgeting">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{ url('cheque-approvals-pending') }}">Pending</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('cheque-approvals-approved') }}">Approved</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('cheque-approvals-rejected') }}">Rejected</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li> --}}
                         </ul>
                     </div>
                 </li>
-
-                <li>
-                    <a href="{{ url('cardless-payment') }}">
-                        <i class="mdi mdi-card-account-details-star-outline"></i>
-                        <span> Cardless</span>
-                    </a>
-                    {{-- <div class="collapse" id="sidebarTransfer">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('own-account') }}">Own Account</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('same-bank') }}">Same Bank</a>
-                            </li>
-                        </ul>
-                    </div> --}}
-                </li>
-
                 <li>
                     <a href="{{  url('qr-transfer') }}">
                         <i class="mdi mdi-qrcode-scan"></i>
@@ -272,13 +288,6 @@
                 </li>
 
 
-                <li>
-                    <a href="{{ url('kyc-update') }}">
-                        {{--  <span class="badge badge-primary float-right">Hot</span>  --}}
-                        <i class="mdi mdi-contacts-outline"></i>
-                        <span> KYC Services </span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="#sidebarAccountServices" data-toggle="collapse">
@@ -337,6 +346,14 @@
                             <li>
                                 <a href="{{ url('remove-signature') }}">Remove a signature </a>
                             </li>
+                            <li>
+                                <a href="{{ url('kyc-update') }}">
+                                    {{--  <span class="badge badge-primary float-right">Hot</span>  --}}
+                                    <i class="mdi mdi-contacts-outline"></i>
+                                    <span> KYC Services </span>
+                                </a>
+                            </li>
+
 
 
                             {{--  <li>
@@ -390,30 +407,6 @@
                     </div>
                 </li>
 
-                <li>
-                    <a href="#sidebarContacts" data-toggle="collapse">
-                        <i class="mdi mdi-book-account-outline"></i>
-                        <span> Budgeting </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarContacts">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('budgeting-spending-statics') }}">Spending Statistics</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </li>
-
-
-                <li>
-                    <a href="{{ url('branch-locator') }}">
-                        {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
-                        <i class="mdi mdi-map-marker-outline"></i>
-                        <span> Branch Locator </span>
-                    </a>
-                </li>
 
 
                 <li>
@@ -492,6 +485,13 @@
 
                         </ul>
                     </div>
+                </li>
+                <li>
+                    <a href="{{ url('branch-locator') }}">
+                        {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+                        <i class="mdi mdi-map-marker-outline"></i>
+                        <span> Branch Locator </span>
+                    </a>
                 </li>
 
 
