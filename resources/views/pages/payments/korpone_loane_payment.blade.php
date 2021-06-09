@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <h4 class="text-primary">
                         <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                        KORPONE LOANE
+                        E-KORPOR
                     </h4>
                 </div>
 
@@ -46,7 +46,7 @@
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Korpone loane Payment</b>
+                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Korpor Payment</b>
 
 
                         </span>
@@ -71,18 +71,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#profile1" data-toggle="tab" aria-expanded="true" class="nav-link active reverse_korpor_tab">
-                            Reverse Korpor
+                        <a href="#reverse_korpor_page" data-toggle="tab" aria-expanded="true" class="nav-link active reverse_korpor_tab">
+                            Reverse E-Korpor
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#messages1" data-toggle="tab" aria-expanded="false" class="nav-link redeem_korpor_tab">
-                            Redeem Korpor
+                        <a href="#redeem_korpor_page" data-toggle="tab" aria-expanded="false" class="nav-link redeem_korpor_tab">
+                            Redeem E-Korpor
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#korpor_trans_page" data-toggle="tab" aria-expanded="false" class="nav-link korpor_trans_tab">
-                            Korpor Transactions
+                            E-Korpor Transactions
                         </a>
                     </li>
                 </ul>
@@ -307,14 +307,17 @@
                                                                                                         <b class="col-md-5 text-primary">Pay From&nbsp; <span
                                                                                                                 class="text-danger">*</span> </b>
 
-
-                                                                                                        <select class="form-control col-md-7 " id="from_account"
+                                                                                                                <input type="text" class="form-control col-md-7" id="amount"
+                                                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                                                value="004001100241700194" placeholder="2000" required disabled=true>
+                                                                                                            <br>
+                                                                                                        {{-- <select class="form-control col-md-7 " id="from_account"
                                                                                                             required>
-                                                                                                            <option value="">Select Account
+                                                                                                            <option value="">004001100241700194
                                                                                                             </option>
 
 
-                                                                                                        </select>
+                                                                                                        </select> --}}
                                                                                                     </div>
 
 
@@ -327,7 +330,7 @@
 
                                                                                                         <input type="text" class="form-control col-md-7" id="amount"
                                                                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                                                            required>
+                                                                                                            value="20000" placeholder="2000" required disabled=true>
                                                                                                         <br>
 
 
@@ -343,7 +346,7 @@
 
 
                                                                                                                 <input type="text" class="form-control col-md-7" id="receiver_name"
-                                                                                                                placeholder="enter receiver name" autocomplete="off" required>
+                                                                                                                value="Joshua Amarfio" placeholder="Joshua Amarfio" autocomplete="off" required>
                                                                                                                 <br>
 
                                                                                                     </div>
@@ -353,7 +356,7 @@
                                                                                                         <b class="col-md-5 text-primary"> Receiver's Phone Number: &nbsp; <span
                                                                                                                 class="text-danger">*</span></b>
 
-                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_phoneNum" placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_phoneNum" value="0549830797" placeholder="0549380507" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
                                                                                                                 <br>
 
                                                                                                     </div>
@@ -363,7 +366,7 @@
                                                                                                         <b class="col-md-5 text-primary"> Receiver's Address: &nbsp; <span
                                                                                                                 class="text-danger">*</span></b>
 
-                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_address" placeholder="receiver Address" autocomplete="off" required>
+                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_address" value="Kaneshie street" autocomplete="off" required>
                                                                                                                 <br>
 
                                                                                                     </div>
@@ -384,9 +387,9 @@
                                                                                                         <button type="button"
                                                                                                         class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
                                                                                                         id="confirm_button">
-                                                                                                        <span class="submit-text">Submit</span>
-                                                                                                        <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
-                                                                                                        <span id="spinner-text">Loading...</span>
+                                                                                                        <span class="reverse-text">Reverse</span>
+                                                                                                        <span class="spinner-border spinner-border-sm mr-1" id="spinner-reverse" role="status" aria-hidden="true"></span>
+                                                                                                        <span id="spinner-text-reverse">Loading...</span>
                                                                                                     </button>
                                                                                                     </div>
 
@@ -401,7 +404,7 @@
 
                                             </div>
                                             <div class="col-md-5">
-                                                <br><br>
+                                                <br>
                                                     <div class="card">
                                                         <div class="card-body">
                                                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="min-height: 120px; max-height: auto;">
@@ -596,6 +599,8 @@
                     // $('#print_receipt').hide();
 
                     $(".display_button_print").hide();
+                    $("#spinner-reverse").hide();
+                    $("#spinner-text-reverse").hide();
 
 
                 setTimeout(function() {
