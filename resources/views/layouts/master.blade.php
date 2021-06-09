@@ -76,7 +76,7 @@
         /* Works on Firefox */
         * {
             scrollbar-width: thin;
-            scrollbar-color: rgb(43, 20, 148) rgb(217, 217, 216);
+            scrollbar-color: rgb(221, 221, 223) rgb(217, 217, 216);
         }
 
         /* Works on Chrome, Edge, and Safari */
@@ -89,7 +89,7 @@
         }
 
         *::-webkit-scrollbar-thumb {
-            background-color: rgb(43, 20, 148);
+            background-color: rgb(230, 230, 231);
             border-radius: 20px;
             border: 3px solid rgb(217, 217, 216);
         }

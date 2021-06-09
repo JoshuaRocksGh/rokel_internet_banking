@@ -173,7 +173,8 @@
 
                         <div class="col-md-4">
                             <a href="{{ url('manage-cards') }}">
-                            <div class="card" style="background-color: #0561ad; border-radius: 20px;">
+                            {{--  <div class="card" style="background-color: #0561ad; border-radius: 20px;">  --}}
+                                <div class="card" style="border-radius: 20px; background-image: url({{ asset('assets/images/cards/atm-bg.png') }})">
 
                                 {{-- <img class="card-img-top img-fluid" src="../assets/images/small/img-5.jpg" alt="Card image cap"> --}}
                                 <div class="card-body">
@@ -398,9 +399,59 @@
                         <div class="card" style="border-radius: 20px;">
                             <div class="border mt-0 rounded">
                                 <h4 class="header-title p-2 mb-0 text-dark" style="font-weight: bolder">Expense Categories</h4>
+<hr style="margin: 0px;">
+<legend></legend>
+                                <div class="table-responsive container" style="height: 360px; min-height:285px; zoom:0.9">
 
-                                <div class="table-responsive" style="height: 360px; min-height:285px; zoom:0.9">
-                                    <table class="table table-centered table-nowrap mb-0">
+
+                                    <p class="mb-2 font-weight-semibold">Fees & Charges: <span class="float-right">30%</span></p>
+                                    <div class="progress mb-2 progress-sm">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+
+                                    <p class="mb-2 font-weight-semibold">Fees & Charges: <span class="float-right">60</span></p>
+                                    <div class="progress mb-2 progress-sm">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+
+                                    <p class="mb-2 font-weight-semibold">Fees & Charges: <span class="float-right">55/85</span></p>
+                                    <div class="progress mb-2 progress-sm">
+                                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+
+                                    <p class="mb-2 font-weight-semibold">Fees & Charges: <span class="float-right">55/85</span></p>
+                                    <div class="progress mb-2 progress-sm">
+                                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+
+                                    <p class="mb-2 font-weight-semibold">Fees & Charges: <span class="float-right">55/85</span></p>
+                                    <div class="progress mb-2 progress-sm">
+                                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+
+                                    <p class="mb-2 font-weight-semibold">Fees & Charges: <span class="float-right">55/85</span></p>
+                                    <div class="progress mb-2 progress-sm">
+                                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+
+                                    <p class="mb-2 font-weight-semibold">Fees & Charges: <span class="float-right">55/85</span></p>
+                                    <div class="progress mb-2 progress-sm">
+                                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+
+                                    <p class="mb-2 font-weight-semibold">Fees & Charges: <span class="float-right">55/85</span></p>
+                                    <div class="progress mb-2 progress-sm">
+                                        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+
+                                    {{--  <table class="table table-centered table-nowrap mb-0">
                                         <tbody>
                                             <tr>
                                                 <td>
@@ -499,7 +550,7 @@
                                                 </td>
                                             </tr>
                                         </tbody>
-                                    </table>
+                                    </table>  --}}
                                 </div>
                                 <!-- end table-responsive -->
                             </div> <!-- end .border-->
@@ -780,7 +831,7 @@
                         </div> --}}
 
                         {{-- </div> --}}
-                        <div class="card" style="border-radius: 20px;">
+                        <div class="card " style="border-radius: 20px;">
                             <div class="border mt-0 rounded">
                                 <h4 class="header-title p-2 mb-0 text-dark" style="font-weight: bolder">Forex Rates</h4>
                                 <ul class="nav nav-tabs nav-bordered nav-justified">
@@ -796,7 +847,7 @@
                                     </li>
 
                                 </ul>
-                                <div class="tab-content"
+                                <div class="tab-content container"
                                     style="overflow-y:scroll !important; height: 285px; min-height:285px; ">
                                     <div class="tab-pane active" id="home-b2">
 
@@ -804,7 +855,6 @@
                                         <div class="text-center cross_rates_loading_area" id="account_balance_info_loader">
                                             <div class="spinner-border text-secondary avatar-sm " role="status"></div>
                                         </div>
-
 
 
                                         <div class="text-center cross_rates_error_area">
@@ -854,7 +904,7 @@
 
 
 
-                                        <table class="table table-bordered mb-0 cross_rates_display_area"
+                                        <table class="table table-bordered mb-0 cross_rates_display_area container"
                                             style="zoom: 0.8;">
                                             <thead>
                                                 <tr>
