@@ -108,4 +108,28 @@ class CardlessController extends Controller
 
         }
     }
+    public function send_unredeemed_request(Request $request){
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        // return $authToken;
+
+        // $base_response = new BaseResponse();
+
+        $accountNumber = $request->accountNo;
+        $accountNumber = "004001100241700194";
+        $data = [
+
+            "accountNumber" => $accountNumber
+
+        ];
+
+
+        //for debugging purposes
+        // return $data;
+        $response = Http::get(env('API_BASE_URL') . "request/unredeemedCardless/$accountNumber");
+        // return $response;die();
+        $result = new ApiBaseResponse();
+
+        return $result->api_response($response);
+    }
 }
