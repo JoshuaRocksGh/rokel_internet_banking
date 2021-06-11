@@ -40,30 +40,12 @@
                 </div>
             </div>
             <br><br><br>
-            <div class="container row">
-                <div class="col-md-2"></div>
-                {{-- <div class="col-md-3" >
-                    <div class="card text-white bg-warning text-xs-center">
-                    <a href="{{ url('add-beneficiary/own-account-beneficiary') }}">
-                        <div class="card-body">
-                            <h3 class="text-white" >Own Account</h3>
-
-                            <i data-feather="refresh-cw" class="icons-l card-icon"></i>
-
-                            <blockquote class="card-bodyquote">
-
-                                    <br>
-                                <footer class="p-text">Someone famous in <cite title="Source Title">Source Title</cite>
-                                </footer>
-                            </blockquote>
-                        </div>
-                    </a>
-                    </div> <!-- end card-box-->
-                </div> <!-- end col --> --}}
+            <div class="container">
+                <div class="row">
 
 
-                <div class="col-md-3">
-                    <div class="card text-white bg-danger text-xs-center">
+                <div class="col-md-4">
+                    <div class="card text-white bg-danger text-xs-center " >
                         <a href="{{ url('add-same-bank-beneficiary') }}">
                             <div class="card-body">
                                 <h3 class="text-white">Same Bank</h3>
@@ -85,8 +67,8 @@
 
 
 
-                <div class="col-md-3">
-                    <div class="card text-white bg-success text-xs-center">
+                <div class="col-md-4">
+                    <div class="card text-white bg-success text-xs-center" >
                         <a href="{{ url('add-local-bank-beneficiary') }}">
                             <div class="card-body">
                                 <h3 class="text-white">Other Local Bank</h3>
@@ -108,7 +90,7 @@
                 </div> <!-- end col -->
 
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card text-white bg-info text-xs-center">
                         <a href="{{ url('add-international-bank-beneficiary') }}">
                             <div class="card-body">
@@ -126,7 +108,13 @@
                     </div> <!-- end card-box-->
                 </div> <!-- end col -->
 
-                <div class="col-md-1"></div>
+
+
+                </div>
+
+
+
+                {{-- <div class="col-md-1"></div> --}}
             </div>
         </div>
     </div>

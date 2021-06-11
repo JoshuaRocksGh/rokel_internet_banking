@@ -64,8 +64,7 @@
                                                 <hr>
                                                 <div class="form-group row">
                                                     {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
-                                                    <label class="col-4"><span
-                                                            class="text-danger">*</span>Account Number</label>
+                                                    <b class="col-4 text-primary">Account Number &nbsp; <span class="text-danger">*</span></b>
                                                     <div class="col-7">
                                                         <input class="form-control" type="text" class="form-control"
                                                             id="account_number"
@@ -75,8 +74,7 @@
 
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class=" col-4"> <span
-                                                            class="text-danger">*</span>Account Name</label>
+                                                    <b class=" col-4 text-primary"> Account Name &nbsp; <span class="text-danger">*</span></b>
                                                     <div class="col-7">
                                                         <input type="text" class="form-control" id="account_name"
                                                             parsley-trigger="change" placeholder="Account Name" readonly
@@ -85,8 +83,7 @@
 
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-4"> <span
-                                                            class="text-danger">*</span>Account Currency</label>
+                                                    <b class="col-4 text-primary"> Account Currency &nbsp; <span class="text-danger">*</span></b>
                                                     <div class="col-7">
                                                         <input type="hidden" class="form-control" readonly value=""
                                                             id="select_currency">
@@ -108,8 +105,7 @@
 
                                                 <div class="form-group row">
 
-                                                    <label class="col-4"> <span
-                                                            class="text-danger">*</span>Beneficiary Name</label>
+                                                    <b class="col-4 text-primary"> Beneficiary Name &nbsp;<span class="text-danger">*</span></b>
                                                     <div class="col-7">
                                                         <input type="text" class="form-control" id="beneficiary_name"
                                                             parsley-trigger="change" placeholder="Beneficiary Name"
@@ -120,8 +116,7 @@
 
 
                                                 <div class="form-group row">
-                                                    <label class="col-4"> <span
-                                                            class="text-danger">*</span>Beneficiary Phone</label>
+                                                    <b class="col-4 text-primary"> Beneficiary Phone <span class="text-danger">*</span></b>
                                                     <div class="col-7">
                                                         <input type="text" class="form-control"
                                                             id="beneficiary_mobile_number"
@@ -132,8 +127,7 @@
 
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-4"> <span
-                                                            class="text-danger">*</span>Beneficiary Address</label>
+                                                    <b class="col-4 text-primary"> Beneficiary Address &nbsp; <span class="text-danger">*</span></b>
                                                     <div class="col-7">
                                                         <input type="text" class="form-control" id="beneficiary_address"
                                                             parsley-trigger="change" placeholder="Beneficiary Address"
@@ -142,8 +136,7 @@
 
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="col-4"> <span
-                                                            class="text-danger">*</span>Beneficiary Email</label>
+                                                    <b class="col-4 text-primary">Beneficiary Email &nbsp; <span class="text-danger">*</span></b>
                                                     <div class="col-7">
                                                         <input type="email" class="form-control" id="beneficiary_email"
                                                             parsley-trigger="change" placeholder="Beneficiary Email"
