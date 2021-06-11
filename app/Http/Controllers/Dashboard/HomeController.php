@@ -21,7 +21,7 @@ class HomeController extends Controller
         // $accounts = DB::select(DB::raw($query));
         // return $accounts ;
 
-        return view('pages.dashboard.home');
+        return view('pages.dashboard.pie');
     }
 
 

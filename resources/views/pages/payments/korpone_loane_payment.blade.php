@@ -488,9 +488,13 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
 
             </div>
+
+
     </div><!-- end card-box-->
 
 
@@ -594,36 +598,36 @@
                 // });
 
 
-                $(".reverse_korpor_tab").click(function(){
-                    $("#send_korpor_page").hide();
-                    $("#reverse_korpor_page").show();
-                    $("#redeem_korpor_page").hide();
-                    $("#korpor_trans_page").hide();
-                });
+                // $(".reverse_korpor_tab").click(function(){
+                //     $("#send_korpor_page").hide();
+                //     $("#reverse_korpor_page").show();
+                //     $("#redeem_korpor_page").hide();
+                //     $("#korpor_trans_page").hide();
+                // });
 
 
-                $(".send_korpor_tab").click(function(){
-                    $("#send_korpor_page").show();
-                    $("#reverse_korpor_page").hide();
-                    $("#redeem_korpor_page").hide();
-                    $("#korpor_trans_page").hide();
-                });
+                // $(".send_korpor_tab").click(function(){
+                //     $("#send_korpor_page").show();
+                //     $("#reverse_korpor_page").hide();
+                //     $("#redeem_korpor_page").hide();
+                //     $("#korpor_trans_page").hide();
+                // });
 
 
-                $(".korpor_trans_tab").click(function(){
-                    $("#send_korpor_page").hide();
-                    $("#reverse_korpor_page").hide();
-                    $("#redeem_korpor_page").show();
-                    $("#korpor_trans_page").hide();
-                });
+                // $(".korpor_trans_tab").click(function(){
+                //     $("#send_korpor_page").hide();
+                //     $("#reverse_korpor_page").hide();
+                //     $("#redeem_korpor_page").show();
+                //     $("#korpor_trans_page").hide();
+                // });
 
 
-                $(".redeem_korpor_tab").click(function(){
-                    $("#send_korpor_page").hide();
-                    $("#reverse_korpor_page").hide();
-                    $("#redeem_korpor_page").show();
-                    $("#korpor_trans_page").hide();
-                });
+                // $(".redeem_korpor_tab").click(function(){
+                //     $("#send_korpor_page").hide();
+                //     $("#reverse_korpor_page").hide();
+                //     $("#redeem_korpor_page").show();
+                //     $("#korpor_trans_page").hide();
+                // });
 
                 //show card after the from_account value changes
                 $("#from_account").change(function() {

@@ -494,6 +494,9 @@ Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_re
 //Route to send loan request details of quotation
 Route::post('loan-quotation-details',[LoanQuotationController::class,'send_loan_request_quote'])->name('loan-quotation-details');
 
+//Route to send unredeem request
+Route::get('unredeem-cardless-request',[CardlessController::class,'send_unredeemed_request'])->name('unredeem-cardless-request');
+
 //route to return interest rate types
 Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_Types'])->name('get-interest-types-api');
 
