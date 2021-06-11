@@ -523,6 +523,7 @@
                                                         <td> <b> Receiver's Name </b> </td>
                                                         <td> <b> Receiver's Address </b> </td>
                                                         <td> <b> Amount </b> </td>
+                                                        <td> <b>Status</b></td>
                                                     </tr>
                                                 </thead>
                                                 <tbody style="background-color:white;"class="unredeem_cardless_list_display">
@@ -601,6 +602,7 @@
                                         <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
                                         <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
                                         <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
+                                        <td> <b> unredeemed </b> </td>
                                         </tr>`
                                 )
                             })
