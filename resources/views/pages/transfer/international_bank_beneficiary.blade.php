@@ -734,10 +734,10 @@
                     bank_branches_list();
                 }, 2000);
 
-                {{-- $("#rootwizard").click(function(e){
+                $("#rootwizard").click(function(e){
                     e.preventDefault();
                     return false;
-                }) --}}
+                })
 
                 function toaster(message, icon, timer) {
                     const Toast = Swal.mixin({

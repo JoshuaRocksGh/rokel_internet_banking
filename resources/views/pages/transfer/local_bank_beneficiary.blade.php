@@ -60,7 +60,7 @@
 
 
                                         <div class="form-group row">
-                                            <label class="col-4">Select Bank: <span class="text-danger">*</span></label>
+                                            <b class="col-4 text-primary">Select Bank &nbsp;<span class="text-danger">*</span></b>
                                             <div class="col-7">
                                                 <select class="custom-select " id="select_bank" required>
                                                     <option value="">Select Bank</option>
@@ -71,7 +71,7 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-4">Bank Swift Code: <span class="text-danger">*</span></label>
+                                            <b class="col-4 text-primary">Bank Swift Code &nbsp;<span class="text-danger">*</span></b>
                                             <div class="col-7">
                                                 <input type="text" class="form-control" id="swift_code"
                                                     placeholder="Bank Swift Code" required>
@@ -84,7 +84,7 @@
 
 
                                         <div class="form-group row">
-                                            <label class="col-4">Account Number: <span class="text-danger">*</span></label>
+                                            <b class="col-4 text-primary">Account Number &nbsp;<span class="text-danger">*</span></b>
                                             <div class="col-7">
                                                 <input type="text" class="form-control" id="account_number"
                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
@@ -94,7 +94,7 @@
                                             {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-4">Account Name: <span class="text-danger">*</span></label>
+                                            <label class="col-4 text-primary">Account Name &nbsp; <span class="text-danger">*</span></label>
                                             <div class="col-7">
                                                 <input type="text" class="form-control" id="account_name"
                                                     placeholder="Account Name" required>
@@ -104,8 +104,7 @@
 
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-4">Account Currency: <span
-                                                    class="text-danger">*</span></label>
+                                            <b class="col-4 text-primary">Account Currency &nbsp; <span class="text-danger">*</span></b>
                                             <div class="col-7">
                                                 <select class="custom-select" id="select_currency" required>
                                                     <option value="">Select Currency</option>
@@ -123,7 +122,7 @@
                                     <hr>
 
                                     <div class="form-group row">
-                                        <label class="col-4"> Name: <span class="text-danger">*</span></label>
+                                        <b class="col-4 text-primary"> Name &nbsp;<span class="text-danger">*</span></b>
                                         <div class="col-7">
                                             <input type="text" class="form-control" id="beneficiary_name"
                                                 placeholder="Beneficiary Name" required>
@@ -131,7 +130,7 @@
 
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-4"> Address: <span class="text-danger">*</span></label>
+                                        <label class="col-4 text-primary"> Address &nbsp; <span class="text-danger">*</span></label>
                                         <div class="col-7">
                                             <input type="text" class="form-control" id="beneficiary_address"
                                                 placeholder="Beneficiary Address" required>
@@ -148,7 +147,7 @@
                                     </div>  --}}
 
                                     <div class="form-group row">
-                                        <label class="col-4"> Email: <span class="text-danger">*</span></label>
+                                        <label class="col-4 text-primary"> Email &nbsp; <span class="text-danger">*</span></label>
                                         <div class="col-7">
                                             <input type="email" class="form-control" id="beneficiary_email"
                                                 placeholder="Beneficiary Email" required>
