@@ -80,6 +80,9 @@
                                 <a href="{{ url('request-statement') }}">Statement Request</a>
                             </li>
                             <li>
+                                <a href="{{ url('budgeting-spending-statics') }}">Budgeting</a>
+                            </li>
+                            {{-- <li>
                                 <a href="#budgeting" data-toggle="collapse">
                                     <i class="mdi mdi-book-account-outline"></i>
                                     <span> Budgeting </span>
@@ -93,7 +96,7 @@
 
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
                             {{-- <li>
                                 <a href="#sidebarBudgeting" data-toggle="collapse">
                                     <span>Budgeting</span>
@@ -207,9 +210,9 @@
                             <li>
                                 <a href="{{ url('korpone-loane-payment') }}">Korpor / Salone Link</a>
                             </li>
-                            {{-- <li>
-                                <a href="{{ url('pay-again') }}">Pay Again</a>
-                            </li> --}}
+                            <li>
+                                <a href="{{ url('utility-payment') }}">Utilities</a>
+                            </li>
                             <li>
                                 <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
                             </li>

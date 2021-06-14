@@ -14,6 +14,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class transferController extends Controller
 {
     //
+
     public function transfer()
     {
         return view('pages.transfer.transfer');
