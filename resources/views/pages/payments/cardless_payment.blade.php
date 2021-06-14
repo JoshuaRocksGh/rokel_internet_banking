@@ -62,16 +62,16 @@
             </div>
         </div>
 
-        <div class="card-box">
+        <div class="">
 
-            <ul class="nav nav-pills navtab-bg nav-justified">
+            <ul class="nav nav-tabs nav-bordered nav-justified">
                 <li class="nav-item">
-                    <a href="#send_cardless_page" data-toggle="tab" aria-expanded="false" class="nav-link send_korpor_tab">
+                    <a href="#send_cardless_page" data-toggle="tab" aria-expanded="true" class="nav-link active send_korpor_tab">
                         Send Cardless
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#reverse_cardless_page" data-toggle="tab" aria-expanded="true" class="nav-link active reverse_korpor_tab">
+                    <a href="#reverse_cardless_page" data-toggle="tab" aria-expanded="false" class="nav-link reverse_korpor_tab">
                         Reverse Cardless
                     </a>
                 </li>
@@ -87,7 +87,7 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane" id="send_cardless_page">
+                <div class="tab-pane show active" id="send_cardless_page">
                     <div class="row">
                         <div class="col-12">
                             <div class="card-body">
@@ -95,7 +95,7 @@
 
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class=" col-md-7 rtgs_card m-2" id="request_form_div"
+                                            <div class=" col-md-7 m-2" id="request_form_div"
                                                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                                                 <br><br><br>
 
@@ -233,7 +233,7 @@
 
                                             </div> <!-- end col -->
 
-                                            <div class="col-md-4 rtgs_card_right m-2" id="atm_request_summary"
+                                            <div class="col-md-4 m-2" id="atm_request_summary"
                                                         style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                                         <br><br>
                                                         <div class=" col-md-12 card card-body">
@@ -291,7 +291,7 @@
                             <div class="col-12">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6 rtgs_card m-2" id="request_form_div"
+                                        <div class="col-md-6  m-2" id="request_form_div"
                                                                             style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                                                             <br><br><br>
 

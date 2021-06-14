@@ -393,7 +393,7 @@
                     </div> --}}
 
                     <span class="font-20" style="color:white">
-                       Personal Banking
+                       Internet Banking
                     </span>
                 </a>
             </li>

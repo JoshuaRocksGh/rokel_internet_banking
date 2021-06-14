@@ -312,13 +312,6 @@
                     <div class="collapse" id="sidebarAccountServices">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('branch-locator') }}">
-                                    {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
-                                    {{-- <i class="mdi mdi-map-marker-outline"></i> --}}
-                                    <span> Branch Locator </span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="{{ url('cheque-book-request') }}">Cheque Book Request </a>
                             </li>
                             <li>
@@ -484,7 +477,13 @@
                     </div>
                 </li>
 
-
+                <li>
+                    <a href="{{ url('branch-locator') }}">
+                        {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+                        <i class="mdi mdi-map-marker-outline"></i>
+                        <span> Branch Locator </span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="{{ url('logout') }}">

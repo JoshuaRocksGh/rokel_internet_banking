@@ -61,22 +61,45 @@
 
                                                     <div class="form-group">
                                                         <label for="simpleinput">Enter old pin</label>
-                                                        <input type="text" id="old_pin_txtBx" class="form-control"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 
+                                                        <div class="input-group input-group-merge">
+                                                        <input type="password" id="old_pin_txtBx" class="form-control"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                            <div class="input-group-append" data-password="false">
+                                                                <div class="input-group-text">
+                                                                    <span class="password-eye"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label for="simpleinput">Enter new pin</label>
+
+                                                        <div class="input-group input-group-merge">
                                                         <input type="text" id="new_pin_txtBx" class="form-control"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                            <div class="input-group-append" data-password="false">
+                                                                <div class="input-group-text">
+                                                                    <span class="password-eye"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
 
 
                                                     <div class="form-group">
                                                         <label for="simpleinput">Confirm pin</label>
+
+                                                        <div class="input-group input-group-merge">
                                                         <input type="text" id="confirm_pin_txtBx" class="form-control"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                        <div class="input-group-append" data-password="false">
+                                                            <div class="input-group-text">
+                                                                <span class="password-eye"></span>
+                                                            </div>
+                                                        </div>
+                                                        </div>
                                                     </div>
 
                                                     <div class="form-group">
