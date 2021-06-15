@@ -80,8 +80,11 @@
                                 <a href="{{ url('request-statement') }}">Statement Request</a>
                             </li>
                             <li>
+                                <a href="{{ url('close-account') }}">Close account</a>
+                            </li>
+                            <li>
                                 <a href="#budgeting" data-toggle="collapse">
-                                    <i class="mdi mdi-book-account-outline"></i>
+                                    {{-- <i class="mdi mdi-book-account-outline"></i> --}}
                                     <span> Budgeting </span>
                                     <span class="menu-arrow"></span>
                                 </a>
@@ -293,13 +296,13 @@
                     </div>
                 </li>
 
-                <li>
-                    <a href="#">
+                {{-- <li>
+                    <a href="#"> --}}
                         {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
-                        <i class="mdi mdi-printer-pos"></i>
+                        {{-- <i class="mdi mdi-printer-pos"></i>
                         <span> POS</span>
                     </a>
-                </li>
+                </li> --}}
 
 
 
@@ -341,7 +344,7 @@
                             </li>
                             <li>
                                 <a href="#sidebarTasks" data-toggle="collapse">
-                                    <i class="mdi mdi-credit-card-multiple-outline"></i>
+                                    {{-- <i class="mdi mdi-credit-card-multiple-outline"></i> --}}
                                     <span> Card Services </span>
                                     <span class="menu-arrow"></span>
                                 </a>
@@ -356,6 +359,9 @@
                                         <li>
                                             <a href="{{ url('activate-card') }}">Activate Card</a>
                                         </li>
+                                        <li>
+                                            <a href="{{ url('request-atm') }}">Request ATM Card</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -369,21 +375,19 @@
                                 <a href="{{ url('open-additional-account') }}">Open additional account</a>
                             </li>
                             <li>
-                                <a href="{{ url('request-draft') }}">Request a draft</a>
+                                <a href="{{ url('request-draft') }}">Request bank draft</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ url('add-signature') }}">Add Signatory</a>
                             </li>
                             <li>
-                                <a href="close-account">Close account</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('add-signature') }}">Add a signature</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('remove-signature') }}">Remove a signature </a>
+                                <a href="{{ url('remove-signature') }}">Remove Signatory</a>
                             </li>
                             <li>
                                 <a href="{{ url('kyc-update') }}">
                                     {{--  <span class="badge badge-primary float-right">Hot</span>  --}}
-                                    <i class="mdi mdi-contacts-outline"></i>
+                                    {{-- <i class="mdi mdi-contacts-outline"></i> --}}
                                     <span> KYC Services </span>
                                 </a>
                             </li>
@@ -393,9 +397,7 @@
                             {{--  <li>
                                 <a href="{{ url('kyc-update') }}">KYC Update</a>
                             </li>  --}}
-                            <li>
-                                <a href="{{ url('request-atm') }}">Request ATM</a>
-                            </li>
+
                         </ul>
                     </div>
                 </li>

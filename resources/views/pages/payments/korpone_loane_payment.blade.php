@@ -132,11 +132,11 @@
 
                                                                                         <div class="row col-md-7 ">
                                                                                             <div class="radio radio-primary form-check-inline m-1 col-md-5 destination">
-                                                                                                <input type="radio" id="inlineRadio1" value="SELF" name="radioInline" checked>
+                                                                                                <input type="radio" id="inlineRadio1" value="SELF" name="radioInline" >
                                                                                                 <label for="inlineRadio1"> Self </label>
                                                                                             </div>
                                                                                             <div class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                                                <input type="radio" id="inlineRadio2" value="OTHERS" name="radioInline">
+                                                                                                <input type="radio" id="inlineRadio2" value="OTHERS" name="radioInline" checked>
                                                                                                 <label for="inlineRadio2"> Others</label>
                                                                                             </div>
 
@@ -144,14 +144,14 @@
 
                                                                                     </div>
 
-                                                                                    <div id="others_form">
+                                                                                    <div class="others_form">
                                                                                         <div class="form-group row mb-3" id="pay_from_account">
 
                                                                                             <b class="col-md-5 text-primary">Amount&nbsp;
                                                                                                 <span class="text-danger">*</span></b>
 
 
-                                                                                            <input type="text" class="form-control col-md-7" id="amount"
+                                                                                            <input type="text" class="form-control col-md-7 amount"
                                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                                                 required>
                                                                                             <br>
@@ -166,7 +166,7 @@
                                                                                                     class="text-danger">*</span></b>
 
 
-                                                                                                    <input type="text" class="form-control col-md-7" id="receiver_name"
+                                                                                                    <input type="text" class="form-control col-md-7 receiver_name"
                                                                                                     placeholder="enter receiver name" autocomplete="off" required>
                                                                                                     <br>
 
@@ -177,7 +177,7 @@
                                                                                             <b class="col-md-5 text-primary"> Receiver's Phone Number: &nbsp; <span
                                                                                                     class="text-danger">*</span></b>
 
-                                                                                                    <input type="text" class="form-control col-md-7" id="receiver_phoneNum" placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                                                                                    <input type="text" class="form-control col-md-7 receiver_phoneNum"  placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
                                                                                                     <br>
 
                                                                                         </div>
@@ -187,7 +187,7 @@
                                                                                             <b class="col-md-5 text-primary"> Receiver's Address: &nbsp; <span
                                                                                                     class="text-danger">*</span></b>
 
-                                                                                                    <input type="text" class="form-control col-md-7" id="receiver_address" placeholder="receiver Address" autocomplete="off" required>
+                                                                                                    <input type="text" class="form-control col-md-7 receiver_address" placeholder="receiver Address" autocomplete="off" required>
                                                                                                     <br>
 
                                                                                         </div>
@@ -197,7 +197,7 @@
                                                                                             <b class="col-md-5 text-primary" for="pin" >
                                                                                                 Enter Your Pin
                                                                                                 <span class="text-danger">*</span></b>
-                                                                                                <input type="password" class="form-control col-md-7" id="user_pin"
+                                                                                                <input type="password" class="form-control col-md-7 user_pin"
                                                                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
 
@@ -216,14 +216,14 @@
                                                                                     </div>
 
                                                                                     {{-- codes for others --}}
-                                                                                    <div id="self_form">
+                                                                                    <div class="self_form">
                                                                                         <div class="form-group row mb-3" id="pay_from_account">
 
                                                                                             <b class="col-md-5 text-primary">Amount&nbsp;
                                                                                                 <span class="text-danger">*</span></b>
 
 
-                                                                                            <input type="text" class="form-control col-md-7" id="amount"
+                                                                                            <input type="text" class="form-control col-md-7 amount"
                                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                                                 required>
                                                                                             <br>
@@ -238,8 +238,8 @@
                                                                                                     class="text-danger">*</span></b>
 
 
-                                                                                                    <input type="text" class="form-control col-md-7" id="receiver_name"
-                                                                                                    placeholder="enter receiver name" autocomplete="off" required>
+                                                                                                    <input type="text" class="form-control col-md-7 receiver_name"
+                                                                                                    placeholder="enter receiver name" value="{{ session()->get('userAlias') }}" autocomplete="off" required>
                                                                                                     <br>
 
                                                                                         </div>
@@ -249,7 +249,7 @@
                                                                                             <b class="col-md-5 text-primary"> Receiver's Phone Number: &nbsp; <span
                                                                                                     class="text-danger">*</span></b>
 
-                                                                                                    <input type="text" class="form-control col-md-7" id="receiver_phoneNum" placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                                                                                    <input type="text" class="form-control col-md-7 receiver_phoneNum"  value="0549380507" placeholder="receiver Phone Number" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
                                                                                                     <br>
 
                                                                                         </div>
@@ -259,7 +259,7 @@
                                                                                             <b class="col-md-5 text-primary"> Receiver's Address: &nbsp; <span
                                                                                                     class="text-danger">*</span></b>
 
-                                                                                                    <input type="text" class="form-control col-md-7" id="receiver_address" placeholder="receiver Address" autocomplete="off" required>
+                                                                                                    <input type="text" class="form-control col-md-7 receiver_address"  value="kaneshie" placeholder="receiver Address" autocomplete="off" required>
                                                                                                     <br>
 
                                                                                         </div>
@@ -269,7 +269,7 @@
                                                                                             <b class="col-md-5 text-primary" for="pin" >
                                                                                                 Enter Your Pin
                                                                                                 <span class="text-danger">*</span></b>
-                                                                                                <input type="password" class="form-control col-md-7" id="user_pin"
+                                                                                                <input type="password" class="form-control col-md-7 user_pin"
                                                                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
 
@@ -279,10 +279,10 @@
                                                                                         <div class="form-group text-right ">
                                                                                             <button type="button"
                                                                                             class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                                                            id="confirm_button">
-                                                                                            <span class="submit-text">Submit</span>
-                                                                                            <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true"></span>
-                                                                                            <span id="spinner-text">Loading...</span>
+                                                                                            id="confirm_button_self">
+                                                                                            <span class="submit-text-self">Submit</span>
+                                                                                            <span class="spinner-border spinner-border-sm mr-1" id="spinner-self" role="status" aria-hidden="true"></span>
+                                                                                            <span id="spinner-text-self">Loading...</span>
                                                                                         </button>
                                                                                         </div>
                                                                                     </div>
@@ -644,13 +644,16 @@
 
                     $("#spinner").hide();
                     $("#spinner-text").hide();
+                    $("#spinner-self").hide();
+                    $("#spinner-text-self").hide();
                     // $('#print_receipt').hide();
 
-                    $("#self_form").hide();
+                    $(".self_form").hide();
 
                     $(".display_button_print").hide();
                     $("#spinner-reverse").hide();
                     $("#spinner-text-reverse").hide();
+                    // $("#confirm_button_self").hide();
 
 
                 setTimeout(function() {
@@ -755,41 +758,67 @@
 
                 });
 
-                $('.destination').on("change", function(e) {
-                        e.preventDefault();
+                // $('.destination').on("change", function(e) {
+                //         e.preventDefault();
 
-                        var destination_type = $('input[name="radioInline"]:checked').val();
-                        console.log(destination_type);
-                        if (transfer_type == 'INVOICE') {
-                            {{-- console.log('disable'); --}}
+                //         var destination_type = $('input[name="radioInline"]:checked').val();
+                //         console.log(destination_type);
+                //         if (destination_type == 'SELF') {
+                //             {{-- console.log('disable'); --}}
 
-                            $(".attach_invoice").toggle(500);
-                        } else {
-                            {{-- console.log('enable'); --}}
-                            $(".attach_invoice").hide();
-                            return false;
-                        }
-                    });
+                //             $("#self_form").toggle(500);
+                //             $("#others_form").show();
+                //         } else {
+                //             {{-- console.log('enable'); --}}
+                //             $("#self_form").hide();
+                //             return false;
+                //         }
+                //     });
 
-                $("#receiver_name").change(function(){
-                    var receiver_name = $("#receiver_name").val();
+
+
+                $(".inlineRadio1").click(function(){
+                    var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                    // console.log(destination_type);
+                    $(".self_form").show(2000);
+                    $(".others_form").hide();
+                });
+
+                $(".inlineRadio2").click(function(){
+                    var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                    // console.log(destination_type);
+                    $(".others_form").show();
+                    $(".self_form").hide();
+                });
+
+                $(".receiver_name").change(function(){
+                    var receiver_name = $(".receiver_name").val();
                     $(".display_receiver_name").text(receiver_name);
                 });
 
-                $("#receiver_phoneNum").change(function(){
-                    var receiver_phoneNum = $("#receiver_phoneNum").val();
+                $(".receiver_phoneNum").change(function(){
+                    var receiver_phoneNum = $(".receiver_phoneNum").val();
                     $(".display_receiver_phoneNum").text(receiver_phoneNum);
                 });
 
-                $("#receiver_address").change(function(){
-                    var receiver_address = $("#receiver_address").val();
+                $(".receiver_address").change(function(){
+                    var receiver_address = $(".receiver_address").val();
                     $(".display_receiver_address").text(receiver_address);
                 })
 
-                $("#amount").change(function(){
-                    var amount = $("#amount").val();
+                $(".amount").change(function(){
+                    var amount = $(".amount").val();
                     $(".display_amount").text(amount);
                 });
+
+
+
+
+                    if (destination_type == 'SELF') {
+
+                        // $("#receiver_name").val() = @json( session()->get('userAlias') );
+                    }
+
 
 
                 function formatToCurrency(amount) {
@@ -945,6 +974,94 @@
                     }
                 });
 
+                $('#confirm_button_self').click(function() {
+                    let from_account = from_account_info[2].trim();
+                    // $('#from_account').val().split('~');
+                    // from_account = from_account[2].trim;
+                    let transfer_amount = $('#amount').val();
+                    let receiver_name = $('#receiver_name').val();
+                    let receiver_phoneNum = $('#receiver_phoneNum').val();
+                    let receiver_address = $('#receiver_address').val();
+                    let sender_name = @json(session()->get('userAlias'));
+                    let user_pin = $('#user_pin').val();
+                    console.log(sender_name);
+
+
+                    if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
+                        '' || receiver_address == '') {
+                        toaster('Fields must not be empty', 'error', 10000)
+                        return false
+                    } else {
+
+                        //hide the payment form and show the summary form
+                        $("#cardless_payment_form").hide()
+                        $("#cardless_payment_summary").show();
+
+                        amt = from_account_info[4].trim();
+                        if (amt < transfer_amount) {
+                            toaster('Insufficient account balance', 'error', 9000);
+                            return false
+                        } else {
+
+                            //display this is the payment summary
+                            $("#display_amount").text(transfer_amount);
+                            $("#display_receiver_name").text(receiver_name);
+                            $("#display_receiver_address").text(receiver_name);
+                            $("#display_receiver_phoneNum").text(receiver_phoneNum);
+
+
+
+                        }
+
+                            if (user_pin == "") {
+                                toaster('enter your pin', 'error', 9000);
+                                console.log("Error is from here.");
+                                return false;
+                            } else {
+
+                                    $('#spinner').show(),
+                                    $('#spinner-text').show(),
+                                    // $('#print_receipt').hide();
+                                    $('.submit-text').hide();
+                                $.ajax({
+
+                                    'type': 'POST',
+                                    'url': 'initiate-korpor',
+                                    "datatype": "application/json",
+                                    'data': {
+                                        'amount': transfer_amount,
+                                        'debit_account': from_account,
+                                        'pin_code': user_pin,
+                                        'receiver_address': receiver_address.trim(),
+                                        'receiver_name': receiver_name.trim(),
+                                        'receiver_phone': receiver_phoneNum
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+
+                                        console.log(response)
+
+                                        if (response.responseCode == '000') {
+                                            toaster(response.message, 'success', 20000);
+                                            $("#request_form_div").hide();
+                                            $('.display_button_print').show();
+                                        } else {
+
+                                            toaster(response.message, 'error', 9000);
+
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('.submit-text').show();
+                                            // $('#confirm_payment').show();
+                                            // $('#confirm_button').attr('disabled', false);
+                                        }
+                                    }
+                                });
+                            }
+                    }
+                });
                 //for testing process
                 $('#from_account').change(function() {
                     var from_account = $('#from_account').val();
