@@ -79,99 +79,76 @@
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br><br>
 
-
-                                    <div class="row container">
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-3">
-                                            <label class="text-primary"> <b>Beneficiary Type</b> </label>
-                                        </div>
-                                        <div class="col-md-6">
-
-                                            {{-- <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
-                                                </div> --}}
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    name="onetime_beneficiary_type" id="customCheck1">
-                                                <label class="custom-control-label " for="customCheck1">
-                                                    <b>Onetime </b> </label>
-                                            </div>
-                                            <hr>
-                                            <span class="badge badge-primary float-right" style="cursor: pointer"><a
-                                                    href="{{ url('add-local-bank-beneficiary') }}"
-                                                    class="text-white">Create
-                                                    Beneficiary</a>
-                                            </span>
-                                            <br>
-                                        </div>
-                                    </div>
-
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
                                         <div class=" row container">
                                             <div class="col-md-1"></div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-10">
 
-                                                <div class="row">
+
+                                            <div class="form-group row mb-3">
+                                                <b class="col-md-12 text-primary">Account from which the money will
+                                                    be tansfered &nbsp <span
+                                                        class="text-danger">*</span></b>
+
+                                                <select class="form-control col-md-12" id="from_account"
+                                                    required>
+                                                    <option value=""> -- Select Your Account --</option>
+                                                </select>
+
+                                            </div>
+
+                                            <hr>
+
+                                            <div class="row mb-2">
+
+                                                <div class="col-md-4">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            name="onetime_beneficiary_type" id="customCheck1">
+                                                        <label class="custom-control-label " for="customCheck1">
+                                                            <b class="text-primary">Onetime Transfer</b> </label>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-8">
+                                                    <div class="form-group  row mb-3 select_beneficiary">
+                                                        <b class="col-md-4 text-primary">Beneficiary &nbsp;
+                                                            <span class="text-danger">*</span></b>
+
+                                                        <select class="form-control col-md-8" id="to_account" required>
+                                                            <option value=""> -- Select Beneficiary --</option>
+
+                                                        </select>
+
+                                                    </div>
+
+                                                    <span class="badge badge-primary float-right" style="cursor: pointer"><a
+                                                        href="{{ url('add-local-bank-beneficiary') }}"
+                                                        class="text-white">Create
+                                                        Beneficiary</a>
+                                                </span>
+                                                </div>
+
+                                            </div>
+                                                <div class="row" id="saved_benefciary_form">
 
                                                     <div class="col-md-12">
 
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">My Account &nbsp <span
-                                                                    class="text-danger">*</span></b>
-
-                                                            <select class="form-control col-md-8" id="from_account"
-                                                                required>
-                                                                <option value=""> -- Select Your Account --</option>
-                                                            </select>
-
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary"> Beneficiary Name</b>
+                                                            <input type="text" class="form-control col-md-8 " id="" readonly>
                                                         </div>
 
-                                                        {{-- <div class="row">
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
+                                                            <input type="text" class="form-control col-md-8 " id="" readonly>
+                                                        </div>
 
-                                                                <div class="col-md-4"></div>
-
-                                                                <div class="col-md-8">
-                                                                    <div class="form-group row">
-
-                                                                        <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input radio"
-                                                                                type="radio" name="onetime"
-                                                                                id="inlineRadio1" value="beneficiary"
-                                                                                checked="checked">
-                                                                            <label class="form-check-label"
-                                                                                for="inlineRadio1">Select
-                                                                                beneficiary</label>
-                                                                        </div>
-                                                                        &nbsp;&nbsp;
-                                                                        <div class="form-check form-check-inline">
-                                                                            <input class="form-check-input radio"
-                                                                                type="radio" name="onetime"
-                                                                                id="inlineRadio2" value="onetime">
-                                                                            <label class="form-check-label"
-                                                                                for="inlineRadio2">Onetime
-                                                                                beneficiary</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <span class="badge badge-primary float-right mb-2"
-                                                                        style="cursor: pointer"><a
-                                                                            href="{{ url('add-same-bank-beneficiary') }}"
-                                                                            class="text-white">Create Beneficiary</a>
-                                                                    </span>
-                                                                </div>
-                                                            </div> --}}
-
-                                                        <div class="form-group  row mb-3 select_beneficiary">
-                                                            <b class="col-md-4 text-primary">Beneficiary Account &nbsp;
-                                                                <span class="text-danger">*</span></b>
-
-                                                            <select class="form-control col-md-8" id="to_account" required>
-                                                                <option value=""> -- Select Beneficiary --</option>
-
-                                                            </select>
-
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary"> Beneficiary Email</b>
+                                                            <input type="text" class="form-control col-md-8 " id="" readonly>
                                                         </div>
 
 
@@ -290,11 +267,6 @@
                                                                 </div>
                                                             </div> --}}
 
-                                                        <div class="form-group text-right yes_beneficiary">
-                                                            <button class="btn btn-primary btn-rounded" type="button"
-                                                                id="next_button">
-                                                                &nbsp; Next &nbsp;<i class="fe-arrow-right"></i></button>
-                                                        </div>
 
                                                     </div>
 
@@ -331,6 +303,13 @@
 
                                                 </div>
 
+
+                                                <div class="form-group text-right yes_beneficiary">
+                                                    <button class="btn btn-primary btn-rounded" type="button"
+                                                        id="next_button">
+                                                        &nbsp; Next &nbsp;<i class="fe-arrow-right"></i></button>
+                                                </div>
+
                                                 <div class="form-group no_beneficiary">
                                                     <div class="alert alert-warning" role="alert">
                                                         <i class="mdi mdi-alert-outline mr-2"></i> <strong>warning</strong>
@@ -340,6 +319,9 @@
                                                 </div>
 
                                             </div>
+
+
+
 
                                         <div class="col-md-1"></div>
                                     </form>
@@ -906,7 +888,7 @@
                 get_currency();
             }, 3000);
 
-            $("#customCheck1").click(function() {
+            {{--  $("#customCheck1").click(function() {
                 if ($(this).is(":checked")) {
                     console.log("Checkbox is checked.");
 
@@ -917,7 +899,7 @@
                     $("#payment_details_form").toggle(500);
                     $("#onetime_payment_details_form").hide();
                 }
-            });
+            });  --}}
 
 
             // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
