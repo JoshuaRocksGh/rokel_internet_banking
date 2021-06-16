@@ -48,6 +48,9 @@
         .form-group {
             margin-bottom: 0.4rem!Important;
         }
+        .readOnly {
+            background-color: #eceff1!Important;
+        }
 
         .rtgs_card{
             box-shadow:

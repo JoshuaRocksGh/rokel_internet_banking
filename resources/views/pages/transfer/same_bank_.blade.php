@@ -137,40 +137,76 @@
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary Name</b>
-                                                            <input type="text" class="form-control col-md-8 " id="saved_beneficiary_name" readonly>
+                                                            <input type="text" class="form-control col-md-8 readOnly " id="saved_beneficiary_name" readonly>
                                                         </div>
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
-                                                            <input type="text" class="form-control col-md-8 " id="saved_account_number" readonly>
+                                                            <input type="text" class="form-control col-md-8 readOnly" id="saved_account_number" readonly>
                                                         </div>
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary Email</b>
-                                                            <input type="text" class="form-control col-md-8 " id="saved_beneficiary_email" readonly>
+                                                            <input type="text" class="form-control col-md-8 readOnly" id="saved_beneficiary_email" readonly>
                                                         </div>
-
 
 
                                                         <div class="form-group row">
-                                                            <b class="col-md-4 text-primary">Amount &nbsp; <span
-                                                                    class="text-danger">*</span></b>
 
-                                                            <div class="col-2">
-                                                                <div class="input-group mb-1">
-                                                                    <div class="input-group-prepend"
-                                                                        style="margin-right:-1px;">
-                                                                        <div
-                                                                            class="input-group-text display_from_account_currency">
-                                                                            CUR</div>
+                                                            <b class="col-4 text-primary">Actual Amount &nbsp; <span
+                                                                    class="text-danger">*</span></b>
+    
+                                                                    <div class="" >
+                                                                        <div class="input-group mb-1">
+            
+                                                                            <div class="input-group-prepend" >
+                                                                                <select name="" class="input-group-text" id="select_currency">
+                                                                                    <option value="SLL" selected>SLL</option>
+                                                                                    <option value="EUR">EURO</option>
+                                                                                    <option value="USD">USD</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <input type="text" class="form-control col-md-6" id="amount"
-                                                                placeholder="Amount: 0.00"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required>
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input type="text" class="form-control col-6" id="amount"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
+                                                            required>
+    
+                                                         
+    
+    
                                                         </div>
+
+                                                        <div class="form-group row">
+
+                                                            <b class="col-4 text-primary"> Cur / Rate / Amount</b>
+    
+                                                                    <div class="" >
+                                                                        <div class="input-group mb-1">
+            
+                                                                            <div class="input-group-prepend" >
+                                                                                <select name="" class="input-group-text" id="select_currency__">
+                                                                                    <option value="SLL" selected>SLL</option>
+                                                                                    <option value="EUR">EURO</option>
+                                                                                    <option value="USD">USD</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <input type="text" class="form-control readOnly col-2" value="1.00">
+
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input type="text" class="form-control  col-4" id="amount" readonly required>
+    
+                                                         
+    
+    
+                                                        </div>
+                                                        
+
+                                                   
 
                                                         <div class="form-group row mb-3">
                                                             <b class="col-md-4 text-primary">Purpose of Transfer &nbsp;<span
@@ -285,6 +321,62 @@
                                                         </div>
 
                                                         <div class="form-group row">
+
+                                                            <b class="col-4 text-primary">Actual Amount &nbsp; <span
+                                                                    class="text-danger">*</span></b>
+    
+                                                                    <div class="" >
+                                                                        <div class="input-group mb-1">
+            
+                                                                            <div class="input-group-prepend" >
+                                                                                <select name="" class="input-group-text" id="select_currency">
+                                                                                    <option value="SLL" selected>SLL</option>
+                                                                                    <option value="EUR">EURO</option>
+                                                                                    <option value="USD">USD</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input type="text" class="form-control col-6" id="amount"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
+                                                            required>
+    
+                                                         
+    
+    
+                                                        </div>
+
+                                                        <div class="form-group row">
+
+                                                            <b class="col-4 text-primary"> Cur / Rate / Amount</b>
+    
+                                                                    <div class="" >
+                                                                        <div class="input-group mb-1">
+            
+                                                                            <div class="input-group-prepend" >
+                                                                                <select name="" class="input-group-text" id="select_currency__">
+                                                                                    <option value="SLL" selected>SLL</option>
+                                                                                    <option value="EUR">EURO</option>
+                                                                                    <option value="USD">USD</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <input type="text" class="form-control readOnly col-2" value="1.00">
+
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <input type="text" class="form-control  col-4" id="amount" readonly required>
+    
+                                                         
+    
+    
+                                                        </div>
+                                                        
+
+
+                                                        <div class="form-group row">
                                                             <b class="col-md-4 text-primary">Amount &nbsp; <span
                                                                     class="text-danger">*</span></b>
 
@@ -303,6 +395,7 @@
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                 required>
                                                         </div>
+
                                                         <div class="form-group row mb-3">
                                                             <b class="col-md-4 text-primary">Purpose of Transfer &nbsp;<span
                                                                     class="text-danger">*</span></b>
@@ -342,12 +435,14 @@
                                                     </div>
 
                                                 </div>
+                                                <legend></legend>
 
                                                 <div class="form-group text-right yes_beneficiary">
                                                     <button class="btn btn-primary btn-rounded" type="button"
                                                         id="next_button">
                                                         &nbsp; Next &nbsp;<i class="fe-arrow-right"></i></button>
                                                 </div>
+                                                <br>
 
 
                                                 <div class="form-group no_beneficiary">
@@ -528,6 +623,19 @@
                                             <h6 class="col-md-5">Account Currency:</h6>
                                             <span class="text-primary display_to_account_currency col-md-7"></span>
                                         </div>
+
+                                        <br>
+                                        <div class="row">
+                                            <h6 class="col-md-5">Enter Amount:</h6>
+                                            <span class="text-primary display_amount col-md-7"></span>
+
+                                            <h6 class="col-md-5">Currency Rate:</h6>
+                                            <span class="text-primary display_midrate col-md-7"></span>
+
+                                            <h6 class="col-md-5">Converted Amount:</h6>
+                                            <span class="text-primary display_converted_amount col-md-7"></span>
+                                        </div>
+
                                         <br>
 
                                         <div class="row">
