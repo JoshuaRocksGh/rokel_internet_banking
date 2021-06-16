@@ -487,7 +487,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-2">
+                                                        <div class="col-1">
                                                             <i class="mdi mdi-arrow-right"></i>
                                                         </div>
 
