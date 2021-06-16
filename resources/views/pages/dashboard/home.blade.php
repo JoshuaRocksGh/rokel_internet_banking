@@ -29,6 +29,283 @@
 
         <!-- end page title -->
 
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <marquee behavior="" direction="">
+                            <span>
+                                <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+                                /
+                                <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+
+                                <span> <strong> 9.000 / 1.00</strong> </span>
+                            </span>
+
+                            &nbsp; &nbsp;
+
+                            <span>
+                                <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+                                /
+                                <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+
+                                <span> <strong> 9.000 / 1.00</strong> </span>
+                            </span>
+
+
+                        </marquee>
+                        <legend></legend>
+                    </div>
+                </div>
+
+                <div class="row">
+
+
+                    <div class="col-md-6">
+                        <div class="card-box ribbon-box" style="border-radius: 20px; background-image: url({{ asset('assets/images/cards/atm-bg.png') }})">
+
+                            <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
+                            <i class="fa fa-eye-slash  float-right eye-close text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
+                                <h4 class="ribbon ribbon-warning float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4>
+                                <br><br>
+                                <a href="{{ url('list-of-accounts') }}"><h2 class="text-white my-3" style="font-size: 25px">SLL <span class="i_have_amount open-money"></span> <span class="i_have_amount_ close-money">***********</span></h2></a>
+                                <br>
+                                <p class="text-white mb-0">Total Local Currency <span class="float-right"></p>
+
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-md-6">
+                        <a href="{{ url('manage-cards') }}">
+
+                            <div class="card" style="border-radius: 20px;">
+
+
+                            <div class="card-body bg-warning">
+
+                                <h5 class="card-title text-white">My Cards</h5>
+                                <br>
+                                <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
+                                <p class="card-text">
+                                    <p class="text-white mb-0" style="font-size: 20px;">Loan Owner <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
+
+                                </p>
+                            </div>
+                        </div> <!-- end card-box-->
+                        </a>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+
+
+                    <div class="col-md-3 ">
+                        <a href="{{ url('mobile-money') }}"><div class="widget-rounded-circle card-box" style="border-radius: 20px; background-color: #0561ad">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white ">
+                                        <i class="fe-log-out font-20 avatar-title text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div> <!-- end col-->
+
+                    <div class="col-md-3 ">
+                        <a href="{{ url('airtime-payment') }}">
+                        <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white">
+                                        <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div> <!-- end col-->
+
+
+                    <div class="col-md-3 ">
+                        <a href="{{ url('korpone-loane-payment') }}">
+                        <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
+                            <div class=" row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white ">
+                                        <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div>
+
+
+                    <div class="col-md-3 ">
+                        <a href="{{ url('cardless-payment') }}">
+                        <div class="widget-rounded-circle card-box custom-color-gold bg-success" style="border-radius: 20px;">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white">
+                                        <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div> <!-- end col-->
+
+
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="card" style="border-radius: 20px;">
+                            <div class="border mt-0 rounded">
+                                <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest Transactions</h4>
+
+                                <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                                    {{--  <div class="col-md-1"></div>  --}}
+                                    <div class="col-md-12">
+                                        <select name="" class="form-control" id="">
+                                            <option value="">04785505050</option>
+                                            <option value="">04785505050</option>
+                                        </select>
+                                    </div>
+                                    {{--  <div class="col-md-1"></div>  --}}
+                                </div>
+
+                                <legend></legend>
+
+                                <div class="table-responsive" style="height: 360px; zoom:0.9">
+                                    <table class="table table-centered table-nowrap mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="avatar-sm rounded bg-soft-blue">
+                                                        <i class="fe-arrow-down-left font-4 avatar-title text-blue"></i>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Deposit</a>
+                                                    <small class="d-block">02/03/2021</small>
+                                                </td>
+
+                                                <td class="text-right font-weight-semibold text-primary">
+                                                    SLL 90,039.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td >
+                                                    <div class="avatar-sm rounded bg-soft-danger">
+                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">RTGS Transfer</a>
+                                                    <small class="d-block">03/01/2021</small>
+                                                </td>
+                                                <td class="text-right font-weight-semibold text-danger">
+                                                    SLL 5,700.00
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                    <td >
+                                                        <div class="avatar-sm rounded bg-soft-danger">
+                                                            <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
+                                                        </div>
+                                                    </td>
+
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
+                                                    <small class="d-block">02/06/2021</small>
+                                                </td>
+                                                <td class="text-right font-weight-semibold text-danger">
+                                                    SLL 888.00
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+                            </div> <!-- end .border-->
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-4">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}" alt="First slide">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}" alt="Second slide">
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}" alt="Third slide">
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+            </div>
+
+        </div>
+
+
 
         <div class="row">
 
@@ -62,7 +339,7 @@
 
             <!-- end row-->
 
-
+{{--
 
             <div class="container-fluid">
                 <div class="">
@@ -71,7 +348,7 @@
 
                         <div class="col-lg-4">
                             <div class="card-box ribbon-box" style="border-radius: 20px;">
-                                {{-- <div class="ribbon ribbon-blue float-left"><i class="mdi mdi-access-point mr-1"></i> Balance</div> --}}
+
                                 <i class="fas fa-eye  float-right eye-open" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
                                 <i class="fa fa-eye-slash  float-right eye-close" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
                                     <h4 class="ribbon ribbon-blue float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4>
@@ -80,73 +357,15 @@
                                     <br>
                                     <p class="text-primary mb-0">Click the amount to see your accounts. <span class="float-right"><i class="fa fa-caret-up text-success mr-1"></i>10.25%</span></p>
 
-                                {{-- <div class="ribbon ribbon-blue float-left"><i class="mdi mdi-access-point mr-1"></i> Balance</div>
-                                <h5 class="text-blue float-right mt-0">Balance</h5>
-                                <div class="ribbon-content">
-                                    <p class="mb-0 text-primary" style="font-size: 30px;" href="{{ url('account-enquiry') }}">SLL 4,000000308</p>
-                                    <br><br><br>
-                                    <h5 class="text-primary ">Updated according to the total amount in your balance. Click on amount to see your list of accounts</h5>
-                                </div> --}}
+
                             </div>
                         </div>
-                        {{-- <div class="col-md-4 col-xl-4">
-                            <div class=" card-box">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <h4 class=" font-15">Balance</h4> --}}
 
-                                        {{-- <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
-                                        </div> --}}
-                                    {{-- </div>
-                                    <div class="col-8">
-                                        <i class="fa fa-info-circle text-muted float-right" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                                        <div class="text-right">
-                                            <h3 class=" text-white"><span></span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                                <div class="row">
-                                    <h2 class="text-primary my-3 text-center">SLL <span>31,570</span></h2>
-                                </div>
-                                <div class="row">
-                                    <h6 class="text-primary font-7">Updated approximatelyy every 15 minutes</h6>
-                                </div>
-                            </div> <!-- end widget-rounded-circle-->
-                        </div> <!-- end col--> --}}
 
                         <div class="col-md-4 col-xl-4">
                             <div class="card" style="border-radius: 20px">
 
-                            {{-- <div class="widget-rounded-circle card-box bg-warning">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white">
-                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span> &nbsp; Other Bank Transfer</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle--> --}}
 
-                            {{-- <div class="row mt-4 text-center">
-                                <div class="col-4">
-                                    <p class="text-muted font-14 mb-1 text-truncate">Target</p>
-                                    <h4><i class="fe-arrow-down text-danger mr-1"></i>$3.8k</h4>
-                                </div>
-                                <div class="col-4">
-                                    <p class="text-muted font-14 mb-1 text-truncate">Last week</p>
-                                    <h4><i class="fe-arrow-up text-success mr-1"></i>$1.1k</h4>
-                                </div>
-                                <div class="col-4">
-                                    <p class="text-muted font-14 mb-1 text-truncate">Last Month</p>
-                                    <h4><i class="fe-arrow-down text-danger mr-1"></i>$25k</h4>
-                                </div>
-                            </div> --}}
                             <div class="mt-3 chartjs-chart">
                                 <canvas id="projections-actuals-chart" data-colors="#0561ad,#e3eaef" height="170px"></canvas>
                             </div>
@@ -154,30 +373,13 @@
                         </div> <!-- end col-->
 
 
-                        {{-- <div class="col-md-3 col-xl-3">
-                            <div class="widget-rounded-circle card-box bg-danger">
-                                <div class=" row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>&nbsp; Mobile Money</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </div> --}}
-
 
                         <div class="col-md-4">
                             <a href="{{ url('manage-cards') }}">
-                            {{--  <div class="card" style="background-color: #0561ad; border-radius: 20px;">  --}}
+
                                 <div class="card" style="border-radius: 20px; background-image: url({{ asset('assets/images/cards/atm-bg.png') }})">
 
-                                {{-- <img class="card-img-top img-fluid" src="../assets/images/small/img-5.jpg" alt="Card image cap"> --}}
+
                                 <div class="card-body">
 
                                     <h5 class="card-title text-white">My Cards</h5>
@@ -191,22 +393,6 @@
                             </div> <!-- end card-box-->
                             </a>
                         </div>
-                        {{-- <div class="col-md-3 col-xl-3">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col--> --}}
 
 
 
@@ -298,23 +484,6 @@
                             </a>
                         </div> <!-- end col-->
 
-                        {{-- <div class="col-md-3 col-xl-3">
-                    <div class="widget-rounded-circle card-box">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="avatar-md rounded-circle bg-soft-primary border-primary border">
-                                    <i class="fe-log-out font-20 avatar-title text-primary"></i>
-                                </div>
-                            </div>
-                            <div class="col-8">
-                                <div class="text-right">
-                                    <h3 class="mt-1"><span >Funds Transactions</span></h3>
-                                </div>
-                            </div>
-                        </div> <!-- end row-->
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col--> --}}
-
 
 
                     </div>
@@ -322,7 +491,7 @@
             </div>
 
             <div class="col-md-12 col-xl-12">
-                {{-- <h5 class="page-title element">ACCOUNTS</h5> --}}
+
                 <div class="row">
 
 
@@ -339,10 +508,7 @@
                                                     <div class="avatar-sm rounded bg-soft-blue">
                                                         <i class="fe-arrow-down-left font-4 avatar-title text-blue"></i>
                                                     </div>
-                                                    {{-- <div class="avatar-md rounded-circle bg-white ">
-                                                        <span class="fe-arrow-down-left noti-icon text-danger"></span>
-                                                    &nbsp;&nbsp;
-                                                    </div> --}}
+
                                                 </td>
                                                 <td>
                                                     <a href="ecommerce-product-detail.html"
@@ -400,8 +566,8 @@
                         <div class="card" style="border-radius: 20px;">
                             <div class="border mt-0 rounded">
                                 <h4 class="header-title p-2 mb-0 text-dark" style="font-weight: bolder">Expense Categories</h4>
-<hr style="margin: 0px;">
-<legend></legend>
+                                <hr style="margin: 0px;">
+                                <legend></legend>
                                 <div class="table-responsive container" style="height: 360px; min-height:285px; zoom:0.9">
 
 
@@ -452,106 +618,7 @@
                                         <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
 
-                                    {{--  <table class="table table-centered table-nowrap mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-down-left font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Food and Groceries</a>
-                                                    <small class="d-block">02/03/2021</small>
-                                                </td>
 
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 90,039.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Electricity</a>
-                                                    <small class="d-block">03/01/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 5,700.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                    <td >
-                                                        <div class="avatar-sm rounded bg-soft-danger">
-                                                            <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                        </div>
-                                                    </td>
-
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Personal</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Fees</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Gifts and Donations</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Travel</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>  --}}
                                 </div>
                                 <!-- end table-responsive -->
                             </div> <!-- end .border-->
@@ -561,277 +628,6 @@
 
                     <div class="col-md-4 col-xl-4">
 
-                        {{-- <div class="col-xl-4 col-lg-5"> --}}
-
-                        {{-- <div class="card">
-                            <div class="card-body">
-
-                                <h5 class="card-title font-16 mb-3">Accounts</h5>
-
-                                <ul class="nav nav-pills navtab-bg nav-justified">
-                                    <li class="nav-item">
-                                        <a href="#i_have" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                            I HAVE
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#i_owe" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                            I OWE
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#investments" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            INVESTMENT
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane show active" id="i_have">
-
-
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-success">MY CURRENT & SAVINGS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-info">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="{{ url('account-enquiry') }}"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-info">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-info">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-info">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-info">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Red Hoodie for
-                                                                    men</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                USD 5,700.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-info">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Designer Awesome
-                                                                    T-Shirt</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                SLL 888.00
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
-
-                                    </div>
-                                    <div class="tab-pane" id="i_owe">
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Red Hoodie for
-                                                                    men</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                USD 5,700.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Designer Awesome
-                                                                    T-Shirt</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                SLL 888.00
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
-
-
-                                    </div>
-                                    <div class="tab-pane" id="investments">
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-success">INVESTMENTS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-info">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="{{ url('account-enquiry') }}"
-                                                                    class="text-body font-weight-semibold">Fixed Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-info">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-info"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-
-                        {{-- </div> --}}
                         <div class="card " style="border-radius: 20px;">
                             <div class="border mt-0 rounded">
                                 <h4 class="header-title p-2 mb-0 text-dark" style="font-weight: bolder">Forex Rates</h4>
@@ -933,7 +729,7 @@
 
                 </div>
 
-            </div>
+            </div>  --}}
 
             {{-- <div class="row ">
 
@@ -1105,7 +901,7 @@
 
     @section('scripts')
         <!-- Plugins js-->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="{{ asset('assets/js/chart.js') }}"></script>
 
 
         <!-- Tour page js -->
@@ -1577,17 +1373,17 @@
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(
                                             `
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <tr>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <td style="zoom: 0.8;">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                    <tr>
+                                                                                                                                                                                                                                                        <td style="zoom: 0.8;">
+                                                                                                                                                                                                                                                            <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                            /
+                                                                                                                                                                                                                                                            <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </tr>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    `
+                                                                                                                                                                                                                                                        </td>
+                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                                                                                                                                                                    </tr>
+                                                                                                                                                                                                                                                `
                                         );
                                     });
                                 }
