@@ -468,19 +468,30 @@
                                                         <b class="col-4 text-primary"> Amount &nbsp; <span
                                                                 class="text-danger">*</span></b>
 
+
+                                                        <input type="text" class="form-control col-2" id="amount"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                        required>
+
                                                         <div class="col-2">
                                                             <div class="input-group mb-2">
+
                                                                 <div class="input-group-prepend" style="margin-right:-1px;">
                                                                     <select name="" class="input-group-text" id="select_currency">
                                                                         <option value=""></option>
+                                                                        <option value="SLL">SLL</option>
+                                                                        <option value="EUR">EURO</option>
+                                                                        <option value="USD">USD</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                        <input type="text" class="form-control col-6" id="amount"
+
+                                                        <input type="text" class="form-control col-2" id="amount"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                             required>
+
 
 
                                                     </div>
