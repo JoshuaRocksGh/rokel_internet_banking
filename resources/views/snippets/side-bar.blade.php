@@ -96,7 +96,7 @@
 
                                     </ul>
                                 </div>
-                            </li>
+                            </li> --}}
                             {{-- <li>
                                 <a href="#sidebarBudgeting" data-toggle="collapse">
                                     <span>Budgeting</span>
@@ -210,9 +210,9 @@
                             <li>
                                 <a href="{{ url('korpone-loane-payment') }}">Korpor / Salone Link</a>
                             </li>
-                            {{-- <li>
-                                <a href="{{ url('pay-again') }}">Pay Again</a>
-                            </li> --}}
+                            <li>
+                                <a href="{{ url('utility-payment') }}">Utilities</a>
+                            </li>
                             <li>
                                 <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
                             </li>

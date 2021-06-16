@@ -77,7 +77,7 @@ class GetAccountDescription extends Controller
             "accountNumber"    => $account_no
         ];
 
-        // return $data;
+        return $data;
 
         $response = Http::post(env('API_BASE_URL') ."/account/getAccountDescription",$data);
 

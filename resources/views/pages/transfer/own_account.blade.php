@@ -311,9 +311,10 @@
                                                     <div class="col-md-9">
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><b class="text-primary">Transfer From
-                                                                    &nbsp; </b> <span class="text-danger">*</span></label>
-                                                            <select class="form-control col-md-8" id="from_account"
+                                                            <b class="col-md-12 text-primary mb-1">Account from which the money will
+                                                                be tansfered
+                                                                &nbsp; <span class="text-danger">*</span> </b>
+                                                            <select class="form-control col-md-12" id="from_account"
                                                                 required>
                                                                 <option value="">Select Account</option>
 
@@ -326,9 +327,9 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><b class="text-primary">Transfer To
-                                                                    &nbsp;</b><span class="text-danger">*</span></label>
-                                                            <select class="form-control col-md-8" id="to_account" required>
+                                                            <b class="col-md-12"><b class="text-primary">Account which will receive the money
+                                                                    &nbsp;</b><span class="text-danger">*</span></b>
+                                                            <select class="form-control col-md-12" id="to_account" required>
                                                                 <option value="">Select Account</option>
 
                                                                 {{-- <option value="Currenct Account~004004100435270140~USD~800">

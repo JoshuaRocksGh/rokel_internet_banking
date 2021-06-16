@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 class paymentController extends Controller
 {
     //
+    public function utilities() {
+        return view('pages.payments.utility');
+    }
 
     public function list_of_payments()
     {
@@ -57,7 +60,7 @@ class paymentController extends Controller
         return view("pages.payments.bulk_upload_payment");
     }
 
-    
+
 
     //method to return the cardless payment screen
     public function cardless_payment(){
