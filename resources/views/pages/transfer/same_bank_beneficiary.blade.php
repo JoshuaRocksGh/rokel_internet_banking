@@ -43,151 +43,214 @@
                 <div class="card-body ">
                     <div class="row">
 
-                        <div class="col-md-1"></div>
+                        {{-- <div class="col-md-1"></div> --}}
 
-                        <div class="col-md-10 m-2 card_box_shadow"
+                        <div class="col-md-6 m-2 card_box_shadow" id="transaction_summary"
+                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                            <br><br><br>
+
+                            <div class="row"></div>
+
+                            {{-- <div class="col-md-1"></div> --}}
+
+                            <div class="col-md-12">
+                                <form action="#" id="same_bank_beneficiary_form_summary" autocomplete="off"
+                                    aria-autocomplete="off">
+
+                                    <div class="col-md-12">
+                                        <div class="card card-body">
+
+                                            <h4 class="text-primary"> Account Details</h4>
+                                            <hr>
+
+                                            <div class="form-group row mb-2">
+                                                <b class="col-md-6 ">Account Number:</b>
+                                                <span class="col-md-6 text-primary" id="display_account_number"></span>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <b class=" col-md-6"> Account Name:</b>
+                                                <span class="col-md-6 text-primary" id="display_account_name"></span>
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <b class="col-md-6 "> Account Currency:</b>
+                                                <span class="col-md-6 text-primary" id="display_account_currency"></span>
+                                            </div>
+                                            <hr>
+
+                                            <h4 class="text-primary"> Beneficiary Details</h4>
+                                            <hr>
+
+                                            <div class="form-group row mb-2">
+
+                                                <b class="col-md-6 "> Beneficiary Name:</b>
+                                                <span class="col-md-6 text-primary" id="display_beneficiary_name"></span>
+
+
+
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <b class="col-md-6 "> Beneficiary Phone:</b>
+                                                <span class="col-md-6 text-primary"
+                                                    id="display_beneficiary_mobile_number"></span>
+
+
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <b class="col-md-6"> Beneficiary Email:</b>
+                                                <span class="col-md-6 text-primary" id="display_beneficiary_Address"></span>
+
+
+                                            </div>
+
+                                            <div class="form-group row mb-2">
+                                                <b class="col-md-6">Email beneficiary when a transfer is made? </b>
+                                                <span class="col-md-6 text-primary" id="display_transfer_email"></span>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div class="form-group">
+
+                                <button type="button" class="btn btn-rounded btn-secondary mb-2" id="save_beneficiary_back">
+                                    <i class="fe-arrow-left"></i> &nbsp; Back</button>
+
+
+
+                                <button type="submit" class="btn btn-primary btn-rounded float-right">Add Beneficiary &nbsp;
+                                    <i class="fe-arrow-right"></i></button>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-md-6 m-2 card_box_shadow" id="transaction_form"
                             style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                             <br><br><br>
                             <div class="row ">
 
-                                <div class="col-md-1"></div>
+                                {{-- <div class="col-md-1"></div> --}}
 
-                                <div class="col-md-10 ">
+                                <div class="col-md-12 ">
                                     <form action="#" id="same_bank_beneficiary_form" autocomplete="off"
                                         aria-autocomplete="off">
                                         {{-- @csrf --}}
-                                        <div class="row">
+                                        <div class="col-md-12">
 
-
-
-
-                                            <div class="col-md-6">
-                                                <h4 class="text-primary"> Account Details</h4>
-                                                <hr>
-                                                <div class="form-group row">
-                                                    {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
-                                                    <b class="col-4 text-primary">Account Number &nbsp; <span
-                                                            class="text-danger">*</span></b>
-                                                    <div class="col-7">
-                                                        <input class="form-control" type="text" class="form-control"
-                                                            id="account_number"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                            placeholder="Account Number" required>
-                                                    </div>
-
+                                            <h4 class="text-primary"> Account Details</h4>
+                                            <hr>
+                                            <div class="form-group row">
+                                                {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
+                                                <b class="col-md-4 text-primary">Account Number &nbsp; <span
+                                                        class="text-danger">*</span></b>
+                                                <div class="col-md-7">
+                                                    <input class="form-control" type="text" class="form-control"
+                                                        id="account_number"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                        placeholder="Account Number" required>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <b class=" col-4 text-primary"> Account Name &nbsp; <span
-                                                            class="text-danger">*</span></b>
-                                                    <div class="col-7">
-                                                        <input type="text" class="form-control" id="account_name"
-                                                            parsley-trigger="change" placeholder="Account Name" readonly
-                                                            required>
-                                                    </div>
 
+                                            </div>
+                                            <div class="form-group row">
+                                                <b class=" col-md-4 text-primary"> Account Name &nbsp; <span
+                                                        class="text-danger">*</span></b>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control" id="account_name"
+                                                        parsley-trigger="change" placeholder="Account Name" readonly
+                                                        required>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <b class="col-4 text-primary"> Account Currency &nbsp; <span
-                                                            class="text-danger">*</span></b>
-                                                    <div class="col-7">
-                                                        <input type="hidden" class="form-control" readonly value=""
-                                                            id="select_currency">
-                                                        <input type="text" class="form-control" readonly value=""
-                                                            id="select_currency_i">
-                                                    </div>
 
+                                            </div>
 
-
+                                            <div class="form-group row">
+                                                <b class="col-md-4 text-primary"> Account Currency &nbsp; <span
+                                                        class="text-danger">*</span></b>
+                                                <div class="col-md-7">
+                                                    <input type="hidden" class="form-control" readonly value=""
+                                                        id="select_currency">
+                                                    <input type="text" class="form-control" readonly value=""
+                                                        id="select_currency_i">
                                                 </div>
+
 
 
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <h4 class="text-primary"> Beneficiary Details</h4>
-                                                <hr>
+                                            <h4 class="text-primary"> Beneficiary Details</h4>
+                                            <hr>
 
+                                            <div class="form-group row">
 
-                                                <div class="form-group row">
-
-                                                    <b class="col-4 text-primary"> Beneficiary Name &nbsp;<span
-                                                            class="text-danger">*</span></b>
-                                                    <div class="col-7">
-                                                        <input type="text" class="form-control" id="beneficiary_name"
-                                                            parsley-trigger="change" placeholder="Beneficiary Name"
-                                                            required>
-                                                    </div>
-
+                                                <b class="col-md-4 text-primary"> Beneficiary Name &nbsp;<span
+                                                        class="text-danger">*</span></b>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control" id="beneficiary_name"
+                                                        parsley-trigger="change" placeholder="Beneficiary Name" required>
                                                 </div>
 
-
-                                                <div class="form-group row">
-                                                    <b class="col-4 text-primary"> Beneficiary Phone <span
-                                                            class="text-danger">*</span></b>
-                                                    <div class="col-7">
-                                                        <input type="text" class="form-control"
-                                                            id="beneficiary_mobile_number"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                            parsley-trigger="change" placeholder="Beneficiary Mobile Number"
-                                                            required>
-                                                    </div>
-
-                                                </div>
-                                                <div class="form-group row">
-                                                    <b class="col-4 text-primary"> Beneficiary Address &nbsp; <span
-                                                            class="text-danger">*</span></b>
-                                                    <div class="col-7">
-                                                        <input type="text" class="form-control" id="beneficiary_address"
-                                                            parsley-trigger="change" placeholder="Beneficiary Address"
-                                                            required>
-                                                    </div>
-
-                                                </div>
-                                                <div class="form-group row">
-                                                    <b class="col-4 text-primary">Beneficiary Email &nbsp; <span
-                                                            class="text-danger">*</span></b>
-                                                    <div class="col-7">
-                                                        <input type="email" class="form-control" id="beneficiary_email"
-                                                            parsley-trigger="change" placeholder="Beneficiary Email"
-                                                            required>
-                                                    </div>
-
+                                            </div>
+                                            <div class="form-group row">
+                                                <b class="col-md-4 text-primary"> Beneficiary Phone <span
+                                                        class="text-danger">*</span></b>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control" id="beneficiary_mobile_number"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                        parsley-trigger="change" placeholder="Beneficiary Mobile Number"
+                                                        required>
                                                 </div>
 
-
-
-
-                                                <div class="form-group">
-
-                                                    <div class="checkbox checkbox-primary mb-2" id="transfer_email">
-                                                        <input id="checkbox2" type="checkbox">
-                                                        <label for="checkbox2">
-                                                            Email beneficiary when a transfer is made
-                                                        </label>
-                                                    </div>
-
+                                            </div>
+                                            <div class="form-group row">
+                                                <b class="col-md-4 text-primary"> Beneficiary Address &nbsp; <span
+                                                        class="text-danger">*</span></b>
+                                                <div class="col-md-7">
+                                                    <input type="text" class="form-control" id="beneficiary_address"
+                                                        parsley-trigger="change" placeholder="Beneficiary Address" required>
                                                 </div>
 
-                                                <p class="sub-header font-13">
+                                            </div>
+                                            <div class="form-group row">
+                                                <b class="col-md-4 text-primary">Beneficiary Email &nbsp; <span
+                                                        class="text-danger">*</span></b>
+                                                <div class="col-md-7">
+                                                    <input type="email" class="form-control" id="beneficiary_email"
+                                                        parsley-trigger="change" placeholder="Beneficiary Email" required>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-4"></div>
+
+                                                <div class="checkbox checkbox-primary m-2 col-md-7" id="transfer_email">
+                                                    <input id="checkbox2" type="checkbox">
+                                                    <label for="checkbox2">
+                                                        Email beneficiary when a transfer is made
+                                                    </label>
+                                                </div>
+
+                                            </div>
+
+                                            {{-- <p class="sub-header font-13">
                                                     Providing beneficairy email and checking
 
-                                                </p>
+                                                </p> --}}
 
-                                                <div class="form-group text-right ">
+                                            <div class="form-group text-right ">
 
-                                                    <button class="btn btn-primary waves-effect waves-light btn-rounded "
-                                                        type="submit" id="save_beneficiary">Next<i
-                                                            class="fe-arrow-right"></i></button>
-                                                </div>
-
-
-
-
+                                                <button class="btn btn-primary waves-effect waves-light btn-rounded "
+                                                    type="submit" id="save_beneficiary">Next &nbsp;<i
+                                                        class="fe-arrow-right"></i></button>
                                             </div>
-
-                                            <br>
-
-
 
                                         </div>
 
@@ -201,7 +264,7 @@
 
 
 
-                                <div class="col-md-1"></div>
+                                {{-- <div class="col-md-1"></div> --}}
                                 <!-- end row -->
 
 
@@ -228,7 +291,44 @@
 
                         </div> --}}
 
-                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <br>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
+                                        style="min-height: 120px; max-height: auto;">
+                                        <div class="carousel-inner" role="listbox">
+                                            <div class="carousel-item active">
+                                                <img class="d-block img-fluid" style="min-height: 100%"
+                                                    src="{{ asset('assets/images/ads/rokel.jpeg') }}" alt="First slide">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block img-fluid" style="height: auto;"
+                                                    src="{{ asset('assets/images/ads/sim_korpor_ad_6.jpeg') }}"
+                                                    alt="Second slide">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block img-fluid" style="min-height"
+                                                    src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
+                                                    alt="Third slide">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
 
                     </div> <!-- end card-body -->
 
