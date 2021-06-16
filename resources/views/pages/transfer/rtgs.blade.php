@@ -87,7 +87,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-7 rtgs_summary_card m-2" id="transaction_summary"
+                                <div class="col-md-7  m-2" id="transaction_summary"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <div class="row">
                                         <div class="col-md-1"></div>
@@ -310,7 +310,7 @@
 
                                 </div>
 
-                                <div class="col-md-7 rtgs_card m-2" id="transaction_form"
+                                <div class="col-md-7 m-2" id="transaction_form"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br><br>
 
@@ -471,9 +471,9 @@
                                                         <div class="col-2">
                                                             <div class="input-group mb-2">
                                                                 <div class="input-group-prepend" style="margin-right:-1px;">
-                                                                    <div
-                                                                        class="input-group-text display_from_account_currency">
-                                                                        CUR</div>
+                                                                    <select name="" class="input-group-text" id="select_currency">
+                                                                        <option value=""></option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -729,7 +729,7 @@
                                 {{-- LEFT CARD --}}
 
 
-                                <div class="col-md-4 m-2 rtgs_card_right d-none d-sm-block" id="related_information_display"
+                                <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
 
@@ -968,6 +968,17 @@
                                     value: data[index].isoCode + '~' + data[index]
                                         .description
                                 }).text(data[index].isoCode + '~' + data[index].description));
+
+                                if(cur == data[index].currCode){
+
+                                $('#select_currency').append($('<option selected>', {
+                                    value: data[index].currCode + '~' + data[index].description
+                                }).text(data[index].isoCode + '~' + data[index].description));
+                                }else{
+                                $('#select_currency').append(`<option >
+                                    ${data[index].isoCode + '~' + data[index].description }
+                                </option>`)
+                                }
 
                             });
 
