@@ -126,29 +126,30 @@
 
                                                     <span class="badge badge-primary float-right" style="cursor: pointer"><a
                                                         href="{{ url('add-local-bank-beneficiary') }}"
-                                                        class="text-white">Create
+                                                        class="text-white" id="add_beneficiary_badge">Create
                                                         Beneficiary</a>
                                                 </span>
                                                 </div>
+                                                <hr>
 
                                             </div>
-                                                <div class="row" id="saved_benefciary_form">
+                                                <div class="row" id="saved_beneficiary_form">
 
                                                     <div class="col-md-12">
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary Name</b>
-                                                            <input type="text" class="form-control col-md-8 " id="" readonly>
+                                                            <input type="text" class="form-control col-md-8 " id="saved_beneficiary_name" readonly>
                                                         </div>
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
-                                                            <input type="text" class="form-control col-md-8 " id="" readonly>
+                                                            <input type="text" class="form-control col-md-8 " id="saved_account_number" readonly>
                                                         </div>
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary Email</b>
-                                                            <input type="text" class="form-control col-md-8 " id="" readonly>
+                                                            <input type="text" class="form-control col-md-8 " id="saved_beneficiary_email" readonly>
                                                         </div>
 
 
@@ -189,17 +190,7 @@
 
                                                             <select class="form-control col-md-8" id="category" required>
                                                                 <option value="">---Not Selected---</option>
-                                                                {{-- <option value="01~Travel">Travel</option>
-                                                                    <option value="02~Petty Cash">Petty Cash</option>
-                                                                    <option value="03~Salary">Salary</option>
-                                                                    <option value="04~Groceries">Groceries</option>
-                                                                    <option value="05~Allowances">Allowances</option>
-                                                                    <option value="06~Medical">Medical</option>
-                                                                    <option value="07~Vendor Payment">Vendor Payment
-                                                                    </option>
-                                                                    <option value="08~Insurance">Insurance</option>
-                                                                    <option value="09~Tax">Tax</option>
-                                                                    <option value="10~Others">Others</option> --}}
+
                                                             </select>
 
 
@@ -274,41 +265,92 @@
 
 
                                                 </div>
-                                                <div class="form-group">
-
-                                                    {{-- <table
-                                                            class="table-responsive table table-centered table-nowrap mb-0 from_account_display_info card">
-                                                            <tbody class="text-primary">
-                                                                <tr class="text-primary">
-
-                                                                    <td class="text-primary">
-                                                                        <a
-                                                                            class="text-body font-weight-semibold display_from_account_name text-primary"></a>
-                                                                        <small
-                                                                            class="d-block display_from_account_no text-primary"></small>
-                                                                    </td>
-
-                                                                    <td class="text-right font-weight-semibold text-primary">
-                                                                        <span
-                                                                            class="display_from_account_currency text-primary"></span>
-                                                                        <span
-                                                                            class="display_from_account_amount text-primary"></span>
-
-                                                                    </td>
-                                                                </tr>
 
 
-                                                            </tbody>
-                                                        </table> --}}
+                                                <div class=" row form-group" id="onetime_beneficiary_form">
+                                                    <div class="col-md-12">
+
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary"> Beneficiary A/C Name</b>
+                                                            <input type="text" class="form-control col-md-8 " id="onetime_beneficiary_name" placeholder="Enter Account Name">
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
+                                                            <input type="text" class="form-control col-md-8 " id="onetime_account_number" placeholder="Enter Account Number"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary"> Beneficiary Email</b>
+                                                            <input type="text" class="form-control col-md-8 " id="onetime_beneficiary_email" placeholder="Enter Beneficiary Email">
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary">Amount &nbsp; <span
+                                                                    class="text-danger">*</span></b>
+
+                                                            <div class="col-2">
+                                                                <div class="input-group mb-2">
+                                                                    <div class="input-group-prepend"
+                                                                        style="margin-right:-1px;">
+                                                                        <div
+                                                                            class="input-group-text display_from_account_currency">
+                                                                            CUR</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="text" class="form-control col-md-6" id="onetime_amount"
+                                                                placeholder="Amount: 0.00"
+                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                required>
+                                                        </div>
+                                                        <div class="form-group row mb-3">
+                                                            <b class="col-md-4 text-primary">Purpose of Transfer &nbsp;<span
+                                                                    class="text-danger">*</span></b>
+
+                                                            <input type="text" class="form-control col-md-8" id="onetime_purpose"
+                                                                placeholder="Enter purpose of transaction" required>
+
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary">Expense Category &nbsp; <span
+                                                                    class="text-danger">*</span></b>
+
+
+                                                            <select class="form-control col-md-8" id="onetime_category" required>
+                                                                <option value="">---Not Selected---</option>
+
+                                                            </select>
+
+
+                                                        </div>
+
+                                                        <div class="form-group row mb-3">
+                                                            <b class="col-md-4 text-primary ">Future Payment &nbsp;
+
+                                                            </b>
+
+                                                            <input type="date" class="form-control col-md-8"
+                                                                id="onetime_future_payement" required>
+
+                                                        </div>
+
+
+
+
+
+                                                    </div>
 
                                                 </div>
-
 
                                                 <div class="form-group text-right yes_beneficiary">
                                                     <button class="btn btn-primary btn-rounded" type="button"
                                                         id="next_button">
                                                         &nbsp; Next &nbsp;<i class="fe-arrow-right"></i></button>
                                                 </div>
+
 
                                                 <div class="form-group no_beneficiary">
                                                     <div class="alert alert-warning" role="alert">
@@ -844,7 +886,7 @@
                     console.log(response);
                     let data = response.data
                     if (response.data.length > 0) {
-                        $('.yes_beneficiary').show()
+                        {{--  $('.yes_beneficiary').show()  --}}
                         $('.no_beneficiary').hide()
                         $.each(data, function(index) {
                             //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
@@ -863,7 +905,7 @@
                             Currenct Account ~ 8888888888888~Joshua Amarfio
                         </option> --}}
                     } else {
-                        $('.yes_beneficiary').hide()
+                        {{--  $('.yes_beneficiary').hide()  --}}
                         $('.no_beneficiary').show()
                     }
 
@@ -881,6 +923,7 @@
             $(".hide_invoice").hide();
             $('.no_beneficiary').hide();
             $("#onetime_payment_details_form").show();
+            $('.badge').hide();
 
             setTimeout(function() {
                 from_account();
@@ -888,18 +931,22 @@
                 get_currency();
             }, 3000);
 
-            {{--  $("#customCheck1").click(function() {
+            $("#customCheck1").click(function() {
                 if ($(this).is(":checked")) {
                     console.log("Checkbox is checked.");
 
-                    $("#onetime_payment_details_form").toggle(500);
-                    $("#payment_details_form").hide();
+                    $("#onetime_beneficiary_form").toggle(500);
+                    $("#saved_beneficiary_form").hide();
+                    $(".badge").toggle(500);
+                    $(".select_beneficiary").hide();
                 } else if ($(this).is(":not(:checked)")) {
                     console.log("Checkbox is unchecked.");
-                    $("#payment_details_form").toggle(500);
-                    $("#onetime_payment_details_form").hide();
+                    $("#saved_beneficiary_form").toggle(500);
+                    $(".select_beneficiary").toggle(500);
+                    $("#onetime_beneficiary_form").hide();
+                    $(".badge").hide();
                 }
-            });  --}}
+            });
 
 
             // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
@@ -991,10 +1038,11 @@
             $('#schedule_payment_contraint_input').hide()
             $('.display_schedule_payment_date').text('N/A')
             $('#select_frequency').hide(),
-                $('#select_frequency_text').hide(),
+            $('#select_frequency_text').hide(),
 
-                $("#transaction_form").show()
-            $("#transaction_summary").hide()
+            $("#transaction_form").show();
+            $("#transaction_summary").hide();
+            $('#onetime_beneficiary_form').hide();
 
             {{-- $("#next_button").click(function(e) {
                     e.preventDefault()
