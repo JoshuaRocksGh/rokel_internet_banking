@@ -17,7 +17,7 @@
         <div class="col-md-7 col-xl-7" >
 
             <div class="card">
-                <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
 
 
                     <ul class="nav nav-tabs nav-bordered nav-justified">
@@ -129,7 +129,7 @@
                     <h5 class="card-title mb-0 text-white" id="currency_converter_tour">Currency Converter</h5>
                 </div>
                 <div id="cardCollpase5" class="collapse show" style="height: 370px; min-height:370; zoom: 0.9;">
-                    <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                    <div class="card-body" style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
 
 
 

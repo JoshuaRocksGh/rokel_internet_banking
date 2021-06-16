@@ -96,7 +96,7 @@
 
                                     </ul>
                                 </div>
-                            </li> --}}
+                            </li> 
                             {{-- <li>
                                 <a href="#sidebarBudgeting" data-toggle="collapse">
                                     <span>Budgeting</span>

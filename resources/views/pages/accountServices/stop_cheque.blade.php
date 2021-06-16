@@ -48,7 +48,7 @@
                     <div class="col-md-12">
                         <div class="row">
                         <div class=" col-md-7 m-2" id="request_form_div"
-                                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                             <br><br><br>
 
                                             <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
@@ -190,7 +190,7 @@
                         </div> <!-- end col -->
 
                         <div class="col-md-4 m-2" id="atm_request_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <br><br>
                                     <div class=" col-md-12 card card-body">
                                         {{-- <br><br> --}}
@@ -235,7 +235,7 @@
                                     </div>
                         </div>
 
-                        {{-- <div class="col-md-8 text-center success_message" id="request_detail_div" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                        {{-- <div class="col-md-8 text-center success_message" id="request_detail_div" style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-10">

@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="row" id="beneficiary_table" >
                                     <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class="p-3 mt-4 mt-lg-0 rounded">
                                         <br>
 

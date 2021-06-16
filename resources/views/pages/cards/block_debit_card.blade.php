@@ -84,7 +84,7 @@
 
                         <div class="cards_table row">
                             <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class="p-3 mt-4 mt-lg-0 rounded">
                                         <br>
 
@@ -156,7 +156,7 @@
                                         <div class="row" >
 
                                             <div class=" col-md-4 m-2" id="card_processing_request"
-                                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                         <br><br><br>
 
                                                         <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
@@ -279,7 +279,7 @@
 
 
                                             <div class="col-md-7 m-2" id="card_processing_page"
-                                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                         <br><br>
                                                         <div class=" col-md-12 card card-body">
                                                             {{-- <br><br> --}}

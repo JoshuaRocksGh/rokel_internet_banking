@@ -76,7 +76,7 @@
                                 {{-- SUMMARY FORM GOES HERE --}}
 
                                 <div class=" col-md-7 m-2" id="transaction_form"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <br>
 
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
@@ -151,62 +151,56 @@
                                                         </div>
 
 
+
+
                                                         <div class="form-group row">
 
-                                                            <b class="col-4 text-primary">Actual Amount &nbsp; <span
+                                                            <b class="col-md-4 text-primary">Actual Amount &nbsp; <span
                                                                     class="text-danger">*</span></b>
-    
-                                                                    <div class="" >
-                                                                        <div class="input-group mb-1">
-            
-                                                                            <div class="input-group-prepend" >
-                                                                                <select name="" class="input-group-text" id="select_currency">
-                                                                                    <option value="SLL" selected>SLL</option>
-                                                                                    <option value="EUR">EURO</option>
-                                                                                    <option value="USD">USD</option>
-                                                                                </select>
-                                                                            </div>
+
+                                                                    <div class="input-group mb-1 col-8" style="padding: 0px;">
+                                                                        <div class="input-group-prepend">
+                                                                            <select name="" class="input-group-text" id="select_currency__">
+                                                                                <option value="SLL" selected>SLL</option>
+                                                                                <option value="EUR">EURO</option>
+                                                                                <option value="USD">USD</option>
+                                                                            </select>
                                                                         </div>
-                                                                    </div>
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <input type="text" class="form-control col-6" id="amount"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
-                                                            required>
-    
-                                                         
-    
-    
+
+                                                                          &nbsp;&nbsp;
+                                                                          <input type="text" class="form-control " id="amount"
+                                                                          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
+                                                                          required>
+                                                                      </div>
+
+
                                                         </div>
 
                                                         <div class="form-group row">
 
                                                             <b class="col-4 text-primary"> Cur / Rate / Amount</b>
-    
-                                                                    <div class="" >
-                                                                        <div class="input-group mb-1">
-            
-                                                                            <div class="input-group-prepend" >
-                                                                                <select name="" class="input-group-text" id="select_currency__">
-                                                                                    <option value="SLL" selected>SLL</option>
-                                                                                    <option value="EUR">EURO</option>
-                                                                                    <option value="USD">USD</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
 
-                                                                    <input type="text" class="form-control readOnly col-2" value="1.00">
+                                                            <div class="input-group mb-1 col-8" style="padding: 0px;">
+                                                                <div class="input-group-prepend">
+                                                                    <select name="" class="input-group-text" id="select_currency__">
+                                                                        <option value="SLL" selected>SLL</option>
+                                                                        <option value="EUR">EURO</option>
+                                                                        <option value="USD">USD</option>
+                                                                    </select>
+                                                                </div>
+                                                                &nbsp;&nbsp;
+                                                                <div class="input-group-prepend">
+                                                                    <input type="text" class="form-control readOnly " value="1.00" style="width: 100px;">
+                                                                  </div>
+                                                                  &nbsp;&nbsp;
+                                                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                              </div>
 
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <input type="text" class="form-control  col-4" id="amount" readonly required>
-    
-                                                         
-    
-    
+
                                                         </div>
-                                                        
 
-                                                   
+
+
 
                                                         <div class="form-group row mb-3">
                                                             <b class="col-md-4 text-primary">Purpose of Transfer &nbsp;<span
@@ -320,81 +314,58 @@
                                                             <input type="text" class="form-control col-md-8 " id="onetime_beneficiary_email" placeholder="Enter Beneficiary Email">
                                                         </div>
 
+
+
+
                                                         <div class="form-group row">
 
-                                                            <b class="col-4 text-primary">Actual Amount &nbsp; <span
+                                                            <b class="col-md-4 text-primary">Actual Amount &nbsp; <span
                                                                     class="text-danger">*</span></b>
-    
-                                                                    <div class="" >
-                                                                        <div class="input-group mb-1">
-            
-                                                                            <div class="input-group-prepend" >
-                                                                                <select name="" class="input-group-text" id="select_currency">
-                                                                                    <option value="SLL" selected>SLL</option>
-                                                                                    <option value="EUR">EURO</option>
-                                                                                    <option value="USD">USD</option>
-                                                                                </select>
-                                                                            </div>
+
+                                                                    <div class="input-group mb-3 col-8" style="padding: 0px;">
+                                                                        <div class="input-group-prepend">
+                                                                            <select name="" class="input-group-text" id="select_currency__">
+                                                                                <option value="SLL" selected>SLL</option>
+                                                                                <option value="EUR">EURO</option>
+                                                                                <option value="USD">USD</option>
+                                                                            </select>
                                                                         </div>
-                                                                    </div>
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <input type="text" class="form-control col-6" id="amount"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
-                                                            required>
-    
-                                                         
-    
-    
+
+                                                                          &nbsp;&nbsp;
+                                                                          <input type="text" class="form-control " id="amount"
+                                                                          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
+                                                                          required>
+                                                                      </div>
+
+
                                                         </div>
 
                                                         <div class="form-group row">
 
                                                             <b class="col-4 text-primary"> Cur / Rate / Amount</b>
-    
-                                                                    <div class="" >
-                                                                        <div class="input-group mb-1">
-            
-                                                                            <div class="input-group-prepend" >
-                                                                                <select name="" class="input-group-text" id="select_currency__">
-                                                                                    <option value="SLL" selected>SLL</option>
-                                                                                    <option value="EUR">EURO</option>
-                                                                                    <option value="USD">USD</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
 
-                                                                    <input type="text" class="form-control readOnly col-2" value="1.00">
-
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <input type="text" class="form-control  col-4" id="amount" readonly required>
-    
-                                                         
-    
-    
-                                                        </div>
-                                                        
-
-
-                                                        <div class="form-group row">
-                                                            <b class="col-md-4 text-primary">Amount &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-
-                                                            <div class="col-2">
-                                                                <div class="input-group mb-2">
-                                                                    <div class="input-group-prepend"
-                                                                        style="margin-right:-1px;">
-                                                                        <div
-                                                                            class="input-group-text display_from_account_currency">
-                                                                            CUR</div>
-                                                                    </div>
+                                                            <div class="input-group mb-3 col-8" style="padding: 0px;">
+                                                                <div class="input-group-prepend">
+                                                                    <select name="" class="input-group-text" id="select_currency__">
+                                                                        <option value="SLL" selected>SLL</option>
+                                                                        <option value="EUR">EURO</option>
+                                                                        <option value="USD">USD</option>
+                                                                    </select>
                                                                 </div>
-                                                            </div>
-                                                            <input type="text" class="form-control col-md-6" id="onetime_amount"
-                                                                placeholder="Amount: 0.00"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required>
+                                                                &nbsp;&nbsp;
+                                                                <div class="input-group-prepend">
+                                                                    <input type="text" class="form-control readOnly " value="1.00" style="width: 100px;">
+                                                                  </div>
+                                                                  &nbsp;&nbsp;
+                                                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                              </div>
+
+
                                                         </div>
+
+
+
+
 
                                                         <div class="form-group row mb-3">
                                                             <b class="col-md-4 text-primary">Purpose of Transfer &nbsp;<span
