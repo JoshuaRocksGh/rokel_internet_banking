@@ -155,7 +155,7 @@
                                     <div class="modal-body">
                                         <div class="row" >
 
-                                            <div class=" col-md-4 rtgs_card m-2" id="card_processing_request"
+                                            <div class=" col-md-4 m-2" id="card_processing_request"
                                                         style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                                         <br><br><br>
 
@@ -278,7 +278,7 @@
                                             </div> <!-- end col -->
 
 
-                                            <div class="col-md-7 rtgs_card_right m-2" id="card_processing_page"
+                                            <div class="col-md-7 m-2" id="card_processing_page"
                                                         style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                                         <br><br>
                                                         <div class=" col-md-12 card card-body">

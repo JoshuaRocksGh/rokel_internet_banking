@@ -244,10 +244,10 @@
                                                 <div class="modal-header">
                                                     <h3 class="modal-title text-center text-primary" id="myCenterModalLabel ">ENTER TRANSACTION PIN</h3>
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                   
+
                                                 </div>
                                                 <div class="modal-body">
-                                                   
+
                                                   <div class="row">
                                                     <div class="col-md-2"></div>
                                                     <div class="col-md-9  text-center">
@@ -298,7 +298,7 @@
 
                                 </div>
 
-                                <div class=" col-md-7 rtgs_card m-2" id="transaction_form"
+                                <div class=" col-md-7 m-2" id="transaction_form"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br><br>
 
@@ -862,7 +862,7 @@
                                 {{-- <button class="m-2 btn btn-info d-none d-sm-block">Related Information</button> --}}
                                 {{-- LEFT CARD --}}
 
-                                <div class=" col-md-4 other_card_right rtgs_card_right m-2 d-none d-sm-block"
+                                <div class=" col-md-4 other_card_right m-2 d-none d-sm-block"
                                     id="related_information_display"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
@@ -1148,7 +1148,7 @@
                                     if (response.data.length > 0) {
                                         $('.yes_beneficiary').show()
                                         $('.no_beneficiary').hide()
-    
+
                                         $.each(data, function(index) {
                                             //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
                                             $('#to_account').append($('<option>', {
@@ -1166,9 +1166,9 @@
                                                 ' - ' + data[index].BEN_ACCOUNT + ' - ' + data[
                                                     index]
                                                 .BEN_ACCOUNT_CURRENCY));
-    
+
                                         });
-    
+
                                     } else {
                                         $('.yes_beneficiary').hide()
                                         $('.no_beneficiary').show()
@@ -1205,7 +1205,7 @@
                             get_currency();
                         }, 2000)
 
-                     
+
 
                         $("#onetime_beneficiary_form").click(function() {
                             if ($(this).is(":checked")) {
@@ -1220,7 +1220,7 @@
                             }
                         })
 
-                     
+
 
 
 
@@ -1256,9 +1256,9 @@
                         console.log(beneficiary_type);
 
 
-                      
-                        
-                      
+
+
+
 
 
                         $("#amount").keyup(function() {
@@ -1323,7 +1323,7 @@
                         });
 
 
-                    
+
 
 
 
@@ -1407,7 +1407,7 @@
                                     'success'
                                 );
                             }else{
-                              
+
                             }
                         });
 
@@ -1428,7 +1428,7 @@
                                 var transfer_amount = $('#amount').val()
                                 var category = $('#category').val().split('~')
                                 var purpose = $('#purpose').val()
-                               
+
 
                                 var from_account_ = from_account[2];
                                 var to_account_ = to_account[2];
@@ -1454,7 +1454,7 @@
                                     $('#confirm_button').attr('disabled', true);
 
 
-                             
+
                                 $.ajax({
                                     'type': 'POST',
                                     'url': 'transfer-to-other-bank-beneficiary-api',
@@ -1486,7 +1486,7 @@
                                             $(".rtgs_card_right").hide();
                                             $(".success_gif").show();
 
-                                         
+
 
                                         }
                                     },

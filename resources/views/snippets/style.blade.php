@@ -44,6 +44,11 @@
         {{--  .btn-primary {
             box-shadow: 0 0 0 0 rgb(6 55 195 / 70%) !important;
         }  --}}
+
+        .form-group {
+            margin-bottom: 0.4rem!Important;
+        }
+
         .rtgs_card{
             box-shadow:
             0 2.8px 2.2px rgba(0, 0, 0, 0.034),
