@@ -302,7 +302,7 @@
                             </div>
 
 
-                            <div class="col-md-7 rtgs_card m-2" id="transaction_form"
+                            <div class="col-md-7 m-2" id="transaction_form"
                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                 <br><br><br>
 
@@ -546,7 +546,7 @@
                             </div>
 
 
-                            <div class="col-md-4 m-2 rtgs_card_right d-none d-sm-block" id="related_information_display"
+                            <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                 <br><br>
 

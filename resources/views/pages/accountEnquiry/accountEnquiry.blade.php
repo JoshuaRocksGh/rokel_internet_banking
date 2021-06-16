@@ -86,7 +86,7 @@
                 <div class="card-body">
 
 
-                    <div class="row" >
+                    <div class="row" style="zoom: 0.9">
 
 
 
@@ -100,7 +100,7 @@
                                         <div class="col-md-6">
                                             {{-- <p>Select Acount</p> --}}
                                             <div class="form-group row ">
-                                                <b class="col-md-4 text-primary">Select Account :</b>
+                                                <b class="col-md-3 text-primary">Select Account :</b>
                                                 <select class="form-control col-md-8" id="from_account" required>
                                                     <option value=""> -- Select Your Account --
                                                     </option>
@@ -108,7 +108,7 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <b class="col-md-4 text-primary">Date Interval :</b>
+                                                <b class="col-md-3 text-primary">Date Interval :</b>
                                                 <div class="col-md-8">
                                                     <div class="row">
                                                         <input type="text" id="startDate" class="form-control date-picker-startDate flatpickr-input input-sm col-md-5" readonly="readonly">
@@ -122,7 +122,7 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <b class="col-md-4 text-primary">Amount Interval :</b>
+                                                <b class="col-md-3 text-primary">Amount Interval :</b>
 
                                                 <div class="col-md-8">
                                                     <div class="row">

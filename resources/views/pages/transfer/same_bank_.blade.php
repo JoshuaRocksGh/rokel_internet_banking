@@ -75,49 +75,47 @@
 
                                 {{-- SUMMARY FORM GOES HERE --}}
 
-                                <div class=" col-md-7 rtgs_card m-2" id="transaction_form"
+                                <div class=" col-md-7 m-2" id="transaction_form"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <br><br><br>
+                                    <br>
 
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
                                         @csrf
-                                        <div class=" row container">
+                                        <div class="row container">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10">
 
 
-                                            <div class="form-group row mb-3">
-                                                <b class="col-md-12 text-primary">Account from which the money will
-                                                    be tansfered &nbsp <span
+                                            <div class="form-group row ">
+                                                <b class="col-md-12 text-primary">Account from which the money will be tansfered &nbsp <span
                                                         class="text-danger">*</span></b>
 
                                                 <select class="form-control col-md-12" id="from_account"
                                                     required>
-                                                    <option value=""> -- Select Your Account --</option>
+                                                    <option value=""> -- Select Account --</option>
                                                 </select>
 
                                             </div>
 
-                                            <hr>
+                                            <hr style="padding-top: 0px; padding-bottom: 0px;">
 
-                                            <div class="row mb-2">
+                                            <div class="row ">
 
                                                 <div class="col-md-4">
                                                     <div class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input"
                                                             name="onetime_beneficiary_type" id="customCheck1">
                                                         <label class="custom-control-label " for="customCheck1">
-                                                            <b class="text-primary">Onetime Transfer</b> </label>
+                                                            <b class="text-primary">Onetime ?</b> </label>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="col-md-8">
-                                                    <div class="form-group  row mb-3 select_beneficiary">
-                                                        <b class="col-md-4 text-primary">Beneficiary &nbsp;
-                                                            <span class="text-danger">*</span></b>
+                                                    <div class="form-group  row mb-1 select_beneficiary">
 
-                                                        <select class="form-control col-md-8" id="to_account" required>
+
+                                                        <select class="form-control col-md-12" id="to_account" required>
                                                             <option value=""> -- Select Beneficiary --</option>
 
                                                         </select>
@@ -159,7 +157,7 @@
                                                                     class="text-danger">*</span></b>
 
                                                             <div class="col-2">
-                                                                <div class="input-group mb-2">
+                                                                <div class="input-group mb-1">
                                                                     <div class="input-group-prepend"
                                                                         style="margin-right:-1px;">
                                                                         <div
@@ -499,7 +497,7 @@
 
                             </div>
 
-                            <div class=" col-md-4 rtgs_card_right m-2 d-none d-sm-block"
+                            <div class=" col-md-4 m-2 d-none d-sm-block"
                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); zoom: 0.9 ;">
 
                                 <div class=" col-md-12  ">

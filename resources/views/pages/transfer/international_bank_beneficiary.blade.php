@@ -83,7 +83,7 @@
 
                         <div class="row">
                             <div class="col-md-1"></div>
-                            <div class="col-md-10 rtgs_card m-2" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                            <div class="col-md-10 m-2" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
 
 
                                 <div class="">

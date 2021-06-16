@@ -240,7 +240,7 @@
 
                                 </div>
 
-                                <div class=" col-md-7 rtgs_card m-2" id="transaction_form"
+                                <div class=" col-md-7 m-2" id="transaction_form"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br><br>
 
@@ -821,7 +821,7 @@
                                 {{-- <button class="m-2 btn btn-info d-none d-sm-block">Related Information</button> --}}
                                 {{-- LEFT CARD --}}
 
-                                <div class=" col-md-4 rtgs_card_right m-2 d-none d-sm-block"
+                                <div class=" col-md-4 m-2 d-none d-sm-block"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
                                     <div class=" col-md-12 card card-body rtgs_transfer_summary">

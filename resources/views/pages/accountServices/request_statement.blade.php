@@ -43,7 +43,7 @@
 
                         <div class="col-md-12">
                             <div class="row">
-                            <div class=" col-md-7 rtgs_card m-2" id="request_form_div"
+                            <div class=" col-md-7 m-2" id="request_form_div"
                                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                                 <br><br><br>
 
@@ -184,7 +184,7 @@
 
                             </div> <!-- end col -->
 
-                            <div class="col-md-4 rtgs_card_right m-2" id="atm_request_summary"
+                            <div class="col-md-4 m-2" id="atm_request_summary"
                                         style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                         <br><br>
                                         <div class=" col-md-12 card card-body">
@@ -329,9 +329,9 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    <script src="{{ asset('assets/js/jquery-3.6.0.js') }}" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('assets/js/sweetalert2@10') }}"></script>
     <script>
         function my_account() {
             $.ajax({

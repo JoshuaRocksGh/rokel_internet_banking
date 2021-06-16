@@ -64,13 +64,13 @@
 
             <div class="">
 
-                <ul class="nav nav-tabs nav-bordered nav-justified">
+                <ul class="nav nav-pills navtab-bg nav-justified">
                     <li class="nav-item">
                         <a href="#send_korpor_page" data-toggle="tab" aria-expanded="true" class="nav-link active send_korpor_tab">
                             Send E-Korpor
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="#reverse_korpor_page" data-toggle="tab" aria-expanded="false" class="nav-link  reverse_korpor_tab">
                             Reverse E-Korpor
                         </a>
@@ -79,7 +79,7 @@
                         <a href="#redeem_korpor_page" data-toggle="tab" aria-expanded="false" class="nav-link redeem_korpor_tab">
                             Redeem E-Korpor
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="#korpor_trans_page" data-toggle="tab" aria-expanded="false" class="nav-link korpor_trans_tab">
                             E-Korpor Transactions
@@ -377,7 +377,7 @@
                                 <div class="col-12">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-6 rtgs_card m-2" id="request_form_div"
+                                            <div class="col-md-6 m-2" id="request_form_div"
                                                                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                                                                 <br><br><br>
 
@@ -527,9 +527,9 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="redeem_korpor_page">
+                    {{-- <div class="tab-pane" id="redeem_korpor_page">
 
-                    </div>
+                    </div> --}}
                     <div class="tab-pane" id="korpor_trans_page">
                         <div class="col-md-12">
                             <div class="cards_table row">
@@ -777,14 +777,14 @@
 
 
 
-                $(".inlineRadio1").click(function(){
+                $("#inlineRadio1").click(function(){
                     var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
                     // console.log(destination_type);
                     $(".self_form").show(2000);
                     $(".others_form").hide();
                 });
 
-                $(".inlineRadio2").click(function(){
+                $("#inlineRadio2").click(function(){
                     var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
                     // console.log(destination_type);
                     $(".others_form").show();

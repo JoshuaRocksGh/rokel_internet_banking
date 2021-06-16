@@ -21,7 +21,7 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-user mr-1"></i>
-                        <span>My Account</span>
+                        <span>Account</span>
                     </a>
 
                     <!-- item-->
@@ -68,7 +68,7 @@
                 <li>
                     <a href="#sidebarMyAccount" data-toggle="collapse">
                         <i class="mdi mdi-book-account-outline"></i>
-                        <span> My Account</span>
+                        <span> Account</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarMyAccount">
@@ -243,7 +243,7 @@
                 <li>
                     <a href="#sidebarLoans" data-toggle="collapse">
                         <i class="mdi mdi-briefcase-check-outline"></i>
-                        <span> My Loans </span>
+                        <span> Loans </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarLoans">
@@ -267,7 +267,7 @@
                 <li>
                     <a href="#sidebarMyInvestments" data-toggle="collapse">
                         <i class="mdi mdi-domain"></i>
-                        <span> My Investments </span>
+                        <span> Investments </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarMyInvestments">
@@ -458,6 +458,9 @@
                     </a>
                     <div class="collapse" id="sidebarSetting">
                         <ul class="nav-second-level">
+                            <li>
+                                <a href="#">Create Originator</a>
+                            </li>
                             <li>
                                 <a href="{{ url('set-transaction') }}">Set Transaction Limits</a>
                             </li>
