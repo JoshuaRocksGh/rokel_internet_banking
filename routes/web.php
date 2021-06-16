@@ -167,6 +167,7 @@ Route::get('/international-bank', [transferController::class, 'international_ban
 
 
 // PAYMENTS ROUTES
+Route::get('/utility-payment', [paymentController::class, 'utilities'])->name('utility-payment');
 Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
 Route::get('/payment-add-beneficiary', [paymentController::class, 'add_beneficiary'])->name('payment-add-beneficiary');
 Route::get('/payment-add-beneficiary/mobile-money-beneficiary', [paymentController::class, 'mobile_money_beneficiary'])->name('mobile-money-beneficiary');
