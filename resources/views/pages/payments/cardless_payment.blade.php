@@ -64,7 +64,7 @@
 
         <div class="">
 
-            <ul class="nav nav-tabs nav-bordered nav-justified">
+            <ul class="nav nav-pills navtab-bg nav-justified">
                 <li class="nav-item">
                     <a href="#send_cardless_page" data-toggle="tab" aria-expanded="true" class="nav-link active send_korpor_tab">
                         Send Cardless
@@ -639,6 +639,8 @@
 
                     $("#spinner").hide();
                     $("#spinner-text").hide();
+                    $("#spinner-reverse").hide();
+                    $("#spinner-text-reverse").hide();
                     // $('#print_receipt').hide();
 
                     $(".display_button_print").hide();
