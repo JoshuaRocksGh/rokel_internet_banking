@@ -72,7 +72,7 @@
                             <div class="row">
 
                                 <div class="col-md-7 rtgs_summary_card m-2" id="transaction_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-10 ">
@@ -293,7 +293,7 @@
 
 
                                 <div class="col-md-7 m-2" id="transaction_form"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
 
                                     <div class=" container">
 
@@ -314,7 +314,7 @@
                                                             <b class="col-md-12 text-primary mb-1">Account from which the money will
                                                                 be tansfered
                                                                 &nbsp; <span class="text-danger">*</span> </b>
-                                                            <select class="form-control col-md-12" id="from_account"
+                                                            <select class="form-control col-md-12 mb-2" id="from_account"
                                                                 required>
                                                                 <option value="">Select Account</option>
 
@@ -325,45 +325,75 @@
                                                             </select>
 
                                                         </div>
+                                                        <legend></legend>
 
                                                         <div class="form-group row mb-3">
                                                             <b class="col-md-12"><b class="text-primary">Account which will receive the money
                                                                     &nbsp;</b><span class="text-danger">*</span></b>
-                                                            <select class="form-control col-md-12" id="to_account" required>
+                                                            <select class="form-control col-md-12 mb-2" id="to_account" required>
                                                                 <option value="">Select Account</option>
 
-                                                                {{-- <option value="Currenct Account~004004100435270140~USD~800">
-                                                            Currenct Account ~ 004004100435270140 ~ USD</option> --}}
                                                             </select>
                                                         </div>
 
-                                                        <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><b class="text-primary">Enter Amount
-                                                                    &nbsp;</b><span class="text-danger">*</span></label>
+                                                        <legend></legend>
 
-                                                            <div class="col-2">
-                                                                <div class="input-group mb-2">
-                                                                    <div class="input-group-prepend"
-                                                                        style="margin-right:-1px;">
-                                                                        <div
-                                                                            class="input-group-text display_from_account_currency">
-                                                                            CUR</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
 
-                                                            <input type="text" class="form-control col-md-6" id="amount"
-                                                                placeholder="Amount: 0.00"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required>
+
+                                                        <div class="form-group row">
+
+                                                            <b class="col-md-4 text-primary">Actual Amount &nbsp; <span
+                                                                    class="text-danger">*</span></b>
+
+                                                                    <div class="input-group mb-3 col-8" style="padding: 0px;">
+                                                                        <div class="input-group-prepend">
+                                                                            <select name="" class="input-group-text" id="select_currency__">
+                                                                                <option value="SLL" selected>SLL</option>
+                                                                                <option value="EUR">EURO</option>
+                                                                                <option value="USD">USD</option>
+                                                                            </select>
+                                                                        </div>
+                                                                       
+                                                                          &nbsp;&nbsp;
+                                                                          <input type="text" class="form-control " id="amount"
+                                                                          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
+                                                                          required>
+                                                                      </div>
+
+
                                                         </div>
+
+                                                        <div class="form-group row">
+
+                                                            <b class="col-4 text-primary"> Cur / Rate / Amount</b>
+
+                                                            <div class="input-group mb-3 col-8" style="padding: 0px;">
+                                                                <div class="input-group-prepend">
+                                                                    <select name="" class="input-group-text" id="select_currency__">
+                                                                        <option value="SLL" selected>SLL</option>
+                                                                        <option value="EUR">EURO</option>
+                                                                        <option value="USD">USD</option>
+                                                                    </select>
+                                                                </div>
+                                                                &nbsp;&nbsp;
+                                                                <div class="input-group-prepend">
+                                                                    <input type="text" class="form-control readOnly " value="1.00" style="width: 100px;">
+                                                                  </div>
+                                                                  &nbsp;&nbsp;
+                                                                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                              </div>
+
+
+                                                        </div>
+
+
 
                                                         <div class="form-group row mb-3">
                                                             <label class="col-md-4"><b class="text-primary">Purpose of
                                                                     Transfer &nbsp</b><span
                                                                     class="text-danger">*</span></label>
 
-                                                            <input type="text" class="form-control col-md-8" id="purpose"
+                                                            <input type="text" class="form-control col-md-8 mb-2" id="purpose"
                                                                 placeholder="Enter purpose of transfer" autocomplete="off"
                                                                 required>
 
@@ -375,7 +405,7 @@
 
                                                             {{-- <label class="h6">Category</label> --}}
 
-                                                            <select class="form-control col-md-8" id="category" required>
+                                                            <select class="form-control col-md-8 mb-2" id="category" required>
                                                                 <option value="">Select Category</option>
                                                                 {{-- <option value="001~Fees">Fees</option>
                                                                 <option value="002~Electronics">Electronics</option>
@@ -444,7 +474,7 @@
                                 </div>
 
                                 <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
 
                                     <div class="col-md-12 card card-body rtgs_transfer_summary">
@@ -478,6 +508,19 @@
                                             <h6 class="col-md-5">Account Currency:</h6>
                                             <h6 class="text-primary display_to_account_currency col-md-7"></h6>
                                         </div>
+
+                                        <hr>
+                                        <div class="row">
+                                            <h6 class="col-md-5">Enter Amount:</h6>
+                                            <span class="text-primary display_amount col-md-7"></span>
+
+                                            <h6 class="col-md-5">Currency Rate:</h6>
+                                            <span class="text-primary display_midrate col-md-7"></span>
+
+                                            <h6 class="col-md-5">Converted Amount:</h6>
+                                            <span class="text-primary display_converted_amount col-md-7"></span>
+                                        </div>
+
                                         <hr>
                                         <div class="row">
                                             <h6 class="text-primary col-md-5">Transfer Amount:</h6>

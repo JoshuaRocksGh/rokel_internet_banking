@@ -58,7 +58,7 @@ type="text/css" />
                     <div class="col-md-12">
                         <div class="row">
                         <div class=" col-md-7 m-2" id="request_form_div"
-                                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                             <br><br><br>
 
                                             <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
@@ -193,7 +193,7 @@ type="text/css" />
                         </div> <!-- end col -->
 
                         <div class="col-md-4 m-2" id="atm_request_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <br><br>
                                     <div class="card card-body">
                                         {{-- <br><br> --}}
@@ -231,7 +231,7 @@ type="text/css" />
                                     </div>
                         </div>
 
-                        <div class="col-md-5 text-center card-body success-message" style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                        <div class="col-md-5 text-center card-body success-message" style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
 
                             <p class="display-4 text-center text-success">
                                 <img width="305px" height="505px" src="{{ asset("land_asset/images/rcb_cashless.jpeg") }}" />

@@ -127,7 +127,12 @@
 
 
                                 <button type="submit" class="btn btn-primary btn-rounded float-right">Add Beneficiary &nbsp;
-                                    <i class="fe-arrow-right"></i></button>
+                                    <i class="fe-arrow-right"></i>
+                                    <span id="confirm_transfer">Confirm Transfer</span>
+                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
+                                        aria-hidden="true"></span>
+                                    <span id="spinner-text">Loading...</span>
+                                </button>
 
                             </div>
 

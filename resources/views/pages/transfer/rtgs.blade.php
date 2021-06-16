@@ -88,7 +88,7 @@
                             <div class="row">
 
                                 <div class="col-md-7  m-2" id="transaction_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-10 ">
@@ -311,8 +311,8 @@
                                 </div>
 
                                 <div class="col-md-7 m-2" id="transaction_form"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <br><br><br>
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                    <br>
 
 
                                     <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
@@ -347,16 +347,15 @@
                                                             <div class="form-group mb-3">
                                                                 <div class="custom-control custom-checkbox">
                                                                     <input type="checkbox" class="custom-control-input" id="checkmeout0" name="onetime_check" value="CHECKED">
-                                                                    <label class="custom-control-label" for="checkmeout0"><b class="text-primary">Onetime Transfer </b> </label>
+                                                                    <label class="custom-control-label" for="checkmeout0"><b class="text-primary">Onetime </b> </label>
                                                                 </div>
                                                             </div>
 
                                                     </div>
                                                     <div class="col-md-8">
                                                         <div class="row">
-                                                            <b class="text-primary col-md-4 bene_details">Beneficiary
-                                                                &nbsp;<span class="text-danger">*</span></b>
-                                                            <select class="form-control col-md-8 bene_details"
+
+                                                            <select class="form-control col-md-12 bene_details"
                                                                 id="to_account" required>
                                                                 <option value=""><b>-- Select Beneficiary --</b> </option>
                                                                 {{-- <option value="Standard Chartered Bank~Joshua Amarfio~004004110449140121~GHS~800">
@@ -367,38 +366,38 @@
 
 
                                                 </div>
-                                                <hr>
+
 
                                                 <div id="saved_benefciary_form">
 
-                                                    <div class="row mb-2">
+                                                    <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Transfer Bank</b>
                                                         <input class="form-control col-md-8 " type="text"
                                                             id="beneficiary_bank_name" readonly>
                                                     </div>
 
-                                                    <div class="row mb-2">
+                                                    <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary A/C Number</b>
                                                         <input class="form-control col-md-8" type="text"
                                                             id="beneficiary_account_number" readonly>
                                                     </div>
 
-                                                    <div class="row mb-2">
+                                                    <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary Name</b>
                                                         <input class="form-control col-md-8" type="text"
                                                             id="beneficiary_account_name" readonly>
                                                     </div>
 
-                                                    <div class="row mb-2">
+                                                    <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary Email</b>
                                                         <input class="form-control col-md-8" type="text"
                                                             id="beneficiary_email" readonly>
                                                     </div>
-                                                    <hr>
+
 
                                                     <div class="form-group row">
 
-                                                        <b class="col-md-4 text-primary"> Transfer Type &nbsp; <span class="text-danger">*</span></b>
+                                                        <b class="col-md-4 text-primary"> Attach Document&nbsp; <span class="text-danger">*</span></b>
 
                                                         <div class="row col-md-8 ">
                                                             {{-- <div
@@ -412,14 +411,17 @@
                                                                     value="INVOICE" name="transfer_type">
                                                                 <label for="inlineRadio2">Invoice</label>
                                                             </div> --}}
-                                                            <div class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                <input type="radio" id="inlineRadio1" value="NORMAL" name="radioInline" checked>
-                                                                <label for="inlineRadio1"> Normal </label>
-                                                            </div>
+
                                                             <div class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
                                                                 <input type="radio" id="inlineRadio2" value="INVOICE" name="radioInline">
-                                                                <label for="inlineRadio2"> Invoice</label>
+                                                                <label for="inlineRadio2"> YES</label>
                                                             </div>
+
+                                                            <div class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
+                                                                <input type="radio" id="inlineRadio1" value="NORMAL" name="radioInline" checked>
+                                                                <label for="inlineRadio1"> NO </label>
+                                                            </div>
+
 
                                                         </div>
 
@@ -436,7 +438,7 @@
                                                         </div>
 
                                                     </div>
-                                                    <hr>
+
 
                                                     <div class="form-group row">
                                                         <b class="text-primary col-md-4"> Transfer Mode &nbsp;<span
@@ -463,51 +465,55 @@
                                                     </div>
 
 
+
                                                     <div class="form-group row">
 
-                                                        <b class="col-4 text-primary"> Amount &nbsp; <span
+                                                        <b class="col-md-4 text-primary">Actual Amount &nbsp; <span
                                                                 class="text-danger">*</span></b>
 
+                                                                <div class="input-group mb-1 col-8" style="padding: 0px;">
+                                                                    <div class="input-group-prepend">
+                                                                        <select name="" class="input-group-text" id="select_currency__">
+                                                                            <option value="SLL" selected>SLL</option>
+                                                                            <option value="EUR">EURO</option>
+                                                                            <option value="USD">USD</option>
+                                                                        </select>
+                                                                    </div>
 
-                                                        <input type="text" class="form-control col-4" id="amount"
-                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                        required>
-
-                                                        <div class="col-1">
-                                                            <div class="input-group mb-2">
-
-                                                                <div class="input-group-prepend" style="margin-right:-1px;">
-                                                                    <select name="" class="input-group-text" id="select_currency">
-                                                                        <option value=""></option>
-                                                                        <option value="SLL">SLL</option>
-                                                                        <option value="EUR">EURO</option>
-                                                                        <option value="USD">USD</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                            <i class="mdi mdi-arrow-right"></i>
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                            <div class="input-group mb-2">
-
-                                                                <div class="input-group-prepend" style="margin-right:-1px;">
-                                                                    <select name="" class="input-group-text" id="select_currency">
-                                                                        <option value=""></option>
-                                                                        <option value="SLL">SLL</option>
-                                                                        <option value="EUR">EURO</option>
-                                                                        <option value="USD">USD</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
+                                                                      &nbsp;&nbsp;
+                                                                      <input type="text" class="form-control " id="amount"
+                                                                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
+                                                                      required>
+                                                                  </div>
 
 
                                                     </div>
+
+                                                    <div class="form-group row">
+
+                                                        <b class="col-4 text-primary"> Cur / Rate / Amount</b>
+
+                                                        <div class="input-group mb-1 col-8" style="padding: 0px;">
+                                                            <div class="input-group-prepend">
+                                                                <select name="" class="input-group-text" id="select_currency__">
+                                                                    <option value="SLL" selected>SLL</option>
+                                                                    <option value="EUR">EURO</option>
+                                                                    <option value="USD">USD</option>
+                                                                </select>
+                                                            </div>
+                                                            &nbsp;&nbsp;
+                                                            <div class="input-group-prepend">
+                                                                <input type="text" class="form-control readOnly " value="1.00" style="width: 100px;">
+                                                              </div>
+                                                              &nbsp;&nbsp;
+                                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                          </div>
+
+
+                                                    </div>
+
+
+
 
                                                     <div class="form-group row mb-3">
                                                         <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
@@ -596,13 +602,16 @@
                                                                     value="INVOICE" name="radioInline">
                                                                 <label for="onetime_invioce_transfer_type">Invoice</label>
                                                             </div> --}}
-                                                            <div class="radio radio-primary form-check-inline m-1 col-md-5 onetime_transfer_type">
-                                                                <input type="radio" id="onetime_inlineRadio1" value="NORMAL" name="onetime_radioInline" checked>
-                                                                <label for="inlineRadio1"> Normal </label>
-                                                            </div>
+
+
                                                             <div class="radio  radio-primary form-check-inline m-1 col-md-5 onetime_transfer_type">
                                                                 <input type="radio" id="onetime_inlineRadio2" value="INVOICE" name="onetime_radioInline">
-                                                                <label for="inlineRadio2"> Invoice</label>
+                                                                <label for="inlineRadio2"> YES</label>
+                                                            </div>
+
+                                                            <div class="radio radio-primary form-check-inline m-1 col-md-5 onetime_transfer_type">
+                                                                <input type="radio" id="onetime_inlineRadio1" value="NORMAL" name="onetime_radioInline" checked>
+                                                                <label for="inlineRadio1"> NO </label>
                                                             </div>
 
 
@@ -754,7 +763,7 @@
 
 
                                 <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                     <br><br>
 
                                     <div class=" col-md-12 card card-body ach_transfer_summary">
@@ -793,6 +802,20 @@
                                             <h6 class="col-md-5">Account Currency:</h6>
                                             <h6 class="text-primary display_to_account_currency col-md-7"></h6>
                                         </div>
+
+                                        <hr>
+                                        <div class="row">
+                                            <h6 class="col-md-5">Enter Amount:</h6>
+                                            <span class="text-primary display_amount col-md-7"></span>
+
+                                            <h6 class="col-md-5">Currency Rate:</h6>
+                                            <span class="text-primary display_midrate col-md-7"></span>
+
+                                            <h6 class="col-md-5">Converted Amount:</h6>
+                                            <span class="text-primary display_converted_amount col-md-7"></span>
+                                        </div>
+
+
                                         <br>
                                         <button type="button"
                                             class="btn btn-warning btn-xs waves-effect waves-light beneficiary_details col-md-3 text-primary"
