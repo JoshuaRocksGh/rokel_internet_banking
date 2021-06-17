@@ -33,5 +33,10 @@ class settingsController extends Controller
         return view('pages.settings.update_company_info');
     }
 
+    //method to return the create originator
+    public function create_originator(){
+        return view('pages.settings.create_originator');
+    }
+
 
 }

@@ -350,6 +350,9 @@ Route::get('biometric-setup', [settingsController::class, 'biometric_setup'])->n
 //route to display the change pin screen
 Route::get('change-pin', [settingsController::class, 'change_pin'])->name('change-pin');
 
+//route to display the create originator screen
+Route::get('create-originator',[settingsController::class,'create_originator'])->name('create-originator');
+
 //route to display the forgot transaction pin screen
 Route::get('set-transaction-limit', [settingsController::class, 'set_transaction_limit'])->name('set-transaction-limit');
 
