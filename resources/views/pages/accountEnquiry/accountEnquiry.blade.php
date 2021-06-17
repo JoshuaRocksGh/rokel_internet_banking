@@ -197,7 +197,7 @@
 
                                         </div>
                                         <div class="col-md-5">
-                                            <button class="btn btn-primary btn-sm  mb-2" style="margin-left: 70px;">Search</button>
+                                            <button class="btn btn-primary btn-sm  mb-2" id="search_transaction" style="margin-left: 70px;">Search</button>
                                         </div>
                                     </div>
 
@@ -599,6 +599,25 @@
                 getAccountBalanceInfo(account_number);  --}}
             }, 500);
 
+            $('#search_transaction').click(function() {
+                let start_date = $('#startDate').val()
+                let end_date = $('#endDate').val()
+
+                var from_account = $('#from_account').val()
+
+
+
+                if (from_account.trim() == '' || from_account.trim() == undefined) {
+                    return false;
+                }else{
+                    from_account_info = from_account.split("~")
+                    let account_number = from_account_info[2].trim()
+                    getAccountTransactions(account_number, start_date, end_date, transLimit)
+                }
+
+
+            })
+
 
             $('#date_search').click(function() {
 
@@ -607,8 +626,7 @@
                 $("#account_transaction_retry_btn").hide();
                 $("#account_transaction_loader").show();
 
-                let start_date = $('#startDate').val()
-                let end_date = $('#endDate').val()
+
 
                 getAccountTransactions(account_number, start_date, end_date, transLimit)
 
