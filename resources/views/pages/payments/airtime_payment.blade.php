@@ -79,7 +79,7 @@
                             <div class="row">
 
                                 <div class="col-md-7 m-2" id="transaction_form"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <br><br><br>
 
                                     <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
@@ -771,7 +771,7 @@
                                 </div>
 
                                 <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <br><br>
 
                                     <div class=" col-md-12 card card-body ach_transfer_summary">

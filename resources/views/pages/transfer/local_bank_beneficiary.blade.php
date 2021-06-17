@@ -43,7 +43,7 @@
                         <div class="col-md-1"></div>
 
                         <div class="col-md-10 m-2"
-                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
 
 
                             <br><br><br>

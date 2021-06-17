@@ -93,11 +93,12 @@
                         <div class="col-md-12">
 
                             <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12 rtgs_card_statement m-2" id="transaction_form"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                    <br><br><br>
+                                <div class="col-md-12 col-sm-12 col-xs-12  m-2" id="transaction_form"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                    <br>
                                     <div class="row m-1">
-                                        <div class="col-md-6">
+
+                                        <div class="col-md-8">
                                             {{-- <p>Select Acount</p> --}}
                                             <div class="form-group row ">
                                                 <b class="col-md-3 text-primary">Select Account :</b>
@@ -142,7 +143,7 @@
                                             </div>
 
 
-
+                                            <br>
                                             <div class="form-group row">
                                                 <b class="col-md-4 text-primary">Transfer Type :</b>
 
@@ -152,6 +153,7 @@
                                                     <option value="002~Credit"> CREDIT </option>
                                                     <option value="003~Debit"> DEBIT </option>
                                                 </select>  --}}
+
 
                                                 <div class="col-md-8">
                                                     <div class="radio radio-primary form-check-inline col-md-3 transfer_type">
@@ -171,52 +173,40 @@
                                                     </div>
 
                                                 </div>
+
+
+
+
                                             </div>
+
+
 
 
                                         </div>
 
-                                        <div class="col-md-3">
-                                            {{--  <p>Account Balance</p>  --}}
-                                            <div class="form-group row">
-                                                <b class="col-md-4 text-primary">A/C Bal : </b>
-                                                <input type="text" class="form-control col-md-8" readonly placeholder="A/C Balance" id="account_balance">
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <b class="col-md-4 text-primary">Avail. Debit Limit : </b>
-                                                <input type="text" class="form-control col-md-8" readonly placeholder="Available Debit Limit">
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <b class="col-md-4 text-primary">Avail. Bal : </b>
-                                                <input type="text" class="form-control col-md-8" readonly placeholder="Avail. Balance" id="available_balance">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 ">
-                                            {{--  <p>Total debits</p>  --}}
-
-                                            <div class="form-group row">
-                                                <b class="col-md-4 text-primary">Total Credits : </b>
-                                                <input type="text" class="form-control col-md-8" readonly placeholder="Total Credits" id="total_credits">
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <b class="col-md-4 text-primary">Total Debits : </b>
-                                                <input type="text" class="form-control col-md-8" readonly placeholder="total_debits" id="total_debits">
-                                            </div>
+                                        <div class="col-md-4">
+                                            {{--  <button class="btn btn-primary float-right m-2">Search</button>  --}}
                                         </div>
 
 
                                     </div>
-                                    <button class="btn btn-primary float-right m-2">Search</button>
+
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-5">
+                                           
+                                        </div>
+                                        <div class="col-md-5">
+                                            <button class="btn btn-primary btn-sm  mb-2" style="margin-left: 70px;">Search</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
                             <div class="row" style="zoom:0.8;">
                                 <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class=" p-3 mt-4 mt-lg-0 rounded">
                                         {{-- <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2> --}}
                                         <br>

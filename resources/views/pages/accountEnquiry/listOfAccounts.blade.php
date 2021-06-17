@@ -85,7 +85,7 @@
                         <div class="row">
                             <div class="col-xl-12" style="zoom:0.8;">
                                 <div id="accordion" class="mb-3">
-                                    <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
+                                    <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));" --}}>
                                         <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
                                             <div class="card-header" id="headingOne">
                                                 <h5 class="m-0">
@@ -151,7 +151,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
+                                    <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));" --}}>
                                         <a class="text-dark" data-toggle="collapse" href="#collapseTwo" aria-expanded="true">
                                             <div class="card-header" id="headingTwo">
                                                 <h5 class="m-0">
@@ -216,7 +216,7 @@
                                     </div>
 
 
-                                    <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));" --}}>
+                                    <div class="card mb-1" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));" --}}>
                                         <a class="text-dark" data-toggle="collapse" href="#collapseThree" aria-expanded="true">
                                             <div class="card-header" id="headingThree">
                                                 <h5 class="m-0">
