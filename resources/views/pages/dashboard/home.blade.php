@@ -1373,17 +1373,17 @@
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(
                                             `
-                                                                                                                                                                                                                                                    <tr>
-                                                                                                                                                                                                                                                        <td style="zoom: 0.8;">
-                                                                                                                                                                                                                                                            <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                                                                                                                                                                                                                            /
-                                                                                                                                                                                                                                                            <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                        <tr>
+                                            <td style="zoom: 0.8;">
+                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                /
+                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                                                                                                                                                                                                                                        </td>
-                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                                                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                                                                `
+                                            </td>
+                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                        </tr>
+                                    `
                                         );
                                     });
                                 }

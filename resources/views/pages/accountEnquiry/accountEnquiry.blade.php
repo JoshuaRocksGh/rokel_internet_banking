@@ -194,7 +194,7 @@
                                     <div class="row">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-5">
-                                           
+
                                         </div>
                                         <div class="col-md-5">
                                             <button class="btn btn-primary btn-sm  mb-2" style="margin-left: 70px;">Search</button>
@@ -476,6 +476,61 @@
 
 
 
+        function get_accounts() {
+
+            $.ajax({
+                "type": "GET",
+                "url": "get-accounts-api",
+                "datatype": "application/json",
+
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.responseCode == '000') {
+
+                        let data = response.data
+                        if(data.length > 0 ){
+
+                            $.each(data, function(index) {
+                                $('#from_account').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[
+                                            index].accountDesc + '~' + data[
+                                            index].accountNumber + '~' + data[
+                                            index].currency + '~' + data[index]
+                                        .availableBalance
+                                }).text(data[index].accountType + '' + ' - ' + '' + data[index]
+                                    .accountNumber + '' + ' - ' + '' + data[index]
+                                    .currency + '' + ' - ' + '' + formatToCurrency(Number(data[
+                                            index]
+                                        .availableBalance))));
+                                //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                            });
+
+                        }else{
+
+                        }
+
+
+
+
+
+                    } else {
+
+                    }
+
+                },
+                error: function(xhr, status, error) {
+
+                }
+            })
+        }
+
+
+
+
         $(document).ready(function() {
 
 
@@ -539,9 +594,10 @@
             var tranactions = []
 
             setTimeout(function() {
-                getAccountTransactions(account_number, start_date, end_date, transLimit)
-                getAccountBalanceInfo(account_number);
-            }, 2000);
+                get_accounts()
+                {{--  getAccountTransactions(account_number, start_date, end_date, transLimit)
+                getAccountBalanceInfo(account_number);  --}}
+            }, 500);
 
 
             $('#date_search').click(function() {
@@ -653,16 +709,16 @@
                         let amount = ``;
                         if (parseFloat(data[index].amount) > 0) {
                             amount = `<b class='text-success'>
-                                                                                                        <i class="fe-arrow-up text-success mr-1"></i>
-                                                                                                        ${data[index].amount}
-                                                                                                    </b>
-                                                                                                    `
+                                        <i class="fe-arrow-up text-success mr-1"></i>
+                                        ${data[index].amount}
+                                    </b>
+                                    `
                         } else {
                             amount = `<b class='text-danger'>
-                                                                                                        <i class="fe-arrow-down text-danger mr-1"></i>
-                                                                                                        ${data[index].amount}
-                                                                                                    </b>
-                                                                                                    `
+                                        <i class="fe-arrow-down text-danger mr-1"></i>
+                                        ${data[index].amount}
+                                    </b>
+                                    `
                         }
 
                         let attachment = ``

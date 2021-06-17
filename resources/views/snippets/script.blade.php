@@ -51,6 +51,12 @@
 <!-- Validation init js-->
 {{-- <script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script> --}}
 
+<script>
+    function formatToCurrency(amount) {
+        return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    };
+</script>
+
 
 <script type='text/javascript'>
     function googleTranslateElementInit() {
