@@ -82,6 +82,12 @@
                                                 <table class="table mb-0">
 
                                                     <tbody>
+                                                        <tr class="success_gif">
+                                                            <td class="text-center bg-white" colspan="2">
+                                                                <img src="{{ asset('land_asset/images/statement_success.gif') }}"
+                                                                    style="zoom: 0.5" alt="">
+                                                            </td>
+                                                        </tr>
                                                         <tr>
                                                             <td>From Account:</td>
                                                             <td>
@@ -772,10 +778,10 @@
 
                             </div>
 
-                            <div class=" col-md-4 m-2 d-none d-sm-block"
+                            <div class="col-md-4 m-2 d-none d-sm-block card_right"
                                 style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); zoom: 0.9 ;">
 
-                                <div class=" col-md-12  ">
+                                <div class=" col-md-12">
                                     <br><br>
                                     <div class="card card-body">
                                         <div class="row ">
@@ -792,7 +798,7 @@
                                             <span class="text-primary display_from_account_currency col-md-7"></span>
                                         </div>
 
-                                        <br>
+                                        <hr>
                                         <div class="row">
                                             <h6 class="col-md-5">Receiver Name:</h6>
                                             <span class="text-primary display_to_account_name col-md-7"></span>
@@ -804,7 +810,7 @@
                                             <span class="text-primary display_to_account_currency col-md-7"></span>
                                         </div>
 
-                                        <br>
+                                        <hr>
                                         <div class="row">
                                             <h6 class="col-md-5">Enter Amount:</h6>
                                             <span class="text-primary display_amount col-md-7"></span>
@@ -1150,8 +1156,11 @@
         }
 
 
+
+
         $(document).ready(function() {
 
+            $(".success_gif").hide();
             $('#spinner').hide();
             $('#spinner-text').hide();
             $('#print_receipt').hide();
@@ -1159,6 +1168,8 @@
             $('.no_beneficiary').hide();
             $("#onetime_payment_details_form").show();
             $('.badge').hide();
+            $(".card_right").hide();
+
 
             setTimeout(function() {
                 from_account();
@@ -1166,10 +1177,65 @@
                 expenseTypes();
                 get_currency();
 
+
                 {{-- setTimeout(function(){
                 },3000); --}}
 
             }, 2000);
+
+            function getAccountDescription(account_no) {
+                $.ajax({
+                    "type": "POST",
+                    "url": "get-account-description",
+                    "datatype": "application/json",
+                    "data": {
+                        "authToken": "string",
+                        "accountNumber": account_no
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    success: function(response) {
+
+                        console.log(response.responseCode)
+                        if (response.responseCode == "000") {
+                            console.log(response.data)
+                            toaster(response.message, 'success');
+                            $('#onetime_beneficiary_name').val(response.data.accountDescription);
+                            $('.display_to_account_name').text(response.data.accountDescription);
+                            $('.display_to_account_currency').text(response.data.accountCurrencyDescription);
+                            $('.display_to_account_no').text(account_no);
+                            {{--  $('#select_currency_i').val(response.data.accountCurrencyDescription)
+                            $('#select_currency').val(response.data.accountCurrencyCode + '~' +
+                                response.data.accountCurrencyDescription)  --}}
+
+
+                            $('#save_beneficiary').show('')
+
+                        } else {
+                            toaster(response.message, 'error');
+                            {{--  $('#account_name').val('')
+                            $('#select_currency_i').val('')
+                            $('#select_currency').val('')
+                            $('#save_beneficiary').hide('')  --}}
+
+
+                        }
+                    }
+
+                })
+            };
+
+
+            $("#onetime_account_number").keyup(function() {
+                    let account_no = $(this).val();
+                    if (account_no.length > 17) {
+                        getAccountDescription(account_no)
+                    }
+
+
+                })
 
             $("#customCheck1").click(function() {
                 if ($(this).is(":checked")) {
@@ -1700,6 +1766,8 @@
 
                     if ($('#customCheck1').is(':checked')) {
 
+                        // ONETIME TRANSFER API
+
                         $("#transfer_pin").click(function(e) {
                             e.preventDefault();
 
@@ -1733,7 +1801,7 @@
 
                             var transfer_amount = $('#amount_').val();
                             console.log(transfer_amount);
-                            
+
                             {{--  var select_frequency = $('#select_frequency').val()  --}}
 
                             var onetime_future_payement = $('#onetime_future_payement').val();
@@ -1773,25 +1841,39 @@
 
 
                                     if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 1000)
-                                        $('#confirm_button').hide();
+
+                                        $("#related_information_display").removeClass(
+                                            "d-none d-sm-block");
+                                        Swal.fire(
+                                            '',
+                                            response.message,
+                                            'success'
+                                        );
+
+                                        $('#confirm_modal_button').hide();
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
                                         $('#back_button').hide();
                                         $('#print_receipt').show();
 
-                                        $(".success-message").html(
-                                            '<img src="{{ asset('land_asset/images/statement_success.gif') }}" />'
-                                        )
+
+                                        $(".card_right").hide();
+                                        $(".success_gif").show();
+
+
 
                                     } else {
                                         toaster(response.message, 'error', 10000)
 
+                                        $("#confirm_transfer").show();
+                                        $("#confirm_modal_button").prop('disabled', false);
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
+                                        $('#back_button').show();
                                         $('#print_receipt').hide();
-
-
-                                        $('#confirm_transfer').show();
-                                        $('#confirm_button').attr('disabled', false);
+                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                        $("#related_information_display").show();
+                                        $(".success_gif").hide();
 
 
                                     }
