@@ -25,15 +25,17 @@ class SameBankController extends Controller
         $validator = Validator::make($req->all(), [
             'from_account' => 'required',
             'to_account' => 'required',
-            'transfer_amount' => 'required',
+            'amount' => 'required',
             'category' => 'required',
             'account_currency' => 'required' ,
             'purpose' => 'required',
             'alias_name' => 'required',
-            'type' => 'required',
+            // 'type' => 'required',
             'amount' => 'required' ,
             'secPin' => 'required' ,
-            'category' => 'required'
+            'category' => 'required' ,
+            "account_currency" => 'required'
+
         ]);
 
         // return [
@@ -71,33 +73,48 @@ class SameBankController extends Controller
 
         $data = [
 
-            "amount" => (float) $req->transfer_amount,
+            // "amount" => (float) $req->amount,
+            // "authToken" => $authToken,
+            // "creditAccount" => $req->to_account,
+            // "debitAccount" => $req->from_account,
+            // "deviceIp" => null,
+            // "entrySource" => null,
+            // "narration" => $req->purpose,
+
+            // "secPin" => $user_pin,
+            // "userName" => null,
+            // "category" => $req->category,
+            // "posted_by" => $userID
+            // "beneficiaryEmail" => $req->beneficiary_email
+
+            "amount" => (float) $req->amount,
             "authToken" => $authToken,
             "creditAccount" => $req->to_account,
+            "currency" => $req->account_currency,
             "debitAccount" => $req->from_account,
-            "deviceIp" => "string",
-            "entrySource" => "string",
+            "deviceIp" => null,
+            "entrySource" => null,
             "narration" => $req->purpose,
-            //security pin
             "secPin" => $user_pin,
-            "userName" => "string",
+            "userName" => $userID,
             "category" => $req->category,
-            "posted_by" => $userID
-
+            "beneficiaryEmail" => $req->beneficiary_email
         ];
 
-        if ($req->type == 'onetime') {
-            $data['alias_name'] = $req->alias_name;
-        }
+
+        // return $data ;
+        // if ($req->type == 'onetime') {
+        //     $data['alias_name'] = $req->alias_name;
+        // }
 
 
-        if (isset($req->select_frequency)) {
-            $frequency = explode('~', $req->select_frequency);
-            // return $frequency;
-            $selected_frequency_code = $frequency[0];
-            $data['schedulePaymentDate'] = $req->schedule_payment_date;
-            $data['selectFrequency'] = $selected_frequency_code;
-        }
+        // if (isset($req->select_frequency)) {
+        //     $frequency = explode('~', $req->select_frequency);
+        //     return $frequency;
+        //     $selected_frequency_code = $frequency[0];
+        //     $data['schedulePaymentDate'] = $req->schedule_payment_date;
+        //     $data['selectFrequency'] = $selected_frequency_code;
+        // }
 
         //return $data ;
         // if($schedule_paymen == "Y")

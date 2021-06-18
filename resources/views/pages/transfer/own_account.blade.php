@@ -1352,8 +1352,7 @@
 
                                         {{-- $('#confirm_modal_button').show(); --}}
                                         $("#confirm_transfer").show();
-                                        $("#confirm_modal_button").prop('disabled',
-                                            false);
+                                        $("#confirm_modal_button").prop('disabled', false);
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#back_button').show();

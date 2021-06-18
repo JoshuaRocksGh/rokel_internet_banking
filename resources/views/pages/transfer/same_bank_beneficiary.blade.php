@@ -433,7 +433,7 @@
 
                 $("#account_number").keyup(function() {
                     let account_no = $(this).val();
-                    if (account_no.length > 10) {
+                    if (account_no.length > 17) {
                         getAccountDescription(account_no)
                     }
 
