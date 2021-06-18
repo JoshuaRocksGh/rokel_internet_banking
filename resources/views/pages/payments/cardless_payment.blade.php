@@ -101,13 +101,8 @@
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class=" col-md-7 m-2" id="request_form_div"
-<<<<<<< HEAD
-                                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                                <br><br><br>
-=======
                                                                 style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                                 <br><br><br>
->>>>>>> fe58495429e797d1cd8ca07aa0aac9855c72ff1d
 
                                                 <form action="#" class="select_beneficiary" id="payment_details_form"
                                                     autocomplete="off" aria-autocomplete="none">
@@ -261,17 +256,6 @@
                                             </div> <!-- end col -->
 
                                             <div class="col-md-4 m-2" id="atm_request_summary"
-<<<<<<< HEAD
-                                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                                <br><br>
-                                                <div class=" col-md-12 card card-body">
-                                                    {{-- <br><br> --}}
-                                                    <div class="row">
-                                                        <span class="col-md-12 success-message"></span>
-                                                        <h6 class="col-md-5">Account Name:</h6>
-                                                        <span
-                                                            class="text-primary display_from_account_name col-md-7"></span>
-=======
                                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                         <br><br>
                                                         <div class=" col-md-12 card card-body">
@@ -280,7 +264,6 @@
                                                                 <span class="col-md-12 success-message"></span>
                                                                 <h6 class="col-md-5">Account Name:</h6>
                                                                 <span class="text-primary display_from_account_name col-md-7"></span>
->>>>>>> fe58495429e797d1cd8ca07aa0aac9855c72ff1d
 
                                                         <h6 class="col-md-5">Account Number:</h6>
                                                         <span class="text-primary display_from_account_no col-md-7"></span>
@@ -329,36 +312,6 @@
                 </div>
                 <div class="tab-pane" id="reverse_cardless_page">
                     <div class="row">
-<<<<<<< HEAD
-                        <div class="col-12">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6  m-2" id="request_form_div"
-                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                        <br><br><br>
-
-                                        <form action="#" class="select_beneficiary" id="payment_details_form"
-                                            autocomplete="off" aria-autocomplete="none">
-                                            @csrf
-
-                                            <div class="col-md-12">
-                                                {{-- <br><br><br> --}}
-                                                <div class="row">
-                                                    {{-- <div class="col-md-1"></div> --}}
-
-                                                    <div class="col-md-12">
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-5 text-primary">Pay From&nbsp; <span
-                                                                    class="text-danger">*</span> </b>
-
-                                                            <input type="text" class="form-control col-md-7" id="amount"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                value="004001100241700194" placeholder="2000" required
-                                                                disabled=true>
-                                                            <br>
-                                                            {{-- <select class="form-control col-md-7 " id="from_account"
-=======
                             <div class="col-12">
                                 <div class="card-body">
                                     <div class="row">
@@ -386,7 +339,6 @@
                                                                                                             value="004001100241700194" placeholder="2000" required disabled=true>
                                                                                                         <br>
                                                                                                     {{-- <select class="form-control col-md-7 " id="from_account"
->>>>>>> fe58495429e797d1cd8ca07aa0aac9855c72ff1d
                                                                                                         required>
                                                                                                         <option value="">004001100241700194
                                                                                                         </option>
@@ -539,15 +491,9 @@
                     <div class="col-md-12">
                         <div class="cards_table row">
                             <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
-<<<<<<< HEAD
-                                style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
-                                <div class="p-3 mt-4 mt-lg-0 rounded">
-                                    <br>
-=======
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class="p-3 mt-4 mt-lg-0 rounded">
                                         <br>
->>>>>>> fe58495429e797d1cd8ca07aa0aac9855c72ff1d
 
                                     {{-- <table id="datatable-buttons"
                                             class="table table-bordered bg-white  table-striped dt-responsive nowrap w-100 beneficiary_list_display">
