@@ -434,7 +434,7 @@
                                                                                                                 class="text-danger">*</span></b>
 
 
-                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_name"
+                                                                                                                <input type="text" class="form-control col-md-7 receiver_name"
                                                                                                                 value="Joshua Amarfio" placeholder="Joshua Amarfio" autocomplete="off" required>
                                                                                                                 <br>
 
@@ -445,7 +445,7 @@
                                                                                                         <b class="col-md-5 text-primary"> Receiver's Phone Number: &nbsp; <span
                                                                                                                 class="text-danger">*</span></b>
 
-                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_phoneNum" value="0549830797" placeholder="0549380507" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                                                                                                <input type="text" class="form-control col-md-7 receiver_phoneNum" id="" value="0549830797" placeholder="0549380507" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
                                                                                                                 <br>
 
                                                                                                     </div>
@@ -455,7 +455,7 @@
                                                                                                         <b class="col-md-5 text-primary"> Receiver's Address: &nbsp; <span
                                                                                                                 class="text-danger">*</span></b>
 
-                                                                                                                <input type="text" class="form-control col-md-7" id="receiver_address" value="Kaneshie street" autocomplete="off" required>
+                                                                                                                <input type="text" class="form-control col-md-7 receiver_address" id="" value="Kaneshie street" autocomplete="off" required>
                                                                                                                 <br>
 
                                                                                                     </div>

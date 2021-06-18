@@ -96,7 +96,7 @@
 
                                     </ul>
                                 </div>
-                            </li> 
+                            </li>
                             {{-- <li>
                                 <a href="#sidebarBudgeting" data-toggle="collapse">
                                     <span>Budgeting</span>
@@ -459,7 +459,7 @@
                     <div class="collapse" id="sidebarSetting">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">Create Originator</a>
+                                <a href="{{ url('create-originator') }}">Create Originator</a>
                             </li>
                             <li>
                                 <a href="{{ url('set-transaction') }}">Set Transaction Limits</a>
