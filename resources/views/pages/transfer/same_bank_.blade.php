@@ -501,19 +501,20 @@
                                                     <div class="col-md-12">
 
                                                         <div class="form-group row">
-                                                            <b class="col-md-4 text-primary"> Beneficiary A/C Name</b>
-                                                            <input type="text" class="form-control col-md-8 "
-                                                                id="onetime_beneficiary_name"
-                                                                placeholder="Enter Account Name">
-                                                        </div>
-
-                                                        <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
                                                             <input type="text" class="form-control col-md-8 "
                                                                 id="onetime_account_number"
                                                                 placeholder="Enter Account Number"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                         </div>
+
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary"> Beneficiary A/C Name</b>
+                                                            <input type="text" class="form-control col-md-8 readOnly"
+                                                                id="onetime_beneficiary_name" readonly>
+                                                        </div>
+
+
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary Email</b>
