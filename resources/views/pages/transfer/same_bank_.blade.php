@@ -25,7 +25,7 @@
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container-fluid hide_on_print">
         <br>
         <!-- start page title -->
         <div class="row">
@@ -63,6 +63,175 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
+
+                            {{-- RECEIPT --}}
+
+                            <div class="receipt">
+                                <div class="container card card-body">
+
+                                    <div class="container">
+                                        <div class="">
+                                            <div class="col-md-12 col-md-offset-3 body-main">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
+                                                                src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
+                                                                style="zoom: 0.6" /> </div>
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-md-4 text-right">
+                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
+                                                            </h4>
+                                                            <p>25-27 Siaka Stevens St</p>
+                                                            <p> Freetown, Sierra Leone</p>
+                                                            <p>rokelsl@rokelbank.sl</p>
+                                                            <p>(+232)-76-22-25-01</p>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="page-header">
+                                                        <h2>Transfer Receipt </h2>
+                                                    </div>
+                                                    <br>
+                                                    {{-- <div class="row">
+                                                        <div class="col-md-12 text-center">
+                                                            <h2>INVOICE</h2>
+                                                            <h5>04854654101</h5>
+                                                        </div>
+                                                    </div> --}}
+                                                    <br />
+                                                    {{-- <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><h5>Description</h5></th>
+                                                                    <th><h5>Further Details</h5></th>
+                                                                    <th><h5>Amount</h5></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="col-md-9">
+                                                                        From Account Number<br>
+                                                                        004004110449140121
+                                                                    </td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 50,000 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">
+                                                                        To Account Number<br>
+                                                                        004004110445350137
+                                                                    </td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 5,200 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">Category Type</td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 25,000 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">Purpose of Transfer</td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 2,200 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9"> Transfer Amount</td>
+                                                                    <td class="text-right">
+                                                                        <p> <strong>Shipment and Taxes:</strong> </p>
+                                                                        <p> <strong>Total Amount: </strong> </p>
+                                                                        <p> <strong>Discount: </strong> </p>
+                                                                        <p> <strong>Payable Amount: </strong> </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 500 </strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong> </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="color: #F81D2D;">
+                                                                    <td class="text-right">
+                                                                        <h4><strong>Total:</strong></h4>
+                                                                    </td>
+                                                                    <td class="text-left">
+                                                                        <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900 </strong></h4>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div> --}}
+                                                    <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <thead class="thead-light">
+                                                            <tr>
+                                                                {{--  <th>#</th>  --}}
+                                                                <th>Description</th>
+                                                                <th>Further Details</th>
+                                                                <th>Amount</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                {{--  <th scope="row">1</th>  --}}
+                                                                <td>Transfer From Account Number</td>
+                                                                <td>004004100435290122</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                {{--  <th scope="row">2</th>  --}}
+                                                                <td>Transfer To Account Number</td>
+                                                                <td>004004110445350137</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                {{--  <th scope="row">3</th>  --}}
+                                                                <td>Transfer Cartegory</td>
+                                                                <td>Travels</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                {{--  <th scope="row">3</th>  --}}
+                                                                <td>Transfer Purpose</td>
+                                                                <td>Payment of Ethiopian Airline Ticket</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                {{--  <th scope="row">3</th>  --}}
+                                                                <td>Amount</td>
+                                                                <td></td>
+                                                                <td><strong>1000.00</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                {{--  <th scope="row">3</th>  --}}
+                                                                <td>Transaction Fee </td>
+                                                                <td></td>
+                                                                <td><strong>15.00</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                {{--  <th scope="row">3</th>  --}}
+                                                                <td><strong>Total Amount</strong> </td>
+                                                                <td></td>
+                                                                <td><strong>1015.00</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                {{--  <th scope="row">3</th>  --}}
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div> <!-- end table-responsive-->
+                                                    <br>
+                                                    <div>
+                                                        <div class="col-md-12">
+                                                            <p><b>Date Posted :</b> {{ date('d F, Y') }}</p> <br /> <br />
+                                                            <p><b>Posted By : {{ session('userId') }}</b></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="row">
@@ -329,9 +498,16 @@
                                                     <hr>
 
                                                 </div>
+
                                                 <div class="row" id="saved_beneficiary_form">
 
                                                     <div class="col-md-12">
+
+                                                        <div class="form-group row">
+                                                            <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
+                                                            <input type="text" class="form-control col-md-8 readOnly"
+                                                                id="saved_account_number" readonly>
+                                                        </div>
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary Name</b>
@@ -339,11 +515,7 @@
                                                                 id="saved_beneficiary_name" readonly>
                                                         </div>
 
-                                                        <div class="form-group row">
-                                                            <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
-                                                            <input type="text" class="form-control col-md-8 readOnly"
-                                                                id="saved_account_number" readonly>
-                                                        </div>
+
 
                                                         <div class="form-group row">
                                                             <b class="col-md-4 text-primary"> Beneficiary Email</b>
@@ -427,9 +599,7 @@
                                                         </div>
 
                                                         <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary ">Future Payment &nbsp;
-
-                                                            </b>
+                                                            <b class="col-md-4 text-primary ">Future Payment &nbsp; </b>
 
                                                             <input type="date" class="form-control col-md-8"
                                                                 id="future_payement" required>
@@ -491,7 +661,17 @@
 
                                                     </div>
 
+                                                    <br>
 
+
+                                                    <div class="form-group no_beneficiary">
+                                                        <div class="alert alert-warning" role="alert">
+                                                            <i class="mdi mdi-alert-outline mr-2"></i>
+                                                            <strong>warning</strong>
+                                                            No
+                                                            beneficiary found
+                                                        </div>
+                                                    </div>
 
 
                                                 </div>
@@ -629,16 +809,7 @@
                                                         id="next_button">
                                                         &nbsp; Next &nbsp;<i class="fe-arrow-right"></i></button>
                                                 </div>
-                                                <br>
 
-
-                                                <div class="form-group no_beneficiary">
-                                                    <div class="alert alert-warning" role="alert">
-                                                        <i class="mdi mdi-alert-outline mr-2"></i> <strong>warning</strong>
-                                                        No
-                                                        beneficiary found
-                                                    </div>
-                                                </div>
 
                                             </div>
 
@@ -813,8 +984,12 @@
 
                                         <hr>
                                         <div class="row">
-                                            <h6 class="col-md-5">Enter Amount:</h6>
-                                            <span class="text-primary display_amount col-md-7"></span>
+                                            <h6 class="col-md-5">Transfer Amount:</h6>
+                                            <span class="row col-md-7">
+                                                <span class="text-primary display_transfer_currency col-md-4"></span>
+                                                <span class="text-primary display_amount col-md-8"></span>
+
+                                            </span>
 
                                             <h6 class="col-md-5">Currency Rate:</h6>
                                             <span class="text-primary display_midrate col-md-7"></span>
@@ -1170,6 +1345,7 @@
             $("#onetime_payment_details_form").show();
             $('.badge').hide();
             $(".card_right").hide();
+            $(".receipt").hide();
 
 
             setTimeout(function() {
@@ -1205,21 +1381,22 @@
                             toaster(response.message, 'success');
                             $('#onetime_beneficiary_name').val(response.data.accountDescription);
                             $('.display_to_account_name').text(response.data.accountDescription);
-                            $('.display_to_account_currency').text(response.data.accountCurrencyDescription);
+                            $('.display_to_account_currency').text(response.data
+                                .accountCurrencyDescription);
                             $('.display_to_account_no').text(account_no);
-                            {{--  $('#select_currency_i').val(response.data.accountCurrencyDescription)
+                            {{-- $('#select_currency_i').val(response.data.accountCurrencyDescription)
                             $('#select_currency').val(response.data.accountCurrencyCode + '~' +
-                                response.data.accountCurrencyDescription)  --}}
+                                response.data.accountCurrencyDescription) --}}
 
 
                             $('#save_beneficiary').show('')
 
                         } else {
                             toaster(response.message, 'error');
-                            {{--  $('#account_name').val('')
+                            {{-- $('#account_name').val('')
                             $('#select_currency_i').val('')
                             $('#select_currency').val('')
-                            $('#save_beneficiary').hide('')  --}}
+                            $('#save_beneficiary').hide('') --}}
 
 
                         }
@@ -1230,13 +1407,13 @@
 
 
             $("#onetime_account_number").keyup(function() {
-                    let account_no = $(this).val();
-                    if (account_no.length > 17) {
-                        getAccountDescription(account_no)
-                    }
+                let account_no = $(this).val();
+                if (account_no.length > 17) {
+                    getAccountDescription(account_no)
+                }
 
 
-                })
+            })
 
             $("#customCheck1").click(function() {
                 if ($(this).is(":checked")) {
@@ -1402,6 +1579,7 @@
                     $(".display_from_account_name").text(from_account_info[1].trim())
                     $(".display_from_account_no").text(from_account_info[2].trim())
                     $(".display_from_account_currency").text(from_account_info[3].trim())
+                    $(".display_transfer_currency").text(from_account_info[3].trim())
 
                     let crr = from_account_info[3].trim()
 
@@ -1522,8 +1700,7 @@
                     } else {
                         //alert('set')
                         var transfer_amount = $(this).val()
-                        $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount
-                            .trim())))
+                        $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount.trim())))
                     }
 
                 } else {
@@ -1540,8 +1717,31 @@
             $("#amount").keyup(function() {
                 var amount = ($(this).val());
                 {{-- console.log(amount); --}}
-                $(".display_amount").text(amount);
+                $(".display_amount").text(formatToCurrency(Number(amount.trim())));
+                {{-- $('#display_transfer_amount').text(amount); --}}
             });
+
+            $("#amount_").keyup(function() {
+                var amount = ($(this).val());
+                $(".display_amount").text(formatToCurrency(Number(amount.trim())))
+                $(".display_transfer_amount").text(formatToCurrency(Number(amount.trim())))
+                {{-- $('#display_transfer_amount').text(amount); --}}
+
+            });
+
+            //category
+            $("#onetime_category").change(function() {
+                var category = ($(this).val().split('~'));
+                $("#display_category").text(category[1]);
+
+            })
+
+            //purpose
+            $("#onetime_purpose").keyup(function() {
+                var purpose = ($(this).val());
+                $("#display_purpose").text(purpose);
+
+            })
 
             $("#from_account").change(function() {
                 var from_acc_currency = ($(this).val().split('~'))
@@ -1634,22 +1834,13 @@
                 }
 
                 //set purpose and category values
-                var category_info = category.split("~")
+                {{-- var category_info = category.split("~")
                 $("#display_category").text(category_info[1])
-                $("#display_purpose").text(purpose)
+                var purpose =
+                $("#display_purpose").text(purpose) --}}
 
                 $("#transaction_form").hide()
                 $("#transaction_summary").show()
-
-
-
-                if (schedule_payment_contraint_input.trim() != '' || schedule_payment_date.trim() ==
-                    '') {
-                    $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                    toaster('Select schedule date for subsequent transfers', 'error', 10000)
-
-                    {{-- return false; --}}
-                }
 
 
                 if (type == 'Saved_beneficiary') {
@@ -1684,7 +1875,7 @@
 
                     // ONETIME BENEFICIARY DETAILS
                     var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
-                    var onetime_beneficiary_account_number = $('#onetime_beneficiary_account_number').val()
+                    var onetime_account_number = $('#onetime_account_number').val()
                     var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency')
                         .val()
                     var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
@@ -1700,8 +1891,8 @@
                     //////////////////////////////
 
 
-                    if (from_account.trim() == '' || onetime_beneficiary_account_number.trim() ==
-                        '' || transfer_amount.trim() == '' || category.trim() == '' || purpose
+                    if (from_account.trim() == '' || onetime_account_number.trim() ==
+                        '' || amount_.trim() == '' || category.trim() == '' || purpose
                         .trim() == '') {
                         {{-- toaster('Field must not be empty', 'error', 10000) --}}
 
@@ -1746,8 +1937,7 @@
 
 
                 $('#online_display_beneficiary_alias_name').text(onetime_beneficiary_alias_name);
-                $('#online_display_beneficiary_account_no').text(
-                    onetime_beneficiary_account_number);
+                $('#online_display_beneficiary_account_no').text(onetime_beneficiary_account_number);
                 $('#online_display_beneficiary_account_currency').text(
                     onetime_beneficiary_account_currency);
                 $('#online_display_beneficiary_email').text(onetime_beneficiary_email);
@@ -1803,7 +1993,7 @@
                             var transfer_amount = $('#amount_').val();
                             console.log(transfer_amount);
 
-                            {{--  var select_frequency = $('#select_frequency').val()  --}}
+                            {{-- var select_frequency = $('#select_frequency').val() --}}
 
                             var onetime_future_payement = $('#onetime_future_payement').val();
                             console.log(onetime_future_payement);
@@ -1867,7 +2057,8 @@
                                         toaster(response.message, 'error', 10000)
 
                                         $("#confirm_transfer").show();
-                                        $("#confirm_modal_button").prop('disabled', false);
+                                        $("#confirm_modal_button").prop('disabled',
+                                            false);
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#back_button').show();
@@ -1887,6 +2078,122 @@
 
 
 
+                    }else {
+
+                        $("#transfer_pin").click(function(e){
+                            e.preventDefault();
+
+                            $('#confirm_transfer').hide()
+                            $('#spinner').show();
+                            $('#spinner-text').show();
+                            $("#confirm_modal_button").prop('disabled', true);
+
+
+                            var from_account = $('#from_account').val().split('~');
+                            var from_account_ = from_account[2];
+
+                            console.log(from_account_);
+
+                            var to_account = $('#to_account').val().split('~');
+                            var to_account_ = to_account[2];
+                            console.log(to_account_)
+
+                            var beneficiary_name = to_account[1];
+                            console.log(beneficiary_name);
+
+                            var beneficiary_currency = $("#select_currency").val();
+                            console.log(beneficiary_currency);
+
+
+                            var purpose = $('#purpose').val()
+                            console.log(purpose);
+
+                            var beneficiary_email = to_account[4];
+                            console.log(beneficiary_email);
+
+
+                            var transfer_amount = $('#amount').val();
+                            console.log(transfer_amount);
+
+                            {{-- var select_frequency = $('#select_frequency').val() --}}
+
+                            var future_payement = $('#future_payement').val();
+                            console.log(future_payement);
+
+                            var category_ = $('#category').val().split('~');
+                            var category = category_[1];
+                            console.log(category);
+
+                            var user_pin = $('#user_pin').val();
+                            console.log(user_pin);
+
+                            $.ajax({
+                                'type': 'POST',
+                                'url': 'transfer-to-beneficiary-api',
+                                "datatype": "application/json",
+                                'data': {
+                                    'from_account': from_account_,
+                                    'alias_name': beneficiary_name,
+                                    'to_account': to_account_,
+                                    'account_currency': beneficiary_currency,
+                                    'purpose': purpose,
+                                    'beneficiary_email': beneficiary_email,
+                                    'amount': transfer_amount,
+                                    'schedule_payment_date': onetime_future_payement,
+                                    'category': category,
+                                    'secPin': user_pin
+                                },
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                        'content')
+                                },
+                                success: function(response) {
+                                    {{-- console.log(response); --}}
+
+
+                                    if (response.responseCode == '000') {
+
+                                        $("#related_information_display").removeClass(
+                                            "d-none d-sm-block");
+                                        Swal.fire(
+                                            '',
+                                            response.message,
+                                            'success'
+                                        );
+
+                                        $('#confirm_modal_button').hide();
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#back_button').hide();
+                                        $('#print_receipt').show();
+
+
+                                        $(".card_right").hide();
+                                        $(".success_gif").show();
+
+
+
+                                    } else {
+                                        toaster(response.message, 'error', 10000)
+
+                                        $("#confirm_transfer").show();
+                                        $("#confirm_modal_button").prop('disabled',
+                                            false);
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#back_button').show();
+                                        $('#print_receipt').hide();
+                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                        $("#related_information_display").show();
+                                        $(".success_gif").hide();
+
+
+                                    }
+
+
+                                }
+                            });
+                        })
                     }
 
                 } else {
