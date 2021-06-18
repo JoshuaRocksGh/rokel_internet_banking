@@ -27,10 +27,13 @@ class SameBankController extends Controller
             'to_account' => 'required',
             'transfer_amount' => 'required',
             'category' => 'required',
-            //'select_frequency' => 'required' ,
+            'account_currency' => 'required' ,
             'purpose' => 'required',
             'alias_name' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'amount' => 'required' ,
+            'secPin' => 'required' ,
+            'category' => 'required'
         ]);
 
         // return [
