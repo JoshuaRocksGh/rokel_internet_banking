@@ -2083,10 +2083,10 @@
                         $("#transfer_pin").click(function(e){
                             e.preventDefault();
 
-                            $('#confirm_transfer').hide()
+                            {{-- $('#confirm_transfer').hide()
                             $('#spinner').show();
                             $('#spinner-text').show();
-                            $("#confirm_modal_button").prop('disabled', true);
+                            $("#confirm_modal_button").prop('disabled', true); --}}
 
 
                             var from_account = $('#from_account').val().split('~');
