@@ -182,7 +182,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
-                                                                    <td>Transfer Cartegory</td>
+                                                                    <td>Transfer Category</td>
                                                                     <td><span id="category_receipt"></span></td>
                                                                     <td></td>
                                                                 </tr>
@@ -230,15 +230,18 @@
                                                         </div>
                                                     </div>
                                                     <br><br>
-                                                    <div class="col-md-5"></div>
-                                                    <div class="col-md-2">
-                                                        <button class="btn btn-light btn-rounded hide_on_print"
-                                                            type="button" onclick="window.print()">Print
-                                                            Receipt
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-5"></div>
+                                                    <div class="row">
+                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-2">
+                                                              <button class="btn btn-light btn-rounded hide_on_print text-center"
+                                                                type="button" onclick="window.print()">Print
+                                                                Receipt
+                                                            </button>
 
+
+                                                        </div>
+                                                        <div class="col-md-5"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1597,7 +1600,7 @@
                     }
 
                     // set summary values for display
-                    $(".display_from_account_type").text(from_account_info[0].trim())
+                    {{-- $(".display_from_account_type").text(from_account_info[0].trim()) --}}
                     $(".display_from_account_name").text(from_account_info[1].trim())
                     $(".display_from_account_no").text(from_account_info[2].trim())
                     $(".display_from_account_currency").text(from_account_info[3].trim())
@@ -1656,7 +1659,7 @@
                     }
 
                     // set summary values for display
-                    $(".display_to_account_type").text(to_account_info[0].trim())
+                    {{-- $(".display_to_account_type").text(to_account_info[0].trim()) --}}
                     $(".display_to_account_name").text(to_account_info[1].trim())
                     $(".display_to_account_no").text(to_account_info[2].trim())
                     $(".display_to_account_currency").text(to_account_info[3].trim())
@@ -1740,7 +1743,23 @@
                 var amount = ($(this).val());
                 {{-- console.log(amount); --}}
                 $(".display_amount").text(formatToCurrency(Number(amount.trim())));
-                {{-- $('#display_transfer_amount').text(amount); --}}
+                $('#display_transfer_amount').text(formatToCurrency(Number(amount.trim())));
+            });
+
+            {{-- $("#select_currency").change(function(){
+                var select_currency = ($(this).val());
+                $(".display_transfer_currency").text(select_currency);
+            }) --}}
+
+            $("#category").change(function() {
+                var category = ($(this).val().split('~'));
+                var category_ = category[1]
+                $("#display_category").text(category_);
+            });
+
+            $("#purpose").keyup(function() {
+                var purpose = ($(this).val());
+                $("#display_purpose").text(purpose);
             });
 
             $("#amount_").keyup(function() {
@@ -1958,7 +1977,7 @@
                 var from_account_ = from_account[2];
 
 
-                $('#online_display_beneficiary_alias_name').text(onetime_beneficiary_alias_name);
+                {{-- $('#online_display_beneficiary_alias_name').text(onetime_beneficiary_alias_name); --}}
                 $('#online_display_beneficiary_account_no').text(onetime_beneficiary_account_number);
                 $('#online_display_beneficiary_account_currency').text(
                     onetime_beneficiary_account_currency);
@@ -2015,7 +2034,8 @@
 
                             var transfer_amount = $('#amount_').val();
                             console.log(transfer_amount);
-                            $("#amount_receipt").text(transfer_amount);
+                            $("#amount_receipt").text(formatToCurrency(Number(transfer_amount
+                            .trim())));
 
                             {{-- var select_frequency = $('#select_frequency').val() --}}
 
@@ -2093,7 +2113,8 @@
                                         $(".receipt").hide();
 
                                         $("#confirm_transfer").show();
-                                        $("#confirm_modal_button").prop('disabled', false);
+                                        $("#confirm_modal_button").prop('disabled',
+                                            false);
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#back_button').show();
@@ -2140,7 +2161,8 @@
 
                             var transfer_amount = $('#amount').val();
                             console.log(transfer_amount);
-                            $("#amount_receipt").text(transfer_amount)
+                            $("#amount_receipt").text(formatToCurrency(Number(transfer_amount
+                            .trim())));
 
                             var select_currency = $("#select_currency").val();
                             console.log(select_currency);
