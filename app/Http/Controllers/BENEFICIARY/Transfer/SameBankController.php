@@ -76,46 +76,46 @@ class SameBankController extends Controller
 
             "addressDetails" => [
                 "address1" => $req->beneficiary_address,
-                "address2" => "string",
-                "address3" => "string",
-                "city" => "string",
-                "countryOfResidence" => "string"
+                "address2" => null,
+                "address3" => null,
+                "city" => null,
+                "countryOfResidence" => null
             ],
 
             "bankDetails" => [
-                "bankAddress" => "string",
-                "bankBranch" => "string",
-                "bankCity" => "string",
-                "bankCountry" => "string",
+                "bankAddress" => null,
+                "bankBranch" => null,
+                "bankCity" => null,
+                "bankCountry" => null,
                 "bankName" => "THIS BANK",
-                "bankSwiftCode" => "string"
+                "bankSwiftCode" => null
             ],
 
-            "beneID" => "string",
+            "beneID" => null,
 
             "beneficiaryDetails" => [
                 "email" => $req->beneficiary_email,
-                "firstName" => "string",
-                "lastName" => "string",
-                "nationality" => "string",
+                "firstName" => null,
+                "lastName" => null,
+                "nationality" => null,
                 "nickname" => $req->beneficiary_name,
-                "otherName" => "string",
+                "otherName" => null,
                 "sendMail" => $req->transfer_email
             ],
 
             "beneficiaryType" => "SAB",
 
             "securityDetails" => [
-                "approvedBy" => "string",
+                "approvedBy" => null,
                 "approvedDateTime" => date('Y-m-d'),
-                "createdBy" => "string",
+                "createdBy" => null,
                 "createdDateTime" =>  date('Y-m-d'),
-                "entrySource" => "string",
-                "modifyBy" => "string",
+                "entrySource" => null,
+                "modifyBy" => null,
                 "modifyDateTime" =>  date('Y-m-d')
             ],
 
-            "transactionType" => "string",
+            "transactionType" => null,
             "userID" => $userID,
             "telephone" => $req->number
 

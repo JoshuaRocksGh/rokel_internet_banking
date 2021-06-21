@@ -353,7 +353,7 @@
                                 model_data = data[index]
 
                                 table.row.add([
-                                    data[index].FIRST_NAME,
+                                    data[index].NICKNAME,
                                     data[index].BEN_ACCOUNT,
                                     data[index].NICKNAME,
                                     data[index].EMAIL,
