@@ -38,6 +38,8 @@ class SameBankController extends Controller
 
         ]);
 
+        // return $req ;
+
         // return [
         //     'responseCode' => '000',
         //     'message' => 'Money transferred successfully',

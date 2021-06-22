@@ -381,4 +381,36 @@
                 left: 67%;
                 top: 68%;
             }
+
+            // RECEIPT CSS
+
+            .body-main {
+                background: #ffffff;
+                border-bottom: 15px solid #1E1F23;
+                border-top: 15px solid #1E1F23;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                padding: 40px 30px !important;
+                position: relative;
+                box-shadow: 0 1px 21px #808080;
+                font-size: 10px
+            }
+
+            .main thead {
+                background: #1E1F23;
+                color: #fff
+            }
+
+            .img {
+                height: 100px;
+
+            }
+
+            .logo {
+                align: center
+            }
+
+            h2 {
+                text-align: center
+            }
 </style>
