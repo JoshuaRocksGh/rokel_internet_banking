@@ -204,7 +204,7 @@
                                 </div>
                             </div>
 
-                            <div class="row" style="zoom:0.8;">
+                            <div class="row" >
                                 <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class=" p-3 mt-4 mt-lg-0 rounded">
@@ -218,49 +218,30 @@
                                             <button class="btn btn-sm btn-secondary">retry</button>
                                         </div>
 
-                                        <div class="table-responsive table-bordered" id="account_balance_info_display">
+                                        <div class="" id="account_balance_info_display">
 
+                                            <div class="alert alert-secondary" role="alert">
+                                               <h5>Account Number: <strong class="display_account_number"></strong> Date Range: <strong class="display_search_date_range"></strong></h5>
+                                            </div>
 
-
-                                            <table class="table mb-0" id="myTable">
+                                            <table id="datatable-buttons" class="table table-bordered table-striped mb-0 account_transaction_display_table" >
                                                 <tbody>
-                                                    <tr class="bg-primary text-white ">
-                                                        <td>Date</td>
-                                                        <td>Amount (SLL)<span class="account_number_display_"></span></td>
-                                                        <td>Balance (SLL)<span class="account_description_display_"></span></td>
-                                                        <td>Explanation <span class="account_currency_display_"></span>
-                                                        </td>
-                                                        <td>Transaction Details <span class="account_product_display_"></span> </td>
+                                                    <thead>
+                                                        <tr class="bg-info text-white ">
+                                                            <td>Date</td>
+                                                            <td>Amount (SLL)<span class="account_number_display_"></span></td>
+                                                            <td>Balance (SLL)<span class="account_description_display_"></span></td>
+                                                            <td>Explanation <span class="account_currency_display_"></span>
+                                                            </td>
+                                                            <td>Transaction Details <span class="account_product_display_"></span> </td>
+                                                            <td>Document Ref <span class=""></span> </td>
+                                                            <th>Batch No</th>
+                                                        </tr>
+                                                    </thead>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b> 03/05/2021 &emsp; 10:30:29</b> </td>
-                                                        <td class="text-danger"><b>5,000.00</b> </td>
-                                                        <td><b>1,450,523.00</b></td>
-                                                        <td> <b>Others</b> </td>
-                                                        <td> <b>Transfer to mum for hospital bills</b> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b> 11/05/2021 &emsp; 14:11:29</b> </td>
-                                                        <td class="text-success"><b>1,000.00</b> </td>
-                                                        <td><b>1,451,523.00</b></td>
-                                                        <td> <b>Transfer</b> </td>
-                                                        <td> <b>Interest Payment</b> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b> 12/05/2021 &emsp; 08:46:59</b> </td>
-                                                        <td class="text-success"><b>5,000.00</b> </td>
-                                                        <td><b>1,456,523.00</b></td>
-                                                        <td> <b>Transfer</b> </td>
-                                                        <td> <b>Payment from James</b> </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b> 16/05/2021 &emsp; 15:03:59</b> </td>
-                                                        <td class="text-danger"><b>10,000.00</b> </td>
-                                                        <td><b>1,466,523.00</b></td>
-                                                        <td> <b>Travel</b> </td>
-                                                        <td> <b>Payment for Airplane ticket</b> </td>
-                                                    </tr>
+                                                    <tbody id="table-body-display">
+
+                                                    </tbody>
 
                                                 </tbody>
                                             </table>
@@ -467,12 +448,12 @@
     </script>
 
     <script>
-        $("#account_balance_info_display").hide();
-        $("#account_balance_info_retry_btn").hide();
+        {{-- $("#account_balance_info_display").hide(); --}}
 
+        {{-- $("#account_balance_info_retry_btn").hide();
         $(".account_transaction_display").hide();
         $(".account_transaction_display_table").hide();
-        $("#account_transaction_retry_btn").hide();
+        $("#account_transaction_retry_btn").hide(); --}}
 
 
 
@@ -586,7 +567,7 @@
 
 
 
-            var account_number = @json($account_number);
+            var account_number = "account_number";
             var start_date = defaultStartDate;
             var end_date = defaultEndDate;
             var transLimit = "10";
@@ -595,8 +576,7 @@
 
             setTimeout(function() {
                 get_accounts()
-                {{--  getAccountTransactions(account_number, start_date, end_date, transLimit)
-                getAccountBalanceInfo(account_number);  --}}
+
             }, 500);
 
             $('#search_transaction').click(function() {
@@ -604,8 +584,6 @@
                 let end_date = $('#endDate').val()
 
                 var from_account = $('#from_account').val()
-
-
 
                 if (from_account.trim() == '' || from_account.trim() == undefined) {
                     return false;
@@ -650,7 +628,7 @@
                 })
 
 
-                load_data_into_table(load_data)
+                load_data_into_table(load_data, account_number, start_date, end_date)
             })
 
 
@@ -677,20 +655,20 @@
 
                     }
                 })
-                load_data_into_table(load_data)
+                load_data_into_table(load_data, account_number, start_date, end_date)
             })
 
 
 
-            $("#account_balance_info_retry_btn").click(function() {
+            {{-- $("#account_balance_info_retry_btn").click(function() {
                 $("#account_balance_info_display").hide();
                 $("#account_balance_info_retry_btn").hide();
                 $("#account_balance_info_loader").show();
                 getAccountBalanceInfo(account_number);
-            })
+            }) --}}
 
 
-            $("#account_transaction_retry_btn").click(function() {
+            {{-- $("#account_transaction_retry_btn").click(function() {
                 $(".account_transaction_display").hide();
                 $(".account_transaction_display_table").hide();
                 $("#account_transaction_retry_btn").hide();
@@ -703,10 +681,10 @@
                 console.log(end_date)
                 console.log(account_number)
                 getAccountTransactions(account_number, start_date, end_date);
-            })
+            }) --}}
 
 
-            function load_data_into_table(data) {
+            function load_data_into_table(data, account_number, start_date, end_date) {
                 {{-- $('#table-body-display').empty() --}}
 
                 $("#table-body-display tr").remove();
@@ -714,6 +692,15 @@
                 $(".account_transaction_display_table").hide();
                 $("#account_transaction_retry_btn").hide();
                 $("#account_transaction_loader").show();
+
+                $(".display_account_number").text(account_number);
+                $(".display_search_date_range").text(start_date + ' to ' + end_date);
+
+                account_number = account_number
+                start_date = start_date
+                end_date = end_date
+
+
 
                 $('#table-body-display').html('')
                 var table = $('.account_transaction_display_table').DataTable();
@@ -752,6 +739,26 @@
 
                         table.row.add([
                             data[index].postingSysDate,
+                            amount,
+                            `${data[index].runningBalance}`,
+                            "EXPLANATION",
+                            data[index].narration,
+
+                            data[index].documentReference,
+
+                            data[index].valueDate,
+                            `<a type="button" data-toggle="modal"
+                                data-target="#bs-example-modal-xl"
+                                class="text-primary">${data[index].batchNumber}</a>`,
+                            amount,
+
+                            `${attachment}`
+
+
+                        ]).draw(false)
+
+                        {{-- table.row.add([
+                            data[index].postingSysDate,
                             data[index].valueDate,
                             data[index].narration,
                             data[index].documentReference,
@@ -763,7 +770,7 @@
                             `${attachment}`
 
 
-                        ]).draw(false)
+                        ]).draw(false) --}}
 
 
                     })
@@ -805,7 +812,7 @@
 
                             tranactions = response.data
 
-                            load_data_into_table(tranactions)
+                            load_data_into_table(tranactions, account_number, start_date, end_date)
 
                             $("#account_transaction_loader").hide();
                             $("#account_transaction_retry_btn").hide();

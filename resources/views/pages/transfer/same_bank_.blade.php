@@ -2127,22 +2127,27 @@
                             var user_pin = $('#user_pin').val();
                             console.log(user_pin);
 
+                            let data = {
+                                from_account: from_account_,
+                                alias_name: beneficiary_name,
+                                to_account: to_account_,
+                                account_currency: beneficiary_currency,
+                                purpose: purpose,
+                                beneficiary_email: beneficiary_email,
+                                amount: transfer_amount,
+                                schedule_payment_date: onetime_future_payement,
+                                category: category,
+                                secPin: user_pin
+                            }
+                            console.log(data)
+                            return false
+
+
                             $.ajax({
                                 'type': 'POST',
                                 'url': 'transfer-to-beneficiary-api',
                                 "datatype": "application/json",
-                                'data': {
-                                    'from_account': from_account_,
-                                    'alias_name': beneficiary_name,
-                                    'to_account': to_account_,
-                                    'account_currency': beneficiary_currency,
-                                    'purpose': purpose,
-                                    'beneficiary_email': beneficiary_email,
-                                    'amount': transfer_amount,
-                                    'schedule_payment_date': onetime_future_payement,
-                                    'category': category,
-                                    'secPin': user_pin
-                                },
+                                'data': JSON.stringify(data),
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
                                         'content')
