@@ -17,6 +17,38 @@
 
 @section('content')
 
+<div class="container-fluid hide_on_print">
+    <br>
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="text-primary">
+                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                SAME BANK TRANSFER
+
+            </h4>
+        </div>
+
+        <div class="col-md-6 text-right">
+            <h6>
+
+                <span class="flaot-right">
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank</b>
+
+
+                </span>
+
+            </h6>
+
+        </div>
+
+        <div class="col-md-12 ">
+            <hr class="text-primary" style="margin: 0px;">
+        </div>
+
+    </div>
+</div>
+
     <div>
 
         <div class="row">
@@ -27,301 +59,43 @@
 
                         <div class="row">
 
-                            <div class="col-md-12">
-
-                                <p class="sub-header font-18 purple-color" style="cursor: pointer">
-                                <h2 class="header-title m-t-0 text-primary">PENDING</h2>
-
-                                </p>
-                                <hr>
-                            </div>
 
                             <div class="col-md-12">
 
 
-                                <ul class="nav nav-pills navtab-bg nav-justified">
-                                    <li class="nav-item">
-                                        <a href="#transfer_tab" data-toggle="tab" aria-expanded="false"
-                                            class="nav-link active transfer_tab_btn">
-                                            Transfers
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#payment_tab" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                            Payments
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#request_tab" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            Requests
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#cards_tab" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            Cards
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane show active" id="transfer_tab">
+                                <div class="card-body">
 
-                                        <div class="card-body">
+                                    {{-- <h4 class="header-title">Buttons example</h4>
+                                    <p class="sub-header font-13">
+                                        The Buttons extension for DataTables provides a common set of options, API
+                                        methods and styling to display buttons on a page
+                                        that will interact with a DataTable. The core library provides the based
+                                        framework upon which plug-ins can built.
+                                    </p> --}}
 
-                                            {{-- <h4 class="header-title">Buttons example</h4>
-                                            <p class="sub-header font-13">
-                                                The Buttons extension for DataTables provides a common set of options, API
-                                                methods and styling to display buttons on a page
-                                                that will interact with a DataTable. The core library provides the based
-                                                framework upon which plug-ins can built.
-                                            </p> --}}
-
-                                            <table id="datatable-buttons"
-                                                class="table table-striped table-bordered dt-responsive nowrap w-100 pending_transaction_request"
-                                                style="zoom: 0.8;">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Req-Type</th>
-                                                        <th>Status</th>
-                                                        <th>Initiated By</th>
-                                                        <th>Posted Date</th>
-                                                        <th>Account No</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
+                                    <table id="datatable-buttons"
+                                        class="table table-striped table-bordered dt-responsive nowrap w-100 pending_transaction_request"
+                                        style="zoom: 0.9;">
+                                        <thead>
+                                            <tr>
+                                                <th>Req-Type</th>
+                                                <th>Status</th>
+                                                <th>Initiated By</th>
+                                                <th>Posted Date</th>
+                                                <th>Account No</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
 
 
 
-                                            </table>
+                                    </table>
 
 
-                                        </div> <!-- end card body-->
-
-
-                                    </div>
-
-                                    <div class="tab-pane  " id="payment_tab">
+                                </div> <!-- end card body-->
 
 
 
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Red Hoodie for
-                                                                    men</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                USD 5,700.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Designer Awesome
-                                                                    T-Shirt</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                SLL 888.00
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
-
-
-                                    </div>
-
-
-                                    <div class="tab-pane  " id="request_tab">
-
-
-
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Red Hoodie for
-                                                                    men</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                USD 5,700.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Designer Awesome
-                                                                    T-Shirt</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                SLL 888.00
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
-
-
-                                    </div>
-
-
-                                    <div class="tab-pane  " id="cards_tab">
-
-
-
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Red Hoodie for
-                                                                    men</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                USD 5,700.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Designer Awesome
-                                                                    T-Shirt</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                SLL 888.00
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
-
-
-                                    </div>
-
-
-                                </div>
                             </div>
 
 
