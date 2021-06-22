@@ -38,7 +38,7 @@ class SameBankController extends Controller
 
         ]);
 
-        return $req ;
+        // return $req ;
 
         // return [
         //     'responseCode' => '000',

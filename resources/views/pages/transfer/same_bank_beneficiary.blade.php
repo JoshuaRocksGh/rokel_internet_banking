@@ -126,12 +126,12 @@
 
 
 
-                                <button type="submit" class="btn btn-primary btn-rounded float-right">Add Beneficiary &nbsp;
+                                <button type="button" class="btn btn-primary btn-rounded float-right" id="add_beneficiary" >Add Beneficiary &nbsp;
                                     <i class="fe-arrow-right"></i>
-                                    <span id="confirm_transfer">Confirm Transfer</span>
-                                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
-                                        aria-hidden="true"></span>
-                                    <span id="spinner-text">Loading...</span>
+                                    {{-- <span id="confirm_transfer">Confirm Transfer</span> --}}
+                                    {{-- <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
+                                        aria-hidden="true"></span> --}}
+                                    {{-- <span id="spinner-text">Loading...</span> --}}
                                 </button>
 
                             </div>
@@ -413,6 +413,7 @@
                                 $('#select_currency_i').val(response.data.accountCurrencyDescription)
                                 $('#select_currency').val(response.data.accountCurrencyCode + '~' +
                                     response.data.accountCurrencyDescription)
+                                $('#display_account_currency').text(response.data.accountCurrencyDescription);
 
                                 $('#save_beneficiary').show('')
 
@@ -453,8 +454,8 @@
                     var beneficiary_address = $('#beneficiary_address').val();
                     var transfer_email = $("#transfer_email input[type='checkbox']:checked").val();
                     var currency = $('#select_currency').val().split('~');
-                    var currency_ = currency[1];
-                    console.log(currency_);
+                    {{-- var currency_ = currency[1];
+                    console.log(currency_); --}}
 
                     var account_number = $('#account_number').val();
                     $('#display_account_number').text(account_number);
@@ -462,8 +463,8 @@
                     var account_name = $('#account_name').val();
                     $('#display_account_name').text(account_name);
 
-                    var currency_ = currency[1];
-                    $('#display_account_currency').text(currency);
+                    {{-- var currency_ = currency[1];
+                    $('#display_account_currency').text(currency); --}}
 
                     var beneficiary_name = $('#beneficiary_name').val();
                     $('#display_beneficiary_name').text(beneficiary_name);
@@ -507,7 +508,7 @@
                 })
 
 
-                $('#same_bank_beneficiary_form_summary').submit(function(e) {
+                $('#add_beneficiary').click(function(e) {
                     e.preventDefault();
 
                     $('#spinner').show();
