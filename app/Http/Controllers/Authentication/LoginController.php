@@ -98,19 +98,31 @@ class LoginController extends Controller
                         "firstTimeLogin" => $user_detail->firstTimeLogin,
                         "userToken" => $user_detail->userToken,
                         "customerNumber" => $user_detail->customerNumber,
+                        "customerPhone" => $user_detail->customerPhone,
                         "updateUrl" => $user_detail->updateUrl,
                         "lastLogin" => $user_detail->lastLogin,
                         // "customerType" => $user_detail->customerType,
                         // "checkerMaker" => $user_detail->checkerMaker,
                         "customerType" => 'C',
                         "checkerMaker" => 'M',
+                        "headers"=>["x-api-key"=> "123",
+                        "x-api-secret"=> "123",
+                        "x-api-source"=> "123",
+                        "x-api-token"=> "123"]
 
                     ]);
 
+                    $api_headers = [
+
+                    ];
+                    // return session();
+                    // return session()->get('customerPhone');
+
                     $authToken = session()->get('userToken');
+
                     $userID = session()->get('userId');
                     // return $authToken;
-                    // return session()->get('user');
+                    // return session();
 
                     // return redirect()->route('home');
 

@@ -131,95 +131,201 @@
                                                                         </select>
                                                                     </div>
 
-
-
-                                                                    <div class="form-group row mb-3" id="pay_from_account">
-
-                                                                        <b class="col-md-5 text-primary">Amount&nbsp;
-                                                                            <span class="text-danger">*</span></b>
-
-
-                                                                        <input type="text" class="form-control col-md-7"
-                                                                            id="amount"
-                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                            required>
-                                                                        <br>
-
-
-
-                                                                    </div>
-
-
-
                                                                     <div class="form-group row">
 
-                                                                        <b class="col-md-5 text-primary"> Receiver Name
-                                                                            &nbsp; <span class="text-danger">*</span></b>
+                                                                        <b class="col-md-5 text-primary"> Destination &nbsp; <span class="text-danger">*</span></b>
 
+                                                                        <div class="row col-md-7 ">
+                                                                            <div class="radio radio-primary form-check-inline m-1 col-md-5 destination">
+                                                                                <input type="radio" id="inlineRadio1" value="SELF" name="radioInline" >
+                                                                                <label for="inlineRadio1"> Self </label>
+                                                                            </div>
+                                                                            <div class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
+                                                                                <input type="radio" id="inlineRadio2" value="OTHERS" name="radioInline" checked>
+                                                                                <label for="inlineRadio2"> Others</label>
+                                                                            </div>
 
-                                                                        <input type="text" class="form-control col-md-7"
-                                                                            id="receiver_name"
-                                                                            placeholder="enter receiver name"
-                                                                            autocomplete="off" required>
-                                                                        <br>
-
-                                                                    </div>
-
-                                                                    <div class="form-group row">
-
-                                                                        <b class="col-md-5 text-primary"> Receiver's Phone
-                                                                            Number: &nbsp; <span
-                                                                                class="text-danger">*</span></b>
-
-                                                                        <input type="text" class="form-control col-md-7"
-                                                                            id="receiver_phoneNum"
-                                                                            placeholder="receiver Phone Number"
-                                                                            autocomplete="off"
-                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                            required>
-                                                                        <br>
+                                                                        </div>
 
                                                                     </div>
 
-                                                                    <div class="form-group row">
 
-                                                                        <b class="col-md-5 text-primary"> Receiver's
-                                                                            Address: &nbsp; <span
-                                                                                class="text-danger">*</span></b>
+                                                                    <div class="others_form">
+                                                                        <div class="form-group row mb-3">
 
-                                                                        <input type="text" class="form-control col-md-7"
-                                                                            id="receiver_address"
-                                                                            placeholder="receiver Address"
-                                                                            autocomplete="off" required>
-                                                                        <br>
+                                                                            <b class="col-md-5 text-primary">Amount&nbsp;
+                                                                                <span class="text-danger">*</span></b>
 
+
+                                                                            <input type="text" class="form-control col-md-7 "
+                                                                                id="amount"
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                required>
+                                                                            <br>
+
+
+
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-5 text-primary"> Receiver Name
+                                                                                &nbsp; <span class="text-danger">*</span></b>
+
+
+                                                                            <input type="text" class="form-control col-md-7 "
+                                                                                id="receiver_name"
+                                                                                placeholder="enter receiver name"
+                                                                                autocomplete="off" required>
+                                                                            <br>
+
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-5 text-primary"> Receiver's Phone
+                                                                                Number: &nbsp; <span
+                                                                                    class="text-danger">*</span></b>
+
+                                                                            <input type="text" class="form-control col-md-7 "
+                                                                                id="receiver_phoneNum"
+                                                                                placeholder="receiver Phone Number"
+                                                                                autocomplete="off"
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                required>
+                                                                            <br>
+
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-5 text-primary"> Receiver's
+                                                                                Address: &nbsp; <span
+                                                                                    class="text-danger"></span></b>
+
+                                                                            <input type="text" class="form-control col-md-7 "
+                                                                                id="receiver_address"
+                                                                                placeholder="receiver Address"
+                                                                                autocomplete="off" required>
+                                                                            <br>
+
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-5 text-primary " for="pin">
+                                                                                Enter Your Pin
+                                                                                <span class="text-danger">*</span></b>
+                                                                            <input type="password" class="form-control col-md-7"
+                                                                                id="user_pin"
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                        </div>
+
+                                                                        <div class="form-group text-right ">
+                                                                            <button type="button"
+                                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
+                                                                                id="confirm_button">
+                                                                                <span class="submit-text">Submit</span>
+                                                                                <span
+                                                                                    class="spinner-border spinner-border-sm mr-1"
+                                                                                    id="spinner" role="status"
+                                                                                    aria-hidden="true"></span>
+                                                                                <span id="spinner-text">Loading...</span>
+                                                                            </button>
+                                                                        </div>
                                                                     </div>
 
-                                                                    <div class="form-group row">
+                                                                    <div class="self_form">
+                                                                        <div class="form-group row mb-3">
 
-                                                                        <b class="col-md-5 text-primary" for="pin">
-                                                                            Enter Your Pin
-                                                                            <span class="text-danger">*</span></b>
-                                                                        <input type="password" class="form-control col-md-7"
-                                                                            id="user_pin"
-                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+                                                                            <b class="col-md-5 text-primary">Amount&nbsp;
+                                                                                <span class="text-danger">*</span></b>
 
 
+                                                                            <input type="text" class="form-control col-md-7 "
+                                                                                id="amount_self"
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                required>
+                                                                            <br>
 
+
+
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-5 text-primary"> Receiver Name
+                                                                                &nbsp; <span class="text-danger">*</span></b>
+
+                                                                                {{-- value={{ session()->get('userAlias') }} --}}
+                                                                            <input type="text" class="form-control col-md-7"
+                                                                                id="receiver_name_self"
+                                                                                placeholder="enter receiver name" value="{{ Session()->get('userAlias') }}"
+                                                                                autocomplete="off"  required>
+                                                                            <br>
+
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-5 text-primary"> Receiver's Phone
+                                                                                Number: &nbsp; <span
+                                                                                    class="text-danger">*</span></b>
+
+                                                                            <input type="text" class="form-control col-md-7 "
+                                                                                id="receiver_phoneNum_self"
+                                                                                placeholder="receiver Phone Number"
+                                                                                autocomplete="off"  value="{{ session()->get('customerPhone') }}"
+                                                                                required>
+                                                                            <br>
+                                                                            {{-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" --}}
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-5 text-primary"> Receiver's
+                                                                                Address: &nbsp; <span
+                                                                                    class="text-danger"></span></b>
+
+                                                                            <input type="text" class="form-control col-md-7 "
+                                                                                id="receiver_address_self"
+                                                                                placeholder="enter your Address"
+                                                                                autocomplete="off" required>
+                                                                            <br>
+
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-5 text-primary " for="pin">
+                                                                                Enter Your Pin
+                                                                                <span class="text-danger">*</span></b>
+                                                                            <input type="password" class="form-control col-md-7"
+                                                                                id="user_pin_self"
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                        </div>
+
+                                                                        <div class="form-group text-right ">
+                                                                            <button type="button"
+                                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
+                                                                                id="confirm_button_self">
+                                                                                <span class="submit-text">Submit</span>
+                                                                                <span
+                                                                                    class="spinner-border spinner-border-sm mr-1"
+                                                                                    id="spinner-self" role="status"
+                                                                                    aria-hidden="true"></span>
+                                                                                <span id="spinner-text-self">Loading...</span>
+                                                                            </button>
+                                                                        </div>
                                                                     </div>
 
-                                                                    <div class="form-group text-right ">
-                                                                        <button type="button"
-                                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                                            id="confirm_button">
-                                                                            <span class="submit-text">Submit</span>
-                                                                            <span
-                                                                                class="spinner-border spinner-border-sm mr-1"
-                                                                                id="spinner" role="status"
-                                                                                aria-hidden="true"></span>
-                                                                            <span id="spinner-text">Loading...</span>
-                                                                        </button>
-                                                                    </div>
+
 
 
                                                                 </div>
@@ -255,15 +361,15 @@
 
                                             </div> <!-- end col -->
 
-                                            <div class="col-md-4 m-2" id="atm_request_summary"
+                                            <div class="col-md-4 m-2 others_summary"
                                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                         <br><br>
-                                                        <div class=" col-md-12 card card-body">
+                                                <div class=" col-md-12 card card-body">
                                                             {{-- <br><br> --}}
-                                                            <div class="row">
-                                                                <span class="col-md-12 success-message"></span>
-                                                                <h6 class="col-md-5">Account Name:</h6>
-                                                                <span class="text-primary display_from_account_name col-md-7"></span>
+                                                    <div class="row">
+                                                        <span class="col-md-12 success-message"></span>
+                                                        <h6 class="col-md-5">Account Name:</h6>
+                                                        <span class="text-primary display_from_account_name col-md-7"></span>
 
                                                         <h6 class="col-md-5">Account Number:</h6>
                                                         <span class="text-primary display_from_account_no col-md-7"></span>
@@ -288,6 +394,52 @@
 
                                                         <h6 class="col-md-5">Receiver's Address:</h6>
                                                         <span class="text-success display_receiver_address col-md-7"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group text-center display_button_print">
+
+                                                    <span>&nbsp;
+                                                        <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
+                                                                id="print_receipt" onclick="window.print()">Print
+                                                                Receipt
+                                                            </button></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 m-2 self_summary"
+                                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                                        <br><br>
+                                                <div class=" col-md-12 card card-body">
+                                                            {{-- <br><br> --}}
+                                                    <div class="row">
+                                                        <span class="col-md-12 success-message"></span>
+                                                        <h6 class="col-md-5">Account Name:</h6>
+                                                        <span class="text-primary display_from_account_name_self col-md-7"></span>
+
+                                                        <h6 class="col-md-5">Account Number:</h6>
+                                                        <span class="text-primary display_from_account_no_self col-md-7"></span>
+
+                                                        <h6 class="col-md-5">Available Balance:</h6>
+                                                        <span
+                                                            class="text-primary display_from_account_amount_self col-md-7"></span>
+
+                                                        <h6 class="col-md-5">Account Currency:</h6>
+                                                        <span class="text-primary display_currency_self col-md-7"></span>
+
+                                                        <h6 class="col-md-5">Amount:</h6>
+                                                        <span class="text-primary display_amount_self col-md-7"></span>
+
+
+                                                        <h6 class="col-md-5">Receiver's Name: </h6>
+                                                        <span class="text-success display_receiver_name_self col-md-7">{{ session()->get('userAlias') }}</span>
+
+                                                        <h6 class="col-md-5">Receiver's Phone Number:</h6>
+                                                        <span
+                                                            class="text-success display_receiver_phoneNum_self col-md-7">{{ session()->get('customerPhone') }}</span>
+
+                                                        <h6 class="col-md-5">Receiver's Address:</h6>
+                                                        <span class="text-success display_receiver_address_self col-md-7"></span>
                                                     </div>
                                                 </div>
 
@@ -330,99 +482,57 @@
 
                                                                                             <div class="col-md-12">
 
-                                                                                                <div class="form-group row mb-3">
-                                                                                                    <b class="col-md-5 text-primary">Pay From&nbsp; <span
-                                                                                                            class="text-danger">*</span> </b>
-
-                                                                                                            <input type="text" class="form-control col-md-7" id="amount"
-                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                                                            value="004001100241700194" placeholder="2000" required disabled=true>
-                                                                                                        <br>
-                                                                                                    {{-- <select class="form-control col-md-7 " id="from_account"
-                                                                                                        required>
-                                                                                                        <option value="">004001100241700194
-                                                                                                        </option>
-
-
-                                                                                                    </select> --}}
-                                                        </div>
-
-
-
-                                                        <div class="form-group row mb-3" id="pay_from_account">
-
-                                                            <b class="col-md-5 text-primary">Amount&nbsp;
-                                                                <span class="text-danger">*</span></b>
-
-
-                                                            <input type="text" class="form-control col-md-7" id="amount"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                value="20000" placeholder="2000" required disabled=true>
-                                                            <br>
-
-
-
-                                                        </div>
 
 
 
                                                         <div class="form-group row">
 
-                                                            <b class="col-md-5 text-primary"> Receiver Name &nbsp; <span
+                                                            <b class="col-md-5 text-primary"> Reference Number &nbsp; <span
                                                                     class="text-danger">*</span></b>
 
 
                                                             <input type="text" class="form-control col-md-7"
-                                                                id="receiver_name" value="Joshua Amarfio"
-                                                                placeholder="Joshua Amarfio" autocomplete="off" required>
+                                                                id="reference_no"
+                                                                placeholder="0098348789" autocomplete="off" required>
                                                             <br>
 
                                                         </div>
 
+                                                        <br>
                                                         <div class="form-group row">
 
                                                             <b class="col-md-5 text-primary"> Receiver's Phone Number:
                                                                 &nbsp; <span class="text-danger">*</span></b>
 
                                                             <input type="text" class="form-control col-md-7"
-                                                                id="receiver_phoneNum" value="0549830797"
-                                                                placeholder="0549380507" autocomplete="off"
+                                                                id="receiver_phoneNo_reverse"
+                                                                placeholder="enter phone number" autocomplete="off"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                                 required>
                                                             <br>
 
                                                         </div>
 
-                                                        <div class="form-group row">
 
-                                                            <b class="col-md-5 text-primary"> Receiver's Address: &nbsp;
-                                                                <span class="text-danger">*</span></b>
-
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="receiver_address" value="Kaneshie street"
-                                                                autocomplete="off" required>
-                                                            <br>
-
-                                                        </div>
-
+                                                        <br>
                                                         <div class="form-group row">
 
                                                             <b class="col-md-5 text-primary" for="pin">
                                                                 Enter Your Pin
                                                                 <span class="text-danger">*</span></b>
                                                             <input type="password" class="form-control col-md-7"
-                                                                id="user_pin"
+                                                                id="user_pin_reverse"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
 
 
                                                         </div>
-
+                                                        <br><br><br>
                                                         <div class="form-group text-right ">
                                                             <button type="button"
                                                                 class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                                id="confirm_button">
-                                                                <span class="reverse-text">Reverse</span>
+                                                                id="reverse_button">
+                                                                <span id="reverse-text">Reverse</span>
                                                                 <span class="spinner-border spinner-border-sm mr-1"
                                                                     id="spinner-reverse" role="status"
                                                                     aria-hidden="true"></span>
@@ -485,98 +595,418 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="redeem_cardless_page">
-                    good work
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6  m-2" id="request_form_div"
+                                                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                                                        <br><br><br>
+
+                                                                        <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                                            aria-autocomplete="none">
+                                                                            @csrf
+
+                                                                        <div class="col-md-12">
+                                                                                    {{-- <br><br><br> --}}
+                                                                                    <div class="row">
+                                                                                        {{-- <div class="col-md-1"></div> --}}
+
+                                                                                        <div class="col-md-12 redeem_cardless">
+
+                                                                                            <p class="text-muted font-14 m-b-20">
+                                                                                                <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
+                                                                                                        Note:&nbsp;&nbsp;</b> <span class="">Enter the remittance and phone number for cardless payment details.
+
+                                                                                                <hr>
+                                                                                            </p>
+
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Mobile Number &nbsp; <span
+                                                                                                                class="text-danger">*</span></b>
+
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="mobile_no" autocomplete="off" required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+
+                                                                                                    <br>
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Remittance Number:
+                                                                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="remittance_no"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                                            required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+
+
+                                                                                                    <br>
+                                                                                                    {{-- <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary" for="pin">
+                                                                                                            Enter Your Pin
+                                                                                                            <span class="text-danger">*</span></b>
+                                                                                                        <input type="password" class="form-control col-md-7"
+                                                                                                            id="user_pin_reverse"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                                                    </div> --}}
+                                                                                                    <br><br><br>
+                                                                                                    <div class="form-group text-right ">
+                                                                                                        <button type="button"
+                                                                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
+                                                                                                            id="redeem_button">
+                                                                                                            <span id="next-text">Next</span>
+                                                                                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                                                                                id="spinner-next" role="status"
+                                                                                                                aria-hidden="true"></span>
+                                                                                                            <span id="spinner-text-next">Loading...</span>
+                                                                                                        </button>
+                                                                                                    </div>
+
+
+                                                                                        </div>
+                                                                                        <div class="col-md-12 cardless_details">
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Receiver's Name &nbsp; <span
+                                                                                                                class="text-danger">*</span></b>
+
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="receiver_name_redeem"
+                                                                                                            placeholder="0098348789" autocomplete="off" required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+
+                                                                                                    <br>
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Receiver's Phone:
+                                                                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="receiver_phone_redeem"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                                            required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+
+
+                                                                                                    <br>
+                                                                                                    {{-- <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary" for="pin">
+                                                                                                            Enter Your Pin
+                                                                                                            <span class="text-danger">*</span></b>
+                                                                                                        <input type="password" class="form-control col-md-7"
+                                                                                                            id="user_pin_reverse"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                                                    </div> --}}
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Receiver's Address:
+                                                                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="receiver_address_redeem"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                                            required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+                                                                                                    <br>
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Account Number:
+                                                                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="receiver_account_redeem"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                                            required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+                                                                                                    <br>
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Receiver's Phone:
+                                                                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="receiver_phoneNo_reverse"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                                            required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+
+
+
+                                                                                                    <br><br><br>
+                                                                                                    <div class="form-group text-right ">
+                                                                                                        <button type="button"
+                                                                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                                                            id="done_button">
+                                                                                                            <span id="redeem-text">Redeem</span>
+                                                                                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                                                                                id="spinner-redeem" role="status"
+                                                                                                                aria-hidden="true"></span>
+                                                                                                            <span id="spinner-text-redeem">Loading...</span>
+                                                                                                        </button>
+                                                                                                    </div>
+
+
+                                                                                        </div>
+
+                                                {{-- <div class="col-md-1"></div> --}}
+                                                                                    </div>
+
+                                                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <br>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div id="carouselExampleControls" class="carousel slide"
+                                                data-ride="carousel" style="min-height: 120px; max-height: auto;">
+                                                <div class="carousel-inner" role="listbox">
+                                                    <div class="carousel-item active">
+                                                        <img class="d-block img-fluid" style="min-height: 100%"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_9.jpeg') }}"
+                                                            alt="First slide">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block img-fluid" style="height: auto;"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_10.jpeg') }}"
+                                                            alt="Second slide">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block img-fluid" style="min-height"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
+                                                            alt="Third slide">
+                                                    </div>
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleControls"
+                                                    role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleControls"
+                                                    role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <div class="tab-pane" id="cardless_trans_page">
                     <div class="col-md-12">
                         <div class="cards_table row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
+                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id=""
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class="p-3 mt-4 mt-lg-0 rounded">
                                         <br>
 
-                                    {{-- <table id="datatable-buttons"
-                                            class="table table-bordered bg-white  table-striped dt-responsive nowrap w-100 beneficiary_list_display">
-                                            <thead>
-                                                <tr class="bg-primary text-white">
-                                                    <th> <b> Reference No </b> </th>
-                                                    <th> <b> Receiver Name </b> </th>
-                                                    <th><b>Receiver Address</b></th>
-                                                    <th> <b> Amount </b> </th>
-                                                    <th> <b>Status </b> </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="">
-                                                    <td>004001216997442165</td>
-                                                    <td>1447866768967681</td>
-                                                    <td>Visa</td>
-                                                    <td>2000</td>
-                                                    <td>Blocked</td>
-                                                </tr>
-                                                <tr class="">
-                                                    <td>004001216997442276</td>
-                                                    <td>1447866768967570</td>
-                                                    <td>Credit Card</td>
-                                                    <td>30000</td>
-                                                    <td>Active</td>
-                                                </tr>
-                                            </tbody>
+                                        <div class="card-box">
+                                            <ul class="nav nav-tabs">
+                                                <li class="nav-item">
+                                                    <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                        Unreedeemed/Pending
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                                        Completed
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                                        Reversed
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane" id="home">
+
+                                                    <div class="card mb-2 bg-info">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-sm-8">
+                                                                        <form class="form-inline">
+                                                                            <div class="form-group">
+                                                                                <select class="form-control from_account" required>
+                                                                                    <option value="">Select Account Number</option>
 
 
-                                        </table> --}}
+                                                                                </select>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="text-sm-right">
+                                                                            <button type="button"
+                                                                                class="btn btn-primary waves-effect waves-light"
+                                                                                id="submit_account_no_unredeemed"><i
+                                                                                    class="mdi mdi-plus-circle mr-1"></i>Submit</button>
+                                                                        </div>
+                                                                    </div><!-- end col-->
+                                                                </div>
+                                                            </div> <!-- end card-body-->
+                                                        </div> <!-- end card-->
 
-                                    <div class="card mb-2 bg-info">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-sm-8">
-                                                    <form class="form-inline">
-                                                        <div class="form-group">
-                                                            {{-- <label for="inputPassword2" class=""></label>
-                                                                <input type="text" class="form-control" id="inputPassword2" placeholder="Search..."> --}}
-                                                            {{-- <b class="col-sm-5 text-primary">Select Account Number&nbsp; <span
-                                                                            class="text-danger">*</span> </b> --}}
+                                                    <div class="table-responsive table-bordered accounts_display_area">
+                                                        <table id="" class="table mb-0 ">
+                                                            <thead>
+                                                                <tr class="bg-primary text-white ">
+                                                                    <td> <b> Reference Number </b> </td>
+                                                                    <td> <b> Receiver's Name </b> </td>
+                                                                    <td> <b> Receiver's Address </b> </td>
+                                                                    <td> <b> Amount </b> </td>
+                                                                    <td> <b>Status</b></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display">
 
 
-                                                            <select class="form-control from_account" required>
-                                                                <option value="">Select Account Number
-                                                                </option>
-
-
-                                                            </select>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="text-sm-right">
-                                                        {{-- <button type="button" class="btn btn-success waves-effect waves-light mr-1"><i class="mdi mdi-cog"></i></button> --}}
-                                                        <button type="button"
-                                                            class="btn btn-primary waves-effect waves-light"
-                                                            id="submit_account_number"><i
-                                                                class="mdi mdi-plus-circle mr-1"></i>Submit</button>
+                                                            </tbody>
+                                                        </table>
                                                     </div>
-                                                </div><!-- end col-->
+                                                </div>
+                                                <div class="tab-pane show active" id="profile">
+
+                                                    <div class="card mb-2 bg-info">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-sm-8">
+                                                                    <form class="form-inline">
+                                                                        <div class="form-group">
+                                                                            <select class="form-control from_account" required>
+                                                                                <option value="">Select Account Number</option>
+
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="text-sm-right">
+                                                                        <button type="button"
+                                                                            class="btn btn-primary waves-effect waves-light"
+                                                                            id="submit_account_number_completed"><i
+                                                                                class="mdi mdi-plus-circle mr-1"></i>Submit</button>
+                                                                    </div>
+                                                                </div><!-- end col-->
+                                                            </div>
+                                                        </div> <!-- end card-body-->
+                                                    </div> <!-- end card-->
+
+                                                    <div class="table-responsive table-bordered accounts_display_area">
+                                                        <table id="" class="table mb-0 ">
+                                                            <thead>
+                                                                <tr class="bg-primary text-white ">
+                                                                    <td> <b> Reference Number </b> </td>
+                                                                    <td> <b> Receiver's Name </b> </td>
+                                                                    <td> <b> Receiver's Address </b> </td>
+                                                                    <td> <b> Amount </b> </td>
+                                                                    <td> <b>Status</b></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display">
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="messages">
+
+                                                    <div class="card mb-2 bg-info">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-sm-8">
+                                                                    <form class="form-inline">
+                                                                        <div class="form-group">
+                                                                            <select class="form-control from_account" required>
+                                                                                <option value="">Select Account Number</option>
+
+
+                                                                            </select>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="text-sm-right">
+                                                                        <button type="button"
+                                                                            class="btn btn-primary waves-effect waves-light"
+                                                                            id="submit_account_number_canceled"><i
+                                                                                class="mdi mdi-plus-circle mr-1"></i>Submit</button>
+                                                                    </div>
+                                                                </div><!-- end col-->
+                                                            </div>
+                                                        </div> <!-- end card-body-->
+                                                    </div> <!-- end card-->
+
+
+                                                    <div class="table-responsive table-bordered accounts_display_area">
+                                                        <table id="" class="table mb-0 ">
+                                                            <thead>
+                                                                <tr class="bg-primary text-white ">
+                                                                    <td> <b> Reference Number </b> </td>
+                                                                    <td> <b> Receiver's Name </b> </td>
+                                                                    <td> <b> Receiver's Address </b> </td>
+                                                                    <td> <b> Amount </b> </td>
+                                                                    <td> <b>Status</b></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display">
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div> <!-- end card-body-->
-                                    </div> <!-- end card-->
-
-                                    <div class="table-responsive table-bordered accounts_display_area">
-                                        <table id="" class="table mb-0 ">
-                                            <thead>
-                                                <tr class="bg-primary text-white ">
-                                                    <td> <b> Reference Number </b> </td>
-                                                    <td> <b> Receiver's Name </b> </td>
-                                                    <td> <b> Receiver's Address </b> </td>
-                                                    <td> <b> Amount </b> </td>
-                                                    <td> <b>Status</b></td>
-                                                </tr>
-                                            </thead>
-                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display">
+                                        </div>
 
 
-                                            </tbody>
-                                        </table>
-                                    </div>
+
+
                                 </div>
 
 
@@ -604,7 +1034,7 @@
         function from_account() {
             $.ajax({
                 'type': 'GET',
-                'url': 'get-my-account',
+                'url': 'get-accounts-api',
                 "datatype": "application/json",
                 success: function(response) {
                     console.log(response.data);
@@ -626,10 +1056,11 @@
             })
         }
 
-        function get_unredeemed_cardless() {
+        function get_unredeemed_cardless(accountNo) {
             $.ajax({
                 "type": "GET",
                 "url": "unredeem-cardless-request",
+                'accountNo':from_account,
                 "datatype": "application/json",
                 success: function(response) {
                     // <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
@@ -647,7 +1078,7 @@
                                             <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
                                             <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
                                             <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
-                                            <td> <b> unredeemed </b> </td>
+                                            <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
                                             </tr>`
                             )
                         })
@@ -686,14 +1117,103 @@
             $("#spinner-text").hide();
             $("#spinner-reverse").hide();
             $("#spinner-text-reverse").hide();
+            $("#spinner-text-self").hide();
+            $("#spinner-self").hide();
+            $("#spinner-text-next").hide();
+            $("#spinner-next").hide();
+            $(".self_form").hide();
+            $(".self_summary").hide();
+
+            $(".cardless_details").hide();
+
+            $("#redeem_button").click(function(){
+
+                let mobile_no = $("#mobile_no").val();
+                console.log(mobile_no);
+                let remittance_no = $("#remittance_no").val();
+                console.log(remittance_no);
+
+                if (mobile_no =='' || remittance_no ==''){
+                    toaster("fields must not be empty","error", 2000);
+                    return false;
+                }
+
+
+
+
+
+                $.ajax({
+
+                    'type': 'POST',
+                    'url': 'cardless-otp',
+                    "datatype": "application/json",
+                    'data': {
+                        "remittance_no":remittance_no,
+                        "mobile_no": mobile_no
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+
+                        console.log(response)
+
+                        if (response.responseCode == '000') {
+                            toaster(response.message, 'success', 20000);
+                            $("#request_form_div").hide();
+                            $('.display_button_print').show();
+                            // alert("done test");
+                            $(".redeem_cardless").hide();
+                            $(".cardless_details").show();
+                        } else {
+
+                            toaster(response.message, 'error', 9000);
+
+                            $('#spinner').hide();
+                            $('#spinner-text').hide();
+                            $('.submit-text').show();
+                            // $('#confirm_payment').show();
+                            // $('#confirm_button').attr('disabled', false);
+                        }
+                    }
+                });
+
+
+            });
+
+
+            // $("#")
             // $('#print_receipt').hide();
 
             $(".display_button_print").hide();
 
 
+            //codes to display self or others transfer
+            $("#inlineRadio1").click(function(){
+                    var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                    // console.log(destination_type);
+                    $(".self_form").show();
+                    $(".self_summary").show();
+                    $(".others_form").hide();
+                    $(".others_summary").hide();
+                });
+
+                $("#inlineRadio2").click(function(){
+                    var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                    // console.log(destination_type);
+                    $(".others_form").show();
+                    $(".others_summary").show();
+                    $(".self_form").hide();
+                    $(".self_summary").hide();
+
+                });
+
+
             setTimeout(function() {
                 from_account();
                 get_unredeemed_cardless();
+
+
             }, 200);
 
             function sweet_alert(message, icon, timer) {
@@ -753,6 +1273,21 @@
                     $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
                         .trim())))
                     $(".from_account_display_info").show()
+
+                    //set summary value for display for self
+
+                    $(".display_from_account_type_self").text(from_account_info[0].trim())
+                    $(".display_from_account_name_self").text(from_account_info[1].trim())
+                    $(".display_from_account_no_self").text(from_account_info[2].trim())
+                    $(".display_from_account_currency_self").text(from_account_info[3].trim())
+
+                    $(".display_currency_self").text(from_account_info[3].trim()) // set summary currency
+
+                    amt = from_account_info[4].trim()
+
+                    $(".display_from_account_amount_self").text(formatToCurrency(Number(from_account_info[4]
+                        .trim())))
+                    $(".from_account_display_info_self").show()
                 }
 
 
@@ -795,6 +1330,7 @@
             //end of testing process
 
 
+            //display for others
             $("#receiver_name").change(function() {
                 var receiver_name = $("#receiver_name").val();
                 $(".display_receiver_name").text(receiver_name);
@@ -814,6 +1350,68 @@
                 var amount = $("#amount").val();
                 $(".display_amount").text(amount);
             });
+
+            //cardless transfer details for self
+            $('#amount_self').change(function() {
+                var amount = $('#amount_self').val();
+                console.log(amount);
+            });
+
+            $('#receiver_name_self').click(function() {
+                var receiver_name = $('#receiver_name_self').val();
+                console.log(receiver_name);
+            });
+
+            $('#receiver_phoneNum_self').change(function() {
+                var receiver_phoneNum = $('#receiver_phoneNum_self').val();
+                console.log(receiver_phoneNum);
+            });
+
+            $('#receiver_address_self').change(function() {
+                var receiver_address = $('#receiver_address_self').val();
+                console.log(receiver_address);
+            });
+
+            $('#user_pin_self').change(function() {
+                var user_pin = $('#user_pin_self').val();
+                console.log(user_pin);
+            });
+            //end of testing process
+
+
+            $("#receiver_name_self").click(function() {
+                var receiver_name = @json(session()->get('userAlias'));
+                $(".display_receiver_name_self").text(receiver_name);
+            });
+
+            $("#receiver_phoneNum_self").change(function() {
+                var receiver_phoneNum = $("#receiver_phoneNum_self").val();
+                $(".display_receiver_phoneNum_self").text(receiver_phoneNum);
+            });
+
+            // $("#receiver_address_self").change(function() {
+            //     var receiver_address = $("#receiver_address_self").val();
+            //     $(".display_receiver_address_self").text(receiver_address);
+            // })
+
+            $("#amount_self").change(function() {
+                var amount = $("#amount_self").val();
+                $(".display_amount_self").text(amount);
+            });
+
+            $(".reference_no").change(function(){
+                var reference_no = $(".reference_no").val();
+                console.log(reference_no);
+            });
+
+            $(".receiver_phoneNo_reverse").change(function(){
+                var receiver_phoneNo = $(".receiver_phoneNo_reverse").val();
+                console.log(receiver_phoneNo);
+            });
+
+
+
+
 
 
             function formatToCurrency(amount) {
@@ -878,26 +1476,125 @@
 
             // });
 
-            $('#submit_account_no').click(function() {
+            $('#submit_account_no_unredeemed').click(function() {
+
+                let from_account_info = $(".from_account").val();
                 let from_account = from_account_info[2].trim();
+                console.log(from_account);
+
+                            $.ajax({
+
+                                'type': 'GET',
+                                'url': 'unredeem-cardless-request',
+                                "datatype": "application/json",
+                                'accountNo':from_account,
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success: function(response) {
+
+                                    console.log(response)
+
+                                    if (response.data.length > 0) {
+                                        let data = response.data;
+
+                                        let unredeemed_cardless_list = response.data;
+                                        console.log(unredeemed_cardless_list);
+                                        $.each(data, function(index) {
+                                            $('.unredeem_cardless_list_display').append(
+                                                `<tr>
+
+                                                            <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
+                                                            <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
+                                                            <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
+                                                            <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
+                                                            <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
+                                                            </tr>`
+                                            )
+                                        })
+
+                                    }
+
+                                    // if (response.responseCode == '000') {
+                                    //     toaster(response.message, 'success', 20000);
+                                    //     $("#request_form_div").hide();
+                                    //     $('.display_button_print').show();
+                                    //     // alert("done test");
+                                    //     $(".redeem_cardless").hide();
+                                    //     $(".cardless_details").show();
+                                    // } else {
+
+                                    //     toaster(response.message, 'error', 9000);
+
+                                    //     $('#spinner').hide();
+                                    //     $('#spinner-text').hide();
+                                    //     $('.submit-text').show();
+                                    //     // $('#confirm_payment').show();
+                                    //     // $('#confirm_button').attr('disabled', false);
+                                    // }
+                                }
+                            });
+
+
+            //     $.ajax({
+            //     "type": "GET",
+            //     "url": "unredeem-cardless-request",
+            //     "datatype": "application/json",
+            //     success: function(response) {
+            //         // <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
+
+            //         if (response.data.length > 0) {
+            //             let data = response.data;
+
+            //             let unredeemed_cardless_list = response.data;
+            //             console.log(unredeemed_cardless_list);
+            //             $.each(data, function(index) {
+            //                 $('.unredeem_cardless_list_display').append(
+            //                     `<tr>
+
+            //                                 <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
+            //                                 <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
+            //                                 <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
+            //                                 <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
+            //                                 <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
+            //                                 </tr>`
+            //                 )
+            //             })
+
+            //         }
+
+            //     }
+            // })
+
 
             });
 
+
+
+
             $('#confirm_button').click(function() {
-                let from_account = from_account_info[2].trim();
+                // alert('i have been clicked');
+                var from_account = $('.from_account').val();
+
+                // let from_account = from_account_value;
                 let transfer_amount = $('#amount').val();
+                console.log(transfer_amount);
+                // alert('');
                 let receiver_name = $('#receiver_name').val();
                 let receiver_phoneNum = $('#receiver_phoneNum').val();
                 let receiver_address = $('#receiver_address').val();
                 let sender_name = @json(session()->get('userAlias'));
                 let user_pin = $('#user_pin').val();
-                console.log(sender_name);
+                // console.log(sender_name);
 
 
-                if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
-                    '' || receiver_address == '') {
-                    toaster('Field must not be empty', 'error', 10000)
-                    return false
+
+
+
+                if (from_account.trim() == '' || transfer_amount == '' || receiver_name == '' || receiver_phoneNum =='' || receiver_address == '' || user_pin=='') {
+                        // alert('fields must not be empty');
+                    toaster('Fields must not be empty', 'error', 10000);
+                    return false;
                 } else {
 
                     //hide the payment form and show the summary form
@@ -922,7 +1619,7 @@
 
                     if (user_pin == "") {
                         toaster('enter your pin', 'error', 9000);
-                        console.log("Error is from here.");
+                        // console.log("Error is from here.");
                         return false;
                     } else {
 
@@ -930,6 +1627,7 @@
                             $('#spinner-text').show(),
                             // $('#print_receipt').hide();
                             $('.submit-text').hide();
+                            let from_account_value = from_account_info[2].trim();
                         $.ajax({
 
                             'type': 'POST',
@@ -937,7 +1635,7 @@
                             "datatype": "application/json",
                             'data': {
                                 'amount': transfer_amount,
-                                'debit_account': from_account,
+                                'debit_account': from_account_value,
                                 'pin_code': user_pin,
                                 'receiver_address': receiver_address.trim(),
                                 'receiver_name': receiver_name.trim(),
@@ -970,6 +1668,182 @@
                     }
                 }
             });
+
+            $('#confirm_button_self').click(function() {
+                // alert('i have been clicked');
+                let from_account = $('.from_account').val();
+                let transfer_amount = $('#amount_self').val();
+                console.log(transfer_amount);
+                // alert('');
+                let receiver_name = $('#receiver_name_self').val();
+                let receiver_phoneNum = $('#receiver_phoneNum_self').val();
+                let receiver_address = $('#receiver_address_self').val();
+                let sender_name = @json(session()->get('userAlias'));
+                let user_pin = $('#user_pin_self').val();
+                // console.log(sender_name);
+
+
+
+                //
+
+                if (from_account.trim() == '' || transfer_amount == '' || receiver_name == '' || receiver_phoneNum =='' || user_pin=='') {
+                        // alert('fields must not be empty');
+                    toaster('Fields must not be empty', 'error', 10000);
+                    return false;
+                } else {
+
+                    //hide the payment form and show the summary form
+                    $("#cardless_payment_form").hide()
+                    $("#cardless_payment_summary").show();
+
+                    amt = from_account_info[4].trim();
+                    if (amt < transfer_amount) {
+                        toaster('Insufficient account balance', 'error', 9000);
+                        return false
+                    } else {
+
+                        //display this is the payment summary
+                        $("#display_amount").text(transfer_amount);
+                        $("#display_receiver_name").text(receiver_name);
+                        $("#display_receiver_address").text(receiver_name);
+                        $("#display_receiver_phoneNum").text(receiver_phoneNum);
+
+
+
+                    }
+
+                    if (user_pin == "") {
+                        toaster('enter your pin', 'error', 9000);
+                        // console.log("Error is from here.");
+                        return false;
+                    } else {
+
+                        $('#spinner').show(),
+                            $('#spinner-text').show(),
+                            // $('#print_receipt').hide();
+                            $('.submit-text').hide();
+                            let from_account_value = from_account_info[2].trim();
+                        $.ajax({
+
+                            'type': 'POST',
+                            'url': 'initiate-cardless',
+                            "datatype": "application/json",
+                            'data': {
+                                'amount': transfer_amount,
+                                'debit_account': from_account_value,
+                                'pin_code': user_pin,
+                                'receiver_address': receiver_address.trim(),
+                                'receiver_name': receiver_name.trim(),
+                                'receiver_phone': receiver_phoneNum,
+                                'sender_name': sender_name.trim()
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+
+                                console.log(response)
+
+                                if (response.responseCode == '000') {
+                                    toaster(response.message, 'success', 20000);
+                                    $("#request_form_div").hide();
+                                    $('.display_button_print').show();
+                                } else {
+
+                                    toaster(response.message, 'error', 9000);
+
+                                    $('#spinner').hide();
+                                    $('#spinner-text').hide();
+                                    $('.submit-text').show();
+                                    // $('#confirm_payment').show();
+                                    // $('#confirm_button').attr('disabled', false);
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+
+            $('#reverse_button').click(function(){
+
+
+                let reference_no = $("#reference_no").val();
+                let receiver_phoneNo = $("#receiver_phoneNo_reverse").val();
+                let pin = $("#user_pin_reverse").val();
+
+
+
+                // if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
+                //     '' || receiver_address == '') {
+                //     toaster('Field must not be empty', 'error', 10000)
+                //     return false
+                // }
+
+                if(reference_no =="" || receiver_phoneNo == "" || pin ==""){
+                    toaster("Fields must not be empty","error", 10000)
+                    return false;
+                }
+                else{
+
+                    $("#spinner-reverse").show();
+                    $("#spinner-text-reverse").show();
+                    $("#reverse-text").hide();
+
+                    $.ajax({
+
+                    'type' : 'POST',
+                    'url' : 'reverse-cardless',
+                    "datatype" : "application/json",
+                    'data' : {
+                        'reference_no' : reference_no,
+                        'receiver_phoneNo' : receiver_phoneNo,
+                        'pin' : pin
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success:
+                    function(response){
+
+
+                        if(response.responseCode == '000'){
+                            toaster(response.message, 'success', 2000)
+                            // var data = response.data.loanSchedule
+                            // console.log(response)
+                            $('#spinner-text-reverse').hide()
+                            $('#spinner-reverse').hide()
+                            $('#reverse-text').show();
+                            setTimeout(function() {
+                                window.location.reload();
+                                }, 20000);
+
+                            }
+                            else
+                            {
+
+                            toaster(response.message, 'error', 9000 );
+                            $('#spinner-text-reverse').hide()
+                            $('#spinner-reverse').hide()
+                            $('#reverse-text').show();
+                            }
+                    },
+                    error: function(xhr, status, error){
+                        $('#submit').attr('disabled',false);
+                        $('#spinner').hide()
+                        $('#spinner-text').hide()
+
+                        $('#log_in').show()
+                        $('#error_message').text("Connection Error")
+                        $('#failed_login').show()
+                    }
+                    });
+
+
+                }
+
+            });
+
+
 
 
 
