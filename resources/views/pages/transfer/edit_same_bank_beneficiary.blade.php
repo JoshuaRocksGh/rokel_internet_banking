@@ -261,7 +261,7 @@
             function get_beneficiary_details(){
                 $.ajax({
                     'type' : 'POST' ,
-                    "datatype": "application/json",
+                    datatype: "application/json",
                     'url' : 'edit-same-bank-api',
                     'data' : {
                         'bene_id' : bene_id
@@ -335,8 +335,8 @@
                     $.ajax({
                         "type": "POST",
                         "url": "get-account-description",
-                        "datatype": "application/json",
-                        "data": {
+                        datatype: "application/json",
+                        data: {
                             "authToken": "string",
                             "accountNumber": account_no
                           },
@@ -489,8 +489,8 @@
                     $.ajax({
                         "type": "PUT",
                         "url": "edit-same-bank-beneficiary-api",
-                        "datatype": "application/json",
-                        "data": {
+                        datatype: "application/json",
+                        data: {
                             "account_number": account_number,
                             "account_name": account_name,
                             "account_currency": currency_,

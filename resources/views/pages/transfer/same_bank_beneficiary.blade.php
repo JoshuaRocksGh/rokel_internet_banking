@@ -394,8 +394,8 @@
                     $.ajax({
                         "type": "POST",
                         "url": "get-account-description",
-                        "datatype": "application/json",
-                        "data": {
+                        datatype: "application/json",
+                        data: {
                             "authToken": "string",
                             "accountNumber": account_no
                         },
@@ -547,8 +547,8 @@
                     $.ajax({
                         "type": "POST",
                         "url": "same-bank-beneficiary-api",
-                        "datatype": "application/json",
-                        "data": {
+                        datatype: "application/json",
+                        data: {
                             "account_number": account_number,
                             {{-- "account_name": account_name, --}} "account_currency": currency_,
                             "beneficiary_name": beneficiary_name,

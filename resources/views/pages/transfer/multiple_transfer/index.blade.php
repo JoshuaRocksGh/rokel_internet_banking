@@ -457,9 +457,9 @@
 
                     function from_account() {
                         $.ajax({
-                            'type': 'GET',
-                            'url': 'get-my-account',
-                            "datatype": "application/json",
+                            type: 'GET',
+                            url:  'get-my-account',
+                            datatype: "application/json",
                             success: function(response) {
 
                                 let data = response.data
@@ -482,9 +482,9 @@
 
                     function to_account() {
                         $.ajax({
-                            'type': 'GET',
-                            'url': 'get-same-bank-beneficiary',
-                            "datatype": "application/json",
+                            type: 'GET',
+                            url:  'get-same-bank-beneficiary',
+                            datatype: "application/json",
                             success: function(response) {
                                 console.log(response.data);
                                 let data = response.data

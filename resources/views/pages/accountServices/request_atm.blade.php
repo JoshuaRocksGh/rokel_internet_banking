@@ -307,9 +307,9 @@
     <script>
         function my_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-my-account',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-my-account',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -330,9 +330,9 @@
 
         function branches() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-bank-branches-list-api',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-bank-branches-list-api',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -480,9 +480,9 @@
 
                     $.ajax({
 
-                        'type': 'POST',
-                        'url': 'atm-card-request-api',
-                        "datatype": "application/json",
+                        type: 'POST',
+                        url:  'atm-card-request-api',
+                        datatype: "application/json",
                         'data': {
                             'account_no': accountNumber.trim(),
                             'type_of_card': type_of_card,

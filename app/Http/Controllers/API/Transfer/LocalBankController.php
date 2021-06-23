@@ -73,9 +73,9 @@ class LocalBankController extends Controller
         ];
 
         // return $data ;
-        $response = [
-            'responseCode' => '000'
-        ];
+        // $response = [
+        //     'responseCode' => '000'
+        // ];
 
         // return $response;
 
@@ -212,7 +212,7 @@ class LocalBankController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        // return $req;
+        // return $request;
 
         // return $request ;
 
@@ -235,6 +235,7 @@ class LocalBankController extends Controller
                 "creditAccount" => $request->to_account,
                 "debitAccount" => $request->from_account,
                 "deviceIp" => null,
+                "entrySource" => null,
                 "secPin" => $request->sec_pin,
                 "transactionDetails" => $request->purpose ,
                 "transactionId" => null,
@@ -245,17 +246,17 @@ class LocalBankController extends Controller
 
             // return $data ;
 
-                $response = [
-                    "responseCode" => "000",
-                    "message" => "Transfer Successful"
-                ];
+                // $response = [
+                //     "responseCode" => "000",
+                //     "message" => "Transfer Successful"
+                // ];
 
-                return $response ;
+                // return $response ;
 
 
             try {
 
-                $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
+                $response = Http::post(env('API_BASE_URL') . "transfers/achBankTransfer", $data);
 
                 return $response;
 
@@ -289,6 +290,7 @@ class LocalBankController extends Controller
                 "creditAccount" => $request->to_account,
                 "debitAccount" => $request->from_account,
                 "deviceIp" => null,
+                "entrySource" => null,
                 "secPin" => $request->sec_pin,
                 "transactionDetails" => $request->purpose ,
                 "transactionId" => null,
@@ -297,19 +299,14 @@ class LocalBankController extends Controller
                 "category" => $request->category
             ];
 
-            // return $data ;
+            return $data ;
 
-                $response = [
-                    "responseCode" => "000",
-                    "message" => "Transfer Successful"
-                ];
 
-                return $response ;
 
 
             try {
 
-                $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
+                $response = Http::post(env('API_BASE_URL') . "transfers/rtgsBankTransfer", $data);
 
                 return $response;
 
@@ -329,58 +326,58 @@ class LocalBankController extends Controller
             }
         };
 
-        if($beneficiary_type == "INSTANT"){
-            // return $beneficiary_type ;
+        // if($beneficiary_type == "INSTANT"){
+        //     // return $beneficiary_type ;
 
 
-            $data = [
-                "amount" => (float)$request->amount,
-                "authToken" => $authToken,
-                "bankName" => $request->bank_name,
-                "beneficiaryAddress" => $request->beneficiary_address,
-                "beneficiaryName" => $request->beneficiary_name,
-                "creditAccount" => $request->to_account,
-                "debitAccount" => $request->from_account,
-                "deviceIp" => null,
-                "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose ,
-                "transactionId" => null,
-                "transferCurrency" => $request->currency,
-                "futurePayments" => $request->future_payement,
-                "category" => $request->category
-            ];
+        //     $data = [
+        //         "amount" => (float)$request->amount,
+        //         "authToken" => $authToken,
+        //         "bankName" => $request->bank_name,
+        //         "beneficiaryAddress" => $request->beneficiary_address,
+        //         "beneficiaryName" => $request->beneficiary_name,
+        //         "creditAccount" => $request->to_account,
+        //         "debitAccount" => $request->from_account,
+        //         "deviceIp" => null,
+        //         "secPin" => $request->sec_pin,
+        //         "transactionDetails" => $request->purpose ,
+        //         "transactionId" => null,
+        //         "transferCurrency" => $request->currency,
+        //         "futurePayments" => $request->future_payement,
+        //         "category" => $request->category
+        //     ];
 
-            // return $data ;
+        //     // return $data ;
 
-                $response = [
-                    "responseCode" => "000",
-                    "message" => "Transfer Successful"
-                ];
+        //         // $response = [
+        //         //     "responseCode" => "000",
+        //         //     "message" => "Transfer Successful"
+        //         // ];
 
-                return $response ;
-
-
-            try {
-
-                $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
-
-                return $response;
-
-                $result = new ApiBaseResponse();
-                return $result->api_response($response);
-            } catch (\Exception $e) {
-
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'message' => (string) $e->getMessage()
-                ]);
-
-                return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+        //         // return $response ;
 
 
-            }
-        };
+        //     try {
+
+        //         $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
+
+        //         return $response;
+
+        //         $result = new ApiBaseResponse();
+        //         return $result->api_response($response);
+        //     } catch (\Exception $e) {
+
+        //         DB::table('tb_error_logs')->insert([
+        //             'platform' => 'ONLINE_INTERNET_BANKING',
+        //             'user_id' => 'AUTH',
+        //             'message' => (string) $e->getMessage()
+        //         ]);
+
+        //         return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+
+        //     }
+        // };
     }
 
     public function onetime_beneficiary_transfer(Request $request)
@@ -406,7 +403,7 @@ class LocalBankController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        // return $request;
+        return $request;
 
         // return $request ;
 
@@ -438,19 +435,19 @@ class LocalBankController extends Controller
                 "email" => $request->email,
             ];
 
-            // return $data ;
+            return $data ;
 
-                $response = [
-                    "responseCode" => "000",
-                    "message" => "Transfer Successful"
-                ];
+                // $response = [
+                //     "responseCode" => "000",
+                //     "message" => "Transfer Successful"
+                // ];
 
-                return $response ;
+                // return $response ;
 
 
             try {
 
-                $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
+                $response = Http::post(env('API_BASE_URL') . "transfers/achBankTransfer", $data);
 
                 return $response;
 
@@ -469,6 +466,7 @@ class LocalBankController extends Controller
 
             }
         };
+
 
         if($beneficiary_type == "RTGS"){
             // return $beneficiary_type ;
@@ -494,12 +492,12 @@ class LocalBankController extends Controller
 
             // return $data ;
 
-                $response = [
-                    "responseCode" => "000",
-                    "message" => "Transfer Successful"
-                ];
+                // $response = [
+                //     "responseCode" => "000",
+                //     "message" => "Transfer Successful"
+                // ];
 
-                return $response ;
+                // return $response ;
 
 
             try {
@@ -548,12 +546,12 @@ class LocalBankController extends Controller
 
             // return $data ;
 
-                $response = [
-                    "responseCode" => "000",
-                    "message" => "Transfer Successful"
-                ];
+                // $response = [
+                //     "responseCode" => "000",
+                //     "message" => "Transfer Successful"
+                // ];
 
-                return $response ;
+                // return $response ;
 
 
             try {

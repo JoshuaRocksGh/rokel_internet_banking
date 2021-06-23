@@ -873,9 +873,9 @@
         <script>
             function from_account() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-my-account',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-my-account',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -1146,8 +1146,8 @@
                             $.ajax({
                                 "type": "POST",
                                 "url": "mobile-money-api",
-                                "datatype": "application/json",
-                                "data": {
+                                datatype: "application/json",
+                                data: {
                                     'from_account': from_account_,
                                     'amount': amount,
                                     'currency': currency,
@@ -1203,8 +1203,8 @@
                             $.ajax({
                                 "type": "POST",
                                 "url": "mobile-money-api",
-                                "datatype": "application/json",
-                                "data": {
+                                datatype: "application/json",
+                                data: {
                                     'from_account': from_account_,
                                     'amount': amount,
                                     'currency': currency,

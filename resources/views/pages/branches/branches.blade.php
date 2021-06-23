@@ -89,9 +89,9 @@
 
     function get_branches() {
         $.ajax({
-            'type': 'GET',
-            'url': 'get-branches-api',
-            "datatype": "application/json",
+            type: 'GET',
+            url:  'get-branches-api',
+            datatype: "application/json",
             success: function(response) {
                 console.log(response.data);
                 let data = response.data

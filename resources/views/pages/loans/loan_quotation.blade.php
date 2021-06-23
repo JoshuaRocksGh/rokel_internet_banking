@@ -318,9 +318,9 @@ type="text/css" />
 
             function loan_product() {
                             $.ajax({
-                                'type': 'GET',
-                                'url': 'get-loan-products-api',
-                                "datatype": "application/json",
+                                type: 'GET',
+                                url:  'get-loan-products-api',
+                                datatype: "application/json",
                                 success: function(response) {
                                     console.log(response.data);
                                     let data = response.data
@@ -337,9 +337,9 @@ type="text/css" />
 
                         function loan_frequencies() {
                             $.ajax({
-                                'type': 'GET',
-                                'url': 'get-loan-frequencies-api',
-                                "datatype": "application/json",
+                                type: 'GET',
+                                url:  'get-loan-frequencies-api',
+                                datatype: "application/json",
                                 success: function(response) {
                                     console.log(response.data);
                                     let data = response.data
@@ -356,9 +356,9 @@ type="text/css" />
 
                         function interest_repay_frequency() {
                             $.ajax({
-                                'type': 'GET',
-                                'url': 'get-interest-types-api',
-                                "datatype": "application/json",
+                                type: 'GET',
+                                url:  'get-interest-types-api',
+                                datatype: "application/json",
                                 success: function(response) {
                                     console.log(response.data);
                                     let data = response.data

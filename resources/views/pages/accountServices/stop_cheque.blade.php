@@ -344,7 +344,7 @@
 
             function my_account(){
                 $.ajax({
-                    'type': 'GET',
+                    type: 'GET',
                     'url' : 'get-my-account',
                     "datatype" : "application/json",
                     success:function(response){

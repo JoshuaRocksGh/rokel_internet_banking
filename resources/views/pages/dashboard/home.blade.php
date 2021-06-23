@@ -1043,7 +1043,7 @@
 
                     "type": "GET",
                     "url": "fixed-deposit-account-api",
-                    "datatype": "application/json",
+                    datatype: "application/json",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -1123,7 +1123,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-accounts-api",
-                    "datatype": "application/json",
+                    datatype: "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1192,7 +1192,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-loan-accounts-api",
-                    "datatype": "application/json",
+                    datatype: "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1265,9 +1265,9 @@
 
             function get_currency() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-currency-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-currency-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -1296,9 +1296,9 @@
                 $(".currency_converter_loading_area").show()
 
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-correct-fx-rate-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-correct-fx-rate-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -1340,7 +1340,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-fx-rate-api?rateType=" + rate_type,
-                    "datatype": "application/json",
+                    datatype: "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1388,17 +1388,17 @@
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(
                                             `
-                                                                                                                                                                                                                                                    <tr>
-                                                                                                                                                                                                                                                        <td style="zoom: 0.8;">
-                                                                                                                                                                                                                                                            <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                                                                                                                                                                                                                            /
-                                                                                                                                                                                                                                                            <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                        <tr>
+                                            <td style="zoom: 0.8;">
+                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                /
+                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                                                                                                                                                                                                                                        </td>
-                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                                                                                                                                                                                                                                    </tr>
-                                                                                                                                                                                                                                                `
+                                            </td>
+                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                        </tr>
+                                    `
                                         );
                                     });
                                 }

@@ -372,25 +372,25 @@
 
                                                     <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Transfer Bank</b>
-                                                        <input class="form-control col-md-8 " type="text"
+                                                        <input class="form-control col-md-8 readOnly" type="text"
                                                             id="beneficiary_bank_name" readonly>
                                                     </div>
 
                                                     <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary A/C Number</b>
-                                                        <input class="form-control col-md-8" type="text"
+                                                        <input class="form-control col-md-8 readOnly" type="text"
                                                             id="beneficiary_account_number" readonly>
                                                     </div>
 
                                                     <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary Name</b>
-                                                        <input class="form-control col-md-8" type="text"
+                                                        <input class="form-control col-md-8 readOnly" type="text"
                                                             id="beneficiary_account_name" readonly>
                                                     </div>
 
                                                     <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary Email</b>
-                                                        <input class="form-control col-md-8" type="text"
+                                                        <input class="form-control col-md-8 readOnly" type="text"
                                                             id="beneficiary_email" readonly>
                                                     </div>
 
@@ -473,7 +473,7 @@
 
                                                                 <div class="input-group mb-1 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <select name="" class="input-group-text" id="select_currency__">
+                                                                        <select name="" class="input-group-text" id="select_currency">
                                                                             <option value="SLL" selected>SLL</option>
                                                                             <option value="EUR">EURO</option>
                                                                             <option value="USD">USD</option>
@@ -482,7 +482,7 @@
 
                                                                       &nbsp;&nbsp;
                                                                       <input type="text" class="form-control " id="amount"
-                                                                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
+                                                                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                       required>
                                                                   </div>
 
@@ -506,7 +506,7 @@
                                                                 <input type="text" class="form-control readOnly " value="1.00" style="width: 100px;">
                                                               </div>
                                                               &nbsp;&nbsp;
-                                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                                                           </div>
 
 
@@ -981,9 +981,9 @@
 
                 function bank_list() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-bank-list-api',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-bank-list-api',
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data
@@ -1003,9 +1003,9 @@
 
                 function get_currency() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-currency-list-api',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-currency-list-api',
+                        datatype: "application/json",
                         success: function(response) {
                             {{-- console.log(response.data); --}}
                             let data = response.data
@@ -1040,7 +1040,7 @@
                     $.ajax({
                         "type": "GET",
                         "url": "get-expenses",
-                        "datatype": "application/json",
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data;
@@ -1061,7 +1061,7 @@
                     $.ajax({
                         "type": "GET",
                         "url": "get-expenses",
-                        "datatype": "application/json",
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data;
@@ -1080,9 +1080,9 @@
 
                 function from_account() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-my-account',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-my-account',
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data
@@ -1109,9 +1109,9 @@
 
                 function from_account_onetime() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-my-account',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-my-account',
+                        datatype: "application/json",
                         success: function(response) {
                             {{-- console.log(response.data); --}}
                             let data = response.data
@@ -1138,9 +1138,9 @@
 
                 function get_benerficiary() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-transfer-beneficiary-api?beneType=OTB',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-transfer-beneficiary-api?beneType=OTB',
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data
@@ -1774,11 +1774,11 @@
                             $("#transfer_pin").click(function(e) {
                                 e.preventDefault();
 
-                                $("#back_button").hide();
+                                {{--  $("#back_button").hide();
                                 $('#confirm_transfer').hide()
                                 $('#spinner').show();
                                 $('#spinner-text').show();
-                                $("#confirm_modal_button").prop('disabled', true);
+                                $("#confirm_modal_button").prop('disabled', true);  --}}
 
 
                                 {{-- var onetime_transfer = $("input[type='checkbox']:checked").val();
@@ -1837,8 +1837,8 @@
                                     $.ajax({
                                         "type": "POST",
                                         "url": "onetime-beneficiary-local-bank-api",
-                                        "dataType": "application/json",
-                                        "data": {
+                                        datatype: "application/json",
+                                        data: {
                                             "from_account": onetime_from_account,
                                             "beneficiary_type": transfer_type,
                                             "beneficiary_name": beneficiary_name,
@@ -1941,10 +1941,10 @@
                                     var sec_pin = $('#user_pin').val()
 
                                     $.ajax({
-                                        'type': 'POST',
-                                        'url': 'saved-beneficiary-local-bank-transfer-api',
-                                        "datatype": "application/json",
-                                        "data": {
+                                        type: 'POST',
+                                        url:  'saved-beneficiary-local-bank-transfer-api',
+                                        datatype: "application/json",
+                                        data: {
                                             "from_account": from_account,
                                             "bank_name": bank_name,
                                             "beneficiary_name": beneficiary_name,
@@ -1970,30 +1970,30 @@
                                                 $('#confirm_modal_button').hide();
                                                 Swal.fire(
                                                     '',
-                                                    response.message,
+                                                    response.message ,
                                                     'success'
                                                 );
-                                                $('#spinner').hide();
+                                                {{--  $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#back_button').hide();
                                                 $('#print_receipt').show();
                                                 $("#related_information_display").removeClass("d-none d-sm-block");
                                                 $(".rtgs_card_right").hide();
-                                                $(".success_gif").show();
+                                                $(".success_gif").show();  --}}
 
 
 
 
                                             } else {
-                                                {{-- toaster(response.message, 'error', 10000) --}}
+                                                toaster(response.message, 'error', 10000)
 
-                                                $('#confirm_modal_button').show();
+                                                {{--  $('#confirm_modal_button').show();
                                                 $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#print_receipt').hide();
-                                                $(".success_gif").hide();
+                                                $(".success_gif").hide();  --}}
                                                 {{-- $("#related_information_display").removeClass("d-none d-sm-block"); --}}
-                                                $(".rtgs_card_right").show();
+                                                {{--  $(".rtgs_card_right").show();  --}}
 
                                                 {{-- $('#confirm_transfer').show(); --}}
                                                 {{-- $('#confirm_button').attr('disabled', false); --}}

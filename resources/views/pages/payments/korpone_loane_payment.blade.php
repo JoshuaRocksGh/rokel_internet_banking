@@ -596,9 +596,9 @@
         <script>
             function from_account() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-my-account',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-my-account',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -936,9 +936,9 @@
                                     $('.submit-text').hide();
                                 $.ajax({
 
-                                    'type': 'POST',
-                                    'url': 'initiate-korpor',
-                                    "datatype": "application/json",
+                                    type: 'POST',
+                                    url:  'initiate-korpor',
+                                    datatype: "application/json",
                                     'data': {
                                         'amount': transfer_amount,
                                         'debit_account': from_account,
@@ -1025,9 +1025,9 @@
                                     $('.submit-text').hide();
                                 $.ajax({
 
-                                    'type': 'POST',
-                                    'url': 'initiate-korpor',
-                                    "datatype": "application/json",
+                                    type: 'POST',
+                                    url:  'initiate-korpor',
+                                    datatype: "application/json",
                                     'data': {
                                         'amount': transfer_amount,
                                         'debit_account': from_account,

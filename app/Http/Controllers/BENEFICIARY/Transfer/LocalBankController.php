@@ -44,7 +44,7 @@ class LocalBankController extends Controller
             'beneficiary_name'  => 'required',
             'beneficiary_email' => 'required',
             'beneficiary_address' => 'required',
-            // 'number' => 'requ',
+            'number' => 'required',
             'account_currency' => 'required',
             'bank_swift_code' => 'required'
             //'send_mail' => 'required',

@@ -173,9 +173,9 @@
     <script>
         function my_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-my-account',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-my-account',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -208,8 +208,8 @@
             var nodes = table.rows().nodes();
             $.ajax({
                 'tpye': 'GET',
-                'url': 'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
-                "datatype": "application/json",
+                url:  'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
+                datatype: "application/json",
                 success: function(response) {
                     {{-- console.log(response.data); --}}
 
@@ -314,9 +314,9 @@
 
             $.ajax({
 
-                'type': 'POST',
-                'url': 'post-bulk-transaction-api',
-                "datatype": "application/json",
+                type: 'POST',
+                url:  'post-bulk-transaction-api',
+                datatype: "application/json",
                 'data': {
                     'batch_no': batch_no.trim()
                 },
