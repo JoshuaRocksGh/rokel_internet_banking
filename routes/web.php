@@ -173,9 +173,12 @@ Route::get('/payment-add-beneficiary', [paymentController::class, 'add_beneficia
 Route::get('/payment-add-beneficiary/mobile-money-beneficiary', [paymentController::class, 'mobile_money_beneficiary'])->name('mobile-money-beneficiary');
 Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentController::class, 'utility_payment_beneficiary'])->name('utility-payment-beneficiary');
 
-//PAYMENTS API ROUTES
+//route for cardless payment
 Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
 Route::post('/cardless-otp', [CardlessController::class,'cardless_otp'])->name('cardless-otp');
+Route::post('/redeem-cardless',[CardlessController::class,'redeem_cardless'])->name('redeem-cardless');
+
+
 Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
 Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
@@ -503,6 +506,10 @@ Route::post('loan-quotation-details',[LoanQuotationController::class,'send_loan_
 
 //Route to send unredeem request
 Route::post('unredeem-cardless-request',[CardlessController::class,'send_unredeemed_request'])->name('unredeem-cardless-request');
+
+//Route to send reversed request
+Route::post('reversed-cardless-request',[CardlessController::class,'send_reversed_request'])->name('reversed-cardless-request');
+
 
 //Route to reverse cardless
 Route::post('reverse-cardless',[CardlessController::class,'reverse_cardless'])->name('reverse-cardless');
