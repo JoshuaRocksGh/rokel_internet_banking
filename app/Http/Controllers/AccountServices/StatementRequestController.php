@@ -14,7 +14,8 @@ class StatementRequestController extends Controller
     public function statement_request(Request $request){
 
         $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
+        $userID = session()->get('userAlias');
+        $customerNumber = session()->get('customerNumber');
         // return $authToken;
 
         // $base_response = new BaseResponse();
@@ -27,10 +28,12 @@ class StatementRequestController extends Controller
         $startDate = $request->transStartDate;
         $endDate = $request->transEndDate;
         $statementType = $request->type_of_statement;
+        $medium = $request->medium;
 
         $data = [
 
                 "accountNumber" => $accountNumber,
+                "medium"=> $medium,
                 "branch"=> $branchCode,
                 "deviceIP"=> "A",
                 "endDate"=> $endDate,
@@ -38,11 +41,13 @@ class StatementRequestController extends Controller
                 "pinCode"=> $pincode,
                 "startDate"=> $startDate,
                 "statementType"=> $statementType,
-                "tokenID"=> $authToken
+                "tokenID"=> $authToken,
+                "userID" => $userID,
+                "customer_num"=> $customerNumber
 
         ];
 
-        // return $data;
+        return $data; die;
         $response = Http::post(env('API_BASE_URL') . "/request/statment", $data);
 
         $result = new ApiBaseResponse();

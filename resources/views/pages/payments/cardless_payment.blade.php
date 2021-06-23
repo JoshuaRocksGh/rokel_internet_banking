@@ -870,7 +870,7 @@
                                                                     <div class="col-sm-8">
                                                                         <form class="form-inline">
                                                                             <div class="form-group">
-                                                                                <select class="form-control from_account" required>
+                                                                                <select class="form-control unredeemed" required>
                                                                                     <option value="">Select Account Number</option>
 
 
@@ -891,7 +891,7 @@
                                                         </div> <!-- end card-->
 
                                                     <div class="table-responsive table-bordered accounts_display_area">
-                                                        <table id="" class="table mb-0 ">
+                                                        <table id="" class="table table-striped mb-0 ">
                                                             <thead>
                                                                 <tr class="bg-primary text-white ">
                                                                     <td> <b> Reference Number </b> </td>
@@ -1050,6 +1050,15 @@
                             '~' + data[index].currency + '~' + data[index].availableBalance
                         ));
 
+                        $('.unredeemed').append($('<option>', {
+                            value: data[index].accountType + '~' + data[index]
+                                .accountDesc + '~' + data[index].accountNumber + '~' +
+                                data[index].currency + '~' + data[index]
+                                .availableBalance
+                        }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            '~' + data[index].currency + '~' + data[index].availableBalance
+                        ));
+
                     });
                 },
 
@@ -1078,7 +1087,7 @@
                                             <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
                                             <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
                                             <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
-                                            <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
+                                            <td> <strong><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></strong> </td>
                                             </tr>`
                             )
                         })
@@ -1211,7 +1220,7 @@
 
             setTimeout(function() {
                 from_account();
-                get_unredeemed_cardless();
+                // get_unredeemed_cardless();
 
 
             }, 200);
@@ -1270,8 +1279,7 @@
 
                     amt = from_account_info[4].trim()
 
-                    $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
-                        .trim())))
+                    $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4].trim())))
                     $(".from_account_display_info").show()
 
                     //set summary value for display for self
@@ -1302,6 +1310,11 @@
                 console.log(from_account);
                 // alert(from_account);
             });
+
+            $('.unredeemed').change(function(){
+                var account = $('.unredeemed').val();
+                console.log(account);
+            })
 
             $('#amount').change(function() {
                 var amount = $('#amount').val();
@@ -1476,18 +1489,24 @@
 
             // });
 
+
+            //button to collect data for unredeemed cardless transactions.
             $('#submit_account_no_unredeemed').click(function() {
 
-                let from_account_info = $(".from_account").val();
-                let from_account = from_account_info[2].trim();
-                console.log(from_account);
+
+                let from_account = $(".unredeemed").val();
+                let from_account_info = from_account.split("~")
+                let from_account_value = from_account_info[2].trim();
+                console.log(from_account_value);
 
                             $.ajax({
 
-                                'type': 'GET',
-                                'url': 'unredeem-cardless-request',
-                                "datatype": "application/json",
-                                'accountNo':from_account,
+                                type: 'POST',
+                                url: 'unredeem-cardless-request',
+                                datatype: "application/json",
+                                data:{
+                                    'accountNo':from_account_value,
+                                },
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
@@ -1507,71 +1526,20 @@
                                                             <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
                                                             <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
                                                             <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
-                                                            <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
+                                                            <td> <b> ${formatToCurrency(parseFloat(data[index].REMITTANCE_AMOUNT))}</b></td>
                                                             <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
                                                             </tr>`
                                             )
                                         })
 
                                     }
-
-                                    // if (response.responseCode == '000') {
-                                    //     toaster(response.message, 'success', 20000);
-                                    //     $("#request_form_div").hide();
-                                    //     $('.display_button_print').show();
-                                    //     // alert("done test");
-                                    //     $(".redeem_cardless").hide();
-                                    //     $(".cardless_details").show();
-                                    // } else {
-
-                                    //     toaster(response.message, 'error', 9000);
-
-                                    //     $('#spinner').hide();
-                                    //     $('#spinner-text').hide();
-                                    //     $('.submit-text').show();
-                                    //     // $('#confirm_payment').show();
-                                    //     // $('#confirm_button').attr('disabled', false);
-                                    // }
                                 }
                             });
 
 
-            //     $.ajax({
-            //     "type": "GET",
-            //     "url": "unredeem-cardless-request",
-            //     "datatype": "application/json",
-            //     success: function(response) {
-            //         // <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
-
-            //         if (response.data.length > 0) {
-            //             let data = response.data;
-
-            //             let unredeemed_cardless_list = response.data;
-            //             console.log(unredeemed_cardless_list);
-            //             $.each(data, function(index) {
-            //                 $('.unredeem_cardless_list_display').append(
-            //                     `<tr>
-
-            //                                 <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
-            //                                 <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
-            //                                 <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
-            //                                 <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
-            //                                 <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
-            //                                 </tr>`
-            //                 )
-            //             })
-
-            //         }
-
-            //     }
-            // })
-
-
             });
 
-
-
-
+            //button to submit cardless payment transaction for others
             $('#confirm_button').click(function() {
                 // alert('i have been clicked');
                 var from_account = $('.from_account').val();
@@ -1669,6 +1637,7 @@
                 }
             });
 
+            //button to submit cardless payment transaction for self.
             $('#confirm_button_self').click(function() {
                 // alert('i have been clicked');
                 let from_account = $('.from_account').val();
@@ -1764,6 +1733,7 @@
                 }
             });
 
+            //button to submit for cardless payment for reversal
             $('#reverse_button').click(function(){
 
 
@@ -1791,10 +1761,10 @@
 
                     $.ajax({
 
-                    'type' : 'POST',
-                    'url' : 'reverse-cardless',
-                    "datatype" : "application/json",
-                    'data' : {
+                    type : 'POST',
+                    url : 'reverse-cardless',
+                    datatype : "application/json",
+                    data : {
                         'reference_no' : reference_no,
                         'receiver_phoneNo' : receiver_phoneNo,
                         'pin' : pin

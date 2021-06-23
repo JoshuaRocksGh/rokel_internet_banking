@@ -134,15 +134,16 @@ class CardlessController extends Controller
 
         $accountNumber = $request->accountNo;
         // $accountNumber = "004001100241700194";
-        $accountNumber = "004001160169700292";
+        // $accountNumber = "004001160169700292";
         // $data = [
 
         //     "accountNumber" => $accountNumber
 
         // ];
+        // return $accountNumber;
 
 
-        $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "payment/unredeemedCardless/$accountNumber");
+        $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "/payment/unredeemedCardless/$accountNumber");
         // return $response;
 
         //for debugging purposes

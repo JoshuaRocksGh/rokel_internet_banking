@@ -502,7 +502,7 @@ Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_re
 Route::post('loan-quotation-details',[LoanQuotationController::class,'send_loan_request_quote'])->name('loan-quotation-details');
 
 //Route to send unredeem request
-Route::get('unredeem-cardless-request',[CardlessController::class,'send_unredeemed_request'])->name('unredeem-cardless-request');
+Route::post('unredeem-cardless-request',[CardlessController::class,'send_unredeemed_request'])->name('unredeem-cardless-request');
 
 //Route to reverse cardless
 Route::post('reverse-cardless',[CardlessController::class,'reverse_cardless'])->name('reverse-cardless');

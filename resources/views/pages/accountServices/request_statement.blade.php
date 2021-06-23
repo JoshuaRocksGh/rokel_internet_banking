@@ -97,6 +97,24 @@
 
                                                                     <div class="form-group row">
 
+                                                                        <b class="col-md-5 text-primary"> Medium &nbsp; <span class="text-danger">*</span></b>
+
+                                                                        <div class="row col-md-7 ">
+                                                                            <div class="radio radio-primary form-check-inline m-1 col-md-5 destination">
+                                                                                <input type="radio" id="inlineRadio1" value="branch" name="radioInline" >
+                                                                                <label for="inlineRadio1"> Branch </label>
+                                                                            </div>
+                                                                            <div class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
+                                                                                <input type="radio" id="inlineRadio2" value="email" name="radioInline" checked>
+                                                                                <label for="inlineRadio2"> Email</label>
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="form-group row select_branch">
+
                                                                         <b class="col-md-4 text-primary"> Pick Up Branch &nbsp; <span
                                                                                 class="text-danger">*</span></b>
 
@@ -205,6 +223,9 @@
 
                                                 <h6 class="col-md-5">Type Of Statement:</h6>
                                                 <span class="text-success display_type_of_statement col-md-7"></span>
+
+                                                <h6 class="col-md-5">Medium:</h6>
+                                                <span class="text-success display_medium col-md-7"></span>
 
                                                 <h6 class="col-md-5">Pick Up Branch:</h6>
                                                 <span class="text-success display_pick_up_branch col-md-7"></span>
@@ -416,6 +437,7 @@
             $('#spinner').hide();
             $('#spinner-text').hide();
             $(".display_button_print").hide();
+            $(".select_branch").hide();
 
             $("#my_account").change(function() {
                 var my_account = $(this).val();
@@ -428,6 +450,34 @@
                 $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4].trim())))
                 console.log(my_account);
             });
+
+             //codes to display self or others transfer
+                $("#inlineRadio1").click(function(){
+                    var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                    console.log(destination_type);
+                    $(".display_medium").text(destination_type);
+                    $('.display_pick_up_branch').text("");
+                    var pickUpBranch = $("#pUBranch").val();
+                    if (pickUpBranch != "") {
+
+                        let branch_info = pickUpBranch.split("~")
+                        $(".display_pick_up_branch").text(branch_info[1]);
+                        console.log(branch_info[1]);
+                        console.log(pickUpBranch);
+                        console.log(branch_info[1]);
+                    }
+
+                    $(".select_branch").show();
+                });
+
+                $("#inlineRadio2").click(function(){
+                    var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                    console.log(destination_type);
+                    $(".display_medium").text(destination_type);
+                    $(".display_pick_up_branch").text('');
+                    $(".select_branch").hide();
+
+                });
 
             $("#statementType").change(function() {
                 var statementType = $("#statementType").val();
@@ -479,6 +529,8 @@
                 //statement request details/get values.
                 let my_account = $('#my_account').val();
                 let type_of_statement = $('#statementType').val();
+                let medium = $('input[type="radio"][name="radioInline"]:checked').val();
+                console.log(medium);
                 let pUBranch = $('#pUBranch').val();
                 let transStartDate = $('#startDate').val();
                 let transEndDate = $('#endDate').val();
@@ -486,8 +538,7 @@
                 console.log(pin);
 
 
-                if (pUBranch == "" || my_account == "" || type_of_statement == "" || transStartDate == "" ||
-                    transEndDate == "" || pin == "") {
+                if (my_account == "" || type_of_statement == "" || transStartDate == "" || transEndDate == "" || pin == "") {
                     toaster("Please fill all required fields", "error", 6000);
                 } else {
 
@@ -501,7 +552,7 @@
                     let branch_info = pUBranch.split("~");
                     let branchCode = branch_info[0];
 
-                    my_account_info = my_account.split("~");
+                    let my_account_info = my_account.split("~");
                     let accountNumber = my_account_info[2].trim();
 
 
@@ -517,6 +568,7 @@
                             'pick_up_branch': branchCode.trim(),
                             'transStartDate': transStartDate.trim(),
                             'transEndDate': transEndDate.trim(),
+                            'medium': medium,
                             'pin': pin
                         },
                         headers: {
@@ -526,7 +578,7 @@
 
                             console.log(response)
 
-                            if (response.responseCode != '000') {
+                            if (response.responseCode == '000') {
                                 toaster(response.message, 'success', 20000)
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();

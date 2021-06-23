@@ -62,29 +62,16 @@
                 <div class="row">
 
 
-                    <div class="col-md-7">
-                        <div class="card-box" style="height:170px;">
-
-                            <div class="ribbon-content">
-                                <h1>HI, {{ session()->get('userAlias') }}</h1>
-
-                                <h4>Welcome to Rokel's Internet banking platform.</h4>
-                                <br>
-                                <h5 class="mb-0">Last Login: {{ date('d M Y @ H:i:s') }}.</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5">
-                        <div class="card-box" style="height:170px; background-image: url({{ asset('assets/images/cards/atm-bg.png') }})">
+                    <div class="col-md-6">
+                        <div class="card-box ribbon-box" style="border-radius: 20px; background-image: url({{ asset('assets/images/cards/atm-bg.png') }})">
 
                             <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
                             <i class="fa fa-eye-slash  float-right eye-close text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                                {{-- <h4 class="ribbon ribbon-warning float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4> --}}
-
-                                <a href="{{ url('list-of-accounts') }}"><h2 class="text-white my-3 text-left" style="font-size: 25px">SLL <span class="i_have_amount open-money"></span> <span class="i_have_amount_ close-money">***********</span></h2></a>
-
-                                <h4 class="text-white mb-0">Total Local Equivalence <span class="float-right"></h4>
+                                <h4 class="ribbon ribbon-warning float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4>
+                                <br><br>
+                                <a href="{{ url('list-of-accounts') }}"><h2 class="text-white my-3" style="font-size: 25px">SLL <span class="i_have_amount open-money"></span> <span class="i_have_amount_ close-money">***********</span></h2></a>
+                                <br>
+                                <p class="text-white mb-0">Total Local Currency <span class="float-right"></p>
 
 
                         </div>
@@ -93,7 +80,25 @@
 
 
 
+                    <div class="col-md-6">
+                        <a href="{{ url('manage-cards') }}">
 
+                            <div class="card" style="border-radius: 20px;">
+
+
+                            <div class="card-body bg-warning">
+
+                                <h5 class="card-title text-white">My Cards</h5>
+                                <br>
+                                <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
+                                <p class="card-text">
+                                    <p class="text-white mb-0" style="font-size: 20px;">Loan Owner <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
+
+                                </p>
+                            </div>
+                        </div> <!-- end card-box-->
+                        </a>
+                    </div>
 
 
 
@@ -265,25 +270,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <a href="{{ url('manage-cards') }}">
 
-                            <div class="card" style="border-radius: 20px;">
-
-
-                            <div class="card-body bg-warning">
-
-                                <h5 class="card-title text-white">My Cards</h5>
-                                <br>
-                                <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
-                                <p class="card-text">
-                                    <p class="text-white mb-0" style="font-size: 20px;">Loan Owner <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
-
-                                </p>
-                            </div>
-                        </div> <!-- end card-box-->
-                        </a>
-                    </div>
                 </div>
 
 

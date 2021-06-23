@@ -83,7 +83,7 @@
                 <div class="container-fluid">
                     <div class="">
                         <div class="row">
-                            <div class="col-xl-12" style="zoom:0.8;">
+                            <div class="col-xl-8" style="zoom:0.8;">
                                 <div id="accordion" class="mb-3">
                                     <div class="card mb-2" {{-- style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));" --}}>
                                         <a class="text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
