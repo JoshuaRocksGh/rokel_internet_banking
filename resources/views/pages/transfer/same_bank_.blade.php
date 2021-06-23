@@ -1215,7 +1215,7 @@
             $.ajax({
                 "type": "GET",
                 "url": "get-currency-list-api",
-                "datatype": "application/json",
+                datatype: "application/json",
                 success: function(response) {
                     {{-- console.log(response); --}}
 
@@ -1247,9 +1247,9 @@
 
         function from_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-my-account',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-my-account',
+                datatype: "application/json",
                 success: function(response) {
                     //console.log(response.data);
                     let data = response.data
@@ -1284,9 +1284,9 @@
 
         function to_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-transfer-beneficiary-api?beneType=SAB',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-transfer-beneficiary-api?beneType=SAB',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response);
                     let data = response.data
@@ -1324,7 +1324,7 @@
             $.ajax({
                 "type": "GET",
                 "url": "get-expenses",
-                "datatype": "application/json",
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data;
@@ -1389,8 +1389,8 @@
                 $.ajax({
                     "type": "POST",
                     "url": "get-account-description",
-                    "datatype": "application/json",
-                    "data": {
+                    datatype: "application/json",
+                    data: {
                         "authToken": "string",
                         "accountNumber": account_no
                     },
@@ -2058,9 +2058,9 @@
 
 
                             $.ajax({
-                                'type': 'POST',
-                                'url': 'transfer-to-beneficiary-api',
-                                "datatype": "application/json",
+                                type: 'POST',
+                                url:  'transfer-to-beneficiary-api',
+                                datatype: "application/json",
                                 'data': {
                                     'from_account': from_account_,
                                     'alias_name': onetime_beneficiary_name,
@@ -2187,9 +2187,9 @@
                             $("#confirm_modal_button").prop('disabled', true);
 
                             $.ajax({
-                                'type': 'POST',
-                                'url': 'transfer-to-beneficiary-api',
-                                "datatype": "application/json",
+                                type: 'POST',
+                                url:  'transfer-to-beneficiary-api',
+                                datatype: "application/json",
                                 'data': JSON.stringify(data),
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(

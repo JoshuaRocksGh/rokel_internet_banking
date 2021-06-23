@@ -341,7 +341,7 @@
 
             function get_currency() {
                 $.ajax({
-                    'type': 'GET',
+                    type: 'GET',
                     'url': 'get-currency-list-api',
                     "datatype": "application/json",
                     success: function(response) {
@@ -451,7 +451,7 @@
                 {{--  alert(name) ;
                 return false;  --}}
                 $.ajax({
-                    'type': 'GET',
+                    type: 'GET',
                     'url': 'get-bank-list-api',
                     "datatype": "application/json",
                     success: function(response) {
@@ -500,7 +500,7 @@
 
                 return false  --}}
                 $.ajax({
-                    'type': 'GET',
+                    type: 'GET',
                     'url': 'get-currency-list-api',
                     "datatype": "application/json",
                     success: function(response) {

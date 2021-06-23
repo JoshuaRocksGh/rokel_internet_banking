@@ -129,9 +129,9 @@
 
     function get_security_question() {
         $.ajax({
-            'type': 'GET',
-            'url': 'get-security-question-api',
-            "datatype": "application/json",
+            type: 'GET',
+            url:  'get-security-question-api',
+            datatype: "application/json",
             success: function(response) {
                 console.log(response.data);
                 let data = response.data
@@ -182,7 +182,7 @@
                 "type": "POST",
                 "url" : "post-change-password",
                 "datatype" : "application/json",
-                "data": {
+                data: {
                     "security_question" : security_question,
                     "security_answer" : security_answer,
                     "new_password" : new_password,

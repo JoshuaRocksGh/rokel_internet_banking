@@ -668,9 +668,9 @@
 
                     function from_account() {
                         $.ajax({
-                            'type': 'GET',
-                            'url': 'get-my-account',
-                            "datatype": "application/json",
+                            type: 'GET',
+                            url:  'get-my-account',
+                            datatype: "application/json",
                             success: function(response) {
                                 //console.log(response.data);
                                 let data = response.data
@@ -696,9 +696,9 @@
 
                     function get_benerficiary() {
                         $.ajax({
-                            'type': 'GET',
-                            'url': 'get-transfer-beneficiary-api?beneType=OTB',
-                            "datatype": "application/json",
+                            type: 'GET',
+                            url:  'get-transfer-beneficiary-api?beneType=OTB',
+                            datatype: "application/json",
                             success: function(response) {
                                 console.log(response.data);
                                 let data = response.data
@@ -1201,9 +1201,9 @@
                         console.log(schedule_payment_date); --}}
 
                             $.ajax({
-                                'type': 'POST',
-                                'url': 'transfer-to-other-bank-beneficiary-api',
-                                "datatype": "application/json",
+                                type: 'POST',
+                                url:  'transfer-to-other-bank-beneficiary-api',
+                                datatype: "application/json",
                                 'data': {
                                     'from_account': from_account_,
                                     'to_account': to_account_,
@@ -1303,10 +1303,10 @@
                                 $('#confirm_button').attr('disabled', true);
 
                             $.ajax({
-                                'type': 'POST',
-                                'url': 'transfer-to-other-bank-onetime-beneficiary-api',
-                                "datatype": "application/json",
-                                "data": {
+                                type: 'POST',
+                                url:  'transfer-to-other-bank-onetime-beneficiary-api',
+                                datatype: "application/json",
+                                data: {
                                     'from_account': from_account_,
                                     'beneficiary_name': alias_name,
                                     'to_account': to_account,

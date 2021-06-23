@@ -336,8 +336,8 @@
                 var nodes = table.rows().nodes();
                 $.ajax({
                     'tpye': 'GET',
-                    'url': 'all-beneficiary-list',
-                    "datatype": "application/json",
+                    url:  'all-beneficiary-list',
+                    datatype: "application/json",
                     success: function(response) {
                         {{-- console.log(response.responseCode); --}}
 

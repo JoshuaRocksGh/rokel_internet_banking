@@ -644,9 +644,9 @@
 
         function from_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-my-account',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-my-account',
+                datatype: "application/json",
                 success: function(response) {
                     {{-- console.log(response.data); --}}
                     let data = response.data
@@ -672,9 +672,9 @@
 
         function get_benerficiary() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-transfer-beneficiary-api?beneType=INTB',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-transfer-beneficiary-api?beneType=INTB',
+                datatype: "application/json",
                 success: function(response) {
                     {{-- console.log(response.data); --}}
                     let data = response.data
@@ -723,7 +723,7 @@
             $.ajax({
                 "type": "GET",
                 "url": "get-expenses",
-                "datatype": "application/json",
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data;
@@ -971,7 +971,7 @@
                     $.ajax({
                         "type" : "POST" ,
                         "url" : "international-bank-transfer-api" ,
-                        "dataType": "application/json",
+                        datatype: "application/json",
                         "data" : {
 
                         },

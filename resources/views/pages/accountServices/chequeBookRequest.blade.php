@@ -209,7 +209,7 @@
 
             function my_account(){
                 $.ajax({
-                    'type': 'GET',
+                    type: 'GET',
                     'url' : 'get-my-account',
                     "datatype" : "application/json",
                     success:function(response){
@@ -229,7 +229,7 @@
 
             function branches(){
                 $.ajax({
-                    'type': 'GET',
+                    type: 'GET',
                     'url' : 'get-bank-branches-list-api',
                     "datatype" : "application/json",
                     success:function(response){

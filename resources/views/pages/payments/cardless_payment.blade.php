@@ -1033,7 +1033,7 @@
     <script>
         function from_account() {
             $.ajax({
-                'type': 'GET',
+                type: 'GET',
                 'url': 'get-accounts-api',
                 "datatype": "application/json",
                 success: function(response) {
@@ -1144,7 +1144,7 @@
 
                 $.ajax({
 
-                    'type': 'POST',
+                    type: 'POST',
                     'url': 'cardless-otp',
                     "datatype": "application/json",
                     'data': {
@@ -1484,7 +1484,7 @@
 
                             $.ajax({
 
-                                'type': 'GET',
+                                type: 'GET',
                                 'url': 'unredeem-cardless-request',
                                 "datatype": "application/json",
                                 'accountNo':from_account,
@@ -1630,7 +1630,7 @@
                             let from_account_value = from_account_info[2].trim();
                         $.ajax({
 
-                            'type': 'POST',
+                            type: 'POST',
                             'url': 'initiate-cardless',
                             "datatype": "application/json",
                             'data': {
@@ -1725,7 +1725,7 @@
                             let from_account_value = from_account_info[2].trim();
                         $.ajax({
 
-                            'type': 'POST',
+                            type: 'POST',
                             'url': 'initiate-cardless',
                             "datatype": "application/json",
                             'data': {

@@ -196,7 +196,7 @@
 
         function from_account() {
                     $.ajax({
-                        'type': 'GET',
+                        type: 'GET',
                         'url': 'get-account-api',
                         "datatype": "application/json",
                         success: function(response) {
@@ -304,7 +304,7 @@
 
                             $.ajax({
 
-                                    'type': 'POST',
+                                    type: 'POST',
                                     'url': 'create-originator-api',
                                     "datatype": "application/json",
                                     'data': {

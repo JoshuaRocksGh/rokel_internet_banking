@@ -1028,7 +1028,7 @@
 
                     "type": "GET",
                     "url": "fixed-deposit-account-api",
-                    "datatype": "application/json",
+                    datatype: "application/json",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -1108,7 +1108,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-accounts-api",
-                    "datatype": "application/json",
+                    datatype: "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1177,7 +1177,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-loan-accounts-api",
-                    "datatype": "application/json",
+                    datatype: "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1250,9 +1250,9 @@
 
             function get_currency() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-currency-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-currency-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -1281,9 +1281,9 @@
                 $(".currency_converter_loading_area").show()
 
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-correct-fx-rate-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-correct-fx-rate-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -1325,7 +1325,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-fx-rate-api?rateType=" + rate_type,
-                    "datatype": "application/json",
+                    datatype: "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -353,7 +353,7 @@
                         "type": "GET",
                         "url": "get-pending-requests?customerNumber=" + customerNumber + '&requestStatus=' +
                             requestStatus,
-                        "datatype": "application/json",
+                        datatype: "application/json",
 
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

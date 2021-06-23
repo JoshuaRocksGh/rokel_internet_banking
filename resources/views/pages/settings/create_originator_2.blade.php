@@ -881,7 +881,7 @@
 
     function from_account() {
             $.ajax({
-                'type': 'GET',
+                type: 'GET',
                 'url': 'get-my-account',
                 "datatype": "application/json",
                 success: function(response) {
@@ -929,7 +929,7 @@
 
         // function to_account() {
         //     $.ajax({
-        //         'type': 'GET',
+        //         type: 'GET',
         //         'url': 'get-transfer-beneficiary-api?beneType=SAB',
         //         "datatype": "application/json",
         //         success: function(response) {
@@ -1464,7 +1464,7 @@
                 e.preventDefault();
 
                 $.ajax({
-                        'type': 'POST',
+                        type: 'POST',
                         'url': 'transfer-to-beneficiary-api',
                         "datatype": "application/json",
                         'data': {
@@ -1615,7 +1615,7 @@
                         $('#confirm_button').attr('disabled', true);
 
                     $.ajax({
-                        'type': 'POST',
+                        type: 'POST',
                         'url': 'transfer-to-beneficiary-api',
                         "datatype": "application/json",
                         'data': {

@@ -568,7 +568,7 @@
         $.ajax({
             "type": "GET",
             "url": "get-accounts-api",
-            "datatype": "application/json",
+            datatype: "application/json",
 
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -624,9 +624,9 @@
 
     function lovs_list() {
         $.ajax({
-            'type': 'GET',
-            'url': '../get-lovs-list-api',
-            "datatype": "application/json",
+            type: 'GET',
+            url:  '../get-lovs-list-api',
+            datatype: "application/json",
             success: function(response) {
                 console.log(response);
                 let title_list = response.data.titleList;
@@ -1063,7 +1063,7 @@
                 $.ajax({
                     "type" : "POST" ,
                     "url" : "../savings-account-creation-api" ,
-                    "datatype": "application/json",
+                    datatype: "application/json",
                     "data" : {
                         "title" : title ,
                         "surname" : surname ,

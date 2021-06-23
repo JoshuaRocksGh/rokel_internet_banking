@@ -368,9 +368,9 @@
 
 function my_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-my-account',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-my-account',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -413,9 +413,9 @@ function cc_format(value) {
 
 function branches() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-bank-branches-list-api',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-bank-branches-list-api',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data

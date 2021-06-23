@@ -462,7 +462,7 @@
             $.ajax({
                 "type": "GET",
                 "url": "get-accounts-api",
-                "datatype": "application/json",
+                datatype: "application/json",
 
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -795,8 +795,8 @@
                 $.ajax({
                     "type": "POST",
                     "url": "account-transaction-history",
-                    "datatype": "application/json",
-                    "data": {
+                    datatype: "application/json",
+                    data: {
                         "accountNumber": account_number,
                         "endDate": end_date,
                         "entrySource": "A",
@@ -841,8 +841,8 @@
                 $.ajax({
                     "type": "POST",
                     "url": "api/account-balance-info",
-                    "datatype": "application/json",
-                    "data": {
+                    datatype: "application/json",
+                    data: {
                         "accountNumber": account_number,
                         "authToken": "15D2A303-98FD-43A6-86E4-F24FC7436069",
                         "endDate": "",

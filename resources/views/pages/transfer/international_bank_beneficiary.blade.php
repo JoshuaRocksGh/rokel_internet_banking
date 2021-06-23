@@ -640,9 +640,9 @@
         <script>
             function get_currency() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-currency-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-currency-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         {{-- console.log(response.data); --}}
                         let data = response.data
@@ -662,9 +662,9 @@
 
             function bank_list() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-bank-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-bank-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -684,9 +684,9 @@
 
             function bank_list() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-bank-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-bank-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -706,9 +706,9 @@
 
             function bank_branches_list() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-bank-branches-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-bank-branches-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -1046,9 +1046,9 @@
                     {{-- console.log(bank_country); --}}
 
                     $.ajax({
-                        'type': 'POST',
-                        'url': 'international-bank-beneficiary-api',
-                        "datatype": "application/json",
+                        type: 'POST',
+                        url:  'international-bank-beneficiary-api',
+                        datatype: "application/json",
                         'data': {
                             'bank_country': bank_country,
                             'bank_city': bank_city,

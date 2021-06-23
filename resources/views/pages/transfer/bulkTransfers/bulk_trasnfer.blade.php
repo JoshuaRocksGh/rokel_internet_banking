@@ -231,9 +231,9 @@
     <script>
         function my_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-my-account',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-my-account',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -260,8 +260,8 @@
             var nodes = table.rows().nodes();
             $.ajax({
                 'tpye': 'GET',
-                'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
-                "datatype": "application/json",
+                url:  'get-bulk-upload-list-api?customer_no=' + customer_no,
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
 

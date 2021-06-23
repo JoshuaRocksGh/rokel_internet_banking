@@ -320,9 +320,9 @@
         <script>
             function get_security_question() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-security-question-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-security-question-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -451,9 +451,9 @@
 
                             //code to pass variables' values to the api
                             $.ajax({
-                                'type': 'POST',
-                                'url': 'change-pin-api',
-                                "datatype": "application/json",
+                                type: 'POST',
+                                url:  'change-pin-api',
+                                datatype: "application/json",
                                 'data': {
                                     'security_answer': security_answer.trim(),
                                     'old_pin': old_pin,
@@ -546,9 +546,9 @@
 
                             //ajax code to pass values to the api
                             $.ajax({
-                                'type': 'POST',
-                                'url': 'change-password-api',
-                                "datatype": "application/json",
+                                type: 'POST',
+                                url:  'change-password-api',
+                                datatype: "application/json",
                                 'data': {
                                     'security_answer': security_answer.trim(),
                                     'old_password': old_password,

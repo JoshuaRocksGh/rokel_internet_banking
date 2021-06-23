@@ -342,9 +342,9 @@
         <script>
             function from_account() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-my-account',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-my-account',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -551,9 +551,9 @@
                         $('#confirm_payment').hide();
                         $.ajax({
 
-                            'type': 'POST',
-                            'url': 'initiate-cardless',
-                            "datatype": "application/json",
+                            type: 'POST',
+                            url:  'initiate-cardless',
+                            datatype: "application/json",
                             'data': {
                                 'amount': transfer_amount,
                                 'debit_account': from_account,
