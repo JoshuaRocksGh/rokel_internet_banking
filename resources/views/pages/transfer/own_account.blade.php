@@ -9,6 +9,7 @@
             }
         }
 
+
         @font-face {
             font-family: 'password';
             font-style: normal;
@@ -165,7 +166,7 @@
                                                                     {{-- <th>#</th> --}}
                                                                     <th>Description</th>
                                                                     <th>Further Details</th>
-                                                                    <th>Amount (<span id="receipt_currency"></span>)</th>
+                                                                    {{--  <th>Amount (<span id="receipt_currency"></span>)</th>  --}}
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -173,47 +174,47 @@
                                                                     {{-- <th scope="row">1</th> --}}
                                                                     <td>Transfer From Account Number</td>
                                                                     <td><span id="from_account_receipt"></span></td>
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">2</th> --}}
                                                                     <td>Transfer To Account Number</td>
                                                                     <td><span id="to_account_receipt"></span></td>
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Category</td>
                                                                     <td><span id="category_receipt"></span></td>
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Purpose</td>
                                                                     <td><span id="purpose_receipt"></span></td>
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
-                                                                    <td></td>
-                                                                    <td><strong><span id="amount_receipt"></span></strong>
+                                                                    {{--  <td></td>  --}}
+                                                                    <td><strong>(<span class="receipt_currency"></span>)<span id="amount_receipt"></span></strong>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transaction Fee </td>
-                                                                    <td></td>
-                                                                    <td><strong>15.00</strong></td>
+                                                                    {{--  <td></td>  --}}
+                                                                    <td><strong>(<span class="receipt_currency"></span>)15.00</strong></td>
                                                                 </tr>
-                                                                <tr>
-                                                                    {{-- <th scope="row">3</th> --}}
+                                                                {{--  <tr>
+                                                                    <th scope="row">3</th>
                                                                     <td><strong>Total Amount</strong> </td>
                                                                     <td></td>
                                                                     <td><strong><span
                                                                                 id="total_amount_receipt"></span></strong>
                                                                     </td>
-                                                                </tr>
+                                                                </tr>  --}}
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td></td>
@@ -253,7 +254,7 @@
                             <div class="form_process">
                                 <div class="row">
 
-                                    <div class="col-md-7 rtgs_summary_card m-2" id="transaction_summary"
+                                    <div class="col-md-7 m-2" id="transaction_summary"
                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                         <div class="row">
                                             <div class="col-md-1"></div>
@@ -400,11 +401,12 @@
                                                     aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h3 class="modal-title text-center text-primary"
+                                                            <div class="modal-header text-center ">
+                                                                    <h3 class="modal-title text-primary"
                                                                     id="myCenterModalLabel ">ENTER TRANSACTION PIN</h3>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>
+
+                                                                {{--  <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-hidden="true">×</button>  --}}
 
                                                             </div>
                                                             <div class="modal-body transfer_pin_modal">
@@ -443,7 +445,7 @@
                                                 <div class="form-group text-center">
 
                                                     <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                            id="back_button">Back</button> &nbsp; </span>
+                                                            id="back_button"> <i class="fe-arrow-left"></i>&nbsp;Back</button> &nbsp; </span>
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button"
@@ -486,7 +488,7 @@
                                                         <div class="col-md-1"></div>
                                                         <div class="col-md-10">
 
-                                                            <div class="form-group row mb-3">
+                                                            <div class="form-group row ">
                                                                 <b class="col-md-12 text-primary mb-1">Account from which the money will
                                                                     be tansfered
                                                                     &nbsp; <span class="text-danger">*</span> </b>
@@ -503,7 +505,7 @@
                                                             </div>
                                                             <legend></legend>
 
-                                                            <div class="form-group row mb-3">
+                                                            <div class="form-group row">
                                                                 <b class="col-md-12"><b class="text-primary">Account which will receive the money
                                                                         &nbsp;</b><span class="text-danger">*</span></b>
                                                                 <select class="form-control col-md-12 mb-2" id="to_account" required>
@@ -553,18 +555,31 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control readOnly " value="1.00" style="width: 100px;">
+                                                                        <input type="text" class="form-control readOnly " id="convertor_rate" placeholder="1.00" style="width: 100px;">
                                                                       </div>
                                                                       &nbsp;&nbsp;
-                                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                                    <input type="text" class="form-control" id="converted_amount" placeholder="Converted Amount" aria-label="Converted Amount" aria-describedby="basic-addon1">
                                                                   </div>
 
 
                                                             </div>
 
+                                                            <div class="form-group row">
+                                                                <label class="col-md-4"><b class="text-primary">Expense Category
+                                                                        &nbsp;</b><span class="text-danger">*</span></label>
+
+                                                                {{-- <label class="h6">Category</label> --}}
+
+                                                                <select class="form-control col-md-8 mb-2" id="category" required>
+                                                                    <option value="">Select Category</option>
+
+                                                                </select>
+
+                                                            </div>
 
 
-                                                            <div class="form-group row mb-3">
+
+                                                            <div class="form-group row">
                                                                 <label class="col-md-4"><b class="text-primary">Purpose of
                                                                         Transfer &nbsp</b><span
                                                                         class="text-danger">*</span></label>
@@ -575,21 +590,7 @@
 
                                                             </div>
 
-                                                            <div class="form-group row mb-3">
-                                                                <label class="col-md-4"><b class="text-primary">Expense Category
-                                                                        &nbsp;</b><span class="text-danger">*</span></label>
 
-                                                                {{-- <label class="h6">Category</label> --}}
-
-                                                                <select class="form-control col-md-8 mb-2" id="category" required>
-                                                                    <option value="">Select Category</option>
-                                                                    {{-- <option value="001~Fees">Fees</option>
-                                                                    <option value="002~Electronics">Electronics</option>
-                                                                    <option value="003~Travels">Travels</option>
-                                                                    <option value="004~Travels">Others</option> --}}
-                                                                </select>
-
-                                                            </div>
 
                                                             <div class="form-group row">
                                                                 <label class="col-md-4"><b class="text-primary">Future
@@ -627,8 +628,8 @@
 
 
 
-                                                            <div class="form-group text-right">
-                                                                <button class="btn btn-primary btn-rounded" type="button"
+                                                            <div class="form-group text-right m-2">
+                                                                <button class="btn btn-primary btn-rounded" type="submit"
                                                                     id="next_button">
                                                                     &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
                                                             </div>
@@ -655,18 +656,18 @@
 
                                         <div class="col-md-12 card card-body rtgs_transfer_summary">
                                             <div class="row">
-                                                <h6 class="col-md-5">Account Description:</h6>
+                                                <p class="col-md-5">Account Description:</p>
                                                 <span class="text-primary display_from_account_name col-md-7"></span>
 
-                                                <h6 class="col-md-5">Account Number:</h6>
+                                                <p class="col-md-5">Account Number:</p>
                                                 <span class="text-primary display_from_account_no col-md-7"></span>
 
-                                                <h6 class="col-md-5">Available Balance:</h6>
+                                                <p class="col-md-5">Available Balance:</p>
 
                                                 <span class="text-primary display_from_account_amount col-md-7"></span>
 
 
-                                                <h6 class="col-md-5">Account Currency:</h6>
+                                                <p class="col-md-5">Account Currency:</p>
                                                 <span class="text-primary display_from_account_currency col-md-7"></span>
 
                                                 {{-- <h6 class="col-md-5">Account Currency:</h6>
@@ -675,20 +676,29 @@
 
                                             <hr>
                                             <div class="row">
-                                                <h6 class="col-md-5">Account Number:</h6>
-                                                <h6 class="text-primary display_to_account_no col-md-7"></h6>
+                                                <p class="col-md-5">Account Number:</p>
+                                                <p class="text-primary display_to_account_no col-md-7"></p>
 
-                                                <h6 class="col-md-5">Account Balance:</h6>
-                                                <h6 class="text-primary display_to_account_amount col-md-7"></h6>
+                                                <p class="col-md-5">Account Balance:</p>
+                                                <p class="text-primary display_to_account_amount col-md-7"></p>
 
-                                                <h6 class="col-md-5">Account Currency:</h6>
-                                                <h6 class="text-primary display_to_account_currency col-md-7"></h6>
+                                                <p class="col-md-5">Account Currency:</p>
+                                                <p class="text-primary display_to_account_currency col-md-7"></p>
                                             </div>
 
                                             <hr>
                                             <div class="row">
-                                                <h6 class="col-md-5">Enter Amount:</h6>
-                                                <span class="text-primary display_amount col-md-7"></span>
+                                                <p class="text-primary col-md-5">Transfer Amount:</p>
+                                                <h4 class="text-danger text-bold col-md-7 ">
+                                                    <span class="display_from_account_currency"></span>
+                                                    &nbsp;
+                                                    <b style="font-style: 16px"><span class="display_transfer_amount"></span></b>
+                                                </h4>
+                                            </div>
+                                            <div class="row">
+
+                                                {{--  <h6 class="col-md-5">Enter Amount:</h6>
+                                                <span class="text-primary display_amount col-md-7"></span>  --}}
 
                                                 <h6 class="col-md-5">Currency Rate:</h6>
                                                 <span class="text-primary display_midrate col-md-7"></span>
@@ -697,15 +707,8 @@
                                                 <span class="text-primary display_converted_amount col-md-7"></span>
                                             </div>
 
-                                            <hr>
-                                            <div class="row">
-                                                <h6 class="text-primary col-md-5">Transfer Amount:</h6>
-                                                <h6 class="text-danger text-bold col-md-7 ">
-                                                    <span class="display_from_account_currency"></span>
-                                                    &nbsp;
-                                                    <span class="display_transfer_amount"></span>
-                                                </h6>
-                                            </div>
+                                            {{--  <hr>  --}}
+
 
                                         </div>
                                     </div>
@@ -1032,6 +1035,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <script>
             function from_account() {
@@ -1125,6 +1130,35 @@
             }
 
 
+            function get_correct_fx_rate() {
+
+
+                $.ajax({
+                    'type': 'GET',
+                    'url': 'get-correct-fx-rate-api',
+                    "datatype": "application/json",
+                    success: function(response) {
+                        console.log(response.data);
+                        let data = response.data
+
+
+                        if (response.responseCode == '000') {
+                            forex_rate = response.data
+                        } else {
+
+                        }
+
+
+
+                    },
+                    error: function(xhr, status, error) {
+
+                    }
+
+                })
+            };
+
+
             $(document).ready(function() {
 
                 $("#transaction_summary").hide();
@@ -1138,8 +1172,13 @@
                     from_account();
                     expenseTypes();
                     get_currency();
+                    get_correct_fx_rate();
 
                 }, 200);
+
+                var forex_rate = []
+                var cur_1 = "SLL"
+                var cur_2 = "SLL"
 
                 var now = new Date();
 
@@ -1147,8 +1186,10 @@
                 var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
                 var today = now.getFullYear() + "-" + (month) + "-" + (day);
+                {{--  $( "#future_payment" ).datepicker({ minDate: 0});  --}}
 
-                $('#future_payment').text(today);
+
+                $('#future_payment').text(today).datepicker("setDate", new Date());
 
                 {{-- $( "#future_date" ).datepicker({ defaultDate: new Date() }); --}}
 
@@ -1181,6 +1222,8 @@
 
                 $("#transaction_form").show()
                 $("#transaction_summary").hide()
+
+                $("#future_payment").datepicker();
 
                 {{-- $("#next_button").click(function(e) {
                     e.preventDefault()
@@ -1287,10 +1330,66 @@
 
 
 
+                    function currency_convertor(forex_rate){
+                        let amount = $("#amount").val()
+                        let converted_amount = ''
+
+                        cur_1 = $('#select_currency').val()
+                        cur_2 = $('#select_currency__').val()
+
+                        currency_pair_1 = cur_1 + '/ ' + cur_2
+                        currency_pair_2 = cur_2 + '/ ' + cur_1
+
+
+
+                        console.log(currency_pair_1)
+                        console.log(currency_pair_2)
+                        console.log(forex_rate)
+
+                        if(forex_rate.length > 0){
+                            $.each(forex_rate, function(index) {
+
+                                if(String(forex_rate[index].PAIR.trim()) == String(currency_pair_1.trim())){
+
+                                }
+
+                                if(String(forex_rate[index].PAIR.trim()) == String(currency_pair_1.trim())){
+
+                                    converted_amount = parseFloat(amount) * parseFloat(forex_rate[index].MIDRATE)
+                                    $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                                    $('#converted_amount').val(formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                                    console.log(`match 1 => ${converted_amount}`)
+                                    console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                                }else if(String(forex_rate[index].PAIR.trim()) == String(currency_pair_2.trim())){
+
+                                    $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                                    converted_amount = parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE)
+                                    $('#converted_amount').val(formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                                    console.log(`match 2 => ${converted_amount}`)
+                                    console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                                }else{
+
+                                }
+                            })
+                        }
+                    }
+
+                    $("#select_currency").change(function() {
+                        currency_convertor(forex_rate)
+                    })
+
+                    $("#select_currency__").change(function() {
+                        currency_convertor(forex_rate)
+                    })
+
+
 
                 $("#amount").keyup(function() {
                     var from_account = $('#from_account').val()
                     var to_account = $('#to_account').val()
+                    currency_convertor(forex_rate);
 
                     console.log(amt)
 
@@ -1425,7 +1524,7 @@
 
                 }); --}}
 
-                $("#next_button").click(function(e) {
+                $("#payment_details_form").submit(function(e) {
                     e.preventDefault();
 
                     var from_account_ = $('#from_account').val().split("~");
@@ -1450,15 +1549,18 @@
 
                     var select_frequency_ = $('#select_frequency').val();
 
-                    if (from_account == '' || to_account == '' || transfer_amount == '' ||
+                    $("#transaction_summary").show();
+                    $("#transaction_form").hide();
+
+                    {{--  if (from_account == '' || to_account == '' || transfer_amount == '' ||
                         category == '' || purpose == '') {
-                        {{-- alert('Field must not be empty') --}}
+                        alert('Field must not be empty')
                         toaster('Field must not be empty', 'error', 10000)
                         return false
                     } else {
                         $("#transaction_summary").show();
                         $("#transaction_form").hide();
-                    }
+                    }  --}}
                 })
 
 
@@ -1515,7 +1617,7 @@
                             $("#amount_receipt").text(formatToCurrency(parseFloat(transfer_amount)));
 
                             var select_currency = $("#select_currency").val();
-                            $("#receipt_currency").text(select_currency);
+                            $(".receipt_currency").text(select_currency);
 
 
                             var category = $('#category').val().split("~");

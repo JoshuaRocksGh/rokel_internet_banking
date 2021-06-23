@@ -1774,11 +1774,11 @@
                             $("#transfer_pin").click(function(e) {
                                 e.preventDefault();
 
-                                $("#back_button").hide();
+                                {{--  $("#back_button").hide();
                                 $('#confirm_transfer').hide()
                                 $('#spinner').show();
                                 $('#spinner-text').show();
-                                $("#confirm_modal_button").prop('disabled', true);
+                                $("#confirm_modal_button").prop('disabled', true);  --}}
 
 
                                 {{-- var onetime_transfer = $("input[type='checkbox']:checked").val();
@@ -1973,13 +1973,13 @@
                                                     response.message ,
                                                     'success'
                                                 );
-                                                $('#spinner').hide();
+                                                {{--  $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#back_button').hide();
                                                 $('#print_receipt').show();
                                                 $("#related_information_display").removeClass("d-none d-sm-block");
                                                 $(".rtgs_card_right").hide();
-                                                $(".success_gif").show();
+                                                $(".success_gif").show();  --}}
 
 
 
@@ -1987,13 +1987,13 @@
                                             } else {
                                                 toaster(response.message, 'error', 10000)
 
-                                                $('#confirm_modal_button').show();
+                                                {{--  $('#confirm_modal_button').show();
                                                 $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#print_receipt').hide();
-                                                $(".success_gif").hide();
+                                                $(".success_gif").hide();  --}}
                                                 {{-- $("#related_information_display").removeClass("d-none d-sm-block"); --}}
-                                                $(".rtgs_card_right").show();
+                                                {{--  $(".rtgs_card_right").show();  --}}
 
                                                 {{-- $('#confirm_transfer').show(); --}}
                                                 {{-- $('#confirm_button').attr('disabled', false); --}}
