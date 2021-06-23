@@ -1050,15 +1050,15 @@
                                     data[index].currency + '~' + data[index]
                                     .availableBalance
                             }).text(data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
+                                '~' + data[index].currency + ' ~ ' + formatToCurrency(parseFloat(data[index].availableBalance))
                             ));
                             $('#to_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
+                                value: data[index].accountType + ' ~ ' + data[index]
                                     .accountDesc + '~' + data[index]
                                     .accountNumber + '~' + data[index].currency + '~' +
                                     data[index].availableBalance
                             }).text(data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
+                                '~' + data[index].currency + '~' + formatToCurrency(parseFloat(data[index].availableBalance))
                             ));
 
                         });

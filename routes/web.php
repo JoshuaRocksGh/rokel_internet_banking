@@ -175,6 +175,7 @@ Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentContr
 
 //PAYMENTS API ROUTES
 Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
+Route::post('/cardless-otp', [CardlessController::class,'cardless_otp'])->name('cardless-otp');
 Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
 Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
@@ -353,6 +354,9 @@ Route::get('change-pin', [settingsController::class, 'change_pin'])->name('chang
 //route to display the create originator screen
 Route::get('create-originator',[settingsController::class,'create_originator'])->name('create-originator');
 
+//route to hit the create originator endpoint
+Route::post('create-originator-api',[settingsController::class,'create_originator_api'])->name('create-originator-api');
+
 //route to display the forgot transaction pin screen
 Route::get('set-transaction-limit', [settingsController::class, 'set_transaction_limit'])->name('set-transaction-limit');
 
@@ -438,8 +442,7 @@ Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->na
 //DELETE BENEFICIARY
 Route::get('/delete-beneficiary', [DeleteBeneficiaryController::class, 'index'])->name('delete-beneficiary');
 
-Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_be
-neficiary'])->name('edit-same-bank-beneficiary');
+Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
 Route::post('/edit-same-bank-api', [EditSameBankController::class, 'get_same_bank_beneficiary'])->name('edit-same-bank-api');
 Route::put('/edit-same-bank-beneficiary-api', [EditSameBankController::class, 'update_same_bank_beneficiary'])->name('edit-same-bank-beneficiary-api');
 // -------- OTHER LOCAL BANK -----------
@@ -501,6 +504,8 @@ Route::post('loan-quotation-details',[LoanQuotationController::class,'send_loan_
 //Route to send unredeem request
 Route::get('unredeem-cardless-request',[CardlessController::class,'send_unredeemed_request'])->name('unredeem-cardless-request');
 
+//Route to reverse cardless
+Route::post('reverse-cardless',[CardlessController::class,'reverse_cardless'])->name('reverse-cardless');
 //route to return interest rate types
 Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_Types'])->name('get-interest-types-api');
 

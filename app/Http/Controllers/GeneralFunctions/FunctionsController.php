@@ -122,6 +122,7 @@ class FunctionsController extends Controller
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+        $api_headers = session()->get('headers');
 
         $data = [
             "authToken" => $authToken,
@@ -133,7 +134,8 @@ class FunctionsController extends Controller
         // return $data;
         // return env('API_BASE_URL') ."account/getAccounts";
 
-        $response = Http::post(env('API_BASE_URL') . "account/getAccounts", $data);
+        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "account/getAccounts",$data);
+        // $response = Http::post(env('API_BASE_URL') . "account/getAccounts", $data);
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
@@ -272,7 +274,11 @@ class FunctionsController extends Controller
     public function branches_list()
     {
 
-        $response = Http::get(env('API_BASE_URL') . "/utilities/getBranches");
+        // $response = Http::get(env('API_BASE_URL') . "/utilities/getBranches");
+        $api_headers = session()->get('headers');
+
+        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "/utilities/getBranches");
+
 
         //return $response;
         // return $response->status();
