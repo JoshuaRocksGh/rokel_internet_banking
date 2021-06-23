@@ -372,25 +372,25 @@
 
                                                     <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Transfer Bank</b>
-                                                        <input class="form-control col-md-8 " type="text"
+                                                        <input class="form-control col-md-8 readOnly" type="text"
                                                             id="beneficiary_bank_name" readonly>
                                                     </div>
 
                                                     <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary A/C Number</b>
-                                                        <input class="form-control col-md-8" type="text"
+                                                        <input class="form-control col-md-8 readOnly" type="text"
                                                             id="beneficiary_account_number" readonly>
                                                     </div>
 
                                                     <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary Name</b>
-                                                        <input class="form-control col-md-8" type="text"
+                                                        <input class="form-control col-md-8 readOnly" type="text"
                                                             id="beneficiary_account_name" readonly>
                                                     </div>
 
                                                     <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary Email</b>
-                                                        <input class="form-control col-md-8" type="text"
+                                                        <input class="form-control col-md-8 readOnly" type="text"
                                                             id="beneficiary_email" readonly>
                                                     </div>
 
@@ -473,7 +473,7 @@
 
                                                                 <div class="input-group mb-1 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <select name="" class="input-group-text" id="select_currency__">
+                                                                        <select name="" class="input-group-text" id="select_currency">
                                                                             <option value="SLL" selected>SLL</option>
                                                                             <option value="EUR">EURO</option>
                                                                             <option value="USD">USD</option>
@@ -482,7 +482,7 @@
 
                                                                       &nbsp;&nbsp;
                                                                       <input type="text" class="form-control " id="amount"
-                                                                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" readonly
+                                                                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                       required>
                                                                   </div>
 
@@ -506,7 +506,7 @@
                                                                 <input type="text" class="form-control readOnly " value="1.00" style="width: 100px;">
                                                               </div>
                                                               &nbsp;&nbsp;
-                                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                            <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                                                           </div>
 
 
@@ -1970,7 +1970,7 @@
                                                 $('#confirm_modal_button').hide();
                                                 Swal.fire(
                                                     '',
-                                                    response.message,
+                                                    response.message ,
                                                     'success'
                                                 );
                                                 $('#spinner').hide();
@@ -1985,7 +1985,7 @@
 
 
                                             } else {
-                                                {{-- toaster(response.message, 'error', 10000) --}}
+                                                toaster(response.message, 'error', 10000)
 
                                                 $('#confirm_modal_button').show();
                                                 $('#spinner').hide();
