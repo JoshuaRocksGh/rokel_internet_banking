@@ -682,11 +682,13 @@
 
                                                                                                     <div class="form-group row">
 
-                                                                                                        <b class="col-md-5 text-primary"> Receiver's Name:</b>
+                                                                                                        <b class="col-md-5 text-primary"> Receiver's Name &nbsp; <span
+                                                                                                                class="text-danger">*</span></b>
 
 
                                                                                                         <input type="text" class="form-control col-md-7"
-                                                                                                            id="receiver_name_redeem" autocomplete="off" readonly>
+                                                                                                            id="receiver_name_redeem"
+                                                                                                            placeholder="0098348789" autocomplete="off" required>
                                                                                                         <br>
 
                                                                                                     </div>
@@ -695,13 +697,13 @@
                                                                                                     <div class="form-group row">
 
                                                                                                         <b class="col-md-5 text-primary"> Receiver's Phone:
-                                                                                                            </b>
+                                                                                                            &nbsp; <span class="text-danger">*</span></b>
 
                                                                                                         <input type="text" class="form-control col-md-7"
                                                                                                             id="receiver_phone_redeem"
-                                                                                                             autocomplete="off"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
                                                                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                                                            readonly>
+                                                                                                            required>
                                                                                                         <br>
 
                                                                                                     </div>
@@ -723,40 +725,41 @@
                                                                                                     <div class="form-group row">
 
                                                                                                         <b class="col-md-5 text-primary"> Receiver's Address:
-                                                                                                            </b>
-
-                                                                                                        <input type="text" class="form-control col-md-7"
-                                                                                                            id="receiver_address_redeem"
-                                                                                                             autocomplete="off"
-                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                                                            readonly>
-                                                                                                        <br>
-
-                                                                                                    </div>
-                                                                                                    <br>
-
-                                                                                                    <div class="form-group row">
-
-                                                                                                        <b class="col-md-5 text-primary"> Amount:</b>
-
-                                                                                                        <input type="text" class="form-control col-md-7"
-                                                                                                            id="receiver_amount_redeem"
-                                                                                                             autocomplete="off"
-                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                                                            readonly>
-                                                                                                        <br>
-
-                                                                                                    </div>
-                                                                                                    <br>
-
-                                                                                                    <div class="form-group row">
-
-                                                                                                        <b class="col-md-5 text-primary"> Enter OTP:
                                                                                                             &nbsp; <span class="text-danger">*</span></b>
 
                                                                                                         <input type="text" class="form-control col-md-7"
-                                                                                                            id="receiver_otp_redeem"
-                                                                                                            placeholder="One Time Password" autocomplete="off"
+                                                                                                            id="receiver_address_redeem"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                                            required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+                                                                                                    <br>
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Account Number:
+                                                                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="receiver_account_redeem"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                                            required>
+                                                                                                        <br>
+
+                                                                                                    </div>
+                                                                                                    <br>
+
+                                                                                                    <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary"> Receiver's Phone:
+                                                                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                                                                        <input type="text" class="form-control col-md-7"
+                                                                                                            id="receiver_phoneNo_reverse"
+                                                                                                            placeholder="enter phone number" autocomplete="off"
                                                                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                                                                             required>
                                                                                                         <br>
@@ -867,7 +870,7 @@
                                                                     <div class="col-sm-8">
                                                                         <form class="form-inline">
                                                                             <div class="form-group">
-                                                                                <select class="form-control unredeemed" required>
+                                                                                <select class="form-control from_account" required>
                                                                                     <option value="">Select Account Number</option>
 
 
@@ -888,7 +891,7 @@
                                                         </div> <!-- end card-->
 
                                                     <div class="table-responsive table-bordered accounts_display_area">
-                                                        <table id="" class="table table-striped mb-0 ">
+                                                        <table id="" class="table mb-0 ">
                                                             <thead>
                                                                 <tr class="bg-primary text-white ">
                                                                     <td> <b> Reference Number </b> </td>
@@ -944,7 +947,7 @@
                                                                     <td> <b>Status</b></td>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody style="background-color:white;" class="redeemed_cardless_list_display">
+                                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display">
 
 
                                                             </tbody>
@@ -959,7 +962,7 @@
                                                                 <div class="col-sm-8">
                                                                     <form class="form-inline">
                                                                         <div class="form-group">
-                                                                            <select class="form-control reversed" required>
+                                                                            <select class="form-control from_account" required>
                                                                                 <option value="">Select Account Number</option>
 
 
@@ -971,7 +974,7 @@
                                                                     <div class="text-sm-right">
                                                                         <button type="button"
                                                                             class="btn btn-primary waves-effect waves-light"
-                                                                            id="submit_account_no_reversed"><i
+                                                                            id="submit_account_number_canceled"><i
                                                                                 class="mdi mdi-plus-circle mr-1"></i>Submit</button>
                                                                     </div>
                                                                 </div><!-- end col-->
@@ -991,7 +994,7 @@
                                                                     <td> <b>Status</b></td>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody style="background-color:white;" class="reversed_cardless_list_display">
+                                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display">
 
 
                                                             </tbody>
@@ -1030,33 +1033,15 @@
     <script>
         function from_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-accounts-api',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-accounts-api',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
                     $.each(data, function(index) {
 
                         $('.from_account').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber + '~' +
-                                data[index].currency + '~' + data[index]
-                                .availableBalance
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance
-                        ));
-
-                        $('.unredeemed').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber + '~' +
-                                data[index].currency + '~' + data[index]
-                                .availableBalance
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance
-                        ));
-
-                        $('.reversed').append($('<option>', {
                             value: data[index].accountType + '~' + data[index]
                                 .accountDesc + '~' + data[index].accountNumber + '~' +
                                 data[index].currency + '~' + data[index]
@@ -1076,7 +1061,7 @@
                 "type": "GET",
                 "url": "unredeem-cardless-request",
                 'accountNo':from_account,
-                "datatype": "application/json",
+                datatype: "application/json",
                 success: function(response) {
                     // <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
 
@@ -1093,7 +1078,7 @@
                                             <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
                                             <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
                                             <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
-                                            <td> <strong><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></strong> </td>
+                                            <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
                                             </tr>`
                             )
                         })
@@ -1138,8 +1123,6 @@
             $("#spinner-next").hide();
             $(".self_form").hide();
             $(".self_summary").hide();
-            $("#spinner-redeem").hide();
-            $("#spinner-text-redeem").hide();
 
             $(".cardless_details").hide();
 
@@ -1162,9 +1145,9 @@
                 $.ajax({
 
                     type: 'POST',
-                    url: 'cardless-otp',
+                    url:  'cardless-otp',
                     datatype: "application/json",
-                    data: {
+                    'data': {
                         "remittance_no":remittance_no,
                         "mobile_no": mobile_no
                     },
@@ -1177,63 +1160,11 @@
 
                         if (response.responseCode == '000') {
                             toaster(response.message, 'success', 20000);
-
-                            $(".redeem_cardless").hide();
-                            $(".cardless_details").show();
-                            let receiver_name = response.data.beneficiaryName;
-                            console.log(receiver_name);
-                            $("#receiver_name_redeem").text(receiver_name);
-                            $("#receiver_name_redeem").val(receiver_name);
-                            let receiver_address = response.data.beneficiaryAddress;
-                            // $("#receiver_address_redeem").text(receiver_address);
-                            $("#receiver_address_redeem").val(receiver_address);
-                            let receiver_amount = response.data.remittanceAmount;
-                            $("#receiver_amount_redeem").val(receiver_amount);
-
-                            let receiver_num = $("#mobile_no").val();
-                            $("#receiver_phone_redeem").val(receiver_num);
-
-                            let accountNo = response.data.accountNumber;
-
-                            $("#done_button").click(function(){
-
-                                let otp = $("#receiver_otp_redeem").val();
-                                if(otp==''){
-                                    toaster("Kindly enter the otp",'error', 20000);
-                                    return false;
-                                }
-
-                                $.ajax({
-                                    type: 'POST',
-                                    url: 'redeem-cardless',
-                                    datatype: "application/json",
-                                    data: {
-                                        "remittance_no":remittance_no,
-                                        "mobile_no": mobile_no
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function(response) {
-
-                                        console.log(response)
-
-                                        if (response.responseCode == '000') {
-
-                                        }
-                                    }
-
-                                });
-
-
-                            });
-
-
-
                             $("#request_form_div").hide();
                             $('.display_button_print').show();
                             // alert("done test");
-
+                            $(".redeem_cardless").hide();
+                            $(".cardless_details").show();
                         } else {
 
                             toaster(response.message, 'error', 9000);
@@ -1280,7 +1211,7 @@
 
             setTimeout(function() {
                 from_account();
-                // get_unredeemed_cardless();
+                get_unredeemed_cardless();
 
 
             }, 200);
@@ -1339,7 +1270,8 @@
 
                     amt = from_account_info[4].trim()
 
-                    $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4].trim())))
+                    $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
+                        .trim())))
                     $(".from_account_display_info").show()
 
                     //set summary value for display for self
@@ -1370,11 +1302,6 @@
                 console.log(from_account);
                 // alert(from_account);
             });
-
-            $('.unredeemed').change(function(){
-                var account = $('.unredeemed').val();
-                console.log(account);
-            })
 
             $('#amount').change(function() {
                 var amount = $('#amount').val();
@@ -1551,20 +1478,16 @@
 
             $('#submit_account_no_unredeemed').click(function() {
 
-
-                let from_account = $(".unredeemed").val();
-                let from_account_info = from_account.split("~")
-                let from_account_value = from_account_info[2].trim();
-                console.log(from_account_value);
+                let from_account_info = $(".from_account").val();
+                let from_account = from_account_info[2].trim();
+                console.log(from_account);
 
                             $.ajax({
 
-                                type: 'POST',
-                                url: 'unredeem-cardless-request',
+                                type: 'GET',
+                                url:  'unredeem-cardless-request',
                                 datatype: "application/json",
-                                data:{
-                                    'accountNo':from_account_value,
-                                },
+                                'accountNo':from_account,
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
@@ -1584,64 +1507,68 @@
                                                             <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
                                                             <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
                                                             <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
-                                                            <td> <b> ${formatToCurrency(parseFloat(data[index].REMITTANCE_AMOUNT))}</b></td>
+                                                            <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
                                                             <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
                                                             </tr>`
                                             )
                                         })
 
                                     }
+
+                                    // if (response.responseCode == '000') {
+                                    //     toaster(response.message, 'success', 20000);
+                                    //     $("#request_form_div").hide();
+                                    //     $('.display_button_print').show();
+                                    //     // alert("done test");
+                                    //     $(".redeem_cardless").hide();
+                                    //     $(".cardless_details").show();
+                                    // } else {
+
+                                    //     toaster(response.message, 'error', 9000);
+
+                                    //     $('#spinner').hide();
+                                    //     $('#spinner-text').hide();
+                                    //     $('.submit-text').show();
+                                    //     // $('#confirm_payment').show();
+                                    //     // $('#confirm_button').attr('disabled', false);
+                                    // }
                                 }
                             });
 
 
-            });
+            //     $.ajax({
+            //     "type": "GET",
+            //     "url": "unredeem-cardless-request",
+            //     datatype: "application/json",
+            //     success: function(response) {
+            //         // <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
 
-            $('#submit_account_no_reversed').click(function() {
-                let from_account = $(".reversed").val();
-                let from_account_info = from_account.split("~")
-                let from_account_value = from_account_info[2].trim();
-                console.log(from_account_value);
+            //         if (response.data.length > 0) {
+            //             let data = response.data;
 
-                            $.ajax({
+            //             let unredeemed_cardless_list = response.data;
+            //             console.log(unredeemed_cardless_list);
+            //             $.each(data, function(index) {
+            //                 $('.unredeem_cardless_list_display').append(
+            //                     `<tr>
 
-                                type: 'POST',
-                                url: 'reversed-cardless-request',
-                                datatype: "application/json",
-                                data:{
-                                    'accountNo':from_account_value,
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                success: function(response) {
+            //                                 <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
+            //                                 <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
+            //                                 <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
+            //                                 <td> <b> ${data[index].REMITTANCE_AMOUNT}</b></td>
+            //                                 <td> <h5><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></h5> </td>
+            //                                 </tr>`
+            //                 )
+            //             })
 
-                                    console.log(response)
+            //         }
 
-                                    if (response.data.length > 0) {
-                                        let data = response.data;
-
-                                        let unredeemed_cardless_list = response.data;
-                                        console.log(unredeemed_cardless_list);
-                                        $.each(data, function(index) {
-                                            $('.reversed_cardless_list_display').append(
-                                                `<tr>
-
-                                                            <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
-                                                            <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
-                                                            <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
-                                                            <td> <b> ${formatToCurrency(parseFloat(data[index].REMITTANCE_AMOUNT))}</b></td>
-                                                            <td> <h5><span class="badge badge-danger">&nbsp;Cancelled&nbsp;</span></h5> </td>
-                                                            </tr>`
-                                            )
-                                        })
-
-                                    }
-                                }
-                            });
+            //     }
+            // })
 
 
             });
+
 
 
 
@@ -1703,9 +1630,9 @@
                             let from_account_value = from_account_info[2].trim();
                         $.ajax({
 
-                            'type': 'POST',
-                            'url': 'initiate-cardless',
-                            "datatype": "application/json",
+                            type: 'POST',
+                            url:  'initiate-cardless',
+                            datatype: "application/json",
                             'data': {
                                 'amount': transfer_amount,
                                 'debit_account': from_account_value,
@@ -1798,9 +1725,9 @@
                             let from_account_value = from_account_info[2].trim();
                         $.ajax({
 
-                            'type': 'POST',
-                            'url': 'initiate-cardless',
-                            "datatype": "application/json",
+                            type: 'POST',
+                            url:  'initiate-cardless',
+                            datatype: "application/json",
                             'data': {
                                 'amount': transfer_amount,
                                 'debit_account': from_account_value,
