@@ -525,7 +525,7 @@
 
                                                                         <div class="input-group mb-3 col-8" style="padding: 0px;">
                                                                             <div class="input-group-prepend">
-                                                                                <input type="text" class="input-group-text select_currency" id="select_currency" readonly>
+                                                                                <input type="text" class="input-group-text select_currency" id="select_currency" style="width: 80px;" readonly>
                                                                                 {{-- <select name="" class="input-group-text select_currency" id="select_currency">
                                                                                  </select> --}}
                                                                             </div>
@@ -533,7 +533,7 @@
                                                                               &nbsp;&nbsp;
                                                                               <input type="text" class="form-control " id="amount" placeholder="Enter Amount"
                                                                               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                              required>
+                                                                              required >
                                                                           </div>
 
 
