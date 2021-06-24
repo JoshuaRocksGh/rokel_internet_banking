@@ -6,9 +6,22 @@
     <style>
         @media print {
             .hide_on_print {
-                display: none
-            }
+                display: none ;
+            };
         }
+
+        @page {
+            size: A4;
+            {{--  margin: 10px;  --}}
+          }
+          @media print {
+                html, body {
+                width: 210mm;
+                height: 297mm;
+            }
+            /* ... the rest of the rules ... */
+          }
+
 
         @font-face {
             font-family: 'password';
@@ -164,7 +177,7 @@
                                                                     {{-- <th>#</th> --}}
                                                                     <th>Description</th>
                                                                     <th>Further Details</th>
-                                                                    <th>Amount (<span id="receipt_currency"></span>)</th>
+                                                                    {{--  <th>Amount </th>  --}}
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -172,50 +185,50 @@
                                                                     {{-- <th scope="row">1</th> --}}
                                                                     <td>Transfer From Account Number</td>
                                                                     <td><span id="from_account_receipt"></span></td>
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">2</th> --}}
                                                                     <td>Transfer To Account Number</td>
                                                                     <td><span id="to_account_receipt"></span></td>
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Category</td>
                                                                     <td><span id="category_receipt"></span></td>
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Purpose</td>
                                                                     <td><span id="purpose_receipt"></span></td>
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
-                                                                    <td></td>
-                                                                    <td><strong><span id="amount_receipt"></span></strong>
+                                                                    {{--  <td></td>  --}}
+                                                                    <td><strong>(<span class="receipt_currency"></span>) &nbsp;<span id="amount_receipt"></span></strong>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transaction Fee </td>
-                                                                    <td></td>
-                                                                    <td><strong>15.00</strong></td>
+                                                                    {{--  <td></td>  --}}
+                                                                    <td><strong>(<span class="receipt_currency"></span>) &nbsp; 15.00</strong></td>
                                                                 </tr>
-                                                                <tr>
-                                                                    {{-- <th scope="row">3</th> --}}
+                                                                {{--  <tr>
+                                                                    <th scope="row">3</th>
                                                                     <td><strong>Total Amount</strong> </td>
                                                                     <td></td>
                                                                     <td><strong><span
                                                                                 id="total_amount_receipt"></span></strong>
                                                                     </td>
-                                                                </tr>
+                                                                </tr>  --}}
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
-                                                                    <td></td>
+                                                                    {{--  <td></td>  --}}
                                                                     <td></td>
                                                                     <td></td>
                                                                 </tr>
@@ -304,9 +317,8 @@
                                                                         id="display_to_account_no"> </span>
 
 
-                                                                    <span
-                                                                        class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                        id="online_display_beneficiary_alias_name"> </span>
+                                                                    {{--  <span class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                        id="online_display_beneficiary_alias_name"> </span>  --}}
 
                                                                     <span
                                                                         class="font-13 text-primary h3 online_display_beneficiary_account_no"
@@ -439,7 +451,7 @@
                                                 <div class="form-group text-center">
 
                                                     <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                            id="back_button">Back</button> &nbsp; </span>
+                                                            id="back_button"><i class="fe-arrow-left"></i> &nbsp;Back</button> &nbsp; </span>
                                                     <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
                                                             id="confirm_modal_button" data-toggle="modal"
                                                             data-target="#centermodal"><span id="confirm_transfer">Confirm
@@ -844,127 +856,6 @@
                                                 <div class="col-md-1"></div>
                                         </form>
 
-                                        {{-- <form action="#" class="onetime_beneficiary" id="onetime_payment_details_form"
-                                        autocomplete="off" aria-autocomplete="none">
-                                        @csrf
-
-                                                <div class="row ">
-                                                    <div class="col-md-1"></div>
-
-                                                    <div class="col-md-10">
-
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">My Account &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-
-                                                            <select class="form-control col-md-8" id="from_account_onetime"
-                                                                required>
-                                                                <option value=""> -- Select Your Account --</option>
-                                                            </select>
-
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">Receiver Name &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_beneficiary_alias_name"
-                                                                placeholder="Beneficiary Name" required>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span
-                                                                    class="text-danger">*</span>Account
-                                                                Number</label>
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_beneficiary_account_number"
-                                                                placeholder="Account Number"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span
-                                                                    class="text-danger">*</span>Account
-                                                                Currency</label>
-
-                                                            <select class="custom-select col-md-8"
-                                                                id="onetime_beneficiary_account_currency" required>
-                                                                <option value="">Select Currency</option>
-                                                                <option value="GHS">GHS</option>
-                                                                        <option value="USD">USD</option>
-                                                                        <option value="EURO">EURO</option>
-                                                                        <option value="SLL">SLL</option>
-                                                                        <option value="GBP">GBP</option>
-                                                            </select>
-
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">Enter Amount &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_amount" placeholder="Amount: 0.00"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary">Purpose of Transfer &nbsp;<span
-                                                                    class="text-danger">*</span></b>
-
-                                                            <input type="text" class="form-control col-md-8" id="onetime_purpose"
-                                                                placeholder="Enter purpose of transaction" required>
-
-                                                        </div>
-
-                                                        <div class="form-group row">
-                                                            <b class="col-md-4 text-primary">Expense Category &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-
-
-                                                            <select class="form-control col-md-8" id="onetime_category" required>
-                                                                <option value="">---Not Selected---</option>
-                                                                <option value="01~Travel">Travel</option>
-                                                                            <option value="02~Petty Cash">Petty Cash</option>
-                                                                            <option value="03~Salary">Salary</option>
-                                                                            <option value="04~Groceries">Groceries</option>
-                                                                            <option value="05~Allowances">Allowances</option>
-                                                                            <option value="06~Medical">Medical</option>
-                                                                            <option value="07~Vendor Payment">Vendor Payment
-                                                                            </option>
-                                                                            <option value="08~Insurance">Insurance</option>
-                                                                            <option value="09~Tax">Tax</option>
-                                                                            <option value="10~Others">Others</option>
-                                                            </select>
-
-
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span
-                                                                    class="text-danger">*</span>Beneficiary
-                                                                Email</label>
-                                                            <input type="email" class="form-control col-md-8"
-                                                                id="onetime_beneficiary_email" placeholder="Email" required>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-                                                            <label class="col-md-4"><span
-                                                                    class="text-danger">*</span>Beneficiary
-                                                                Phone Number</label>
-                                                            <input type="text" class="form-control col-md-8"
-                                                                id="onetime_beneficiary_phone" placeholder="Phone" required>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="col-md-1"></div>
-                                                </div>
-
-                                    </form> --}}
-
 
 
                                     </div><!-- end col -->
@@ -982,44 +873,44 @@
                                         <br><br>
                                         <div class="card card-body">
                                             <div class="row ">
-                                                <h6 class="col-md-5">Sender Name:</h6>
+                                                <p class="col-md-5">Sender Name:</p>
                                                 <span class="text-primary display_from_account_name col-md-7"></span>
 
-                                                <h6 class="col-md-5">Sender Account:</h6>
+                                                <p class="col-md-5">Sender Account:</p>
                                                 <span class="text-primary display_from_account_no col-md-7"></span>
 
-                                                <h6 class="col-md-5">Available Balance:</h6>
+                                                <p class="col-md-5">Available Balance:</p>
                                                 <span class="text-primary display_from_account_amount col-md-7"></span>
 
-                                                <h6 class="col-md-5">Account Currency:</h6>
+                                                <p class="col-md-5">Account Currency:</p>
                                                 <span class="text-primary display_from_account_currency col-md-7"></span>
                                             </div>
 
                                             <hr>
                                             <div class="row">
-                                                <h6 class="col-md-5">Receiver Name:</h6>
+                                                <p class="col-md-5">Receiver Name:</p>
                                                 <span class="text-primary display_to_account_name col-md-7"></span>
 
-                                                <h6 class="col-md-5">Receiver Account:</h6>
+                                                <p class="col-md-5">Receiver Account:</p>
                                                 <span class="text-primary display_to_account_no col-md-7"></span>
 
-                                                <h6 class="col-md-5">Account Currency:</h6>
+                                                <p class="col-md-5">Account Currency:</p>
                                                 <span class="text-primary display_to_account_currency col-md-7"></span>
                                             </div>
 
                                             <hr>
                                             <div class="row">
-                                                <h6 class="col-md-5">Transfer Amount:</h6>
-                                                <span class="row col-md-7">
-                                                    <span class="text-primary display_transfer_currency col-md-4"></span>
-                                                    <span class="text-primary display_amount col-md-8"></span>
+                                                <p class="col-md-5">Transfer Amount:</p>
+                                                <h4 class="row col-md-7">
+                                                    <span class="text-danger display_transfer_currency col-md-4"></span>
+                                                    <span class="text-danger display_amount col-md-8"></span>
 
-                                                </span>
+                                                </h4>
 
-                                                <h6 class="col-md-5">Currency Rate:</h6>
+                                                <p class="col-md-5">Currency Rate:</p>
                                                 <span class="text-primary display_midrate col-md-7"></span>
 
-                                                <h6 class="col-md-5">Converted Amount:</h6>
+                                                <p class="col-md-5">Converted Amount:</p>
                                                 <span class="text-primary display_converted_amount col-md-7"></span>
                                             </div>
 
@@ -1845,10 +1736,10 @@
 
                 {{-- var type = $("input[type='radio']:checked").val(); --}}
                 if ($('#customCheck1').is(':checked')) {
-                    var type = "Saved_beneficiary";
+                    var type = "onetime_beneficiary";
 
                 } else {
-                    var type = "onetime_beneficiary";
+                    var type = "Saved_beneficiary";
                 }
                 //console.log(type);
 
@@ -1861,17 +1752,17 @@
 
                 if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() ==
                     '' || purpose.trim() == '') {
-                    {{-- toaster('Field must not be empty', 'error', 10000) --}}
+                    toaster('Field must not be empty', 'error', 10000)
 
-                    {{-- alert('Field must not be empty') --}}
+                    {{--  alert('Field must not be empty')  --}}
 
-                    {{-- return false --}}
+                    return false
 
                 }
 
                 if (parseFloat(amt) < parseFloat(transfer_amount)) {
                     toaster('Insufficient account balance', 'error', 10000)
-                    {{-- return false --}}
+                    return false
                 }
 
                 //set purpose and category values
@@ -1896,7 +1787,7 @@
                         toaster('Field must not be empty', 'error', 10000)
 
 
-                        {{-- return false --}}
+                        return false
                     } else {
                         //set purpose and category values
                         var category_info = category.split("~")
@@ -1935,7 +1826,7 @@
                     if (from_account.trim() == '' || onetime_account_number.trim() ==
                         '' || amount_.trim() == '' || category.trim() == '' || purpose
                         .trim() == '') {
-                        {{-- toaster('Field must not be empty', 'error', 10000) --}}
+                        toaster('Field must not be empty', 'error', 10000)
 
                         {{-- alert('Field must not be empty') --}}
                         {{-- return false --}}
@@ -2003,9 +1894,6 @@
 
                             // ONETIME TRANSFER API
 
-
-
-
                             var from_account = $('#from_account').val().split('~');
                             var from_account_ = from_account[2];
                             $("#from_account_receipt").text(from_account_);
@@ -2021,7 +1909,7 @@
 
                             var onetime_currency = $("#select_currency__").val();
                             console.log(onetime_currency);
-                            $("#receipt_currency").text(onetime_currency);
+                            $(".receipt_currency").text(onetime_currency);
 
 
                             var purpose = $('#onetime_purpose').val()
@@ -2166,7 +2054,7 @@
 
                             var select_currency = $("#select_currency").val();
                             console.log(select_currency);
-                            $("#receipt_currency").text(select_currency);
+                            $(".receipt_currency").text(select_currency);
 
                             {{-- var select_frequency = $('#select_frequency').val() --}}
 
@@ -2190,7 +2078,18 @@
                                 'type': 'POST',
                                 'url': 'transfer-to-beneficiary-api',
                                 "datatype": "application/json",
-                                'data': JSON.stringify(data),
+                                'data': {
+                                    'from_account': from_account_,
+                                    'alias_name': beneficiary_name,
+                                    'to_account': to_account_,
+                                    'account_currency': beneficiary_currency,
+                                    'purpose': purpose,
+                                    'beneficiary_email': beneficiary_email,
+                                    'amount': transfer_amount,
+                                    'schedule_payment_date': future_payement,
+                                    'category': category,
+                                    'secPin': user_pin
+                                },
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
                                         'content')
