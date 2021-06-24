@@ -185,7 +185,7 @@
 
 
                 <div class="row">
-                    <div class="col-md-6 ">
+                    <div class="col-md-8 ">
                         <div class="card" style="border-radius: 20px;">
                             <div class="border mt-0 rounded">
                                 <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest Transactions</h4>
@@ -193,9 +193,9 @@
                                 <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                     {{--  <div class="col-md-1"></div>  --}}
                                     <div class="col-md-12">
-                                        <select name="" class="form-control" id="">
-                                            <option value="">04785505050</option>
-                                            <option value="">04785505050</option>
+                                        <select name="" class="form-control" id="account_transaction">
+                                            <option value=""> -- Select Account -- </option>
+                                            {{--  <option value="">04785505050</option>  --}}
                                         </select>
                                     </div>
                                     {{--  <div class="col-md-1"></div>  --}}
@@ -205,56 +205,8 @@
 
                                 <div class="table-responsive" style="height: 360px; zoom:0.9">
                                     <table class="table table-centered table-nowrap mb-0">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="avatar-sm rounded bg-soft-blue">
-                                                        <i class="fe-arrow-down-left font-4 avatar-title text-blue"></i>
-                                                    </div>
+                                        <tbody id="transaction_history">
 
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Deposit</a>
-                                                    <small class="d-block">02/03/2021</small>
-                                                </td>
-
-                                                <td class="text-right font-weight-semibold text-primary">
-                                                    SLL 90,039.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td >
-                                                    <div class="avatar-sm rounded bg-soft-danger">
-                                                        <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">RTGS Transfer</a>
-                                                    <small class="d-block">03/01/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 5,700.00
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                    <td >
-                                                        <div class="avatar-sm rounded bg-soft-danger">
-                                                            <i class="fe-arrow-up-right font-4 avatar-title text-danger"></i>
-                                                        </div>
-                                                    </td>
-
-                                                <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold">Designer Awesome T-Shirt</a>
-                                                    <small class="d-block">02/06/2021</small>
-                                                </td>
-                                                <td class="text-right font-weight-semibold text-danger">
-                                                    SLL 888.00
-                                                </td>
-                                            </tr>
 
                                         </tbody>
                                     </table>
@@ -265,7 +217,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <a href="{{ url('manage-cards') }}">
 
                             <div class="card" style="border-radius: 20px;">
@@ -1032,6 +984,41 @@
                 return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
             }; --}}
 
+            function account_transaction() {
+                $.ajax({
+                    type: 'GET',
+                    url:  'get-my-account',
+                    datatype: "application/json",
+                    success: function(response) {
+                        console.log(response.data);
+                        let data = response.data
+                        $.each(data, function(index) {
+                            $('#account_transaction').append($('<option>', {
+                                value: data[index].accountType + '~' + data[index]
+                                    .accountDesc + '~' + data[index].accountNumber +
+                                    '~' + data[index].currency + '~' + data[index]
+                                    .availableBalance
+                            }).text(data[index].accountNumber + ' ' + '-' + ' ' + data[index].currency + ' ' + '-' + ' ' +
+                            formatToCurrency(Number(data[index].availableBalance.trim())) ));
+                            //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+
+                        });
+                        {{-- let name = $("from_acc_currency").val(); --}}
+
+                        {{-- console.log(response); --}}
+                        {{-- let currency = response.data[0].currency; --}}
+                        {{-- console.log(currency); --}}
+
+                        {{-- $.each(currency, function(index) {
+                            let data = currency[index].description ;
+                            console.log(data);
+                        }) --}}
+
+                    },
+
+                })
+            }
+
             function fixed_deposit() {
 
                 $('.my_investment_loading_area').show()
@@ -1441,6 +1428,113 @@
 
 
 
+                    let today = new Date();
+                    let dd = today.getDate();
+
+                    let mm = today.getMonth() + 1;
+                    const yyyy = today.getFullYear()
+                    console.log(mm)
+                    console.log(String(mm).length)
+                    if (String(mm).length == 1) {
+                        mm = '0' + mm
+                    }
+
+                    var end_date = '01-' + mm + '-' + today.getFullYear() ;
+                    var start_date = '30-' + mm + '-' + (Number(today.getFullYear()) - 1) ;
+                    var transLimit = 20 ;
+
+
+
+                    function getAccountTransactions(account_number, start_date, end_date, transLimit) {
+                        {{--  var table = $('.account_transaction_display_table').DataTable();
+                        var nodes = table.rows().nodes();  --}}
+
+
+                        $.ajax({
+                            "type": "POST",
+                            "url": "account-transaction-history",
+                            datatype: "application/json",
+                            data: {
+                                "accountNumber": account_number,
+                                "endDate": end_date,
+                                "entrySource": "A",
+                                "startDate": start_date,
+                                "transLimit": transLimit
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                console.log(response);
+                                if (response.responseCode == '000') {
+
+                                    let data = response.data
+                                    console.log(data);
+
+                                    $.each(data, function(index) {
+                                        console.log(data[index].amount);
+                                        var transfer_amount = parseFloat(data[index].amount);
+
+                                        let icon = "" ;
+                                        let color = "";
+
+                                        if (transfer_amount > 0){
+                                            icon = "fe-arrow-down-left ";
+                                            color = "bg-soft-blue";
+                                        } else {
+                                            icon = "fe-arrow-down-right ";
+                                            color = "bg-soft-danger";
+
+
+                                        }
+
+                                        {{--  $("#transaction_history").html("")  --}}
+                                        $("#transaction_history tr").remove();
+                                        $("#transaction_history").append(
+                                            `
+                                            <tr>
+                                                <td>
+                                                    <div class="avatar-sm rounded ${String(icon)}">
+                                                        <i class="${String(color)} font-4 avatar-title text-blue"></i>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold transfer_narration">${data[index].narration}</a>
+                                                    <small class="d-block transfer_date">${data[index].postingSysDate}</small>
+                                                </td>
+
+                                                <td class="text-right font-weight-semibold text-primary">
+                                                     <span class="account_currency">${global_selected_currency}</span> &nbsp; <span class="transfer_amount">${data[index].amount}</span>
+                                                </td>
+                                            </tr>
+                                            `
+                                        )
+                                    })
+
+
+
+                                } else {
+
+
+                                }
+
+                            },
+                            error: function(xhr, status, error) {
+                                {{--  $("#account_transaction_loader").hide();
+                                $(".account_transaction_display").hide();
+                                $(".account_transaction_display_table").hide();
+                                $("#account_transaction_retry_btn").show();  --}}
+                                console.log(xhr, status, error);
+                            }
+                        })
+                    }
+
+                var global_selected_currency = "";
+
+
+
             $(document).ready(function() {
 
                 {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
@@ -1468,6 +1562,8 @@
                 $(".currency_converter_error_area").hide()
                 $(".currency_converter_loading_area").show()
 
+
+
                 var converter_rates = []
 
                 function fx_rates() {
@@ -1483,7 +1579,33 @@
                     get_accounts();
                     get_loans();
                     fixed_deposit();
+                    account_transaction();
                 }, 200);
+
+            })
+
+            $("#account_transaction").change(function(){
+                var account_details = $(this).val().split('~');
+                var account_number = account_details[2];
+                var account_currency = account_details[3];
+
+                global_selected_currency = account_details[3]
+
+                {{--  var start_date = start_date;  --}}
+                {{--  var end_date = end_date;  --}}
+                {{--  var transLimit = transLimit;  --}}
+                $(".account_currency").text(account_currency);
+
+                console.log(account_details);
+                console.log(account_number);
+                console.log(start_date);
+                console.log(end_date);
+                console.log(transLimit);
+
+                getAccountTransactions(account_number, start_date, end_date, transLimit)
+
+                {{--  let data =   --}}
+
 
             })
 
