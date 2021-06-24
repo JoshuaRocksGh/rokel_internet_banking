@@ -113,15 +113,14 @@
                                                 <div class="col-md-8">
                                                     <div class="row">
                                                         <input type="text" id="startDate" class="form-control date-picker-startDate flatpickr-input input-sm col-md-5" readonly="readonly">
-                                                        {{--  <input class="col-md-5"  type="date">  --}}
                                                     <p class="col-md-1"></p>
                                                     <input type="text" id="endDate" class="form-control date-picker-endDate flatpickr-input input-sm col-md-6" readonly="readonly">
-                                                    {{--  <input class=""type="date">  --}}
                                                     </div>
 
                                                 </div>
                                             </div>
 
+{{--                                              
                                             <div class="form-group row">
                                                 <b class="col-md-3 text-primary">Amount Interval :</b>
 
@@ -141,65 +140,25 @@
                                                     </div>
                                                 </div>
                                             </div>
+  --}}
 
-
-                                            <br>
-                                            <div class="form-group row">
-                                                <b class="col-md-4 text-primary">Transfer Type :</b>
-
-                                                {{--  <select class="form-control col-md-8" id="from_account" required>
-                                                    <option value=""> -- Select Transfer Type -- </option>
-                                                    <option value="001~All"> ALL</option>
-                                                    <option value="002~Credit"> CREDIT </option>
-                                                    <option value="003~Debit"> DEBIT </option>
-                                                </select>  --}}
-
-
-                                                <div class="col-md-8">
-                                                    <div class="radio radio-primary form-check-inline col-md-3 transfer_type">
-                                                        <input type="radio" id="ach_beneficiary" value="ALL"
-                                                            name="transfer_beneficiary" checked>
-                                                        <label for="ach_beneficiary" class="text-primary">ALL</label>
-                                                    </div>
-                                                    <div class="radio radio-primary form-check-inline col-md-3 transfer_type">
-                                                        <input type="radio" id="rtgs_beneficiary" value="CREDITS"
-                                                            name="transfer_beneficiary">
-                                                        <label for="rtgs_beneficiary" class="text-primary">CREDITS</label>
-                                                    </div>
-                                                    <div class="radio radio-primary form-check-inline col-md-3 transfer_type">
-                                                        <input type="radio" id="instant_payment_beneficiary" value="DEBITS"
-                                                            name="transfer_beneficiary">
-                                                        <label for="instant_payment_beneficiary" class="text-primary">DEBITS</label>
-                                                    </div>
-
-                                                </div>
-
-
-
-
-                                            </div>
-
-
-
+                                        <button class="btn btn-primary btn-sm  mb-2" id="search_transaction" style="float: right; margin-right:70px;">Search</button>
 
                                         </div>
 
                                         <div class="col-md-4">
-                                            {{--  <button class="btn btn-primary float-right m-2">Search</button>  --}}
+                                           
+                                            <h3 class=""> <b>Account Details</b> </h3>
+                                            <h5 class="">Name: <b class="account_description">Kwabena Ampah</b> </h5>
+                                            <h5 class="">Account NO: <b class="account_number">012453234578521</b> </h5>
+                                            <h5 class="">Product: <b class="account_product">SAVINGS ACCOUNT</b> </h5>
+
                                         </div>
 
 
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-5">
-
-                                        </div>
-                                        <div class="col-md-5">
-                                            <button class="btn btn-primary btn-sm  mb-2" id="search_transaction" style="margin-left: 70px;">Search</button>
-                                        </div>
-                                    </div>
+                                   
 
                                 </div>
                             </div>
@@ -221,7 +180,49 @@
                                         <div class="" id="account_balance_info_display">
 
                                             <div class="alert alert-secondary" role="alert">
-                                               <h5>Account Number: <strong class="display_account_number"></strong> Date Range: <strong class="display_search_date_range"></strong></h5>
+                                                <div class="row">
+
+                                                    <div class="col-md-6"> <h5>Account Number: <strong class="display_account_number"></strong> Date Range: <strong class="display_search_date_range"></strong></div>
+
+                                                    <div class="col-md-4">
+                                                        
+                                                        <div class="row">
+                                                           
+                                                            <select class="form-control col-md-8" id="from_account" required>
+                                                                <option value=""> -- Select Transfer Type -- </option>
+                                                                <option value="001~All"> ALL</option>
+                                                                <option value="002~Credit"> CREDIT </option>
+                                                                <option value="003~Debit"> DEBIT </option>
+                                                            </select>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2">
+                                                        <span style="float: right">
+                                                            &nbsp;&nbsp;
+                                                            <span id="pdf_print">
+                                                                {{--  <a href="{{ url('print-account-statement') }}">
+                                                                    <img src="{{ asset('assets/images/pdf.png') }}" alt="" style="width: 22px; height: 25px;">
+                                                                </a>  --}}
+                                                            </span>
+        
+                                                            &nbsp;&nbsp;&nbsp;
+                                                        </span>
+                                                        <span style="float: right">
+                                                            <span id="excel_print">
+                                                                {{--  <a href="{{ url('print-account-statement') }}">
+                                                                    <img src="{{ asset('assets/images/excel.png') }}" alt="" style="width: 22px; height: 25px;">
+                                                                </a>  --}}
+                                                            </span>
+        
+                                                        </span>
+                                                    </div>  
+
+                                                </div>
+
+                                             
+                                            
                                             </div>
 
                                             <table id="datatable-buttons" class="table table-bordered table-striped mb-0 account_transaction_display_table" >
@@ -233,7 +234,7 @@
                                                             <td>Balance (SLL)<span class="account_description_display_"></span></td>
                                                             <td>Explanation <span class="account_currency_display_"></span>
                                                             </td>
-                                                            <td>Transaction Details <span class="account_product_display_"></span> </td>
+                                                            {{--  <td>Transaction Details <span class="account_product_display_"></span> </td>  --}}
                                                             <td>Document Ref <span class=""></span> </td>
                                                             <th>Batch No</th>
                                                         </tr>
@@ -456,6 +457,9 @@
         $("#account_transaction_retry_btn").hide(); --}}
 
 
+        function formatToCurrency(amount) {
+            return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        };
 
         function get_accounts() {
 
@@ -483,7 +487,7 @@
                                         .availableBalance
                                 }).text(data[index].accountType + '' + ' - ' + '' + data[index]
                                     .accountNumber + '' + ' - ' + '' + data[index]
-                                    .currency + '' + ' - ' + '' + formatToCurrency(Number(data[
+                                    .currency + '' + ' - ' + '' + formatToCurrency(parseFloat(data[
                                             index]
                                         .availableBalance))));
                                 //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
@@ -710,6 +714,19 @@
 
 
                 if (data.length > 0) {
+
+                    $('#pdf_print').html(`
+                        <a href="print-account-statement?account_number=${account_number}&start_date=${start_date}&end_date=${end_date}">
+                            <img src="{{ asset('assets/images/pdf.png') }}" alt="" style="width: 22px; height: 25px;">
+                        </a>
+                    `)
+
+                    $('#excel_print').html(`
+                        <a href="{{ url('print-account-statement') }}">
+                            <img src="{{ asset('assets/images/excel.png') }}" alt="" style="width: 22px; height: 25px;">
+                        </a>
+                    `)
+
                     $.each(data, function(index) {
                         let amount = ``;
                         if (parseFloat(data[index].amount) > 0) {
@@ -741,7 +758,7 @@
                             data[index].postingSysDate,
                             amount,
                             `${data[index].runningBalance}`,
-                            "EXPLANATION",
+                            {{--  "EXPLANATION",  --}}
                             data[index].narration,
 
                             data[index].documentReference,

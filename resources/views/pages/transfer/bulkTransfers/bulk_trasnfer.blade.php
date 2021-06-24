@@ -207,9 +207,9 @@
                             </div>
 
 
-                            
-                          
-                        
+
+
+
 
 
                         </div>
@@ -420,6 +420,10 @@
                 bulk_upload_list(customer_no, "P")
                 my_account()
             }, 1000)
+
+            $('#bulk_upload_form').submit(function(e) {
+                $('submit_cheque_request').text('Processing ... ')
+            })
 
 
             $.ajaxSetup({
