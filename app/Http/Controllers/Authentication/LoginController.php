@@ -93,13 +93,14 @@ class LoginController extends Controller
                         "updateUrl" => $user_detail->updateUrl,
                         "lastLogin" => $user_detail->lastLogin,
                         "customerType" => $user_detail->customerType,
-                        "checkerMaker" => $user_detail->checkerMaker,
+                        "checkerMaker" => $user_detail->checkerMaker,   
                         "checkerMaker" => 'M', 
                         "headers"=>[
-                        "x-api-key"=> "123",
-                        "x-api-secret"=> "123",
-                        "x-api-source"=> "123",
-                        "x-api-token"=> "123"]
+                            "x-api-key"=> "123",
+                            "x-api-secret"=> "123",
+                            "x-api-source"=> "123",
+                            "x-api-token"=> "123"
+                            ]
 
                     ]);
 
