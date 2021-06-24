@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
 use App\Http\Controllers\AccountServices\AtmCardRequestController;
 use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountServicesChequeBookRequestController;
+use App\Http\Controllers\AccountServices\ComplaintController;
 use App\Http\Controllers\AccountServices\KYC\KycController as KYCKycController;
 use App\Http\Controllers\AccountServices\StatementRequestController;
 use App\Http\Controllers\AccountServices\StopChequeController;
@@ -122,7 +123,11 @@ Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_
 Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('add-local-bank-beneficiary');
 Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('add-international-bank-beneficiary');
 
+//
 Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
+Route::get('/currency-converter',[transferController::class,'currency_converter'])->name('currency-converter');
+
+
 
 // OWN ACCOUNT
 Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('own-account');
@@ -178,8 +183,15 @@ Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless
 Route::post('/cardless-otp', [CardlessController::class,'cardless_otp'])->name('cardless-otp');
 Route::post('/redeem-cardless',[CardlessController::class,'redeem_cardless'])->name('redeem-cardless');
 
-
+//route for korpor payment
 Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
+Route::post('/korpor-otp', [KorporController::class,'korpor_otp'])->name('korpor-otp');
+Route::post('/redeem-korpor',[KorporController::class,'redeem_korpor'])->name('redeem-korpor');
+Route::post('unredeem-korpor-request',[KorporController::class,'send_unredeemed_request'])->name('unredeem-korpor-request');
+Route::post('reversed-korpor-request',[KorporController::class,'send_reversed_request'])->name('reversed-korpor-request');
+Route::post('reverse-korpor',[KorporController::class,'reverse_korpor'])->name('reverse-korpor');
+
+
 Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
 
@@ -277,7 +289,7 @@ Route::post('bulkupload.import', [BulkUploadsController::class, 'import'])->name
 Route::get('cardless-payment', [paymentController::class, 'cardless_payment'])->name('cardless-payment');
 
 //route to display the korpone loane payment screen
-Route::get('korpone-loane-payment', [paymentController::class, 'korpone_loane_payment'])->name('korpone-loane-payment');
+Route::get('e-korpor', [paymentController::class, 'e_korpor'])->name('e-korpor');
 
 //route to display order blink payment screen
 Route::get('order-blink-payment', [paymentController::class, 'order_blink_payment'])->name('order-blink-payment');
@@ -356,6 +368,9 @@ Route::get('change-pin', [settingsController::class, 'change_pin'])->name('chang
 
 //route to display the create originator screen
 Route::get('create-originator',[settingsController::class,'create_originator'])->name('create-originator');
+
+//route to display the make complaint screen
+Route::get('complaint',[ComplaintController::class,'make_complaint'])->name('complaint');
 
 //route to hit the create originator endpoint
 Route::post('create-originator-api',[settingsController::class,'create_originator_api'])->name('create-originator-api');

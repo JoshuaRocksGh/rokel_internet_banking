@@ -1208,8 +1208,12 @@
                                     url: 'redeem-cardless',
                                     datatype: "application/json",
                                     data: {
-                                        "remittance_no":remittance_no,
-                                        "mobile_no": mobile_no
+                                        "redeem_amount":receiver_amount,
+                                        "redeem_receiver_name": receiver_name,
+                                        "redeem_receiver_phone": receiver_num,
+                                        "redeem_account":accountNo,
+                                        "redeem_remittance_no": remittance_no,
+                                        "otp_number": otp
                                     },
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1219,6 +1223,10 @@
                                         console.log(response)
 
                                         if (response.responseCode == '000') {
+                                            toaster(response.message,'success',20000);
+                                        }
+                                        else{
+                                            toaster(response.message,'error', 20000);
 
                                         }
                                     }
@@ -1230,8 +1238,8 @@
 
 
 
-                            $("#request_form_div").hide();
-                            $('.display_button_print').show();
+                            // $("#request_form_div").hide();
+                            // $('.display_button_print').show();
                             // alert("done test");
 
                         } else {
@@ -1888,7 +1896,7 @@
                             $('#reverse-text').show();
                             setTimeout(function() {
                                 window.location.reload();
-                                }, 20000);
+                                }, 2000);
 
                             }
                             else

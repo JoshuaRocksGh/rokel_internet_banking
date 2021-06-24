@@ -148,6 +148,9 @@
                             <li>
                                 <a href="{{ url('local-bank') }}">Local Bank</a>
                             </li>
+                            <li>
+                                <a href="{{ url('currency-converter') }}">Currency Converter</a>
+                            </li>
 
                             {{--  <li>
                                 <a href="{{ url('ach') }}">ACH</a>
@@ -208,7 +211,7 @@
                                 <a href="{{ url('cardless-payment') }}">Cardless</a>
                             </li>
                             <li>
-                                <a href="{{ url('korpone-loane-payment') }}">Korpor / Salone Link</a>
+                                <a href="{{ url('e-korpor') }}">E-Korpor</a>
                             </li>
                             <li>
                                 <a href="{{ url('utility-payment') }}">Utilities</a>

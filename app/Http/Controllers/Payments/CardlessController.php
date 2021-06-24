@@ -314,10 +314,12 @@ class CardlessController extends Controller
 
 
 
-        // $remittance_no = $request->remittance_no;
-        // $receiverPhone = $request->mobile_no;
-        // $senderName = $request->sender_name;
-        // $deviceIP = $_SERVER['REMOTE_ADDR'];
+        $amount = $request->redeem_amount;
+        $beneficiary_name = $request->redeem_receiver_name;
+        $beneficiary_tel = $request->redeem_receiver_phone;
+        $credit_account = $request->redeem_account;
+        $otp_number = $request->otp_number;
+        $remittance_no = $request->redeem_remittance_no;
 
         // return $user_ip_address ;
 
@@ -334,12 +336,12 @@ class CardlessController extends Controller
                 // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
 
 
-                    "amount"=> "200",
-                    "beneficiaryName"=> "Josh",
-                    "beneficiaryTel"=> "0549380507",
-                    "creditAccount"=> "004001100241700194",
-                    "otpNumber"=> "3472",
-                    "remittanceNumber"=> "707473"
+                    "amount"=> $amount,
+                    "beneficiaryName"=> $beneficiary_name,
+                    "beneficiaryTel"=> $beneficiary_tel,
+                    "creditAccount"=> $credit_account,
+                    "otpNumber"=> $otp_number,
+                    "remittanceNumber"=> $remittance_no
 
                     // "beneficiaryTel"=> $receiverPhone,
                     // "remittanceNumber"=> $remittance_no
