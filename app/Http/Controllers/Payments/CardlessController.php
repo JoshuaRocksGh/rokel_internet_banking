@@ -155,6 +155,40 @@ class CardlessController extends Controller
         return $result->api_response($response);
     }
 
+    //method to show redeemed cardless transactions...
+    public function send_redeemed_request(Request $request){
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $api_headers = session()->get("headers");
+        // return $authToken;
+
+        // $base_response = new BaseResponse();
+
+
+
+        $accountNumber = $request->accountNo;
+        // $accountNumber = "004001100241700194";
+        // $accountNumber = "004001160169700292";
+        // $data = [
+
+        //     "accountNumber" => $accountNumber
+
+        // ];
+        // return $accountNumber;
+
+
+        $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "payment/redeemedCardless/$accountNumber");
+        // return $response;
+
+        //for debugging purposes
+        // return $data;
+        // $response = Http::get(env('API_BASE_URL') . "payment/unredeemedCardless/$accountNumber");
+        // return $response;die();
+        $result = new ApiBaseResponse();
+
+        return $result->api_response($response);
+    }
+
     //method to send reversed cardless request for list of reversed cardless transactions.
     public function send_reversed_request(Request $request){
         $authToken = session()->get('userToken');
@@ -314,10 +348,12 @@ class CardlessController extends Controller
 
 
 
-        // $remittance_no = $request->remittance_no;
-        // $receiverPhone = $request->mobile_no;
-        // $senderName = $request->sender_name;
-        // $deviceIP = $_SERVER['REMOTE_ADDR'];
+        $redeem_amount = $request->redeem_amount;
+        $redeem_receiver_name = $request->redeem_receiver_name;
+        $redeem_receiver_phone = $request->redeem_receiver_phone;
+        $redeem_account = $request->redeem_account;
+        $redeem_remittance_no = $request->redeem_remittance_no;
+        $otp_number =$request->otp_number;
 
         // return $user_ip_address ;
 
@@ -334,12 +370,12 @@ class CardlessController extends Controller
                 // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
 
 
-                    "amount"=> "200",
-                    "beneficiaryName"=> "Josh",
-                    "beneficiaryTel"=> "0549380507",
-                    "creditAccount"=> "004001100241700194",
-                    "otpNumber"=> "3472",
-                    "remittanceNumber"=> "707473"
+                    "amount"=> $redeem_amount,
+                    "beneficiaryName"=> $redeem_receiver_name,
+                    "beneficiaryTel"=> $redeem_receiver_phone,
+                    "creditAccount"=> $redeem_account,
+                    "otpNumber"=> $otp_number,
+                    "remittanceNumber"=> $redeem_remittance_no
 
                     // "beneficiaryTel"=> $receiverPhone,
                     // "remittanceNumber"=> $remittance_no
@@ -349,6 +385,7 @@ class CardlessController extends Controller
 
             ];
 
+            //for debugging purposes
             // return $data;
 
 

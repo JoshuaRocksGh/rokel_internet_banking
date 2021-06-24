@@ -152,7 +152,7 @@ Route::get('/get-bulk-upload-list-api', [BulkUploadBulkUploadsController::class,
 Route::get('/get-bulk-upload-detail-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_file_details'])->name('get-bulk-upload-detail-list-api');
 Route::get('/post-bulk-transaction-api', [BulkUploadBulkUploadsController::class, 'post_bulk_transaction'])->name('post-bulk-transaction-api');
 
-Route::post('/upload_', [BulkUploadBulkUploadsController::class, 'upload_'])->name('/upload_');
+
 
 
 // LOCAL BANK
@@ -177,9 +177,13 @@ Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentContr
 Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
 Route::post('/cardless-otp', [CardlessController::class,'cardless_otp'])->name('cardless-otp');
 Route::post('/redeem-cardless',[CardlessController::class,'redeem_cardless'])->name('redeem-cardless');
+Route::post('/redeemed-cardless',[CardlessController::class,'send_redeemed_request'])->name('redeemed-cardless');
 
-
+//route for korpor payment
 Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
+Route::post('/korpor-otp', [KorporController::class,'korpor_otp'])->name('korpor-otp');
+Route::post('/redeem-korpor',[KorporController::class,'redeem_korpor'])->name('redeem-korpor');
+
 Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
 
@@ -280,7 +284,8 @@ Route::post('bulkupload.import', [BulkUploadsController::class, 'import'])->name
 Route::get('cardless-payment', [paymentController::class, 'cardless_payment'])->name('cardless-payment');
 
 //route to display the korpone loane payment screen
-Route::get('korpone-loane-payment', [paymentController::class, 'korpone_loane_payment'])->name('korpone-loane-payment');
+// Route::get('korpone-loane-payment', [paymentController::class, 'korpone_loane_payment'])->name('korpone-loane-payment');
+Route::get('e-korpor', [paymentController::class, 'e_korpor'])->name('e-korpor');
 
 //route to display order blink payment screen
 Route::get('order-blink-payment', [paymentController::class, 'order_blink_payment'])->name('order-blink-payment');
@@ -513,9 +518,18 @@ Route::post('unredeem-cardless-request',[CardlessController::class,'send_unredee
 //Route to send reversed request
 Route::post('reversed-cardless-request',[CardlessController::class,'send_reversed_request'])->name('reversed-cardless-request');
 
-
 //Route to reverse cardless
 Route::post('reverse-cardless',[CardlessController::class,'reverse_cardless'])->name('reverse-cardless');
+
+//Route to send unredeem request
+Route::post('unredeem-korpor-request',[KorporController::class,'send_unredeemed_request'])->name('unredeem-korpor-request');
+
+//Route to send reversed request
+Route::post('reversed-korpor-request',[KorporController::class,'send_reversed_request'])->name('reversed-korpor-request');
+
+//Route to reverse cardless
+Route::post('reverse-korpor',[KorporController::class,'reverse_korpor'])->name('reverse-korpor');
+
 //route to return interest rate types
 Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_Types'])->name('get-interest-types-api');
 

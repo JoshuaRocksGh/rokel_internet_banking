@@ -38,7 +38,7 @@
                 <div class="col-md-6">
                     <h4 class="text-primary">
                         <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                        CARDLESS
+                        E-Korpor
                     </h4>
                 </div>
 
@@ -46,7 +46,7 @@
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Cardless
+                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">E-Korpor
                                 Payment</b>
 
 
@@ -67,32 +67,32 @@
 
             <ul class="nav nav-pills navtab-bg nav-justified">
                 <li class="nav-item">
-                    <a href="#send_cardless_page" data-toggle="tab" aria-expanded="true"
+                    <a href="#send_korpor_page" data-toggle="tab" aria-expanded="true"
                         class="nav-link active send_korpor_tab">
-                        Send Cardless
+                        Send E-Korpor
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#reverse_cardless_page" data-toggle="tab" aria-expanded="false"
+                    <a href="#reverse_korpor_page" data-toggle="tab" aria-expanded="false"
                         class="nav-link reverse_korpor_tab">
-                        Reverse Cardless
+                        Reverse E-Korpor
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#redeem_cardless_page" data-toggle="tab" aria-expanded="false"
+                    <a href="#redeem_korpor_page" data-toggle="tab" aria-expanded="false"
                         class="nav-link redeem_korpor_tab">
-                        Redeem Cardless
+                        Redeem E-Korpor
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#cardless_trans_page" data-toggle="tab" aria-expanded="false"
+                    <a href="#korpor_trans_page" data-toggle="tab" aria-expanded="false"
                         class="nav-link korpor_trans_tab">
-                        Cardless Transactions
+                        E-Korpor Transactions
                     </a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane show active" id="send_cardless_page">
+                <div class="tab-pane show active" id="send_korpor_page">
                     <div class="row">
                         <div class="col-12">
                             <div class="card-body">
@@ -462,7 +462,7 @@
                     </div>
 
                 </div>
-                <div class="tab-pane" id="reverse_cardless_page">
+                <div class="tab-pane" id="reverse_korpor_page">
                     <div class="row">
                             <div class="col-12">
                                 <div class="card-body">
@@ -594,7 +594,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="redeem_cardless_page">
+                <div class="tab-pane" id="redeem_korpor_page">
                     <div class="row">
                         <div class="col-12">
                             <div class="card-body">
@@ -612,11 +612,11 @@
                                                                                     <div class="row">
                                                                                         {{-- <div class="col-md-1"></div> --}}
 
-                                                                                        <div class="col-md-12 redeem_cardless">
+                                                                                        <div class="col-md-12 redeem_korpor">
 
                                                                                             <p class="text-muted font-14 m-b-20">
                                                                                                 <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
-                                                                                                        Note:&nbsp;&nbsp;</b> <span class="">Enter the remittance and phone number for cardless payment details.
+                                                                                                        Note:&nbsp;&nbsp;</b> <span class="">Enter the remittance and phone number for korpor payment details.
 
                                                                                                 <hr>
                                                                                             </p>
@@ -678,7 +678,7 @@
 
 
                                                                                         </div>
-                                                                                        <div class="col-md-12 cardless_details">
+                                                                                        <div class="col-md-12 korpor_details">
 
                                                                                                     <div class="form-group row">
 
@@ -832,7 +832,7 @@
                     </div>
                 </div>
                 </div>
-                <div class="tab-pane" id="cardless_trans_page">
+                <div class="tab-pane" id="korpor_trans_page">
                     <div class="col-md-12">
                         <div class="cards_table row">
                             <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id=""
@@ -898,7 +898,7 @@
                                                                     <td> <b>Status</b></td>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display">
+                                                            <tbody style="background-color:white;" class="unredeem_korpor_list_display">
 
 
                                                             </tbody>
@@ -913,7 +913,7 @@
                                                                 <div class="col-sm-8">
                                                                     <form class="form-inline">
                                                                         <div class="form-group">
-                                                                            <select class="form-control redeemed" required>
+                                                                            <select class="form-control from_account" required>
                                                                                 <option value="">Select Account Number</option>
 
 
@@ -925,7 +925,7 @@
                                                                     <div class="text-sm-right">
                                                                         <button type="button"
                                                                             class="btn btn-primary waves-effect waves-light"
-                                                                            id="submit_account_no_redeemed"><i
+                                                                            id="submit_account_number_completed"><i
                                                                                 class="mdi mdi-plus-circle mr-1"></i>Submit</button>
                                                                     </div>
                                                                 </div><!-- end col-->
@@ -944,7 +944,7 @@
                                                                     <td> <b>Status</b></td>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody style="background-color:white;" class="redeemed_cardless_list_display">
+                                                            <tbody style="background-color:white;" class="redeemed_korpor_list_display">
 
 
                                                             </tbody>
@@ -991,7 +991,7 @@
                                                                     <td> <b>Status</b></td>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody style="background-color:white;" class="reversed_cardless_list_display">
+                                                            <tbody style="background-color:white;" class="reversed_korpor_list_display">
 
 
                                                             </tbody>
@@ -1065,17 +1065,6 @@
                             '~' + data[index].currency + '~' + data[index].availableBalance
                         ));
 
-                        $('.redeemed').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber + '~' +
-                                data[index].currency + '~' + data[index]
-                                .availableBalance
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance
-                        ));
-
-
-
                     });
                 },
 
@@ -1121,7 +1110,7 @@
             $("#spinner-redeem").hide();
             $("#spinner-text-redeem").hide();
 
-            $(".cardless_details").hide();
+            $(".korpor_details").hide();
 
             $("#redeem_button").click(function(){
 
@@ -1135,14 +1124,10 @@
                     return false;
                 }
 
-
-
-
-
                 $.ajax({
 
                     type: 'POST',
-                    url: 'cardless-otp',
+                    url: 'korpor-otp',
                     datatype: "application/json",
                     data: {
                         "remittance_no":remittance_no,
@@ -1158,8 +1143,8 @@
                         if (response.responseCode == '000') {
                             toaster(response.message, 'success', 20000);
 
-                            $(".redeem_cardless").hide();
-                            $(".cardless_details").show();
+                            $(".redeem_korpor").hide();
+                            $(".korpor_details").show();
                             let receiver_name = response.data.beneficiaryName;
                             console.log(receiver_name);
                             $("#receiver_name_redeem").text(receiver_name);
@@ -1185,7 +1170,7 @@
 
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'redeem-cardless',
+                                    url: 'redeem-korpor',
                                     datatype: "application/json",
                                     data: {
                                         "redeem_amount":receiver_amount,
@@ -1268,7 +1253,7 @@
 
             setTimeout(function() {
                 from_account();
-                // get_unredeemed_cardless();
+                // get_unredeemed_korpor();
 
 
             }, 200);
@@ -1300,8 +1285,8 @@
             $('#schedule_payment_contraint_input').hide()
             $('.display_schedule_payment_date').text('N/A')
 
-            $("#cardless_payment_form").show()
-            $("#cardless_payment_summary").hide()
+            $("#korpor_payment_form").show()
+            $("#korpor_payment_summary").hide()
 
             //show card after the from_account value changes
             $(".from_account").change(function() {
@@ -1362,12 +1347,7 @@
             $('.unredeemed').change(function(){
                 var account = $('.unredeemed').val();
                 console.log(account);
-            });
-
-            $('.redeemed').change(function(){
-                var account = $('.redeemed').val();
-                console.log(account);
-            });
+            })
 
             $('#amount').change(function() {
                 var amount = $('#amount').val();
@@ -1417,7 +1397,7 @@
                 $(".display_amount").text(amount);
             });
 
-            //cardless transfer details for self
+            //korpor transfer details for self
             $('#amount_self').change(function() {
                 var amount = $('#amount_self').val();
                 console.log(amount);
@@ -1488,7 +1468,7 @@
                             $.ajax({
 
                                 type: 'POST',
-                                url: 'unredeem-cardless-request',
+                                url: 'unredeem-korpor-request',
                                 datatype: "application/json",
                                 data:{
                                     'accountNo':from_account_value,
@@ -1503,10 +1483,10 @@
                                     if (response.data.length > 0) {
                                         let data = response.data;
 
-                                        let unredeemed_cardless_list = response.data;
-                                        console.log(unredeemed_cardless_list);
+                                        let unredeemed_korpor_list = response.data;
+                                        console.log(unredeemed_korpor_list);
                                         $.each(data, function(index) {
-                                            $('.unredeem_cardless_list_display').append(
+                                            $('.unredeem_korpor_list_display').append(
                                                 `<tr>
 
                                                             <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
@@ -1534,7 +1514,7 @@
                             $.ajax({
 
                                 type: 'POST',
-                                url: 'reversed-cardless-request',
+                                url: 'reversed-korpor-request',
                                 datatype: "application/json",
                                 data:{
                                     'accountNo':from_account_value,
@@ -1545,14 +1525,15 @@
                                 success: function(response) {
 
                                     console.log(response)
+                                    toaster(response.message, 'error', 20000);
 
                                     if (response.data.length > 0) {
                                         let data = response.data;
 
-                                        let unredeemed_cardless_list = response.data;
-                                        console.log(unredeemed_cardless_list);
+                                        let unredeemed_korpor_list = response.data;
+                                        console.log(unredeemed_korpor_list);
                                         $.each(data, function(index) {
-                                            $('.reversed_cardless_list_display').append(
+                                            $('.reversed_korpor_list_display').append(
                                                 `<tr>
 
                                                             <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
@@ -1571,54 +1552,8 @@
 
             });
 
-            $('#submit_account_no_redeemed').click(function() {
 
-
-                    let from_account = $(".redeemed").val();
-                    let from_account_info = from_account.split("~")
-                    let from_account_value = from_account_info[2].trim();
-                    console.log(from_account_value);
-
-                                $.ajax({
-
-                                    type: 'POST',
-                                    url: 'redeemed-cardless',
-                                    datatype: "application/json",
-                                    data:{
-                                        'accountNo':from_account_value,
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function(response) {
-
-                                        console.log(response)
-                                        toaster(response.message,'error',2000);
-                                        if (response.data.length > 0) {
-                                            let data = response.data;
-
-                                            let unredeemed_cardless_list = response.data;
-                                            console.log(unredeemed_cardless_list);
-                                            $.each(data, function(index) {
-                                                $('.redeemed_cardless_list_display').append(
-                                                    `<tr>
-
-                                                                <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
-                                                                <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
-                                                                <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
-                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].REMITTANCE_AMOUNT))}</b></td>
-                                                                <td> <strong><span class="badge badge-success">&nbsp;Completed&nbsp;</span></strong> </td>
-                                                                </tr>`
-                                                )
-                                            })
-
-                                        }
-                                    }
-                                });
-            });
-
-
-            //button to submit cardless payment transaction for others
+            //button to submit korpor payment transaction for others
             $('#confirm_button').click(function() {
                 // alert('i have been clicked');
                 var from_account = $('.from_account').val();
@@ -1645,8 +1580,8 @@
                 } else {
 
                     //hide the payment form and show the summary form
-                    $("#cardless_payment_form").hide()
-                    $("#cardless_payment_summary").show();
+                    $("#korpor_payment_form").hide()
+                    $("#korpor_payment_summary").show();
 
                     amt = from_account_info[4].trim();
                     if (amt < transfer_amount) {
@@ -1678,7 +1613,7 @@
                         $.ajax({
 
                             'type': 'POST',
-                            'url': 'initiate-cardless',
+                            'url': 'initiate-korpor',
                             "datatype": "application/json",
                             'data': {
                                 'amount': transfer_amount,
@@ -1716,7 +1651,7 @@
                 }
             });
 
-            //button to submit cardless payment transaction for self.
+            //button to submit korpor payment transaction for self.
             $('#confirm_button_self').click(function() {
                 // alert('i have been clicked');
                 let from_account = $('.from_account').val();
@@ -1741,8 +1676,8 @@
                 } else {
 
                     //hide the payment form and show the summary form
-                    $("#cardless_payment_form").hide()
-                    $("#cardless_payment_summary").show();
+                    $("#korpor_payment_form").hide()
+                    $("#korpor_payment_summary").show();
 
                     amt = from_account_info[4].trim();
                     if (amt < transfer_amount) {
@@ -1774,7 +1709,7 @@
                         $.ajax({
 
                             'type': 'POST',
-                            'url': 'initiate-cardless',
+                            'url': 'initiate-korpor',
                             "datatype": "application/json",
                             'data': {
                                 'amount': transfer_amount,
@@ -1812,7 +1747,7 @@
                 }
             });
 
-            //button to submit for cardless payment for reversal
+            //button to submit for korpor payment for reversal
             $('#reverse_button').click(function(){
 
 
@@ -1841,7 +1776,7 @@
                     $.ajax({
 
                                type : 'POST',
-                               url : 'reverse-cardless',
+                               url : 'reverse-korpor',
                                datatype : "application/json",
                                data : {
                                     'reference_no' : reference_no,
