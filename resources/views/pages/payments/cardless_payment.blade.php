@@ -1216,6 +1216,7 @@
 
                             // $("#request_form_div").hide();
                             // $('.display_button_print').show();
+                            // // alert("done test");
 
                             // alert("done test");
                             $(".redeem_cardless").hide();
