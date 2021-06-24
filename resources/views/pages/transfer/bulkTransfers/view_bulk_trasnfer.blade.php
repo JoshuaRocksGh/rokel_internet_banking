@@ -208,7 +208,7 @@
             var nodes = table.rows().nodes();
             $.ajax({
                 'tpye': 'GET',
-                url:  'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
+                url: 'http://localhost/laravel/cib_api/public/api/get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
                 datatype: "application/json",
                 success: function(response) {
                     {{-- console.log(response.data); --}}
@@ -220,12 +220,14 @@
                         $('#beneficiary_list_loader').hide();
                         $('#beneficiary_list_retry_btn').hide(); --}}
 
-                        data = bulk_upload_array_list
+                        let bulk_info = bulk_upload_array_list.bulk_info
+                        let bulk_details = bulk_upload_array_list.bulk_details
+                        let data = bulk_upload_array_list.bulk_details
 
-                        $('.display_batch_no').text(data[0].BATCH_NO)
-                        $('.display_narrations').text(data[0].TRANS_DESC)
-                        $('.display_debit_account_no').text(data[0].BBAN)
-                        $('.display_total_amount').text(formatToCurrency(parseFloat(data[0].TOTAL_AMOUNT)))
+                        $('.display_batch_no').text(bulk_info.batch_no)
+                        $('.display_narrations').text(bulk_info.description)
+                        $('.display_debit_account_no').text(bulk_info.account_no)
+                        $('.display_total_amount').text(formatToCurrency(parseFloat(bulk_info.total_amount)))
 
                         $.each(data, function(index) {
                             {{-- console.log(data[index]) --}}
@@ -233,10 +235,10 @@
                             let status = ''
                             let bank_type = ''
 
-                            if (data[index].STATUS == 'A') {
+                            if (data[index].status == 'A') {
                                 status =
                                     `<span class="badge badge-success"> &nbsp; Approved &nbsp; </span> `
-                            } else if (data[index].STATUS == 'R') {
+                            } else if (data[index].status == 'R') {
                                 status =
                                     `<span class="badge badge-danger"> &nbsp; Rejected &nbsp; </span> `
                             } else {
@@ -244,14 +246,14 @@
                                     `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
                             }
 
-                            if (data[index].BANK_CODE == 'I') {
+                            if (data[index].bank_code == 'I') {
                                 bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
                             } else {
                                 bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
                             }
 
                             let batch =
-                                `<a href="{{ url('bulkFile/${data[index].BATCH_NO}') }}">${data[index].BATCH_NO}</a>`
+                                `<a href="{{ url('bulkFile/${data[index].batch_no}') }}">${data[index].batch_no}</a>`
 
                             let action =
                                 `<span class="btn-group mb-2">
@@ -261,10 +263,10 @@
                                                                                                                                                                                                                                                                                                                                                                  </span>  `
 
                             table.row.add([
-                                data[index].ID,
-                                data[index].BBAN,
-                                formatToCurrency(parseFloat(data[index].AMOUNT)),
-                                data[index].NAME,
+                                data[index].id,
+                                data[index].bban,
+                                formatToCurrency(parseFloat(data[index].amount)),
+                                data[index].name,
 
 
                             ]).draw(false)
