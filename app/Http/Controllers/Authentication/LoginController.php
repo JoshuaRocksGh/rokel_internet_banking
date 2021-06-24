@@ -100,6 +100,7 @@ class LoginController extends Controller
                         "customerNumber" => $user_detail->customerNumber,
                         "customerPhone" => $user_detail->customerPhone,
                         "updateUrl" => $user_detail->updateUrl,
+                        "c_type" => $user_detail->c_type,
                         "lastLogin" => $user_detail->lastLogin,
                         // "customerType" => $user_detail->customerType,
                         // "checkerMaker" => $user_detail->checkerMaker,
