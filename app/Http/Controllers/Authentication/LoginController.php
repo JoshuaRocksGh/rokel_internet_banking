@@ -102,9 +102,8 @@ class LoginController extends Controller
                         "updateUrl" => $user_detail->updateUrl,
                         "c_type" => $user_detail->c_type,
                         "lastLogin" => $user_detail->lastLogin,
-                        // "customerType" => $user_detail->customerType,
-                        // "checkerMaker" => $user_detail->checkerMaker,
-                        "customerType" => 'C',
+                        "customerType" => $user_detail->customerType,
+                        "checkerMaker" => $user_detail->checkerMaker,
                         "checkerMaker" => 'M',
                         "headers"=>[
                         "x-api-key"=> "123",
