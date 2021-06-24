@@ -19,6 +19,15 @@ class HomeController extends Controller
         // return $authToken ;
         $query = "SELECT a.cust_no as custnum, cus_ac_no as acct_link, NVL (ACCOUNT_DESCRP, customer_name) as acctdescrp, cleared_bal as avbal, book_bal as lgbal, get_curriso (get_acctcurrcode (cus_ac_no)) as curr, acc_type as actype FROM  TBLCUSTOMERACCINFO_V a LEFT OUTER JOIN mbank_acct_desc b ON a.cus_ac_no = B.ACCT_LINK WHERE A.CUST_NO = '$authToken' AND info_type IN ('1', '2')" ;
 
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+
+        // return $data;
         // return $query ;
         // $accounts = DB::select(DB::raw($query));
         // return $accounts ;
@@ -40,7 +49,7 @@ class HomeController extends Controller
             "authToken" => $authToken,
             "userId"    => $userID
         ];
-        // return $data;
+        return $data;
         // return env('API_BASE_URL') ."account/getAccounts";
 
         $response = Http::post(env('API_BASE_URL') ."account/getAccounts", $data);

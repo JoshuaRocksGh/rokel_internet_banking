@@ -210,13 +210,13 @@
                                     <div class=" p-3 mt-4 mt-lg-0 rounded">
                                         {{-- <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2> --}}
                                         <br>
-                                        <div class="text-center" id="account_balance_info_loader">
+                                        {{--  <div class="text-center" id="account_balance_info_loader">
                                             <div class="spinner-border text-primary avatar-sm" role="status"></div>
-                                        </div>
+                                        </div>  --}}
 
-                                        <div class="text-center" id="account_balance_info_retry_btn">
+                                        {{--  <div class="text-center" id="account_balance_info_retry_btn">
                                             <button class="btn btn-sm btn-secondary">retry</button>
-                                        </div>
+                                        </div>  --}}
 
                                         <div class="" id="account_balance_info_display">
 
