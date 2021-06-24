@@ -1237,7 +1237,7 @@
 
                         amt = from_account_info[4].trim()
 
-                        $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
+                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(from_account_info[4]
                             .trim())))
                         {{-- alert('and show' + from_account_info[3].trim()) --}}
                         $(".from_account_display_info").show()
@@ -1277,7 +1277,7 @@
                         $(".display_to_account_amount").text(to_account_info[4])
                         $(".display_to_account_currency").text(to_account_info[3])
                         // alert(to_account_info[0].trim())
-                        //$(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
+                        //$(".display_to_account_amount").text(formatToCurrency(parseFloat(to_account_info[4].trim())))
 
                         $(".to_account_display_info").show()
                     }

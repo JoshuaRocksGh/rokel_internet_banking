@@ -34,7 +34,7 @@
                     <div class="col-md-1"></div>
 
                     <div class="  card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">BULK UPLOAD TRANSFER</h2>
+                        <h2 class="header-title m-t-0 text-primary">BULK TRANSFER UPLOAD</h2>
 
                         <p class="text-muted font-14 m-b-20">
                             <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
@@ -48,7 +48,9 @@
                         </p>
 
 
-                        <form role="form" class="parsley-examples" id="bulk_upload_form">
+                        <form id="bulk_upload_form" action="{{ url('upload_') }}" method="post"
+                            enctype="multipart/form-data">
+                            @csrf
                             <div class="row">
 
                                 <div class="col-md-4">
@@ -56,9 +58,9 @@
 
                                     <div class="form-group ">
                                         <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">MY Account<span
+                                            <label for="inputEmail3" class="col-12 col-form-label"> Account<span
                                                     class="text-danger"> *</span></label>
-                                            <select class="custom-select " id="my_account" required>
+                                            <select class="custom-select " name="my_account" id="my_account" required>
                                                 <option value="">Select Account</option>
                                             </select>
                                         </div>
@@ -69,7 +71,7 @@
                                         <div class="col-12">
                                             <label for="inputEmail3" class="col-12 col-form-label">Bank Type<span
                                                     class="text-danger"> *</span></label>
-                                            <select class="custom-select " id="bank_type" required>
+                                            <select class="custom-select " name="bank_type" id="bank_type" required>
                                                 <option value=""> ---Select Type --</option>
                                                 <option value="SAB"> Same Bank </option>
                                                 <option value="OTB"> Other Bank </option>
@@ -86,9 +88,9 @@
 
                                     <div class="form-group ">
                                         <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Bulk Amount<span
+                                            <label for="inputEmail3" class="col-12 col-form-label">Total Amount<span
                                                     class="text-danger"> *</span></label>
-                                            <input type="text" id="bulk_amount"
+                                            <input type="text" name="bulk_amount" id="bulk_amount"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                 class="form-control input-sm" required>
                                         </div>
@@ -99,7 +101,8 @@
                                         <div class="col-12">
                                             <label for="inputEmail3" class="col-12 col-form-label">Reference Number<span
                                                     class="text-danger"> *</span></label>
-                                            <input type="text" id="reference_no" class="form-control input-sm" required>
+                                            <input type="text" name="reference_no" id="reference_no"
+                                                class="form-control input-sm" required>
                                         </div>
                                     </div>
 
@@ -114,7 +117,7 @@
                                         <div class="col-12">
                                             <label for="inputEmail3" class="col-12 col-form-label">Value Date<span
                                                     class="text-danger"> *</span></label>
-                                            <input type="text" id="value_date"
+                                            <input type="text" name="value_date" id="value_date"
                                                 class="form-control date-picker-valueDate flatpickr-input input-sm"
                                                 required>
 
@@ -126,7 +129,7 @@
                                         <div class="col-12">
                                             <label for="inputEmail3" class="col-12 col-form-label">File<span
                                                     class="text-danger"> *</span></label>
-                                            <input type="file" id="excel_file" class=" input-sm" required>
+                                            <input type="file" name="excel_file" id="excel_file" class=" input-sm" required>
                                         </div>
                                     </div>
 
@@ -162,7 +165,21 @@
 
                         <div class="row card" id="beneficiary_table" style="zoom: 0.8;">
                             <br>
+
                             <div class="col-md-12">
+
+                            @if(session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session()->get('error') }}
+    </div>
+@endif
+
+@if(session('success'))
+    <div class="alert alert-success">{{session('success')}}</div>
+@endif
+</div>
+
+<div class="col-md-12">
 
                                 <table id="datatable-buttons"
                                     class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
@@ -175,7 +192,7 @@
                                             <th> <b> Bulk Amount </b> </th>
                                             <th> <b> Value date </b> </th>
                                             <th> <b> Bank Type </b> </th>
-                                            <th> <b> Status </b> </th>
+                                            <!-- <th> <b> Status </b> </th> -->
                                             <th class="text-center"> <b>Actions </b> </th>
 
                                         </tr>
@@ -228,12 +245,16 @@
 
     <!-- Datatables init -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+
+    <script>
+
+    </script>
     <script>
         function my_account() {
             $.ajax({
-                type: 'GET',
-                url:  'get-my-account',
-                datatype: "application/json",
+                'type': 'GET',
+                'url': 'get-my-account',
+                "datatype": "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -260,8 +281,8 @@
             var nodes = table.rows().nodes();
             $.ajax({
                 'tpye': 'GET',
-                url:  'get-bulk-upload-list-api?customer_no=' + customer_no,
-                datatype: "application/json",
+                'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
+                "datatype": "application/json",
                 success: function(response) {
                     console.log(response.data);
 
@@ -298,13 +319,14 @@
                             }
 
                             let batch =
-                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}</a>`
+                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&bulk_amount=${data[index].total_amount}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}</a>`
 
-                            let action = `<span class="btn-group mb-2">
-                                                                                                                <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
-                                                                                                                 &nbsp;
-                                                                                                                 <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
-                                                                                                                 </span>  `
+                            let action =
+                                `<span class="btn-group mb-2">
+                                                                                                                                                                                        <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
+                                                                                                                                                                                         &nbsp;
+                                                                                                                                                                                         <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                                                                                                                                                                         </span>  `
 
                             table.row.add([
                                 batch,
@@ -313,7 +335,7 @@
                                 data[index].total_amount,
                                 bank_type,
                                 data[index].value_date,
-                                status,
+                                // status,
                                 action
 
 
@@ -387,11 +409,46 @@
                 position: "below"
             })
 
+            var customer_no = @json(session('customerNumber'))
+
             setTimeout(function() {
-                bulk_upload_list("057725", "P")
+                // bulk_upload_list('057725', "P")
+                bulk_upload_list(customer_no, "P")
                 my_account()
             }, 1000)
 
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            {{-- $('#bulk_upload_form').submit(function(e) {
+                e.preventDefault();
+                let formData = new FormData(this);
+                console.log(formData);
+                return false;
+
+                $('#image-input-error').text('');
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost/laravel/cib_api/public/api/import',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: (response) => {
+                        if (response) {
+                            this.reset();
+                            alert('Image has been uploaded successfully');
+                        }
+                    },
+                    error: function(response) {
+                        console.log(response);
+                        $('#image-input-error').text(response.responseJSON.errors.file);
+                    }
+                });
+            }); --}}
 
 
 

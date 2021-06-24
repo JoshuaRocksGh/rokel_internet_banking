@@ -393,6 +393,12 @@
                     </div> --}}
 
                     <span class="font-20" style="color:white">
+
+                        @if (session()->get('c_type') == 'C')
+                            Corporate
+                        @else
+                            Personal
+                        @endif
                        Internet Banking
                     </span>
                 </a>

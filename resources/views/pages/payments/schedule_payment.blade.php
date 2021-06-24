@@ -655,7 +655,7 @@
                     $(".display_to_account_name").text(to_account_info[1].trim())
                     $(".display_to_account_no").text(to_account_info[2].trim())
                     $(".display_to_account_currency").text(to_account_info[3].trim())
-                    //$(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
+                    //$(".display_to_account_amount").text(formatToCurrency(parseFloat(to_account_info[4].trim())))
 
                     $(".to_account_display_info").show()
                 }

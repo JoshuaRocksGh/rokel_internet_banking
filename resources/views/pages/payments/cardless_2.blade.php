@@ -450,7 +450,7 @@
 
                         amt = from_account_info[4].trim()
 
-                        $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
+                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(from_account_info[4]
                             .trim())))
                         $(".from_account_display_info").show()
                     }

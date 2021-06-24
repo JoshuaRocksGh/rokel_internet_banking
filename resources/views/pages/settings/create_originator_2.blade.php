@@ -882,8 +882,8 @@
     function from_account() {
             $.ajax({
                 type: 'GET',
-                'url': 'get-my-account',
-                "datatype": "application/json",
+                url:  'get-my-account',
+                datatype: "application/json",
                 success: function(response) {
                     //console.log(response.data);
                     let data = response.data
@@ -908,7 +908,7 @@
         //     $.ajax({
         //         "type": "GET",
         //         "url": "get-currency-list-api",
-        //         "datatype": "application/json",
+        //         datatype: "application/json",
         //         success: function(response) {
         //             {{-- console.log(response); --}}
 
@@ -930,8 +930,8 @@
         // function to_account() {
         //     $.ajax({
         //         type: 'GET',
-        //         'url': 'get-transfer-beneficiary-api?beneType=SAB',
-        //         "datatype": "application/json",
+        //         url:  'get-transfer-beneficiary-api?beneType=SAB',
+        //         datatype: "application/json",
         //         success: function(response) {
         //             console.log(response);
         //             let data = response.data
@@ -1139,7 +1139,7 @@
             //         $(".display_currency").text(from_account_info[3].trim()) // set summary currency
 
             //         amt = from_account_info[4].trim()
-            //         $(".display_from_account_amount").text(formatToCurrency(Number(
+            //         $(".display_from_account_amount").text(formatToCurrency(parseFloat(
             //             from_account_info[4]
             //             .trim())))
             //         {{-- alert('and show' + from_account_info[3].trim()) --}}
@@ -1179,7 +1179,7 @@
             //         $(".display_to_account_name").text(to_account_info[1].trim())
             //         $(".display_to_account_no").text(to_account_info[2].trim())
             //         $(".display_to_account_currency").text(to_account_info[3].trim())
-            //         //$(".display_to_account_amount").text(formatToCurrency(Number(to_account_info[4].trim())))
+            //         //$(".display_to_account_amount").text(formatToCurrency(parseFloat(to_account_info[4].trim())))
 
             //         $(".to_account_display_info").show()
             //     }
@@ -1213,7 +1213,7 @@
             //                 toaster('Insufficient account balance', 'error', 10000)
             //                 return false
             //             } else {
-            //                 $(".display_transfer_amount").text(formatToCurrency(Number(
+            //                 $(".display_transfer_amount").text(formatToCurrency(parseFloat(
             //                     transfer_amount
             //                     .trim())))
             //             }
@@ -1242,7 +1242,7 @@
             //         } else {
             //             //alert('set')
             //             var transfer_amount = $(this).val()
-            //             $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount
+            //             $(".display_transfer_amount").text(formatToCurrency(parseFloat(transfer_amount
             //                 .trim())))
             //         }
 
@@ -1465,8 +1465,8 @@
 
                 $.ajax({
                         type: 'POST',
-                        'url': 'transfer-to-beneficiary-api',
-                        "datatype": "application/json",
+                        url:  'transfer-to-beneficiary-api',
+                        datatype: "application/json",
                         'data': {
                             'from_account': from_account,
                             'first_name': first_name,
@@ -1616,8 +1616,8 @@
 
                     $.ajax({
                         type: 'POST',
-                        'url': 'transfer-to-beneficiary-api',
-                        "datatype": "application/json",
+                        url:  'transfer-to-beneficiary-api',
+                        datatype: "application/json",
                         'data': {
                             'from_account': from_account_,
                             'alias_name': onetime_beneficiary_alias_name,

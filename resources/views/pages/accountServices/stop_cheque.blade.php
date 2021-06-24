@@ -415,7 +415,7 @@
 
                     $(".display_currency").text(my_account_info[3].trim()) // set summary currency
 
-                    $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4]
+                    $(".display_my_account_amount").text(formatToCurrency(parseFloat(my_account_info[4]
                         .trim())))
 
                         console.log
@@ -466,11 +466,11 @@
                         $(this).val('')
                         return false;
                     } else {
-                        $(".display_amount").text(formatToCurrency(Number(amount)));
+                        $(".display_amount").text(formatToCurrency(parseFloat(amount)));
                     } --}}
 
                     //delete after use
-                      $(".display_amount").text(formatToCurrency(Number(amount)));
+                      $(".display_amount").text(formatToCurrency(parseFloat(amount)));
 
                 });
 
