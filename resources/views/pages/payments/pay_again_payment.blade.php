@@ -461,7 +461,7 @@
 
             function from_account(){
                 $.ajax({
-                    'type': 'GET',
+                    type: 'GET',
                     'url' : 'get-my-account',
                     "datatype" : "application/json",
                     success:function(response){
@@ -480,7 +480,7 @@
 
             function to_account(){
                 $.ajax({
-                    'type': 'GET',
+                    type: 'GET',
                     'url' : 'get-same-bank-beneficiary',
                     "datatype" : "application/json",
                     success:function(response){

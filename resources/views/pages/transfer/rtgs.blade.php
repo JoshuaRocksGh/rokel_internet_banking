@@ -981,9 +981,9 @@
 
                 function bank_list() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-bank-list-api',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-bank-list-api',
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data
@@ -1003,9 +1003,9 @@
 
                 function get_currency() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-currency-list-api',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-currency-list-api',
+                        datatype: "application/json",
                         success: function(response) {
                             {{-- console.log(response.data); --}}
                             let data = response.data
@@ -1040,7 +1040,7 @@
                     $.ajax({
                         "type": "GET",
                         "url": "get-expenses",
-                        "datatype": "application/json",
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data;
@@ -1061,7 +1061,7 @@
                     $.ajax({
                         "type": "GET",
                         "url": "get-expenses",
-                        "datatype": "application/json",
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data;
@@ -1080,9 +1080,9 @@
 
                 function from_account() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-my-account',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-my-account',
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data
@@ -1109,9 +1109,9 @@
 
                 function from_account_onetime() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-my-account',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-my-account',
+                        datatype: "application/json",
                         success: function(response) {
                             {{-- console.log(response.data); --}}
                             let data = response.data
@@ -1138,9 +1138,9 @@
 
                 function get_benerficiary() {
                     $.ajax({
-                        'type': 'GET',
-                        'url': 'get-transfer-beneficiary-api?beneType=OTB',
-                        "datatype": "application/json",
+                        type: 'GET',
+                        url:  'get-transfer-beneficiary-api?beneType=OTB',
+                        datatype: "application/json",
                         success: function(response) {
                             console.log(response.data);
                             let data = response.data
@@ -1837,8 +1837,8 @@
                                     $.ajax({
                                         "type": "POST",
                                         "url": "onetime-beneficiary-local-bank-api",
-                                        "dataType": "application/json",
-                                        "data": {
+                                        datatype: "application/json",
+                                        data: {
                                             "from_account": onetime_from_account,
                                             "beneficiary_type": transfer_type,
                                             "beneficiary_name": beneficiary_name,
@@ -1941,10 +1941,10 @@
                                     var sec_pin = $('#user_pin').val()
 
                                     $.ajax({
-                                        'type': 'POST',
-                                        'url': 'saved-beneficiary-local-bank-transfer-api',
-                                        "datatype": "application/json",
-                                        "data": {
+                                        type: 'POST',
+                                        url:  'saved-beneficiary-local-bank-transfer-api',
+                                        datatype: "application/json",
+                                        data: {
                                             "from_account": from_account,
                                             "bank_name": bank_name,
                                             "beneficiary_name": beneficiary_name,

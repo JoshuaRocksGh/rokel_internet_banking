@@ -441,9 +441,9 @@
         <script>
             function bank_list() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-bank-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-bank-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -463,9 +463,9 @@
 
             function get_currency() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-currency-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-currency-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         {{-- console.log(response.data); --}}
                         let data = response.data
@@ -488,8 +488,8 @@
                 $.ajax({
                     "type": "POST",
                     "url": "validate-account-no",
-                    "datatype": "application/json",
-                    "data": {
+                    datatype: "application/json",
+                    data: {
                         "authToken": "string",
                         "accountNumber": account_no
                     },
@@ -553,7 +553,7 @@
             function get_beneficiary_details(){
                 $.ajax({
                     'type' : 'POST',
-                    "datatype": "application/json",
+                    datatype: "application/json",
                     'url' : 'edit-local-bank-api',
                     'data' : {
                         'bene_id' : bene_id
@@ -718,9 +718,9 @@
                     };
 
                     $.ajax({
-                        'type': 'POST',
-                        'url': 'add-local-bank-beneficiary-api',
-                        "datatype": "application/json",
+                        type: 'POST',
+                        url:  'add-local-bank-beneficiary-api',
+                        datatype: "application/json",
                         'data': {
                             'bank_name': select_bank,
                             'account_number': account_number,

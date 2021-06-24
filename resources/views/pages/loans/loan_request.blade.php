@@ -272,9 +272,9 @@ type="text/css" />
         // function to get accounts owned by the user
         // function my_account() {
         //     $.ajax({
-        //         'type': 'GET',
-        //         'url': 'get-my-account',
-        //         "datatype": "application/json",
+        //         type: 'GET',
+        //         url:  'get-my-account',
+        //         datatype: "application/json",
         //         success: function(response) {
         //             console.log(response.data);
         //             let data = response.data
@@ -295,9 +295,9 @@ type="text/css" />
 
         function loan_frequencies() {
                             $.ajax({
-                                'type': 'GET',
-                                'url': 'get-loan-frequencies-api',
-                                "datatype": "application/json",
+                                type: 'GET',
+                                url:  'get-loan-frequencies-api',
+                                datatype: "application/json",
                                 success: function(response) {
                                     console.log(response.data);
                                     let data = response.data
@@ -314,9 +314,9 @@ type="text/css" />
 
         function interest_repay_frequency() {
                             $.ajax({
-                                'type': 'GET',
-                                'url': 'get-interest-types-api',
-                                "datatype": "application/json",
+                                type: 'GET',
+                                url:  'get-interest-types-api',
+                                datatype: "application/json",
                                 success: function(response) {
                                     console.log(response.data);
                                     let data = response.data
@@ -332,9 +332,9 @@ type="text/css" />
                         }
         function loan_purpose() {
                             $.ajax({
-                                'type': 'GET',
-                                'url': 'get-loan-purpose-api',
-                                "datatype": "application/json",
+                                type: 'GET',
+                                url:  'get-loan-purpose-api',
+                                datatype: "application/json",
                                 success: function(response) {
                                     console.log(response.data);
                                     let data = response.data
@@ -352,9 +352,9 @@ type="text/css" />
             //function to get the loan products accessible to the customer of the bank.
             function loan_product() {
                             $.ajax({
-                                'type': 'GET',
-                                'url': 'get-loan-products-api',
-                                "datatype": "application/json",
+                                type: 'GET',
+                                url:  'get-loan-products-api',
+                                datatype: "application/json",
                                 success: function(response) {
                                     console.log(response.data);
                                     let data = response.data

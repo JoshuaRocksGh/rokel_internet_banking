@@ -270,8 +270,8 @@
                     $.ajax({
                         "type": "POST",
                         "url": "login",
-                        "datatype": "application/json",
-                        "data": {
+                        datatype: "application/json",
+                        data: {
                             "user_id": email,
                             "password": password,
                         },

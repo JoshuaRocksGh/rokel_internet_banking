@@ -62,29 +62,16 @@
                 <div class="row">
 
 
-                    <div class="col-md-7">
-                        <div class="card-box" style="height:170px;">
-
-                            <div class="ribbon-content">
-                                <h1>HI, {{ session()->get('userAlias') }}</h1>
-
-                                <h4>Welcome to Rokels Internet banking platform.</h4>
-                                <br>
-                                <h5 class="mb-0">Last Login: {{ date('d M Y @ H:i:s') }}.</h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-5">
-                        <div class="card-box" style="height:170px; background-image: url({{ asset('assets/images/cards/atm-bg.png') }})">
+                    <div class="col-md-6">
+                        <div class="card-box ribbon-box" style="border-radius: 20px; background-image: url({{ asset('assets/images/cards/atm-bg.png') }})">
 
                             <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
                             <i class="fa fa-eye-slash  float-right eye-close text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                                {{-- <h4 class="ribbon ribbon-warning float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4> --}}
-
-                                <a href="{{ url('list-of-accounts') }}"><h2 class="text-white my-3 text-left" style="font-size: 25px">SLL <span class="i_have_amount open-money"></span> <span class="i_have_amount_ close-money">***********</span></h2></a>
-
-                                <h4 class="text-white mb-0">Total Local Equivalence <span class="float-right"></h4>
+                                <h4 class="ribbon ribbon-warning float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4>
+                                <br><br>
+                                <a href="{{ url('list-of-accounts') }}"><h2 class="text-white my-3" style="font-size: 25px">SLL <span class="i_have_amount open-money"></span> <span class="i_have_amount_ close-money">***********</span></h2></a>
+                                <br>
+                                <p class="text-white mb-0">Total Local Currency <span class="float-right"></p>
 
 
                         </div>
@@ -93,7 +80,25 @@
 
 
 
+                    <div class="col-md-6">
+                        <a href="{{ url('manage-cards') }}">
 
+                            <div class="card" style="border-radius: 20px;">
+
+
+                            <div class="card-body bg-warning">
+
+                                <h5 class="card-title text-white">My Cards</h5>
+                                <br>
+                                <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
+                                <p class="card-text">
+                                    <p class="text-white mb-0" style="font-size: 20px;">Loan Owner <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
+
+                                </p>
+                            </div>
+                        </div> <!-- end card-box-->
+                        </a>
+                    </div>
 
 
 
@@ -265,25 +270,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <a href="{{ url('manage-cards') }}">
 
-                            <div class="card" style="border-radius: 20px;">
-
-
-                            <div class="card-body bg-warning">
-
-                                <h5 class="card-title text-white">My Cards</h5>
-                                <br>
-                                <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
-                                <p class="card-text">
-                                    <p class="text-white mb-0" style="font-size: 20px;">Loan Owner <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
-
-                                </p>
-                            </div>
-                        </div> <!-- end card-box-->
-                        </a>
-                    </div>
                 </div>
 
 
@@ -1043,7 +1030,7 @@
 
                     "type": "GET",
                     "url": "fixed-deposit-account-api",
-                    datatype: "application/json",
+                    "datatype": "application/json",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -1123,7 +1110,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-accounts-api",
-                    datatype: "application/json",
+                    "datatype": "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1192,7 +1179,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-loan-accounts-api",
-                    datatype: "application/json",
+                    "datatype": "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1265,9 +1252,9 @@
 
             function get_currency() {
                 $.ajax({
-                    type: 'GET',
-                    url:  'get-currency-list-api',
-                    datatype: "application/json",
+                    'type': 'GET',
+                    'url': 'get-currency-list-api',
+                    "datatype": "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -1296,9 +1283,9 @@
                 $(".currency_converter_loading_area").show()
 
                 $.ajax({
-                    type: 'GET',
-                    url:  'get-correct-fx-rate-api',
-                    datatype: "application/json",
+                    'type': 'GET',
+                    'url': 'get-correct-fx-rate-api',
+                    "datatype": "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -1340,7 +1327,7 @@
                 $.ajax({
                     "type": "GET",
                     "url": "get-fx-rate-api?rateType=" + rate_type,
-                    datatype: "application/json",
+                    "datatype": "application/json",
 
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1388,17 +1375,17 @@
                                         flag_2 = `assets/images/flags/${pair[1].trim()}.png`
                                         $('.display_cross_rates').append(
                                             `
-                                        <tr>
-                                            <td style="zoom: 0.8;">
-                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                /
-                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                    <tr>
+                                                                                                                                                                                                                                                        <td style="zoom: 0.8;">
+                                                                                                                                                                                                                                                            <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                                                                                                                                                                                                                                                            /
+                                                                                                                                                                                                                                                            <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                            </td>
-                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                        </tr>
-                                    `
+                                                                                                                                                                                                                                                        </td>
+                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                                                                                                                                                                                                                                                        <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                                                                                                                                                                                                                                                    </tr>
+                                                                                                                                                                                                                                                `
                                         );
                                     });
                                 }

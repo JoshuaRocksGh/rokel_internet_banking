@@ -277,7 +277,7 @@ class FunctionsController extends Controller
         // $response = Http::get(env('API_BASE_URL') . "/utilities/getBranches");
         $api_headers = session()->get('headers');
 
-        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "/utilities/getBranches");
+        $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "/utilities/getBranches");
 
 
         //return $response;

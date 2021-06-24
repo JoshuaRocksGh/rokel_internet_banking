@@ -134,15 +134,50 @@ class CardlessController extends Controller
 
         $accountNumber = $request->accountNo;
         // $accountNumber = "004001100241700194";
-        $accountNumber = "004001160169700292";
+        // $accountNumber = "004001160169700292";
         // $data = [
 
         //     "accountNumber" => $accountNumber
 
         // ];
+        // return $accountNumber;
 
 
         $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "payment/unredeemedCardless/$accountNumber");
+        // return $response;
+
+        //for debugging purposes
+        // return $data;
+        // $response = Http::get(env('API_BASE_URL') . "payment/unredeemedCardless/$accountNumber");
+        // return $response;die();
+        $result = new ApiBaseResponse();
+
+        return $result->api_response($response);
+    }
+
+    //method to send reversed cardless request for list of reversed cardless transactions.
+    public function send_reversed_request(Request $request){
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $api_headers = session()->get("headers");
+        // return $authToken;
+
+        // $base_response = new BaseResponse();
+
+
+
+        $accountNumber = $request->accountNo;
+        // $accountNumber = "004001100241700194";
+        // $accountNumber = "004001160169700292";
+        // $data = [
+
+        //     "accountNumber" => $accountNumber
+
+        // ];
+        // return $accountNumber;
+
+
+        $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "payment/reversedCardless/$accountNumber");
         // return $response;
 
         //for debugging purposes
@@ -204,8 +239,8 @@ class CardlessController extends Controller
                 // "senderName"=>"ATO",
                 // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
 
-                    "beneficiaryTel"=> $remittance_no,
-                    "remittanceNumber"=> $receiverPhone
+                    "beneficiaryTel"=> $receiverPhone,
+                    "remittanceNumber"=> $remittance_no
 
                     // "beneficiaryTel"=> "0549380507",
                     // "remittanceNumber"=> "617432"
@@ -248,6 +283,109 @@ class CardlessController extends Controller
         }
     }
 
+    public function redeem_cardless(Request $request)
+    {
+
+
+        // $validator = Validator::make($request->all(), [
+
+
+        //     'remittance_no' => 'required',
+        //     'mobile_no' => 'required'
+
+        // ]);
+
+        // // return $request;
+
+        // $base_response = new BaseResponse();
+
+        // // VALIDATION
+        // if ($validator->fails()) {
+
+        //     return $base_response->api_response('500', $validator->errors(), NULL);
+        // };
+        // // return $req;
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $api_headers = session()->get('headers');
+        $sender_name = session()->get('userAlias');
+        // return $api_headers;
+
+
+
+        // $remittance_no = $request->remittance_no;
+        // $receiverPhone = $request->mobile_no;
+        // $senderName = $request->sender_name;
+        // $deviceIP = $_SERVER['REMOTE_ADDR'];
+
+        // return $user_ip_address ;
+
+        $data = [
+                // "amount"=>$amount,
+                // "debitAccount"=>"004001100241700194",
+                // "deviceIP"=> "A",
+                // "fee"=> "",
+                // "pinCode"=> "1234",
+                // "receiverAddress"=> "P.0 BOX 259 AD",
+                // "receiverName"=> "Josh",
+                // "receiverPhone"=> "0549380507",
+                // "senderName"=>"ATO",
+                // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
+
+
+                    "amount"=> "200",
+                    "beneficiaryName"=> "Josh",
+                    "beneficiaryTel"=> "0549380507",
+                    "creditAccount"=> "004001100241700194",
+                    "otpNumber"=> "3472",
+                    "remittanceNumber"=> "707473"
+
+                    // "beneficiaryTel"=> $receiverPhone,
+                    // "remittanceNumber"=> $remittance_no
+
+                    // "beneficiaryTel"=> "0549380507",
+                    // "remittanceNumber"=> "617432"
+
+            ];
+
+            // return $data;
+
+
+
+
+
+        try {
+
+
+            // $response = Http::post(env('API_BASE_URL') . "payment/cardless", $data)->headers({
+            //     ''
+            // });
+
+
+            // return $data;
+            $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "payment/redeemCardless", $data);
+
+
+            // return $response;
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            // return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+
+        }
+    }
+
+
     public function reverse_cardless(Request $request){
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -275,6 +413,8 @@ class CardlessController extends Controller
             "referenceNo"=> $referenceNo
 
         ];
+
+
         // for debugging purposes
         // return $data;
 
@@ -290,4 +430,6 @@ class CardlessController extends Controller
 
         return $result->api_response($response);
     }
+
+
 }

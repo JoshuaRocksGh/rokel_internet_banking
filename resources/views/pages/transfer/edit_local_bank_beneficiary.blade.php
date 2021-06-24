@@ -341,9 +341,9 @@
 
             function get_currency() {
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-currency-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-currency-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
                         let data = response.data
@@ -370,7 +370,7 @@
             function get_beneficiary_details(){
                 $.ajax({
                     'type' : 'POST',
-                    "datatype": "application/json",
+                    datatype: "application/json",
                     'url' : 'edit-local-bank-api',
                     'data' : {
                         'bene_id' : bene_id
@@ -451,9 +451,9 @@
                 {{--  alert(name) ;
                 return false;  --}}
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-bank-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-bank-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         {{--  console.log(response.data);  --}}
                         let data = response.data
@@ -500,9 +500,9 @@
 
                 return false  --}}
                 $.ajax({
-                    'type': 'GET',
-                    'url': 'get-currency-list-api',
-                    "datatype": "application/json",
+                    type: 'GET',
+                    url:  'get-currency-list-api',
+                    datatype: "application/json",
                     success: function(response) {
                         {{--  console.log(response.data);  --}}
                         let data = response.data

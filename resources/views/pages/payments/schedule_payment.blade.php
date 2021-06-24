@@ -353,7 +353,7 @@
 
                                                 <span class="col-12" id="diaply_select_default_attempts"></span>
 
-                                            
+
                                             </div>
 
                                             <div class="form-group row">
@@ -435,9 +435,9 @@
 
         function to_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-transfer-beneficiary-api?beneType=SAB',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-transfer-beneficiary-api?beneType=SAB',
+                datatype: "application/json",
                 success: function(response) {
                     {{--  console.log(response);  --}}
                     let data = response.data
@@ -470,7 +470,7 @@
             $.ajax({
                 "type": "GET",
                 "url": "get-accounts-api",
-                "datatype": "application/json",
+                datatype: "application/json",
 
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -506,7 +506,7 @@
             $.ajax({
                 "type" : "GET" ,
                 "url" : "get-currency-list-api" ,
-                "datatype": "application/json",
+                datatype: "application/json",
                 success: function(response) {
                     {{--  console.log(response);  --}}
 
@@ -671,7 +671,7 @@
                     $(".maximum_attempts").show();
 
                 }else {
-                    
+
                     $(".maximum_attempts").hide();
                 }
             })
@@ -741,7 +741,7 @@
                 $.ajax({
                     "type" : "POST" ,
                     "url" : "schedule-payment-api" ,
-                    "datatype": "application/json",
+                    datatype: "application/json",
                     "data" : {
                         'from_account' : from_account ,
                         'beneficiary_account' : beneficiary_account ,

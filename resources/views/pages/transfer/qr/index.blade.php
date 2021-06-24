@@ -228,9 +228,9 @@
     <script>
         function my_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-my-account',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-my-account',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -253,9 +253,9 @@
 
         function branches() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-bank-branches-list-api',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-bank-branches-list-api',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -389,9 +389,9 @@
 
                     $.ajax({
 
-                        'type': 'POST',
-                        'url': 'submit-cheque-book-request',
-                        "datatype": "application/json",
+                        type: 'POST',
+                        url:  'submit-cheque-book-request',
+                        datatype: "application/json",
                         'data': {
                             'accountNumber': accountNumber.trim(),
                             'branchCode': branchCode.trim(),

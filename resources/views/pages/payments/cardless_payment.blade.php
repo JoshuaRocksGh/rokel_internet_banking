@@ -1033,9 +1033,9 @@
     <script>
         function from_account() {
             $.ajax({
-                'type': 'GET',
-                'url': 'get-accounts-api',
-                "datatype": "application/json",
+                type: 'GET',
+                url:  'get-accounts-api',
+                datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
                     let data = response.data
@@ -1061,7 +1061,7 @@
                 "type": "GET",
                 "url": "unredeem-cardless-request",
                 'accountNo':from_account,
-                "datatype": "application/json",
+                datatype: "application/json",
                 success: function(response) {
                     // <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
 
@@ -1144,9 +1144,9 @@
 
                 $.ajax({
 
-                    'type': 'POST',
-                    'url': 'cardless-otp',
-                    "datatype": "application/json",
+                    type: 'POST',
+                    url:  'cardless-otp',
+                    datatype: "application/json",
                     'data': {
                         "remittance_no":remittance_no,
                         "mobile_no": mobile_no
@@ -1484,9 +1484,9 @@
 
                             $.ajax({
 
-                                'type': 'GET',
-                                'url': 'unredeem-cardless-request',
-                                "datatype": "application/json",
+                                type: 'GET',
+                                url:  'unredeem-cardless-request',
+                                datatype: "application/json",
                                 'accountNo':from_account,
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1539,7 +1539,7 @@
             //     $.ajax({
             //     "type": "GET",
             //     "url": "unredeem-cardless-request",
-            //     "datatype": "application/json",
+            //     datatype: "application/json",
             //     success: function(response) {
             //         // <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
 
@@ -1630,9 +1630,9 @@
                             let from_account_value = from_account_info[2].trim();
                         $.ajax({
 
-                            'type': 'POST',
-                            'url': 'initiate-cardless',
-                            "datatype": "application/json",
+                            type: 'POST',
+                            url:  'initiate-cardless',
+                            datatype: "application/json",
                             'data': {
                                 'amount': transfer_amount,
                                 'debit_account': from_account_value,
@@ -1725,9 +1725,9 @@
                             let from_account_value = from_account_info[2].trim();
                         $.ajax({
 
-                            'type': 'POST',
-                            'url': 'initiate-cardless',
-                            "datatype": "application/json",
+                            type: 'POST',
+                            url:  'initiate-cardless',
+                            datatype: "application/json",
                             'data': {
                                 'amount': transfer_amount,
                                 'debit_account': from_account_value,
