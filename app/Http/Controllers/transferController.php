@@ -26,11 +26,6 @@ class transferController extends Controller
         return view('pages.transfer.add_beneficiary');
     }
 
-    public function currency_converter(){
-        //return currency convertor page
-        return view('pages.transfer.currency_converter');
-    }
-
     public function own_account_beneficiary()
     {
         return view('pages.transfer.own_account_beneficiary');

@@ -1160,7 +1160,7 @@
 
                         if (response.responseCode == '000') {
                             toaster(response.message, 'success', 20000);
-<<<<<<< HEAD
+
 
                             $(".redeem_cardless").hide();
                             $(".cardless_details").show();
@@ -1192,12 +1192,8 @@
                                     url: 'redeem-cardless',
                                     datatype: "application/json",
                                     data: {
-                                        "redeem_amount":receiver_amount,
-                                        "redeem_receiver_name": receiver_name,
-                                        "redeem_receiver_phone": receiver_num,
-                                        "redeem_account":accountNo,
-                                        "redeem_remittance_no": remittance_no,
-                                        "otp_number": otp
+                                        "remittance_no":remittance_no,
+                                        "mobile_no": mobile_no
                                     },
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1207,10 +1203,6 @@
                                         console.log(response)
 
                                         if (response.responseCode == '000') {
-                                            toaster(response.message,'success',20000);
-                                        }
-                                        else{
-                                            toaster(response.message,'error', 20000);
 
                                         }
                                     }
@@ -1224,10 +1216,7 @@
 
                             // $("#request_form_div").hide();
                             // $('.display_button_print').show();
-=======
-                            $("#request_form_div").hide();
-                            $('.display_button_print').show();
->>>>>>> 1d19f86aba4f7f260ebb574186eaedcb0bfd62c8
+
                             // alert("done test");
                             $(".redeem_cardless").hide();
                             $(".cardless_details").show();
@@ -1881,7 +1870,7 @@
                             $('#reverse-text').show();
                             setTimeout(function() {
                                 window.location.reload();
-                                }, 2000);
+                                }, 20000);
 
                             }
                             else

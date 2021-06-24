@@ -68,8 +68,8 @@ class paymentController extends Controller
     }
 
     //method to return the korpone loane payment screen
-    public function e_korpor(){
-        return view("pages.payments.korpor");
+    public function korpone_loane_payment(){
+        return view("pages.payments.korpone_loane_payment");
     }
 
     //method to return the order blink payment screen

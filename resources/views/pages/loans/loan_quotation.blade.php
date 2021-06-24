@@ -263,7 +263,7 @@ type="text/css" />
                             </div>
                         </div>
                     </div>
-                        {{-- <div class="table-responsive table-bordered">
+                        <div class="table-responsive table-bordered">
                             <table  class="table mb-0 loan_payment_schedule">
                                 <thead>
                                     <tr class="bg-blue text-white ">
@@ -275,25 +275,6 @@ type="text/css" />
                                     </tr>
                                 </thead>
 
-                            </table>
-                        </div> --}}
-
-                        <div class="row accounts_display_area">
-                            {{-- data-order='[[1, "asc"]]' data-page-length='25' --}}
-                            <table id="datatable-buttons" class="table table-responsive table-bordered mb-0 display" >
-                                <thead>
-                                    <tr class="bg-primary text-white ">
-                                        <td> <b> NO </b> </td>
-                                        <td> <b> REPAYMENT DATE </b> </td>
-                                        <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
-                                        <td> <b> INTEREST REPAYMENT AMOUNT </b> </td>
-                                        <td> <b> TOTAL REPAYMENT AMOUNT</b></td>
-                                    </tr>
-                                </thead>
-                                <tbody style="background-color:white;" id="loans_schedule">
-
-
-                                </tbody>
                             </table>
                         </div>
                         <!-- end table-responsive -->
@@ -430,7 +411,6 @@ type="text/css" />
                 interest_repay_frequency()
             }, 1000)
 
-            $("")
             $(".success-message").hide();
             $(".appear-button").hide();
 
@@ -490,7 +470,7 @@ type="text/css" />
                     let principal_repay_freq = $('#principal_repay_freq').val();
                     let interest_repay_freq = $('#interest_repay_freq').val();
 
-                    var table = $('#datatable-buttons').DataTable();
+                    var table = $('.loan_payment_schedule').DataTable();
                     var nodes = table.rows().nodes();
 
                     console.log('loan product: '+loan_product);
@@ -532,8 +512,8 @@ type="text/css" />
 
                             if(response.responseCode == '000'){
                                 toaster(response.message, 'success', 20000 )
-                                let data = response.data;
-                                // console.log(response)
+                                var data = response.data.loanSchedule
+                                console.log(response)
                                 $("#request_form_div").hide();
                                 $(".disappear-after-success").hide();
                                 // $(".success-message").html('<img src="{{ asset("land_asset/images/statement_success.gif") }}" />');
@@ -549,8 +529,8 @@ type="text/css" />
 
 
 
-                                // console.log(data); return false;
-                                 data = data.loanSchedule;
+                                // // console.log(data); return false;
+                                // let data = data.loanSchedule;
 
                                 var count = count +1;
                                 $.each(data, function(index) {
@@ -571,20 +551,7 @@ type="text/css" />
 
                                 ]).draw(false)
 
-                                    })
-
-                                // var count = count+1;
-                                // $.each(data, function(index) {
-                                //             $('#loan_payment_schedule').append(
-                                //                 `<tr>
-                                //                             <td> <b> ${count} <b/> </td>
-                                //                             <td> <b> ${data[index].repaymentDate} </b>  </td>
-                                //                             <td> <b> ${data[index].principalRepayment}  </b>  </td>
-                                //                             <td> <b> ${data[index].interestRepayment}  </b>  </td>
-                                //                             <td> <b> ${formatToCurrency(parseFloat(data[index].totalRepayment))}  </b>  </td>
-                                //                             </tr>`
-                                //             )
-                                //         })
+                            })
                                 }
                                 else
                                 {
