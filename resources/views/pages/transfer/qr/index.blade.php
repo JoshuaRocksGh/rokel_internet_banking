@@ -321,7 +321,7 @@
 
                 $(".display_currency").text(my_account_info[3].trim()) // set summary currency
 
-                $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4]
+                $(".display_my_account_amount").text(formatToCurrency(parseFloat(my_account_info[4]
                     .trim())))
 
                 console.log

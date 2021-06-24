@@ -68,7 +68,7 @@
                             <div class="ribbon-content">
                                 <h1>HI, {{ session()->get('userAlias') }}</h1>
 
-                                <h4>Welcome to Rokel's Internet banking platform.</h4>
+                                <h4>Welcome to Rokels Internet banking platform.</h4>
                                 <br>
                                 <h5 class="mb-0">Last Login: {{ date('d M Y @ H:i:s') }}.</h5>
                             </div>

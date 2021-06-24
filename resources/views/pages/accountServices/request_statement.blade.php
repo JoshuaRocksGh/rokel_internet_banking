@@ -447,7 +447,7 @@
                 $(".display_my_account_name").text(my_account_info[1].trim());
                 $(".display_my_account_no").text(my_account_info[2].trim());
                 $(".display_my_account_currency").text(my_account_info[3].trim());
-                $(".display_my_account_amount").text(formatToCurrency(Number(my_account_info[4].trim())))
+                $(".display_my_account_amount").text(formatToCurrency(parseFloat(my_account_info[4].trim())))
                 console.log(my_account);
             });
 

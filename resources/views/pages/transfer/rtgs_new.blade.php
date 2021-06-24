@@ -1432,7 +1432,7 @@
 
                                 amt = from_account_info[4].trim()
 
-                                $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4].trim())))
+                                $(".display_from_account_amount").text(formatToCurrency(parseFloat(from_account_info[4].trim())))
                                 {{-- alert('and show' + from_account_info[3].trim()) --}}
                                 $(".from_account_display_info").show()
                             }
@@ -1519,7 +1519,7 @@
                                         return false;
                                     }
 
-                                    $(".display_transfer_amount").text(formatToCurrency(Number(transfer_amount)))
+                                    $(".display_transfer_amount").text(formatToCurrency(parseFloat(transfer_amount)))
                                 }
 
                             } else if (type == 'onetime') {
@@ -1555,7 +1555,7 @@
                                         toaster('Insufficient account balance', 'error', 10000)
                                         return false;
                                     }
-                                    $(".display_transfer_amount").text(formatToCurrency(Number(
+                                    $(".display_transfer_amount").text(formatToCurrency(parseFloat(
                                         transfer_amount
                                         .trim())))
                                 }

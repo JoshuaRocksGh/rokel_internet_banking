@@ -994,7 +994,7 @@
                         $(".display_currency").text(from_account_info[3].trim()) // set summary currency
 
                         amt = from_account_info[4].trim()
-                        $(".display_from_account_amount").text(formatToCurrency(Number(
+                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(
                             from_account_info[4]
                             .trim())))
                         {{-- alert('and show '  + from_account_info[3].trim()) --}}
