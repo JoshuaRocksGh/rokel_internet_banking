@@ -17,6 +17,78 @@ class BulkUploadsController extends Controller
         return view('pages.transfer.bulkTransfers.bulk_trasnfer');
     }
 
+
+    public function upload_(Request $request)
+    {
+        // return $request;
+
+        $account_no = $request->my_account;
+        $bank_type = $request->bank_type;
+        $total_amount = $request->bulk_amount;
+        $value_date = $request->value_date;
+        $trans_ref_no = $request->reference_no;
+        $value_date = $request->value_date;
+        $user_name = $request->value_date;
+        $user_id = session()->get('userId');
+        $user_name = session()->get('userAlias');
+        $customer_no = session()->get('customerNumber');
+
+        $image = $request->file('excel_file');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+
+        $data = [
+            "account_no" => $account_no,
+            "bank_type" => $bank_type,
+            "trans_ref_no" => $trans_ref_no,
+            "total_amount" => $total_amount,
+            "value_date" => $value_date,
+            "user_id" => $user_id,
+            "user_name" => $user_name,
+            "customer_no" => $customer_no,
+        ];
+
+        // return $data;
+
+
+        try {
+            $file = fopen($image, 'r');
+            $response = Http::attach(
+                'select_file',
+                $file,
+                $filename
+            )->post("http://localhost/laravel/cib_api/public/api/import", $data);
+
+
+            if ($response->ok()) {
+
+
+                // return $response;
+
+
+
+                $result = json_decode($response->body());
+
+                if($result->responseCode == '000'){
+                    return back()->with('success', $result->message);
+                }else{
+                    return back()->with('error', $result->message);
+                }
+                // return $returns;
+
+
+
+                return redirect()->route('pending-uploaded-returns')->with('success', 'Upload successful');
+            } else {
+                return $response;
+                return "Error";
+            }
+        } catch (\Exception $e) {
+            // $e->getMessage();
+            return  $e->getMessage();
+        }
+    }
+
+
     public function download_same_bank()
     {
         $pathToFile = public_path() . '/assets/images/bulk_payment_same_bank.xlsx';

@@ -72,20 +72,11 @@ class LoginController extends Controller
                 if ($result->responseCode == '000') { // API responseCode is 000
 
                     $result_data = $result->data;
-
-                    // CHECK FOR USER TYPE PERSONAL OR CORPORATE
-                    /*
-                    if ($result_data->c_type == 'C') {
-                        return  $base_response->api_response('900', 'This is a corporate user not allowed here',  NULL);
-                    }
-                    */
+                    // return (array)$result_data;
 
                     $user_detail = $result->data;
                     $customerType = $user_detail->customerType;
 
-                    // if ($customerType != "I") {
-                    //     return  $base_response->api_response("422", "Corporate users not allowed",  null);
-                    // }
 
 
                     session([
@@ -100,11 +91,9 @@ class LoginController extends Controller
                         "customerNumber" => $user_detail->customerNumber,
                         "customerPhone" => $user_detail->customerPhone,
                         "updateUrl" => $user_detail->updateUrl,
-                        "c_type" => $user_detail->c_type,
                         "lastLogin" => $user_detail->lastLogin,
-                        // "customerType" => $user_detail->customerType,
-                        // "checkerMaker" => $user_detail->checkerMaker,
-                        "customerType" => 'C',
+                        "customerType" => $user_detail->customerType,
+                        "checkerMaker" => $user_detail->checkerMaker,
                         "checkerMaker" => 'M',
                         "headers"=>[
                         "x-api-key"=> "123",
@@ -165,23 +154,23 @@ class LoginController extends Controller
                 }
             } else { // API response status code not 200
 
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'code' => $response->status(),
-                    'message' => $response->body()
-                ]);
+                // DB::table('tb_error_logs')->insert([
+                //     'platform' => 'ONLINE_INTERNET_BANKING',
+                //     'user_id' => 'AUTH',
+                //     'code' => $response->status(),
+                //     'message' => $response->body()
+                // ]);
 
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
             }
         } catch (\Exception $e) {
 
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
 
             return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
