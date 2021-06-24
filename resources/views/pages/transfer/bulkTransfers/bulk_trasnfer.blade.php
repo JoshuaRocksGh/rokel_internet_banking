@@ -179,7 +179,7 @@
 @endif
 </div>
 
-                            <div class="col-md-12">
+<div class="col-md-12">
 
                                 <table id="datatable-buttons"
                                     class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
@@ -189,7 +189,7 @@
                                             <th> <b> Batch </b> </th>
                                             <th> <b>Reference </b> </th>
                                             <th> <b> Debit Account </b> </th>
-                                            <th> <b> Total Amount </b> </th>
+                                            <th> <b> Bulk Amount </b> </th>
                                             <th> <b> Value date </b> </th>
                                             <th> <b> Bank Type </b> </th>
                                             <!-- <th> <b> Status </b> </th> -->
@@ -205,12 +205,6 @@
 
                                 </table>
                             </div>
-
-
-                            
-                          
-                        
-
 
                         </div>
 
@@ -271,9 +265,8 @@
                                 '~' + data[index].accountNumber + '~' + data[index]
                                 .currency + '~' + data[index].availableBalance
                         }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + formatToCurrency(parseFloat(data[index].availableBalance)))
+                            '~' + data[index].currency + '~' + data[index].availableBalance));
 
-                        );
                     });
                 },
 
@@ -288,7 +281,7 @@
             var nodes = table.rows().nodes();
             $.ajax({
                 'tpye': 'GET',
-                'url': 'http://localhost/laravel/cib_api/public/api/get-bulk-upload-list?customer_no=' + customer_no,
+                'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
                 "datatype": "application/json",
                 success: function(response) {
                     console.log(response.data);
@@ -326,11 +319,14 @@
                             }
 
                             let batch =
-                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&bulk_amount=${data[index].total_amount}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}`
+                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&bulk_amount=${data[index].total_amount}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}</a>`
 
                             let action =
-                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&bulk_amount=${data[index].total_amount}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">
-                                <span class="btn-group mb-2">  <button class="btn btn-sm btn-primary" style="zoom:0.8;"> View Details</button>&nbsp; </span> </a>`
+                                `<span class="btn-group mb-2">
+                                                                                                                                                                                        <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
+                                                                                                                                                                                         &nbsp;
+                                                                                                                                                                                         <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                                                                                                                                                                         </span>  `
 
                             table.row.add([
                                 batch,

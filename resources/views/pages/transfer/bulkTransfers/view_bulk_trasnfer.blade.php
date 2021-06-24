@@ -34,7 +34,7 @@
                     <div class="col-md-1"></div>
 
                     <div class="  card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">DETAILS OF BULK UPLOAD</h2>
+                        <h2 class="header-title m-t-0 text-primary">DETAIL OF BULK UPLOAD</h2>
                         <hr>
                         {{-- <p class="text-muted font-14 m-b-20">
                             Parsley is a javascript form validation library. It helps you provide your
@@ -66,7 +66,7 @@
                                             class="text-primary display_debit_account_no"></b>
                                     </h4>
 
-                                    <h4 class="mb-2">Total Amount : <span class="text-muted mr-2"></span> <b
+                                    <h4 class="mb-2">Bulk Amount : <span class="text-muted mr-2"></span> <b
                                             class="text-primary display_total_amount"></b>
                                     </h4>
 
