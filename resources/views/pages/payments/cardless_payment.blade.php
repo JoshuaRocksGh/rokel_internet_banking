@@ -1160,8 +1160,64 @@
 
                         if (response.responseCode == '000') {
                             toaster(response.message, 'success', 20000);
-                            $("#request_form_div").hide();
-                            $('.display_button_print').show();
+
+
+                            $(".redeem_cardless").hide();
+                            $(".cardless_details").show();
+                            let receiver_name = response.data.beneficiaryName;
+                            console.log(receiver_name);
+                            $("#receiver_name_redeem").text(receiver_name);
+                            $("#receiver_name_redeem").val(receiver_name);
+                            let receiver_address = response.data.beneficiaryAddress;
+                            // $("#receiver_address_redeem").text(receiver_address);
+                            $("#receiver_address_redeem").val(receiver_address);
+                            let receiver_amount = response.data.remittanceAmount;
+                            $("#receiver_amount_redeem").val(receiver_amount);
+
+                            let receiver_num = $("#mobile_no").val();
+                            $("#receiver_phone_redeem").val(receiver_num);
+
+                            let accountNo = response.data.accountNumber;
+
+                            $("#done_button").click(function(){
+
+                                let otp = $("#receiver_otp_redeem").val();
+                                if(otp==''){
+                                    toaster("Kindly enter the otp",'error', 20000);
+                                    return false;
+                                }
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'redeem-cardless',
+                                    datatype: "application/json",
+                                    data: {
+                                        "remittance_no":remittance_no,
+                                        "mobile_no": mobile_no
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+
+                                        console.log(response)
+
+                                        if (response.responseCode == '000') {
+
+                                        }
+                                    }
+
+                                });
+
+
+                            });
+
+
+
+                            // $("#request_form_div").hide();
+                            // $('.display_button_print').show();
+                            // // alert("done test");
+
                             // alert("done test");
                             $(".redeem_cardless").hide();
                             $(".cardless_details").show();
