@@ -183,6 +183,9 @@ Route::post('/redeemed-cardless',[CardlessController::class,'send_redeemed_reque
 Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->name('initiate-korpor');
 Route::post('/korpor-otp', [KorporController::class,'korpor_otp'])->name('korpor-otp');
 Route::post('/redeem-korpor',[KorporController::class,'redeem_korpor'])->name('redeem-korpor');
+Route::post('/redeemed-korpor',[KorporController::class,'send_redeemed_request'])->name('redeemed-korpor');
+
+
 
 Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
