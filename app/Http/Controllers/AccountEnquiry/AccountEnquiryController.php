@@ -20,7 +20,54 @@ class AccountEnquiryController extends Controller
         return view('pages.accountEnquiry.listOfAccounts');
     }
 
+    public function print_account_statement(Request $request)
+    {
+        $account_number = $request->query('account_number');
+        $start_date = $request->query('start_date');
+        $end_date = $request->query('end_date');
+        return view('pages.accountEnquiry.print_statement', [
+            'account_number' => $account_number,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+        ]);
+    }
+
     public function account_transaction_history(Request $request)
+    {
+        $accountNumber = $request->accountNumber;
+        $startDate = $request->startDate;
+        $endDate = $request->endDate;
+        $transLimit = $request->transLimit;
+
+        $result = new ApiBaseResponse();
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+
+        $data = [
+            // "authToken" => $authToken,
+            // "userId"    => $userID
+            "accountNumber" => $accountNumber,
+            "authToken" =>  $authToken,
+            "endDate" => $endDate,
+            "entrySource" => "A",
+            "startDate" => $startDate,
+            "transLimit" => $transLimit
+
+
+        ];
+        // return $data;
+        // return env('API_BASE_URL') . "account/getTransactions";
+
+        $response = Http::post(env('API_BASE_URL') . "account/getTransactions", $data);
+
+
+        return $result->api_response($response);
+    }
+
+
+    public function print_account_statement_history(Request $request)
     {
         $accountNumber = $request->accountNumber;
         $startDate = $request->startDate;
@@ -53,4 +100,5 @@ class AccountEnquiryController extends Controller
 
         return $result->api_response($response);
     }
+
 }
