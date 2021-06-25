@@ -50,9 +50,9 @@
 </div>
 
     <div>
-
+        <br>
         <div class="row">
-            <br> <br>
+            <br> <br><br>
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
@@ -369,15 +369,15 @@
 
                                 $.each(data, function(index) {
                                     let request_type = ''
-                                    if (data[index].REQUEST_TYPE == 'OWN') {
+                                    if (data[index].request_type == 'OWN') {
                                         request_type = 'Own Account Transfer'
-                                    } else if (data[index].REQUEST_TYPE == 'SAM') {
+                                    } else if (data[index].request_type == 'SAB') {
                                         request_type = 'Same Bank Transfer'
-                                    } else if (data[index].REQUEST_TYPE == 'OBT') {
+                                    } else if (data[index].request_type == 'OBT') {
                                         request_type = 'ACH Transfer'
-                                    } else if (data[index].REQUEST_TYPE == 'RTGS') {
+                                    } else if (data[index].request_type == 'RTGS') {
                                         request_type = 'RTGS Transfer'
-                                    } else if (data[index].REQUEST_TYPE == 'INT') {
+                                    } else if (data[index].request_type == 'INT') {
                                         request_type = 'International Bank Transfer'
                                     } else {
                                         request_type = 'Others'
@@ -388,14 +388,13 @@
 
                                         request_type,
                                         'o',
-                                        data[index].POST_DATE,
-                                        data[index].POSTEDBY,
-                                        data[index].ACCOUNT_NO,
+                                        data[index].postedby,
+                                        data[index].post_date,
+                                        data[index].account_no,
                                         `
                                                                              <a href="{{ url('approvals-pending-transfer-details') }}"
                                                                                 target="_blank">
-                                                                                <button type="button"
-                                                                                    class="btn btn-sm btn-primary">View</button>
+                                                                                View Details>>>
                                                                             </a>
                                                                             `
 

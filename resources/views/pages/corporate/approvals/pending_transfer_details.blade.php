@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.approval_detail')
 
 @section('content')
 
@@ -9,9 +9,9 @@
                 <div class="">
                     <div class="card-body ">
                         <div class="row">
-                            <div class="col-md-2"></div>
+                            <div class="col-md-1"></div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-10">
                                 <p class="sub-header font-18 purple-color">
                                     <a href="javascript:window.open('', '_self').close();"
                                         onclick="function(){window.top.close()}">
@@ -168,7 +168,7 @@
 
                             </div>
 
-                            <div class="col-md-2"></div>
+                            <div class="col-md-1"></div>
 
                         </div> <!-- end card-body -->
 

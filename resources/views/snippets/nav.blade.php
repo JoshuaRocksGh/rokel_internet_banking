@@ -394,7 +394,7 @@
 
                     <span class="font-20" style="color:white">
 
-                        @if (session()->get('c_type') == 'C')
+                        @if (session()->get('customerType') == 'C')
                             Corporate
                         @else
                             Personal
