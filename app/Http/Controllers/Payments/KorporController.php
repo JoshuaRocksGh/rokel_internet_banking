@@ -340,8 +340,8 @@ class KorporController extends Controller
                 "beneficiaryName"=> $redeem_receiver_name,
                 "beneficiaryTel"=> $redeem_receiver_phone,
                 "creditAccount"=> $redeem_account,
-                "otpNumber"=> $redeem_remittance_no,
-                "remittanceNumber"=> $otp_number
+                "otpNumber"=> $otp_number,
+                "remittanceNumber"=>$redeem_remittance_no
                     // "beneficiaryTel"=> $receiverPhone,
                     // "remittanceNumber"=> $remittance_no
 
@@ -350,7 +350,7 @@ class KorporController extends Controller
 
             ];
 
-            return $data;
+            // return $data;
 
 
 

@@ -1204,6 +1204,10 @@
 
                                         if (response.responseCode == '000') {
                                             toaster(response.message,'success',20000);
+
+                                            setTimeout(function(){
+                                                window.location.reload();
+                                            }, 30000)
                                         }
                                         else{
                                             toaster(response.message,'error', 20000);
@@ -1472,15 +1476,21 @@
                 console.log(receiver_phoneNo);
             });
 
-
+            //method for currency conversion
             function formatToCurrency(amount) {
                 return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
             }
 
+
+            //button to submit for list of unredeemed transactions
             $('#submit_account_no_unredeemed').click(function() {
 
-
+                //validate if account has been selected
                 let from_account = $(".unredeemed").val();
+                if (from_account ==''){
+                    toaster('Select an account to show list of unredeemed transactions','error',20000);
+                    return false;
+                }else{
                 let from_account_info = from_account.split("~")
                 let from_account_value = from_account_info[2].trim();
                 console.log(from_account_value);
@@ -1521,12 +1531,23 @@
                                     }
                                 }
                             });
+                }
 
 
             });
 
+
+            //button to submit for list of reversed cardless transactions
             $('#submit_account_no_reversed').click(function() {
+
+
                 let from_account = $(".reversed").val();
+
+                //validate if account has been selected.
+                if (from_account ==''){
+                    toaster('Select an account to show list of reversed transactions','error',20000);
+                    return false;
+                }
                 let from_account_info = from_account.split("~")
                 let from_account_value = from_account_info[2].trim();
                 console.log(from_account_value);
@@ -1571,10 +1592,17 @@
 
             });
 
+            //button to submit for list of redeemed/completed transactions
             $('#submit_account_no_redeemed').click(function() {
 
+                let from_account = $(".redeemed").val();
 
-                    let from_account = $(".redeemed").val();
+                //validate if account has been selected...
+                if (from_account ==''){
+                    toaster('Select an account to show list of redeemed transactions','error',20000);
+                    return false;
+                }
+
                     let from_account_info = from_account.split("~")
                     let from_account_value = from_account_info[2].trim();
                     console.log(from_account_value);
@@ -1891,13 +1919,6 @@
                 }
 
             });
-
-
-
-
-
-
-
 
         });
 

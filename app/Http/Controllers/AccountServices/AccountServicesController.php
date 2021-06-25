@@ -82,5 +82,8 @@ class AccountServicesController extends Controller
         return view('pages.accountServices.close_account');
     }
 
-    
+    //method to return make a complaint screen
+    public function make_complaint(){
+        return view('pages.accountServices.make_complaint');
+    }
 }

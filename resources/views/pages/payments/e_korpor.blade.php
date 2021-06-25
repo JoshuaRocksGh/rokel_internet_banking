@@ -1189,6 +1189,10 @@
 
                                         if (response.responseCode == '000') {
                                             toaster(response.message,'success',20000);
+
+                                            setTimeout(function(){
+                                                window.location.reload();
+                                            }, 30000);
                                         }
                                         else{
                                             toaster(response.message,'error', 20000);
