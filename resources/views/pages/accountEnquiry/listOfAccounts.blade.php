@@ -126,14 +126,14 @@
 
 
 
-                                                <div class="table-responsive table-bordered accounts_display_area">
+                                                <div class="table-responsive table-bordered accounts_display_area" style="zoom: 0.9;">
                                                     <table id="" class="table mb-0 ">
                                                         <thead>
                                                             <tr class="bg-info text-white ">
-                                                                <td> <b> Account Number </b> </td>
-                                                                <td> <b> Account Description </b> </td>
+                                                                <td> <b> Account No </b> </td>
+                                                                <td> <b> Description </b> </td>
                                                                 <td> <b> Product </b> </td>
-                                                                <td> <b> Currency </b> </td>
+                                                                <td> <b> Cur </b> </td>
                                                                 <td> <b> Overdrawn Limit </b> </td>
                                                                 <td> <b> Ledger Balance </b> </td>
                                                                 <td> <b> Available Balance </b> </td>

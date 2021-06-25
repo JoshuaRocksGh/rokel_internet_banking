@@ -30,161 +30,159 @@
         <!-- end page title -->
 
         <div class="row">
+            <div class="col-md-12">
+                <marquee behavior="" direction="">
+                    <span>
+                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+                        /
+                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+
+                        <span> <strong> 9.000 / 1.00</strong> </span>
+                    </span>
+
+                    &nbsp; &nbsp;
+
+                    <span>
+                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+                        /
+                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+
+                        <span> <strong> 9.000 / 1.00</strong> </span>
+                    </span>
+
+
+                </marquee>
+                <legend></legend>
+            </div>
+        </div>
+
+
+        <div class="row">
             <div class="col-md-8">
 
                 <div class="row">
+
+
                     <div class="col-md-12">
-                        <marquee behavior="" direction="">
-                            <span>
-                                <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
-                                /
-                                <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
-
-                                <span> <strong> 9.000 / 1.00</strong> </span>
-                            </span>
-
-                            &nbsp; &nbsp;
-
-                            <span>
-                                <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
-                                /
-                                <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
-
-                                <span> <strong> 9.000 / 1.00</strong> </span>
-                            </span>
-
-
-                        </marquee>
-                        <legend></legend>
-                    </div>
-                </div>
-
-                <div class="row">
-
-
-                    <div class="col-md-7">
-                        <div class="card-box" style="height:170px;">
-
-                            <div class="ribbon-content">
-                                <h1>HI, {{ session()->get('userAlias') }}</h1>
-
-                                <h4>Welcome to Rokels Internet banking platform.</h4>
-                                <br>
-                                <h5 class="mb-0">Last Login: {{ date('d M Y @ H:i:s') }}.</h5>
+                        <div class="card-box" style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <canvas id="myChart" width="300" height="250"></canvas>
+                                </div>
+                                <div class="col-md-3"></div>
                             </div>
+
+                            <div class="row" style="padding-bottom: 10px;">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+
+                                    <div class="card-body">
+
+                                        <ul class="list-group">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center active" style="font-size: 17px">
+
+                                                <strong>Total Local Amount: </strong>
+                                                <strong >
+
+                                                    SLL <span class="i_have_amount open-money"></span>
+                                                    <span class="i_have_amount_ close-money">***********</span>
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
+                                                    <i class="fa fa-eye-slash  float-right eye-close text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
+
+                                                </strong>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
+                                                <span class="badge badge-success badge-pill currency_and_savings_account_no"></span>
+                                            </li>
+
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <strong class="text-warning">INVESTMENTS</strong>
+                                                <span class="badge badge-warning badge-pill">0</span>
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <strong class="text-danger"> LOANS </strong>
+                                                <span class="badge badge-danger badge-pill">0</span>
+                                            </li>
+
+                                        </ul>
+
+                                    </div> <!-- end card-body -->
+
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+
+
                         </div>
                     </div>
-
-                    <div class="col-md-5">
-                        <div class="card-box" style="height:170px; background-image: url({{ asset('assets/images/cards/atm-bg.png') }})">
-
-                            <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                            <i class="fa fa-eye-slash  float-right eye-close text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                                {{-- <h4 class="ribbon ribbon-warning float-left mt-0 font-15"><i class="fe-briefcase mr-1"></i>Balance</h4> --}}
-
-                                <a href="{{ url('list-of-accounts') }}"><h2 class="text-white my-3 text-left" style="font-size: 25px">SLL <span class="i_have_amount open-money"></span> <span class="i_have_amount_ close-money">***********</span></h2></a>
-
-                                <h4 class="text-white mb-0">Total Local Equivalence <span class="float-right"></h4>
-
-
-                        </div>
-                    </div>
-
-
-
-
-
 
 
 
                 </div>
 
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box" >
+
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                        <strong class="text-success">CURRENT & SAVINGS</strong>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                        <strong class="text-warning">INVESTMENTS</strong>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <strong class="text-danger">LOANS</strong>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home">
+                                    <p>
+
+                                        <div class="table-responsive table-bordered accounts_display_area">
+                                            <table id="" class="table mb-0 ">
+                                                <thead>
+                                                    <tr class="bg-info text-white ">
+                                                        <td> <b> Account No </b> </td>
+                                                        <td> <b> Description </b> </td>
+                                                        <td> <b> Product </b> </td>
+                                                        <td> <b> Cur </b> </td>
+                                                        <td> <b> OverDraft </b> </td>
+                                                        <td> <b> Ledger Bal </b> </td>
+                                                        <td> <b> Av. Bal </b> </td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="casa_list_display">
 
 
-                    <div class="col-md-3 ">
-                        <a href="{{ url('mobile-money') }}"><div class="widget-rounded-circle card-box" style="border-radius: 20px; background-color: #0561ad">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white ">
-                                        <i class="fe-log-out font-20 avatar-title text-info"></i>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </a>
-                    </div> <!-- end col-->
+                                        <!-- end table-responsive -->
 
-                    <div class="col-md-3 ">
-                        <a href="{{ url('airtime-payment') }}">
-                        <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white">
-                                        <i class="fe-send font-20 avatar-title text-white text-warning"></i>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
-                                    </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
-                        </a>
-                    </div> <!-- end col-->
+                                    </p>
 
-
-                    <div class="col-md-3 ">
-                        <a href="{{ url('korpone-loane-payment') }}">
-                        <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
-                            <div class=" row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white ">
-                                        <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
-                                    </div>
                                 </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
-                                    </div>
+                                <div class="tab-pane show " id="profile">
+                                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                    <p class="mb-0">Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
                                 </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
-                        </a>
+                                <div class="tab-pane" id="messages">
+                                    <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                                    <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                </div>
+                            </div>
+                        </div> <!-- end card-box-->
                     </div>
-
-
-                    <div class="col-md-3 ">
-                        <a href="{{ url('cardless-payment') }}">
-                        <div class="widget-rounded-circle card-box custom-color-gold bg-success" style="border-radius: 20px;">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white">
-                                        <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
-                                    </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
-                        </a>
-                    </div> <!-- end col-->
-
-
-
-                </div>
-
-
-                <div class="row">
                     <div class="col-md-8 ">
                         <div class="card" style="border-radius: 20px;">
                             <div class="border mt-0 rounded">
@@ -242,6 +240,147 @@
             </div>
 
             <div class="col-md-4">
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="card-box" style="height:170px;">
+
+                            <div class="ribbon-content">
+                                <h1>HI, {{ session()->get('userAlias') }}</h1>
+
+                                <h4>Welcome to Rokels Internet banking platform.</h4>
+                                <br>
+                                <h5 class="mb-0">Last Login: {{ date('d M Y @ H:i:s') }}.</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <legend></legend>
+                            <h5>FREQUENTLY USED SERVICES</h5>
+                            <legend></legend>
+                    </div>
+
+                    <div class="col-md-6">
+                        <a href="{{ url('mobile-money') }}"><div class="widget-rounded-circle card-box" style="border-radius: 20px; background-color: #0561ad">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white ">
+                                        <i class="fe-log-out font-20 avatar-title text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div> <!-- end col-->
+
+                    <div class="col-md-6 ">
+                        <a href="{{ url('airtime-payment') }}">
+                        <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white">
+                                        <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div> <!-- end col-->
+
+
+                    <div class="col-md-6 ">
+                        <a href="{{ url('cardless-payment') }}">
+                        <div class="widget-rounded-circle card-box custom-color-gold bg-success" style="border-radius: 20px;">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white">
+                                        <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div> <!-- end col-->
+
+
+                    <div class="col-md-6 ">
+                        <a href="{{ url('korpone-loane-payment') }}">
+                        <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
+                            <div class=" row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white ">
+                                        <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <a href="{{ url('mobile-money') }}"><div class="widget-rounded-circle card-box" style="border-radius: 20px; background-color: #0561ad">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white ">
+                                        <i class="fe-log-out font-20 avatar-title text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div> <!-- end col-->
+
+                    <div class="col-md-6 ">
+                        <a href="{{ url('airtime-payment') }}">
+                        <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-md rounded-circle bg-white">
+                                        <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                        </a>
+                    </div> <!-- end col-->
+
+
+                </div>
+
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -877,13 +1016,13 @@
         {{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
 
         <!-- Chart JS -->
-        <script src="{{ asset('assets/libs/chart.js/Chart.bundle.min.js') }}"></script>
+        {{--  <script src="{{ asset('assets/libs/chart.js/Chart.bundle.min.js') }}"></script>  --}}
 
         <script src="{{ asset('assets/libs/moment/min/moment.min.js') }}"></script>
         <script src="{{ asset('assets/libs/jquery.scrollto/jquery.scrollTo.min.js') }}"></script>
 
         <!-- Chat app -->
-        <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script>
+        {{--  <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script>  --}}
 
         <!-- Todo app -->
         <script src="{{ asset('assets/js/pages/jquery.todo.js') }}"></script>
@@ -894,49 +1033,46 @@
         <!-- App js-->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
-            google.charts.load("current", {
-                packages: ["corechart"]
-            });
-            google.charts.setOnLoadCallback(drawChart);
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Current & Savings', 'Investments', 'Loans'],
+                    datasets: [{
+                        label: 'MY ACCOUNTS',
+                        data: [93333333, 145849, 674337],
+                        backgroundColor: [
 
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Expense', 'Amount'],
-                    ['Vendor payment', 100],
-                    ['Travel', 200],
-                    ['Petty Cash', 300],
-                    ['Salary', 900],
-                    ['Groceries', 50],
-                    ['Allowances', 80],
-                    ['Medical', 50],
-                    ['Insurance', 950],
-                    ['Tax', 95],
-                    ['Others', 40],
+                            'rgb(75,192,192)',
+                            'rgba(231, 223, 10, 1)',
+                            'rgb(233,55,93)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
 
-                ]);
-
-                var options = {
-                    title: 'SPENDING ANALYSIS',
-                    is3D: true,
-                    chartArea: {
-                        left: 10,
-                        width: '80%',
-                        height: '75%'
-                    },
-                    legend: {
-                        position: 'right',
-                        textStyle: {
-                            color: 'blue',
-                            fontSize: 16
+                            'rgb(75,192,192)',
+                            'rgba(231, 223, 10, 1)',
+                            'rgb(233,55,93)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                {{-- options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
                         }
-                    }
-                };
-
-                var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-                chart.draw(data, options);
-            }
+                    }]
+                }
+            } --}}
+            });
 
         </script>
 
@@ -1122,9 +1258,16 @@
                             let data = response.data;
 
                             let i_have_total = 0
+                            let count = 0
+
+                            $('.currency_and_savings_account_no').text(data.length)
 
                             $.each(data, function(index) {
-                                i_have_total += parseFloat(data[index].availableBalance)
+                                let localEquivalentAvailableBalance =  data[index].localEquivalentAvailableBalance
+                                localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(/,/g, "");
+
+
+                                i_have_total += parseFloat(localEquivalentAvailableBalance)
                                 $('.casa_list_display').append(
                                     `<tr>
                                         <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
