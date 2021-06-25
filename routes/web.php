@@ -354,6 +354,9 @@ Route::get('complaint',[AccountServicesController::class,'make_complaint'])->nam
 //route to hit for complaint api
 Route::post('complaint-api',[ComplaintController::class,'make_complaint_api'])->name('complaint-api');
 
+//route to hit for forex request api
+Route::get('currency-converter',[transferController::class,'forex_request'])->name('currency-converter');
+
 //route to display the activate card screen
 Route::get('activate-card', [CardsController::class, 'activate_card'])->name('activate-card');
 

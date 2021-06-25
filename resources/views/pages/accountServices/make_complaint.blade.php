@@ -310,22 +310,24 @@
                             // let account= $("#from_account").val();
 
                             //show card after the from_account value changes
-                            var from_account = $("#from_account").val();
-                            var from_account_info = from_account.split("~");
-                            var account = from_account_info[2].trim();
-                            console.log(account);
 
 
+                            let from_account = $("#from_account").val();
                             let service_type= $("#service_type").val();
                             let description = $("#description").val();
 
                             //validate to ensure fields are not empty
                             // account.trim() =='' ||
-                            if(account=='' || service_type=='' || description==''){
+                            if(from_account=='' || service_type=='' || description==''){
                                 toaster('Fields must not be empty', 'error', 10000)
                                 return false;
                             }
                             else{
+
+
+                                var from_account_info = from_account.split("~");
+                                let account = from_account_info[2].trim();
+                                console.log(account);
                                 $("#proceed-text").hide();
                                 $("#spinner-proceed").show();
                                 $("#spinner-text-proceed").show();

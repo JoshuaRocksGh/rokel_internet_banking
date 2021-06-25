@@ -55,6 +55,9 @@ class transferController extends Controller
     {
         return view('pages.transfer.beneficiary_list');
     }
+    public function forex_request(){
+        return view('pages.transfer.forex_rate');
+    }
 
     public function all_beneficiary_list()
     {
