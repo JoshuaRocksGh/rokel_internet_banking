@@ -386,6 +386,40 @@ class KorporController extends Controller
         }
     }
 
+    //method to show redeemed cardless transactions...
+    public function send_redeemed_request(Request $request){
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $api_headers = session()->get("headers");
+        // return $authToken;
+
+        // $base_response = new BaseResponse();
+
+
+
+        $accountNumber = $request->accountNo;
+        // $accountNumber = "004001100241700194";
+        // $accountNumber = "004001160169700292";
+        // $data = [
+
+        //     "accountNumber" => $accountNumber
+
+        // ];
+        // return $accountNumber;
+
+
+        $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "payment/redeemedKorpor/$accountNumber");
+        // return $response;
+
+        //for debugging purposes
+        // return $data;
+        // $response = Http::get(env('API_BASE_URL') . "payment/unredeemedCardless/$accountNumber");
+        // return $response;die();
+        $result = new ApiBaseResponse();
+
+        return $result->api_response($response);
+    }
+
 
     public function reverse_korpor(Request $request){
         $authToken = session()->get('userToken');

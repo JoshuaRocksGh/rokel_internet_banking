@@ -29,159 +29,188 @@
 
 @section('content')
 
-<div class="container-fluid">
-    <br>
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-md-6">
-            <h4 class="text-primary">
-                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                Create Originator
+<div class="">
+    <div class="container-fluid">
+        <br>
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-primary">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    CUSTOMER COMPLAINT
 
-            </h4>
-        </div>
+                </h4>
+            </div>
 
-        <div class="col-md-6 text-right">
-            <h6>
+            <div class="col-md-6 text-right">
+                <h6>
 
-                <span class="flaot-right">
-                    <b class="text-primary"> Settings </b> &nbsp; > &nbsp; <b class="text-danger">Create Originator</b>
-
-
-                </span>
-
-            </h6>
-
-        </div>
-
-        <div class="col-md-12 ">
-            <hr class="text-primary" style="margin: 0px;">
-        </div>
-
-    </div>
-</div>
+                    <span class="flaot-right">
+                        <b class="text-primary"> Account Services </b> &nbsp; > &nbsp; <b class="text-danger">Customer complaint</b>
 
 
-<div class="row">
-    <div class="col-12">
-        <div class=" ">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
+                    </span>
 
-
-                        <div class="row">
-
-                            {{-- SUMMARY FORM GOES HERE --}}
-
-                            <div class=" col-md-7 m-2" id="transaction_form"
-                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                <br>
-
-                                <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
-                                    @csrf
-                                    <div class="row container">
-                                        <div class="col-md-1"></div>
-                                        <div class="col-md-10">
-
-
-                                        <div class="form-group row ">
-                                            <b class="col-md-12 text-primary">Select Account&nbsp; <span
-                                                    class="text-danger">*</span></b>
-
-                                            <select class="form-control col-md-12" id="from_account"
-                                                required>
-                                                <option value=""> -- Select Account --</option>
-                                            </select>
-
-                                        </div>
-
-                                        <hr style="padding-top: 0px; padding-bottom: 0px;">
-
-                                        <div class="row" id="saved_beneficiary_form">
-
-                                            <div class="col-md-12">
-
-                                                <div class="form-group row">
-                                                    <b class="col-md-4 text-primary"> First Name
-                                                        &nbsp; <span
-                                                            class="text-danger">*</span>
-                                                    </b>
-                                                    <input type="text" class="form-control col-md-8" id="first_name" >
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <b class="col-md-4 text-primary"> Other Name
-                                                        &nbsp; <span
-                                                        class="text-danger">*</span>
-                                                    </b>
-                                                    <input type="text" class="form-control col-md-8" id="other_name">
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <b class="col-md-4 text-primary"> Last Name
-                                                        &nbsp; <span
-                                                        class="text-danger">*</span>
-                                                    </b>
-                                                    <input type="text" class="form-control col-md-8" id="last_name">
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <b class="col-md-4 text-primary"> Email
-                                                        &nbsp; <span
-                                                        class="text-danger">*</span>
-                                                    </b>
-                                                    <input type="text" class="form-control col-md-8" id="email">
-                                                </div>
-
-                                            </div>
-
-
-
-
-                                        </div>
-
-                                        <legend></legend>
-
-                                        <div class="form-group text-right">
-                                            <button type="button"
-                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                id="proceed_button">
-                                                <span id="proceed-text">Proceed</span>
-                                                <span class="spinner-border spinner-border-sm mr-1"
-                                                    id="spinner-proceed" role="status"
-                                                    aria-hidden="true"></span>
-                                                <span id="spinner-text-proceed">Loading...</span>
-                                            </button>
-                                        </div>
-                                                <br>
-
-                                            </div>
-
-
-
-
-                                            <div class="col-md-1"></div>
-                                </form>
-
-                            </div><!-- end col -->
-
-
-                        </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div> <!-- end col -->
+                </h6>
 
             </div>
 
+            <div class="col-md-12 ">
+                <hr class="text-primary" style="margin: 0px;">
+            </div>
+
         </div>
-
-
-
     </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6  m-2" id="request_form_div"
+                                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                                        <br><br><br>
+
+                    <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                            aria-autocomplete="none">
+                                                            @csrf
+
+                                                        <div class="col-md-12">
+                                                                    {{-- <br><br><br> --}}
+                                                                    <div class="row">
+                                                                        {{-- <div class="col-md-1"></div> --}}
+
+                                                                        <div class="col-md-12">
+
+
+
+
+                                    {{-- <div class="form-group row">
+
+                                        <b class="col-md-5 text-primary"> Select Account &nbsp; <span
+                                                class="text-danger">*</span></b>
+
+
+                                        <input type="text" class="form-control col-md-7"
+                                            id="reference_no"
+                                            placeholder="0098348789" autocomplete="off" required>
+                                        <br>
+
+                                    </div> --}}
+                                    <div class="form-group row ">
+                                        <b class="col-md-12 text-primary">Select Account&nbsp; <span
+                                                class="text-danger">*</span></b>
+
+                                        <select class="form-control col-md-12" id="from_account"
+                                            required>
+                                            <option value=""> -- Select Account --</option>
+                                        </select>
+
+                                    </div>
+
+                                    <br>
+                                    <div class="form-group row">
+
+                                        <b class="col-md-5 text-primary"> Select Service Type:
+                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                        <select name="" id="service_type" class="form-control col-md-7">
+                                            <option value="">---- select a service type ----</option>
+                                            <option value="operations">Operations</option>
+                                            <option value="credit">Credit</option>
+                                            <option value="kyc">KYC</option>
+                                            <option value="network">Network</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        {{-- <input type="text" class="form-control col-md-7"
+                                            id="receiver_phoneNo_proceed"
+                                            placeholder="enter phone number" autocomplete="off"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                            required> --}}
+                                        <br>
+
+                                    </div>
+
+
+                                    <br>
+                                    <div class="form-group row">
+
+                                        <b class="col-md-5 text-primary" for="description">
+                                            Description
+                                            <span class="text-danger">*</span></b>
+                                        {{-- <input type="password" class="form-control col-md-7"
+                                            id="user_pin_proceed"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"> --}}
+                                        <textarea name="" id="description" class="form-control col-md-7" cols="30" rows="10"></textarea>
+
+
+                                    </div>
+                                    <br><br><br>
+                                    <div class="form-group text-right ">
+                                        <button type="button"
+                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                            id="proceed_button">
+                                            <span id="proceed-text">Proceed</span>
+                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                id="spinner-proceed" role="status"
+                                                aria-hidden="true"></span>
+                                            <span id="spinner-text-proceed">Loading...</span>
+                                        </button>
+                                    </div>
+
+
+                                </div>
+
+                                {{-- <div class="col-md-1"></div> --}}
+                            </div>
+
+                        </div>
+                    </form>
+
+                    </div>
+                <div class="col-md-5">
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="carouselExampleControls" class="carousel slide"
+                                data-ride="carousel" style="min-height: 120px; max-height: auto;">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active">
+                                        <img class="d-block img-fluid" style="min-height: 100%"
+                                            src="{{ asset('assets/images/ads/sim_korpor_ad_5.jpeg') }}"
+                                            alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid" style="height: auto;"
+                                            src="{{ asset('assets/images/ads/sim_korpor_ad_6.jpeg') }}"
+                                            alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid" style="min-height"
+                                            src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
+                                            alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls"
+                                    role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls"
+                                    role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 @endsection
@@ -193,34 +222,34 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
+                //function to select user's account
+                function from_account() {
+                            $.ajax({
+                                type: 'GET',
+                                url:  'get-accounts-api',
+                                datatype: "application/json",
+                                success: function(response) {
+                                    //console.log(response.data);
+                                    let data = response.data
+                                    $.each(data, function(index) {
+                                        $('#from_account').append($('<option>', {
+                                            value: data[index].accountType + '~' + data[index]
+                                                .accountDesc + '~' + data[index].accountNumber +
+                                                '~' + data[index].currency + '~' + data[index]
+                                                .availableBalance
+                                        }).text(data[index].accountType + '~' + data[index]
+                                            .accountNumber + '~' + data[index].currency + '~' + data[
+                                                index].availableBalance));
+                                        //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
-        function from_account() {
-                    $.ajax({
-                        type: 'GET',
-                        url:  'get-account-api',
-                        datatype: "application/json",
-                        success: function(response) {
-                            //console.log(response.data);
-                            let data = response.data
-                            $.each(data, function(index) {
-                                $('#from_account').append($('<option>', {
-                                    value: data[index].accountType + '~' + data[index]
-                                        .accountDesc + '~' + data[index].accountNumber +
-                                        '~' + data[index].currency + '~' + data[index]
-                                        .availableBalance
-                                }).text(data[index].accountType + '~' + data[index]
-                                    .accountNumber + '~' + data[index].currency + '~' + data[
-                                        index].availableBalance));
-                                //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+                                    });
+                                },
 
-                            });
-                        },
-
-                    })
+                            })
                 }
 
-            //function to alert users.
-            function toaster(message, icon, timer) {
+                    //function to alert users.
+                    function toaster(message, icon, timer) {
                                     const Toast = Swal.mixin({
                                         toast: true,
                                         position: 'top-end',
@@ -237,9 +266,13 @@
                                         icon: icon,
                                         title: message
                                     })
-                            }
+                    }
 
-                $(document).ready(function() {
+
+
+
+
+                    $(document).ready(function() {
 
                     $('#spinner-proceed').hide();
                     $('#spinner-text-proceed').hide();
@@ -257,89 +290,90 @@
                                 console.log(from_account);
                             });
 
-                            //console first name entered
-                            $("#first_name").change(function(){
-                                var first_name = $("#first_name").val();;
-                                console.log(first_name);
+                            //console service type entered
+                            $("#service_type").change(function(){
+                                var service_type = $("#service_type").val();;
+                                console.log(service_type);
                             });
 
-                            //console other name entered
-                            $("#other_name").change(function(){
-                                var other_name = $("#other_name").val();;
-                                console.log(other_name);
+                            //console description entered
+                            $("#description").change(function(){
+                                var description = $("#description").val();;
+                                console.log(description);
                             });
 
-                            //console log last name entered
-                            $("#last_name").change(function(){
-                                var last_name = $("#last_name").val();;
-                                console.log(last_name);
-                            });
 
-                            //console log email entered
-                            $("#email").change(function(){
-                                var email = $("#email").val();;
-                                console.log(email);
-                            });
+                        //code to handle the proceed button when clicked.
+                        $("#proceed_button").click(function(){
 
-                    $("#proceed_button").click(function(){
+                            //declare variables to be used universally here
+                            // let account= $("#from_account").val();
 
-                        //declare variables to be used universally here
-                        // let account= $("#from_account").val();
-                        let first_name = $("#first_name").val();
-                        let other_name = $("#other_name").val();
-                        let last_name = $("#last_name").val();
-                        let email = $("#email").val();
+                            //show card after the from_account value changes
+                            var from_account = $("#from_account").val();
+                            var from_account_info = from_account.split("~");
+                            var account = from_account_info[2].trim();
+                            console.log(account);
 
 
-                        //validate to ensure fields are not empty
-                        // account.trim() =='' ||
-                        if(  first_name=='' || other_name=='' || last_name=='' || email == ''){
-                            toaster('Field must not be empty', 'error', 10000)
-                            return false;
-                        }
-                        else{
-                            $("#proceed-text").hide();
-                            $("#spinner-proceed").show();
-                            $("#spinner-text-proceed").show();
+                            let service_type= $("#service_type").val();
+                            let description = $("#description").val();
 
-                            $.ajax({
+                            //validate to ensure fields are not empty
+                            // account.trim() =='' ||
+                            if(account=='' || service_type=='' || description==''){
+                                toaster('Fields must not be empty', 'error', 10000)
+                                return false;
+                            }
+                            else{
+                                $("#proceed-text").hide();
+                                $("#spinner-proceed").show();
+                                $("#spinner-text-proceed").show();
 
-                                    type: 'POST',
-                                    url:  'create-originator-api',
-                                    datatype: "application/json",
-                                    'data': {
-                                        // 'accountNumber': account,
-                                        'first_name': first_name,
-                                        'other_name': other_name,
-                                        'last_name': last_name,
-                                        'email': email
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function(response) {
+                                $.ajax({
 
-                                        console.log(response)
+                                        type: 'POST',
+                                        url:  'complaint-api',
+                                        datatype: "application/json",
+                                        data: {
+                                            // 'accountNumber': account,
+                                            'account_no': account,
+                                            'service_type': service_type,
+                                            'description': description
+                                        },
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function(response) {
 
-                                        if (response.responseCode == '000') {
-                                            toaster(response.message, 'success', 20000);
-                                            $("#request_form_div").hide();
-                                            $('.display_button_print').show();
-                                        } else {
+                                            // console.log(response)
 
-                                            toaster(response.message, 'error', 9000);
+                                            // if (response.responseCode == '000') {
+                                                // toaster(response.message, 'success', 20000);
+                                                // $("#request_form_div").hide();
+                                                // $('.display_button_print').show();
+                                                toaster('Complaint submitted successfully','success',2000);
 
-                                            $('#spinner').hide();
-                                            $('#spinner-text').hide();
-                                            $('.submit-text').show();
-                                            // $('#confirm_payment').show();
-                                            // $('#confirm_button').attr('disabled', false);
+                                                $("#spinner-proceed").hide();
+                                                $("#spinner-text-proceed").hide();
+                                                $("#proceed-text").show();
+                                                setTimeout(function() {
+                                                    window.location.reload();
+                                                },2000);
+                                            // } else {
+                                                return false;
+                                                // toaster(response.message, 'error', 9000);
+                                                $("#proceed-text").show();
+                                                $("#spinner-proceed").hide();
+                                                $("#spinner-text-proceed").hide();
+                                                // $('#confirm_payment').show();
+                                                // $('#confirm_button').attr('disabled', false);
+                                            // }
                                         }
-                                    }
-                            });
+                                });
 
-                        }
-                    });
+                            }
+                        });
 
                 });
 

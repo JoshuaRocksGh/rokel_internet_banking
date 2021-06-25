@@ -913,7 +913,7 @@
                                                                 <div class="col-sm-8">
                                                                     <form class="form-inline">
                                                                         <div class="form-group">
-                                                                            <select class="form-control from_account" required>
+                                                                            <select class="form-control redeemed" required>
                                                                                 <option value="">Select Account Number</option>
 
 
@@ -925,7 +925,7 @@
                                                                     <div class="text-sm-right">
                                                                         <button type="button"
                                                                             class="btn btn-primary waves-effect waves-light"
-                                                                            id="submit_account_number_completed"><i
+                                                                            id="submit_account_no_redeemed"><i
                                                                                 class="mdi mdi-plus-circle mr-1"></i>Submit</button>
                                                                     </div>
                                                                 </div><!-- end col-->
@@ -1057,6 +1057,15 @@
                         ));
 
                         $('.reversed').append($('<option>', {
+                            value: data[index].accountType + '~' + data[index]
+                                .accountDesc + '~' + data[index].accountNumber + '~' +
+                                data[index].currency + '~' + data[index]
+                                .availableBalance
+                        }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            '~' + data[index].currency + '~' + data[index].availableBalance
+                        ));
+
+                        $('.redeemed').append($('<option>', {
                             value: data[index].accountType + '~' + data[index]
                                 .accountDesc + '~' + data[index].accountNumber + '~' +
                                 data[index].currency + '~' + data[index]
@@ -1451,20 +1460,83 @@
                 console.log(reference_no);
             });
 
+
             $(".receiver_phoneNo_reverse").change(function(){
                 var receiver_phoneNo = $(".receiver_phoneNo_reverse").val();
                 console.log(receiver_phoneNo);
             });
 
 
+            //method to format currency amount
             function formatToCurrency(amount) {
                 return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
             }
 
+            //button to submit for list of redeemed/completed transactions
+            $('#submit_account_no_redeemed').click(function() {
+
+                let from_account = $(".redeemed").val();
+
+                //validate if account has been selected...
+                if (from_account ==''){
+                    toaster('Select an account to show list of redeemed transactions','error',20000);
+                    return false;
+                }
+
+                    let from_account_info = from_account.split("~")
+                    let from_account_value = from_account_info[2].trim();
+                    console.log(from_account_value);
+
+                                $.ajax({
+
+                                    type: 'POST',
+                                    url: 'redeemed-korpor',
+                                    datatype: "application/json",
+                                    data:{
+                                        'accountNo':from_account_value,
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+
+                                        console.log(response)
+
+                                        if (response.data.length > 0) {
+                                            toaster(response.message,'success',2000);
+                                            let data = response.data;
+
+                                            let unredeemed_cardless_list = response.data;
+                                            console.log(unredeemed_cardless_list);
+                                            $.each(data, function(index) {
+                                                $('.redeemed_korpor_list_display').append(
+                                                    `<tr>
+
+                                                                <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
+                                                                <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
+                                                                <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
+                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].REMITTANCE_AMOUNT))}</b></td>
+                                                                <td> <strong><span class="badge badge-success">&nbsp;Completed&nbsp;</span></strong> </td>
+                                                                </tr>`
+                                                )
+                                            })
+
+                                        }
+                                    }
+                                });
+            });
+
+            //button to submit account unredeemed request
             $('#submit_account_no_unredeemed').click(function() {
 
 
                 let from_account = $(".unredeemed").val();
+
+                //validate if account has been selected...
+                if (from_account ==''){
+                    toaster('Select an account to show list of unredeemed transactions','error',20000);
+                    return false;
+                }
                 let from_account_info = from_account.split("~")
                 let from_account_value = from_account_info[2].trim();
                 console.log(from_account_value);
@@ -1509,8 +1581,15 @@
 
             });
 
+            //button to submit account no for reversed korpor transaction.
             $('#submit_account_no_reversed').click(function() {
                 let from_account = $(".reversed").val();
+
+                //validate if account has been selected...
+                if (from_account ==''){
+                    toaster('Select an account to show list of reversed transactions','error',20000);
+                    return false;
+                }
                 let from_account_info = from_account.split("~")
                 let from_account_value = from_account_info[2].trim();
                 console.log(from_account_value);
