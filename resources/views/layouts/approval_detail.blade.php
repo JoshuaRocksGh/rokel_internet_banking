@@ -155,7 +155,7 @@
     <div id="wrapper" style="zoom: 0.9;">
 
 
-        <div class="content-page">
+        <div>
             <div class="content" style="zoom: 0.9 ;">
                 @yield('content')
             </div>
