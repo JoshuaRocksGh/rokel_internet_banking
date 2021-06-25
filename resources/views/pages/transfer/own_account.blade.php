@@ -5,9 +5,21 @@
     <style>
         @media print {
             .hide_on_print {
-                display: none
-            }
+                display: none ;
+            };
         }
+
+        @page {
+            size: A4;
+            {{--  margin: 10px;  --}}
+          }
+          @media print {
+                html, body {
+                width: 210mm;
+                height: 297mm;
+            }
+            /* ... the rest of the rules ... */
+          }
 
 
         @font-face {
