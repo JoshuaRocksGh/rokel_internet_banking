@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountServices\accountCreationController;
 use App\Http\Controllers\AccountServices\AccountServicesController;
 use App\Http\Controllers\AccountServices\AtmCardRequestController;
 use App\Http\Controllers\AccountServices\ChequeBookRequestController as AccountServicesChequeBookRequestController;
+use App\Http\Controllers\AccountServices\ComplaintController;
 use App\Http\Controllers\AccountServices\KYC\KycController as KYCKycController;
 use App\Http\Controllers\AccountServices\StatementRequestController;
 use App\Http\Controllers\AccountServices\StopChequeController;
@@ -349,6 +350,9 @@ Route::get('stop-cheque', [AccountServicesController::class, 'stop_cheque'])->na
 
 //route to display make complaint screen
 Route::get('complaint',[AccountServicesController::class,'make_complaint'])->name('complaint');
+
+//route to hit for complaint api
+Route::post('complaint-api',[ComplaintController::class,'make_complaint_api'])->name('complaint-api');
 
 //route to display the activate card screen
 Route::get('activate-card', [CardsController::class, 'activate_card'])->name('activate-card');

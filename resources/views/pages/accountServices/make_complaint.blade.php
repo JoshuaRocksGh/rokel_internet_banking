@@ -266,7 +266,10 @@
                                         icon: icon,
                                         title: message
                                     })
-                            }
+                    }
+
+
+
 
 
                     $(document).ready(function() {
@@ -305,16 +308,21 @@
 
                             //declare variables to be used universally here
                             // let account= $("#from_account").val();
-                            let  = $("#").val();
-                            let other_name = $("#other_name").val();
-                            let last_name = $("#last_name").val();
-                            let email = $("#email").val();
 
+                            //show card after the from_account value changes
+                            var from_account = $("#from_account").val();
+                            var from_account_info = from_account.split("~");
+                            var account = from_account_info[2].trim();
+                            console.log(account);
+
+
+                            let service_type= $("#service_type").val();
+                            let description = $("#description").val();
 
                             //validate to ensure fields are not empty
                             // account.trim() =='' ||
-                            if(  first_name=='' || other_name=='' || last_name=='' || email == ''){
-                                toaster('Field must not be empty', 'error', 10000)
+                            if(account=='' || service_type=='' || description==''){
+                                toaster('Fields must not be empty', 'error', 10000)
                                 return false;
                             }
                             else{
@@ -325,36 +333,42 @@
                                 $.ajax({
 
                                         type: 'POST',
-                                        url:  'create-originator-api',
+                                        url:  'complaint-api',
                                         datatype: "application/json",
-                                        'data': {
+                                        data: {
                                             // 'accountNumber': account,
-                                            'first_name': first_name,
-                                            'other_name': other_name,
-                                            'last_name': last_name,
-                                            'email': email
+                                            'account_no': account,
+                                            'service_type': service_type,
+                                            'description': description
                                         },
                                         headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
                                         success: function(response) {
 
-                                            console.log(response)
+                                            // console.log(response)
 
-                                            if (response.responseCode == '000') {
-                                                toaster(response.message, 'success', 20000);
-                                                $("#request_form_div").hide();
-                                                $('.display_button_print').show();
-                                            } else {
+                                            // if (response.responseCode == '000') {
+                                                // toaster(response.message, 'success', 20000);
+                                                // $("#request_form_div").hide();
+                                                // $('.display_button_print').show();
+                                                toaster('Complaint submitted successfully','success',2000);
 
-                                                toaster(response.message, 'error', 9000);
-
-                                                $('#spinner').hide();
-                                                $('#spinner-text').hide();
-                                                $('.submit-text').show();
+                                                $("#spinner-proceed").hide();
+                                                $("#spinner-text-proceed").hide();
+                                                $("#proceed-text").show();
+                                                setTimeout(function() {
+                                                    window.location.reload();
+                                                },2000);
+                                            // } else {
+                                                return false;
+                                                // toaster(response.message, 'error', 9000);
+                                                $("#proceed-text").show();
+                                                $("#spinner-proceed").hide();
+                                                $("#spinner-text-proceed").hide();
                                                 // $('#confirm_payment').show();
                                                 // $('#confirm_button').attr('disabled', false);
-                                            }
+                                            // }
                                         }
                                 });
 
