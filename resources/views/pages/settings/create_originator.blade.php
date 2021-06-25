@@ -197,7 +197,7 @@
         function from_account() {
                     $.ajax({
                         type: 'GET',
-                        url:  'get-account-api',
+                        url:  'get-accounts-api',
                         datatype: "application/json",
                         success: function(response) {
                             //console.log(response.data);
