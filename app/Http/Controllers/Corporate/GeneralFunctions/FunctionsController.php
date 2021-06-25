@@ -29,9 +29,11 @@ class FunctionsController extends Controller
             "userId"    => $userID
         ];
 
-        $response = Http::get(env('API_BASE_URL') . "/corporate/getCorporateTransfers?customerNumber=$customerNumber&requestStatus=$requestStatus");
+        // return env('CIB_API') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus";
 
-        //return $response;
+        $response = Http::get(env('CIB_API') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus");
+
+        // return $response;
         // return $response->status();
         $result = new ApiBaseResponse();
         return $result->api_response($response);
