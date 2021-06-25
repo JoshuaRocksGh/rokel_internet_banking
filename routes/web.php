@@ -341,6 +341,9 @@ Route::get('close-account', [AccountServicesController::class, 'close_account'])
 //route to display the stop cheque screen
 Route::get('stop-cheque', [AccountServicesController::class, 'stop_cheque'])->name('stop-cheque');
 
+//route to display make complaint screen
+Route::get('complaint',[AccountServicesController::class,'make_complaint'])->name('complaint');
+
 //route to display the activate card screen
 Route::get('activate-card', [CardsController::class, 'activate_card'])->name('activate-card');
 

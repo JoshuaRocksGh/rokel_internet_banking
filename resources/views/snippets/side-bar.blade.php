@@ -376,7 +376,7 @@
                             </li>
                             <li>
                                 <a href="{{ url('request-draft') }}">Request bank draft</a>
-                            </li>
+                                </li>
 
                             <li>
                                 <a href="{{ url('add-signature') }}">Add Signatory</a>
@@ -389,6 +389,11 @@
                                     {{--  <span class="badge badge-primary float-right">Hot</span>  --}}
                                     {{-- <i class="mdi mdi-contacts-outline"></i> --}}
                                     <span> KYC Services </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('complaint') }}">
+                                    <span>Make Complaint</span>
                                 </a>
                             </li>
 
