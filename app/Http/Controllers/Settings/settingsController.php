@@ -88,4 +88,57 @@ class settingsController extends Controller
         // return $result->api_response($response);
     }
 
+    public function set_transaction_limits_api(Request $request){
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $api_headers = session()->get("headers");
+        // return $authToken;
+
+        // $base_response = new BaseResponse();
+
+
+
+        $rtgsLimit = $request->rtgs_limit;
+        $directCreditLimit = $request->direct_credit_limit;
+        $rokelLimit = $request->rokel_limit;
+        $directCreditBulkLimit = $request->direct_credit_bulk_limit;
+        $rokelBulkLimit = $request->rokel_bulk_limit;
+        // $accountNumber = "004001100241700194";
+        // $beneficiaryMobileNo = $request->receiver_phoneNo;
+        // $customerNo = session()->get('customerNumber');
+        // $postedBy = session()->get('userAlias');
+        // $referenceNo = $request->reference_no;
+        // $pinCode = $request->pin;
+
+
+        $data = [
+
+            // "accountNumber"=> $accountNumber,
+            // "firstName"=> $firstName,
+            // "otherName"=> $otherName,
+            // "lastName"=> $lastName,
+            // "email"=> $email
+
+            "rtgsLimit"=> $rtgsLimit,
+            "directCreditLimit"=> $directCreditLimit,
+            "rokelLimit"=> $rokelLimit,
+            "directCreditBulkLimit"=> $directCreditBulkLimit,
+            "rokelBulkLimit"=>$rokelBulkLimit
+
+        ];
+        // for debugging purposes
+        return $data;
+
+
+        // $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "request/setTransactionLimit", $data);
+        // return $response;
+
+        //for debugging purposes
+
+        // return $response;die();
+        // $result = new ApiBaseResponse();
+
+        // return $result->api_response($response);
+    }
+
 }

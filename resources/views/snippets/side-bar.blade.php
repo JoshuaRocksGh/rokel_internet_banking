@@ -467,7 +467,7 @@
                                 <a href="{{ url('create-originator') }}">Create Originator</a>
                             </li>
                             <li>
-                                <a href="{{ url('set-transaction') }}">Set Transaction Limits</a>
+                                <a href="{{ url('set-transaction-limit') }}">Set Transaction Limits</a>
                             </li>
                             <li>
                                 <a href="{{ url('update-company-info') }}">Update Company Information</a>
