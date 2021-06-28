@@ -80,11 +80,10 @@
                                 <a href="{{ url('request-statement') }}">Statement Request</a>
                             </li>
                             <li>
-                                <a href="{{ url('close-account') }}">Close account</a>
+                                <a href="{{ url('close-account') }}">Account Closure</a>
                             </li>
                             <li>
                                 <a href="#budgeting" data-toggle="collapse">
-                                    {{-- <i class="mdi mdi-book-account-outline"></i> --}}
                                     <span> Budgeting </span>
                                     <span class="menu-arrow"></span>
                                 </a>
@@ -337,6 +336,9 @@
                                 <a href="{{ url('cheque-book-request') }}">Cheque Book Request </a>
                             </li>
                             <li>
+                                <a href="{{ url('confirm-cheque') }}">Cheque Status</a>
+                            </li>
+                            <li>
                                 <a href="{{ url('activate-cheque-book') }}">Activate Cheque Book</a>
                             </li>
                             <li>
@@ -373,20 +375,16 @@
                                             <a href="{{ url('block-debit-card') }}">Block Debit Card</a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('replace-card') }}">Replace Card</a>
+                                            <a href="{{ url('request-atm') }}">Request Card</a>
                                         </li>
                                         <li>
                                             <a href="{{ url('activate-card') }}">Activate Card</a>
                                         </li>
-                                        <li>
-                                            <a href="{{ url('request-atm') }}">Request ATM Card</a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
-                            <li>
-                                <a href="{{ url('confirm-cheque') }}">Confirm Cheque</a>
-                            </li>
+
                             <li>
                                 <a href="{{ url('request-for-letter') }}">Request For Letter</a>
                             </li>

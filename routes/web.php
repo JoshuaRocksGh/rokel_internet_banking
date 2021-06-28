@@ -55,6 +55,7 @@ use App\Http\Controllers\Loan\LoansController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MaileController;
+use App\Http\Controllers\Payments\Bulk\BulkKorporController;
 use App\Http\Controllers\Payments\BulkUpload\BulkUploadsController;
 use App\Http\Controllers\Payments\CardlessController;
 use App\Http\Controllers\Payments\KorporController;
@@ -188,6 +189,9 @@ Route::post('/redeemed-korpor',[KorporController::class,'send_redeemed_request']
 
 // Bulk ekorpor
 Route::get('/bulk-korpor',[KorporController::class,'bulk_korpor'])->name('bulk-korpor');
+Route::get('/bulk-korpor_detail',[KorporController::class,'bulk_korpor_detail'])->name('bulk-korpor_detail');
+Route::get('/get-bulk-korpor-upload-list-api',[BulkKorporController::class,'get_bulk_korpor_upload_list'])->name('get-bulk-korpor-upload-list-api');
+Route::get('/get-bulk-korpor-upload-detail-list-api',[BulkKorporController::class,'get_bulk_korpor_upload_detail_list'])->name('get-bulk-korpor-upload-detail-list-api');
 
 
 

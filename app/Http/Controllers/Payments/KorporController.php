@@ -471,6 +471,12 @@ class KorporController extends Controller
         return view('pages.payments.korpor.bulk_korpor');
     }
 
+    public function bulk_korpor_detail()
+    {
+        return view('pages.payments.korpor.bulk_korpor_details');
+    }
+
+
 
 }
 
