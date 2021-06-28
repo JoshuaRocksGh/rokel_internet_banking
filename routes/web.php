@@ -90,7 +90,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [LandingPageController::class, 'index'])->name('starter');
+Route::get('/', [AuthenticationLoginController::class, 'login'])->name('login');
 
 Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
@@ -185,6 +185,11 @@ Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->n
 Route::post('/korpor-otp', [KorporController::class,'korpor_otp'])->name('korpor-otp');
 Route::post('/redeem-korpor',[KorporController::class,'redeem_korpor'])->name('redeem-korpor');
 Route::post('/redeemed-korpor',[KorporController::class,'send_redeemed_request'])->name('redeemed-korpor');
+
+// Bulk ekorpor
+Route::get('/bulk-korpor',[KorporController::class,'bulk_korpor'])->name('bulk-korpor');
+
+
 
 
 

@@ -31,7 +31,7 @@
 
                     <!-- title-->
                     <p class="text-muted mb-4">
-                    <h2 class="text-primary"> Personal Banking.</h2>
+                    <h2 class="text-primary"> Internet Banking </h2>
                     </p>
                     <br><br>
                     <h4 class="mt-0">Sign In</h4>
