@@ -26,6 +26,12 @@ class PendingController extends Controller
 
         $mandate = session()->get('userMandate');
         // return $mandate;
-        return view('pages.corporate.approvals.pending_transfer_details', [ 'request_id'=> $request_id, 'customer_no'=> $customer_no , 'mandate' => $mandate]);
+        if ($mandate == 'A') {
+
+            return view('pages.corporate.approvals.pending_transfer_details', [ 'request_id'=> $request_id, 'customer_no'=> $customer_no , 'mandate' => $mandate]);
+
+        }else {
+            return ('Not Authorized To Approve Pendding Request');
+        }
     }
 }

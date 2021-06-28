@@ -105,7 +105,7 @@ class LoginController extends Controller
                         "customerType" => $user_detail->customerType,
                         "checkerMaker" => $user_detail->checkerMaker,
                         "checkerMaker" => 'M',
-                        "userMandate" => 'A' ,
+                        // "userMandate" => 'A' ,
                         "headers"=>[
                             "x-api-key"=> "123",
                             "x-api-secret"=> "123",
