@@ -24,7 +24,7 @@
         <div class="col-md-6">
             <h4 class="text-primary">
                 <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                SAME BANK TRANSFER
+                PENDING APPROVAL
 
             </h4>
         </div>
@@ -33,7 +33,7 @@
             <h6>
 
                 <span class="flaot-right">
-                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank</b>
+                    <b class="text-primary"> Approval </b> &nbsp; > &nbsp; <b class="text-danger">pending Approval</b>
 
 
                 </span>
@@ -54,8 +54,8 @@
         <div class="row">
             <br> <br><br>
             <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
+                <div class="">
+                    <div class="">
 
                         <div class="row">
 
@@ -74,7 +74,7 @@
                                     </p> --}}
 
                                     <table id="datatable-buttons"
-                                        class="table table-striped table-bordered dt-responsive nowrap w-100 pending_transaction_request"
+                                        class="table dt-responsive nowrap w-100 pending_transaction_request "
                                         style="zoom: 0.9;">
                                         <thead>
                                             <tr>
@@ -382,6 +382,8 @@
                                     } else {
                                         request_type = 'Others'
                                     }
+                                    let request_id = data[index].request_id;
+                                    let customer_no = data[index].customer_no;
 
 
                                     table.row.add([
@@ -392,7 +394,7 @@
                                         data[index].post_date,
                                         data[index].account_no,
                                         `
-                                                                             <a href="{{ url('approvals-pending-transfer-details') }}"
+                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}"
                                                                                 target="_blank">
                                                                                 View Details>>>
                                                                             </a>
