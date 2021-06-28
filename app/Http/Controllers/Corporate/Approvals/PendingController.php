@@ -9,6 +9,7 @@ class PendingController extends Controller
 {
     public function approvals_pending()
     {
+        // return $request_id;
         return view('pages.corporate.approvals.pending');
     }
 
@@ -18,8 +19,13 @@ class PendingController extends Controller
     }
 
 
-    public function approvals_pending_transfer_details()
+    public function approvals_pending_transfer_details($request_id , $customer_no)
     {
-        return view('pages.corporate.approvals.pending_transfer_details');
+
+        // return $customer_no;
+
+        $mandate = session()->get('userMandate');
+        // return $mandate;
+        return view('pages.corporate.approvals.pending_transfer_details', [ 'request_id'=> $request_id, 'customer_no'=> $customer_no , 'mandate' => $mandate]);
     }
 }
