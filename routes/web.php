@@ -90,7 +90,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [LandingPageController::class, 'index'])->name('starter');
+Route::get('/', [AuthenticationLoginController::class, 'login'])->name('login');
 
 Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
@@ -186,6 +186,11 @@ Route::post('/korpor-otp', [KorporController::class,'korpor_otp'])->name('korpor
 Route::post('/redeem-korpor',[KorporController::class,'redeem_korpor'])->name('redeem-korpor');
 Route::post('/redeemed-korpor',[KorporController::class,'send_redeemed_request'])->name('redeemed-korpor');
 
+// Bulk ekorpor
+Route::get('/bulk-korpor',[KorporController::class,'bulk_korpor'])->name('bulk-korpor');
+
+
+
 
 
 Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
@@ -211,8 +216,10 @@ Route::get('/one-time-payment', [paymentController::class, 'one_time'])->name('o
 
 //  CORPORATE ROUTE
 Route::get('/approvals-pending', [PendingController::class, 'approvals_pending'])->name('approvals-pending');
+// Route::get('/approvals-pending/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending'])->name('approvals-pending/request_id/customer_no');
 Route::get('/get-pending-requests', [GeneralFunctionsFunctionsController::class, 'get_pending_requests'])->name('get-pending-requests');
 Route::get('/approvals-pending-transfer-details', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details');
+Route::get('/approvals-pending-transfer-details/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details/{request_id}/{customer_no}');
 
 
 // BRANCH LOCATOR LIST VIEW

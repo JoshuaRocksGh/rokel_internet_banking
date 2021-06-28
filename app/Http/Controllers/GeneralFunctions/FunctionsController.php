@@ -91,19 +91,16 @@ class FunctionsController extends Controller
 
     public function get_my_loans_accounts()
     {
-        // return 'kjsdf';
-
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+        $api_headers = session()->get('headers');
 
         $data = [
             "token" => $authToken,
         ];
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
 
-        $response = Http::post(env('API_BASE_URL') . "loans/getLoans", $data);
+        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "loans/getLoans", $data);
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);

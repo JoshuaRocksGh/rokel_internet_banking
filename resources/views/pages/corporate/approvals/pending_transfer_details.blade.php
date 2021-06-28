@@ -5,21 +5,27 @@
     <style>
         @media print {
             .hide_on_print {
-                display: none ;
-            };
+                display: none;
+            }
+
+            ;
         }
 
         @page {
             size: A4;
-            {{--  margin: 10px;  --}}
-          }
-          @media print {
-                html, body {
+            {{-- margin: 10px; --}}
+        }
+
+        @media print {
+
+            html,
+            body {
                 width: 210mm;
                 height: 297mm;
             }
+
             /* ... the rest of the rules ... */
-          }
+        }
 
 
         @font-face {
@@ -36,7 +42,7 @@
 
 @section('content')
 
-    <div>
+    <div class="container-fluid">
 
         <div class="row">
             <div class="col-12">
@@ -60,7 +66,8 @@
                                                                     style="zoom: 0.6" /> </div>
                                                             <div class="col-md-4"></div>
                                                             <div class="col-md-4 text-right">
-                                                                <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
+                                                                <h4 class="text-primary"><strong>ROKEL COMMERCIAL
+                                                                        BANK</strong>
                                                                 </h4>
                                                                 <p>25-27 Siaka Stevens St</p>
                                                                 <p> Freetown, Sierra Leone</p>
@@ -74,48 +81,167 @@
                                                         </div>
                                                         <br>
                                                         <div class="col-md-1"></div>
-                                                        <div class="col-md-10">
+
+                                                        <div class="container col-md-10 text-center">
                                                             <div class="col-md-12">
 
-                                                            <div class="form-group row mb-3">
-                                                                <span class="col-md-6">Issue Date</span>
-                                                                <span class="col-md-6" id="request_date">25/12/2021</span>
-                                                            </div>
-                                                            <div class="form-group row mb-3">
-                                                                <span class="col-md-6">Request Type</span>
-                                                                <span class="col-md-6" id="request_type">Own Account Transfer</span>
-                                                            </div>
+                                                                <div class="row ">
+                                                                    <span class="col-md-6 text-left h4">Issue Date</span>
+                                                                    <span class="col-md-6 text-right text-primary h4"
+                                                                        id="request_date">25-12-2021</span>
+                                                                </div>
+                                                                {{--  <br>  --}}
+                                                                <hr class="mt-0">
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Request Type</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="request_type">Own Account
+                                                                        Transfer</span>
+                                                                </div>
+                                                                <hr class="mt-0">
 
-                                                            <div class="form-group row mb-3">
-                                                                <span class="col-md-6">Posted By</span>
-                                                                <span class="col-md-6" id="posted_by">Cobby Eyeson</span>
-                                                            </div>
+                                                                <div class=" row">
+                                                                    <span class="col-md-6 text-left h4">Posted By</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="posted_by">Cobby
+                                                                        Eyeson</span>
+                                                                </div>
+                                                                <hr class="mt-0">
 
-                                                            <div class="form-group row mb-3">
-                                                                <span class="col-md-6">Beneficiary Name</span>
-                                                                <span class="col-md-6" id="beneficiary_name">Dangote Cement Limited</span>
-                                                            </div>
+                                                                <div class=" row">
+                                                                    <span class="col-md-6 text-left h4">Debit Account</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="debit_account">004008210057725128</span>
+                                                                </div>
+                                                                <hr class="mt-0">
 
-                                                            <div class="form-group row mb-3">
-                                                                <span class="col-md-6">Beneficiary Account</span>
-                                                                <span class="col-md-6" id="beneficiary_account">004004100435210194	</span>
-                                                            </div>
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Beneficiary Name</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="beneficiary_name">Dansoman, Accra - Ghana</span>
+                                                                </div>
+                                                                <hr class="mt-0">
 
-                                                            <div class="form-group row mb-3">
-                                                                <span class="col-md-6">Amount</span>
-                                                                <span class="col-md-6" id="amount">1000,000.00</span>
-                                                            </div>
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Beneficiary Account</span>
+                                                                    <span class="col-md-6 text-right text-primary h4"
+                                                                        id="beneficiary_account">004008215057725152 </span>
+                                                                </div>
+                                                                <hr class="mt-0">
 
-                                                            <div class="form-group row mb-3">
-                                                                <span class="col-md-6">Currency</span>
-                                                                <span class="col-md-6" id="currency">SLL</span>
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Beneficiary Address</span>
+                                                                    <span class="col-md-6 text-right text-primary h4"
+                                                                        id="beneficiary_address">004008215057725152 </span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Amount</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="amount">1000,000.00</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Total Amount</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="total_amount">10,000,000.00</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Currency</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="currency">SLL</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Narration</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="narration">RTGS TESTING</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Catergory</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="category">Salary</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Batch Number</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="batch_number">1594663539</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Reference Number</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="reference_number">1594663539</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Frequency</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="frequency">03~MONTHLY</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Cheque Number From</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="cheque_number_from">000123</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Cheque Number To</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="cheque_number_to">000200</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Branch Code</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="branch_code">102235</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Transaction Start Date</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="transaction_start_date">25-07-2021</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Transaction End Date</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="transaction_end_date">04-08-2021</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="row">
+                                                                    <span class="col-md-6 text-left h4">Number of Leaflet</span>
+                                                                    <span class="col-md-6 text-right text-primary h4" id="number_of_leaflet">50</span>
+                                                                </div>
+                                                                <hr class="mt-0">
+
+                                                                <div class="mt-1">
+
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-md-2"></div>
+                                                                            <button class="btn btn-danger waves-effect waves-light col-md-3 btn-lg"
+                                                                                type="button">Reject
+                                                                                <i class="mdi mdi-cancel"></i>
+                                                                            </button>
+                                                                            <div class="col-md-2"></div>
+                                                                            <button class="btn btn-success waves-effect waves-light col-md-3 btn-lg"
+                                                                                type="button">Appove
+                                                                                <i class="mdi mdi-check-all"></i>
+                                                                            </button>
+                                                                            <div class="col-md-2"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
-                                                        </div>
                                                         </div>
                                                         <div class="col-md-1"></div>
 
 
-                                                        <br>
+                                                        <br><br>
+
                                                         {{-- <div>
                                                             <div class="col-md-12">
                                                                 <p><b>Date Posted :</b> {{ date('d F, Y') }}</p> <br /> <br />
@@ -146,8 +272,8 @@
                             <div class="col-md-4">
                                 <div class="card ">
                                     <div class="p-3 mt-4 mt-lg-0">
-                                        <h2 class="mb-1 text-left">Account Mandate</h2>
-                                        <h3 id="account_mandate">1A OR 2B</h3>
+                                        <h4 class="mb-1 text-center">Account Mandate</h4>
+                                        <h2 id="account_mandate">1A OR 2B</h2>
                                         {{-- <div class="table-responsive">
                                             <table class="table mb-0 table-bordered">
                                                 <tbody>
@@ -159,262 +285,87 @@
                                         </div> --}}
 
                                     </div>
-                                    {{-- <br> --}}
+                                </div>
+
+                                {{-- <br> --}}
+                                <div class="card">
                                     <div class="p-3 mt-4 mt-lg-0">
-                                        <h2 class="mb-1 text-left">Initiated By</h2>
-                                        <h3 id="initiated_by">Cobby Enterprise</h3>
+                                        <h4 class="mb-1 text-center">Initiated By</h4>
+                                        <h2 id="initiated_by">Cobby Enterprise</h2>
                                         {{-- <div class="table-responsive">
-                                            <table class="table mb-0 table-bordered">
-                                                <tbody>
-                                                    <tr>
-                                                        <td id="initiated_by"></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div> --}}
+                                                <table class="table mb-0 table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td id="initiated_by"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div> --}}
 
-                                    </div>
-                                    {{-- <br> --}}
-                                    <div class="p-3 mt-4 mt-lg-0">
-                                        <h2 class="mb-1 text-left">Approvers</h2>
-                                        <h3 class="approvers">Jonas Korankye</h3>
-                                        <h3 class="approvers">Joshua Tetteh</h3>
-                                        {{-- <div class="table-responsive">
-                                            <table class="table mb-0 table-bordered">
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="approvers"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="approvers"></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div> --}}
-
-                                    </div>
-                                    <br>
-                                    <div class="col-md-12 mb-3">
-                                        <div class="row">
-                                            <div class="col-md-2"></div>
-                                            <button class="btn btn-danger waves-effect waves-light col-md-3 " type="button">Reject
-
-                                            </button>
-                                            <div class="col-md-2"></div>
-                                            <button class="btn btn-success waves-effect waves-light col-md-3" type="button">Appove
-
-                                            </button>
-                                            <div class="col-md-2"></div>
-                                        </div>
                                     </div>
                                 </div>
 
+                                {{-- <br> --}}
+                                <div class="card">
+                                    <div class="p-3 mt-4 mt-lg-0">
+                                        <h4 class="mb-1 text-center">Approvers</h4>
+                                        <h2 class="approvers">Jonas Korankye</h2>
+                                        <h2 class="approvers">Joshua Tetteh</h2>
+                                        {{-- <div class="table-responsive">
+                                                <table class="table mb-0 table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="approvers"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="approvers"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div> --}}
+
+                                    </div>
+                                </div>
+
+
+
                             </div>
+
                         </div>
+                    </div>
 
-                    </div> <!-- end card-body -->
+                </div> <!-- end card-body -->
 
 
 
-                </div> <!-- end col -->
+            </div> <!-- end col -->
 
-            </div> <!-- end row -->
+        </div> <!-- end row -->
 
 
 
-        </div>
+    </div>
+    </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            let customer = @json($customer_no);
+            let request = @json($request_id);
+            let mandate = @json($mandate)
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-                crossorigin="anonymous"></script>
-        <script>
-            $(document).ready(function() {
-
-                {{-- hide select accounts info --}}
-                $(".from_account_display_info").hide()
-                $(".to_account_display_info").hide()
-                $("#schedule_payment_date").hide()
-                $('#schedule_payment_contraint_input').hide()
-                $('.display_schedule_payment_date').text('N/A')
-
-
-                $("#transaction_summary").show()
-
-                {{-- $("#next_button").click(function(e) {
-                    e.preventDefault()
-
-                    $("#transaction_summary").show()
-                }) --}}
-
-
-                {{-- Event on From Account field --}}
-
-                $("#from_account").change(function() {
-                    var from_account = $(this).val()
-                    {{-- alert(from_account) --}}
-                    if (from_account.trim() == '' || from_account.trim() == undefined) {
-                        {{-- alert('money') --}}
-                        $(".from_account_display_info").hide()
-
-                    } else {
-                        from_account_info = from_account.split("~")
-                        {{-- alert('continue') --}}
-
-                        var to_account = $('#to_account').val()
-
-                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                            to_account.trim() != '') {
-                            alert('can not transfer to same account')
-                            $(this).val('')
-                        }
-
-                        // set summary values for display
-                        $(".display_from_account_type").text(from_account_info[0].trim())
-                        $(".display_from_account_name").text(from_account_info[1].trim())
-                        $(".display_from_account_no").text(from_account_info[2].trim())
-                        $(".display_from_account_currency").text(from_account_info[3].trim())
-
-                        $(".display_currency").text(from_account_info[3].trim()) // set summary currency
-
-                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(
-                            from_account_info[4]
-                            .trim())))
-                        {{-- alert('and show' + from_account_info[3].trim()) --}}
-                        $(".from_account_display_info").show()
-                    }
-
-
-
-
-                    {{-- alert(from_account_info[0]); --}}
-                });
-
-
-                $("#to_account").change(function() {
-                    var to_account = $(this).val()
-                    {{-- alert(to_account) --}}
-                    if (to_account.trim() == '' || to_account.trim() == undefined) {
-                        {{-- alert('money') --}}
-                        $(".to_account_display_info").hide()
-
-                    } else {
-                        to_account_info = to_account.split("~")
-
-
-                        var from_account = $('#from_account').val()
-
-                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                            to_account.trim() != '') {
-                            alert('can not transfer to same account')
-                            $(this).val('')
-                        }
-
-                        // set summary values for display
-                        $(".display_to_account_type").text(to_account_info[0].trim())
-                        $(".display_to_account_name").text(to_account_info[1].trim())
-                        $(".display_to_account_no").text(to_account_info[2].trim())
-                        $(".display_to_account_currency").text(to_account_info[3].trim())
-                        $(".display_to_account_amount").text(formatToCurrency(parseFloat(to_account_info[4]
-                            .trim())))
-
-                        $(".to_account_display_info").show()
-                    }
-
-
-
-
-                    {{-- alert(to_account_info[0]); --}}
-                });
-
-
-                $("#amount").keyup(function() {
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    if (from_account.trim() == '' || to_account.trim() == '') {
-                        alert('Please select source and destination accounts')
-                        $(this).val('')
-                        return false;
-                    } else {
-                        var transfer_amount = $(this).val()
-                        $(".display_transfer_amount").text(formatToCurrency(parseFloat(to_account_info[4]
-                            .trim())))
-                    }
-
-                })
-
-
-                function formatToCurrency(amount) {
-                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-                };
-
-
-                // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
-                $("input:checkbox").on("change", function() {
-                    if ($(this).is(":checked")) {
-                        console.log("Checkbox Checked!");
-                        $("#schedule_payment_date").show()
-                        $(".display_schedule_payment").text('YES')
-                        $('#schedule_payment_contraint_input').val('TRUE')
-
-                    } else {
-                        console.log("Checkbox UnChecked!");
-                        $("#schedule_payment_date").val('')
-                        $("#schedule_payment_date").hide()
-                        $('.display_schedule_payment').text('NO')
-                        $('.display_schedule_payment_date').text('N/A')
-
-                        $('#schedule_payment_contraint_input').val('')
-                        $('#schedule_payment_contraint_input').hide()
-                        $('#schedule_payment_date').val('')
-                    }
-                });
-
-
-
-
-                $("#next_button").click(function() {
-                    {{-- var t =  $("#schedule_payment_date").val()
-                    alert(t) --}}
-                    {{-- return false; --}}
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    var transfer_amount = $('#amount').val()
-                    var category = $('#category').val()
-
-                    var purpose = $('#purpose').val()
-
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                    var schedule_payment_date = $('#schedule_payment_date').val();
-
-                    if (schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() ==
-                        '') {
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
-
-
-                    $('.display_schedule_payment_date').text(schedule_payment_date)
-
-
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount
-                        .trim() == '' || category.trim() == '' || purpose.trim() == '') {
-                        alert('Field must not be empty')
-                        return false
-                    } else {
-                        //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
-
-
-                        $("#transaction_summary").show()
-                    }
-
-
-                });
-
-
-            });
-        </script>
-    @endsection
+            console.log(customer);
+            console.log(request);
+            console.log(mandate);
+            $.ajax({
+                'type' : 'POST',
+                'url' : '',
+                'datatype' : 'application/json',
+                succes: function(response){
+                    console.log(response);
+                }
+            })
+         });
+    </script>
+@endsection

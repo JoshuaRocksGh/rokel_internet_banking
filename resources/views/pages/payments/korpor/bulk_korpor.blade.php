@@ -24,8 +24,7 @@
         <div class="col-md-6">
             <h4 class="text-primary">
                 <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                PENDING APPROVAL
-
+                BULK KORPOR PAYMENTS
             </h4>
         </div>
 
@@ -33,9 +32,7 @@
             <h6>
 
                 <span class="flaot-right">
-                    <b class="text-primary"> Approval </b> &nbsp; > &nbsp; <b class="text-danger">pending Approval</b>
-
-
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank</b>
                 </span>
 
             </h6>
@@ -50,12 +47,52 @@
 </div>
 
     <div>
+        <div class="row">
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">BULK E-KORPOR UPLOAD</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="bulk_upload_form" action="{{ url('korpor_upload_') }}" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                  <label for="exampleFormControlFile1">Example file input</label>
+                                  <input type="file" name="excel_file" id="excel_file" class="form-control-file" >
+                                </div>
+                              </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
         <br>
         <div class="row">
-            <br> <br><br>
+            <div class="col-md-12">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Launch demo modal
+                </button>
+            </div>
+            <br>
             <div class="col-12">
-                <div class="">
-                    <div class="">
+                <div class="card">
+                    <div class="card-body">
 
                         <div class="row">
 
@@ -74,7 +111,7 @@
                                     </p> --}}
 
                                     <table id="datatable-buttons"
-                                        class="table dt-responsive nowrap w-100 pending_transaction_request "
+                                        class="table table-striped table-bordered dt-responsive nowrap w-100 pending_transaction_request"
                                         style="zoom: 0.9;">
                                         <thead>
                                             <tr>
@@ -382,8 +419,6 @@
                                     } else {
                                         request_type = 'Others'
                                     }
-                                    let request_id = data[index].request_id;
-                                    let customer_no = data[index].customer_no;
 
 
                                     table.row.add([
@@ -394,7 +429,7 @@
                                         data[index].post_date,
                                         data[index].account_no,
                                         `
-                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}"
+                                                                             <a href="{{ url('approvals-pending-transfer-details') }}"
                                                                                 target="_blank">
                                                                                 View Details>>>
                                                                             </a>

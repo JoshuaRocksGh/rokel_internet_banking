@@ -74,7 +74,7 @@
                     <div class="collapse" id="sidebarMyAccount">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('account-enquiry') }}">Account Statment</a>
+                                <a href="{{ url('account-enquiry') }}">Account Statement</a>
                             </li>
                             <li>
                                 <a href="{{ url('request-statement') }}">Statement Request</a>
@@ -205,8 +205,27 @@
                                 <a href="{{ url('airtime-payment') }}">Airtime</a>
                             </li>
                              <li>
-                                <a href="{{ url('cardless-payment') }}">Cardless</a>
+
                             </li>
+
+                            <li>
+                                <a href="#budgeting" data-toggle="collapse">
+                                    {{-- <i class="mdi mdi-book-account-outline"></i> --}}
+                                    <span> Cardless </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="budgeting">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{ url('cardless-payment') }}">Cardless</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('bulk-korpor') }}">Bulk E-Korpor</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
                             <li>
                                 <a href="{{ url('e-korpor') }}">E-Korpor</a>
                             </li>
@@ -388,7 +407,7 @@
                                 <a href="{{ url('kyc-update') }}">
                                     {{--  <span class="badge badge-primary float-right">Hot</span>  --}}
                                     {{-- <i class="mdi mdi-contacts-outline"></i> --}}
-                                    <span> KYC Services </span>
+                                    <span> Update Company Info </span>
                                 </a>
                             </li>
                             <li>
