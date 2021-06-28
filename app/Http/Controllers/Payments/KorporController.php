@@ -466,6 +466,11 @@ class KorporController extends Controller
         return $result->api_response($response);
     }
 
+    public function bulk_korpor()
+    {
+        return view('pages.payments.korpor.bulk_korpor');
+    }
+
 
 }
 

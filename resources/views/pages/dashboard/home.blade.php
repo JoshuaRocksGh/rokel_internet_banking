@@ -157,7 +157,7 @@
                                                         <td> <b> Product </b> </td>
                                                         <td> <b> Cur </b> </td>
                                                         <td> <b> OverDraft </b> </td>
-                                                        <td> <b> Ledger Bal </b> </td>
+                                                        {{--  <td> <b> Ledger Bal </b> </td>  --}}
                                                         <td> <b> Av. Bal </b> </td>
                                                     </tr>
                                                 </thead>
@@ -1275,7 +1275,7 @@
                                         <td> <b> ${data[index].accountType}  </b>  </td>
                                         <td> <b> ${data[index].currency}  </b>  </td>
                                         <td>  <b> 0.00  </b> </td>
-                                        <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td>
+                                        {{--  <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td>  --}}
                                         <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
                                     </tr>`
                                 )
