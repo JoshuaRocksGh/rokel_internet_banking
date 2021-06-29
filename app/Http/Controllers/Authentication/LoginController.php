@@ -73,6 +73,8 @@ class LoginController extends Controller
 
                     $result_data = $result->data;
 
+                    // return (string) json_decode($result_data);
+
                     // CHECK FOR USER TYPE PERSONAL OR CORPORATE
                     /*
                     if ($result_data->c_type == 'C') {
@@ -157,6 +159,7 @@ class LoginController extends Controller
 
                */
 
+              return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
                     return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
                 } else {  // API responseCode is not 000
@@ -184,7 +187,7 @@ class LoginController extends Controller
                 'message' => (string) $e->getMessage()
             ]);
 
-            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', 'CONNECTION SERVER ERROR',  NULL); // return API BASERESPONSE
 
 
 
