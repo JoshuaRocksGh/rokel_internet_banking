@@ -362,15 +362,8 @@
 
                 $.ajax({
                     type : 'GET',
-                    url : "pending-request-details-api",
+                    url : "pending-request-details-api?customer_no="+ customer +"&request_id="+ request +"",
                     datatype : 'application/json',
-                    'data' : {
-                        'customer_no' : customer ,
-                        'request_id' : request
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
                     succes: function(response){
                         console.log(response);
                     }

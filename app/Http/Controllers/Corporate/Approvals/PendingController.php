@@ -49,10 +49,11 @@ class PendingController extends Controller
         }
     }
 
+
         public function pending_request_details(Request $request) {
 
 
-            return ('hello');
+            return $request_id;
 
         // $validator = Validator::make($request->all(), [
         //     'customer_no' => 'required' ,
