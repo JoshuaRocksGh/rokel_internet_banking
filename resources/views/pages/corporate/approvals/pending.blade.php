@@ -63,7 +63,7 @@
                             <div class="col-md-12">
 
 
-                                <div class="card-body">
+                                <div class="card card-body">
 
                                     {{-- <h4 class="header-title">Buttons example</h4>
                                     <p class="sub-header font-13">
@@ -394,8 +394,7 @@
                                         data[index].post_date,
                                         data[index].account_no,
                                         `
-                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}"
-                                                                                target="_blank">
+                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}">
                                                                                 View Details>>>
                                                                             </a>
                                                                             `

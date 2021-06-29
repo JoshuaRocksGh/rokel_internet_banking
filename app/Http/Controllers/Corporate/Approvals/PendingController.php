@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Corporate\Approvals;
 
+use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class PendingController extends Controller
 {
@@ -26,12 +32,75 @@ class PendingController extends Controller
 
         $mandate = session()->get('userMandate');
         // return $mandate;
+
+        // Alert::error('', 'Not Authorized To Approve Pending Request');
+        // return back();
+        // $error = alert()->error('ErrorAlert','Lorem ipsum dolor sit amet.');
+
+        // return $errorMessage ;
+
         if ($mandate == 'A') {
 
             return view('pages.corporate.approvals.pending_transfer_details', [ 'request_id'=> $request_id, 'customer_no'=> $customer_no , 'mandate' => $mandate]);
 
         }else {
-            return ('Not Authorized To Approve Pendding Request');
+            Alert::error('', 'Not Authorized To Approve Pending Request');
+            return back();
         }
+    }
+
+        public function pending_request_details(Request $request) {
+
+
+            return ('hello');
+
+        // $validator = Validator::make($request->all(), [
+        //     'customer_no' => 'required' ,
+        //     'request_id' => 'required'
+
+        // ]);
+
+        return $request->query('customer');
+
+        $base_response = new BaseResponse();
+
+        // if ($validator->fails()) {
+
+        //     return $base_response->api_response('500', $validator->errors(), NULL);
+        // };
+        // return $request;
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $data = [
+            "customer_no" => $request->customer ,
+            "request_id" => $request->request
+
+        ];
+
+        // return $data ;
+        try {
+
+            $response = Http::get("localhost/laravel/cib_api/public/api/get-detail-pending-request-api", $data);
+
+            return $response;
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+
+        }
+
     }
 }

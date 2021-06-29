@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "maatwebsite/excel": "^3.1",
-        "realrashid/sweet-alert": "^3.2",
+        "realrashid/sweet-alert": "^4.0",
         "stevebauman/location": "^6.1",
         "yajra/laravel-oci8": "^8.4"
     },
