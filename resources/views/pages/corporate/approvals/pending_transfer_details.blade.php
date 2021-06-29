@@ -350,22 +350,42 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function() {
-            let customer = @json($customer_no);
-            let request = @json($request_id);
-            let mandate = @json($mandate)
+            function account_mandate(){
 
-            console.log(customer);
-            console.log(request);
-            console.log(mandate);
-            $.ajax({
-                'type' : 'POST',
-                'url' : '',
-                'datatype' : 'application/json',
-                succes: function(response){
-                    console.log(response);
-                }
-            })
+                var customer = @json($customer_no);
+                var request = @json($request_id);
+                var mandate = @json($mandate)
+
+                console.log(customer);
+                console.log(request);
+                console.log(mandate);
+
+                $.ajax({
+                    type : 'GET',
+                    url : "pending-request-details-api",
+                    datatype : 'application/json',
+                    'data' : {
+                        'customer_no' : customer ,
+                        'request_id' : request
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    succes: function(response){
+                        console.log(response);
+                    }
+                })
+            }
+
+
+        $(document).ready(function() {
+
+            setTimeout(function() {
+                account_mandate();
+
+            },700);
+
+
          });
     </script>
 @endsection
