@@ -75,7 +75,7 @@
 
                                     <table id="datatable-buttons"
                                         class="table dt-responsive nowrap w-100 pending_transaction_request "
-                                        style="zoom: 0.9;">
+                                        style="zoom: 1;">
                                         <thead>
                                             <tr>
                                                 <th>Req-Type</th>
