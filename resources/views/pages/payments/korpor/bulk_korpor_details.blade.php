@@ -80,6 +80,90 @@
             </div>
             </div>
 
+            
+            <!-- Modal -->
+            <div class="modal fade" id="add_korpor" tabindex="-1" role="dialog" aria-labelledby="AddKorporModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AddKorporModalLabel">BULK E-KORPOR UPLOAD</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form id="" action="#" method="post" enctype="multipart/form-data" autocomplete="off" aria-autocomplete="off">
+                                <div class="form-group">
+                                  <label for="exampleFormControlFile1">Beneficiary Name</label>
+                                  <input type="text" name="add_name" id="add_name" class="form-control-file" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Telephone Number</label>
+                                    <input type="file" name="add_phone" id="add_phone" class="form-control-file" >
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="exampleFormControlFile1">Amount (SLL)</label>
+                                    <input type="text" name="add_amount" id="add_amount" class="form-control-file" >
+                                  </div>
+
+                              </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+             
+            <!-- Modal -->
+            <div class="modal fade" id="edir_korpor" tabindex="-1" role="dialog" aria-labelledby="AddKorporModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="EditKorporModalLabel">BULK E-KORPOR UPLOAD</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="#" method="post" enctype="multipart/form-data" autocomplete="off" aria-autocomplete="off">
+                                <div class="form-group">
+                                  <label for="exampleFormControlFile1">Beneficiary Name</label>
+                                  <input type="text" name="edit_name" id="edit_name" class="form-control-file" >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Telephone Number</label>
+                                    <input type="file" name="edit_phone" id="edit_phone" class="form-control-file" >
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="exampleFormControlFile1">Amount (SLL)</label>
+                                    <input type="text" name="edit_amount" id="edit_amount" class="form-control-file" >
+                                  </div>
+
+                              </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
         </div>
         <br>
         <div class="row">
@@ -116,9 +200,9 @@
                                         <thead>
                                             <tr class="bg-secondary text-white">
                                                 <th>No</th>
-                                                <th>From Account</th>
-                                                <th>Batch NO</th>
-                                                <th>Initiated By</th>
+                                                <th>Name</th>
+                                                <th>Phone</th>
+                                                <th>Amount</th>
                                                 <th>Date</th>
                                                 <th>Action</th>
                                             </tr>
@@ -386,7 +470,7 @@
 
                     $.ajax({
                         type: "GET",
-                        url: "get-bulk-korpor-upload-list-api",
+                        url: "get-bulk-korpor-upload-detail-list-api",
                         datatype: "application/json",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -406,13 +490,16 @@
 
                                     table.row.add([
                                         count,
-                                        data[index].account_no,
-                                        data[index].batch_no,
-                                        data[index].user_id,
+                                        data[index].name,
+                                        data[index].phone,
+                                        data[index].amount,
                                         '09-12-2021',
                                         `
-                                        <a href="bulk-korpor_detail?customer_no=${data[index].customer_no}&batch_no=${data[index].batch_no}">
-                                            <button class="btn btn-sm btn-info">View More</button>
+                                          <button class="btn btn-sm btn-info" data-korpor="${JSON.stringify(data[index])}" data-toggle="modal" data-target="#edit_korpor">Edit</button>
+                                        
+                                        &nbsp;
+                                        <a href="#">
+                                            <button class="btn btn-sm btn-danger">Delete</button>
                                         </a>
                                         `
 
