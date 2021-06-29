@@ -362,7 +362,7 @@
 
                 $.ajax({
                     type : 'GET',
-                    url : "pending-request-details-api",
+                    url : "../../pending-request-details-api",
                     datatype : 'application/json',
                     'data' : {
                         'customer_no' : customer ,

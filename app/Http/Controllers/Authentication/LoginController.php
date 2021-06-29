@@ -187,7 +187,7 @@ class LoginController extends Controller
                 'message' => (string) $e->getMessage()
             ]);
 
-            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', 'CONNECTION SERVER ERROR',  NULL); // return API BASERESPONSE
 
 
 
