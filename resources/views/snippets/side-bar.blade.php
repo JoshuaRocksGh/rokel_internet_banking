@@ -208,25 +208,28 @@
                             </li>
 
                             <li>
-                                <a href="#budgeting" data-toggle="collapse">
-                                    {{-- <i class="mdi mdi-book-account-outline"></i> --}}
-                                    <span> Cardless </span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse" id="budgeting">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="{{ url('cardless-payment') }}">Cardless</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ url('bulk-korpor') }}">Bulk E-Korpor</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a href="{{ url('cardless-payment') }}">Cardless</a>
                             </li>
 
                             <li>
-                                <a href="{{ url('e-korpor') }}">E-Korpor</a>
+                                {{-- <a href="{{ url('e-korpor') }}">E-Korpor</a> --}}
+                                <li>
+                                    <a href="#korpor" data-toggle="collapse">
+                                        {{-- <i class="mdi mdi-book-account-outline"></i> --}}
+                                        <span> E-Korpor </span>
+                                        <span class="menu-arrow"></span>
+                                    </a>
+                                    <div class="collapse" id="korpor">
+                                        <ul class="nav-second-level">
+                                            <li>
+                                                <a href="{{ url('e-korpor') }}">E-Korpor</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('bulk-korpor') }}">Bulk E-Korpor</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                             </li>
                             <li>
                                 <a href="{{ url('utility-payment') }}">Utilities</a>
@@ -484,7 +487,7 @@
                                 <a href="{{ url('create-originator') }}">Create Originator</a>
                             </li>
                             <li>
-                                <a href="{{ url('set-transaction') }}">Set Transaction Limits</a>
+                                <a href="{{ url('set-transaction-limit') }}">Set Transaction Limits</a>
                             </li>
                             <li>
                                 <a href="{{ url('update-company-info') }}">Update Company Information</a>
