@@ -347,25 +347,40 @@
     </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            let customer = @json($customer_no);
-            let request = @json($request_id);
-            let mandate = @json($mandate)
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-            console.log(customer);
-            console.log(request);
-            console.log(mandate);
-            $.ajax({
-                'type' : 'POST',
-                'url' : '',
-                'datatype' : 'application/json',
-                succes: function(response){
-                    console.log(response);
-                }
-            })
+    <script>
+            function account_mandate() {
+
+                var customer = @json($customer_no);
+                var request = @json($request_id);
+                var mandate = @json($mandate)
+
+                console.log(customer);
+                console.log(request);
+                console.log(mandate);
+
+                $.ajax({
+                    type : 'GET',
+                    url : "../../pending-request-details-api?customer_no=" + customer + "&request_id=" + request ,
+                    datatype : 'application/json',
+                    succes: function(){
+                        {{--  console.log(response);  --}}
+                        alert('Successful');
+                    }
+                })
+            }
+
+
+        $(document).ready(function() {
+
+            setTimeout(function() {
+                account_mandate();
+
+            },700);
+
+
          });
     </script>
 @endsection

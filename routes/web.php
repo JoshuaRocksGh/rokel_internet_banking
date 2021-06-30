@@ -228,6 +228,7 @@ Route::get('/approvals-pending', [PendingController::class, 'approvals_pending']
 Route::get('/get-pending-requests', [GeneralFunctionsFunctionsController::class, 'get_pending_requests'])->name('get-pending-requests');
 Route::get('/approvals-pending-transfer-details', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details');
 Route::get('/approvals-pending-transfer-details/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details/{request_id}/{customer_no}');
+Route::get('/pending-request-details-api' , [PendingController::class, 'pending_request_details'])->name('pending-request-details-api');
 
 
 // BRANCH LOCATOR LIST VIEW
@@ -396,16 +397,16 @@ Route::get('create-originator',[settingsController::class,'create_originator'])-
 //route to hit the create originator endpoint
 Route::post('create-originator-api',[settingsController::class,'create_originator_api'])->name('create-originator-api');
 
+// display the update company info screen
+Route::get('update-company-info', [settingsController::class, 'update_company_info'])->name('update-company-info');
+
+//route to display the forgot transaction pin screen//route to hit the set transaction limits endpoint
+Route::get('set-transaction-limits-api',[settingsController::class,'set_transaction_limits_api'])->name('set-transaction-limits-api');
+
 //route to hit the set transaction limits endpoint
 Route::get('set-transaction-limits-api',[settingsController::class,'set_transaction_limits_api'])->name('set-transaction-limits-api');
 
-//route to display the forgot transaction pin screen
-Route::get('set-transaction-limit', [settingsController::class, 'set_transaction_limit'])->name('set-transaction-limit');
 
-//route to display the update company info screen
-Route::get('update-company-info', [settingsController::class, 'update_company_info'])->name('update-company-info');
-
-//route to display the forgot transaction pin screen
 Route::get('forgot-transaction-pin', [settingsController::class, 'forgot_transaction_pin'])->name('forgot-transaction-pin');
 
 //route to display the lc origination of the trade finance screen

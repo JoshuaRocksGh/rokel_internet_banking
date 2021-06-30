@@ -17,7 +17,8 @@ class FunctionsController extends Controller
     {
         $customerNumber = $request->query('customerNumber');
         $requestStatus = $request->query('requestStatus');
-        // return $request;
+
+        // return ('Welcome');
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -29,9 +30,9 @@ class FunctionsController extends Controller
             "userId"    => $userID
         ];
 
-        // return env('CIB_API') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus";
+        // echo (env('CIB_API_BASE_URL') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus");
 
-        $response = Http::get(env('CIB_API') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus");
+        $response = Http::get(env('CIB_API_BASE_URL') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus");
 
         // return $response;
         // return $response->status();

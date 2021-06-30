@@ -21,11 +21,23 @@ class ApiBaseResponse
 
             if ($result->responseCode == '000') {
 
-                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+                return response()->json([
+                    'responseCode' => $result->responseCode,
+                    'message' => $result->message,
+                    'data' => $result->data
+                ], 200);
+
+                // return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
             } else {   // API responseCode is not 000
 
-                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+                return response()->json([
+                    'responseCode' => $result->responseCode,
+                    'message' => $result->message,
+                    'data' => $result->data
+                ], 200);
+
+                // return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
             }
         } else { // API response status code not 200
