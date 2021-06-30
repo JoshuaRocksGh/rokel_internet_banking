@@ -222,9 +222,9 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <b class=" col-md-4 text-primary">End Date &nbsp; <span
-                                                                class="text-danger">*</span></b>
-
+                                                        <b class=" col-md-4 text-primary">End Date</b>
+                                                        {{-- &nbsp; <span
+                                                        class="text-danger">*</span> --}}
 
                                                                 <input type="date" class="form-control col-md-8" id="so_end_date" required>
 
