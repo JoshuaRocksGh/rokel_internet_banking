@@ -74,6 +74,7 @@ use App\Http\Controllers\Transfers\OwnAccountController;
 use App\Http\Controllers\Transfers\QR\GenerateQRController;
 use App\Http\Controllers\Transfers\SameBankController;
 use App\Http\Controllers\Transfers\SchedulePayment\SchedulePaymentController;
+use App\Http\Controllers\Transfers\StandingOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -131,6 +132,9 @@ Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('
 Route::get('/get-my-accounts', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-accounts');
 Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
+
+//Standing order page
+Route::get('standing-order',[StandingOrderController::class,'display_standing_order'])->name('standing-order');
 
 Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submit_own_account_transfer'])->name('submit-own-account-transfer');
 
@@ -394,16 +398,16 @@ Route::get('create-originator',[settingsController::class,'create_originator'])-
 //route to hit the create originator endpoint
 Route::post('create-originator-api',[settingsController::class,'create_originator_api'])->name('create-originator-api');
 
+// display the update company info screen
+Route::get('update-company-info', [settingsController::class, 'update_company_info'])->name('update-company-info');
+
+//route to display the forgot transaction pin screen//route to hit the set transaction limits endpoint
+Route::get('set-transaction-limits-api',[settingsController::class,'set_transaction_limits_api'])->name('set-transaction-limits-api');
+
 //route to hit the set transaction limits endpoint
 Route::get('set-transaction-limits-api',[settingsController::class,'set_transaction_limits_api'])->name('set-transaction-limits-api');
 
-//route to display the forgot transaction pin screen
-Route::get('set-transaction-limit', [settingsController::class, 'set_transaction_limit'])->name('set-transaction-limit');
 
-//route to display the update company info screen
-Route::get('update-company-info', [settingsController::class, 'update_company_info'])->name('update-company-info');
-
-//route to display the forgot transaction pin screen
 Route::get('forgot-transaction-pin', [settingsController::class, 'forgot_transaction_pin'])->name('forgot-transaction-pin');
 
 //route to display the lc origination of the trade finance screen
@@ -457,6 +461,7 @@ Route::post('/transfer-to-beneficiary-api', [SameBankController::class, 'transfe
 Route::post('/transfer-to-same-bank-beneficiary-onetime-api', [SameBankController::class, 'one_time_beneficiary'])->name('transfer-to-same-bank-beneficiary-onetime-api');
 Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
+// Route::get('standing-order',[])
 
 // OTHER LOCAL BANK
 Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');
