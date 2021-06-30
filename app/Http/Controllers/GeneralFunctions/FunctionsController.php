@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class FunctionsController extends Controller
 {
 
+
     public function baseResponseApi($response)
     {
 
@@ -396,6 +397,7 @@ class FunctionsController extends Controller
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+        $api_headers = session()->get('headers');
 
         $data = [
             "authToken" => $authToken,
@@ -407,7 +409,39 @@ class FunctionsController extends Controller
         // return $data;
         // return env('API_BASE_URL') ."account/getAccounts";
 
-        $response = Http::get(env('API_BASE_URL') . "/loans/purpose", $data);
+        // $response = Http::get(env('API_BASE_URL') . "/loans/purpose", $data);
+        // return $data;
+        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "/loans/purpose", $data);
+
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+
+        // return $response;
+        // return $response->status();
+    }
+
+    public function get_standing_order_frequencies()
+    {
+        // return 'kjsdf';
+
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $api_headers = session()->get('headers');
+
+        $data = [
+            "authToken" => $authToken,
+            "userId"    => $userID
+        ];
+
+        $base_response = new BaseResponse();
+
+        // return $data;
+        // return env('API_BASE_URL') ."account/getAccounts";
+
+        // $response = Http::get(env('API_BASE_URL') . "/loans/purpose", $data);
+        // return $data;
+        $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "/transfers/standingOrderFrequencies", $data);
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
