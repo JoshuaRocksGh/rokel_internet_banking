@@ -80,7 +80,7 @@
             </div>
             </div>
 
-            
+
             <!-- Modal -->
             <div class="modal fade" id="add_korpor" tabindex="-1" role="dialog" aria-labelledby="AddKorporModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -97,17 +97,17 @@
                             <form id="" action="#" method="post" enctype="multipart/form-data" autocomplete="off" aria-autocomplete="off">
                                 <div class="form-group">
                                   <label for="exampleFormControlFile1">Beneficiary Name</label>
-                                  <input type="text" name="add_name" id="add_name" class="form-control-file" >
+                                  <input type="text" name="add_name" id="add_name" class="form-control" >
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Telephone Number</label>
-                                    <input type="file" name="add_phone" id="add_phone" class="form-control-file" >
+                                    <input type="text" name="add_phone" id="add_phone" class="form-control" >
                                   </div>
 
                                   <div class="form-group">
                                     <label for="exampleFormControlFile1">Amount (SLL)</label>
-                                    <input type="text" name="add_amount" id="add_amount" class="form-control-file" >
+                                    <input type="text" name="add_amount" id="add_amount" class="form-control" >
                                   </div>
 
                               </form>
@@ -122,9 +122,9 @@
             </div>
             </div>
 
-             
+
             <!-- Modal -->
-            <div class="modal fade" id="edir_korpor" tabindex="-1" role="dialog" aria-labelledby="AddKorporModalLabel" aria-hidden="true">
+            <div class="modal fade" id="edit_korpor" tabindex="-1" role="dialog" aria-labelledby="AddKorporModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -139,17 +139,19 @@
                             <form action="#" method="post" enctype="multipart/form-data" autocomplete="off" aria-autocomplete="off">
                                 <div class="form-group">
                                   <label for="exampleFormControlFile1">Beneficiary Name</label>
-                                  <input type="text" name="edit_name" id="edit_name" class="form-control-file" >
+                                  <input type="text" name="edit_name" id="edit_name" class="form-control" >
+                                  <input type="hidden" name="edit_id" id="edit_id" class="form-control" >
+                                  <input type="hidden" name="edit_customer_no" id="edit_customer_no" class="form-control" >
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1">Telephone Number</label>
-                                    <input type="file" name="edit_phone" id="edit_phone" class="form-control-file" >
+                                    <input type="text" name="edit_phone" id="edit_phone" class="form-control" >
                                   </div>
 
                                   <div class="form-group">
                                     <label for="exampleFormControlFile1">Amount (SLL)</label>
-                                    <input type="text" name="edit_amount" id="edit_amount" class="form-control-file" >
+                                    <input type="text" name="edit_amount" id="edit_amount" class="form-control" >
                                   </div>
 
                               </form>
@@ -158,7 +160,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" id="edit_save_changes_btn" class="btn btn-primary">Save changes</button>
                 </div>
                 </div>
             </div>
@@ -205,6 +207,7 @@
                                                 <th>Amount</th>
                                                 <th>Date</th>
                                                 <th>Action</th>
+                                                <th>data</th>
                                             </tr>
 
                                         </thead>
@@ -467,6 +470,9 @@
                     var table = $('.pending_transaction_request').DataTable();
                     var nodes = table.rows().nodes();
 
+                  //Remove the six coulumn and redraw
+                    table.column(6).visible( false, false );
+                    table.columns.adjust().draw( false );
 
                     $.ajax({
                         type: "GET",
@@ -495,13 +501,14 @@
                                         data[index].amount,
                                         '09-12-2021',
                                         `
-                                          <button class="btn btn-sm btn-info" data-korpor="${JSON.stringify(data[index])}" data-toggle="modal" data-target="#edit_korpor">Edit</button>
-                                        
+                                          <button class="btn btn-sm btn-info edit_korpor_btn" onclick="GetKorporDetails(this)" data-korpor="${JSON.stringify(data[index])}" data-toggle="modal" data-target="#edit_korpor">Edit</button>
+
                                         &nbsp;
                                         <a href="#">
                                             <button class="btn btn-sm btn-danger">Delete</button>
                                         </a>
-                                        `
+                                        `,
+                                        data[index]
 
 
                                     ]).draw(false)
@@ -524,13 +531,92 @@
 
                 }
 
+                function GetKorporDetails(data)
+                {
+                    var dataRow = $('.pending_transaction_request').DataTable().row($(data).closest('tr')).data();
+
+                    $('#edit_id').val('');
+                    $('#edit_customer_no').val('');
+                    $('#edit_name').val('');
+                    $('#edit_name').val('');
+                    $('#edit_name').val('');
+
+                    let korpor_detail = dataRow[6]
+
+                    $('#edit_id').val(korpor_detail.id);
+                    $('#edit_customer_no').val(korpor_detail.customer_no);
+                    $('#edit_name').val(korpor_detail.name);
+                    $('#edit_phone').val(korpor_detail.phone);
+                    $('#edit_amount').val(korpor_detail.amount);
+
+                    {{--  alert(dataRow[0]);  --}}
+                    console.log(dataRow[6]);
+                }
+
                 $(document).ready(function() {
 
+                    $('#edit_save_changes_btn').click(function(){
+                        let id = $('#edit_id').val();
+                        let customer_no = $('#edit_customer_no').val();
+                        let name = $('#edit_name').val();
+                        let phone = $('#edit_phone').val();
+                        let amount = $('#edit_amount').val();
+
+
+                        if(('' == amount.trim())  || ('' == phone.trim())  || ('' == amount.trim())  ) {
+                            alert('erroor')
+                            return false;
+                        }else{
+                            alert("klsdjlkfs")
+
+                            let data = {
+                                id: id,
+                                customer_no: customer_no,
+                                name: name,
+                                phone: phone,
+                                amount: amount
+                            }
+
+                            $.ajax({
+                                type: "GET",
+                                url: "update-korpor-upload-detail-list-api",
+                                datatype: "application/json",
+                                data: data,
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success: function(response) {
+                                    console.log(response);
+                                    if (response.responseCode == '000') {
+
+                                        get_corporate_requests()
+
+                                    } else {
+
+                                    }
+
+                                },
+                                error: function(xhr, status, error) {
+
+                                }
+
+                            })
+
+                        }
+
+
+                    })
 
                     $('.transfer_tab_btn').click(function() {
                         get_corporate_requests()
                     })
                     get_corporate_requests()
+
+                    $('button.edit_korpor_btn').click(function(){
+                        alert('hi');
+                        var one_korpor = JSON.parse($(this).data('korpor'))
+                        console.log(one_korpor)
+                    })
                 })
 
             </script>

@@ -192,6 +192,7 @@ Route::get('/bulk-korpor',[KorporController::class,'bulk_korpor'])->name('bulk-k
 Route::get('/bulk-korpor_detail',[KorporController::class,'bulk_korpor_detail'])->name('bulk-korpor_detail');
 Route::get('/get-bulk-korpor-upload-list-api',[BulkKorporController::class,'get_bulk_korpor_upload_list'])->name('get-bulk-korpor-upload-list-api');
 Route::get('/get-bulk-korpor-upload-detail-list-api',[BulkKorporController::class,'get_bulk_korpor_upload_detail_list'])->name('get-bulk-korpor-upload-detail-list-api');
+Route::post('/update-korpor-upload-detail-list-api',[BulkKorporController::class,'update_bulk_korpor_upload_detail_list'])->name('update-korpor-upload-detail-list-api');
 
 
 

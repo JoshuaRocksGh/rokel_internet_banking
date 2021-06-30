@@ -36,4 +36,28 @@ class BulkKorporController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
+
+    public function update_bulk_korpor_upload_detail_list(Request $request)
+    {
+
+        return $request;
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $customerNumber = session()->get('customerNumber');
+
+        $data = [
+            'id' => $request->id,
+            'customer_no' => $request->customer_no,
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'amount' => $request->amount,
+        ];
+
+        $response = Http::post(env('CIB_API_BASE_URL') . "update-bulk-korpor-upload-detail-list-api?customer_no=2343&status=P&batch_no=1624901812", $request);
+
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
 }
