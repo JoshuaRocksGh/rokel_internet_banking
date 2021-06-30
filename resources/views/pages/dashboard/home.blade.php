@@ -172,13 +172,60 @@
                                     </p>
 
                                 </div>
+
                                 <div class="tab-pane show " id="profile">
-                                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                    <p class="mb-0">Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+
+                                    <p id="p_fixed_deposit_account">
+
+                                        <div class="table-responsive table-bordered my_investment_display_area">
+                                            <table id="" class="table mb-0 ">
+                                                <thead>
+                                                    <tr class="bg-info text-white ">
+                                                        <td> <b> Account No </b> </td>
+                                                        <td> <b> Deal Amount </b> </td>
+                                                        <td> <b> Tunure </b> </td>
+                                                        <td> <b> FixedInterestRate </b> </td>
+                                                        <td> <b> Rollover </b> </td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="fixed_deposit_account">
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end table-responsive -->
+
+                                    </p>
+
                                 </div>
+
                                 <div class="tab-pane" id="messages">
-                                    <p>Vakal text here dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-                                    <p class="mb-0">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                    <p id="p_loans_display">
+
+                                        <div class="table-responsive table-bordered loans_display_area">
+                                            <table id="" class="table mb-0 ">
+                                                <thead>
+                                                    <tr class="bg-info text-white ">
+                                                        <td> <b> Facility No </b> </td>
+                                                        <td> <b> Description </b> </td>
+                                                        <td> <b> Cur </b> </td>
+                                                        <td> <b> Amount Granted </b> </td>
+                                                        <td> <b> Loan Bal </b> </td>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="loans_display">
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- end table-responsive -->
+
+                                    </p>
+
                                 </div>
                             </div>
                         </div> <!-- end card-box-->
@@ -1034,14 +1081,18 @@
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
         <script type="text/javascript">
+            var i_have = 93333333
+            var i_owe = 1458649
+            var i_invest_total = 11111111
+
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ['Current & Savings', 'Investments', 'Loans'],
+                    labels: ['I HAVE', 'Investments', 'I OWE'],
                     datasets: [{
                         label: 'MY ACCOUNTS',
-                        data: [93333333, 145849, 674337],
+                        data: [i_have, i_owe, i_invest_total],
                         backgroundColor: [
 
                             'rgb(75,192,192)',
@@ -1189,6 +1240,11 @@
                             if (response.data.length > 0) {
                                 console.log(response.data.length);
                                 $.each(data, function(index) {
+
+                                let invest_amount =  data[index].dealAmount
+                                invest_amount = invest_amount.replace(/,/g, "");
+                                i_invest_total += parseFloat(invest_amount)
+
                                     $('.fixed_deposit_account').append(
                                         `<tr>
                                             <td><b> ${data[index].sourceAccount} </b></td>
@@ -1207,6 +1263,9 @@
                                 $('.my_investment_no_data_found').hide()
                                 $('.my_investment_display_area').show()
                             } else {
+
+                                $('#p_fixed_deposit_account').html(`<h2 class="text-center">No Investment</h2>`)
+
                                 $('.my_investment_loading_area').hide()
                                 $('.my_investment_error_area').hide()
                                 $('.my_investment_no_data_found').show()
@@ -1267,6 +1326,7 @@
                                 localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(/,/g, "");
 
 
+
                                 i_have_total += parseFloat(localEquivalentAvailableBalance)
                                 $('.casa_list_display').append(
                                     `<tr>
@@ -1281,7 +1341,11 @@
                                 )
                             })
 
+                            {{--  SETTING TABLE VALUES  --}}
                             $('.i_have_amount').text(formatToCurrency(parseFloat(i_have_total)));
+
+                            {{--  SETTING GRAPH VALUE  --}}
+                            i_have = i_have_total
 
 
 
@@ -1343,25 +1407,28 @@
                             var data = response.data;
 
                             if(!response.data){
-                                alert(response.data)
-                                return false
 
+                                return false
                                 $('.loan_no_data_found').show()
                                 $(".loans_display_area").hide()
                             }else{
-                                $.each(data, function(index) {
-                                    $('.loans_display').append(
-                                        `
-                                    <tr>
-                                        <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                        <td> <b> ${data[index].description} </b>  </td>
-                                        <td> <b> ${data[index].isoCode}  </b>  </td>
-                                        <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
-                                        <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
-                                    </tr>`
-                                    )
+                                if(response.data == null){
+                                    $('#p_loans_display').html(`<h2 class="text-center">No Loan</h2>`)
+                                }else{
+                                    $.each(data, function(index) {
+                                        $('.loans_display').append(
+                                            `
+                                        <tr>
+                                            <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                            <td> <b> ${data[index].description} </b>  </td>
+                                            <td> <b> ${data[index].isoCode}  </b>  </td>
+                                            <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                            <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
+                                        </tr>`
+                                        )
 
-                                })
+                                    })
+                                }
 
 
                             }

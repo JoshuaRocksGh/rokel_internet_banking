@@ -248,6 +248,60 @@
 @section('scripts')
 
     <script>
+
+
+        function login(email, password)
+        {
+            $.ajax({
+                "type": "POST",
+                "url": "login",
+                datatype: "application/json",
+                data: {
+                    "user_id": email,
+                    "password": password,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                success: function(response) {
+                    console.log(response);
+                    var res = response.data
+                    $('#submit').attr('disabled', false);
+
+                    if (response.responseCode == "000") {
+                        if (response.data.firstTimeLogin == true) {
+                            window.location = 'change-password';
+                        } else {
+                            window.location = 'home';
+                        }
+
+
+                    } else {
+                        $('#spinner').hide()
+                        $('#spinner-text').hide()
+
+                        $('#log_in').show()
+                        $('#error_message').text(response.message)
+                        $('#failed_login').show()
+
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#submit').attr('disabled', false);
+                    $('#spinner').hide()
+                    $('#spinner-text').hide()
+
+                    $('#log_in').show()
+                    $('#error_message').text("Connection Error")
+                    $('#failed_login').show()
+
+                    console.log( 'Ajax request failed...' );
+                    setTimeout ( function(){ login(email, password) }, $.ajaxSetup().retryAfter )
+                }
+            })
+        }
+
         $(document).ready(function() {
 
             $('#failed_login').hide(),
@@ -267,52 +321,12 @@
                         $('#submit').attr('disabled', true);
 
                     //var show_error = $('#failed_login').show();
-                    $.ajax({
-                        "type": "POST",
-                        "url": "login",
-                        datatype: "application/json",
-                        data: {
-                            "user_id": email,
-                            "password": password,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
 
-                        success: function(response) {
-                            console.log(response);
-                            var res = response.data
-                            $('#submit').attr('disabled', false);
+                    login(email, password)
 
-                            if (response.responseCode == "000") {
-                                if (response.data.firstTimeLogin == true) {
-                                    window.location = 'change-password';
-                                } else {
-                                    window.location = 'home';
-                                }
-
-
-                            } else {
-                                $('#spinner').hide()
-                                $('#spinner-text').hide()
-
-                                $('#log_in').show()
-                                $('#error_message').text(response.message)
-                                $('#failed_login').show()
-
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            $('#submit').attr('disabled', false);
-                            $('#spinner').hide()
-                            $('#spinner-text').hide()
-
-                            $('#log_in').show()
-                            $('#error_message').text("Connection Error")
-                            $('#failed_login').show()
-                        }
-                    })
                 })
+
+
         })
 
     </script>
