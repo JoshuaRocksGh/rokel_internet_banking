@@ -572,3 +572,6 @@ Route::get('get-loan-frequencies-api', [FunctionsController::class, 'get_loan_fr
 
 //route to return loan purposes
 Route::get('get-loan-purpose-api',[FunctionsController::class,'get_loan_purpose'])->name('get-loan-purpose-api');
+
+//route to return standing order frequencies
+Route::get('get-standing-order-frequencies-api',[FunctionsController::class,'get_standing_order_frequencies'])->name('get-standing-order-frequencies-api');

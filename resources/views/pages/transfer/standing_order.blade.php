@@ -131,7 +131,7 @@
 
 
                                                 </div> --}}
-                                                <div class="form-group row">
+                                                {{-- <div class="form-group row">
 
                                                     <b class="col-md-5 text-primary"> Beneficiary Type &nbsp; <span class="text-danger">*</span></b>
 
@@ -147,16 +147,19 @@
 
                                                     </div>
 
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="form-group row select_saved_beneficiary">
 
-                                                    <b class="col-md-4 text-primary"> Saved Beneficiary &nbsp; <span
+                                                    <b class="col-md-4 text-primary">Beneficiary &nbsp; <span
                                                             class="text-danger">*</span></b>
 
 
                                                             <select class="form-control col-md-8" id="saved_beneficiary" placeholder="Select Pick Up Branch" required>
                                                                 <option value="">--- Select Saved Beneficiary ---</option>
+                                                                <option
+                                                            value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
+                                                            Saving Account~001023468976001~GHS~2000</option>
                                                             </select>
                                                             <br>
 
@@ -219,9 +222,9 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <b class=" col-md-4 text-primary">End Date &nbsp; <span
-                                                                class="text-danger">*</span></b>
-
+                                                        <b class=" col-md-4 text-primary">End Date</b>
+                                                        {{-- &nbsp; <span
+                                                        class="text-danger">*</span> --}}
 
                                                                 <input type="date" class="form-control col-md-8" id="so_end_date" required>
 
@@ -234,8 +237,9 @@
                                                                 class="text-danger">*</span></b>
 
 
-                                                                <select class="form-control col-md-8 frequency" id="beneficiary_frequency" placeholder="Select Pick Up Branch" required>
+                                                                <select class="form-control col-md-8 so_frequency" id="beneficiary_frequency" placeholder="Select Pick Up Branch" required>
                                                                     <option value="">---Select Frequency---</option>
+                                                                    <option value="Joshua">Joshua </option>
                                                                 </select>
 
                                                     </div>
@@ -601,6 +605,8 @@
 
                                 </div>
 
+
+
                                 <div class="row" id="transaction_summary">
 
 
@@ -773,6 +779,8 @@
 
                                 </div>
 
+
+
                                 <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <br><br>
@@ -801,14 +809,22 @@
 
                                         <hr>
                                         <div class="row">
-                                            <h6 class="col-md-5">Recipient Name:</h6>
+                                            <h6 class="col-md-5">Account Name:</h6>
                                             <h6 class="text-primary display_to_account_name col-md-7"></h6>
 
-                                            <h6 class="col-md-5">Recipient Number:</h6>
-                                            <h6 class="text-primary display_to_bank_name col-md-7"></h6>
-
-                                            <h6 class="col-md-5">Recipient Network:</h6>
+                                            <h6 class="col-md-5">Account Number:</h6>
                                             <h6 class="text-primary display_to_account_no col-md-7"></h6>
+
+                                            <h6 class="col-md-5">Start Date:</h6>
+                                            <h6 class="text-primary display_so_start_date col-md-7"></h6>
+
+                                            <h6 class="col-md-5">End Date:</h6>
+                                            <h6 class="text-primary display_so_end_date col-md-7"></h6>
+
+                                            <h6 class="col-md-5">Frequency:</h6>
+                                            <h6 class="text-primary display_frequency_so col-md-7"></h6>
+                                            {{-- <h6 class="col-md-5">Account Currency:</h6>
+                                            <h6 class="text-primary display_to_account_currency col-md-7"></h6> --}}
 
                                             {{--  <h6 class="col-md-5">Account Currency:</h6>
                                             <h6 class="text-primary display_to_account_currency col-md-7"></h6>  --}}
@@ -845,6 +861,189 @@
 
                                     </div>
 
+                                </div>
+
+                                <div class="receipt">
+                                    <div class="container card card-body">
+
+                                        <div class="container">
+                                            <div class="">
+                                                <div class="col-md-12 col-md-offset-3 body-main">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
+                                                                    src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
+                                                                    style="zoom: 0.6" /> </div>
+                                                            <div class="col-md-4"></div>
+                                                            <div class="col-md-4 text-right">
+                                                                <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
+                                                                </h4>
+                                                                <p>25-27 Siaka Stevens St</p>
+                                                                <p> Freetown, Sierra Leone</p>
+                                                                <p>rokelsl@rokelbank.sl</p>
+                                                                <p>(+232)-76-22-25-01</p>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="page-header">
+                                                            <h2>Transfer Receipt </h2>
+                                                        </div>
+                                                        <br>
+                                                        {{-- <div class="row">
+                                                            <div class="col-md-12 text-center">
+                                                                <h2>INVOICE</h2>
+                                                                <h5>04854654101</h5>
+                                                            </div>
+                                                        </div> --}}
+                                                        <br />
+                                                        {{-- <div class="table-responsive">
+                                                            <table class="table mb-0">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th><h5>Description</h5></th>
+                                                                        <th><h5>Further Details</h5></th>
+                                                                        <th><h5>Amount</h5></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="col-md-9">
+                                                                            From Account Number<br>
+                                                                            004004110449140121
+                                                                        </td>
+                                                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 50,000 </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="col-md-9">
+                                                                            To Account Number<br>
+                                                                            004004110445350137
+                                                                        </td>
+                                                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 5,200 </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="col-md-9">Category Type</td>
+                                                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 25,000 </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="col-md-9">Purpose of Transfer</td>
+                                                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 2,200 </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="col-md-9"> Transfer Amount</td>
+                                                                        <td class="text-right">
+                                                                            <p> <strong>Shipment and Taxes:</strong> </p>
+                                                                            <p> <strong>Total Amount: </strong> </p>
+                                                                            <p> <strong>Discount: </strong> </p>
+                                                                            <p> <strong>Payable Amount: </strong> </p>
+                                                                        </td>
+                                                                        <td>
+                                                                            <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 500 </strong> </p>
+                                                                            <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong> </p>
+                                                                            <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong> </p>
+                                                                            <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong> </p>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr style="color: #F81D2D;">
+                                                                        <td class="text-right">
+                                                                            <h4><strong>Total:</strong></h4>
+                                                                        </td>
+                                                                        <td class="text-left">
+                                                                            <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900 </strong></h4>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div> --}}
+                                                        <div class="table-responsive">
+                                                            <table class="table mb-0">
+                                                                <thead class="thead-light">
+                                                                    <tr>
+                                                                        {{-- <th>#</th> --}}
+                                                                        <th>Description</th>
+                                                                        <th>Further Details</th>
+                                                                        {{--  <th>Amount (<span id="receipt_currency"></span>)</th>  --}}
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        {{-- <th scope="row">1</th> --}}
+                                                                        <td>Transfer From Account Number</td>
+                                                                        <td><span id="from_account_receipt"></span></td>
+                                                                        {{--  <td></td>  --}}
+                                                                    </tr>
+                                                                    <tr>
+                                                                        {{-- <th scope="row">2</th> --}}
+                                                                        <td>Transfer To Account Number</td>
+                                                                        <td><span id="to_account_receipt"></span></td>
+                                                                        {{--  <td></td>  --}}
+                                                                    </tr>
+                                                                    <tr>
+                                                                        {{-- <th scope="row">3</th> --}}
+                                                                        <td>Transfer Category</td>
+                                                                        <td><span id="category_receipt"></span></td>
+                                                                        {{--  <td></td>  --}}
+                                                                    </tr>
+                                                                    <tr>
+                                                                        {{-- <th scope="row">3</th> --}}
+                                                                        <td>Transfer Purpose</td>
+                                                                        <td><span id="purpose_receipt"></span></td>
+                                                                        {{--  <td></td>  --}}
+                                                                    </tr>
+                                                                    <tr>
+                                                                        {{-- <th scope="row">3</th> --}}
+                                                                        <td>Amount</td>
+                                                                        {{--  <td></td>  --}}
+                                                                        <td><strong>(<span class="receipt_currency"></span>)<span id="amount_receipt"></span></strong>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        {{-- <th scope="row">3</th> --}}
+                                                                        <td>Transaction Fee </td>
+                                                                        {{--  <td></td>  --}}
+                                                                        <td><strong>(<span class="receipt_currency"></span>)15.00</strong></td>
+                                                                    </tr>
+                                                                    {{--  <tr>
+                                                                        <th scope="row">3</th>
+                                                                        <td><strong>Total Amount</strong> </td>
+                                                                        <td></td>
+                                                                        <td><strong><span
+                                                                                    id="total_amount_receipt"></span></strong>
+                                                                        </td>
+                                                                    </tr>  --}}
+                                                                    <tr>
+                                                                        {{-- <th scope="row">3</th> --}}
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div> <!-- end table-responsive-->
+                                                        <br>
+                                                        <div>
+                                                            <div class="col-md-12">
+                                                                <p><b>Date Posted :</b> {{ date('d F, Y') }}</p> <br /> <br />
+                                                                <p><b>Posted By : {{ session('userId') }}</b></p>
+                                                            </div>
+                                                        </div>
+                                                        <br><br>
+                                                        <div class="row">
+                                                            <div class="col-md-5"></div>
+                                                            <div class="col-md-2">
+                                                                  <button class="btn btn-light btn-rounded hide_on_print text-center"
+                                                                    type="button" onclick="window.print()">Print
+                                                                    Receipt
+                                                                </button>
+
+
+                                                            </div>
+                                                            <div class="col-md-5"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -892,19 +1091,96 @@
                             }).text(data[index].accountType + '~' + data[index].accountNumber +
                                 '~' + data[index].currency + '~' + data[index].availableBalance
                             ));
-                            $('#to_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountNumber + '~' + data[index].currency + '~' +
-                                    data[index].availableBalance
-                            }).text(data[index].accountType + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
-                            ));
+                            // $('#to_account').append($('<option>', {
+                            //     value: data[index].accountType + '~' + data[index]
+                            //         .accountNumber + '~' + data[index].currency + '~' +
+                            //         data[index].availableBalance
+                            // }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            //     '~' + data[index].currency + '~' + data[index].availableBalance
+                            // ));
 
                         });
                     },
 
                 })
             }
+
+              //function to get the loan products accessible to the customer of the bank.
+              function get_so_frequencies() {
+                            $.ajax({
+                                type: 'GET',
+                                url:  'get-standing-order-frequencies-api',
+                                datatype: "application/json",
+                                success: function(response) {
+                                    console.log(response.data);
+                                    let data = response.data
+                                    $.each(data, function(index) {
+
+                                        $('.so_frequency').append($('<option>', {
+                                            value: data[index].code}).text(data[index].name));
+
+                                    });
+                                },
+
+                            })
+                        }
+
+
+            function get_benerficiary() {
+                    $.ajax({
+                        type: 'GET',
+                        url:  'get-transfer-beneficiary-api?beneType=OTB',
+                        datatype: "application/json",
+                        success: function(response) {
+                            console.log(response.data);
+                            let data = response.data
+
+                            if (!response.data) {
+
+                            } else {
+                                if (response.data.length > 0) {
+                                    $('.yes_beneficiary').show()
+                                    $('.no_beneficiary').hide()
+
+                                    $.each(data, function(index) {
+                                        //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
+                                        $('#saved_beneficiary').append($('<option>', {
+                                            value: data[index].BANK_NAME + '~' +
+                                                data[index].NICKNAME.toUpperCase() + '~' +
+                                                data[index].BEN_ACCOUNT + '~' +
+                                                data[index].BEN_ACCOUNT_CURRENCY + '~' +
+                                                data[index].ADDRESS_1 + '~' +
+                                                data[index].BANK_SWIFT_CODE + '~' +
+                                                data[index].EMAIL + '~' + JSON
+                                                .stringify(data[index])
+                                        }).text(data[index].NICKNAME.toUpperCase() + ' - ' +
+                                            data[index]
+                                            .BANK_NAME.toUpperCase() +
+                                            ' - ' + data[index].BEN_ACCOUNT + ' - ' + data[
+                                                index]
+                                            .BEN_ACCOUNT_CURRENCY));
+
+                                    });
+
+                                } else {
+                                    // $('.yes_beneficiary').hide()
+                                    // $('.no_beneficiary').show()
+                                }
+                            }
+
+
+                            {{-- let beneficiary_details = response.data; --}}
+                            {{-- console.log(beneficiary_details); --}}
+
+                            {{-- $.each(beneficiary_details, function(index){
+                                $('#beneficiary_bank_name').val(beneficiary_details[0].BANK_NAME);
+                            }) --}}
+                        },
+
+                    })
+                }
+
+
 
             function formatToCurrency(amount) {
                 return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
@@ -915,6 +1191,8 @@
 
                 setTimeout(function() {
                     from_account();
+                    get_benerficiary();
+                    get_so_frequencies();
                 }, 200);
 
                 $("#beneficiary_selected").show();
@@ -923,6 +1201,7 @@
                 $("#print_receipt").hide();
                 $("#spinner_text").hide();
                 $("#onetime_beneficiary_form").hide();
+                $(".receipt").hide();
 
 
                  //codes to display self or others transfer
@@ -1044,6 +1323,77 @@
                     }
 
                 })
+
+                $("#saved_beneficiary").change(function() {
+                    let saved_beneficiary = $(this).val()
+
+                    if (saved_beneficiary.trim() == '' || saved_beneficiary.trim() == undefined) {
+                        alert('money')
+                        $(".saved_beneficiary_display_info").hide()
+
+                    } else {
+                        saved_beneficiary_info = saved_beneficiary.split("~")
+
+                        // var to_account = $('#to_account').val()
+
+
+                        // set summary values for display
+                        $(".display_to_account_name").text(saved_beneficiary_info[0].trim())
+                        $(".display_to_account_no").text(saved_beneficiary_info[1].trim())
+                        $(".display_saved_beneficiary_no").text(saved_beneficiary_info[2].trim())
+                        // $(".display_from_account_currency").text(from_account_info[3].trim())
+
+                        // $(".display_currency").text(from_account_info[3].trim()) // set summary currency
+
+                        amt = saved_beneficiary_info[4].trim()
+                        // $(".display_saved_beneficiary_amount").text(formatToCurrency(parseFloat(
+                        //     from_account_info[4]
+                        //     .trim())))
+                        {{-- alert('and show '  + from_account_info[3].trim()) --}}
+                        $(".from_account_display_info").show()
+
+
+
+
+
+                        // alert(from_account_info[0]);
+                    }
+
+                })
+
+                $("#so_start_date").change(function(){
+                    var display_start_date = $("#so_start_date").val();
+                    $(".display_so_start_date").text(display_start_date);
+                    console.log(display_start_date);
+                });
+
+                $("#so_end_date").change(function(){
+                    var display_end_date = $("#so_end_date").val();
+                    $(".display_so_end_date").text(display_end_date);
+                    console.log(display_start_date);
+                });
+
+                $("#amount").keyup(function(){
+                    var amount = $("#amount").val();
+                    $(".display_transfer_amount").text(formatToCurrency(parseFloat(amount)));
+                    console.log(amount);
+                });
+
+                $("#beneficiary_frequency").change(function(){
+                    var frequency = $("#beneficiary_frequency").val();
+                    var optionText = $("#beneficiary_frequency option:selected").text();
+                    $(".display_frequency_so").text(optionText);
+                    console.log(frequency);
+                })
+
+                // $("#loan_product").change(function(){
+                // var loan_product = $("#loan_product").val();
+                // var optionText = $("#loan_product option:selected").text();
+                // $(".display_loan_product").text(optionText);
+                // console.log(loan_product);
+                //  });
+
+                // $(".display_transfer_amount").text(formatToCurrency(parseFloat(transfer_amount)));
 
                 function toaster(message, icon, timer) {
                     const Toast = Swal.mixin({
