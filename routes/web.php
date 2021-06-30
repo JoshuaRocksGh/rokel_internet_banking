@@ -74,6 +74,7 @@ use App\Http\Controllers\Transfers\OwnAccountController;
 use App\Http\Controllers\Transfers\QR\GenerateQRController;
 use App\Http\Controllers\Transfers\SameBankController;
 use App\Http\Controllers\Transfers\SchedulePayment\SchedulePaymentController;
+use App\Http\Controllers\Transfers\StandingOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -131,6 +132,9 @@ Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('
 Route::get('/get-my-accounts', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-accounts');
 Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
+
+//Standing order page
+Route::get('standing-order',[StandingOrderController::class,'display_standing_order'])->name('standing-order');
 
 Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submit_own_account_transfer'])->name('submit-own-account-transfer');
 
@@ -455,6 +459,7 @@ Route::post('/transfer-to-beneficiary-api', [SameBankController::class, 'transfe
 Route::post('/transfer-to-same-bank-beneficiary-onetime-api', [SameBankController::class, 'one_time_beneficiary'])->name('transfer-to-same-bank-beneficiary-onetime-api');
 Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
+// Route::get('standing-order',[])
 
 // OTHER LOCAL BANK
 Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');

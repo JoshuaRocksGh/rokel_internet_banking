@@ -46,7 +46,7 @@
                 <div class="col-md-6">
                     <h4 class="text-primary">
                         <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                        MOBILE MONEY
+                        STANDING ORDER
                     </h4>
                 </div>
 
@@ -54,7 +54,7 @@
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Mobile Money</b>
+                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Standing Order</b>
 
 
                         </span>
@@ -104,7 +104,7 @@
 
                                                 </div>
                                                 <hr>
-                                                <div class="row mb-2">
+                                                {{-- <div class="row mb-2">
                                                     <div class="col-md-4">
 
                                                         <div class="form-group mb-3">
@@ -130,12 +130,43 @@
                                                     </div>
 
 
+                                                </div> --}}
+                                                <div class="form-group row">
+
+                                                    <b class="col-md-5 text-primary"> Beneficiary Type &nbsp; <span class="text-danger">*</span></b>
+
+                                                    <div class="row col-md-7 ">
+                                                        <div class="radio radio-primary form-check-inline m-1 col-md-5 destination">
+                                                            <input type="radio" id="inlineRadio1" value="one_time" name="radioInline" >
+                                                            <label for="inlineRadio1"> One time </label>
+                                                        </div>
+                                                        <div class="radio  radio-primary form-check-inline m-1 col-md-6 transfer_type">
+                                                            <input type="radio" id="inlineRadio2" value="saved_beneficiary" name="radioInline" checked>
+                                                            <label for="inlineRadio2"> Saved Beneficiary</label>
+                                                        </div>
+
+                                                    </div>
+
                                                 </div>
+
+                                                <div class="form-group row select_saved_beneficiary">
+
+                                                    <b class="col-md-4 text-primary"> Saved Beneficiary &nbsp; <span
+                                                            class="text-danger">*</span></b>
+
+
+                                                            <select class="form-control col-md-8" id="saved_beneficiary" placeholder="Select Pick Up Branch" required>
+                                                                <option value="">--- Select Saved Beneficiary ---</option>
+                                                            </select>
+                                                            <br>
+
+                                                </div>
+
                                                 <hr>
 
                                                 <div id="saved_beneficiary_form">
 
-                                                    <div class="row mb-2">
+                                                    {{-- <div class="row mb-2">
                                                         <b class="text-primary col-md-4">Name </b>
                                                         <input type="text" class="form-control col-md-8" id="beneficiary_name" readonly>
 
@@ -152,7 +183,7 @@
                                                         <input type="text" class="form-control col-md-8" id="beneficiary_network" readonly>
 
                                                     </div>
-                                                    <hr>
+                                                    <hr> --}}
 
                                                     <div class="form-group row">
 
@@ -178,20 +209,40 @@
 
 
                                                     <div class="form-group row mb-3">
-                                                        <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
+                                                        <b class=" col-md-4 text-primary">Start Date &nbsp; <span
                                                                 class="text-danger">*</span></b>
 
 
-                                                        <select class="form-control col-md-8" id="category" required>
-                                                            <option value="">---Not Selected---</option>
-
-                                                        </select>
+                                                                <input type="date" class="form-control col-md-8" id="so_start_date" required>
 
 
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
+                                                        <b class=" col-md-4 text-primary">End Date &nbsp; <span
+                                                                class="text-danger">*</span></b>
+
+
+                                                                <input type="date" class="form-control col-md-8" id="so_end_date" required>
+
+
+                                                    </div>
+
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-4 text-primary">Frequency &nbsp; <span
+                                                                class="text-danger">*</span></b>
+
+
+                                                                <select class="form-control col-md-8 frequency" id="beneficiary_frequency" placeholder="Select Pick Up Branch" required>
+                                                                    <option value="">---Select Frequency---</option>
+                                                                </select>
+
+                                                    </div>
+
+
+                                                    <div class="form-group row mb-3">
+                                                        <b class="col-md-4 text-primary ">Narration &nbsp;
                                                             <span class="text-danger">*</span></b>
 
                                                         <input type="text" class="form-control col-md-8" id="purpose"
@@ -244,7 +295,7 @@
 
                                                     </div>
 
-                                                    <div class="form-group row mb-3">
+                                                    {{-- <div class="form-group row mb-3">
                                                         <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
                                                                 class="text-danger">*</span></b>
 
@@ -255,10 +306,23 @@
                                                         </select>
 
 
+                                                    </div> --}}
+
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-4 text-primary">Frequency &nbsp; <span
+                                                                class="text-danger">*</span></b>
+
+
+                                                                <select class="form-control col-md-8 frequency" id="onetime_frequency" placeholder="Select Pick Up Branch" required>
+                                                                    <option value="">---Select Frequency---</option>
+                                                                </select>
+
                                                     </div>
 
+
                                                     <div class="form-group row mb-3">
-                                                        <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
+                                                        <b class="col-md-4 text-primary ">Narration &nbsp;
                                                             <span class="text-danger">*</span></b>
 
                                                         <input type="text" class="form-control col-md-8" id="onetime_purpose"
@@ -416,68 +480,7 @@
                                         </div>  --}}
 
                                         {{-- ONETIME BENEFICIARY SCREEN --}}
-                                        <div class="form-group" id="onetime_beneficiary">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="">Enter Receipient Mobile Number:<span
-                                                                class="text-danger">*</span></label>
 
-                                                        {{-- <select class="custom-select col-7" id="receipient_number" required>
-                                                                <option value="">Select Receipient Number</option>
-                                                                <option value="MTN">MTN</option>
-                                                                <option value="VODAFONE">VODAFONE</option>
-                                                                <option value="AIRTEL TOGO">AIRTEL TOGO</option>
-                                                            </select> --}}
-                                                        <input type="text" class="form-control"
-                                                            id="onetime_receipient_number" placeholder="Enter Number"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class=""> Select Category:<span
-                                                                class="text-danger">*</span></label>
-
-                                                        <select class="custom-select" id="onetime_category">
-                                                            <option value="">Select Category</option>
-                                                            <option value="001~Fees">Fees</option>
-                                                            <option value="002~Electronics">Electronics</option>
-                                                            <option value="003~Travels">Travels</option>
-                                                        </select>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-6">
-
-                                                    <div class="form-group">
-                                                        <label class="" for=""> Select Receipient Network Type:<span
-                                                                class="text-danger">*</span></label>
-                                                        <select class="custom-select" id="onetime_network_type">
-                                                            <option value="">Select Network Type</option>
-                                                            <option value="MTN">MTN</option>
-                                                            <option value="VODAFONE">VODAFONE</option>
-                                                            <option value="AIRTEL TOGO">AIRTEL TOGO</option>
-                                                        </select>
-
-
-                                                        {{-- <label class="">Receipient Mobile Number</label>
-                                                            <input type="text" class="form-control" id="amount"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required> --}}
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="">Enter Naration:<span
-                                                                class="text-danger">*</span></label>
-
-                                                        <input type="text" class="form-control" id="onetime_purpose"
-                                                            placeholder="Enter purpose / narration">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         {{-- SCHEDULE PAYMENTS --}}
                                         {{-- <div class="col-6">
@@ -921,37 +924,70 @@
                 $("#spinner_text").hide();
                 $("#onetime_beneficiary_form").hide();
 
-                $(".radio").click(function() {
-                    var type = $("input[type='radio']:checked").val();
 
-                    if (type == "beneficiary") {
-                        $("#beneficiary_selected").show();
-                        $("#onetime_beneficiary").hide();
-                    }
+                 //codes to display self or others transfer
+                 $("#inlineRadio1").click(function(){
+                    var beneficiary_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                    console.log(beneficiary_type);
+                    // $(".display_beneficiary_type").text(beneficiary_type);
+                    // $('.display_pick_up_branch').text("");
+                    // var pickUpBranch = $("#pUBranch").val();
+                    // if (pickUpBranch != "") {
 
-                    if (type == "onetime") {
-                        $("#onetime_beneficiary").show();
-                        $("#beneficiary_selected").hide();
-
-                    }
-                })
-                $("#checkmeout0").click(function() {
-                    if ($(this).is(":checked")){
-                        {{--  alert("Checked!");  --}}
-                    $("#onetime_beneficiary_form").toggle(500);
+                    //     let branch_info = pickUpBranch.split("~")
+                    //     $(".display_pick_up_branch").text(branch_info[1]);
+                    //     console.log(branch_info[1]);
+                    //     console.log(pickUpBranch);
+                    //     console.log(branch_info[1]);
+                    // }
                     $("#saved_beneficiary_form").hide();
-                    $(".bene_details").hide();
+                    $(".select_saved_beneficiary").hide();
+                    $("#onetime_beneficiary_form").show(200);
+
+                });
+
+                $("#inlineRadio2").click(function(){
+                    var beneficiary_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                    console.log(beneficiary_type);
+                    // $(".display_beneficiary_type").text(destination_type);
+                    // $(".display_pick_up_branch").text('');
+                    $("#saved_beneficiary_form").show();
+                    $(".select_saved_beneficiary").show();
+                    $("#onetime_beneficiary_form").hide();
+
+                });
+
+                // $(".radio").click(function() {
+                //     var type = $("input[type='radio']:checked").val();
+
+                //     if (type == "beneficiary") {
+                //         $("#beneficiary_selected").show();
+                //         $("#onetime_beneficiary").hide();
+                //     }
+
+                //     if (type == "onetime") {
+                //         $("#onetime_beneficiary").show();
+                //         $("#beneficiary_selected").hide();
+
+                //     }
+                // })
+                // $("#checkmeout0").click(function() {
+                //     if ($(this).is(":checked")){
+                //         {{--  alert("Checked!");  --}}
+                //     $("#onetime_beneficiary_form").toggle(500);
+                //     $("#saved_beneficiary_form").hide();
+                //     $(".bene_details").hide();
 
 
 
-                    }else{
-                        $("#saved_beneficiary_form").toggle(500);
-                        $(".bene_details").toggle(500);
-                        $("#onetime_beneficiary_form").hide();
+                //     }else{
+                //         $("#saved_beneficiary_form").toggle(500);
+                //         $(".bene_details").toggle(500);
+                //         $("#onetime_beneficiary_form").hide();
 
-                        {{--  alert("Unchecked!");  --}}
-                    }
-                })
+                //         {{--  alert("Unchecked!");  --}}
+                //     }
+                // })
 
                 {{-- hide select accounts info --}}
                 $(".from_account_display_info").hide()
