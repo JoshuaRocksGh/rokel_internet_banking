@@ -350,9 +350,8 @@
                     $(".loans_loading_area").show()
 
                     $.ajax({
-                        "type": "GET",
-                        "url": "get-pending-requests?customerNumber=" + customerNumber + '&requestStatus=' +
-                            requestStatus,
+                        type: "GET",
+                        url: "get-pending-requests?customerNumber=" + customerNumber + '&requestStatus=' + requestStatus,
                         datatype: "application/json",
 
                         headers: {
@@ -431,7 +430,7 @@
 
                 $(document).ready(function() {
 
-                    var customer_no = '057725'
+                    var customer_no = @json(session()->get('customerNumber'));
                     var request_status = 'P'
 
                     $('.transfer_tab_btn').click(function() {

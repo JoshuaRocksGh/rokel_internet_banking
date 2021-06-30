@@ -76,8 +76,8 @@ class PendingController extends Controller
         // return $data ;
         try {
 
-            // $response = Http::get("localhost/laravel/cib_api/public/api/get-detail-pending-request-api", $data);
-            $response = Http::get(env('CIB_API_BASE_URL') . "/get-detail-pending-request-api?customer_no=$customer_no&request_id=$request_id");
+            // dd(env('CIB_API_BASE_URL') . "get-detail-pending-request-api?customer_no=$customer_no&request_id=$request_id");
+            $response = Http::get(env('CIB_API_BASE_URL') . "get-detail-pending-request-api?customer_no=$customer_no&request_id=$request_id");
 
             // return $response;
 

@@ -32,7 +32,7 @@ class FunctionsController extends Controller
 
         // echo (env('CIB_API_BASE_URL') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus");
 
-        $response = Http::get(env('CIB_API_BASE_URL') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus");
+        $response = Http::get(env('CIB_API_BASE_URL') . "pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus");
 
         // return $response;
         // return $response->status();

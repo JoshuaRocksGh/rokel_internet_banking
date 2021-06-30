@@ -365,9 +365,9 @@
                     type : 'GET',
                     url : "../../pending-request-details-api?customer_no=" + customer + "&request_id=" + request ,
                     datatype : 'application/json',
-                    succes: function(){
-                        {{--  console.log(response);  --}}
-                        alert('Successful');
+                    success: function(){
+                         console.log(response);
+                        {{-- alert('Successful'); --}}
                     }
                 })
             }
