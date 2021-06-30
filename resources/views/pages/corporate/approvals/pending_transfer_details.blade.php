@@ -368,6 +368,9 @@
                     success: function(){
                          console.log(response);
                         {{-- alert('Successful'); --}}
+                    },
+                    error: function(xhr, status, error) {
+
                     }
                 })
             }
