@@ -84,137 +84,7 @@
 
                                                         <div class="container col-md-10 text-center">
                                                             <div class="col-md-12">
-
-                                                                <div class="row ">
-                                                                    <span class="col-md-6 text-left h4">Issue Date</span>
-                                                                    <span class="col-md-6 text-right text-primary h4"
-                                                                        id="request_date">25-12-2021</span>
-                                                                </div>
-                                                                {{--  <br>  --}}
-                                                                <hr class="mt-0">
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Request Type</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="request_type">Own Account
-                                                                        Transfer</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class=" row">
-                                                                    <span class="col-md-6 text-left h4">Posted By</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="posted_by">Cobby
-                                                                        Eyeson</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class=" row">
-                                                                    <span class="col-md-6 text-left h4">Debit Account</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="debit_account">004008210057725128</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Beneficiary Name</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="beneficiary_name">Dansoman, Accra - Ghana</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Beneficiary Account</span>
-                                                                    <span class="col-md-6 text-right text-primary h4"
-                                                                        id="beneficiary_account">004008215057725152 </span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Beneficiary Address</span>
-                                                                    <span class="col-md-6 text-right text-primary h4"
-                                                                        id="beneficiary_address">004008215057725152 </span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Amount</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="amount">1000,000.00</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Total Amount</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="total_amount">10,000,000.00</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Currency</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="currency">SLL</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Narration</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="narration">RTGS TESTING</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Catergory</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="category">Salary</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Batch Number</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="batch_number">1594663539</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Reference Number</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="reference_number">1594663539</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Frequency</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="frequency">03~MONTHLY</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Cheque Number From</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="cheque_number_from">000123</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Cheque Number To</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="cheque_number_to">000200</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Branch Code</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="branch_code">102235</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Transaction Start Date</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="transaction_start_date">25-07-2021</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Transaction End Date</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="transaction_end_date">04-08-2021</span>
-                                                                </div>
-                                                                <hr class="mt-0">
-
-                                                                <div class="row">
-                                                                    <span class="col-md-6 text-left h4">Number of Leaflet</span>
-                                                                    <span class="col-md-6 text-right text-primary h4" id="number_of_leaflet">50</span>
-                                                                </div>
-                                                                <hr class="mt-0">
+                                                                <div id="approval_details"></div>
 
                                                                 <div class="mt-1">
 
@@ -273,7 +143,7 @@
                                 <div class="card ">
                                     <div class="p-3 mt-4 mt-lg-0">
                                         <h4 class="mb-1 text-center">Account Mandate</h4>
-                                        <h2 id="account_mandate">1A OR 2B</h2>
+                                        <h2 id="account_mandate"></h2>
                                         {{-- <div class="table-responsive">
                                             <table class="table mb-0 table-bordered">
                                                 <tbody>
@@ -291,7 +161,7 @@
                                 <div class="card">
                                     <div class="p-3 mt-4 mt-lg-0">
                                         <h4 class="mb-1 text-center">Initiated By</h4>
-                                        <h2 id="initiated_by">Cobby Enterprise</h2>
+                                        <h2 id="initiated_by"></h2>
                                         {{-- <div class="table-responsive">
                                                 <table class="table mb-0 table-bordered">
                                                     <tbody>
@@ -365,9 +235,101 @@
                     type : 'GET',
                     url : "../../pending-request-details-api?customer_no=" + customer + "&request_id=" + request ,
                     datatype : 'application/json',
-                    success: function(){
-                         console.log(response);
-                        {{-- alert('Successful'); --}}
+                    success: function(response){
+                         console.log(response.data);
+
+                         if (response.responseCode == '000'){
+
+                            let pending_request = response.data;
+                            console.log(pending_request);
+
+                            $('#account_mandate').text(pending_request.account_mandate);
+                            $('#initiated_by').text(pending_request.postedby);
+
+
+                            let post_date = pending_request.post_date;
+                            post_date != null ? append_approval_details("Issue Date" , post_date) : '';
+
+                            let request_type = pending_request.request_type;
+                            if (request_type == 'SO') {
+                                let request_type =  'Standing Order' ;
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }
+
+
+                            let posted_by = pending_request.postedby;
+                            posted_by != null ? append_approval_details("Posted By" , posted_by) : '';
+
+                            let debit_account = pending_request.account_no;
+                            debit_account != null ? append_approval_details("Debit Account" , debit_account) : '';
+
+                            let beneficiary_name = pending_request.beneficiary_name;
+                            beneficiary_name != null ? append_approval_details("Beneficiary Name" , beneficiary_name) : '';
+
+                            let beneficiary_account = pending_request.creditaccountnumber;
+                            beneficiary_account != null ? append_approval_details("Beneficiary Account" , beneficiary_account) : '';
+
+                            let beneficiary_address = pending_request.beneficiaryaddress;
+                            beneficiary_address != null ? append_approval_details("Beneficiary Address" , beneficiary_address) : '';
+
+                            let currency = pending_request.currency;
+                            currency != null ? append_approval_details("Currency" , currency) : '';
+
+                            let amount = formatToCurrency(parseFloat(pending_request.amount));
+                            amount != null ? append_approval_details("Amount" , amount) : '';
+
+                            let total_amount = formatToCurrency(parseFloat(pending_request.total_amount));
+                            total_amount != null ? append_approval_details("Total Amount" , total_amount) : '';
+
+                            let narration = pending_request.narration;
+                            narration != null ? append_approval_details("Narration" , narration) : '';
+
+                            let category = pending_request.category;
+                            category != null ? append_approval_details("Cartegory" , category) : '';
+
+                            let batch_number = pending_request.batch;
+                            batch_number != null ? append_approval_details("Batch Number" , batch_number) : '';
+
+                            let reference_number = pending_request.ref_no;
+                            reference_number != null ? append_approval_details("Reference Number" , reference_number) : '';
+
+                            let frequency = pending_request.frequency;
+                            frequency != null ? append_approval_details("Frequency" , frequency) : '';
+
+                            let order_number = pending_request.order_number;
+                            order_number != null ? append_approval_details("Order Number" , order_number) : '';
+
+                            let cheque_number_from = pending_request.cheque_from;
+                            cheque_number_from != null ? append_approval_details("Cheque Number From" , cheque_number_from) : '';
+
+                            let cheque_number_to = pending_request.cheque_to;
+                            cheque_number_to != null ? append_approval_details("Cheque Number To" , cheque_number_to) : '';
+
+                            let leaflet = pending_request.leaflet;
+                            leaflet != null ? append_approval_details("Number of Leaflet" , leaflet) : '';
+
+                            {{--  $('#request_date').text(pending_request.post_date);
+                            $('#request_type').text(pending_request.request_type);
+                            $('#posted_by').text(pending_request.postedby);
+                            $('#debit_account').text(pending_request.account_no);
+                            $('#beneficiary_name').text(pending_request.beneficiary_name);
+                            $('#beneficiary_account').text(pending_request.creditaccountnumber);
+                            $('#beneficiary_address').text(pending_request.beneficiaryaddress);
+                            $('#amount').text(formatToCurrency(parseFloat(pending_request.amount)));
+                            $('#total_amount').text(formatToCurrency(parseFloat(pending_request.total_amount)));
+                            $('#currency').text(pending_request.currency);
+                            $('#Narration').text(pending_request.narration);
+                            $('#category').text(pending_request.category);
+                            $('#batch_number').text(pending_request.batch);
+                            $('#reference_number').text(pending_request.ref_no);
+                            $('#frequency').text(pending_request.frequency);
+                            $('#cheque_number_from').text(pending_request.cheque_from);
+                            $('#cheque_number_to').text(pending_request.cheque_to);  --}}
+
+
+                         }
+
                     },
                     error: function(xhr, status, error) {
 
@@ -375,6 +337,14 @@
                 })
             }
 
+            function append_approval_details(description , data) {
+
+                $('#approval_details').append(`<div class="row ">
+                    <span class="col-md-6 text-left h4">${description}</span>
+                    <span class="col-md-6 text-right text-primary h4">${data}</span>
+                </div>
+                <hr class="mt-0">`)
+             };
 
         $(document).ready(function() {
 
@@ -382,6 +352,7 @@
                 account_mandate();
 
             },700);
+
 
 
          });
