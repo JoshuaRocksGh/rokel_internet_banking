@@ -1,4 +1,4 @@
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> --}}
+sc{{-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> --}}
 
 <!-- Vendor js -->
 <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
@@ -70,7 +70,9 @@
 
 <script type='text/javascript' src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
 
+<script>
 $.ajaxSetup({
     timeout: 3000,
     retryAfter:7000
 });
+</script>
