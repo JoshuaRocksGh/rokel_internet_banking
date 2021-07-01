@@ -11,7 +11,7 @@ class ApiBaseResponse
     public static function api_response($response)
     {
 
-        $base_response = new BaseResponse();
+        $api_response = new BaseResponse();
 
         if ($response->ok()) {    // API response status code is 200
 
@@ -42,7 +42,7 @@ class ApiBaseResponse
             }
         } else { // API response status code not 200
 
-            return $response->body();
+            // return $response->body();
             DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
