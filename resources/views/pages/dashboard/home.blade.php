@@ -1415,6 +1415,11 @@
                                 if(response.data == null){
                                     $('#p_loans_display').html(`<h2 class="text-center">No Loan</h2>`)
                                 }else{
+                                    $('#p_loans_display').show()
+                                    $(".loans_display_area").show()
+                                    console.log("response");
+
+
                                     $.each(data, function(index) {
                                         $('.loans_display').append(
                                             `
