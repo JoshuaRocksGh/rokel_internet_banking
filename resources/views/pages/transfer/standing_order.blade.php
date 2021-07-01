@@ -640,50 +640,6 @@
                                                 <!-- end table-responsive -->
 
 
-                                                <!-- Center modal content -->
-                                                <div class="modal fade" id="centermodal" tabindex="-1" role="dialog"
-                                                    aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header text-center ">
-                                                                    <h3 class="modal-title text-primary"
-                                                                    id="myCenterModalLabel ">ENTER TRANSACTION PIN</h3>
-
-                                                                {{--  <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>  --}}
-
-                                                            </div>
-                                                            <div class="modal-body transfer_pin_modal">
-
-                                                                <div class="row">
-                                                                    <div class="col-md-2"></div>
-                                                                    <div class="col-md-9  text-center">
-                                                                        <form action="#" autocomplete="off"
-                                                                            aria-autocomplete="off">
-                                                                            <input type="text" name="user_pin" maxlength="4"
-                                                                                class="form-control key hide_on_print"
-                                                                                id="user_pin"
-                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                                            <br>
-                                                                            <button
-                                                                                class="btn btn-soft-primary waves-effect waves-light"
-                                                                                type="button" id="transfer_pin"
-                                                                                data-dismiss="modal">Submit</button>
-                                                                        </form>
-
-                                                                    </div>
-                                                                    <div class="col-md-1"></div>
-                                                                </div>
-                                                            </div>
-                                                            <br>
-                                                        </div>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
-                                                </div>
-                                                <!-- /.modal -->
-
-
 
                                                 <br>
                                                 <div class="form-group text-center">
@@ -692,9 +648,7 @@
                                                             id="back_button"> <i class="fe-arrow-left"></i>&nbsp;Back</button> &nbsp; </span>
                                                     <span>
                                                         &nbsp;
-                                                        <button class="btn btn-primary btn-rounded " type="button"
-                                                            id="confirm_modal_button" data-toggle="modal"
-                                                            data-target="#centermodal">
+                                                        <button class="btn btn-primary btn-rounded " type="button">
                                                             <span id="confirm_transfer">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1" role="status"
                                                                 id="spinner" aria-hidden="true"></span>
@@ -1392,6 +1346,9 @@
 
                 $("#next_button").click(function(e) {
                     e.preventDefault();
+                    $("#confirm_transfer").show();
+                    $("#spinner").hide();
+                    $("#spinner-text").hide();
 
                     let from_account = $("#from_account").val();
                     let beneficiary = $("#saved_beneficiary").val();
@@ -1406,207 +1363,52 @@
                         return false;
                     }
 
+                    let from_account_info = from_account.split('~');
+                    let to_account_info = beneficiary.split('~');
 
-                    // var type = $("input[type='radio']:checked").val();
-                    // console.log(type);
-
-                    // if (type == "beneficiary") {
-
-                    //     var from_account = $("#from_account").val().split('~');
-                    //     {{-- var from_account_ = from_account[2]; --}}
-                    //     $("#display_from_account_type").text();
-                    //     $("#display_from_account_name").text();
-                    //     $("#display_from_account_no").text();
-
-                    //     var amount = $("#amount").val();
-                    //     $("#display_currency").text();
-                    //     $("#display_transfer_amount").text(amount);
-
-                    //     var receipient_number = $("#receipient_number").val();
-                    //     $("#display_to_receipient_number").text(receipient_number);
-
-                    //     var receipient_network = $("#network_type").val();
-                    //     $("#display_to_receipient_network_type").text(receipient_network);
-
-                    //     var category = $("#category").val().split('~');
-                    //     var category_ = category[1]
-                    //     $("#display_category").text(category_);
-
-                    //     {{-- var category_ = category[0] ; --}}
-                    //     var naration = $("#purpose").val();
-                    //     $("#display_purpose").text(naration);
-
-                    //     {{-- console.log(from_account);
-                    //         console.log(amount);
-                    //         console.log(receipient_number);
-                    //         console.log(receipient_network);
-                    //         console.log(category);
-                    //         console.log(naration); --}}
+                    from_account = from_account_info[2];
+                    beneficiary = to_account_info[2];
 
 
 
-                    //     $("#transaction_form").hide()
-                    //     $("#transaction_summary").show()
-
-
-                    // }
-
-                    // if (type == "onetime") {
-
-                    //     var from_account = $("#from_account").val();
-                    //     $("#display_from_account_type").text();
-                    //     $("#display_from_account_name").text();
-                    //     $("#display_from_account_no").text();
-
-                    //     var amount = $("#amount").val();
-                    //     $("#display_currency").text();
-                    //     $("#display_transfer_amount").text(amount);
-
-                    //     var onetime_receipient_number = $("#onetime_receipient_number").val();
-                    //     $("#display_to_receipient_number").text(receipient_number);
-
-                    //     var onetime_receipient_network = $("#onetime_network_type").val();
-                    //     $("#display_to_receipient_network_type").text(receipient_network);
-
-                    //     var category = $("#onetime_category").val();
-                    //     $("#display_category").text(category);
-
-                    //     var naration = $("#onetime_purpose").val();
-                    //     $("#display_purpose").text(naration);
-
-                    //     {{-- console.log(from_account);
-                    //         console.log(amount);
-                    //         console.log(onetime_receipient_number);
-                    //         console.log(onetime_receipient_network);
-                    //         console.log(category);
-                    //         console.log(naration); --}}
-
-                    //     $("#transaction_form").hide()
-                    //     $("#transaction_summary").show()
-                    // }
                     $("#transaction_form").hide()
                     $("#transaction_summary").show()
 
-                    $("#confirm_button").click(function(e) {
-                        e.preventDefault();
-
-
-                        var type = $("input[type='radio']:checked").val();
-                        {{-- console.log(type); --}}
-
-                        if (type == "beneficiary") {
-
-                            var from_account = $("#from_account").val().split('~');
-                            var from_account_ = from_account[2];
-                            var currency = from_account[3];
-                            var amount = $("#amount").val();
-                            var receipient_number = $("#receipient_number").val();
-                            var receipient_network = $("#network_type").val();
-                            var category = $("#category").val().split('~');
-                            var category_ = category[0];
-                            var naration = $("#purpose").val();
-                            var user_pin = $("#user_pin").val();
-
-                            {{-- console.log(from_account);
-                                console.log(from_account_);
-                                console.log(currency);
-                                console.log(amount);
-                                console.log(receipient_number);
-                                console.log(receipient_network);
-                                console.log(category_);
-                                console.log(naration);
-                                console.log(user_pin); --}}
-
+                        $("#confirm_transfer").click(function(e) {
+                            e.preventDefault();
+                            $("#spinner").show();
+                            $("#spinner-text").show();
 
                             $.ajax({
-                                "type": "POST",
-                                "url": "mobile-money-api",
-                                datatype: "application/json",
-                                data: {
-                                    'from_account': from_account_,
-                                    'amount': amount,
-                                    'currency': currency,
-                                    'category_': category_,
-                                    'receipient_number': receipient_number,
-                                    'receipient_network': receipient_network,
-                                    'naration': naration,
-                                    'user_pin': user_pin
+                                    type : "POST",
+                                    url : "initiate-standing-order-request",
+                                    datatype : "application/json",
+                                    data : {
+                                        'from_account': from_account,
+                                        'amount': amount,
+                                        'beneficiary_account': beneficiary,
+                                        'standing_order_start_date': so_start_date,
+                                        'standing_order_end_date': so_end_date,
+                                        'standing_order_frequency': so_frequency,
+                                        'narration': narration
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
+                                    },
+                                    success: function(response) {
+                                        {{-- console.log(response); --}}
+                                        if (response.responseCode == '000') {
+                                            toaster(response.message, 'success', 10000);
 
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-                                    {{-- console.log(response); --}}
-                                    if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 10000);
-                                    } else {
-                                        toaster(response.message, 'error', 6000);
+                                            setTimeout(function(){
+                                                window.location.reload();
+                                            }, 2000);
+                                        } else {
+                                            toaster(response.message, 'error', 6000);
+                                        }
                                     }
-                                }
-                            })
-
-
-                        }
-
-                        if (type == "onetime") {
-                            {{-- alert('onetime'); --}}
-
-                            var from_account = $("#from_account").val().split('~');
-                            var from_account_ = from_account[2];
-                            var currency = from_account[3];
-                            var amount = $("#amount").val();
-                            var receipient_number = $("#onetime_receipient_number").val();
-                            var receipient_network = $("#onetime_network_type").val();
-                            var category = $("#onetime_category").val().split('~');
-                            var category_ = category[0];
-                            var naration = $("#onetime_purpose").val();
-                            var user_pin = $("#user_pin").val();
-
-                            {{-- console.log(from_account); --}}
-                            console.log(from_account_);
-                            console.log(currency);
-                            console.log(amount);
-                            console.log(receipient_number);
-                            console.log(receipient_network);
-                            console.log(category_);
-                            console.log(naration);
-                            console.log(user_pin);
-
-
-                            $.ajax({
-                                "type": "POST",
-                                "url": "mobile-money-api",
-                                datatype: "application/json",
-                                data: {
-                                    'from_account': from_account_,
-                                    'amount': amount,
-                                    'currency': currency,
-                                    'category_': category_,
-                                    'receipient_number': receipient_number,
-                                    'receipient_network': receipient_network,
-                                    'naration': naration,
-                                    'user_pin': user_pin
-
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-                                    {{-- console.log(response); --}}
-                                    if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 10000);
-                                    } else {
-                                        toaster(response.message, 'error', 6000);
-                                    }
-                                }
-                            })
-
-                        }
-
-
+                        });
 
 
                     })
