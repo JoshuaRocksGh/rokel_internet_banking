@@ -579,6 +579,27 @@
                                                             </tr>
 
                                                             <tr>
+                                                                <td>Start Date:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_so_start_date"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>End Date:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_so_end_date"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Frequency:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_frequency_so"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
                                                                 <td>Transfer Date: </td>
                                                                 <td>
                                                                     <span class="font-13 text-primary h3"
@@ -649,7 +670,7 @@
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button" id="confirm_transfer">
-                                                            <span id="confirm_transfer-text">Confirm Transfer</span>
+                                                            <span id="confirm_transfer-text">Confirm Order</span>
                                                             <span class="spinner-border spinner-border-sm mr-1" role="status"
                                                                 id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
@@ -775,7 +796,7 @@
                                                     </div>
                                                     <br>
                                                     <div class="page-header">
-                                                        <h2>Transfer Receipt </h2>
+                                                        <h2>Standing Order Receipt </h2>
                                                     </div>
                                                     <br>
                                                     {{-- <div class="row">
@@ -857,39 +878,61 @@
                                                                 <tr>
                                                                     {{-- <th scope="row">1</th> --}}
                                                                     <td>Transfer From Account Number</td>
-                                                                    <td><span id="from_account_receipt"></span></td>
+                                                                    <td><span class="font-13 text-primary text-bold display_from_account_no"></span></td>
                                                                     {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">2</th> --}}
                                                                     <td>Transfer To Account Number</td>
-                                                                    <td><span id="to_account_receipt"></span></td>
+                                                                    <td><span class="font-13 text-primary text-bold display_to_account_no"></span></td>
                                                                     {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
-                                                                    <td>Transfer Category</td>
-                                                                    <td><span id="category_receipt"></span></td>
+                                                                    <td>Narration</td>
+                                                                    <td><span class="font-13 text-primary text-bold display_purpose"></span></td>
                                                                     {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
-                                                                    {{-- <th scope="row">3</th> --}}
-                                                                    <td>Transfer Purpose</td>
-                                                                    <td><span id="purpose_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td>Start Date:</td>
+                                                                    <td>
+                                                                        <span class="font-13 text-primary h3 display_so_start_date"></span>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>End Date:</td>
+                                                                    <td>
+                                                                        <span class="font-13 text-primary h3 display_so_end_date"></span>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Frequency:</td>
+                                                                    <td>
+                                                                        <span class="font-13 text-primary h3 display_frequency_so"></span>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Transfer Date: </td>
+                                                                    <td>
+                                                                        <span class="font-13 text-primary h3"
+                                                                            id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
                                                                     {{--  <td></td>  --}}
-                                                                    <td><strong>(<span class="receipt_currency"></span>)<span id="amount_receipt"></span></strong>
+                                                                    <td><strong>(<span class="display_currency"></span>)<span class="display_transfer_amount"></span></strong>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transaction Fee </td>
                                                                     {{--  <td></td>  --}}
-                                                                    <td><strong>(<span class="receipt_currency"></span>)15.00</strong></td>
+                                                                    <td><strong>(<span class="display_currency"></span>)15.00</strong></td>
                                                                 </tr>
                                                                 {{--  <tr>
                                                                     <th scope="row">3</th>
@@ -1165,6 +1208,7 @@
 
 
 
+
                 $("#back_button").click(function(e) {
                     e.preventDefault()
                     $("#transaction_summary").hide()
@@ -1410,6 +1454,8 @@
                                             $("#confirm_transfer-text").show();
                                             $("#spinner").hide();
                                             $("#spinner-text").hide();
+                                            $(".form_process").hide();
+                                            $(".receipt").show();
                                         }
                                     }
                         });
