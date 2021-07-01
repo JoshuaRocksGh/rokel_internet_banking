@@ -139,4 +139,127 @@ class OwnAccountController extends Controller
 
         }
     }
+
+    public function corporate_own_account_transfer(Request $req)
+    {
+        $validator = Validator::make($req->all(), [
+            'from_account' => 'required',
+            'to_account' => 'required',
+            'transfer_amount' => 'required',
+            // 'category' => 'required',
+            'purpose' => 'required',
+            'currency' => 'required'
+
+
+        ]);
+        // return $req ;
+
+        $base_response = new BaseResponse();
+
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        // $response = [
+        //     "responseCode" => "000",
+        //     "message" => "Transfer Successful"
+        // ];
+
+        // return $response ;
+
+        // return $req;
+
+        // $user_pin = $req->secPin;
+
+        // return $user_pin;
+        // if($user_pin != '123456'){
+
+        //     return $base_response->api_response('099', 'Incorrect Pin',  null); // return API BASERESPONSE
+
+        // }
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $userAlias = session()->get('userAlias');
+        $customerPhone = session()->get('customerPhone');
+        $customerNumber = session()->get('customerNumber');
+
+
+        // $from_account = $req->from_account;
+        // 'from_account' : from_account_ ,
+        // 'to_account' : to_account_ ,
+        // 'transfer_amount' : transfer_amount ,
+        // 'category' : category_ ,
+        // 'select_frequency' : select_frequency_ ,
+        // 'purpose' : purpose ,
+        // 'schedule_payment_type' : schedule_payment_contraint_input ,
+        // 'schedule_payment_date' : schedule_payment_date,
+        // 'secPin' : pin
+        $data = [
+
+            // "amount" => $req->transfer_amount,
+            // "authToken" => $authToken,
+            // "creditAccount" => $req->to_account,
+            // "currency" => null,
+            // "debitAccount" => $req->from_account,
+            // "deviceIp" => null,
+            // "entrySource" => null,
+            // "narration" => $req->purpose,
+            // "secPin" => $req->secPin,
+            // "userName" => null,
+            // "category" => $req->category,
+
+            "account_no" => $req->from_account ,
+            "destinationAccountId" => $req->to_account,
+            "amount" => $req->transfer_amount,
+            "currency" => $req->currency,
+            "narration" => $req->purpose,
+            "postBy" => $userID,
+            // "appBy" => '';
+            "customerTel" => $customerPhone ,
+            "transBy" => $userID ,
+            "user_id" => $userID ,
+            "customer_no" => $customerNumber ,
+            "user_alias" => $userAlias
+            // $documentRef => strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 2) . time());
+
+        ];
+
+
+        if (isset($req->select_frequency)) {
+            $frequency = $req->select_frequency;
+            // return $frequency;
+            $selected_frequency_code = $frequency;
+            $data['schedulePaymentDate'] = $req->schedule_payment_date;
+            $data['selectFrequency'] = $selected_frequency_code;
+        }
+
+        // return $data ;
+
+        try {
+
+            // dd((env('API_BASE_PENDING_URL') . "own-account-gone-for-pending"));
+
+            $response = Http::post(env('API_BASE_PENDING_URL') . "own-account-gone-for-pending", $data);
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+            // return json_decode($response->body();
+
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+
+
+        }
+    }
 }

@@ -132,6 +132,9 @@ Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('
 Route::get('/get-my-accounts', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-accounts');
 Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
+//CORPORATE OWN ACCOUNT API
+Route::post('/corporate-own-account-api', [TransferOwnAccountController::class, 'corporate_own_account_transfer'])->name('corporate-own-account-api');
+
 
 //Standing order page
 Route::get('standing-order',[StandingOrderController::class,'display_standing_order'])->name('standing-order');

@@ -223,6 +223,9 @@ class LocalBankController extends Controller
 
         // return $beneficiary_type ;
 
+        $client_ip = request()->ip();
+        // dd( $client_ip);
+
         if ($beneficiary_type == "ACH") {
             // return $beneficiary_type ;
 
@@ -234,14 +237,15 @@ class LocalBankController extends Controller
                 "beneficiaryName" => $request->beneficiary_name,
                 "creditAccount" => $request->to_account,
                 "debitAccount" => $request->from_account,
-                "deviceIp" => null,
-                "entrySource" => null,
+                "deviceIp" => $client_ip,
+                "entrySource" => "I",
+                "channel" => "NET",
                 "secPin" => $request->sec_pin,
                 "transactionDetails" => $request->purpose ,
-                "transactionId" => null,
+                // "transactionId" => null,
                 "transferCurrency" => $request->currency,
-                "futurePayments" => $request->future_payement,
-                "category" => $request->category
+                // "futurePayments" => $request->future_payement,
+                // "category" => $request->category
             ];
 
             // return $data ;
@@ -258,7 +262,7 @@ class LocalBankController extends Controller
 
                 $response = Http::post(env('API_BASE_URL') . "transfers/achBankTransfer", $data);
 
-                return $response;
+                // return $response;
 
                 $result = new ApiBaseResponse();
                 return $result->api_response($response);

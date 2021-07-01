@@ -1012,7 +1012,7 @@
                             $.each(data, function(index) {
 
                                 $('#onetime_beneficiary_account_currency').append($('<option>', {
-                                    value: data[index].isoCode + '~' + data[index]
+                                    value: data[index].currCode + '~' + data[index].isoCode + '~' + data[index]
                                         .description
                                 }).text(data[index].isoCode + '~' + data[index].description));
 
@@ -1533,7 +1533,7 @@
 
                     $("#onetime_beneficiary_account_currency").change(function() {
                         var beneficiary_account_currency = $(this).val().split("~");
-                        $(".display_to_account_currency").text(beneficiary_account_currency[0]);
+                        $(".display_to_account_currency").text(beneficiary_account_currency[1]);
                     })
 
                     $("#onetime_amount").keyup(function() {
@@ -1819,7 +1819,7 @@
                                     console.log(onetime_amount);
 
                                     var expense_category_ = $('#onetime_category').val().split('~');
-                                    var expense_category = expense_category_[1];
+                                    var expense_category = expense_category_[0];
                                     console.log(expense_category);
 
                                     {{--  $(".display_category").text(category_info[1]);  --}}

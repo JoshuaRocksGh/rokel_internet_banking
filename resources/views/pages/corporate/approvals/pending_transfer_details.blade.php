@@ -255,6 +255,53 @@
                                 let request_type =  'Standing Order' ;
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 
+                            }else if (request_type == 'RTGS'){
+                                let request_type = 'RTGS Payment'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'OBT'){
+                                let request_type = 'Own Account Transfer'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'TPT'){
+                                let request_type = 'Other BAnk Transfer'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'BULK'){
+                                let request_type = 'Bulk Payment'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'DTRA'){
+                                let request_type = 'Direct Transfer'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'BULK'){
+                                let request_type = 'Bulk Payment'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'STR'){
+                                let request_type = 'Statement Request'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'FD'){
+                                let request_type = 'Fixed Deposit'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'STST'){
+                                let request_type = 'Stop Standing Order'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'COMPL'){
+                                let request_type = 'Complaints'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else if (request_type == 'CHQR'){
+                                let request_type = 'Cheque Book Request'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
+                            }else {
+                                let request_type = ''
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
                             }
 
 
@@ -276,11 +323,11 @@
                             let currency = pending_request.currency;
                             currency != null ? append_approval_details("Currency" , currency) : '';
 
-                            let amount = formatToCurrency(parseFloat(pending_request.amount));
-                            amount != null ? append_approval_details("Amount" , amount) : '';
+                            let amount = pending_request.amount;
+                            amount != null ? append_approval_details("Amount" , formatToCurrency(parseFloat(amount))) : '';
 
-                            let total_amount = formatToCurrency(parseFloat(pending_request.total_amount));
-                            total_amount != null ? append_approval_details("Total Amount" , total_amount) : '';
+                            let total_amount = pending_request.total_amount;
+                            total_amount != null ? append_approval_details("Total Amount" , formatToCurrency(parseFloat(total_amount))) : '';
 
                             let narration = pending_request.narration;
                             narration != null ? append_approval_details("Narration" , narration) : '';

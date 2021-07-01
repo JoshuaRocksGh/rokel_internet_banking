@@ -432,8 +432,10 @@
 
                     var customer_no = @json(session()->get('customerNumber'));
                     var request_status = 'P'
+                    console.log(customer_no);
 
                     $('.transfer_tab_btn').click(function() {
+                        let customer_no = @json(session()->get('customerNumber'));
                         get_corporate_requests(customer_no, 'P')
                     })
                     get_corporate_requests(customer_no, request_status)

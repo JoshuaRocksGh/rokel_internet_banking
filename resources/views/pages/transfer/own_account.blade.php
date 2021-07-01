@@ -1189,6 +1189,8 @@
 
 
 
+
+
                 setTimeout(function() {
                     from_account();
                     expenseTypes();
@@ -1196,6 +1198,12 @@
                     get_correct_fx_rate();
 
                 }, 200);
+
+                var customerType = @json(session()->get('customerType'));
+
+                if(customerType == 'C'){
+                    $("#confirm_modal_button").removeAttr("data-target");
+                }
 
 
 
@@ -1660,123 +1668,259 @@
 
                     if ($("#terms_and_conditions").is(":checked")) {
 
-                        $("#transfer_pin").click(function(e) {
-                            e.preventDefault();
+                        var customerType = @json(session()->get('customerType'));
+                        console.log(customerType);
+
+
+
+                        if (customerType == 'C') {
+
+                            {{--  alert('Corporate Account');  --}}
+                            {{--  $('#centermodal').modal('hide');  --}}
+                            {{-- $('.modal-dialog').modal('hide'); --}}
+                            {{-- $('body').removeClass('modal-open');
+                            $('.modal-backdrop').remove(); --}}
 
                             $('#confirm_transfer').hide()
                             $('#spinner').show();
                             $('#spinner-text').show();
                             $("#confirm_modal_button").prop('disabled', true);
 
-
                             var from_account_ = $('#from_account').val().split("~");
-                            console.log(from_account_);
-                            var from_account = from_account_[2];
-                            $("#from_account_receipt").text(from_account);
+                                console.log(from_account_);
+                                var from_account = from_account_[2];
+                                var currency = from_account_[3];
+                                $("#from_account_receipt").text(from_account);
 
-                            var to_account_ = $('#to_account').val().split('~');
-                            console.log(to_account_);
-                            var to_account = to_account_[2];
-                            $("#to_account_receipt").text(to_account);
-
-
-                            var transfer_amount = $('#amount').val();
-                            $("#amount_receipt").text(formatToCurrency(parseFloat(transfer_amount)));
-
-                            var select_currency = $("#select_currency").val();
-                            $(".receipt_currency").text(select_currency);
+                                var to_account_ = $('#to_account').val().split('~');
+                                console.log(to_account_);
+                                var to_account = to_account_[2];
+                                $("#to_account_receipt").text(to_account);
 
 
-                            var category = $('#category').val().split("~");
-                            $("#display_category").text(category[1]);
-                            $("#category_receipt").text(category[1]);
+                                var transfer_amount = $('#amount').val();
+                                $("#amount_receipt").text(formatToCurrency(parseFloat(transfer_amount)));
 
-                            var purpose = $('#purpose').val();
-                            $("#display_purpose").text(purpose);
-                            $("#purpose_receipt").text(purpose);
-
-                            var schedule_payment_contraint_input = $(
-                                '#schedule_payment_contraint_input').val();
+                                var select_currency = $("#select_currency").val();
+                                $(".receipt_currency").text(select_currency);
 
 
+                                var category_ = $('#category').val().split("~");
+                                var category = category_[0];
+                                $("#display_category").text(category[1]);
+                                $("#category_receipt").text(category[1]);
+
+                                var purpose = $('#purpose').val();
+                                $("#display_purpose").text(purpose);
+                                $("#purpose_receipt").text(purpose);
+
+                                var schedule_payment_contraint_input = $(
+                                    '#schedule_payment_contraint_input').val();
 
 
-                            var schedule_payment_date = $('#schedule_payment_date').val();
-
-                            var select_frequency_ = $('#select_frequency').val();
-
-                            var sec_pin = $('#user_pin').val();
 
 
-                            $.ajax({
+                                var schedule_payment_date = $('#schedule_payment_date').val();
 
-                                type: 'POST',
-                                url:  'own-account-api',
-                                datatype: "application/json",
-                                data: {
-                                    'from_account': from_account,
-                                    'to_account': to_account,
-                                    'transfer_amount': transfer_amount,
-                                    'category': category,
-                                    'purpose': purpose,
-                                    'schedule_payment_type': schedule_payment_contraint_input,
-                                    'schedule_payment_date': schedule_payment_date,
-                                    'secPin': sec_pin
+                                var select_frequency_ = $('#select_frequency').val();
 
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-                                    console.log();
-                                    {{-- console.log(response.responseCode) --}}
-                                    if (response.responseCode == '000') {
-                                        $("#related_information_display").removeClass(
-                                            "d-none d-sm-block");
-                                        Swal.fire(
-                                            '',
-                                            response.message,
-                                            'success'
-                                        );
-
-                                        $(".receipt").show();
-                                        $(".form_process").hide();
-
-                                        $('#confirm_modal_button').hide();
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#back_button').hide();
-                                        $('#print_receipt').show();
+                                {{--  var sec_pin = $('#user_pin').val();  --}}
 
 
-                                        $(".rtgs_card_right").hide();
-                                        $(".success_gif").show();
-
-                                    } else {
-
-                                        toaster(response.message, 'error', 10000);
-
-                                        $(".receipt").hide();
-                                        {{-- $(".form_process").hide(); --}}
-                                        {{-- $('#confirm_modal_button').show(); --}}
-                                        $("#confirm_transfer").show();
-                                        $("#confirm_modal_button").prop('disabled', false);
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#back_button').show();
-                                        $('#print_receipt').hide();
-                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                        $("#related_information_display").show();
-                                        $(".success_gif").hide();
 
 
+                                $.ajax({
+
+                                    type: 'POST',
+                                    url:  'corporate-own-account-api',
+                                    datatype: "application/json",
+                                    data: {
+                                        'from_account': from_account,
+                                        'to_account': to_account,
+                                        'transfer_amount': transfer_amount,
+                                        {{--  'category': category,  --}}
+                                        'purpose': purpose,
+                                        'currency' : currency ,
+                                        'schedule_payment_type': schedule_payment_contraint_input,
+                                        'schedule_payment_date': schedule_payment_date,
+                                        {{--  'secPin': sec_pin  --}}
+
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
+                                    },
+                                    success: function(response) {
+                                        console.log();
+                                        {{-- console.log(response.responseCode) --}}
+                                        if (response.responseCode == '000') {
+                                            $("#related_information_display").removeClass(
+                                                "d-none d-sm-block");
+                                            Swal.fire(
+                                                '',
+                                                response.message,
+                                                'success'
+                                            );
+
+                                            {{--  $(".receipt").show();
+                                            $(".form_process").hide();  --}}
+
+                                            $('#confirm_modal_button').hide();
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').hide();
+                                            {{--  $('#print_receipt').show();  --}}
+
+
+                                            $(".rtgs_card_right").hide();
+                                            {{--  $(".success_gif").show();  --}}
+
+                                        } else {
+
+                                            toaster(response.message, 'error', 10000);
+
+                                            $(".receipt").hide();
+                                            {{-- $(".form_process").hide(); --}}
+                                            {{-- $('#confirm_modal_button').show(); --}}
+                                            $("#confirm_transfer").show();
+                                            $("#confirm_modal_button").prop('disabled', false);
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').show();
+                                            $('#print_receipt').hide();
+                                            {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                            $("#related_information_display").show();
+                                            $(".success_gif").hide();
+
+
+                                        }
                                     }
-                                }
+
+                                })
+
+                        }else {
+
+                            $("#transfer_pin").click(function(e) {
+                                e.preventDefault();
+
+                                $('#confirm_transfer').hide()
+                                $('#spinner').show();
+                                $('#spinner-text').show();
+                                $("#confirm_modal_button").prop('disabled', true);
+
+
+                                var from_account_ = $('#from_account').val().split("~");
+                                console.log(from_account_);
+                                var from_account = from_account_[2];
+                                $("#from_account_receipt").text(from_account);
+
+                                var to_account_ = $('#to_account').val().split('~');
+                                console.log(to_account_);
+                                var to_account = to_account_[2];
+                                $("#to_account_receipt").text(to_account);
+
+
+                                var transfer_amount = $('#amount').val();
+                                $("#amount_receipt").text(formatToCurrency(parseFloat(transfer_amount)));
+
+                                var select_currency = $("#select_currency").val();
+                                $(".receipt_currency").text(select_currency);
+
+
+                                var category = $('#category').val().split("~");
+                                $("#display_category").text(category[1]);
+                                $("#category_receipt").text(category[1]);
+
+                                var purpose = $('#purpose').val();
+                                $("#display_purpose").text(purpose);
+                                $("#purpose_receipt").text(purpose);
+
+                                var schedule_payment_contraint_input = $(
+                                    '#schedule_payment_contraint_input').val();
+
+
+
+
+                                var schedule_payment_date = $('#schedule_payment_date').val();
+
+                                var select_frequency_ = $('#select_frequency').val();
+
+                                var sec_pin = $('#user_pin').val();
+
+
+                                $.ajax({
+
+                                    type: 'POST',
+                                    url:  'own-account-api',
+                                    datatype: "application/json",
+                                    data: {
+                                        'from_account': from_account,
+                                        'to_account': to_account,
+                                        'transfer_amount': transfer_amount,
+                                        'category': category,
+                                        'purpose': purpose,
+                                        'schedule_payment_type': schedule_payment_contraint_input,
+                                        'schedule_payment_date': schedule_payment_date,
+                                        'secPin': sec_pin
+
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
+                                    },
+                                    success: function(response) {
+                                        console.log();
+                                        {{-- console.log(response.responseCode) --}}
+                                        if (response.responseCode == '000') {
+                                            $("#related_information_display").removeClass(
+                                                "d-none d-sm-block");
+                                            Swal.fire(
+                                                '',
+                                                response.message,
+                                                'success'
+                                            );
+
+                                            $(".receipt").show();
+                                            $(".form_process").hide();
+
+                                            $('#confirm_modal_button').hide();
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').hide();
+                                            $('#print_receipt').show();
+
+
+                                            $(".rtgs_card_right").hide();
+                                            $(".success_gif").show();
+
+                                        } else {
+
+                                            toaster(response.message, 'error', 10000);
+
+                                            $(".receipt").hide();
+                                            {{-- $(".form_process").hide(); --}}
+                                            {{-- $('#confirm_modal_button').show(); --}}
+                                            $("#confirm_transfer").show();
+                                            $("#confirm_modal_button").prop('disabled', false);
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').show();
+                                            $('#print_receipt').hide();
+                                            {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                            $("#related_information_display").show();
+                                            $(".success_gif").hide();
+
+
+                                        }
+                                    }
+
+                                })
 
                             })
 
-                        })
+                        }
+
+
                     } else {
                         toaster('Accept terms & conditions to continue', 'error', 6000)
                         console.log("UNCHECKED");
