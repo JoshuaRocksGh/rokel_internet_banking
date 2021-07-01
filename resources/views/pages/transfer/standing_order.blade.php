@@ -648,8 +648,8 @@
                                                             id="back_button"> <i class="fe-arrow-left"></i>&nbsp;Back</button> &nbsp; </span>
                                                     <span>
                                                         &nbsp;
-                                                        <button class="btn btn-primary btn-rounded " type="button">
-                                                            <span id="confirm_transfer">Confirm Transfer</span>
+                                                        <button class="btn btn-primary btn-rounded " type="button" id="confirm_transfer">
+                                                            <span id="confirm_transfer-text">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1" role="status"
                                                                 id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
@@ -1346,7 +1346,7 @@
 
                 $("#next_button").click(function(e) {
                     e.preventDefault();
-                    $("#confirm_transfer").show();
+                    $("#confirm_transfer-text").show();
                     $("#spinner").hide();
                     $("#spinner-text").hide();
 
@@ -1376,6 +1376,7 @@
 
                         $("#confirm_transfer").click(function(e) {
                             e.preventDefault();
+                            $("#confirm_transfer-text").hide();
                             $("#spinner").show();
                             $("#spinner-text").show();
 
@@ -1406,6 +1407,9 @@
                                             }, 2000);
                                         } else {
                                             toaster(response.message, 'error', 6000);
+                                            $("#confirm_transfer-text").show();
+                                            $("#spinner").hide();
+                                            $("#spinner-text").hide();
                                         }
                                     }
                         });

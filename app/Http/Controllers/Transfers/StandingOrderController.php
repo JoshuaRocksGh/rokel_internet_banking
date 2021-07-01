@@ -57,27 +57,27 @@ class StandingOrderController extends Controller
             $beneficiaryAccount = $request->beneficiary_account;
             $dueAmount= $request->amount;
             $dueDate = $request->standing_order_end_date;
-            $startDate = $request->standing_order_start_date;
+            // $startDate = $request->standing_order_start_date;
             $frequencyCode = $request->so_frequency;
             $postedBy = $sender_name;
             $terminalId = get_current_user();
             $transactionDetails = $request->narration;
 
 
-            $data =
-            [
-                "acctLink"=> "004001100241700194",
-                "approvalTerminal"=> "a",
-                "approvedBy"=> "work",
-                "beneficiaryAccount"=> "004001100241700291",
-                "dueAmount"=> "200",
-                "dueDate"=> "2020-06-01",
-                "entrySource"=> "I",
-                "frequencyCode"=> "01",
-                "postedBy"=> "ATO",
-                "terminalId"=> "ATO",
-                "transactionDetails"=> "goods purchase"
-            ];
+            // $data =
+            // [
+            //     "acctLink"=> "004001100241700194",
+            //     "approvalTerminal"=> "a",
+            //     "approvedBy"=> "work",
+            //     "beneficiaryAccount"=> "004001100241700291",
+            //     "dueAmount"=> "200",
+            //     "dueDate"=> "2020-06-01",
+            //     "entrySource"=> "I",
+            //     "frequencyCode"=> "01",
+            //     "postedBy"=> "ATO",
+            //     "terminalId"=> "ATO",
+            //     "transactionDetails"=> "goods purchase"
+            // ];
 
             $data =
             [
