@@ -578,3 +578,6 @@ Route::get('get-loan-purpose-api',[FunctionsController::class,'get_loan_purpose'
 
 //route to return standing order frequencies
 Route::get('get-standing-order-frequencies-api',[FunctionsController::class,'get_standing_order_frequencies'])->name('get-standing-order-frequencies-api');
+
+//route to initiate standing order request
+Route::post('initiate-standing-order-request',[StandingOrderController::class,'standing_order_request'])->name('initiate-standing-order-request');

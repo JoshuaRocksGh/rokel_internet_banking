@@ -76,6 +76,7 @@
                     <div class="row">
                         <div class="col-md-12">
 
+                        <div class="form_process">
                             <div class="row">
 
                                 <div class="col-md-7 m-2" id="transaction_form"
@@ -157,9 +158,9 @@
 
                                                             <select class="form-control col-md-8" id="saved_beneficiary" placeholder="Select Pick Up Branch" required>
                                                                 <option value="">--- Select Saved Beneficiary ---</option>
-                                                                <option
+                                                                {{-- <option
                                                             value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
-                                                            Saving Account~001023468976001~GHS~2000</option>
+                                                            Saving Account~001023468976001~GHS~2000</option> --}}
                                                             </select>
                                                             <br>
 
@@ -256,88 +257,6 @@
 
                                                 </div>
 
-                                                <div id="onetime_beneficiary_form">
-
-                                                    <div class="row mb-2">
-                                                        <b class="text-primary col-md-4" >Name &nbsp;<span class="text-danger">*</span></b>
-                                                        <input type="text" class="form-control col-md-8" id="Onetime_beneficiary_name" placeholder="Enter Beneficiary Name">
-
-                                                    </div>
-
-                                                    <div class="row mb-2">
-                                                        <b class="text-primary col-md-4" >Recipient Mobile Number &nbsp;<span class="text-danger">*</span></b>
-                                                        <input type="text" class="form-control col-md-8" id="onetime_beneficiary_number" placeholder="Enter Beneficiary Telephone">
-
-                                                    </div>
-
-                                                    <div class="row mb-2">
-                                                        <b class="text-primary col-md-4" >Recipient Network &nbsp;<span class="text-danger">*</span></b>
-                                                        <input type="text" class="form-control col-md-8" id="onetime_beneficiary_network" placeholder="Enter Beneficiary Network">
-
-                                                    </div>
-                                                    <hr>
-
-                                                    <div class="form-group row">
-
-                                                        <b class="col-4 text-primary"> Amount &nbsp; <span
-                                                                class="text-danger">*</span></b>
-
-                                                        <div class="col-2">
-                                                            <div class="input-group mb-2">
-                                                                <div class="input-group-prepend" style="margin-right:-1px;">
-                                                                    <div
-                                                                        class="input-group-text display_from_account_currency">
-                                                                        SLL</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <input type="text" class="form-control col-6" id="onetime_amount" placeholder="Amount 0.00"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                            required>
-
-
-                                                    </div>
-
-                                                    {{-- <div class="form-group row mb-3">
-                                                        <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
-                                                                class="text-danger">*</span></b>
-
-
-                                                        <select class="form-control col-md-8" id="onetime_category" required>
-                                                            <option value="">---Not Selected---</option>
-
-                                                        </select>
-
-
-                                                    </div> --}}
-
-                                                    <div class="form-group row">
-
-                                                        <b class="col-md-4 text-primary">Frequency &nbsp; <span
-                                                                class="text-danger">*</span></b>
-
-
-                                                                <select class="form-control col-md-8 frequency" id="onetime_frequency" placeholder="Select Pick Up Branch" required>
-                                                                    <option value="">---Select Frequency---</option>
-                                                                </select>
-
-                                                    </div>
-
-
-                                                    <div class="form-group row mb-3">
-                                                        <b class="col-md-4 text-primary ">Narration &nbsp;
-                                                            <span class="text-danger">*</span></b>
-
-                                                        <input type="text" class="form-control col-md-8" id="onetime_purpose"
-                                                            placeholder="Enter purpose of transaction" required>
-
-                                                    </div>
-
-                                                </div>
-
-
-
                                                 <div class="form-group text-right">
                                                     <button class="btn btn-primary btn-rounded" type="submit" id="next_button">
                                                         &nbsp; Next &nbsp; <i class="fe-arrow-right"></i></button>
@@ -383,21 +302,6 @@
 
                                             {{-- RIGHT SIDE COL0UMN --}}
 
-                                            <div class="">
-
-
-
-                                                {{-- <div class="form-group">
-                                                        <label class="h6">Network Type</label>
-
-                                                        <select class="custom-select" id="network_type" required>
-                                                            <option value="">Select Account</option>
-                                                            <option value="MTN">MTN</option>
-                                                            <option value="VODAFONE">VODAFONE</option>
-                                                            <option value="AIRTEL TOGO">AIRTEL TOGO</option>
-                                                        </select>
-                                                    </div> --}}
-                                            </div>
                                         </div>
                                         <hr>
                                         {{--  <div class="form-group">
@@ -507,7 +411,7 @@
                                                 </div>
                                             </div> --}}
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
 
 
                                         </div>
@@ -538,7 +442,7 @@
                                             </table>
 
 
-                                        </div>
+                                        </div> --}}
 
                                         {{-- <hr> --}}
                                         {{-- <div class="form-group">
@@ -605,183 +509,186 @@
 
                                 </div>
 
+                                <div class="col-md-7 m-2" id="transaction_summary"
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                        <div class="row">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10 ">
+                                                <br><br><br>
 
+                                                <div class="table-responsive card table_over_flow">
+                                                    <table class="table mb-0 table-bordered table-striped  ">
 
-                                <div class="row" id="transaction_summary">
+                                                        <tbody>
+                                                            <tr class="success_gif">
+                                                                <td class="text-center bg-white" colspan="2">
+                                                                    <img src="{{ asset('land_asset/images/statement_success.gif') }}"
+                                                                        style="zoom: 0.5" alt="">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>From Account:</td>
+                                                                <td>
+                                                                    {{-- <span class="font-13 text-primary text-bold display_from_account_type"
+                                                                        id="display_from_account_type"></span> --}}
+                                                                    <span
+                                                                        class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                        id="display_from_account_name"> </span>
+                                                                    <span
+                                                                        class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                        id="display_from_account_no"></span>
+                                                                </td>
+                                                            </tr>
 
+                                                            <tr>
+                                                                <td>To Account:</td>
+                                                                <td>
 
-                                    <div class="col-md-12">
-                                        <div class=" border p-3 mt-4 mt-lg-0 rounded">
-                                            <h4 class="header-title mb-3">Transfer Detail Summary</h4>
+                                                                    {{-- <span class="font-13 text-primary text-bold display_to_account_type"
+                                                                        id="display_to_account_type"> </span> --}}
+                                                                    <span
+                                                                        class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                        id="display_to_account_name"> </span>
+                                                                    {{-- <span class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                                        id="online_display_beneficiary_bank_name"></span> --}}
+                                                                    <span
+                                                                        class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                        id="display_to_account_no"> </span>
 
-                                            <div class="table-responsive table-striped table-bordered">
-                                                <table class="table mb-0">
+                                                                </td>
+                                                            </tr>
 
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>From Account:</td>
+                                                            <tr>
+                                                                <td>Amount:</td>
+                                                                <td>
+                                                                    <span class="font-15 text-primary h3 display_currency"
+                                                                        id="display_currency"> </span>
+                                                                    &nbsp;
+                                                                    <span
+                                                                        class="font-15 text-primary h3 display_transfer_amount"
+                                                                        id="display_transfer_amount"></span>
+
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Narration:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_purpose"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Start Date:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_so_start_date"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>End Date:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_so_end_date"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Frequency:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_frequency_so"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Transfer Date: </td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3"
+                                                                        id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Posted BY: </td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3"
+                                                                        id="display_posted_by">{{ session()->get('userAlias') }}</span>
+                                                                </td>
+                                                            </tr>
+
+                                                            {{-- <tr>
+                                                            <td>Enter Pin: </td>
                                                             <td>
-                                                                <span
-                                                                    class="font-13 text-primary text-bold display_from_account_type"
-                                                                    id="display_from_account_type"></span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                    id="display_from_account_name"> </span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                    id="display_from_account_no"></span>
-                                                            </td>
-                                                        </tr>
 
-                                                        <tr>
-                                                            <td>Receipient Mobile Number:</td>
-                                                            <td>
+                                                                <input type="text" name="user_pin"
+                                                                    class="form-control key hide_on_print" id="user_pin"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 
-                                                                <span
-                                                                    class="font-13 text-primary text-bold display_to_account_type"
-                                                                    id="display_to_receipient_network_type"> </span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                    id=""> </span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                    id="display_to_account_no"> </span>
-
-
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                    id="online_display_beneficiary_alias_name"> </span>
-
-                                                                <span
-                                                                    class="font-13 text-primary h3 online_display_beneficiary_account_no"
-                                                                    id="online_display_beneficiary_account_no"> </span>
-                                                                &nbsp; | &nbsp;
-                                                                <span
-                                                                    class="font-13 text-primary h3 online_display_beneficiary_account_currency"
-                                                                    id="display_to_receipient_number">
-                                                                </span>
-
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
-                                                                    id="online_display_beneficiary_email"> </span>
-
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
-                                                                    id="online_display_beneficiary_phone"> </span>
-
-
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Amount:</td>
-                                                            <td>
-                                                                <span class="font-15 text-primary h3 display_currency"
-                                                                    id="display_currency"> </span>
-                                                                &nbsp;
-                                                                <span
-                                                                    class="font-15 text-primary h3 display_transfer_amount"
-                                                                    id="display_transfer_amount"></span>
-
-                                                            </td>
-                                                        </tr>
-
-
-                                                        <tr>
-                                                            <td>Category:</td>
-                                                            <td>
-                                                                <span class="font-13 text-primary h3 display_category"
-                                                                    id="display_category"></span>
-
-                                                            </td>
-                                                        </tr>
-
-
-                                                        <tr>
-                                                            <td>Purpose:</td>
-                                                            <td>
-                                                                <span class="font-13 text-primary h3 display_purpose"
-                                                                    id="display_purpose"></span>
-                                                            </td>
-                                                        </tr>
-
-
-                                                        {{-- <tr>
-                                                            <td>Schedule Payment:</td>
-                                                            <td>
-                                                                <span
-                                                                    class="font-13 text-primary h3 display_schedule_payment"
-                                                                    id="display_schedule_payment">NO </span>
-                                                                &nbsp; | &nbsp;
-                                                                <span
-                                                                    class="font-13 text-primary h3 display_schedule_payment_date"
-                                                                    id="display_schedule_payment_date"> N/A
-                                                                </span>
                                                             </td>
                                                         </tr> --}}
 
+                                                            {{-- <tr>
 
-                                                        <tr>
-                                                            <td>Transfer Date: </td>
-                                                            <td>
-                                                                <span class="font-13 text-primary h3"
-                                                                    id="display_transfer_date">{{ date('d F, Y') }}</span>
-                                                            </td>
-                                                        </tr>
+                                                                <td colspan="2">
 
-                                                        <tr>
-                                                            <td>Posted BY: </td>
-                                                            <td>
-                                                                <span class="font-13 text-primary h3"
-                                                                    id="display_posted_by">{{ session('userId') }}</span>
-                                                            </td>
-                                                        </tr>
+                                                                    <div class="alert alert-info form-control col-md-12"
+                                                                        role="alert">
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input type="checkbox" class="custom-control-input"
+                                                                                name="terms_and_conditions"
+                                                                                name="terms_and_conditions"
+                                                                                id="terms_and_conditions">
+                                                                            <label class="custom-control-label "
+                                                                                for="terms_and_conditions">
+                                                                                <b>
+                                                                                    By clicking, you agree with terms and
+                                                                                    conditions
 
-                                                        <tr>
-                                                            <td>Enter Pin: </td>
-                                                            <td>
-                                                                <div class="form-group">
-                                                                    <input type="text" name="user_pin" class="form-control"
-                                                                        id="user_pin"
-                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                                                </b>
+                                                                            </label>
+                                                                        </div>
 
 
-                                                    </tbody>
-                                                </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr> --}}
+
+
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- end table-responsive -->
+
+
+
+                                                <br>
+                                                <div class="form-group text-center">
+
+                                                    <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                            id="back_button"> <i class="fe-arrow-left"></i>&nbsp;Back</button> &nbsp; </span>
+                                                    <span>
+                                                        &nbsp;
+                                                        <button class="btn btn-primary btn-rounded " type="button" id="confirm_transfer">
+                                                            <span id="confirm_transfer-text">Confirm Order</span>
+                                                            <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                                id="spinner" aria-hidden="true"></span>
+                                                            <span id="spinner-text">Loading...</span>
+                                                        </button>
+                                                    </span>
+
+                                                    <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                            type="button" id="print_receipt" onclick="window.print()">Print
+                                                            Receipt
+                                                        </button></span>
+                                                </div>
                                             </div>
-                                            <!-- end table-responsive -->
-                                            <br>
-                                            <div class="form-group text-center">
-
-                                                <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                        id="back_button">Back</button> &nbsp; </span>
-                                                <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                        id="confirm_button"><span id="confirm_transfer">Confirm
-                                                            Transfer</span>
-                                                        <span class="spinner-border spinner-border-sm mr-1" role="status"
-                                                            id="spinner" aria-hidden="true"></span>
-                                                        <span id="spinner_text">Loading...</span>
-                                                    </button></span>
-                                                <span>&nbsp; <button class="btn btn-light btn-rounded" type="button"
-                                                        id="print_receipt" onclick="window.print()">Print Receipt
-                                                    </button></span>
-                                            </div>
+                                            <div class="col-md-1"></div>
                                         </div>
-
-                                    </div> <!-- end col -->
-
-
-
-
 
                                 </div>
 
-
-
-                                <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
+                                <div class="col-md-4 m-2" id="related_information_display"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <br><br>
 
@@ -863,201 +770,219 @@
 
                                 </div>
 
-                                <div class="receipt">
-                                    <div class="container card card-body">
+                            </div>
+                        </div>
 
-                                        <div class="container">
-                                            <div class="">
-                                                <div class="col-md-12 col-md-offset-3 body-main">
-                                                    <div class="col-md-12">
-                                                        <div class="row">
-                                                            <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
-                                                                    src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
-                                                                    style="zoom: 0.6" /> </div>
-                                                            <div class="col-md-4"></div>
-                                                            <div class="col-md-4 text-right">
-                                                                <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
-                                                                </h4>
-                                                                <p>25-27 Siaka Stevens St</p>
-                                                                <p> Freetown, Sierra Leone</p>
-                                                                <p>rokelsl@rokelbank.sl</p>
-                                                                <p>(+232)-76-22-25-01</p>
-                                                            </div>
+                        <div class="row receipt">
+                                <div class="container card card-body">
+
+                                    <div class="container">
+                                        <div class="">
+                                            <div class="col-md-12 col-md-offset-3 body-main">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
+                                                                src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
+                                                                style="zoom: 0.6" /> </div>
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-md-4 text-right">
+                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
+                                                            </h4>
+                                                            <p>25-27 Siaka Stevens St</p>
+                                                            <p> Freetown, Sierra Leone</p>
+                                                            <p>rokelsl@rokelbank.sl</p>
+                                                            <p>(+232)-76-22-25-01</p>
                                                         </div>
-                                                        <br>
-                                                        <div class="page-header">
-                                                            <h2>Transfer Receipt </h2>
+                                                    </div>
+                                                    <br>
+                                                    <div class="page-header">
+                                                        <h2>Standing Order Receipt </h2>
+                                                    </div>
+                                                    <br>
+                                                    {{-- <div class="row">
+                                                        <div class="col-md-12 text-center">
+                                                            <h2>INVOICE</h2>
+                                                            <h5>04854654101</h5>
                                                         </div>
-                                                        <br>
-                                                        {{-- <div class="row">
-                                                            <div class="col-md-12 text-center">
-                                                                <h2>INVOICE</h2>
-                                                                <h5>04854654101</h5>
-                                                            </div>
-                                                        </div> --}}
-                                                        <br />
-                                                        {{-- <div class="table-responsive">
-                                                            <table class="table mb-0">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th><h5>Description</h5></th>
-                                                                        <th><h5>Further Details</h5></th>
-                                                                        <th><h5>Amount</h5></th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="col-md-9">
-                                                                            From Account Number<br>
-                                                                            004004110449140121
-                                                                        </td>
-                                                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 50,000 </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="col-md-9">
-                                                                            To Account Number<br>
-                                                                            004004110445350137
-                                                                        </td>
-                                                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 5,200 </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="col-md-9">Category Type</td>
-                                                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 25,000 </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="col-md-9">Purpose of Transfer</td>
-                                                                        <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 2,200 </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="col-md-9"> Transfer Amount</td>
-                                                                        <td class="text-right">
-                                                                            <p> <strong>Shipment and Taxes:</strong> </p>
-                                                                            <p> <strong>Total Amount: </strong> </p>
-                                                                            <p> <strong>Discount: </strong> </p>
-                                                                            <p> <strong>Payable Amount: </strong> </p>
-                                                                        </td>
-                                                                        <td>
-                                                                            <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 500 </strong> </p>
-                                                                            <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong> </p>
-                                                                            <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong> </p>
-                                                                            <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong> </p>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr style="color: #F81D2D;">
-                                                                        <td class="text-right">
-                                                                            <h4><strong>Total:</strong></h4>
-                                                                        </td>
-                                                                        <td class="text-left">
-                                                                            <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900 </strong></h4>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div> --}}
-                                                        <div class="table-responsive">
-                                                            <table class="table mb-0">
-                                                                <thead class="thead-light">
-                                                                    <tr>
-                                                                        {{-- <th>#</th> --}}
-                                                                        <th>Description</th>
-                                                                        <th>Further Details</th>
-                                                                        {{--  <th>Amount (<span id="receipt_currency"></span>)</th>  --}}
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        {{-- <th scope="row">1</th> --}}
-                                                                        <td>Transfer From Account Number</td>
-                                                                        <td><span id="from_account_receipt"></span></td>
-                                                                        {{--  <td></td>  --}}
-                                                                    </tr>
-                                                                    <tr>
-                                                                        {{-- <th scope="row">2</th> --}}
-                                                                        <td>Transfer To Account Number</td>
-                                                                        <td><span id="to_account_receipt"></span></td>
-                                                                        {{--  <td></td>  --}}
-                                                                    </tr>
-                                                                    <tr>
-                                                                        {{-- <th scope="row">3</th> --}}
-                                                                        <td>Transfer Category</td>
-                                                                        <td><span id="category_receipt"></span></td>
-                                                                        {{--  <td></td>  --}}
-                                                                    </tr>
-                                                                    <tr>
-                                                                        {{-- <th scope="row">3</th> --}}
-                                                                        <td>Transfer Purpose</td>
-                                                                        <td><span id="purpose_receipt"></span></td>
-                                                                        {{--  <td></td>  --}}
-                                                                    </tr>
-                                                                    <tr>
-                                                                        {{-- <th scope="row">3</th> --}}
-                                                                        <td>Amount</td>
-                                                                        {{--  <td></td>  --}}
-                                                                        <td><strong>(<span class="receipt_currency"></span>)<span id="amount_receipt"></span></strong>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        {{-- <th scope="row">3</th> --}}
-                                                                        <td>Transaction Fee </td>
-                                                                        {{--  <td></td>  --}}
-                                                                        <td><strong>(<span class="receipt_currency"></span>)15.00</strong></td>
-                                                                    </tr>
-                                                                    {{--  <tr>
-                                                                        <th scope="row">3</th>
-                                                                        <td><strong>Total Amount</strong> </td>
-                                                                        <td></td>
-                                                                        <td><strong><span
-                                                                                    id="total_amount_receipt"></span></strong>
-                                                                        </td>
-                                                                    </tr>  --}}
-                                                                    <tr>
-                                                                        {{-- <th scope="row">3</th> --}}
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div> <!-- end table-responsive-->
-                                                        <br>
-                                                        <div>
-                                                            <div class="col-md-12">
-                                                                <p><b>Date Posted :</b> {{ date('d F, Y') }}</p> <br /> <br />
-                                                                <p><b>Posted By : {{ session('userId') }}</b></p>
-                                                            </div>
+                                                    </div> --}}
+                                                    <br />
+                                                    {{-- <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><h5>Description</h5></th>
+                                                                    <th><h5>Further Details</h5></th>
+                                                                    <th><h5>Amount</h5></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="col-md-9">
+                                                                        From Account Number<br>
+                                                                        004004110449140121
+                                                                    </td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 50,000 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">
+                                                                        To Account Number<br>
+                                                                        004004110445350137
+                                                                    </td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 5,200 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">Category Type</td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 25,000 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">Purpose of Transfer</td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 2,200 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9"> Transfer Amount</td>
+                                                                    <td class="text-right">
+                                                                        <p> <strong>Shipment and Taxes:</strong> </p>
+                                                                        <p> <strong>Total Amount: </strong> </p>
+                                                                        <p> <strong>Discount: </strong> </p>
+                                                                        <p> <strong>Payable Amount: </strong> </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 500 </strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong> </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="color: #F81D2D;">
+                                                                    <td class="text-right">
+                                                                        <h4><strong>Total:</strong></h4>
+                                                                    </td>
+                                                                    <td class="text-left">
+                                                                        <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900 </strong></h4>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div> --}}
+                                                    <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <thead class="thead-light">
+                                                                <tr>
+                                                                    {{-- <th>#</th> --}}
+                                                                    <th>Description</th>
+                                                                    <th>Further Details</th>
+                                                                    {{--  <th>Amount (<span id="receipt_currency"></span>)</th>  --}}
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    {{-- <th scope="row">1</th> --}}
+                                                                    <td>Transfer From Account Number</td>
+                                                                    <td><span class="font-13 text-primary text-bold display_from_account_no"></span></td>
+                                                                    {{--  <td></td>  --}}
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">2</th> --}}
+                                                                    <td>Transfer To Account Number</td>
+                                                                    <td><span class="font-13 text-primary text-bold display_to_account_no"></span></td>
+                                                                    {{--  <td></td>  --}}
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    <td>Narration</td>
+                                                                    <td><span class="font-13 text-primary text-bold display_purpose"></span></td>
+                                                                    {{--  <td></td>  --}}
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Start Date:</td>
+                                                                    <td>
+                                                                        <span class="font-13 text-primary h3 display_so_start_date"></span>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>End Date:</td>
+                                                                    <td>
+                                                                        <span class="font-13 text-primary h3 display_so_end_date"></span>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Frequency:</td>
+                                                                    <td>
+                                                                        <span class="font-13 text-primary h3 display_frequency_so"></span>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Transfer Date: </td>
+                                                                    <td>
+                                                                        <span class="font-13 text-primary h3"
+                                                                            id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    <td>Amount</td>
+                                                                    {{--  <td></td>  --}}
+                                                                    <td><strong>(<span class="display_currency"></span>)<span class="display_transfer_amount"></span></strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    <td>Transaction Fee </td>
+                                                                    {{--  <td></td>  --}}
+                                                                    <td><strong>(<span class="display_currency"></span>)15.00</strong></td>
+                                                                </tr>
+                                                                {{--  <tr>
+                                                                    <th scope="row">3</th>
+                                                                    <td><strong>Total Amount</strong> </td>
+                                                                    <td></td>
+                                                                    <td><strong><span
+                                                                                id="total_amount_receipt"></span></strong>
+                                                                    </td>
+                                                                </tr>  --}}
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div> <!-- end table-responsive-->
+                                                    <br>
+                                                    <div>
+                                                        <div class="col-md-12">
+                                                            <p><b>Date Posted :</b> {{ date('d F, Y') }}</p> <br /> <br />
+                                                            <p><b>Posted By : {{ session('userId') }}</b></p>
                                                         </div>
-                                                        <br><br>
-                                                        <div class="row">
-                                                            <div class="col-md-5"></div>
-                                                            <div class="col-md-2">
-                                                                  <button class="btn btn-light btn-rounded hide_on_print text-center"
-                                                                    type="button" onclick="window.print()">Print
-                                                                    Receipt
-                                                                </button>
+                                                    </div>
+                                                    <br><br>
+                                                    <div class="row">
+                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-2">
+                                                            <button class="btn btn-light btn-rounded hide_on_print text-center"
+                                                                type="button" onclick="window.print()">Print
+                                                                Receipt
+                                                            </button>
 
 
-                                                            </div>
-                                                            <div class="col-md-5"></div>
                                                         </div>
+                                                        <div class="col-md-5"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
                         </div>
 
-
-
                         {{-- <div class="col-md-2"></div> --}}
 
                     </div> <!-- end card-body -->
-
-
-
 
                 </div> <!-- end col -->
 
@@ -1106,7 +1031,7 @@
             }
 
               //function to get the loan products accessible to the customer of the bank.
-              function get_so_frequencies() {
+            function get_so_frequencies() {
                             $.ajax({
                                 type: 'GET',
                                 url:  'get-standing-order-frequencies-api',
@@ -1275,8 +1200,12 @@
                 $('#schedule_payment_contraint_input').hide()
                 $('.display_schedule_payment_date').text('N/A')
 
+                //changes to be made after alteration
                 $("#transaction_form").show()
                 $("#transaction_summary").hide()
+                $("#related_information_display").show();
+                $(".receipt").hide()
+
 
 
 
@@ -1325,41 +1254,79 @@
                 })
 
                 $("#saved_beneficiary").change(function() {
-                    let saved_beneficiary = $(this).val()
-
-                    if (saved_beneficiary.trim() == '' || saved_beneficiary.trim() == undefined) {
-                        alert('money')
-                        $(".saved_beneficiary_display_info").hide()
+                    var to_account = $(this).val()
+                    {{-- console.log(to_account); --}}
+                    {{-- alert(to_account) --}}
+                    if (to_account.trim() == '' || to_account.trim() == undefined) {
+                        {{-- alert('money') --}}
+                        $(".to_account_display_info").hide()
 
                     } else {
-                        saved_beneficiary_info = saved_beneficiary.split("~")
+                        to_account_info = to_account.split("~")
+                        console.log(to_account_info);
 
-                        // var to_account = $('#to_account').val()
+                        var from_account = $('#from_account').val()
 
+                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
+                            to_account.trim() != '') {
+                            {{-- alert('can not transfer to same account') --}}
+                            $(this).val('')
+                        }
 
                         // set summary values for display
-                        $(".display_to_account_name").text(saved_beneficiary_info[0].trim())
-                        $(".display_to_account_no").text(saved_beneficiary_info[1].trim())
-                        $(".display_saved_beneficiary_no").text(saved_beneficiary_info[2].trim())
-                        // $(".display_from_account_currency").text(from_account_info[3].trim())
+                        $(".display_to_account_type").text(to_account_info[0])
+                        $(".display_to_account_name").text(to_account_info[1])
+                        $(".display_to_account_no").text(to_account_info[2])
+                        $(".display_to_account_amount").text(to_account_info[4])
+                        $(".display_to_account_currency").text(to_account_info[3])
+                        // alert(to_account_info[0].trim())
+                        //$(".display_to_account_amount").text(formatToCurrency(parseFloat(to_account_info[4].trim())))
 
-                        // $(".display_currency").text(from_account_info[3].trim()) // set summary currency
-
-                        amt = saved_beneficiary_info[4].trim()
-                        // $(".display_saved_beneficiary_amount").text(formatToCurrency(parseFloat(
-                        //     from_account_info[4]
-                        //     .trim())))
-                        {{-- alert('and show '  + from_account_info[3].trim()) --}}
-                        $(".from_account_display_info").show()
-
-
-
-
-
-                        // alert(from_account_info[0]);
+                        $(".to_account_display_info").show()
                     }
 
-                })
+
+
+
+                    {{-- alert(to_account_info[0]); --}}
+                });
+
+                // $("#saved_beneficiary").change(function() {
+                //     let saved_beneficiary = $(this).val()
+
+                //     if (saved_beneficiary.trim() == '' || saved_beneficiary.trim() == undefined) {
+                //         alert('money')
+                //         $(".saved_beneficiary_display_info").hide()
+
+                //     } else {
+                //         saved_beneficiary_info = saved_beneficiary.split("~")
+
+                //         // var to_account = $('#to_account').val()
+
+
+                //         // set summary values for display
+                //         $(".display_to_account_name").text(saved_beneficiary_info[0].trim())
+                //         $(".display_to_account_no").text(saved_beneficiary_info[1].trim())
+                //         $(".display_saved_beneficiary_no").text(saved_beneficiary_info[2].trim())
+                //         // $(".display_from_account_currency").text(from_account_info[3].trim())
+
+                //         // $(".display_currency").text(from_account_info[3].trim()) // set summary currency
+
+                //         amt = saved_beneficiary_info[4].trim()
+                //         // $(".display_saved_beneficiary_amount").text(formatToCurrency(parseFloat(
+                //         //     from_account_info[4]
+                //         //     .trim())))
+                //         {{-- alert('and show '  + from_account_info[3].trim()) --}}
+                //         $(".from_account_display_info").show()
+
+
+
+
+
+                //         // alert(from_account_info[0]);
+                //     }
+
+                // })
 
                 $("#so_start_date").change(function(){
                     var display_start_date = $("#so_start_date").val();
@@ -1385,6 +1352,12 @@
                     $(".display_frequency_so").text(optionText);
                     console.log(frequency);
                 })
+
+                $("#purpose").change(function(){
+                    var purpose = $("#purpose").val();
+                    $(".display_purpose").text(purpose);
+                    console.log(purpose);
+                });
 
                 // $("#loan_product").change(function(){
                 // var loan_product = $("#loan_product").val();
@@ -1413,211 +1386,79 @@
                         title: message,
                         timer: timer
                     })
-                };
+                }
 
                 $("#next_button").click(function(e) {
                     e.preventDefault();
+                    $("#confirm_transfer-text").show();
+                    $("#spinner").hide();
+                    $("#spinner-text").hide();
 
+                    let from_account = $("#from_account").val();
+                    let beneficiary = $("#saved_beneficiary").val();
+                    let amount = $("#amount").val();
+                    let so_start_date = $("#so_start_date").val();
+                    let so_end_date = $("#so_end_date").val();
+                    let so_frequency = $("#beneficiary_frequency").val();
+                    let narration = $("#narration").val();
 
-                    var type = $("input[type='radio']:checked").val();
-                    console.log(type);
-
-                    if (type == "beneficiary") {
-
-                        var from_account = $("#from_account").val().split('~');
-                        {{-- var from_account_ = from_account[2]; --}}
-                        $("#display_from_account_type").text();
-                        $("#display_from_account_name").text();
-                        $("#display_from_account_no").text();
-
-                        var amount = $("#amount").val();
-                        $("#display_currency").text();
-                        $("#display_transfer_amount").text(amount);
-
-                        var receipient_number = $("#receipient_number").val();
-                        $("#display_to_receipient_number").text(receipient_number);
-
-                        var receipient_network = $("#network_type").val();
-                        $("#display_to_receipient_network_type").text(receipient_network);
-
-                        var category = $("#category").val().split('~');
-                        var category_ = category[1]
-                        $("#display_category").text(category_);
-
-                        {{-- var category_ = category[0] ; --}}
-                        var naration = $("#purpose").val();
-                        $("#display_purpose").text(naration);
-
-                        {{-- console.log(from_account);
-                            console.log(amount);
-                            console.log(receipient_number);
-                            console.log(receipient_network);
-                            console.log(category);
-                            console.log(naration); --}}
-
-
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-
-
+                    if( from_account =='' || beneficiary =='' || amount=='' || so_start_date =='' || so_frequency =='' || narration == ''){
+                        toaster('fields cannot be empty','error',2000);
+                        return false;
                     }
 
-                    if (type == "onetime") {
+                    let from_account_info = from_account.split('~');
+                    let to_account_info = beneficiary.split('~');
 
-                        var from_account = $("#from_account").val();
-                        $("#display_from_account_type").text();
-                        $("#display_from_account_name").text();
-                        $("#display_from_account_no").text();
-
-                        var amount = $("#amount").val();
-                        $("#display_currency").text();
-                        $("#display_transfer_amount").text(amount);
-
-                        var onetime_receipient_number = $("#onetime_receipient_number").val();
-                        $("#display_to_receipient_number").text(receipient_number);
-
-                        var onetime_receipient_network = $("#onetime_network_type").val();
-                        $("#display_to_receipient_network_type").text(receipient_network);
-
-                        var category = $("#onetime_category").val();
-                        $("#display_category").text(category);
-
-                        var naration = $("#onetime_purpose").val();
-                        $("#display_purpose").text(naration);
-
-                        {{-- console.log(from_account);
-                            console.log(amount);
-                            console.log(onetime_receipient_number);
-                            console.log(onetime_receipient_network);
-                            console.log(category);
-                            console.log(naration); --}}
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
+                    from_account = from_account_info[2];
+                    beneficiary = to_account_info[2];
 
 
-                    $("#confirm_button").click(function(e) {
-                        e.preventDefault();
 
+                    $("#transaction_form").hide()
+                    $("#transaction_summary").show()
 
-                        var type = $("input[type='radio']:checked").val();
-                        {{-- console.log(type); --}}
-
-                        if (type == "beneficiary") {
-
-                            var from_account = $("#from_account").val().split('~');
-                            var from_account_ = from_account[2];
-                            var currency = from_account[3];
-                            var amount = $("#amount").val();
-                            var receipient_number = $("#receipient_number").val();
-                            var receipient_network = $("#network_type").val();
-                            var category = $("#category").val().split('~');
-                            var category_ = category[0];
-                            var naration = $("#purpose").val();
-                            var user_pin = $("#user_pin").val();
-
-                            {{-- console.log(from_account);
-                                console.log(from_account_);
-                                console.log(currency);
-                                console.log(amount);
-                                console.log(receipient_number);
-                                console.log(receipient_network);
-                                console.log(category_);
-                                console.log(naration);
-                                console.log(user_pin); --}}
-
+                        $("#confirm_transfer").click(function(e) {
+                            e.preventDefault();
+                            $("#confirm_transfer-text").hide();
+                            $("#spinner").show();
+                            $("#spinner-text").show();
 
                             $.ajax({
-                                "type": "POST",
-                                "url": "mobile-money-api",
-                                datatype: "application/json",
-                                data: {
-                                    'from_account': from_account_,
-                                    'amount': amount,
-                                    'currency': currency,
-                                    'category_': category_,
-                                    'receipient_number': receipient_number,
-                                    'receipient_network': receipient_network,
-                                    'naration': naration,
-                                    'user_pin': user_pin
+                                    type : "POST",
+                                    url : "initiate-standing-order-request",
+                                    datatype : "application/json",
+                                    data : {
+                                        'from_account': from_account,
+                                        'amount': amount,
+                                        'beneficiary_account': beneficiary,
+                                        'standing_order_start_date': so_start_date,
+                                        'standing_order_end_date': so_end_date,
+                                        'standing_order_frequency': so_frequency,
+                                        'narration': narration
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
+                                    },
+                                    success: function(response) {
+                                        {{-- console.log(response); --}}
+                                        if (response.responseCode == '000') {
+                                            toaster(response.message, 'success', 10000);
 
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-                                    {{-- console.log(response); --}}
-                                    if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 10000);
-                                    } else {
-                                        toaster(response.message, 'error', 6000);
+                                            setTimeout(function(){
+                                                window.location.reload();
+                                            }, 2000);
+                                        } else {
+                                            toaster(response.message, 'error', 6000);
+                                            $("#confirm_transfer-text").show();
+                                            $("#spinner").hide();
+                                            $("#spinner-text").hide();
+                                            $(".form_process").hide();
+                                            $(".receipt").show();
+                                        }
                                     }
-                                }
-                            })
-
-
-                        }
-
-                        if (type == "onetime") {
-                            {{-- alert('onetime'); --}}
-
-                            var from_account = $("#from_account").val().split('~');
-                            var from_account_ = from_account[2];
-                            var currency = from_account[3];
-                            var amount = $("#amount").val();
-                            var receipient_number = $("#onetime_receipient_number").val();
-                            var receipient_network = $("#onetime_network_type").val();
-                            var category = $("#onetime_category").val().split('~');
-                            var category_ = category[0];
-                            var naration = $("#onetime_purpose").val();
-                            var user_pin = $("#user_pin").val();
-
-                            {{-- console.log(from_account); --}}
-                            console.log(from_account_);
-                            console.log(currency);
-                            console.log(amount);
-                            console.log(receipient_number);
-                            console.log(receipient_network);
-                            console.log(category_);
-                            console.log(naration);
-                            console.log(user_pin);
-
-
-                            $.ajax({
-                                "type": "POST",
-                                "url": "mobile-money-api",
-                                datatype: "application/json",
-                                data: {
-                                    'from_account': from_account_,
-                                    'amount': amount,
-                                    'currency': currency,
-                                    'category_': category_,
-                                    'receipient_number': receipient_number,
-                                    'receipient_network': receipient_network,
-                                    'naration': naration,
-                                    'user_pin': user_pin
-
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-                                    {{-- console.log(response); --}}
-                                    if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 10000);
-                                    } else {
-                                        toaster(response.message, 'error', 6000);
-                                    }
-                                }
-                            })
-
-                        }
-
-
+                        });
 
 
                     })

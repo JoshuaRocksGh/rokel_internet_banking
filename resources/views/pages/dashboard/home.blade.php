@@ -1081,9 +1081,9 @@
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
         <script type="text/javascript">
-            var i_have = 93333333
-            var i_owe = 1458649
-            var i_invest_total = 11111111
+            var i_have = 0
+            var i_owe = 0
+            var i_invest_total = 0
 
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
@@ -1258,6 +1258,8 @@
 
                                 })
 
+                                console.log('i_invest_total: ' + i_invest_total)
+
                                 $('.my_investment_loading_area').hide()
                                 $('.my_investment_error_area').hide()
                                 $('.my_investment_no_data_found').hide()
@@ -1341,6 +1343,8 @@
                                 )
                             })
 
+                            console.log('i_have_total: ' + i_have_total)
+
                             {{--  SETTING TABLE VALUES  --}}
                             $('.i_have_amount').text(formatToCurrency(parseFloat(i_have_total)));
 
@@ -1415,7 +1419,18 @@
                                 if(response.data == null){
                                     $('#p_loans_display').html(`<h2 class="text-center">No Loan</h2>`)
                                 }else{
+                                    $('#p_loans_display').show()
+                                    $(".loans_display_area").show()
+                                    console.log("response");
+
+                                    let i_owe_total = 0
+                                    let count = 0
+
                                     $.each(data, function(index) {
+                                        let loanBalance =  data[index].loanBalance
+                                        loanBalance = loanBalance.replace(/,/g, "");
+                                        i_owe_total += parseFloat(loanBalance)
+
                                         $('.loans_display').append(
                                             `
                                         <tr>
@@ -1428,6 +1443,8 @@
                                         )
 
                                     })
+
+                                    console.log('i_owe_total: ' + i_owe_total)
                                 }
 
 
