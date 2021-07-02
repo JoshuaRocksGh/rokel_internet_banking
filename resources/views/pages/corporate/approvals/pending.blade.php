@@ -388,13 +388,15 @@
                                     table.row.add([
 
                                         request_type,
-                                        'o',
+                                        `<button type="button" class="btn btn-warning disabled btn-xs waves-effect waves-light">Pending</button>`
+
+                                        ,
                                         data[index].postedby,
                                         data[index].post_date,
                                         data[index].account_no,
                                         `
                                                                              <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}">
-                                                                                View Details>>>
+                                                                                <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
                                                                             </a>
                                                                             `
 

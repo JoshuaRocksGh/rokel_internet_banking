@@ -380,6 +380,7 @@
                     },
                     error: function(xhr, status, error) {
 
+                        setTimeout ( function(){ account_mandate(customer, request) }, $.ajaxSetup().retryAfter )
                     }
                 })
             }
