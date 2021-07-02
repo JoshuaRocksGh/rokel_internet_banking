@@ -1078,6 +1078,10 @@
 
                         });
                     },
+                    error: function(xhr, status, error) {
+
+                        setTimeout ( function(){ from_account()() }, $.ajaxSetup().retryAfter )
+                    }
 
                 })
             }
@@ -1100,6 +1104,10 @@
 
                         });
                     },
+                    error: function(xhr, status, error) {
+
+                        setTimeout ( function(){ expenseTypes() }, $.ajaxSetup().retryAfter )
+                    }
                 })
             }
 
@@ -1139,6 +1147,10 @@
                             }
                         });
 
+                    },
+                    error: function(xhr, status, error) {
+
+                        setTimeout ( function(){ get_currency() }, $.ajaxSetup().retryAfter )
                     }
                 })
             }
@@ -1171,7 +1183,7 @@
 
                     },
                     error: function(xhr, status, error) {
-
+                        setTimeout ( function(){ get_correct_fx_rate() }, $.ajaxSetup().retryAfter )
                     }
 
                 })
@@ -1795,7 +1807,7 @@
 
                                         }
                                     },error: function(xhr, status, error) {
-                                        
+
                                     }
 
                                 })

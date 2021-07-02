@@ -120,7 +120,7 @@
                                                 </div>
                                             </div>
 
-{{--                                              
+{{--
                                             <div class="form-group row">
                                                 <b class="col-md-3 text-primary">Amount Interval :</b>
 
@@ -147,18 +147,19 @@
                                         </div>
 
                                         <div class="col-md-4">
-                                           
+
                                             <h3 class=""> <b>Account Details</b> </h3>
-                                            <h5 class="">Name: <b class="account_description">Kwabena Ampah</b> </h5>
-                                            <h5 class="">Account NO: <b class="account_number">012453234578521</b> </h5>
-                                            <h5 class="">Product: <b class="account_product">SAVINGS ACCOUNT</b> </h5>
+                                            <h5 class="">Name:&nbsp; <b class="account_description">#############</b> </h5>
+                                            <h5 class="">Account NO:&nbsp; <b class="account_number">#############</b> </h5>
+                                            <h5 class="">Product:&nbsp; <b class="account_product">########</b> </h5>
+                                            <h5 class="">Currency:&nbsp; <b class="account_currency">########</b> </h5>
 
                                         </div>
 
 
                                     </div>
 
-                                   
+
 
                                 </div>
                             </div>
@@ -185,9 +186,9 @@
                                                     <div class="col-md-6"> <h5>Account Number: <strong class="display_account_number"></strong> Date Range: <strong class="display_search_date_range"></strong></div>
 
                                                     <div class="col-md-4">
-                                                        
+
                                                         <div class="row">
-                                                           
+
                                                             <select class="form-control col-md-8" id="from_account" required>
                                                                 <option value=""> -- Select Transfer Type -- </option>
                                                                 <option value="001~All"> ALL</option>
@@ -206,7 +207,7 @@
                                                                     <img src="{{ asset('assets/images/pdf.png') }}" alt="" style="width: 22px; height: 25px;">
                                                                 </a>  --}}
                                                             </span>
-        
+
                                                             &nbsp;&nbsp;&nbsp;
                                                         </span>
                                                         <span style="float: right">
@@ -215,14 +216,14 @@
                                                                     <img src="{{ asset('assets/images/excel.png') }}" alt="" style="width: 22px; height: 25px;">
                                                                 </a>  --}}
                                                             </span>
-        
+
                                                         </span>
-                                                    </div>  
+                                                    </div>
 
                                                 </div>
 
-                                             
-                                            
+
+
                                             </div>
 
                                             <table id="datatable-buttons" class="table table-bordered table-striped mb-0 account_transaction_display_table" >
@@ -508,7 +509,7 @@
 
                 },
                 error: function(xhr, status, error) {
-
+                    setTimeout ( function(){ get_accounts() }, $.ajaxSetup().retryAfter )
                 }
             })
         }
@@ -582,6 +583,33 @@
                 get_accounts()
 
             }, 500);
+
+            $("#from_account").change(function() {
+                var from_account = $(this).val();
+
+                from_account_info = from_account.split("~")
+                console.log(from_account_info);
+
+
+
+                // set summary values for display
+                $(".account_product").text(from_account_info[0])
+                $(".account_description").text(from_account_info[1])
+                $(".account_number").text(from_account_info[2])
+                $(".display_from_account_currency").text(from_account_info[3])
+                $('.account_currency').text(from_account_info[3])
+                //$(".display_currency").text(from_account_info[3]) // set summary currency
+
+                //amt = from_account_info[4].trim()
+
+                //$(".display_from_account_amount").text(formatToCurrency(Parse(from_account_info[4].trim())))
+
+                //$(".from_account_display_info").show()
+
+
+
+
+            });
 
             $('#search_transaction').click(function() {
                 let start_date = $('#startDate').val()
@@ -757,7 +785,7 @@
                         table.row.add([
                             data[index].postingSysDate,
                             amount,
-                            `${data[index].runningBalance}`,
+                            `${formatToCurrency(parseFloat(data[index].runningBalance))}`,
                             {{--  "EXPLANATION",  --}}
                             data[index].narration,
 

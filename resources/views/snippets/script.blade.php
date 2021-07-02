@@ -73,6 +73,6 @@
 <script>
 $.ajaxSetup({
     timeout: 3000,
-    retryAfter:7000
+    retryAfter:5000
 });
 </script>
