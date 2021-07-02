@@ -1135,7 +1135,7 @@
                         console.log(data);
                         $.each(data, function(index) {
                             $('#select_currency__').append($('<option>', {
-                                value: data[index].isoCode
+                                value: data[index].currCode + '~' + data[index].description + '~' + data[index].isoCode
                             }).text(data[index].isoCode));
                         })
 

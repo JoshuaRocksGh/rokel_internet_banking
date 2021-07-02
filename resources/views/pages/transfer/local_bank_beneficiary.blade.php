@@ -457,6 +457,9 @@
                         });
 
                     },
+                    error : function (xhr, status, error) {
+                        setTimeout ( function(){ bank_list() }, $.ajaxSetup().retryAfter )
+                    }
 
                 })
             };
@@ -479,6 +482,9 @@
                         });
 
                     },
+                    error: function(xhr, status, error) {
+                        setTimeout ( function(){ get_currency() }, $.ajaxSetup().retryAfter )
+                    }
 
                 })
             };
@@ -520,6 +526,9 @@
                             {{-- return false --}}
 
                         }
+                    },
+                    error: function(xhr, status, error) {
+                        setTimeout ( function(){ validate_account_number() }, $.ajaxSetup().retryAfter )
                     }
 
                 })
@@ -703,6 +712,10 @@
                     }
                     var currency = $('#select_currency').val().split('~');
                     var currency_ = currency[1];
+                    var currCode = currency[0];
+
+                    console.log(currCode);
+
                     var beneficiary_number = $('#beneficiary_telephone').val();
                     var beneficiary_address = $('#beneficiary_address').val();
                     var beneficiary_email = $('#beneficiary_email').val();
@@ -731,7 +744,8 @@
                             "account_currency": currency_,
                             "number": beneficiary_number,
                             "beneficiary_address": beneficiary_address,
-                            "bank_swift_code": swift_code
+                            "bank_swift_code": swift_code,
+                            "currency_code": currCode
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

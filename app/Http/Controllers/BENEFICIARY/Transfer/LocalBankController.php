@@ -46,11 +46,11 @@ class LocalBankController extends Controller
             'beneficiary_address' => 'required',
             'number' => 'required',
             'account_currency' => 'required',
-            'bank_swift_code' => 'required'
-            //'send_mail' => 'required',
+            'bank_swift_code' => 'required',
+            'currency_code' => 'required'
         ]);
 
-        //return $req;
+        // return $req;
 
         $base_response = new BaseResponse();
 
@@ -86,8 +86,8 @@ class LocalBankController extends Controller
                 "bankBranch" => null,
                 "bankCity" => null,
                 "bankCountry" => null,
-                "bankName" => $req->bank_name,
-                "bankSwiftCode" => $req->bank_swift_code
+                "bankName" => $req->bank_name .''.'||'.''. $req->bank_swift_code,
+                "bankSwiftCode" => $req->currency_code
             ],
 
             "beneID" => null,

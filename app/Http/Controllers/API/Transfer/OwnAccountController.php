@@ -94,6 +94,7 @@ class OwnAccountController extends Controller
 
             "amount" => $req->transfer_amount,
             "authToken" => $authToken,
+            "channel" => 'MOB',
             "creditAccount" => $req->to_account,
             "currency" => null,
             "debitAccount" => $req->from_account,

@@ -473,10 +473,10 @@
 
                                                                 <div class="input-group mb-1 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <select name="" class="input-group-text" id="select_currency">
-                                                                            <option value="SLL" selected>SLL</option>
+                                                                        <select name="" class="input-group-text select_currency" id="select_currency" disabled>
+                                                                            {{--  <option value="SLL" selected></option>
                                                                             <option value="EUR">EURO</option>
-                                                                            <option value="USD">USD</option>
+                                                                            <option value="USD">USD</option>  --}}
                                                                         </select>
                                                                     </div>
 
@@ -495,10 +495,10 @@
 
                                                         <div class="input-group mb-1 col-8" style="padding: 0px;">
                                                             <div class="input-group-prepend">
-                                                                <select name="" class="input-group-text" id="select_currency__">
-                                                                    <option value="SLL" selected>SLL</option>
+                                                                <select name="" class="input-group-text select_currency" id="select_currency__">
+                                                                    {{--  <option value="SLL" selected>SLL</option>
                                                                     <option value="EUR">EURO</option>
-                                                                    <option value="USD">USD</option>
+                                                                    <option value="USD">USD</option>  --}}
                                                                 </select>
                                                             </div>
                                                             &nbsp;&nbsp;
@@ -1006,19 +1006,64 @@
                     })
                 };
 
+                var c = {}
+
                 function get_currency() {
+                    {{-- let name = $("#hidden_currency").val();
+                    console.log(name); --}}
+                    $.ajax({
+                        "type": "GET",
+                        "url": "get-currency-list-api",
+                        datatype: "application/json",
+                        success: function(response) {
+                            {{-- console.log(response); --}}
+
+                            let data = response.data
+
+                            c = data
+
+                            console.log(data);
+                            $.each(data, function(index) {
+                                $('.select_currency').append($('<option>', {
+                                    value: data[index].isoCode
+                                }).text(data[index].isoCode));
+                            })
+
+                            $('.select_currency option').each(function() {
+
+
+                                if ($(this).val() == 'SLL') {
+                                    $(this).prop("selected", true);
+                                } else {
+
+                                }
+
+
+                            });
+                        },
+                        error: function(xhr, status, error) {
+
+                            setTimeout ( function(){ get_currency() }, $.ajaxSetup().retryAfter )
+                        }
+                    })
+                }
+
+
+                {{--  function get_currency() {
                     $.ajax({
                         type: 'GET',
                         url:  'get-currency-list-api',
                         datatype: "application/json",
                         success: function(response) {
-                            {{-- console.log(response.data); --}}
+                            console.log(response.data);
                             let data = response.data
+
+
+
                             $.each(data, function(index) {
 
                                 $('#onetime_beneficiary_account_currency').append($('<option>', {
-                                    value: data[index].currCode + '~' + data[index].isoCode + '~' + data[index]
-                                        .description
+                                    value: data[index].currCode + '~' + data[index].isoCode + '~' + data[index].description
                                 }).text(data[index].isoCode + '~' + data[index].description));
 
                                 if(cur == data[index].currCode){
@@ -1042,7 +1087,7 @@
                         }
 
                     })
-                };
+                };  --}}
 
 
 
@@ -1274,6 +1319,7 @@
                     $("#from_account").change(function() {
                         var from_account_details = $(this).val().split("~");
                         console.log(from_account_details);
+                        $("#select_currency").val(from_account_details[3]);
                         $(".display_from_account_name").text(from_account_details[1]);
                         $(".display_from_account_no").text(from_account_details[2]);
                         $(".display_from_account_amount").text(from_account_details[4]);
@@ -1955,8 +2001,9 @@
                                     var amount = $("#amount").val();
                                     console.log(amount)
 
-                                    var currency = to_account_[3];
-                                    console.log(currency)
+                                    var currency_ = $("#select_currency").val().split('~')
+                                    console.log(currency_)
+                                    var currency = currency_[0];
 
                                     var category_ = $("#category").val().split("~")
                                     var category = category_[1];

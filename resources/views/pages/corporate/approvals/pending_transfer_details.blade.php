@@ -103,6 +103,16 @@
                                                                             <div class="col-md-2"></div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4"></div>
+                                                                            <div class="col-md-4">
+                                                                                {{--  <button type="button" class="btn btn-blue btn-sm waves-effect waves-light">Btn Small</button>  --}}
+
+                                                                            </div>
+                                                                            <div class="col-md-4"></div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
 
                                                             </div>
@@ -259,7 +269,7 @@
                                 let request_type = 'RTGS Payment'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 
-                            }else if (request_type == 'OBT'){
+                            }else if (request_type == 'OWN'){
                                 let request_type = 'Own Account Transfer'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 

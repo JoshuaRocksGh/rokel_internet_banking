@@ -395,7 +395,7 @@
                                         data[index].post_date,
                                         data[index].account_no,
                                         `
-                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}">
+                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }} " target="_blank">
                                                                                 <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
                                                                             </a>
                                                                             `
