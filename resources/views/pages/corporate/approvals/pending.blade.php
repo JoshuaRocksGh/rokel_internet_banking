@@ -421,6 +421,8 @@
                             $(".loans_loading_area").hide()
                             $(".loans_error_area").show()
 
+                              setTimeout ( function(){ get_corporate_requests(customerNumber, requestStatus) }, $.ajaxSetup().retryAfter )
+
                         }
 
                     })
