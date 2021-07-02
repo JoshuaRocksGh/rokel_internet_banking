@@ -75,6 +75,7 @@ use App\Http\Controllers\Transfers\QR\GenerateQRController;
 use App\Http\Controllers\Transfers\SameBankController;
 use App\Http\Controllers\Transfers\SchedulePayment\SchedulePaymentController;
 use App\Http\Controllers\Transfers\StandingOrderController;
+use App\Http\Controllers\TransferStatus\TransferStatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -261,6 +262,10 @@ Route::get('/loan-quotation', [LoansController::class, 'loan_quotation'])->name(
 
 // SETTINGS
 Route::get('/settings', [settingsController::class, 'settings'])->name('settings');
+
+
+// TRANSFER STATUS
+Route::get('/transfer-status', [TransferStatusController::class, 'transfer_status'])->name('transfer-status');
 
 
 // Auth::routes();

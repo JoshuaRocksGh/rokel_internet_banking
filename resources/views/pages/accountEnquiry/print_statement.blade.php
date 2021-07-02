@@ -199,7 +199,7 @@
 
                     },
                     error: function(xhr, status, error) {
-
+                        setTimeout ( function(){ getAccountTransactions(account_number, start_date, end_date, transLimit) }, $.ajaxSetup().retryAfter )
                     }
                 })
             }
@@ -280,7 +280,14 @@
 
 
                         $('#transaction_history').append(debit)
+
+
                     })
+
+                    setTimeout(function(){
+                        window.print();
+                        window.close();
+                    }, 2000)
 
 
                 } else {

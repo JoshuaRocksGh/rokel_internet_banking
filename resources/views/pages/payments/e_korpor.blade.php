@@ -1076,6 +1076,11 @@
 
                     });
                 },
+                error: function(xhr, status, error) {
+
+                    setTimeout ( function(){ from_account() }, $.ajaxSetup().retryAfter )
+
+                }
 
             })
         }

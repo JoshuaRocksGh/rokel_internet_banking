@@ -24,7 +24,7 @@
 
 </head>
 
-<body style="zoom: 0.9; background-color: white;">
+<body style="zoom: 0.9; background-color: white;" >
 
     <!-- Pre-loader -->
     <div id="preloader">
@@ -35,21 +35,21 @@
     <!-- End Preloader-->
 
     <!-- Begin page -->
-   
+
     <div class="container-fluid">
         <div class="row" >
-     
-      
+
+
 
             <div class="col-md-12">
                 <div class="content" style="zoom: 0.9 ;">
                     @yield('content')
                 </div>
-               
+
             </div>
-    
-            
-    
+
+
+
         </div>
     </div>
 
@@ -57,7 +57,7 @@
 
 
     @yield('scripts')
-   
+
 
 </body>
 

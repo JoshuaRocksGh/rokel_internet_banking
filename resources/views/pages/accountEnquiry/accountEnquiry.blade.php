@@ -612,14 +612,17 @@
             });
 
             $('#search_transaction').click(function() {
+
                 let start_date = $('#startDate').val()
                 let end_date = $('#endDate').val()
 
                 var from_account = $('#from_account').val()
 
                 if (from_account.trim() == '' || from_account.trim() == undefined) {
+                    $('#search_transaction').text('Search')
                     return false;
                 }else{
+                    $('#search_transaction').text('Loading ...')
                     from_account_info = from_account.split("~")
                     let account_number = from_account_info[2].trim()
                     getAccountTransactions(account_number, start_date, end_date, transLimit)
@@ -744,7 +747,7 @@
                 if (data.length > 0) {
 
                     $('#pdf_print').html(`
-                        <a href="print-account-statement?account_number=${account_number}&start_date=${start_date}&end_date=${end_date}">
+                        <a href="print-account-statement?account_number=${account_number}&start_date=${start_date}&end_date=${end_date}" target="_blank">
                             <img src="{{ asset('assets/images/pdf.png') }}" alt="" style="width: 22px; height: 25px;">
                         </a>
                     `)
@@ -833,6 +836,7 @@
 
 
             function getAccountTransactions(account_number, start_date, end_date, transLimit) {
+                $('#search_transaction').text('Loading ...')
                 var table = $('.account_transaction_display_table').DataTable();
                 var nodes = table.rows().nodes();
 
@@ -854,9 +858,9 @@
                     success: function(response) {
                         console.log(response);
                         if (response.responseCode == '000') {
-
                             tranactions = response.data
 
+                            $('#search_transaction').text('Search')
                             load_data_into_table(tranactions, account_number, start_date, end_date)
 
                             $("#account_transaction_loader").hide();
@@ -865,6 +869,7 @@
                             $(".account_transaction_display").show();
 
                         } else {
+                            $('#search_transaction').text('Search')
                             $("#account_transaction_loader").hide();
                             $(".account_transaction_display").hide();
                             $(".account_transaction_display_table").hide();
@@ -873,10 +878,13 @@
 
                     },
                     error: function(xhr, status, error) {
+                        $('#search_transaction').text('Search')
                         $("#account_transaction_loader").hide();
                         $(".account_transaction_display").hide();
                         $(".account_transaction_display_table").hide();
                         $("#account_transaction_retry_btn").show();
+                        setTimeout ( function(){ getAccountTransactions(account_number, start_date, end_date, transLimit) }, $.ajaxSetup().retryAfter )
+
                     }
                 })
             }
