@@ -73,6 +73,6 @@ sc{{-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H
 <script>
 $.ajaxSetup({
     timeout: 3000,
-    retryAfter:7000
+    retryAfter:5000
 });
 </script>

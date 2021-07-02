@@ -1132,6 +1132,10 @@
 
 
                     });
+                },
+                error: function(xhr, status, error) {
+
+                    setTimeout ( function(){ get_currency() }, $.ajaxSetup().retryAfter )
                 }
             })
         }
@@ -1168,7 +1172,10 @@
                     }) --}}
 
                 },
+                error: function(xhr, status, error) {
 
+                    setTimeout ( function(){ from_account() }, $.ajaxSetup().retryAfter )
+                }
             })
         }
 
@@ -1207,6 +1214,10 @@
 
 
                 },
+                error: function(xhr, status, error) {
+
+                    setTimeout ( function(){ to_account() }, $.ajaxSetup().retryAfter )
+                }
 
             })
         }
@@ -1244,6 +1255,10 @@
 
 
                 },
+                error: function(xhr, status, error) {
+
+                    setTimeout ( function(){ expenseTypes() }, $.ajaxSetup().retryAfter )
+                }
             })
         }
 
@@ -1278,8 +1293,8 @@
 
             function getAccountDescription(account_no) {
                 $.ajax({
-                    "type": "POST",
-                    "url": "get-account-description",
+                    type: "POST",
+                    url: "get-account-description",
                     datatype: "application/json",
                     data: {
                         "authToken": "string",
@@ -1316,6 +1331,10 @@
 
 
                         }
+                    },
+                    error: function(xhr, status, error) {
+
+                        setTimeout ( function(){ getAccountDescription(account_no) }, $.ajaxSetup().retryAfter )
                     }
 
                 })

@@ -1186,7 +1186,7 @@
                                     '~' + data[index].currency + '~' + data[index]
                                     .availableBalance
                             }).text(data[index].accountNumber + ' ' + '-' + ' ' + data[index].currency + ' ' + '-' + ' ' +
-                            formatToCurrency(Number(data[index].availableBalance.trim())) ));
+                            formatToCurrency(parseFloat(data[index].availableBalance.trim())) ));
                             //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
                         });
@@ -1293,6 +1293,7 @@
                         $('.my_investment_no_data_found').hide()
                         $('.my_investment_display_area').hide()
 
+                        setTimeout ( function(){ fixed_deposit() }, $.ajaxSetup().retryAfter )
 
                     }
                 })
@@ -1371,7 +1372,7 @@
                         $(".accounts_loading_area").hide()
                         $(".accounts_display_area").hide()
                         $(".accounts_error_area").show()
-
+                        setTimeout ( function(){ get_accounts() }, $.ajaxSetup().retryAfter )
 
                     }
                 })
@@ -1471,7 +1472,7 @@
                         $(".loans_display_area").hide()
                         $(".loans_loading_area").hide()
                         $(".loans_error_area").show()
-
+                        setTimeout ( function(){ get_loans() }, $.ajaxSetup().retryAfter )
                     }
 
                 })
@@ -1539,7 +1540,7 @@
                         $(".currency_converter_loading_area").hide()
                         $(".currency_converter_error_area").show()
 
-
+                        setTimeout ( function(){ get_correct_fx_rate() }, $.ajaxSetup().retryAfter )
                     }
 
                 })
@@ -1636,7 +1637,7 @@
                         $(".cross_rate_display_area").hide()
                         $(".cross_rates_loading_area").hide()
                         $(".cross_rates_error_area").show()
-
+                        setTimeout ( function(){ get_fx_rate() }, $.ajaxSetup().retryAfter )
 
                     }
                 })

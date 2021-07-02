@@ -997,6 +997,11 @@
                             });
 
                         },
+                        error: function(xhr, status, error) {
+
+                            setTimeout ( function(){ bank_list() }, $.ajaxSetup().retryAfter )
+
+                        }
 
                     })
                 };
@@ -1030,6 +1035,11 @@
                             });
 
                         },
+                        error: function(xhr, status, error) {
+
+                            setTimeout ( function(){ get_currency() }, $.ajaxSetup().retryAfter )
+
+                        }
 
                     })
                 };
@@ -1054,6 +1064,11 @@
 
                             });
                         },
+                        error: function(xhr, status, error) {
+
+                            setTimeout ( function(){ expenseTypes() }, $.ajaxSetup().retryAfter )
+
+                        }
                     })
                 }
 
@@ -1075,6 +1090,11 @@
 
                             });
                         },
+                        error: function(xhr, status, error) {
+
+                            setTimeout ( function(){ expenseTypes_onetime() }, $.ajaxSetup().retryAfter )
+
+                        }
                     })
                 }
 
@@ -1103,6 +1123,11 @@
                             });
 
                         },
+                        error: function(xhr, status, error) {
+
+                            setTimeout ( function(){ from_account() }, $.ajaxSetup().retryAfter )
+
+                        }
 
                     })
                 }
@@ -1131,6 +1156,11 @@
                             });
 
                         },
+                        error: function(xhr, status, error) {
+
+                            setTimeout ( function(){ from_account_onetime() }, $.ajaxSetup().retryAfter )
+
+                        }
 
                     })
                 }
@@ -1186,6 +1216,11 @@
                                 $('#beneficiary_bank_name').val(beneficiary_details[0].BANK_NAME);
                             }) --}}
                         },
+                        error: function(xhr, status, error) {
+
+                            setTimeout ( function(){ get_benerficiary() }, $.ajaxSetup().retryAfter )
+
+                        }
 
                     })
                 }
