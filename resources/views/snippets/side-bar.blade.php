@@ -448,7 +448,7 @@
                                 <a href="{{ url('approvals-rejected') }}">Rejected</a>
                             </li>
                             <li>
-                                <a href="#">All</a>
+                                <a href="{{ url('transfer-status') }}">Transfer Status</a>
                             </li>
                         </ul>
                     </div>

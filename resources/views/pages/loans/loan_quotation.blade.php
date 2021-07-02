@@ -331,6 +331,10 @@ type="text/css" />
 
                                     });
                                 },
+                                error: function(xhr, status, error) {
+
+                                    setTimeout ( function(){ loan_product() }, $.ajaxSetup().retryAfter )
+                                }
 
                             })
                         }
@@ -350,6 +354,10 @@ type="text/css" />
 
                                     });
                                 },
+                                error: function(xhr, status, error) {
+
+                                    setTimeout ( function(){ loan_frequencies() }, $.ajaxSetup().retryAfter )
+                                }
 
                             })
                         }
@@ -369,6 +377,10 @@ type="text/css" />
 
                                     });
                                 },
+                                error: function(xhr, status, error) {
+
+                                    setTimeout ( function(){ interest_repay_frequency() }, $.ajaxSetup().retryAfter )
+                                }
 
                             })
                         }
