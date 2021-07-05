@@ -488,6 +488,13 @@
 
 
                                                     </div>
+                                                    <div class="form-group">
+                                                        <select name="" class="input-group-text" id="hidden_select_currency" >
+                                                            
+                                                        </select>
+                                                    </div>
+
+
 
                                                     <div class="form-group row">
 
@@ -768,7 +775,9 @@
 
                                     <div class=" col-md-12 card card-body ach_transfer_summary">
                                         {{-- <br><br> --}}
-                                        <div class="row">
+                                        <h4 class="text-primary">Sender Acc. Info</h4>
+                                        <hr class="mt-0">
+                                        <div class="row mt-0">
                                             <h6 class="col-md-5">Account Description:</h6>
                                             <span class="text-primary display_from_account_name col-md-7"></span>
 
@@ -789,6 +798,8 @@
                                         </div>
 
                                         <hr>
+                                        <h4 class="text-primary">Receiver Acc. Info </h4>
+                                        <hr class="mt-0">
                                         <div class="row">
                                             <h6 class="col-md-5">Receiver Name:</h6>
                                             <h6 class="text-primary display_to_account_name col-md-7"></h6>
@@ -1016,7 +1027,7 @@
                         "url": "get-currency-list-api",
                         datatype: "application/json",
                         success: function(response) {
-                            {{-- console.log(response); --}}
+                            console.log(response);
 
                             let data = response.data
 
@@ -1034,12 +1045,38 @@
 
                                 if ($(this).val() == 'SLL') {
                                     $(this).prop("selected", true);
+                                    
                                 } else {
 
                                 }
 
 
                             });
+
+                            let name = $("#select_currency").val();
+                            console.log(name);      
+
+                            let account_currency = response.data; 
+                            console.log("=======================")
+                            console.log(account_currency);
+                            console.log("=======================")
+
+                            $.each(account_currency, function(index) {
+                                let data = account_currency[index].isoCode; 
+                                console.log(data);
+                                if(name == data) {
+                                    $("#hidden_select_currency").append($('<option selected>', {
+                                            value: account_currency[index].currCode + '~' + account_currency[index].isoCode + '~' + account_currency[index].description
+                                        }).text(account_currency[index].currCode + '~' + account_currency[index].isoCode + '~' + account_currency[index].description));
+
+                                        console.log('TRUE');
+                                    
+                                } else {
+                                    $("#hidden_select_currency").append($('<option>', {
+                                        value: account_currency[index].currCode + '~' + account_currency[index].isoCode + '~' + account_currency[index].description
+                                    }).text(account_currency[index].currCode + '~' + account_currency[index].isoCode + '~' + account_currency[index].description));
+                                }
+                            })
                         },
                         error: function(xhr, status, error) {
 
@@ -1325,6 +1362,7 @@
                         $(".display_from_account_amount").text(from_account_details[4]);
                         $(".display_from_account_currency").text(from_account_details[3]);
                         $(".display_currency").text(from_account_details[3]);
+                        
 
                     })
 
@@ -2004,6 +2042,8 @@
                                     var currency_ = $("#select_currency").val().split('~')
                                     console.log(currency_)
                                     var currency = currency_[0];
+                                    var hidden_currency = $("#hidden_select_currency").val().split('~');
+                                    console.log(hidden_currency);
 
                                     var category_ = $("#category").val().split("~")
                                     var category = category_[1];
