@@ -185,39 +185,39 @@
                                                                 <tr>
                                                                     {{-- <th scope="row">1</th> --}}
                                                                     <td>Transfer From Account Number</td>
-                                                                    <td><span id="from_account_receipt"></span></td>
+                                                                    <td class="text-right"><span id="from_account_receipt"></span></td>
                                                                     {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">2</th> --}}
                                                                     <td>Transfer To Account Number</td>
-                                                                    <td><span id="to_account_receipt"></span></td>
+                                                                    <td class="text-right"><span id="to_account_receipt"></span></td>
                                                                     {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Category</td>
-                                                                    <td><span id="category_receipt"></span></td>
+                                                                    <td class="text-right"><span id="category_receipt"></span></td>
                                                                     {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Purpose</td>
-                                                                    <td><span id="purpose_receipt"></span></td>
+                                                                    <td class="text-right"><span id="purpose_receipt"></span></td>
                                                                     {{--  <td></td>  --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
                                                                     {{--  <td></td>  --}}
-                                                                    <td><strong>(<span class="receipt_currency"></span>)<span id="amount_receipt"></span></strong>
+                                                                    <td class="text-right"><strong>(<span class="receipt_currency"></span>)<span id="amount_receipt"></span></strong>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transaction Fee </td>
                                                                     {{--  <td></td>  --}}
-                                                                    <td><strong>(<span class="receipt_currency"></span>)15.00</strong></td>
+                                                                    <td class="text-right"><strong>(<span class="receipt_currency"></span>)15.00</strong></td>
                                                                 </tr>
                                                                 {{--  <tr>
                                                                     <th scope="row">3</th>
@@ -329,6 +329,15 @@
                                                             </tr>
 
                                                             <tr>
+                                                                <td>Category:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_category"
+                                                                        id="display_category"></span>
+
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
                                                                 <td>Purpose:</td>
                                                                 <td>
                                                                     <span class="font-13 text-primary h3 display_purpose"
@@ -337,14 +346,7 @@
                                                             </tr>
 
 
-                                                            <tr>
-                                                                <td>Category:</td>
-                                                                <td>
-                                                                    <span class="font-13 text-primary h3 display_category"
-                                                                        id="display_category"></span>
 
-                                                                </td>
-                                                            </tr>
 
                                                             <tr>
                                                                 <td>Transfer Date: </td>
@@ -387,8 +389,7 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree with terms and
-                                                                                    conditions
+                                                                                    By clicking, you agree to a transfer fee of (SLL - 100)
 
                                                                                 </b>
                                                                             </label>
@@ -428,10 +429,10 @@
                                                                     <div class="col-md-9  text-center">
                                                                         <form action="#" autocomplete="off"
                                                                             aria-autocomplete="off">
-                                                                            <input type="text" name="user_pin" maxlength="4"
+                                                                            <input type="text" name="user_pin" maxlength="4"  autocomplete="off" aria-autocomplete="off"
                                                                                 class="form-control key hide_on_print"
                                                                                 id="user_pin"
-                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
                                                                             <br>
                                                                             <button
                                                                                 class="btn btn-soft-primary waves-effect waves-light"
@@ -457,7 +458,7 @@
                                                 <div class="form-group text-center">
 
                                                     <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                            id="back_button"> <i class="fe-arrow-left"></i>&nbsp;Back</button> &nbsp; </span>
+                                                            id="back_button"> <i class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button> &nbsp; </span>
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button"
@@ -591,12 +592,11 @@
 
                                                             <div class="form-group row">
                                                                 <label class="col-md-4"><b class="text-primary">Purpose of
-                                                                        Transfer &nbsp</b><span
-                                                                        class="text-danger">*</span></label>
+                                                                        Transfer &nbsp</b></label>
 
                                                                 <input type="text" class="form-control col-md-8 mb-2" id="purpose"
                                                                     placeholder="Enter purpose of transfer" autocomplete="off"
-                                                                    required>
+                                                                    >
 
                                                             </div>
 
@@ -665,7 +665,7 @@
                                         <br><br>
 
                                         <div class="col-md-12 card card-body rtgs_transfer_summary">
-                                            <h4 class="text-primary">Sender Acc. Number</h4>
+                                            <h4 class="text-primary">Sender Acc. Info</h4>
                                             <hr class="mt-0">
                                             <div class="row">
                                                 <p class="col-md-5">Account Description:</p>
@@ -686,7 +686,7 @@
                                                 <span class="text-primary display_from_account_currency col-md-7"></span> --}}
                                             </div>
 
-                                            <hr>
+                                            {{-- <hr> --}}
                                             <h4 class="text-primary">Receiver Acc. Info</h4>
                                             <hr class="mt-0">
                                             <div class="row">
@@ -702,11 +702,11 @@
 
                                             <hr>
                                             <div class="row">
-                                                <p class="text-primary col-md-5">Transfer Amount:</p>
+                                                <p class="text-primary col-md-5 mt-2">Transfer Amount:</p>
                                                 <h4 class="text-danger text-bold col-md-7 ">
-                                                    <span class="display_from_account_currency"></span>
+                                                    <span class="display_from_account_currency mt-0"></span>
                                                     &nbsp;
-                                                    <b style="font-style: 16px"><span class="display_transfer_amount"></span></b>
+                                                    <b class="mt-0"  style="font-style: 16px"><span class="display_transfer_amount"></span></b>
                                                 </h4>
                                             </div>
                                             <div class="row">
@@ -1324,6 +1324,8 @@
                         $(".display_from_account_amount").text(formatToCurrency(Parse(from_account_info[4]
                             .trim())))
                         {{-- alert('and show' + from_account_info[3].trim()) --}}
+                        toaster('Can not send to same account', 'error', 10000)
+
                         $(".from_account_display_info").show()
                     }
 
@@ -1632,8 +1634,17 @@
                     var category = $('#category').val().split("~");
                     $("#display_category").text(category[1]);
 
+
+
                     var purpose = $('#purpose').val();
-                    $("#display_purpose").text(purpose);
+                    if (purpose == ''){
+                        $("#display_purpose").text("Own Account Transfer");
+                        var purpose = $('#purpose').val("Own Account Transfer");
+
+                    }else {
+                        $("#display_purpose").text(purpose);
+                    }
+
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
 
@@ -1941,7 +1952,7 @@
 
 
                     } else {
-                        toaster('Accept terms & conditions to continue', 'error', 6000)
+                        toaster('Accept Transfer fee charge to continue', 'error', 6000)
                         console.log("UNCHECKED");
                         return false;
                     }

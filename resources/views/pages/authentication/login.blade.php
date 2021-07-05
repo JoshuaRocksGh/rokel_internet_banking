@@ -251,7 +251,6 @@
 
 
 
-
         function login(email, password)
         {
             $.ajax({
