@@ -43,14 +43,18 @@ class ApiBaseResponse
         } else { // API response status code not 200
 
             // return $response->body();
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'code' => $response->status(),
-                'message' => $response->body()
-            ]);
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'code' => $response->status(),
+            //     'message' => (string) $response->body()
+            // ]);
 
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+            return response()->json([
+                'responseCode' => '500',
+                'message' => 'API SERVER ERROR',
+                'data' => (string) $response->body()
+            ], 500);
 
         }
     }
