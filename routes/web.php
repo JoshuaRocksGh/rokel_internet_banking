@@ -41,6 +41,7 @@ use App\Http\Controllers\Cheques\ChequesPendingController;
 use App\Http\Controllers\Cheques\ChequesRejectedController;
 use App\Http\Controllers\Corporate\Approvals\PendingController;
 use App\Http\Controllers\Corporate\Approvals\ApprovedController;
+use App\Http\Controllers\Corporate\Approvals\ApprovedRequestController;
 use App\Http\Controllers\Corporate\Approvals\RejectedController;
 use App\Http\Controllers\Corporate\GeneralFunctions\FunctionsController as GeneralFunctionsFunctionsController;
 use App\Http\Controllers\Dashboard\HomeController;
@@ -234,6 +235,7 @@ Route::get('/get-pending-requests', [GeneralFunctionsFunctionsController::class,
 Route::get('/approvals-pending-transfer-details', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details');
 Route::get('/approvals-pending-transfer-details/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details/{request_id}/{customer_no}');
 Route::get('/pending-request-details-api' , [PendingController::class, 'pending_request_details'])->name('pending-request-details-api');
+Route::post('/approved-pending-request' , [ApprovedRequestController::class, 'approved_request'])->name('approved-pending-request');
 
 
 // BRANCH LOCATOR LIST VIEW

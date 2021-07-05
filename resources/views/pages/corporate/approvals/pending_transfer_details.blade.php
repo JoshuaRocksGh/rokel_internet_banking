@@ -91,12 +91,13 @@
                                                                     <div class="col-md-12 mb-3">
                                                                         <div class="row">
                                                                             <div class="col-md-2"></div>
-                                                                            <button class="btn btn-danger waves-effect waves-light col-md-3 btn-lg"
+                                                                            <button class="btn btn-danger waves-effect waves-light col-md-3 btn-lg" id="reject_transaction"
                                                                                 type="button">Reject
                                                                                 <i class="mdi mdi-cancel"></i>
                                                                             </button>
                                                                             <div class="col-md-2"></div>
-                                                                            <button class="btn btn-success waves-effect waves-light col-md-3 btn-lg"
+                                                                            <button class="btn btn-success waves-effect waves-light col-md-3 btn-lg" data-toggle="modal" data-target="#success-alert-modal"
+                                                                            id="approve_transaction"
                                                                                 type="button">Appove
                                                                                 <i class="mdi mdi-check-all"></i>
                                                                             </button>
@@ -210,6 +211,8 @@
 
 
                             </div>
+
+
 
                         </div>
                     </div>
@@ -411,7 +414,75 @@
 
             },700);
 
+            //Reject Button
+            $("#reject_transaction").click(function(e){
+                e.preventDefault();
+                alert("Reject Transaction");
+            })
 
+            $("#approve_transaction").click(function (e){
+                e.preventDefault();
+                {{-- alert("Approve Transaction"); --}}
+
+                approve_request();
+
+
+
+
+
+            })
+
+            function ajax_post(){
+
+                var customer = @json($customer_no);
+                var request = @json($request_id);
+
+                $.ajax({
+                    type : 'POST',
+                    url : "../../approved-pending-request" ,
+                    datatype : 'application/json',
+                    data : {
+                        'customer_no' : customer,
+                        'request_id' : request
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        if (response.responseCode == '000') {
+                            Swal.fire(response.message, '', 'success');
+
+                        }else {
+                            Swal.fire(response.message, '', 'error');
+
+                        }
+                    }
+                })
+            }
+
+            function approve_request() {
+
+
+
+                Swal.fire({
+                    title: 'Do you want to Approve the transaction?',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: `Proceed`,
+                    {{-- denyButtonText: `Don't save`, --}}
+                  }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        ajax_post()
+
+                    } else if (result.isDenied) {
+                      Swal.fire('Failed to approve transaction', '', 'info')
+                    }
+                  })
+
+
+            }
 
          });
     </script>
