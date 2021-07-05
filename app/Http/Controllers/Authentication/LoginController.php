@@ -64,7 +64,7 @@ class LoginController extends Controller
 
         try {
 
-            $response = Http::post(env('API_BASE_URL') . "/user/login", $data);
+            $response = Http::post(env('API_BASE_URL') . "user/login", $data);
 
             if ($response->ok()) { // API response status code is 200
 
