@@ -775,7 +775,9 @@
 
                                     <div class=" col-md-12 card card-body ach_transfer_summary">
                                         {{-- <br><br> --}}
-                                        <div class="row">
+                                        <h4 class="text-primary">Sender Acc. Info</h4>
+                                        <hr class="mt-0">
+                                        <div class="row mt-0">
                                             <h6 class="col-md-5">Account Description:</h6>
                                             <span class="text-primary display_from_account_name col-md-7"></span>
 
@@ -796,6 +798,8 @@
                                         </div>
 
                                         <hr>
+                                        <h4 class="text-primary">Receiver Acc. Info </h4>
+                                        <hr class="mt-0">
                                         <div class="row">
                                             <h6 class="col-md-5">Receiver Name:</h6>
                                             <h6 class="text-primary display_to_account_name col-md-7"></h6>

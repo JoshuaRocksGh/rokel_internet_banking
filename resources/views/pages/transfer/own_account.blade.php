@@ -665,6 +665,8 @@
                                         <br><br>
 
                                         <div class="col-md-12 card card-body rtgs_transfer_summary">
+                                            <h4 class="text-primary">Sender Acc. Number</h4>
+                                            <hr class="mt-0">
                                             <div class="row">
                                                 <p class="col-md-5">Account Description:</p>
                                                 <span class="text-primary display_from_account_name col-md-7"></span>
@@ -685,6 +687,8 @@
                                             </div>
 
                                             <hr>
+                                            <h4 class="text-primary">Receiver Acc. Info</h4>
+                                            <hr class="mt-0">
                                             <div class="row">
                                                 <p class="col-md-5">Account Number:</p>
                                                 <p class="text-primary display_to_account_no col-md-7"></p>
@@ -1313,6 +1317,7 @@
                         $(".display_from_account_currency").text(from_account_info[3])
                         $('#select_currency').val(from_account_info[3])
                         $(".display_currency").text(from_account_info[3]) // set summary currency
+                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(from_account_info[4])))
 
                         amt = from_account_info[4].trim()
 
@@ -1351,7 +1356,7 @@
                         $(".display_to_account_type").text(to_account_info[0])
                         $(".display_to_account_name").text(to_account_info[1])
                         $(".display_to_account_no").text(to_account_info[2])
-                        $(".display_to_account_amount").text(to_account_info[4])
+                        $(".display_to_account_amount").text(formatToCurrency(parseFloat(to_account_info[4])))
                         $(".display_to_account_currency").text(to_account_info[3])
                         // alert(to_account_info[0].trim())
                         //$(".display_to_account_amount").text(formatToCurrency(parseFloat(to_account_info[4].trim())))
