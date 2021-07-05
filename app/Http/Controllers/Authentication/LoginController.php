@@ -37,6 +37,7 @@ class LoginController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
+        return $request;
 
         // return $req;
         $user_id = strtoupper($req->user_id);
@@ -58,6 +59,7 @@ class LoginController extends Controller
 
         // return $data;
 
+        dd(env('API_BASE_URL') . "/user/login");
 
 
         try {

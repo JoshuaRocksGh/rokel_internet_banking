@@ -255,8 +255,8 @@
         function login(email, password)
         {
             $.ajax({
-                "type": "POST",
-                "url": "login",
+                type: "POST",
+                url: "login",
                 datatype: "application/json",
                 data: {
                     "user_id": email,
@@ -299,7 +299,7 @@
                     $('#failed_login').show()
 
                     console.log( 'Ajax request failed...' );
-                    setTimeout ( function(){ login(email, password) }, $.ajaxSetup().retryAfter )
+                    //setTimeout ( function(){ login(email, password) }, $.ajaxSetup().retryAfter )
                 }
             })
         }
