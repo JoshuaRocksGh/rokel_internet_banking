@@ -582,16 +582,15 @@
 
                                                                 <div class="input-group mb-1 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text"
-                                                                            class="input-group-text "
+                                                                        <input type="text" class="input-group-text "
                                                                             id="select_currency" style="width: 80px;"
                                                                             readonly>
 
-                                                                        {{--  <select name=""
+                                                                        {{-- <select name=""
                                                                             class="input-group-text select_currency"
                                                                             id="select_currency">
 
-                                                                        </select>  --}}
+                                                                        </select> --}}
                                                                     </div>
 
                                                                     &nbsp;&nbsp;
@@ -617,12 +616,15 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control readOnly " id="convertor_rate_"
-                                                                            value="1.00" style="width: 100px;" readonly>
+                                                                        <input type="text" class="form-control readOnly "
+                                                                            id="convertor_rate_" value="1.00"
+                                                                            style="width: 100px;" readonly>
                                                                     </div>
                                                                     &nbsp;&nbsp;
-                                                                    <input type="text" class="form-control converted_amount" id="converted_amount_"
-                                                                        placeholder="Converted Amount" aria-label="converted_amount"
+                                                                    <input type="text" class="form-control converted_amount"
+                                                                        id="converted_amount_"
+                                                                        placeholder="Converted Amount"
+                                                                        aria-label="converted_amount"
                                                                         aria-describedby="basic-addon1" readonly>
                                                                 </div>
 
@@ -768,16 +770,15 @@
 
                                                                 <div class="input-group mb-3 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text"
-                                                                            class="input-group-text "
+                                                                        <input type="text" class="input-group-text "
                                                                             id="select_currency__" style="width: 80px;"
                                                                             readonly>
 
-                                                                        {{--  <select name="" class="input-group-text"
+                                                                        {{-- <select name="" class="input-group-text"
                                                                             id="select_currency__">
                                                                             <option value="SLL" selected>SLL</option>
 
-                                                                        </select>  --}}
+                                                                        </select> --}}
                                                                     </div>
 
                                                                     &nbsp;&nbsp;
@@ -804,12 +805,15 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control " id="convertor_rate"
-                                                                            value="1.00" style="width: 100px;" readonly>
+                                                                        <input type="text" class="form-control "
+                                                                            id="convertor_rate" value="1.00"
+                                                                            style="width: 100px;" readonly>
                                                                     </div>
                                                                     &nbsp;&nbsp;
-                                                                    <input type="text" class="form-control converted_amount_" id="convertor_amount"
-                                                                        placeholder="Converted Amount" aria-label="converted_amount"
+                                                                    <input type="text"
+                                                                        class="form-control converted_amount_"
+                                                                        id="convertor_amount" placeholder="Converted Amount"
+                                                                        aria-label="converted_amount"
                                                                         aria-describedby="basic-addon1" readonly>
                                                                 </div>
 
@@ -834,7 +838,7 @@
 
                                                             <div class="form-group row mb-3">
                                                                 <b class="col-md-4 text-primary">Purpose of Transfer
-                                                                    </b>
+                                                                </b>
 
                                                                 <input type="text" class="form-control col-md-8"
                                                                     id="onetime_purpose"
@@ -1192,7 +1196,7 @@
 
                     });
                 },
-                 error: function(xhr, status, error) {
+                error: function(xhr, status, error) {
 
                     setTimeout(function() {
                         get_currency()
@@ -1319,16 +1323,19 @@
 
 
                 },
-                 error: function(xhr, status, error) {
-                        setTimeout(function() {
-                            expenseTypes()
-                        }, $.ajaxSetup().retryAfter)
-                    }
+                error: function(xhr, status, error) {
+                    setTimeout(function() {
+                        expenseTypes()
+                    }, $.ajaxSetup().retryAfter)
+                }
             })
         }
 
 
-
+        function customerType() {
+            var customerType = @json(session()->get('customerType'));
+            console.log(customerType);
+        }
 
         $(document).ready(function() {
 
@@ -1344,12 +1351,14 @@
             $(".receipt").hide();
 
 
+
             setTimeout(function() {
                 from_account();
                 to_account();
                 expenseTypes();
                 get_currency();
-                get_correct_fx_rate()
+                get_correct_fx_rate();
+                customerType();
 
 
                 {{-- setTimeout(function(){
@@ -1767,10 +1776,10 @@
 
             //purpose
             $("#onetime_purpose").keyup(function() {
-                if($(this).val() == ''){
+                if ($(this).val() == '') {
                     $("#display_purpose").text('Same Bank Transfer');
 
-                }else {
+                } else {
                     var purpose = ($(this).val());
                     $('#display_purpose').text(purpose);
 
@@ -1871,11 +1880,11 @@
                 var schedule_payment_date = $('#schedule_payment_date').val();
 
                 if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '') {
-                    {{--  toaster('Field must not be empty', 'error', 10000)  --}}
+                    {{-- toaster('Field must not be empty', 'error', 10000) --}}
 
                     {{-- alert('Field must not be empty') --}}
 
-                    {{--  return false  --}}
+                    {{-- return false --}}
 
                 }
 
@@ -1903,10 +1912,10 @@
 
                     if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount
                         .trim() == '' || category.trim() == '') {
-                        {{--  toaster('Field must not be empty', 'error', 10000)
+                        {{-- toaster('Field must not be empty', 'error', 10000)
 
 
-                        return false  --}}
+                        return false --}}
                     } else {
                         //set purpose and category values
                         var category_info = category.split("~")
@@ -1943,8 +1952,8 @@
 
 
                     if (from_account.trim() == '' || onetime_account_number.trim() ==
-                        '' || amount_.trim() == '' || category.trim() == '' ) {
-                        {{--  toaster('Field must not be empty', 'error', 10000)  --}}
+                        '' || amount_.trim() == '' || category.trim() == '') {
+                        {{-- toaster('Field must not be empty', 'error', 10000) --}}
 
                         {{-- alert('Field must not be empty') --}}
                         {{-- return false --}}
@@ -2005,8 +2014,12 @@
                 if ($("#terms_and_conditions").is(":checked")) {
                     {{-- alert("Terms Accepted"); --}}
 
-                    $("#transfer_pin").click(function(e) {
-                        e.preventDefault();
+
+
+                    var customerType = @json(session()->get('customerType'));
+                    console.log(customerType);
+
+                    if (customerType == "C") {
 
                         if ($('#customCheck1').is(':checked')) {
 
@@ -2072,7 +2085,7 @@
 
                             $.ajax({
                                 type: 'POST',
-                                url: 'transfer-to-beneficiary-api',
+                                url: 'corporate-same-bank-api',
                                 datatype: "application/json",
                                 data: {
                                     'from_account': from_account_,
@@ -2084,7 +2097,7 @@
                                     'amount': transfer_amount,
                                     'schedule_payment_date': onetime_future_payement,
                                     'category': category,
-                                    'secPin': user_pin
+                                    {{-- 'secPin': user_pin --}}
                                 },
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
@@ -2208,7 +2221,7 @@
 
                             $.ajax({
                                 type: 'POST',
-                                url: 'transfer-to-beneficiary-api',
+                                url: 'corporate-same-bank-api',
                                 datatype: "application/json",
                                 data: {
                                     'from_account': from_account_,
@@ -2220,7 +2233,7 @@
                                     'amount': transfer_amount,
                                     'schedule_payment_date': future_payement,
                                     'category': category,
-                                    'secPin': user_pin
+                                    {{-- 'secPin': user_pin --}}
                                 },
 
                                 headers: {
@@ -2282,7 +2295,293 @@
 
                         }
 
-                    });
+                    } else {
+                        $("#transfer_pin").click(function(e) {
+                            e.preventDefault();
+
+                            if ($('#customCheck1').is(':checked')) {
+
+                                // ONETIME TRANSFER API
+
+                                var from_account = $('#from_account').val().split('~');
+                                var from_account_ = from_account[2];
+                                $("#from_account_receipt").text(from_account_);
+
+                                console.log(from_account);
+
+                                var onetime_beneficiary_name = $('#onetime_beneficiary_name').val();
+                                console.log(onetime_beneficiary_name);
+
+                                var onetime_account_number = $('#onetime_account_number').val();
+                                console.log(onetime_account_number);
+                                $("#to_account_receipt").text(onetime_account_number);
+
+                                var onetime_currency = $("#select_currency__").val();
+                                console.log(onetime_currency);
+                                $(".receipt_currency").text(onetime_currency);
+
+
+                                var purpose = $('#onetime_purpose').val()
+                                {{-- console.log(purpose); --}}
+                                if (purpose == '') {
+                                    $("#purpose_receipt").text("Same Bank Transfer");
+                                    var purpose = $("#onetime_purpose").val("Same Bank Transfer");
+                                } else {
+                                    $("#purpose_receipt").text(purpose);
+
+                                }
+                                {{-- $("#purpose_receipt").text(purpose); --}}
+
+                                var onetime_beneficiary_email = $('#onetime_beneficiary_email')
+                                    .val();
+                                console.log(onetime_beneficiary_email);
+
+
+                                var transfer_amount = $('#amount_').val();
+                                console.log(transfer_amount);
+                                $("#amount_receipt").text(formatToCurrency(parseFloat(
+                                    transfer_amount
+                                    .trim())));
+
+                                {{-- var select_frequency = $('#select_frequency').val() --}}
+
+                                var onetime_future_payement = $('#onetime_future_payement').val();
+                                console.log(onetime_future_payement);
+
+                                var category_ = $('#onetime_category').val().split('~');
+                                var category = category_[1];
+                                console.log(category);
+                                $("#category_receipt").text(category);
+
+                                var user_pin = $('#user_pin').val();
+                                console.log(user_pin);
+
+
+                                $('#confirm_transfer').hide()
+                                $('#spinner').show();
+                                $('#spinner-text').show();
+                                $("#confirm_modal_button").prop('disabled', true);
+
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'transfer-to-beneficiary-api',
+                                    datatype: "application/json",
+                                    data: {
+                                        'from_account': from_account_,
+                                        'alias_name': onetime_beneficiary_name,
+                                        'to_account': onetime_account_number,
+                                        'account_currency': onetime_currency,
+                                        'purpose': purpose,
+                                        'beneficiary_email': onetime_beneficiary_email,
+                                        'amount': transfer_amount,
+                                        'schedule_payment_date': onetime_future_payement,
+                                        'category': category,
+                                        'secPin': user_pin
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
+                                    },
+                                    success: function(response) {
+                                        {{-- console.log(response); --}}
+
+
+                                        if (response.responseCode == '000') {
+
+                                            $("#related_information_display")
+                                                .removeClass(
+                                                    "d-none d-sm-block");
+                                            Swal.fire(
+                                                '',
+                                                response.message,
+                                                'success'
+                                            );
+
+                                            $(".receipt").show();
+                                            $(".form_process").hide();
+
+
+                                            $('#confirm_modal_button').hide();
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').hide();
+                                            $('#print_receipt').show();
+
+
+                                            $(".card_right").hide();
+                                            $(".success_gif").show();
+
+
+
+                                        } else {
+                                            toaster(response.message, 'error', 10000)
+
+                                            $(".receipt").hide();
+
+                                            $("#confirm_transfer").show();
+                                            $("#confirm_modal_button").prop('disabled',
+                                                false);
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').show();
+                                            $('#print_receipt').hide();
+                                            {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                            $("#related_information_display").show();
+                                            $(".success_gif").hide();
+
+
+                                        }
+
+
+                                    }
+                                });
+
+                            } else {
+
+
+                                var from_account = $('#from_account').val().split('~');
+                                var from_account_ = from_account[2];
+                                $("#from_account_receipt").text(from_account_);
+
+                                console.log(from_account_);
+
+                                var to_account = $('#to_account').val().split('~');
+                                var to_account_ = to_account[2];
+                                console.log(to_account_)
+                                $("#to_account_receipt").text(to_account_);
+
+                                var beneficiary_name = to_account[1];
+                                console.log(beneficiary_name);
+
+                                var beneficiary_currency = $("#select_currency").val();
+                                console.log(beneficiary_currency);
+
+
+                                var purpose = $('#purpose').val()
+                                {{-- console.log(purpose); --}}
+                                if (purpose == '') {
+                                    $("#purpose_receipt").text("Same Bank Transfer");
+                                    var purpose = $("#purpose").val("Same Bank Transfer");
+                                } else {
+                                    $("#purpose_receipt").text(purpose);
+
+                                }
+                                {{-- $("#purpose_receipt").text(purpose); --}}
+
+                                var beneficiary_email = to_account[4];
+                                console.log(beneficiary_email);
+
+
+                                var transfer_amount = $('#amount').val();
+                                console.log(transfer_amount);
+                                $("#amount_receipt").text(formatToCurrency(parseFloat(
+                                    transfer_amount
+                                    .trim())));
+
+                                var select_currency = $("#select_currency").val();
+                                console.log(select_currency);
+                                $(".receipt_currency").text(select_currency);
+
+                                {{-- var select_frequency = $('#select_frequency').val() --}}
+
+                                var future_payement = $('#future_payement').val();
+                                console.log(future_payement);
+
+                                var category_ = $('#category').val().split('~');
+                                var category = category_[1];
+                                console.log(category);
+                                $("#category_receipt").text(category);
+
+                                var user_pin = $('#user_pin').val();
+                                console.log(user_pin);
+
+                                $('#confirm_transfer').hide()
+                                $('#spinner').show();
+                                $('#spinner-text').show();
+                                $("#confirm_modal_button").prop('disabled', true);
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'transfer-to-beneficiary-api',
+                                    datatype: "application/json",
+                                    data: {
+                                        'from_account': from_account_,
+                                        'alias_name': beneficiary_name,
+                                        'to_account': to_account_,
+                                        'account_currency': beneficiary_currency,
+                                        'purpose': purpose,
+                                        'beneficiary_email': beneficiary_email,
+                                        'amount': transfer_amount,
+                                        'schedule_payment_date': future_payement,
+                                        'category': category,
+                                        'secPin': user_pin
+                                    },
+
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
+                                    },
+                                    success: function(response) {
+                                        {{-- console.log(response); --}}
+
+
+                                        if (response.responseCode == '000') {
+
+                                            $("#related_information_display")
+                                                .removeClass(
+                                                    "d-none d-sm-block");
+                                            Swal.fire(
+                                                '',
+                                                response.message,
+                                                'success'
+                                            );
+
+                                            $(".receipt").show();
+                                            $(".form_process").hide();
+
+                                            $('#confirm_modal_button').hide();
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').hide();
+                                            $('#print_receipt').show();
+
+
+                                            $(".card_right").hide();
+                                            $(".success_gif").show();
+
+
+
+                                        } else {
+                                            toaster(response.message, 'error', 10000)
+
+                                            $(".receipt").hide();
+                                            {{-- $(".form_process").hide(); --}}
+
+                                            $("#confirm_transfer").show();
+                                            $("#confirm_modal_button").prop('disabled',
+                                                false);
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').show();
+                                            $('#print_receipt').hide();
+                                            {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                            $("#related_information_display").show();
+                                            $(".success_gif").hide();
+
+
+                                        }
+
+
+                                    }
+                                });
+
+                            }
+
+                        });
+                    }
+
+
 
 
 
