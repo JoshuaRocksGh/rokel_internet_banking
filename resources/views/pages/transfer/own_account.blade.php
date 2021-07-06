@@ -5,21 +5,27 @@
     <style>
         @media print {
             .hide_on_print {
-                display: none ;
-            };
+                display: none;
+            }
+
+            ;
         }
 
         @page {
             size: A4;
-            {{--  margin: 10px;  --}}
-          }
-          @media print {
-                html, body {
+            {{-- margin: 10px; --}}
+        }
+
+        @media print {
+
+            html,
+            body {
                 width: 210mm;
                 height: 297mm;
             }
+
             /* ... the rest of the rules ... */
-          }
+        }
 
 
         @font-face {
@@ -177,56 +183,64 @@
                                                                 <tr>
                                                                     {{-- <th>#</th> --}}
                                                                     <th>Description</th>
-                                                                    <th>Further Details</th>
-                                                                    {{--  <th>Amount (<span id="receipt_currency"></span>)</th>  --}}
+                                                                    <th class="text-right">Further Details</th>
+                                                                    {{-- <th>Amount (<span id="receipt_currency"></span>)</th> --}}
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     {{-- <th scope="row">1</th> --}}
                                                                     <td>Transfer From Account Number</td>
-                                                                    <td class="text-right"><span id="from_account_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td class="text-right"><span
+                                                                            id="from_account_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">2</th> --}}
                                                                     <td>Transfer To Account Number</td>
-                                                                    <td class="text-right"><span id="to_account_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td class="text-right"><span
+                                                                            id="to_account_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Category</td>
-                                                                    <td class="text-right"><span id="category_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td class="text-right"><span
+                                                                            id="category_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Purpose</td>
-                                                                    <td class="text-right"><span id="purpose_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td class="text-right"><span
+                                                                            id="purpose_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
-                                                                    {{--  <td></td>  --}}
-                                                                    <td class="text-right"><strong>(<span class="receipt_currency"></span>)<span id="amount_receipt"></span></strong>
+                                                                    {{-- <td></td> --}}
+                                                                    <td class="text-right"><strong>(<span
+                                                                                class="receipt_currency"></span>)<span
+                                                                                id="amount_receipt"></span></strong>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transaction Fee </td>
-                                                                    {{--  <td></td>  --}}
-                                                                    <td class="text-right"><strong>(<span class="receipt_currency"></span>)15.00</strong></td>
+                                                                    {{-- <td></td> --}}
+                                                                    <td class="text-right"><strong>(<span
+                                                                                class="receipt_currency"></span>)15.00</strong>
+                                                                    </td>
                                                                 </tr>
-                                                                {{--  <tr>
+                                                                {{-- <tr>
                                                                     <th scope="row">3</th>
                                                                     <td><strong>Total Amount</strong> </td>
                                                                     <td></td>
                                                                     <td><strong><span
                                                                                 id="total_amount_receipt"></span></strong>
                                                                     </td>
-                                                                </tr>  --}}
+                                                                </tr> --}}
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td></td>
@@ -247,7 +261,8 @@
                                                     <div class="row">
                                                         <div class="col-md-5"></div>
                                                         <div class="col-md-2">
-                                                              <button class="btn btn-light btn-rounded hide_on_print text-center"
+                                                            <button
+                                                                class="btn btn-light btn-rounded hide_on_print text-center"
                                                                 type="button" onclick="window.print()">Print
                                                                 Receipt
                                                             </button>
@@ -382,14 +397,16 @@
                                                                     <div class="alert alert-info form-control col-md-12"
                                                                         role="alert">
                                                                         <div class="custom-control custom-checkbox">
-                                                                            <input type="checkbox" class="custom-control-input"
+                                                                            <input type="checkbox"
+                                                                                class="custom-control-input"
                                                                                 name="terms_and_conditions"
                                                                                 name="terms_and_conditions"
                                                                                 id="terms_and_conditions">
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree to a transfer fee of (SLL - 100)
+                                                                                    By clicking, you agree to a transfer fee
+                                                                                    of (SLL - 100)
 
                                                                                 </b>
                                                                             </label>
@@ -415,27 +432,23 @@
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header text-center ">
-                                                                    <h3 class="modal-title text-primary"
-                                                                    id="myCenterModalLabel ">ENTER TRANSACTION PIN</h3>
-
-                                                                {{--  <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>  --}}
 
                                                             </div>
                                                             <div class="modal-body transfer_pin_modal">
-
+                                                                <h3 class="modal-title text-primary text-center"
+                                                                    id="myCenterModalLabel ">ENTER TRANSACTION PIN</h3>
                                                                 <div class="row">
                                                                     <div class="col-md-2"></div>
                                                                     <div class="col-md-9  text-center">
                                                                         <form action="#" autocomplete="off"
                                                                             aria-autocomplete="off">
-                                                                            <input type="text" name="user_pin" maxlength="4"  autocomplete="off" aria-autocomplete="off"
+                                                                            <input type="text" name="user_pin" maxlength="4"
+                                                                                autocomplete="off" aria-autocomplete="off"
                                                                                 class="form-control key hide_on_print"
                                                                                 id="user_pin"
-                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                                             <br>
-                                                                            <button
-                                                                                class="btn btn-soft-primary waves-effect waves-light"
+                                                                            <button class="btn btn-success"
                                                                                 type="button" id="transfer_pin"
                                                                                 data-dismiss="modal">Submit</button>
                                                                         </form>
@@ -458,15 +471,17 @@
                                                 <div class="form-group text-center">
 
                                                     <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                            id="back_button"> <i class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button> &nbsp; </span>
+                                                            id="back_button"> <i
+                                                                class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button>
+                                                        &nbsp; </span>
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button"
                                                             id="confirm_modal_button" data-toggle="modal"
                                                             data-target="#centermodal">
                                                             <span id="confirm_transfer">Confirm Transfer</span>
-                                                            <span class="spinner-border spinner-border-sm mr-1" role="status"
-                                                                id="spinner" aria-hidden="true"></span>
+                                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                                role="status" id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
                                                         </button>
                                                     </span>
@@ -502,11 +517,12 @@
                                                         <div class="col-md-10">
 
                                                             <div class="form-group row ">
-                                                                <b class="col-md-12 text-primary mb-1">Account from which the money will
+                                                                <b class="col-md-12 text-primary mb-1">Account from which
+                                                                    the money will
                                                                     be tansfered
                                                                     &nbsp; <span class="text-danger">*</span> </b>
-                                                                <select class="form-control col-md-12 mb-2" id="from_account"
-                                                                    required>
+                                                                <select class="form-control col-md-12 mb-2"
+                                                                    id="from_account" required>
                                                                     <option value="">Select Account</option>
 
                                                                     {{-- <option value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
@@ -519,9 +535,11 @@
                                                             <legend></legend>
 
                                                             <div class="form-group row">
-                                                                <b class="col-md-12"><b class="text-primary">Account which will receive the money
+                                                                <b class="col-md-12"><b class="text-primary">Account which
+                                                                        will receive the money
                                                                         &nbsp;</b><span class="text-danger">*</span></b>
-                                                                <select class="form-control col-md-12 mb-2" id="to_account" required>
+                                                                <select class="form-control col-md-12 mb-2" id="to_account"
+                                                                    required>
                                                                     <option value="">Select Account</option>
 
                                                                 </select>
@@ -536,29 +554,36 @@
                                                                 <b class="col-md-4 text-primary">Actual Amount &nbsp; <span
                                                                         class="text-danger">*</span></b>
 
-                                                                        <div class="input-group mb-3 col-8" style="padding: 0px;">
-                                                                            <div class="input-group-prepend">
-                                                                                <input type="text" class="input-group-text select_currency" id="select_currency" style="width: 80px;" readonly>
-                                                                                {{-- <select name="" class="input-group-text select_currency" id="select_currency">
+                                                                <div class="input-group mb-3 col-8" style="padding: 0px;">
+                                                                    <div class="input-group-prepend">
+                                                                        <input type="text"
+                                                                            class="input-group-text select_currency"
+                                                                            id="select_currency" style="width: 80px;"
+                                                                            readonly>
+                                                                        {{-- <select name="" class="input-group-text select_currency" id="select_currency">
                                                                                  </select> --}}
-                                                                            </div>
+                                                                    </div>
 
-                                                                              &nbsp;&nbsp;
-                                                                              <input type="text" class="form-control " id="amount" placeholder="Enter Amount"
-                                                                              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                              required >
-                                                                          </div>
+                                                                    &nbsp;&nbsp;
+                                                                    <input type="text" class="form-control " id="amount"
+                                                                        placeholder="Enter Amount"
+                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                        required>
+                                                                </div>
 
 
                                                             </div>
 
                                                             <div class="form-group row">
 
-                                                                <b class="col-4 text-primary"> Cur / Rate / Converted Amount</b>
+                                                                <b class="col-4 text-primary"> Cur / Rate / Converted
+                                                                    Amount</b>
 
                                                                 <div class="input-group mb-3 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <select name="" class="input-group-text select_currency" id="select_currency__">
+                                                                        <select name=""
+                                                                            class="input-group-text select_currency"
+                                                                            id="select_currency__">
                                                                             {{-- <option value="SLL" selected>SLL</option>
                                                                             <option value="EUR">EURO</option>
                                                                             <option value="USD">USD</option> --}}
@@ -566,22 +591,29 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control readOnly " id="convertor_rate" placeholder="0.00" style="width: 100px;">
-                                                                      </div>
-                                                                      &nbsp;&nbsp;
-                                                                    <input type="text" class="form-control" id="converted_amount" placeholder="Converted Amount" aria-label="Converted Amount" aria-describedby="basic-addon1">
-                                                                  </div>
+                                                                        <input type="text" class="form-control"
+                                                                            id="convertor_rate" placeholder="0.00" readonly
+                                                                            style="width: 100px;">
+                                                                    </div>
+                                                                    &nbsp;&nbsp;
+                                                                    <input type="text" class="form-control"
+                                                                        id="converted_amount" placeholder="Converted Amount"
+                                                                        aria-label="Converted Amount"
+                                                                        aria-describedby="basic-addon1" readonly>
+                                                                </div>
 
 
                                                             </div>
 
                                                             <div class="form-group row">
-                                                                <label class="col-md-4"><b class="text-primary">Expense Category
+                                                                <label class="col-md-4"><b class="text-primary">Expense
+                                                                        Category
                                                                         &nbsp;</b><span class="text-danger">*</span></label>
 
                                                                 {{-- <label class="h6">Category</label> --}}
 
-                                                                <select class="form-control col-md-8 mb-2" id="category" required>
+                                                                <select class="form-control col-md-8 mb-2" id="category"
+                                                                    required>
                                                                     <option value="">Select Category</option>
 
                                                                 </select>
@@ -594,9 +626,9 @@
                                                                 <label class="col-md-4"><b class="text-primary">Purpose of
                                                                         Transfer &nbsp</b></label>
 
-                                                                <input type="text" class="form-control col-md-8 mb-2" id="purpose"
-                                                                    placeholder="Enter purpose of transfer" autocomplete="off"
-                                                                    >
+                                                                <input type="text" class="form-control col-md-8 mb-2"
+                                                                    id="purpose" placeholder="Enter purpose of transfer"
+                                                                    autocomplete="off">
 
                                                             </div>
 
@@ -641,7 +673,8 @@
                                                             <div class="form-group text-right m-2">
                                                                 <button class="btn btn-primary btn-rounded" type="submit"
                                                                     id="next_button">
-                                                                    &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
+                                                                    &nbsp; Next &nbsp;<i class="fe-arrow-right"></i>
+                                                                </button>
                                                             </div>
                                                         </div>
 
@@ -661,7 +694,7 @@
                                     </div>
 
                                     <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                                         <br><br>
 
                                         <div class="col-md-12 card card-body rtgs_transfer_summary">
@@ -706,13 +739,14 @@
                                                 <h4 class="text-danger text-bold col-md-7 ">
                                                     <span class="display_from_account_currency mt-0"></span>
                                                     &nbsp;
-                                                    <b class="mt-0"  style="font-style: 16px"><span class="display_transfer_amount"></span></b>
+                                                    <b class="mt-0" style="font-style: 16px"><span
+                                                            class="display_transfer_amount"></span></b>
                                                 </h4>
                                             </div>
                                             <div class="row">
 
-                                                {{--  <h6 class="col-md-5">Enter Amount:</h6>
-                                                <span class="text-primary display_amount col-md-7"></span>  --}}
+                                                {{-- <h6 class="col-md-5">Enter Amount:</h6>
+                                                <span class="text-primary display_amount col-md-7"></span> --}}
 
                                                 <h6 class="col-md-5">Currency Rate:</h6>
                                                 <span class="text-primary display_midrate col-md-7"></span>
@@ -721,7 +755,7 @@
                                                 <span class="text-primary display_converted_amount col-md-7"></span>
                                             </div>
 
-                                            {{--  <hr>  --}}
+                                            {{-- <hr> --}}
 
 
                                         </div>
@@ -1046,8 +1080,8 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -1056,7 +1090,7 @@
             function from_account() {
                 $.ajax({
                     type: 'GET',
-                    url:  'get-my-account',
+                    url: 'get-my-account',
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
@@ -1069,7 +1103,8 @@
                                     data[index].currency + '~' + data[index]
                                     .availableBalance
                             }).text(data[index].accountNumber +
-                                '~' + data[index].currency + ' ~ ' + formatToCurrency(parseFloat(data[index].availableBalance))
+                                '~' + data[index].currency + ' ~ ' + formatToCurrency(parseFloat(
+                                    data[index].availableBalance))
                             ));
                             $('#to_account').append($('<option>', {
                                 value: data[index].accountType + ' ~ ' + data[index]
@@ -1077,14 +1112,17 @@
                                     .accountNumber + '~' + data[index].currency + '~' +
                                     data[index].availableBalance
                             }).text(data[index].accountNumber +
-                                '~' + data[index].currency + '~' + formatToCurrency(parseFloat(data[index].availableBalance))
+                                '~' + data[index].currency + '~' + formatToCurrency(parseFloat(data[
+                                    index].availableBalance))
                             ));
 
                         });
                     },
                     error: function(xhr, status, error) {
 
-                        setTimeout ( function(){ from_account()() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            from_account();
+                        }, $.ajaxSetup().retryAfter)
                     }
 
                 })
@@ -1110,7 +1148,9 @@
                     },
                     error: function(xhr, status, error) {
 
-                        setTimeout ( function(){ expenseTypes() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            expenseTypes()
+                        }, $.ajaxSetup().retryAfter)
                     }
                 })
             }
@@ -1123,8 +1163,8 @@
                 {{-- let name = $("#hidden_currency").val();
                 console.log(name); --}}
                 $.ajax({
-                    "type": "GET",
-                    "url": "get-currency-list-api",
+                    type: "GET",
+                    url: "get-currency-list-api",
                     datatype: "application/json",
                     success: function(response) {
                         {{-- console.log(response); --}}
@@ -1139,7 +1179,8 @@
                         console.log(data);
                         $.each(data, function(index) {
                             $('#select_currency__').append($('<option>', {
-                                value: data[index].currCode + '~' + data[index].description + '~' + data[index].isoCode
+                                value: data[index].currCode + '~' + data[index].description +
+                                    '~' + data[index].isoCode
                             }).text(data[index].isoCode));
                         })
 
@@ -1154,7 +1195,9 @@
                     },
                     error: function(xhr, status, error) {
 
-                        setTimeout ( function(){ get_currency() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            get_currency()
+                        }, $.ajaxSetup().retryAfter)
                     }
                 })
             }
@@ -1169,7 +1212,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url:  'get-correct-fx-rate-api',
+                    url: 'get-correct-fx-rate-api',
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
@@ -1187,7 +1230,9 @@
 
                     },
                     error: function(xhr, status, error) {
-                        setTimeout ( function(){ get_correct_fx_rate() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            get_correct_fx_rate()
+                        }, $.ajaxSetup().retryAfter)
                     }
 
                 })
@@ -1199,8 +1244,8 @@
                 $("#transaction_summary").hide();
                 $(".success_gif").hide();
                 $('#spinner').hide(),
-                $('#spinner-text').hide(),
-                $('#print_receipt').hide();
+                    $('#spinner-text').hide(),
+                    $('#print_receipt').hide();
                 $(".receipt").hide();
 
 
@@ -1217,7 +1262,7 @@
 
                 var customerType = @json(session()->get('customerType'));
 
-                if(customerType == 'C'){
+                if (customerType == 'C') {
                     $("#confirm_modal_button").removeAttr("data-target");
                 }
 
@@ -1229,14 +1274,14 @@
                 var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
                 var today = now.getFullYear() + "-" + (month) + "-" + (day);
-                {{--  $( "#future_payment" ).datepicker({ minDate: 0});  --}}
+                {{-- $( "#future_payment" ).datepicker({ minDate: 0}); --}}
 
 
                 $('#future_payment').text(today).datepicker("setDate", new Date());
 
                 {{-- $( "#future_date" ).datepicker({ defaultDate: new Date() }); --}}
 
-                function sweet_alert() {
+                function sweet_alert(message, icon, timer) {
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -1250,8 +1295,8 @@
                     })
 
                     Toast.fire({
-                        icon: 'error',
-                        title: 'Can not send to same account'
+                        icon: icon,
+                        title: message
                     })
                 }
 
@@ -1269,10 +1314,10 @@
                 $("#future_payment").datepicker();
 
                 {{-- $("#next_button").click(function(e) {
-                    e.preventDefault()
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
-                }) --}}
+                            e.preventDefault()
+                            $("#transaction_form").hide()
+                            $("#transaction_summary").show()
+                        }) --}}
 
                 $("#back_button").click(function(e) {
                     e.preventDefault()
@@ -1317,14 +1362,15 @@
                         $(".display_from_account_currency").text(from_account_info[3])
                         $('#select_currency').val(from_account_info[3])
                         $(".display_currency").text(from_account_info[3]) // set summary currency
-                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(from_account_info[4])))
+                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(from_account_info[
+                            4])))
 
                         amt = from_account_info[4].trim()
 
-                        $(".display_from_account_amount").text(formatToCurrency(Parse(from_account_info[4]
+                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(from_account_info[4]
                             .trim())))
                         {{-- alert('and show' + from_account_info[3].trim()) --}}
-                        toaster('Can not send to same account', 'error', 10000)
+                        {{-- toaster('Can not send to same account', 'error', 10000) --}}
 
                         $(".from_account_display_info").show()
                     }
@@ -1374,111 +1420,145 @@
 
 
 
-                    function currency_convertor(forex_rate){
-                        let amount = $("#amount").val()
-                        let convert_amount_currency = $('#select_currency__').val()
-                        let converted_amount = ''
+                function currency_convertor(forex_rate) {
 
-                        cur_1 = $('#select_currency').val()
-                        cur_2 = $('#select_currency__').val()
+                    let select_currency__ = $('#select_currency__').val()
+                    select_currency___info = select_currency__.split("~")
 
-                        if(cur_1 == "SLL"){
-
-                        }else{
-
-                        }
-
-                        let currency_pair_1 = cur_1 + '/ ' + cur_2
-                        let currency_pair_2 = cur_2 + '/ ' + cur_1
-
-                        let to_local_currency = cur_1 + '/ SLL'
-                        let local_currency = ''
-
-
-                        console.log(currency_pair_1)
-                        console.log(currency_pair_2)
-                        console.log(forex_rate)
-
-                        $('#converted_amount').val('')
-                        $('#convertor_rate').val('')
-
-
-                        if(forex_rate.length > 0){
-                            $.each(forex_rate, function(index) {
-
-                                if(String(forex_rate[index].PAIR.trim()) == String(to_local_currency.trim())){
-                                    local_currency = parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE)
-
-                                }
+                    let amount = $("#amount").val()
+                    let convert_amount_currency = select_currency___info[2]
+                    let converted_amount = ''
 
 
 
-                                if(String(forex_rate[index].PAIR.trim()) == String(currency_pair_1.trim())){
+                    console.log(convert_amount_currency)
 
-                                    converted_amount = parseFloat(amount) * parseFloat(forex_rate[index].MIDRATE)
-                                    $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                                    $('.display_midrate').text(currency_pair_1.trim() + ' => ' + formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                                    $('#converted_amount').val(formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                                    $('.display_converted_amount').text(convert_amount_currency + ' ' + formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                                    console.log(`match 1 => ${converted_amount}`)
-                                    console.log(parseFloat(forex_rate[index].MIDRATE))
+                    cur_1 = $('#select_currency').val()
+                    cur_2 = select_currency___info[2]
 
-                                }else if(String(forex_rate[index].PAIR.trim()) == String(currency_pair_2.trim())){
 
-                                    $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                                    $('.display_midrate').text(currency_pair_2.trim() + ' => ' + formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                                    converted_amount = parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE)
-                                    $('#converted_amount').val(formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                                    $('.display_converted_amount').text(convert_amount_currency + ' ' + formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                                    console.log(`match 2 => ${converted_amount}`)
-                                    console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                                }else{
+                    cur_1 = $('#select_currency').val()
+                    cur_2 = $('#select_currency__').val()
 
-                                }
-                            })
-                        }
+                    if (cur_1 == "SLL") {
+
+                    } else {
+
                     }
 
-                    $("#select_currency__").change(function() {
-                        {{-- let select_cur_1 = $(this).val()
-                        alert(select_cur_1)
+                    let currency_pair_1 = cur_1 + '/ ' + cur_2
+                    let currency_pair_2 = cur_2 + '/ ' + cur_1
 
-                        get_cur_1 = _cur_
-                        get_cur_2 = _cur_
-
-                        console.log(get_cur_1)
+                    let to_local_currency = cur_1 + '/ SLL'
+                    let local_currency = ''
 
 
-                            for (let index = 0; index < get_cur_1.length; index++) {
-                            console.log(get_cur_1[index].isoCode + ' - index: ' + index)
-                            if(String(get_cur_1[index].isoCode) === String(select_cur_1)){
-                               console.log("kkkkkkk")
-                               if(get_cur_2.splice(index, 1)){
+                    console.log(currency_pair_1)
+                    console.log(currency_pair_2)
+                    console.log(forex_rate)
 
-                                break;
-                               }
+                    $('#converted_amount').val('')
+                    $('#convertor_rate').val('')
+
+
+                    if (forex_rate.length > 0) {
+                        $.each(forex_rate, function(index) {
+
+                            if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
+                                    .trim())) {
+                                local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
+                                    .MIDRATE)
 
                             }
 
-                            $('#select_currency__').empty().append($('<option>', {
-                                value: get_cur_2[index].isoCode
-                            }).text(get_cur_2[index].isoCode));
 
-                        }
 
-                        console.log('-----------------')
-                        console.log(get_cur_2)
-                         console.log('-----------------')
+                            if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
+                                    .trim())) {
 
-                        return false; --}}
+                                converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
+                                    .MIDRATE)
+                                $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                        index].MIDRATE
+                                    .toFixed(2))))
+                                $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
+                                    formatToCurrency(
+                                        parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                                $('#converted_amount').val(formatToCurrency(parseFloat(
+                                    converted_amount.toFixed(
+                                        2))))
+                                $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                                    formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                                console.log(`match 1 => ${converted_amount}`)
+                                console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        currency_convertor(forex_rate)
-                    })
+                            } else if (String(forex_rate[index].PAIR.trim()) == String(
+                                    currency_pair_2
+                                    .trim())) {
 
-                    $("#select_currency__").change(function() {
-                        currency_convertor(forex_rate)
-                    })
+                                $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                        index].MIDRATE
+                                    .toFixed(2))))
+                                $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
+                                    formatToCurrency(
+                                        parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                                converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
+                                    .MIDRATE)
+                                $('#converted_amount').val(formatToCurrency(parseFloat(
+                                    converted_amount.toFixed(
+                                        2))))
+                                $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                                    formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                                console.log(`match 2 => ${converted_amount}`)
+                                console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                            } else {
+
+                            }
+                        })
+                    }
+                }
+
+                $("#select_currency__").change(function() {
+                    {{-- let select_cur_1 = $(this).val()
+                                    alert(select_cur_1)
+
+                                    get_cur_1 = _cur_
+                                    get_cur_2 = _cur_
+
+                                    console.log(get_cur_1)
+
+
+                                    for (let index = 0; index < get_cur_1.length; index++) {
+                                        console.log(get_cur_1[index].isoCode + ' - index: ' + index)
+                                        if(String(get_cur_1[index].isoCode) === String(select_cur_1)){
+                                        console.log("kkkkkkk")
+                                        if(get_cur_2.splice(index, 1)){
+
+                                            break;
+                                        }
+
+                                        }
+
+                                        $('#select_currency__').empty().append($('<option>', {
+                                            value: get_cur_2[index].isoCode
+                                        }).text(get_cur_2[index].isoCode));
+
+                                    }
+
+                                console.log('-----------------')
+                                console.log(get_cur_2)
+                                console.log('-----------------')
+
+                                return false; --}}
+
+                    currency_convertor(forex_rate)
+                })
+
+                $("#select_currency__").change(function() {
+                    currency_convertor(forex_rate)
+                })
 
 
 
@@ -1500,7 +1580,8 @@
                             toaster('Insufficient account balance', 'error', 10000)
                             return false
                         } else {
-                            $(".display_transfer_amount").text(formatToCurrency(parseFloat(transfer_amount)));
+                            $(".display_transfer_amount").text(formatToCurrency(parseFloat(
+                                transfer_amount)));
                         }
 
                     }
@@ -1544,79 +1625,80 @@
 
                 {{-- $("#next_button").click(function() {
 
-                    $("#transaction_summary").show();
-                    $("#transaction_form").hide();
+                                        $("#transaction_summary").show();
+                                        $("#transaction_form").hide();
 
-                    var t =  $("#schedule_payment_date").val()
-                    alert(t)
-                    return false;
-                    var from_account_ = $('#from_account').val().split("~");
-                    var from_account = $('#from_account');
+                                        var t =  $("#schedule_payment_date").val()
+                                        alert(t)
+                                        return false;
+                                        var from_account_ = $('#from_account').val().split("~");
+                                        var from_account = $('#from_account');
 
-                    var to_account_ = $('#to_account').val().split('~');
-                    var to_account = $('#to_account').val();
+                                        var to_account_ = $('#to_account').val().split('~');
+                                        var to_account = $('#to_account').val();
 
-                    var transfer_amount = $('#amount').val();
+                                        var transfer_amount = $('#amount').val();
 
-                    var category = $('#category').val().split("~");
-                    $("#display_category").text(category[1]);
+                                        var category = $('#category').val().split("~");
+                                        $("#display_category").text(category[1]);
 
-                    var select_frequency_ = $('#select_frequency').val()
-                    var purpose = $('#purpose').val();
-                    $("#display_purpose").text(purpose);
+                                        var select_frequency_ = $('#select_frequency').val()
+                                        var purpose = $('#purpose').val();
+                                        $("#display_purpose").text(purpose);
 
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
+                                        var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
 
-                    var schedule_payment_date = $('#schedule_payment_date').val();
+                                        var schedule_payment_date = $('#schedule_payment_date').val();
 
-                    var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
-                    console.log(schdule_pay);
-
-
-                    if (from_account_[2] == to_account_[1]) {
-
-                        toaster('Can not send to same account', 'error', 10000)
-                        return false;
-                    }
+                                        var schdule_pay = $("#customCheck1 input[type='checkbox']:checked").val();
+                                        console.log(schdule_pay);
 
 
-                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
-                        toaster('Insufficient account balance', 'error', 10000)
-                        return false
-                    }
+                                        if (from_account_[2] == to_account_[1]) {
 
-                    if (schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() ==
-                        '') {
-                        $('.display_schedule_payment_date').text('N/A') // shedule date NULL
-                        toaster('Select schedule date for subsequent transfers', 'error', 10000)
-                        alert('Select schedule date for subsequent transfers')
-                        return false;
-                    }
+                                            toaster('Can not send to same account', 'error', 10000)
+                                            return false;
+                                        }
 
 
-                    $('.display_schedule_payment_date').text('| ' + schedule_payment_date)
+                                        if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                                            toaster('Insufficient account balance', 'error', 10000)
+                                            return false
+                                        }
+
+                                        if (schedule_payment_contraint_input.trim() != '' && schedule_payment_date.trim() ==
+                                            '') {
+                                            $('.display_schedule_payment_date').text('N/A') // shedule date NULL
+                                            toaster('Select schedule date for subsequent transfers', 'error', 10000)
+                                            alert('Select schedule date for subsequent transfers')
+                                            return false;
+                                        }
 
 
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() ==
-                        '' || category.trim() == '' || purpose.trim() == '') {
-                        alert('Field must not be empty')
-                        toaster('Field must not be empty', 'error', 10000)
-                        return false
-                    } else {
-                        //set purpose and category values
-                        var category_info = category.split("~")
+                                        $('.display_schedule_payment_date').text('| ' + schedule_payment_date)
 
-                        var select_frequency_info = select_frequency_.split("~")
 
-                        $("#display_category").text(category_info[1])
-                        $("#display_frequency").text(select_frequency_info[1])
-                        $("#display_purpose").text(purpose)
+                                        if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() ==
+                                            '' || category.trim() == '' || purpose.trim() == '') {
+                                            alert('Field must not be empty')
+                                            toaster('Field must not be empty', 'error', 10000)
+                                            return false
+                                        } else {
+                                            //set purpose and category values
+                                            var category_info = category.split("~")
 
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
+                                            var select_frequency_info = select_frequency_.split("~")
 
-                }); --}}
+                                            $("#display_category").text(category_info[1])
+                                            $("#display_frequency").text(select_frequency_info[1])
+                                            $("#display_purpose").text(purpose)
+
+                                            $("#transaction_form").hide()
+                                            $("#transaction_summary").show()
+                                        }
+
+                                    }); --}}
+
 
                 $("#payment_details_form").submit(function(e) {
                     e.preventDefault();
@@ -1637,16 +1719,17 @@
 
 
                     var purpose = $('#purpose').val();
-                    if (purpose == ''){
+                    if (purpose == '') {
                         $("#display_purpose").text("Own Account Transfer");
                         var purpose = $('#purpose').val("Own Account Transfer");
 
-                    }else {
+                    } else {
                         $("#display_purpose").text(purpose);
                     }
 
 
-                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input')
+                        .val();
 
                     var schedule_payment_date = $('#schedule_payment_date').val();
 
@@ -1655,15 +1738,15 @@
                     $("#transaction_summary").show();
                     $("#transaction_form").hide();
 
-                    {{--  if (from_account == '' || to_account == '' || transfer_amount == '' ||
-                        category == '' || purpose == '') {
-                        alert('Field must not be empty')
-                        toaster('Field must not be empty', 'error', 10000)
-                        return false
-                    } else {
-                        $("#transaction_summary").show();
-                        $("#transaction_form").hide();
-                    }  --}}
+                    {{-- if (from_account == '' || to_account == '' || transfer_amount == '' ||
+                                            category == '' || purpose == '') {
+                                            alert('Field must not be empty')
+                                            toaster('Field must not be empty', 'error', 10000)
+                                            return false
+                                        } else {
+                                            $("#transaction_summary").show();
+                                            $("#transaction_form").hide();
+                                        } --}}
                 })
 
 
@@ -1703,11 +1786,11 @@
 
                         if (customerType == 'C') {
 
-                            {{--  alert('Corporate Account');  --}}
-                            {{--  $('#centermodal').modal('hide');  --}}
+                            {{-- alert('Corporate Account'); --}}
+                            {{-- $('#centermodal').modal('hide'); --}}
                             {{-- $('.modal-dialog').modal('hide'); --}}
                             {{-- $('body').removeClass('modal-open');
-                            $('.modal-backdrop').remove(); --}}
+                                                $('.modal-backdrop').remove(); --}}
 
                             $('#confirm_transfer').hide()
                             $('#spinner').show();
@@ -1715,120 +1798,123 @@
                             $("#confirm_modal_button").prop('disabled', true);
 
                             var from_account_ = $('#from_account').val().split("~");
-                                console.log(from_account_);
-                                var from_account = from_account_[2];
-                                var currency = from_account_[3];
-                                $("#from_account_receipt").text(from_account);
+                            console.log(from_account_);
+                            var from_account = from_account_[2];
+                            var currency = from_account_[3];
+                            $("#from_account_receipt").text(from_account);
 
-                                var to_account_ = $('#to_account').val().split('~');
-                                console.log(to_account_);
-                                var to_account = to_account_[2];
-                                $("#to_account_receipt").text(to_account);
-
-
-                                var transfer_amount = $('#amount').val();
-                                $("#amount_receipt").text(formatToCurrency(parseFloat(transfer_amount)));
-
-                                var select_currency = $("#select_currency").val();
-                                $(".receipt_currency").text(select_currency);
+                            var to_account_ = $('#to_account').val().split('~');
+                            console.log(to_account_);
+                            var to_account = to_account_[2];
+                            $("#to_account_receipt").text(to_account);
 
 
-                                var category_ = $('#category').val().split("~");
-                                var category = category_[0];
-                                $("#display_category").text(category[1]);
-                                $("#category_receipt").text(category[1]);
+                            var transfer_amount = $('#amount').val();
+                            $("#amount_receipt").text(formatToCurrency(parseFloat(
+                                transfer_amount)));
 
-                                var purpose = $('#purpose').val();
-                                $("#display_purpose").text(purpose);
-                                $("#purpose_receipt").text(purpose);
-
-                                var schedule_payment_contraint_input = $(
-                                    '#schedule_payment_contraint_input').val();
+                            var select_currency = $("#select_currency").val();
+                            $(".receipt_currency").text(select_currency);
 
 
+                            var category_ = $('#category').val().split("~");
+                            var category = category_[1];
+                            $("#display_category").text(category[1]);
+                            $("#category_receipt").text(category[1]);
 
+                            var purpose = $('#purpose').val();
+                            $("#display_purpose").text(purpose);
+                            $("#purpose_receipt").text(purpose);
 
-                                var schedule_payment_date = $('#schedule_payment_date').val();
-
-                                var select_frequency_ = $('#select_frequency').val();
-
-                                {{--  var sec_pin = $('#user_pin').val();  --}}
+                            var schedule_payment_contraint_input = $(
+                                '#schedule_payment_contraint_input').val();
 
 
 
 
-                                $.ajax({
+                            var schedule_payment_date = $('#schedule_payment_date').val();
 
-                                    type: 'POST',
-                                    url:  'corporate-own-account-api',
-                                    datatype: "application/json",
-                                    data: {
-                                        'from_account': from_account,
-                                        'to_account': to_account,
-                                        'transfer_amount': transfer_amount,
-                                        {{--  'category': category,  --}}
-                                        'purpose': purpose,
-                                        'currency' : currency ,
-                                        'schedule_payment_type': schedule_payment_contraint_input,
-                                        'schedule_payment_date': schedule_payment_date,
-                                        {{--  'secPin': sec_pin  --}}
+                            var select_frequency_ = $('#select_frequency').val();
 
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                            'content')
-                                    },
-                                    success: function(response) {
-                                        console.log();
-                                        {{-- console.log(response.responseCode) --}}
-                                        if (response.responseCode == '000') {
-                                            $("#related_information_display").removeClass(
-                                                "d-none d-sm-block");
-                                            Swal.fire(
-                                                '',
-                                                response.message,
-                                                'success'
-                                            );
-
-                                            {{--  $(".receipt").show();
-                                            $(".form_process").hide();  --}}
-
-                                            $('#confirm_modal_button').hide();
-                                            $('#spinner').hide();
-                                            $('#spinner-text').hide();
-                                            $('#back_button').hide();
-                                            {{--  $('#print_receipt').show();  --}}
+                            {{-- var sec_pin = $('#user_pin').val(); --}}
 
 
-                                            $(".rtgs_card_right").hide();
-                                            {{--  $(".success_gif").show();  --}}
-
-                                        } else {
-
-                                            toaster(response.message, 'error', 10000);
-
-                                            $(".receipt").hide();
-                                            {{-- $(".form_process").hide(); --}}
-                                            {{-- $('#confirm_modal_button').show(); --}}
-                                            $("#confirm_transfer").show();
-                                            $("#confirm_modal_button").prop('disabled', false);
-                                            $('#spinner').hide();
-                                            $('#spinner-text').hide();
-                                            $('#back_button').show();
-                                            $('#print_receipt').hide();
-                                            {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                            $("#related_information_display").show();
-                                            $(".success_gif").hide();
 
 
-                                        }
-                                    },error: function(xhr, status, error) {
+                            $.ajax({
+
+                                type: 'POST',
+                                url: 'corporate-own-account-api',
+                                datatype: "application/json",
+                                data: {
+                                    'from_account': from_account,
+                                    'to_account': to_account,
+                                    'transfer_amount': transfer_amount,
+                                    'category': category,
+                                    'purpose': purpose,
+                                    'currency': currency,
+                                    'schedule_payment_type': schedule_payment_contraint_input,
+                                    'schedule_payment_date': schedule_payment_date,
+                                    {{-- 'secPin': sec_pin --}}
+
+                                },
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                        'content')
+                                },
+                                success: function(response) {
+                                    console.log();
+                                    {{-- console.log(response.responseCode) --}}
+                                    if (response.responseCode == '000') {
+                                        $("#related_information_display").removeClass(
+                                            "d-none d-sm-block");
+                                        Swal.fire(
+                                            '',
+                                            response.message,
+                                            'success'
+                                        );
+
+                                        {{-- $(".receipt").show();
+                                                            $(".form_process").hide(); --}}
+
+                                        $('#confirm_modal_button').hide();
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#back_button').hide();
+                                        {{-- $('#print_receipt').show(); --}}
+
+
+                                        $(".rtgs_card_right").hide();
+                                        {{-- $(".success_gif").show(); --}}
+
+                                    } else {
+
+                                        toaster(response.message, 'error', 10000);
+
+                                        $(".receipt").hide();
+                                        {{-- $(".form_process").hide(); --}}
+                                        {{-- $('#confirm_modal_button').show(); --}}
+                                        $("#confirm_transfer").show();
+                                        $("#confirm_modal_button").prop('disabled',
+                                            false);
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#back_button').show();
+                                        $('#print_receipt').hide();
+                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                        $("#related_information_display").show();
+                                        $(".success_gif").hide();
+
 
                                     }
+                                },
+                                error: function(xhr, status, error) {
 
-                                })
+                                }
 
-                        }else {
+                            })
+
+                        } else {
 
                             $("#transfer_pin").click(function(e) {
                                 e.preventDefault();
@@ -1851,7 +1937,8 @@
 
 
                                 var transfer_amount = $('#amount').val();
-                                $("#amount_receipt").text(formatToCurrency(parseFloat(transfer_amount)));
+                                $("#amount_receipt").text(formatToCurrency(parseFloat(
+                                    transfer_amount)));
 
                                 var select_currency = $("#select_currency").val();
                                 $(".receipt_currency").text(select_currency);
@@ -1871,7 +1958,8 @@
 
 
 
-                                var schedule_payment_date = $('#schedule_payment_date').val();
+                                var schedule_payment_date = $('#schedule_payment_date')
+                                    .val();
 
                                 var select_frequency_ = $('#select_frequency').val();
 
@@ -1881,7 +1969,7 @@
                                 $.ajax({
 
                                     type: 'POST',
-                                    url:  'own-account-api',
+                                    url: 'own-account-api',
                                     datatype: "application/json",
                                     data: {
                                         'from_account': from_account,
@@ -1895,15 +1983,17 @@
 
                                     },
                                     headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                            'content')
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                            .attr(
+                                                'content')
                                     },
                                     success: function(response) {
                                         console.log();
                                         {{-- console.log(response.responseCode) --}}
                                         if (response.responseCode == '000') {
-                                            $("#related_information_display").removeClass(
-                                                "d-none d-sm-block");
+                                            $("#related_information_display")
+                                                .removeClass(
+                                                    "d-none d-sm-block");
                                             Swal.fire(
                                                 '',
                                                 response.message,
@@ -1925,19 +2015,23 @@
 
                                         } else {
 
-                                            toaster(response.message, 'error', 10000);
+                                            toaster(response.message, 'error',
+                                                10000);
 
                                             $(".receipt").hide();
                                             {{-- $(".form_process").hide(); --}}
                                             {{-- $('#confirm_modal_button').show(); --}}
                                             $("#confirm_transfer").show();
-                                            $("#confirm_modal_button").prop('disabled', false);
+                                            $("#confirm_modal_button").prop(
+                                                'disabled',
+                                                false);
                                             $('#spinner').hide();
                                             $('#spinner-text').hide();
                                             $('#back_button').show();
                                             $('#print_receipt').hide();
                                             {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                            $("#related_information_display").show();
+                                            $("#related_information_display")
+                                                .show();
                                             $(".success_gif").hide();
 
 
@@ -1957,9 +2051,10 @@
                         return false;
                     }
 
-
                 })
-            });
 
+
+
+            })
         </script>
     @endsection

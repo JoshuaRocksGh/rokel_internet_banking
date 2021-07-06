@@ -6,21 +6,27 @@
     <style>
         @media print {
             .hide_on_print {
-                display: none ;
-            };
+                display: none;
+            }
+
+            ;
         }
 
         @page {
             size: A4;
-            {{--  margin: 10px;  --}}
-          }
-          @media print {
-                html, body {
+            {{-- margin: 10px; --}}
+        }
+
+        @media print {
+
+            html,
+            body {
                 width: 210mm;
                 height: 297mm;
             }
+
             /* ... the rest of the rules ... */
-          }
+        }
 
 
         @font-face {
@@ -176,59 +182,67 @@
                                                                 <tr>
                                                                     {{-- <th>#</th> --}}
                                                                     <th>Description</th>
-                                                                    <th>Further Details</th>
-                                                                    {{--  <th>Amount </th>  --}}
+                                                                    <th class="text-right">Further Details</th>
+                                                                    {{-- <th>Amount </th> --}}
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     {{-- <th scope="row">1</th> --}}
                                                                     <td>Transfer From Account Number</td>
-                                                                    <td><span id="from_account_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td class="text-right"><span
+                                                                            id="from_account_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">2</th> --}}
                                                                     <td>Transfer To Account Number</td>
-                                                                    <td><span id="to_account_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td class="text-right"><span
+                                                                            id="to_account_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Category</td>
-                                                                    <td><span id="category_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td class="text-right"><span
+                                                                            id="category_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transfer Purpose</td>
-                                                                    <td><span id="purpose_receipt"></span></td>
-                                                                    {{--  <td></td>  --}}
+                                                                    <td class="text-right"><span
+                                                                            id="purpose_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
-                                                                    {{--  <td></td>  --}}
-                                                                    <td><strong>(<span class="receipt_currency"></span>) &nbsp;<span id="amount_receipt"></span></strong>
+                                                                    {{-- <td></td> --}}
+                                                                    <td class="text-right"><strong>(<span
+                                                                                class="receipt_currency"></span>)
+                                                                            &nbsp;<span id="amount_receipt"></span></strong>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Transaction Fee </td>
-                                                                    {{--  <td></td>  --}}
-                                                                    <td><strong>(<span class="receipt_currency"></span>) &nbsp; 15.00</strong></td>
+                                                                    {{-- <td></td> --}}
+                                                                    <td class="text-right"><strong>(<span
+                                                                                class="receipt_currency"></span>) &nbsp;
+                                                                            15.00</strong></td>
                                                                 </tr>
-                                                                {{--  <tr>
+                                                                {{-- <tr>
                                                                     <th scope="row">3</th>
                                                                     <td><strong>Total Amount</strong> </td>
                                                                     <td></td>
                                                                     <td><strong><span
                                                                                 id="total_amount_receipt"></span></strong>
                                                                     </td>
-                                                                </tr>  --}}
+                                                                </tr> --}}
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
-                                                                    {{--  <td></td>  --}}
+                                                                    {{-- <td></td> --}}
                                                                     <td></td>
                                                                     <td></td>
                                                                 </tr>
@@ -246,7 +260,8 @@
                                                     <div class="row">
                                                         <div class="col-md-5"></div>
                                                         <div class="col-md-2">
-                                                              <button class="btn btn-light btn-rounded hide_on_print text-center"
+                                                            <button
+                                                                class="btn btn-light btn-rounded hide_on_print text-center"
                                                                 type="button" onclick="window.print()">Print
                                                                 Receipt
                                                             </button>
@@ -317,8 +332,8 @@
                                                                         id="display_to_account_no"> </span>
 
 
-                                                                    {{--  <span class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                        id="online_display_beneficiary_alias_name"> </span>  --}}
+                                                                    {{-- <span class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                        id="online_display_beneficiary_alias_name"> </span> --}}
 
                                                                     <span
                                                                         class="font-13 text-primary h3 online_display_beneficiary_account_no"
@@ -430,8 +445,8 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree with terms and
-                                                                                    conditions
+                                                                                    By clicking, you agree to a transfer fee
+                                                                                    of (SLL - 100)
 
                                                                                 </b>
                                                                             </label>
@@ -451,7 +466,8 @@
                                                 <div class="form-group text-center">
 
                                                     <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                            id="back_button"><i class="fe-arrow-left"></i> &nbsp;Back</button> &nbsp; </span>
+                                                            id="back_button"><i class="mdi mdi-reply-all-outline"></i>
+                                                            &nbsp;Back</button> &nbsp; </span>
                                                     <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
                                                             id="confirm_modal_button" data-toggle="modal"
                                                             data-target="#centermodal"><span id="confirm_transfer">Confirm
@@ -566,11 +582,16 @@
 
                                                                 <div class="input-group mb-1 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <select name=""
+                                                                        <input type="text"
+                                                                            class="input-group-text "
+                                                                            id="select_currency" style="width: 80px;"
+                                                                            readonly>
+
+                                                                        {{--  <select name=""
                                                                             class="input-group-text select_currency"
                                                                             id="select_currency">
 
-                                                                        </select>
+                                                                        </select>  --}}
                                                                     </div>
 
                                                                     &nbsp;&nbsp;
@@ -596,12 +617,12 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control readOnly "
-                                                                            value="1.00" style="width: 100px;">
+                                                                        <input type="text" class="form-control readOnly " id="convertor_rate_"
+                                                                            value="1.00" style="width: 100px;" readonly>
                                                                     </div>
                                                                     &nbsp;&nbsp;
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Username" aria-label="Username"
+                                                                    <input type="text" class="form-control converted_amount" id="converted_amount_"
+                                                                        placeholder="Converted Amount" aria-label="converted_amount"
                                                                         aria-describedby="basic-addon1" readonly>
                                                                 </div>
 
@@ -611,15 +632,7 @@
 
 
 
-                                                            <div class="form-group row mb-3">
-                                                                <b class="col-md-4 text-primary">Purpose of Transfer
-                                                                    &nbsp;<span class="text-danger">*</span></b>
 
-                                                                <input type="text" class="form-control col-md-8"
-                                                                    id="purpose" placeholder="Enter purpose of transaction"
-                                                                    required>
-
-                                                            </div>
 
                                                             <div class="form-group row">
                                                                 <b class="col-md-4 text-primary">Expense Category &nbsp;
@@ -635,7 +648,12 @@
 
                                                             </div>
 
-                                                            <div class="form-group row mb-3">
+                                                            <div class="form-group row">
+                                                                <b class="col-md-4 text-primary">Purpose of Transfer</b>
+
+                                                                <input type="text" class="form-control col-md-8"
+                                                                    id="purpose" placeholder="Enter purpose of transaction"
+                                                                    <div class="form-group row mb-3">
                                                                 <b class="col-md-4 text-primary ">Future Payment &nbsp; </b>
 
                                                                 <input type="date" class="form-control col-md-8"
@@ -750,12 +768,16 @@
 
                                                                 <div class="input-group mb-3 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <select name="" class="input-group-text"
+                                                                        <input type="text"
+                                                                            class="input-group-text "
+                                                                            id="select_currency__" style="width: 80px;"
+                                                                            readonly>
+
+                                                                        {{--  <select name="" class="input-group-text"
                                                                             id="select_currency__">
                                                                             <option value="SLL" selected>SLL</option>
-                                                                            {{-- <option value="EUR">EURO</option>
-                                                                                <option value="USD">USD</option> --}}
-                                                                        </select>
+
+                                                                        </select>  --}}
                                                                     </div>
 
                                                                     &nbsp;&nbsp;
@@ -782,31 +804,18 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control readOnly "
-                                                                            value="1.00" style="width: 100px;">
+                                                                        <input type="text" class="form-control " id="convertor_rate"
+                                                                            value="1.00" style="width: 100px;" readonly>
                                                                     </div>
                                                                     &nbsp;&nbsp;
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Username" aria-label="Username"
-                                                                        aria-describedby="basic-addon1">
+                                                                    <input type="text" class="form-control converted_amount_" id="convertor_amount"
+                                                                        placeholder="Converted Amount" aria-label="converted_amount"
+                                                                        aria-describedby="basic-addon1" readonly>
                                                                 </div>
 
 
                                                             </div>
 
-
-
-
-
-                                                            <div class="form-group row mb-3">
-                                                                <b class="col-md-4 text-primary">Purpose of Transfer
-                                                                    &nbsp;<span class="text-danger">*</span></b>
-
-                                                                <input type="text" class="form-control col-md-8"
-                                                                    id="onetime_purpose"
-                                                                    placeholder="Enter purpose of transaction" required>
-
-                                                            </div>
 
                                                             <div class="form-group row">
                                                                 <b class="col-md-4 text-primary">Expense Category &nbsp;
@@ -821,6 +830,19 @@
 
 
                                                             </div>
+
+
+                                                            <div class="form-group row mb-3">
+                                                                <b class="col-md-4 text-primary">Purpose of Transfer
+                                                                    </b>
+
+                                                                <input type="text" class="form-control col-md-8"
+                                                                    id="onetime_purpose"
+                                                                    placeholder="Enter purpose of transaction">
+
+                                                            </div>
+
+
 
                                                             <div class="form-group row mb-3">
                                                                 <b class="col-md-4 text-primary ">Future Payment &nbsp;
@@ -872,6 +894,8 @@
                                     <div class=" col-md-12">
                                         <br><br>
                                         <div class="card card-body">
+                                            <h4 class="text-primary">Sender Acc. Info</h4>
+                                            <hr class="mt-0">
                                             <div class="row ">
                                                 <p class="col-md-5">Sender Name:</p>
                                                 <span class="text-primary display_from_account_name col-md-7"></span>
@@ -886,7 +910,8 @@
                                                 <span class="text-primary display_from_account_currency col-md-7"></span>
                                             </div>
 
-                                            <hr>
+                                            <h4 class="text-primary">Receiver Acc. Info</h4>
+                                            <hr class="mt-0">
                                             <div class="row">
                                                 <p class="col-md-5">Receiver Name:</p>
                                                 <span class="text-primary display_to_account_name col-md-7"></span>
@@ -900,7 +925,7 @@
 
                                             <hr>
                                             <div class="row">
-                                                <p class="col-md-5">Transfer Amount:</p>
+                                                <p class="col-md-5 mt-2 text-primary">Transfer Amount:</p>
                                                 <h4 class="row col-md-7">
                                                     <span class="text-danger display_transfer_currency col-md-4"></span>
                                                     <span class="text-danger display_amount col-md-8"></span>
@@ -916,17 +941,17 @@
 
                                             <br>
 
-                                            <div class="row">
+                                            {{-- <div class="row">
                                                 <h6 class="text-primary col-md-5">Transaction Fee:</h6>
                                                 <span class="text-danger text-bold col-md-7">0.10% of transfer amount</span>
-                                            </div>
+                                            </div> --}}
 
-                                            <br>
+                                            {{-- <br>
                                             <div class="row">
                                                 <h6 class="text-primary col-md-5">Please Note:</h6>
                                                 <span class="text-danger col-md-7">RTGS Tranfers should be above (SLL
                                                     50,000,000.00)</span>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -983,11 +1008,11 @@
                                     <div class="col-md-2"></div>
                                     <div class="col-md-9  text-center">
                                         <form action="#" autocomplete="off" aria-autocomplete="off">
-                                            <input type="text" name="user_pin" maxlength="4"
-                                                class="form-control key hide_on_print" id="user_pin"
+                                            <input type="text" name="user_pin" maxlength="4" autocomplete="off"
+                                                aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                             <br>
-                                            <button class="btn btn-soft-primary waves-effect waves-light" type="button"
+                                            <button class="btn btn-success waves-effect waves-light" type="button"
                                                 id="transfer_pin" data-dismiss="modal">Submit</button>
                                         </form>
 
@@ -1100,12 +1125,46 @@
     <script>
         var c = {}
 
+        var forex_rate = []
+        var cur_1 = "SLL"
+        var cur_2 = "SLL"
+
+        function get_correct_fx_rate() {
+
+
+            $.ajax({
+                type: 'GET',
+                url: 'get-correct-fx-rate-api',
+                datatype: "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+
+
+                    if (response.responseCode == '000') {
+                        forex_rate = response.data
+                        console.log(forex_rate)
+                    } else {
+
+                    }
+
+
+                },
+                error: function(xhr, status, error) {
+                    setTimeout(function() {
+                        get_correct_fx_rate()
+                    }, $.ajaxSetup().retryAfter)
+                }
+
+            })
+        };
+
         function get_currency() {
             {{-- let name = $("#hidden_currency").val();
             console.log(name); --}}
             $.ajax({
-                "type": "GET",
-                "url": "get-currency-list-api",
+                type: "GET",
+                url: "get-currency-list-api",
                 datatype: "application/json",
                 success: function(response) {
                     {{-- console.log(response); --}}
@@ -1133,9 +1192,11 @@
 
                     });
                 },
-                error: function(xhr, status, error) {
+                 error: function(xhr, status, error) {
 
-                    setTimeout ( function(){ get_currency() }, $.ajaxSetup().retryAfter )
+                    setTimeout(function() {
+                        get_currency()
+                    }, $.ajaxSetup().retryAfter)
                 }
             })
         }
@@ -1143,7 +1204,7 @@
         function from_account() {
             $.ajax({
                 type: 'GET',
-                url:  'get-my-account',
+                url: 'get-my-account',
                 datatype: "application/json",
                 success: function(response) {
                     //console.log(response.data);
@@ -1173,9 +1234,11 @@
 
                 },
                 error: function(xhr, status, error) {
-
-                    setTimeout ( function(){ from_account() }, $.ajaxSetup().retryAfter )
+                    setTimeout(function() {
+                        from_account()
+                    }, $.ajaxSetup().retryAfter)
                 }
+
             })
         }
 
@@ -1183,7 +1246,7 @@
         function to_account() {
             $.ajax({
                 type: 'GET',
-                url:  'get-transfer-beneficiary-api?beneType=SAB',
+                url: 'get-transfer-beneficiary-api?beneType=SAB',
                 datatype: "application/json",
                 success: function(response) {
                     console.log(response);
@@ -1215,8 +1278,9 @@
 
                 },
                 error: function(xhr, status, error) {
-
-                    setTimeout ( function(){ to_account() }, $.ajaxSetup().retryAfter )
+                    setTimeout(function() {
+                        to_account()
+                    }, $.ajaxSetup().retryAfter)
                 }
 
             })
@@ -1255,10 +1319,11 @@
 
 
                 },
-                error: function(xhr, status, error) {
-
-                    setTimeout ( function(){ expenseTypes() }, $.ajaxSetup().retryAfter )
-                }
+                 error: function(xhr, status, error) {
+                        setTimeout(function() {
+                            expenseTypes()
+                        }, $.ajaxSetup().retryAfter)
+                    }
             })
         }
 
@@ -1284,17 +1349,18 @@
                 to_account();
                 expenseTypes();
                 get_currency();
+                get_correct_fx_rate()
 
 
                 {{-- setTimeout(function(){
                 },3000); --}}
 
-            }, 2000);
+            }, 500);
 
             function getAccountDescription(account_no) {
                 $.ajax({
-                    type: "POST",
-                    url: "get-account-description",
+                    "type": "POST",
+                    "url": "get-account-description",
                     datatype: "application/json",
                     data: {
                         "authToken": "string",
@@ -1331,10 +1397,6 @@
 
 
                         }
-                    },
-                    error: function(xhr, status, error) {
-
-                        setTimeout ( function(){ getAccountDescription(account_no) }, $.ajaxSetup().retryAfter )
                     }
 
                 })
@@ -1516,6 +1578,10 @@
                     $(".display_from_account_currency").text(from_account_info[3].trim())
                     $(".display_transfer_currency").text(from_account_info[3].trim())
 
+                    $("#select_currency").val(from_account_info[3].trim())
+                    $("#select_currency__").val(from_account_info[3].trim())
+
+
                     let crr = from_account_info[3].trim()
 
                     $('#select_currency option').each(function() {
@@ -1652,8 +1718,14 @@
             $("#amount").keyup(function() {
                 var amount = ($(this).val());
                 {{-- console.log(amount); --}}
+
                 $(".display_amount").text(formatToCurrency(parseFloat(amount.trim())));
                 $('#display_transfer_amount').text(formatToCurrency(parseFloat(amount.trim())));
+
+
+                console.log(forex_rate)
+                currency_convertor(forex_rate);
+
             });
 
             {{-- $("#select_currency").change(function(){
@@ -1668,8 +1740,14 @@
             });
 
             $("#purpose").keyup(function() {
-                var purpose = ($(this).val());
-                $("#display_purpose").text(purpose);
+                if ($(this).val() == '') {
+                    $("#display_purpose").text('Same Bank Transfer');
+
+                } else {
+                    var purpose = ($(this).val());
+                    $("#display_purpose").text(purpose);
+
+                }
             });
 
             $("#amount_").keyup(function() {
@@ -1689,8 +1767,14 @@
 
             //purpose
             $("#onetime_purpose").keyup(function() {
-                var purpose = ($(this).val());
-                $("#display_purpose").text(purpose);
+                if($(this).val() == ''){
+                    $("#display_purpose").text('Same Bank Transfer');
+
+                }else {
+                    var purpose = ($(this).val());
+                    $('#display_purpose').text(purpose);
+
+                }
 
             })
 
@@ -1766,16 +1850,32 @@
                 var transfer_amount = $('#amount').val()
                 var category = $('#category').val()
                 var purpose = $('#purpose').val()
+                if (purpose == '') {
+                    $("#display_purpose").text('Same Bank Transfer');
+                    var purpose = $('#purpose').val('Same Bank Transfer');
+                } else {
+                    $("#display_purpose").text(purpose);
+
+                }
+
+                var purpose = $('#onetime_purpose').val()
+                if (purpose == '') {
+                    $("#display_purpose").text('Same Bank Transfer');
+                    var purpose = $('#onetime_purpose').val('Same Bank Transfer');
+                } else {
+                    $("#display_purpose").text(purpose);
+
+                }
+
                 var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                 var schedule_payment_date = $('#schedule_payment_date').val();
 
-                if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() ==
-                    '' || purpose.trim() == '') {
-                    toaster('Field must not be empty', 'error', 10000)
+                if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '') {
+                    {{--  toaster('Field must not be empty', 'error', 10000)  --}}
 
-                    {{--  alert('Field must not be empty')  --}}
+                    {{-- alert('Field must not be empty') --}}
 
-                    return false
+                    {{--  return false  --}}
 
                 }
 
@@ -1802,16 +1902,16 @@
 
 
                     if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount
-                        .trim() == '' || category.trim() == '' || purpose.trim() == '') {
-                        toaster('Field must not be empty', 'error', 10000)
+                        .trim() == '' || category.trim() == '') {
+                        {{--  toaster('Field must not be empty', 'error', 10000)
 
 
-                        return false
+                        return false  --}}
                     } else {
                         //set purpose and category values
                         var category_info = category.split("~")
                         $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
+                        {{-- $("#display_purpose").text(purpose) --}}
 
                         $("#transaction_form").hide()
                         $("#transaction_summary").show()
@@ -1843,9 +1943,8 @@
 
 
                     if (from_account.trim() == '' || onetime_account_number.trim() ==
-                        '' || amount_.trim() == '' || category.trim() == '' || purpose
-                        .trim() == '') {
-                        toaster('Field must not be empty', 'error', 10000)
+                        '' || amount_.trim() == '' || category.trim() == '' ) {
+                        {{--  toaster('Field must not be empty', 'error', 10000)  --}}
 
                         {{-- alert('Field must not be empty') --}}
                         {{-- return false --}}
@@ -1853,7 +1952,7 @@
                         //set purpose and category values
                         var category_info = category.split("~")
                         $("#display_category").text(category_info[1])
-                        $("#display_purpose").text(purpose)
+                        {{-- $("#display_purpose").text(purpose) --}}
 
                         $("#transaction_form").hide()
                         $("#transaction_summary").show()
@@ -1875,7 +1974,7 @@
                     .val()
                 var onetime_beneficiary_account_currency = $(
                     '#onetime_beneficiary_account_currency').val()
-                var purpose = $('#purpose').val()
+                {{-- var purpose = $('#purpose').val() --}}
                 var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
                 var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
                 var transfer_amount = $('#amount').val();
@@ -1932,8 +2031,15 @@
 
 
                             var purpose = $('#onetime_purpose').val()
-                            console.log(purpose);
-                            $("#purpose_receipt").text(purpose);
+                            {{-- console.log(purpose); --}}
+                            if (purpose == '') {
+                                $("#purpose_receipt").text("Same Bank Transfer");
+                                var purpose = $("#onetime_purpose").val("Same Bank Transfer");
+                            } else {
+                                $("#purpose_receipt").text(purpose);
+
+                            }
+                            {{-- $("#purpose_receipt").text(purpose); --}}
 
                             var onetime_beneficiary_email = $('#onetime_beneficiary_email').val();
                             console.log(onetime_beneficiary_email);
@@ -1942,7 +2048,7 @@
                             var transfer_amount = $('#amount_').val();
                             console.log(transfer_amount);
                             $("#amount_receipt").text(formatToCurrency(parseFloat(transfer_amount
-                            .trim())));
+                                .trim())));
 
                             {{-- var select_frequency = $('#select_frequency').val() --}}
 
@@ -1966,9 +2072,9 @@
 
                             $.ajax({
                                 type: 'POST',
-                                url:  'transfer-to-beneficiary-api',
+                                url: 'transfer-to-beneficiary-api',
                                 datatype: "application/json",
-                                'data': {
+                                data: {
                                     'from_account': from_account_,
                                     'alias_name': onetime_beneficiary_name,
                                     'to_account': onetime_account_number,
@@ -2059,8 +2165,15 @@
 
 
                             var purpose = $('#purpose').val()
-                            console.log(purpose);
-                            $("#purpose_receipt").text(purpose);
+                            {{-- console.log(purpose); --}}
+                            if (purpose == '') {
+                                $("#purpose_receipt").text("Same Bank Transfer");
+                                var purpose = $("#purpose").val("Same Bank Transfer");
+                            } else {
+                                $("#purpose_receipt").text(purpose);
+
+                            }
+                            {{-- $("#purpose_receipt").text(purpose); --}}
 
                             var beneficiary_email = to_account[4];
                             console.log(beneficiary_email);
@@ -2069,7 +2182,7 @@
                             var transfer_amount = $('#amount').val();
                             console.log(transfer_amount);
                             $("#amount_receipt").text(formatToCurrency(parseFloat(transfer_amount
-                            .trim())));
+                                .trim())));
 
                             var select_currency = $("#select_currency").val();
                             console.log(select_currency);
@@ -2094,10 +2207,10 @@
                             $("#confirm_modal_button").prop('disabled', true);
 
                             $.ajax({
-                                'type': 'POST',
-                                'url': 'transfer-to-beneficiary-api',
-                                "datatype": "application/json",
-                                'data': {
+                                type: 'POST',
+                                url: 'transfer-to-beneficiary-api',
+                                datatype: "application/json",
+                                data: {
                                     'from_account': from_account_,
                                     'alias_name': beneficiary_name,
                                     'to_account': to_account_,
@@ -2109,10 +2222,6 @@
                                     'category': category,
                                     'secPin': user_pin
                                 },
-                                type: 'POST',
-                                url:  'transfer-to-beneficiary-api',
-                                datatype: "application/json",
-                                'data': JSON.stringify(data),
 
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
@@ -2178,7 +2287,7 @@
 
 
                 } else {
-                    toaster('Accept terms & conditions to continue', 'error', 6000)
+                    toaster('Accept Transfer fee charge to continue', 'error', 6000)
                     {{-- console.log("UNCHECKED"); --}}
                     return false;
                 }
@@ -2187,5 +2296,111 @@
 
         });
 
+        function currency_convertor_(forex_rate) {}
+
+        function currency_convertor(forex_rate) {
+
+            let select_currency = $('#select_currency').val()
+
+            let select_currency__ = $('#select_converted_currency').val()
+            console.log(select_currency__ + '  kkkkk')
+
+            let amount = $("#amount").val()
+            let convert_amount_currency = select_currency__
+
+            let converted_amount = ''
+
+
+
+            console.log(convert_amount_currency)
+
+            cur_1 = $('#select_currency').val()
+            cur_2 = select_currency__
+
+            console.log(cur_1)
+            console.log(cur_2)
+
+            if (cur_1 == "SLL") {
+
+            } else {
+
+
+                cur_1 = $('#select_currency').val()
+                cur_2 = $('#select_converted_currency').val()
+
+
+                let currency_pair_1 = cur_1 + '/ ' + cur_2
+                let currency_pair_2 = cur_2 + '/ ' + cur_1
+
+                let to_local_currency = cur_1 + '/ SLL'
+                let local_currency = ''
+
+
+                console.log(currency_pair_1)
+                console.log(currency_pair_2)
+                console.log(forex_rate)
+
+                $('#converted_amount').val('')
+                $('#convertor_rate').val('')
+
+
+                if (forex_rate.length > 0) {
+                    $.each(forex_rate, function(index) {
+
+                        if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
+                                .trim())) {
+                            local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
+                                .MIDRATE)
+
+                        }
+
+
+
+                        if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
+                                .trim())) {
+
+                            converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
+                                .MIDRATE)
+                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                    index].MIDRATE
+                                .toFixed(2))))
+                            $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
+                                formatToCurrency(
+                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                            $('#converted_amount').val(formatToCurrency(parseFloat(
+                                converted_amount.toFixed(
+                                    2))))
+                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                            console.log(`match 1 => ${converted_amount}`)
+                            console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                        } else if (String(forex_rate[index].PAIR.trim()) == String(
+                                currency_pair_2
+                                .trim())) {
+
+                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                    index].MIDRATE
+                                .toFixed(2))))
+                            $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
+                                formatToCurrency(
+                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                            converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
+                                .MIDRATE)
+                            $('#converted_amount').val(formatToCurrency(parseFloat(
+                                converted_amount.toFixed(
+                                    2))))
+                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                            console.log(`match 2 => ${converted_amount}`)
+                            console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                        } else {
+
+                        }
+                    })
+                }
+            }
+        }
     </script>
 @endsection

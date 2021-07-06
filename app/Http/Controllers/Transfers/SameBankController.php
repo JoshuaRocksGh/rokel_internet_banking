@@ -92,6 +92,7 @@ class SameBankController extends Controller
             "amount" => (float) $req->amount,
             "authToken" => $authToken,
             "creditAccount" => $req->to_account,
+            "channel" => "MOB" ,
             "currency" => $req->account_currency,
             "debitAccount" => $req->from_account,
             "deviceIp" => null,
