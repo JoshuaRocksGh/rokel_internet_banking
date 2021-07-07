@@ -63,7 +63,7 @@
                             <div class="col-md-12">
 
 
-                                <div class="card card-body">
+                                <div class="card card-body table-responsive">
 
                                     {{-- <h4 class="header-title">Buttons example</h4>
                                     <p class="sub-header font-13">
@@ -74,10 +74,10 @@
                                     </p> --}}
 
                                     <table id="datatable-buttons"
-                                        class="table dt-responsive nowrap w-100 pending_transaction_request "
+                                        class="table dt-responsive  table-bordered table-striped nowrap w-100 pending_transaction_request "
                                         style="zoom: 1;">
                                         <thead>
-                                            <tr>
+                                            <tr class="bg-info text-white">
                                                 <th>Req-Type</th>
                                                 <th>Status</th>
                                                 <th>Initiated By</th>
