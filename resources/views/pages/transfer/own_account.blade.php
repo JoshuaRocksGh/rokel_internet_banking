@@ -1100,8 +1100,8 @@
                             $('#from_account').append($('<option>', {
                                 value: data[index].accountType + '~' + data[index]
                                     .accountDesc + '~' + data[index].accountNumber + '~' +
-                                    data[index].currency + '~' + data[index]
-                                    .availableBalance
+                                    data[index].currency + '~' + data[index].availableBalance
+                                    + '~' + data[index].accountMandate
                             }).text(data[index].accountNumber +
                                 '~' + data[index].currency + ' ~ ' + formatToCurrency(parseFloat(
                                     data[index].availableBalance))
@@ -1801,6 +1801,7 @@
                             console.log(from_account_);
                             var from_account = from_account_[2];
                             var currency = from_account_[3];
+                            var account_mandate = from_account_[5];
                             $("#from_account_receipt").text(from_account);
 
                             var to_account_ = $('#to_account').val().split('~');
@@ -1855,7 +1856,7 @@
                                     'currency': currency,
                                     'schedule_payment_type': schedule_payment_contraint_input,
                                     'schedule_payment_date': schedule_payment_date,
-                                    {{-- 'secPin': sec_pin --}}
+                                    'account_mandate': account_mandate
 
                                 },
                                 headers: {

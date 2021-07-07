@@ -187,31 +187,11 @@ class OwnAccountController extends Controller
         $userAlias = session()->get('userAlias');
         $customerPhone = session()->get('customerPhone');
         $customerNumber = session()->get('customerNumber');
+        $userMandate = session()->get('userMandate');
 
 
-        // $from_account = $req->from_account;
-        // 'from_account' : from_account_ ,
-        // 'to_account' : to_account_ ,
-        // 'transfer_amount' : transfer_amount ,
-        // 'category' : category_ ,
-        // 'select_frequency' : select_frequency_ ,
-        // 'purpose' : purpose ,
-        // 'schedule_payment_type' : schedule_payment_contraint_input ,
-        // 'schedule_payment_date' : schedule_payment_date,
-        // 'secPin' : pin
         $data = [
 
-            // "amount" => $req->transfer_amount,
-            // "authToken" => $authToken,
-            // "creditAccount" => $req->to_account,
-            // "currency" => null,
-            // "debitAccount" => $req->from_account,
-            // "deviceIp" => null,
-            // "entrySource" => null,
-            // "narration" => $req->purpose,
-            // "secPin" => $req->secPin,
-            // "userName" => null,
-            // "category" => $req->category,
 
             "account_no" => $req->from_account ,
             "destinationAccountId" => $req->to_account,
@@ -219,6 +199,8 @@ class OwnAccountController extends Controller
             "currency" => $req->currency,
             "narration" => $req->purpose,
             "postBy" => $userID,
+            "account_mandate" => $req->account_mandate,
+            "user_mandate" => $userMandate,
             // "appBy" => '';
             "customerTel" => $customerPhone ,
             "transBy" => $userID ,

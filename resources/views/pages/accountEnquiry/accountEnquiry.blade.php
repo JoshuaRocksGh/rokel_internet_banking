@@ -226,7 +226,7 @@
 
                                             </div>
 
-                                            <table id="datatable-buttons" class="table table-bordered table-striped mb-0 account_transaction_display_table" >
+                                            <table id="datatable-buttons" class="table table-bordered table-striped mb-0 table-responsive account_transaction_display_table" >
                                                 <tbody>
                                                     <thead>
                                                         <tr class="bg-info text-white ">
