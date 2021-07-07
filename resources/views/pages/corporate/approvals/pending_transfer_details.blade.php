@@ -98,7 +98,7 @@
                                                                             <div class="col-md-2"></div>
                                                                             <button class="btn btn-success waves-effect waves-light col-md-3 btn-lg" data-toggle="modal" data-target="#success-alert-modal"
                                                                             id="approve_transaction"
-                                                                                type="button">Appove
+                                                                                type="button">Approve
                                                                                 <i class="mdi mdi-check-all"></i>
                                                                             </button>
                                                                             <div class="col-md-2"></div>
@@ -190,20 +190,11 @@
                                 <div class="card">
                                     <div class="p-3 mt-4 mt-lg-0">
                                         <h4 class="mb-1 text-center">Approvers</h4>
-                                        <h2 class="approvers">Jonas Korankye</h2>
-                                        <h2 class="approvers">Joshua Tetteh</h2>
-                                        {{-- <div class="table-responsive">
-                                                <table class="table mb-0 table-bordered">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="approvers"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="approvers"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div> --}}
+                                        <span id="approvers_list"></span>
+
+                                        {{--  <h2 class="approvers">Jonas Korankye</h2>
+                                        <h2 class="approvers">Joshua Tetteh</h2>  --}}
+
 
                                     </div>
                                 </div>
@@ -272,12 +263,14 @@
                                 let request_type = 'RTGS Payment'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 
+                            }else if (request_type == 'SAB'){
+                                let request_type = 'Same Bank Transfer'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
                             }else if (request_type == 'OWN'){
                                 let request_type = 'Own Account Transfer'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
-
-                            }else if (request_type == 'TPT'){
-                                let request_type = 'Other BAnk Transfer'
+                            }else if (request_type == 'OBT'){
+                                let request_type = 'Other Bank Transfer'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 
                             }else if (request_type == 'BULK'){
@@ -369,6 +362,9 @@
                             let leaflet = pending_request.leaflet;
                             leaflet != null ? append_approval_details("Number of Leaflet" , leaflet) : '';
 
+                            $('#approvers_list').append(`<h2 class="approvers">${pending_request.approvers}</h2>`)
+
+
                             {{--  $('#request_date').text(pending_request.post_date);
                             $('#request_type').text(pending_request.request_type);
                             $('#posted_by').text(pending_request.postedby);
@@ -412,7 +408,7 @@
             setTimeout(function() {
                 account_mandate();
 
-            },700);
+            },300);
 
             //Reject Button
             $("#reject_transaction").click(function(e){
@@ -422,6 +418,9 @@
 
             $("#approve_transaction").click(function (e){
                 e.preventDefault();
+
+
+
                 {{-- alert("Approve Transaction"); --}}
 
                 approve_request();
@@ -433,7 +432,7 @@
             })
 
             function ajax_post(){
-
+                $('#approve_transaction').text("Processing ...")
                 var customer = @json($customer_no);
                 var request = @json($request_id);
 
@@ -457,6 +456,11 @@
                             Swal.fire(response.message, '', 'error');
 
                         }
+
+                        $('#approve_transaction').html(`Approve<i class="mdi mdi-check-all">`)
+                    },
+                    error: function(xhr, status, error) {
+                        $('#approve_transaction').html(`Approve<i class="mdi mdi-check-all">`)
                     }
                 })
             }
@@ -470,6 +474,8 @@
                     showDenyButton: false,
                     showCancelButton: true,
                     confirmButtonText: `Proceed`,
+                    confirmButtonColor: '#18c40d',
+                    cancelButtonColor: '#df1919',
                     {{-- denyButtonText: `Don't save`, --}}
                   }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */

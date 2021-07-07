@@ -33,9 +33,11 @@
             <div class="col-md-12">
                 <marquee behavior="" direction="">
                     <span>
-                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px'
+                            style='border-radius:5px;'>
                         /
-                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px'
+                            style='border-radius:5px;'>
 
                         <span> <strong> 9.000 / 1.00</strong> </span>
                     </span>
@@ -43,9 +45,11 @@
                     &nbsp; &nbsp;
 
                     <span>
-                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px'
+                            style='border-radius:5px;'>
                         /
-                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px' style='border-radius:5px;'>
+                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px'
+                            style='border-radius:5px;'>
 
                         <span> <strong> 9.000 / 1.00</strong> </span>
                     </span>
@@ -64,7 +68,8 @@
 
 
                     <div class="col-md-12">
-                        <div class="card-box" style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                        <div class="card-box"
+                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-6">
@@ -80,22 +85,28 @@
                                     <div class="card-body">
 
                                         <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center active" style="font-size: 17px">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center active"
+                                                style="font-size: 17px">
 
                                                 <strong>Total Local Amount: </strong>
-                                                <strong >
+                                                <strong>
 
                                                     SLL <span class="i_have_amount open-money"></span>
                                                     <span class="i_have_amount_ close-money">***********</span>
                                                     &nbsp;&nbsp;&nbsp;
-                                                    <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
-                                                    <i class="fa fa-eye-slash  float-right eye-close text-white" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="More Info"></i>
+                                                    <i class="fas fa-eye  float-right eye-open text-white"
+                                                        data-toggle="tooltip" data-placement="bottom" title=""
+                                                        data-original-title="More Info"></i>
+                                                    <i class="fa fa-eye-slash  float-right eye-close text-white"
+                                                        data-toggle="tooltip" data-placement="bottom" title=""
+                                                        data-original-title="More Info"></i>
 
                                                 </strong>
                                             </li>
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                                 <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
-                                                <span class="badge badge-success badge-pill currency_and_savings_account_no"></span>
+                                                <span
+                                                    class="badge badge-success badge-pill currency_and_savings_account_no"></span>
                                             </li>
 
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -125,7 +136,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card-box" >
+                        <div class="card-box">
 
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
@@ -148,26 +159,26 @@
                                 <div class="tab-pane active" id="home">
                                     <p>
 
-                                        <div class="table-responsive table-bordered accounts_display_area">
-                                            <table id="" class="table mb-0 ">
-                                                <thead>
-                                                    <tr class="bg-info text-white ">
-                                                        <td> <b> Account No </b> </td>
-                                                        <td> <b> Description </b> </td>
-                                                        <td> <b> Product </b> </td>
-                                                        <td> <b> Cur </b> </td>
-                                                        <td> <b> OverDraft </b> </td>
-                                                        {{--  <td> <b> Ledger Bal </b> </td>  --}}
-                                                        <td> <b> Av. Bal </b> </td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="casa_list_display">
+                                    <div class="table-responsive table-bordered accounts_display_area">
+                                        <table id="" class="table mb-0 ">
+                                            <thead>
+                                                <tr class="bg-info text-white ">
+                                                    <td> <b> Account No </b> </td>
+                                                    <td> <b> Description </b> </td>
+                                                    <td> <b> Product </b> </td>
+                                                    <td> <b> Cur </b> </td>
+                                                    <td> <b> OverDraft </b> </td>
+                                                    {{-- <td> <b> Ledger Bal </b> </td> --}}
+                                                    <td> <b> Av. Bal </b> </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="casa_list_display">
 
 
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- end table-responsive -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
 
                                     </p>
 
@@ -177,25 +188,25 @@
 
                                     <p id="p_fixed_deposit_account">
 
-                                        <div class="table-responsive table-bordered my_investment_display_area">
-                                            <table id="" class="table mb-0 ">
-                                                <thead>
-                                                    <tr class="bg-info text-white ">
-                                                        <td> <b> Account No </b> </td>
-                                                        <td> <b> Deal Amount </b> </td>
-                                                        <td> <b> Tunure </b> </td>
-                                                        <td> <b> FixedInterestRate </b> </td>
-                                                        <td> <b> Rollover </b> </td>
+                                    <div class="table-responsive table-bordered my_investment_display_area">
+                                        <table id="" class="table mb-0 ">
+                                            <thead>
+                                                <tr class="bg-info text-white ">
+                                                    <td> <b> Account No </b> </td>
+                                                    <td> <b> Deal Amount </b> </td>
+                                                    <td> <b> Tunure </b> </td>
+                                                    <td> <b> FixedInterestRate </b> </td>
+                                                    <td> <b> Rollover </b> </td>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="fixed_deposit_account">
+                                                </tr>
+                                            </thead>
+                                            <tbody class="fixed_deposit_account">
 
 
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- end table-responsive -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
 
                                     </p>
 
@@ -204,25 +215,25 @@
                                 <div class="tab-pane" id="messages">
                                     <p id="p_loans_display">
 
-                                        <div class="table-responsive table-bordered loans_display_area">
-                                            <table id="" class="table mb-0 ">
-                                                <thead>
-                                                    <tr class="bg-info text-white ">
-                                                        <td> <b> Facility No </b> </td>
-                                                        <td> <b> Description </b> </td>
-                                                        <td> <b> Cur </b> </td>
-                                                        <td> <b> Amount Granted </b> </td>
-                                                        <td> <b> Loan Bal </b> </td>
+                                    <div class="table-responsive table-bordered loans_display_area">
+                                        <table id="" class="table mb-0 ">
+                                            <thead>
+                                                <tr class="bg-info text-white ">
+                                                    <td> <b> Facility No </b> </td>
+                                                    <td> <b> Description </b> </td>
+                                                    <td> <b> Cur </b> </td>
+                                                    <td> <b> Amount Granted </b> </td>
+                                                    <td> <b> Loan Bal </b> </td>
 
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="loans_display">
+                                                </tr>
+                                            </thead>
+                                            <tbody class="loans_display">
 
 
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- end table-responsive -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
 
                                     </p>
 
@@ -233,17 +244,18 @@
                     <div class="col-md-8 ">
                         <div class="card" style="border-radius: 20px;">
                             <div class="border mt-0 rounded">
-                                <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest Transactions</h4>
+                                <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest
+                                    Transactions</h4>
 
                                 <div class="row" style="padding-left: 15px; padding-right: 15px;">
-                                    {{--  <div class="col-md-1"></div>  --}}
+                                    {{-- <div class="col-md-1"></div> --}}
                                     <div class="col-md-12">
                                         <select name="" class="form-control" id="account_transaction">
                                             <option value=""> -- Select Account -- </option>
-                                            {{--  <option value="">04785505050</option>  --}}
+                                            {{-- <option value="">04785505050</option> --}}
                                         </select>
                                     </div>
-                                    {{--  <div class="col-md-1"></div>  --}}
+                                    {{-- <div class="col-md-1"></div> --}}
                                 </div>
 
                                 <legend></legend>
@@ -261,26 +273,28 @@
 
                         </div>
                     </div>
-
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <a href="{{ url('manage-cards') }}">
 
                             <div class="card" style="border-radius: 20px;">
 
 
-                            <div class="card-body bg-warning">
+                                <div class="card-body bg-warning">
 
-                                <h5 class="card-title text-white">My Cards</h5>
-                                <br>
-                                <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** **** ****</p>
-                                <p class="card-text">
-                                    <p class="text-white mb-0" style="font-size: 20px;">Loan Owner <span class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span></p>
+                                    <h5 class="card-title text-white">My Cards</h5>
+                                    <br>
+                                    <p class="card-text font-30 text-white" style="font-size: 23px;">1234 **** **** ****
+                                        ****</p>
+                                    <p class="card-text">
+                                    <p class="text-white mb-0" style="font-size: 20px;">Loan Owner <span
+                                            class="float-right"><i class="fe-shield-off text-danger mr-1"></i>12/26</span>
+                                    </p>
 
-                                </p>
-                            </div>
-                        </div> <!-- end card-box-->
+                                    </p>
+                                </div>
+                            </div> <!-- end card-box-->
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
 
 
@@ -305,19 +319,21 @@
 
                     <div class="col-md-12">
                         <legend></legend>
-                            <h5>FREQUENTLY USED SERVICES</h5>
-                            <legend></legend>
+                        <h5>FREQUENTLY USED SERVICES</h5>
+                        <legend></legend>
                     </div>
 
                     <div class="col-md-6">
-                        <a href="{{ url('mobile-money') }}"><div class="widget-rounded-circle card-box" style="border-radius: 20px; background-color: #0561ad">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white ">
-                                        <i class="fe-log-out font-20 avatar-title text-info"></i>
+                        <a href="{{ url('mobile-money') }}">
+                            <div class="widget-rounded-circle card-box"
+                                style="border-radius: 20px; background-color: #0561ad">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white ">
+                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
+                                    <div class="col-8">
                                         <div class="text-right">
                                             <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
                                         </div>
@@ -329,76 +345,79 @@
 
                     <div class="col-md-6 ">
                         <a href="{{ url('airtime-payment') }}">
-                        <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white">
-                                        <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                            <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white">
+                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
                         </a>
                     </div> <!-- end col-->
 
 
                     <div class="col-md-6 ">
                         <a href="{{ url('cardless-payment') }}">
-                        <div class="widget-rounded-circle card-box custom-color-gold bg-success" style="border-radius: 20px;">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white">
-                                        <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
+                            <div class="widget-rounded-circle card-box custom-color-gold bg-success"
+                                style="border-radius: 20px;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white">
+                                            <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
                         </a>
                     </div> <!-- end col-->
 
 
                     <div class="col-md-6 ">
                         <a href="{{ url('korpone-loane-payment') }}">
-                        <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
-                            <div class=" row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white ">
-                                        <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
+                            <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
+                                <div class=" row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white ">
+                                            <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
                         </a>
                     </div>
 
 
 
                     <div class="col-md-6">
-                        <a href="{{ url('mobile-money') }}"><div class="widget-rounded-circle card-box" style="border-radius: 20px; background-color: #0561ad">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white ">
-                                        <i class="fe-log-out font-20 avatar-title text-info"></i>
+                        <a href="{{ url('branch-locator') }}">
+                            <div class="widget-rounded-circle card-box"
+                                style="border-radius: 20px; background-color: #0561ad">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white ">
+                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
+                                    <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
+                                            <h3 class="mt-1 text-white"><span>Branches</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->
@@ -407,21 +426,21 @@
                     </div> <!-- end col-->
 
                     <div class="col-md-6 ">
-                        <a href="{{ url('airtime-payment') }}">
-                        <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="avatar-md rounded-circle bg-white">
-                                        <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                        <a href="{{ url('account-enquiry') }}">
+                            <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="avatar-md rounded-circle bg-white">
+                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
+                                    <div class="col-8">
+                                        <div class="text-right">
+                                            <h3 class="mt-1 text-white"><span>Account Equiry</span></h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
                         </a>
                     </div> <!-- end col-->
 
@@ -430,30 +449,33 @@
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img class="d-block w-100" src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}" alt="First slide">
-                      </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}" alt="Second slide">
-                      </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}" alt="Third slide">
-                      </div>
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}"
+                                alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}"
+                                alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}"
+                                alt="Third slide">
+                        </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
                     </a>
-                  </div>
+                </div>
             </div>
 
         </div>
@@ -492,9 +514,7 @@
 
             <!-- end row-->
 
-{{--
-
-            <div class="container-fluid">
+            {{-- <div class="container-fluid">
                 <div class="">
                     <div class="row">
 
@@ -882,7 +902,7 @@
 
                 </div>
 
-            </div>  --}}
+            </div> --}}
 
             {{-- <div class="row ">
 
@@ -1063,13 +1083,13 @@
         {{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
 
         <!-- Chart JS -->
-        {{--  <script src="{{ asset('assets/libs/chart.js/Chart.bundle.min.js') }}"></script>  --}}
+        {{-- <script src="{{ asset('assets/libs/chart.js/Chart.bundle.min.js') }}"></script> --}}
 
         <script src="{{ asset('assets/libs/moment/min/moment.min.js') }}"></script>
         <script src="{{ asset('assets/libs/jquery.scrollto/jquery.scrollTo.min.js') }}"></script>
 
         <!-- Chat app -->
-        {{--  <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script>  --}}
+        {{-- <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script> --}}
 
         <!-- Todo app -->
         <script src="{{ asset('assets/js/pages/jquery.todo.js') }}"></script>
@@ -1085,8 +1105,7 @@
             var i_owe = 0
             var i_invest_total = 0
 
-            function show_chart(i_have, i_owe, i_invest_total)
-            {
+            function show_chart(i_have, i_owe, i_invest_total) {
                 var ctx = document.getElementById('myChart').getContext('2d');
                 var myChart = new Chart(ctx, {
                     type: 'pie',
@@ -1119,9 +1138,6 @@
 
                 });
             }
-
-
-
         </script>
 
         <script>
@@ -1136,14 +1152,14 @@
             //         legendItem.hidden = false;
             //     }
             // }
-            $(document).ready(function(){
+            $(document).ready(function() {
                 $('.close-money').show()
                 $('.open-money').hide()
 
                 $('.eye-open').hide()
                 $('.eye-close').show()
 
-                $('.eye-open').click(function(){
+                $('.eye-open').click(function() {
 
                     $('.eye-open').hide()
                     $('.eye-close').show()
@@ -1153,7 +1169,7 @@
 
                 })
 
-                $('.eye-close').click(function(){
+                $('.eye-close').click(function() {
 
                     $('.eye-close').hide()
                     $('.eye-open').show()
@@ -1171,7 +1187,7 @@
             function account_transaction() {
                 $.ajax({
                     type: 'GET',
-                    url:  'get-my-account',
+                    url: 'get-my-account',
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
@@ -1182,8 +1198,9 @@
                                     .accountDesc + '~' + data[index].accountNumber +
                                     '~' + data[index].currency + '~' + data[index]
                                     .availableBalance
-                            }).text(data[index].accountNumber + ' ' + '-' + ' ' + data[index].currency + ' ' + '-' + ' ' +
-                            formatToCurrency(parseFloat(data[index].availableBalance.trim())) ));
+                            }).text(data[index].accountNumber + ' ' + '-' + ' ' + data[index]
+                                .currency + ' ' + '-' + ' ' +
+                                formatToCurrency(parseFloat(data[index].availableBalance.trim()))));
                             //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
                         });
@@ -1238,9 +1255,9 @@
                                 console.log(response.data.length);
                                 $.each(data, function(index) {
 
-                                let invest_amount =  data[index].dealAmount
-                                invest_amount = invest_amount.replace(/,/g, "");
-                                i_invest_total += parseFloat(invest_amount)
+                                    let invest_amount = data[index].dealAmount
+                                    invest_amount = invest_amount.replace(/,/g, "");
+                                    i_invest_total += parseFloat(invest_amount)
 
                                     $('.fixed_deposit_account').append(
                                         `<tr>
@@ -1261,9 +1278,12 @@
                                 $('.my_investment_error_area').hide()
                                 $('.my_investment_no_data_found').hide()
                                 $('.my_investment_display_area').show()
+
+                                show_chart(i_have, i_owe, i_invest_total)
                             } else {
 
-                                $('#p_fixed_deposit_account').html(`<h2 class="text-center">No Investment</h2>`)
+                                $('#p_fixed_deposit_account').html(
+                                    `<h2 class="text-center text-warning">No Investment</h2>`)
 
                                 $('.my_investment_loading_area').hide()
                                 $('.my_investment_error_area').hide()
@@ -1273,11 +1293,11 @@
                             }
 
 
-                        }else{
+                        } else {
                             $('.my_investment_loading_area').hide()
-                                $('.my_investment_error_area').show()
-                                $('.my_investment_no_data_found').hide()
-                                $('.my_investment_display_area').hide()
+                            $('.my_investment_error_area').show()
+                            $('.my_investment_no_data_found').hide()
+                            $('.my_investment_display_area').hide()
                         }
 
 
@@ -1290,7 +1310,9 @@
                         $('.my_investment_no_data_found').hide()
                         $('.my_investment_display_area').hide()
 
-                        setTimeout ( function(){ fixed_deposit() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            fixed_deposit()
+                        }, $.ajaxSetup().retryAfter)
 
                     }
                 })
@@ -1322,8 +1344,10 @@
                             $('.currency_and_savings_account_no').text(data.length)
 
                             $.each(data, function(index) {
-                                let localEquivalentAvailableBalance =  data[index].localEquivalentAvailableBalance
-                                localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(/,/g, "");
+                                let localEquivalentAvailableBalance = data[index]
+                                    .localEquivalentAvailableBalance
+                                localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(
+                                    /,/g, "");
 
 
 
@@ -1335,7 +1359,7 @@
                                         <td> <b> ${data[index].accountType}  </b>  </td>
                                         <td> <b> ${data[index].currency}  </b>  </td>
                                         <td>  <b> 0.00  </b> </td>
-                                        {{--  <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td>  --}}
+                                        {{-- <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td> --}}
                                         <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
                                     </tr>`
                                 )
@@ -1343,10 +1367,10 @@
 
                             console.log('i_have_total: ' + i_have_total)
 
-                            {{--  SETTING TABLE VALUES  --}}
+                            {{-- SETTING TABLE VALUES --}}
                             $('.i_have_amount').text(formatToCurrency(parseFloat(i_have_total)));
 
-                            {{--  SETTING GRAPH VALUE  --}}
+                            {{-- SETTING GRAPH VALUE --}}
                             i_have = i_have_total
 
 
@@ -1371,7 +1395,9 @@
                         $(".accounts_loading_area").hide()
                         $(".accounts_display_area").hide()
                         $(".accounts_error_area").show()
-                        setTimeout ( function(){ get_accounts() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            get_accounts()
+                        }, $.ajaxSetup().retryAfter)
 
                     }
                 })
@@ -1397,56 +1423,52 @@
                     },
                     success: function(response) {
                         console.log(response);
-                        {{--  alert(response.data)
-                                return false  --}}
-
-                                {{--  if(!response.data){
-                                    alert(response.data + " ooooo")
-                                }else{
-                                    alert(response.data + " ii")
-                                }
-                                return false  --}}
                         if (response.responseCode == '000') {
 
                             var data = response.data;
 
-                            if(!response.data){
+                            if (!response.data) {
 
                                 return false
                                 $('.loan_no_data_found').show()
                                 $(".loans_display_area").hide()
-                            }else{
-                                if(response.data == null){
-                                    $('#p_loans_display').html(`<h2 class="text-center">No Loan</h2>`)
-                                }else{
-                                    $('#p_loans_display').show()
-                                    $(".loans_display_area").show()
-                                    console.log("response");
+                            } else {
+                                if (response.data == null) {
+                                    $('#p_loans_display').html(`<h2 class="text-center text-danger">No Loan</h2>`)
+                                } else {
 
-                                    let i_owe_total = 0
-                                    let count = 0
+                                    if (response.data.length > 0) {
+                                        $('#p_loans_display').show()
+                                        $(".loans_display_area").show()
+                                        console.log("response");
 
-                                    $.each(data, function(index) {
-                                        let loanBalance =  data[index].loanBalance
-                                        loanBalance = loanBalance.replace(/,/g, "");
-                                        i_owe_total += parseFloat(loanBalance)
+                                        let i_owe_total = 0
+                                        let count = 0
 
-                                        $('.loans_display').append(
-                                            `
-                                        <tr>
-                                            <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                            <td> <b> ${data[index].description} </b>  </td>
-                                            <td> <b> ${data[index].isoCode}  </b>  </td>
-                                            <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
-                                            <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
-                                        </tr>`
-                                        )
+                                        $.each(data, function(index) {
+                                            let loanBalance = data[index].loanBalance
+                                            loanBalance = loanBalance.replace(/,/g, "");
+                                            i_owe_total += parseFloat(loanBalance)
 
-                                    })
+                                            $('.loans_display').append(
+                                                `
+                                            <tr>
+                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                                <td> <b> ${data[index].description} </b>  </td>
+                                                <td> <b> ${data[index].isoCode}  </b>  </td>
+                                                <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                                <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
+                                            </tr>`
+                                            )
 
-                                    console.log('i_owe_total: ' + i_owe_total)
+                                        })
 
-                                    show_chart(i_have, i_owe, i_invest_total)
+                                        console.log('i_owe_total: ' + i_owe_total)
+
+                                        show_chart(i_have, i_owe, i_invest_total)
+                                    } else {
+                                        $('#p_loans_display').html(`<h2 class="text-center">No Loan</h2>`)
+                                    }
                                 }
 
 
@@ -1454,17 +1476,16 @@
 
 
 
-                        }else if(response.responseCode == '00'){
+                        } else if (response.responseCode == '00') {
                             $(".loan_no_data_found").show()
                             $(".loans_error_area").hide()
                             $(".loans_loading_area").hide()
                             $(".loans_display_area").hide()
-                        }
-                        else {
-                        $(".loan_no_data_found").hide()
-                            {{--  $(".loans_error_area").hide()
+                        } else {
+                            $(".loan_no_data_found").hide()
+                            {{-- $(".loans_error_area").hide()
                             $(".loans_loading_area").hide()
-                            $(".loans_display_area").show()  --}}
+                            $(".loans_display_area").show() --}}
 
                         }
 
@@ -1473,7 +1494,9 @@
                         $(".loans_display_area").hide()
                         $(".loans_loading_area").hide()
                         $(".loans_error_area").show()
-                        setTimeout ( function(){ get_loans() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            get_loans()
+                        }, $.ajaxSetup().retryAfter)
                     }
 
                 })
@@ -1482,7 +1505,7 @@
             function get_currency() {
                 $.ajax({
                     type: 'GET',
-                    url:  'get-currency-list-api',
+                    url: 'get-currency-list-api',
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
@@ -1513,7 +1536,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url:  'get-correct-fx-rate-api',
+                    url: 'get-correct-fx-rate-api',
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
@@ -1541,7 +1564,9 @@
                         $(".currency_converter_loading_area").hide()
                         $(".currency_converter_error_area").show()
 
-                        setTimeout ( function(){ get_correct_fx_rate() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            get_correct_fx_rate()
+                        }, $.ajaxSetup().retryAfter)
                     }
 
                 })
@@ -1638,13 +1663,15 @@
                         $(".cross_rate_display_area").hide()
                         $(".cross_rates_loading_area").hide()
                         $(".cross_rates_error_area").show()
-                        setTimeout ( function(){ get_fx_rate() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            get_fx_rate()
+                        }, $.ajaxSetup().retryAfter)
 
                     }
                 })
             }
 
-                    //     {{-- function dynamic_display(first, second, third){
+            //     {{-- function dynamic_display(first, second, third){
                     //      $(".cross_rate_display_area").hide()
                     //      $(".cross_rates_error_area").hide()
 
@@ -1657,70 +1684,70 @@
 
 
 
-                    let today = new Date();
-                    let dd = today.getDate();
+            let today = new Date();
+            let dd = today.getDate();
 
-                    let mm = today.getMonth() + 1;
-                    const yyyy = today.getFullYear()
-                    console.log(mm)
-                    console.log(String(mm).length)
-                    if (String(mm).length == 1) {
-                        mm = '0' + mm
-                    }
+            let mm = today.getMonth() + 1;
+            const yyyy = today.getFullYear()
+            console.log(mm)
+            console.log(String(mm).length)
+            if (String(mm).length == 1) {
+                mm = '0' + mm
+            }
 
-                    var end_date = '01-' + mm + '-' + today.getFullYear() ;
-                    var start_date = '30-' + mm + '-' + (Number(today.getFullYear()) - 1) ;
-                    var transLimit = 20 ;
-
-
-
-                    function getAccountTransactions(account_number, start_date, end_date, transLimit) {
-                        {{--  var table = $('.account_transaction_display_table').DataTable();
-                        var nodes = table.rows().nodes();  --}}
+            var end_date = '01-' + mm + '-' + today.getFullYear();
+            var start_date = '30-' + mm + '-' + (Number(today.getFullYear()) - 1);
+            var transLimit = 20;
 
 
-                        $.ajax({
-                            "type": "POST",
-                            "url": "account-transaction-history",
-                            datatype: "application/json",
-                            data: {
-                                "accountNumber": account_number,
-                                "endDate": end_date,
-                                "entrySource": "A",
-                                "startDate": start_date,
-                                "transLimit": transLimit
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response) {
-                                console.log(response);
-                                if (response.responseCode == '000') {
 
-                                    let data = response.data
-                                    console.log(data);
-
-                                    $.each(data, function(index) {
-                                        console.log(data[index].amount);
-                                        var transfer_amount = parseFloat(data[index].amount);
-
-                                        let icon = "" ;
-                                        let color = "";
-
-                                        if (transfer_amount > 0){
-                                            icon = "fe-arrow-down-left ";
-                                            color = "bg-soft-blue";
-                                        } else {
-                                            icon = "fe-arrow-down-right ";
-                                            color = "bg-soft-danger";
+            function getAccountTransactions(account_number, start_date, end_date, transLimit) {
+                {{-- var table = $('.account_transaction_display_table').DataTable();
+                        var nodes = table.rows().nodes(); --}}
 
 
-                                        }
+                $.ajax({
+                    "type": "POST",
+                    "url": "account-transaction-history",
+                    datatype: "application/json",
+                    data: {
+                        "accountNumber": account_number,
+                        "endDate": end_date,
+                        "entrySource": "A",
+                        "startDate": start_date,
+                        "transLimit": transLimit
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.responseCode == '000') {
 
-                                        {{--  $("#transaction_history").html("")  --}}
-                                        $("#transaction_history tr").remove();
-                                        $("#transaction_history").append(
-                                            `
+                            let data = response.data
+                            console.log(data);
+
+                            $.each(data, function(index) {
+                                console.log(data[index].amount);
+                                var transfer_amount = parseFloat(data[index].amount);
+
+                                let icon = "";
+                                let color = "";
+
+                                if (transfer_amount > 0) {
+                                    icon = "fe-arrow-down-left ";
+                                    color = "bg-soft-blue";
+                                } else {
+                                    icon = "fe-arrow-down-right ";
+                                    color = "bg-soft-danger";
+
+
+                                }
+
+                                {{-- $("#transaction_history").html("") --}}
+                                $("#transaction_history tr").remove();
+                                $("#transaction_history").append(
+                                    `
                                             <tr>
                                                 <td>
                                                     <div class="avatar-sm rounded ${String(icon)}">
@@ -1739,28 +1766,28 @@
                                                 </td>
                                             </tr>
                                             `
-                                        )
-                                    })
+                                )
+                            })
 
 
 
-                                } else {
+                        } else {
 
 
-                                }
+                        }
 
-                            },
-                            error: function(xhr, status, error) {
-                                {{--  $("#account_transaction_loader").hide();
+                    },
+                    error: function(xhr, status, error) {
+                        {{-- $("#account_transaction_loader").hide();
                                 $(".account_transaction_display").hide();
                                 $(".account_transaction_display_table").hide();
-                                $("#account_transaction_retry_btn").show();  --}}
-                                console.log(xhr, status, error);
-                            }
-                        })
+                                $("#account_transaction_retry_btn").show(); --}}
+                        console.log(xhr, status, error);
                     }
+                })
+            }
 
-                var global_selected_currency = "";
+            var global_selected_currency = "";
 
 
 
@@ -1813,16 +1840,16 @@
 
             })
 
-            $("#account_transaction").change(function(){
+            $("#account_transaction").change(function() {
                 var account_details = $(this).val().split('~');
                 var account_number = account_details[2];
                 var account_currency = account_details[3];
 
                 global_selected_currency = account_details[3]
 
-                {{--  var start_date = start_date;  --}}
-                {{--  var end_date = end_date;  --}}
-                {{--  var transLimit = transLimit;  --}}
+                {{-- var start_date = start_date; --}}
+                {{-- var end_date = end_date; --}}
+                {{-- var transLimit = transLimit; --}}
                 $(".account_currency").text(account_currency);
 
                 console.log(account_details);
@@ -1833,32 +1860,31 @@
 
                 getAccountTransactions(account_number, start_date, end_date, transLimit)
 
-                {{--  let data =   --}}
+                {{-- let data = --}}
 
 
             })
-
         </script>
 
-                {{--  <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script>  --}}
+        {{-- <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script> --}}
 
 
 
-                {{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
             <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
             <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script> --}}
 
 
 
-                <!-- third party js -->
-                {{-- <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <!-- third party js -->
+        {{-- <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"> --}}
-                {{-- </script> --}}
+        {{-- </script> --}}
 
-                {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+        {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
@@ -1867,11 +1893,11 @@
             <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
             <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
             <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-                <!-- third party js ends -->
+        <!-- third party js ends -->
 
-                <!-- Datatables init -->
-                {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
-                <!-- Vendor js -->
+        <!-- Datatables init -->
+        {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
+        <!-- Vendor js -->
 
 
     @endsection
