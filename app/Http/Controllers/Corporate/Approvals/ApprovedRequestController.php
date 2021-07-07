@@ -22,7 +22,7 @@ class ApprovedRequestController extends Controller
 
 
 
-        // return $request_id ;
+
 
         $base_response = new BaseResponse();
 
@@ -30,6 +30,8 @@ class ApprovedRequestController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
+
+        // return $request;
 
         $customer_no = $request->customer_no;
         $request_id = $request->request_id;

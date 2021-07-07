@@ -260,7 +260,7 @@
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 
                             }else if (request_type == 'RTGS'){
-                                let request_type = 'RTGS Payment'
+                                let request_type = 'RTGS Transfer'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 
                             }else if (request_type == 'SAB'){
@@ -269,6 +269,10 @@
                             }else if (request_type == 'OWN'){
                                 let request_type = 'Own Account Transfer'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
+                            }else if (request_type == 'ACH'){
+                                let request_type = 'ACH Transfer'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+
                             }else if (request_type == 'OBT'){
                                 let request_type = 'Other Bank Transfer'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
@@ -450,10 +454,10 @@
                     success: function(response) {
                         console.log(response)
                         if (response.responseCode == '000') {
-                            Swal.fire(response.message, '', 'success');
+                            Swal.fire('', response.message, 'success');
 
                         }else {
-                            Swal.fire(response.message, '', 'error');
+                            Swal.fire('', response.message, 'error');
 
                         }
 
