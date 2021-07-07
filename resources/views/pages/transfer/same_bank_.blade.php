@@ -2028,6 +2028,8 @@
                             var from_account = $('#from_account').val().split('~');
                             var from_account_ = from_account[2];
                             $("#from_account_receipt").text(from_account_);
+                            var account_mandate = from_account[5]
+
 
                             console.log(from_account);
 
@@ -2097,7 +2099,7 @@
                                     'amount': transfer_amount,
                                     'schedule_payment_date': onetime_future_payement,
                                     'category': category,
-                                    {{-- 'secPin': user_pin --}}
+                                    'account_mandate': account_mandate
                                 },
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(

@@ -85,6 +85,203 @@
                         <div class="col-md-12">
 
 
+                            <div class="receipt">
+                                <div class="container card card-body">
+
+                                    <div class="container">
+                                        <div class="">
+                                            <div class="col-md-12 col-md-offset-3 body-main">
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
+                                                                src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
+                                                                style="zoom: 0.6" /> </div>
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-md-4 text-right">
+                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
+                                                            </h4>
+                                                            <p>25-27 Siaka Stevens St</p>
+                                                            <p> Freetown, Sierra Leone</p>
+                                                            <p>rokelsl@rokelbank.sl</p>
+                                                            <p>(+232)-76-22-25-01</p>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="page-header">
+                                                        <h2>Transfer Receipt </h2>
+                                                    </div>
+                                                    <br>
+                                                    {{-- <div class="row">
+                                                        <div class="col-md-12 text-center">
+                                                            <h2>INVOICE</h2>
+                                                            <h5>04854654101</h5>
+                                                        </div>
+                                                    </div> --}}
+                                                    <br />
+                                                    {{-- <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th><h5>Description</h5></th>
+                                                                    <th><h5>Further Details</h5></th>
+                                                                    <th><h5>Amount</h5></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="col-md-9">
+                                                                        From Account Number<br>
+                                                                        004004110449140121
+                                                                    </td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 50,000 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">
+                                                                        To Account Number<br>
+                                                                        004004110445350137
+                                                                    </td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 5,200 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">Category Type</td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 25,000 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9">Purpose of Transfer</td>
+                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 2,200 </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="col-md-9"> Transfer Amount</td>
+                                                                    <td class="text-right">
+                                                                        <p> <strong>Shipment and Taxes:</strong> </p>
+                                                                        <p> <strong>Total Amount: </strong> </p>
+                                                                        <p> <strong>Discount: </strong> </p>
+                                                                        <p> <strong>Payable Amount: </strong> </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 500 </strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong> </p>
+                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong> </p>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="color: #F81D2D;">
+                                                                    <td class="text-right">
+                                                                        <h4><strong>Total:</strong></h4>
+                                                                    </td>
+                                                                    <td class="text-left">
+                                                                        <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900 </strong></h4>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div> --}}
+                                                    <div class="table-responsive">
+                                                        <table class="table mb-0">
+                                                            <thead class="thead-light">
+                                                                <tr>
+                                                                    {{-- <th>#</th> --}}
+                                                                    <th>Description</th>
+                                                                    <th class="text-right">Further Details</th>
+                                                                    {{-- <th>Amount </th> --}}
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    {{-- <th scope="row">1</th> --}}
+                                                                    <td>Transfer From Account Number</td>
+                                                                    <td class="text-right"><span
+                                                                            id="from_account_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">2</th> --}}
+                                                                    <td>Transfer To Account Number</td>
+                                                                    <td class="text-right"><span
+                                                                            id="to_account_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    <td>Transfer Category</td>
+                                                                    <td class="text-right"><span
+                                                                            id="category_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    <td>Transfer Purpose</td>
+                                                                    <td class="text-right"><span
+                                                                            id="purpose_receipt"></span></td>
+                                                                    {{-- <td></td> --}}
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    <td>Amount</td>
+                                                                    {{-- <td></td> --}}
+                                                                    <td class="text-right"><strong>(<span
+                                                                                class="receipt_currency"></span>)
+                                                                            &nbsp;<span id="amount_receipt"></span></strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    <td>Transaction Fee </td>
+                                                                    {{-- <td></td> --}}
+                                                                    <td class="text-right"><strong>(<span
+                                                                                class="receipt_currency"></span>) &nbsp;
+                                                                            15.00</strong></td>
+                                                                </tr>
+                                                                {{-- <tr>
+                                                                    <th scope="row">3</th>
+                                                                    <td><strong>Total Amount</strong> </td>
+                                                                    <td></td>
+                                                                    <td><strong><span
+                                                                                id="total_amount_receipt"></span></strong>
+                                                                    </td>
+                                                                </tr> --}}
+                                                                <tr>
+                                                                    {{-- <th scope="row">3</th> --}}
+                                                                    {{-- <td></td> --}}
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div> <!-- end table-responsive-->
+                                                    <br>
+                                                    <div>
+                                                        <div class="col-md-12">
+                                                            <p><b>Date Posted :</b> {{ date('d F, Y') }}</p> <br /> <br />
+                                                            <p><b>Posted By : {{ session('userId') }}</b></p>
+                                                        </div>
+                                                    </div>
+                                                    <br><br>
+                                                    <div class="row">
+                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-2">
+                                                            <button
+                                                                class="btn btn-light btn-rounded hide_on_print text-center"
+                                                                type="button" onclick="window.print()">Print
+                                                                Receipt
+                                                            </button>
+
+
+                                                        </div>
+                                                        <div class="col-md-5"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-class">
+
+
+                            </div>
+
                             <div class="row">
 
                                 <div class="col-md-7  m-2" id="transaction_summary"
@@ -473,11 +670,12 @@
 
                                                                 <div class="input-group mb-1 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <select name="" class="input-group-text select_currency" id="select_currency" disabled>
-                                                                            {{--  <option value="SLL" selected></option>
-                                                                            <option value="EUR">EURO</option>
-                                                                            <option value="USD">USD</option>  --}}
-                                                                        </select>
+                                                                        <input type="text" class="input-group-text select_currency "
+                                                                            id="select_currency" style="width: 80px;"
+                                                                            readonly>
+                                                                        {{--  <select name="" class="input-group-text select_currency" id="select_currency" disabled>
+
+                                                                        </select>  --}}
                                                                     </div>
 
                                                                       &nbsp;&nbsp;
@@ -488,11 +686,11 @@
 
 
                                                     </div>
-                                                    <div class="form-group">
+                                                    {{--  <div class="form-group">
                                                         <select name="" class="input-group-text" id="hidden_select_currency" >
-                                                            
+
                                                         </select>
-                                                    </div>
+                                                    </div>  --}}
 
 
 
@@ -862,11 +1060,6 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="col-md-5 text-center" style="margin-top: 80px;">
-
-                                    <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt="">
-                                </div> <!-- end col --> --}}
-
 
                             <!-- end row -->
 
@@ -1027,7 +1220,7 @@
                         "url": "get-currency-list-api",
                         datatype: "application/json",
                         success: function(response) {
-                            console.log(response);
+                            {{--  console.log(response);  --}}
 
                             let data = response.data
 
@@ -1045,7 +1238,7 @@
 
                                 if ($(this).val() == 'SLL') {
                                     $(this).prop("selected", true);
-                                    
+
                                 } else {
 
                                 }
@@ -1054,15 +1247,15 @@
                             });
 
                             let name = $("#select_currency").val();
-                            console.log(name);      
+                            console.log(name);
 
-                            let account_currency = response.data; 
+                            let account_currency = response.data;
                             console.log("=======================")
-                            console.log(account_currency);
+                            {{--  console.log(account_currency);  --}}
                             console.log("=======================")
 
                             $.each(account_currency, function(index) {
-                                let data = account_currency[index].isoCode; 
+                                let data = account_currency[index].isoCode;
                                 console.log(data);
                                 if(name == data) {
                                     $("#hidden_select_currency").append($('<option selected>', {
@@ -1070,7 +1263,7 @@
                                         }).text(account_currency[index].currCode + '~' + account_currency[index].isoCode + '~' + account_currency[index].description));
 
                                         console.log('TRUE');
-                                    
+
                                 } else {
                                     $("#hidden_select_currency").append($('<option>', {
                                         value: account_currency[index].currCode + '~' + account_currency[index].isoCode + '~' + account_currency[index].description
@@ -1134,7 +1327,7 @@
                         "url": "get-expenses",
                         datatype: "application/json",
                         success: function(response) {
-                            console.log(response.data);
+                            {{--  console.log(response.data);  --}}
                             let data = response.data;
 
                             $.each(data, function(index) {
@@ -1160,7 +1353,7 @@
                         "url": "get-expenses",
                         datatype: "application/json",
                         success: function(response) {
-                            console.log(response.data);
+                            {{--  console.log(response.data);  --}}
                             let data = response.data;
 
                             $.each(data, function(index) {
@@ -1186,15 +1379,15 @@
                         url:  'get-my-account',
                         datatype: "application/json",
                         success: function(response) {
-                            console.log(response.data);
+                            {{--  console.log(response.data);  --}}
                             let data = response.data
                             $.each(data, function(index) {
                                 $('#from_account').append($('<option>', {
-                                    value: data[index].accountType + '~' + data[
-                                            index].accountDesc + '~' + data[
-                                            index].accountNumber + '~' + data[
-                                            index].currency + '~' + data[index]
-                                        .availableBalance
+                                    value: data[index].accountType + '~' + data[index].accountDesc
+                                            + '~' + data[index].accountNumber + '~' +
+                                            data[index].currency + '~' + data[index].availableBalance
+                                            + '~' + data[index].currencyCode
+
                                 }).text(data[index].accountType + '' + ' - ' + '' + data[index]
                                     .accountNumber + '' + ' - ' + '' + data[index]
                                     .currency + '' + ' - ' + '' + formatToCurrency(Number(data[
@@ -1254,7 +1447,7 @@
                         url:  'get-transfer-beneficiary-api?beneType=OTB',
                         datatype: "application/json",
                         success: function(response) {
-                            console.log(response.data);
+                            {{--  console.log(response.data);  --}}
                             let data = response.data
 
                             if (!response.data) {
@@ -1306,6 +1499,9 @@
 
                     })
                 }
+
+
+
 
                 $(document).ready(function() {
 
@@ -1362,7 +1558,6 @@
                         $(".display_from_account_amount").text(from_account_details[4]);
                         $(".display_from_account_currency").text(from_account_details[3]);
                         $(".display_currency").text(from_account_details[3]);
-                        
 
                     })
 
@@ -2020,8 +2215,10 @@
                                     console.log("saved beneficiary");
 
                                     var from_account_ = $("#from_account").val().split("~");
+                                    console.log(from_account_);
 
                                     var from_account = from_account_[2];
+                                    var currCode = from_account_[5];
                                     console.log(from_account);
 
                                     var to_account_ = $("#to_account").val().split("~");
@@ -2042,8 +2239,8 @@
                                     var currency_ = $("#select_currency").val().split('~')
                                     console.log(currency_)
                                     var currency = currency_[0];
-                                    var hidden_currency = $("#hidden_select_currency").val().split('~');
-                                    console.log(hidden_currency);
+                                    {{--  var hidden_currency = $("#hidden_select_currency").val().split('~');
+                                    console.log(hidden_currency);  --}}
 
                                     var category_ = $("#category").val().split("~")
                                     var category = category_[1];
@@ -2073,12 +2270,13 @@
                                             "beneficiary_address": beneficiary_address,
                                             "to_account": to_account,
                                             "amount": amount,
-                                            "currency": currency,
+                                            "currency": currCode,
                                             "category": category,
                                             "purpose": purpose,
                                             "future_payement": future_payement,
                                             "beneficiary_type": beneficiary_type,
-                                            "sec_pin": sec_pin
+                                            "sec_pin": sec_pin,
+
                                         },
                                         headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
@@ -2095,13 +2293,13 @@
                                                     response.message ,
                                                     'success'
                                                 );
-                                                {{--  $('#spinner').hide();
+                                                $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#back_button').hide();
                                                 $('#print_receipt').show();
                                                 $("#related_information_display").removeClass("d-none d-sm-block");
                                                 $(".rtgs_card_right").hide();
-                                                $(".success_gif").show();  --}}
+                                                $(".success_gif").show();
 
 
 
@@ -2109,16 +2307,16 @@
                                             } else {
                                                 toaster(response.message, 'error', 10000)
 
-                                                {{--  $('#confirm_modal_button').show();
+                                                $('#confirm_modal_button').show();
                                                 $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#print_receipt').hide();
-                                                $(".success_gif").hide();  --}}
-                                                {{-- $("#related_information_display").removeClass("d-none d-sm-block"); --}}
-                                                {{--  $(".rtgs_card_right").show();  --}}
+                                                $(".success_gif").hide();
+                                                $("#related_information_display").removeClass("d-none d-sm-block");
+                                                $(".rtgs_card_right").show();
 
-                                                {{-- $('#confirm_transfer').show(); --}}
-                                                {{-- $('#confirm_button').attr('disabled', false); --}}
+                                                $('#confirm_transfer').show();
+                                                $('#confirm_button').attr('disabled', false);
 
 
                                             }
