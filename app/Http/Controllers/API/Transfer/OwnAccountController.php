@@ -224,9 +224,9 @@ class OwnAccountController extends Controller
 
         try {
 
-            // dd((env('API_BASE_PENDING_URL') . "own-account-gone-for-pending"));
+            //dd((env('CIB_API_BASE_URL') . "own-account-gone-for-pending"));
 
-            $response = Http::post(env('API_BASE_PENDING_URL') . "own-account-gone-for-pending", $data);
+            $response = Http::post(env('CIB_API_BASE_URL') . "own-account-gone-for-pending", $data);
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);
