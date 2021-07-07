@@ -321,8 +321,10 @@
                             let debit_account = pending_request.account_no;
                             debit_account != null ? append_approval_details("Debit Account" , debit_account) : '';
 
-                            let beneficiary_name = pending_request.beneficiary_name;
-                            beneficiary_name != null ? append_approval_details("Beneficiary Name" , beneficiary_name) : '';
+
+
+                            let bank_name = pending_request.bank_name;
+                            bank_name != null ? append_approval_details("Bank Name" , bank_name) : '';
 
                             let beneficiary_account = pending_request.creditaccountnumber;
                             beneficiary_account != null ? append_approval_details("Beneficiary Account" , beneficiary_account) : '';
@@ -330,11 +332,16 @@
                             let beneficiary_address = pending_request.beneficiaryaddress;
                             beneficiary_address != null ? append_approval_details("Beneficiary Address" , beneficiary_address) : '';
 
+                            let beneficiary_name = pending_request.beneficiaryname;
+                            beneficiary_name != null ? append_approval_details("Beneficiary Name" , beneficiary_name) : '';
+
                             let currency = pending_request.currency;
                             currency != null ? append_approval_details("Currency" , currency) : '';
 
                             let amount = pending_request.amount;
                             amount != null ? append_approval_details("Amount" , formatToCurrency(parseFloat(amount))) : '';
+
+
 
                             let total_amount = pending_request.total_amount;
                             total_amount != null ? append_approval_details("Total Amount" , formatToCurrency(parseFloat(total_amount))) : '';

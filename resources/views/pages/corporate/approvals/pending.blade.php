@@ -372,7 +372,7 @@
                                         request_type = 'Own Account Transfer'
                                     } else if (data[index].request_type == 'SAB') {
                                         request_type = 'Same Bank Transfer'
-                                    } else if (data[index].request_type == 'OBT') {
+                                    } else if (data[index].request_type == 'ACH') {
                                         request_type = 'ACH Transfer'
                                     } else if (data[index].request_type == 'RTGS') {
                                         request_type = 'RTGS Transfer'
