@@ -237,6 +237,7 @@ Route::get('/approvals-pending-transfer-details', [PendingController::class, 'ap
 Route::get('/approvals-pending-transfer-details/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details/{request_id}/{customer_no}');
 Route::get('/pending-request-details-api', [PendingController::class, 'pending_request_details'])->name('pending-request-details-api');
 Route::post('/approved-pending-request', [ApprovedRequestController::class, 'approved_request'])->name('approved-pending-request');
+Route::post('/reject-pending-request', [ApprovedRequestController::class, 'reject_request'])->name('reject-pending-request');
 
 
 // BRANCH LOCATOR LIST VIEW

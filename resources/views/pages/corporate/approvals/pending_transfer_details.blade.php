@@ -427,7 +427,7 @@
                 {{--  alert("Reject Transaction");  --}}
 
                 Swal.fire({
-                    title: 'Proveide reason for rejection',
+                    title: 'Provide reason for rejection',
                     input: 'text',
                     inputAttributes: {
                       autocapitalize: 'off'
@@ -436,19 +436,9 @@
                     confirmButtonColor: '#f1556c',
                     confirmButtonText: 'Proceed',
                     showLoaderOnConfirm: true,
-                    preConfirm: (login) => {
-                      return fetch(`//api.github.com/users/${login}`)
-                        .then(response => {
-                          if (!response.ok) {
-                            throw new Error(response.statusText)
-                          }
-                          return response.json()
-                        })
-                        .catch(error => {
-                          Swal.showValidationMessage(
-                            `Request failed: ${error}`
-                          )
-                        })
+                    preConfirm: (narration) => {
+                        return ajax_post_for_reject();
+
                     },
                     allowOutsideClick: () => !Swal.isLoading()
                   }).then((result) => {
@@ -539,6 +529,51 @@
                   })
 
 
+            }
+
+            function ajax_post_for_reject(){
+                let narration = $('.swal2-input').val()
+                $('#reject_transaction').text("Processing ...")
+                var customer = @json($customer_no);
+                var request_id = @json($request_id);
+
+                console.log(narration)
+
+                $.ajax({
+                    type : 'POST',
+                    url : "../../reject-pending-request" ,
+                    datatype : 'application/json',
+                    data : {
+                        'narrartion' : narration,
+                        'request_id' : request_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        if (response.responseCode == '000') {
+                            Swal.fire('', response.message, 'success');
+
+                            setTimeout(function(){
+                                window.opener.location.reload();
+                                window.close();
+                            }, 5000)
+
+                        }else {
+                            Swal.fire('', response.message, 'error');
+
+                        }
+
+                        $('#reject_transaction').html(`Reject <i class="mdi mdi-cancel">`)
+                    },
+                    error: function(xhr, status, error) {
+                        $('#reject_transaction').html(`Reject <i class="mdi mdi-cancel">`)
+                            Swal.showValidationMessage(
+                            `Request failed: ${error}`
+                          )
+                    }
+                })
             }
 
          });
