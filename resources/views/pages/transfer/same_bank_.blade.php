@@ -805,13 +805,13 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control "
+                                                                        <input type="text" class="form-control display_midrate"
                                                                             id="convertor_rate" value="1.00"
                                                                             style="width: 100px;" readonly>
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <input type="text"
-                                                                        class="form-control converted_amount_"
+                                                                        class="form-control converted_amount_ display_converted_amount"
                                                                         id="convertor_amount" placeholder="Converted Amount"
                                                                         aria-label="converted_amount"
                                                                         aria-describedby="basic-addon1" readonly>
@@ -1737,6 +1737,10 @@
 
             });
 
+            $('#select_converted_currency').change(function(){
+                currency_convertor(forex_rate)
+            })
+
             {{-- $("#select_currency").change(function(){
                 var select_currency = ($(this).val());
                 $(".display_transfer_currency").text(select_currency);
@@ -2624,9 +2628,6 @@
             console.log(cur_1)
             console.log(cur_2)
 
-            if (cur_1 == "SLL") {
-
-            } else {
 
 
                 cur_1 = $('#select_currency').val()
@@ -2671,7 +2672,10 @@
                             $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
                                 formatToCurrency(
                                     parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                            $('#converted_amount').val(formatToCurrency(parseFloat(
+
+                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+
+                            $('#converted_amount_').val(formatToCurrency(parseFloat(
                                 converted_amount.toFixed(
                                     2))))
                             $('.display_converted_amount').text(convert_amount_currency + ' ' +
@@ -2691,7 +2695,10 @@
                                     parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
                             converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
                                 .MIDRATE)
-                            $('#converted_amount').val(formatToCurrency(parseFloat(
+
+                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+
+                            $('#converted_amount_').val(formatToCurrency(parseFloat(
                                 converted_amount.toFixed(
                                     2))))
                             $('.display_converted_amount').text(convert_amount_currency + ' ' +
@@ -2704,7 +2711,7 @@
                         }
                     })
                 }
-            }
+
         }
     </script>
 @endsection
