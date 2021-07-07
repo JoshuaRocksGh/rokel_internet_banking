@@ -192,16 +192,16 @@ class LocalBankController extends Controller
     public function saved_beneficiary_transfer(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "from_account"  => "required" ,
-            "to_account"  => "required"  ,
-            "bank_name"  => "required"  ,
-            "beneficiary_name"  => "required"  ,
-            "beneficiary_address"  => "required"  ,
-            "amount"  => "required"  ,
-            "currency"  => "required"  ,
-            "category"  => "required"  ,
-            "purpose"  => "required"  ,
-            "sec_pin"  => "required" ,
+            "from_account"  => "required",
+            "to_account"  => "required",
+            "bank_name"  => "required",
+            "beneficiary_name"  => "required",
+            "beneficiary_address"  => "required",
+            "amount"  => "required",
+            "currency"  => "required",
+            "category"  => "required",
+            "purpose"  => "required",
+            "sec_pin"  => "required",
             "beneficiary_type"  => "required"
         ]);
 
@@ -219,7 +219,7 @@ class LocalBankController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $beneficiary_type = $request->beneficiary_type ;
+        $beneficiary_type = $request->beneficiary_type;
 
         $bank_name = $request->bank_name;
         $explode_bank_name = explode('||', $bank_name);
@@ -247,7 +247,7 @@ class LocalBankController extends Controller
                 "entrySource" => "I",
                 "channel" => "MOB",
                 "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose ,
+                "transactionDetails" => $request->purpose,
                 // "transactionId" => null,
                 "transferCurrency" => $request->currency,
                 // "futurePayments" => $request->future_payement,
@@ -256,12 +256,12 @@ class LocalBankController extends Controller
 
             // return $data ;
 
-                // $response = [
-                //     "responseCode" => "000",
-                //     "message" => "Transfer Successful"
-                // ];
+            // $response = [
+            //     "responseCode" => "000",
+            //     "message" => "Transfer Successful"
+            // ];
 
-                // return $response ;
+            // return $response ;
 
 
             try {
@@ -287,7 +287,7 @@ class LocalBankController extends Controller
         };
 
 
-        if($beneficiary_type == "RTGS") {
+        if ($beneficiary_type == "RTGS") {
             // return $beneficiary_type ;
 
 
@@ -302,14 +302,14 @@ class LocalBankController extends Controller
                 "deviceIp" => null,
                 "entrySource" => null,
                 "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose ,
+                "transactionDetails" => $request->purpose,
                 "transactionId" => null,
                 "transferCurrency" => $request->currency,
                 "futurePayments" => $request->future_payement,
                 "category" => $request->category
             ];
 
-            return $data ;
+            return $data;
 
 
 
@@ -393,16 +393,16 @@ class LocalBankController extends Controller
     public function onetime_beneficiary_transfer(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "from_account" => "required" ,
-            "beneficiary_type" => "required"  ,
-            "beneficiary_name" => "required"  ,
-            "bank_name" => "required"  ,
-            "to_account" => "required"  ,
-            "currency" => "required"  ,
-            "amount" => "required"  ,
-            "email" => "required"  ,
-            "category" => "required"  ,
-            "purpose" => "required" ,
+            "from_account" => "required",
+            "beneficiary_type" => "required",
+            "beneficiary_name" => "required",
+            "bank_name" => "required",
+            "to_account" => "required",
+            "currency" => "required",
+            "amount" => "required",
+            "email" => "required",
+            "category" => "required",
+            "purpose" => "required",
             "sec_pin" => "required"
         ]);
 
@@ -413,18 +413,21 @@ class LocalBankController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        return $request;
+        // return $request;
 
         // return $request ;
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $beneficiary_type = $request->beneficiary_type ;
+        $beneficiary_type = $request->beneficiary_type;
 
         // return $beneficiary_type ;
 
-        if($beneficiary_type == "ACH"){
+        $client_ip = request()->ip();
+
+
+        if ($beneficiary_type == "ACH") {
             // return $beneficiary_type ;
 
             $data = [
@@ -435,24 +438,25 @@ class LocalBankController extends Controller
                 "beneficiaryName" => $request->beneficiary_name,
                 "creditAccount" => $request->to_account,
                 "debitAccount" => $request->from_account,
-                "deviceIp" => null,
+                "deviceIp" => $client_ip,
                 "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose ,
+                "transactionDetails" => $request->purpose,
                 "transactionId" => null,
                 "transferCurrency" => $request->currency,
                 "futurePayments" => null,
                 "category" => $request->category,
+                "channel" => 'MOB',
                 "email" => $request->email,
             ];
 
-            return $data ;
+            // return $data;
 
-                // $response = [
-                //     "responseCode" => "000",
-                //     "message" => "Transfer Successful"
-                // ];
+            // $response = [
+            //     "responseCode" => "000",
+            //     "message" => "Transfer Successful"
+            // ];
 
-                // return $response ;
+            // return $response ;
 
 
             try {
@@ -478,7 +482,7 @@ class LocalBankController extends Controller
         };
 
 
-        if($beneficiary_type == "RTGS"){
+        if ($beneficiary_type == "RTGS") {
             // return $beneficiary_type ;
 
 
@@ -492,7 +496,7 @@ class LocalBankController extends Controller
                 "debitAccount" => $request->from_account,
                 "deviceIp" => null,
                 "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose ,
+                "transactionDetails" => $request->purpose,
                 "transactionId" => null,
                 "transferCurrency" => $request->currency,
                 "futurePayments" => null,
@@ -502,12 +506,12 @@ class LocalBankController extends Controller
 
             // return $data ;
 
-                // $response = [
-                //     "responseCode" => "000",
-                //     "message" => "Transfer Successful"
-                // ];
+            // $response = [
+            //     "responseCode" => "000",
+            //     "message" => "Transfer Successful"
+            // ];
 
-                // return $response ;
+            // return $response ;
 
 
             try {
@@ -532,7 +536,7 @@ class LocalBankController extends Controller
             }
         };
 
-        if($beneficiary_type == "INSTANT"){
+        if ($beneficiary_type == "INSTANT") {
             // return $beneficiary_type ;
 
 
@@ -546,7 +550,7 @@ class LocalBankController extends Controller
                 "debitAccount" => $request->from_account,
                 "deviceIp" => null,
                 "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose ,
+                "transactionDetails" => $request->purpose,
                 "transactionId" => null,
                 "transferCurrency" => $request->currency,
                 "futurePayments" => null,
@@ -556,12 +560,12 @@ class LocalBankController extends Controller
 
             // return $data ;
 
-                // $response = [
-                //     "responseCode" => "000",
-                //     "message" => "Transfer Successful"
-                // ];
+            // $response = [
+            //     "responseCode" => "000",
+            //     "message" => "Transfer Successful"
+            // ];
 
-                // return $response ;
+            // return $response ;
 
 
             try {
