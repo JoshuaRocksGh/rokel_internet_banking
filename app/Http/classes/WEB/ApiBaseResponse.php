@@ -16,7 +16,7 @@ class ApiBaseResponse
         if ($response->ok()) {    // API response status code is 200
 
             $result = json_decode($response->body());
-            // return $result->responseCode;
+            // return $result;
 
 
             if ($result->responseCode == '000') {
@@ -43,12 +43,12 @@ class ApiBaseResponse
         } else { // API response status code not 200
 
             // return $response->body();
-            // DB::table('tb_error_logs')->insert([
-            //     'platform' => 'ONLINE_INTERNET_BANKING',
-            //     'user_id' => 'AUTH',
-            //     'code' => $response->status(),
-            //     'message' => (string) $response->body()
-            // ]);
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'code' => $response->status(),
+                'message' => (string) $response->body()
+            ]);
 
             return response()->json([
                 'responseCode' => '500',
