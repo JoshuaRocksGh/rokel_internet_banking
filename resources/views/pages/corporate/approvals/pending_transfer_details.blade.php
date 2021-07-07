@@ -463,6 +463,11 @@
                         if (response.responseCode == '000') {
                             Swal.fire('', response.message, 'success');
 
+                            setTimeout(function(){
+                                window.opener.location.reload();
+                                window.close();
+                            }, 5000)
+
                         }else {
                             Swal.fire('', response.message, 'error');
 
