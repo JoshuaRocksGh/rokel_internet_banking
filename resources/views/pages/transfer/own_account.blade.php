@@ -448,8 +448,8 @@
                                                                                 id="user_pin"
                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                                             <br>
-                                                                            <button class="btn btn-success"
-                                                                                type="button" id="transfer_pin"
+                                                                            <button class="btn btn-success" type="button"
+                                                                                id="transfer_pin"
                                                                                 data-dismiss="modal">Submit</button>
                                                                         </form>
 
@@ -1100,8 +1100,8 @@
                             $('#from_account').append($('<option>', {
                                 value: data[index].accountType + '~' + data[index]
                                     .accountDesc + '~' + data[index].accountNumber + '~' +
-                                    data[index].currency + '~' + data[index].availableBalance
-                                    + '~' + data[index].accountMandate
+                                    data[index].currency + '~' + data[index].availableBalance +
+                                    '~' + data[index].accountMandate
                             }).text(data[index].accountNumber +
                                 '~' + data[index].currency + ' ~ ' + formatToCurrency(parseFloat(
                                     data[index].availableBalance))
