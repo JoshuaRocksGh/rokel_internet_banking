@@ -1811,10 +1811,13 @@
                             $(".receipt_currency").text(select_currency);
 
 
-                            var category_ = $('#category').val().split("~");
+                            var category_ = ($('#category').val()).split("~");
                             var category = category_[1];
+                            console.log(category_)
+                            console.log(category)
                             $("#display_category").text(category[1]);
                             $("#category_receipt").text(category[1]);
+
 
                             var purpose = $('#purpose').val();
                             $("#display_purpose").text(purpose);
@@ -1903,7 +1906,16 @@
                                     }
                                 },
                                 error: function(xhr, status, error) {
-
+                                    $("#confirm_transfer").show();
+                                        $("#confirm_modal_button").prop('disabled',
+                                            false);
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#back_button').show();
+                                        $('#print_receipt').hide();
+                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                        $("#related_information_display").show();
+                                        $(".success_gif").hide();
                                 }
 
                             })
