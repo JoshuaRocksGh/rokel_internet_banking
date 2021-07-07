@@ -226,7 +226,7 @@
 
                                             </div>
 
-                                            <table id="datatable-buttons" class="table table-bordered table-striped mb-0 account_transaction_display_table" >
+                                            <table  class="table table-bordered table-striped mb-0 account_transaction_display_table" >
                                                 <tbody>
                                                     <thead>
                                                         <tr class="bg-info text-white ">
@@ -738,7 +738,9 @@
 
 
                 $('#table-body-display').html('')
+                $('#datatable-buttons').DataTable({"order": [[ 5, "desc" ]]});
                 var table = $('.account_transaction_display_table').DataTable();
+                {{--  {"order": [[ 0, "desc" ]]}  --}}
                 var nodes = table.rows().nodes();
                 {{-- table.rows.remove() --}}
                 table.clear().draw()
@@ -784,23 +786,21 @@
                                 `<i class="fe-file-text text-danger">`
                         }
 
+                        let today = new Date(data[index].postingSysDate);
+                        let dd = String(today.getDate()).padStart(2, '0');
+                        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                        let yyyy = today.getFullYear();
 
                         table.row.add([
-                            data[index].postingSysDate,
+                              dd + '/' + mm + '/' + yyyy,
                             amount,
                             `${formatToCurrency(parseFloat(data[index].runningBalance))}`,
-                            {{--  "EXPLANATION",  --}}
+
                             data[index].narration,
 
                             data[index].documentReference,
 
-                            data[index].valueDate,
-                            `<a type="button" data-toggle="modal"
-                                data-target="#bs-example-modal-xl"
-                                class="text-primary">${data[index].batchNumber}</a>`,
-                            amount,
-
-                            `${attachment}`
+                            data[index].batchNumber,
 
 
                         ]).draw(false)
