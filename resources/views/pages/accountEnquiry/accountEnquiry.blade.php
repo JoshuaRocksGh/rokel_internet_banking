@@ -738,7 +738,7 @@
 
 
                 $('#table-body-display').html('')
-                $('#datatable-buttons').DataTable({"order": [[ 0, "desc" ]]});
+                $('#datatable-buttons').DataTable({"order": [[ 5, "desc" ]]});
                 var table = $('.account_transaction_display_table').DataTable();
                 {{--  {"order": [[ 0, "desc" ]]}  --}}
                 var nodes = table.rows().nodes();
