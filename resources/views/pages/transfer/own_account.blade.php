@@ -183,8 +183,7 @@
                                                                 <tr>
                                                                     {{-- <th>#</th> --}}
                                                                     <th>Description</th>
-                                                                    <th class="text-right">Further Details</th>
-                                                                    {{-- <th>Further Details</th>
+                                                                    <th>Further Details</th>
                                                                     {{-- <th>Amount (<span id="receipt_currency"></span>)</th> --}}
                                                                 </tr>
                                                             </thead>
@@ -1512,76 +1511,112 @@
                         })
                     }
 
+                }
+
+                $("#select_currency__").change(function() {
+                    {{-- let select_cur_1 = $(this).val()
+                                    alert(select_cur_1)
+
+                                    get_cur_1 = _cur_
+                                    get_cur_2 = _cur_
+
+                                    console.log(get_cur_1)
+
+
+                                    for (let index = 0; index < get_cur_1.length; index++) {
+                                        console.log(get_cur_1[index].isoCode + ' - index: ' + index)
+                                        if(String(get_cur_1[index].isoCode) === String(select_cur_1)){
+                                        console.log("kkkkkkk")
+                                        if(get_cur_2.splice(index, 1)){
+
+                                            break;
+                                        }
+
+                                        }
+
+                                        $('#select_currency__').empty().append($('<option>', {
+                                            value: get_cur_2[index].isoCode
+                                        }).text(get_cur_2[index].isoCode));
+
+                                    }
+
+                                console.log('-----------------')
+                                console.log(get_cur_2)
+                                console.log('-----------------')
+
+                                return false; --}}
+
+                    currency_convertor(forex_rate)
                 })
 
-            $("#select_currency__").change(function() {
-                currency_convertor(forex_rate)
-            })
+                $("#select_currency__").change(function() {
+                    currency_convertor(forex_rate)
+                })
 
 
 
-            $("#amount").keyup(function() {
-                var from_account = $('#from_account').val()
-                var to_account = $('#to_account').val()
-                console.log(forex_rate)
-                currency_convertor(forex_rate);
+                $("#amount").keyup(function() {
+                    var from_account = $('#from_account').val()
+                    var to_account = $('#to_account').val()
+                    console.log(forex_rate)
+                    currency_convertor(forex_rate);
 
 
-                if (from_account.trim() == '' || to_account.trim() == '') {
+                    if (from_account.trim() == '' || to_account.trim() == '') {
 
-                    toaster('Please select source and destination accounts', 'error', 10000)
-                    $(this).val('')
-                    return false;
-                } else {
-                    var transfer_amount = $(this).val()
-                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
-                        toaster('Insufficient account balance', 'error', 10000)
-                        return false
+                        toaster('Please select source and destination accounts', 'error', 10000)
+                        $(this).val('')
+                        return false;
                     } else {
-                        $(".display_transfer_amount").text(formatToCurrency(parseFloat(
-                            transfer_amount)));
+                        var transfer_amount = $(this).val()
+                        if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                            toaster('Insufficient account balance', 'error', 10000)
+                            return false
+                        } else {
+                            $(".display_transfer_amount").text(formatToCurrency(parseFloat(
+                                transfer_amount)));
+                        }
+
                     }
 
-                }
+                    let amount = $("#amount").val()
+                    $('.display_transfer_amount').text(formatToCurrency(parseFloat(amount)))
 
-                let amount = $("#amount").val()
-                $('.display_transfer_amount').text(formatToCurrency(parseFloat(amount)))
-
-            });
+                });
 
 
-            function formatToCurrency(amount) {
-                return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-            };
+                function formatToCurrency(amount) {
+                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+                };
 
 
-            // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
-            $("input:checkbox").on("change", function() {
-                if ($(this).is(":checked")) {
-                    {{-- console.log("Checkbox Checked!"); --}}
-                    $("#schedule_payment_date").show()
-                    $("#frequency").show()
-                    $(".display_schedule_payment").text('YES')
-                    $('#schedule_payment_contraint_input').val('TRUE')
+                // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
+                $("input:checkbox").on("change", function() {
+                    if ($(this).is(":checked")) {
+                        {{-- console.log("Checkbox Checked!"); --}}
+                        $("#schedule_payment_date").show()
+                        $("#frequency").show()
+                        $(".display_schedule_payment").text('YES')
+                        $('#schedule_payment_contraint_input').val('TRUE')
 
-                } else {
-                    {{-- console.log("Checkbox UnChecked!"); --}}
-                    $("#schedule_payment_date").val('')
-                    $("#schedule_payment_date").hide()
-                    $("#frequency").hide()
-                    $('.display_schedule_payment').text('NO')
-                    $('.display_schedule_payment_date').text('N/A')
+                    } else {
+                        {{-- console.log("Checkbox UnChecked!"); --}}
+                        $("#schedule_payment_date").val('')
+                        $("#schedule_payment_date").hide()
+                        $("#frequency").hide()
+                        $('.display_schedule_payment').text('NO')
+                        $('.display_schedule_payment_date').text('N/A')
 
-                    $('#schedule_payment_contraint_input').val('')
-                    $('#schedule_payment_contraint_input').hide()
-                    $('#schedule_payment_date').val('')
-                }
-            });
+                        $('#schedule_payment_contraint_input').val('')
+                        $('#schedule_payment_contraint_input').hide()
+                        $('#schedule_payment_date').val('')
+                    }
+                });
 
 
-            {{-- $("#transaction_form").click(function() {}) --}}
+                {{-- $("#transaction_form").click(function() {}) --}}
 
-            {{-- $("#next_button").click(function() {
+                {{-- $("#next_button").click(function() {
 
                                         $("#transaction_summary").show();
                                         $("#transaction_form").hide();
@@ -1658,45 +1693,45 @@
                                     }); --}}
 
 
-            $("#payment_details_form").submit(function(e) {
-                e.preventDefault();
+                $("#payment_details_form").submit(function(e) {
+                    e.preventDefault();
 
-                var from_account_ = $('#from_account').val().split("~");
-                console.log(from_account_);
-                var from_account = from_account_[2];
+                    var from_account_ = $('#from_account').val().split("~");
+                    console.log(from_account_);
+                    var from_account = from_account_[2];
 
-                var to_account_ = $('#to_account').val().split('~');
-                console.log(to_account_);
-                var to_account = to_account_[2];
+                    var to_account_ = $('#to_account').val().split('~');
+                    console.log(to_account_);
+                    var to_account = to_account_[2];
 
-                var transfer_amount = $('#amount').val();
+                    var transfer_amount = $('#amount').val();
 
-                var category = $('#category').val().split("~");
-                $("#display_category").text(category[1]);
-
-
-
-                var purpose = $('#purpose').val();
-                if (purpose == '') {
-                    $("#display_purpose").text("Own Account Transfer");
-                    var purpose = $('#purpose').val("Own Account Transfer");
-
-                } else {
-                    $("#display_purpose").text(purpose);
-                }
+                    var category = $('#category').val().split("~");
+                    $("#display_category").text(category[1]);
 
 
-                var schedule_payment_contraint_input = $('#schedule_payment_contraint_input')
-                    .val();
 
-                var schedule_payment_date = $('#schedule_payment_date').val();
+                    var purpose = $('#purpose').val();
+                    if (purpose == '') {
+                        $("#display_purpose").text("Own Account Transfer");
+                        var purpose = $('#purpose').val("Own Account Transfer");
 
-                var select_frequency_ = $('#select_frequency').val();
+                    } else {
+                        $("#display_purpose").text(purpose);
+                    }
 
-                $("#transaction_summary").show();
-                $("#transaction_form").hide();
 
-                {{-- if (from_account == '' || to_account == '' || transfer_amount == '' ||
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input')
+                        .val();
+
+                    var schedule_payment_date = $('#schedule_payment_date').val();
+
+                    var select_frequency_ = $('#select_frequency').val();
+
+                    $("#transaction_summary").show();
+                    $("#transaction_form").hide();
+
+                    {{-- if (from_account == '' || to_account == '' || transfer_amount == '' ||
                                             category == '' || purpose == '') {
                                             alert('Field must not be empty')
                                             toaster('Field must not be empty', 'error', 10000)
@@ -1705,188 +1740,61 @@
                                             $("#transaction_summary").show();
                                             $("#transaction_form").hide();
                                         } --}}
-            })
-
-
-
-
-            function toaster(message, icon, timer) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: timer,
-                    timerProgressBar: false,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
                 })
 
-                Toast.fire({
-                    icon: icon,
-                    title: message
-                })
-            }
-
-
-            // SUBMIT TO API
-
-            $('#confirm_modal_button').click(function(e) {
-                e.preventDefault();
-
-                if ($("#terms_and_conditions").is(":checked")) {
-
-                    var customerType = @json(session()->get('customerType'));
-                    console.log(customerType);
 
 
 
-                    if (customerType == 'C') {
+                function toaster(message, icon, timer) {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: timer,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
 
-                        {{-- alert('Corporate Account'); --}}
-                        {{-- $('#centermodal').modal('hide'); --}}
-                        {{-- $('.modal-dialog').modal('hide'); --}}
-                        {{-- $('body').removeClass('modal-open');
+                    Toast.fire({
+                        icon: icon,
+                        title: message
+                    })
+                }
+
+
+                // SUBMIT TO API
+
+                $('#confirm_modal_button').click(function(e) {
+                    e.preventDefault();
+
+                    if ($("#terms_and_conditions").is(":checked")) {
+
+                        var customerType = @json(session()->get('customerType'));
+                        console.log(customerType);
+
+
+
+                        if (customerType == 'C') {
+
+                            {{-- alert('Corporate Account'); --}}
+                            {{-- $('#centermodal').modal('hide'); --}}
+                            {{-- $('.modal-dialog').modal('hide'); --}}
+                            {{-- $('body').removeClass('modal-open');
                                                 $('.modal-backdrop').remove(); --}}
-
-                        $('#confirm_transfer').hide()
-                        $('#spinner').show();
-                        $('#spinner-text').show();
-                        $("#confirm_modal_button").prop('disabled', true);
-
-                        var from_account_ = $('#from_account').val().split("~");
-                        console.log(from_account_);
-                        var from_account = from_account_[2];
-                        var currency = from_account_[3];
-                        var account_mandate = from_account_[5];
-                        $("#from_account_receipt").text(from_account);
-
-                        var to_account_ = $('#to_account').val().split('~');
-                        console.log(to_account_);
-                        var to_account = to_account_[2];
-                        $("#to_account_receipt").text(to_account);
-
-
-                        var transfer_amount = $('#amount').val();
-                        $("#amount_receipt").text(formatToCurrency(parseFloat(
-                            transfer_amount)));
-
-                        var select_currency = $("#select_currency").val();
-                        $(".receipt_currency").text(select_currency);
-
-
-                        var category_ = $('#category').val().split("~");
-                        var category = category_[1];
-                        $("#display_category").text(category[1]);
-                        $("#category_receipt").text(category[1]);
-
-                        var purpose = $('#purpose').val();
-                        $("#display_purpose").text(purpose);
-                        $("#purpose_receipt").text(purpose);
-
-                        var schedule_payment_contraint_input = $(
-                            '#schedule_payment_contraint_input').val();
-
-
-
-
-                        var schedule_payment_date = $('#schedule_payment_date').val();
-
-                        var select_frequency_ = $('#select_frequency').val();
-
-                        {{-- var sec_pin = $('#user_pin').val(); --}}
-
-
-
-
-                        $.ajax({
-
-                            type: 'POST',
-                            url: 'corporate-own-account-api',
-                            datatype: "application/json",
-                            data: {
-                                'from_account': from_account,
-                                'to_account': to_account,
-                                'transfer_amount': transfer_amount,
-                                'category': category,
-                                'purpose': purpose,
-                                'currency': currency,
-                                'schedule_payment_type': schedule_payment_contraint_input,
-                                'schedule_payment_date': schedule_payment_date,
-                                'account_mandate': account_mandate
-
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                    'content')
-                            },
-                            success: function(response) {
-                                console.log();
-                                {{-- console.log(response.responseCode) --}}
-                                if (response.responseCode == '000') {
-                                    $("#related_information_display").removeClass(
-                                        "d-none d-sm-block");
-                                    Swal.fire(
-                                        '',
-                                        response.message,
-                                        'success'
-                                    );
-
-                                    {{-- $(".receipt").show();
-                                                            $(".form_process").hide(); --}}
-
-                                    $('#confirm_modal_button').hide();
-                                    $('#spinner').hide();
-                                    $('#spinner-text').hide();
-                                    $('#back_button').hide();
-                                    {{-- $('#print_receipt').show(); --}}
-
-
-                                    $(".rtgs_card_right").hide();
-                                    {{-- $(".success_gif").show(); --}}
-
-                                } else {
-
-                                    toaster(response.message, 'error', 10000);
-
-                                    $(".receipt").hide();
-                                    {{-- $(".form_process").hide(); --}}
-                                    {{-- $('#confirm_modal_button').show(); --}}
-                                    $("#confirm_transfer").show();
-                                    $("#confirm_modal_button").prop('disabled',
-                                        false);
-                                    $('#spinner').hide();
-                                    $('#spinner-text').hide();
-                                    $('#back_button').show();
-                                    $('#print_receipt').hide();
-                                    {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                    $("#related_information_display").show();
-                                    $(".success_gif").hide();
-
-
-                                }
-                            },
-                            error: function(xhr, status, error) {
-
-                            }
-
-                        })
-
-                    } else {
-
-                        $("#transfer_pin").click(function(e) {
-                            e.preventDefault();
 
                             $('#confirm_transfer').hide()
                             $('#spinner').show();
                             $('#spinner-text').show();
                             $("#confirm_modal_button").prop('disabled', true);
 
-
                             var from_account_ = $('#from_account').val().split("~");
                             console.log(from_account_);
                             var from_account = from_account_[2];
+                            var currency = from_account_[3];
+                            var account_mandate = from_account_[5];
                             $("#from_account_receipt").text(from_account);
 
                             var to_account_ = $('#to_account').val().split('~');
@@ -1903,7 +1811,8 @@
                             $(".receipt_currency").text(select_currency);
 
 
-                            var category = $('#category').val().split("~");
+                            var category_ = $('#category').val().split("~");
+                            var category = category_[1];
                             $("#display_category").text(category[1]);
                             $("#category_receipt").text(category[1]);
 
@@ -1917,18 +1826,19 @@
 
 
 
-                            var schedule_payment_date = $('#schedule_payment_date')
-                                .val();
+                            var schedule_payment_date = $('#schedule_payment_date').val();
 
                             var select_frequency_ = $('#select_frequency').val();
 
-                            var sec_pin = $('#user_pin').val();
+                            {{-- var sec_pin = $('#user_pin').val(); --}}
+
+
 
 
                             $.ajax({
 
                                 type: 'POST',
-                                url: 'own-account-api',
+                                url: 'corporate-own-account-api',
                                 datatype: "application/json",
                                 data: {
                                     'from_account': from_account,
@@ -1936,81 +1846,206 @@
                                     'transfer_amount': transfer_amount,
                                     'category': category,
                                     'purpose': purpose,
+                                    'currency': currency,
                                     'schedule_payment_type': schedule_payment_contraint_input,
                                     'schedule_payment_date': schedule_payment_date,
-                                    'secPin': sec_pin
+                                    'account_mandate': account_mandate
 
                                 },
                                 headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
-                                        .attr(
-                                            'content')
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                        'content')
                                 },
                                 success: function(response) {
                                     console.log();
                                     {{-- console.log(response.responseCode) --}}
                                     if (response.responseCode == '000') {
-                                        $("#related_information_display")
-                                            .removeClass(
-                                                "d-none d-sm-block");
+                                        $("#related_information_display").removeClass(
+                                            "d-none d-sm-block");
                                         Swal.fire(
                                             '',
                                             response.message,
                                             'success'
                                         );
 
-                                        $(".receipt").show();
-                                        $(".form_process").hide();
+                                        {{-- $(".receipt").show();
+                                                            $(".form_process").hide(); --}}
 
                                         $('#confirm_modal_button').hide();
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#back_button').hide();
-                                        $('#print_receipt').show();
+                                        {{-- $('#print_receipt').show(); --}}
 
 
                                         $(".rtgs_card_right").hide();
-                                        $(".success_gif").show();
+                                        {{-- $(".success_gif").show(); --}}
 
                                     } else {
 
-                                        toaster(response.message, 'error',
-                                            10000);
+                                        toaster(response.message, 'error', 10000);
 
                                         $(".receipt").hide();
                                         {{-- $(".form_process").hide(); --}}
                                         {{-- $('#confirm_modal_button').show(); --}}
                                         $("#confirm_transfer").show();
-                                        $("#confirm_modal_button").prop(
-                                            'disabled',
+                                        $("#confirm_modal_button").prop('disabled',
                                             false);
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#back_button').show();
                                         $('#print_receipt').hide();
                                         {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                        $("#related_information_display")
-                                            .show();
+                                        $("#related_information_display").show();
                                         $(".success_gif").hide();
 
 
                                     }
+                                },
+                                error: function(xhr, status, error) {
+
                                 }
 
                             })
 
-                        })
+                        } else {
 
+                            $("#transfer_pin").click(function(e) {
+                                e.preventDefault();
+
+                                $('#confirm_transfer').hide()
+                                $('#spinner').show();
+                                $('#spinner-text').show();
+                                $("#confirm_modal_button").prop('disabled', true);
+
+
+                                var from_account_ = $('#from_account').val().split("~");
+                                console.log(from_account_);
+                                var from_account = from_account_[2];
+                                $("#from_account_receipt").text(from_account);
+
+                                var to_account_ = $('#to_account').val().split('~');
+                                console.log(to_account_);
+                                var to_account = to_account_[2];
+                                $("#to_account_receipt").text(to_account);
+
+
+                                var transfer_amount = $('#amount').val();
+                                $("#amount_receipt").text(formatToCurrency(parseFloat(
+                                    transfer_amount)));
+
+                                var select_currency = $("#select_currency").val();
+                                $(".receipt_currency").text(select_currency);
+
+
+                                var category = $('#category').val().split("~");
+                                $("#display_category").text(category[1]);
+                                $("#category_receipt").text(category[1]);
+
+                                var purpose = $('#purpose').val();
+                                $("#display_purpose").text(purpose);
+                                $("#purpose_receipt").text(purpose);
+
+                                var schedule_payment_contraint_input = $(
+                                    '#schedule_payment_contraint_input').val();
+
+
+
+
+                                var schedule_payment_date = $('#schedule_payment_date')
+                                    .val();
+
+                                var select_frequency_ = $('#select_frequency').val();
+
+                                var sec_pin = $('#user_pin').val();
+
+
+                                $.ajax({
+
+                                    type: 'POST',
+                                    url: 'own-account-api',
+                                    datatype: "application/json",
+                                    data: {
+                                        'from_account': from_account,
+                                        'to_account': to_account,
+                                        'transfer_amount': transfer_amount,
+                                        'category': category,
+                                        'purpose': purpose,
+                                        'schedule_payment_type': schedule_payment_contraint_input,
+                                        'schedule_payment_date': schedule_payment_date,
+                                        'secPin': sec_pin
+
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                            .attr(
+                                                'content')
+                                    },
+                                    success: function(response) {
+                                        console.log();
+                                        {{-- console.log(response.responseCode) --}}
+                                        if (response.responseCode == '000') {
+                                            $("#related_information_display")
+                                                .removeClass(
+                                                    "d-none d-sm-block");
+                                            Swal.fire(
+                                                '',
+                                                response.message,
+                                                'success'
+                                            );
+
+                                            $(".receipt").show();
+                                            $(".form_process").hide();
+
+                                            $('#confirm_modal_button').hide();
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').hide();
+                                            $('#print_receipt').show();
+
+
+                                            $(".rtgs_card_right").hide();
+                                            $(".success_gif").show();
+
+                                        } else {
+
+                                            toaster(response.message, 'error',
+                                                10000);
+
+                                            $(".receipt").hide();
+                                            {{-- $(".form_process").hide(); --}}
+                                            {{-- $('#confirm_modal_button').show(); --}}
+                                            $("#confirm_transfer").show();
+                                            $("#confirm_modal_button").prop(
+                                                'disabled',
+                                                false);
+                                            $('#spinner').hide();
+                                            $('#spinner-text').hide();
+                                            $('#back_button').show();
+                                            $('#print_receipt').hide();
+                                            {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                            $("#related_information_display")
+                                                .show();
+                                            $(".success_gif").hide();
+
+
+                                        }
+                                    }
+
+                                })
+
+                            })
+
+                        }
+
+
+                    } else {
+                        toaster('Accept Transfer fee charge to continue', 'error', 6000)
+                        console.log("UNCHECKED");
+                        return false;
                     }
 
-
-                } else {
-                    toaster('Accept Transfer fee charge to continue', 'error', 6000)
-                    console.log("UNCHECKED");
-                    return false;
-                }
-
-            })
+                })
 
 
 
