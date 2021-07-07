@@ -1211,14 +1211,14 @@
                 url: 'get-my-account',
                 datatype: "application/json",
                 success: function(response) {
-                    //console.log(response.data);
+                    console.log(response.data);
                     let data = response.data
                     $.each(data, function(index) {
                         $('#from_account').append($('<option>', {
                             value: data[index].accountType + '~' + data[index]
                                 .accountDesc + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index]
-                                .availableBalance
+                                '~' + data[index].currency + '~' + data[index].availableBalance
+                                + '~' + data[index].accountMandate
                         }).text(data[index].accountType + '~' + data[index]
                             .accountNumber + '~' + data[index].currency + '~' + data[
                                 index].availableBalance));
@@ -1255,7 +1255,7 @@
                 success: function(response) {
                     console.log(response);
                     let data = response.data
-                    console.log(data);
+                    {{--  console.log(data);  --}}
                     if (response.data.length > 0) {
                         {{-- $('.yes_beneficiary').show() --}}
                         $('.no_beneficiary').hide()
@@ -1296,7 +1296,7 @@
                 "url": "get-expenses",
                 datatype: "application/json",
                 success: function(response) {
-                    console.log(response.data);
+                    {{--  console.log(response.data);  --}}
                     let data = response.data;
 
                     $.each(data, function(index) {
@@ -2015,7 +2015,7 @@
                     {{-- alert("Terms Accepted"); --}}
 
 
-
+                    // Coporate Account check
                     var customerType = @json(session()->get('customerType'));
                     console.log(customerType);
 
@@ -2028,6 +2028,8 @@
                             var from_account = $('#from_account').val().split('~');
                             var from_account_ = from_account[2];
                             $("#from_account_receipt").text(from_account_);
+                            var account_mandate = from_account[5]
+
 
                             console.log(from_account);
 
@@ -2097,7 +2099,7 @@
                                     'amount': transfer_amount,
                                     'schedule_payment_date': onetime_future_payement,
                                     'category': category,
-                                    {{-- 'secPin': user_pin --}}
+                                    'account_mandate': account_mandate
                                 },
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
@@ -2160,8 +2162,11 @@
 
 
                             var from_account = $('#from_account').val().split('~');
+                            console.log(from_account);
                             var from_account_ = from_account[2];
                             $("#from_account_receipt").text(from_account_);
+                            var account_mandate = from_account[5]
+
 
                             console.log(from_account_);
 
@@ -2233,7 +2238,7 @@
                                     'amount': transfer_amount,
                                     'schedule_payment_date': future_payement,
                                     'category': category,
-                                    {{-- 'secPin': user_pin --}}
+                                    'account_mandate': account_mandate
                                 },
 
                                 headers: {

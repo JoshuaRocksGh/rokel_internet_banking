@@ -165,6 +165,7 @@ class SameBankController extends Controller
             'amount' => 'required',
             // 'secPin' => 'required',
             'category' => 'required',
+            'account_mandate' => 'required'
 
         ]);
 
@@ -184,12 +185,13 @@ class SameBankController extends Controller
         $userAlias = session()->get('userAlias');
         $customerPhone = session()->get('customerPhone');
         $customerNumber = session()->get('customerNumber');
+        $userMandate = session()->get('userMandate');
 
         $data = [
             "account_no" => $request->from_account,
             "destinationAccountId" => $request->to_account,
             "currency" => $request->account_currency,
-            "account_mandate" => null,
+            "account_mandate" => $request->account_mandate,
             "amount" => $request->amount,
             "narration" => $request->purpose,
             "postBy" => $userID,
@@ -198,6 +200,7 @@ class SameBankController extends Controller
             "transBy" => $userAlias,
             "customer_no" => $customerNumber,
             "user_alias" => $userAlias,
+            "user_mandate" => $userMandate,
             "documentRef" => strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 2) . time()),
         ];
 
@@ -207,9 +210,9 @@ class SameBankController extends Controller
 
         try {
 
-            // dd((env('API_BASE_PENDING_URL') . "own-account-gone-for-pending"));
+            // dd((env('CIB_API_BASE_URL') . "same-bank-gone-for-pending"));
 
-            $response = Http::post(env('APPROVAL_API') . "same-bank-gone-for-pending", $data);
+            $response = Http::post(env('CIB_API_BASE_URL') . "same-bank-gone-for-pending", $data);
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);

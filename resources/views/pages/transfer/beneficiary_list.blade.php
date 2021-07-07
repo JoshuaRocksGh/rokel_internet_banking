@@ -128,11 +128,11 @@
                                 <div class="row" id="beneficiary_table" >
                                     <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                    <div class="p-3 mt-4 mt-lg-0 rounded">
+                                    <div class="p-3 mt-4 mt-lg-0 rounded table-responsive">
                                         <br>
 
                                         <table id="datatable-buttons"
-                                            class="table table-bordered table-striped dt-responsive nowrap w-100 beneficiary_list_display">
+                                            class="table table-bordered table-striped dt-responsive w-100 mb-0 beneficiary_list_display">
                                             {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
                                             <thead>
                                                 <tr class="bg-primary text-white">

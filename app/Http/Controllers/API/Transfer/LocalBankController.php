@@ -212,7 +212,7 @@ class LocalBankController extends Controller
 
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
-        return $request;
+        // return $request;
 
         // return $request ;
 
@@ -220,6 +220,12 @@ class LocalBankController extends Controller
         $userID = session()->get('userId');
 
         $beneficiary_type = $request->beneficiary_type ;
+
+        $bank_name = $request->bank_name;
+        $explode_bank_name = explode('||', $bank_name);
+        // return $explode_bank_name;
+
+        $bankName = $explode_bank_name[0];
 
         // return $beneficiary_type ;
 
@@ -232,14 +238,14 @@ class LocalBankController extends Controller
             $data = [
                 "amount" => (float)$request->amount,
                 "authToken" => $authToken,
-                "bankName" => $request->bank_name,
+                "bankName" => $bankName,
                 "beneficiaryAddress" => $request->beneficiary_address,
                 "beneficiaryName" => $request->beneficiary_name,
                 "creditAccount" => $request->to_account,
                 "debitAccount" => $request->from_account,
                 "deviceIp" => $client_ip,
                 "entrySource" => "I",
-                "channel" => "NET",
+                "channel" => "MOB",
                 "secPin" => $request->sec_pin,
                 "transactionDetails" => $request->purpose ,
                 // "transactionId" => null,
