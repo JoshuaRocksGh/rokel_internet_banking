@@ -86,6 +86,8 @@
                                                             <div class="col-md-12">
                                                                 <div id="approval_details"></div>
 
+                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">Large Modal</button>
+
                                                                 <div class="mt-1">
 
                                                                     <div class="col-md-12 mb-3">
@@ -218,6 +220,54 @@
 
 
 
+        <!--  Modal content for the Large example -->
+        <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="card card-body table-responsive">
+
+                                    <table id="datatable-buttons"
+                                        class="table dt-responsive  table-bordered table-striped nowrap w-100 pending_transaction_request "
+                                        style="zoom: 1;">
+                                        <thead>
+                                            <tr class="bg-info text-white">
+                                                <th>Req-Type</th>
+                                                <th>Status</th>
+                                                <th>Initiated By</th>
+                                                <th>Posted Date</th>
+                                                <th>Account No</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+
+
+
+                                    </table>
+
+
+                                </div> <!-- end card body-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
+
+
     </div>
     </div>
 
@@ -281,13 +331,14 @@
                                 let request_type = 'Bulk Payment'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 
+
                             }else if (request_type == 'DTRA'){
                                 let request_type = 'Direct Transfer'
                                 request_type != null ? append_approval_details("Request Type" , request_type) : '';
 
-                            }else if (request_type == 'BULK'){
+                            {{--  }else if (request_type == 'BULK'){
                                 let request_type = 'Bulk Payment'
-                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';  --}}
 
                             }else if (request_type == 'STR'){
                                 let request_type = 'Statement Request'

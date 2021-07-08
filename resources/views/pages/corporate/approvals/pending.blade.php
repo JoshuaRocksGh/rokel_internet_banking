@@ -65,14 +65,6 @@
 
                                 <div class="card card-body table-responsive">
 
-                                    {{-- <h4 class="header-title">Buttons example</h4>
-                                    <p class="sub-header font-13">
-                                        The Buttons extension for DataTables provides a common set of options, API
-                                        methods and styling to display buttons on a page
-                                        that will interact with a DataTable. The core library provides the based
-                                        framework upon which plug-ins can built.
-                                    </p> --}}
-
                                     <table id="datatable-buttons"
                                         class="table dt-responsive  table-bordered table-striped nowrap w-100 pending_transaction_request "
                                         style="zoom: 1;">
@@ -376,6 +368,8 @@
                                         request_type = 'ACH Transfer'
                                     } else if (data[index].request_type == 'RTGS') {
                                         request_type = 'RTGS Transfer'
+                                    } else if (data[index].request_type == 'BULK') {
+                                        request_type = 'Bulk Transfer'
                                     } else if (data[index].request_type == 'INT') {
                                         request_type = 'International Bank Transfer'
                                     } else {
