@@ -294,19 +294,20 @@ class LocalBankController extends Controller
             $data = [
                 "amount" => (float)$request->amount,
                 "authToken" => $authToken,
-                "bankName" => $request->bank_name,
+                "bankName" => $bankName,
                 "beneficiaryAddress" => $request->beneficiary_address,
                 "beneficiaryName" => $request->beneficiary_name,
                 "creditAccount" => $request->to_account,
                 "debitAccount" => $request->from_account,
-                "deviceIp" => null,
-                "entrySource" => null,
+                "deviceIp" => $client_ip,
+                "entrySource" => "I",
+                "channel" => "MOB",
                 "secPin" => $request->sec_pin,
                 "transactionDetails" => $request->purpose,
-                "transactionId" => null,
+                // "transactionId" => null,
                 "transferCurrency" => $request->currency,
-                "futurePayments" => $request->future_payement,
-                "category" => $request->category
+                // "futurePayments" => $request->future_payement,
+                // "category" => $request->category
             ];
 
             return $data;
@@ -494,13 +495,14 @@ class LocalBankController extends Controller
                 "beneficiaryName" => $request->beneficiary_name,
                 "creditAccount" => $request->to_account,
                 "debitAccount" => $request->from_account,
-                "deviceIp" => null,
+                "deviceIp" => $client_ip,
                 "secPin" => $request->sec_pin,
                 "transactionDetails" => $request->purpose,
                 "transactionId" => null,
                 "transferCurrency" => $request->currency,
                 "futurePayments" => null,
                 "category" => $request->category,
+                "channel" => 'MOB',
                 "email" => $request->email,
             ];
 
@@ -516,7 +518,7 @@ class LocalBankController extends Controller
 
             try {
 
-                $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
+                $response = Http::post(env('API_BASE_URL') . "transfers/rtgsBankTransfer", $data);
 
                 return $response;
 
