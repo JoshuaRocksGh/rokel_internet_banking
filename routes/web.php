@@ -137,6 +137,8 @@ Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_accou
 //CORPORATE OWN ACCOUNT API
 Route::post('/corporate-own-account-api', [TransferOwnAccountController::class, 'corporate_own_account_transfer'])->name('corporate-own-account-api');
 Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
+Route::post('/corporate-saved-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_saved_beneficiary'])->name('corporate-saved-local-bank-transfer-api');
+// Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
 
 
 //Standing order page

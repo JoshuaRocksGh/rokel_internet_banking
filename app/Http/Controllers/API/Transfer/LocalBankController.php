@@ -590,4 +590,20 @@ class LocalBankController extends Controller
             }
         }
     }
+
+    public function corporate_saved_beneficiary(Request $request){
+        $validator = Validator::make($request->all() , [
+            "from_account"  => "required",
+            "to_account"  => "required",
+            "bank_name"  => "required",
+            "beneficiary_name"  => "required",
+            "beneficiary_address"  => "required",
+            "amount"  => "required",
+            "currency"  => "required",
+            "category"  => "required",
+            "purpose"  => "required",
+            "sec_pin"  => "required",
+            "beneficiary_type"  => "required"
+        ]);
+    }
 }
