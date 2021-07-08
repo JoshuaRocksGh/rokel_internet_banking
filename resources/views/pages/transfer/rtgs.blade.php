@@ -1682,7 +1682,7 @@
                     $(".beneficiary_details").hide();
                     {{-- $(".select_beneficiary").toggle(500); --}}
 
-                    {{--  $('.receipt').hide();  --}}
+                    $('.receipt').hide();
 
 
 
