@@ -235,58 +235,56 @@ class LocalBankController extends Controller
 
         if ($beneficiary_type == "ACH") {
             $url_endpoint = 'achBankTransfer';
-        }else if ($beneficiary_type == "RTGS") {
+        } else if ($beneficiary_type == "RTGS") {
             $url_endpoint = 'rtgsBankTransfer';
-        }else if ($beneficiary_type == "INSTANT") {
+        } else if ($beneficiary_type == "INSTANT") {
             $url_endpoint = 'instantBankTransfer';
-        }else{
+        } else {
             $url_endpoint = '';
         }
 
-            $data = [
-                "amount" => (float)$request->amount,
-                "authToken" => $authToken,
-                "bankName" => $bankName,
-                "beneficiaryAddress" => $request->beneficiary_address,
-                "beneficiaryName" => $request->beneficiary_name,
-                "creditAccount" => $request->to_account,
-                "debitAccount" => $request->from_account,
-                "deviceIp" => $client_ip,
-                "entrySource" => "I",
-                "channel" => "MOB",
-                "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose,
-                // "transactionId" => null,
-                "transferCurrency" => $request->currency,
-                // "futurePayments" => $request->future_payement,
-                // "category" => $request->category
-            ];
+        $data = [
+            "amount" => (float)$request->amount,
+            "authToken" => $authToken,
+            "bankName" => $bankName,
+            "beneficiaryAddress" => $request->beneficiary_address,
+            "beneficiaryName" => $request->beneficiary_name,
+            "creditAccount" => $request->to_account,
+            "debitAccount" => $request->from_account,
+            "deviceIp" => $client_ip,
+            "entrySource" => "I",
+            "channel" => "MOB",
+            "secPin" => $request->sec_pin,
+            "transactionDetails" => $request->purpose,
+            // "transactionId" => null,
+            "transferCurrency" => $request->currency,
+            // "futurePayments" => $request->future_payement,
+            // "category" => $request->category
+        ];
 
 
 
-            try {
+        try {
 
-                $response = Http::post(env('API_BASE_URL') . "transfers/$url_endpoint", $data);
+            $response = Http::post(env('API_BASE_URL') . "transfers/$url_endpoint", $data);
 
-                // return $response;
+            // return $response;
 
-                $result = new ApiBaseResponse();
-                return $result->api_response($response);
-            } catch (\Exception $e) {
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        } catch (\Exception $e) {
 
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'message' => (string) $e->getMessage()
-                ]);
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
 
-                return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
-
-
-            }
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
 
 
         }
+    }
 
 
 
@@ -328,11 +326,11 @@ class LocalBankController extends Controller
 
         if ($beneficiary_type == "ACH") {
             $url_endpoint = 'achBankTransfer';
-        }else if ($beneficiary_type == "RTGS") {
+        } else if ($beneficiary_type == "RTGS") {
             $url_endpoint = 'rtgsBankTransfer';
-        }else if ($beneficiary_type == "INSTANT") {
+        } else if ($beneficiary_type == "INSTANT") {
             $url_endpoint = 'instantBankTransfer';
-        }else{
+        } else {
             $url_endpoint = '';
         }
 
@@ -375,8 +373,10 @@ class LocalBankController extends Controller
 
 
         }
+    }
 
-
-
+    public function corporate_saved_beneficiary(Request $request)
+    {
+        $validator = Validator::make($request->all(), []);
     }
 }
