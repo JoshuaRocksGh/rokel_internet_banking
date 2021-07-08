@@ -829,6 +829,12 @@
                                                             <input class="form-control col-md-8" type="text"
                                                                 id="onetime_beneficiary_account_name">
                                                         </div>
+                                                        <div class="row mb-2">
+                                                            <b class="text-primary col-md-4">Beneficiary Address&nbsp; <span
+                                                                    class="text-danger">*</span></b>
+                                                            <input class="form-control col-md-8" type="text"
+                                                                id="onetime_beneficiary_account_address">
+                                                        </div>
 
                                                         <div class="row mb-2">
                                                             <b class="text-primary col-md-4">Beneficiary Email &nbsp; <span
@@ -2041,6 +2047,7 @@
                             {{-- var account_currency = $('#onetime_beneficiary_account_currency').val().split('~')
                             $('.receipt_currency').text(account_currency[1]); --}}
 
+
                             var onetime_bene_name = $("#onetime_beneficiary_account_name").val();
                             console.log(onetime_bene_name);
                             $(".display_to_account_name").text(onetime_bene_name);
@@ -2290,7 +2297,9 @@
                                     console.log("onetime beneficiary");
                                     var onetime_from_account_ = $('#from_account').val().split('~');
                                     var onetime_from_account = onetime_from_account_[2];
-                                    var account_mandate = from_account[5];
+                                    var currCode = onetime_from_account_[5];
+                                    var currency = onetime_from_account_[3];
+                                    var accountMandate = onetime_from_account_[6];
                                     console.log(onetime_from_account);
 
                                     var bank_name_ = $("#onetime_beneficiary_bank_name").val().split('~');
@@ -2328,6 +2337,8 @@
 
                                     {{-- $(".display_category").text(category_info[1]); --}}
 
+                                    var onetime_bene_address = $('#onetime_beneficiary_account_address').val();
+
 
                                     var transfer_purpose = $('#onetime_purpose').val();
                                     console.log(transfer_purpose);
@@ -2336,11 +2347,11 @@
                                     var value_date = $("#onetime_future_payement").val();
                                     console.log(value_date);
 
-                                    var sec_pin = $('#user_pin').val()
+                                    {{-- var sec_pin = $('#user_pin').val() --}}
 
                                     $.ajax({
                                         type: "POST",
-                                        url: "onetime-beneficiary-local-bank-api",
+                                        url: "corporate-onetime-local-bank-transfer-api",
                                         datatype: "application/json",
                                         data: {
                                             "from_account": onetime_from_account,
@@ -2348,12 +2359,15 @@
                                             "beneficiary_name": beneficiary_name,
                                             "bank_name": bank_name,
                                             "to_account": account_number,
-                                            "currency": beneficiary_currency,
+                                            "currency": currCode,
+                                            "currency_iso": currency,
                                             "amount": onetime_amount,
                                             "email": beneficiary_email,
                                             "category": expense_category,
                                             "purpose": transfer_purpose,
-                                            'account_mandate': account_mandate
+                                            'account_mandate': accountMandate,
+                                            "beneficiary_address": onetime_bene_address,
+
                                         },
                                         headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
@@ -2443,6 +2457,7 @@
                                     var currency = currency_[0];
                                     {{-- var hidden_currency = $("#hidden_select_currency").val().split('~');
                                     console.log(hidden_currency); --}}
+
 
                                     var category_ = $("#category").val().split("~")
                                     var category = category_[1];

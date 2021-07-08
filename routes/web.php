@@ -138,6 +138,7 @@ Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_accou
 Route::post('/corporate-own-account-api', [TransferOwnAccountController::class, 'corporate_own_account_transfer'])->name('corporate-own-account-api');
 Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
 Route::post('/corporate-saved-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_saved_beneficiary'])->name('corporate-saved-local-bank-transfer-api');
+Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary'])->name('corporate-onetime-local-bank-transfer-api');
 // Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
 
 
@@ -209,7 +210,6 @@ Route::get('/bulk-korpor_detail', [KorporController::class, 'bulk_korpor_detail'
 Route::get('/get-bulk-korpor-upload-list-api', [BulkKorporController::class, 'get_bulk_korpor_upload_list'])->name('get-bulk-korpor-upload-list-api');
 Route::get('/get-bulk-korpor-upload-detail-list-api', [BulkKorporController::class, 'get_bulk_korpor_upload_detail_list'])->name('get-bulk-korpor-upload-detail-list-api');
 Route::post('/update-korpor-upload-detail-list-api', [BulkKorporController::class, 'update_bulk_korpor_upload_detail_list'])->name('update-korpor-upload-detail-list-api');
-
 
 
 

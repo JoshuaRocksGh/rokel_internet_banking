@@ -482,4 +482,102 @@ class LocalBankController extends Controller
 
         }
     }
+
+    public function corporate_onetime_beneficiary(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "from_account" => 'required',
+            "bank_name" => 'required',
+            "beneficiary_name" => 'required',
+            "beneficiary_address" => 'required',
+            "to_account" => 'required',
+            "amount" => 'required',
+            "currency" => 'required',
+            "currency_iso" => 'required',
+            "category" => 'required',
+            "purpose" => 'required',
+            // "future_payement" => 'required',
+            "beneficiary_type" => 'required',
+            "account_mandate" => 'required'
+        ]);
+
+        $base_response = new BaseResponse();
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+        // return $request;
+
+        $beneficiary_type = $request->beneficiary_type;
+
+
+        $client_ip = request()->ip();
+        // dd( $client_ip);
+
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $userAlias = session()->get('userAlias');
+        $customerPhone = session()->get('customerPhone');
+        $customerNumber = session()->get('customerNumber');
+        $userMandate = session()->get('userMandate');
+
+        
+        if ($beneficiary_type == "ACH") {
+            $url_endpoint = 'ach-bank-gone-for-pending';
+        } else if ($beneficiary_type == "RTGS") {
+            $url_endpoint = 'rtgs-bank-gone-for-pending';
+        } else if ($beneficiary_type == "INSTANT") {
+            $url_endpoint = 'instantBankTransfer';
+        } else {
+            $url_endpoint = '';
+        }
+
+        
+        $data = [
+            "customer_no" => $customerNumber,
+            "user_id" => $userID,
+            "user_alias" => $userAlias,
+            "account_mandate" => $request->account_mandate,
+            "account_no" => $request->from_account,
+            "bank_code" => null,
+            "bank_name" => $request->bank_name,
+            "bene_account" => $request->to_account,
+            "bene_name" => $request->beneficiary_name,
+            "bene_address" => $request->beneficiary_address,
+            "bene_tel" => null,
+            "amount" => $request->amount,
+            "currency" => $request->currency,
+            "currency_iso" => $request->currency_iso,
+            "narration" => $request->account_mandate
+        ];
+
+        // return $data;
+
+        
+        try {
+
+            // dd((env('CIB_API_BASE_URL') . $url_endpoint));
+
+            $response = Http::post(env('CIB_API_BASE_URL') . $url_endpoint, $data);
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+            // return json_decode($response->body();
+
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', 'SERVER ERROR',  NULL); // return API BASERESPONSE
+
+
+        }
+    }
 }
