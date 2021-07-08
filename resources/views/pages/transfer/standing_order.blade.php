@@ -217,7 +217,7 @@
                                                                 class="text-danger">*</span></b>
 
 
-                                                                <input type="date" class="form-control col-md-8" id="so_start_date" required>
+                                                                <input type="date" class="form-control col-md-8" min="01-01-1997" max="31-12-2030" id="so_start_date" required>
 
 
                                                     </div>
@@ -918,7 +918,7 @@
                                                                     <td>Transfer Date: </td>
                                                                     <td>
                                                                         <span class="font-13 text-primary h3"
-                                                                            id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                                            id="display_transfer_date">{{ date('d F , Y') }}</span>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -1337,7 +1337,7 @@
                 $("#so_end_date").change(function(){
                     var display_end_date = $("#so_end_date").val();
                     $(".display_so_end_date").text(display_end_date);
-                    console.log(display_start_date);
+                    console.log(display_end_date);
                 });
 
                 $("#amount").keyup(function(){
@@ -1400,7 +1400,7 @@
                     let so_start_date = $("#so_start_date").val();
                     let so_end_date = $("#so_end_date").val();
                     let so_frequency = $("#beneficiary_frequency").val();
-                    let narration = $("#narration").val();
+                    let narration = $("#purpose").val();
 
                     if( from_account =='' || beneficiary =='' || amount=='' || so_start_date =='' || so_frequency =='' || narration == ''){
                         toaster('fields cannot be empty','error',2000);
@@ -1444,11 +1444,14 @@
                                     success: function(response) {
                                         {{-- console.log(response); --}}
                                         if (response.responseCode == '000') {
-                                            toaster(response.message, 'success', 10000);
-
-                                            setTimeout(function(){
-                                                window.location.reload();
-                                            }, 2000);
+                                            toaster(response.message, 'success', 1000);
+                                            $("#spinner").hide();
+                                            $("#spinner-text").hide();
+                                            $(".form_process").hide();
+                                            $(".receipt").show();
+                                            // setTimeout(function(){
+                                            //     window.location.reload();
+                                            // }, 2000);
                                         } else {
                                             toaster(response.message, 'error', 6000);
                                             $("#confirm_transfer-text").show();
