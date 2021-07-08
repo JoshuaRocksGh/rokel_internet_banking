@@ -232,8 +232,16 @@ class LocalBankController extends Controller
         $client_ip = request()->ip();
         // dd( $client_ip);
 
+
         if ($beneficiary_type == "ACH") {
-            // return $beneficiary_type ;
+            $url_endpoint = 'achBankTransfer';
+        }else if ($beneficiary_type == "RTGS") {
+            $url_endpoint = 'rtgsBankTransfer';
+        }else if ($beneficiary_type == "INSTANT") {
+            $url_endpoint = 'instantBankTransfer';
+        }else{
+            $url_endpoint = '';
+        }
 
             $data = [
                 "amount" => (float)$request->amount,
@@ -254,19 +262,11 @@ class LocalBankController extends Controller
                 // "category" => $request->category
             ];
 
-            // return $data ;
-
-            // $response = [
-            //     "responseCode" => "000",
-            //     "message" => "Transfer Successful"
-            // ];
-
-            // return $response ;
 
 
             try {
 
-                $response = Http::post(env('API_BASE_URL') . "transfers/achBankTransfer", $data);
+                $response = Http::post(env('API_BASE_URL') . "transfers/$url_endpoint", $data);
 
                 // return $response;
 
@@ -284,112 +284,11 @@ class LocalBankController extends Controller
 
 
             }
-        };
 
 
-        if ($beneficiary_type == "RTGS") {
-            // return $beneficiary_type ;
+        }
 
 
-            $data = [
-                "amount" => (float)$request->amount,
-                "authToken" => $authToken,
-                "bankName" => $bankName,
-                "beneficiaryAddress" => $request->beneficiary_address,
-                "beneficiaryName" => $request->beneficiary_name,
-                "creditAccount" => $request->to_account,
-                "debitAccount" => $request->from_account,
-                "deviceIp" => $client_ip,
-                "entrySource" => "I",
-                "channel" => "MOB",
-                "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose,
-                // "transactionId" => null,
-                "transferCurrency" => $request->currency,
-                // "futurePayments" => $request->future_payement,
-                // "category" => $request->category
-            ];
-
-            return $data;
-
-
-
-
-            try {
-
-                $response = Http::post(env('API_BASE_URL') . "transfers/rtgsBankTransfer", $data);
-
-                return $response;
-
-                $result = new ApiBaseResponse();
-                return $result->api_response($response);
-            } catch (\Exception $e) {
-
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'message' => (string) $e->getMessage()
-                ]);
-
-                return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
-
-
-            }
-        };
-
-        // if($beneficiary_type == "INSTANT"){
-        //     // return $beneficiary_type ;
-
-
-        //     $data = [
-        //         "amount" => (float)$request->amount,
-        //         "authToken" => $authToken,
-        //         "bankName" => $request->bank_name,
-        //         "beneficiaryAddress" => $request->beneficiary_address,
-        //         "beneficiaryName" => $request->beneficiary_name,
-        //         "creditAccount" => $request->to_account,
-        //         "debitAccount" => $request->from_account,
-        //         "deviceIp" => null,
-        //         "secPin" => $request->sec_pin,
-        //         "transactionDetails" => $request->purpose ,
-        //         "transactionId" => null,
-        //         "transferCurrency" => $request->currency,
-        //         "futurePayments" => $request->future_payement,
-        //         "category" => $request->category
-        //     ];
-
-        //     // return $data ;
-
-        //         // $response = [
-        //         //     "responseCode" => "000",
-        //         //     "message" => "Transfer Successful"
-        //         // ];
-
-        //         // return $response ;
-
-
-        //     try {
-
-        //         $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
-
-        //         return $response;
-
-        //         $result = new ApiBaseResponse();
-        //         return $result->api_response($response);
-        //     } catch (\Exception $e) {
-
-        //         DB::table('tb_error_logs')->insert([
-        //             'platform' => 'ONLINE_INTERNET_BANKING',
-        //             'user_id' => 'AUTH',
-        //             'message' => (string) $e->getMessage()
-        //         ]);
-
-        //         return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
-
-
-        //     }
-        // };
-    }
 
     public function onetime_beneficiary_transfer(Request $request)
     {
@@ -427,185 +326,57 @@ class LocalBankController extends Controller
 
         $client_ip = request()->ip();
 
-
         if ($beneficiary_type == "ACH") {
-            // return $beneficiary_type ;
-
-            $data = [
-                "amount" => (float)$request->amount,
-                "authToken" => $authToken,
-                "bankName" => $request->bank_name,
-                "beneficiaryAddress" => null,
-                "beneficiaryName" => $request->beneficiary_name,
-                "creditAccount" => $request->to_account,
-                "debitAccount" => $request->from_account,
-                "deviceIp" => $client_ip,
-                "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose,
-                "transactionId" => null,
-                "transferCurrency" => $request->currency,
-                "futurePayments" => null,
-                "category" => $request->category,
-                "channel" => 'MOB',
-                "email" => $request->email,
-            ];
-
-            // return $data;
-
-            // $response = [
-            //     "responseCode" => "000",
-            //     "message" => "Transfer Successful"
-            // ];
-
-            // return $response ;
-
-
-            try {
-
-                $response = Http::post(env('API_BASE_URL') . "transfers/achBankTransfer", $data);
-
-                return $response;
-
-                $result = new ApiBaseResponse();
-                return $result->api_response($response);
-            } catch (\Exception $e) {
-
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'message' => (string) $e->getMessage()
-                ]);
-
-                return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
-
-
-            }
-        };
-
-
-        if ($beneficiary_type == "RTGS") {
-            // return $beneficiary_type ;
-
-
-            $data = [
-                "amount" => (float)$request->amount,
-                "authToken" => $authToken,
-                "bankName" => $request->bank_name,
-                "beneficiaryAddress" => null,
-                "beneficiaryName" => $request->beneficiary_name,
-                "creditAccount" => $request->to_account,
-                "debitAccount" => $request->from_account,
-                "deviceIp" => $client_ip,
-                "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose,
-                "transactionId" => null,
-                "transferCurrency" => $request->currency,
-                "futurePayments" => null,
-                "category" => $request->category,
-                "channel" => 'MOB',
-                "email" => $request->email,
-            ];
-
-            // return $data ;
-
-            // $response = [
-            //     "responseCode" => "000",
-            //     "message" => "Transfer Successful"
-            // ];
-
-            // return $response ;
-
-
-            try {
-
-                $response = Http::post(env('API_BASE_URL') . "transfers/rtgsBankTransfer", $data);
-
-                return $response;
-
-                $result = new ApiBaseResponse();
-                return $result->api_response($response);
-            } catch (\Exception $e) {
-
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'message' => (string) $e->getMessage()
-                ]);
-
-                return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
-
-
-            }
-        };
-
-        if ($beneficiary_type == "INSTANT") {
-            // return $beneficiary_type ;
-
-
-            $data = [
-                "amount" => (float)$request->amount,
-                "authToken" => $authToken,
-                "bankName" => $request->bank_name,
-                "beneficiaryAddress" => null,
-                "beneficiaryName" => $request->beneficiary_name,
-                "creditAccount" => $request->to_account,
-                "debitAccount" => $request->from_account,
-                "deviceIp" => null,
-                "secPin" => $request->sec_pin,
-                "transactionDetails" => $request->purpose,
-                "transactionId" => null,
-                "transferCurrency" => $request->currency,
-                "futurePayments" => null,
-                "category" => $request->category,
-                "email" => $request->email,
-            ];
-
-            // return $data ;
-
-            // $response = [
-            //     "responseCode" => "000",
-            //     "message" => "Transfer Successful"
-            // ];
-
-            // return $response ;
-
-
-            try {
-
-                $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
-
-                return $response;
-
-                $result = new ApiBaseResponse();
-                return $result->api_response($response);
-            } catch (\Exception $e) {
-
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'message' => (string) $e->getMessage()
-                ]);
-
-                return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
-
-
-            }
+            $url_endpoint = 'achBankTransfer';
+        }else if ($beneficiary_type == "RTGS") {
+            $url_endpoint = 'rtgsBankTransfer';
+        }else if ($beneficiary_type == "INSTANT") {
+            $url_endpoint = 'instantBankTransfer';
+        }else{
+            $url_endpoint = '';
         }
-    }
 
-    public function corporate_saved_beneficiary(Request $request){
-        $validator = Validator::make($request->all() , [
-            "from_account"  => "required",
-            "to_account"  => "required",
-            "bank_name"  => "required",
-            "beneficiary_name"  => "required",
-            "beneficiary_address"  => "required",
-            "amount"  => "required",
-            "currency"  => "required",
-            "category"  => "required",
-            "purpose"  => "required",
-            "sec_pin"  => "required",
-            "beneficiary_type"  => "required"
-        ]);
+        $data = [
+            "amount" => (float)$request->amount,
+            "authToken" => $authToken,
+            "bankName" => $request->bank_name,
+            "beneficiaryAddress" => null,
+            "beneficiaryName" => $request->beneficiary_name,
+            "creditAccount" => $request->to_account,
+            "debitAccount" => $request->from_account,
+            "deviceIp" => $client_ip,
+            "secPin" => $request->sec_pin,
+            "transactionDetails" => $request->purpose,
+            "transactionId" => null,
+            "transferCurrency" => $request->currency,
+            "futurePayments" => null,
+            "category" => $request->category,
+            "channel" => 'MOB',
+            "email" => $request->email,
+        ];
+
+        try {
+
+            $response = Http::post(env('API_BASE_URL') . "transfers/$url_endpoint", $data);
+
+            return $response;
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+
+        }
+
+
+
     }
 }
