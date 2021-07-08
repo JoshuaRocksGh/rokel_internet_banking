@@ -2283,7 +2283,9 @@
 
 
                             if (customerType == "C") {
+                                $('#confirm_modal_button').removeAttr("data-target");
 
+                                {{-- alert(customerType); --}}
                                 if ($('#checkmeout0').is(':checked')) {
                                     console.log("onetime beneficiary");
                                     var onetime_from_account_ = $('#from_account').val().split('~');
@@ -2531,6 +2533,8 @@
                                     })
 
                                 }
+
+
 
                             } else {
                                 $("#transfer_pin").click(function(e) {
