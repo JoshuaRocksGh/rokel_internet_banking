@@ -235,6 +235,8 @@ Route::get('/one-time-payment', [paymentController::class, 'one_time'])->name('o
 
 //  CORPORATE ROUTE
 Route::get('/approvals-pending', [PendingController::class, 'approvals_pending'])->name('approvals-pending');
+// Route::get('/approved-transaction', [PendingController::class, 'approved_transaction'])->name('approved-transaction');
+
 // Route::get('/approvals-pending/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending'])->name('approvals-pending/request_id/customer_no');
 Route::get('/get-pending-requests', [GeneralFunctionsFunctionsController::class, 'get_pending_requests'])->name('get-pending-requests');
 Route::get('/approvals-pending-transfer-details', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details');

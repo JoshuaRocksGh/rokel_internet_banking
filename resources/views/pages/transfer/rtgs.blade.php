@@ -280,8 +280,8 @@
                                                     </div>
                                                     <br><br>
                                                     <div class="row">
-                                                        <div class="col-md-5"></div>
-                                                        <div class="col-md-2">
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-md-4">
                                                             <button
                                                                 class="btn btn-light btn-rounded hide_on_print text-center"
                                                                 type="button" onclick="window.print()">Print
@@ -290,7 +290,7 @@
 
 
                                                         </div>
-                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-4"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1596,7 +1596,7 @@
                         url: 'get-transfer-beneficiary-api?beneType=OTB',
                         datatype: "application/json",
                         success: function(response) {
-                            {{-- console.log(response.data); --}}
+                            console.log(response.data);
                             let data = response.data
 
                             if (!response.data) {
@@ -2419,6 +2419,7 @@
 
                                     var from_account = from_account_[2];
                                     var currCode = from_account_[5];
+                                    var currency = from_account_[3];
                                     var accountMandate = from_account_[6];
                                     console.log(from_account);
 
@@ -2472,11 +2473,12 @@
                                             "to_account": to_account,
                                             "amount": amount,
                                             "currency": currCode,
+                                            "currency_iso": currency,
                                             "category": category,
                                             "purpose": purpose,
                                             "future_payement": future_payement,
                                             "beneficiary_type": beneficiary_type,
-                                            'account_mandate': account_mandate
+                                            'account_mandate': accountMandate
 
                                         },
                                         headers: {
@@ -2520,7 +2522,7 @@
                                                 $(".success_gif").hide();
                                                 $("#related_information_display").removeClass(
                                                     "d-none d-sm-block");
-                                                {{-- $(".rtgs_card_right").show(); --}}
+                                                $(".rtgs_card_right").show();
                                                 $(".form_process").show();
                                                 $(".receipt").hide();
 

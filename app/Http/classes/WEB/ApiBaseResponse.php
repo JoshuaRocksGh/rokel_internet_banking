@@ -54,9 +54,8 @@ class ApiBaseResponse
             return response()->json([
                 'responseCode' => '500',
                 'message' => 'API SERVER ERROR',
-                'data' => (string) $response->body()
+                'data' => null
             ], 500);
-
         }
     }
 }
