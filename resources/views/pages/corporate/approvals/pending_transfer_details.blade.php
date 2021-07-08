@@ -35,8 +35,20 @@
             src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
         }
 
+
+
     </style>
 
+    <!-- third party css -->
+    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
+        rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <!-- third party css end -->
 
 @endsection
 
@@ -86,7 +98,6 @@
                                                             <div class="col-md-12">
                                                                 <div id="approval_details"></div>
 
-                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">Large Modal</button>
 
                                                                 <div class="mt-1">
 
@@ -225,32 +236,33 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+                        <h3 class="modal-title text-info" id="myLargeModalLabel"> BULK TRANSACTION DETAILS</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
 
-                                <div class="card card-body table-responsive">
+                                <div class=" card-body table-responsive">
 
                                     <table id="datatable-buttons"
-                                        class="table dt-responsive  table-bordered table-striped nowrap w-100 pending_transaction_request "
-                                        style="zoom: 1;">
-                                        <thead>
-                                            <tr class="bg-info text-white">
-                                                <th>Req-Type</th>
-                                                <th>Status</th>
-                                                <th>Initiated By</th>
-                                                <th>Posted Date</th>
-                                                <th>Account No</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
+                                    class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
+
+                                    <thead>
+                                        <tr class="bg-secondary text-white">
+                                            <th>No</th>
+                                            <th>Credit Acc</th>
+                                            <th>Amount</th>
+                                            <th>Name</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="bulk_upload_list_body">
+
+                                    </tbody>
 
 
-
-                                    </table>
+                                </table>
 
 
                                 </div> <!-- end card body-->
@@ -271,8 +283,31 @@
     </div>
     </div>
 
+    @endsection
+
+    @section('scripts')
+    <!-- third party js -->
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <!-- third party js ends -->
+
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+{{--
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>  --}}
 
     <script>
             function account_mandate() {
@@ -329,7 +364,7 @@
 
                             }else if (request_type == 'BULK'){
                                 let request_type = 'Bulk Payment'
-                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
+                                request_type != null ? append_approval_details_bulk("Request Type" , request_type) : '';
 
 
                             }else if (request_type == 'DTRA'){
@@ -445,6 +480,14 @@
                             $('#cheque_number_from').text(pending_request.cheque_from);
                             $('#cheque_number_to').text(pending_request.cheque_to);  --}}
 
+                            console.log(request_type)
+
+                            if(request_type == 'BULK'){
+                                ajax_call_bulk_details_endpoint(batch_number)
+                            }
+
+
+
 
                          }
 
@@ -456,11 +499,86 @@
                 })
             }
 
+            function ajax_call_bulk_details_endpoint(batch_no)
+            {
+                var table = $('.bulk_upload_list').DataTable();
+                var nodes = table.rows().nodes();
+
+                var customer = @json($customer_no);
+                var request = @json($request_id);
+
+
+
+                $.ajax({
+                    type : 'POST',
+                    url : "../../get-bulk-detail-list-for-approval" ,
+                    datatype : 'application/json',
+                    data : {
+                        'batch_no' : batch_no
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        if (response.responseCode == '000') {
+                            let details = response.data.bulk_details
+
+                            table.clear().draw()
+                            let count = 1
+
+                            $.each(details, function(index) {
+
+                                {{--  $('.bulk_upload_list_body').append(`
+                                    <tr class="">
+                                        <th>${count}</th>
+                                        <th>${details[index].bban}</th>
+                                        <th>${formatToCurrency(parseFloat(details[index].amount))}</th>
+                                        <th>${details[index].name}</th>
+                                    </tr>
+                                `)  --}}
+
+                                 table.row.add([
+                                    count,
+                                    details[index].bban,
+                                    details[index].amount,
+                                    details[index].name
+                                ]).draw(false)
+
+                                count++
+                            })
+
+                        }else {
+
+
+                        }
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        setTimeout ( function(){ ajax_call_bulk_details_endpoint(batch_no) }, $.ajaxSetup().retryAfter )
+                    }
+                })
+
+            }
+
             function append_approval_details(description , data) {
 
                 $('#approval_details').append(`<div class="row ">
                     <span class="col-md-6 text-left h4">${description}</span>
                     <span class="col-md-6 text-right text-primary h4">${data}</span>
+                </div>
+                <hr class="mt-0">`)
+             };
+
+             function append_approval_details_bulk(description , data) {
+
+                $('#approval_details').append(`<div class="row ">
+                    <span class="col-md-6 text-left h4">Bulk Details</span>
+                    <span class="col-md-6 text-right text-primary h4">
+                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">View Transaction Details</button>
+                        
+                    </span>
                 </div>
                 <hr class="mt-0">`)
              };
@@ -518,6 +636,9 @@
 
             })
 
+
+
+
             function ajax_post(){
                 $('#approve_transaction').text("Processing ...")
                 var customer = @json($customer_no);
@@ -543,6 +664,8 @@
                                 window.opener.location.reload();
                                 window.close();
                             }, 5000)
+
+
 
                         }else {
                             Swal.fire('', response.message, 'error');

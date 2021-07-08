@@ -25,7 +25,7 @@ class PendingController extends Controller
     }
 
 
-    public function approvals_pending_transfer_details($request_id , $customer_no)
+    public function approvals_pending_transfer_details($request_id, $customer_no)
     {
 
         // return $customer_no;
@@ -41,23 +41,23 @@ class PendingController extends Controller
 
         if ($mandate == 'A') {
 
-            return view('pages.corporate.approvals.pending_transfer_details', [ 'request_id'=> $request_id, 'customer_no'=> $customer_no , 'mandate' => $mandate]);
-
-        }else {
+            return view('pages.corporate.approvals.pending_transfer_details', ['request_id' => $request_id, 'customer_no' => $customer_no, 'mandate' => $mandate]);
+        } else {
             Alert::error('', 'Not Authorized To Approve Pending Request');
             return back();
         }
     }
 
 
-        public function pending_request_details(Request $request) {
+    public function pending_request_details(Request $request)
+    {
 
 
-            // return ('hello');
-            $customer_no = $request->query('customer_no');
-            $request_id = $request->query('request_id');
+        // return ('hello');
+        $customer_no = $request->query('customer_no');
+        $request_id = $request->query('request_id');
 
-            // return $request_id ;
+        // return $request_id ;
 
 
 
@@ -84,7 +84,6 @@ class PendingController extends Controller
             $result = new ApiBaseResponse();
 
             return $result->api_response($response);
-
         } catch (\Exception $e) {
 
             DB::table('tb_error_logs')->insert([
@@ -97,6 +96,57 @@ class PendingController extends Controller
 
 
         }
+    }
 
+
+    public function get_bulk_detail_list_for_approval(Request $request)
+    {
+
+
+
+        $batch_no = $request->batch_no;
+        $request_id = $request->query('request_id');
+
+        // return $request_id ;
+
+
+
+        $base_response = new BaseResponse();
+
+        // if ($validator->fails()) {
+
+        //     return $base_response->api_response('500', $validator->errors(), NULL);
+        // };
+        // return $request;
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+
+        // return $data ;
+        try {
+
+            // dd(env('CIB_API_BASE_URL') . "/get-detail-pending-request-api?customer_no=$customer_no&request_id=$request_id");
+            $response = Http::get(env('CIB_API_BASE_URL') . "get-bulk-upload-detail-list-api?batch_no=$batch_no");
+
+            // return $response;
+
+            $result = new ApiBaseResponse();
+
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $result->api_response($response);
+
+            //return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+
+        }
     }
 }
