@@ -1093,7 +1093,8 @@
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
-                        let data = response.data
+                        if(response.responseCode == '000'){
+                            let data = response.data
                         $.each(data, function(index) {
 
                             $('#from_account').append($('<option>', {
@@ -1106,16 +1107,22 @@
                                     data[index].availableBalance))
                             ));
                             $('#to_account').append($('<option>', {
-                                value: data[index].accountType + ' ~ ' + data[index]
+                                value: data[index].accountType + '~' + data[index]
                                     .accountDesc + '~' + data[index]
                                     .accountNumber + '~' + data[index].currency + '~' +
-                                    data[index].availableBalance
+                                    data[index].availableBalance +
+                                    '~' + data[index].accountMandate
                             }).text(data[index].accountNumber +
                                 '~' + data[index].currency + '~' + formatToCurrency(parseFloat(data[
                                     index].availableBalance))
                             ));
 
                         });
+                        }else{
+                            if(response.data == null){
+                                window.location = 'logout'
+                            }
+                        }
                     },
                     error: function(xhr, status, error) {
 
@@ -1392,9 +1399,12 @@
 
                         var from_account = $('#from_account').val()
 
-                        if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
-                            to_account.trim() != '') {
-                            {{-- alert('can not transfer to same account') --}}
+
+
+                        if ((from_account.trim() == to_account.trim()) && (from_account.trim() != '' &&
+                            to_account.trim() != '')) {
+                            {{--  alert('can not transfer to same account')  --}}
+                            toaster('Can not send to same account', 'error', 2000)
                             $(this).val('')
                         }
 

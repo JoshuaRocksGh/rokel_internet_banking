@@ -167,6 +167,8 @@ Route::get('/get-bulk-upload-detail-list-api', [BulkUploadBulkUploadsController:
 Route::get('/post-bulk-transaction-api', [BulkUploadBulkUploadsController::class, 'post_bulk_transaction'])->name('post-bulk-transaction-api');
 
 
+Route::post('/get-bulk-detail-list-for-approval', [PendingController::class, 'get_bulk_detail_list_for_approval'])->name('get-bulk-detail-list-for-approval');
+
 
 
 // LOCAL BANK

@@ -1576,7 +1576,7 @@
                     if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                         to_account.trim() != '') {
                         toaster('can not transfer to same account', 'error', 10000)
-                        {{-- alert('can not transfer to same account') --}}
+
                         $(this).val('')
                     }
 
