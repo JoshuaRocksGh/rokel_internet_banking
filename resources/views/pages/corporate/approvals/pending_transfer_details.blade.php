@@ -364,8 +364,8 @@
 
                             }else if (request_type == 'BULK'){
                                 let request_type = 'Bulk Payment'
+                                request_type != null ? append_approval_details("Request Type" , request_type) : '';
                                 request_type != null ? append_approval_details_bulk("Request Type" , request_type) : '';
-
 
                             }else if (request_type == 'DTRA'){
                                 let request_type = 'Direct Transfer'
@@ -577,7 +577,7 @@
                     <span class="col-md-6 text-left h4">Bulk Details</span>
                     <span class="col-md-6 text-right text-primary h4">
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#bs-example-modal-lg">View Transaction Details</button>
-                        
+
                     </span>
                 </div>
                 <hr class="mt-0">`)

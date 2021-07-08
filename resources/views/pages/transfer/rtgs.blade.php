@@ -1523,14 +1523,15 @@
                         url: 'get-my-account',
                         datatype: "application/json",
                         success: function(response) {
-                            {{-- console.log(response.data); --}}
+                            console.log(response.data);
                             let data = response.data
                             $.each(data, function(index) {
                                 $('#from_account').append($('<option>', {
                                     value: data[index].accountType + '~' + data[index].accountDesc +
                                         '~' + data[index].accountNumber + '~' +
                                         data[index].currency + '~' + data[index].availableBalance +
-                                        '~' + data[index].currencyCode+ '~' + data[index].accountMandate
+                                        '~' + data[index].currencyCode + '~' + data[index]
+                                        .accountMandate
 
                                 }).text(data[index].accountType + '' + ' - ' + '' + data[index]
                                     .accountNumber + '' + ' - ' + '' + data[index]
@@ -1651,7 +1652,11 @@
                 }
 
 
+                function customerType() {
+                    var customerType = @json(session()->get('customerType'));
+                    console.log(customerType);
 
+                }
 
                 $(document).ready(function() {
 
@@ -1695,6 +1700,7 @@
                         get_currency();
                         expenseTypes();
                         expenseTypes_onetime();
+                        customerType();
                     }, 2000)
 
 
@@ -2032,8 +2038,8 @@
                             console.log(to_account);
                             $('#receiver_account_number').text(to_account)
 
-                            {{--  var account_currency = $('#onetime_beneficiary_account_currency').val().split('~')
-                            $('.receipt_currency').text(account_currency[1]);  --}}
+                            {{-- var account_currency = $('#onetime_beneficiary_account_currency').val().split('~')
+                            $('.receipt_currency').text(account_currency[1]); --}}
 
                             var onetime_bene_name = $("#onetime_beneficiary_account_name").val();
                             console.log(onetime_bene_name);
@@ -2264,10 +2270,8 @@
                     //
 
 
-                    $('#confirm_modal_button').click(function() {
-                        {{-- $('#user_pin').attr('readonly', false);
-                        $('#user_pin').val('') --}}
-                        {{-- $("#confirm_modal_button").prop('disabled', true); --}}
+                    $('#confirm_modal_button').click(function(e) {
+                        e.preventDefault();
 
                         if ($("#terms_and_conditions").is(':checked')) {
                             {{-- console.log("checked"); --}}
@@ -2276,7 +2280,9 @@
                             var customerType = @json(session()->get('customerType'));
                             console.log(customerType);
 
-                            if (customerType == "C"){
+
+
+                            if (customerType == "C") {
 
                                 if ($('#checkmeout0').is(':checked')) {
                                     console.log("onetime beneficiary");
@@ -2411,6 +2417,7 @@
 
                                     var from_account = from_account_[2];
                                     var currCode = from_account_[5];
+                                    var accountMandate = from_account_[6];
                                     console.log(from_account);
 
                                     var to_account_ = $("#to_account").val().split("~");
@@ -2453,7 +2460,7 @@
 
                                     $.ajax({
                                         type: 'POST',
-                                        url: 'saved-beneficiary-local-bank-transfer-api',
+                                        url: 'corporate-saved-local-bank-transfer-api',
                                         datatype: "application/json",
                                         data: {
                                             "from_account": from_account,
@@ -2525,7 +2532,7 @@
 
                                 }
 
-                            }else{
+                            } else {
                                 $("#transfer_pin").click(function(e) {
                                     e.preventDefault();
 
@@ -2545,14 +2552,16 @@
                                         var onetime_from_account = onetime_from_account_[2];
                                         console.log(onetime_from_account);
 
-                                        var bank_name_ = $("#onetime_beneficiary_bank_name").val().split('~');
+                                        var bank_name_ = $("#onetime_beneficiary_bank_name").val().split(
+                                            '~');
                                         var bank_name = bank_name_[1];
                                         console.log(bank_name);
 
                                         var account_number = $("#onetime_beneficiary_account_number").val();
                                         console.log(account_number);
 
-                                        var beneficiary_currency_ = $("#onetime_beneficiary_account_currency")
+                                        var beneficiary_currency_ = $(
+                                                "#onetime_beneficiary_account_currency")
                                             .val().split('~');
                                         var beneficiary_currency = beneficiary_currency_[0];
                                         console.log(beneficiary_currency_)
@@ -2628,8 +2637,9 @@
                                                     $('#spinner-text').hide();
                                                     $('#back_button').hide();
                                                     $('#print_receipt').show();
-                                                    $("#related_information_display").removeClass(
-                                                        "d-none d-sm-block");
+                                                    $("#related_information_display")
+                                                        .removeClass(
+                                                            "d-none d-sm-block");
                                                     $(".form_process").hide();
                                                     $(".receipt").show();
 
@@ -2647,14 +2657,16 @@
                                                     $('#spinner-text').hide();
                                                     $('#print_receipt').hide();
                                                     $(".success_gif").hide();
-                                                    $("#related_information_display").removeClass(
-                                                        "d-none d-sm-block");
+                                                    $("#related_information_display")
+                                                        .removeClass(
+                                                            "d-none d-sm-block");
                                                     {{-- $(".rtgs_card_right").show(); --}}
                                                     $(".form_process").show();
                                                     $(".receipt").hide();
 
                                                     $('#confirm_transfer').show();
-                                                    $('#confirm_button').attr('disabled', false);
+                                                    $('#confirm_button').attr('disabled',
+                                                        false);
 
 
                                                 }
@@ -2750,8 +2762,9 @@
                                                     $('#spinner-text').hide();
                                                     $('#back_button').hide();
                                                     $('#print_receipt').show();
-                                                    $("#related_information_display").removeClass(
-                                                        "d-none d-sm-block");
+                                                    $("#related_information_display")
+                                                        .removeClass(
+                                                            "d-none d-sm-block");
                                                     $(".form_process").hide();
                                                     $(".receipt").show();
 
@@ -2769,14 +2782,16 @@
                                                     $('#spinner-text').hide();
                                                     $('#print_receipt').hide();
                                                     $(".success_gif").hide();
-                                                    $("#related_information_display").removeClass(
-                                                        "d-none d-sm-block");
+                                                    $("#related_information_display")
+                                                        .removeClass(
+                                                            "d-none d-sm-block");
                                                     {{-- $(".rtgs_card_right").show(); --}}
                                                     $(".form_process").show();
                                                     $(".receipt").hide();
 
                                                     $('#confirm_transfer').show();
-                                                    $('#confirm_button').attr('disabled', false);
+                                                    $('#confirm_button').attr('disabled',
+                                                        false);
 
 
                                                 }
