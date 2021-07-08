@@ -261,11 +261,16 @@
 
                     $.each(data, function(index){
 
+                        let today = new Date(data[index].postingSysDate);
+                        let dd = String(today.getDate()).padStart(2, '0');
+                        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                        let yyyy = today.getFullYear();
+
 
                         let debit = `
                         <tr>
 
-                            <td>${data[index].valueDate}</td>
+                            <td>${dd + '/' + mm + '/' + yyyy}</td>
                             <td>${formatToCurrency(parseFloat(data[index].amount))}</td>
                             <td>${formatToCurrency(parseFloat(data[index].runningBalance))}</td>
                             <td>${data[index].narration}</td>

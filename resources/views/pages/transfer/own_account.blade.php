@@ -183,7 +183,7 @@
                                                                 <tr>
                                                                     {{-- <th>#</th> --}}
                                                                     <th>Description</th>
-                                                                    <th class="text-right">Further Details</th>
+                                                                    <th>Further Details</th>
                                                                     {{-- <th>Amount (<span id="receipt_currency"></span>)</th> --}}
                                                                 </tr>
                                                             </thead>
@@ -448,7 +448,7 @@
                                                                                 id="user_pin"
                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                                             <br>
-                                                                            <button class="btn btn-success"
+                                                                            <button class="btn btn-success">
                                                                                 type="button" id="transfer_pin"
                                                                                 data-dismiss="modal">Submit</button>
                                                                         </form>
@@ -556,8 +556,7 @@
 
                                                                 <div class="input-group mb-3 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text"
-                                                                            class="input-group-text select_currency"
+                                                                        <input type="text" class="input-group-text "
                                                                             id="select_currency" style="width: 80px;"
                                                                             readonly>
                                                                         {{-- <select name="" class="input-group-text select_currency" id="select_currency">
@@ -1100,8 +1099,8 @@
                             $('#from_account').append($('<option>', {
                                 value: data[index].accountType + '~' + data[index]
                                     .accountDesc + '~' + data[index].accountNumber + '~' +
-                                    data[index].currency + '~' + data[index].availableBalance
-                                    + '~' + data[index].accountMandate
+                                    data[index].currency + '~' + data[index].availableBalance +
+                                    '~' + data[index].accountMandate
                             }).text(data[index].accountNumber +
                                 '~' + data[index].currency + ' ~ ' + formatToCurrency(parseFloat(
                                     data[index].availableBalance))
@@ -1179,8 +1178,7 @@
                         console.log(data);
                         $.each(data, function(index) {
                             $('#select_currency__').append($('<option>', {
-                                value: data[index].currCode + '~' + data[index].description +
-                                    '~' + data[index].isoCode
+                                value: data[index].isoCode
                             }).text(data[index].isoCode));
                         })
 
@@ -1420,32 +1418,26 @@
 
 
 
+
                 function currency_convertor(forex_rate) {
 
-                    let select_currency__ = $('#select_currency__').val()
-                    select_currency___info = select_currency__.split("~")
+                    {{-- let select_currency__ = $('#select_currency__').val()
+                    select_currency___info = select_currency__.split("~") --}}
 
                     let amount = $("#amount").val()
-                    let convert_amount_currency = select_currency___info[2]
+                    let convert_amount_currency = $('#select_currency__').val()
                     let converted_amount = ''
 
 
 
                     console.log(convert_amount_currency)
 
-                    cur_1 = $('#select_currency').val()
-                    cur_2 = select_currency___info[2]
-
 
 
                     cur_1 = $('#select_currency').val()
                     cur_2 = $('#select_currency__').val()
 
-                    if (cur_1 == "SLL") {
 
-                    } else {
-
-                    }
 
                     let currency_pair_1 = cur_1 + '/ ' + cur_2
                     let currency_pair_2 = cur_2 + '/ ' + cur_1
@@ -1518,6 +1510,7 @@
                             }
                         })
                     }
+
                 }
 
                 $("#select_currency__").change(function() {
@@ -1818,10 +1811,13 @@
                             $(".receipt_currency").text(select_currency);
 
 
-                            var category_ = $('#category').val().split("~");
+                            var category_ = ($('#category').val()).split("~");
                             var category = category_[1];
+                            console.log(category_)
+                            console.log(category)
                             $("#display_category").text(category[1]);
                             $("#category_receipt").text(category[1]);
+
 
                             var purpose = $('#purpose').val();
                             $("#display_purpose").text(purpose);
@@ -1910,7 +1906,16 @@
                                     }
                                 },
                                 error: function(xhr, status, error) {
-
+                                    $("#confirm_transfer").show();
+                                        $("#confirm_modal_button").prop('disabled',
+                                            false);
+                                        $('#spinner').hide();
+                                        $('#spinner-text').hide();
+                                        $('#back_button').show();
+                                        $('#print_receipt').hide();
+                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                        $("#related_information_display").show();
+                                        $(".success_gif").hide();
                                 }
 
                             })

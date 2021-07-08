@@ -321,8 +321,10 @@
                             let debit_account = pending_request.account_no;
                             debit_account != null ? append_approval_details("Debit Account" , debit_account) : '';
 
-                            let beneficiary_name = pending_request.beneficiary_name;
-                            beneficiary_name != null ? append_approval_details("Beneficiary Name" , beneficiary_name) : '';
+
+
+                            let bank_name = pending_request.bank_name;
+                            bank_name != null ? append_approval_details("Bank Name" , bank_name) : '';
 
                             let beneficiary_account = pending_request.creditaccountnumber;
                             beneficiary_account != null ? append_approval_details("Beneficiary Account" , beneficiary_account) : '';
@@ -330,11 +332,16 @@
                             let beneficiary_address = pending_request.beneficiaryaddress;
                             beneficiary_address != null ? append_approval_details("Beneficiary Address" , beneficiary_address) : '';
 
+                            let beneficiary_name = pending_request.beneficiaryname;
+                            beneficiary_name != null ? append_approval_details("Beneficiary Name" , beneficiary_name) : '';
+
                             let currency = pending_request.currency;
                             currency != null ? append_approval_details("Currency" , currency) : '';
 
                             let amount = pending_request.amount;
                             amount != null ? append_approval_details("Amount" , formatToCurrency(parseFloat(amount))) : '';
+
+
 
                             let total_amount = pending_request.total_amount;
                             total_amount != null ? append_approval_details("Total Amount" , formatToCurrency(parseFloat(total_amount))) : '';
@@ -417,7 +424,32 @@
             //Reject Button
             $("#reject_transaction").click(function(e){
                 e.preventDefault();
-                alert("Reject Transaction");
+                {{--  alert("Reject Transaction");  --}}
+
+                Swal.fire({
+                    title: 'Provide reason for rejection',
+                    input: 'text',
+                    inputAttributes: {
+                      autocapitalize: 'off'
+                    },
+                    showCancelButton: true,
+                    confirmButtonColor: '#f1556c',
+                    confirmButtonText: 'Proceed',
+                    showLoaderOnConfirm: true,
+                    preConfirm: (narration) => {
+                        return ajax_post_for_reject();
+
+                    },
+                    allowOutsideClick: () => !Swal.isLoading()
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      Swal.fire({
+                        title: `${result.value.login}'s avatar`,
+                        imageUrl: result.value.avatar_url
+                      })
+                    }
+                  })
+
             })
 
             $("#approve_transaction").click(function (e){
@@ -456,6 +488,11 @@
                         if (response.responseCode == '000') {
                             Swal.fire('', response.message, 'success');
 
+                            setTimeout(function(){
+                                window.opener.location.reload();
+                                window.close();
+                            }, 5000)
+
                         }else {
                             Swal.fire('', response.message, 'error');
 
@@ -492,6 +529,51 @@
                   })
 
 
+            }
+
+            function ajax_post_for_reject(){
+                let narration = $('.swal2-input').val()
+                $('#reject_transaction').text("Processing ...")
+                var customer = @json($customer_no);
+                var request_id = @json($request_id);
+
+                console.log(narration)
+
+                $.ajax({
+                    type : 'POST',
+                    url : "../../reject-pending-request" ,
+                    datatype : 'application/json',
+                    data : {
+                        'narrartion' : narration,
+                        'request_id' : request_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        if (response.responseCode == '000') {
+                            Swal.fire('', response.message, 'success');
+
+                            setTimeout(function(){
+                                window.opener.location.reload();
+                                window.close();
+                            }, 5000)
+
+                        }else {
+                            Swal.fire('', response.message, 'error');
+
+                        }
+
+                        $('#reject_transaction').html(`Reject <i class="mdi mdi-cancel">`)
+                    },
+                    error: function(xhr, status, error) {
+                        $('#reject_transaction').html(`Reject <i class="mdi mdi-cancel">`)
+                            Swal.showValidationMessage(
+                            `Request failed: ${error}`
+                          )
+                    }
+                })
             }
 
          });

@@ -77,4 +77,27 @@ class ApprovedRequestController extends Controller
         }
 
     }
+
+    public function reject_request(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'narration' => 'required',
+            'request_id' => 'required'
+        ]);
+
+
+
+
+
+        $base_response = new BaseResponse();
+
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        return $request;
+
+    }
+
 }
