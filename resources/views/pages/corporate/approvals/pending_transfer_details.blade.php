@@ -306,8 +306,8 @@
     <!-- Datatables init -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 {{--
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>  --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>  --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
             function account_mandate() {
@@ -422,6 +422,8 @@
                             beneficiary_name != null ? append_approval_details("Beneficiary Name" , beneficiary_name) : '';
 
                             let currency = pending_request.currency;
+
+                            currency = pending_request.currency == ('ACH' || 'RTGS') ? pending_request.currency  : pending_request.currency_2;
                             currency != null ? append_approval_details("Currency" , currency) : '';
 
                             let amount = pending_request.amount;

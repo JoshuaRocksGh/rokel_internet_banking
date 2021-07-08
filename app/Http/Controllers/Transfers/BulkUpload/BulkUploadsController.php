@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Transfers\BulkUpload;
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
+use App\Imports\ExcelUploadImport;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BulkUploadsController extends Controller
 {
@@ -72,6 +74,77 @@ class BulkUploadsController extends Controller
         return response()->download($pathToFile, 'Bulk_Payment_Other_bank_File.xlsx');
     }
 
+
+    public function upload_(Request $request)
+    {
+
+
+        $documentRef = time();
+        $account_no = $request->account_no;
+        $bank_code = $request->bank_type;
+        $trans_ref_no = $request->trans_ref_no;
+        $total_amount = $request->total_amount;
+        $value_date = $request->value_date;
+
+        $this->validate($request, [
+            'excel_file' => 'required|mimes:xls,xlsx',
+            'my_account' => 'required',
+            'bulk_amount' => 'required',
+            'reference_no' => 'required',
+            'value_date' => 'required',
+        ]);
+
+      
+        $user_id = session()->get('userId');
+        $customer_no = session()->get('customerNumber');
+        $user_name = session()->get('userAlias');
+
+        $documentRef = time();
+        $account_no = $request->account_no;
+        $bank_code = $request->bank_type;
+        $trans_ref_no = $request->trans_ref_no;
+        $total_amount = $request->total_amount;
+        $value_date = $request->value_date;
+
+
+         $account_info = explode("~", $account_no);
+         $account_no = $account_info[2];
+
+         if ($request->file()) {
+             
+            $path = $request->file('excel_file')->getRealPath();
+
+            $file = $request->file('excel_file');
+            $ext = $file->getClientOriginalExtension();
+            $name = strtoupper($documentRef) . '~' . strtoupper($trans_ref_no) . '~' . strtoupper($total_amount) . '.' . $ext;
+
+            $post_date = Carbon::now();
+            $post_date = $post_date->toDateTimeString();
+
+            return Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file), $file);
+            
+         }else{
+
+         }
+
+        $path = $request->file('excel_file')->getRealPath();
+
+        $file = $request->file('excel_file');
+        $ext = $file->getClientOriginalExtension();
+        $name = strtoupper($documentRef) . '~' . strtoupper($trans_ref_no) . '~' . strtoupper($total_amount) . '.' . $ext;
+
+        $post_date = Carbon::now();
+        $post_date = $post_date->toDateTimeString();
+
+        return $post_date;
+
+        $pathToFile = public_path() . '/assets/images/bulk_payment_other_bank.xlsx';
+
+        $header = array(
+            'Content-Type' => 'application/xlsx'
+        );
+        return response()->download($pathToFile, 'Bulk_Payment_Other_bank_File.xlsx');
+    }
 
     public function get_bulk_upload_list(Request $request)
     {

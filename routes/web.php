@@ -158,6 +158,8 @@ Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])
 Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
 
 // BULK TRANSFERS
+Route::post('/upload_', [BulkUploadBulkUploadsController::class, 'upload_'])->name('upload_');
+
 Route::get('/bulk-transfer', [BulkUploadBulkUploadsController::class, 'index'])->name('bulk-transfer');
 Route::get('/download_same_bank_file', [BulkUploadBulkUploadsController::class, 'download_same_bank'])->name('download-same-bank-file');
 Route::get('/download_other_bank_file', [BulkUploadBulkUploadsController::class, 'download_other_bank'])->name('download-other-bank-file');
