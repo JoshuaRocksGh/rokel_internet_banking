@@ -44,7 +44,7 @@
 
 
 
-        <div class="container-fluid">
+        <div class="container-fluid hide_on_print">
             <br>
             <!-- start page title -->
             <div class="row">
@@ -2373,8 +2373,8 @@
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
                                                 'content')
                                         },
-                                        success: function(data) {
-                                            let response = JSON.parse(data)
+                                        success: function(response) {
+                                            
                                             console.log(response);
 
                                             if (response.responseCode == '000') {
@@ -2476,26 +2476,29 @@
 
                                     var sec_pin = $('#user_pin').val()
 
+                                    let api_data = {
+                                        from_account: from_account,
+                                        bank_name: bank_name,
+                                        beneficiary_name: beneficiary_name,
+                                        beneficiary_address: beneficiary_address,
+                                        to_account: to_account,
+                                        amount: amount,
+                                        currency: currCode,
+                                        currency_iso: currency,
+                                        category: category,
+                                        purpose: purpose,
+                                        future_payement: future_payement,
+                                        beneficiary_type: beneficiary_type,
+                                        account_mandate: accountMandate
+                                    };
+
+                                    console.log(api_data)
+
                                     $.ajax({
                                         type: 'POST',
                                         url: 'corporate-saved-local-bank-transfer-api',
                                         datatype: "application/json",
-                                        data: {
-                                            "from_account": from_account,
-                                            "bank_name": bank_name,
-                                            "beneficiary_name": beneficiary_name,
-                                            "beneficiary_address": beneficiary_address,
-                                            "to_account": to_account,
-                                            "amount": amount,
-                                            "currency": currCode,
-                                            "currency_iso": currency,
-                                            "category": category,
-                                            "purpose": purpose,
-                                            "future_payement": future_payement,
-                                            "beneficiary_type": beneficiary_type,
-                                            'account_mandate': accountMandate
-
-                                        },
+                                        data: api_data,
                                         headers: {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
                                                 .attr('content')

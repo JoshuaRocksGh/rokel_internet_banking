@@ -377,6 +377,7 @@ class LocalBankController extends Controller
 
     public function corporate_saved_beneficiary(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             "from_account" => 'required',
             "bank_name" => 'required',
@@ -409,11 +410,12 @@ class LocalBankController extends Controller
         $beneficiary_type = $request->beneficiary_type;
 
         $bank_name = $request->bank_name;
-        $explode_bank_name = explode('||', $bank_name);
-        // return $explode_bank_name;
 
+        /*
+        $explode_bank_name = explode('||', $bank_name);
         $bankName = $explode_bank_name[0];
         $bankCode = $explode_bank_name[1];
+        */
 
         // return $beneficiary_type ;
 
@@ -446,7 +448,7 @@ class LocalBankController extends Controller
             "account_mandate" => $request->account_mandate,
             "account_no" => $request->from_account,
             "bank_code" => null,
-            "bank_name" => $bankName,
+            "bank_name" => $bank_name,
             "bene_account" => $request->to_account,
             "bene_name" => $request->beneficiary_name,
             "bene_address" => $request->beneficiary_address,
@@ -457,11 +459,17 @@ class LocalBankController extends Controller
             "narration" => $request->account_mandate
         ];
 
+        // return response()->json([
+        //     'responseCode' => '$response_code',
+        //     'message' => '$message',
+        //     'data' => $data
+        // ], 200);
+        // return $base_response->api_response('200', 'TESTING',  $data);
         // return $data;
 
         try {
 
-            // dd((env('CIB_API_BASE_URL') . "own-account-gone-for-pending"));
+            // dd(env('CIB_API_BASE_URL') . $url_endpoint);
 
             $response = Http::post(env('CIB_API_BASE_URL') . $url_endpoint, $data);
 
@@ -485,6 +493,8 @@ class LocalBankController extends Controller
 
     public function corporate_onetime_beneficiary(Request $request)
     {
+        // return $request;
+
         $validator = Validator::make($request->all(), [
             "from_account" => 'required',
             "bank_name" => 'required',
@@ -524,7 +534,7 @@ class LocalBankController extends Controller
         $customerNumber = session()->get('customerNumber');
         $userMandate = session()->get('userMandate');
 
-        
+
         if ($beneficiary_type == "ACH") {
             $url_endpoint = 'ach-bank-gone-for-pending';
         } else if ($beneficiary_type == "RTGS") {
@@ -535,7 +545,7 @@ class LocalBankController extends Controller
             $url_endpoint = '';
         }
 
-        
+
         $data = [
             "customer_no" => $customerNumber,
             "user_id" => $userID,
@@ -556,7 +566,7 @@ class LocalBankController extends Controller
 
         // return $data;
 
-        
+
         try {
 
             // dd((env('CIB_API_BASE_URL') . $url_endpoint));

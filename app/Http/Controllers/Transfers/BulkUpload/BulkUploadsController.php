@@ -94,7 +94,7 @@ class BulkUploadsController extends Controller
             'value_date' => 'required',
         ]);
 
-      
+
         $user_id = session()->get('userId');
         $customer_no = session()->get('customerNumber');
         $user_name = session()->get('userAlias');
@@ -111,7 +111,7 @@ class BulkUploadsController extends Controller
          $account_no = $account_info[2];
 
          if ($request->file()) {
-             
+
             $path = $request->file('excel_file')->getRealPath();
 
             $file = $request->file('excel_file');
@@ -122,7 +122,7 @@ class BulkUploadsController extends Controller
             $post_date = $post_date->toDateTimeString();
 
             return Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file), $file);
-            
+
          }else{
 
          }
