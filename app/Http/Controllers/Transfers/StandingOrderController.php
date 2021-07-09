@@ -49,6 +49,7 @@ class StandingOrderController extends Controller
         $userID = session()->get('userId');
         $api_headers = session()->get('headers');
         $sender_name = session()->get('userAlias');
+        $ip_address =
         // return $api_headers;
 
             $accLink= $request->from_account;
@@ -57,8 +58,8 @@ class StandingOrderController extends Controller
             $beneficiaryAccount = $request->beneficiary_account;
             $dueAmount= $request->amount;
             $dueDate = $request->standing_order_end_date;
-            // $startDate = $request->standing_order_start_date;
-            $frequencyCode = $request->so_frequency;
+            $startDate = $request->standing_order_start_date;
+            $frequencyCode = $request->standing_order_frequency;
             $postedBy = $sender_name;
             $terminalId = get_current_user();
             $transactionDetails = $request->narration;
@@ -78,6 +79,21 @@ class StandingOrderController extends Controller
             //     "terminalId"=> "ATO",
             //     "transactionDetails"=> "goods purchase"
             // ];
+
+            $data =
+            // [
+            //     "amount": "20",
+            //     "authToken": "string",
+            //     "bankCode": "string",
+            //     "creditAccount": $accLink,
+            //     "debitAccount": $beneficiaryAccount,
+            //     "deviceIp": "string",
+            //     "effectiveDate": $startDate,
+            //     "expiryDate": $dueDate,
+            //     "frequency": $frequencyCode,
+            //     "pinCode"=> $pin_code,
+            //     "transactionDesc"=> $transactionDetails
+            //  ]
 
             $data =
             [
