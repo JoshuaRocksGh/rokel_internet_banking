@@ -17,37 +17,37 @@
 
 @section('content')
 
-<div class="container-fluid hide_on_print">
-    <br>
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-md-6">
-            <h4 class="text-primary">
-                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                PENDING APPROVAL
+    <div class="container-fluid hide_on_print">
+        <br>
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-primary">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    PENDING APPROVAL
 
-            </h4>
+                </h4>
+            </div>
+
+            <div class="col-md-6 text-right">
+                <h6>
+
+                    <span class="flaot-right">
+                        <b class="text-primary"> Approval </b> &nbsp; > &nbsp; <b class="text-danger">Pending Approval</b>
+
+
+                    </span>
+
+                </h6>
+
+            </div>
+
+            <div class="col-md-12 ">
+                <hr class="text-primary" style="margin: 0px;">
+            </div>
+
         </div>
-
-        <div class="col-md-6 text-right">
-            <h6>
-
-                <span class="flaot-right">
-                    <b class="text-primary"> Approval </b> &nbsp; > &nbsp; <b class="text-danger">pending Approval</b>
-
-
-                </span>
-
-            </h6>
-
-        </div>
-
-        <div class="col-md-12 ">
-            <hr class="text-primary" style="margin: 0px;">
-        </div>
-
     </div>
-</div>
 
     <div>
         <br>
@@ -64,14 +64,6 @@
 
 
                                 <div class="card card-body table-responsive">
-
-                                    {{-- <h4 class="header-title">Buttons example</h4>
-                                    <p class="sub-header font-13">
-                                        The Buttons extension for DataTables provides a common set of options, API
-                                        methods and styling to display buttons on a page
-                                        that will interact with a DataTable. The core library provides the based
-                                        framework upon which plug-ins can built.
-                                    </p> --}}
 
                                     <table id="datatable-buttons"
                                         class="table dt-responsive  table-bordered table-striped nowrap w-100 pending_transaction_request "
@@ -315,136 +307,140 @@
 
             </div>
 
+        </div>
+    </div>
+@endsection
 
-        @endsection
+@section('scripts')
 
-        @section('scripts')
+    <!-- third party js -->
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <!-- third party js ends -->
 
-            <!-- third party js -->
-            <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-            </script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
-            <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
-            <!-- Datatables init -->
-            <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    <script>
+        function get_corporate_requests(customerNumber, requestStatus) {
+            var table = $('.pending_transaction_request').DataTable();
+            var nodes = table.rows().nodes();
 
-            <script>
-                function get_corporate_requests(customerNumber, requestStatus) {
-                    var table = $('.pending_transaction_request').DataTable();
-                    var nodes = table.rows().nodes();
+            $(".loans_display_area").hide()
+            $(".loans_error_area").hide()
+            $(".loans_loading_area").show()
 
-                    $(".loans_display_area").hide()
-                    $(".loans_error_area").hide()
-                    $(".loans_loading_area").show()
+            $.ajax({
+                type: "GET",
+                url: "get-pending-requests?customerNumber=" + customerNumber + '&requestStatus=' + requestStatus,
+                datatype: "application/json",
 
-                    $.ajax({
-                        type: "GET",
-                        url: "get-pending-requests?customerNumber=" + customerNumber + '&requestStatus=' + requestStatus,
-                        datatype: "application/json",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.responseCode == '000') {
 
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response) {
-                            console.log(response);
-                            if (response.responseCode == '000') {
+                        let data = response.data;
 
-                                let data = response.data;
-
-                                table.clear().draw()
-
-
-                                $.each(data, function(index) {
-                                    let request_type = ''
-                                    if (data[index].request_type == 'OWN') {
-                                        request_type = 'Own Account Transfer'
-                                    } else if (data[index].request_type == 'SAB') {
-                                        request_type = 'Same Bank Transfer'
-                                    } else if (data[index].request_type == 'ACH') {
-                                        request_type = 'ACH Transfer'
-                                    } else if (data[index].request_type == 'RTGS') {
-                                        request_type = 'RTGS Transfer'
-                                    } else if (data[index].request_type == 'INT') {
-                                        request_type = 'International Bank Transfer'
-                                    } else {
-                                        request_type = 'Others'
-                                    }
-                                    let request_id = data[index].request_id;
-                                    let customer_no = data[index].customer_no;
+                        table.clear().draw()
 
 
-                                    table.row.add([
+                        $.each(data, function(index) {
+                            let request_type = ''
+                            if (data[index].request_type == 'OWN') {
+                                request_type = 'Own Account Transfer'
+                            } else if (data[index].request_type == 'SAB') {
+                                request_type = 'Same Bank Transfer'
+                            } else if (data[index].request_type == 'ACH') {
+                                request_type = 'ACH Transfer'
+                            } else if (data[index].request_type == 'RTGS') {
+                                request_type = 'RTGS Transfer'
+                            } else if (data[index].request_type == 'BULK') {
+                                request_type = 'Bulk Transfer'
+                            } else if (data[index].request_type == 'INT') {
+                                request_type = 'International Bank Transfer'
+                            } else {
+                                request_type = 'Others'
+                            }
+                            let request_id = data[index].request_id;
+                            let customer_no = data[index].customer_no;
 
-                                        request_type,
-                                        `<button type="button" class="btn btn-warning disabled btn-xs waves-effect waves-light">Pending</button>`
 
-                                        ,
-                                        data[index].postedby,
-                                        data[index].post_date,
-                                        data[index].account_no,
-                                        `
+                            table.row.add([
+
+                                request_type,
+                                `<button type="button" class="btn btn-warning disabled btn-xs waves-effect waves-light">Pending</button>`
+
+                                ,
+                                data[index].postedby,
+                                data[index].post_date,
+                                data[index].account_no,
+                                `
                                                                              <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }} " target="_blank">
                                                                                 <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
                                                                             </a>
                                                                             `
 
-                                    ]).draw(false)
+                            ]).draw(false)
 
 
-                                })
+                        })
 
-                                $(".loans_error_area").hide()
-                                $(".loans_loading_area").hide()
-                                $(".loans_display_area").show()
+                        $(".loans_error_area").hide()
+                        $(".loans_loading_area").hide()
+                        $(".loans_display_area").show()
 
-                            } else {
+                    } else {
 
-                                $(".loans_error_area").hide()
-                                $(".loans_loading_area").hide()
-                                $(".loans_display_area").show()
+                        $(".loans_error_area").hide()
+                        $(".loans_loading_area").hide()
+                        $(".loans_display_area").show()
 
-                            }
+                    }
 
-                        },
-                        error: function(xhr, status, error) {
-                            $(".loans_display_area").hide()
-                            $(".loans_loading_area").hide()
-                            $(".loans_error_area").show()
+                },
+                error: function(xhr, status, error) {
+                    $(".loans_display_area").hide()
+                    $(".loans_loading_area").hide()
+                    $(".loans_error_area").show()
 
-                              setTimeout ( function(){ get_corporate_requests(customerNumber, requestStatus) }, $.ajaxSetup().retryAfter )
-
-                        }
-
-                    })
-
+                    setTimeout(function() {
+                        get_corporate_requests(customerNumber, requestStatus)
+                    }, $.ajaxSetup().retryAfter)
 
                 }
 
-                $(document).ready(function() {
+            })
 
-                    var customer_no = @json(session()->get('customerNumber'));
-                    var request_status = 'P'
-                    console.log(customer_no);
 
-                    $('.transfer_tab_btn').click(function() {
-                        let customer_no = @json(session()->get('customerNumber'));
-                        get_corporate_requests(customer_no, 'P')
-                    })
-                    get_corporate_requests(customer_no, request_status)
-                })
+        }
 
-            </script>
+        $(document).ready(function() {
 
-        @endsection
+            var customer_no = @json(session()->get('customerNumber'));
+            var request_status = 'P'
+            console.log(customer_no);
+
+            $('.transfer_tab_btn').click(function() {
+                let customer_no = @json(session()->get('customerNumber'));
+                get_corporate_requests(customer_no, 'P')
+            })
+            get_corporate_requests(customer_no, request_status)
+        })
+    </script>
+
+@endsection

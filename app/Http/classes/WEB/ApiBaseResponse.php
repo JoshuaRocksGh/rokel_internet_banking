@@ -15,8 +15,9 @@ class ApiBaseResponse
 
         if ($response->ok()) {    // API response status code is 200
 
+            // return $response->body();
             $result = json_decode($response->body());
-            // return $result;
+            // return $result->message;
 
 
             if ($result->responseCode == '000') {
@@ -53,9 +54,8 @@ class ApiBaseResponse
             return response()->json([
                 'responseCode' => '500',
                 'message' => 'API SERVER ERROR',
-                'data' => (string) $response->body()
+                'data' => null
             ], 500);
-
         }
     }
 }

@@ -193,7 +193,7 @@ class OwnAccountController extends Controller
         $data = [
 
 
-            "account_no" => $req->from_account ,
+            "account_no" => $req->from_account,
             "destinationAccountId" => $req->to_account,
             "amount" => $req->transfer_amount,
             "currency" => $req->currency,
@@ -202,10 +202,10 @@ class OwnAccountController extends Controller
             "account_mandate" => $req->account_mandate,
             "user_mandate" => $userMandate,
             // "appBy" => '';
-            "customerTel" => $customerPhone ,
-            "transBy" => $userID ,
-            "user_id" => $userID ,
-            "customer_no" => $customerNumber ,
+            "customerTel" => $customerPhone,
+            "transBy" => $userID,
+            "user_id" => $userID,
+            "customer_no" => $customerNumber,
             "user_alias" => $userAlias
             // $documentRef => strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 2) . time());
 

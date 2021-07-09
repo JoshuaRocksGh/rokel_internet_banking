@@ -17,413 +17,78 @@
 
 @section('content')
 
-    <div>
-
+    <div class="container-fluid hide_on_print">
+        <br>
+        <!-- start page title -->
         <div class="row">
-            <br> <br>
+            <div class="col-md-6">
+                <h4 class="text-primary">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    APPROVED TRANSACTION
+
+                </h4>
+            </div>
+
+            <div class="col-md-6 text-right">
+                <h6>
+
+                    <span class="flaot-right">
+                        <b class="text-primary"> Approval </b> &nbsp; > &nbsp; <b class="text-danger">Approved
+                            Transaction</b>
+
+
+                    </span>
+
+                </h6>
+
+            </div>
+
+            <div class="col-md-12 ">
+                <hr class="text-primary" style="margin: 0px;">
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <br>
+        <div class="row">
+            <br> <br><br>
             <div class="col-12">
-                <div class="card">
-                    <div class="card-body card-background-image">
+                <div class="">
+                    <div class="">
 
                         <div class="row">
 
-                            <div class="col-md-12">
-                                <p class="sub-header font-18 purple-color" style="cursor: pointer" onclick="window.history.back()">
-                                    <b>  APPROVED  </b>
-
-                                </p>
-                                <hr>
-                            </div>
 
                             <div class="col-md-12">
 
 
-                                <ul class="nav nav-pills navtab-bg nav-justified">
-                                    <li class="nav-item">
-                                        <a href="#transfer_tab" data-toggle="tab" aria-expanded="false"
-                                            class="nav-link active">
-                                            Transfers
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#payment_tab" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                            Payments
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#request_tab" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            Requests
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#cards_tab" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                            Cards
-                                        </a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane show active" id="transfer_tab">
+                                <div class="card card-body table-responsive">
 
-                                        <div class="card-body">
-
-                                            {{-- <h4 class="header-title">Buttons example</h4>
-                                            <p class="sub-header font-13">
-                                                The Buttons extension for DataTables provides a common set of options, API
-                                                methods and styling to display buttons on a page
-                                                that will interact with a DataTable. The core library provides the based
-                                                framework upon which plug-ins can built.
-                                            </p> --}}
-
-                                            <table id="datatable-buttons"
-                                                class="table table-striped dt-responsive nowrap w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Req-Type</th>
-                                                        <th>Status</th>
-                                                        <th>Initiated By</th>
-                                                        <th>Posted Date</th>
-                                                        <th>Account No</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-
-
-                                                <tbody>
-
-                                                    <tr>
-                                                        <td>914</td>
-                                                        <td>Approved</td>
-                                                        <td>AL HAMD ENTERPRISES</td>
-                                                        <td>15-04-2020 12:15:52</td>
-                                                        <td>004008210057725128</td>
-                                                        <td>
-                                                            <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-approved-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>1001</td>
-                                                        <td>Approved</td>
-                                                        <td>AL HAMD ENTERPRISES</td>
-                                                        <td>12-04-2020 12:15:52</td>
-                                                        <td>004008210057725123</td>
-                                                        <td>
-                                                            <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-approved-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                        <tr>
-                                                            <td>914</td>
-                                                            <td>Approved</td>
-                                                            <td>AL HAMD ENTERPRISES</td>
-                                                            <td>15-04-2020 12:15:52</td>
-                                                            <td>004008210057725128</td>
-                                                            <td>
-                                                                <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-approved-transfer-details') }}"
-                                                                    target="_blank">
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-primary">View</button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                    <tr>
-                                                        <td>1001</td>
-                                                        <td>Approved</td>
-                                                        <td>AL HAMD ENTERPRISES</td>
-                                                        <td>12-04-2020 12:15:52</td>
-                                                        <td>004008210057725123</td>
-                                                        <td>
-                                                            <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-approved-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                        <tr>
-                                                            <td>914</td>
-                                                            <td>Approved</td>
-                                                            <td>AL HAMD ENTERPRISES</td>
-                                                            <td>15-04-2020 12:15:52</td>
-                                                            <td>004008210057725128</td>
-                                                            <td>
-                                                                <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-approved-transfer-details') }}"
-                                                                    target="_blank">
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-primary">View</button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    <tr>
-                                                        <td>1001</td>
-                                                        <td>Approved</td>
-                                                        <td>AL HAMD ENTERPRISES</td>
-                                                        <td>12-04-2020 12:15:52</td>
-                                                        <td>004008210057725123</td>
-                                                        <td>
-                                                            <!-- Info Alert modal -->
-                                                            <a href="{{ url('approvals-approved-transfer-details') }}"
-                                                                target="_blank">
-                                                                <button type="button"
-                                                                    class="btn btn-sm btn-primary">View</button>
-                                                            </a>
-                                                        </td>
-                                                        <tr>
-                                                            <td>914</td>
-                                                            <td>Approved</td>
-                                                            <td>AL HAMD ENTERPRISES</td>
-                                                            <td>15-04-2020 12:15:52</td>
-                                                            <td>004008210057725128</td>
-                                                            <td>
-                                                                <!-- Info Alert modal -->
-                                                                <a href="{{ url('approvals-approved-transfer-details') }}"
-                                                                    target="_blank">
-                                                                    <button type="button"
-                                                                        class="btn btn-sm btn-primary">View</button>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-
-                                                </tbody>
-                                            </table>
-
-
-                                        </div> <!-- end card body-->
-
-
-                                    </div>
-
-                                    <div class="tab-pane  " id="payment_tab">
+                                    <table id="datatable-buttons"
+                                        class="table dt-responsive  table-bordered table-striped nowrap w-100 pending_transaction_request "
+                                        style="zoom: 1;">
+                                        <thead>
+                                            <tr class="bg-info text-white">
+                                                <th>Req-Type</th>
+                                                <th>Status</th>
+                                                <th>Initiated By</th>
+                                                <th>Posted Date</th>
+                                                <th>Account No</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
 
 
 
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Red Hoodie for
-                                                                    men</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                USD 5,700.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Designer Awesome
-                                                                    T-Shirt</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                SLL 888.00
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
+                                    </table>
 
 
-                                    </div>
-
-
-                                    <div class="tab-pane  " id="request_tab">
+                                </div> <!-- end card body-->
 
 
 
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Red Hoodie for
-                                                                    men</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                USD 5,700.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Designer Awesome
-                                                                    T-Shirt</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                SLL 888.00
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
-
-
-                                    </div>
-
-
-                                    <div class="tab-pane  " id="cards_tab">
-
-
-
-                                        <div class="border mt-0 rounded">
-                                            <h4 class="header-title p-2 mb-0 text-danger">My LOANS</h4>
-
-                                            <div class="table-responsive" style="height: 275px;">
-                                                <table class="table table-centered table-nowrap mb-0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Savings
-                                                                    Account</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-
-                                                            <td class="text-right">
-                                                                GHS 90,039.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Red Hoodie for
-                                                                    men</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                USD 5,700.00
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="width: 10px;">
-                                                                <div class="avatar-sm rounded bg-soft-danger">
-                                                                    <i
-                                                                        class="dripicons-wallet font-4 avatar-title text-danger"></i>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <a href="ecommerce-product-detail.html"
-                                                                    class="text-body font-weight-semibold">Designer Awesome
-                                                                    T-Shirt</a>
-                                                                <small class="d-block">01024499300101</small>
-                                                            </td>
-                                                            <td class="text-right">
-                                                                SLL 888.00
-                                                            </td>
-                                                        </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                        </div> <!-- end .border-->
-
-
-                                    </div>
-                                </div>
                             </div>
 
 
@@ -604,7 +269,7 @@
                                                                     type="button" id="confirm_button">Confirm Transfer
                                                                 </button></span>
                                                             <span>&nbsp; <button class="btn btn-light btn-rounded"
-                                                                    type="button" id="confirm_button">Print Receipt
+                                                                    type="button" id="receipt_button">Print Receipt
                                                                 </button></span>
                                                         </div>
                                                     </div>
@@ -643,29 +308,140 @@
 
             </div>
 
+        </div>
+    </div>
+@endsection
 
-        @endsection
+@section('scripts')
 
-        @section('scripts')
+    <!-- third party js -->
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <!-- third party js ends -->
 
-            <!-- third party js -->
-            <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-            </script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
-            <!-- third party js ends -->
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
-            <!-- Datatables init -->
-            <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    <script>
+        function get_corporate_requests(customerNumber, requestStatus) {
+            var table = $('.pending_transaction_request').DataTable();
+            var nodes = table.rows().nodes();
 
-        @endsection
+            $(".loans_display_area").hide()
+            $(".loans_error_area").hide()
+            $(".loans_loading_area").show()
+
+            $.ajax({
+                type: "GET",
+                url: "get-pending-requests?customerNumber=" + customerNumber + '&requestStatus=' + requestStatus,
+                datatype: "application/json",
+
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.responseCode == '000') {
+
+                        let data = response.data;
+
+                        table.clear().draw()
+
+
+                        $.each(data, function(index) {
+                            let request_type = ''
+                            if (data[index].request_type == 'OWN') {
+                                request_type = 'Own Account Transfer'
+                            } else if (data[index].request_type == 'SAB') {
+                                request_type = 'Same Bank Transfer'
+                            } else if (data[index].request_type == 'ACH') {
+                                request_type = 'ACH Transfer'
+                            } else if (data[index].request_type == 'RTGS') {
+                                request_type = 'RTGS Transfer'
+                            } else if (data[index].request_type == 'BULK') {
+                                request_type = 'Bulk Transfer'
+                            } else if (data[index].request_type == 'INT') {
+                                request_type = 'International Bank Transfer'
+                            } else {
+                                request_type = 'Others'
+                            }
+                            let request_id = data[index].request_id;
+                            let customer_no = data[index].customer_no;
+
+
+                            table.row.add([
+
+                                request_type,
+                                `<button type="button" class="btn btn-success disabled btn-xs waves-effect waves-light">Approved</button>`
+
+                                ,
+                                data[index].postedby,
+                                data[index].post_date,
+                                data[index].account_no,
+                                `
+                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }} " target="_blank">
+                                                                                <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
+                                                                            </a>
+                                                                            `
+
+                            ]).draw(false)
+
+
+                        })
+
+                        $(".loans_error_area").hide()
+                        $(".loans_loading_area").hide()
+                        $(".loans_display_area").show()
+
+                    } else {
+
+                        $(".loans_error_area").hide()
+                        $(".loans_loading_area").hide()
+                        $(".loans_display_area").show()
+
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    $(".loans_display_area").hide()
+                    $(".loans_loading_area").hide()
+                    $(".loans_error_area").show()
+
+                    setTimeout(function() {
+                        get_corporate_requests(customerNumber, requestStatus)
+                    }, $.ajaxSetup().retryAfter)
+
+                }
+
+            })
+
+
+        }
+
+        $(document).ready(function() {
+
+            var customer_no = @json(session()->get('customerNumber'));
+            var request_status = 'A'
+            console.log(customer_no);
+
+            $('.transfer_tab_btn').click(function() {
+                let customer_no = @json(session()->get('customerNumber'));
+                get_corporate_requests(customer_no, 'P')
+            })
+            get_corporate_requests(customer_no, request_status)
+        })
+    </script>
+
+@endsection

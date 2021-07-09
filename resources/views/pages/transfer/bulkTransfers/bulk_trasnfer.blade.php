@@ -270,6 +270,12 @@
 
                     });
                 },
+                error: function(xhr, status, error) {
+
+                    setTimeout(function() {
+                        my_account();
+                    }, $.ajaxSetup().retryAfter)
+                }
 
             })
         }

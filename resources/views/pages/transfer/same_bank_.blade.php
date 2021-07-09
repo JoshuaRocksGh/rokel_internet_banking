@@ -1384,7 +1384,7 @@
                         console.log(response.responseCode)
                         if (response.responseCode == "000") {
                             console.log(response.data)
-                            toaster(response.message, 'success');
+                            toaster(response.message, 'success', 5000);
                             $('#onetime_beneficiary_name').val(response.data.accountDescription);
                             $('.display_to_account_name').text(response.data.accountDescription);
                             $('.display_to_account_currency').text(response.data
@@ -1398,7 +1398,7 @@
                             $('#save_beneficiary').show('')
 
                         } else {
-                            toaster(response.message, 'error');
+                            toaster(response.message, 'error', 10000);
                             {{-- $('#account_name').val('')
                             $('#select_currency_i').val('')
                             $('#select_currency').val('')
@@ -1576,7 +1576,7 @@
                     if ((from_account.trim() == to_account.trim()) && from_account.trim() != '' &&
                         to_account.trim() != '') {
                         toaster('can not transfer to same account', 'error', 10000)
-                        {{-- alert('can not transfer to same account') --}}
+
                         $(this).val('')
                     }
 

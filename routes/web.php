@@ -137,6 +137,9 @@ Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_accou
 //CORPORATE OWN ACCOUNT API
 Route::post('/corporate-own-account-api', [TransferOwnAccountController::class, 'corporate_own_account_transfer'])->name('corporate-own-account-api');
 Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
+Route::post('/corporate-saved-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_saved_beneficiary'])->name('corporate-saved-local-bank-transfer-api');
+Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary'])->name('corporate-onetime-local-bank-transfer-api');
+// Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
 
 
 //Standing order page
@@ -156,6 +159,8 @@ Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])
 Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
 
 // BULK TRANSFERS
+Route::post('/upload_', [BulkUploadBulkUploadsController::class, 'upload_'])->name('upload_');
+
 Route::get('/bulk-transfer', [BulkUploadBulkUploadsController::class, 'index'])->name('bulk-transfer');
 Route::get('/download_same_bank_file', [BulkUploadBulkUploadsController::class, 'download_same_bank'])->name('download-same-bank-file');
 Route::get('/download_other_bank_file', [BulkUploadBulkUploadsController::class, 'download_other_bank'])->name('download-other-bank-file');
@@ -164,6 +169,8 @@ Route::get('/get-bulk-upload-list-api', [BulkUploadBulkUploadsController::class,
 Route::get('/get-bulk-upload-detail-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_file_details'])->name('get-bulk-upload-detail-list-api');
 Route::get('/post-bulk-transaction-api', [BulkUploadBulkUploadsController::class, 'post_bulk_transaction'])->name('post-bulk-transaction-api');
 
+
+Route::post('/get-bulk-detail-list-for-approval', [PendingController::class, 'get_bulk_detail_list_for_approval'])->name('get-bulk-detail-list-for-approval');
 
 
 
@@ -207,7 +214,6 @@ Route::post('/update-korpor-upload-detail-list-api', [BulkKorporController::clas
 
 
 
-
 Route::post('/submit-kyc', [KycController::class, 'submit_kyc'])->name('submit-kyc');
 
 
@@ -231,6 +237,8 @@ Route::get('/one-time-payment', [paymentController::class, 'one_time'])->name('o
 
 //  CORPORATE ROUTE
 Route::get('/approvals-pending', [PendingController::class, 'approvals_pending'])->name('approvals-pending');
+// Route::get('/approved-transaction', [PendingController::class, 'approved_transaction'])->name('approved-transaction');
+
 // Route::get('/approvals-pending/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending'])->name('approvals-pending/request_id/customer_no');
 Route::get('/get-pending-requests', [GeneralFunctionsFunctionsController::class, 'get_pending_requests'])->name('get-pending-requests');
 Route::get('/approvals-pending-transfer-details', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details');
