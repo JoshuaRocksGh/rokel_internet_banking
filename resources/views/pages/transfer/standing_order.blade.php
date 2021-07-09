@@ -1442,7 +1442,8 @@
                                             'content')
                                     },
                                     success: function(response) {
-                                        {{-- console.log(response); --}}
+                                        console.log(response);
+
                                         if (response.responseCode == '000') {
                                             toaster(response.message, 'success', 1000);
                                             $("#spinner").hide();

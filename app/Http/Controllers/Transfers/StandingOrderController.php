@@ -94,6 +94,7 @@ class StandingOrderController extends Controller
                 "transactionDetails"=> $transactionDetails
             ];
 
+            return $data;
 
         try {
             $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "transfers/standingOrder", $data);
