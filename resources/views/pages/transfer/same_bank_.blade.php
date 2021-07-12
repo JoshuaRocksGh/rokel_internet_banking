@@ -470,8 +470,8 @@
                                                             &nbsp;Back</button> &nbsp; </span>
                                                     <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
                                                             id="confirm_modal_button" data-toggle="modal"
-                                                            data-target="#centermodal"><span id="confirm_transfer">Confirm
-                                                                Transfer</span>
+                                                            data-target="#centermodal">
+                                                            <span id="confirm_transfer">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
                                                                 role="status" id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
@@ -805,7 +805,8 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control display_midrate"
+                                                                        <input type="text"
+                                                                            class="form-control display_midrate"
                                                                             id="convertor_rate" value="1.00"
                                                                             style="width: 100px;" readonly>
                                                                     </div>
@@ -1217,8 +1218,9 @@
                         $('#from_account').append($('<option>', {
                             value: data[index].accountType + '~' + data[index]
                                 .accountDesc + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
-                                + '~' + data[index].accountMandate
+                                '~' + data[index].currency + '~' + data[index]
+                                .availableBalance +
+                                '~' + data[index].accountMandate
                         }).text(data[index].accountType + '~' + data[index]
                             .accountNumber + '~' + data[index].currency + '~' + data[
                                 index].availableBalance));
@@ -1255,7 +1257,7 @@
                 success: function(response) {
                     console.log(response);
                     let data = response.data
-                    {{--  console.log(data);  --}}
+                    {{-- console.log(data); --}}
                     if (response.data.length > 0) {
                         {{-- $('.yes_beneficiary').show() --}}
                         $('.no_beneficiary').hide()
@@ -1296,7 +1298,7 @@
                 "url": "get-expenses",
                 datatype: "application/json",
                 success: function(response) {
-                    {{--  console.log(response.data);  --}}
+                    {{-- console.log(response.data); --}}
                     let data = response.data;
 
                     $.each(data, function(index) {
@@ -1750,11 +1752,11 @@
 
             });
 
-            $('#select_converted_currency').change(function(){
+            $('#select_converted_currency').change(function() {
                 currency_convertor(forex_rate)
             })
 
-            $('#select_converted_currency__').change(function(){
+            $('#select_converted_currency__').change(function() {
                 currency_convertor_(forex_rate)
             })
 
@@ -2627,7 +2629,7 @@
 
 
             let amount = $("#amount_").val()
-            let convert_amount_currency  = $('#select_converted_currency__').val()
+            let convert_amount_currency = $('#select_converted_currency__').val()
 
             let converted_amount = ''
 
@@ -2647,86 +2649,88 @@
             cur_2 = $('#select_converted_currency__').val()
 
 
-                let currency_pair_1 = cur_1 + '/ ' + cur_2
-                let currency_pair_2 = cur_2 + '/ ' + cur_1
+            let currency_pair_1 = cur_1 + '/ ' + cur_2
+            let currency_pair_2 = cur_2 + '/ ' + cur_1
 
-                let to_local_currency = cur_1 + '/ SLL'
-                let local_currency = ''
-
-
-                console.log(currency_pair_1)
-                console.log(currency_pair_2)
-                console.log(forex_rate)
-
-                $('#convertor_amount').val('')
-                $('#convertor_rate').val('')
-
-                $('#convertor_amount_').val('')
-                $('#convertor_rate_').val('')
+            let to_local_currency = cur_1 + '/ SLL'
+            let local_currency = ''
 
 
-                if (forex_rate.length > 0) {
-                    $.each(forex_rate, function(index) {
+            console.log(currency_pair_1)
+            console.log(currency_pair_2)
+            console.log(forex_rate)
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
-                                .trim())) {
-                            local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
+            $('#convertor_amount').val('')
+            $('#convertor_rate').val('')
 
-                        }
-
+            $('#convertor_amount_').val('')
+            $('#convertor_rate_').val('')
 
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
-                                .trim())) {
+            if (forex_rate.length > 0) {
+                $.each(forex_rate, function(index) {
 
-                            converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
-                                .MIDRATE)
-                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                    if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
+                            .trim())) {
+                        local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                    }
 
-                            $('#converted_amount_').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 1 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        } else if (String(forex_rate[index].PAIR.trim()) == String(
-                                currency_pair_2
-                                .trim())) {
 
-                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                            converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
+                    if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
+                            .trim())) {
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
+                            .MIDRATE)
+                        $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
 
-                            $('#converted_amount_').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 2 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(
+                            2))))
 
-                        } else {
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 1 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        }
-                    })
-                }
+                    } else if (String(forex_rate[index].PAIR.trim()) == String(
+                            currency_pair_2
+                            .trim())) {
+
+                        $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
+
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(
+                            2))))
+
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 2 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                    } else {
+
+                    }
+                })
+            }
 
         }
 
@@ -2754,87 +2758,89 @@
 
 
 
-                cur_1 = $('#select_currency').val()
-                cur_2 = $('#select_converted_currency').val()
+            cur_1 = $('#select_currency').val()
+            cur_2 = $('#select_converted_currency').val()
 
 
-                let currency_pair_1 = cur_1 + '/ ' + cur_2
-                let currency_pair_2 = cur_2 + '/ ' + cur_1
+            let currency_pair_1 = cur_1 + '/ ' + cur_2
+            let currency_pair_2 = cur_2 + '/ ' + cur_1
 
-                let to_local_currency = cur_1 + '/ SLL'
-                let local_currency = ''
-
-
-                console.log(currency_pair_1)
-                console.log(currency_pair_2)
-                console.log(forex_rate)
-
-                $('#converted_amount').val('')
-                $('#convertor_rate').val('')
+            let to_local_currency = cur_1 + '/ SLL'
+            let local_currency = ''
 
 
-                if (forex_rate.length > 0) {
-                    $.each(forex_rate, function(index) {
+            console.log(currency_pair_1)
+            console.log(currency_pair_2)
+            console.log(forex_rate)
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
-                                .trim())) {
-                            local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
-
-                        }
+            $('#converted_amount').val('')
+            $('#convertor_rate').val('')
 
 
+            if (forex_rate.length > 0) {
+                $.each(forex_rate, function(index) {
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
-                                .trim())) {
+                    if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
+                            .trim())) {
+                        local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
 
-                            converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
-                                .MIDRATE)
-                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                    }
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
 
-                            $('#converted_amount_').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 1 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        } else if (String(forex_rate[index].PAIR.trim()) == String(
-                                currency_pair_2
-                                .trim())) {
+                    if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
+                            .trim())) {
 
-                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                            converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
+                        converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
+                            .MIDRATE)
+                        $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(
+                            2))))
 
-                            $('#converted_amount_').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 2 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 1 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        } else {
+                    } else if (String(forex_rate[index].PAIR.trim()) == String(
+                            currency_pair_2
+                            .trim())) {
 
-                        }
-                    })
-                }
+                        $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
+
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(
+                            2))))
+
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 2 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                    } else {
+
+                    }
+                })
+            }
 
         }
     </script>

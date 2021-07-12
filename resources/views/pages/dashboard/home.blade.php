@@ -62,7 +62,7 @@
 
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
 
                 <div class="row">
 
@@ -71,16 +71,16 @@
                         <div class="card-box"
                             style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                             <div class="row">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
                                     <canvas id="myChart" width="300" height="250"></canvas>
                                 </div>
-                                <div class="col-md-3"></div>
+                                <div class="col-md-2"></div>
                             </div>
 
                             <div class="row" style="padding-bottom: 10px;">
-                                <div class="col-md-2"></div>
-                                <div class="col-md-8">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
 
                                     <div class="card-body">
 
@@ -123,7 +123,7 @@
                                     </div> <!-- end card-body -->
 
                                 </div>
-                                <div class="col-md-2"></div>
+                                <div class="col-md-1"></div>
                             </div>
 
 
@@ -135,144 +135,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card-box">
-
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                        <strong class="text-success">CURRENT & SAVINGS</strong>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                        <strong class="text-warning">INVESTMENTS</strong>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                        <strong class="text-danger">LOANS</strong>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="home">
-                                    <p>
-
-                                    <div class="table-responsive table-bordered accounts_display_area">
-                                        <table id="" class="table mb-0 ">
-                                            <thead>
-                                                <tr class="bg-info text-white ">
-                                                    <td> <b> Account No </b> </td>
-                                                    <td> <b> Description </b> </td>
-                                                    <td> <b> Product </b> </td>
-                                                    <td> <b> Cur </b> </td>
-                                                    <td> <b> OverDraft </b> </td>
-                                                    {{-- <td> <b> Ledger Bal </b> </td> --}}
-                                                    <td> <b> Av. Bal </b> </td>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="casa_list_display">
 
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- end table-responsive -->
-
-                                    </p>
-
-                                </div>
-
-                                <div class="tab-pane show " id="profile">
-
-                                    <p id="p_fixed_deposit_account">
-
-                                    <div class="table-responsive table-bordered my_investment_display_area">
-                                        <table id="" class="table mb-0 ">
-                                            <thead>
-                                                <tr class="bg-info text-white ">
-                                                    <td> <b> Account No </b> </td>
-                                                    <td> <b> Deal Amount </b> </td>
-                                                    <td> <b> Tunure </b> </td>
-                                                    <td> <b> FixedInterestRate </b> </td>
-                                                    <td> <b> Rollover </b> </td>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody class="fixed_deposit_account">
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- end table-responsive -->
-
-                                    </p>
-
-                                </div>
-
-                                <div class="tab-pane" id="messages">
-                                    <p id="p_loans_display">
-
-                                    <div class="table-responsive table-bordered loans_display_area">
-                                        <table id="" class="table mb-0 ">
-                                            <thead>
-                                                <tr class="bg-info text-white ">
-                                                    <td> <b> Facility No </b> </td>
-                                                    <td> <b> Description </b> </td>
-                                                    <td> <b> Cur </b> </td>
-                                                    <td> <b> Amount Granted </b> </td>
-                                                    <td> <b> Loan Bal </b> </td>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody class="loans_display">
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- end table-responsive -->
-
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div> <!-- end card-box-->
-                    </div>
-                    <div class="col-md-8 ">
-                        <div class="card" style="border-radius: 20px;">
-                            <div class="border mt-0 rounded">
-                                <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest
-                                    Transactions</h4>
-
-                                <div class="row" style="padding-left: 15px; padding-right: 15px;">
-                                    {{-- <div class="col-md-1"></div> --}}
-                                    <div class="col-md-12">
-                                        <select name="" class="form-control" id="account_transaction">
-                                            <option value=""> -- Select Account -- </option>
-                                            {{-- <option value="">04785505050</option> --}}
-                                        </select>
-                                    </div>
-                                    {{-- <div class="col-md-1"></div> --}}
-                                </div>
-
-                                <legend></legend>
-
-                                <div class="table-responsive" style="height: 360px; zoom:0.9">
-                                    <table class="table table-centered table-nowrap mb-0">
-                                        <tbody id="transaction_history">
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
-                            </div> <!-- end .border-->
-
-                        </div>
-                    </div>
                     {{-- <div class="col-md-4">
                         <a href="{{ url('manage-cards') }}">
 
@@ -300,12 +164,13 @@
 
             </div>
 
-            <div class="col-md-4">
-
+            <div class="col-md-6">
                 <div class="row">
+
                     <div class="col-md-12">
 
-                        <div class="card-box" style="height:170px;">
+
+                        <div class="card card-body" style="height:170px;">
 
                             <div class="ribbon-content">
                                 <h1>HI, {{ session()->get('userAlias') }}</h1>
@@ -317,164 +182,278 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
-                        <legend></legend>
-                        <h5>FREQUENTLY USED SERVICES</h5>
-                        <legend></legend>
+                    <div class="col-md-6">
+                        <div class="">
+                            <h2 class="text-primary">Frequently used services</h2>
+                            {{-- <hr class="mt-0"> --}}
+                        </div>
+
+                        <div class="col-md-12">
+                            <a href="{{ url('mobile-money') }}">
+                                <div class="widget-rounded-circle card-box"
+                                    style="border-radius: 20px; background-color: #0561ad">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="avatar-md rounded-circle bg-white ">
+                                                <i class="fe-log-out font-5 avatar-title text-info"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="text-right">
+                                                <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </a>
+                        </div> <!-- end col-->
+
+                        <div class="col-md-12 ">
+                            <a href="{{ url('airtime-payment') }}">
+                                <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="avatar-md rounded-circle bg-white">
+                                                <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="text-right">
+                                                <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </a>
+                        </div> <!-- end col-->
+
+
+                        <div class="col-md-12 ">
+                            <a href="#">
+                                <div class="widget-rounded-circle card-box custom-color-gold bg-success"
+                                    style="border-radius: 20px;">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="avatar-md rounded-circle bg-white">
+                                                <i
+                                                    class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="text-right">
+                                                <h3 class="mt-1 text-white"><span> &nbsp; Transfers</span></h3>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </a>
+                        </div> <!-- end col-->
+
+                        <div class="col-md-12 ">
+                            <a href="{{ url('korpone-loane-payment') }}">
+                                <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
+                                    <div class=" row">
+                                        <div class="col-4">
+                                            <div class="avatar-md rounded-circle bg-white ">
+                                                <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="text-right">
+                                                <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </a>
+                        </div>
+
                     </div>
 
                     <div class="col-md-6">
-                        <a href="{{ url('mobile-money') }}">
-                            <div class="widget-rounded-circle card-box"
-                                style="border-radius: 20px; background-color: #0561ad">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </a>
-                    </div> <!-- end col-->
 
-                    <div class="col-md-6 ">
-                        <a href="{{ url('airtime-payment') }}">
-                            <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white">
-                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </a>
-                    </div> <!-- end col-->
-
-
-                    <div class="col-md-6 ">
-                        <a href="{{ url('cardless-payment') }}">
-                            <div class="widget-rounded-circle card-box custom-color-gold bg-success"
-                                style="border-radius: 20px;">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white">
-                                            <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span> &nbsp; Cardless</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </a>
-                    </div> <!-- end col-->
-
-
-                    <div class="col-md-6 ">
-                        <a href="{{ url('korpone-loane-payment') }}">
-                            <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
-                                <div class=" row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </a>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100"
+                                        src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}" alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}"
+                                        alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}"
+                                        alt="Third slide">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
-
-
-
-                    <div class="col-md-6">
-                        <a href="{{ url('branch-locator') }}">
-                            <div class="widget-rounded-circle card-box"
-                                style="border-radius: 20px; background-color: #0561ad">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white ">
-                                            <i class="fe-log-out font-20 avatar-title text-info"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>Branches</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </a>
-                    </div> <!-- end col-->
-
-                    <div class="col-md-6 ">
-                        <a href="{{ url('account-enquiry') }}">
-                            <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="avatar-md rounded-circle bg-white">
-                                            <i class="fe-send font-20 avatar-title text-white text-warning"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>Account Equiry</span></h3>
-                                        </div>
-                                    </div>
-                                </div> <!-- end row-->
-                            </div> <!-- end widget-rounded-circle-->
-                        </a>
-                    </div> <!-- end col-->
-
 
                 </div>
 
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}"
-                                alt="First slide">
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 mt-1">
+                <div class="col-md-12">
+                    <div class="card-box">
+
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                    <strong class="text-success">CURRENT & SAVINGS</strong>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                    <strong class="text-warning">INVESTMENTS</strong>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    <strong class="text-danger">LOANS</strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home">
+                                <p>
+
+                                <div class="table-responsive table-bordered accounts_display_area">
+                                    <table id="" class="table mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Account No </b> </td>
+                                                <td> <b> Description </b> </td>
+                                                <td> <b> Product </b> </td>
+                                                <td> <b> Cur </b> </td>
+                                                <td> <b> OverDraft </b> </td>
+                                                {{-- <td> <b> Ledger Bal </b> </td> --}}
+                                                <td> <b> Av. Bal </b> </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="casa_list_display">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+
+                                </p>
+
+                            </div>
+
+                            <div class="tab-pane show " id="profile">
+
+                                <p id="p_fixed_deposit_account">
+
+                                <div class="table-responsive table-bordered my_investment_display_area">
+                                    <table id="" class="table mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Account No </b> </td>
+                                                <td> <b> Deal Amount </b> </td>
+                                                <td> <b> Tunure </b> </td>
+                                                <td> <b> FixedInterestRate </b> </td>
+                                                <td> <b> Rollover </b> </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="fixed_deposit_account">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+
+                                </p>
+
+                            </div>
+
+                            <div class="tab-pane" id="messages">
+                                <p id="p_loans_display">
+
+                                <div class="table-responsive table-bordered loans_display_area">
+                                    <table id="" class="table mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Facility No </b> </td>
+                                                <td> <b> Description </b> </td>
+                                                <td> <b> Cur </b> </td>
+                                                <td> <b> Amount Granted </b> </td>
+                                                <td> <b> Loan Bal </b> </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="loans_display">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+
+                                </p>
+
+                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}"
-                                alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}"
-                                alt="Third slide">
-                        </div>
+                    </div> <!-- end card-box-->
+                </div>
+            </div>
+
+            <div class="col-md-4 mt-1">
+                <div class="col-md-12 ">
+                    <div class="card" style="border-radius: 20px;">
+                        <div class="border mt-0 rounded">
+                            <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest
+                                Transactions</h4>
+
+                            <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                                {{-- <div class="col-md-1"></div> --}}
+                                <div class="col-md-12">
+                                    <select name="" class="form-control" id="account_transaction">
+                                        <option value=""> -- Select Account -- </option>
+                                        {{-- <option value="">04785505050</option> --}}
+                                    </select>
+                                </div>
+                                {{-- <div class="col-md-1"></div> --}}
+                            </div>
+
+                            <legend></legend>
+
+                            <div class="table-responsive" style="height: 360px; zoom:0.9">
+                                <table class="table table-centered table-nowrap mb-0">
+                                    <tbody id="transaction_history">
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
+                        </div> <!-- end .border-->
+
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
             </div>
 

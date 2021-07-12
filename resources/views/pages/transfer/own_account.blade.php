@@ -477,7 +477,6 @@
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button"
-                                                            id="confirm_modal_button" data-toggle="modal"
                                                             data-target="#centermodal">
                                                             <span id="confirm_transfer">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
@@ -1093,33 +1092,36 @@
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
-                        if(response.responseCode == '000'){
+                        if (response.responseCode == '000') {
                             let data = response.data
-                        $.each(data, function(index) {
+                            $.each(data, function(index) {
 
-                            $('#from_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountDesc + '~' + data[index].accountNumber + '~' +
-                                    data[index].currency + '~' + data[index].availableBalance +
-                                    '~' + data[index].accountMandate
-                            }).text(data[index].accountNumber +
-                                '~' + data[index].currency + ' ~ ' + formatToCurrency(parseFloat(
-                                    data[index].availableBalance))
-                            ));
-                            $('#to_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountDesc + '~' + data[index]
-                                    .accountNumber + '~' + data[index].currency + '~' +
-                                    data[index].availableBalance +
-                                    '~' + data[index].accountMandate
-                            }).text(data[index].accountNumber +
-                                '~' + data[index].currency + '~' + formatToCurrency(parseFloat(data[
-                                    index].availableBalance))
-                            ));
+                                $('#from_account').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[index]
+                                        .accountDesc + '~' + data[index].accountNumber + '~' +
+                                        data[index].currency + '~' + data[index]
+                                        .availableBalance +
+                                        '~' + data[index].accountMandate
+                                }).text(data[index].accountNumber +
+                                    '~' + data[index].currency + ' ~ ' + formatToCurrency(
+                                        parseFloat(
+                                            data[index].availableBalance))
+                                ));
+                                $('#to_account').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[index]
+                                        .accountDesc + '~' + data[index]
+                                        .accountNumber + '~' + data[index].currency + '~' +
+                                        data[index].availableBalance +
+                                        '~' + data[index].accountMandate
+                                }).text(data[index].accountNumber +
+                                    '~' + data[index].currency + '~' + formatToCurrency(parseFloat(
+                                        data[
+                                            index].availableBalance))
+                                ));
 
-                        });
-                        }else{
-                            if(response.data == null){
+                            });
+                        } else {
+                            if (response.data == null) {
                                 window.location = 'logout'
                             }
                         }
@@ -1402,8 +1404,8 @@
 
 
                         if ((from_account.trim() == to_account.trim()) && (from_account.trim() != '' &&
-                            to_account.trim() != '')) {
-                            {{--  alert('can not transfer to same account')  --}}
+                                to_account.trim() != '')) {
+                            {{-- alert('can not transfer to same account') --}}
                             toaster('Can not send to same account', 'error', 2000)
                             $(this).val('')
                         }
@@ -1917,15 +1919,15 @@
                                 },
                                 error: function(xhr, status, error) {
                                     $("#confirm_transfer").show();
-                                        $("#confirm_modal_button").prop('disabled',
-                                            false);
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#back_button').show();
-                                        $('#print_receipt').hide();
-                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                        $("#related_information_display").show();
-                                        $(".success_gif").hide();
+                                    $("#confirm_modal_button").prop('disabled',
+                                        false);
+                                    $('#spinner').hide();
+                                    $('#spinner-text').hide();
+                                    $('#back_button').show();
+                                    $('#print_receipt').hide();
+                                    {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                    $("#related_information_display").show();
+                                    $(".success_gif").hide();
                                 }
 
                             })
