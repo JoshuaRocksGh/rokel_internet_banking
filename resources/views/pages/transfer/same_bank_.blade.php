@@ -445,8 +445,7 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree to a transfer fee
-                                                                                    of (SLL - 100)
+                                                                                    By checking this box, you agree to to abide by the Terms and Conditions
 
                                                                                 </b>
                                                                             </label>
@@ -1814,6 +1813,8 @@
                 var from_acc_currency = ($(this).val().split('~'))
                 {{-- console.log(from_acc_currency); --}}
                 $("#hidden_currency").val(from_acc_currency[3]);
+
+                
             })
 
 

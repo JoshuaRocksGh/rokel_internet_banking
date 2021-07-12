@@ -405,9 +405,7 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree to a transfer fee
-                                                                                    of (SLL - 100)
-
+                                                                                    By checking this box, you agree to to abide by the Terms and Conditions
                                                                                 </b>
                                                                             </label>
                                                                         </div>
@@ -442,15 +440,9 @@
                                                                     <div class="col-md-9  text-center">
                                                                         <form action="#" autocomplete="off"
                                                                             aria-autocomplete="off">
-                                                                            <input type="text" name="user_pin" maxlength="4"
-                                                                                autocomplete="off" aria-autocomplete="off"
-                                                                                class="form-control key hide_on_print"
-                                                                                id="user_pin"
-                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                                            <input type="text" name="user_pin" maxlength="4" autocomplete="off" aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                                             <br>
-                                                                            <button class="btn btn-success">
-                                                                                type="button" id="transfer_pin"
-                                                                                data-dismiss="modal">Submit</button>
+                                                                            <button class="btn btn-success" type="button" id="transfer_pin" data-dismiss="modal">Submit</button>
                                                                         </form>
 
                                                                     </div>
