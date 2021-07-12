@@ -445,7 +445,8 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By checking this box, you agree to to abide by the Terms and Conditions
+                                                                                    By checking this box, you agree to to
+                                                                                    abide by the Terms and Conditions
 
                                                                                 </b>
                                                                             </label>
@@ -655,12 +656,16 @@
                                                                 <input type="text" class="form-control col-md-8"
                                                                     id="purpose" placeholder="Enter purpose of transaction"
                                                                     <div class="form-group row mb-3">
+
+
+                                                            </div>
+
+                                                            {{-- <div class="form-group row">
                                                                 <b class="col-md-4 text-primary ">Future Payment &nbsp; </b>
 
                                                                 <input type="date" class="form-control col-md-8"
                                                                     id="future_payement" required>
-
-                                                            </div>
+                                                            </div> --}}
 
                                                             {{-- <div class="row">
                                                                 <div class="col-md-4"></div>
@@ -848,7 +853,7 @@
 
 
 
-                                                            <div class="form-group row mb-3">
+                                                            {{-- <div class="form-group row mb-3">
                                                                 <b class="col-md-4 text-primary ">Future Payment &nbsp;
 
                                                                 </b>
@@ -856,7 +861,7 @@
                                                                 <input type="date" class="form-control col-md-8"
                                                                     id="onetime_future_payement" required>
 
-                                                            </div>
+                                                            </div> --}}
 
 
 
@@ -1001,7 +1006,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title text-center text-primary" id="myCenterModalLabel ">ENTER TRANSACTION
+                                <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER TRANSACTION
                                     PIN</h3>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 
@@ -1212,40 +1217,38 @@
                 datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
-                    let data = response.data
-                    $.each(data, function(index) {
-                        $('#from_account').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index]
-                                .availableBalance +
-                                '~' + data[index].accountMandate
-                        }).text(data[index].accountType + '~' + data[index]
-                            .accountNumber + '~' + data[index].currency + '~' + data[
-                                index].availableBalance));
-                        //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+                    if (response.responseCode == '000') {
+                        let data = response.data
+                        $.each(data, function(index) {
 
-                    });
-                    {{-- let name = $("from_acc_currency").val(); --}}
+                            $('#from_account').append($('<option>', {
+                                value: data[index].accountType + '~' + data[index]
+                                    .accountDesc + '~' + data[index].accountNumber + '~' +
+                                    data[index].currency + '~' + data[index]
+                                    .availableBalance +
+                                    '~' + data[index].accountMandate
+                            }).text(data[index].accountNumber +
+                                '~' + data[index].currency + ' ~ ' + formatToCurrency(
+                                    parseFloat(data[index].availableBalance))
+                            ));
 
-                    {{-- console.log(response); --}}
-                    {{-- let currency = response.data[0].currency; --}}
-                    {{-- console.log(currency); --}}
-
-                    {{-- $.each(currency, function(index) {
-                        let data = currency[index].description ;
-                        console.log(data);
-                    }) --}}
-
+                        });
+                    } else {
+                        if (response.data == null) {
+                            window.location = 'logout'
+                        }
+                    }
                 },
                 error: function(xhr, status, error) {
+
                     setTimeout(function() {
-                        from_account()
+                        from_account();
                     }, $.ajaxSetup().retryAfter)
                 }
 
             })
         }
+
 
 
         function to_account() {
@@ -1263,7 +1266,8 @@
                         $.each(data, function(index) {
                             //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
                             $('#to_account').append($('<option>', {
-                                value: data[index].BENEF_TYPE + '~' + data[index]
+                                value: data[index].BENEF_TYPE + '~' + data[
+                                        index]
                                     .NICKNAME + '~' + data[index].BEN_ACCOUNT +
                                     '~' + data[index].BEN_ACCOUNT_CURRENCY +
                                     '~' + data[index].EMAIL
@@ -1386,8 +1390,10 @@
                         if (response.responseCode == "000") {
                             console.log(response.data)
                             toaster(response.message, 'success', 5000);
-                            $('#onetime_beneficiary_name').val(response.data.accountDescription);
-                            $('.display_to_account_name').text(response.data.accountDescription);
+                            $('#onetime_beneficiary_name').val(response.data
+                                .accountDescription);
+                            $('.display_to_account_name').text(response.data
+                                .accountDescription);
                             $('.display_to_account_currency').text(response.data
                                 .accountCurrencyDescription);
                             $('.display_to_account_no').text(account_no);
@@ -1770,7 +1776,7 @@
                 $("#display_category").text(category_);
             });
 
-            $("#purpose").keyup(function() {
+            {{-- $("#purpose").keyup(function() {
                 if ($(this).val() == '') {
                     $("#display_purpose").text('Same Bank Transfer');
 
@@ -1779,7 +1785,7 @@
                     $("#display_purpose").text(purpose);
 
                 }
-            });
+            }); --}}
 
             $("#amount_").keyup(function() {
                 var amount = ($(this).val());
@@ -1797,7 +1803,7 @@
             })
 
             //purpose
-            $("#onetime_purpose").keyup(function() {
+            {{-- $("#onetime_purpose").keyup(function() {
                 if ($(this).val() == '') {
                     $("#display_purpose").text('Same Bank Transfer');
 
@@ -1807,14 +1813,14 @@
 
                 }
 
-            })
+            }) --}}
 
             $("#from_account").change(function() {
                 var from_acc_currency = ($(this).val().split('~'))
                 {{-- console.log(from_acc_currency); --}}
                 $("#hidden_currency").val(from_acc_currency[3]);
 
-                
+
             })
 
 
@@ -1882,10 +1888,12 @@
                 var from_account = $('#from_account').val()
                 var transfer_amount = $('#amount').val()
                 var category = $('#category').val()
-                var purpose = $('#purpose').val()
+
+                var purpose = $('#purpose').val();
                 if (purpose == '') {
+                    var purpose_ = $('#purpose').val('Same Bank Transfer');
                     $("#display_purpose").text('Same Bank Transfer');
-                    var purpose = $('#purpose').val('Same Bank Transfer');
+
                 } else {
                     $("#display_purpose").text(purpose);
 
@@ -1903,12 +1911,13 @@
                 var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                 var schedule_payment_date = $('#schedule_payment_date').val();
 
-                if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '') {
-                    {{-- toaster('Field must not be empty', 'error', 10000) --}}
+                if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() ==
+                    '') {
+                    toaster('Field must not be empty', 'error', 10000)
 
                     {{-- alert('Field must not be empty') --}}
 
-                    {{-- return false --}}
+                    return false
 
                 }
 
@@ -1934,12 +1943,11 @@
                     $('.display_schedule_payment_date').text("| " + schedule_payment_date)
 
 
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount
-                        .trim() == '' || category.trim() == '') {
-                        {{-- toaster('Field must not be empty', 'error', 10000)
+                    if (from_account == '' || to_account == '' || transfer_amount == '' || category == '') {
+                        toaster('Field must not be empty', 'error', 10000)
 
 
-                        return false --}}
+                        return false
                     } else {
                         //set purpose and category values
                         var category_info = category.split("~")
@@ -1960,7 +1968,8 @@
                     // ONETIME BENEFICIARY DETAILS
                     var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
                     var onetime_account_number = $('#onetime_account_number').val()
-                    var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency')
+                    var onetime_beneficiary_account_currency = $(
+                            '#onetime_beneficiary_account_currency')
                         .val()
                     var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
                     var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
@@ -1977,10 +1986,10 @@
 
                     if (from_account.trim() == '' || onetime_account_number.trim() ==
                         '' || amount_.trim() == '' || category.trim() == '') {
-                        {{-- toaster('Field must not be empty', 'error', 10000) --}}
+                        toaster('Field must not be empty', 'error', 10000)
 
                         {{-- alert('Field must not be empty') --}}
-                        {{-- return false --}}
+                        return false
                     } else {
                         //set purpose and category values
                         var category_info = category.split("~")
@@ -2020,7 +2029,8 @@
 
 
                 {{-- $('#online_display_beneficiary_alias_name').text(onetime_beneficiary_alias_name); --}}
-                $('#online_display_beneficiary_account_no').text(onetime_beneficiary_account_number);
+                $('#online_display_beneficiary_account_no').text(
+                    onetime_beneficiary_account_number);
                 $('#online_display_beneficiary_account_currency').text(
                     onetime_beneficiary_account_currency);
                 $('#online_display_beneficiary_email').text(onetime_beneficiary_email);
@@ -2338,10 +2348,12 @@
 
                                 console.log(from_account);
 
-                                var onetime_beneficiary_name = $('#onetime_beneficiary_name').val();
+                                var onetime_beneficiary_name = $(
+                                    '#onetime_beneficiary_name').val();
                                 console.log(onetime_beneficiary_name);
 
-                                var onetime_account_number = $('#onetime_account_number').val();
+                                var onetime_account_number = $('#onetime_account_number')
+                                    .val();
                                 console.log(onetime_account_number);
                                 $("#to_account_receipt").text(onetime_account_number);
 
@@ -2354,14 +2366,16 @@
                                 {{-- console.log(purpose); --}}
                                 if (purpose == '') {
                                     $("#purpose_receipt").text("Same Bank Transfer");
-                                    var purpose = $("#onetime_purpose").val("Same Bank Transfer");
+                                    var purpose = $("#onetime_purpose").val(
+                                        "Same Bank Transfer");
                                 } else {
                                     $("#purpose_receipt").text(purpose);
 
                                 }
                                 {{-- $("#purpose_receipt").text(purpose); --}}
 
-                                var onetime_beneficiary_email = $('#onetime_beneficiary_email')
+                                var onetime_beneficiary_email = $(
+                                        '#onetime_beneficiary_email')
                                     .val();
                                 console.log(onetime_beneficiary_email);
 
@@ -2374,7 +2388,8 @@
 
                                 {{-- var select_frequency = $('#select_frequency').val() --}}
 
-                                var onetime_future_payement = $('#onetime_future_payement').val();
+                                var onetime_future_payement = $('#onetime_future_payement')
+                                    .val();
                                 console.log(onetime_future_payement);
 
                                 var category_ = $('#onetime_category').val().split('~');
@@ -2409,8 +2424,9 @@
                                         'secPin': user_pin
                                     },
                                     headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                            'content')
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                            .attr(
+                                                'content')
                                     },
                                     success: function(response) {
                                         {{-- console.log(response); --}}
@@ -2444,19 +2460,22 @@
 
 
                                         } else {
-                                            toaster(response.message, 'error', 10000)
+                                            toaster(response.message, 'error',
+                                                10000)
 
                                             $(".receipt").hide();
 
                                             $("#confirm_transfer").show();
-                                            $("#confirm_modal_button").prop('disabled',
+                                            $("#confirm_modal_button").prop(
+                                                'disabled',
                                                 false);
                                             $('#spinner').hide();
                                             $('#spinner-text').hide();
                                             $('#back_button').show();
                                             $('#print_receipt').hide();
                                             {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                            $("#related_information_display").show();
+                                            $("#related_information_display")
+                                                .show();
                                             $(".success_gif").hide();
 
 
@@ -2548,8 +2567,9 @@
                                     },
 
                                     headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                            'content')
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                            .attr(
+                                                'content')
                                     },
                                     success: function(response) {
                                         {{-- console.log(response); --}}
@@ -2582,20 +2602,23 @@
 
 
                                         } else {
-                                            toaster(response.message, 'error', 10000)
+                                            toaster(response.message, 'error',
+                                                10000)
 
                                             $(".receipt").hide();
                                             {{-- $(".form_process").hide(); --}}
 
                                             $("#confirm_transfer").show();
-                                            $("#confirm_modal_button").prop('disabled',
+                                            $("#confirm_modal_button").prop(
+                                                'disabled',
                                                 false);
                                             $('#spinner').hide();
                                             $('#spinner-text').hide();
                                             $('#back_button').show();
                                             $('#print_receipt').hide();
                                             {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                            $("#related_information_display").show();
+                                            $("#related_information_display")
+                                                .show();
                                             $(".success_gif").hide();
 
 
@@ -2692,8 +2715,9 @@
                             formatToCurrency(
                                 parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
 
-                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(
-                            2))))
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE
+                            .toFixed(
+                                2))))
 
                         $('#converted_amount_').val(formatToCurrency(parseFloat(
                             converted_amount.toFixed(
@@ -2716,8 +2740,9 @@
                         converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
                             .MIDRATE)
 
-                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(
-                            2))))
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE
+                            .toFixed(
+                                2))))
 
                         $('#converted_amount_').val(formatToCurrency(parseFloat(
                             converted_amount.toFixed(
@@ -2802,8 +2827,9 @@
                             formatToCurrency(
                                 parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
 
-                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(
-                            2))))
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE
+                            .toFixed(
+                                2))))
 
                         $('#converted_amount_').val(formatToCurrency(parseFloat(
                             converted_amount.toFixed(
@@ -2826,8 +2852,9 @@
                         converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
                             .MIDRATE)
 
-                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(
-                            2))))
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE
+                            .toFixed(
+                                2))))
 
                         $('#converted_amount_').val(formatToCurrency(parseFloat(
                             converted_amount.toFixed(

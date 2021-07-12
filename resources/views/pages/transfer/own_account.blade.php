@@ -1104,8 +1104,7 @@
                                         '~' + data[index].accountMandate
                                 }).text(data[index].accountNumber +
                                     '~' + data[index].currency + ' ~ ' + formatToCurrency(
-                                        parseFloat(
-                                            data[index].availableBalance))
+                                        parseFloat(data[index].availableBalance))
                                 ));
                                 $('#to_account').append($('<option>', {
                                     value: data[index].accountType + '~' + data[index]
