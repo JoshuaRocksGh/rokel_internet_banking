@@ -1705,7 +1705,7 @@
                                     }); --}}
 
 
-                $("#payment_details_form").submit(function(e) {
+                $("#next_button").click(function(e) {
                     e.preventDefault();
 
                     var from_account_ = $('#from_account').val().split("~");
@@ -1743,15 +1743,15 @@
                     $("#transaction_summary").show();
                     $("#transaction_form").hide();
 
-                    {{-- if (from_account == '' || to_account == '' || transfer_amount == '' ||
-                                            category == '' || purpose == '') {
-                                            alert('Field must not be empty')
-                                            toaster('Field must not be empty', 'error', 10000)
-                                            return false
-                                        } else {
-                                            $("#transaction_summary").show();
-                                            $("#transaction_form").hide();
-                                        } --}}
+                    if (from_account == '' || to_account == '' || transfer_amount == '' ||
+                        category == '') {
+                        {{-- alert('Field must not be empty') --}}
+                        toaster('Field must not be empty', 'error', 10000)
+                        return false
+                    } else {
+                        $("#transaction_summary").show();
+                        $("#transaction_form").hide();
+                    }
                 })
 
 
