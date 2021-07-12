@@ -122,6 +122,14 @@ class FunctionsController extends Controller
         $userID = session()->get('userId');
         $api_headers = session()->get('headers');
 
+        return response()->json([
+            'responseCode' => '$result->responseCode',
+            'message' => '$result->message',
+            'data' => $api_headers
+        ], 200);
+
+        return $api_headers;
+
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID

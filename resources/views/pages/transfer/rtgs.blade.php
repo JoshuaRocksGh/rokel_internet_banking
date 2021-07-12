@@ -434,8 +434,7 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree to a transfer fee
-                                                                                    of (SLL - 100)
+                                                                                    By checking this box, you agree to to abide by the Terms and Conditions
 
                                                                                 </b>
                                                                             </label>

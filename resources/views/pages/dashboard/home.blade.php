@@ -241,21 +241,21 @@
                             </div>
                         </div> <!-- end card-box-->
                     </div>
-                    <div class="col-md-8 ">
+                    {{--  <div class="col-md-8 ">
                         <div class="card" style="border-radius: 20px;">
                             <div class="border mt-0 rounded">
                                 <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest
                                     Transactions</h4>
 
                                 <div class="row" style="padding-left: 15px; padding-right: 15px;">
-                                    {{-- <div class="col-md-1"></div> --}}
+
                                     <div class="col-md-12">
                                         <select name="" class="form-control" id="account_transaction">
                                             <option value=""> -- Select Account -- </option>
-                                            {{-- <option value="">04785505050</option> --}}
+
                                         </select>
                                     </div>
-                                    {{-- <div class="col-md-1"></div> --}}
+
                                 </div>
 
                                 <legend></legend>
@@ -272,7 +272,7 @@
                             </div> <!-- end .border-->
 
                         </div>
-                    </div>
+                    </div>  --}}
                     {{-- <div class="col-md-4">
                         <a href="{{ url('manage-cards') }}">
 
@@ -436,7 +436,7 @@
                                     </div>
                                     <div class="col-8">
                                         <div class="text-right">
-                                            <h3 class="mt-1 text-white"><span>Account Equiry</span></h3>
+                                            <h3 class="mt-1 text-white"><span>Account Enquiry</span></h3>
                                         </div>
                                     </div>
                                 </div> <!-- end row-->

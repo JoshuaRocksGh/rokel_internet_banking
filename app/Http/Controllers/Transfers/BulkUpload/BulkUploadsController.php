@@ -100,13 +100,17 @@ class BulkUploadsController extends Controller
         $user_name = session()->get('userAlias');
 
         $documentRef = time();
-        $account_no = $request->account_no;
+        $account_no = $request->my_account;
         $bank_code = $request->bank_type;
         $trans_ref_no = $request->trans_ref_no;
         $total_amount = $request->total_amount;
         $value_date = $request->value_date;
 
+        // return $request;
 
+        
+
+        // return $account_no;
          $account_info = explode("~", $account_no);
          $account_no = $account_info[2];
 
@@ -120,6 +124,8 @@ class BulkUploadsController extends Controller
 
             $post_date = Carbon::now();
             $post_date = $post_date->toDateTimeString();
+
+            
 
             return Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file), $file);
 

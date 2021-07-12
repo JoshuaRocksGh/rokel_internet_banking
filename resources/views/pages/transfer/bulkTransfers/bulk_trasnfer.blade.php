@@ -193,7 +193,7 @@
                                             <th> <b> Value date </b> </th>
                                             <th> <b> Bank Type </b> </th>
                                             <!-- <th> <b> Status </b> </th> -->
-                                            <th class="text-center"> <b>Actions </b> </th>
+                                            {{--  <th class="text-center"> <b>Actions </b> </th>  --}}
 
                                         </tr>
                                     </thead>
@@ -343,7 +343,7 @@
                                 bank_type,
                                 data[index].value_date,
                                 // status,
-                                action
+                                //action
 
 
                             ]).draw(false)
@@ -356,6 +356,12 @@
                         $('#beneficiary_list_retry_btn').show();
                     }
 
+                },
+                error: function(xhr, status, error) {
+
+                    setTimeout(function() {
+                        bulk_upload_list(customer_no, status)
+                    }, $.ajaxSetup().retryAfter)
                 }
             })
         }

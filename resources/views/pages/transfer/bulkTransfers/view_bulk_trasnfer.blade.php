@@ -207,7 +207,7 @@
             var table = $('.bulk_upload_list').DataTable();
             var nodes = table.rows().nodes();
             $.ajax({
-                'tpye': 'GET',
+                tpye: 'GET',
                 url: 'http://localhost/laravel/cib_api/public/api/get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
                 datatype: "application/json",
                 success: function(response) {
