@@ -108,7 +108,10 @@
                                                     </div>
                                                     <br>
                                                     <div class="page-header">
-                                                        <h2>Transfer Receipt </h2>
+                                                        <h2><span id="personal_transfer_receipt">Transfer Receipt</span>
+                                                            <span id="coporate_transfer_approval">Transaction Awaiting
+                                                                Approval</span>
+                                                        </h2>
                                                     </div>
                                                     <br>
                                                     {{-- <div class="row">
@@ -1643,10 +1646,18 @@
                 }
 
 
-                function customerType() {
+                function customer() {
                     var customerType = @json(session()->get('customerType'));
                     console.log(customerType);
 
+                    if (customerType == 'C') {
+
+                        $('#coporate_transfer_approval').show();
+                        $('#personal_transfer_receipt').hide();
+                    } else {
+                        $('#personal_transfer_receipt').show();
+                        $('#coporate_transfer_approval').hide();
+                    }
                 }
 
                 $(document).ready(function() {
@@ -1678,7 +1689,7 @@
                     $(".beneficiary_details").hide();
                     {{-- $(".select_beneficiary").toggle(500); --}}
 
-                    $('.receipt').hide();
+                    {{-- $('.receipt').hide(); --}}
 
 
 
@@ -1691,7 +1702,7 @@
                         get_currency();
                         expenseTypes();
                         expenseTypes_onetime();
-                        customerType();
+                        customer();
                     }, 2000)
 
 
@@ -2278,7 +2289,7 @@
 
                             if (customerType == "C") {
                                 $('#confirm_modal_button').removeAttr("data-target");
-
+                                $('#personal_transfer_receipt').hide();
                                 {{-- alert(customerType); --}}
                                 if ($('#checkmeout0').is(':checked')) {
                                     console.log("onetime beneficiary");
@@ -2346,8 +2357,8 @@
                                             "beneficiary_name": beneficiary_name,
                                             "bank_name": bank_name,
                                             "to_account": account_number,
-                                            "currency": currCode,
-                                            "currency_iso": currency,
+                                            "currency": currency,
+                                            "currency_iso": currCode,
                                             "amount": onetime_amount,
                                             "email": beneficiary_email,
                                             "category": expense_category,
@@ -2464,19 +2475,19 @@
                                     var sec_pin = $('#user_pin').val()
 
                                     let api_data = {
-                                        from_account: from_account,
-                                        bank_name: bank_name,
-                                        beneficiary_name: beneficiary_name,
-                                        beneficiary_address: beneficiary_address,
-                                        to_account: to_account,
-                                        amount: amount,
-                                        currency: currCode,
-                                        currency_iso: currency,
-                                        category: category,
-                                        purpose: purpose,
-                                        future_payement: future_payement,
-                                        beneficiary_type: beneficiary_type,
-                                        account_mandate: accountMandate
+                                        "from_account": from_account,
+                                        "bank_name": bank_name,
+                                        "beneficiary_name": beneficiary_name,
+                                        "beneficiary_address": beneficiary_address,
+                                        "to_account": to_account,
+                                        "amount": amount,
+                                        "currency": currency,
+                                        "currency_iso": currCode,
+                                        "category": category,
+                                        "purpose": purpose,
+                                        "future_payement": future_payement,
+                                        "beneficiary_type": beneficiary_type,
+                                        "account_mandate": accountMandate
                                     };
 
                                     console.log(api_data)
@@ -2544,6 +2555,7 @@
 
 
                             } else {
+                                $('#coporate_transfer_approval').hide();
                                 $("#transfer_pin").click(function(e) {
                                     e.preventDefault();
 
