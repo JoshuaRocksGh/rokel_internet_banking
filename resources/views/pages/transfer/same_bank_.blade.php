@@ -1885,55 +1885,7 @@
                 }
                 //console.log(type);
 
-                var from_account = $('#from_account').val()
-                var transfer_amount = $('#amount').val()
-                var category = $('#category').val()
 
-                var purpose = $('#purpose').val();
-                if (purpose == '') {
-                    var purpose_ = $('#purpose').val('Same Bank Transfer');
-                    $("#display_purpose").text('Same Bank Transfer');
-
-                } else {
-                    $("#display_purpose").text(purpose);
-
-                }
-
-                var purpose = $('#onetime_purpose').val()
-                if (purpose == '') {
-                    $("#display_purpose").text('Same Bank Transfer');
-                    var purpose = $('#onetime_purpose').val('Same Bank Transfer');
-                } else {
-                    $("#display_purpose").text(purpose);
-
-                }
-
-                var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                var schedule_payment_date = $('#schedule_payment_date').val();
-
-                if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() ==
-                    '') {
-                    toaster('Field must not be empty', 'error', 10000)
-
-                    {{-- alert('Field must not be empty') --}}
-
-                    return false
-
-                }
-
-                if (parseFloat(amt) < parseFloat(transfer_amount)) {
-                    toaster('Insufficient account balance', 'error', 10000)
-                    return false
-                }
-
-                //set purpose and category values
-                {{-- var category_info = category.split("~")
-                $("#display_category").text(category_info[1])
-                var purpose =
-                $("#display_purpose").text(purpose) --}}
-
-                $("#transaction_form").hide()
-                $("#transaction_summary").show()
 
 
                 if (type == 'Saved_beneficiary') {
@@ -1941,6 +1893,47 @@
                     var to_account = $('#to_account').val()
 
                     $('.display_schedule_payment_date').text("| " + schedule_payment_date)
+
+                    var from_account = $('#from_account').val()
+                    var transfer_amount = $('#amount').val()
+                    var category = $('#category').val()
+
+                    var purpose = $('#purpose').val();
+                    if (purpose == '') {
+                        var purpose_ = $('#purpose').val('Same Bank Transfer');
+                        $("#display_purpose").text('Same Bank Transfer');
+
+                    } else {
+                        $("#display_purpose").text(purpose);
+
+                    }
+
+                    var purpose = $('#onetime_purpose').val()
+                    if (purpose == '') {
+                        $("#display_purpose").text('Same Bank Transfer');
+                        var purpose = $('#onetime_purpose').val('Same Bank Transfer');
+                    } else {
+                        $("#display_purpose").text(purpose);
+
+                    }
+
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                    var schedule_payment_date = $('#schedule_payment_date').val();
+
+
+                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                        toaster('Insufficient account balance', 'error', 10000)
+                        return false
+                    }
+
+                    //set purpose and category values
+                    {{-- var category_info = category.split("~")
+                    $("#display_category").text(category_info[1])
+                    var purpose =
+                    $("#display_purpose").text(purpose) --}}
+
+                    $("#transaction_form").hide()
+                    $("#transaction_summary").show()
 
 
                     if (from_account == '' || to_account == '' || transfer_amount == '' || category == '') {
@@ -1966,33 +1959,45 @@
                     var from_account = $('#from_account').val()
 
                     // ONETIME BENEFICIARY DETAILS
-                    var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
+                    var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
                     var onetime_account_number = $('#onetime_account_number').val()
                     var onetime_beneficiary_account_currency = $(
                             '#onetime_beneficiary_account_currency')
                         .val()
                     var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
                     var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                    var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
+                    var select_currency__ = $('#select_currency__').val()
+                    var onetime_category = $('#onetime_category').val();
+                    var onetime_purpose = $('#onetime_purpose').val();
 
+                    if (onetime_purpose == '') {
+                        $("#display_purpose").text('Same Bank Transfer');
+                        var onetime_purpose = $('#onetime_purpose').val('Same Bank Transfer');
+                    } else {
+                        $("#display_purpose").text(onetime_purpose);
+
+                    }
 
 
                     // END OF ONETIME BENEFICIARY DETAILS
+
 
                     ///////////////////////////////
 
                     //////////////////////////////
 
 
-                    if (from_account.trim() == '' || onetime_account_number.trim() ==
-                        '' || amount_.trim() == '' || category.trim() == '') {
+                    if (from_account.trim() == '' || onetime_account_number.trim() == '' || onetime_category
+                        .trim() == '' || select_currency__.trim() == '' ||
+                        onetime_beneficiary_email.trim() == '') {
                         toaster('Field must not be empty', 'error', 10000)
 
                         {{-- alert('Field must not be empty') --}}
                         return false
                     } else {
                         //set purpose and category values
-                        var category_info = category.split("~")
+                        var category_info = onetime_category.split("~");
+                        console.log(category_info);
                         $("#display_category").text(category_info[1])
                         {{-- $("#display_purpose").text(purpose) --}}
 
