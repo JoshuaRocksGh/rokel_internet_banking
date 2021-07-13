@@ -434,7 +434,8 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By checking this box, you agree to to abide by the Terms and Conditions
+                                                                                    By checking this box, you agree to to
+                                                                                    abide by the Terms and Conditions
 
                                                                                 </b>
                                                                             </label>
@@ -624,17 +625,8 @@
                                                                     class="text-danger">*</span></b>
 
                                                             <div class="row col-md-8 ">
-                                                                {{-- <div
-                                                                class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                <input type="radio" id="normal_transfer_type" value="NORMAL" name="transfer_type">
-                                                                <label for="inlineRadio1">Normal</label>
-                                                            </div> --}}
-                                                                {{-- <div
-                                                                class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                <input type="radio" id="invioce_transfer_type"
-                                                                    value="INVOICE" name="transfer_type">
-                                                                <label for="inlineRadio2">Invoice</label>
-                                                            </div> --}}
+
+
 
                                                                 <div
                                                                     class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
@@ -709,9 +701,7 @@
                                                                     <input type="text"
                                                                         class="input-group-text select_currency "
                                                                         id="select_currency" style="width: 80px;" readonly>
-                                                                    {{-- <select name="" class="input-group-text select_currency" id="select_currency" disabled>
 
-                                                                        </select> --}}
                                                                 </div>
 
                                                                 &nbsp;&nbsp;
@@ -722,11 +712,7 @@
 
 
                                                         </div>
-                                                        {{-- <div class="form-group">
-                                                        <select name="" class="input-group-text" id="hidden_select_currency" >
 
-                                                        </select>
-                                                    </div> --}}
 
 
 
@@ -2084,9 +2070,15 @@
                             // upload invoice file
 
                             if (from_account == '' || to_account == '' || transfer_amount == '' ||
-                                category_info == '' || purpose == '') {
+                                category_info == '') {
                                 toaster('Field must not be empty', 'error');
                                 return false
+                            } else {
+                                $("#transaction_form").hide()
+                                {{-- $(".other_card_right").hide() --}}
+                                $("#related_information_display").hide()
+                                $("#transaction_summary").show()
+                                $('#print_button').hide();
                             }
 
                             if (parseFloat(transfer_amount) < parseFloat(transfer_amount)) {
@@ -2096,11 +2088,7 @@
                             //set purpose and category values
 
 
-                            $("#transaction_form").hide()
-                            {{-- $(".other_card_right").hide() --}}
-                            $("#related_information_display").hide()
-                            $("#transaction_summary").show()
-                            $('#print_button').hide();
+
 
 
 
@@ -2373,7 +2361,7 @@
                                                 'content')
                                         },
                                         success: function(response) {
-                                            
+
                                             console.log(response);
 
                                             if (response.responseCode == '000') {
