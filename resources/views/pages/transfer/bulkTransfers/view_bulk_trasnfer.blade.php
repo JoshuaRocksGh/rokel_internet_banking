@@ -405,6 +405,52 @@
         }
 
 
+        function reject_upload(batch_no) {
+
+            const ipAPI = 'reject-bulk-transaction-api?batch_no=' + batch_no
+
+            Swal.queue([{
+                title: 'Are you sure you want to reject',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, Reject!',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return fetch(ipAPI)
+                        .then(response => response.json())
+                        .then((data) => {
+                            if (data.responseCode == '000') {
+                                Swal.insertQueueStep({
+                                    icon: 'success',
+                                    title: data.message
+                                })
+
+                                setTimeout(function() {
+                                    window.location = "{{ url('bulk-transfer') }}"
+                                }, 2000)
+                            } else {
+                                Swal.insertQueueStep({
+                                    icon: 'error',
+                                    title: data.message
+                                })
+                            }
+                            {{-- Swal.insertQueueStep(data.ip) --}}
+                        })
+                        .catch(() => {
+                            Swal.insertQueueStep({
+                                icon: 'error',
+                                title: 'API SERVER ERROR'
+                            })
+                        })
+                }
+            }])
+
+
+        }
+
+
 
         $(document).ready(function() {
 
@@ -432,6 +478,11 @@
             $('#approve_upload_btn').click(function() {
 
                 submit_upload(batch_no)
+            })
+
+            $('#reject_upload_btn').click(function() {
+
+                reject_upload(batch_no)
             })
 
 

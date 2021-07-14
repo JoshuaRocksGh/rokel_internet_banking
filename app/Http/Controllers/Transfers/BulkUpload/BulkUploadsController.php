@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BulkUploadsController extends Controller
 {
@@ -100,6 +101,7 @@ class BulkUploadsController extends Controller
         $user_name = session()->get('userAlias');
 
         $documentRef = time();
+        $batch_no = $documentRef;
         $account_no = $request->my_account;
         $bank_code = $request->bank_type;
         $trans_ref_no = $request->reference_no;
@@ -128,7 +130,14 @@ class BulkUploadsController extends Controller
 
 
            Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file), $file);
-            return back()->with('success', 'Bulk transfer pending approval');
+           Alert::success("Bulk transfer pending approval");
+           return redirect()->route('view-bulk-transfer', [
+                                                            'batch_no' => $batch_no,
+                                                            'bulk_amount' => $total_amount,
+                                                            'bank_type' => $bank_code,
+                                                            'bank_type' => $bank_code
+                                                            ]);
+            // return back()->with('success', 'Bulk transfer pending approval');
             // return $upload;
 
          }else{
@@ -147,6 +156,7 @@ class BulkUploadsController extends Controller
         $files = DB::table('tb_corp_bank_import_excel')
             ->distinct()
             ->where('user_id', $customerNumber)
+            ->where('status', 'P')
             ->orderBy('batch_no', 'desc')
             ->get(['batch_no', 'account_no', 'bank_code', 'status', 'ref_no', 'total_amount', 'value_date']);
 
@@ -213,10 +223,17 @@ class BulkUploadsController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $files = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get();
+        $data = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get();
 
-        // return $files;
+        if(count($data) > 0){
 
+        }else{
+
+        }
+
+        // return $data;
+
+        /*
         $credit_data = [];
         $debit_data = [];
 
@@ -253,15 +270,124 @@ class BulkUploadsController extends Controller
 
         // return  $data;
 
-        $response = Http::post(env('API_BASE_URL') . "/transfers/sameBankBulkUpload", $data);
-
+        */
+        // dd(env('CIB_API_BASE_URL') . "post-bulk-upload-list");
+        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-upload-list", (array) $data);
+        // return (array) $response;
         // $result = new ApiBaseResponse();
         $base_response = new BaseResponse();
 
         if ($response->ok()) {    // API response status code is 200
 
+            // return $response->body();
             $result = json_decode($response->body());
             // return $result->responseCode;
+
+            // return $result;
+
+
+            if ($result->responseCode == '000') {
+
+                $update_db = DB::table('tb_corp_bank_import_excel')
+                    ->where('batch_no', $batch_no)
+                    ->update([
+                        'status' => 'A'
+                    ]);
+
+                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            } else {   // API responseCode is not 000
+
+                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            }
+        } else { // API response status code not 200
+
+            return $response->body();
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'code' => $response->status(),
+                'message' => $response->body()
+            ]);
+
+            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+        }
+    }
+
+
+
+    public function reject_bulk_transaction(Request $request)
+    {
+
+        $batch_no = $request->query('batch_no');
+        // $batch_no = $request->batch_no;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $result = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->update(['status' => 'R']);
+
+        $base_response = new BaseResponse();
+        if($result){
+            return $base_response->api_response('000', 'Upload rejected successfully',  NULL);
+        }else{
+            return $base_response->api_response('666', 'Failed to reject upload',  NULL);
+        }
+
+        // return $data;
+
+        /*
+        $credit_data = [];
+        $debit_data = [];
+
+        foreach ($files as $data) {
+
+            $credit['creditAccount'] = $data->BBAN;
+            $credit['creditAmount'] = (float) $data->AMOUNT;
+            $credit['creditBranch'] = '001';
+            $credit['debitCurrency'] = 'SLL';
+            $credit['creditNarration'] =  $data->TRANS_DESC;
+            $credit['creditProdRef'] = $data->REF_NO;
+
+            array_push($credit_data, $credit);
+        }
+
+        $debit_data['debitAccount'] = $files[0]->ACCOUNT_NO;
+        $debit_data['debitAmount'] = (float) $files[0]->TOTAL_AMOUNT;
+        $debit_data['debitCurrency'] = 'SLL';
+        $debit_data['debitNarration'] = $files[0]->TRANS_DESC;
+        $debit_data['debitProdRef'] = $files[0]->REF_NO;
+
+        $data = [
+            "approvedBy" => "string",
+            "branch" => "string",
+            "channelCode" => "string",
+            "department" => "rr",
+            "postedBy" => "KOBBY",
+            "referenceNo" => "string",
+            "transType" => "string",
+            "unit" => "yyy",
+            "debitAccounts" => [$debit_data],
+            "creditAccounts" => $credit_data,
+        ];
+
+        // return  $data;
+
+        */
+        // dd(env('CIB_API_BASE_URL') . "post-bulk-upload-list");
+        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-upload-list", (array) $data);
+        // return (array) $response;
+        // $result = new ApiBaseResponse();
+        $base_response = new BaseResponse();
+
+        if ($response->ok()) {    // API response status code is 200
+
+            // return $response->body();
+            $result = json_decode($response->body());
+            // return $result->responseCode;
+
+            // return $result;
 
 
             if ($result->responseCode == '000') {

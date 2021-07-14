@@ -93,7 +93,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
         $check_ref = false;
 
-        $batch_no = time();
+        $batch_no = $documentRef;
 
 /*
         foreach ($rows as $row) {
@@ -198,7 +198,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                     'account_no' => $account_no,
                     'total_amount' => $total_amount,
                     'message' => 'message',
-                    'batch_no' => $documentRef,
+                    'batch_no' => $batch_no,
                     'status' => 'P',
                     'bank_name' => '$bank_name',
                     'created_at' => NOW(),
