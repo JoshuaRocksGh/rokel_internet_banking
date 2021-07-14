@@ -604,9 +604,20 @@
                                                             </div>
 
                                                             <div class="form-group row">
+                                                                <label class="col-md-4"><b class="text-primary">Purpose of
+                                                                        Transfer &nbsp;</b><span
+                                                                        class="text-danger">*</span></b></label>
+
+                                                                <input type="text" class="form-control col-md-8 mb-2"
+                                                                    id="purpose" placeholder="Enter purpose of transfer"
+                                                                    autocomplete="off">
+
+                                                            </div>
+
+                                                            <div class="form-group row">
                                                                 <label class="col-md-4"><b class="text-primary">Expense
                                                                         Category
-                                                                        &nbsp;</b><span class="text-danger">*</span></label>
+                                                                        &nbsp;</b></label>
 
                                                                 {{-- <label class="h6">Category</label> --}}
 
@@ -620,15 +631,7 @@
 
 
 
-                                                            <div class="form-group row">
-                                                                <label class="col-md-4"><b class="text-primary">Purpose of
-                                                                        Transfer &nbsp</b></label>
 
-                                                                <input type="text" class="form-control col-md-8 mb-2"
-                                                                    id="purpose" placeholder="Enter purpose of transfer"
-                                                                    autocomplete="off">
-
-                                                            </div>
 
 
 
