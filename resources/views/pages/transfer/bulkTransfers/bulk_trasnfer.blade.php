@@ -15,6 +15,31 @@
     <!-- third party css end -->
 
     <style>
+        @media print {
+            .hide_on_print {
+                display: none
+            }
+        }
+
+        @font-face {
+            font-family: 'password';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40px;
+            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf)
+        }
+
+        input.key {
+            font-family: 'password';
+            width: 300px;
+            height: 80px;
+            font-size: 100px;
+        }
+
+        .table_over_flow {
+            overflow-y: hidden;
+
+        }
 
     </style>
 
@@ -25,194 +50,264 @@
 @section('content')
 
     <div>
-        <legend></legend>
 
-        <div class="row">
+
+        <div class="container-fluid">
+            <br>
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-primary">
+                        <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                        BULK TRANSFER
+                    </h4>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <h6>
+
+                        <span class="flaot-right">
+                            <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Bulk Transfer</b>
+
+
+                        </span>
+
+                    </h6>
+
+                </div>
+
+                <div class="col-md-12 ">
+                    <hr class="text-primary" style="margin: 0px;">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="">
             <div class="col-12">
 
                 <div class="row">
-                    <div class="col-md-1"></div>
 
-                    <div class="  card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">BULK TRANSFER UPLOAD</h2>
-
-                        <p class="text-muted font-14 m-b-20">
-                            <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
-                                    Note:&nbsp;&nbsp;</b> <span class="">You can download template for upload (<span
-                                        class="text-danger"><a href="{{ url('download_same_bank_file') }}"
-                                            class="text-danger"> Same Bank</a></span>) and
-                                    (<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other
-                                            ACH Bank </a> </span>)</span> </span>
-
-                            <hr>
-                        </p>
-
-
-                        <form id="bulk_upload_form" action="{{ url('upload_') }}" method="post"
-                            enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-
-                                <div class="col-md-4">
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label"> Account<span
-                                                    class="text-danger"> *</span></label>
-                                            <select class="custom-select " name="my_account" id="my_account" required>
-                                                <option value="">Select Account</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Bank Type<span
-                                                    class="text-danger"> *</span></label>
-                                            <select class="custom-select " name="bank_type" id="bank_type" required>
-                                                <option value=""> ---Select Type --</option>
-                                                <option value="SAB"> Same Bank </option>
-                                                <option value="OTB"> Other Bank </option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-
-                                <div class="col-md-4" id="">
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Total Amount<span
-                                                    class="text-danger"> *</span></label>
-                                            <input type="text" name="bulk_amount" id="bulk_amount"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                class="form-control input-sm" required>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Reference Number<span
-                                                    class="text-danger"> *</span></label>
-                                            <input type="text" name="reference_no" id="reference_no"
-                                                class="form-control input-sm" required>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-
-                                <div class="col-md-4" id="">
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">Value Date<span
-                                                    class="text-danger"> *</span></label>
-                                            <input type="text" name="value_date" id="value_date"
-                                                class="form-control date-picker-valueDate flatpickr-input input-sm"
-                                                required>
-
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group ">
-                                        <div class="col-12">
-                                            <label for="inputEmail3" class="col-12 col-form-label">File<span
-                                                    class="text-danger"> *</span></label>
-                                            <input type="file" name="excel_file" id="excel_file" class=" input-sm" required>
-                                        </div>
-                                    </div>
-
-
-                                </div>
+                    <div class="card-body col-md-12">
 
 
 
-
-                                <!-- end row -->
-
-
-
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group row">
-                                        <div class="col-8 offset-4 text-right">
-                                            <button type="submit"
-                                                class="btn btn-primary btn-sm btn-rounded waves-effect waves-light disappear-after-success"
-                                                id="submit_cheque_request">
-                                                Submit Upload
-                                            </button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </form>
-
-                        <div class="row card" id="beneficiary_table" style="zoom: 0.8;">
+                        <div class="col-md-12 col-sm-12 col-xs-12  m-3"
+                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                             <br>
+                            {{-- <div class="col-md-1"></div> --}}
 
                             <div class="col-md-12">
-
-                            @if(session()->has('error'))
-    <div class="alert alert-danger">
-        {{ session()->get('error') }}
-    </div>
-@endif
-
-@if(session('success'))
-    <div class="alert alert-success">{{session('success')}}</div>
-@endif
-</div>
-
-<div class="col-md-12">
-
-                                <table id="datatable-buttons"
-                                    class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
-
-                                    <thead>
-                                        <tr class="bg-secondary text-white">
-                                            <th> <b> Batch </b> </th>
-                                            <th> <b>Reference </b> </th>
-                                            <th> <b> Debit Account </b> </th>
-                                            <th> <b> Bulk Amount </b> </th>
-                                            <th> <b> Value date </b> </th>
-                                            <th> <b> Bank Type </b> </th>
-                                            <!-- <th> <b> Status </b> </th> -->
-                                            {{--  <th class="text-center"> <b>Actions </b> </th>  --}}
-
-                                        </tr>
-                                    </thead>
-
-                                    <tbody class="">
-
-                                    </tbody>
+                                <p class="text-muted font-14 m-b-20 m-2">
+                                    <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
+                                            Note:&nbsp;&nbsp;</b> <span class="text-primary">Download template for upload
+                                            (<span class="text-danger"><a href="{{ url('download_same_bank_file') }}"
+                                                    class="text-danger"> BULK TRANSFER TEMPLATE</a></span>)
+                                            {{-- and(<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other
+                                            ACH Bank </a> </span>)</span> </span> --}}
+                                </p>
 
 
-                                </table>
+                                <form id="bulk_upload_form" action="{{ url('upload_') }}" method="post"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+
+
+                                            <div class="form-group ">
+                                                <div class="col-12">
+                                                    <label for="inputEmail3" class="col-12 col-form-label text-primary">
+                                                        Select Account<span class="text-danger"> *</span></label>
+                                                    <select class="form-control" name="my_account" id="my_account" required>
+                                                        <option value="">Select Account</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group ">
+                                                <div class="col-12">
+                                                    <label for="inputEmail3" class="col-12 col-form-label text-primary">Bank
+                                                        Transfer Type<span class="text-danger"> *</span></label>
+                                                    <select class="form-control " name="bank_type" id="bank_type" required>
+                                                        <option value=""> ---Select Type --</option>
+                                                        <option value="SAB"> Same Bank </option>
+                                                        <option value="OTB"> Other Bank </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="col-md-4" id="">
+
+
+                                            <div class="form-group ">
+                                                <div class="col-12">
+                                                    <label for="inputEmail3"
+                                                        class="col-12 col-form-label text-primary">Total Amount<span
+                                                            class="text-danger"> *</span></label>
+                                                    <input type="text" name="bulk_amount" id="bulk_amount"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                        class="form-control input-sm" required>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group ">
+                                                <div class="col-12">
+                                                    <label for="inputEmail3"
+                                                        class="col-12 col-form-label text-primary">Reference
+                                                        Number<span class="text-danger"> *</span></label>
+                                                    <input type="text" name="reference_no" id="reference_no"
+                                                        class="form-control input-sm" required>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="col-md-4" id="">
+
+
+                                            <div class="form-group ">
+                                                <div class="col-12">
+                                                    <label for="inputEmail3"
+                                                        class="col-12 col-form-label text-primary">Value Date<span
+                                                            class="text-danger"> *</span></label>
+                                                    <input type="text" name="value_date" id="value_date"
+                                                        class="form-control date-picker-valueDate flatpickr-input input-sm"
+                                                        required>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group ">
+                                                <div class="col-12">
+                                                    <label for="inputEmail3"
+                                                        class="col-12 col-form-label text-primary">File<span
+                                                            class="text-danger"> *</span></label>
+                                                    <input type="file" name="excel_file" id="excel_file" class=" input-sm"
+                                                        required>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+
+
+                                        <!-- end row -->
+
+
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <div class="col-8 offset-4 text-right">
+                                                    <button type="submit"
+                                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light disappear-after-success"
+                                                        id="submit_cheque_request">
+                                                        Submit Upload
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+
                             </div>
+
+                            {{-- <div class="col-md-1"></div> --}}
+
+
+
+
+
+
+                        </div>
+
+                        <div class="col-md-1"></div>
+
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 m-3"
+                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+
+                            {{-- <div class="col-md-1"></div> --}}
+
+                            <div class="col-md-12">
+                                <div class="" id="beneficiary_table" style="zoom: 0.8;">
+                                    <br>
+
+                                    <div class="col-md-12">
+
+                                        @if (session()->has('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session()->get('error') }}
+                                            </div>
+                                        @endif
+
+                                        @if (session('success'))
+                                            <div class="alert alert-success">{{ session('success') }}</div>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-12">
+
+                                        <table id="datatable-buttons"
+                                            class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
+
+                                            <thead>
+                                                <tr class="bg-info text-white">
+                                                    <th> <b> Batch </b> </th>
+                                                    <th> <b>Reference </b> </th>
+                                                    <th> <b> Debit Account </b> </th>
+                                                    <th> <b> Bulk Amount </b> </th>
+                                                    <th> <b> Value date </b> </th>
+                                                    <th> <b> Bank Type </b> </th>
+                                                    <!-- <th> <b> Status </b> </th> -->
+                                                    {{-- <th class="text-center"> <b>Actions </b> </th> --}}
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody class="">
+
+                                            </tbody>
+
+
+                                        </table>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                            {{-- <div class="col-md-1"></div> --}}
 
 
                         </div>
 
 
+
+
+
                     </div>
 
-                    <div class="col-md-1"></div>
+
 
                 </div> <!-- end card-body -->
 
@@ -265,8 +360,9 @@
                             value: data[index].accountType + '~' + data[index].accountDesc +
                                 '~' + data[index].accountNumber + '~' + data[index]
                                 .currency + '~' + data[index].availableBalance
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance));
+                        }).text(data[index].accountNumber +
+                            '~' + data[index].currency + '~' + formatToCurrency(parseFloat(data[
+                                index].availableBalance))));
 
                     });
                 },
@@ -470,7 +566,6 @@
 
 
         });
-
     </script>
 
 @endsection
