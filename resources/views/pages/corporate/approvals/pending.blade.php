@@ -72,7 +72,7 @@
                                             <tr class="bg-info text-white">
                                                 <th>Rquest Id</th>
                                                 <th>Transfer Purpose</th>
-                                                <th>(Currency)Amount</th>
+                                                <th>Amount</th>
                                                 <th>Req-Type</th>
                                                 <th>Initiated By</th>
                                                 <th>Posted Date</th>
@@ -345,13 +345,12 @@
         };
 
         function get_corporate_requests(customerNumber, requestStatus) {
-            var table = $('.pending_transaction_request').DataTable({
-                "order": [
-                    [0, "desc"]
-                ]
-            });
+            var table = $('.pending_transaction_request').DataTable();
             var nodes = table.rows().nodes();
 
+            table
+                .order([0, 'desc'])
+                .draw();
 
 
 
@@ -409,7 +408,6 @@
                                 data[index].narration,
                                 (data[index].currency) + ' ' + formatToCurrency(parseFloat(data[
                                     index].amount)),
-
                                 request_type,
                                 data[index].postedby,
                                 dd + '/' + mm + '/' + yyyy,
@@ -456,9 +454,20 @@
 
         $(document).ready(function() {
 
+
+            {{-- $('.pending_transaction_request').DataTable({
+                "columnDefs": [{
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }]
+            }) --}}
+
             var customer_no = @json(session()->get('customerNumber'));
             var request_status = 'P'
             console.log(customer_no);
+
+
 
 
             $('.transfer_tab_btn').click(function() {
