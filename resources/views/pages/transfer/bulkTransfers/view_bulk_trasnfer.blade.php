@@ -208,7 +208,7 @@
             var nodes = table.rows().nodes();
             $.ajax({
                 tpye: 'GET',
-                url: 'http://localhost/laravel/cib_api/public/api/get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
+                url: 'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
                 datatype: "application/json",
                 success: function(response) {
                     {{-- console.log(response.data); --}}
@@ -224,10 +224,10 @@
                         let bulk_details = bulk_upload_array_list.bulk_details
                         let data = bulk_upload_array_list.bulk_details
 
-                        $('.display_batch_no').text(bulk_info.batch_no)
-                        $('.display_narrations').text(bulk_info.description)
-                        $('.display_debit_account_no').text(bulk_info.account_no)
-                        $('.display_total_amount').text(formatToCurrency(parseFloat(bulk_info.total_amount)))
+                        $('.display_batch_no').text(bulk_info.BATCH_NO)
+                        $('.display_narrations').text(bulk_info.DESCRIPTION)
+                        $('.display_debit_account_no').text(bulk_info.ACCOUNT_NO)
+                        $('.display_total_amount').text(formatToCurrency(parseFloat(bulk_info.TOTAL_AMOUNT)))
 
                         $.each(data, function(index) {
                             {{-- console.log(data[index]) --}}
@@ -235,10 +235,10 @@
                             let status = ''
                             let bank_type = ''
 
-                            if (data[index].status == 'A') {
+                            if (data[index].STATUS == 'A') {
                                 status =
                                     `<span class="badge badge-success"> &nbsp; Approved &nbsp; </span> `
-                            } else if (data[index].status == 'R') {
+                            } else if (data[index].STATUS == 'R') {
                                 status =
                                     `<span class="badge badge-danger"> &nbsp; Rejected &nbsp; </span> `
                             } else {
@@ -246,14 +246,14 @@
                                     `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
                             }
 
-                            if (data[index].bank_code == 'I') {
+                            if (data[index].BANK_CODE == 'SAB') {
                                 bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
                             } else {
                                 bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
                             }
 
                             let batch =
-                                `<a href="{{ url('bulkFile/${data[index].batch_no}') }}">${data[index].batch_no}</a>`
+                                `<a href="{{ url('bulkFile/${data[index].BATCH_NO}') }}">${data[index].BATCH_NO}</a>`
 
                             let action =
                                 `<span class="btn-group mb-2">
@@ -263,10 +263,10 @@
                                                                                                                                                                                                                                                                                                                                                                  </span>  `
 
                             table.row.add([
-                                data[index].id,
-                                data[index].bban,
-                                formatToCurrency(parseFloat(data[index].amount)),
-                                data[index].name,
+                                data[index].ID,
+                                data[index].BBAN,
+                                formatToCurrency(parseFloat(data[index].AMOUNT)),
+                                data[index].NAME,
 
 
                             ]).draw(false)
@@ -277,9 +277,17 @@
                         $('#beneficiary_table').hide();
                         $('#beneficiary_list_loader').hide();
                         $('#beneficiary_list_retry_btn').show();
+
+
                     }
 
+                }, error: function(xhr, status, error) {
+                    setTimeout(function() {
+                        bulk_upload_detail_list()
+                    }, $.ajaxSetup().retryAfter)
                 }
+
+
             })
         }
 
@@ -400,7 +408,8 @@
 
         $(document).ready(function() {
 
-            var customer_no = "057725"
+            {{--  var customer_no = "057725"  --}}
+            var customer_no = @json(session('customerNumber'))
             {{-- var customer_no = @json($customer_no) --}}
             var batch_no = @json($batch_no)
 
@@ -437,7 +446,7 @@
 
             setTimeout(function() {
                 bulk_upload_detail_list(customer_no, batch_no)
-                my_account()
+                {{--  my_account()  --}}
             }, 1000)
 
 

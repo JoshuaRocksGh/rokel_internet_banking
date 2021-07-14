@@ -168,6 +168,8 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
         }
         */
 
+       $t_amt = 0;
+
         foreach ($rows as $row) {
 
 
@@ -177,9 +179,11 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                 // return null;
             } else {
 
-               
+
                 $beneficiaryname = $row['name'];
                 $creditaccountnumber =  $row['account_number'];
+
+                $t_amt = $t_amt + (float) $row['amount'];
 
 
                 $query_result = DB::table('tb_corp_bank_import_excel')->insert([
@@ -233,10 +237,10 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
                 'REF_NO' => $ref_no,
                 'VALUE_DATE' => $value_date,
-                'TOTAL_AMOUNT' => $total_amount,
+                'TOTAL_AMOUNT' => $t_amt,
                 'DESCRIPTION' => 'Description goes here ....',
-                'USER_ID' => "user_id",
-                'ACCOUNT_NO' => "account_no",
+                'USER_ID' => $user_id,
+                'ACCOUNT_NO' => $account_no,
                 'BATCH_NO' => $batch_no
 
             ]
@@ -246,19 +250,31 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
         DB::commit();
 
-        if($query_result_){
-            echo json_encode( [
-                'responseCode' => '000',
-                'message' => 'Bulk transfer pending approval'
-            ]);
-            die();
-        }else{
-            echo json_encode( [
-                'responseCode' => 'ii',
-                'message' => 'Something went wrong'
-            ]);
-            die();
-        }
+        // if($query_result_){
+
+        //     return back()->with('success', 'Bulk transfer pending approval');
+
+        // }else{
+        //     return back()->withErrors(['error' => 'Bulk transfer pending approval']);
+
+        // }
+
+        // if($query_result_){
+
+        //     // return back()->with('success', 'Bulk transfer pending approval');
+        //     return json_encode( [
+        //         'responseCode' => '000',
+        //         'message' => 'Bulk transfer pending approval'
+        //     ]);
+        //     // die();
+        // }else{
+        //     // return back()->with('success', 'Bulk transfer pending approval');
+        //     return json_encode( [
+        //         'responseCode' => 'ii',
+        //         'message' => 'Something went wrong'
+        //     ]);
+        //     // die();
+        // }
 
 
     }

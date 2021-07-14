@@ -79,12 +79,12 @@ class BulkUploadsController extends Controller
     {
 
 
-        $documentRef = time();
-        $account_no = $request->account_no;
-        $bank_code = $request->bank_type;
-        $trans_ref_no = $request->trans_ref_no;
-        $total_amount = $request->total_amount;
-        $value_date = $request->value_date;
+        // $documentRef = time();
+        // $account_no = $request->account_no;
+        // $bank_code = $request->bank_type;
+        // $trans_ref_no = $request->trans_ref_no;
+        // $total_amount = $request->total_amount;
+        // $value_date = $request->value_date;
 
         $this->validate($request, [
             'excel_file' => 'required|mimes:xls,xlsx',
@@ -102,13 +102,13 @@ class BulkUploadsController extends Controller
         $documentRef = time();
         $account_no = $request->my_account;
         $bank_code = $request->bank_type;
-        $trans_ref_no = $request->trans_ref_no;
-        $total_amount = $request->total_amount;
+        $trans_ref_no = $request->reference_no;
+        $total_amount = $request->bulk_amount;
         $value_date = $request->value_date;
 
         // return $request;
 
-        
+
 
         // return $account_no;
          $account_info = explode("~", $account_no);
@@ -125,31 +125,17 @@ class BulkUploadsController extends Controller
             $post_date = Carbon::now();
             $post_date = $post_date->toDateTimeString();
 
-            
 
-            return Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file), $file);
+
+           Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file), $file);
+            return back()->with('success', 'Bulk transfer pending approval');
+            // return $upload;
 
          }else{
 
          }
 
-        $path = $request->file('excel_file')->getRealPath();
 
-        $file = $request->file('excel_file');
-        $ext = $file->getClientOriginalExtension();
-        $name = strtoupper($documentRef) . '~' . strtoupper($trans_ref_no) . '~' . strtoupper($total_amount) . '.' . $ext;
-
-        $post_date = Carbon::now();
-        $post_date = $post_date->toDateTimeString();
-
-        return $post_date;
-
-        $pathToFile = public_path() . '/assets/images/bulk_payment_other_bank.xlsx';
-
-        $header = array(
-            'Content-Type' => 'application/xlsx'
-        );
-        return response()->download($pathToFile, 'Bulk_Payment_Other_bank_File.xlsx');
     }
 
     public function get_bulk_upload_list(Request $request)
@@ -200,13 +186,21 @@ class BulkUploadsController extends Controller
         $account_no = $request->query('account_no');
         $bank_type = $request->query('bank_type');
 
-        $files = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get();
 
-        return [
+        $bulk_details = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get();
+        $bulk_info = DB::table('TB_CORP_BANK_BULK_REF')->where('batch_no', $batch_no)->first();
+
+
+        return response()->json([
             'responseCode' => '000',
             'message' => "Detail of upload transfer",
-            'data' => $files
-        ];
+            'data' => [
+                'bulk_info' => $bulk_info,
+                'bulk_details' => $bulk_details
+            ]
+        ], 200);
+
+
     }
 
 
