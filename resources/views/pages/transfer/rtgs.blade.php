@@ -2084,6 +2084,8 @@
 
                             // upload invoice file
 
+                            
+
                             if (from_account == '' || to_account == '' || transfer_amount == '' ||
                                 category_info == '' || purpose == '') {
                                 toaster('Field must not be empty', 'error');
@@ -2095,6 +2097,11 @@
                                 return false;
                             }
                             //set purpose and category values
+
+                            if( $("#transfer_mode").val() == '' ||  $("#transfer_mode").val() == udefined){
+                                toaster(response.message, 'error', 5000)
+                                return false;
+                            }
 
 
                             $("#transaction_form").hide()
@@ -2374,7 +2381,7 @@
                                                 'content')
                                         },
                                         success: function(response) {
-                                            
+
                                             console.log(response);
 
                                             if (response.responseCode == '000') {
@@ -2739,6 +2746,11 @@
 
                                         var future_payement = $("#future_payement").val();
                                         console.log(future_payement);
+
+                                        if( $("#transfer_mode").val() == '' ||  $("#transfer_mode").val() == udefined){
+                                            toaster(response.message, 'error', 5000)
+                                            return false;
+                                        }
 
                                         var beneficiary_type_ = $("#transfer_mode").val().split('~');
 
