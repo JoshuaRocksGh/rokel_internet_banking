@@ -183,7 +183,7 @@
                                                                 <tr>
                                                                     {{-- <th>#</th> --}}
                                                                     <th>Description</th>
-                                                                    <th>Further Details</th>
+                                                                    <th class="text-right">Further Details</th>
                                                                     {{-- <th>Amount (<span id="receipt_currency"></span>)</th> --}}
                                                                 </tr>
                                                             </thead>
@@ -405,9 +405,8 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree to a transfer fee
-                                                                                    of (SLL - 100)
-
+                                                                                    By checking this box, you agree to to
+                                                                                    abide by the Terms and Conditions
                                                                                 </b>
                                                                             </label>
                                                                         </div>
@@ -448,8 +447,8 @@
                                                                                 id="user_pin"
                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                                             <br>
-                                                                            <button class="btn btn-success">
-                                                                                type="button" id="transfer_pin"
+                                                                            <button class="btn btn-success" type="button"
+                                                                                id="transfer_pin"
                                                                                 data-dismiss="modal">Submit</button>
                                                                         </form>
 
@@ -477,7 +476,7 @@
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button"
-                                                            id="confirm_modal_button" data-toggle="modal"
+                                                            data-toggle="modal" id="confirm_modal_button"
                                                             data-target="#centermodal">
                                                             <span id="confirm_transfer">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
@@ -605,9 +604,20 @@
                                                             </div>
 
                                                             <div class="form-group row">
+                                                                <label class="col-md-4"><b class="text-primary">Purpose of
+                                                                        Transfer &nbsp;</b><span
+                                                                        class="text-danger">*</span></b></label>
+
+                                                                <input type="text" class="form-control col-md-8 mb-2"
+                                                                    id="purpose" placeholder="Enter purpose of transfer"
+                                                                    autocomplete="off">
+
+                                                            </div>
+
+                                                            <div class="form-group row">
                                                                 <label class="col-md-4"><b class="text-primary">Expense
                                                                         Category
-                                                                        &nbsp;</b><span class="text-danger">*</span></label>
+                                                                        &nbsp;</b></label>
 
                                                                 {{-- <label class="h6">Category</label> --}}
 
@@ -621,24 +631,16 @@
 
 
 
-                                                            <div class="form-group row">
-                                                                <label class="col-md-4"><b class="text-primary">Purpose of
-                                                                        Transfer &nbsp</b></label>
-
-                                                                <input type="text" class="form-control col-md-8 mb-2"
-                                                                    id="purpose" placeholder="Enter purpose of transfer"
-                                                                    autocomplete="off">
-
-                                                            </div>
 
 
 
-                                                            <div class="form-group row">
+
+                                                            {{-- <div class="form-group row">
                                                                 <label class="col-md-4"><b class="text-primary">Future
                                                                         Payment</b> </label>
                                                                 <input class="form-control col-md-8" type="date"
                                                                     id="future_payment">
-                                                            </div>
+                                                            </div> --}}
 
                                                             {{-- <div class="row">
                                                                 <div class="col-md-4"></div>
@@ -1093,33 +1095,35 @@
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
-                        if(response.responseCode == '000'){
+                        if (response.responseCode == '000') {
                             let data = response.data
-                        $.each(data, function(index) {
+                            $.each(data, function(index) {
 
-                            $('#from_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountDesc + '~' + data[index].accountNumber + '~' +
-                                    data[index].currency + '~' + data[index].availableBalance +
-                                    '~' + data[index].accountMandate
-                            }).text(data[index].accountNumber +
-                                '~' + data[index].currency + ' ~ ' + formatToCurrency(parseFloat(
-                                    data[index].availableBalance))
-                            ));
-                            $('#to_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountDesc + '~' + data[index]
-                                    .accountNumber + '~' + data[index].currency + '~' +
-                                    data[index].availableBalance +
-                                    '~' + data[index].accountMandate
-                            }).text(data[index].accountNumber +
-                                '~' + data[index].currency + '~' + formatToCurrency(parseFloat(data[
-                                    index].availableBalance))
-                            ));
+                                $('#from_account').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[index]
+                                        .accountDesc + '~' + data[index].accountNumber + '~' +
+                                        data[index].currency + '~' + data[index]
+                                        .availableBalance +
+                                        '~' + data[index].accountMandate
+                                }).text(data[index].accountNumber +
+                                    '~' + data[index].currency + ' ~ ' + formatToCurrency(
+                                        parseFloat(data[index].availableBalance))
+                                ));
+                                $('#to_account').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[index]
+                                        .accountDesc + '~' + data[index]
+                                        .accountNumber + '~' + data[index].currency + '~' +
+                                        data[index].availableBalance +
+                                        '~' + data[index].accountMandate
+                                }).text(data[index].accountNumber +
+                                    '~' + data[index].currency + '~' + formatToCurrency(parseFloat(
+                                        data[
+                                            index].availableBalance))
+                                ));
 
-                        });
-                        }else{
-                            if(response.data == null){
+                            });
+                        } else {
+                            if (response.data == null) {
                                 window.location = 'logout'
                             }
                         }
@@ -1248,9 +1252,9 @@
 
                 $("#transaction_summary").hide();
                 $(".success_gif").hide();
-                $('#spinner').hide(),
-                    $('#spinner-text').hide(),
-                    $('#print_receipt').hide();
+                $('#spinner').hide();
+                $('#spinner-text').hide();
+                $('#print_receipt').hide();
                 $(".receipt").hide();
 
 
@@ -1402,8 +1406,8 @@
 
 
                         if ((from_account.trim() == to_account.trim()) && (from_account.trim() != '' &&
-                            to_account.trim() != '')) {
-                            {{--  alert('can not transfer to same account')  --}}
+                                to_account.trim() != '')) {
+                            {{-- alert('can not transfer to same account') --}}
                             toaster('Can not send to same account', 'error', 2000)
                             $(this).val('')
                         }
@@ -1703,7 +1707,7 @@
                                     }); --}}
 
 
-                $("#payment_details_form").submit(function(e) {
+                $("#next_button").click(function(e) {
                     e.preventDefault();
 
                     var from_account_ = $('#from_account').val().split("~");
@@ -1717,6 +1721,7 @@
                     var transfer_amount = $('#amount').val();
 
                     var category = $('#category').val().split("~");
+
                     $("#display_category").text(category[1]);
 
 
@@ -1738,18 +1743,18 @@
 
                     var select_frequency_ = $('#select_frequency').val();
 
-                    $("#transaction_summary").show();
-                    $("#transaction_form").hide();
+                    {{-- $("#transaction_summary").show();
+                    $("#transaction_form").hide(); --}}
 
-                    {{-- if (from_account == '' || to_account == '' || transfer_amount == '' ||
-                                            category == '' || purpose == '') {
-                                            alert('Field must not be empty')
-                                            toaster('Field must not be empty', 'error', 10000)
-                                            return false
-                                        } else {
-                                            $("#transaction_summary").show();
-                                            $("#transaction_form").hide();
-                                        } --}}
+                    if (from_account == '' || to_account == '' || transfer_amount == '' ||
+                        category == '') {
+                        {{-- alert('Field must not be empty') --}}
+                        toaster('Field must not be empty', 'error', 10000);
+                        return false
+                    } else {
+                        $("#transaction_summary").show();
+                        $("#transaction_form").hide();
+                    }
                 })
 
 
@@ -1777,7 +1782,7 @@
 
                 // SUBMIT TO API
 
-                $('#confirm_modal_button').click(function(e) {
+                $('#confirm_transfer').click(function(e) {
                     e.preventDefault();
 
                     if ($("#terms_and_conditions").is(":checked")) {
@@ -1786,14 +1791,13 @@
                         console.log(customerType);
 
 
-
                         if (customerType == 'C') {
 
                             {{-- alert('Corporate Account'); --}}
                             {{-- $('#centermodal').modal('hide'); --}}
                             {{-- $('.modal-dialog').modal('hide'); --}}
                             {{-- $('body').removeClass('modal-open');
-                                                $('.modal-backdrop').remove(); --}}
+                                $('.modal-backdrop').remove(); --}}
 
                             $('#confirm_transfer').hide()
                             $('#spinner').show();
@@ -1821,7 +1825,7 @@
                             $(".receipt_currency").text(select_currency);
 
 
-                            var category_ = ($('#category').val()).split("~");
+                            var category_ = $('#category').val().split("~");
                             var category = category_[1];
                             console.log(category_)
                             console.log(category)
@@ -1833,8 +1837,7 @@
                             $("#display_purpose").text(purpose);
                             $("#purpose_receipt").text(purpose);
 
-                            var schedule_payment_contraint_input = $(
-                                '#schedule_payment_contraint_input').val();
+                            var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val();
 
 
 
@@ -1844,9 +1847,6 @@
                             var select_frequency_ = $('#select_frequency').val();
 
                             {{-- var sec_pin = $('#user_pin').val(); --}}
-
-
-
 
                             $.ajax({
 
@@ -1881,14 +1881,14 @@
                                             'success'
                                         );
 
-                                        {{-- $(".receipt").show();
-                                                            $(".form_process").hide(); --}}
+                                        $(".receipt").show();
+                                        $(".form_process").hide();
 
                                         $('#confirm_modal_button').hide();
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#back_button').hide();
-                                        {{-- $('#print_receipt').show(); --}}
+                                        $('#print_receipt').show();
 
 
                                         $(".rtgs_card_right").hide();
@@ -1917,20 +1917,22 @@
                                 },
                                 error: function(xhr, status, error) {
                                     $("#confirm_transfer").show();
-                                        $("#confirm_modal_button").prop('disabled',
-                                            false);
-                                        $('#spinner').hide();
-                                        $('#spinner-text').hide();
-                                        $('#back_button').show();
-                                        $('#print_receipt').hide();
-                                        {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                        $("#related_information_display").show();
-                                        $(".success_gif").hide();
+                                    $("#confirm_modal_button").prop('disabled',
+                                        false);
+                                    $('#spinner').hide();
+                                    $('#spinner-text').hide();
+                                    $('#back_button').show();
+                                    $('#print_receipt').hide();
+                                    {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
+                                    $("#related_information_display").show();
+                                    $(".success_gif").hide();
                                 }
 
                             })
 
                         } else {
+
+                            {{-- alert('Personal Account'); --}}
 
                             $("#transfer_pin").click(function(e) {
                                 e.preventDefault();
@@ -2062,7 +2064,7 @@
 
 
                     } else {
-                        toaster('Accept Transfer fee charge to continue', 'error', 6000)
+                        toaster('Accept Terms & Conditions to continue', 'error', 6000)
                         console.log("UNCHECKED");
                         return false;
                     }

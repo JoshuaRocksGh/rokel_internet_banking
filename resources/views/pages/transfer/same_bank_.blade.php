@@ -445,8 +445,8 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree to a transfer fee
-                                                                                    of (SLL - 100)
+                                                                                    By checking this box, you agree to to
+                                                                                    abide by the Terms and Conditions
 
                                                                                 </b>
                                                                             </label>
@@ -470,8 +470,8 @@
                                                             &nbsp;Back</button> &nbsp; </span>
                                                     <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
                                                             id="confirm_modal_button" data-toggle="modal"
-                                                            data-target="#centermodal"><span id="confirm_transfer">Confirm
-                                                                Transfer</span>
+                                                            data-target="#centermodal">
+                                                            <span id="confirm_transfer">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
                                                                 role="status" id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
@@ -656,12 +656,16 @@
                                                                 <input type="text" class="form-control col-md-8"
                                                                     id="purpose" placeholder="Enter purpose of transaction"
                                                                     <div class="form-group row mb-3">
+
+
+                                                            </div>
+
+                                                            {{-- <div class="form-group row">
                                                                 <b class="col-md-4 text-primary ">Future Payment &nbsp; </b>
 
                                                                 <input type="date" class="form-control col-md-8"
                                                                     id="future_payement" required>
-
-                                                            </div>
+                                                            </div> --}}
 
                                                             {{-- <div class="row">
                                                                 <div class="col-md-4"></div>
@@ -805,7 +809,8 @@
                                                                     </div>
                                                                     &nbsp;&nbsp;
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control display_midrate"
+                                                                        <input type="text"
+                                                                            class="form-control display_midrate"
                                                                             id="convertor_rate" value="1.00"
                                                                             style="width: 100px;" readonly>
                                                                     </div>
@@ -848,7 +853,7 @@
 
 
 
-                                                            <div class="form-group row mb-3">
+                                                            {{-- <div class="form-group row mb-3">
                                                                 <b class="col-md-4 text-primary ">Future Payment &nbsp;
 
                                                                 </b>
@@ -856,7 +861,7 @@
                                                                 <input type="date" class="form-control col-md-8"
                                                                     id="onetime_future_payement" required>
 
-                                                            </div>
+                                                            </div> --}}
 
 
 
@@ -1001,7 +1006,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title text-center text-primary" id="myCenterModalLabel ">ENTER TRANSACTION
+                                <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER TRANSACTION
                                     PIN</h3>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 
@@ -1212,39 +1217,38 @@
                 datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
-                    let data = response.data
-                    $.each(data, function(index) {
-                        $('#from_account').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
-                                + '~' + data[index].accountMandate
-                        }).text(data[index].accountType + '~' + data[index]
-                            .accountNumber + '~' + data[index].currency + '~' + data[
-                                index].availableBalance));
-                        //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+                    if (response.responseCode == '000') {
+                        let data = response.data
+                        $.each(data, function(index) {
 
-                    });
-                    {{-- let name = $("from_acc_currency").val(); --}}
+                            $('#from_account').append($('<option>', {
+                                value: data[index].accountType + '~' + data[index]
+                                    .accountDesc + '~' + data[index].accountNumber + '~' +
+                                    data[index].currency + '~' + data[index]
+                                    .availableBalance +
+                                    '~' + data[index].accountMandate
+                            }).text(data[index].accountNumber +
+                                '~' + data[index].currency + ' ~ ' + formatToCurrency(
+                                    parseFloat(data[index].availableBalance))
+                            ));
 
-                    {{-- console.log(response); --}}
-                    {{-- let currency = response.data[0].currency; --}}
-                    {{-- console.log(currency); --}}
-
-                    {{-- $.each(currency, function(index) {
-                        let data = currency[index].description ;
-                        console.log(data);
-                    }) --}}
-
+                        });
+                    } else {
+                        if (response.data == null) {
+                            window.location = 'logout'
+                        }
+                    }
                 },
                 error: function(xhr, status, error) {
+
                     setTimeout(function() {
-                        from_account()
+                        from_account();
                     }, $.ajaxSetup().retryAfter)
                 }
 
             })
         }
+
 
 
         function to_account() {
@@ -1255,14 +1259,15 @@
                 success: function(response) {
                     console.log(response);
                     let data = response.data
-                    {{--  console.log(data);  --}}
+                    {{-- console.log(data); --}}
                     if (response.data.length > 0) {
                         {{-- $('.yes_beneficiary').show() --}}
                         $('.no_beneficiary').hide()
                         $.each(data, function(index) {
                             //$('#from_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountDesc+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType +'~'+ data[index].accountNumber +'~'+data[index].currency+'~'+data[index].availableBalance));
                             $('#to_account').append($('<option>', {
-                                value: data[index].BENEF_TYPE + '~' + data[index]
+                                value: data[index].BENEF_TYPE + '~' + data[
+                                        index]
                                     .NICKNAME + '~' + data[index].BEN_ACCOUNT +
                                     '~' + data[index].BEN_ACCOUNT_CURRENCY +
                                     '~' + data[index].EMAIL
@@ -1296,7 +1301,7 @@
                 "url": "get-expenses",
                 datatype: "application/json",
                 success: function(response) {
-                    {{--  console.log(response.data);  --}}
+                    {{-- console.log(response.data); --}}
                     let data = response.data;
 
                     $.each(data, function(index) {
@@ -1385,8 +1390,10 @@
                         if (response.responseCode == "000") {
                             console.log(response.data)
                             toaster(response.message, 'success', 5000);
-                            $('#onetime_beneficiary_name').val(response.data.accountDescription);
-                            $('.display_to_account_name').text(response.data.accountDescription);
+                            $('#onetime_beneficiary_name').val(response.data
+                                .accountDescription);
+                            $('.display_to_account_name').text(response.data
+                                .accountDescription);
                             $('.display_to_account_currency').text(response.data
                                 .accountCurrencyDescription);
                             $('.display_to_account_no').text(account_no);
@@ -1750,11 +1757,11 @@
 
             });
 
-            $('#select_converted_currency').change(function(){
+            $('#select_converted_currency').change(function() {
                 currency_convertor(forex_rate)
             })
 
-            $('#select_converted_currency__').change(function(){
+            $('#select_converted_currency__').change(function() {
                 currency_convertor_(forex_rate)
             })
 
@@ -1769,7 +1776,7 @@
                 $("#display_category").text(category_);
             });
 
-            $("#purpose").keyup(function() {
+            {{-- $("#purpose").keyup(function() {
                 if ($(this).val() == '') {
                     $("#display_purpose").text('Same Bank Transfer');
 
@@ -1778,7 +1785,7 @@
                     $("#display_purpose").text(purpose);
 
                 }
-            });
+            }); --}}
 
             $("#amount_").keyup(function() {
                 var amount = ($(this).val());
@@ -1796,7 +1803,7 @@
             })
 
             //purpose
-            $("#onetime_purpose").keyup(function() {
+            {{-- $("#onetime_purpose").keyup(function() {
                 if ($(this).val() == '') {
                     $("#display_purpose").text('Same Bank Transfer');
 
@@ -1806,12 +1813,14 @@
 
                 }
 
-            })
+            }) --}}
 
             $("#from_account").change(function() {
                 var from_acc_currency = ($(this).val().split('~'))
                 {{-- console.log(from_acc_currency); --}}
                 $("#hidden_currency").val(from_acc_currency[3]);
+
+
             })
 
 
@@ -1876,52 +1885,7 @@
                 }
                 //console.log(type);
 
-                var from_account = $('#from_account').val()
-                var transfer_amount = $('#amount').val()
-                var category = $('#category').val()
-                var purpose = $('#purpose').val()
-                if (purpose == '') {
-                    $("#display_purpose").text('Same Bank Transfer');
-                    var purpose = $('#purpose').val('Same Bank Transfer');
-                } else {
-                    $("#display_purpose").text(purpose);
 
-                }
-
-                var purpose = $('#onetime_purpose').val()
-                if (purpose == '') {
-                    $("#display_purpose").text('Same Bank Transfer');
-                    var purpose = $('#onetime_purpose').val('Same Bank Transfer');
-                } else {
-                    $("#display_purpose").text(purpose);
-
-                }
-
-                var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
-                var schedule_payment_date = $('#schedule_payment_date').val();
-
-                if (from_account.trim() == '' || transfer_amount.trim() == '' || category.trim() == '') {
-                    {{-- toaster('Field must not be empty', 'error', 10000) --}}
-
-                    {{-- alert('Field must not be empty') --}}
-
-                    {{-- return false --}}
-
-                }
-
-                if (parseFloat(amt) < parseFloat(transfer_amount)) {
-                    toaster('Insufficient account balance', 'error', 10000)
-                    return false
-                }
-
-                //set purpose and category values
-                {{-- var category_info = category.split("~")
-                $("#display_category").text(category_info[1])
-                var purpose =
-                $("#display_purpose").text(purpose) --}}
-
-                $("#transaction_form").hide()
-                $("#transaction_summary").show()
 
 
                 if (type == 'Saved_beneficiary') {
@@ -1930,13 +1894,53 @@
 
                     $('.display_schedule_payment_date').text("| " + schedule_payment_date)
 
+                    var from_account = $('#from_account').val()
+                    var transfer_amount = $('#amount').val()
+                    var category = $('#category').val()
 
-                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount
-                        .trim() == '' || category.trim() == '') {
-                        {{-- toaster('Field must not be empty', 'error', 10000)
+                    var purpose = $('#purpose').val();
+                    if (purpose == '') {
+                        var purpose_ = $('#purpose').val('Same Bank Transfer');
+                        $("#display_purpose").text('Same Bank Transfer');
+
+                    } else {
+                        $("#display_purpose").text(purpose);
+
+                    }
+
+                    var purpose = $('#onetime_purpose').val()
+                    if (purpose == '') {
+                        $("#display_purpose").text('Same Bank Transfer');
+                        var purpose = $('#onetime_purpose').val('Same Bank Transfer');
+                    } else {
+                        $("#display_purpose").text(purpose);
+
+                    }
+
+                    var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
+                    var schedule_payment_date = $('#schedule_payment_date').val();
 
 
-                        return false --}}
+                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                        toaster('Insufficient account balance', 'error', 10000)
+                        return false
+                    }
+
+                    //set purpose and category values
+                    {{-- var category_info = category.split("~")
+                    $("#display_category").text(category_info[1])
+                    var purpose =
+                    $("#display_purpose").text(purpose) --}}
+
+                    $("#transaction_form").hide()
+                    $("#transaction_summary").show()
+
+
+                    if (from_account == '' || to_account == '' || transfer_amount == '' || category == '') {
+                        toaster('Field must not be empty', 'error', 10000)
+
+
+                        return false
                     } else {
                         //set purpose and category values
                         var category_info = category.split("~")
@@ -1955,32 +1959,45 @@
                     var from_account = $('#from_account').val()
 
                     // ONETIME BENEFICIARY DETAILS
-                    var onetime_beneficiary_alias_name = $('#onetime_beneficiary_alias_name').val()
+                    var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
                     var onetime_account_number = $('#onetime_account_number').val()
-                    var onetime_beneficiary_account_currency = $('#onetime_beneficiary_account_currency')
+                    var onetime_beneficiary_account_currency = $(
+                            '#onetime_beneficiary_account_currency')
                         .val()
                     var onetime_beneficiary_name = $('#onetime_beneficiary_name').val()
                     var onetime_beneficiary_email = $('#onetime_beneficiary_email').val()
-                    var onetime_beneficiary_phone = $('#onetime_beneficiary_phone').val()
+                    var select_currency__ = $('#select_currency__').val()
+                    var onetime_category = $('#onetime_category').val();
+                    var onetime_purpose = $('#onetime_purpose').val();
 
+                    if (onetime_purpose == '') {
+                        $("#display_purpose").text('Same Bank Transfer');
+                        var onetime_purpose = $('#onetime_purpose').val('Same Bank Transfer');
+                    } else {
+                        $("#display_purpose").text(onetime_purpose);
+
+                    }
 
 
                     // END OF ONETIME BENEFICIARY DETAILS
+
 
                     ///////////////////////////////
 
                     //////////////////////////////
 
 
-                    if (from_account.trim() == '' || onetime_account_number.trim() ==
-                        '' || amount_.trim() == '' || category.trim() == '') {
-                        {{-- toaster('Field must not be empty', 'error', 10000) --}}
+                    if (from_account.trim() == '' || onetime_account_number.trim() == '' || onetime_category
+                        .trim() == '' || select_currency__.trim() == '' ||
+                        onetime_beneficiary_email.trim() == '') {
+                        toaster('Field must not be empty', 'error', 10000)
 
                         {{-- alert('Field must not be empty') --}}
-                        {{-- return false --}}
+                        return false
                     } else {
                         //set purpose and category values
-                        var category_info = category.split("~")
+                        var category_info = onetime_category.split("~");
+                        console.log(category_info);
                         $("#display_category").text(category_info[1])
                         {{-- $("#display_purpose").text(purpose) --}}
 
@@ -2017,7 +2034,8 @@
 
 
                 {{-- $('#online_display_beneficiary_alias_name').text(onetime_beneficiary_alias_name); --}}
-                $('#online_display_beneficiary_account_no').text(onetime_beneficiary_account_number);
+                $('#online_display_beneficiary_account_no').text(
+                    onetime_beneficiary_account_number);
                 $('#online_display_beneficiary_account_currency').text(
                     onetime_beneficiary_account_currency);
                 $('#online_display_beneficiary_email').text(onetime_beneficiary_email);
@@ -2335,10 +2353,12 @@
 
                                 console.log(from_account);
 
-                                var onetime_beneficiary_name = $('#onetime_beneficiary_name').val();
+                                var onetime_beneficiary_name = $(
+                                    '#onetime_beneficiary_name').val();
                                 console.log(onetime_beneficiary_name);
 
-                                var onetime_account_number = $('#onetime_account_number').val();
+                                var onetime_account_number = $('#onetime_account_number')
+                                    .val();
                                 console.log(onetime_account_number);
                                 $("#to_account_receipt").text(onetime_account_number);
 
@@ -2351,14 +2371,16 @@
                                 {{-- console.log(purpose); --}}
                                 if (purpose == '') {
                                     $("#purpose_receipt").text("Same Bank Transfer");
-                                    var purpose = $("#onetime_purpose").val("Same Bank Transfer");
+                                    var purpose = $("#onetime_purpose").val(
+                                        "Same Bank Transfer");
                                 } else {
                                     $("#purpose_receipt").text(purpose);
 
                                 }
                                 {{-- $("#purpose_receipt").text(purpose); --}}
 
-                                var onetime_beneficiary_email = $('#onetime_beneficiary_email')
+                                var onetime_beneficiary_email = $(
+                                        '#onetime_beneficiary_email')
                                     .val();
                                 console.log(onetime_beneficiary_email);
 
@@ -2371,7 +2393,8 @@
 
                                 {{-- var select_frequency = $('#select_frequency').val() --}}
 
-                                var onetime_future_payement = $('#onetime_future_payement').val();
+                                var onetime_future_payement = $('#onetime_future_payement')
+                                    .val();
                                 console.log(onetime_future_payement);
 
                                 var category_ = $('#onetime_category').val().split('~');
@@ -2406,8 +2429,9 @@
                                         'secPin': user_pin
                                     },
                                     headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                            'content')
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                            .attr(
+                                                'content')
                                     },
                                     success: function(response) {
                                         {{-- console.log(response); --}}
@@ -2441,19 +2465,22 @@
 
 
                                         } else {
-                                            toaster(response.message, 'error', 10000)
+                                            toaster(response.message, 'error',
+                                                10000)
 
                                             $(".receipt").hide();
 
                                             $("#confirm_transfer").show();
-                                            $("#confirm_modal_button").prop('disabled',
+                                            $("#confirm_modal_button").prop(
+                                                'disabled',
                                                 false);
                                             $('#spinner').hide();
                                             $('#spinner-text').hide();
                                             $('#back_button').show();
                                             $('#print_receipt').hide();
                                             {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                            $("#related_information_display").show();
+                                            $("#related_information_display")
+                                                .show();
                                             $(".success_gif").hide();
 
 
@@ -2545,8 +2572,9 @@
                                     },
 
                                     headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                            'content')
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                            .attr(
+                                                'content')
                                     },
                                     success: function(response) {
                                         {{-- console.log(response); --}}
@@ -2579,20 +2607,23 @@
 
 
                                         } else {
-                                            toaster(response.message, 'error', 10000)
+                                            toaster(response.message, 'error',
+                                                10000)
 
                                             $(".receipt").hide();
                                             {{-- $(".form_process").hide(); --}}
 
                                             $("#confirm_transfer").show();
-                                            $("#confirm_modal_button").prop('disabled',
+                                            $("#confirm_modal_button").prop(
+                                                'disabled',
                                                 false);
                                             $('#spinner').hide();
                                             $('#spinner-text').hide();
                                             $('#back_button').show();
                                             $('#print_receipt').hide();
                                             {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-                                            $("#related_information_display").show();
+                                            $("#related_information_display")
+                                                .show();
                                             $(".success_gif").hide();
 
 
@@ -2627,7 +2658,7 @@
 
 
             let amount = $("#amount_").val()
-            let convert_amount_currency  = $('#select_converted_currency__').val()
+            let convert_amount_currency = $('#select_converted_currency__').val()
 
             let converted_amount = ''
 
@@ -2647,86 +2678,90 @@
             cur_2 = $('#select_converted_currency__').val()
 
 
-                let currency_pair_1 = cur_1 + '/ ' + cur_2
-                let currency_pair_2 = cur_2 + '/ ' + cur_1
+            let currency_pair_1 = cur_1 + '/ ' + cur_2
+            let currency_pair_2 = cur_2 + '/ ' + cur_1
 
-                let to_local_currency = cur_1 + '/ SLL'
-                let local_currency = ''
-
-
-                console.log(currency_pair_1)
-                console.log(currency_pair_2)
-                console.log(forex_rate)
-
-                $('#convertor_amount').val('')
-                $('#convertor_rate').val('')
-
-                $('#convertor_amount_').val('')
-                $('#convertor_rate_').val('')
+            let to_local_currency = cur_1 + '/ SLL'
+            let local_currency = ''
 
 
-                if (forex_rate.length > 0) {
-                    $.each(forex_rate, function(index) {
+            console.log(currency_pair_1)
+            console.log(currency_pair_2)
+            console.log(forex_rate)
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
-                                .trim())) {
-                            local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
+            $('#convertor_amount').val('')
+            $('#convertor_rate').val('')
 
-                        }
-
+            $('#convertor_amount_').val('')
+            $('#convertor_rate_').val('')
 
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
-                                .trim())) {
+            if (forex_rate.length > 0) {
+                $.each(forex_rate, function(index) {
 
-                            converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
-                                .MIDRATE)
-                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                    if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
+                            .trim())) {
+                        local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                    }
 
-                            $('#converted_amount_').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 1 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        } else if (String(forex_rate[index].PAIR.trim()) == String(
-                                currency_pair_2
-                                .trim())) {
 
-                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                            converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
+                    if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
+                            .trim())) {
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
+                            .MIDRATE)
+                        $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
 
-                            $('#converted_amount_').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 2 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE
+                            .toFixed(
+                                2))))
 
-                        } else {
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 1 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        }
-                    })
-                }
+                    } else if (String(forex_rate[index].PAIR.trim()) == String(
+                            currency_pair_2
+                            .trim())) {
+
+                        $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
+
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE
+                            .toFixed(
+                                2))))
+
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 2 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                    } else {
+
+                    }
+                })
+            }
 
         }
 
@@ -2754,87 +2789,91 @@
 
 
 
-                cur_1 = $('#select_currency').val()
-                cur_2 = $('#select_converted_currency').val()
+            cur_1 = $('#select_currency').val()
+            cur_2 = $('#select_converted_currency').val()
 
 
-                let currency_pair_1 = cur_1 + '/ ' + cur_2
-                let currency_pair_2 = cur_2 + '/ ' + cur_1
+            let currency_pair_1 = cur_1 + '/ ' + cur_2
+            let currency_pair_2 = cur_2 + '/ ' + cur_1
 
-                let to_local_currency = cur_1 + '/ SLL'
-                let local_currency = ''
-
-
-                console.log(currency_pair_1)
-                console.log(currency_pair_2)
-                console.log(forex_rate)
-
-                $('#converted_amount').val('')
-                $('#convertor_rate').val('')
+            let to_local_currency = cur_1 + '/ SLL'
+            let local_currency = ''
 
 
-                if (forex_rate.length > 0) {
-                    $.each(forex_rate, function(index) {
+            console.log(currency_pair_1)
+            console.log(currency_pair_2)
+            console.log(forex_rate)
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
-                                .trim())) {
-                            local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
-
-                        }
+            $('#converted_amount').val('')
+            $('#convertor_rate').val('')
 
 
+            if (forex_rate.length > 0) {
+                $.each(forex_rate, function(index) {
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
-                                .trim())) {
+                    if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
+                            .trim())) {
+                        local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
 
-                            converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
-                                .MIDRATE)
-                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                    }
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
 
-                            $('#converted_amount_').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 1 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        } else if (String(forex_rate[index].PAIR.trim()) == String(
-                                currency_pair_2
-                                .trim())) {
+                    if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
+                            .trim())) {
 
-                            $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                            converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
+                        converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
+                            .MIDRATE)
+                        $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE
+                            .toFixed(
+                                2))))
 
-                            $('#converted_amount_').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 2 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 1 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        } else {
+                    } else if (String(forex_rate[index].PAIR.trim()) == String(
+                            currency_pair_2
+                            .trim())) {
 
-                        }
-                    })
-                }
+                        $('#convertor_rate').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
+
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[index].MIDRATE
+                            .toFixed(
+                                2))))
+
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 2 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                    } else {
+
+                    }
+                })
+            }
 
         }
     </script>

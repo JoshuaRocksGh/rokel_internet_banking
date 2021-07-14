@@ -108,7 +108,10 @@
                                                     </div>
                                                     <br>
                                                     <div class="page-header">
-                                                        <h2>Transfer Receipt </h2>
+                                                        <h2><span id="personal_transfer_receipt">Transfer Receipt</span>
+                                                            <span id="coporate_transfer_approval">Transaction Awaiting
+                                                                Approval</span>
+                                                        </h2>
                                                     </div>
                                                     <br>
                                                     {{-- <div class="row">
@@ -434,8 +437,8 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By clicking, you agree to a transfer fee
-                                                                                    of (SLL - 100)
+                                                                                    By checking this box, you agree to to
+                                                                                    abide by the Terms and Conditions
 
                                                                                 </b>
                                                                             </label>
@@ -625,17 +628,8 @@
                                                                     class="text-danger">*</span></b>
 
                                                             <div class="row col-md-8 ">
-                                                                {{-- <div
-                                                                class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                <input type="radio" id="normal_transfer_type" value="NORMAL" name="transfer_type">
-                                                                <label for="inlineRadio1">Normal</label>
-                                                            </div> --}}
-                                                                {{-- <div
-                                                                class="radio radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                <input type="radio" id="invioce_transfer_type"
-                                                                    value="INVOICE" name="transfer_type">
-                                                                <label for="inlineRadio2">Invoice</label>
-                                                            </div> --}}
+
+
 
                                                                 <div
                                                                     class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
@@ -710,9 +704,7 @@
                                                                     <input type="text"
                                                                         class="input-group-text select_currency "
                                                                         id="select_currency" style="width: 80px;" readonly>
-                                                                    {{-- <select name="" class="input-group-text select_currency" id="select_currency" disabled>
 
-                                                                        </select> --}}
                                                                 </div>
 
                                                                 &nbsp;&nbsp;
@@ -723,11 +715,7 @@
 
 
                                                         </div>
-                                                        {{-- <div class="form-group">
-                                                        <select name="" class="input-group-text" id="hidden_select_currency" >
 
-                                                        </select>
-                                                    </div> --}}
 
 
 
@@ -1658,10 +1646,18 @@
                 }
 
 
-                function customerType() {
+                function customer() {
                     var customerType = @json(session()->get('customerType'));
                     console.log(customerType);
 
+                    if (customerType == 'C') {
+
+                        $('#coporate_transfer_approval').show();
+                        $('#personal_transfer_receipt').hide();
+                    } else {
+                        $('#personal_transfer_receipt').show();
+                        $('#coporate_transfer_approval').hide();
+                    }
                 }
 
                 $(document).ready(function() {
@@ -1693,7 +1689,7 @@
                     $(".beneficiary_details").hide();
                     {{-- $(".select_beneficiary").toggle(500); --}}
 
-                    $('.receipt').hide();
+                    {{-- $('.receipt').hide(); --}}
 
 
 
@@ -1706,7 +1702,7 @@
                         get_currency();
                         expenseTypes();
                         expenseTypes_onetime();
-                        customerType();
+                        customer();
                     }, 2000)
 
 
@@ -2087,9 +2083,15 @@
                             
 
                             if (from_account == '' || to_account == '' || transfer_amount == '' ||
-                                category_info == '' || purpose == '') {
+                                category_info == '') {
                                 toaster('Field must not be empty', 'error');
                                 return false
+                            } else {
+                                $("#transaction_form").hide()
+                                {{-- $(".other_card_right").hide() --}}
+                                $("#related_information_display").hide()
+                                $("#transaction_summary").show()
+                                $('#print_button').hide();
                             }
 
                             if (parseFloat(transfer_amount) < parseFloat(transfer_amount)) {
@@ -2104,11 +2106,7 @@
                             }
 
 
-                            $("#transaction_form").hide()
-                            {{-- $(".other_card_right").hide() --}}
-                            $("#related_information_display").hide()
-                            $("#transaction_summary").show()
-                            $('#print_button').hide();
+
 
 
 
@@ -2298,7 +2296,7 @@
 
                             if (customerType == "C") {
                                 $('#confirm_modal_button').removeAttr("data-target");
-
+                                $('#personal_transfer_receipt').hide();
                                 {{-- alert(customerType); --}}
                                 if ($('#checkmeout0').is(':checked')) {
                                     console.log("onetime beneficiary");
@@ -2366,8 +2364,8 @@
                                             "beneficiary_name": beneficiary_name,
                                             "bank_name": bank_name,
                                             "to_account": account_number,
-                                            "currency": currCode,
-                                            "currency_iso": currency,
+                                            "currency": currency,
+                                            "currency_iso": currCode,
                                             "amount": onetime_amount,
                                             "email": beneficiary_email,
                                             "category": expense_category,
@@ -2484,19 +2482,19 @@
                                     var sec_pin = $('#user_pin').val()
 
                                     let api_data = {
-                                        from_account: from_account,
-                                        bank_name: bank_name,
-                                        beneficiary_name: beneficiary_name,
-                                        beneficiary_address: beneficiary_address,
-                                        to_account: to_account,
-                                        amount: amount,
-                                        currency: currCode,
-                                        currency_iso: currency,
-                                        category: category,
-                                        purpose: purpose,
-                                        future_payement: future_payement,
-                                        beneficiary_type: beneficiary_type,
-                                        account_mandate: accountMandate
+                                        "from_account": from_account,
+                                        "bank_name": bank_name,
+                                        "beneficiary_name": beneficiary_name,
+                                        "beneficiary_address": beneficiary_address,
+                                        "to_account": to_account,
+                                        "amount": amount,
+                                        "currency": currency,
+                                        "currency_iso": currCode,
+                                        "category": category,
+                                        "purpose": purpose,
+                                        "future_payement": future_payement,
+                                        "beneficiary_type": beneficiary_type,
+                                        "account_mandate": accountMandate
                                     };
 
                                     console.log(api_data)
@@ -2564,6 +2562,7 @@
 
 
                             } else {
+                                $('#coporate_transfer_approval').hide();
                                 $("#transfer_pin").click(function(e) {
                                     e.preventDefault();
 

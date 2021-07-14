@@ -168,6 +168,7 @@ Route::get('/view-bulk-transfer', [BulkUploadBulkUploadsController::class, 'view
 Route::get('/get-bulk-upload-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_list'])->name('get-bulk-upload-list-api');
 Route::get('/get-bulk-upload-detail-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_file_details'])->name('get-bulk-upload-detail-list-api');
 Route::get('/post-bulk-transaction-api', [BulkUploadBulkUploadsController::class, 'post_bulk_transaction'])->name('post-bulk-transaction-api');
+Route::get('/reject-bulk-transaction-api', [BulkUploadBulkUploadsController::class, 'reject_bulk_transaction'])->name('reject-bulk-transaction-api');
 
 
 Route::post('/get-bulk-detail-list-for-approval', [PendingController::class, 'get_bulk_detail_list_for_approval'])->name('get-bulk-detail-list-for-approval');

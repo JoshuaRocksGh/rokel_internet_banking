@@ -456,7 +456,7 @@ class LocalBankController extends Controller
             "amount" => $request->amount,
             "currency" => $request->currency,
             "currency_iso" => $request->currency_iso,
-            "narration" => $request->account_mandate
+            "narration" => $request->purpose
         ];
 
         // return response()->json([
@@ -561,7 +561,7 @@ class LocalBankController extends Controller
             "amount" => $request->amount,
             "currency" => $request->currency,
             "currency_iso" => $request->currency_iso,
-            "narration" => $request->account_mandate
+            "narration" => $request->purpose
         ];
 
         // return $data;

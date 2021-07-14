@@ -15,10 +15,11 @@ class GetAccountDescription extends Controller
 {
 
 
-    public function getAccounts(Request $request){
+    public function getAccounts(Request $request)
+    {
 
-        $validator = Validator::make($request->all(),[
-            'accountNumber' => 'required' ,
+        $validator = Validator::make($request->all(), [
+            'accountNumber' => 'required',
         ]);
         $base_response = new BaseResponse();
 
@@ -38,21 +39,20 @@ class GetAccountDescription extends Controller
         ];
 
 
-        $response = Http::post(env('API_BASE_URL') ."/account/getAccounts",$data);
+        $response = Http::post(env('API_BASE_URL') . "/account/getAccounts", $data);
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
-
-
     }
 
 
 
 
-    public function get_account_description(Request $request){
+    public function get_account_description(Request $request)
+    {
 
-        $validator = Validator::make($request->all(),[
-            'accountNumber' => 'required' ,
+        $validator = Validator::make($request->all(), [
+            'accountNumber' => 'required',
         ]);
 
         $base_response = new BaseResponse();
@@ -74,17 +74,16 @@ class GetAccountDescription extends Controller
 
         $data = [
             "authToken" => $authToken,
-            "accountNumber"    => $account_no
+            "userId"    => $account_no
         ];
 
         // return $data;
 
-        $response = Http::post(env('API_BASE_URL') ."/account/getAccountDescription",$data);
+        $response = Http::post(env('API_BASE_URL') . "/account/getAccountDescription", $data);
 
         // return $response->body();
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
-
 }

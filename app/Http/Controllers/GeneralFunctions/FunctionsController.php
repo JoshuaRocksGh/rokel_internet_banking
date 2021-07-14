@@ -122,6 +122,14 @@ class FunctionsController extends Controller
         $userID = session()->get('userId');
         $api_headers = session()->get('headers');
 
+        // return response()->json([
+        //     'responseCode' => '$result->responseCode',
+        //     'message' => '$result->message',
+        //     'data' => $api_headers
+        // ], 200);
+
+        // return $api_headers;
+
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
@@ -132,7 +140,7 @@ class FunctionsController extends Controller
         // return $data;
         // return env('API_BASE_URL') ."account/getAccounts";
 
-        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "account/getAccounts",$data);
+        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "account/getAccounts", $data);
         // $response = Http::post(env('API_BASE_URL') . "account/getAccounts", $data);
 
         $result = new ApiBaseResponse();
@@ -450,4 +458,3 @@ class FunctionsController extends Controller
         // return $response->status();
     }
 }
-

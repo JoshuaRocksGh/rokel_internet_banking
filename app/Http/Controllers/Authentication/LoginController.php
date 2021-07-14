@@ -161,7 +161,7 @@ class LoginController extends Controller
 
                */
 
-              return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
+            //   return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
                     return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
                 } else {  // API responseCode is not 000

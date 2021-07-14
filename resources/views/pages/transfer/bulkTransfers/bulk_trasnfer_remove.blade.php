@@ -65,7 +65,7 @@
 
 
 <div>
-
+    <legend></legend>
 
     <div class="row">
         <div class="col-12">
@@ -308,7 +308,14 @@
 
 
                 if (response.responseCode == '000') {
-                    bulk_upload_array_list = response.data;
+                    bulk_upload_array_list = response.data; {
+                        {
+                            --$('#beneficiary_table').show();
+                            $('#beneficiary_list_loader').hide();
+                            $('#beneficiary_list_retry_btn').hide();
+                            --
+                        }
+                    }
 
                     data = bulk_upload_array_list
 
@@ -449,7 +456,37 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        });
+        }); {
+            {
+                --$('#bulk_upload_form').submit(function(e) {
+                    e.preventDefault();
+                    let formData = new FormData(this);
+                    console.log(formData);
+                    return false;
+
+                    $('#image-input-error').text('');
+
+                    $.ajax({
+                        type: 'POST'
+                        , url: 'http://localhost/laravel/cib_api/public/api/import'
+                        , data: formData
+                        , contentType: false
+                        , processData: false
+                        , success: (response) => {
+                            if (response) {
+                                this.reset();
+                                alert('Image has been uploaded successfully');
+                            }
+                        }
+                        , error: function(response) {
+                            console.log(response);
+                            $('#image-input-error').text(response.responseJSON.errors.file);
+                        }
+                    });
+                });
+                --
+            }
+        }
 
 
 
