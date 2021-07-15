@@ -618,7 +618,7 @@
                                                                 <label class="col-md-4"><b class="text-primary">Expense
                                                                         Category
                                                                         &nbsp;</b></label>
-                                                                        <input type="hidden" value="Others" id="category_">
+                                                                <input type="hidden" value="Others" id="category_">
 
                                                                 {{-- <label class="h6">Category</label> --}}
 
@@ -1154,12 +1154,12 @@
 
                         $.each(data, function(index) {
 
-                            if ('Others' == data[index].expenseName){
+                            if ('Others' == data[index].expenseName) {
                                 $("#category").append($('<option selected>', {
                                     value: data[index].expenseCode + '~' + data[index]
                                         .expenseName
                                 }).text(data[index].expenseName))
-                            }else{
+                            } else {
                                 $("#category").append($('<option>', {
                                     value: data[index].expenseCode + '~' + data[index]
                                         .expenseName
@@ -1270,7 +1270,7 @@
                 $('#spinner').hide();
                 $('#spinner-text').hide();
                 $('#print_receipt').hide();
-                $(".receipt").hide();
+                {{-- $(".receipt").hide(); --}}
 
 
 
@@ -1356,11 +1356,11 @@
 
                 $("#from_account").change(function() {
                     var from_account = $(this).val();
-                    {{--  var from_account_currency = from_account.split('~');
+                    {{-- var from_account_currency = from_account.split('~');
                     console.log("~~~~~~");
                     console.log(from_account_currency);
                     var from_acc_curr = from_account_currency[3];
-                    console.log("end here");  --}}
+                    console.log("end here"); --}}
 
                     {{-- alert(from_account) --}}
                     if (from_account.trim() == '' || from_account.trim() == undefined) {
@@ -1385,14 +1385,14 @@
                             $(this).val('')
                         }
 
-                        {{--  var currency = to_account.split('~');
+                        {{-- var currency = to_account.split('~');
                         console.log("===========")
                         console.log(currency)
                         var to_acc_curr = currency[3]
                         console.log("form acc +++++");
                         console.log(from_acc_curr);
                         console.log("to acc -----");
-                        console.log(to_acc_curr);  --}}
+                        console.log(to_acc_curr); --}}
 
 
 
@@ -1750,9 +1750,14 @@
 
                     var transfer_amount = $('#amount').val();
 
-                    var category = $('#category').val().split("~");
+                    var category = $('#category').val();
+                    if (category != 'Others') {
+                        var category_ = $('#category').val().split('~');
+                        var category = category_[1];
+                    }
 
-                    $("#display_category").text(category[1]);
+                    $("#display_category").text(category);
+                    {{--  $("#category_receipt").text(category);  --}}
 
 
 
@@ -1778,8 +1783,9 @@
                     var to_account_currency = to_acc_curr[3];
                     console.log(to_account_currency);
 
-                    if(to_account_currency != 'SLL' ) {
-                        toaster('You can not transfer from' + ' ' + from_account_currency + ' ' + 'to' + ' ' + to_account_currency , 'error', 10000);
+                    if (to_account_currency != 'SLL') {
+                        toaster('You can not transfer from' + ' ' + from_account_currency + ' ' + 'to' + ' ' +
+                            to_account_currency, 'error', 10000);
                         return false;
                     }
 
@@ -1864,13 +1870,22 @@
                             var select_currency = $("#select_currency").val();
                             $(".receipt_currency").text(select_currency);
 
+                            var category = $('#category').val();
+                            if (category != 'Others') {
+                                var category_ = $('#category').val().split('~');
+                                var category = category_[1];
+                            }
 
-                            var category_ = $('#category').val().split("~");
+                            {{-- $("#display_category").text(category); --}}
+                            $("#category_receipt").text(category);
+
+
+                            {{-- var category_ = $('#category').val().split("~");
                             var category = category_[1];
                             console.log(category_)
                             console.log(category)
                             $("#display_category").text(category[1]);
-                            $("#category_receipt").text(category[1]);
+                            $("#category_receipt").text(category[1]); --}}
 
 
                             var purpose = $('#purpose').val();
@@ -1897,8 +1912,7 @@
                                     'from_account': from_account,
                                     'to_account': to_account,
                                     'transfer_amount': transfer_amount,
-                                    'category': category,
-                                    'purpose': purpose,
+                                    {{-- 'category': category, --}} 'purpose': purpose,
                                     'currency': currency,
                                     'schedule_payment_type': schedule_payment_contraint_input,
                                     'schedule_payment_date': schedule_payment_date,
@@ -1986,6 +2000,7 @@
                                 var from_account_ = $('#from_account').val().split("~");
                                 console.log(from_account_);
                                 var from_account = from_account_[2];
+                                var from_account_currency = from_account_[3]
                                 $("#from_account_receipt").text(from_account);
 
                                 var to_account_ = $('#to_account').val().split('~');
@@ -2001,10 +2016,18 @@
                                 var select_currency = $("#select_currency").val();
                                 $(".receipt_currency").text(select_currency);
 
+                                var category = $('#category').val();
+                                if (category != 'Others') {
+                                    var category_ = $('#category').val().split('~');
+                                    var category = category_[1];
+                                }
 
-                                var category = $('#category').val().split("~");
+                                {{-- $("#display_category").text(category); --}}
+                                $("#category_receipt").text(category);
+
+                                {{-- var category = $('#category').val();
                                 $("#display_category").text(category[1]);
-                                $("#category_receipt").text(category[1]);
+                                $("#category_receipt").text(category[1]); --}}
 
                                 var purpose = $('#purpose').val();
                                 $("#display_purpose").text(purpose);
@@ -2032,9 +2055,9 @@
                                     data: {
                                         'from_account': from_account,
                                         'to_account': to_account,
+                                        'account_currency': from_account_currency,
                                         'transfer_amount': transfer_amount,
-                                        'category': category,
-                                        'purpose': purpose,
+                                        {{-- 'category': category, --}} 'purpose': purpose,
                                         'schedule_payment_type': schedule_payment_contraint_input,
                                         'schedule_payment_date': schedule_payment_date,
                                         'secPin': sec_pin

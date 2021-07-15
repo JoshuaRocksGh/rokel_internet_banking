@@ -189,6 +189,8 @@ class SameBankController extends Controller
 
         $data = [
             "account_no" => $request->from_account,
+            "authToken" => $authToken,
+            "channel" => 'NET',
             "destinationAccountId" => $request->to_account,
             "currency" => $request->account_currency,
             "account_mandate" => $request->account_mandate,

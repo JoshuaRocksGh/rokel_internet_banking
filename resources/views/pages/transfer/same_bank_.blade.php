@@ -652,6 +652,7 @@
                                                             <div class="form-group row">
                                                                 <b class="col-md-4 text-primary">Expense Category &nbsp;
                                                                     </b>
+                                                                    <input type="hidden" value="Others" id="category_">
 
 
                                                                 <select class="form-control col-md-8" id="category"
@@ -828,11 +829,21 @@
 
 
                                                             </div>
+                                                            <div class="form-group row mb-3">
+                                                                <b class="col-md-4 text-primary">Purpose of Transfer
+                                                                    &nbsp; <span class="text-danger">*</span>
+                                                                </b>
+
+                                                                <input type="text" class="form-control col-md-8"
+                                                                    id="onetime_purpose"
+                                                                    placeholder="Enter purpose of transaction">
+
+                                                            </div>
 
 
                                                             <div class="form-group row">
                                                                 <b class="col-md-4 text-primary">Expense Category &nbsp;
-                                                                    <span class="text-danger">*</span></b>
+                                                                    </b>
 
 
                                                                 <select class="form-control col-md-8" id="onetime_category"
@@ -845,15 +856,7 @@
                                                             </div>
 
 
-                                                            <div class="form-group row mb-3">
-                                                                <b class="col-md-4 text-primary">Purpose of Transfer
-                                                                </b>
 
-                                                                <input type="text" class="form-control col-md-8"
-                                                                    id="onetime_purpose"
-                                                                    placeholder="Enter purpose of transaction">
-
-                                                            </div>
 
 
 
@@ -1300,6 +1303,7 @@
         }
 
         function expenseTypes() {
+            let name = $('#category_').val();
             $.ajax({
                 "type": "GET",
                 "url": "get-expenses",
@@ -1308,23 +1312,40 @@
                     {{-- console.log(response.data); --}}
                     let data = response.data;
 
+                    let exType = response.data.expenseName
+                        console.log(name);
+
                     $.each(data, function(index) {
 
-                        $("#category").append($('<option>', {
-                            value: data[index].expenseCode + '~' + data[index]
-                                .expenseName
-                        }).text(data[index].expenseName))
-
+                        if ('Others' == data[index].expenseName){
+                                $("#category").append($('<option selected>', {
+                                    value: data[index].expenseCode + '~' + data[index]
+                                        .expenseName
+                                }).text(data[index].expenseName))
+                            }else{
+                                $("#category").append($('<option>', {
+                                    value: data[index].expenseCode + '~' + data[index]
+                                        .expenseName
+                                }).text(data[index].expenseName))
+                            }
 
 
                     });
 
                     $.each(data, function(index) {
 
-                        $("#onetime_category").append($('<option>', {
-                            value: data[index].expenseCode + '~' + data[index]
-                                .expenseName
-                        }).text(data[index].expenseName))
+                        if ('Others' == data[index].expenseName) {
+                            $("#onetime_category").append($('<option selected>', {
+                                value: data[index].expenseCode + '~' + data[index]
+                                    .expenseName
+                            }).text(data[index].expenseName))
+                        }else {
+                            $("#onetime_category").append($('<option>', {
+                                value: data[index].expenseCode + '~' + data[index]
+                                    .expenseName
+                            }).text(data[index].expenseName))
+                        }
+
 
 
 
@@ -1562,13 +1583,6 @@
             $("#transaction_summary").hide();
             $('#onetime_beneficiary_form').hide();
 
-            {{-- $("#next_button").click(function(e) {
-                    e.preventDefault()
-                    $("#transaction_summary").toggle();
-                    $("#transaction_form").hide();
-
-                }) --}}
-
             $("#back_button").click(function(e) {
                 e.preventDefault()
                 $("#transaction_form").toggle();
@@ -1786,19 +1800,15 @@
             $("#category").change(function() {
                 var category = ($(this).val().split('~'));
                 var category_ = category[1]
+                console.log(category_);
                 $("#display_category").text(category_);
             });
 
-            {{-- $("#purpose").keyup(function() {
-                if ($(this).val() == '') {
-                    $("#display_purpose").text('Same Bank Transfer');
+            $("#purpose").keyup(function() {
+                var purpose = ($(this).val());
+                $("#display_purpose").text(purpose);
 
-                } else {
-                    var purpose = ($(this).val());
-                    $("#display_purpose").text(purpose);
-
-                }
-            }); --}}
+            });
 
             $("#amount_").keyup(function() {
                 var amount = ($(this).val());
@@ -1889,14 +1899,14 @@
             // NEXT BUTTON CLICK
             $("#next_button").click(function() {
 
-                {{-- var type = $("input[type='radio']:checked").val(); --}}
+                var type = $("input[type='radio']:checked").val();
                 if ($('#customCheck1').is(':checked')) {
                     var type = "onetime_beneficiary";
 
                 } else {
                     var type = "Saved_beneficiary";
                 }
-                //console.log(type);
+                console.log(type);
 
 
 
@@ -1910,13 +1920,17 @@
                     var from_account = $('#from_account').val()
                     var transfer_amount = $('#amount').val()
                     var category = $('#category').val()
+                    $("#display_category").text(category);
+                    var category = $('#category').val()
+                    console.log(category)
+
 
                     var purpose = $('#purpose').val();
                     $("#display_purpose").text(purpose);
-                    
+                    console.log(purpose);
 
-                    var purpose = $('#onetime_purpose').val();
-                    $("#display_purpose").text(purpose);
+                    {{--  var purpose = $('#onetime_purpose').val();
+                    $("#display_purpose").text(purpose);  --}}
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
@@ -1928,24 +1942,22 @@
                     }
 
                     //set purpose and category values
-                    {{-- var category_info = category.split("~")
+                    var category_info = category.split("~")
                     $("#display_category").text(category_info[1])
-                    var purpose =
-                    $("#display_purpose").text(purpose) --}}
+                    {{--  var purpose =
+                    $("#display_purpose").text(purpose)  --}}
 
-                    $("#transaction_form").hide()
-                    $("#transaction_summary").show()
+                    {{--  $("#transaction_form").hide()
+                    $("#transaction_summary").show()  --}}
 
 
-                    if (from_account == '' || to_account == '' || transfer_amount == '' || category == '') {
+                    if (from_account.trim() == '' || to_account.trim() == '' || transfer_amount.trim() == '' || purpose.trim() == '') {
                         toaster('Field must not be empty', 'error', 10000)
-
-
-                        return false
+                        return false;
                     } else {
                         //set purpose and category values
-                        var category_info = category.split("~")
-                        $("#display_category").text(category_info[1])
+                        {{--  var category_info = category.split("~")
+                        $("#display_category").text(category_info[1])  --}}
                         {{-- $("#display_purpose").text(purpose) --}}
 
                         $("#transaction_form").hide()
@@ -1970,14 +1982,8 @@
                     var select_currency__ = $('#select_currency__').val()
                     var onetime_category = $('#onetime_category').val();
                     var onetime_purpose = $('#onetime_purpose').val();
+                    $("#display_purpose").text(onetime_purpose);
 
-                    if (onetime_purpose == '') {
-                        $("#display_purpose").text('Same Bank Transfer');
-                        var onetime_purpose = $('#onetime_purpose').val('Same Bank Transfer');
-                    } else {
-                        $("#display_purpose").text(onetime_purpose);
-
-                    }
 
 
                     // END OF ONETIME BENEFICIARY DETAILS
@@ -1988,7 +1994,7 @@
                     //////////////////////////////
 
 
-                    if (from_account.trim() == '' || onetime_account_number.trim() == '' || onetime_category
+                    if (from_account.trim() == '' || onetime_account_number.trim() == '' || onetime_purpose
                         .trim() == '' || select_currency__.trim() == '' ||
                         onetime_beneficiary_email.trim() == '') {
                         toaster('Field must not be empty', 'error', 10000)
@@ -1997,9 +2003,9 @@
                         return false
                     } else {
                         //set purpose and category values
-                        var category_info = onetime_category.split("~");
+                        {{--  var category_info = onetime_category.split("~");
                         console.log(category_info);
-                        $("#display_category").text(category_info[1])
+                        $("#display_category").text(category_info[1])  --}}
                         {{-- $("#display_purpose").text(purpose) --}}
 
                         $("#transaction_form").hide()
@@ -2110,10 +2116,14 @@
                             var onetime_future_payement = $('#onetime_future_payement').val();
                             console.log(onetime_future_payement);
 
-                            var category_ = $('#onetime_category').val().split('~');
-                            var category = category_[1];
+                            var category = $('#onetime_category').val();
+                            if (category != 'Others'){
+                                var category_ = $('#onetime_category').val().split('~');
+                                var category = category_[1];
+                            }
+                            {{--  var category = category_[1];
                             console.log(category);
-                            $("#category_receipt").text(category);
+                            $("#category_receipt").text(category);  --}}
 
                             var user_pin = $('#user_pin').val();
                             console.log(user_pin);
@@ -2221,17 +2231,22 @@
                             var beneficiary_currency = $("#select_currency").val();
                             console.log(beneficiary_currency);
 
+                            var purpose = $('#purpose').val();
+                            $("#display_purpose").text(purpose);
+                            $("#purpose_receipt").text(purpose);
+
+                            console.log(purpose);
+
 
                             var purpose = $('#purpose').val()
                             {{-- console.log(purpose); --}}
-                            if (purpose == '') {
+                            {{--  if (purpose == '') {
                                 $("#purpose_receipt").text("Same Bank Transfer");
                                 var purpose = $("#purpose").val("Same Bank Transfer");
                             } else {
                                 $("#purpose_receipt").text(purpose);
 
-                            }
-                            {{-- $("#purpose_receipt").text(purpose); --}}
+                            }  --}}
 
                             var beneficiary_email = to_account[4];
                             console.log(beneficiary_email);
@@ -2251,8 +2266,12 @@
                             var future_payement = $('#future_payement').val();
                             console.log(future_payement);
 
-                            var category_ = $('#category').val().split('~');
-                            var category = category_[1];
+                            var category = $('#category').val();
+                            if(category != 'Others'){
+                                var category_ = $('#category').val().split('~');
+                                var category = category_[1];
+                            }
+
                             console.log(category);
                             $("#category_receipt").text(category);
 
@@ -2542,10 +2561,21 @@
                                 var future_payement = $('#future_payement').val();
                                 console.log(future_payement);
 
-                                var category_ = $('#category').val().split('~');
+                                var category = $('#category').val();
+                                if (category != 'Others'){
+                                    var category_ = $('#category').val().split('~');
+                                    var category = category_[1];
+                                }
+
+
+                                var purpose = $('#purpose').val();
+                            $("#display_purpose").text(purpose);
+                            $("#purpose_receipt").text(purpose);
+
+                                {{--  var category_ = $('#category').val().split('~');
                                 var category = category_[1];
                                 console.log(category);
-                                $("#category_receipt").text(category);
+                                $("#category_receipt").text(category);  --}}
 
                                 var user_pin = $('#user_pin').val();
                                 console.log(user_pin);

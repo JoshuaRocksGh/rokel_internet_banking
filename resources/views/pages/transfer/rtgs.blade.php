@@ -1689,7 +1689,7 @@
                     $(".beneficiary_details").hide();
                     {{-- $(".select_beneficiary").toggle(500); --}}
 
-                    {{-- $('.receipt').hide(); --}}
+                    $('.receipt').hide();
 
 
 
@@ -2080,7 +2080,7 @@
 
                             // upload invoice file
 
-                            
+
 
                             if (from_account == '' || to_account == '' || transfer_amount == '' ||
                                 category_info == '') {
