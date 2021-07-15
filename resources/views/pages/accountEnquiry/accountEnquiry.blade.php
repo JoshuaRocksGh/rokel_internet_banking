@@ -196,12 +196,12 @@
 
                                                         <div class="row">
 
-                                                            <select class="form-control col-md-8" id="from_account"
+                                                            <select class="form-control col-md-8" id="filter"
                                                                 required>
-                                                                <option value=""> -- Select Transfer Type -- </option>
-                                                                <option value="001~All"> ALL</option>
-                                                                <option value="002~Credit"> CREDIT </option>
-                                                                <option value="003~Debit"> DEBIT </option>
+                                                                
+                                                                <option value="all" selected> ALL</option>
+                                                                <option value="credit"> CREDIT </option>
+                                                                <option value="debit"> DEBIT </option>
                                                             </select>
 
                                                         </div>
@@ -247,8 +247,9 @@
                                                                     class="account_description_display_"></span></td>
                                                             <td>Explanation <span class="account_currency_display_"></span>
                                                             </td>
+                                                            <th>Credit Account</th>
                                                             {{-- <td>Transaction Details <span class="account_product_display_"></span> </td> --}}
-                                                            <td>Document Ref <span class=""></span> </td>
+                                                            <td>Transaction ID <span class=""></span> </td>
                                                             <th>Batch No</th>
                                                         </tr>
                                                     </thead>
@@ -680,6 +681,65 @@
                 load_data_into_table(load_data, account_number, start_date, end_date)
             })
 
+            $("#filter").change(function(){
+                let filter = $(this).val()
+
+                let account = $("#from_account").val()
+
+                if(account == '' || account == undefined){
+                    return false;
+                }
+
+                if(filter == 'debit'){
+
+                    $('#table-body-display').empty()
+                    {{-- return false --}}
+    
+                    let data = tranactions
+                    var load_data = []
+                    $.each(data, function(index) {
+                        if (parseFloat(data[index].amount) < 0) {
+                            {{-- alert(data[index].amount) --}}
+                            load_data.push(data[index])
+                        } else {
+    
+                        }
+                    })
+                    load_data_into_table(load_data, account_number, start_date, end_date)
+            
+                    
+                }else if(filter == 'credit'){
+                    $('#table-body-display').empty()
+                {{-- return false --}}
+
+                let data = tranactions
+                var load_data = []
+                $.each(data, function(index) {
+                    if (parseFloat(data[index].amount) > 0) {
+                        {{-- alert(data[index].amount) --}}
+                        load_data.push(data[index])
+                    } else {
+
+                    }
+                })
+
+
+                load_data_into_table(load_data, account_number, start_date, end_date)
+            
+            }else{
+               
+                let load_data = tranactions
+                load_data_into_table(load_data, account_number, start_date, end_date)
+
+                }
+
+                {{--  $('#table-body-display').empty()
+
+                let data = tranactions
+
+                load_data_into_table(tranactions)  --}}
+            })
+
 
             $("#all_transaction").click(function() {
                 $('#table-body-display').empty()
@@ -752,21 +812,12 @@
 
 
                 $('#table-body-display').html('')
-                $('#datatable-buttons').DataTable({
-                    "order": [
-                        [5, "desc"]
-                    ]
-                });
+                
                 var table = $('.account_transaction_display_table').DataTable();
-                {{-- {"order": [[ 0, "desc" ]]} --}}
-                var nodes = table.rows().nodes();
-                {{-- table.rows.remove() --}}
-                table
-                    .order([0, 'desc'])
-                    .column( 0 ).visible( false, false )
-                    .draw();
+               
+               
                 table.clear().draw()
-
+               
 
 
                 if (data.length > 0) {
@@ -788,13 +839,13 @@
                         if (parseFloat(data[index].amount) > 0) {
                             amount = `<b class='text-success'>
                                         <i class="fe-arrow-up text-success mr-1"></i>
-                                        ${data[index].amount}
+                                        ${formatToCurrency(parseFloat(data[index].amount))}
                                     </b>
                                     `
                         } else {
                             amount = `<b class='text-danger'>
                                         <i class="fe-arrow-down text-danger mr-1"></i>
-                                        ${data[index].amount}
+                                        ${formatToCurrency(parseFloat(data[index].amount))}
                                     </b>
                                     `
                         }
@@ -821,13 +872,14 @@
                             `${formatToCurrency(parseFloat(data[index].runningBalance))}`,
 
                             data[index].narration,
-
-                            data[index].documentReference,
-
+                            data[index].contraAccount,
+                            data[index].transactionNumber,
                             data[index].batchNumber,
 
 
-                        ]).draw(false)
+                        ]).order([0, 'desc'])
+                        .column( 0 ).visible( false, false )
+                        .draw(false)
 
                         {{-- table.row.add([
                             data[index].postingSysDate,
@@ -856,19 +908,14 @@
                 $(".account_transaction_display_table").show();
                 $(".account_transaction_display").show();
 
-                $('.account_transaction_display_table').DataTable({
-                    columnDefs: [{
-                        "visible": false,
-                        "targets": [0]
-                    }],
-                })
+             
             }
 
 
             function getAccountTransactions(account_number, start_date, end_date, transLimit) {
                 $('#search_transaction').text('Loading ...')
                 var table = $('.account_transaction_display_table').DataTable();
-                var nodes = table.rows().nodes();
+               
 
 
                 $.ajax({

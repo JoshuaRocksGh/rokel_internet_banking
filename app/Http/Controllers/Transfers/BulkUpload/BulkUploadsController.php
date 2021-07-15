@@ -372,7 +372,7 @@ class BulkUploadsController extends Controller
 
         */
         // dd(env('CIB_API_BASE_URL') . "post-bulk-upload-list");
-        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-upload-list", (array) $data);
+        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-upload-list",null);
         // return (array) $response;
         // $result = new ApiBaseResponse();
         $base_response = new BaseResponse();

@@ -611,7 +611,7 @@
                                                                         class="text-danger">*</span></b></label>
 
                                                                 <input type="text" class="form-control col-md-8 mb-2"
-                                                                    id="purpose" placeholder="Enter purpose of transfer"
+                                                                    id="purpose" value="Own Account" placeholder="Enter purpose of transfer"
                                                                     autocomplete="off">
 
                                                             </div>
