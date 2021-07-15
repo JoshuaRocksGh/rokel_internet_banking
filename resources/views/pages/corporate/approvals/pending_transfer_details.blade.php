@@ -728,14 +728,14 @@
                         if (response.responseCode == '000') {
                             Swal.fire('', response.message, 'success');
 
-                            setTimeout(function() {
+                            {{-- setTimeout(function() {
                                 window.location = 'approvals-pending'
-                            }, 3000)
+                            }, 3000) --}}
 
                             setTimeout(function() {
                                 window.opener.location.reload();
                                 window.close();
-                            }, 5000)
+                            }, 3000)
 
 
 
