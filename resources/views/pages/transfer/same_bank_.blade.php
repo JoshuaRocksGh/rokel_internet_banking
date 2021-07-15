@@ -641,7 +641,7 @@
                                                                 </b>
 
                                                                 <input type="text" class="form-control col-md-8"
-                                                                    id="purpose" placeholder="Enter purpose of transaction"
+                                                                    id="purpose" value="Same Bank transfer" placeholder="Enter purpose of transaction"
                                                                     <div class="form-group row mb-3">
 
 
@@ -835,7 +835,7 @@
                                                                 </b>
 
                                                                 <input type="text" class="form-control col-md-8"
-                                                                    id="onetime_purpose"
+                                                                    id="onetime_purpose" value="Same Bank transfer"
                                                                     placeholder="Enter purpose of transaction">
 
                                                             </div>
