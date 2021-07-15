@@ -241,9 +241,9 @@
                                                         <tr class="bg-info text-white ">
                                                             <td>Document Ref</td>
                                                             <td>Date</td>
-                                                            <td>Amount (SLL)<span class="account_number_display_"></span>
+                                                            <td>Amount <span class="account_number_display_"></span>
                                                             </td>
-                                                            <td>Balance (SLL)<span
+                                                            <td>Balance<span
                                                                     class="account_description_display_"></span></td>
                                                             <td>Explanation <span class="account_currency_display_"></span>
                                                             </td>
