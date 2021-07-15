@@ -1703,7 +1703,7 @@
                         expenseTypes();
                         expenseTypes_onetime();
                         customer();
-                    }, 2000)
+                    }, 500)
 
 
                     {{-- $("input[type=radio][name='transfer_type']:checked").val() --}}
