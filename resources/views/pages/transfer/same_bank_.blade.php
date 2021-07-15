@@ -108,7 +108,10 @@
                                                     </div>
                                                     <br>
                                                     <div class="page-header">
-                                                        <h2>Transfer Receipt </h2>
+                                                        <h2><span id="personal_transfer_receipt">Transfer Receipt</span>
+                                                            <span id="coporate_transfer_approval">Transaction Awaiting
+                                                                Approval</span>
+                                                        </h2>
                                                     </div>
                                                     <br>
                                                     {{-- <div class="row">
@@ -1337,9 +1340,18 @@
         }
 
 
-        function customerType() {
+        function customer() {
             var customerType = @json(session()->get('customerType'));
             console.log(customerType);
+
+            if (customerType == 'C') {
+
+                $('#coporate_transfer_approval').show();
+                $('#personal_transfer_receipt').hide();
+            } else {
+                $('#personal_transfer_receipt').show();
+                $('#coporate_transfer_approval').hide();
+            }
         }
 
         $(document).ready(function() {
@@ -1363,7 +1375,7 @@
                 expenseTypes();
                 get_currency();
                 get_correct_fx_rate();
-                customerType();
+                customer();
 
 
                 {{-- setTimeout(function(){
