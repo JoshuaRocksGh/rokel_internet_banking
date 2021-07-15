@@ -745,7 +745,14 @@
 
                                                         </div>
 
+                                                        <div class="form-group row mb-3">
+                                                            <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
+                                                                <span class="text-danger">*</span></b>
 
+                                                            <input type="text" class="form-control col-md-8" id="purpose"
+                                                                placeholder="Enter purpose of transaction" required>
+
+                                                        </div>
 
 
                                                         <div class="form-group row mb-3">
@@ -761,14 +768,7 @@
 
                                                         </div>
 
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
-                                                                <span class="text-danger">*</span></b>
-
-                                                            <input type="text" class="form-control col-md-8" id="purpose"
-                                                                placeholder="Enter purpose of transaction" required>
-
-                                                        </div>
+                                                        
 
                                                         <div class="form-group row mb-2">
                                                             <b class="col-md-4 text-primary ">Value Date &nbsp;</b>
@@ -1482,6 +1482,8 @@
                         }
                     })
                 }
+
+
 
                 function expenseTypes_onetime() {
                     $.ajax({
@@ -2281,6 +2283,29 @@
 
                     //
 
+                    function transactionFee(from_account , amount){
+
+                        $.ajax({
+                            type : 'POST' ,
+                            url : 'get-transaction-fees' ,
+                            datatype : 'application/json' ,
+                            data : {
+                                "accountNumber": from_account,
+                                "amount": amount,
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                    'content')
+                            },
+                            success: function(response){
+                                console.log(response);
+                            }
+
+                        })
+                        
+
+                    }
+
 
                     $('#confirm_modal_button').click(function(e) {
                         e.preventDefault();
@@ -2442,6 +2467,8 @@
                                     var accountMandate = from_account_[6];
                                     console.log(from_account);
 
+                                    
+
                                     var to_account_ = $("#to_account").val().split("~");
                                     console.log(to_account_);
                                     var bank_name = to_account_[0];
@@ -2480,6 +2507,8 @@
                                     console.log(beneficiary_type);
 
                                     var sec_pin = $('#user_pin').val()
+
+                                    transactionFee(from_account , amount);
 
                                     let api_data = {
                                         "from_account": from_account,

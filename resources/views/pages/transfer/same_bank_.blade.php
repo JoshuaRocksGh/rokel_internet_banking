@@ -2682,7 +2682,7 @@
 
 
                 } else {
-                    toaster('Accept Transfer fee charge to continue', 'error', 6000)
+                    toaster('Accept Terms & Conditions to continue', 'error', 6000)
                     {{-- console.log("UNCHECKED"); --}}
                     return false;
                 }

@@ -245,7 +245,7 @@
                                                             </td>
                                                             <td>Balance<span
                                                                     class="account_description_display_"></span></td>
-                                                            <td>Explanation <span class="account_currency_display_"></span>
+                                                            <td>Purpose of Transfer <span class="account_currency_display_"></span>
                                                             </td>
                                                             <th>Credit Account</th>
                                                             {{-- <td>Transaction Details <span class="account_product_display_"></span> </td> --}}

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\AcceptHeader;
 
 class FunctionsController extends Controller
 {
@@ -386,6 +387,36 @@ class FunctionsController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
+
+        //method to return the interest types
+        public function get_transaction_fees(Request $request)
+        {
+
+            $accountNumber = $request->accountNumber;
+            $amount = $request->amount;
+            $feeType = $request->feeType;
+
+            // ACHP
+            // RTG
+
+            $authToken = session()->get('userToken');
+            $userID = session()->get('userId');
+
+
+
+            $data = [
+                "accountNumber" => $accountNumber,
+                "amount"    => $amount,
+                "feeType"    => $feeType,
+                "authToken"    => $authToken,
+            ];
+
+
+            $response = Http::get(env('API_BASE_URL') . "/transfers/transactionFes", $data);
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        }
 
     // method to return expense types
     public function get_expenses()
