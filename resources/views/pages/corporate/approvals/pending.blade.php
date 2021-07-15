@@ -350,6 +350,7 @@
 
             table
                 .order([0, 'desc'])
+                .column( 0 ).visible( false, false )
                 .draw();
 
 
@@ -455,13 +456,13 @@
         $(document).ready(function() {
 
 
-            {{-- $('.pending_transaction_request').DataTable({
+            {{--  $('#datatable-buttons').DataTable({
                 "columnDefs": [{
                     "targets": [0],
                     "visible": false,
                     "searchable": false
                 }]
-            }) --}}
+            })  --}}
 
             var customer_no = @json(session()->get('customerNumber'));
             var request_status = 'P'
