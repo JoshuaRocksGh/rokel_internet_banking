@@ -1154,14 +1154,18 @@
 
                         $.each(data, function(index) {
 
-                            if (name == data[index].expenseName){
-
+                            if ('Others' == data[index].expenseName){
+                                $("#category").append($('<option selected>', {
+                                    value: data[index].expenseCode + '~' + data[index]
+                                        .expenseName
+                                }).text(data[index].expenseName))
+                            }else{
+                                $("#category").append($('<option>', {
+                                    value: data[index].expenseCode + '~' + data[index]
+                                        .expenseName
+                                }).text(data[index].expenseName))
                             }
 
-                            $("#category").append($('<option>', {
-                                value: data[index].expenseCode + '~' + data[index]
-                                    .expenseName
-                            }).text(data[index].expenseName))
 
                         });
 
@@ -1357,7 +1361,7 @@
                     console.log(from_account_currency);
                     var from_acc_curr = from_account_currency[3];
                     console.log("end here");  --}}
-                    
+
                     {{-- alert(from_account) --}}
                     if (from_account.trim() == '' || from_account.trim() == undefined) {
                         {{-- alert('money') --}}
@@ -1380,7 +1384,7 @@
                             toaster('Can not send to same account', 'error', 10000)
                             $(this).val('')
                         }
-                        
+
                         {{--  var currency = to_account.split('~');
                         console.log("===========")
                         console.log(currency)
@@ -1390,7 +1394,7 @@
                         console.log("to acc -----");
                         console.log(to_acc_curr);  --}}
 
-                        
+
 
                         // set summary values for display
                         $(".display_from_account_type").text(from_account_info[0])
@@ -1456,7 +1460,7 @@
                     {{-- alert(to_account_info[0]); --}}
                 });
 
-               
+
 
 
                 function currency_convertor(forex_rate) {
@@ -1763,7 +1767,7 @@
 
                     var select_frequency_ = $('#select_frequency').val();
 
-                                        
+
                     var from_acc = $("#from_account").val();
                     var from_acc_curr = from_acc.split('~');
                     var from_account_currency = from_acc_curr[3];
