@@ -635,13 +635,23 @@
                                                             </div>
 
 
+                                                            <div class="form-group row">
+                                                                <b class="col-md-4 text-primary">Purpose of Transfer
+                                                                    <span class="text-danger">*</span>
+                                                                </b>
 
+                                                                <input type="text" class="form-control col-md-8"
+                                                                    id="purpose" placeholder="Enter purpose of transaction"
+                                                                    <div class="form-group row mb-3">
+
+
+                                                            </div>
 
 
 
                                                             <div class="form-group row">
                                                                 <b class="col-md-4 text-primary">Expense Category &nbsp;
-                                                                    <span class="text-danger">*</span></b>
+                                                                    </b>
 
 
                                                                 <select class="form-control col-md-8" id="category"
@@ -653,15 +663,6 @@
 
                                                             </div>
 
-                                                            <div class="form-group row">
-                                                                <b class="col-md-4 text-primary">Purpose of Transfer</b>
-
-                                                                <input type="text" class="form-control col-md-8"
-                                                                    id="purpose" placeholder="Enter purpose of transaction"
-                                                                    <div class="form-group row mb-3">
-
-
-                                                            </div>
 
                                                             {{-- <div class="form-group row">
                                                                 <b class="col-md-4 text-primary ">Future Payment &nbsp; </b>
@@ -1911,23 +1912,11 @@
                     var category = $('#category').val()
 
                     var purpose = $('#purpose').val();
-                    if (purpose == '') {
-                        var purpose_ = $('#purpose').val('Same Bank Transfer');
-                        $("#display_purpose").text('Same Bank Transfer');
+                    $("#display_purpose").text(purpose);
+                    
 
-                    } else {
-                        $("#display_purpose").text(purpose);
-
-                    }
-
-                    var purpose = $('#onetime_purpose').val()
-                    if (purpose == '') {
-                        $("#display_purpose").text('Same Bank Transfer');
-                        var purpose = $('#onetime_purpose').val('Same Bank Transfer');
-                    } else {
-                        $("#display_purpose").text(purpose);
-
-                    }
+                    var purpose = $('#onetime_purpose').val();
+                    $("#display_purpose").text(purpose);
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input').val()
                     var schedule_payment_date = $('#schedule_payment_date').val();
