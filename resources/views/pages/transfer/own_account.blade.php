@@ -344,6 +344,14 @@
                                                             </tr>
 
                                                             <tr>
+                                                                <td>Purpose:</td>
+                                                                <td>
+                                                                    <span class="font-13 text-primary h3 display_purpose"
+                                                                        id="display_purpose"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
                                                                 <td>Category:</td>
                                                                 <td>
                                                                     <span class="font-13 text-primary h3 display_category"
@@ -352,13 +360,7 @@
                                                                 </td>
                                                             </tr>
 
-                                                            <tr>
-                                                                <td>Purpose:</td>
-                                                                <td>
-                                                                    <span class="font-13 text-primary h3 display_purpose"
-                                                                        id="display_purpose"></span>
-                                                                </td>
-                                                            </tr>
+
 
 
 
@@ -1270,7 +1272,7 @@
                 $('#spinner').hide();
                 $('#spinner-text').hide();
                 $('#print_receipt').hide();
-                {{-- $(".receipt").hide(); --}}
+                $(".receipt").hide();
 
 
 
