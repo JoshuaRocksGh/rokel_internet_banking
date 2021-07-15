@@ -448,7 +448,7 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By checking this box, you agree to to
+                                                                                    By checking this box, you agree to
                                                                                     abide by the Terms and Conditions
 
                                                                                 </b>
