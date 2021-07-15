@@ -194,6 +194,8 @@ class OwnAccountController extends Controller
 
 
             "account_no" => $req->from_account,
+            "authToken" => $authToken,
+            "channel" => 'NET',
             "destinationAccountId" => $req->to_account,
             "amount" => $req->transfer_amount,
             "currency" => $req->currency,
@@ -224,7 +226,7 @@ class OwnAccountController extends Controller
 
         try {
 
-            //dd((env('CIB_API_BASE_URL') . "own-account-gone-for-pending"));
+            // dd((env('CIB_API_BASE_URL') . "own-account-gone-for-pending"));
 
             $response = Http::post(env('CIB_API_BASE_URL') . "own-account-gone-for-pending", $data);
 

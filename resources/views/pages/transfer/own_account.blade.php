@@ -618,6 +618,7 @@
                                                                 <label class="col-md-4"><b class="text-primary">Expense
                                                                         Category
                                                                         &nbsp;</b></label>
+                                                                        <input type="hidden" value="Others" id="category_">
 
                                                                 {{-- <label class="h6">Category</label> --}}
 
@@ -1139,6 +1140,7 @@
             }
 
             function expenseTypes() {
+                let name = $('#category_').val();
                 $.ajax({
                     "type": "GET",
                     "url": "get-expenses",
@@ -1147,7 +1149,14 @@
                         console.log(response.data);
                         let data = response.data;
 
+                        let exType = response.data.expenseName
+                        console.log(name);
+
                         $.each(data, function(index) {
+
+                            if (name == data[index].expenseName){
+
+                            }
 
                             $("#category").append($('<option>', {
                                 value: data[index].expenseCode + '~' + data[index]
@@ -1155,6 +1164,8 @@
                             }).text(data[index].expenseName))
 
                         });
+
+
                     },
                     error: function(xhr, status, error) {
 
@@ -1341,6 +1352,12 @@
 
                 $("#from_account").change(function() {
                     var from_account = $(this).val();
+                    {{--  var from_account_currency = from_account.split('~');
+                    console.log("~~~~~~");
+                    console.log(from_account_currency);
+                    var from_acc_curr = from_account_currency[3];
+                    console.log("end here");  --}}
+                    
                     {{-- alert(from_account) --}}
                     if (from_account.trim() == '' || from_account.trim() == undefined) {
                         {{-- alert('money') --}}
@@ -1363,6 +1380,17 @@
                             toaster('Can not send to same account', 'error', 10000)
                             $(this).val('')
                         }
+                        
+                        {{--  var currency = to_account.split('~');
+                        console.log("===========")
+                        console.log(currency)
+                        var to_acc_curr = currency[3]
+                        console.log("form acc +++++");
+                        console.log(from_acc_curr);
+                        console.log("to acc -----");
+                        console.log(to_acc_curr);  --}}
+
+                        
 
                         // set summary values for display
                         $(".display_from_account_type").text(from_account_info[0])
@@ -1425,12 +1453,10 @@
                     }
 
 
-
-
                     {{-- alert(to_account_info[0]); --}}
                 });
 
-
+               
 
 
                 function currency_convertor(forex_rate) {
@@ -1727,13 +1753,7 @@
 
 
                     var purpose = $('#purpose').val();
-                    if (purpose == '') {
-                        $("#display_purpose").text("Own Account Transfer");
-                        var purpose = $('#purpose').val("Own Account Transfer");
-
-                    } else {
-                        $("#display_purpose").text(purpose);
-                    }
+                    $('#display_purpose').text(purpose)
 
 
                     var schedule_payment_contraint_input = $('#schedule_payment_contraint_input')
@@ -1742,6 +1762,22 @@
                     var schedule_payment_date = $('#schedule_payment_date').val();
 
                     var select_frequency_ = $('#select_frequency').val();
+
+                                        
+                    var from_acc = $("#from_account").val();
+                    var from_acc_curr = from_acc.split('~');
+                    var from_account_currency = from_acc_curr[3];
+                    console.log(from_account_currency);
+                    console.log("=====");
+                    var to_acc = $('#to_account').val();
+                    var to_acc_curr = to_acc.split('~');
+                    var to_account_currency = to_acc_curr[3];
+                    console.log(to_account_currency);
+
+                    if(to_account_currency != 'SLL' ) {
+                        toaster('You can not transfer from' + ' ' + from_account_currency + ' ' + 'to' + ' ' + to_account_currency , 'error', 10000);
+                        return false;
+                    }
 
                     {{-- $("#transaction_summary").show();
                     $("#transaction_form").hide(); --}}
