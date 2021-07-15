@@ -763,6 +763,7 @@
                 {{-- table.rows.remove() --}}
                 table
                     .order([0, 'desc'])
+                    .column( 0 ).visible( false, false )
                     .draw();
                 table.clear().draw()
 

@@ -223,13 +223,9 @@ class BulkUploadsController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $data = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get();
+        $data = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get()->toArray();
 
-        if(count($data) > 0){
-
-        }else{
-
-        }
+        
 
         // return $data;
 
@@ -272,7 +268,7 @@ class BulkUploadsController extends Controller
 
         */
         // dd(env('CIB_API_BASE_URL') . "post-bulk-upload-list");
-        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-upload-list", (array) $data);
+        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-upload-list", $data);
         // return (array) $response;
         // $result = new ApiBaseResponse();
         $base_response = new BaseResponse();
