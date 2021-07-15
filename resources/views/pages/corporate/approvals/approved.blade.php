@@ -72,7 +72,6 @@
                                         <thead>
                                             <tr class="bg-info text-white">
                                                 <th>Req-Type</th>
-                                                <th>Status</th>
                                                 <th>Initiated By</th>
                                                 <th>Posted Date</th>
                                                 <th>Account No</th>
@@ -384,17 +383,15 @@
                             table.row.add([
 
                                 request_type,
-                                `<button type="button" class="btn btn-success disabled btn-xs waves-effect waves-light">Approved</button>`
-
-                                ,
+                                
                                 data[index].postedby,
                                 data[index].post_date,
                                 data[index].account_no,
                                 `
-                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }} " target="_blank">
-                                                                                <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
-                                                                            </a>
-                                                                            `
+                                    <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }} " target="_blank">
+                                    <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
+                                </a>
+                                `
 
                             ]).draw(false)
 

@@ -729,6 +729,10 @@
                             Swal.fire('', response.message, 'success');
 
                             setTimeout(function() {
+                                window.location = 'approvals-pending'
+                            }, 3000)
+
+                            setTimeout(function() {
                                 window.opener.location.reload();
                                 window.close();
                             }, 5000)
@@ -795,12 +799,13 @@
                     success: function(response) {
                         console.log(response)
                         if (response.responseCode == '000') {
-                            Swal.fire('', response.message, 'success');
+
+                           
 
                             setTimeout(function() {
-                                window.opener.location.reload();
-                                window.close();
-                            }, 5000)
+                                Swal.fire('', response.message, 'success');
+                                window.location = 'approvals-pending'
+                            }, 3000)
 
                         } else {
                             Swal.fire('', response.message, 'error');
