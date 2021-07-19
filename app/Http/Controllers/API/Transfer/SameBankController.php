@@ -80,6 +80,8 @@ class SameBankController extends Controller
             "userId"    => $userID
         ];
 
+        
+
         $response = Http::get("http://localhost/IIE/same-bank-beneficiary.php", $data);
 
         //return $response;

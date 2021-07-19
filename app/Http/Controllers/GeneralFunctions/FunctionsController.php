@@ -394,7 +394,7 @@ class FunctionsController extends Controller
 
             $accountNumber = $request->accountNumber;
             $amount = $request->amount;
-            $feeType = $request->feeType;
+            // $feeType = $request->feeType;
 
             // ACHP
             // RTG
@@ -407,12 +407,15 @@ class FunctionsController extends Controller
             $data = [
                 "accountNumber" => $accountNumber,
                 "amount"    => $amount,
-                "feeType"    => $feeType,
+                "feeType"    => 'ACHP',
                 "authToken"    => $authToken,
             ];
 
+            return $data ;
 
-            $response = Http::get(env('API_BASE_URL') . "/transfers/transactionFes", $data);
+            // dd(env('API_BASE_URL') . "transfers/transactionFees");
+
+            $response = Http::post(env('API_BASE_URL') . "transfers/transactionFees", $data);
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);

@@ -131,7 +131,7 @@ Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])
 
 // OWN ACCOUNT
 Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('own-account');
-Route::get('/get-my-accounts', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-accounts');
+Route::get('/get-my-account', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-account');
 Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
 //CORPORATE OWN ACCOUNT API
