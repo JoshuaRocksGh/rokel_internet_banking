@@ -437,8 +437,19 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By checking this box, you agree to
-                                                                                    abide by the Terms and Conditions
+                                                                                    <span class="terms_and_conditions">By
+                                                                                        checking this box, you agree to
+                                                                                        abide by the Terms and
+                                                                                        Conditions</span>
+
+                                                                                    <span class="terms_and_conditions_fee">
+                                                                                        By checking this box, you agree to a
+                                                                                        fee of <span
+                                                                                            class="fee_currency"></span>
+                                                                                        <span class="fee_amount"></span>
+                                                                                        abide by the Terms and Conditions
+                                                                                    </span>
+
 
                                                                                 </b>
                                                                             </label>
@@ -762,7 +773,8 @@
                                                             <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
                                                                 <span class="text-danger">*</span></b>
 
-                                                            <input type="text" class="form-control col-md-8" id="purpose" value="Local Bank Transfer"
+                                                            <input type="text" class="form-control col-md-8" id="purpose"
+                                                                value="Local Bank Transfer"
                                                                 placeholder="Enter purpose of transaction" required>
 
                                                         </div>
@@ -782,15 +794,17 @@
 
 
 
-                                                        {{--  <div class="form-group row mb-2">
+                                                        {{-- <div class="form-group row mb-2">
                                                             <b class="col-md-4 text-primary ">Value Date &nbsp;</b>
 
                                                             <input type="date" class="form-control col-md-8"
                                                                 id="future_payement" required>
 
-                                                        </div>  --}}
+                                                        </div> --}}
 
                                                     </div>
+
+
 
                                                     <div id="onetime_beneficiary_form">
                                                         <div class="row mb-2">
@@ -1027,20 +1041,21 @@
 
                                                         </div>
 
-                                                        {{--  <div class="form-group row mb-2">
+                                                        {{-- <div class="form-group row mb-2">
                                                             <b class="col-md-4 text-primary ">Value Date &nbsp;</b>
 
 
                                                             <input type="date" class="form-control col-md-8"
                                                                 id="onetime_future_payement" required>
 
-                                                        </div>  --}}
+                                                        </div> --}}
 
                                                     </div>
 
 
                                                     <div class="form-group text-right yes_beneficiary">
-                                                        <button class="btn btn-primary btn-rounded" type="button" id="next_button">
+                                                        <button class="btn btn-primary btn-rounded" type="button"
+                                                            id="next_button">
                                                             &nbsp; Next &nbsp;<i class="fe-arrow-right"></i> </button>
 
                                                     </div>
@@ -1458,7 +1473,7 @@
 
 
                 function expenseTypes() {
-                let name = $('#category_').val();
+                    let name = $('#category_').val();
 
                     $.ajax({
                         "type": "GET",
@@ -1688,7 +1703,7 @@
                 }
 
                 //Transaction Fees API
-                function get_response(){
+                function get_response() {
                     alert('Function Called');
                 };
 
@@ -1725,6 +1740,8 @@
                     {{-- $(".select_beneficiary").toggle(500); --}}
 
                     $('.receipt').hide();
+                    $('.terms_and_conditions').hide();
+                    $('.terms_and_conditions_fee').hide();
 
 
 
@@ -1755,6 +1772,7 @@
                         $(".display_from_account_currency").text(from_account_details[3]);
                         $(".display_currency").text(from_account_details[3]);
                         $('#onetime_select_currency').val(from_account_details[3]);
+                        $(".fee_currency").text(from_account_details[3]);
 
                     })
 
@@ -1771,6 +1789,9 @@
                     $("#to_account").change(function() {
                         var to_account_details = $(this).val().split("~");
                         console.log(to_account_details)
+                        var bene_bank_deatils = to_account_details[0].split("||");
+                        var bene_swift_code = bene_bank_deatils[1]
+                        console.log(bene_swift_code);
                         $(".display_to_account_name").text(to_account_details[1]);
                         $(".display_to_bank_name").text(to_account_details[0]);
                         $(".display_to_account_no").text(to_account_details[2]);
@@ -1785,7 +1806,7 @@
 
                         //MODAL DISPLAY
                         $("#beneficiary_details_bank_name").text(to_account_details[0]);
-                        $("#beneficiary_details_bank_swift_code").text(to_account_details[5]);
+                        $("#beneficiary_details_bank_swift_code").text(bene_swift_code);
                         $("#beneficiary_details_account_name").text(to_account_details[1]);
                         $("#beneficiary_details_account_number").text(to_account_details[2]);
                         $("#beneficiary_details_account_currency").text(to_account_details[3]);
@@ -1912,18 +1933,18 @@
                         })
                     };
 
-                    function transactionFee(fee_account , fee_amount){
+                    function transactionFee(fee_account, fee_amount) {
 
 
                         console.log("fee_account" + fee_account);
                         console.log("fee_amount" + fee_amount);
-                        {{--  return false;  --}}
+                        {{-- return false; --}}
 
                         $.ajax({
-                            type : 'POST' ,
-                            url : 'get-transaction-fees' ,
-                            datatype : 'application/json' ,
-                            data : {
+                            type: 'POST',
+                            url: 'get-transaction-fees',
+                            datatype: 'application/json',
+                            data: {
                                 "accountNumber": fee_account,
                                 "amount": fee_amount,
                             },
@@ -1931,9 +1952,24 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
                                     'content')
                             },
-                            success: function(response){
-                                console.log(response);
+                            success: function(response) {
+                                console.log(response.data);
+                                let fee = response.data;
+                                if (fee != "0") {
+                                    $('.terms_and_conditions_fee').show();
+                                    $('.terms_and_conditions').hide();
+                                    $('.fee_amount').text(response.data);
+
+
+
+                                } else {
+                                    $('.terms_and_conditions').show();
+                                    $('.terms_and_conditions_fee').hide();
+
+                                }
                             }
+
+
 
                         })
 
@@ -2085,9 +2121,9 @@
 
                     // NEXT BUTTON CLICK
                     $("#next_button").click(function() {
-                        {{--  console.log("next button clicked");
-                        return false;  --}}
-                        {{--  transactionFee('004001110259770178' , '1000')  --}}
+                        {{-- console.log("next button clicked");
+                        return false; --}}
+                        {{-- transactionFee('004001110259770178' , '1000') --}}
 
                         var onetime_transfer = $("input[type='checkbox']:checked").val();
                         console.log(onetime_transfer)
@@ -2142,12 +2178,14 @@
                             if (category_info != 'Others') {
                                 var category_ = $('#onetime_category').val().split('~');
                                 var cartegory = category_[1];
+                                console.log("=====");
+                                console.log(cartegory);
                                 $(".display_category").text(category);
                                 $('#category_receipt').text(category);
                             }
 
-                            {{--  $('#category_receipt').text(category_info[1])
-                            $(".display_category").text(category_info[1]);  --}}
+                            {{-- $('#category_receipt').text(category_info[1])
+                            $(".display_category").text(category_info[1]); --}}
 
 
                             var purpose = $('#onetime_purpose').val();
@@ -2162,8 +2200,9 @@
 
 
 
-                            if (from_account == '' || onetime_bank_name_ == '' || transfer_amount == '' || onetime_bene_name == '' || onetime_bene_email == '' ||
-                            purpose == '' || onetime_beneficiary_type_ == '') {
+                            if (from_account == '' || onetime_bank_name_ == '' || transfer_amount == '' ||
+                                onetime_bene_name == '' || onetime_bene_email == '' ||
+                                purpose == '' || onetime_beneficiary_type_ == '') {
                                 toaster('Field must not be empty', 'error');
                                 return false
                             } else {
@@ -2180,20 +2219,20 @@
                             }
                             //set purpose and category values
 
-                            {{--  if( $("#transfer_mode").val() == '' ||  $("#transfer_mode").val() == udefined){
+                            {{-- if( $("#transfer_mode").val() == '' ||  $("#transfer_mode").val() == udefined){
                                 toaster('Select transfer mode', 'error', 5000)
                                 return false;
-                            }  --}}
+                            } --}}
 
                             var fee_account = from_account[2];
                             var fee_amount = transfer_amount;
 
                             console.log(fee_account);
                             console.log(fee_amount);
-                            transactionFee(fee_account , fee_amount);
+                            transactionFee(fee_account, fee_amount);
 
 
-                            {{--  transactionFee(from_account , fee_amount);  --}}
+                            {{-- transactionFee(from_account , fee_amount); --}}
 
 
 
@@ -2275,7 +2314,7 @@
 
 
                             if (sender_acc == '' || receiver_num == '' || transfer_amount == '' ||
-                               purpose == '' || beneficiary_type == '') {
+                                purpose == '' || beneficiary_type == '') {
                                 toaster('Field must not be empty', 'error');
                                 return false
                             }
@@ -2299,7 +2338,7 @@
 
                             console.log(fee_account);
                             console.log(fee_amount);
-                            transactionFee(fee_account , fee_amount);
+                            transactionFee(fee_account, fee_amount);
 
 
                         }
@@ -2397,7 +2436,6 @@
 
 
 
-
                     $('#confirm_modal_button').click(function(e) {
                         e.preventDefault();
 
@@ -2454,8 +2492,13 @@
                                     var onetime_amount = $('#onetime_amount').val();
                                     console.log(onetime_amount);
 
-                                    var expense_category_ = $('#onetime_category').val().split('~');
-                                    var expense_category = expense_category_[1];
+                                    var expense_category = $('#onetime_category').val();
+                                    if (expense_category != "Others") {
+                                        var category_ = $("#category").val().split('~')
+                                        var expense_category = category_[1];
+
+                                    }
+
                                     console.log(expense_category);
 
                                     {{-- $(".display_category").text(category_info[1]); --}}
@@ -2584,8 +2627,13 @@
                                     console.log(hidden_currency); --}}
 
 
-                                    var category_ = $("#category").val().split("~")
-                                    var category = category_[1];
+                                    var category = $("#category").val()
+                                    {{-- var category = category_[1]; --}}
+                                    if (category != "Others") {
+                                        var category_ = $("#category").val().split('~')
+                                        var category = category_[1];
+
+                                    }
                                     console.log(category)
 
                                     var purpose = $("#purpose").val();
@@ -2600,7 +2648,6 @@
                                     console.log(beneficiary_type);
 
                                     var sec_pin = $('#user_pin').val()
-
 
 
                                     let api_data = {
@@ -2684,7 +2731,7 @@
 
 
                             } else {
-                                {{--  $('#coporate_transfer_approval').hide();  --}}
+                                {{-- $('#coporate_transfer_approval').hide(); --}}
 
                                 $("#transfer_pin").click(function(e) {
                                     e.preventDefault();
@@ -2693,9 +2740,9 @@
                                     if ($('#checkmeout0').is(':checked')) {
 
                                         console.log("onetime beneficiary");
-                                        {{--  var onetime_from_account_ = $('#from_account').val().split('~');  --}}
-                                        {{--  var onetime_from_account = onetime_from_account_[2];  --}}
-                                        {{--  console.log(onetime_from_account);  --}}
+                                        {{-- var onetime_from_account_ = $('#from_account').val().split('~'); --}}
+                                        {{-- var onetime_from_account = onetime_from_account_[2]; --}}
+                                        {{-- console.log(onetime_from_account); --}}
 
                                         var from_account_ = $("#from_account").val().split("~");
                                         console.log(from_account_);
@@ -2736,15 +2783,15 @@
                                         var onetime_amount = $('#onetime_amount').val();
                                         console.log(onetime_amount);
 
-                                        var expense_category_ = $('#onetime_category').val();
-                                        if (expense_category_ != 'Others') {
+                                        var expense_category = $('#onetime_category').val();
+                                        if (expense_category != 'Others') {
                                             var category_ = $('#onetime_category').val().split('~');
-                                            var cartegory = category_[1];
+                                            var expense_category = category_[1];
                                             $(".display_category").text(category);
                                             $('#category_receipt').text(category);
                                         }
-                                        var expense_category = expense_category_[1];
-                                        console.log(expense_category);
+                                        {{-- var expense_category = expense_category_[1];
+                                        console.log(expense_category); --}}
 
                                         {{-- $(".display_category").text(category_info[1]); --}}
 
