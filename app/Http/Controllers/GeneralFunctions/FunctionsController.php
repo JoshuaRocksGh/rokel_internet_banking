@@ -411,7 +411,7 @@ class FunctionsController extends Controller
                 "authToken"    => $authToken,
             ];
 
-            return $data ;
+            // return $data ;
 
             // dd(env('API_BASE_URL') . "transfers/transactionFees");
 
