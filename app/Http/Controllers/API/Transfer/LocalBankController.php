@@ -266,7 +266,7 @@ class LocalBankController extends Controller
         ];
 
 
-        // return $data ;
+        // return $data;
         try {
 
             $response = Http::post(env('API_BASE_URL') . "transfers/$url_endpoint", $data);

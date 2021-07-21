@@ -2748,8 +2748,7 @@
                                         console.log(from_account_);
 
                                         var from_account = from_account_[2];
-                                        var currency = from_account_[3];
-                                        var currCode = from_account_[5];
+                                        {{-- var currCode = from_account_[5]; --}}
                                         console.log(from_account);
 
                                         var bank_name_ = $("#onetime_beneficiary_bank_name").val().split(
@@ -2778,6 +2777,18 @@
 
                                         var transfer_type_ = $('#onetime_transfer_mode').val().split('~');
                                         var transfer_type = transfer_type_[1];
+
+                                        if (transfer_type == "ACH") {
+                                            var from_account_ = $("#from_account").val().split("~");
+                                            var currency = from_account_[5];
+
+                                        } else if (transfer_type == "RTGS") {
+                                            var from_account_ = $("#from_account").val().split("~");
+                                            var currency = from_account_[3];
+                                        } else {
+                                            var from_account_ = $("#from_account").val().split("~");
+                                            var currency = from_account_[5];
+                                        }
                                         console.log(transfer_type);
 
                                         var onetime_amount = $('#onetime_amount').val();
@@ -2815,7 +2826,7 @@
                                                 "beneficiary_name": beneficiary_name,
                                                 "bank_name": bank_name,
                                                 "to_account": account_number,
-                                                "currency": currCode,
+                                                "currency": currency,
                                                 "amount": onetime_amount,
                                                 "email": beneficiary_email,
                                                 "category": expense_category,
@@ -2888,8 +2899,7 @@
                                         console.log(from_account_);
 
                                         var from_account = from_account_[2];
-                                        var currency = from_account_[3];
-                                        var currCode = from_account_[5];
+                                        {{-- var currCode = from_account_[5]; --}}
                                         console.log(from_account);
 
                                         var to_account_ = $("#to_account").val().split("~");
@@ -2932,6 +2942,17 @@
                                         var beneficiary_type_ = $("#transfer_mode").val().split('~');
 
                                         var beneficiary_type = beneficiary_type_[1];
+                                        if (beneficiary_type == "ACH") {
+                                            var from_account_ = $("#from_account").val().split("~");
+                                            var currency = from_account_[5];
+
+                                        } else if (beneficiary_type == "RTGS") {
+                                            var from_account_ = $("#from_account").val().split("~");
+                                            var currency = from_account_[3];
+                                        } else {
+                                            var from_account_ = $("#from_account").val().split("~");
+                                            var currency = from_account_[3];
+                                        }
                                         console.log(beneficiary_type);
 
                                         var sec_pin = $('#user_pin').val()
@@ -2947,7 +2968,7 @@
                                                 "beneficiary_address": beneficiary_address,
                                                 "to_account": to_account,
                                                 "amount": amount,
-                                                "currency": currCode,
+                                                "currency": currency,
                                                 "category": category_,
                                                 "purpose": purpose,
                                                 "future_payement": future_payement,
