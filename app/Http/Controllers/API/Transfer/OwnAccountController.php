@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class OwnAccountController extends Controller
 {
     //
-    public function own_account_()
+    public function get_my_accounts()
     {
 
 
@@ -78,6 +78,7 @@ class OwnAccountController extends Controller
             // "category" => $req->category,
         ];
 
+        // return $data;
 
         if (isset($req->select_frequency)) {
             $frequency = $req->select_frequency;
