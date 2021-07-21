@@ -226,7 +226,7 @@ class LocalBankController extends Controller
         // return $explode_bank_name;
 
         $bankName = $explode_bank_name[0];
-        $this_bank = trim($bankName );
+        $this_bank = trim($bankName);
 
         // return $beneficiary_type ;
 
@@ -244,7 +244,7 @@ class LocalBankController extends Controller
             $url_endpoint = '';
         }
 
-  
+
 
         $data = [
             "amount" => (float)$request->amount,
@@ -413,7 +413,10 @@ class LocalBankController extends Controller
         $beneficiary_type = $request->beneficiary_type;
 
         $bank_name = $request->bank_name;
+        $explode_bank_name = explode('||', $bank_name);
 
+        $bankName = $explode_bank_name[0];
+        $this_bank = trim($bankName);
         /*
         $explode_bank_name = explode('||', $bank_name);
         $bankName = $explode_bank_name[0];
@@ -451,7 +454,7 @@ class LocalBankController extends Controller
             "account_mandate" => $request->account_mandate,
             "account_no" => $request->from_account,
             "bank_code" => null,
-            "bank_name" => $bank_name,
+            "bank_name" => $this_bank,
             "bene_account" => $request->to_account,
             "bene_name" => $request->beneficiary_name,
             "bene_address" => $request->beneficiary_address,

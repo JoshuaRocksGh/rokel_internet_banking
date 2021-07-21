@@ -2492,8 +2492,13 @@
                                     var onetime_amount = $('#onetime_amount').val();
                                     console.log(onetime_amount);
 
-                                    var expense_category_ = $('#onetime_category').val().split('~');
-                                    var expense_category = expense_category_[1];
+                                    var expense_category = $('#onetime_category').val();
+                                    if (expense_category != "Others") {
+                                        var category_ = $("#category").val().split('~')
+                                        var expense_category = category_[1];
+
+                                    }
+
                                     console.log(expense_category);
 
                                     {{-- $(".display_category").text(category_info[1]); --}}

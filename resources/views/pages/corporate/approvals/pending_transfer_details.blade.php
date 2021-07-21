@@ -457,7 +457,7 @@
                         let currency = pending_request.currency;
 
                         currency = pending_request.currency == ('ACH' || 'RTGS') ? pending_request.currency :
-                            pending_request.currency_2;
+                            pending_request.currency;
                         currency != null ? append_approval_details("Currency", currency) : '';
 
                         let amount = pending_request.amount;
@@ -800,7 +800,7 @@
                         console.log(response)
                         if (response.responseCode == '000') {
 
-                           
+
 
                             setTimeout(function() {
                                 Swal.fire('', response.message, 'success');
