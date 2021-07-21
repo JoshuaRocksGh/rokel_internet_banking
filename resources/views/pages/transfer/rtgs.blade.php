@@ -750,15 +750,15 @@
                                                                 <span class="text-danger">*</span></b>
 
                                                             <input type="text" class="form-control col-md-8" id="purpose"
+                                                                value="Local Bank Transfer"
                                                                 placeholder="Enter purpose of transaction" required>
 
                                                         </div>
 
 
                                                         <div class="form-group row mb-3">
-                                                            <b class=" col-md-4 text-primary">Expense Category &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-
+                                                            <b class=" col-md-4 text-primary">Expense Category &nbsp; </b>
+                                                            <input type="hidden" value="Others" id="category_">
 
                                                             <select class="form-control col-md-8" id="category" required>
                                                                 <option value="">---Not Selected---</option>
@@ -768,17 +768,19 @@
 
                                                         </div>
 
-                                                        
 
-                                                        <div class="form-group row mb-2">
+
+                                                        {{-- <div class="form-group row mb-2">
                                                             <b class="col-md-4 text-primary ">Value Date &nbsp;</b>
 
                                                             <input type="date" class="form-control col-md-8"
                                                                 id="future_payement" required>
 
-                                                        </div>
+                                                        </div> --}}
 
                                                     </div>
+
+
 
                                                     <div id="onetime_beneficiary_form">
                                                         <div class="row mb-2">
@@ -1456,6 +1458,7 @@
 
 
                 function expenseTypes() {
+                    let name = $('#category_').val()
                     $.ajax({
                         "type": "GET",
                         "url": "get-expenses",
@@ -1464,12 +1467,27 @@
                             {{-- console.log(response.data); --}}
                             let data = response.data;
 
+                            let exType = response.data.expenseName
+                            console.log(name);
+
                             $.each(data, function(index) {
 
-                                $("#category").append($('<option>', {
+                                if ('Others' == data[index].expenseName) {
+                                    $("#category").append($('<option selected>', {
+                                        value: data[index].expenseCode + '~' + data[index]
+                                            .expenseName
+                                    }).text(data[index].expenseName))
+                                } else {
+                                    $("#category").append($('<option>', {
+                                        value: data[index].expenseCode + '~' + data[index]
+                                            .expenseName
+                                    }).text(data[index].expenseName))
+                                }
+
+                                {{-- $("#category").append($('<option>', {
                                     value: data[index].expenseCode + '~' + data[index]
                                         .expenseName
-                                }).text(data[index].expenseName))
+                                }).text(data[index].expenseName)) --}}
 
                             });
                         },
@@ -1737,6 +1755,9 @@
                     $("#to_account").change(function() {
                         var to_account_details = $(this).val().split("~");
                         console.log(to_account_details)
+                        var bene_bank_deatils = to_account_details[0].split("||");
+                        var bene_swift_code = bene_bank_deatils[1]
+                        console.log(bene_swift_code);
                         $(".display_to_account_name").text(to_account_details[1]);
                         $(".display_to_bank_name").text(to_account_details[0]);
                         $(".display_to_account_no").text(to_account_details[2]);
@@ -1751,7 +1772,7 @@
 
                         //MODAL DISPLAY
                         $("#beneficiary_details_bank_name").text(to_account_details[0]);
-                        $("#beneficiary_details_bank_swift_code").text(to_account_details[5]);
+                        $("#beneficiary_details_bank_swift_code").text(bene_swift_code);
                         $("#beneficiary_details_account_name").text(to_account_details[1]);
                         $("#beneficiary_details_account_number").text(to_account_details[2]);
                         $("#beneficiary_details_account_currency").text(to_account_details[3]);
@@ -2102,7 +2123,7 @@
                             }
                             //set purpose and category values
 
-                            if( $("#transfer_mode").val() == '' ||  $("#transfer_mode").val() == udefined){
+                            if ($("#transfer_mode").val() == '' || $("#transfer_mode").val() == udefined) {
                                 toaster(response.message, 'error', 5000)
                                 return false;
                             }
@@ -2283,13 +2304,13 @@
 
                     //
 
-                    function transactionFee(from_account , amount){
+                    function transactionFee(from_account, amount) {
 
                         $.ajax({
-                            type : 'POST' ,
-                            url : 'get-transaction-fees' ,
-                            datatype : 'application/json' ,
-                            data : {
+                            type: 'POST',
+                            url: 'get-transaction-fees',
+                            datatype: 'application/json',
+                            data: {
                                 "accountNumber": from_account,
                                 "amount": amount,
                             },
@@ -2297,12 +2318,12 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
                                     'content')
                             },
-                            success: function(response){
+                            success: function(response) {
                                 console.log(response);
                             }
 
                         })
-                        
+
 
                     }
 
@@ -2467,7 +2488,7 @@
                                     var accountMandate = from_account_[6];
                                     console.log(from_account);
 
-                                    
+
 
                                     var to_account_ = $("#to_account").val().split("~");
                                     console.log(to_account_);
@@ -2508,7 +2529,7 @@
 
                                     var sec_pin = $('#user_pin').val()
 
-                                    transactionFee(from_account , amount);
+                                    transactionFee(from_account, amount);
 
                                     let api_data = {
                                         "from_account": from_account,
@@ -2775,7 +2796,8 @@
                                         var future_payement = $("#future_payement").val();
                                         console.log(future_payement);
 
-                                        if( $("#transfer_mode").val() == '' ||  $("#transfer_mode").val() == udefined){
+                                        if ($("#transfer_mode").val() == '' || $("#transfer_mode").val() ==
+                                            udefined) {
                                             toaster(response.message, 'error', 5000)
                                             return false;
                                         }
