@@ -226,6 +226,7 @@ class LocalBankController extends Controller
         // return $explode_bank_name;
 
         $bankName = $explode_bank_name[0];
+        $this_bank = trim($bankName );
 
         // return $beneficiary_type ;
 
@@ -243,10 +244,12 @@ class LocalBankController extends Controller
             $url_endpoint = '';
         }
 
+  
+
         $data = [
             "amount" => (float)$request->amount,
             "authToken" => $authToken,
-            "bankName" => $bankName,
+            "bankName" => $this_bank,
             "beneficiaryAddress" => $request->beneficiary_address,
             "beneficiaryName" => $request->beneficiary_name,
             "creditAccount" => $request->to_account,
@@ -263,7 +266,7 @@ class LocalBankController extends Controller
         ];
 
 
-
+        // return $data ;
         try {
 
             $response = Http::post(env('API_BASE_URL') . "transfers/$url_endpoint", $data);
