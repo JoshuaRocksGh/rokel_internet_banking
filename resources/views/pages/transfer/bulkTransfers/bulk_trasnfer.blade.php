@@ -25,46 +25,40 @@
     <br>
     <!-- start page title -->
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <h4 class="text-primary">
                 <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                 BULK TRANSFER UPLOAD
 
-            </h4>
-
-            <p class="text-muted font-14 m-b-20">
-                <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
-                        Note:&nbsp;&nbsp;</b> <span class="">You can download template for upload (<span class="text-danger"><a href="{{ url('download_same_bank_file') }}" class="text-danger"> Same Bank</a></span>) and
-                        (<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other
-                                ACH Bank </a> </span>)</span> </span>
-
-                <hr>
-            </p>
-        </div>
-
-        <div class="col-md-6 text-right">
-            <h6>
-
-                <span class="flaot-right">
+                 <span class="float-right">
                     <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Own Account</b>
-
-
                 </span>
 
-            </h6>
+            </h4>
+
+
+
+
+
+
+
+
 
         </div>
 
         <div class="col-md-12 ">
-            <hr class="text-primary" style="margin: 0px;">
+
+     <p class="text-muted font-14 m-r-20 m-b-20">
+                <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please Note:&nbsp;&nbsp;</b> <span class="">You can download template for upload (<span class="text-danger"><a href="{{ url('download_same_bank_file') }}" class="text-danger"> Same Bank</a></span>) and
+                        (<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other ACH Bank </a> </span>)</span> </span>
+
+            </p>
         </div>
 
+
+
     </div>
-</div>
 
-
-
-<div>
 
 
     <div class="row">
@@ -276,8 +270,7 @@
 
                     $('#my_account').append($('<option>', {
                         value: data[index].accountType + '~' + data[index].accountDesc +
-                            '~' + data[index].accountNumber + '~' + data[index]
-                            .currency + '~' + data[index].availableBalance
+                            '~' + data[index].accountNumber + '~' + data[index].currency + '~' + data[index].availableBalance + '~' + data[index].accountMandate
                     }).text(data[index].accountType + '~' + data[index].accountNumber +
                         '~' + data[index].currency + '~' + data[index].availableBalance));
 

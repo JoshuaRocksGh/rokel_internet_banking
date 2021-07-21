@@ -23,12 +23,14 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
     private $value_date;
     private $ref_no;
     private $total_amount;
+    private $currency;
     private $documentRef;
     private $account_no;
     private $trans_ref_no;
     private $desc;
     private $bank_code;
     private $file;
+    private $account_mandate;
 
 
 
@@ -39,18 +41,20 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
     }
 
 
-    public function __construct($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file)
+    public function __construct($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency,  $value_date, $file, $account_mandate)
     {
         $this->customer_no = $customer_no;
         $this->user_id = $user_id;
         $this->user_name = $user_name;
         $this->total_amount = $total_amount;
+        $this->currency = $currency;
         $this->value_date = $value_date;
         $this->ref_no = $trans_ref_no;
         $this->bank_code = $bank_code;
         $this->documentRef = $documentRef;
         $this->account_no = $account_no;
         $this->file = $file;
+        $this->account_mandate = $account_mandate;
     }
 
     public function collection(Collection $rows)
@@ -61,10 +65,12 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
         // die();
 
 
-    $customer_no = $this->customer_no ;
-    $user_id = $this->user_id ;
+        $account_mandate = $this->account_mandate ;
+        $customer_no = $this->customer_no ;
+        $user_id = $this->user_id ;
          $user_name = $this->user_name ;
          $total_amount = $this->total_amount ;
+         $currency = $this->currency ;
          $value_date = $this->value_date ;
          $ref_no = $this->ref_no ;
          $bank_code = $this->bank_code;
@@ -194,9 +200,12 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                     'trans_desc' => $row['transaction_description'],
                     'value_date' => $value_date,
                     'bank_code' => $bank_code,
-                    'user_id' => $customer_no,
+                    'user_id' => session()->get('userId'),
+                    'customer_no' => $customer_no,
                     'account_no' => $account_no,
+                    'account_mandate' => $account_mandate,
                     'total_amount' => $total_amount,
+                    'currency' => $currency,
                     'message' => 'message',
                     'batch_no' => $batch_no,
                     'status' => 'P',
@@ -241,6 +250,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                 'DESCRIPTION' => 'Description goes here ....',
                 'USER_ID' => $user_id,
                 'ACCOUNT_NO' => $account_no,
+                'ACCOUNT_MANDATE' => $account_mandate,
                 'BATCH_NO' => $batch_no
 
             ]

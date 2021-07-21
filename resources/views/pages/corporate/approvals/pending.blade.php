@@ -378,22 +378,6 @@
 
 
                         $.each(data, function(index) {
-                            let request_type = ''
-                            if (data[index].request_type == 'OWN') {
-                                request_type = 'Own Account Transfer'
-                            } else if (data[index].request_type == 'SAB') {
-                                request_type = 'Same Bank Transfer'
-                            } else if (data[index].request_type == 'ACH') {
-                                request_type = 'ACH Transfer'
-                            } else if (data[index].request_type == 'RTGS') {
-                                request_type = 'RTGS Transfer'
-                            } else if (data[index].request_type == 'BULK') {
-                                request_type = 'Bulk Transfer'
-                            } else if (data[index].request_type == 'INT') {
-                                request_type = 'International Bank Transfer'
-                            } else {
-                                request_type = 'Others'
-                            }
 
                             let request_id = data[index].request_id;
                             let customer_no = data[index].customer_no;
@@ -403,18 +387,41 @@
                             let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                             let yyyy = today.getFullYear();
 
+                            let amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(data[
+                                index].amount))
+
+
+                            let request_type = ''
+
+                            if (data[index].request_type == 'OWN') {
+                                request_type = 'Own Account Transfer'
+                            } else if (data[index].request_type == 'SAB') {
+                                request_type = 'Same Bank Transfer'
+                            } else if (data[index].request_type == 'ACH') {
+                                request_type = 'ACH Transfer'
+                            } else if (data[index].request_type == 'RTGS') {
+                                request_type = 'RTGS Transfer'
+                            } else if (data[index].request_type == 'BULK') {
+                                amount =  (data[index].currency) + ' ' + formatToCurrency(parseFloat(data[index].total_amount))
+                                console.log(data[index].total_amount)
+                                request_type = 'Bulk Transfer'
+                            } else if (data[index].request_type == 'INT') {
+                                request_type = 'International Bank Transfer'
+                            } else {
+                                request_type = 'Others'
+                            }
+
+
 
                             table.row.add([
                                 data[index].request_id,
                                 data[index].narration,
-                                (data[index].currency) + ' ' + formatToCurrency(parseFloat(data[
-                                    index].amount)),
+                                amount,
                                 request_type,
                                 data[index].postedby,
                                 dd + '/' + mm + '/' + yyyy,
                                 data[index].account_no,
-                                `
-                                        <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }} " target="_blank">
+                                    `<a onclick="window.open('{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}', '_blank', 'location=yes,height=670,width=1200,scrollbars=yes,status=yes')">
                                         <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
                                     </a>
                                     `
