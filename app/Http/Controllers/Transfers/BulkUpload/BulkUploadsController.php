@@ -115,6 +115,9 @@ class BulkUploadsController extends Controller
         // return $account_no;
          $account_info = explode("~", $account_no);
          $account_no = $account_info[2];
+         $currency = $account_info[3];
+
+         $account_mandate = $account_info[5];
 
          if ($request->file()) {
 
@@ -129,7 +132,7 @@ class BulkUploadsController extends Controller
 
 
 
-           Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file), $file);
+           Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency, $value_date, $file, $account_mandate), $file);
            Alert::success("Bulk transfer pending approval");
            return redirect()->route('view-bulk-transfer', [
                                                             'batch_no' => $batch_no,
@@ -155,7 +158,7 @@ class BulkUploadsController extends Controller
 
         $files = DB::table('tb_corp_bank_import_excel')
             ->distinct()
-            ->where('user_id', $customerNumber)
+            ->where('customer_no', $customerNumber)
             ->where('status', 'P')
             ->orderBy('batch_no', 'desc')
             ->get(['batch_no', 'account_no', 'bank_code', 'status', 'ref_no', 'total_amount', 'value_date']);
@@ -223,9 +226,11 @@ class BulkUploadsController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
+
+
         $data = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get()->toArray();
 
-        
+
 
         // return $data;
 

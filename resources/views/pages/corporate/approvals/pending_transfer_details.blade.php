@@ -361,6 +361,12 @@
                         let pending_request = response.data;
                         console.log(pending_request);
 
+                        if(pending_request == null || pending_request == ''){
+                            {{--  Swal.fire('', 'Request does not exit', 'error');  --}}
+                            window.close()
+
+                        }
+
                         $('#account_mandate').text(pending_request.account_mandate);
                         $('#initiated_by').text(pending_request.postedby);
 
@@ -790,7 +796,7 @@
                     url: "../../reject-pending-request",
                     datatype: 'application/json',
                     data: {
-                        'narrartion': narration,
+                        'narration': narration,
                         'request_id': request_id
                     },
                     headers: {

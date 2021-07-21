@@ -36,18 +36,18 @@
 
             </h4>
 
-            
 
-           
 
-           
 
-               
+
+
+
+
 
         </div>
 
         <div class="col-md-12 ">
-            
+
      <p class="text-muted font-14 m-r-20 m-b-20">
                 <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please Note:&nbsp;&nbsp;</b> <span class="">You can download template for upload (<span class="text-danger"><a href="{{ url('download_same_bank_file') }}" class="text-danger"> Same Bank</a></span>) and
                         (<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other ACH Bank </a> </span>)</span> </span>
@@ -55,7 +55,7 @@
             </p>
         </div>
 
-       
+
 
     </div>
 
@@ -270,8 +270,7 @@
 
                     $('#my_account').append($('<option>', {
                         value: data[index].accountType + '~' + data[index].accountDesc +
-                            '~' + data[index].accountNumber + '~' + data[index]
-                            .currency + '~' + data[index].availableBalance
+                            '~' + data[index].accountNumber + '~' + data[index].currency + '~' + data[index].availableBalance + '~' + data[index].accountMandate
                     }).text(data[index].accountType + '~' + data[index].accountNumber +
                         '~' + data[index].currency + '~' + data[index].availableBalance));
 
