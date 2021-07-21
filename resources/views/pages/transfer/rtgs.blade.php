@@ -437,8 +437,14 @@
                                                                             <label class="custom-control-label "
                                                                                 for="terms_and_conditions">
                                                                                 <b>
-                                                                                    By checking this box, you agree to
-                                                                                    abide by the Terms and Conditions
+                                                                                    <span class="terms_and_conditions">By checking this box, you agree to
+                                                                                        abide by the Terms and Conditions</span>
+
+                                                                                    <span class="terms_and_conditions_fee">
+                                                                                        By checking this box, you agree to a fee of <span class="fee_currency"></span> <span class="fee_amount"></span>
+                                                                                        abide by the Terms and Conditions
+                                                                                    </span>
+                                                                                    
 
                                                                                 </b>
                                                                             </label>
@@ -1725,6 +1731,8 @@
                     {{-- $(".select_beneficiary").toggle(500); --}}
 
                     $('.receipt').hide();
+                    $('.terms_and_conditions').hide();
+                    $('.terms_and_conditions_fee').hide();
 
 
 
@@ -1755,6 +1763,7 @@
                         $(".display_from_account_currency").text(from_account_details[3]);
                         $(".display_currency").text(from_account_details[3]);
                         $('#onetime_select_currency').val(from_account_details[3]);
+                        $(".fee_currency").text(from_account_details[3]);
 
                     })
 
@@ -1932,8 +1941,23 @@
                                     'content')
                             },
                             success: function(response){
-                                console.log(response);
+                                console.log(response.data);
+                                let fee = response.data ;
+                                if (fee != "0") {
+                                    $('.terms_and_conditions_fee').show();
+                                    $('.terms_and_conditions').hide();
+                                    $('.fee_amount').text(response.data);
+
+
+                                    
+                                }else {
+                                    $('.terms_and_conditions').show();
+                                    $('.terms_and_conditions_fee').hide();
+                                    
+                                }
                             }
+
+
 
                         })
 
@@ -2142,6 +2166,8 @@
                             if (category_info != 'Others') {
                                 var category_ = $('#onetime_category').val().split('~');
                                 var cartegory = category_[1];
+                                console.log("=====");
+                                console.log(cartegory);
                                 $(".display_category").text(category);
                                 $('#category_receipt').text(category);
                             }
@@ -2584,8 +2610,13 @@
                                     console.log(hidden_currency); --}}
 
 
-                                    var category_ = $("#category").val().split("~")
-                                    var category = category_[1];
+                                    var category = $("#category").val()
+                                    {{--  var category = category_[1];  --}}
+                                    if (category != "Others"){
+                                        var category_ = $("#category").val().split('~')
+                                         var category = category_[1];
+
+                                    }
                                     console.log(category)
 
                                     var purpose = $("#purpose").val();
@@ -2736,15 +2767,15 @@
                                         var onetime_amount = $('#onetime_amount').val();
                                         console.log(onetime_amount);
 
-                                        var expense_category_ = $('#onetime_category').val();
-                                        if (expense_category_ != 'Others') {
+                                        var expense_category = $('#onetime_category').val();
+                                        if (expense_category != 'Others') {
                                             var category_ = $('#onetime_category').val().split('~');
-                                            var cartegory = category_[1];
+                                            var expense_category = category_[1];
                                             $(".display_category").text(category);
                                             $('#category_receipt').text(category);
                                         }
-                                        var expense_category = expense_category_[1];
-                                        console.log(expense_category);
+                                        {{--  var expense_category = expense_category_[1];
+                                        console.log(expense_category);  --}}
 
                                         {{-- $(".display_category").text(category_info[1]); --}}
 
