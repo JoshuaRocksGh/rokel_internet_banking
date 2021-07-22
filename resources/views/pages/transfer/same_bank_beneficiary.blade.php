@@ -45,7 +45,7 @@
 
                         {{-- <div class="col-md-1"></div> --}}
 
-                        <div class="col-md-6 m-2 card_box_shadow" id="transaction_summary"
+                        <div class="col-md-6 m-2" id="transaction_summary"
                             style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                             <br><br><br>
 
@@ -139,7 +139,7 @@
 
                         </div>
 
-                        <div class="col-md-6 m-2 card_box_shadow" id="transaction_form"
+                        <div class="col-md-6 m-2 " id="transaction_form"
                             style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                             <br><br><br>
                             <div class="row ">

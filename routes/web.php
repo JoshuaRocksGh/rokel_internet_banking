@@ -120,17 +120,11 @@ Route::get('/forget-password', [loginController::class, 'forget_password'])->nam
 Route::get('/reset-success', [ResetPasswordController::class, 'reset_success'])->name('reset-success');
 // Transfer Routes
 // Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
-Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
-Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('add-same-bank-beneficiary');
 
-Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('add-local-bank-beneficiary');
-Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('add-international-bank-beneficiary');
 
-Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
 
 // OWN ACCOUNT
-Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('own-account');
 Route::get('/get-my-account', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-account');
 Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
@@ -143,7 +137,6 @@ Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankC
 
 
 //Standing order page
-Route::get('standing-order', [StandingOrderController::class, 'display_standing_order'])->name('standing-order');
 
 Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submit_own_account_transfer'])->name('submit-own-account-transfer');
 
@@ -156,12 +149,10 @@ Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])
 
 
 // QR TRANSFERS
-Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
 
 // BULK TRANSFERS
 Route::post('/upload_', [BulkUploadBulkUploadsController::class, 'upload_'])->name('upload_');
 
-Route::get('/bulk-transfer', [BulkUploadBulkUploadsController::class, 'index'])->name('bulk-transfer');
 Route::get('/download_same_bank_file', [BulkUploadBulkUploadsController::class, 'download_same_bank'])->name('download-same-bank-file');
 Route::get('/download_other_bank_file', [BulkUploadBulkUploadsController::class, 'download_other_bank'])->name('download-other-bank-file');
 Route::get('/view-bulk-transfer', [BulkUploadBulkUploadsController::class, 'view_bulk_transfer'])->name('view-bulk-transfer');
@@ -183,12 +174,9 @@ Route::get('/ach', [LocalBankController::class, 'ach'])->name('ach');
 
 
 //international bank transfer
-Route::get('/international-bank', [transferController::class, 'international_bank_'])->name('international-bank');
 
 
 // PAYMENTS ROUTES
-Route::get('/utility-payment', [paymentController::class, 'utilities'])->name('utility-payment');
-Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
 Route::get('/payment-add-beneficiary', [paymentController::class, 'add_beneficiary'])->name('payment-add-beneficiary');
 Route::get('/payment-add-beneficiary/mobile-money-beneficiary', [paymentController::class, 'mobile_money_beneficiary'])->name('mobile-money-beneficiary');
 Route::get('/payment-add-beneficiary/utility-payment-beneficiary', [paymentController::class, 'utility_payment_beneficiary'])->name('utility-payment-beneficiary');
@@ -206,7 +194,6 @@ Route::post('/redeem-korpor', [KorporController::class, 'redeem_korpor'])->name(
 Route::post('/redeemed-korpor', [KorporController::class, 'send_redeemed_request'])->name('redeemed-korpor');
 
 // Bulk ekorpor
-Route::get('/bulk-korpor', [KorporController::class, 'bulk_korpor'])->name('bulk-korpor');
 Route::get('/bulk-korpor_detail', [KorporController::class, 'bulk_korpor_detail'])->name('bulk-korpor_detail');
 Route::get('/get-bulk-korpor-upload-list-api', [BulkKorporController::class, 'get_bulk_korpor_upload_list'])->name('get-bulk-korpor-upload-list-api');
 Route::get('/get-bulk-korpor-upload-detail-list-api', [BulkKorporController::class, 'get_bulk_korpor_upload_detail_list'])->name('get-bulk-korpor-upload-detail-list-api');
@@ -237,7 +224,6 @@ Route::get('/saved-beneficiary/utility-payment', [paymentController::class, 'uti
 Route::get('/one-time-payment', [paymentController::class, 'one_time'])->name('one-time-payment');
 
 //  CORPORATE ROUTE
-Route::get('/approvals-pending', [PendingController::class, 'approvals_pending'])->name('approvals-pending');
 // Route::get('/approved-transaction', [PendingController::class, 'approved_transaction'])->name('approved-transaction');
 
 // Route::get('/approvals-pending/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending'])->name('approvals-pending/request_id/customer_no');
@@ -250,7 +236,6 @@ Route::post('/reject-pending-request', [ApprovedRequestController::class, 'rejec
 
 
 // BRANCH LOCATOR LIST VIEW
-Route::get('branch-locator', [branchLocatorController::class, 'branch_locator'])->name('branch-locator');
 Route::get('get-branches-api', [branchLocatorController::class, 'get_branches_api'])->name('get-branches-api');
 
 // ACCOUNT CREATION
@@ -267,10 +252,8 @@ Route::get('/enquiry', [EnquiryController::class, 'index'])->name('enquiry');
 
 
 // LOAN
-Route::get('/loan-request', [LoansController::class, 'loan_request'])->name('loan-request');
 
 //loan request
-Route::get('/loan-quotation', [LoansController::class, 'loan_quotation'])->name('loan-quotation');
 
 
 // SETTINGS
@@ -290,7 +273,6 @@ Route::get('/transfer-status', [TransferStatusController::class, 'transfer_statu
 Route::get('print-account-statement', [AccountEnquiryController::class, 'print_account_statement'])->name('print-account-statement');
 Route::get('print-account-statement-history', [AccountEnquiryController::class, 'print_account_statement_history'])->name('print-account-statement-history');
 
-Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-enquiry');
 Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
 Route::get('list-of-accounts', [AccountEnquiryController::class, 'list_of_accounts'])->name('list-of-accounts');
 
@@ -298,96 +280,22 @@ Route::get('list-of-accounts', [AccountEnquiryController::class, 'list_of_accoun
 Route::post('get-account-description', [GetAccountDescription::class, 'get_account_description'])->name('get-account-description');
 Route::post('validate-account-no', [FunctionsController::class, 'validate_account_no'])->name('validate-account-no');
 
-//route to control the coperate approval screen
-Route::get('approvals-approved', [ApprovedController::class, 'approvals_approved'])->name('approvals-approved');
-
-//route to control the coperate rejected screen
-Route::get('approvals-rejected', [RejectedController::class, 'approvals_rejected'])->name('approvals-rejected');
-
-//route to return the cheque approvals screen for pending
-Route::get('cheque-approvals-pending', [ChequesPendingController::class, 'pending_cheques'])->name('cheque-approvals-pending');
-
-//route to control the cheques approved screen
-Route::get('cheque-approvals-approved', [ChequesApprovedController::class, 'cheques_approved'])->name('cheque-approval-approved');
-
-//route to control the cheques rejected screen
-Route::get('cheque-approvals-rejected', [ChequesRejectedController::class, 'cheques_rejected'])->name('cheques-approvals-rejected');
-
-//route to display the airtime payment screen
-Route::get('airtime-payment', [paymentController::class, 'airtime_payment'])->name('airtime-payment');
-
-//route to display the bulk upload payment screen
-Route::get('bulk-upload-payment', [paymentController::class, 'bulk_upload_payment'])->name('bulk-upload-payment');
 
 //route to take import of the bulk upload payment screen
 Route::post('bulkupload.import', [BulkUploadsController::class, 'import'])->name('bulkupload.import');
 
 //route to display the cardless payment screen
-Route::get('cardless-payment', [paymentController::class, 'cardless_payment'])->name('cardless-payment');
 
 //route to display the korpone loane payment screen
 // Route::get('korpone-loane-payment', [paymentController::class, 'korpone_loane_payment'])->name('korpone-loane-payment');
-Route::get('e-korpor', [paymentController::class, 'e_korpor'])->name('e-korpor');
 
 //route to display order blink payment screen
-Route::get('order-blink-payment', [paymentController::class, 'order_blink_payment'])->name('order-blink-payment');
 
 //route to display the pay again payment screen
 Route::get('pay-again', [paymentController::class, 'pay_again_payment'])->name('pay-again');
 
 //route to display the qr payment screen
 Route::get('qr-payment', [paymentController::class, 'qr_payment'])->name('qr-payment');
-
-//route to display the request blink payment screen
-Route::get('request-blink', [paymentController::class, 'request_blink_payment'])->name('request-blink');
-
-//route to display the schedule payment screen
-Route::get('schedule-payment', [paymentController::class, 'schedule_payment'])->name('schedule-payment');
-
-//route to display the activate cheque screen
-Route::get('activate-cheque-book', [AccountServicesController::class, 'activate_cheque_book'])->name('activate-cheque-book');
-
-//route to display the add signature screen
-Route::get('add-signature', [AccountServicesController::class, 'add_signature'])->name('add-signature');
-
-//route to display the activate cheque screen
-Route::get('cheque-book-request', [AccountServicesController::class, 'cheque_book_request'])->name('cheque-book-request');
-
-//route to display the confirm cheque screen
-Route::get('confirm-cheque', [AccountServicesController::class, 'confirm_cheque'])->name('confirm-cheque');
-
-//route to display the fd creation screen
-Route::get('fd-creation', [AccountServicesController::class, 'fd_creation'])->name('fd-creation');
-
-//route to display the kyc update screen
-Route::get('kyc-update', [AccountServicesController::class, 'kyc_update'])->name('kyc-update');
-
-//route to display the open additional acc screen
-Route::get('open-additional-account', [AccountServicesController::class, 'open_additional_acc'])->name('open-additional-account');
-
-//route to display the request atm screen
-Route::get('request-atm', [AccountServicesController::class, 'request_atm'])->name('request-atm');
-
-//route to display the remove signature screen
-Route::get('remove-signature', [AccountServicesController::class, 'remove_signature'])->name('remove-signature');
-
-//route to display the request draft screen
-Route::get('request-draft', [AccountServicesController::class, 'request_draft'])->name('request-draft');
-
-//route to display the request statement screen
-Route::get('request-statement', [AccountServicesController::class, 'request_statement'])->name('request-statement');
-
-//route to display the request for letter screen
-Route::get('request-for-letter', [AccountServicesController::class, 'request_for_letter'])->name('request-for-letter');
-
-//route to display the close account
-Route::get('close-account', [AccountServicesController::class, 'close_account'])->name('close-account');
-
-//route to display the stop cheque screen
-Route::get('stop-cheque', [AccountServicesController::class, 'stop_cheque'])->name('stop-cheque');
-
-//route to display make complaint screen
-Route::get('complaint', [AccountServicesController::class, 'make_complaint'])->name('complaint');
 
 //route to hit for complaint api
 Route::post('complaint-api', [ComplaintController::class, 'make_complaint_api'])->name('complaint-api');
@@ -396,7 +304,6 @@ Route::post('complaint-api', [ComplaintController::class, 'make_complaint_api'])
 Route::get('currency-converter', [transferController::class, 'forex_request'])->name('currency-converter');
 
 //route to display the activate card screen
-Route::get('activate-card', [CardsController::class, 'activate_card'])->name('activate-card');
 
 //route to display the block debit card screen
 Route::get('manage-cards', [CardsController::class, 'block_debit_card'])->name('manage-cards');
@@ -405,22 +312,19 @@ Route::get('manage-cards', [CardsController::class, 'block_debit_card'])->name('
 Route::get('replace-card', [CardsController::class, 'replace_card'])->name('replace-card');
 
 //route to display the stop fd screen
-Route::get('stop-fd', [AccountServicesController::class, 'stop_fd'])->name('stop-fd');
 
 //route to display the biometric setup screen
 Route::get('biometric-setup', [settingsController::class, 'biometric_setup'])->name('biometric-setup');
 
 //route to display the change pin screen
-Route::get('change-pin', [settingsController::class, 'change_pin'])->name('change-pin');
+
 
 //route to display the create originator screen
-Route::get('create-originator', [settingsController::class, 'create_originator'])->name('create-originator');
 
 //route to hit the create originator endpoint
 Route::post('create-originator-api', [settingsController::class, 'create_originator_api'])->name('create-originator-api');
 
 // display the update company info screen
-Route::get('update-company-info', [settingsController::class, 'update_company_info'])->name('update-company-info');
 
 //route to display the forgot transaction pin screen//route to hit the set transaction limits endpoint
 Route::get('set-transaction-limits-api', [settingsController::class, 'set_transaction_limits_api'])->name('set-transaction-limits-api');
@@ -428,14 +332,6 @@ Route::get('set-transaction-limits-api', [settingsController::class, 'set_transa
 //route to hit the set transaction limits endpoint
 Route::get('set-transaction-limits-api', [settingsController::class, 'set_transaction_limits_api'])->name('set-transaction-limits-api');
 
-
-Route::get('forgot-transaction-pin', [settingsController::class, 'forgot_transaction_pin'])->name('forgot-transaction-pin');
-
-//route to display the lc origination of the trade finance screen
-Route::get('lc-origination', [TradeFinanceController::class, 'lc_origination'])->name('lc-origination');
-
-//route to display the spending statics screen for budgetting
-Route::get('budgeting-spending-statics', [SpendingStaticsController::class, 'spending_statics'])->name('budgeting-spending-statics');
 
 //route to display the whatsapp chatbook screen
 Route::get('WhatsApp-Chatbot', [WhatsAppChatbotController::class, 'whatsApp_chatbot'])->name('WhatsApp-Chatbot');
@@ -446,14 +342,148 @@ Route::get('Facebook-Chatbot', [FacebookChatbotController::class, 'facebook_chat
 //route to display the instagram chatbot screen
 Route::get('Instagram-Chatbot', [InstagramChatbotController::class, 'instagram_chatbot'])->name('Instagram-Chatbot');
 
-Route::middleware(['userAuth'])->group(function () {
+// Route::middleware(['userAuth'])->group(function () {
+
+// });
+
+Route::group(['middleware' => ['userAuth']], function() {
+
+    //DashBoard Screen
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    // Account Enquiry Screens
+    Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-enquiry');
+
+    Route::get('request-statement', [AccountServicesController::class, 'request_statement'])->name('request-statement');
+
+    Route::get('close-account', [AccountServicesController::class, 'close_account'])->name('close-account');
+
+    Route::get('budgeting-spending-statics', [SpendingStaticsController::class, 'spending_statics'])->name('budgeting-spending-statics');
+
+    //Tranfer Screens
+    Route::get('/own-account', [OwnAccountController::class, 'own_account'])->name('own-account');
+
+    Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
+
+    Route::get('/bulk-transfer', [BulkUploadBulkUploadsController::class, 'index'])->name('bulk-transfer');
+
+    Route::get('/international-bank', [transferController::class, 'international_bank_'])->name('international-bank');
+
+    Route::get('standing-order', [StandingOrderController::class, 'display_standing_order'])->name('standing-order');
+
+    //Add Beneficiary
+    Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
+
+    Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('add-same-bank-beneficiary');
+
+    Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('add-local-bank-beneficiary');
+
+    Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('add-international-bank-beneficiary');
+
+    Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
+
+    Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
+
+    // Payment Screens
+    Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
+
+    Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
+
+    Route::get('airtime-payment', [paymentController::class, 'airtime_payment'])->name('airtime-payment');
+
+    Route::get('cardless-payment', [paymentController::class, 'cardless_payment'])->name('cardless-payment');
+
+    Route::get('e-korpor', [paymentController::class, 'e_korpor'])->name('e-korpor');
+
+    Route::get('/bulk-korpor', [KorporController::class, 'bulk_korpor'])->name('bulk-korpor');
+
+    Route::get('/utility-payment', [paymentController::class, 'utilities'])->name('utility-payment');
+
+    Route::get('schedule-payment', [paymentController::class, 'schedule_payment'])->name('schedule-payment');
+
+    Route::get('bulk-upload-payment', [paymentController::class, 'bulk_upload_payment'])->name('bulk-upload-payment');
+
+    Route::get('request-blink', [paymentController::class, 'request_blink_payment'])->name('request-blink');
+
+    Route::get('order-blink-payment', [paymentController::class, 'order_blink_payment'])->name('order-blink-payment');
+
+
+    // Loan Screens
+    Route::get('/loan-quotation', [LoansController::class, 'loan_quotation'])->name('loan-quotation');
+
+    Route::get('/loan-request', [LoansController::class, 'loan_request'])->name('loan-request');
+
+
+
+    // Investment Screens
+    Route::get('fd-creation', [AccountServicesController::class, 'fd_creation'])->name('fd-creation');
+
+    Route::get('stop-fd', [AccountServicesController::class, 'stop_fd'])->name('stop-fd');
+
+
+    // Trade Finance
+    Route::get('lc-origination', [TradeFinanceController::class, 'lc_origination'])->name('lc-origination');
+
+
+
+    //Account Services Screens
+    Route::get('cheque-book-request', [AccountServicesController::class, 'cheque_book_request'])->name('cheque-book-request');
+
+    Route::get('confirm-cheque', [AccountServicesController::class, 'confirm_cheque'])->name('confirm-cheque');
+
+    Route::get('activate-cheque-book', [AccountServicesController::class, 'activate_cheque_book'])->name('activate-cheque-book');
+
+    Route::get('cheque-approvals-pending', [ChequesPendingController::class, 'pending_cheques'])->name('cheque-approvals-pending');
+
+    Route::get('cheque-approvals-approved', [ChequesApprovedController::class, 'cheques_approved'])->name('cheque-approval-approved');
+
+    Route::get('cheque-approvals-rejected', [ChequesRejectedController::class, 'cheques_rejected'])->name('cheques-approvals-rejected');
+
+    Route::get('stop-cheque', [AccountServicesController::class, 'stop_cheque'])->name('stop-cheque');
+
+    Route::get('request-atm', [AccountServicesController::class, 'request_atm'])->name('request-atm');
+
+    Route::get('activate-card', [CardsController::class, 'activate_card'])->name('activate-card');
+
+    Route::get('request-for-letter', [AccountServicesController::class, 'request_for_letter'])->name('request-for-letter');
+
+    Route::get('open-additional-account', [AccountServicesController::class, 'open_additional_acc'])->name('open-additional-account');
+
+    Route::get('request-draft', [AccountServicesController::class, 'request_draft'])->name('request-draft');
+
+    Route::get('add-signature', [AccountServicesController::class, 'add_signature'])->name('add-signature');
+
+    Route::get('remove-signature', [AccountServicesController::class, 'remove_signature'])->name('remove-signature');
+
+    Route::get('kyc-update', [AccountServicesController::class, 'kyc_update'])->name('kyc-update');
+
+    Route::get('complaint', [AccountServicesController::class, 'make_complaint'])->name('complaint');
+
+    Route::get('/approvals-pending', [PendingController::class, 'approvals_pending'])->name('approvals-pending');
+
+    Route::get('approvals-approved', [ApprovedController::class, 'approvals_approved'])->name('approvals-approved');
+
+    Route::get('approvals-rejected', [RejectedController::class, 'approvals_rejected'])->name('approvals-rejected');
+
+
+    //Settings Screens
+    Route::get('create-originator', [settingsController::class, 'create_originator'])->name('create-originator');
+
+    Route::get('update-company-info', [settingsController::class, 'update_company_info'])->name('update-company-info');
+
+    Route::get('forgot-transaction-pin', [settingsController::class, 'forgot_transaction_pin'])->name('forgot-transaction-pin');
+
+    Route::get('change-pin', [settingsController::class, 'change_pin'])->name('change-pin');
+
+    Route::get('branch-locator', [branchLocatorController::class, 'branch_locator'])->name('branch-locator');
+
+
+
 });
 
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/get-expenses', [HomeController::class, 'get_expenses'])->name('get-expenses');
-Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
 // Logout controller
 
 
@@ -473,6 +503,7 @@ Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_a
 Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 Route::get('get-correct-fx-rate-api', [FunctionsController::class, 'get_correct_fx_rate'])->name('get-correct-fx-rate-api');
 Route::get('get-lovs-list-api', [FunctionsController::class, 'lovs_list'])->name('get-lovs-list-api');
+
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -509,7 +540,6 @@ Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->na
 //DELETE BENEFICIARY
 Route::get('/delete-beneficiary', [DeleteBeneficiaryController::class, 'index'])->name('delete-beneficiary');
 
-Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
 Route::post('/edit-same-bank-api', [EditSameBankController::class, 'get_same_bank_beneficiary'])->name('edit-same-bank-api');
 Route::put('/edit-same-bank-beneficiary-api', [EditSameBankController::class, 'update_same_bank_beneficiary'])->name('edit-same-bank-beneficiary-api');
 // -------- OTHER LOCAL BANK -----------

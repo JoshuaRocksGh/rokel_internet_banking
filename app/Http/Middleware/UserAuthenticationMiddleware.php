@@ -19,10 +19,10 @@ class UserAuthenticationMiddleware
     public function handle(Request $request, Closure $next)
     {
 
-
-        if (!session()->has('userId') )
+        // $value = $request->session()->get('key');
+        if (!$request->session()->get('userId') )
         {
-        // The user is logged in...
+            session()->flush();
             return redirect()->route('login');
         }
         return $next($request);
