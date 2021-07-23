@@ -5,97 +5,214 @@
     <div></div>
     <legend></legend>
 
+    <div class="container-fluid">
+        <br>
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-primary">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    MANAGE SAME BANK BENEFICIARY
+                </h4>
+            </div>
+
+            <div class="col-md-6 text-right">
+                <h6>
+
+                    <span class="flaot-right">
+                        <b class="text-primary"> Beneficiary List </b> &nbsp; > &nbsp; <b class="text-danger"> Edit Beneficiary </b>
+                        
+
+
+                    </span>
+
+                </h6>
+
+            </div>
+
+            <div class="col-md-12 ">
+                <hr class="text-primary" style="margin: 0px;">
+            </div>
+
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-body card-background-image">
+            <div class="">
+                <div class="card-body">
                     <div class="row">
-                        <div class="col-md-2"></div>
 
-                        <div class="col-md-8">
-                            <p class="sub-header font-18 purple-color" style="cursor: pointer;"
-                                onclick="window.history.back()">
-                                <i class="fe-arrow-left"></i> MANAGE SAME BANK BENEFICIARY
-                            </p>
-                            <hr>
+                        <div class="col-md-6 m-2" id="transaction_summary"
+                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                            <br><br><br>
+
+                            <div class="row"></div>
+                            <div class="col-md-12">
+
+                                <form action="#" method="POST" id="same_bank_beneficiary_form_summary"
+                                        autocomplete="off" aria-autocomplete="off">
+                                        <div class="col-md-12">
+                                            <div class="card card-body">
+
+                                                <h4 class="text-primary"> Account Details</h4>
+                                                <hr>
+
+                                                <div class="form-group row mb-2">
+                                                
+                                                    <b class="col-md-6">Account Number:</b>
+                                                    <span class="col-md-6 text-primary" id="display_account_number"></span>
+                                                    
+                                                </div>
+
+                                                <div class="form-group row mb-2">
+                                                    <b class="col-md-6">Account Name:</b>
+                                                    <span class="col-md-6 text-primary" id="display_account_name"></span>
+                                                    
+                                                </div>
+
+                                                <div class="form-group row mb-2">
+                                                    <b class="col-md-6">Account currency:</b>
+                                                    <span class="col-md-6 text-primary" id="display_account_currency"></span>
+                                                   
+                                                </div>
+                                                <hr>
+
+                                                <h4 class="text-primary"> Beneficiary Details</h4>
+                                                <hr>
+
+                                                <div class="form-group row mb-2">
+                                                    <b class="col-md-6">Beneficiary Name:</b>
+                                                    <span class="col-md-6 text-primary" id="display_beneficiary_name"></span>
+    
+                                                </div>
+
+                                                <div class="form-group row mb-2">
+                                                    <b class="col-md-6">Beneficiary Mobile Number:</b>
+                                                    <span class="col-md-6 text-primary" id="display_beneficiary_mobile_number"></span>
+                                                </div>
+
+                                                <div class="form-group row mb-2">
+                                                    <b class="col-md-6">Beneficiary Address:</b>
+                                                    <span class="col-md-6 text-primary" id="display_beneficiary_Address"></span>
+                                                </div>
+
+                                                <div class="form-group row mb-2">
+                                                    <b class="col-md-6">Beneficiary Email:</b>
+                                                    <span class="col-md-6 text-primary" id="display_beneficiary_email"> </span>
+                                                </div>
+
+                                                <div class="form-group row mb-2">
+                                                    {{-- <input id="checkbox2" type="checkbox"> --}}
+                                                    <b class="col-md-6">Email beneficiary when a transfer is made:</b>
+                                                    <span class="col-md-6 text-primary" id="display_transfer_email"></span>
 
 
-                            <div class="row" id="transaction_form">
+                                                </div>
 
 
-                                <div class="col-md-12">
-                                    <form action="#" id="same_bank_beneficiary_form" autocomplete="off"
-                                    aria-autocomplete="off">
-                                    {{-- @csrf --}}
-                                    <div class="row">
-
-
-
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                {{-- <label class="purple-color"> Beneficiary Account Details</label><br> --}}
-                                                <label>Account Number</label>
-                                                <input class="form-control" type="number" class="form-control"
-                                                    id="account_number" placeholder="Account Number" required>
-                                                {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account Name</label>
-                                                <input type="text" class="form-control" id="account_name"
-                                                    parsley-trigger="change" placeholder="Account Name" readonly required>
-                                                {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account Currency</label>
-                                                <input type="hidden" class="form-control" readonly value="" id="select_currency">
-                                                <input type="text" class="form-control" readonly value="" id="select_currency_i">
 
                                             </div>
 
                                         </div>
 
-                                        <div class="col-md-6">
+                                    </form>
+                            </div>
 
-                                            <div class="form-group">
-                                                {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
-                                                <label>Beneficiary Name</label>
-                                                <input type="text" class="form-control" id="beneficiary_name"
+                            <div class="form-group">
+
+                                <button type="button" class="btn btn-secondary btn-rounded mb-2"id="save_beneficiary_back">
+                                    <i class="mdi mdi-reply-all-outline"></i> &nbsp;  Back
+                                </button>
+
+                                <button class="btn btn-primary btn-rounded float-right" type="submit" id="save_beneficiary_summary_btn">
+                                    <span id="confirm_save_beneficiary_text">Save Beneficiary</span>
+                                                        
+                                </button>
+
+
+                            </div>
+
+                            
+
+                        </div>
+                            
+
+
+                        <div class="col-md-6 m-2" id="transaction_form"
+                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                            <br><br><br>
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <form action="#" id="same_bank_beneficiary_form" autocomplete="off"
+                                    aria-autocomplete="off">
+                                    {{-- @csrf --}}
+                                    <div class="col-md-12">
+
+
+                                        <h4 class="text-primary"> Account Details</h4>
+                                        <hr>
+
+                                        <div class="form-group row">
+                                                
+                                            <b class="col-md-4 text-primary">Account Number</b>
+                                            <input class="form-control col-md-7" type="text" class="form-control"
+                                                id="account_number" placeholder="Account Number" required>
+
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <b class="col-md-4 text-primary">Account Name</b>
+                                            <input type="text" class="form-control col-md-7" id="account_name"
+                                                parsley-trigger="change" placeholder="Account Name" readonly required>
+                                           
+
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <b class="col-md-4 text-primary">Account Currency</b>
+                                            <input type="text" class="form-control col-md-7" readonly value="" id="select_currency">
+                                            {{--  <input type="text" class="form-control col-md-7" readonly value="" id="select_currency_i">  --}}
+
+                                        </div>
+
+                                        <h4 class="text-primary"> Beneficiary Details</h4>
+                                            <hr>
+
+                                            <div class="form-group row">
+                                               
+                                                <b class="col-md-4 text-primary">Beneficiary Name</b>
+                                                <input type="text" class="form-control col-md-7" id="beneficiary_name"
                                                     parsley-trigger="change" placeholder="Beneficiary Name" required>
-                                                {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                               
 
                                             </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Mobile Number</label>
-                                                <input type="number" class="form-control" id="beneficiary_mobile_number"
+
+                                            <div class="form-group row">
+                                                <b class="col-md-4 text-primary">Beneficiary Mobile Number</b>
+                                                <input type="text" class="form-control  col-md-7" id="beneficiary_mobile_number"
+                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                     parsley-trigger="change" placeholder="Beneficiary Mobile Number" required>
-                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
                                             </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Address</label>
-                                                <input type="text" class="form-control" id="beneficiary_address"
+
+                                            <div class="form-group row">
+                                                <b class="col-md-4 text-primary">Beneficiary Address</b>
+                                                <input type="text" class="form-control col-md-7" id="beneficiary_address"
                                                     parsley-trigger="change" placeholder="Beneficiary Address" required>
-                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
                                             </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Email</label>
-                                                <input type="email" class="form-control" id="beneficiary_email"
+
+                                            <div class="form-group row">
+                                                <b class="col-md-4 text-primary">Beneficiary Email</b>
+                                                <input type="email" class="form-control col-md-7" id="beneficiary_email"
                                                     parsley-trigger="change" placeholder="Beneficiary Email" required>
-                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                                
 
                                             </div>
 
-
-
-
-                                            <div class="form-group">
-
-                                                <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                            <div class="form-group row">
+                                                <div class="col-md-4"></div>
+                                                <div class="checkbox checkbox-primary mb-2 col-md-7" id="transfer_email">
                                                     <input id="checkbox2" type="checkbox">
                                                     <label for="checkbox2">
                                                         Email beneficiary when a transfer is made
@@ -104,13 +221,10 @@
 
                                             </div>
 
-                                            <p class="sub-header font-13">
-                                                Providing beneficairy email and checking
-
-                                            </p>
+                                        <div class=" form-group text-right">
 
                                             <button class="btn btn-primary waves-effect waves-light btn-rounded" type="submit"
-                                                id="save_beneficiary">Next</button>
+                                                id="save_beneficiary">Next  &nbsp;<i class="fe-arrow-right"></i></button>
                                             {{-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#centermodal" id="center_modal">Center modal</button> --}}
 
 
@@ -122,114 +236,56 @@
 
                                     </div>
 
-                                </form>
-
-
-
-
-                                    <form action="#" method="POST" id="same_bank_beneficiary_form_summary"
-                                        autocomplete="off" aria-autocomplete="off">
-                                        <div class="card-box">
-                                            @csrf
-
-                                            <div class="form-group">
-                                                {{-- <label class="purple-color"> Beneficiary Account Summary</label><br> --}}
-                                                <label>Account Number:&emsp;</label><span class="font-weight-light mr-2"
-                                                    id="display_account_number"> &nbsp</span>
-                                                {{-- <input type="text" class="form-control" id="account_number" data-toggle="input-mask" data-mask-format="" placeholder="Account Number" required> --}}
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account Name:&emsp;</label><span class="font-weight-light mr-2"
-                                                    id="display_account_name"> &nbsp</span>
-                                                {{-- <input type="text" class="form-control" id="account_name" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name" required> --}}
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account currency:&emsp;</label><span class="font-weight-light mr-2"
-                                                    id="display_account_currency"> &nbsp</span>
-                                                {{-- <input type="text" class="form-control" id="account_name" data-toggle="input-mask" data-mask-format="00:00:00" placeholder="Account Name" required> --}}
-                                            </div>
-                                            <div class="form-group">
-                                                {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}} <br>
-                                                <label>Beneficiary Name:&emsp;</label><span class="font-weight-light mr-2"
-                                                    id="display_beneficiary_name"> &nbsp</span>
-
-                                                {{-- <input type="text" class="form-control" id="beneficiary_name" data-toggle="input-mask" data-mask-format="00/00/0000 00:00:00" placeholder="Beneficiary Name" required> --}}
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Mobile Number:&emsp;</label><span
-                                                    class="font-weight-light mr-2" id="display_beneficiary_mobile_number">
-                                                    &nbsp</span><br>
-
-                                                {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Address:&emsp;</label><span
-                                                    class="font-weight-light mr-2" id="display_beneficiary_Address">
-                                                    &nbsp</span><br>
-
-                                                {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Email:&emsp;</label><span class="font-weight-light mr-2"
-                                                    id="display_beneficiary_email"> &nbsp</span><br>
-
-                                                {{-- <input type="text" class="form-control" id="beneficiary_email" data-toggle="input-mask" data-mask-format="00000-000" placeholder="Beneficiary Email" required> --}}
-
-                                            </div>
-
-
-
-                                            <div class="form-group">
-
-                                                <div class="">
-                                                    {{-- <input id="checkbox2" type="checkbox"> --}}
-                                                    <label>Email beneficiary when a transfer is made:&emsp;</label><span
-                                                        class="font-weight-light mr-2" id="display_transfer_email">
-                                                        &nbsp</span>
-
-
-                                                </div>
-
-                                            </div>
-
-                                            {{-- <p class="sub-header font-13">
-                                            Providing  beneficairy email  and  checking
-
-                                        </p> --}}
-
-                                            <button type="submit"
-                                                class="btn btn-secondary btn-rounded waves-effect waves-light"
-                                                id="save_beneficiary_back">Back</button>&emsp;&emsp;
-                                            <button class="btn btn-primary btn-rounded waves-effect waves-light"
-                                                type="submit" id="save_beneficiary_summary_btn"><span
-                                                    id="confirm_save_beneficiary_text">Save Beneficiary</span>
-                                                {{-- <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"></span>
-                                            <span id="spinner-text">Loading...</span> --}}
-                                            </button>
-
-                                        </div>
-
                                     </form>
 
+
+
+
+                                    
+
                                 </div> <!-- end col -->
-
-
-
-
-
-                                <!-- end row -->
-
-
-
                             </div>
-
 
                         </div>
 
-                        <div class="col-md-2"></div>
+                        <div class="col-md-5">
+                            <br>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
+                                        style="min-height: 120px; max-height: auto;">
+                                        <div class="carousel-inner" role="listbox">
+                                            <div class="carousel-item active">
+                                                <img class="d-block img-fluid" style="min-height: 100%"
+                                                    src="{{ asset('assets/images/ads/rokel.jpeg') }}" alt="First slide">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block img-fluid" style="height: auto;"
+                                                    src="{{ asset('assets/images/ads/sim_korpor_ad_6.jpeg') }}"
+                                                    alt="Second slide">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="d-block img-fluid" style="min-height"
+                                                    src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
+                                                    alt="Third slide">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                            data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                            data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
 
                     </div> <!-- end card-body -->
 
@@ -274,11 +330,11 @@
 
                         if(response.responseCode == '000'){
                             let beneficiary_details = response.data;
-                            {{--  console.log(beneficiary_details);  --}}
+                            console.log(beneficiary_details);
 
                         $('#account_number').val(beneficiary_details[0].BEN_ACCOUNT);
                         $('#account_name').val(beneficiary_details[0].NICKNAME);
-                        $('#select_currency_i').val(beneficiary_details[0].BEN_ACCOUNT_CURRENCY);
+                        $('#select_currency').val(beneficiary_details[0].BEN_ACCOUNT_CURRENCY);
                         $('#beneficiary_name').val(beneficiary_details[0].NICKNAME);
                         $('#beneficiary_address').val(beneficiary_details[0].ADDRESS_1);
                         $('#beneficiary_email').val(beneficiary_details[0].EMAIL);
@@ -303,7 +359,7 @@
 
                 $('#save_beneficiary').hide('')
 
-                $('#same_bank_beneficiary_form_summary').hide();
+                $('#transaction_summary').hide();
                 $('#account_number_error').hide();
                 $('#account_name_error').hide();
                 $('#beneficiary_name_error').hide();
@@ -427,29 +483,35 @@
                     if (account_number.trim() != '' && account_name.trim() != '' && beneficiary_name
                     .trim() != '' && beneficiary_email.trim() != '' && beneficiary_number.trim() != '' &&
                         beneficiary_address.trim() != '') {
-                        $('#same_bank_beneficiary_form').hide();
-                        $("#same_bank_beneficiary_form_summary").toggle('500');
+                            $("#transaction_summary").toggle('500');
+                            $('#transaction_form').hide();
 
                     }
 
                 })
 
+                {{--  $('#save_beneficiary').click(function(e) {
+                    e.preventDefault();
+                    $("#transaction_summary").toggle('500');
+                    $('#transaction_form').hide();
+                })  --}}
+
 
                 $('#save_beneficiary_back').click(function(e) {
                     e.preventDefault(e);
 
-                    $("#same_bank_beneficiary_form").toggle('500');
-                    $('#same_bank_beneficiary_form_summary').hide();
+                    $("#transaction_form").toggle('500');
+                    $('#transaction_summary').hide();
 
                 })
 
 
-                $('#same_bank_beneficiary_form_summary').submit(function(e) {
+                $('#save_beneficiary_summary_btn').click(function(e) {
                     e.preventDefault();
                     var account_number = $('#account_number').val();
                     var account_name = $('#account_name').val();
                     var beneficiary_name = $('#beneficiary_name').val();
-                    var currency = $('#select_currency').val().split('~');
+                    var currency = $('#select_currency').val();
                     var currency_ = currency[1];
                     {{--  console.log(currency);  --}}
                     var beneficiary_number = $('#beneficiary_mobile_number').val();
@@ -493,7 +555,7 @@
                         data: {
                             "account_number": account_number,
                             "account_name": account_name,
-                            "account_currency": currency_,
+                            "account_currency": currency,
                             "beneficiary_name": beneficiary_name,
                             "beneficiary_email": beneficiary_email,
                             "send_mail": transfer_email,
@@ -510,7 +572,12 @@
 
                             console.log(response.responseCode)
                             if (response.responseCode == "000") {
-                                toaster(response.message, 'success');
+                                {{--  toaster(response.message, 'success');  --}}
+                                Swal.fire(
+                                response.message,
+                                '',
+                                'success'
+                                )
 
                                 setTimeout(function(){
 

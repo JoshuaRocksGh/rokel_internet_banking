@@ -91,7 +91,7 @@ class EditSameBankController extends Controller
                 "bankBranch" => "string",
                 "bankCity" => "string",
                 "bankCountry" => "string",
-                "bankName" => "THIS BANK",
+                "bankName" => "ROKEL COMMERCIAL BANK",
                 "bankSwiftCode" => "string"
             ],
 
