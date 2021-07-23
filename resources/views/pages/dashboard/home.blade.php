@@ -115,7 +115,7 @@
                                             </li>
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                                 <strong class="text-danger"> LOANS </strong>
-                                                <span class="badge badge-danger badge-pill">0</span>
+                                                <span class="badge badge-danger badge-pill loan_count">0</span>
                                             </li>
 
                                         </ul>
@@ -1081,7 +1081,7 @@
         <script type="text/javascript">
             var i_have = 0
             var i_owe = 0
-            var i_invest_total = 0
+            var i_invest_total = 50000000
 
             function show_chart(i_have, i_owe, i_invest_total) {
                 var ctx = document.getElementById('myChart').getContext('2d');
@@ -1207,8 +1207,8 @@
 
                 $.ajax({
 
-                    "type": "GET",
-                    "url": "fixed-deposit-account-api",
+                    type: "GET",
+                    url: "fixed-deposit-account-api",
                     datatype: "application/json",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1229,6 +1229,7 @@
                                 return false;
                             }
 
+                            let loan_count = 0
                             if (response.data.length > 0) {
                                 console.log(response.data.length);
                                 $.each(data, function(index) {
@@ -1247,10 +1248,12 @@
                                         </tr>`
                                     )
 
-
+                                        loan_count = loan_count + 1 ;
                                 })
 
                                 console.log('i_invest_total: ' + i_invest_total)
+
+                                $(".loan_count").text(loan_count);
 
                                 $('.my_investment_loading_area').hide()
                                 $('.my_investment_error_area').hide()
