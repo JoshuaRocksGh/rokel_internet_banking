@@ -87,7 +87,7 @@ class SameBankController extends Controller
                 "bankBranch" => null,
                 "bankCity" => null,
                 "bankCountry" => null,
-                "bankName" => "THIS BANK",
+                "bankName" => "ROKEL COMMERCIAL BANK",
                 "bankSwiftCode" => null
             ],
 

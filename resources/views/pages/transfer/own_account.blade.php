@@ -475,8 +475,7 @@
                                                 <div class="form-group text-center">
 
                                                     <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                            id="back_button"> <i
-                                                                class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button>
+                                                            id="back_button"> <i class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button>
                                                         &nbsp; </span>
                                                     <span>
                                                         &nbsp;

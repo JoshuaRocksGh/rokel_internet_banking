@@ -170,116 +170,33 @@
 
 
 
-                                <!-- Modal content for the Large example -->
-                                <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog"
-                                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myLargeModalLabel">Beneficiary Details</h4>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-hidden="true">×</button>
-                                            </div>
-                                            <div class="modal-body p-4">
-                                                <p>
-                                                <form action="" id="modal_SAB_form">
-                                                    <h2>SAME BANK</h2>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-6" for="">Account Number:</label>
-                                                                <span class="col-6" id="account_number"></span>
-                                                                {{-- <div class="col-6" >
-                                                                        <input class="form-control" type="number" class="form-control"
-                                                                        id="account_number" placeholder="Account Number" required>
-                                                                    </div> --}}
+                                <!-- Center modal content -->
+                                        <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        {{--  <h4 class="modal-title" id="myCenterModalLabel">Center modal</h4>  --}}
+                                                        {{--  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  --}}
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h1 class="text-center">Do you want to Delete Benficiary?</h1>
+                                                        <br><br><br>
+                                                        <div class="form-group row">
+                                                            <div class="col-md-2"></div>
+
+                                                            <div class="col-md-8">
+                                                                <button type="button" class="btn btn-success btn-lg" id="confirm_delete">Confirm</button>
+
+                                                                <button type="button" class="btn btn-danger btn-lg float-right" data-dismiss="modal" aria-hidden="true" id="decline_delete">Decline</button>
                                                             </div>
 
-                                                            <div class="form-group row">
-                                                                <label class="col-6">Account Name:</label>
-                                                                <span class="col-6" id="account_name"></span>
-                                                                {{-- <input type="text" class="form-control" id="account_name"
-                                                                        parsley-trigger="change" placeholder="Account Name" readonly required> --}}
-                                                                {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label class="col-6">Account Currency:</label>
-                                                                <span class="col-6" id="select_currency"></span>
-                                                                {{-- <input type="hidden" class="form-control" readonly value="" id="select_currency">
-                                                                    <input type="text" class="form-control" readonly value="" id="select_currency_i"> --}}
-
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                {{-- <label class="purple-color">Beneficiary Personal Details</label><br> --}}
-                                                                <label class="col-6">Beneficiary Name:</label>
-                                                                <span class="col-6" id="beneficiary_name"></span>
-                                                                {{-- <input type="text" class="form-control" id="beneficiary_name"
-                                                                        parsley-trigger="change" placeholder="Beneficiary Name" required> --}}
-                                                                {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-
-                                                            <div class="form-group row">
-                                                                <label class="col-6">Beneficiary Mobile Number:</label>
-                                                                <span class="col-6" id="beneficiary_mobile_number"></span>
-                                                                {{-- <input type="number" class="form-control" id="beneficiary_mobile_number"
-                                                                        parsley-trigger="change" placeholder="Beneficiary Mobile Number" required> --}}
-                                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label class="col-6">Beneficiary Address:</label>
-                                                                <span class="col-6" id="beneficiary_address"></span>
-                                                                {{-- <input type="text" class="form-control" id="beneficiary_address"
-                                                                        parsley-trigger="change" placeholder="Beneficiary Address" required> --}}
-                                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label class="col-6">Beneficiary Email:</label>
-                                                                <span class="col-6" id="beneficiary_email"></span>
-                                                                {{-- <input type="email" class="form-control" id="beneficiary_email"
-                                                                        parsley-trigger="change" placeholder="Beneficiary Email" required> --}}
-                                                                {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                                            </div>
-
-                                                            <div class="form-group row">
-                                                                <label class="col-6" for="">Email beneficiary when a
-                                                                    transfer is made</label>
-                                                                <div class="col-6"> <span id="transfer_email"></span></div>
-                                                            </div>
+                                                            <div class="col-md-2"></div>
+                                                            
                                                         </div>
                                                     </div>
-                                                </form>
-                                                <form action="" id="modal_OTB_form">
-                                                    <h2>OTHER BANK BANK</h2>
-
-                                                </form>
-
-                                                <form action="" id="modal_INTB_form">
-                                                    <h2>INTERNATIONAL BANK</h2>
-                                                </form>
-                                                </p>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-info waves-effect"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-danger waves-effect waves-light"
-                                                    data-dismiss="modal">Delete</button>
-                                            </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                </div><!-- /.modal -->
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
 
 
 
@@ -335,7 +252,7 @@
                 var table = $('.beneficiary_list_display').DataTable();
                 var nodes = table.rows().nodes();
                 $.ajax({
-                    'tpye': 'GET',
+                    tpye: 'GET',
                     url:  'all-beneficiary-list',
                     datatype: "application/json",
                     success: function(response) {
@@ -348,7 +265,7 @@
                             $('#beneficiary_list_loader').hide();
                             $('#beneficiary_list_retry_btn').hide();
                             $.each(data, function(index) {
-                                console.log(data[index])
+                                {{--  console.log(data[index])  --}}
 
                                 model_data = data[index]
 
@@ -362,7 +279,7 @@
 
                                     `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
 
-                                                    &emsp;&emsp; <span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-toggle="modal" data-target="#bs-example-modal-lg" data-value="${ data[index]}"></span>`,
+                                    &emsp;&emsp; <span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-toggle="modal" data-target="#centermodal" data-value="${ data[index].BENE_ID}"></span>`,
 
 
 
@@ -383,6 +300,29 @@
 
             $('#beneficiary_list_retry_btn').hide();
             $('#beneficiary_table').hide();
+
+            function beneficiary_details() {
+                $.ajax({
+                    tpye: 'GET',
+                    url:  'all-beneficiary-list',
+                    datatype: "application/json",
+                    success: function(response){
+                        {{--  console.log(response);  --}}
+
+                        let data = response.data;
+
+                        $.each(data, function(index) {
+                            {{--  console.log(data[index])  --}}
+
+                           let bene_id = data[index].BENE_ID;
+
+                           console.log(data[index].BENE_ID);
+                        })
+
+                    }
+                    
+                })
+            }
 
 
             $(document).ready(function() {
@@ -407,30 +347,14 @@
                     alert('hhh')
                 })
 
-                $(".delete_beneficiary_data").click(function() {
+                $("#confirm_delete").click(function(e) {
 
-                    alert("DELETE!!!");
-                    var beneficiary_data = $(this).data().value;
-                    console.log(beneficiary_data);
-                    if (beneficiary_data.BENEF_TYPE == 'SAB') {
-
-                        $('#modal_OTB_form').hide()
-                        $('#modal_INTB_form').hide()
-                        $('#modal_SAB_form').show()
-                    } else if (beneficiary_data.BENEF_TYPE == 'OTB') {
-
-                        $('#modal_INTB_form').hide()
-                        $('#modal_SAB_form').hide()
-                        $('#modal_OTB_form').show()
-                    } else if (beneficiary_data.BENEF_TYPE == 'INT') {
-
-                        $('#modal_SAB_form').hide()
-                        $('#modal_OTB_form').hide()
-                        $('#modal_INTB_form').show()
-
-                    } else {
-
-                    }
+                    var bene_id = $(".delete_beneficiary_data").attr("data-value");
+                    console.log(bene_id);
+                    return false ;
+                    {{--  e.preventDefault();
+                    beneficiary_details();  --}}
+                    
                 })
             })
 

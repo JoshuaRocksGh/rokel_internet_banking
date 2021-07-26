@@ -2,7 +2,8 @@
 
 @section('content')
 
-
+<div></div>
+<legend></legend>
 
     <div class="container-fluid">
         <br>
@@ -122,7 +123,7 @@
                             <div class="form-group">
 
                                 <button type="button" class="btn btn-rounded btn-secondary mb-2" id="save_beneficiary_back">
-                                    <i class="fe-arrow-left"></i> &nbsp; Back</button>
+                                    <<i class="mdi mdi-reply-all-outline"></i> &nbsp; Back</button>
 
 
 
@@ -253,8 +254,7 @@
                                             <div class="form-group text-right ">
 
                                                 <button class="btn btn-primary waves-effect waves-light btn-rounded "
-                                                    type="submit" id="save_beneficiary">Next &nbsp;<i
-                                                        class="fe-arrow-right"></i></button>
+                                                    type="submit" id="save_beneficiary">Next &nbsp;<i class="fe-arrow-right"></i></button>
                                             </div>
 
                                         </div>
@@ -276,25 +276,6 @@
 
                             </div>
                         </div>
-
-                        {{-- <div class="col-md-10">
-
-
-
-
-
-
-                            <div class="">
-                                <div class="">
-
-                                    <div class="col-2"></div>
-
-                                    <div class="col-2"></div>
-                                </div>
-                            </div>
-
-
-                        </div> --}}
 
                         <div class="col-md-5">
                             <br>
