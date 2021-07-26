@@ -568,6 +568,10 @@ Route::get('cheque-book-request-api', [AccountServicesChequeBookRequestControlle
 Route::post('submit-cheque-book-request', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('submit-cheque-book-request');
 Route::post('submit-stop-cheque-book-request', [StopChequeController::class, 'submit_stop_cheque_book_request'])->name('submit-stop-cheque-book-request');
 
+// Corporate chequebook request
+Route::post('corporate-chequebook-request', [AccountServicesChequeBookRequestController::class, 'corporate_cheque_book_request'])->name('corporate-chequebook-request');
+
+
 // KYC EDIT
 Route::get('get-kyc-details', [KYCKycController::class, 'kyc_update'])->name('get-kyc-details');
 

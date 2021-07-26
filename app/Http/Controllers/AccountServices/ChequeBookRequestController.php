@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class ChequeBookRequestController extends Controller
 {
@@ -44,5 +45,26 @@ class ChequeBookRequestController extends Controller
         // return $response;
         $result = new ApiBaseResponse();
         return $result->api_response($response);
+    }
+
+    public function corporate_cheque_book_request(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'accountNumber' => 'required',
+            'branchCode' => 'required',
+            'leaflet' => 'required',
+        ]);
+
+
+        $base_response = new BaseResponse();
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        return $request;
     }
 }

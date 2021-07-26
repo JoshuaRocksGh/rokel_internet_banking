@@ -534,6 +534,34 @@
 
                     alert("Corporate Account");
 
+                    var account_num = $('#my_account').val();
+                    var num = account_num.split('~')
+                    var accountNumber = num[0]
+
+                    var leaflet = $('#leaflet').val();
+
+                    var branch_ = $('#branch').val()
+                    var branch_code = branch_.split("~")
+                    var branch = branch_code[1]
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'corporate-chequebook-request',
+                        datatype: "application/json",
+                        data: {
+                            'accountNumber': accountNumber,
+                            'branchCode': branch,
+                            'leaflet': leaflet,
+
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                        }
+                    })
+
                 } else {
 
                     //show button features after the submit button has been pressed..
