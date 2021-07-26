@@ -191,7 +191,7 @@
                                                             </div>
 
                                                             <div class="col-md-2"></div>
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div><!-- /.modal-content -->
@@ -320,7 +320,7 @@
                         })
 
                     }
-                    
+
                 })
             }
 
@@ -349,12 +349,12 @@
 
                 $("#confirm_delete").click(function(e) {
 
-                    var bene_id = $(".delete_beneficiary_data").attr("data-value");
+                    var bene_id = $(".delete_beneficiary_data").list().attr("data-value");
                     console.log(bene_id);
                     return false ;
                     {{--  e.preventDefault();
                     beneficiary_details();  --}}
-                    
+
                 })
             })
 
