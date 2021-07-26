@@ -346,7 +346,7 @@ Route::get('Instagram-Chatbot', [InstagramChatbotController::class, 'instagram_c
 
 // });
 
-Route::group(['middleware' => ['userAuth']], function() {
+Route::group(['middleware' => ['userAuth']], function () {
 
     //DashBoard Screen
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -383,6 +383,12 @@ Route::group(['middleware' => ['userAuth']], function() {
     Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
 
     Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
+
+    // Route::delete('/delete-beneficiary', [transferController::class, "delete_beneficiary"])->name('delete-beneficiary');
+
+
+    //DELETE BENEFICIARY
+    Route::get('/delete-beneficiary', [DeleteBeneficiaryController::class, 'index'])->name('delete-beneficiary');
 
     // Payment Screens
     Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
@@ -476,9 +482,6 @@ Route::group(['middleware' => ['userAuth']], function() {
     Route::get('change-pin', [settingsController::class, 'change_pin'])->name('change-pin');
 
     Route::get('branch-locator', [branchLocatorController::class, 'branch_locator'])->name('branch-locator');
-
-
-
 });
 
 
@@ -537,8 +540,6 @@ Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class
 // EDIT BENEFICIARY
 Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->name('edit-beneficiary');
 
-//DELETE BENEFICIARY
-Route::get('/delete-beneficiary', [DeleteBeneficiaryController::class, 'index'])->name('delete-beneficiary');
 
 Route::post('/edit-same-bank-api', [EditSameBankController::class, 'get_same_bank_beneficiary'])->name('edit-same-bank-api');
 Route::put('/edit-same-bank-beneficiary-api', [EditSameBankController::class, 'update_same_bank_beneficiary'])->name('edit-same-bank-beneficiary-api');

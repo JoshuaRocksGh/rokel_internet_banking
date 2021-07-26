@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\classes\WEB\UserAuth;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -55,7 +56,8 @@ class transferController extends Controller
     {
         return view('pages.transfer.beneficiary_list');
     }
-    public function forex_request(){
+    public function forex_request()
+    {
         return view('pages.transfer.forex_rate');
     }
 
@@ -71,11 +73,16 @@ class transferController extends Controller
             "userId"    => $userID
         ];
 
-        $response = Http::get(env('API_BASE_URL') ."beneficiary/getTransferBeneficiaries/$userID");
+        $response = Http::get(env('API_BASE_URL') . "beneficiary/getTransferBeneficiaries/$userID");
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
-
     }
 
+    public function delete_beneficiary(Request $request)
+    {
+        $beneficiaryId = $request->beneficiaryId;
+
+        return $beneficiaryId;
+    }
 }

@@ -13,32 +13,36 @@ use Illuminate\Support\Facades\Http;
 class ChequeBookRequestController extends Controller
 {
     //function or method to hit the cheque book request api
-    public function cheque_book_request(Request $request){
+    public function cheque_book_request(Request $request)
+    {
+
+
+        $accountNumber = $request->accountNumber;
+        $numberOfLeaves = $request->leaflet;
+        $branchCode = $request->branchCode;
+        $pinCode = $request->pinCode;
+
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $accountNumber = $request->accountNumber;
-        $numberOfLeaves = $request->numberOfLeaves;
-        $branchCode = $request->branchCode;
-        $pinCode = $request->pinCode;
 
         $data = [
 
-                "accountNumber"=> $accountNumber,
-                "branch" => $branchCode,
-                "deviceIP" => "A",
-                "numberOfLeaves" => $numberOfLeaves,
-                "pinCode" => $pinCode,
-                "tokenID" => $authToken
+            "accountNumber" => $accountNumber,
+            "branch" => $branchCode,
+            "deviceIP" => "A",
+            "numberOfLeaves" => $numberOfLeaves,
+            "pinCode" => $pinCode,
+            "tokenID" => $authToken
 
         ];
 
-        $response = Http::post(env('API_BASE_URL') ."/request/chequeBook",$data);
+        // return $data;
+
+        $response = Http::post(env('API_BASE_URL') . "/request/chequeBook", $data);
         // return $response;
         $result = new ApiBaseResponse();
         return $result->api_response($response);
-
-
     }
 }

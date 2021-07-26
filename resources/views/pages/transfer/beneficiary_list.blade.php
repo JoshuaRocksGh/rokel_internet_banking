@@ -63,7 +63,8 @@
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Transfer Beneficiary List</b>
+                            <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Transfer
+                                Beneficiary List</b>
 
 
                         </span>
@@ -91,7 +92,7 @@
 
 
 
-                            {{--  <div class="col-md-1"></div>  --}}
+                            {{-- <div class="col-md-1"></div> --}}
                             <div class="col-md-12">
 
                                 <div class="row">
@@ -125,31 +126,31 @@
 
                                     </div>
                                 </div>
-                                <div class="row" id="beneficiary_table" >
+                                <div class="row" id="beneficiary_table">
                                     <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                    <div class="p-3 mt-4 mt-lg-0 rounded table-responsive">
-                                        <br>
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                        <div class="p-3 mt-4 mt-lg-0 rounded table-responsive">
+                                            <br>
 
-                                        <table id="datatable-buttons"
-                                            class="table table-bordered table-striped dt-responsive w-100 mb-0 beneficiary_list_display">
-                                            {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
-                                            <thead>
-                                                <tr class="bg-primary text-white">
-                                                    <th> <b> Alias </b> </th>
-                                                    <th> <b> Account Number </b> </th>
-                                                    <th> <b> Beneficiary Name </b> </th>
-                                                    <th> <b> Beneficiary Email </b> </th>
-                                                    <th> <b> Beneficiary Bank </b> </th>
-                                                    <th class="text-center"> <b>Actions </b> </th>
+                                            <table id="datatable-buttons"
+                                                class="table table-bordered table-striped dt-responsive w-100 mb-0 beneficiary_list_display">
+                                                {{-- <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100"> --}}
+                                                <thead>
+                                                    <tr class="bg-primary text-white">
+                                                        <th> <b> Alias </b> </th>
+                                                        <th> <b> Account Number </b> </th>
+                                                        <th> <b> Beneficiary Name </b> </th>
+                                                        <th> <b> Beneficiary Email </b> </th>
+                                                        <th> <b> Beneficiary Bank </b> </th>
+                                                        <th class="text-center"> <b>Actions </b> </th>
 
-                                                </tr>
-                                            </thead>
+                                                    </tr>
+                                                </thead>
 
 
-                                        </table>
+                                            </table>
 
-                                    </div>
+                                        </div>
 
 
                                     </div>
@@ -171,32 +172,37 @@
 
 
                                 <!-- Center modal content -->
-                                        <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        {{--  <h4 class="modal-title" id="myCenterModalLabel">Center modal</h4>  --}}
-                                                        {{--  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  --}}
+                                <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                {{-- <h4 class="modal-title" id="myCenterModalLabel">Center modal</h4> --}}
+                                                {{-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> --}}
+                                            </div>
+                                            <div class="modal-body">
+                                                <h1 class="text-center"
+                                                    style="font-family: 'Segoe UI',Geneva, Verdana, sans-serif">Do
+                                                    you want to Delete Beneficiary?</h1>
+                                                <br><br><br>
+                                                <div class="form-group row">
+                                                    <div class="col-md-2"></div>
+
+                                                    <div class="col-md-8">
+                                                        <button type="button" class="btn btn-success btn-lg"
+                                                            id="confirm_delete">Confirm</button>
+
+                                                        <button type="button" class="btn btn-danger btn-lg float-right"
+                                                            data-dismiss="modal" aria-hidden="true"
+                                                            id="decline_delete">Decline</button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <h1 class="text-center">Do you want to Delete Benficiary?</h1>
-                                                        <br><br><br>
-                                                        <div class="form-group row">
-                                                            <div class="col-md-2"></div>
 
-                                                            <div class="col-md-8">
-                                                                <button type="button" class="btn btn-success btn-lg" id="confirm_delete">Confirm</button>
+                                                    <div class="col-md-2"></div>
 
-                                                                <button type="button" class="btn btn-danger btn-lg float-right" data-dismiss="modal" aria-hidden="true" id="decline_delete">Decline</button>
-                                                            </div>
-
-                                                            <div class="col-md-2"></div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
+                                                </div>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
 
 
 
@@ -207,7 +213,7 @@
 
                         </div>
 
-                        {{--  <div class="col-md-1"></div>  --}}
+                        {{-- <div class="col-md-1"></div> --}}
 
 
 
@@ -243,7 +249,7 @@
         <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
         <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
         <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-                <!-- third party js ends -->
+        <!-- third party js ends -->
 
         <!-- Datatables init -->
         <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
@@ -253,7 +259,7 @@
                 var nodes = table.rows().nodes();
                 $.ajax({
                     tpye: 'GET',
-                    url:  'all-beneficiary-list',
+                    url: 'all-beneficiary-list',
                     datatype: "application/json",
                     success: function(response) {
                         {{-- console.log(response.responseCode); --}}
@@ -265,7 +271,7 @@
                             $('#beneficiary_list_loader').hide();
                             $('#beneficiary_list_retry_btn').hide();
                             $.each(data, function(index) {
-                                {{--  console.log(data[index])  --}}
+                                {{-- console.log(data[index]) --}}
 
                                 model_data = data[index]
 
@@ -279,7 +285,7 @@
 
                                     `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
 
-                                    &emsp;&emsp; <span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-toggle="modal" data-target="#centermodal" data-value="${ data[index].BENE_ID}"></span>`,
+                                    &emsp;&emsp; <a class='delete_beneficiary_data' href='delete-beneficiary?bene_id=${ data[index].BENE_ID}'><span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-value="${ data[index].BENE_ID}"></span></a>`,
 
 
 
@@ -304,23 +310,23 @@
             function beneficiary_details() {
                 $.ajax({
                     tpye: 'GET',
-                    url:  'all-beneficiary-list',
+                    url: 'all-beneficiary-list',
                     datatype: "application/json",
-                    success: function(response){
-                        {{--  console.log(response);  --}}
+                    success: function(response) {
+                        {{-- console.log(response); --}}
 
                         let data = response.data;
 
                         $.each(data, function(index) {
-                            {{--  console.log(data[index])  --}}
+                            {{-- console.log(data[index]) --}}
 
-                           let bene_id = data[index].BENE_ID;
+                            let bene_id = data[index].BENE_ID;
 
-                           console.log(data[index].BENE_ID);
+                            console.log(data[index].BENE_ID);
                         })
 
                     }
-                    
+
                 })
             }
 
@@ -348,15 +354,24 @@
                 })
 
                 $("#confirm_delete").click(function(e) {
-
+                    e.preventDefault();
                     var bene_id = $(".delete_beneficiary_data").attr("data-value");
                     console.log(bene_id);
-                    return false ;
-                    {{--  e.preventDefault();
-                    beneficiary_details();  --}}
-                    
+                    return false;
+                    $.ajax({
+                        type: "delete",
+                        url: "delete-beneficiary",
+                        datatype: "application/json",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                .attr('content')
+                        },
+                        success: function(resposne) {
+                            console.log(resposne)
+                        }
+                    })
+
                 })
             })
-
         </script>
     @endsection
