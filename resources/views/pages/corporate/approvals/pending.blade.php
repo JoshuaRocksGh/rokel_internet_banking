@@ -350,7 +350,7 @@
 
             table
                 .order([0, 'desc'])
-                .column( 0 ).visible( false, false )
+                .column(0).visible(false, false)
                 .draw();
 
 
@@ -387,8 +387,9 @@
                             let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                             let yyyy = today.getFullYear();
 
-                            let amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(data[
-                                index].amount))
+                            let amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
+                                data[
+                                    index].amount))
 
 
                             let request_type = ''
@@ -402,11 +403,14 @@
                             } else if (data[index].request_type == 'RTGS') {
                                 request_type = 'RTGS Transfer'
                             } else if (data[index].request_type == 'BULK') {
-                                amount =  (data[index].currency) + ' ' + formatToCurrency(parseFloat(data[index].total_amount))
+                                amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
+                                    data[index].total_amount))
                                 console.log(data[index].total_amount)
                                 request_type = 'Bulk Transfer'
                             } else if (data[index].request_type == 'INT') {
                                 request_type = 'International Bank Transfer'
+                            } else if (data[index].request_type == 'CHQR') {
+                                request_type = 'Cheque Book Request'
                             } else {
                                 request_type = 'Others'
                             }
@@ -421,7 +425,7 @@
                                 data[index].postedby,
                                 dd + '/' + mm + '/' + yyyy,
                                 data[index].account_no,
-                                    `<a onclick="window.open('{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}', '_blank', 'location=yes,height=670,width=1200,scrollbars=yes,status=yes')">
+                                `<a onclick="window.open('{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}', '_blank', 'location=yes,height=670,width=1200,scrollbars=yes,status=yes')">
                                         <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
                                     </a>
                                     `
@@ -463,13 +467,13 @@
         $(document).ready(function() {
 
 
-            {{--  $('#datatable-buttons').DataTable({
+            {{-- $('#datatable-buttons').DataTable({
                 "columnDefs": [{
                     "targets": [0],
                     "visible": false,
                     "searchable": false
                 }]
-            })  --}}
+            }) --}}
 
             var customer_no = @json(session()->get('customerNumber'));
             var request_status = 'P'

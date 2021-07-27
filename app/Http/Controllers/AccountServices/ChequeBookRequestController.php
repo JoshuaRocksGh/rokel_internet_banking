@@ -54,6 +54,7 @@ class ChequeBookRequestController extends Controller
             'accountNumber' => 'required',
             'branchCode' => 'required',
             'leaflet' => 'required',
+            'account_mandate' => 'required'
         ]);
 
 
@@ -65,18 +66,30 @@ class ChequeBookRequestController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        // return $request;
+        return $request;
 
 
         $userID = session()->get('userId');
         $userAlias = session()->get('userAlias');
         $customerNumber = session()->get('customerNumber');
-        $userMandate = session()->get('userMandate');
+        $userMandate = $request->account_mandate;
         $userAlias = session()->get('userAlias');
         $accountNumber = $request->accountNumber;
         $branchCode = $request->branchCode;
-        $numberOfLeaves = $request->numberOfLeaves;
+        $numberOfLeaves = $request->leaflet;
         $deviceIP = $request->ip();
+        $postBy = session()->get('userAlias');
+        $transBy = session()->get('userAlias');
+
+        //         'customer_no' => 'required',
+        // 'account_mandate' => 'required',
+        // 'user_id' => 'required',
+        // 'user_alias' => 'required',
+        // 'accountNumber' => 'required',
+        // 'branch' => 'required',
+        // 'deviceIP' => 'required',
+        // 'entrySource' => 'required',
+        // 'numberOfLeaves' => 'required',
 
 
         $data = [
@@ -86,13 +99,40 @@ class ChequeBookRequestController extends Controller
             "customer_no" => $customerNumber,
             "account_mandate" => $userMandate,
             // "user_id" = $userID,
-            "accountNumber" => $accountNumber,
-            "branch" => $branchCode,
-            "deviceIP" => $deviceIP,
-            "numberOfLeaves" => $numberOfLeaves,
+            "account_no" => $accountNumber,
+            "branch_code" => $branchCode,
+            // "deviceIP" => $deviceIP,
+            "leaflet" => $numberOfLeaves,
+            'postedBy' => $postBy,
+            'transBy' => $transBy
 
         ];
 
+        // return $data;
 
+
+        try {
+
+            // dd((env('CIB_API_BASE_URL') . "chequebook-request"));
+
+            $response = Http::post(env('CIB_API_BASE_URL') . "chequebook-request", $data);
+            // return $response;
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+            // return json_decode($response->body();
+
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+
+
+        }
     }
 }
