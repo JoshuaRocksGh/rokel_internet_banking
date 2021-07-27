@@ -65,6 +65,34 @@ class ChequeBookRequestController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        return $request;
+        // return $request;
+
+
+        $userID = session()->get('userId');
+        $userAlias = session()->get('userAlias');
+        $customerNumber = session()->get('customerNumber');
+        $userMandate = session()->get('userMandate');
+        $userAlias = session()->get('userAlias');
+        $accountNumber = $request->accountNumber;
+        $branchCode = $request->branchCode;
+        $numberOfLeaves = $request->numberOfLeaves;
+        $deviceIP = $request->ip();
+
+
+        $data = [
+
+            "user_id" => $userID,
+            "user_name" => $userAlias,
+            "customer_no" => $customerNumber,
+            "account_mandate" => $userMandate,
+            // "user_id" = $userID,
+            "accountNumber" => $accountNumber,
+            "branch" => $branchCode,
+            "deviceIP" => $deviceIP,
+            "numberOfLeaves" => $numberOfLeaves,
+
+        ];
+
+
     }
 }

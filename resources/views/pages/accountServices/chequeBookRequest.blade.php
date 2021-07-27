@@ -241,7 +241,7 @@
                                                             </select>
                                                         </div>
 
-                                                        <div class="form-group row mb-3">
+                                                        <div class="form-group row mb-3 pin">
                                                             <b class="col-md-6 text-primary">Enter Pin
                                                                 <span class="text-danger">*</span></b>
 
@@ -444,9 +444,11 @@
 
                 $('#coporate_transfer_approval').show();
                 $('#personal_transfer_receipt').hide();
+                $('.pin').hide();
             } else {
                 $('#personal_transfer_receipt').show();
                 $('#coporate_transfer_approval').hide();
+                $(".pin").show();
             }
         }
 
@@ -532,11 +534,11 @@
 
                 if (customerType == 'C') {
 
-                    alert("Corporate Account");
+                    {{--  alert("Corporate Account");  --}}
 
                     var account_num = $('#my_account').val();
                     var num = account_num.split('~')
-                    var accountNumber = num[0]
+                    var accountNumber = num[2]
 
                     var leaflet = $('#leaflet').val();
 
