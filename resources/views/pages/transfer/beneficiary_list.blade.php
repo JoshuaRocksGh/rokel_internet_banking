@@ -356,8 +356,6 @@
                 })
 
                 $("#confirm_delete").click(function(e) {
-                    <<
-                    << << < HEAD
                     e.preventDefault();
                     var bene_id = $(".delete_beneficiary_data").attr("data-value");
                     console.log(bene_id);
@@ -373,16 +371,14 @@
                             success: function(resposne) {
                                 console.log(resposne)
                             }
-                        }) ===
-                        === =
+                        }) 
 
                         var bene_id = $(".delete_beneficiary_data").list().attr("data-value");
                     console.log(bene_id);
                     return false;
                     {{-- e.preventDefault();
                     beneficiary_details(); --}}
-                        >>>
-                        >>> > 9 bb955560e87d50789ec66e65f061b5a73842665
+
 
                 })
             })

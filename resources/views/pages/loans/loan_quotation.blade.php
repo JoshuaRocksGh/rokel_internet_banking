@@ -264,9 +264,9 @@ type="text/css" />
                         </div>
                     </div>
                         <div class="table-responsive table-bordered">
-                            <table  class="table mb-0 loan_payment_schedule">
+                            <table  class="table mb-0 loan_payment_schedule w-100">
                                 <thead>
-                                    <tr class="bg-blue text-white ">
+                                    <tr class="bg-primary text-white ">
                                         <td> <b> NO </b> </td>
                                         <td> <b> REPAYMENT DATE </b> </td>
                                         <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
