@@ -40,7 +40,7 @@
 
     <div class="">
 
-        <div class="container-fluid">
+        <div class="container-fluid hide_on_print">
             <br>
             <!-- start page title -->
             <div class="row">
@@ -189,156 +189,164 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class=" col-md-7 m-2" id="request_form_div"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                    <br><br><br>
+                            <div class="form_process">
 
-                                    <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
-                                        aria-autocomplete="none">
-                                        @csrf
-                                        <div class="row container">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-9">
+                                <div class="row ">
+                                    <div class=" col-md-7 m-2" id="request_form_div"
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                        <br><br><br>
 
-                                                {{-- <br><br><br> --}}
-                                                <div class="row">
-                                                    {{-- <div class="col-md-1"></div> --}}
+                                        <form action="#" class="select_beneficiary" id="payment_details_form"
+                                            autocomplete="off" aria-autocomplete="none">
+                                            @csrf
+                                            <div class="row container">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-9">
 
-                                                    <div class="col-md-12">
+                                                    {{-- <br><br><br> --}}
+                                                    <div class="row">
+                                                        {{-- <div class="col-md-1"></div> --}}
 
-                                                        <div class="form-group row mb-3">
-                                                            <b class="col-md-6 text-primary">My Account &nbsp; <span
-                                                                    class="text-danger">*</span> </b>
+                                                        <div class="col-md-12">
+
+                                                            <div class="form-group row mb-3">
+                                                                <b class="col-md-6 text-primary">My Account &nbsp; <span
+                                                                        class="text-danger">*</span> </b>
 
 
-                                                            <select class="form-control col-md-6 " id="my_account" required>
-                                                                <option value="">Select Account</option>
-                                                            </select>
+                                                                <select class="form-control col-md-6 " id="my_account"
+                                                                    required>
+                                                                    <option value="">Select Account</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group row mb-3">
+
+                                                                <b class="col-md-6 text-primary" for="leaflet">
+                                                                    Leftlets
+                                                                    <span class="text-danger">*</span></b>
+
+                                                                <select class="form-control col-md-6" id="leaflet" required>
+                                                                    <option value="">-- Select number --</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group row mb-3">
+
+                                                                <b class="col-md-6 text-primary">Branch
+                                                                    <span class="text-danger">*</span></b>
+
+                                                                <select class="form-control col-md-6" id="branch" required>
+                                                                    <option value="">-- Selected Branch --</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group row mb-3 pin">
+                                                                <b class="col-md-6 text-primary">Enter Pin
+                                                                    <span class="text-danger">*</span></b>
+
+                                                                <input type="text" class="form-control col-md-6" id="pin"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+                                                            </div>
+
+
+
+
+                                                            <div class="form-group text-right ">
+                                                                <button type="button"
+                                                                    class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                    id="submit_cheque_request">
+                                                                    <span class="submit-text">Submit</span>
+                                                                    <span class="spinner-border spinner-border-sm mr-1"
+                                                                        role="status" id="spinner"
+                                                                        aria-hidden="true"></span>
+                                                                    <span id="spinner-text">Loading...</span>
+                                                                </button>
+                                                            </div>
+
+
                                                         </div>
 
-                                                        <div class="form-group row mb-3">
-
-                                                            <b class="col-md-6 text-primary" for="leaflet">
-                                                                Leftlets
-                                                                <span class="text-danger">*</span></b>
-
-                                                            <select class="form-control col-md-6" id="leaflet" required>
-                                                                <option value="">-- Select number --</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3">
-
-                                                            <b class="col-md-6 text-primary">Branch
-                                                                <span class="text-danger">*</span></b>
-
-                                                            <select class="form-control col-md-6" id="branch" required>
-                                                                <option value="">-- Selected Branch --</option>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="form-group row mb-3 pin">
-                                                            <b class="col-md-6 text-primary">Enter Pin
-                                                                <span class="text-danger">*</span></b>
-
-                                                            <input type="text" class="form-control col-md-6" id="pin"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-
-                                                        </div>
-
-
-
-
-                                                        <div class="form-group text-right ">
-                                                            <button type="button"
-                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                                id="submit_cheque_request">
-                                                                <span class="submit-text">Submit</span>
-                                                                <span class="spinner-border spinner-border-sm mr-1"
-                                                                    role="status" id="spinner" aria-hidden="true"></span>
-                                                                <span id="spinner-text">Loading...</span>
-                                                            </button>
-                                                        </div>
-
-
+                                                        {{-- <div class="col-md-1"></div> --}}
                                                     </div>
 
-                                                    {{-- <div class="col-md-1"></div> --}}
+
+
+
+
+
+
+
+
                                                 </div>
-
-
-
-
-
-
-
-
+                                                <div class="col-md-1"></div>
 
                                             </div>
-                                            <div class="col-md-1"></div>
 
+
+
+
+
+
+
+
+
+
+
+                                        </form>
+
+
+                                    </div> <!-- end col -->
+
+                                    <div class="col-md-4 m-2" id="atm_request_summary"
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                        <br><br>
+                                        <div class=" col-md-12 card card-body">
+                                            {{-- <br><br> --}}
+                                            <div class="row">
+                                                <span class="col-md-12 success-message"></span>
+                                                <h6 class="col-md-5">Account Name:</h6>
+                                                <span class="text-primary display_my_account_name col-md-7"></span>
+
+                                                <h6 class="col-md-5">Account Number:</h6>
+                                                <span class="text-primary display_my_account_no col-md-7"></span>
+
+                                                <h6 class="col-md-5">Account Currency:</h6>
+                                                <span class="text-primary display_my_account_currency col-md-7"></span>
+
+                                                <h6 class="col-md-5">Available Balance:</h6>
+                                                <span class="text-primary display_my_account_amount col-md-7"></span>
+
+                                                <h6 class="col-md-5">Number Of Leaves:</h6>
+                                                <span class="text-success display_leaflet col-md-7"></span>
+
+                                                <h6 class="col-md-5">Pick Up Branch:</h6>
+                                                <span class="text-success display_branch col-md-7"></span>
+                                            </div>
                                         </div>
 
+                                        <div class="form-group text-center display_button_print">
 
-
-
-
-
-
-
-
-
-
-                                    </form>
-
-
-                                </div> <!-- end col -->
-
-                                <div class="col-md-4 m-2" id="atm_request_summary"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                    <br><br>
-                                    <div class=" col-md-12 card card-body">
-                                        {{-- <br><br> --}}
-                                        <div class="row">
-                                            <span class="col-md-12 success-message"></span>
-                                            <h6 class="col-md-5">Account Name:</h6>
-                                            <span class="text-primary display_my_account_name col-md-7"></span>
-
-                                            <h6 class="col-md-5">Account Number:</h6>
-                                            <span class="text-primary display_my_account_no col-md-7"></span>
-
-                                            <h6 class="col-md-5">Account Currency:</h6>
-                                            <span class="text-primary display_my_account_currency col-md-7"></span>
-
-                                            <h6 class="col-md-5">Available Balance:</h6>
-                                            <span class="text-primary display_my_account_amount col-md-7"></span>
-
-                                            <h6 class="col-md-5">Number Of Leaves:</h6>
-                                            <span class="text-success display_leaflet col-md-7"></span>
-
-                                            <h6 class="col-md-5">Pick Up Branch:</h6>
-                                            <span class="text-success display_branch col-md-7"></span>
+                                            <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                    id="back_button">Back</button> &nbsp; </span>
+                                            <span>&nbsp;
+                                                <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                        type="button" id="print_receipt" onclick="window.print()">Print
+                                                        Receipt
+                                                    </button></span>
                                         </div>
                                     </div>
 
-                                    <div class="form-group text-center display_button_print">
-
-                                        <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                id="back_button">Back</button> &nbsp; </span>
-                                        <span>&nbsp;
-                                            <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
-                                                    type="button" id="print_receipt" onclick="window.print()">Print
-                                                    Receipt
-                                                </button></span>
-                                    </div>
                                 </div>
 
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -358,14 +366,15 @@
                 'url': 'get-my-account',
                 "datatype": "application/json",
                 success: function(response) {
-                    console.log(response.data);
+                    console.log(response);
                     let data = response.data
                     $.each(data, function(index) {
 
                         $('#my_account').append($('<option>', {
                             value: data[index].accountType + '~' + data[index].accountDesc +
                                 '~' + data[index].accountNumber + '~' + data[index]
-                                .currency + '~' + data[index].availableBalance
+                                .currency + '~' + data[index].availableBalance + '~' + data[
+                                    index].accountMandate
                         }).text(data[index].accountType + '~' + data[index].accountNumber +
                             '~' + data[index].currency + '~' + data[index].availableBalance));
 
@@ -534,35 +543,72 @@
 
                 if (customerType == 'C') {
 
-                    {{--  alert("Corporate Account");  --}}
+                    {{-- alert("Corporate Account"); --}}
 
                     var account_num = $('#my_account').val();
-                    var num = account_num.split('~')
+                    var num = account_num.split('~');
+                    console.log(num);
                     var accountNumber = num[2]
+                    var account_mandate = num[5]
 
                     var leaflet = $('#leaflet').val();
 
                     var branch_ = $('#branch').val()
                     var branch_code = branch_.split("~")
-                    var branch = branch_code[1]
+                    var branch = branch_code[0]
 
-                    $.ajax({
-                        type: 'POST',
-                        url: 'corporate-chequebook-request',
-                        datatype: "application/json",
-                        data: {
-                            'accountNumber': accountNumber,
-                            'branchCode': branch,
-                            'leaflet': leaflet,
 
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response) {
-                            console.log(response);
-                        }
-                    })
+                    if (branch == "" || accountNumber == "" || leaflet == "") {
+                        toaster("Please fill all required fieilds", "error", 6000);
+                    } else {
+                        $(".submit-text").hide();
+                        $("#spinner").show();
+                        $("#spinner-text").show();
+
+
+                        $.ajax({
+                            type: 'POST',
+                            url: 'corporate-chequebook-request',
+                            datatype: "application/json",
+                            data: {
+                                'accountNumber': accountNumber,
+                                'branch': branch_code[1],
+                                'branchCode': branch_code[0],
+                                'leaflet': leaflet,
+                                'account_mandate': account_mandate
+
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                console.log(response);
+
+                                if (response.responseCode == "000") {
+                                    Swal.fire(
+                                        '',
+                                        response.message,
+                                        'success'
+                                    )
+                                    $(".receipt").show();
+                                    $(".form_process").hide();
+
+                                } else {
+                                    toaster(response.message, 'error', 9000);
+                                    $('#spinner').hide()
+                                    $('#spinner-text').hide()
+                                    $(".submit-text").show()
+                                    $(".form_process").show();
+                                    $(".receipt").hide();
+
+                                }
+                            }
+                        })
+                    }
+
+
+
+
 
                 } else {
 
@@ -625,6 +671,8 @@
                                     {{-- $(".hh").text(response.message) --}}
                                     $("#request_detail_div").show()
                                     $(".display_button_print").show();
+                                    $(".receipt").show();
+                                    $(".form_process").hide();
 
 
                                 } else {
@@ -633,7 +681,8 @@
                                     $('#spinner').hide()
                                     $('#spinner-text').hide()
                                     $(".submit-text").show()
-
+                                    $(".form_process").show();
+                                    $(".receipt").hide();
 
                                 }
                             }

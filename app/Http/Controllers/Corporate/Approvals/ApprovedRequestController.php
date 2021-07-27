@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Validator;
 class ApprovedRequestController extends Controller
 {
     //
-    public function approved_request(Request $request) {
+    public function approved_request(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'customer_no' => 'required',
@@ -59,7 +60,7 @@ class ApprovedRequestController extends Controller
 
             $response = Http::post(env('CIB_API_BASE_URL') . "request-approval", $data);
 
-            // return $response;
+            return $response;
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);
@@ -75,10 +76,10 @@ class ApprovedRequestController extends Controller
 
 
         }
-
     }
 
-    public function reject_request(Request $request) {
+    public function reject_request(Request $request)
+    {
 
         // return $request;
 
@@ -141,7 +142,5 @@ class ApprovedRequestController extends Controller
 
 
         }
-
     }
-
 }
