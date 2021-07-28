@@ -1068,7 +1068,7 @@
                 $('#spinner').hide();
                 $('#spinner-text').hide();
                 $('#print_receipt').hide();
-                {{--  $(".receipt").hide();  --}}
+                $(".receipt").hide();
 
 
 
@@ -1083,11 +1083,16 @@
                 }, 200);
 
                 var customerType = @json(session()->get('customerType'));
+                console.log(customerType);
 
                 if (customerType == 'C') {
-                    $("#confirm_modal_button").removeAttr("data-target");
-                }
 
+                    $('#coporate_transfer_approval').show();
+                    $('#personal_transfer_receipt').hide();
+                } else {
+                    $('#personal_transfer_receipt').show();
+                    $('#coporate_transfer_approval').hide();
+                }
 
 
                 var now = new Date();

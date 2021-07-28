@@ -222,19 +222,18 @@
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
                                                                     {{-- <td></td> --}}
-                                                                    <td class="text-right"><strong>(<span
-                                                                                class="receipt_currency"></span>)
+                                                                    <td class="text-right"><strong><span class="receipt_currency"></span>
                                                                             &nbsp;<span id="amount_receipt"></span></strong>
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    {{-- <th scope="row">3</th> --}}
+                                                                {{--  <tr>
+                                                                    <th scope="row">3</th>
                                                                     <td>Transaction Fee </td>
-                                                                    {{-- <td></td> --}}
+                                                                    <td></td>
                                                                     <td class="text-right"><strong>(<span
                                                                                 class="receipt_currency"></span>) &nbsp;
                                                                             15.00</strong></td>
-                                                                </tr>
+                                                                </tr>  --}}
                                                                 {{-- <tr>
                                                                     <th scope="row">3</th>
                                                                     <td><strong>Total Amount</strong> </td>
@@ -516,6 +515,15 @@
 
                                                     <hr style="padding-top: 0px; padding-bottom: 0px;">
 
+                                                    <div class="form-group no_beneficiary">
+                                                        <div class="alert alert-warning" role="alert">
+                                                            <i class="mdi mdi-alert-outline mr-2"></i>
+                                                            <strong>No
+                                                                beneficiary found
+                                                            </strong>
+
+                                                        </div>
+                                                    </div>
                                                     <div class="row ">
 
                                                         <div class="col-md-4">
@@ -730,14 +738,7 @@
                                                         <br>
 
 
-                                                        <div class="form-group no_beneficiary">
-                                                            <div class="alert alert-warning" role="alert">
-                                                                <i class="mdi mdi-alert-outline mr-2"></i>
-                                                                <strong>warning</strong>
-                                                                No
-                                                                beneficiary found
-                                                            </div>
-                                                        </div>
+
 
 
                                                     </div>
@@ -1404,6 +1405,18 @@
                 },3000); --}}
 
             }, 500);
+
+            var customerType = @json(session()->get('customerType'));
+            console.log(customerType);
+
+            if (customerType == 'C') {
+
+                $('#coporate_transfer_approval').show();
+                $('#personal_transfer_receipt').hide();
+            } else {
+                $('#personal_transfer_receipt').show();
+                $('#coporate_transfer_approval').hide();
+            }
 
             function getAccountDescription(account_no) {
                 $.ajax({
