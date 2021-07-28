@@ -113,15 +113,16 @@ class BulkUploadsController extends Controller
 
 
         // return $account_no;
-         $account_info = explode("~", $account_no);
-         $account_no = $account_info[2];
-         $currency = $account_info[3];
+        $account_info = explode("~", $account_no);
+        $account_no = $account_info[2];
+        $currency = $account_info[3];
 
-         $account_mandate = $account_info[5];
+        $account_mandate = $account_info[5];
 
-         if ($request->file()) {
+        if ($request->file()) {
 
             $path = $request->file('excel_file')->getRealPath();
+            // return $path;
 
             $file = $request->file('excel_file');
             $ext = $file->getClientOriginalExtension();
@@ -132,22 +133,19 @@ class BulkUploadsController extends Controller
 
 
 
-           Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency, $value_date, $file, $account_mandate), $file);
-           Alert::success("Bulk transfer pending approval");
-           return redirect()->route('view-bulk-transfer', [
-                                                            'batch_no' => $batch_no,
-                                                            'bulk_amount' => $total_amount,
-                                                            'bank_type' => $bank_code,
-                                                            'bank_type' => $bank_code
-                                                            ]);
+            Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency, $value_date, $file, $account_mandate), $file);
+            Alert::success("Bulk transfer pending approval");
+            return redirect()->route('view-bulk-transfer', [
+                'batch_no' => $batch_no,
+                'bulk_amount' => $total_amount,
+                'bank_type' => $bank_code,
+                'bank_type' => $bank_code
+            ]);
             // return back()->with('success', 'Bulk transfer pending approval');
             // return $upload;
 
-         }else{
-
-         }
-
-
+        } else {
+        }
     }
 
     public function get_bulk_upload_list(Request $request)
@@ -212,8 +210,6 @@ class BulkUploadsController extends Controller
                 'bulk_details' => $bulk_details
             ]
         ], 200);
-
-
     }
 
 
@@ -330,9 +326,9 @@ class BulkUploadsController extends Controller
         $result = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->update(['status' => 'R']);
 
         $base_response = new BaseResponse();
-        if($result){
+        if ($result) {
             return $base_response->api_response('000', 'Upload rejected successfully',  NULL);
-        }else{
+        } else {
             return $base_response->api_response('666', 'Failed to reject upload',  NULL);
         }
 
@@ -377,7 +373,7 @@ class BulkUploadsController extends Controller
 
         */
         // dd(env('CIB_API_BASE_URL') . "post-bulk-upload-list");
-        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-upload-list",null);
+        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-upload-list", null);
         // return (array) $response;
         // $result = new ApiBaseResponse();
         $base_response = new BaseResponse();
