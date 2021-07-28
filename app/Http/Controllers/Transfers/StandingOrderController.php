@@ -83,10 +83,10 @@ class StandingOrderController extends Controller
             $data =
             // [
             //     "amount": "20",
-            //     "authToken": "string",
+            //     "authToken": $authToken,
             //     "bankCode": "string",
-            //     "creditAccount": $accLink,
-            //     "debitAccount": $beneficiaryAccount,
+            //     "creditAccount": $beneficiaryAccount,
+            //     "debitAccount": $accLink,
             //     "deviceIp": "string",
             //     "effectiveDate": $startDate,
             //     "expiryDate": $dueDate,
