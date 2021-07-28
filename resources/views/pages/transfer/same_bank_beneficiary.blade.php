@@ -2,7 +2,8 @@
 
 @section('content')
 
-
+<div></div>
+<legend></legend>
 
     <div class="container-fluid">
         <br>
@@ -45,7 +46,7 @@
 
                         {{-- <div class="col-md-1"></div> --}}
 
-                        <div class="col-md-6 m-2 card_box_shadow" id="transaction_summary"
+                        <div class="col-md-6 m-2" id="transaction_summary"
                             style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                             <br><br><br>
 
@@ -122,7 +123,7 @@
                             <div class="form-group">
 
                                 <button type="button" class="btn btn-rounded btn-secondary mb-2" id="save_beneficiary_back">
-                                    <i class="fe-arrow-left"></i> &nbsp; Back</button>
+                                    <<i class="mdi mdi-reply-all-outline"></i> &nbsp; Back</button>
 
 
 
@@ -139,7 +140,7 @@
 
                         </div>
 
-                        <div class="col-md-6 m-2 card_box_shadow" id="transaction_form"
+                        <div class="col-md-6 m-2 " id="transaction_form"
                             style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
                             <br><br><br>
                             <div class="row ">
@@ -253,8 +254,7 @@
                                             <div class="form-group text-right ">
 
                                                 <button class="btn btn-primary waves-effect waves-light btn-rounded "
-                                                    type="submit" id="save_beneficiary">Next &nbsp;<i
-                                                        class="fe-arrow-right"></i></button>
+                                                    type="submit" id="save_beneficiary">Next &nbsp;<i class="fe-arrow-right"></i></button>
                                             </div>
 
                                         </div>
@@ -276,25 +276,6 @@
 
                             </div>
                         </div>
-
-                        {{-- <div class="col-md-10">
-
-
-
-
-
-
-                            <div class="">
-                                <div class="">
-
-                                    <div class="col-2"></div>
-
-                                    <div class="col-2"></div>
-                                </div>
-                            </div>
-
-
-                        </div> --}}
 
                         <div class="col-md-5">
                             <br>

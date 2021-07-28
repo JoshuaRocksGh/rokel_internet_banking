@@ -71,6 +71,7 @@ class SameBankController extends Controller
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+        $client_ip = request()->ip();
 
 
         $data = [
@@ -95,8 +96,8 @@ class SameBankController extends Controller
             "channel" => "MOB",
             "currency" => $req->account_currency,
             "debitAccount" => $req->from_account,
-            "deviceIp" => null,
-            "entrySource" => null,
+            "deviceIp" => $client_ip,
+            "entrySource" => 'I',
             "narration" => $req->purpose,
             "secPin" => $user_pin,
             "userName" => $userID,
@@ -189,6 +190,8 @@ class SameBankController extends Controller
 
         $data = [
             "account_no" => $request->from_account,
+            "authToken" => $authToken,
+            "channel" => 'NET',
             "destinationAccountId" => $request->to_account,
             "currency" => $request->account_currency,
             "account_mandate" => $request->account_mandate,

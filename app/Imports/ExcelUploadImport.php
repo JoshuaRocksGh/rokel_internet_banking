@@ -23,12 +23,14 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
     private $value_date;
     private $ref_no;
     private $total_amount;
+    private $currency;
     private $documentRef;
     private $account_no;
     private $trans_ref_no;
     private $desc;
     private $bank_code;
     private $file;
+    private $account_mandate;
 
 
 
@@ -39,18 +41,20 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
     }
 
 
-    public function __construct($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $value_date, $file)
+    public function __construct($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency,  $value_date, $file, $account_mandate)
     {
         $this->customer_no = $customer_no;
         $this->user_id = $user_id;
         $this->user_name = $user_name;
         $this->total_amount = $total_amount;
+        $this->currency = $currency;
         $this->value_date = $value_date;
         $this->ref_no = $trans_ref_no;
         $this->bank_code = $bank_code;
         $this->documentRef = $documentRef;
         $this->account_no = $account_no;
         $this->file = $file;
+        $this->account_mandate = $account_mandate;
     }
 
     public function collection(Collection $rows)
@@ -61,10 +65,12 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
         // die();
 
 
-    $customer_no = $this->customer_no ;
-    $user_id = $this->user_id ;
+        $account_mandate = $this->account_mandate ;
+        $customer_no = $this->customer_no ;
+        $user_id = $this->user_id ;
          $user_name = $this->user_name ;
          $total_amount = $this->total_amount ;
+         $currency = $this->currency ;
          $value_date = $this->value_date ;
          $ref_no = $this->ref_no ;
          $bank_code = $this->bank_code;
@@ -93,7 +99,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
         $check_ref = false;
 
-        $batch_no = time();
+        $batch_no = $documentRef;
 
 /*
         foreach ($rows as $row) {
@@ -114,6 +120,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
 
         // Looping through the excel file row by row
+        /*
         foreach ($rows as $row) {
             // $ref_no_ = strval( $row['ref_no'] );
 
@@ -128,17 +135,11 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                 break;
             }
 
-            // validation ref_number from session ref_no against ref_no in excel each row
-            // if( strval($ref_no) != $row['ref_no']){
-            //     return Redirect::to('/bulk-payment')->withErrors(['error', "A reference $ref_no does not match $ref_no_"]);
-            //     die();
-            // }
-
-            // $t_amt = $t_amt + floatval($row['amount']);
-
         }
+        */
 
         // validation ref_number from session ref_no against ref_no in excel each row
+        /*
         if ($check_ref) {
             echo json_encode([
                 'responseCode' => '0333',
@@ -147,9 +148,11 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
             die();
         }
+        */
 
 
         // // Check if ref_no already exist in TB_CORP_BANK_BULK_REF
+        /*
         $check_ref_no = DB::table('TB_CORP_BANK_BULK_REF')->where('ref_no', $ref_no)->value('ref_no');
         if ($check_ref_no) {
             echo json_encode([
@@ -158,6 +161,9 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
             ]);
             die();
         }
+        */
+
+        /*
 
         if ($t_amt != $total_amount) {
             echo json_encode([
@@ -166,6 +172,9 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
             ]);
             die();
         }
+        */
+
+       $t_amt = 0;
 
         foreach ($rows as $row) {
 
@@ -176,58 +185,31 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                 // return null;
             } else {
 
-                if ($bank_code == 'I') {
-                    $query = DB::table('VW_CASA_LEDGER')->where('acct_link', $row[0])->count();
-                    if ($query > 0) {
-                        // V ->  VALID ACCOUNT
-                        $message = 'V';
-                        $bank_name = '';
-
-                        // wanted to get the bank description name
-                        // $result = DB::executeFunction(" BANKOWNER.FUNC_BBAN_VALIDATOR(:bbanv);", [ 'bbanv' => $row['bban', '']]);
-                        // if(!empty($result) AND strlen($result) > 2){
-                        //     $bank_name = $result;
-                        // }else{
-                        //     $bank_name = '';
-                        // }
-
-
-                    } else {
-                        // INV ->  INVALID ACCOUNT
-                        $message = 'Invalid account number';
-                        $bank_name = '';
-                    }
-                } else {
-                    // $returnValue = null;
-                    $bban = $row['account_number'];
-                    // BEGIN :returnValue := BANKOWNER.FUNC_BBAN_VALIDATOR(:bbanv);END;
-                    // $bcode= substr($row['bban'],0,3);
-                    // $result = DB::executeFunction("BANKOWNER.FUNC_BBAN_VALIDATOR(bbanv) ", [':bbanv' => $bban]);
-                    // $result = DB::executeFunction("BANKOWNER.FUNC_BBAN_VALIDATOR(:bbanv)", [':bbanv' => $row['bban']],  PDO::PARAM_LOB);
-                    // $message = $result;
-                    $message = 'OTB';
-                    $bank_name = '';
-                }
 
                 $beneficiaryname = $row['name'];
                 $creditaccountnumber =  $row['account_number'];
 
+                $t_amt = $t_amt + (float) $row['amount'];
+
 
                 $query_result = DB::table('tb_corp_bank_import_excel')->insert([
-                    'ref_no' => $ref_no,
+                    'ref_no' => $row['ref_number'],
                     'bban' => $row['account_number'],
                     'name' => $row['name'],
                     'amount' => $row['amount'],
                     'trans_desc' => $row['transaction_description'],
                     'value_date' => $value_date,
                     'bank_code' => $bank_code,
-                    'user_id' => $customer_no,
+                    'user_id' => session()->get('userId'),
+                    'customer_no' => $customer_no,
                     'account_no' => $account_no,
+                    'account_mandate' => $account_mandate,
                     'total_amount' => $total_amount,
-                    'message' => $message,
-                    'batch_no' => $documentRef,
+                    'currency' => $currency,
+                    'message' => 'message',
+                    'batch_no' => $batch_no,
                     'status' => 'P',
-                    'bank_name' => $bank_name,
+                    'bank_name' => '$bank_name',
                     'created_at' => NOW(),
                     'updated_at' => NOW()
                 ]);
@@ -264,10 +246,11 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
                 'REF_NO' => $ref_no,
                 'VALUE_DATE' => $value_date,
-                'TOTAL_AMOUNT' => $total_amount,
+                'TOTAL_AMOUNT' => $t_amt,
                 'DESCRIPTION' => 'Description goes here ....',
-                'USER_ID' => "user_id",
-                'ACCOUNT_NO' => "account_no",
+                'USER_ID' => $user_id,
+                'ACCOUNT_NO' => $account_no,
+                'ACCOUNT_MANDATE' => $account_mandate,
                 'BATCH_NO' => $batch_no
 
             ]
@@ -277,19 +260,31 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
         DB::commit();
 
-        if($query_result_){
-            echo json_encode( [
-                'responseCode' => '000',
-                'message' => 'Bulk transfer pending approval'
-            ]);
-            die();
-        }else{
-            echo json_encode( [
-                'responseCode' => 'ii',
-                'message' => 'Something went wrong'
-            ]);
-            die();
-        }
+        // if($query_result_){
+
+        //     return back()->with('success', 'Bulk transfer pending approval');
+
+        // }else{
+        //     return back()->withErrors(['error' => 'Bulk transfer pending approval']);
+
+        // }
+
+        // if($query_result_){
+
+        //     // return back()->with('success', 'Bulk transfer pending approval');
+        //     return json_encode( [
+        //         'responseCode' => '000',
+        //         'message' => 'Bulk transfer pending approval'
+        //     ]);
+        //     // die();
+        // }else{
+        //     // return back()->with('success', 'Bulk transfer pending approval');
+        //     return json_encode( [
+        //         'responseCode' => 'ii',
+        //         'message' => 'Something went wrong'
+        //     ]);
+        //     // die();
+        // }
 
 
     }

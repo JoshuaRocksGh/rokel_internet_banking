@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class OwnAccountController extends Controller
 {
     //
-    public function own_account_()
+    public function get_my_accounts()
     {
 
 
@@ -41,10 +41,10 @@ class OwnAccountController extends Controller
             'from_account' => 'required',
             'to_account' => 'required',
             'transfer_amount' => 'required',
-            'category' => 'required',
+            // 'category' => 'required',
             'purpose' => 'required',
-            'secPin' => 'required'
-
+            'secPin' => 'required',
+            'account_currency' => 'required'
 
         ]);
         // return $req ;
@@ -58,56 +58,27 @@ class OwnAccountController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        // $response = [
-        //     "responseCode" => "000",
-        //     "message" => "Transfer Successful"
-        // ];
-
-        // return $response ;
-
-        // return $req;
-
-        // $user_pin = $req->secPin;
-
-        // return $user_pin;
-        // if($user_pin != '123456'){
-
-        //     return $base_response->api_response('099', 'Incorrect Pin',  null); // return API BASERESPONSE
-
-        // }
-
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+        $client_ip = request()->ip();
 
 
-        // $from_account = $req->from_account;
-        // 'from_account' : from_account_ ,
-        // 'to_account' : to_account_ ,
-        // 'transfer_amount' : transfer_amount ,
-        // 'category' : category_ ,
-        // 'select_frequency' : select_frequency_ ,
-        // 'purpose' : purpose ,
-        // 'schedule_payment_type' : schedule_payment_contraint_input ,
-        // 'schedule_payment_date' : schedule_payment_date,
-        // 'secPin' : pin
         $data = [
-
             "amount" => $req->transfer_amount,
             "authToken" => $authToken,
             "channel" => 'MOB',
             "creditAccount" => $req->to_account,
-            "currency" => null,
+            "currency" => $req->account_currency,
             "debitAccount" => $req->from_account,
-            "deviceIp" => null,
-            "entrySource" => null,
+            "deviceIp" => $client_ip,
+            "entrySource" => 'I',
             "narration" => $req->purpose,
             "secPin" => $req->secPin,
-            "userName" => null,
-            "category" => $req->category,
-
-
+            "userName" => $userID,
+            // "category" => $req->category,
         ];
 
+        // return $data;
 
         if (isset($req->select_frequency)) {
             $frequency = $req->select_frequency;
@@ -194,6 +165,8 @@ class OwnAccountController extends Controller
 
 
             "account_no" => $req->from_account,
+            "authToken" => $authToken,
+            "channel" => 'NET',
             "destinationAccountId" => $req->to_account,
             "amount" => $req->transfer_amount,
             "currency" => $req->currency,
@@ -224,7 +197,7 @@ class OwnAccountController extends Controller
 
         try {
 
-            //dd((env('CIB_API_BASE_URL') . "own-account-gone-for-pending"));
+            // dd((env('CIB_API_BASE_URL') . "own-account-gone-for-pending"));
 
             $response = Http::post(env('CIB_API_BASE_URL') . "own-account-gone-for-pending", $data);
 

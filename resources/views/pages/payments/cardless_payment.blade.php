@@ -888,7 +888,7 @@
                                                         </div> <!-- end card-->
 
                                                     <div class="table-responsive table-bordered accounts_display_area">
-                                                        <table id="" class="table table-striped mb-0 ">
+                                                        <table id="table_of_items" class="table table-striped mb-0 table_of_items">
                                                             <thead>
                                                                 <tr class="bg-primary text-white ">
                                                                     <td> <b> Reference Number </b> </td>
@@ -898,7 +898,7 @@
                                                                     <td> <b>Status</b></td>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display">
+                                                            <tbody style="background-color:white;" class="unredeem_cardless_list_display clear_table">
 
 
                                                             </tbody>
@@ -933,7 +933,7 @@
                                                         </div> <!-- end card-body-->
                                                     </div> <!-- end card-->
 
-                                                    <div class="table-responsive table-bordered accounts_display_area">
+                                                    <div class="table-responsive table-bordered accounts_display_area table_of_items">
                                                         <table id="" class="table mb-0 ">
                                                             <thead>
                                                                 <tr class="bg-primary text-white ">
@@ -944,7 +944,7 @@
                                                                     <td> <b>Status</b></td>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody style="background-color:white;" class="redeemed_cardless_list_display">
+                                                            <tbody style="background-color:white;" class="redeemed_cardless_list_display clear_table">
 
 
                                                             </tbody>
@@ -980,7 +980,7 @@
                                                     </div> <!-- end card-->
 
 
-                                                    <div class="table-responsive table-bordered accounts_display_area">
+                                                    <div class="table-responsive table-bordered accounts_display_area table_of_items">
                                                         <table id="" class="table mb-0 ">
                                                             <thead>
                                                                 <tr class="bg-primary text-white ">
@@ -991,7 +991,7 @@
                                                                     <td> <b>Status</b></td>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody style="background-color:white;" class="reversed_cardless_list_display">
+                                                            <tbody style="background-color:white;" class="reversed_cardless_list_display clear_table">
 
 
                                                             </tbody>
@@ -1078,6 +1078,12 @@
 
                     });
                 },
+                error: function(xhr, status, error) {
+
+                    setTimeout(function() {
+                        from_account();
+                    }, $.ajaxSetup().retryAfter)
+                }
 
             })
         }
@@ -1485,6 +1491,10 @@
             //button to submit for list of unredeemed transactions
             $('#submit_account_no_unredeemed').click(function() {
 
+                {{-- $(".unredeem_cardless_list_display").text(''); --}}
+
+                $(".table_of_items").find("tr:gt(0)").remove();
+
                 //validate if account has been selected
                 let from_account = $(".unredeemed").val();
                 if (from_account ==''){
@@ -1516,6 +1526,7 @@
                                         let unredeemed_cardless_list = response.data;
                                         console.log(unredeemed_cardless_list);
                                         $.each(data, function(index) {
+
                                             $('.unredeem_cardless_list_display').append(
                                                 `<tr>
 
@@ -1677,7 +1688,7 @@
                     $("#cardless_payment_summary").show();
 
                     amt = from_account_info[4].trim();
-                    if (amt < transfer_amount) {
+                    if (amt > transfer_amount) {
                         toaster('Insufficient account balance', 'error', 9000);
                         return false
                     } else {

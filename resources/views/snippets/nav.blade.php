@@ -301,8 +301,8 @@
 
                     </div> --}}
 
-                    <span class="pro-user-name ml-1">
-                        {{ session()->get('userAlias') }} <i class="mdi mdi-chevron-down"></i>
+                    <span class="pro-user-name ml-1 text-black-50">
+                      <b> {{ session()->get('userAlias') }} </b>   <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">

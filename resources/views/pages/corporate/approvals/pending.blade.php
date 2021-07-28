@@ -70,8 +70,10 @@
                                         style="zoom: 1;">
                                         <thead>
                                             <tr class="bg-info text-white">
+                                                <th>Rquest Id</th>
+                                                <th>Transfer Purpose</th>
+                                                <th>Amount</th>
                                                 <th>Req-Type</th>
-                                                <th>Status</th>
                                                 <th>Initiated By</th>
                                                 <th>Posted Date</th>
                                                 <th>Account No</th>
@@ -328,15 +330,30 @@
     <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
     <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.11/sorting/date-eu.js "></script>
+    {{-- <script type="text/javascript" src="jquery.dataTables.js"></script>
+    <script type="text/javascript" src="dataTables.numericComma.js"></script> --}}
+
     <!-- third party js ends -->
 
     <!-- Datatables init -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
     <script>
+        function formatToCurrency(amount) {
+            return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        };
+
         function get_corporate_requests(customerNumber, requestStatus) {
             var table = $('.pending_transaction_request').DataTable();
             var nodes = table.rows().nodes();
+
+            table
+                .order([0, 'desc'])
+                .column(0).visible(false, false)
+                .draw();
+
+
 
             $(".loans_display_area").hide()
             $(".loans_error_area").hide()
@@ -355,12 +372,28 @@
                     if (response.responseCode == '000') {
 
                         let data = response.data;
+                        console.log(data);
 
                         table.clear().draw()
 
 
                         $.each(data, function(index) {
+
+                            let request_id = data[index].request_id;
+                            let customer_no = data[index].customer_no;
+
+                            let today = new Date(data[index].post_date);
+                            let dd = String(today.getDate()).padStart(2, '0');
+                            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                            let yyyy = today.getFullYear();
+
+                            let amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
+                                data[
+                                    index].amount))
+
+
                             let request_type = ''
+
                             if (data[index].request_type == 'OWN') {
                                 request_type = 'Own Account Transfer'
                             } else if (data[index].request_type == 'SAB') {
@@ -370,30 +403,32 @@
                             } else if (data[index].request_type == 'RTGS') {
                                 request_type = 'RTGS Transfer'
                             } else if (data[index].request_type == 'BULK') {
+                                amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
+                                    data[index].total_amount))
+                                console.log(data[index].total_amount)
                                 request_type = 'Bulk Transfer'
                             } else if (data[index].request_type == 'INT') {
                                 request_type = 'International Bank Transfer'
+                            } else if (data[index].request_type == 'CHQR') {
+                                request_type = 'Cheque Book Request'
                             } else {
                                 request_type = 'Others'
                             }
-                            let request_id = data[index].request_id;
-                            let customer_no = data[index].customer_no;
+
 
 
                             table.row.add([
-
+                                data[index].request_id,
+                                data[index].narration,
+                                amount,
                                 request_type,
-                                `<button type="button" class="btn btn-warning disabled btn-xs waves-effect waves-light">Pending</button>`
-
-                                ,
                                 data[index].postedby,
-                                data[index].post_date,
+                                dd + '/' + mm + '/' + yyyy,
                                 data[index].account_no,
-                                `
-                                                                             <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }} " target="_blank">
-                                                                                <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
-                                                                            </a>
-                                                                            `
+                                `<a onclick="window.open('{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}', '_blank', 'location=yes,height=670,width=1200,scrollbars=yes,status=yes')">
+                                        <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
+                                    </a>
+                                    `
 
                             ]).draw(false)
 
@@ -431,9 +466,21 @@
 
         $(document).ready(function() {
 
+
+            {{-- $('#datatable-buttons').DataTable({
+                "columnDefs": [{
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }]
+            }) --}}
+
             var customer_no = @json(session()->get('customerNumber'));
             var request_status = 'P'
             console.log(customer_no);
+
+
+
 
             $('.transfer_tab_btn').click(function() {
                 let customer_no = @json(session()->get('customerNumber'));

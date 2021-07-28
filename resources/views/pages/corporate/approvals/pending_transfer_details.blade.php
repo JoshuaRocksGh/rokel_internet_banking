@@ -361,6 +361,12 @@
                         let pending_request = response.data;
                         console.log(pending_request);
 
+                        if(pending_request == null || pending_request == ''){
+                            {{--  Swal.fire('', 'Request does not exit', 'error');  --}}
+                            window.close()
+
+                        }
+
                         $('#account_mandate').text(pending_request.account_mandate);
                         $('#initiated_by').text(pending_request.postedby);
 
@@ -457,7 +463,7 @@
                         let currency = pending_request.currency;
 
                         currency = pending_request.currency == ('ACH' || 'RTGS') ? pending_request.currency :
-                            pending_request.currency_2;
+                            pending_request.currency;
                         currency != null ? append_approval_details("Currency", currency) : '';
 
                         let amount = pending_request.amount;
@@ -728,10 +734,14 @@
                         if (response.responseCode == '000') {
                             Swal.fire('', response.message, 'success');
 
+                            {{-- setTimeout(function() {
+                                window.location = 'approvals-pending'
+                            }, 3000) --}}
+
                             setTimeout(function() {
                                 window.opener.location.reload();
                                 window.close();
-                            }, 5000)
+                            }, 3000)
 
 
 
@@ -786,7 +796,7 @@
                     url: "../../reject-pending-request",
                     datatype: 'application/json',
                     data: {
-                        'narrartion': narration,
+                        'narration': narration,
                         'request_id': request_id
                     },
                     headers: {
@@ -795,12 +805,13 @@
                     success: function(response) {
                         console.log(response)
                         if (response.responseCode == '000') {
-                            Swal.fire('', response.message, 'success');
+
+
 
                             setTimeout(function() {
-                                window.opener.location.reload();
-                                window.close();
-                            }, 5000)
+                                Swal.fire('', response.message, 'success');
+                                window.location = 'approvals-pending'
+                            }, 3000)
 
                         } else {
                             Swal.fire('', response.message, 'error');

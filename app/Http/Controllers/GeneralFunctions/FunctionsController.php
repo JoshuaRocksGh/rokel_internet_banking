@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\AcceptHeader;
 
 class FunctionsController extends Controller
 {
@@ -122,6 +123,14 @@ class FunctionsController extends Controller
         $userID = session()->get('userId');
         $api_headers = session()->get('headers');
 
+        // return response()->json([
+        //     'responseCode' => '$result->responseCode',
+        //     'message' => '$result->message',
+        //     'data' => $api_headers
+        // ], 200);
+
+        // return $api_headers;
+
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
@@ -132,7 +141,7 @@ class FunctionsController extends Controller
         // return $data;
         // return env('API_BASE_URL') ."account/getAccounts";
 
-        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "account/getAccounts",$data);
+        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "account/getAccounts", $data);
         // $response = Http::post(env('API_BASE_URL') . "account/getAccounts", $data);
 
         $result = new ApiBaseResponse();
@@ -379,6 +388,39 @@ class FunctionsController extends Controller
         return $result->api_response($response);
     }
 
+        //method to return the interest types
+        public function get_transaction_fees(Request $request)
+        {
+
+            $accountNumber = $request->accountNumber;
+            $amount = $request->amount;
+            // $feeType = $request->feeType;
+
+            // ACHP
+            // RTG
+
+            $authToken = session()->get('userToken');
+            $userID = session()->get('userId');
+
+
+
+            $data = [
+                "accountNumber" => $accountNumber,
+                "amount"    => $amount,
+                "feeType"    => 'ACHP',
+                "authToken"    => $authToken,
+            ];
+
+            // return $data ;
+
+            // dd(env('API_BASE_URL') . "transfers/transactionFees");
+
+            $response = Http::post(env('API_BASE_URL') . "transfers/transactionFees", $data);
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        }
+
     // method to return expense types
     public function get_expenses()
     {
@@ -450,4 +492,3 @@ class FunctionsController extends Controller
         // return $response->status();
     }
 }
-

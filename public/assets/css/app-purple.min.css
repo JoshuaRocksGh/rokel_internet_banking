@@ -135,7 +135,8 @@ body {
 }
 
 .nav-second-level li a:focus,
-.nav-second-level li a:hover {
+.nav-second-level li a:hover
+.nav-second-level li a:active {
     color: #0561ad;
     background-color: #a19472;
 }

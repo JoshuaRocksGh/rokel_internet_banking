@@ -25,41 +25,47 @@
     <br>
     <!-- start page title -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <h4 class="text-primary">
                 <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                 BULK TRANSFER UPLOAD
 
-                 <span class="float-right">
-                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Own Account</b>
-                </span>
-
             </h4>
 
+            <p class="text-muted font-14 m-b-20">
+                <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please
+                        Note:&nbsp;&nbsp;</b> <span class="">You can download template for upload (<span class="text-danger"><a href="{{ url('download_same_bank_file') }}" class="text-danger"> Same Bank</a></span>) and
+                        (<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other
+                                ACH Bank </a> </span>)</span> </span>
+
+                <hr>
+            </p>
+        </div>
+
+        <div class="col-md-6 text-right">
+            <h6>
+
+                <span class="flaot-right">
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Own Account</b>
 
 
+                </span>
 
-
-
-
-
+            </h6>
 
         </div>
 
         <div class="col-md-12 ">
-
-     <p class="text-muted font-14 m-r-20 m-b-20">
-                <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please Note:&nbsp;&nbsp;</b> <span class="">You can download template for upload (<span class="text-danger"><a href="{{ url('download_same_bank_file') }}" class="text-danger"> Same Bank</a></span>) and
-                        (<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other ACH Bank </a> </span>)</span> </span>
-
-            </p>
+            <hr class="text-primary" style="margin: 0px;">
         </div>
 
-
-
     </div>
+</div>
 
 
+
+<div>
+    <legend></legend>
 
     <div class="row">
         <div class="col-12">
@@ -270,7 +276,8 @@
 
                     $('#my_account').append($('<option>', {
                         value: data[index].accountType + '~' + data[index].accountDesc +
-                            '~' + data[index].accountNumber + '~' + data[index].currency + '~' + data[index].availableBalance + '~' + data[index].accountMandate
+                            '~' + data[index].accountNumber + '~' + data[index]
+                            .currency + '~' + data[index].availableBalance
                     }).text(data[index].accountType + '~' + data[index].accountNumber +
                         '~' + data[index].currency + '~' + data[index].availableBalance));
 
@@ -301,7 +308,14 @@
 
 
                 if (response.responseCode == '000') {
-                    bulk_upload_array_list = response.data;
+                    bulk_upload_array_list = response.data; {
+                        {
+                            --$('#beneficiary_table').show();
+                            $('#beneficiary_list_loader').hide();
+                            $('#beneficiary_list_retry_btn').hide();
+                            --
+                        }
+                    }
 
                     data = bulk_upload_array_list
 
@@ -442,7 +456,37 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        });
+        }); {
+            {
+                --$('#bulk_upload_form').submit(function(e) {
+                    e.preventDefault();
+                    let formData = new FormData(this);
+                    console.log(formData);
+                    return false;
+
+                    $('#image-input-error').text('');
+
+                    $.ajax({
+                        type: 'POST'
+                        , url: 'http://localhost/laravel/cib_api/public/api/import'
+                        , data: formData
+                        , contentType: false
+                        , processData: false
+                        , success: (response) => {
+                            if (response) {
+                                this.reset();
+                                alert('Image has been uploaded successfully');
+                            }
+                        }
+                        , error: function(response) {
+                            console.log(response);
+                            $('#image-input-error').text(response.responseJSON.errors.file);
+                        }
+                    });
+                });
+                --
+            }
+        }
 
 
 

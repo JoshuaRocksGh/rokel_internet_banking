@@ -64,7 +64,8 @@
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Account </b> &nbsp; > &nbsp; <b class="text-danger">Account Statement</b>
+                            <b class="text-primary"> Account </b> &nbsp; > &nbsp; <b class="text-danger">Account
+                                Statement</b>
 
 
                         </span>
@@ -112,16 +113,19 @@
                                                 <b class="col-md-3 text-primary">Date Interval :</b>
                                                 <div class="col-md-8">
                                                     <div class="row">
-                                                        <input type="text" id="startDate" class="form-control date-picker-startDate flatpickr-input input-sm col-md-5" readonly="readonly">
-                                                    <p class="col-md-1"></p>
-                                                    <input type="text" id="endDate" class="form-control date-picker-endDate flatpickr-input input-sm col-md-6" readonly="readonly">
+                                                        <input type="text" id="startDate"
+                                                            class="form-control date-picker-startDate flatpickr-input input-sm col-md-5"
+                                                            readonly="readonly">
+                                                        <p class="col-md-1"></p>
+                                                        <input type="text" id="endDate"
+                                                            class="form-control date-picker-endDate flatpickr-input input-sm col-md-6"
+                                                            readonly="readonly">
                                                     </div>
 
                                                 </div>
                                             </div>
 
-{{--
-                                            <div class="form-group row">
+                                            {{-- <div class="form-group row">
                                                 <b class="col-md-3 text-primary">Amount Interval :</b>
 
                                                 <div class="col-md-8">
@@ -139,10 +143,10 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
-  --}}
+                                            </div> --}}
 
-                                        <button class="btn btn-primary btn-sm  mb-2" id="search_transaction" style="float: right; margin-right:70px;">Search</button>
+                                            <button class="btn btn-primary btn-sm  mb-2" id="search_transaction"
+                                                style="float: right; margin-right:70px;">Search</button>
 
                                         </div>
 
@@ -164,36 +168,40 @@
                                 </div>
                             </div>
 
-                            <div class="row" >
+                            <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id="transaction_summary"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <div class=" p-3 mt-4 mt-lg-0 rounded">
                                         {{-- <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2> --}}
                                         <br>
-                                        {{--  <div class="text-center" id="account_balance_info_loader">
+                                        {{-- <div class="text-center" id="account_balance_info_loader">
                                             <div class="spinner-border text-primary avatar-sm" role="status"></div>
-                                        </div>  --}}
+                                        </div> --}}
 
-                                        {{--  <div class="text-center" id="account_balance_info_retry_btn">
+                                        {{-- <div class="text-center" id="account_balance_info_retry_btn">
                                             <button class="btn btn-sm btn-secondary">retry</button>
-                                        </div>  --}}
+                                        </div> --}}
 
                                         <div class="" id="account_balance_info_display">
 
                                             <div class="alert alert-secondary" role="alert">
                                                 <div class="row">
 
-                                                    <div class="col-md-6"> <h5>Account Number: <strong class="display_account_number"></strong> Date Range: <strong class="display_search_date_range"></strong></div>
+                                                    <div class="col-md-6">
+                                                        <h5>Account Number: <strong class="display_account_number"></strong>
+                                                            Date Range: <strong class="display_search_date_range"></strong>
+                                                    </div>
 
                                                     <div class="col-md-4">
 
                                                         <div class="row">
 
-                                                            <select class="form-control col-md-8" id="from_account" required>
-                                                                <option value=""> -- Select Transfer Type -- </option>
-                                                                <option value="001~All"> ALL</option>
-                                                                <option value="002~Credit"> CREDIT </option>
-                                                                <option value="003~Debit"> DEBIT </option>
+                                                            <select class="form-control col-md-8" id="filter"
+                                                                required>
+                                                                
+                                                                <option value="all" selected> ALL</option>
+                                                                <option value="credit"> CREDIT </option>
+                                                                <option value="debit"> DEBIT </option>
                                                             </select>
 
                                                         </div>
@@ -203,18 +211,18 @@
                                                         <span style="float: right">
                                                             &nbsp;&nbsp;
                                                             <span id="pdf_print">
-                                                                {{--  <a href="{{ url('print-account-statement') }}">
+                                                                {{-- <a href="{{ url('print-account-statement') }}">
                                                                     <img src="{{ asset('assets/images/pdf.png') }}" alt="" style="width: 22px; height: 25px;">
-                                                                </a>  --}}
+                                                                </a> --}}
                                                             </span>
 
                                                             &nbsp;&nbsp;&nbsp;
                                                         </span>
                                                         <span style="float: right">
                                                             <span id="excel_print">
-                                                                {{--  <a href="{{ url('print-account-statement') }}">
+                                                                {{-- <a href="{{ url('print-account-statement') }}">
                                                                     <img src="{{ asset('assets/images/excel.png') }}" alt="" style="width: 22px; height: 25px;">
-                                                                </a>  --}}
+                                                                </a> --}}
                                                             </span>
 
                                                         </span>
@@ -226,24 +234,29 @@
 
                                             </div>
 
-                                            <table  class="table table-bordered table-striped mb-0 account_transaction_display_table" >
+                                            <table
+                                                class="table table-bordered table-striped mb-0 account_transaction_display_table">
                                                 <tbody>
                                                     <thead>
                                                         <tr class="bg-info text-white ">
+                                                            <td>Document Ref</td>
                                                             <td>Date</td>
-                                                            <td>Amount (SLL)<span class="account_number_display_"></span></td>
-                                                            <td>Balance (SLL)<span class="account_description_display_"></span></td>
-                                                            <td>Explanation <span class="account_currency_display_"></span>
+                                                            <td>Amount <span class="account_number_display_"></span>
                                                             </td>
-                                                            {{--  <td>Transaction Details <span class="account_product_display_"></span> </td>  --}}
-                                                            <td>Document Ref <span class=""></span> </td>
+                                                            <td>Balance<span
+                                                                    class="account_description_display_"></span></td>
+                                                            <td>Purpose of Transfer <span class="account_currency_display_"></span>
+                                                            </td>
+                                                            <th>Credit Account</th>
+                                                            {{-- <td>Transaction Details <span class="account_product_display_"></span> </td> --}}
+                                                            <td>Transaction ID <span class=""></span> </td>
                                                             <th>Batch No</th>
                                                         </tr>
                                                     </thead>
 
-                                                    <tbody id="table-body-display">
+                                                <tbody id="table-body-display">
 
-                                                    </tbody>
+                                                </tbody>
 
                                                 </tbody>
                                             </table>
@@ -253,7 +266,7 @@
 
                                 </div>
                             </div>
-                            {{--  <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
 
 
@@ -274,9 +287,9 @@
 
 
                                 </div>
-                            </div>  --}}
+                            </div> --}}
 
-                            {{--  <div class="row ">
+                            {{-- <div class="row ">
 
                                 <div class="col-md-12">
 
@@ -338,9 +351,9 @@
                                     </div>
                                     <br>
                                 </div>
-                            </div>  --}}
+                            </div> --}}
 
-                            {{--  <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="text-center" id="account_transaction_loader">
                                         <div class="spinner-border text-primary avatar-sm" role="status"></div>
@@ -360,9 +373,9 @@
                                             <button class="btn btn-sm btn-secondary" >retry</button>
                                         </div>
                                 </div>
-                            </div>  --}}
+                            </div> --}}
 
-                            {{--  <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
 
                                     <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100">
@@ -388,7 +401,7 @@
                                     </table>
                                 </div>
 
-                            </div>  --}}
+                            </div> --}}
 
 
 
@@ -446,7 +459,6 @@
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script>
         // creates multiple instances
-
     </script>
 
     <script>
@@ -477,7 +489,7 @@
                     if (response.responseCode == '000') {
 
                         let data = response.data
-                        if(data.length > 0 ){
+                        if (data.length > 0) {
 
                             $.each(data, function(index) {
                                 $('#from_account').append($('<option>', {
@@ -488,14 +500,15 @@
                                         .availableBalance
                                 }).text(data[index].accountType + '' + ' - ' + '' + data[index]
                                     .accountNumber + '' + ' - ' + '' + data[index]
-                                    .currency + '' + ' - ' + '' + formatToCurrency(parseFloat(data[
+                                    .currency + '' + ' - ' + '' + formatToCurrency(parseFloat(
+                                        data[
                                             index]
                                         .availableBalance))));
                                 //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
                             });
 
-                        }else{
+                        } else {
 
                         }
 
@@ -509,7 +522,9 @@
 
                 },
                 error: function(xhr, status, error) {
-                    setTimeout ( function(){ get_accounts() }, $.ajaxSetup().retryAfter )
+                    setTimeout(function() {
+                        get_accounts()
+                    }, $.ajaxSetup().retryAfter)
                 }
             })
         }
@@ -537,7 +552,7 @@
             console.log(defaultStartDate)
             console.log(defaultEndDate)
 
-            {{--  $('#myTable').DataTable( {
+            {{-- $('#myTable').DataTable( {
                 dom: 'Bfrtip',
                 buttons: [
                     {
@@ -551,7 +566,7 @@
                         }
                     }
                 ]
-            } );  --}}
+            } ); --}}
 
 
             $(".date-picker-startDate").flatpickr({
@@ -621,7 +636,7 @@
                 if (from_account.trim() == '' || from_account.trim() == undefined) {
                     $('#search_transaction').text('Search')
                     return false;
-                }else{
+                } else {
                     $('#search_transaction').text('Loading ...')
                     from_account_info = from_account.split("~")
                     let account_number = from_account_info[2].trim()
@@ -664,6 +679,65 @@
 
 
                 load_data_into_table(load_data, account_number, start_date, end_date)
+            })
+
+            $("#filter").change(function(){
+                let filter = $(this).val()
+
+                let account = $("#from_account").val()
+
+                if(account == '' || account == undefined){
+                    return false;
+                }
+
+                if(filter == 'debit'){
+
+                    $('#table-body-display').empty()
+                    {{-- return false --}}
+    
+                    let data = tranactions
+                    var load_data = []
+                    $.each(data, function(index) {
+                        if (parseFloat(data[index].amount) < 0) {
+                            {{-- alert(data[index].amount) --}}
+                            load_data.push(data[index])
+                        } else {
+    
+                        }
+                    })
+                    load_data_into_table(load_data, account_number, start_date, end_date)
+            
+                    
+                }else if(filter == 'credit'){
+                    $('#table-body-display').empty()
+                {{-- return false --}}
+
+                let data = tranactions
+                var load_data = []
+                $.each(data, function(index) {
+                    if (parseFloat(data[index].amount) > 0) {
+                        {{-- alert(data[index].amount) --}}
+                        load_data.push(data[index])
+                    } else {
+
+                    }
+                })
+
+
+                load_data_into_table(load_data, account_number, start_date, end_date)
+            
+            }else{
+               
+                let load_data = tranactions
+                load_data_into_table(load_data, account_number, start_date, end_date)
+
+                }
+
+                {{--  $('#table-body-display').empty()
+
+                let data = tranactions
+
+                load_data_into_table(tranactions)  --}}
             })
 
 
@@ -738,12 +812,12 @@
 
 
                 $('#table-body-display').html('')
-                $('#datatable-buttons').DataTable({"order": [[ 5, "desc" ]]});
+                
                 var table = $('.account_transaction_display_table').DataTable();
-                {{--  {"order": [[ 0, "desc" ]]}  --}}
-                var nodes = table.rows().nodes();
-                {{-- table.rows.remove() --}}
+               
+               
                 table.clear().draw()
+               
 
 
                 if (data.length > 0) {
@@ -765,13 +839,13 @@
                         if (parseFloat(data[index].amount) > 0) {
                             amount = `<b class='text-success'>
                                         <i class="fe-arrow-up text-success mr-1"></i>
-                                        ${data[index].amount}
+                                        ${formatToCurrency(parseFloat(data[index].amount))}
                                     </b>
                                     `
                         } else {
                             amount = `<b class='text-danger'>
                                         <i class="fe-arrow-down text-danger mr-1"></i>
-                                        ${data[index].amount}
+                                        ${formatToCurrency(parseFloat(data[index].amount))}
                                     </b>
                                     `
                         }
@@ -792,18 +866,20 @@
                         let yyyy = today.getFullYear();
 
                         table.row.add([
-                              dd + '/' + mm + '/' + yyyy,
+                            data[index].documentReference,
+                            dd + '/' + mm + '/' + yyyy,
                             amount,
                             `${formatToCurrency(parseFloat(data[index].runningBalance))}`,
 
                             data[index].narration,
-
-                            data[index].documentReference,
-
+                            data[index].contraAccount,
+                            data[index].transactionNumber,
                             data[index].batchNumber,
 
 
-                        ]).draw(false)
+                        ]).order([0, 'desc'])
+                        .column( 0 ).visible( false, false )
+                        .draw(false)
 
                         {{-- table.row.add([
                             data[index].postingSysDate,
@@ -832,13 +908,14 @@
                 $(".account_transaction_display_table").show();
                 $(".account_transaction_display").show();
 
+             
             }
 
 
             function getAccountTransactions(account_number, start_date, end_date, transLimit) {
                 $('#search_transaction').text('Loading ...')
                 var table = $('.account_transaction_display_table').DataTable();
-                var nodes = table.rows().nodes();
+               
 
 
                 $.ajax({
@@ -883,7 +960,10 @@
                         $(".account_transaction_display").hide();
                         $(".account_transaction_display_table").hide();
                         $("#account_transaction_retry_btn").show();
-                        setTimeout ( function(){ getAccountTransactions(account_number, start_date, end_date, transLimit) }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            getAccountTransactions(account_number, start_date, end_date,
+                                transLimit)
+                        }, $.ajaxSetup().retryAfter)
 
                     }
                 })
@@ -956,7 +1036,6 @@
 
 
         })
-
     </script>
 
 @endsection

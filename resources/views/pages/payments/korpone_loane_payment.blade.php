@@ -345,13 +345,13 @@
                                                                 <span class="text-primary display_amount col-md-7"></span>
 
 
-                                                                <h6 class="col-md-5">Receiver's Name: </h6>
+                                                                <h6 class="col-md-5">Receivers Name: </h6>
                                                                 <span class="text-success display_receiver_name col-md-7"></span>
 
-                                                                <h6 class="col-md-5">Receiver's Phone Number:</h6>
+                                                                <h6 class="col-md-5">Receivers Phone Number:</h6>
                                                                 <span class="text-success display_receiver_phoneNum col-md-7"></span>
 
-                                                                <h6 class="col-md-5">Receiver's Address:</h6>
+                                                                <h6 class="col-md-5">Receivers Address:</h6>
                                                                 <span class="text-success display_receiver_address col-md-7"></span>
                                                             </div>
                                                         </div>
@@ -615,6 +615,12 @@
 
                         });
                     },
+                    error: function(xhr, status, error) {
+
+                        setTimeout(function() {
+                            from_account();
+                        }, $.ajaxSetup().retryAfter)
+                    }
 
                 })
             }
