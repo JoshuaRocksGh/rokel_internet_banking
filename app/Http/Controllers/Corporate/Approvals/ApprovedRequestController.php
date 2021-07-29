@@ -52,15 +52,15 @@ class ApprovedRequestController extends Controller
             "customer_no" => $customer_no
         ];
 
-        // return $data ;
+        // return $data;
 
-        // return env('CIB_API_BASE_URL') . "request-approval";
+        // dd(env('CIB_API_BASE_URL') . "request-approval");
 
         try {
 
             $response = Http::post(env('CIB_API_BASE_URL') . "request-approval", $data);
 
-            return $response;
+            // return $response;
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);
@@ -72,7 +72,7 @@ class ApprovedRequestController extends Controller
                 'message' => (string) $e->getMessage()
             ]);
 
-            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', "Internal Server Error", (string) $e->getMessage()); // return API BASERESPONSE
 
 
         }
