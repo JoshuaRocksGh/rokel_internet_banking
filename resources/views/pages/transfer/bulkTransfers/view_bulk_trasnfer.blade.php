@@ -174,7 +174,7 @@
         function my_account() {
             $.ajax({
                 type: 'GET',
-                url:  'get-my-account',
+                url: 'get-my-account',
                 datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
@@ -281,7 +281,8 @@
 
                     }
 
-                }, error: function(xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
                     setTimeout(function() {
                         bulk_upload_detail_list()
                     }, $.ajaxSetup().retryAfter)
@@ -325,7 +326,7 @@
             $.ajax({
 
                 type: 'POST',
-                url:  'post-bulk-transaction-api',
+                url: 'post-bulk-transaction-api',
                 datatype: "application/json",
                 'data': {
                     'batch_no': batch_no.trim()
@@ -454,7 +455,7 @@
 
         $(document).ready(function() {
 
-            {{--  var customer_no = "057725"  --}}
+            {{-- var customer_no = "057725" --}}
             var customer_no = @json(session('customerNumber'))
             {{-- var customer_no = @json($customer_no) --}}
             var batch_no = @json($batch_no)
@@ -497,14 +498,13 @@
 
             setTimeout(function() {
                 bulk_upload_detail_list(customer_no, batch_no)
-                {{--  my_account()  --}}
+                {{-- my_account() --}}
             }, 1000)
 
 
 
 
         });
-
     </script>
 
 @endsection
