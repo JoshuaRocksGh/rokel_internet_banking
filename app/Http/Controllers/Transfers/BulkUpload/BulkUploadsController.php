@@ -119,6 +119,7 @@ class BulkUploadsController extends Controller
 
          $account_mandate = $account_info[5];
 
+
          if ($request->file()) {
 
             $path = $request->file('excel_file')->getRealPath();
@@ -133,6 +134,7 @@ class BulkUploadsController extends Controller
 
 
            Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency, $value_date, $file, $account_mandate), $file);
+        //    return false ;
            Alert::success("Bulk transfer pending approval");
            return redirect()->route('view-bulk-transfer', [
                                                             'batch_no' => $batch_no,
