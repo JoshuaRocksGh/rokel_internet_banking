@@ -202,14 +202,14 @@ class BulkUploadsController extends Controller
         $bulk_info = DB::table('TB_CORP_BANK_BULK_REF')->where('batch_no', $batch_no)->first();
 
 
-        return response()->json([
-            'responseCode' => '000',
-            'message' => "Detail of upload transfer",
-            'data' => [
-                'bulk_info' => $bulk_info,
-                'bulk_details' => $bulk_details
-            ]
-        ], 200);
+        // return response()->json([
+        //     'responseCode' => '000',
+        //     'message' => "Detail of upload transfer",
+        //     'data' => [
+        //         'bulk_info' => $bulk_info,
+        //         'bulk_details' => $bulk_details
+        //     ]
+        // ], 200);
     }
 
 
@@ -232,7 +232,7 @@ class BulkUploadsController extends Controller
 
         // return response()->json([
         //     'responseCode' => '422',
-        //     'message' => 'Error validation error',
+        //     'message' => 'View Error From Api',
         //     'data' => $data
         // ], 200);
 

@@ -6,8 +6,8 @@
     <div class="auth-fluid">
         <!--Auth fluid left content -->
         <div class="auth-fluid-form-box" style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
-                            background-size: cover;
-                        ">
+                                                    background-size: cover;
+                                                ">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
@@ -86,8 +86,13 @@
                                     aria-hidden="true"></span>
                                 <span id="spinner-text">Loading...</span>
                             </button>
+                            <br><br>
 
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
+
+
+                            <p class=""><a href="auth-register-2.html" class="text-primary ml-1"><b>Self Enroll
+                                        Here!</b></a></p>
                         </div>
 
 
@@ -132,11 +137,7 @@
                     </div>
 
 
-                    <footer class="footer footer-alt">
 
-                        <p class="text-muted">Dont have an account? <a href="auth-register-2.html"
-                                class="text-muted ml-1"><b>Sign Up</b></a></p>
-                    </footer>
 
 
                 </div> <!-- end .card-body -->
@@ -248,11 +249,7 @@
 @section('scripts')
 
     <script>
-
-
-
-        function login(email, password)
-        {
+        function login(email, password) {
             $.ajax({
                 type: "POST",
                 url: "login",
@@ -297,7 +294,7 @@
                     $('#error_message').text("Connection Error")
                     $('#failed_login').show()
 
-                    console.log( 'Ajax request failed...' );
+                    console.log('Ajax request failed...');
                     //setTimeout ( function(){ login(email, password) }, $.ajaxSetup().retryAfter )
                 }
             })
@@ -329,7 +326,6 @@
 
 
         })
-
     </script>
 
 
