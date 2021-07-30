@@ -256,6 +256,12 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
             ]
         );
 
+        return response()->json([
+            'responseCode' => '526' ,
+            'message' => 'Insert into database' ,
+            "data"  => $query_result ,$query_result_
+        ]) ;
+
         // echo $query_result;die;
 
         DB::commit();

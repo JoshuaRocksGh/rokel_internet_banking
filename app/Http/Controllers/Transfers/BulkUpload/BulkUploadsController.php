@@ -230,6 +230,12 @@ class BulkUploadsController extends Controller
 
         // return $data;
 
+        // return response()->json([
+        //     'responseCode' => '422',
+        //     'message' => 'Error validation error',
+        //     'data' => $data
+        // ], 200);
+
         /*
         $credit_data = [];
         $debit_data = [];
