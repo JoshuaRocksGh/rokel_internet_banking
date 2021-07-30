@@ -1608,45 +1608,15 @@
 
             }
 
-            $("#select_currency_").change(function() {
-                    {{-- let select_cur_1 = $(this).val()
-                                    alert(select_cur_1)
 
-                                    get_cur_1 = _cur_
-                                    get_cur_2 = _cur_
-
-                                    console.log(get_cur_1)
-
-
-                                    for (let index = 0; index < get_cur_1.length; index++) {
-                                        console.log(get_cur_1[index].isoCode + ' - index: ' + index)
-                                        if(String(get_cur_1[index].isoCode) === String(select_cur_1)){
-                                        console.log("kkkkkkk")
-                                        if(get_cur_2.splice(index, 1)){
-
-                                            break;
-                                        }
-
-                                        }
-
-                                        $('#select_currency_').empty().append($('<option>', {
-                                            value: get_cur_2[index].isoCode
-                                        }).text(get_cur_2[index].isoCode));
-
-                                    }
-
-                                console.log('-----------------')
-                                console.log(get_cur_2)
-                                console.log('-----------------')
-
-                                return false; --}}
-
-                    currency_convertor(forex_rate)
-            })
 
             $("#select_currency_").change(function() {
                 currency_convertor(forex_rate)
             })
+
+            $("#select_currency__").change(function(){
+                currency_converter(forex_rate);
+            });
 
             // CHECK BOX CONSTRAINT SCHEDULE PAYMENT
             $("#invoice_attachment").on("change", function() {
