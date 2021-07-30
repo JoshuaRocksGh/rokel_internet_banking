@@ -65,20 +65,20 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
         // die();
 
 
-        $account_mandate = $this->account_mandate ;
-        $customer_no = $this->customer_no ;
-        $user_id = $this->user_id ;
-         $user_name = $this->user_name ;
-         $total_amount = $this->total_amount ;
-         $currency = $this->currency ;
-         $value_date = $this->value_date ;
-         $ref_no = $this->ref_no ;
-         $bank_code = $this->bank_code;
-         $documentRef = $this->documentRef;
-         $account_no = $this->account_no ;
-         $file = $this->file;
-         $post_date = Carbon::now();
-         $post_date = $post_date->toDateTimeString();
+        $account_mandate = $this->account_mandate;
+        $customer_no = $this->customer_no;
+        $user_id = $this->user_id;
+        $user_name = $this->user_name;
+        $total_amount = $this->total_amount;
+        $currency = $this->currency;
+        $value_date = $this->value_date;
+        $ref_no = $this->ref_no;
+        $bank_code = $this->bank_code;
+        $documentRef = $this->documentRef;
+        $account_no = $this->account_no;
+        $file = $this->file;
+        $post_date = Carbon::now();
+        $post_date = $post_date->toDateTimeString();
 
         header('Content-type: application/json');
         // echo json_encode([
@@ -101,7 +101,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
         $batch_no = $documentRef;
 
-/*
+        /*
         foreach ($rows as $row) {
 
 
@@ -174,7 +174,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
         }
         */
 
-       $t_amt = 0;
+        $t_amt = 0;
 
         foreach ($rows as $row) {
 
@@ -188,6 +188,12 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
                 $beneficiaryname = $row['name'];
                 $creditaccountnumber =  $row['account_number'];
+
+                // return response()->json([
+                //     'responseCode' => '526',
+                //     'message' => 'Insert into database',
+                //     "data"  => $creditaccountnumber
+                // ]);
 
                 $t_amt = $t_amt + (float) $row['amount'];
 
@@ -256,11 +262,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
             ]
         );
 
-        return response()->json([
-            'responseCode' => '526' ,
-            'message' => 'Insert into database' ,
-            "data"  => $query_result ,$query_result_
-        ]) ;
+
 
         // echo $query_result;die;
 
@@ -295,13 +297,3 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
     }
 }
-
-
-
-
-
-
-
-
-
-
