@@ -632,8 +632,7 @@
                                                                             style="width: 100px;" readonly>
                                                                     </div>
                                                                     &nbsp;&nbsp;
-                                                                    <input type="text" class="form-control converted_amount"
-                                                                        id="converted_amount_"
+                                                                    <input type="text" class="form-control" id="converted_amount"
                                                                         placeholder="Converted Amount"
                                                                         aria-label="converted_amount"
                                                                         aria-describedby="basic-addon1" readonly>

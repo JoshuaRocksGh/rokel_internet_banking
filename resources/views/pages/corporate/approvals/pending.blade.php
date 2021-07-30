@@ -388,8 +388,7 @@
                             let yyyy = today.getFullYear();
 
                             let amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
-                                data[
-                                    index].amount))
+                                data[index].amount))
 
 
                             let request_type = ''
@@ -413,6 +412,9 @@
                                 request_type = 'Cheque Book Request'
                             } else {
                                 request_type = 'Others'
+                                if (request_type = 'Others') {
+                                    amount = data[index].total_amount
+                                }
                             }
 
 
