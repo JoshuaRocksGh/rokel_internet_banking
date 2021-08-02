@@ -669,7 +669,7 @@
                                                             id="back_button"> <i class="fe-arrow-left"></i>&nbsp;Back</button> &nbsp; </span>
                                                     <span>
                                                         &nbsp;
-                                                        <button class="btn btn-primary btn-rounded " type="button" id="confirm_transfer">
+                                                        <button class="btn btn-primary btn-rounded" type="button" data-toggle="modal" data-target="#centermodal">
                                                             <span id="confirm_transfer-text">Confirm Order</span>
                                                             <span class="spinner-border spinner-border-sm mr-1" role="status"
                                                                 id="spinner" aria-hidden="true"></span>
@@ -682,6 +682,44 @@
                                                             Receipt
                                                         </button></span>
                                                 </div>
+
+                                                <!-- Center modal content -->
+                                                <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 class="modal-title text-primary text-center" id="myCenterModalLabel">ENTER TRANSACTION
+                                                                    PIN</h3>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                                                            </div>
+                                                            <div class="modal-body transfer_pin_modal">
+
+                                                                <div class="row">
+                                                                    <div class="col-md-2"></div>
+                                                                    <div class="col-md-9  text-center">
+                                                                        <form action="#" autocomplete="off" aria-autocomplete="off">
+                                                                            <input type="text" name="user_pin" maxlength="4" autocomplete="off"
+                                                                                aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin"
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                                            <br>
+                                                                            <button class="btn btn-success waves-effect waves-light" type="button"
+                                                                            id="confirm_transfer" data-dismiss="modal">Submit</button>
+                                                                        </form>
+
+                                                                    </div>
+                                                                    <div class="col-md-1"></div>
+                                                                </div>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                                <!-- /.modal -->
+
+
                                             </div>
                                             <div class="col-md-1"></div>
                                         </div>
@@ -1328,6 +1366,24 @@
 
                 // })
 
+                $("#saved_beneficiary").change(function() {
+                    let saved_beneficiary = $(this).val()
+
+                    if (saved_beneficiary.trim() == '' || saved_beneficiary.trim() == undefined) {
+                        alert('money')
+                        $(".saved_beneficiary_display_info").hide()
+
+                    } else {
+                        saved_beneficiary_info = saved_beneficiary.split("~")
+
+                        // var to_account = $('#to_account').val()
+
+
+                        // set summary values for display
+                        console.log(saved_beneficiary_info);
+                    }
+                    });
+
                 $("#so_start_date").change(function(){
                     var display_start_date = $("#so_start_date").val();
                     $(".display_so_start_date").text(display_start_date);
@@ -1402,6 +1458,7 @@
                     let so_frequency = $("#beneficiary_frequency").val();
                     let narration = $("#purpose").val();
 
+
                     if( from_account =='' || beneficiary =='' || amount=='' || so_start_date =='' || so_frequency =='' || narration == ''){
                         toaster('fields cannot be empty','error',2000);
                         return false;
@@ -1412,6 +1469,9 @@
 
                     from_account = from_account_info[2];
                     beneficiary = to_account_info[2];
+                    let bankCode = to_account_info[5];
+                    console.log(bankCode);
+                    // console.log(pin);
 
 
 
@@ -1423,6 +1483,8 @@
                             $("#confirm_transfer-text").hide();
                             $("#spinner").show();
                             $("#spinner-text").show();
+                            let pin = $("#user_pin").val();
+                            // console.log(pin);
 
                             $.ajax({
                                     type : "POST",
@@ -1435,7 +1497,9 @@
                                         'standing_order_start_date': so_start_date,
                                         'standing_order_end_date': so_end_date,
                                         'standing_order_frequency': so_frequency,
-                                        'narration': narration
+                                        'narration': narration,
+                                        'bank_code': bankCode,
+                                        'user_pin': pin
                                     },
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
