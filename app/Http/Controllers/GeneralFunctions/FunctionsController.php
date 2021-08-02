@@ -388,38 +388,38 @@ class FunctionsController extends Controller
         return $result->api_response($response);
     }
 
-        //method to return the interest types
-        public function get_transaction_fees(Request $request)
-        {
+    //method to return the interest types
+    public function get_transaction_fees(Request $request)
+    {
 
-            $accountNumber = $request->accountNumber;
-            $amount = $request->amount;
-            // $feeType = $request->feeType;
+        $accountNumber = $request->accountNumber;
+        $amount = $request->amount;
+        // $feeType = $request->feeType;
 
-            // ACHP
-            // RTG
+        // ACHP
+        // RTG
 
-            $authToken = session()->get('userToken');
-            $userID = session()->get('userId');
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
 
 
 
-            $data = [
-                "accountNumber" => $accountNumber,
-                "amount"    => $amount,
-                "feeType"    => 'ACHP',
-                "authToken"    => $authToken,
-            ];
+        $data = [
+            "accountNumber" => $accountNumber,
+            "amount"    => $amount,
+            "feeType"    => 'ACHP',
+            "authToken"    => $authToken,
+        ];
 
-            // return $data ;
+        // return $data ;
 
-            // dd(env('API_BASE_URL') . "transfers/transactionFees");
+        // dd(env('API_BASE_URL') . "transfers/transactionFees");
 
-            $response = Http::post(env('API_BASE_URL') . "transfers/transactionFees", $data);
+        $response = Http::post(env('API_BASE_URL') . "transfers/transactionFees", $data);
 
-            $result = new ApiBaseResponse();
-            return $result->api_response($response);
-        }
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
 
     // method to return expense types
     public function get_expenses()
@@ -490,5 +490,32 @@ class FunctionsController extends Controller
 
         // return $response;
         // return $response->status();
+    }
+
+    public function payment_types()
+    {
+        $response = Http::get(env('API_BASE_URL') . "payment/paymentType");
+
+        $base_response = new BaseResponse();
+
+        if ($response->ok()) {    // API response status code is 200
+
+            $result = json_decode($response->body());
+            // return $result->responseCode;
+            return $base_response->api_response("000", "payment types",  $result); // return API BASERESPONSE
+
+        } else { // API response status code not 200
+
+            return $response->body();
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'code' => $response->status(),
+                'message' => $response->body()
+            ]);
+
+            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+        }
     }
 }

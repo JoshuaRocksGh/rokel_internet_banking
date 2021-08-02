@@ -21,6 +21,7 @@ use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginCo
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\BENEFICIARY\Payment\AirtimePaymentController;
 use App\Http\Controllers\BENEFICIARY\Payment\MobileMoneyController as PaymentMobileMoneyController;
+use App\Http\Controllers\BENEFICIARY\Payment\PaymentTypesController;
 use App\Http\Controllers\BENEFICIARY\Transfer\DeleteBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
@@ -391,6 +392,10 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/delete-beneficiary', [DeleteBeneficiaryController::class, 'index'])->name('delete-beneficiary');
 
     // Payment Screens
+    Route::get('/payment-type', [PaymentTypesController::class, 'index'])->name('payment-type');
+
+    Route::get('/payment-type/{payment_type_code}', [PaymentTypesController::class, 'paymentTypes'])->name('/payment-type/{payment_type_code}');
+
     Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
 
     Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
@@ -506,6 +511,7 @@ Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_a
 Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 Route::get('get-correct-fx-rate-api', [FunctionsController::class, 'get_correct_fx_rate'])->name('get-correct-fx-rate-api');
 Route::get('get-lovs-list-api', [FunctionsController::class, 'lovs_list'])->name('get-lovs-list-api');
+Route::get('get-payment-types-api', [FunctionsController::class, 'payment_types'])->name('get-payment-types-api');
 
 
 

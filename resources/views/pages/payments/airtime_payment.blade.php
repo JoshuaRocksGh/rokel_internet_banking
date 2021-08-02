@@ -89,15 +89,12 @@
                                             <div class="col-md-10">
 
                                                 <div class="form-group">
-                                                    <b class="text-primary">Account from which transfered will be made<span
+                                                    <b class="text-primary">Account from which transfer will be made<span
                                                             class="text-danger">*</span></b>
 
                                                     <select class="custom-select" id="from_account" required>
                                                         <option value="">-- Select Account -- </option>
 
-                                                        <option
-                                                            value="Saving Account~kwabeane Ampah~001023468976001~GHS~2000">
-                                                            Saving Account~001023468976001~GHS~2000</option>
 
                                                     </select>
 
@@ -137,19 +134,22 @@
 
                                                     <div class="row mb-2">
                                                         <b class="text-primary col-md-4">Name </b>
-                                                        <input type="text" class="form-control col-md-8" id="beneficiary_name" readonly>
+                                                        <input type="text" class="form-control col-md-8"
+                                                            id="beneficiary_name" readonly>
 
                                                     </div>
 
                                                     <div class="row mb-2">
                                                         <b class="text-primary col-md-4">Recipient Mobile Number </b>
-                                                        <input type="text" class="form-control col-md-8" id="beneficiary_number" readonly>
+                                                        <input type="text" class="form-control col-md-8"
+                                                            id="beneficiary_number" readonly>
 
                                                     </div>
 
                                                     <div class="row mb-2">
                                                         <b class="text-primary col-md-4">Recipient Network</b>
-                                                        <input type="text" class="form-control col-md-8" id="beneficiary_network" readonly>
+                                                        <input type="text" class="form-control col-md-8"
+                                                            id="beneficiary_network" readonly>
 
                                                     </div>
                                                     <hr>
@@ -204,22 +204,39 @@
                                                 <div id="onetime_beneficiary_form">
 
                                                     <div class="row mb-2">
-                                                        <b class="text-primary col-md-4" >Name &nbsp;<span class="text-danger">*</span></b>
-                                                        <input type="text" class="form-control col-md-8" id="Onetime_beneficiary_name" placeholder="Enter Beneficiary Name">
+                                                        <b class="text-primary col-md-4">Recipient Network &nbsp;<span
+                                                                class="text-danger">*</span></b>
+                                                        {{-- <input type="text" class="form-control col-md-8"
+                                                            id="onetime_beneficiary_network"
+                                                            placeholder="Enter Beneficiary Network"> --}}
+
+                                                        <select class="form-control col-md-8"
+                                                            id="onetime_beneficiary_network" required>
+                                                            <option value="">---Not Selected---</option>
+
+                                                        </select>
 
                                                     </div>
 
                                                     <div class="row mb-2">
-                                                        <b class="text-primary col-md-4" >Recipient Mobile Number &nbsp;<span class="text-danger">*</span></b>
-                                                        <input type="text" class="form-control col-md-8" id="onetime_beneficiary_number" placeholder="Enter Beneficiary Telephone">
+                                                        <b class="text-primary col-md-4">Name &nbsp;<span
+                                                                class="text-danger">*</span></b>
+                                                        <input type="text" class="form-control col-md-8"
+                                                            id="Onetime_beneficiary_name"
+                                                            placeholder="Enter Beneficiary Name">
 
                                                     </div>
 
                                                     <div class="row mb-2">
-                                                        <b class="text-primary col-md-4" >Recipient Network &nbsp;<span class="text-danger">*</span></b>
-                                                        <input type="text" class="form-control col-md-8" id="onetime_beneficiary_network" placeholder="Enter Beneficiary Network">
+                                                        <b class="text-primary col-md-4">Recipient Mobile Number &nbsp;<span
+                                                                class="text-danger">*</span></b>
+                                                        <input type="text" class="form-control col-md-8"
+                                                            id="onetime_beneficiary_number"
+                                                            placeholder="Enter Beneficiary Telephone">
 
                                                     </div>
+
+
                                                     <hr>
 
                                                     <div class="form-group row">
@@ -237,7 +254,8 @@
                                                             </div>
                                                         </div>
 
-                                                        <input type="text" class="form-control col-6" id="onetime_amount" placeholder="Amount 0.00"
+                                                        <input type="text" class="form-control col-6" id="onetime_amount"
+                                                            placeholder="Amount 0.00"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                             required>
 
@@ -249,7 +267,8 @@
                                                                 class="text-danger">*</span></b>
 
 
-                                                        <select class="form-control col-md-8" id="onetime_category" required>
+                                                        <select class="form-control col-md-8" id="onetime_expense_category"
+                                                            required>
                                                             <option value="">---Not Selected---</option>
 
                                                         </select>
@@ -261,8 +280,9 @@
                                                         <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
                                                             <span class="text-danger">*</span></b>
 
-                                                        <input type="text" class="form-control col-md-8" id="onetime_purpose"
-                                                            placeholder="Enter purpose of transaction" required>
+                                                        <input type="text" class="form-control col-md-8"
+                                                            id="onetime_purpose" placeholder="Enter purpose of transaction"
+                                                            required>
 
                                                     </div>
 
@@ -271,7 +291,8 @@
 
 
                                                 <div class="form-group text-right">
-                                                    <button class="btn btn-primary btn-rounded" type="submit" id="next_button">
+                                                    <button class="btn btn-primary btn-rounded" type="submit"
+                                                        id="next_button">
                                                         &nbsp; Next &nbsp; <i class="fe-arrow-right"></i></button>
                                                 </div>
 
@@ -332,7 +353,7 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        {{--  <div class="form-group">
+                                        {{-- <div class="form-group">
 
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input radio" type="radio" name="onetime"
@@ -348,10 +369,10 @@
                                                     beneficiary</label>
                                             </div>
                                         </div>
-                                        <hr>  --}}
+                                        <hr> --}}
 
                                         {{-- SELECTED BENEFICIARY FORM --}}
-                                        {{--  <div class="form-group" id="beneficiary_selected">
+                                        {{-- <div class="form-group" id="beneficiary_selected">
                                             <div class="row">
                                                 <div class="col-6">
 
@@ -413,7 +434,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>  --}}
+                                        </div> --}}
 
                                         {{-- ONETIME BENEFICIARY SCREEN --}}
                                         <div class="form-group" id="onetime_beneficiary">
@@ -471,7 +492,7 @@
                                                         <label class="">Enter Naration:<span
                                                                 class="text-danger">*</span></label>
 
-                                                        <input type="text" class="form-control" id="onetime_purpose"
+                                                        <input type="text" class="form-control" id="onetime_narration"
                                                             placeholder="Enter purpose / narration">
 
                                                     </div>
@@ -807,14 +828,14 @@
                                             <h6 class="col-md-5">Recipient Network:</h6>
                                             <h6 class="text-primary display_to_account_no col-md-7"></h6>
 
-                                            {{--  <h6 class="col-md-5">Account Currency:</h6>
-                                            <h6 class="text-primary display_to_account_currency col-md-7"></h6>  --}}
+                                            {{-- <h6 class="col-md-5">Account Currency:</h6>
+                                            <h6 class="text-primary display_to_account_currency col-md-7"></h6> --}}
                                         </div>
                                         <br>
-                                        {{--  <button type="button"
+                                        {{-- <button type="button"
                                             class="btn btn-warning btn-xs waves-effect waves-light beneficiary_details col-md-3 text-primary"
                                             data-toggle="modal" data-target="#standard-modal">
-                                            More Info</button>  --}}
+                                            More Info</button> --}}
                                         <hr style="margin-top: 2px; margin-bottom: 5px; ">
 
                                         <div class="row">
@@ -825,12 +846,12 @@
                                                 <span class="display_transfer_amount"></span>
                                             </h6>
                                         </div>
-                                        {{--  <hr style="margin-top: 2px; margin-bottom: 5px; ">  --}}
+                                        {{-- <hr style="margin-top: 2px; margin-bottom: 5px; "> --}}
 
-                                        {{--  <div class="row">
+                                        {{-- <div class="row">
                                             <h6 class="text-primary col-md-5">Transaction Fee:</h6>
                                             <h6 class="text-danger text-bold col-md-7">0.08% of transfer amount</h6>
-                                        </div>  --}}
+                                        </div> --}}
 
                                         {{-- <hr>
                                         <div class="row">
@@ -866,40 +887,93 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
             function from_account() {
                 $.ajax({
                     type: 'GET',
-                    url:  'get-my-account',
+                    url: '../get-my-account',
                     datatype: "application/json",
                     success: function(response) {
-                        console.log(response.data);
-                        let data = response.data
-                        $.each(data, function(index) {
+                        {{-- console.log(response); --}}
 
-                            $('#from_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountDesc + '~' + data[index].accountNumber + '~' +
-                                    data[index].currency + '~' + data[index]
-                                    .availableBalance
-                            }).text(data[index].accountType + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
-                            ));
-                            $('#to_account').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountNumber + '~' + data[index].currency + '~' +
-                                    data[index].availableBalance
-                            }).text(data[index].accountType + '~' + data[index].accountNumber +
-                                '~' + data[index].currency + '~' + data[index].availableBalance
-                            ));
+                        if (response.responseCode == '000') {
+                            let data = response.data
+                            $.each(data, function(index) {
 
-                        });
+                                $('#from_account').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[index]
+                                        .accountDesc + '~' + data[index].accountNumber + '~' +
+                                        data[index].currency + '~' + data[index]
+                                        .availableBalance
+                                }).text(data[index].accountType + '~' + data[index].accountNumber +
+                                    '~' + data[index].currency + '~' + data[index].availableBalance
+                                ));
+                                $('#to_account').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[index]
+                                        .accountNumber + '~' + data[index].currency + '~' +
+                                        data[index].availableBalance
+                                }).text(data[index].accountType + '~' + data[index].accountNumber +
+                                    '~' + data[index].currency + '~' + data[index].availableBalance
+                                ));
+
+                            });
+                        }
+
                     },
+                    error: function(xhr, status, error) {
 
+                        setTimeout(function() {
+                            from_account();
+                        }, $.ajaxSetup().retryAfter)
+                    }
+
+                })
+            }
+
+            function paymentType() {
+                var payment_type = @json($payment_type);
+                console.log(payment_type);
+                $.ajax({
+                    type: 'GET',
+                    url: '../get-payment-types-api',
+                    datatype: "application/json",
+                    success: function(response) {
+                        {{-- console.log(response) --}}
+                        let data = response.data.data
+                        {{-- console.log(data) --}}
+
+                        $.each(data, function(index) {
+                            let type = data[index].paymentType
+                            {{-- console.log(type); --}}
+                            if (payment_type == type) {
+                                console.log(data[index].paySubTypes[index])
+
+                                var image = new Image();
+                                var base64_string = data[index].paySubTypes[index].paymentLogo
+                                image.src = "data:image/png;base64," + base64_string
+
+                                $('#onetime_beneficiary_network').append($('<option>', {
+                                    value: data[index].paySubTypes[index].paymentAccount + '~' +
+                                        data[index].paySubTypes[index].paymentCode + '~' +
+                                        data[index].paySubTypes[index].paymentLabel
+                                }).text(image +
+                                    '~' + data[index].paySubTypes[index].paymentDescription
+                                ));
+                            }
+
+
+                        })
+                    },
+                    error: function(xhr, status, error) {
+
+                        setTimeout(function() {
+                            paymentType()
+                        }, $.ajaxSetup().retryAfter)
+                    }
                 })
             }
 
@@ -912,6 +986,7 @@
 
                 setTimeout(function() {
                     from_account();
+                    paymentType();
                 }, 200);
 
                 $("#beneficiary_selected").show();
@@ -936,20 +1011,20 @@
                     }
                 })
                 $("#checkmeout0").click(function() {
-                    if ($(this).is(":checked")){
-                        {{--  alert("Checked!");  --}}
-                    $("#onetime_beneficiary_form").toggle(500);
-                    $("#saved_beneficiary_form").hide();
-                    $(".bene_details").hide();
+                    if ($(this).is(":checked")) {
+                        {{-- alert("Checked!"); --}}
+                        $("#onetime_beneficiary_form").toggle(500);
+                        $("#saved_beneficiary_form").hide();
+                        $(".bene_details").hide();
 
 
 
-                    }else{
+                    } else {
                         $("#saved_beneficiary_form").toggle(500);
                         $(".bene_details").toggle(500);
                         $("#onetime_beneficiary_form").hide();
 
-                        {{--  alert("Unchecked!");  --}}
+                        {{-- alert("Unchecked!"); --}}
                     }
                 })
 
@@ -1243,6 +1318,5 @@
                 })
 
             });
-
         </script>
     @endsection
