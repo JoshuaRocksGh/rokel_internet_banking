@@ -49,12 +49,13 @@ class StandingOrderController extends Controller
         $userID = session()->get('userId');
         $api_headers = session()->get('headers');
         $sender_name = session()->get('userAlias');
-        $ip_address =
+        // $ip_address =
         // return $api_headers;
 
             $accLink= $request->from_account;
             $approvalTerminal= get_current_user();
             $approvedBy = $sender_name;
+            $bank_code = $request->bank_code;
             $beneficiaryAccount = $request->beneficiary_account;
             $dueAmount= $request->amount;
             $dueDate = $request->standing_order_end_date;
@@ -63,6 +64,7 @@ class StandingOrderController extends Controller
             $postedBy = $sender_name;
             $terminalId = get_current_user();
             $transactionDetails = $request->narration;
+            $pin_code = $request->user_pin;
 
 
             // $data =
@@ -81,36 +83,36 @@ class StandingOrderController extends Controller
             // ];
 
             $data =
-            // [
-            //     "amount": "20",
-            //     "authToken": $authToken,
-            //     "bankCode": "string",
-            //     "creditAccount": $beneficiaryAccount,
-            //     "debitAccount": $accLink,
-            //     "deviceIp": "string",
-            //     "effectiveDate": $startDate,
-            //     "expiryDate": $dueDate,
-            //     "frequency": $frequencyCode,
-            //     "pinCode"=> $pin_code,
-            //     "transactionDesc"=> $transactionDetails
-            //  ]
-
-            $data =
             [
-                "acctLink"=> $accLink,
-                "approvalTerminal"=> $approvalTerminal,
-                "approvedBy"=> $approvedBy,
-                "beneficiaryAccount"=> $beneficiaryAccount,
-                "dueAmount"=> $dueAmount,
-                "dueDate"=> $dueDate,
-                "entrySource"=> "I",
-                "frequencyCode"=> $frequencyCode,
-                "postedBy"=> $postedBy,
-                "terminalId"=> $terminalId,
-                "transactionDetails"=> $transactionDetails
+                "amount"=> $dueAmount,
+                "authToken"=> $authToken,
+                "bankCode"=>$bank_code,
+                "creditAccount"=> $beneficiaryAccount,
+                "debitAccount"=> $accLink,
+                "deviceIp"=>$terminalId,
+                "effectiveDate"=> $startDate,
+                "expiryDate"=> $dueDate,
+                "frequency"=> $frequencyCode,
+                "pinCode"=> $pin_code,
+                "transactionDesc"=> $transactionDetails
             ];
 
-            return $data;
+            // $data =
+            // [
+            //     "acctLink"=> $accLink,
+            //     "approvalTerminal"=> $approvalTerminal,
+            //     "approvedBy"=> $approvedBy,
+            //     "beneficiaryAccount"=> $beneficiaryAccount,
+            //     "dueAmount"=> $dueAmount,
+            //     "dueDate"=> $dueDate,
+            //     "entrySource"=> "I",
+            //     "frequencyCode"=> $frequencyCode,
+            //     "postedBy"=> $postedBy,
+            //     "terminalId"=> $terminalId,
+            //     "transactionDetails"=> $transactionDetails
+            // ];
+
+            // return $data;
 
         try {
             $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "transfers/standingOrder", $data);
