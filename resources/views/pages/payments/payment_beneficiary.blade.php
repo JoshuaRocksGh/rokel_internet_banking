@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('content')
 
     <div class="container-fluid">
@@ -9,7 +10,7 @@
             <div class="col-md-6">
                 <h4 class="text-primary">
                     <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                    PAYMENT TYPES
+                    ADD BENEFICIARY
 
                 </h4>
             </div>
@@ -18,7 +19,7 @@
                 <h6>
 
                     <span class="flaot-right">
-                        <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Payment Types</b>
+                        <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Add Beneficiary</b>
 
 
                     </span>
@@ -68,13 +69,11 @@
 
 
 
-
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 
     <script>
         function paymentType() {
@@ -116,7 +115,7 @@
                             $('.payment_types_card').append(
                                 `
                                 <div class="col-md-4">
-                                    <a href="{{ url('payment-type/${payment_type_code}') }}">
+                                    <a href="{{ url('add-beneficiary-${payment_type_code}') }}">
 
 
                                         <div class="card text-white ${card_color} text-xs-center">
@@ -157,5 +156,6 @@
             }, 200)
         })
     </script>
+
 
 @endsection

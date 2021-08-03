@@ -418,6 +418,11 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('order-blink-payment', [paymentController::class, 'order_blink_payment'])->name('order-blink-payment');
 
+    Route::get('add-payment-beneficiary', [paymentController::class, 'add_payment_beneficiary'])->name('add-payment-beneficiary');
+
+    Route::get('/add-beneficiary-{payment_type_code}', [PaymentTypesController::class, 'add_beneficiary'])->name('/add-beneficiary-{payment_type_code}');
+
+
 
     // Loan Screens
     Route::get('/loan-quotation', [LoansController::class, 'loan_quotation'])->name('loan-quotation');

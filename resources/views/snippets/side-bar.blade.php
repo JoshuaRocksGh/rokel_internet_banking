@@ -198,17 +198,17 @@
                             <li>
                                 <a href="{{ url('payment-type') }}">Payment Types</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('mobile-money') }}">Mobile Money</a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ url('qr-transfer') }}">
                                     <span> QR</span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('airtime-payment') }}">Airtime</a>
-                            </li>
+                            </li> --}}
                             <li>
 
                             </li>
@@ -237,9 +237,9 @@
                                 </div>
                             </li>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ url('utility-payment') }}">Utilities</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
                 </li>
@@ -251,6 +251,12 @@
                 </li>
                 <li>
                     <a href="{{ url('order-blink-payment') }}">Order Blink Pay </a>
+                </li>
+                <li>
+                    <a href="{{ url('add-payment-beneficiary') }}">Add Beneficiary</a>
+                </li>
+                <li>
+                    <a href="{{ url('#') }}">Beneficiary List</a>
                 </li>
                 {{-- <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>

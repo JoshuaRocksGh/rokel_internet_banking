@@ -33,4 +33,25 @@ class PaymentTypesController extends Controller
             return false;
         }
     }
+
+    public function add_beneficiary($payment_type_code)
+    {
+
+        $payment_type = $payment_type_code;
+
+
+        if ($payment_type == 'MOM') {
+            return view('pages.payments.beneficiary.mobile_money_beneficiary', ['paymentType' => $payment_type]);
+        } else if ($payment_type == 'AIR') {
+            return back();
+        } else if ($payment_type == 'UTL') {
+            return back();
+        } else if ($payment_type == 'EDU') {
+            return back();
+        } else if ($payment_type == 'GVT') {
+            return back();
+        } else {
+            return false;
+        }
+    }
 }
