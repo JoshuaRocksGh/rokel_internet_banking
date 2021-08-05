@@ -121,7 +121,7 @@
                                     {{-- @csrf --}}
                                     <div class="col-md-12">
 
-                                        <h4 class="text-primary"> Beneficiary Details</h4>
+                                        <h4 class="text-primary">Add Beneficiary </h4>
                                         <hr>
 
                                         <div class="form-group row">
@@ -392,9 +392,14 @@
 
 
             var beneficiary_network = $('#beneficiary_network').val().split('~');
-            var network_details = beneficiary_network[1]
+            var network_details = beneficiary_network[2]
             console.log(beneficiary_network);
             {{-- $('#display_beneficiary_network').text(network_details[2]) --}}
+
+            function redirect_page() {
+                window.location.href = "{{ url('payment-beneficiary-list') }}";
+
+            };
 
             $.ajax({
                 type : 'POST' ,
@@ -406,8 +411,24 @@
                     'paymentType' : payment_type,
                     'payeeName' : network_details
                 },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 success: function(response) {
                     console.log(response);
+                    if (response.responseCode == '000') {
+                        Swal.fire(
+                                    '',
+                                    response.message,
+                                    'success'
+                                );
+                                setTimeout(function() {
+
+                                    redirect_page();
+                                }, 2000);
+                    }else {
+                        toaster(response.message, 'error', 10000);
+                    }
                 }
 
             })

@@ -419,9 +419,12 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('order-blink-payment', [paymentController::class, 'order_blink_payment'])->name('order-blink-payment');
 
-    Route::get('add-payment-beneficiary', [paymentController::class, 'add_payment_beneficiary'])->name('add-payment-beneficiary');
+    Route::get('payment-beneficiary', [paymentController::class, 'payment_beneficiary_list'])->name('payment-beneficiary');
 
-    Route::get('/add-payment-beneficiary', [PaymentTypesController::class, 'add_beneficiary'])->name('/add-payment-beneficiary');
+    Route::get('payment-beneficiary-list', [paymentController::class, 'beneficiary_list'])->name('payment-beneficiary-list');
+
+
+    // Route::get('payment-beneficiary?beneficiary_type={payment_type_code}', [PaymentTypesController::class, 'add_beneficiary'])->name('payment-beneficiary?beneficiary_type={payment_type_code}');
 
 
 
@@ -566,7 +569,7 @@ Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::clas
 
 
 //=======ADD PAYMENT BENEFICARY
-Route::post('add-mobile-money-beneficiary-api' , [MobileMoneyBeneficiaryController::class, 'add_mobile_money_beneficary'])->name('add-mobile-money-beneficiary-api')
+Route::post('add-mobile-money-beneficiary-api' , [MobileMoneyBeneficiaryController::class, 'add_mobile_money_beneficary'])->name('add-mobile-money-beneficiary-api');
 
 
 

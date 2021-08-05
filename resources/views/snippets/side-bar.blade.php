@@ -253,10 +253,10 @@
                     <a href="{{ url('order-blink-payment') }}">Order Blink Pay </a>
                 </li>
                 <li>
-                    <a href="{{ url('add-payment-beneficiary') }}">Add Beneficiary</a>
+                    <a href="{{ url('payment-beneficiary') }}">Add Beneficiary</a>
                 </li>
                 <li>
-                    <a href="{{ url('#') }}">Beneficiary List</a>
+                    <a href="{{ url('payment-beneficiary-list') }}">Beneficiary List</a>
                 </li>
                 {{-- <li>
                                 <a href="{{ url('saved-beneficiary') }}">Saved Beneficiary</a>
