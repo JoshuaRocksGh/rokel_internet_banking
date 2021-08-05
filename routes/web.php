@@ -21,6 +21,7 @@ use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginCo
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\BENEFICIARY\Payment\AirtimePaymentController;
 use App\Http\Controllers\BENEFICIARY\Payment\MobileMoneyController as PaymentMobileMoneyController;
+use App\Http\Controllers\BENEFICIARY\Payment\PaymentTypesController;
 use App\Http\Controllers\BENEFICIARY\Transfer\DeleteBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
@@ -391,6 +392,10 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/delete-beneficiary', [DeleteBeneficiaryController::class, 'index'])->name('delete-beneficiary');
 
     // Payment Screens
+    Route::get('/payment-type', [PaymentTypesController::class, 'index'])->name('payment-type');
+
+    Route::get('/payment-type/{payment_type_code}', [PaymentTypesController::class, 'paymentTypes'])->name('/payment-type/{payment_type_code}');
+
     Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
 
     Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
@@ -412,6 +417,11 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('request-blink', [paymentController::class, 'request_blink_payment'])->name('request-blink');
 
     Route::get('order-blink-payment', [paymentController::class, 'order_blink_payment'])->name('order-blink-payment');
+
+    Route::get('add-payment-beneficiary', [paymentController::class, 'add_payment_beneficiary'])->name('add-payment-beneficiary');
+
+    Route::get('/add-beneficiary-{payment_type_code}', [PaymentTypesController::class, 'add_beneficiary'])->name('/add-beneficiary-{payment_type_code}');
+
 
 
     // Loan Screens
@@ -506,6 +516,7 @@ Route::get('get-loan-accounts-api', [FunctionsController::class, 'get_my_loans_a
 Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 Route::get('get-correct-fx-rate-api', [FunctionsController::class, 'get_correct_fx_rate'])->name('get-correct-fx-rate-api');
 Route::get('get-lovs-list-api', [FunctionsController::class, 'lovs_list'])->name('get-lovs-list-api');
+Route::get('get-payment-types-api', [FunctionsController::class, 'payment_types'])->name('get-payment-types-api');
 
 
 

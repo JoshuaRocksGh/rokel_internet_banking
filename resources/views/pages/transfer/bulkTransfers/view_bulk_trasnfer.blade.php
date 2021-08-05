@@ -230,7 +230,7 @@
                         $('.display_total_amount').text(formatToCurrency(parseFloat(bulk_info.TOTAL_AMOUNT)))
 
                         $.each(data, function(index) {
-                            {{-- console.log(data[index]) --}}
+                            console.log(data[index])
 
                             let status = ''
                             let bank_type = ''
