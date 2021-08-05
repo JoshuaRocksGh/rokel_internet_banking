@@ -34,10 +34,12 @@ class PaymentTypesController extends Controller
         }
     }
 
-    public function add_beneficiary($payment_type_code)
+    public function add_beneficiary(Request $request)
     {
 
-        $payment_type = $payment_type_code;
+        $payment_type = $request->query('bene_type');
+
+        // echo ($payment_type);
 
 
         if ($payment_type == 'MOM') {

@@ -20,6 +20,7 @@ use App\Http\Controllers\Authentication\KycController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\BENEFICIARY\Payment\AirtimePaymentController;
+use App\Http\Controllers\BENEFICIARY\Payment\MobileMoneyBeneficiaryController;
 use App\Http\Controllers\BENEFICIARY\Payment\MobileMoneyController as PaymentMobileMoneyController;
 use App\Http\Controllers\BENEFICIARY\Payment\PaymentTypesController;
 use App\Http\Controllers\BENEFICIARY\Transfer\DeleteBeneficiaryController;
@@ -420,7 +421,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('add-payment-beneficiary', [paymentController::class, 'add_payment_beneficiary'])->name('add-payment-beneficiary');
 
-    Route::get('/add-beneficiary-{payment_type_code}', [PaymentTypesController::class, 'add_beneficiary'])->name('/add-beneficiary-{payment_type_code}');
+    Route::get('/add-payment-beneficiary', [PaymentTypesController::class, 'add_beneficiary'])->name('/add-payment-beneficiary');
 
 
 
@@ -562,6 +563,10 @@ Route::get('/edit-international-bank-beneficiary', [InternationalBankController:
 // EDIT BENEFICIARY DATA
 Route::get('/all-beneficiary-list', [transferController::class, 'all_beneficiary_list'])->name('all-beneficiary-list');
 Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::class, 'edit_local_bank'])->name('edit-local-bank-beneficiary-api');
+
+
+//=======ADD PAYMENT BENEFICARY
+Route::post('add-mobile-money-beneficiary-api' , [MobileMoneyBeneficiaryController::class, 'add_mobile_money_beneficary'])->name('add-mobile-money-beneficiary-api')
 
 
 
