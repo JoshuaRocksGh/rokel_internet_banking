@@ -59,7 +59,7 @@
                     </h4>
                 </div>
 
-                <div class="col-md-6 text-right">
+            <div class="col-md-6 text-right">
                     <h6>
 
                         <span class="flaot-right">
@@ -371,7 +371,7 @@
                             success: function(resposne) {
                                 console.log(resposne)
                             }
-                        }) 
+                        })
 
                         var bene_id = $(".delete_beneficiary_data").list().attr("data-value");
                     console.log(bene_id);

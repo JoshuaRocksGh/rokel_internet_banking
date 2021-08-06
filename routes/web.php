@@ -571,6 +571,8 @@ Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::clas
 //=======ADD PAYMENT BENEFICARY
 Route::post('add-mobile-money-beneficiary-api' , [MobileMoneyBeneficiaryController::class, 'add_mobile_money_beneficary'])->name('add-mobile-money-beneficiary-api');
 
+//=======EDIT PAYMENT BENEFICARY
+Route::get('payment-beneficiary-list-api', [paymentController::class, 'all_paymentbeneficiary_list'])->name('payment-beneficiary-list-api');
 
 
 Route::post('international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');

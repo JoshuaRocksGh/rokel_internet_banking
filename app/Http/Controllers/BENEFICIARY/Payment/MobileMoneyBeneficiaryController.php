@@ -35,6 +35,11 @@ class MobileMoneyBeneficiaryController extends Controller
         };
         // return $req;
 
+        // $type = $request->paymentType;
+        // $thisType = explode('~', $type);
+        // $paymentType = $thisType[0] ;
+        // return $paymentType;
+
         $userID = session()->get('userId');
 
         $data = [
@@ -45,12 +50,12 @@ class MobileMoneyBeneficiaryController extends Controller
             "paymentType" => $request->paymentType,
             "securityDetails" =>
             [
-                "approvedBy" => null,
+                "approvedBy" => $request->approvedBy,
               "approvedDateTime" => date('Y-m-d'),
               "createdBy" => $userID,
               "createdDateTime" => date('Y-m-d'),
               "entrySource" => "NET",
-              "modifyBy" => null,
+              "modifyBy" => $request->modifyBy,
               "modifyDateTime" => date('Y-m-d')
 
             ],
