@@ -115,7 +115,7 @@
                             $('.payment_types_card').append(
                                 `
                                 <div class="col-md-4">
-                                    <a href="{{ url('add-beneficiary-${payment_type_code}') }}">
+                                    <a href="{{ url('payment-beneficiary?beneficiary_type=${payment_type_code}') }}">
 
 
                                         <div class="card text-white ${card_color} text-xs-center">

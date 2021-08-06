@@ -546,7 +546,11 @@
 
                             console.log(response.responseCode)
                             if (response.responseCode == "000") {
-                                toaster(response.message, 'success');
+                                Swal.fire(
+                                    '',
+                                    response.message,
+                                    'success'
+                                );
 
                                 setTimeout(function() {
 

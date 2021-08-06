@@ -109,8 +109,31 @@ class paymentController extends Controller
         return view("pages.payments.schedule_payment");
     }
 
-    public function add_payment_beneficiary()
+    public function payment_beneficiary_list(Request $request)
     {
-        return view('pages.payments.payment_beneficiary');
+        $payment_type = $request->query('beneficiary_type');
+
+
+        if ($payment_type == 'MOM') {
+            return view('pages.payments.beneficiary.mobile_money_beneficiary', ['paymentType' => $payment_type]);
+        } else if ($payment_type == 'AIR') {
+            return back();
+        } else if ($payment_type == 'UTL') {
+            return back();
+        } else if ($payment_type == 'EDU') {
+            return back();
+        } else if ($payment_type == 'GVT') {
+            return back();
+        } else {
+            return view('pages.payments.payment_beneficiary');
+        }
+
     }
+
+    public function beneficiary_list() {
+
+        return view('pages.payments.payment_beneficiary_list');
+    }
+
+
 }

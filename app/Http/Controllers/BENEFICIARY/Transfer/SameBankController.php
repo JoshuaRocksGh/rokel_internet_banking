@@ -243,7 +243,7 @@ class SameBankController extends Controller
         // return $data;
 
         try {
-            $response = Http::post(env('API_BASE_URL') . "beneficiary/addTransferBeneficiary", $data);
+            $response = Http::post(env('API_BASE_URL') . "addPaymentBeneficiary", $data);
 
             // return json_decode($response->body());
 

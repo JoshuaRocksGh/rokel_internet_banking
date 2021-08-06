@@ -75,6 +75,7 @@
 
                                         <div class="form-group row mb-2">
                                             <b class="col-md-6 "> Beneficiary Network:</b>
+                                            {{-- <span class=" col-md-2 network_image" ></span> --}}
                                             <span class="col-md-6 text-primary" id="display_beneficiary_network"></span>
                                         </div>
 
@@ -120,7 +121,7 @@
                                     {{-- @csrf --}}
                                     <div class="col-md-12">
 
-                                        <h4 class="text-primary"> Beneficiary Details</h4>
+                                        <h4 class="text-primary">Add Beneficiary </h4>
                                         <hr>
 
                                         <div class="form-group row">
@@ -154,7 +155,7 @@
                                             <div class="col-md-8">
                                                 <select name="" id="beneficiary_network" class="form-control" required>
                                                     <option value=""> -- Select Network -- </option>
-                                                    <option value="MTN">MTN</option>
+                                                    {{-- <option value="MTN">MTN</option> --}}
                                                 </select>
                                             </div>
 
@@ -241,38 +242,47 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <scirpt src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'></script>
 
     <script>
+
+
         function paymentType() {
-            var payment_type = @json($payment_type);
-            console.log(payment_type);
+            var payment_type = @json($paymentType);
+                {{-- console.log(payment_type); --}}
             $.ajax({
                 type: 'GET',
-                url: '../get-payment-types-api',
+                url: 'get-payment-types-api',
                 datatype: "application/json",
                 success: function(response) {
                     {{-- console.log(response) --}}
                     let data = response.data.data
                     {{-- console.log(data) --}}
 
+
                     $.each(data, function(index) {
-                        let type = data[index].paymentType
-                        {{-- console.log(type); --}}
-                        if (payment_type == type) {
-                            console.log(data[index].paySubTypes[index])
+                        let type = data[index].paySubTypes
+                        let payment = data[index].paymentType
+                        {{-- console.log(payment); --}}
+                        console.log("=========")
 
-                            var image = new Image();
-                            var base64_string = data[index].paySubTypes[index].paymentLogo
-                            image.src = "data:image/png;base64," + base64_string
+                        if (payment_type == payment) {
 
-                            $('#beneficiary_network').append($('<option>', {
-                                value: data[index].paySubTypes[index].paymentAccount + '~' +
-                                    data[index].paySubTypes[index].paymentCode + '~' +
-                                    data[index].paySubTypes[index].paymentLabel
-                            }).text(image +
-                                '~' + data[index].paySubTypes[index].paymentDescription
-                            ));
-                        }
+
+                        $.each(type , function(index) {
+
+                                $('#beneficiary_network').append($('<option>', {
+                                    value: type[index].paymentAccount + '~' +
+                                    type[index].paymentCode + '~' +
+                                    type[index].paymentDescription + '~' +
+                                    type[index].paymentLogo
+                                }).text( type[index].paymentDescription
+                                ));
+
+                        })
+
+                    }
+
 
 
                     })
@@ -327,17 +337,28 @@
         $('#same_bank_beneficiary_form').submit(function(e) {
             e.preventDefault()
 
+            var payment_type = @json($paymentType);
+
+
             var beneficiary_name = $('#beneficiary_name').val();
             $('#display_beneficiary_name').text(beneficiary_name)
-            console.log(beneficiary_name)
+            {{-- console.log(beneficiary_name) --}}
 
             var beneficiary_mobile_number = $('#beneficiary_mobile_number').val();
             $('#display_beneficiary_number').text(beneficiary_mobile_number)
-            console.log(beneficiary_mobile_number);
+            {{-- console.log(beneficiary_mobile_number); --}}
 
-            var beneficiary_network = $('#beneficiary_network').val();
-            $('#display_beneficiary_network').text(beneficiary_network)
-            console.log(beneficiary_network)
+            var beneficiary_network = $('#beneficiary_network').val().split('~');
+            var network_details = beneficiary_network
+            $('#display_beneficiary_network').text(network_details[2])
+            {{-- console.log(beneficiary_network) --}}
+
+                            {{-- let image = new Image()
+                            var base64_string = network_details[3]
+                            console.log(base64_string)
+                            image.src = "data:image/png;base64," + base64_string
+                            $('.network_image').text(image);
+                            console.log(image) --}}
 
 
 
@@ -356,13 +377,61 @@
 
         $('#add_beneficiary').click(function(e) {
             e.preventDefault();
-            var payment_type = @json($payment_type)
+            var payment_type = @json($paymentType);
+                console.log(payment_type);
+
 
 
             var beneficiary_name = $('#beneficiary_name').val();
+            console.log(beneficiary_name);
+
 
 
             var beneficiary_mobile_number = $('#beneficiary_mobile_number').val();
+            console.log(beneficiary_mobile_number);
+
+
+            var beneficiary_network = $('#beneficiary_network').val().split('~');
+            var network_details = beneficiary_network[2]
+            console.log(beneficiary_network);
+            {{-- $('#display_beneficiary_network').text(network_details[2]) --}}
+
+            function redirect_page() {
+                window.location.href = "{{ url('payment-beneficiary-list') }}";
+
+            };
+
+            $.ajax({
+                type : 'POST' ,
+                url : 'add-mobile-money-beneficiary-api' ,
+                datatype : 'application/json' ,
+                data : {
+                    'account' : beneficiary_mobile_number,
+                    'nickname' : beneficiary_name,
+                    'paymentType' : payment_type,
+                    'payeeName' : network_details
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.responseCode == '000') {
+                        Swal.fire(
+                                    '',
+                                    response.message,
+                                    'success'
+                                );
+                                setTimeout(function() {
+
+                                    redirect_page();
+                                }, 2000);
+                    }else {
+                        toaster(response.message, 'error', 10000);
+                    }
+                }
+
+            })
 
 
 
