@@ -945,7 +945,7 @@
                         {{-- console.log(response) --}}
                         let data = response.data.data
                         {{-- console.log(data) --}}
-
+                        console.log(data)
                         $.each(data, function(index) {
                             let type = data[index].paymentType
                             {{-- console.log(type); --}}
