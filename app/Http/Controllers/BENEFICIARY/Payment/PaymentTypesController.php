@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BENEFICIARY\Payment;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class PaymentTypesController extends Controller
 {
@@ -20,7 +21,7 @@ class PaymentTypesController extends Controller
         $payment_type = $payment_type_code;
 
         if ($payment_type == 'MOM') {
-            return back();
+            return view('pages.payments.mobile_money_payment', ['payment_type' => $payment_type]);
         } else if ($payment_type == 'AIR') {
             return view('pages.payments.airtime_payment', ['payment_type' => $payment_type]);
         } else if ($payment_type == 'UTL') {
@@ -47,7 +48,7 @@ class PaymentTypesController extends Controller
         return $payment_type ;
 
 
-        if ($payment_type == 'MOM') {
+        if ($payment_type == 'AIR') {
             return view('pages.payments.beneficiary.mobile_money_beneficiary', ['paymentType' => $payment_type]);
         } else if ($payment_type == 'AIR') {
             return back();
