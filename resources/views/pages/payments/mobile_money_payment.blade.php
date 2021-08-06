@@ -4,18 +4,16 @@
 @section('styles')
 
 <style>
-    @media print {
-        .hide_on_print {
-            display: none
-        }
+    <blade media|%20print%20%7B>.hide_on_print {
+        display: none
+    }
     }
 
-    @font-face {
-        font-family: 'password';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 40px;
-        src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+    <blade font|-face%20%7B>font-family: 'password';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
     }
 
     input.key {
@@ -29,6 +27,7 @@
         overflow-y: hidden;
 
     }
+
 </style>
 
 
@@ -44,7 +43,8 @@
         <div class="row">
             <div class="col-md-6">
                 <h4 class="text-primary">
-                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo"
+                        style="zoom: 0.05">&emsp;
                     MOBILE MONEY PAYMENT
                 </h4>
             </div>
@@ -181,11 +181,11 @@
                                                     <label class="col-md-4"><b class="text-primary">Expense
                                                             Category
                                                             &nbsp;</b></label>
-                                                    <input type="hidden" value="Others" class="category_">
+                                                    <input type="hidden" value="Others" id="category_">
 
 
 
-                                                    <select class="form-control col-md-8 category" required>
+                                                    <select class="form-control col-md-8 " id="category" required>
                                                         <option value="">---Not Selected---</option>
 
                                                     </select>
@@ -272,11 +272,12 @@
                                                     <label class="col-md-4"><b class="text-primary">Expense
                                                             Category
                                                             &nbsp;</b></label>
-                                                    <input type="hidden" value="Others" class="category_">
+                                                    <input type="hidden" value="Others" id="onetime_category_">
 
 
 
-                                                    <select class="form-control col-md-8 category" required>
+                                                    <select class="form-control col-md-8 " id="onetime_category"
+                                                        required>
                                                         <option value="">---Not Selected---</option>
 
                                                     </select>
@@ -627,7 +628,7 @@
 
                         </div>
 
-                        <div class="row" id="transaction_summary">
+                        <div class="col-md-7 m-2" id="transaction_summary">
 
 
                             <div class="col-md-12">
@@ -680,10 +681,10 @@
                                                 <tr>
                                                     <td>Amount:</td>
                                                     <td>
-                                                        <span class="font-15 text-primary h3 display_currency"
+                                                        <span class="font-13 text-primary h3 display_currency"
                                                             id="display_currency"> </span>
                                                         &nbsp;
-                                                        <span class="font-15 text-primary h3 display_transfer_amount"
+                                                        <span class="font-13 text-primary h3 display_transfer_amount"
                                                             id="display_transfer_amount"></span>
 
                                                     </td>
@@ -811,13 +812,16 @@
                                 <hr>
                                 <div class="row">
                                     <h6 class="col-md-5">Recipient Name:</h6>
-                                    <h6 class="text-primary display_to_account_name col-md-7"></h6>
+                                    <h6 class="text-primary display_to_account_name col-md-7"
+                                        id="rel_info_display_receipient_name"></h6>
 
-                                    <h6 class="col-md-5">Recipient Number:</h6>
-                                    <h6 class="text-primary display_to_bank_name col-md-7"></h6>
+                                    <h6 class=" col-md-5">Recipient Number:</h6>
+                                    <h6 class="text-primary display_to_bank_name col-md-7"
+                                        id="rel_info_display_receipient_number"></h6>
 
                                     <h6 class="col-md-5">Recipient Network:</h6>
-                                    <h6 class="text-primary display_to_account_no col-md-7"></h6>
+                                    <h6 class="text-primary display_to_account_no col-md-7"
+                                        id="rel_info_display_receipient_network"></h6>
 
                                     {{-- <h6 class="col-md-5">Account Currency:</h6>
                                             <h6 class="text-primary display_to_account_currency col-md-7"></h6> --}}
@@ -834,7 +838,7 @@
                                     <h6 class="text-danger text-bold col-md-7 ">
                                         <span class="display_currency"></span>
                                         &nbsp;
-                                        <span class="display_transfer_amount"></span>
+                                        <span id="rel_info_display_transfer_amount"></span>
                                     </h6>
                                 </div>
                                 {{-- <hr style="margin-top: 2px; margin-bottom: 5px; "> --}}
@@ -884,457 +888,422 @@
 
 <script>
     function from_account() {
-                $.ajax({
-                    type: 'GET',
-                    url: '../get-my-account',
-                    datatype: "application/json",
-                    success: function(response) {
-                        {{-- console.log(response); --}}
+        $.ajax({
+            type: 'GET',
+            url: '../get-my-account',
+            datatype: "application/json",
+            success: function (response) {
+                // {{-- console.log(response); --}}
 
-                        if (response.responseCode == '000') {
-                            let data = response.data
-                            $.each(data, function(index) {
+                if (response.responseCode == '000') {
+                    let data = response.data
+                    $.each(data, function (index) {
 
-                                $('#from_account').append($('<option>', {
-                                    value: data[index].accountType + '~' + data[index]
-                                        .accountDesc + '~' + data[index].accountNumber + '~' +
-                                        data[index].currency + '~' + data[index]
-                                        .availableBalance
-                                }).text(data[index].accountType + '~' + data[index].accountNumber +
-                                    '~' + data[index].currency + '~' + data[index].availableBalance
-                                ));
-                                $('#to_account').append($('<option>', {
-                                    value: data[index].accountType + '~' + data[index]
-                                        .accountNumber + '~' + data[index].currency + '~' +
-                                        data[index].availableBalance
-                                }).text(data[index].accountType + '~' + data[index].accountNumber +
-                                    '~' + data[index].currency + '~' + data[index].availableBalance
-                                ));
+                        $('#from_account').append($('<option>', {
+                            value: data[index].accountType + '~' + data[index]
+                                .accountDesc + '~' + data[index].accountNumber + '~' +
+                                data[index].currency + '~' + data[index]
+                                .availableBalance
+                        }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            '~' + data[index].currency + '~' + data[index].availableBalance
+                        ));
+                        $('#to_account').append($('<option>', {
+                            value: data[index].accountType + '~' + data[index]
+                                .accountNumber + '~' + data[index].currency + '~' +
+                                data[index].availableBalance
+                        }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            '~' + data[index].currency + '~' + data[index].availableBalance
+                        ));
 
-                            });
-                        }
+                    });
+                }
 
-                    },
-                    error: function(xhr, status, error) {
+            },
+            error: function (xhr, status, error) {
 
-                        setTimeout(function() {
-                            from_account();
-                        }, $.ajaxSetup().retryAfter)
-                    }
-
-                })
-            }
-
-            function expenseTypes() {
-                // let name = $('.category_').val();
-                $.ajax({
-                    "type": "GET",
-                    "url": "../get-expenses",
-                    datatype: "application/json",
-                    success: function(response) {
-                        console.log(response.data);
-                        let data = response.data;
-
-                        let exType = response.data.expenseName
-
-
-                        $.each(data, function(index) {
-
-                            if ('Others' == data[index].expenseName) {
-                                $(".category").append($('<option selected>', {
-                                    value: data[index].expenseCode + '~' + data[index]
-                                        .expenseName
-                                }).text(data[index].expenseName))
-                            } else {
-                                $(".category").append($('<option>', {
-                                    value: data[index].expenseCode + '~' + data[index]
-                                        .expenseName
-                                }).text(data[index].expenseName))
-                            }
-
-
-                        });
-
-
-                    },
-                    error: function(xhr, status, error) {
-
-                        setTimeout(function() {
-                            expenseTypes()
-                        }, $.ajaxSetup().retryAfter)
-                    }
-                })
-            }
-
-
-            function paymentType() {
-                var payment_type = @json($payment_type);
-                $.ajax({
-                    type: 'GET',
-                    url: '../get-payment-types-api',
-                    datatype: "application/json",
-                    success: function(response) {
-                        {{-- console.log(response) --}}
-                        console.log(response)
-
-                        let data = response.data.data
-                        {{-- console.log(data) --}}
-                        console.log(data)
-                        $.each(data, function(index) {
-                            let type = data[index].paymentType
-                            {{-- console.log(type); --}}
-
-                            if (payment_type == type) {
-                                console.log(data[index].paySubTypes[index])
-
-                                var image = new Image();
-                                var base64_string = data[index].paySubTypes[index].paymentLogo
-                                image.src = "data:image/png;base64," + base64_string
-
-                                $('#onetime_beneficiary_network').append($('<option>', {
-                                    value: data[index].paySubTypes[index].paymentAccount + '~' +
-                                        data[index].paySubTypes[index].paymentCode + '~' +
-                                        data[index].paySubTypes[index].paymentLabel
-                                }).text(image +
-                                    '~' + data[index].paySubTypes[index].paymentDescription
-                                ));
-                            }
-
-
-                        })
-                    },
-                    error: function(xhr, status, error) {
-
-                        setTimeout(function() {
-                            paymentType()
-                        }, $.ajaxSetup().retryAfter)
-                    }
-                })
-            }
-
-            function formatToCurrency(amount) {
-                return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-            };
-
-
-            $(document).ready(function() {
-
-                setTimeout(function() {
+                setTimeout(function () {
                     from_account();
-                    paymentType();
-                    expenseTypes();
-                }, 200);
+                }, $.ajaxSetup().retryAfter)
+            }
 
+        })
+    }
+
+    function expenseTypes() {
+        $.ajax({
+            "type": "GET",
+            "url": "../get-expenses",
+            datatype: "application/json",
+            success: function (response) {
+                let data = response.data;
+                $.each(data, function (index) {
+
+                    if ('Others' == data[index].expenseName) {
+                        $("#category").append($('<option selected>', {
+                            value: data[index].expenseCode + '~' + data[index]
+                                .expenseName
+                        }).text(data[index].expenseName))
+
+                        $("#onetime_category").append($('<option selected>', {
+                            value: data[index].expenseCode + '~' + data[index]
+                                .expenseName
+                        }).text(data[index].expenseName))
+
+                    } else {
+                        $("#category").append($('<option>', {
+                            value: data[index].expenseCode + '~' + data[index]
+                                .expenseName
+                        }).text(data[index].expenseName))
+
+                        $("#onetime_category").append($('<option selected>', {
+                            value: data[index].expenseCode + '~' + data[index]
+                                .expenseName
+                        }).text(data[index].expenseName))
+                    }
+                });
+            },
+            error: function (xhr, status, error) {
+
+                setTimeout(function () {
+                    expenseTypes()
+                }, $.ajaxSetup().retryAfter)
+            }
+        })
+    }
+
+
+    function paymentType() {
+        var payment_type = @json($payment_type);
+        $.ajax({
+            type: 'GET',
+            url: '../get-payment-types-api',
+            datatype: "application/json",
+            success: function (response) {
+                // {{-- console.log(response) --}}
+                console.log(response)
+
+                let data = response.data.data
+                // {{-- console.log(data) --}}
+                console.log(data)
+                $.each(data, function (index) {
+                    let type = data[index].paymentType
+                    // {{-- console.log(type); --}}
+
+                    if (payment_type == type) {
+                        console.log(data[index].paySubTypes[index])
+
+                        var image = new Image();
+                        var base64_string = data[index].paySubTypes[index].paymentLogo
+                        image.src = "data:image/png;base64," + base64_string
+
+                        $('#onetime_beneficiary_network').append($('<option>', {
+                            value: data[index].paySubTypes[index].paymentAccount + '~' +
+                                data[index].paySubTypes[index].paymentCode + '~' +
+                                data[index].paySubTypes[index].paymentLabel
+                        }).text(image +
+                            '~' + data[index].paySubTypes[index].paymentDescription
+                        ));
+                    }
+
+
+                })
+            },
+            error: function (xhr, status, error) {
+
+                setTimeout(function () {
+                    paymentType()
+                }, $.ajaxSetup().retryAfter)
+            }
+        })
+    }
+
+    function formatToCurrency(amount) {
+        return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    };
+
+
+    $(document).ready(function () {
+
+        setTimeout(function () {
+            from_account();
+            paymentType();
+            expenseTypes();
+        }, 200);
+
+        $("#beneficiary_selected").show();
+        $("#onetime_beneficiary").hide();
+        $("#spinner").hide();
+        $("#print_receipt").hide();
+        $("#spinner_text").hide();
+        $("#onetime_beneficiary_form").hide();
+
+        $(".radio").click(function () {
+            var type = $("input[type='radio']:checked").val();
+
+            if (type == "beneficiary") {
                 $("#beneficiary_selected").show();
                 $("#onetime_beneficiary").hide();
-                $("#spinner").hide();
-                $("#print_receipt").hide();
-                $("#spinner_text").hide();
+            }
+
+            if (type == "onetime") {
+                $("#onetime_beneficiary").show();
+                $("#beneficiary_selected").hide();
+
+            }
+        })
+        $("#checkmeout0").change(function () {
+            if ($(this).is(":checked")) {
+                // {{-- alert("Checked!"); --}}
+                $("#onetime_beneficiary_form").toggle(500);
+                $("#saved_beneficiary_form").hide();
+                $(".bene_details").hide();
+                $("#rel_info_display_receipient_name").text($("#onetime_beneficiary_name").val())
+                $("#rel_info_display_receipient_number").text($("#onetime_beneficiary_number").val())
+                $("#rel_info_display_receipient_network").text($("#onetime_beneficiary_network").val()
+                    .split('~')[1])
+                $("#rel_info_display_transfer_amount").text($("#onetime_amount").val())
+
+            } else {
+                $("#saved_beneficiary_form").toggle(500);
+                $(".bene_details").toggle(500);
                 $("#onetime_beneficiary_form").hide();
+                $("#rel_info_display_receipient_name").text($("#beneficiary_name").val())
+                $("#rel_info_display_receipient_number").text($("#beneficiary_number").val())
+                $("#rel_info_display_receipient_network").text($("#network_type").val())
+                $("#rel_info_display_transfer_amount").text($("#amount").val())
+            }
+        })
+        // {{-- hide select accounts info --}}
+        $(".from_account_display_info").hide()
+        $(".to_account_display_info").hide()
+        $("#schedule_payment_date").hide()
+        $('#schedule_payment_contraint_input').hide()
+        $('.display_schedule_payment_date').text('N/A')
 
-                $(".radio").click(function() {
-                    var type = $("input[type='radio']:checked").val();
+        $("#transaction_form").show()
+        $("#transaction_summary").hide()
 
-                    if (type == "beneficiary") {
-                        $("#beneficiary_selected").show();
-                        $("#onetime_beneficiary").hide();
-                    }
 
-                    if (type == "onetime") {
-                        $("#onetime_beneficiary").show();
-                        $("#beneficiary_selected").hide();
 
-                    }
-                })
-                $("#checkmeout0").change(function() {
-                    if ($(this).is(":checked")) {
-                        {{-- alert("Checked!"); --}}
-                        $("#onetime_beneficiary_form").toggle(500);
-                        $("#saved_beneficiary_form").hide();
-                        $(".bene_details").hide();
+        $("#back_button").click(function (e) {
+            e.preventDefault()
+            $("#transaction_summary").hide()
+            $("#transaction_form").show()
+            $("#related_information_display").show()
+        })
+        $("#beneficiary_name").on("input", function () {
+            $("#rel_info_display_receipient_number").text($("#beneficiary_name").val())
+        })
+        $("#beneficiary_number").on("input", function () {
+            $("#rel_info_display_receipient_number").text($("#beneficiary_number").val())
+        })
+        $("#beneficiary_network").on("input", function () {
+            $("#rel_info_display_receipient_network").text($("#beneficiary_network").val())
+        })
+        $("#amount").on("input", function () {
+            $("#rel_info_display_transfer_amount").text($("#amount").val())
+        })
 
-                    } else {
-                        $("#saved_beneficiary_form").toggle(500);
-                        $(".bene_details").toggle(500);
-                        $("#onetime_beneficiary_form").hide();
-                    }
-                })
+        // onetime rel info display
+        $("#onetime_beneficiary_name").on("input", function () {
+            $("#rel_info_display_receipient_name").text($("#onetime_beneficiary_name").val())
+        })
+        $("#onetime_beneficiary_number").on("input", function () {
+            $("#rel_info_display_receipient_number").text($("#onetime_beneficiary_number").val())
+        })
+        $("#onetime_beneficiary_network").on("input", function () {
+            $("#rel_info_display_receipient_network").text($("#onetime_beneficiary_network").val()
+                .split('~')[1])
+        })
+        $("#onetime_amount").on("input", function () {
+            $("#rel_info_display_transfer_amount").text($("#onetime_amount").val())
+        })
 
-                {{-- hide select accounts info --}}
+        $("#from_account").change(function () {
+            var from_account = $(this).val()
+
+            if (from_account.trim() == '' || from_account.trim() == undefined) {
+                alert('money')
                 $(".from_account_display_info").hide()
-                $(".to_account_display_info").hide()
-                $("#schedule_payment_date").hide()
-                $('#schedule_payment_contraint_input').hide()
-                $('.display_schedule_payment_date').text('N/A')
 
-                $("#transaction_form").show()
-                $("#transaction_summary").hide()
+            } else {
+                from_account_info = from_account.split("~")
+
+                var to_account = $('#to_account').val()
 
 
+                // set summary values for display
+                $(".display_from_account_type").text(from_account_info[0].trim())
+                $(".display_from_account_name").text(from_account_info[1].trim())
+                $(".display_from_account_no").text(from_account_info[2].trim())
+                $(".display_from_account_currency").text(from_account_info[3].trim())
 
-                $("#back_button").click(function(e) {
-                    e.preventDefault()
-                    $("#transaction_summary").hide()
-                    $("#transaction_form").show()
+                $(".display_currency").text(from_account_info[3].trim()) // set summary currency
 
-                })
+                amt = from_account_info[4].trim()
+                $(".display_from_account_amount").text(formatToCurrency(parseFloat(
+                    from_account_info[4]
+                    .trim())))
+                // {{-- alert('and show '  + from_account_info[3].trim()) --}}
+                $(".from_account_display_info").show()
+                // alert(from_account_info[0]);
+            }
 
-                $("#from_account").change(function() {
-                    var from_account = $(this).val()
+        })
 
-                    if (from_account.trim() == '' || from_account.trim() == undefined) {
-                        alert('money')
-                        $(".from_account_display_info").hide()
+        function toaster(message, icon, timer) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
 
-                    } else {
-                        from_account_info = from_account.split("~")
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
 
-                        var to_account = $('#to_account').val()
+            Toast.fire({
+                icon: icon,
+                title: message,
+                timer: timer
+            })
+        };
 
+        $("#next_button").click(function (e) {
+            e.preventDefault();
 
-                        // set summary values for display
-                        $(".display_from_account_type").text(from_account_info[0].trim())
-                        $(".display_from_account_name").text(from_account_info[1].trim())
-                        $(".display_from_account_no").text(from_account_info[2].trim())
-                        $(".display_from_account_currency").text(from_account_info[3].trim())
+            let oneTimeTransfer = $('#checkmeout0').is(':checked')
 
-                        $(".display_currency").text(from_account_info[3].trim()) // set summary currency
+            let from_account
+            let from_account_
+            let receipient_name
+            let currency
+            let amount
+            let receipient_number
+            let receipient_network
+            let category
+            let naration
+            let user_pin
 
-                        amt = from_account_info[4].trim()
-                        $(".display_from_account_amount").text(formatToCurrency(parseFloat(
-                            from_account_info[4]
-                            .trim())))
-                        {{-- alert('and show '  + from_account_info[3].trim()) --}}
-                        $(".from_account_display_info").show()
+            if (!oneTimeTransfer) {
+                console.log('here')
+                from_account = $("#from_account").val().split('~');
+                // {{-- var from_account_ = from_account[2]; --}}
+                amount = $("#amount").val();
+                receipient_receipient = $("#beneficiary_name").val();
+                receipient_number = $("#beneficiary_number").val();
+                receipient_network = $("#beneficiary_network").val().split('~')[1];
+                category = $("#category").val();
+                naration = $("#purpose").val();
 
+                $("#display_from_account_type").text();
+                $("#display_from_account_name").text();
+                $("#display_from_account_no").text();
+                $("#display_currency").text();
+                $("#display_transfer_amount").text(amount);
+                $("#display_to_receipient_number").text(receipient_number);
+                $("#display_to_receipient_network_type").text(receipient_network);
+                $("#display_category").text(category);
+                $("#display_purpose").text(naration);
 
+                $("#transaction_form").hide()
+                $("#related_information_display").hide()
+                $("#transaction_summary").show()
+            }
 
+            if (oneTimeTransfer) {
+                console.log('there')
+                from_account = $("#from_account").val().split('~');
+                from_account_ = from_account[2];
+                receipient_name = $("#onetime_beneficiary_name").val()
+                currency = from_account[3];
+                amount = $("#onetime_amount").val();
+                receipient_number = $("#onetime_beneficiary_number").val();
+                receipient_network = $("#onetime_beneficiary_network").val().split('~')[1];
+                category = $("#onetime_category").val();
+                naration = $("#onetime_purpose").val();
 
+                // from_account = $("#from_account").val();
+                $("#display_from_account_type").text();
+                $("#display_from_account_name").text();
+                $("#display_from_account_no").text();
+                $("#display_currency").text(currency);
+                $("#display_transfer_amount").text(amount);
+                $("#display_to_receipient_number").text(receipient_number);
+                $("#display_to_receipient_network_type").text(receipient_network);
+                $("#display_to_receipient_name").text(receipient_name)
+                $("#display_category").text(category);
+                $("#display_purpose").text(naration);
 
-                        // alert(from_account_info[0]);
-                    }
+                $("#transaction_form").hide()
+                $("#transaction_summary").show()
+            }
 
-                })
+            $("#confirm_button").click(function (e) {
+                e.preventDefault();
+                user_pin = $("#user_pin").val();
 
-                function toaster(message, icon, timer) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
+                if (!oneTimeTransfer) {
+                    console.log("beneficiary transfer out")
+                    console.log(from_account_);
+                    console.log(currency);
+                    console.log(amount);
+                    console.log(receipient_number);
+                    console.log(receipient_network);
+                    console.log(category);
+                    console.log(naration);
+                    console.log(user_pin);
 
-                        timerProgressBar: false,
-                        didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
-                        }
-                    })
+                }
+                if (oneTimeTransfer) {
+                    // {{-- console.log(from_account); --}}
+                    console.log("onetime transfer out")
+                    console.log(from_account_);
+                    console.log(currency);
+                    console.log(amount);
+                    console.log(receipient_number);
+                    console.log(receipient_network);
+                    console.log(category);
+                    console.log(naration);
+                    console.log(user_pin);
+                }
 
-                    Toast.fire({
-                        icon: icon,
-                        title: message,
-                        timer: timer
-                    })
-                };
+                $.ajax({
+                    "type": "POST",
+                    "url": "mobile-money-api",
+                    datatype: "application/json",
+                    data: {
+                        'from_account': from_account_,
+                        'amount': amount,
+                        'currency': currency,
+                        'category_': category,
+                        'receipient_number': receipient_number,
+                        'receipient_network': receipient_network,
+                        'naration': naration,
+                        'user_pin': user_pin
 
-                $("#next_button").click(function(e) {
-
-                    e.preventDefault();
-
-                    // console.log($('#checkmeout0').checked.val())
-                    // var type = $("input[type='radio']:checked").val();
-                    // console.log(type);
-
-                    if (!$('#checkmeout0').is(':checked')) {
-                        console.log('here')
-                        var from_account = $("#from_account").val().split('~');
-                        {{-- var from_account_ = from_account[2]; --}}
-                        $("#display_from_account_type").text();
-                        $("#display_from_account_name").text();
-                        $("#display_from_account_no").text();
-
-                        var amount = $("#amount").val();
-                        $("#display_currency").text();
-                        $("#display_transfer_amount").text(amount);
-
-                        var receipient_number = $("#receipient_number").val();
-                        $("#display_to_receipient_number").text(receipient_number);
-
-                        var receipient_network = $("#network_type").val();
-                        $("#display_to_receipient_network_type").text(receipient_network);
-
-                        var category = $("#category").val().split('~');
-                        var category_ = category[1]
-                        $("#display_category").text(category_);
-
-                        {{-- var category_ = category[0] ; --}}
-                        var naration = $("#purpose").val();
-                        $("#display_purpose").text(naration);
-
-                        {{-- console.log(from_account);
-                            console.log(amount);
-                            console.log(receipient_number);
-                            console.log(receipient_network);
-                            console.log(category);
-                            console.log(naration); --}}
-
-
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-
-
-                    }
-
-                    if ($('#checkmeout0').is(':checked')) {
-                        console.log('there')
-
-                        var from_account = $("#from_account").val();
-                        $("#display_from_account_type").text();
-                        $("#display_from_account_name").text();
-                        $("#display_from_account_no").text();
-                        $("#display_currency").text();
-                        $("#display_transfer_amount").text($("#amount").val());
-                        $("#display_to_receipient_number").text($("#onetime_beneficiary_number").val());
-                        $("#display_to_receipient_network_type").text($("#onetime_beneficiary_network").val());
-                        $("#display_to_receipient_name").text($("#onetime_beneficiary_name").val())
-                        $("#display_category").text($(".category").val());
-                        $("#display_purpose").text($("#onetime_purpose").val());
-
-                        $("#transaction_form").hide()
-                        $("#transaction_summary").show()
-                    }
-
-
-                    $("#confirm_button").click(function(e) {
-                        e.preventDefault();
-
-
-                        var type = $("input[type='radio']:checked").val();
-                        {{-- console.log(type); --}}
-
-                        if (type == "beneficiary") {
-
-                            var from_account = $("#from_account").val().split('~');
-                            var from_account_ = from_account[2];
-                            var currency = from_account[3];
-                            var amount = $("#amount").val();
-                            var receipient_number = $("#receipient_number").val();
-                            var receipient_network = $("#network_type").val();
-                            var category = $("#category").val().split('~');
-                            var category_ = category[0];
-                            var naration = $("#purpose").val();
-                            var user_pin = $("#user_pin").val();
-
-                            {{-- console.log(from_account);
-                                console.log(from_account_);
-                                console.log(currency);
-                                console.log(amount);
-                                console.log(receipient_number);
-                                console.log(receipient_network);
-                                console.log(category_);
-                                console.log(naration);
-                                console.log(user_pin); --}}
-
-
-                            $.ajax({
-                                "type": "POST",
-                                "url": "mobile-money-api",
-                                datatype: "application/json",
-                                data: {
-                                    'from_account': from_account_,
-                                    'amount': amount,
-                                    'currency': currency,
-                                    'category_': category_,
-                                    'receipient_number': receipient_number,
-                                    'receipient_network': receipient_network,
-                                    'naration': naration,
-                                    'user_pin': user_pin
-
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-                                    {{-- console.log(response); --}}
-                                    if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 10000);
-                                    } else {
-                                        toaster(response.message, 'error', 6000);
-                                    }
-                                }
-                            })
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content')
+                    },
+                    success: function (response) {
+                        // {{-- console.log(response); --}}
+                        if (response.responseCode == '000') {
+                            toaster(response.message, 'success', 10000);
+                        } else {
+                            toaster(response.message, 'error', 6000);
 
 
                         }
-
-                        if (type == "onetime") {
-                            {{-- alert('onetime'); --}}
-
-                            var from_account = $("#from_account").val().split('~');
-                            var from_account_ = from_account[2];
-                            var currency = from_account[3];
-                            var amount = $("#amount").val();
-                            var receipient_number = $("#onetime_receipient_number").val();
-                            var receipient_network = $("#onetime_network_type").val();
-                            var category = $("#onetime_category").val().split('~');
-                            var category_ = category[0];
-                            var naration = $("#onetime_purpose").val();
-                            var user_pin = $("#user_pin").val();
-
-                            {{-- console.log(from_account); --}}
-                            console.log(from_account_);
-                            console.log(currency);
-                            console.log(amount);
-                            console.log(receipient_number);
-                            console.log(receipient_network);
-                            console.log(category_);
-                            console.log(naration);
-                            console.log(user_pin);
-
-
-                            $.ajax({
-                                "type": "POST",
-                                "url": "mobile-money-api",
-                                datatype: "application/json",
-                                data: {
-                                    'from_account': from_account_,
-                                    'amount': amount,
-                                    'currency': currency,
-                                    'category_': category_,
-                                    'receipient_number': receipient_number,
-                                    'receipient_network': receipient_network,
-                                    'naration': naration,
-                                    'user_pin': user_pin
-
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-                                    {{-- console.log(response); --}}
-                                    if (response.responseCode == '000') {
-                                        toaster(response.message, 'success', 10000);
-                                    } else {
-                                        toaster(response.message, 'error', 6000);
-                                    }
-                                }
-                            })
-
-                        }
-
-
-
-
-                    })
-
-
-
-
-
+                    }
                 })
+            })
+        })
 
-            });
+    });
+
 </script>
 @endsection
