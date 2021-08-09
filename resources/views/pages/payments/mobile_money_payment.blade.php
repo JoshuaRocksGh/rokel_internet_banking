@@ -741,7 +741,32 @@
                                                     </td>
                                                 </tr>
 
+
                                                 <tr>
+
+                                                    <td colspan="2">
+
+                                                        <div class="alert alert-info form-control col-md-12"
+                                                            role="alert">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input type="checkbox" class="custom-control-input"
+                                                                    name="terms_and_conditions"
+                                                                    id="terms_and_conditions">
+                                                                <label class="custom-control-label "
+                                                                    for="terms_and_conditions">
+                                                                    <b>
+                                                                        By checking this box, you agree to
+                                                                        abide by the Terms and Conditions
+                                                                    </b>
+                                                                </label>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                {{-- <tr>
                                                     <td>Enter Pin: </td>
                                                     <td>
                                                         <div class="form-group">
@@ -750,7 +775,7 @@
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                         </div>
                                                     </td>
-                                                </tr>
+                                                </tr> --}}
 
 
                                             </tbody>
@@ -761,9 +786,11 @@
                                     <div class="form-group text-center">
 
                                         <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                id="back_button">Back</button> &nbsp; </span>
-                                        <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                id="confirm_button"><span id="confirm_transfer">Confirm
+                                                id="back_button">Back</button>
+                                            &nbsp; </span>
+                                        <span>&nbsp; <button class="btn btn-primary btn-rounded" data-toggle="modal"
+                                                data-target="#centermodal" type="button" id="confirm_button"><span
+                                                    id="confirm_transfer">Confirm
                                                     Transfer</span>
                                                 <span class="spinner-border spinner-border-sm mr-1" role="status"
                                                     id="spinner" aria-hidden="true"></span>
@@ -782,6 +809,42 @@
 
 
                         </div>
+
+                        <!-- Center modal content -->
+                        <div class="modal fade top" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center ">
+
+                                    </div>
+                                    <div class="modal-body transfer_pin_modal">
+                                        <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER
+                                            TRANSACTION PIN</h3>
+                                        <div class="row">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-9  text-center">
+                                                <form action="#" autocomplete="off" aria-autocomplete="off">
+                                                    <input type="text" name="user_pin" maxlength="4" autocomplete="off"
+                                                        aria-autocomplete="off" class="form-control key hide_on_print"
+                                                        id="user_pin"
+                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                    <br>
+                                                    <button class="btn btn-success" type="button" id="transfer_pin"
+                                                        data-dismiss="modal">Submit</button>
+                                                </form>
+
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+
 
                         <div class="col-md-4 m-2 d-none d-sm-block" id="related_information_display"
                             style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
@@ -893,12 +956,13 @@
             url: '../get-my-account',
             datatype: "application/json",
             success: function (response) {
-                // {{-- console.log(response); --}}
-
                 if (response.responseCode == '000') {
-                    let data = response.data
-                    $.each(data, function (index) {
 
+                    let data = response.data
+                    console.log("    a   ")
+                    console.log(data)
+                    $.each(data, function (index) {
+                        console.log(data[index])
                         $('#from_account').append($('<option>', {
                             value: data[index].accountType + '~' + data[index]
                                 .accountDesc + '~' + data[index].accountNumber + '~' +
@@ -907,14 +971,6 @@
                         }).text(data[index].accountType + '~' + data[index].accountNumber +
                             '~' + data[index].currency + '~' + data[index].availableBalance
                         ));
-                        $('#to_account').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountNumber + '~' + data[index].currency + '~' +
-                                data[index].availableBalance
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance
-                        ));
-
                     });
                 }
 
@@ -923,6 +979,38 @@
 
                 setTimeout(function () {
                     from_account();
+                }, $.ajaxSetup().retryAfter)
+            }
+
+        })
+    }
+
+    function get_beneficiaries() {
+        $.ajax({
+            type: 'GET',
+            url: '../payment-beneficiary-list-api',
+            datatype: "application/json",
+            success: function (response) {
+                let data = response.data;
+                console.log(`data below: ${data}`)
+
+                if (response.responseCode === '000') {
+
+                    $.each(data, function (index) {
+                        $('#to_account').append($('<option>', {
+                                value: data[index].NICKNAME + '~' + data[index].ACCOUNT +
+                                    '~' + data[index].PAYEE_NAME
+                            })
+                            .text(data[index].NICKNAME + ' - ' + data[index]
+                                .ACCOUNT + ' - ' +
+                                data[index].PAYEE_NAME));
+                    })
+                }
+            },
+            error: function (xhr, status, error) {
+
+                setTimeout(function () {
+                    get_beneficiaries();
                 }, $.ajaxSetup().retryAfter)
             }
 
@@ -940,23 +1028,27 @@
 
                     if ('Others' == data[index].expenseName) {
                         $("#category").append($('<option selected>', {
-                            value: data[index].expenseCode + '~' + data[index]
+                            value: data[index].expenseCode + '~' + data[
+                                    index]
                                 .expenseName
                         }).text(data[index].expenseName))
 
                         $("#onetime_category").append($('<option selected>', {
-                            value: data[index].expenseCode + '~' + data[index]
+                            value: data[index].expenseCode + '~' + data[
+                                    index]
                                 .expenseName
                         }).text(data[index].expenseName))
 
                     } else {
                         $("#category").append($('<option>', {
-                            value: data[index].expenseCode + '~' + data[index]
+                            value: data[index].expenseCode + '~' + data[
+                                    index]
                                 .expenseName
                         }).text(data[index].expenseName))
 
                         $("#onetime_category").append($('<option selected>', {
-                            value: data[index].expenseCode + '~' + data[index]
+                            value: data[index].expenseCode + '~' + data[
+                                    index]
                                 .expenseName
                         }).text(data[index].expenseName))
                     }
@@ -993,15 +1085,21 @@
                         console.log(data[index].paySubTypes[index])
 
                         var image = new Image();
-                        var base64_string = data[index].paySubTypes[index].paymentLogo
+                        var base64_string = data[index].paySubTypes[index]
+                            .paymentLogo
                         image.src = "data:image/png;base64," + base64_string
 
                         $('#onetime_beneficiary_network').append($('<option>', {
-                            value: data[index].paySubTypes[index].paymentAccount + '~' +
-                                data[index].paySubTypes[index].paymentCode + '~' +
-                                data[index].paySubTypes[index].paymentLabel
+                            value: data[index].paySubTypes[index]
+                                .paymentAccount + '~' +
+                                data[index].paySubTypes[index]
+                                .paymentCode +
+                                '~' +
+                                data[index].paySubTypes[index]
+                                .paymentLabel
                         }).text(image +
-                            '~' + data[index].paySubTypes[index].paymentDescription
+                            '~' + data[index].paySubTypes[index]
+                            .paymentDescription
                         ));
                     }
 
@@ -1028,6 +1126,7 @@
             from_account();
             paymentType();
             expenseTypes();
+            get_beneficiaries();
         }, 200);
 
         $("#beneficiary_selected").show();
@@ -1057,9 +1156,14 @@
                 $("#onetime_beneficiary_form").toggle(500);
                 $("#saved_beneficiary_form").hide();
                 $(".bene_details").hide();
-                $("#rel_info_display_receipient_name").text($("#onetime_beneficiary_name").val())
-                $("#rel_info_display_receipient_number").text($("#onetime_beneficiary_number").val())
-                $("#rel_info_display_receipient_network").text($("#onetime_beneficiary_network").val()
+                $("#rel_info_display_receipient_name").text($("#onetime_beneficiary_name")
+                    .val())
+                $("#rel_info_display_receipient_number").text($(
+                        "#onetime_beneficiary_number")
+                    .val())
+                $("#rel_info_display_receipient_network").text($(
+                        "#onetime_beneficiary_network")
+                    .val()
                     .split('~')[1])
                 $("#rel_info_display_transfer_amount").text($("#onetime_amount").val())
 
@@ -1068,7 +1172,8 @@
                 $(".bene_details").toggle(500);
                 $("#onetime_beneficiary_form").hide();
                 $("#rel_info_display_receipient_name").text($("#beneficiary_name").val())
-                $("#rel_info_display_receipient_number").text($("#beneficiary_number").val())
+                $("#rel_info_display_receipient_number").text($("#beneficiary_number")
+                    .val())
                 $("#rel_info_display_receipient_network").text($("#network_type").val())
                 $("#rel_info_display_transfer_amount").text($("#amount").val())
             }
@@ -1091,39 +1196,12 @@
             $("#transaction_form").show()
             $("#related_information_display").show()
         })
-        $("#beneficiary_name").on("input", function () {
-            $("#rel_info_display_receipient_number").text($("#beneficiary_name").val())
-        })
-        $("#beneficiary_number").on("input", function () {
-            $("#rel_info_display_receipient_number").text($("#beneficiary_number").val())
-        })
-        $("#beneficiary_network").on("input", function () {
-            $("#rel_info_display_receipient_network").text($("#beneficiary_network").val())
-        })
-        $("#amount").on("input", function () {
-            $("#rel_info_display_transfer_amount").text($("#amount").val())
-        })
-
-        // onetime rel info display
-        $("#onetime_beneficiary_name").on("input", function () {
-            $("#rel_info_display_receipient_name").text($("#onetime_beneficiary_name").val())
-        })
-        $("#onetime_beneficiary_number").on("input", function () {
-            $("#rel_info_display_receipient_number").text($("#onetime_beneficiary_number").val())
-        })
-        $("#onetime_beneficiary_network").on("input", function () {
-            $("#rel_info_display_receipient_network").text($("#onetime_beneficiary_network").val()
-                .split('~')[1])
-        })
-        $("#onetime_amount").on("input", function () {
-            $("#rel_info_display_transfer_amount").text($("#onetime_amount").val())
-        })
 
         $("#from_account").change(function () {
             var from_account = $(this).val()
 
             if (from_account.trim() == '' || from_account.trim() == undefined) {
-                alert('money')
+                // alert('money')
                 $(".from_account_display_info").hide()
 
             } else {
@@ -1138,7 +1216,8 @@
                 $(".display_from_account_no").text(from_account_info[2].trim())
                 $(".display_from_account_currency").text(from_account_info[3].trim())
 
-                $(".display_currency").text(from_account_info[3].trim()) // set summary currency
+                $(".display_currency").text(from_account_info[3]
+                    .trim()) // set summary currency
 
                 amt = from_account_info[4].trim()
                 $(".display_from_account_amount").text(formatToCurrency(parseFloat(
@@ -1150,6 +1229,52 @@
             }
 
         })
+
+        $("#to_account").on("change", function () {
+            let account_details = $("#to_account").val().split('~');
+            for (let i = 0; i < 3; i++) {
+                if (account_details[i] === undefined) {
+                    account_details[i] = " "
+                }
+            }
+            //populate beneficiary info
+
+            $("#beneficiary_name").val(account_details[0]);
+            $("#beneficiary_number").val(account_details[1]);
+            $("#beneficiary_network").val(account_details[2]);
+            //populate rel_info
+            $("#rel_info_display_receipient_name").text(account_details[0]);
+            $("#rel_info_display_receipient_number").text(account_details[1]);
+            $("#rel_info_display_receipient_network").text(account_details[2]);
+
+
+
+        }) //
+        $("#amount").on("input", function () {
+            $("#rel_info_display_transfer_amount").text($("#amount").val())
+        })
+        // onetime rel info display
+        $("#onetime_beneficiary_name").on("input", function () {
+            $("#rel_info_display_receipient_name").text($("#onetime_beneficiary_name")
+                .val())
+        })
+        //
+        $("#onetime_beneficiary_number").on("input", function () {
+            $("#rel_info_display_receipient_number").text($("#onetime_beneficiary_number")
+                .val())
+        })
+        //
+        $("#onetime_beneficiary_network").on("input", function () {
+            $("#rel_info_display_receipient_network").text($("#onetime_beneficiary_network")
+                .val()
+                .split('~')[1])
+        })
+        //
+        $("#onetime_amount").on("input", function () {
+            $("#rel_info_display_transfer_amount").text($("#onetime_amount").val())
+        })
+
+
 
         function toaster(message, icon, timer) {
             const Toast = Swal.mixin({
@@ -1190,12 +1315,14 @@
             if (!oneTimeTransfer) {
                 console.log('here')
                 from_account = $("#from_account").val().split('~');
-                // {{-- var from_account_ = from_account[2]; --}}
+                // receipient_name = $("#beneficiary_name").val()
+                from_account_ = from_account[2];
+                currency = from_account[3];
                 amount = $("#amount").val();
-                receipient_receipient = $("#beneficiary_name").val();
+                receipient_name = $("#beneficiary_name").val();
                 receipient_number = $("#beneficiary_number").val();
-                receipient_network = $("#beneficiary_network").val().split('~')[1];
-                category = $("#category").val();
+                receipient_network = $("#beneficiary_network").val();
+                category = $("#category").val().split('~')[1];
                 naration = $("#purpose").val();
 
                 $("#display_from_account_type").text();
@@ -1203,6 +1330,7 @@
                 $("#display_from_account_no").text();
                 $("#display_currency").text();
                 $("#display_transfer_amount").text(amount);
+                $("#display_to_receipient_name").text(receipient_name);
                 $("#display_to_receipient_number").text(receipient_number);
                 $("#display_to_receipient_network_type").text(receipient_network);
                 $("#display_category").text(category);
@@ -1222,7 +1350,7 @@
                 amount = $("#onetime_amount").val();
                 receipient_number = $("#onetime_beneficiary_number").val();
                 receipient_network = $("#onetime_beneficiary_network").val().split('~')[1];
-                category = $("#onetime_category").val();
+                category = $("#onetime_category").val().split('~')[1];
                 naration = $("#onetime_purpose").val();
 
                 // from_account = $("#from_account").val();
@@ -1271,8 +1399,8 @@
                 }
 
                 $.ajax({
-                    "type": "POST",
-                    "url": "mobile-money-api",
+                    type: "POST",
+                    url: "../mobile-money-api",
                     datatype: "application/json",
                     data: {
                         'from_account': from_account_,

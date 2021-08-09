@@ -3,45 +3,46 @@
 
 @section('styles')
 
-    <!-- third party css -->
-    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
-        rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <!-- third party css end -->
+<!-- third party css -->
+<link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}"
+    rel="stylesheet" type="text/css" />
+<link
+    href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
+    rel="stylesheet" type="text/css" />
+<link
+    href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
+    rel="stylesheet" type="text/css" />
+<link
+    href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}"
+    rel="stylesheet" type="text/css" />
+<!-- third party css end -->
 
-    <style>
-        @media print {
-            .hide_on_print {
-                display: none
-            }
-        }
+<style>
+    <blade media|%20print%20%7B>.hide_on_print {
+        display: none
+    }
+    }
 
-        @font-face {
-            font-family: 'password';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 40px;
-            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
-        }
+    <blade font|-face%20%7B>font-family: 'password';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+    }
 
-        input.key {
-            font-family: 'password';
-            width: 300px;
-            height: 80px;
-            font-size: 100px;
-        }
+    input.key {
+        font-family: 'password';
+        width: 300px;
+        height: 80px;
+        font-size: 100px;
+    }
 
-        .table_over_flow {
-            overflow-y: hidden;
+    .table_over_flow {
+        overflow-y: hidden;
 
-        }
+    }
 
-    </style>
+</style>
 
 @endsection
 
@@ -54,7 +55,8 @@
     <div class="row">
         <div class="col-md-6">
             <h4 class="text-primary">
-                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo"
+                    style="zoom: 0.05">&emsp;
                 PAYMENT BENEFICIARY LIST
             </h4>
         </div>
@@ -63,7 +65,8 @@
             <h6>
 
                 <span class="flaot-right">
-                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Payment Beneficiary List</b>
+                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Payment Beneficiary
+                        List</b>
 
 
                 </span>
@@ -108,7 +111,7 @@
                                     <div class="btn-group drop-left">
                                         <a href="{{ url('payment-beneficiary') }}">
                                             <button type="button" class="btn btn-primary dropdown-toggle btn-rounded"
-                                            data-toggle="" aria-expanded="false"> Add Beneficiary  </button>
+                                                data-toggle="" aria-expanded="false"> Add Beneficiary </button>
                                         </a>
 
                                     </div>
@@ -229,17 +232,30 @@
 
 <!-- third party js -->
 <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+<script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}">
 </script>
-{{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+<script
+    src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}">
+</script>
+<script
+    src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+</script>
+{{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}">
+</script>
+<script
+    src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}">
+</script>
+<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}">
+</script>
+<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}">
+</script>
+<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}">
+</script>
+<script
+    src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}">
+</script>
+<script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}">
+</script>
 <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
 <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
 <!-- third party js ends -->
@@ -248,8 +264,6 @@
 <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
 <script>
-
-
     function beneficiary_list() {
         var table = $('.beneficiary_list_display').DataTable();
         var nodes = table.rows().nodes();
@@ -257,26 +271,31 @@
             tpye: 'GET',
             url: 'payment-beneficiary-list-api',
             datatype: "application/json",
-            success: function(response) {
-                {{-- console.log(response.responseCode); --}}
+            success: function (response) {
+                // {
+                //     {
+                // console.log(response.responseCode % 3 B)
+                //     }
+                // }
 
                 let data = response.data;
-                console.log(data) ;
+                console.log(data);
                 if (response.responseCode == '000') {
 
                     $('#beneficiary_table').show();
                     $('#beneficiary_list_loader').hide();
                     $('#beneficiary_list_retry_btn').hide();
-                    $.each(data, function(index) {
-                        {{-- console.log(data[index]) --}}
+                    $.each(data, function (index) {
+
+                        // console.log(data % 5 Bindex % 5 D)
 
 
                         model_data = data[index]
 
                         table.row.add([
                             data[index].NICKNAME,
-                            data[index].APPROVED_BY,
-                            data[index].MODIFY_BY,
+                            data[index].PAYMENT_TYPE,
+                            data[index].PAYEE_NAME,
                             data[index].ACCOUNT,
 
 
@@ -302,8 +321,8 @@
     }
 
 
-    $(document).ready(function() {
-        setTimeout(function() {
+    $(document).ready(function () {
+        setTimeout(function () {
             beneficiary_list();
         }, 2000);
 
@@ -311,8 +330,6 @@
 
 
     })
-
-
 
 </script>
 
