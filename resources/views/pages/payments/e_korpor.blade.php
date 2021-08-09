@@ -62,6 +62,7 @@
 
             </div>
         </div>
+        <br>
 
         <div class="">
 
@@ -100,16 +101,222 @@
 
                                     <div class="col-md-12">
                                         <div class="row">
+
+                                            <div class="col-md-7" id="transaction_summary"
+                                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                                <br><br><br>
+                                                <div class="col-md-12">
+                                                    <div class="card border p-3 mt-4 mt-lg-0 rounded">
+                                                        <h4 class="header-title mb-3">E-Koror Transfer Summary</h4>
+
+                                                        <p class="display-4 text-center text-success success-message "></p>
+
+                                                        <div class="table-responsive table-striped table-bordered">
+                                                            <table class="table mb-0">
+
+                                                                <tbody>
+                                                                    {{-- <tr class="success_gif">
+                                                                        <td class="text-center bg-white" colspan="2">
+                                                                            <img src="{{ asset('land_asset/images/statement_success.gif') }}"
+                                                                                style="zoom: 0.5" alt="">
+                                                                        </td>
+                                                                    </tr> --}}
+                                                                    <tr>
+                                                                        <td>From Account:</td>
+                                                                        <td>
+                                                                            <span
+                                                                                class="font-13 text-primary text-bold display_from_account_type"
+                                                                                id="display_from_account_type"></span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                                id="display_from_account_name"> </span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                                id="display_from_account_no"></span>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>Receiver Name</td>
+                                                                        <td>
+
+                                                                            <span
+                                                                                class="font-13 text-primary text-bold display_to_account_type"
+                                                                                id="display_to_account_type"> </span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                                id="display_to_account_name"> </span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                                id="display_to_account_no"> </span>
+
+
+                                                                            {{-- <span class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                                id="online_display_beneficiary_alias_name"> </span> --}}
+
+                                                                            <span
+                                                                                class="font-13 text-primary h3 online_display_beneficiary_account_no"
+                                                                                id="online_display_beneficiary_account_no"> </span>
+                                                                            {{-- &nbsp; | &nbsp; --}}
+                                                                            <span
+                                                                                class="font-13 text-primary h3 online_display_beneficiary_account_currency"
+                                                                                id="online_display_beneficiary_account_currency">
+                                                                            </span>
+
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                                                id="online_display_beneficiary_email"> </span>
+
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
+                                                                                id="online_display_beneficiary_phone"> </span>
+
+
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    
+
+
+                                                                    <tr>
+                                                                        <td>Receiver Telephone:</td>
+                                                                        <td>
+                                                                            <span class="font-13 text-primary h3 display_category"
+                                                                                id="display_category"></span>
+
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr>
+                                                                        <td>Receiver Address:</td>
+                                                                        <td>
+                                                                            <span class="font-13 text-primary h3 display_purpose"
+                                                                                id="display_purpose"></span>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    {{-- <tr>
+                                                                    <td>Schedule Payment:</td>
+                                                                    <td>
+                                                                        <span
+                                                                            class="font-13 text-primary h3 display_schedule_payment"
+                                                                            id="display_schedule_payment">NO </span>
+                                                                        &nbsp; | &nbsp;
+                                                                        <span
+                                                                            class="font-13 text-primary h3 display_schedule_payment_date"
+                                                                            id="display_schedule_payment_date"> N/A
+                                                                        </span>
+                                                                    </td>
+                                                                </tr> --}}
+                                                                <tr>
+                                                                        <td>Amount:</td>
+                                                                        <td>
+                                                                            <span class="font-15 text-primary h3 display_currency"
+                                                                                id="display_currency"> </span>
+                                                                            &nbsp;
+                                                                            <span
+                                                                                class="font-15 text-primary h3 display_converted_amount"
+                                                                                id="display_transfer_amount"></span>
+
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    <tr>
+                                                                        <td>Transfer Date: </td>
+                                                                        <td>
+                                                                            <span class="font-13 text-primary h3"
+                                                                                id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td>Posted BY: </td>
+                                                                        <td>
+                                                                            <span class="font-13 text-primary h3"
+                                                                                id="display_posted_by">{{ session('userId') }}</span>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    {{-- <tr class="hide_on_print">
+                                                                    <td>Enter Pin: </td>
+                                                                    <td>
+
+                                                                        <input type="text" name="user_pin" class="form-control key " id="user_pin"
+                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+
+                                                                    </td>
+                                                                </tr> --}}
+
+                                                                    <tr>
+
+                                                                        <td colspan="2">
+
+                                                                            <div class="alert alert-info form-control col-md-12"
+                                                                                role="alert">
+                                                                                <div class="custom-control custom-checkbox">
+                                                                                    <input type="checkbox"
+                                                                                        class="custom-control-input"
+                                                                                        name="terms_and_conditions"
+                                                                                        name="terms_and_conditions"
+                                                                                        id="terms_and_conditions">
+                                                                                    <label class="custom-control-label "
+                                                                                        for="terms_and_conditions">
+                                                                                        <b>
+                                                                                            By checking this box, you agree to
+                                                                                            abide by the Terms and Conditions
+
+                                                                                        </b>
+                                                                                    </label>
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!-- end table-responsive -->
+                                                        <br>
+                                                        <div class="form-group text-center">
+
+                                                            <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                                    id="back_button"><i class="mdi mdi-reply-all-outline"></i>
+                                                                    &nbsp;Back</button> &nbsp; </span>
+                                                            <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
+                                                                    id="confirm_modal_button" data-toggle="modal"
+                                                                    data-target="#centermodal">
+                                                                    <span id="confirm_transfer">Submit</span>
+                                                                    <span class="spinner-border spinner-border-sm mr-1"
+                                                                        role="status" id="spinner" aria-hidden="true"></span>
+                                                                    <span id="spinner-text">Loading...</span>
+                                                                </button></span>
+                                                            {{-- <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                                    type="button" id="print_receipt" onclick="window.print()">Print
+                                                                    Receipt
+                                                                </button></span> --}}
+                                                        </div>
+                                                    </div>
+
+                                                </div> <!-- end col -->
+
+                                            </div>
+
                                             <div class=" col-md-7 m-2" id="request_form_div"
                                                                 style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                                 <br><br><br>
 
-                                                <form action="#" class="select_beneficiary" id="payment_details_form"
+                                                <form action="#" class="select_beneficiary" id="send_korpor_payment_details_form"
                                                     autocomplete="off" aria-autocomplete="none">
                                                     @csrf
                                                     <div class="row container">
                                                         <div class="col-md-1"></div>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-10">
 
                                                             {{-- <br><br><br> --}}
                                                             <div class="row">
@@ -117,12 +324,14 @@
 
                                                                 <div class="col-md-12">
 
-                                                                    <div class="form-group row mb-3">
-                                                                        <b class="col-md-5 text-primary">Pay From&nbsp;
+                                                                    <div class="form-group row ">
+                                                                        <b class="col-md-12 text-primary">Account from which
+                                                                        the money will
+                                                                        be tansfered &nbsp;
                                                                             <span class="text-danger">*</span> </b>
 
 
-                                                                        <select class="form-control col-md-7 from_account"
+                                                                        <select class="form-control col-md-12 from_account"
                                                                             required>
                                                                             <option value="">Select Account
                                                                             </option>
@@ -130,10 +339,12 @@
 
                                                                         </select>
                                                                     </div>
+                                                                    <hr style="padding-top: 0px; padding-bottom: 0px;">
+
 
                                                                     <div class="form-group row">
 
-                                                                        <b class="col-md-5 text-primary"> Destination &nbsp; <span class="text-danger">*</span></b>
+                                                                        <b class="col-md-5 text-primary"> Type of Transfer &nbsp; <span class="text-danger">*</span></b>
 
                                                                         <div class="row col-md-7 ">
                                                                             <div class="radio radio-primary form-check-inline m-1 col-md-5 destination">
@@ -149,19 +360,34 @@
 
                                                                     </div>
 
+                                                                    <hr style="padding-top: 0px; padding-bottom: 0px;">
+
 
                                                                     <div class="others_form">
                                                                         <div class="form-group row mb-3">
 
-                                                                            <b class="col-md-5 text-primary">Amount&nbsp;
+                                                                            <b class="col-md-4 text-primary">Amount&nbsp;
                                                                                 <span class="text-danger">*</span></b>
 
 
-                                                                            <input type="text" class="form-control col-md-7 "
+                                                                            {{-- <input type="text" class="form-control col-md-8 "
                                                                                 id="amount"
                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                                required>
-                                                                            <br>
+                                                                                required> --}}
+
+
+                                                                            <div class="input-group mb-1 col-8" style="padding: 0px;">
+                                                                                <div class="input-group-prepend">
+                                                                                    <input type="text" class="input-group-text select_currency"
+                                                                                        id="select_currency" style="width: 80px;"
+                                                                                        readonly>
+                                                                                </div>
+
+                                                                                &nbsp;&nbsp;
+                                                                                <input type="text" class="form-control " id="amount"
+                                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                    required>
+                                                                            </div>
 
 
 
@@ -169,13 +395,13 @@
 
                                                                         <div class="form-group row">
 
-                                                                            <b class="col-md-5 text-primary"> Receiver Name
+                                                                            <b class="col-md-4 text-primary"> Receiver Name
                                                                                 &nbsp; <span class="text-danger">*</span></b>
 
 
-                                                                            <input type="text" class="form-control col-md-7 "
+                                                                            <input type="text" class="form-control col-md-8 "
                                                                                 id="receiver_name"
-                                                                                placeholder="enter receiver name"
+                                                                                placeholder="Enter Receiver Name"
                                                                                 autocomplete="off" required>
                                                                             <br>
 
@@ -183,13 +409,12 @@
 
                                                                         <div class="form-group row">
 
-                                                                            <b class="col-md-5 text-primary"> Receiver's Phone
-                                                                                Number: &nbsp; <span
+                                                                            <b class="col-md-4 text-primary"> Receiver Telphone &nbsp; <span
                                                                                     class="text-danger">*</span></b>
 
-                                                                            <input type="text" class="form-control col-md-7 "
+                                                                            <input type="text" class="form-control col-md-8 "
                                                                                 id="receiver_phoneNum"
-                                                                                placeholder="receiver Phone Number"
+                                                                                placeholder="Enter Receiver Phone Number"
                                                                                 autocomplete="off"
                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                                                 required>
@@ -199,19 +424,18 @@
 
                                                                         <div class="form-group row">
 
-                                                                            <b class="col-md-5 text-primary"> Receiver's
-                                                                                Address: &nbsp; <span
-                                                                                    class="text-danger"></span></b>
+                                                                            <b class="col-md-4 text-primary"> Receiver
+                                                                                Address: &nbsp; <span class="text-danger">*</span></b>
 
-                                                                            <input type="text" class="form-control col-md-7 "
+                                                                            <input type="text" class="form-control col-md-8 "
                                                                                 id="receiver_address"
-                                                                                placeholder="receiver Address"
+                                                                                placeholder="Enter Receiver Address"
                                                                                 autocomplete="off" required>
                                                                             <br>
 
                                                                         </div>
 
-                                                                        <div class="form-group row">
+                                                                        {{-- <div class="form-group row">
 
                                                                             <b class="col-md-5 text-primary " for="pin">
                                                                                 Enter Your Pin
@@ -222,9 +446,9 @@
 
 
 
-                                                                        </div>
+                                                                        </div> --}}
 
-                                                                        <div class="form-group text-right ">
+                                                                        {{-- <div class="form-group text-right ">
                                                                             <button type="button"
                                                                                 class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
                                                                                 id="confirm_button">
@@ -235,21 +459,34 @@
                                                                                     aria-hidden="true"></span>
                                                                                 <span id="spinner-text">Loading...</span>
                                                                             </button>
-                                                                        </div>
+                                                                        </div> --}}
                                                                     </div>
 
                                                                     <div class="self_form">
                                                                         <div class="form-group row mb-3">
 
-                                                                            <b class="col-md-5 text-primary">Amount&nbsp;
+                                                                            <b class="col-md-4 text-primary">Amount&nbsp;
                                                                                 <span class="text-danger">*</span></b>
 
 
-                                                                            <input type="text" class="form-control col-md-7 "
+                                                                            {{-- <input type="text" class="form-control col-md-7 "
                                                                                 id="amount_self"
                                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                                                 required>
-                                                                            <br>
+                                                                            <br> --}}
+
+                                                                            <div class="input-group mb-1 col-8" style="padding: 0px;">
+                                                                                <div class="input-group-prepend">
+                                                                                    <input type="text" class="input-group-text select_currency"
+                                                                                        id="" style="width: 80px;"
+                                                                                        readonly>
+                                                                                </div>
+
+                                                                                &nbsp;&nbsp;
+                                                                                <input type="text" class="form-control " id="amount_self"
+                                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                    required>
+                                                                            </div>
 
 
 
@@ -257,13 +494,13 @@
 
                                                                         <div class="form-group row">
 
-                                                                            <b class="col-md-5 text-primary"> Receiver Name
+                                                                            <b class="col-md-4 text-primary"> Receiver Name
                                                                                 &nbsp; <span class="text-danger">*</span></b>
 
                                                                                 {{-- value={{ session()->get('userAlias') }} --}}
-                                                                            <input type="text" class="form-control col-md-7"
+                                                                            <input type="text" class="form-control col-md-8"
                                                                                 id="receiver_name_self"
-                                                                                placeholder="enter receiver name" value="{{ Session()->get('userAlias') }}"
+                                                                                placeholder="Enter Receiver Name" value="{{ Session()->get('userAlias') }}"
                                                                                 autocomplete="off"  required>
                                                                             <br>
 
@@ -271,34 +508,34 @@
 
                                                                         <div class="form-group row">
 
-                                                                            <b class="col-md-5 text-primary"> Receiver's Phone
-                                                                                Number: &nbsp; <span
+                                                                            <b class="col-md-4 text-primary"> Receiver Telephone: &nbsp; <span
                                                                                     class="text-danger">*</span></b>
 
-                                                                            <input type="text" class="form-control col-md-7 "
+                                                                            <input type="text" class="form-control col-md-8 "
                                                                                 id="receiver_phoneNum_self"
-                                                                                placeholder="receiver Phone Number"
-                                                                                autocomplete="off"  value="{{ session()->get('customerPhone') }}"
+                                                                                placeholder="Enter Receiver Phone Number"
+                                                                                autocomplete="off"
                                                                                 required>
+                                                                                {{-- value="{{ session()->get('customerPhone') }} --}}
                                                                             <br>
                                                                             {{-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" --}}
                                                                         </div>
 
                                                                         <div class="form-group row">
 
-                                                                            <b class="col-md-5 text-primary"> Receiver's
+                                                                            <b class="col-md-4 text-primary"> Receiver
                                                                                 Address: &nbsp; <span
-                                                                                    class="text-danger"></span></b>
+                                                                                    class="text-danger">*</span></b>
 
-                                                                            <input type="text" class="form-control col-md-7 "
+                                                                            <input type="text" class="form-control col-md-8 "
                                                                                 id="receiver_address_self"
-                                                                                placeholder="enter your Address"
+                                                                                placeholder="Enter Receiver Address"
                                                                                 autocomplete="off" required>
                                                                             <br>
 
                                                                         </div>
 
-                                                                        <div class="form-group row">
+                                                                        {{-- <div class="form-group row">
 
                                                                             <b class="col-md-5 text-primary " for="pin">
                                                                                 Enter Your Pin
@@ -309,24 +546,24 @@
 
 
 
-                                                                        </div>
+                                                                        </div> --}}
 
-                                                                        <div class="form-group text-right ">
-                                                                            <button type="button"
-                                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
-                                                                                id="confirm_button_self">
-                                                                                <span class="submit-text">Submit</span>
-                                                                                <span
-                                                                                    class="spinner-border spinner-border-sm mr-1"
-                                                                                    id="spinner-self" role="status"
-                                                                                    aria-hidden="true"></span>
-                                                                                <span id="spinner-text-self">Loading...</span>
-                                                                            </button>
-                                                                        </div>
+
                                                                     </div>
 
 
-
+                                                                    <div class="form-group text-right mt-2">
+                                                                        <button type="button"
+                                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
+                                                                            id="confirm_button_self">
+                                                                            <span class="submit-text">&nbsp; Next &nbsp;<i class="fe-arrow-right"></i></span>
+                                                                            <span
+                                                                                class="spinner-border spinner-border-sm mr-1"
+                                                                                id="spinner-self" role="status"
+                                                                                aria-hidden="true"></span>
+                                                                            <span id="spinner-text-self">Loading...</span>
+                                                                        </button>
+                                                                    </div>
 
                                                                 </div>
 
@@ -342,6 +579,8 @@
 
 
                                                         </div>
+
+
                                                         <div class="col-md-1"></div>
 
                                                     </div>
@@ -365,35 +604,53 @@
                                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                         <br><br>
                                                 <div class=" col-md-12 card card-body">
-                                                            {{-- <br><br> --}}
+                                                    <h4 class="text-primary">Sender Acc. Info</h4>
+                                                    <hr class="mt-0">
+
                                                     <div class="row">
-                                                        <span class="col-md-12 success-message"></span>
-                                                        <h6 class="col-md-5">Account Name:</h6>
+                                                        {{-- <span class="col-md-12 success-message"></span> --}}
+                                                        <p class="col-md-5">Account Name:</p>
                                                         <span class="text-primary display_from_account_name col-md-7"></span>
 
-                                                        <h6 class="col-md-5">Account Number:</h6>
+                                                        <p class="col-md-5">Account Number:</p>
                                                         <span class="text-primary display_from_account_no col-md-7"></span>
 
-                                                        <h6 class="col-md-5">Available Balance:</h6>
+                                                        <p class="col-md-5">Available Balance:</p>
                                                         <span
                                                             class="text-primary display_from_account_amount col-md-7"></span>
 
-                                                        <h6 class="col-md-5">Account Currency:</h6>
+                                                        <p class="col-md-5">Account Currency:</p>
                                                         <span class="text-primary display_currency col-md-7"></span>
 
-                                                        <h6 class="col-md-5">Amount:</h6>
-                                                        <span class="text-primary display_amount col-md-7"></span>
+                                                    </div>
 
 
-                                                        <h6 class="col-md-5">Receiver's Name: </h6>
-                                                        <span class="text-success display_receiver_name col-md-7"></span>
 
-                                                        <h6 class="col-md-5">Receiver's Phone Number:</h6>
+                                                        <h4 class="text-primary">Receiver Acc. Info</h4>
+                                                        <hr class="mt-0">
+                                                    <div class="row">
+                                                        <p class="col-md-5">Receiver Name: </p>
+                                                        <span class="text-primary display_receiver_name col-md-7"></span>
+
+                                                        <p class="col-md-5">Receiver Phone Number:</p>
                                                         <span
-                                                            class="text-success display_receiver_phoneNum col-md-7"></span>
+                                                            class="text-primary display_receiver_phoneNum col-md-7"></span>
 
-                                                        <h6 class="col-md-5">Receiver's Address:</h6>
-                                                        <span class="text-success display_receiver_address col-md-7"></span>
+                                                        <p class="col-md-5">Receiver Address:</p>
+                                                        <span class="text-primary display_receiver_address col-md-7"></span>
+
+                                                        {{-- <p class="col-md-5">Amount:</p>
+                                                        <span class="text-primary display_amount col-md-7"></span> --}}
+                                                    </div>
+                                                    <hr class="mt-0">
+                                                    <div class="row">
+                                                        <p class="col-md-5 mt-2 text-primary">Transfer Amount:</p>
+                                                <h4 class="row col-md-7">
+                                                    <span class="text-danger display_transfer_currency col-md-4"></span>
+                                                    <span class="text-danger display_amount col-md-8"></span>
+
+                                                </h4>
+
                                                     </div>
                                                 </div>
 
@@ -413,8 +670,8 @@
                                                 <div class=" col-md-12 card card-body">
                                                             {{-- <br><br> --}}
                                                     <div class="row">
-                                                        <span class="col-md-12 success-message"></span>
-                                                        <h6 class="col-md-5">Account Name:</h6>
+                                                        {{-- <span class="col-md-12 success-message"></span> --}}
+                                                        <p class="col-md-5">Account Name:</p>
                                                         <span class="text-primary display_from_account_name_self col-md-7"></span>
 
                                                         <h6 class="col-md-5">Account Number:</h6>
@@ -462,6 +719,7 @@
                     </div>
 
                 </div>
+
                 <div class="tab-pane" id="reverse_korpor_page">
                     <div class="row">
                             <div class="col-12">
@@ -471,7 +729,7 @@
                                                                             style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                                             <br><br><br>
 
-                                                                            <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                                            <form action="#" class="select_beneficiary" id="reverse_korpor_payment_details_form" autocomplete="off"
                                                                                 aria-autocomplete="none">
                                                                                 @csrf
 
@@ -515,7 +773,7 @@
 
 
                                                         <br>
-                                                        <div class="form-group row">
+                                                        {{-- <div class="form-group row">
 
                                                             <b class="col-md-5 text-primary" for="pin">
                                                                 Enter Your Pin
@@ -526,7 +784,7 @@
 
 
 
-                                                        </div>
+                                                        </div> --}}
                                                         <br><br><br>
                                                         <div class="form-group text-right ">
                                                             <button type="button"
@@ -594,6 +852,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tab-pane" id="redeem_korpor_page">
                     <div class="row">
                         <div class="col-12">
@@ -603,7 +862,7 @@
                                                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                                         <br><br><br>
 
-                                                                        <form action="#" class="select_beneficiary" id="payment_details_form" autocomplete="off"
+                                                                        <form action="#" class="select_beneficiary" id="redeem_korpor_payment_details_form" autocomplete="off"
                                                                             aria-autocomplete="none">
                                                                             @csrf
 
@@ -832,7 +1091,9 @@
                     </div>
                 </div>
                 </div>
+
                 <div class="tab-pane" id="korpor_trans_page">
+
                     <div class="col-md-12">
                         <div class="cards_table row">
                             <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id=""
@@ -1111,6 +1372,7 @@
 
         $(document).ready(function() {
 
+            $("#transaction_summary").hide();
             $("#spinner").hide();
             $("#spinner-text").hide();
             $("#spinner-reverse").hide();
@@ -1252,19 +1514,22 @@
             $("#inlineRadio1").click(function(){
                     var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
                     // console.log(destination_type);
-                    $(".self_form").show();
-                    $(".self_summary").show();
+                    $('.display_receiver_name').text(@json(session()->get('userAlias')))
+                    $(".self_form").toggle('500');
+                    {{-- $(".self_summary").toggle('500'); --}}
                     $(".others_form").hide();
-                    $(".others_summary").hide();
+                    {{-- $(".others_summary").hide(); --}}
                 });
 
                 $("#inlineRadio2").click(function(){
                     var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
                     // console.log(destination_type);
-                    $(".others_form").show();
-                    $(".others_summary").show();
+                    $('.display_receiver_name').text('')
+                    $(".others_form").toggle('500');
+                    {{-- $(".others_summary").toggle('500'); --}}
                     $(".self_form").hide();
-                    $(".self_summary").hide();
+                    {{-- $(".self_summary").hide(); --}}
+
 
                 });
 
@@ -1325,6 +1590,8 @@
                     $(".display_from_account_name").text(from_account_info[1].trim())
                     $(".display_from_account_no").text(from_account_info[2].trim())
                     $(".display_from_account_currency").text(from_account_info[3].trim())
+                    $(".select_currency").val(from_account_info[3].trim())
+                    $('.display_transfer_currency').text(from_account_info[3].trim())
 
                     $(".display_currency").text(from_account_info[3].trim()) // set summary currency
 
@@ -1367,8 +1634,10 @@
                 console.log(account);
             })
 
-            $('#amount').change(function() {
+            $('#amount').keyup(function() {
+                var amount_ = $(this).val();
                 var amount = $('#amount').val();
+                $(".display_amount").text(formatToCurrency(parseFloat(amount_)))
                 console.log(amount);
             });
 
@@ -1395,17 +1664,17 @@
 
 
             //display for others
-            $("#receiver_name").change(function() {
+            $("#receiver_name").keyup(function() {
                 var receiver_name = $("#receiver_name").val();
                 $(".display_receiver_name").text(receiver_name);
             });
 
-            $("#receiver_phoneNum").change(function() {
+            $("#receiver_phoneNum").keyup(function() {
                 var receiver_phoneNum = $("#receiver_phoneNum").val();
                 $(".display_receiver_phoneNum").text(receiver_phoneNum);
             });
 
-            $("#receiver_address").change(function() {
+            $("#receiver_address").keyup(function() {
                 var receiver_address = $("#receiver_address").val();
                 $(".display_receiver_address").text(receiver_address);
             })
@@ -1416,8 +1685,10 @@
             });
 
             //korpor transfer details for self
-            $('#amount_self').change(function() {
+            $('#amount_self').keyup(function() {
+                var amount_ = $(this).val();
                 var amount = $('#amount_self').val();
+                $('.display_amount').text(formatToCurrency(parseFloat(amount_)))
                 console.log(amount);
             });
 
@@ -1431,8 +1702,10 @@
                 console.log(receiver_phoneNum);
             });
 
-            $('#receiver_address_self').change(function() {
+            $('#receiver_address_self').keyup(function() {
+                var receiver_address_ = $(this).val()
                 var receiver_address = $('#receiver_address_self').val();
+                $('.display_receiver_address').text(receiver_address_)
                 console.log(receiver_address);
             });
 
@@ -1446,11 +1719,14 @@
             $("#receiver_name_self").click(function() {
                 var receiver_name = @json(session()->get('userAlias'));
                 $(".display_receiver_name_self").text(receiver_name);
+                $(".display_receiver_name").text(receiver_name)
             });
 
-            $("#receiver_phoneNum_self").change(function() {
+            $("#receiver_phoneNum_self").keyup(function() {
+                var receiver_phoneNum_ = $(this).val()
                 var receiver_phoneNum = $("#receiver_phoneNum_self").val();
                 $(".display_receiver_phoneNum_self").text(receiver_phoneNum);
+                $('.display_receiver_phoneNum').text(receiver_phoneNum_)
             });
 
 
@@ -1739,8 +2015,26 @@
                 }
             });
 
+            $("#back_button").click(function(e) {
+                e.preventDefault();
+                $("#request_form_div").show();
+                $("#transaction_summary").hide();
+            })
+
             //button to submit korpor payment transaction for self.
-            $('#confirm_button_self').click(function() {
+            $('#confirm_button_self').click(function(e) {
+                e.preventDefault();
+                var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
+                if(destination_type =="OTHERS"){
+                    alert(destination_type)
+                    
+                }else{
+                    alert("SELF")
+                }
+                $('#transaction_summary').show();
+                $("#request_form_div").hide();
+                return false;
+
                 // alert('i have been clicked');
                 let from_account = $('.from_account').val();
                 let transfer_amount = $('#amount_self').val();
