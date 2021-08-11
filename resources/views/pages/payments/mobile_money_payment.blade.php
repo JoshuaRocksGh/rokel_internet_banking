@@ -446,19 +446,19 @@
                                         </div> --}}
 
                                     {{-- ONETIME BENEFICIARY SCREEN --}}
-                                    <div class="form-group" id="onetime_beneficiary">
+                                    {{-- <div class="form-group" id="onetime_beneficiary">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label class="">Enter Receipient Mobile Number:<span
                                                             class="text-danger">*</span></label>
 
-                                                    {{-- <select class="custom-select col-7" id="receipient_number" required>
+                                                    <select class="custom-select col-7" id="receipient_number" required>
                                                                 <option value="">Select Receipient Number</option>
                                                                 <option value="MTN">MTN</option>
                                                                 <option value="VODAFONE">VODAFONE</option>
                                                                 <option value="AIRTEL TOGO">AIRTEL TOGO</option>
-                                                            </select> --}}
+                                                            </select>
                                                     <input type="text" class="form-control"
                                                         id="onetime_receipient_number" placeholder="Enter Number"
                                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
@@ -491,10 +491,10 @@
                                                     </select>
 
 
-                                                    {{-- <label class="">Receipient Mobile Number</label>
+                                                    <label class="">Receipient Mobile Number</label>
                                                             <input type="text" class="form-control" id="amount"
                                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                required> --}}
+                                                                required>
                                                 </div>
 
                                                 <div class="form-group">
@@ -507,7 +507,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     {{-- SCHEDULE PAYMENTS --}}
                                     {{-- <div class="col-6">
@@ -824,12 +824,13 @@
                                             <div class="col-md-2"></div>
                                             <div class="col-md-9  text-center">
                                                 <form action="#" autocomplete="off" aria-autocomplete="off">
-                                                    <input type="text" name="user_pin" maxlength="4" autocomplete="off"
-                                                        aria-autocomplete="off" class="form-control key hide_on_print"
-                                                        id="user_pin"
+                                                    <input type="text" name="user_pin_input" maxlength="4"
+                                                        autocomplete="off" aria-autocomplete="off"
+                                                        class="form-control mx-auto key hide_on_print" id="user_pin"
                                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                                     <br>
-                                                    <button class="btn btn-success" type="button" id="transfer_pin"
+                                                    <button class="btn btn-success" type="button"
+                                                        id="transfer_pin_modal_button"
                                                         data-dismiss="modal">Submit</button>
                                                 </form>
 
@@ -957,12 +958,8 @@
             datatype: "application/json",
             success: function (response) {
                 if (response.responseCode == '000') {
-
                     let data = response.data
-                    console.log("    a   ")
-                    console.log(data)
                     $.each(data, function (index) {
-                        console.log(data[index])
                         $('#from_account').append($('<option>', {
                             value: data[index].accountType + '~' + data[index]
                                 .accountDesc + '~' + data[index].accountNumber + '~' +
@@ -992,8 +989,6 @@
             datatype: "application/json",
             success: function (response) {
                 let data = response.data;
-                console.log(`data below: ${data}`)
-
                 if (response.responseCode === '000') {
 
                     $.each(data, function (index) {
@@ -1071,19 +1066,10 @@
             url: '../get-payment-types-api',
             datatype: "application/json",
             success: function (response) {
-                // {{-- console.log(response) --}}
-                console.log(response)
-
                 let data = response.data.data
-                // {{-- console.log(data) --}}
-                console.log(data)
                 $.each(data, function (index) {
                     let type = data[index].paymentType
-                    // {{-- console.log(type); --}}
-
                     if (payment_type == type) {
-                        console.log(data[index].paySubTypes[index])
-
                         var image = new Image();
                         var base64_string = data[index].paySubTypes[index]
                             .paymentLogo
@@ -1312,18 +1298,58 @@
             let naration
             let user_pin
 
+
+
             if (!oneTimeTransfer) {
-                console.log('here')
-                from_account = $("#from_account").val().split('~');
-                // receipient_name = $("#beneficiary_name").val()
-                from_account_ = from_account[2];
-                currency = from_account[3];
                 amount = $("#amount").val();
                 receipient_name = $("#beneficiary_name").val();
                 receipient_number = $("#beneficiary_number").val();
                 receipient_network = $("#beneficiary_network").val();
-                category = $("#category").val().split('~')[1];
+                category = ($("#category").val() === "Others") ? $("#category").val() : $(
+                        "#category").val()
+                    .split('~')[1];
                 naration = $("#purpose").val();
+            }
+
+            if (oneTimeTransfer) {
+
+                amount = $("#onetime_amount").val();
+                receipient_name = $("#onetime_beneficiary_name").val()
+                receipient_number = $("#onetime_beneficiary_number").val();
+                receipient_network = $("#onetime_beneficiary_network").val().split('~')[1];
+                category = $("#onetime_category").val()
+                naration = $("#onetime_purpose").val();
+            }
+
+            from_account = $("#from_account").val().split('~');
+            from_account_ = from_account[2];
+            currency = from_account[3];
+
+            function evaluateFormMember(member, alert_message) {
+
+                if (member === "" || member === undefined) {
+                    toaster(alert_message, 'error', 2000)
+                    return true
+                } else return false
+            }
+
+            if (evaluateFormMember(from_account_, "please select account")) {
+                return false
+            } else if (
+                evaluateFormMember(receipient_name, "please enter beneficiary name")) {
+                return false
+            } else if (
+                evaluateFormMember(receipient_number, "please enter beneficiary number")) {
+                return false
+            } else if (
+                evaluateFormMember(receipient_network, "please enter beneficiary network")) {
+                return false
+            } else if (
+                evaluateFormMember(amount, "please enter amount")) {
+                return false
+            } else if (evaluateFormMember(naration, "please enter transfer purpose")) {
+                return false
+            } else {
 
                 $("#display_from_account_type").text();
                 $("#display_from_account_name").text();
@@ -1335,100 +1361,66 @@
                 $("#display_to_receipient_network_type").text(receipient_network);
                 $("#display_category").text(category);
                 $("#display_purpose").text(naration);
-
-                $("#transaction_form").hide()
-                $("#related_information_display").hide()
-                $("#transaction_summary").show()
-            }
-
-            if (oneTimeTransfer) {
-                console.log('there')
-                from_account = $("#from_account").val().split('~');
-                from_account_ = from_account[2];
-                receipient_name = $("#onetime_beneficiary_name").val()
-                currency = from_account[3];
-                amount = $("#onetime_amount").val();
-                receipient_number = $("#onetime_beneficiary_number").val();
-                receipient_network = $("#onetime_beneficiary_network").val().split('~')[1];
-                category = $("#onetime_category").val().split('~')[1];
-                naration = $("#onetime_purpose").val();
-
-                // from_account = $("#from_account").val();
-                $("#display_from_account_type").text();
-                $("#display_from_account_name").text();
-                $("#display_from_account_no").text();
-                $("#display_currency").text(currency);
-                $("#display_transfer_amount").text(amount);
-                $("#display_to_receipient_number").text(receipient_number);
-                $("#display_to_receipient_network_type").text(receipient_network);
-                $("#display_to_receipient_name").text(receipient_name)
-                $("#display_category").text(category);
-                $("#display_purpose").text(naration);
-
                 $("#transaction_form").hide()
                 $("#transaction_summary").show()
-            }
+                console.log("mine")
+                $("#confirm_button").click(function (e) {
+                    e.preventDefault();
+                    console.log("clicked")
+                    if ($("#terms_and_conditions").is(":checked")) {
 
-            $("#confirm_button").click(function (e) {
-                e.preventDefault();
-                user_pin = $("#user_pin").val();
-
-                if (!oneTimeTransfer) {
-                    console.log("beneficiary transfer out")
-                    console.log(from_account_);
-                    console.log(currency);
-                    console.log(amount);
-                    console.log(receipient_number);
-                    console.log(receipient_network);
-                    console.log(category);
-                    console.log(naration);
-                    console.log(user_pin);
-
-                }
-                if (oneTimeTransfer) {
-                    // {{-- console.log(from_account); --}}
-                    console.log("onetime transfer out")
-                    console.log(from_account_);
-                    console.log(currency);
-                    console.log(amount);
-                    console.log(receipient_number);
-                    console.log(receipient_network);
-                    console.log(category);
-                    console.log(naration);
-                    console.log(user_pin);
-                }
-
-                $.ajax({
-                    type: "POST",
-                    url: "../mobile-money-api",
-                    datatype: "application/json",
-                    data: {
-                        'from_account': from_account_,
-                        'amount': amount,
-                        'currency': currency,
-                        'category_': category,
-                        'receipient_number': receipient_number,
-                        'receipient_network': receipient_network,
-                        'naration': naration,
-                        'user_pin': user_pin
-
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                            'content')
-                    },
-                    success: function (response) {
-                        // {{-- console.log(response); --}}
-                        if (response.responseCode == '000') {
-                            toaster(response.message, 'success', 10000);
-                        } else {
-                            toaster(response.message, 'error', 6000);
-
-
-                        }
+                        $("#transfer_pin_modal_button").click(function (e) {
+                            e.preventDefault();
+                            user_pin = $("#user_pin").val()
+                            // if ($("#user_pin").val().length < 4) {
+                            //     toaster('Enter 4 digit pin', 'error', 2000)
+                            //     return false
+                            // } else {
+                            //     console.log("im here")
+                            $.ajax({
+                                type: "POST",
+                                url: "../mobile-money-api",
+                                datatype: "application/json",
+                                data: {
+                                    'from_account': from_account_,
+                                    'amount': amount,
+                                    'currency': currency,
+                                    'category_': category,
+                                    'receipient_number': receipient_number,
+                                    'receipient_network': receipient_network,
+                                    'naration': naration,
+                                    'user_pin': user_pin
+                                },
+                                headers: {
+                                    'X-CSRF-TOKEN': $(
+                                            'meta[name="csrf-token"]')
+                                        .attr(
+                                            'content')
+                                },
+                                success: function (response) {
+                                    if (response.responseCode ==
+                                        '000') {
+                                        toaster(response.message,
+                                            'success',
+                                            10000);
+                                        console.log("success")
+                                    } else {
+                                        toaster(response.message,
+                                            'error',
+                                            2000);
+                                        console.log("fail")
+                                    }
+                                }
+                            })
+                            $("#user_pin").val("")
+                            // }
+                        })
+                    } else {
+                        toaster('Accept Terms & Conditions to continue', 'error', 2000)
+                        return false;
                     }
                 })
-            })
+            }
         })
 
     });

@@ -121,7 +121,7 @@ class paymentController extends Controller
         } else if ($payment_type == 'AIR') {
             return back();
         } else if ($payment_type == 'UTL') {
-            return back();
+            return view('pages.payments.utility');
         } else if ($payment_type == 'EDU') {
             return back();
         } else if ($payment_type == 'GVT') {
@@ -129,15 +129,16 @@ class paymentController extends Controller
         } else {
             return view('pages.payments.payment_beneficiary');
         }
-
     }
 
-    public function beneficiary_list() {
+    public function beneficiary_list()
+    {
 
         return view('pages.payments.payment_beneficiary_list');
     }
 
-    public function all_paymentbeneficiary_list() {
+    public function all_paymentbeneficiary_list()
+    {
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -154,6 +155,4 @@ class paymentController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
-
-
 }

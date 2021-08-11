@@ -25,7 +25,7 @@ class PaymentTypesController extends Controller
         } else if ($payment_type == 'AIR') {
             return view('pages.payments.airtime_payment', ['payment_type' => $payment_type]);
         } else if ($payment_type == 'UTL') {
-            return back();
+            return view('pages.payments.utility');
         } else if ($payment_type == 'EDU') {
             return back();
         } else if ($payment_type == 'GVT') {
@@ -45,7 +45,7 @@ class PaymentTypesController extends Controller
 
         // echo ($payment_type);
 
-        return $payment_type ;
+        return $payment_type;
 
 
         if ($payment_type == 'AIR') {
