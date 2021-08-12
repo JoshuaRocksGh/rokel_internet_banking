@@ -2243,6 +2243,9 @@
                 if(destination_type =="OTHERS"){
                     {{-- alert(destination_type) --}}
 
+                    var from_account_ = $('.from_account').val();
+
+
                     var receiver_name_ = $("#receiver_name").val()
                     $("#display_receiver_name").text(receiver_name_)
                     $("#receiver_name_receipt").text(receiver_name_)
@@ -2257,25 +2260,54 @@
                     var amount_ = $("#amount").val()
                     $("#display_transfer_amount").text(formatToCurrency(Number(amount_)))
                     $("#amount_receipt").text(formatToCurrency(Number(amount_)))
+                    
+                    // write an if statement for transfer amount if its less
+
+
+                    if (from_account_.trim() == '' || amount_ == '' || receiver_name_ == '' || receiver_phone_ =='' || receiver_address_ == '' ) {
+                        // alert('fields must not be empty');
+                    toaster('Fields must not be empty', 'error', 10000);
+                    return false;
+                }else {
+                    $('#transaction_summary').show();
+                    $("#request_form_div").hide();
+                }
                 }else{
                     {{-- alert("SELF") --}}
 
+                    var from_account_self_ = $('.from_account').val();
+
+                    var receiver_name_self_ = $("#receiver_name_self").val()
+
                     $("#display_receiver_name").text(@json(session()->get('userAlias')))
+                    $("#receiver_name_receipt").text(@json(session()->get('userAlias')))
 
                     var receiver_phoneNum_self_ = $("#receiver_phoneNum_self").val()
                     $("#display_receiver_telephone").text(receiver_phoneNum_self_)
+                    $("#receiver_telephone_receipt").text(receiver_phoneNum_self_)
 
                     var receiver_address_self = $("#receiver_address_self").val()
                     $("#display_receiver_address").text(receiver_address_self)
 
+
                     var amount_self_ = $("#amount_self").val()
                     $("#display_transfer_amount").text(formatToCurrency(Number(amount_self_)))
+                    $("#amount_receipt").text(formatToCurrency(Number(amount_self_)))
 
+                    if (from_account_self_.trim() == '' || amount_self_ == '' || receiver_name_self_ == '' || receiver_phoneNum_self_ =='' || receiver_address_self == '' ) {
+                        // alert('fields must not be empty');
+                    toaster('Fields must not be empty', 'error', 10000);
+                    return false;
+                }else {
+
+                    $('#transaction_summary').show();
+                    $("#request_form_div").hide();
+                    return false;
+
+                } 
 
                 }
-                $('#transaction_summary').show();
-                $("#request_form_div").hide();
-                return false;
+                
 
                 // alert('i have been clicked');
                 let from_account = $('.from_account').val();
@@ -2330,43 +2362,7 @@
                             // $('#print_receipt').hide();
                             $('.submit-text').hide();
                             let from_account_value = from_account_info[2].trim();
-                        $.ajax({
 
-                            'type': 'POST',
-                            'url': 'initiate-korpor',
-                            "datatype": "application/json",
-                            'data': {
-                                'amount': transfer_amount,
-                                'debit_account': from_account_value,
-                                'pin_code': user_pin,
-                                'receiver_address': receiver_address.trim(),
-                                'receiver_name': receiver_name.trim(),
-                                'receiver_phone': receiver_phoneNum,
-                                'sender_name': sender_name.trim()
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response) {
-
-                                console.log(response)
-
-                                if (response.responseCode == '000') {
-                                    toaster(response.message, 'success', 20000);
-                                    $("#request_form_div").hide();
-                                    $('.display_button_print').show();
-                                } else {
-
-                                    toaster(response.message, 'error', 9000);
-
-                                    $('#spinner').hide();
-                                    $('#spinner-text').hide();
-                                    $('.submit-text').show();
-                                    // $('#confirm_payment').show();
-                                    // $('#confirm_button').attr('disabled', false);
-                                }
-                            }
-                        });
                     }
                 }
             });
@@ -2540,10 +2536,61 @@
                             let receiver_phoneNum = $('#receiver_phoneNum_self').val();
                             let receiver_address = $('#receiver_address_self').val();
                             let sender_name = @json(session()->get('userAlias'));
-                            let user_pin = $('#user_pin_self').val();
+                            let user_pin = $('#user_pin').val();
                             // console.log(sender_name);
 
+                            let from_account_value = from_account_info[2].trim();
 
+                            $.ajax({
+
+                                'type': 'POST',
+                                'url': 'initiate-korpor',
+                                "datatype": "application/json",
+                                'data': {
+                                    'amount': transfer_amount,
+                                    'debit_account': from_account_value,
+                                    'pin_code': user_pin,
+                                    'receiver_address': receiver_address.trim(),
+                                    'receiver_name': receiver_name.trim(),
+                                    'receiver_phone': receiver_phoneNum,
+                                    'sender_name': sender_name.trim()
+                                },
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success: function(response) {
+
+                                    {{--  console.log(response)  --}}
+
+                                    if (response.responseCode == '000') {
+                                        var ref_number = response.message
+
+                                        var reference_number = ref_number.split(" ")
+                                        {{-- console.log(reference_number); --}}
+                                        $("#reference_number_receipt").text(reference_number[7])
+
+                                        Swal.fire(
+                                                        '',
+                                                        response.message,
+                                                        'success'
+                                                    );
+                                        $(".receipt").show();
+                                        $('.form_process').hide();
+                                        // toaster(response.message, 'success', 20000);
+                                        // $("#request_form_div").hide();
+                                        // $('.display_button_print').show();
+                                    } else {
+
+                                        toaster(response.message, 'error', 9000);
+
+                                        // $('#spinner').hide();
+                                        // $('#spinner-text').hide();
+                                        // $('.submit-text').show();
+                                        // $('#confirm_payment').show();
+                                        // $('#confirm_button').attr('disabled', false);
+                                    }
+                                }
+                            });
                         }
                     })
                 } else {
