@@ -33,6 +33,7 @@ use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSame
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Budgeting\SpendingStaticsController;
+use App\Http\Controllers\BulkUpload\CorporateKorporController;
 use App\Http\Controllers\Cards\CardsController;
 use App\Http\Controllers\Chatbot\FacebookChatbotController;
 use App\Http\Controllers\Chatbot\InstagramChatbotController;
@@ -60,6 +61,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MaileController;
 use App\Http\Controllers\Payments\Bulk\BulkKorporController;
 use App\Http\Controllers\Payments\BulkUpload\BulkUploadsController;
+use App\Http\Controllers\Payments\BulkUpload\CorporateKorporController as BulkUploadCorporateKorporController;
 use App\Http\Controllers\Payments\CardlessController;
 use App\Http\Controllers\Payments\KorporController;
 use App\Http\Controllers\Payments\MobileMoneyController;
@@ -194,6 +196,10 @@ Route::post('/initiate-korpor', [KorporController::class, 'initiate_korpor'])->n
 Route::post('/korpor-otp', [KorporController::class, 'korpor_otp'])->name('korpor-otp');
 Route::post('/redeem-korpor', [KorporController::class, 'redeem_korpor'])->name('redeem-korpor');
 Route::post('/redeemed-korpor', [KorporController::class, 'send_redeemed_request'])->name('redeemed-korpor');
+
+// Route ofr corporate korpor payment 
+Route::post('/corporate-initiate-korpor', [BulkUploadCorporateKorporController::class, 'corporate_initiate_korpor'])->name('corporate-initiate-korpor');
+
 
 // Bulk ekorpor
 Route::get('/bulk-korpor_detail', [KorporController::class, 'bulk_korpor_detail'])->name('bulk-korpor_detail');

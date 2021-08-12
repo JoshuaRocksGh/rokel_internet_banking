@@ -108,7 +108,7 @@ class LoginController extends Controller
                         "lastLogin" => $user_detail->lastLogin,
                         "customerType" => $user_detail->customerType,
                         "checkerMaker" => $user_detail->checkerMaker,
-                        "checkerMaker" => 'M',
+                        // "checkerMaker" => 'M',
                         "userMandate" => 'A' ,
                         "headers"=>[
                             "x-api-key"=> "123",
