@@ -29,7 +29,7 @@ class CorporateKorporController extends Controller
 
         // return $request;
 
-        
+
         $base_response = new BaseResponse();
 
         // VALIDATION
@@ -56,7 +56,7 @@ class CorporateKorporController extends Controller
 
 
         $data = [
-                
+
             'user_mandate' => $mandate,
             'account_mandate' => $request->account_mandate,
             'postBy' => $sender_name,
@@ -71,19 +71,14 @@ class CorporateKorporController extends Controller
 
         ];
 
-        return $data;
+        // return $data;
 
-        
+
         try {
 
+            dd(env('CIB_API_BASE_URL') . "send-korpor-gone-for-pending");
 
-            // $response = Http::post(env('API_BASE_URL') . "payment/korpor", $data)->headers({
-            //     ''
-            // });
-
-
-            // return $data;
-            $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "payment/korpor", $data);
+            $response = Http::post(env('CIB_API_BASE_URL') . "send-korpor-gone-for-pending", $data);
 
 
             // return $response;

@@ -2566,7 +2566,7 @@
                             console.log(from_account_)
 
                             var from_account = from_account_[2]
-                            
+
 
                             // let from_account = from_account_value;
                             let transfer_amount = $('#amount').val();
@@ -2580,6 +2580,7 @@
                             let from_account_number = from_account_[2];
                             var form_account_currency = from_account_[3];
                             var from_account_mandate = from_account_[5]
+                            {{--  console.log(from_account_mandate)  --}}
 
                             $.ajax({
 
@@ -2595,7 +2596,7 @@
                                     'receiver_phone': receiver_phoneNum,
                                     'sender_name': sender_name.trim(),
                                     'account_currency' : form_account_currency,
-                                    'account_mandate ' : from_account_mandate  
+                                    'account_mandate' : from_account_mandate
                                 },
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
