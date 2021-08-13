@@ -422,9 +422,27 @@ class KorporController extends Controller
 
 
     public function reverse_korpor(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'reference_no' => 'required',
+            'receiver_phoneNo' => 'required',
+            'pin' => 'required'
+        ]);
+
+        // return $request ;
+
+        $base_response = new BaseResponse();
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         $api_headers = session()->get("headers");
+        // dd($api_headers);
         // return $authToken;
 
         // $base_response = new BaseResponse();
@@ -435,7 +453,7 @@ class KorporController extends Controller
         // $accountNumber = "004001100241700194";
         $beneficiaryMobileNo = $request->receiver_phoneNo;
         $customerNo = session()->get('customerNumber');
-        $postedBy = session()->get('userAlias');
+        $postedBy = session()->get('userId');
         $referenceNo = $request->reference_no;
         $pinCode = $request->pin;
 
@@ -454,16 +472,26 @@ class KorporController extends Controller
         // return $data;
 
 
-        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "payment/reverseKorpor", $data);
-        // return $response;
 
-        //for debugging purposes
-        // return $data;
-        // $response = Http::get(env('API_BASE_URL') . "payment/unredeemedkorpor/$accountNumber");
-        // return $response;die();
-        $result = new ApiBaseResponse();
+        try {
 
-        return $result->api_response($response);
+            $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "payment/reverseKorpor", $data);
+            // return $response;
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+
+        }
     }
 
     public function bulk_korpor()
