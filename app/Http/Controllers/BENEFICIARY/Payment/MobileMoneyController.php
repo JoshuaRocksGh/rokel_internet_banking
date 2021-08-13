@@ -17,14 +17,15 @@ class MobileMoneyController extends Controller
     {
         $validator = Validator::make($request->all(),  [
 
-            'from_account' => 'required',
-            'currency' => 'required',
+            'accountNumber' => 'required',
+            // 'currency' => 'required',
             'amount' => 'required',
-            'receipient_number' => 'required',
-            'category_' => 'required',
-            'receipient_network' => 'required',
             'naration' => 'required',
-            'user_pin' => 'required'
+            'payeeName' => 'required',
+            'payeeNumber' => 'required',
+            'paymentCode' => 'required',
+            'paymentType' => 'required',
+            'pinCode' => 'required'
         ]);
 
         // return $request;
@@ -46,27 +47,31 @@ class MobileMoneyController extends Controller
 
         // return $user_pin;
 
-        if ($user_pin != '123456') {
+        // if ($user_pin != '123456') {
 
-            return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
+        //     return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
 
-        }
+        // }
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+        $customerName = session()->get('userAlias');
+        $customerNumber = session()->get('customerNumber');
 
         $data = [
 
-            'from_account' => $request->from_account,
-            'currency' => $request->currency,
+            'accountNumber' => $request->accountNumber,
             'amount' => $request->amount,
-            'receipient_number' => $request->receipient_number,
-            'category_' => $request->category_,
-            'receipient_network' => $request->receipient_network,
+            'userID' => $userID,
+            'customerName' => $customerName,
+            'customerNumber' => $customerNumber,
+            'payeeName' => $request->payeeName,
+            'payeeNumber' => $request->payeeNumber,
+            'paymentCode' => $request->paymentCode,
             'naration' => $request->naration,
-            'user_pin' => $request->user_pin,
-            'authToke' => $authToken,
-            'userID' => $userID
+            'paymentType' => $request->paymentType,
+            'pinCode' => $request->pinCode,
+
         ];
 
         // return $data ;
