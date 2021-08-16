@@ -566,8 +566,8 @@
 
 
                                                                             <select
-                                                                                class="form-control col-md-12 from_account" id="account_of_transfer"
-                                                                                required>
+                                                                                class="form-control col-md-12 from_account"
+                                                                                id="account_of_transfer" required>
                                                                                 <option value="">Select Account
                                                                                 </option>
 
@@ -681,6 +681,18 @@
                                                                                 </div>
 
 
+
+                                                                            </div>
+
+                                                                            <div class="form-group row">
+                                                                                <b class="col-md-4 text-primary">Purpose of Transfer<span class="text-danger">*</span></b>
+
+                                                                                <input type="text"
+                                                                                    class="form-control col-md-8 "
+                                                                                    id="others_form_narration"
+                                                                                    placeholder="Enter Naration"
+                                                                                    autocomplete="off" required
+                                                                                    value="E-Korpor Transfer">
 
                                                                             </div>
 
@@ -1630,7 +1642,8 @@
                             value: data[index].accountType + '~' + data[index]
                                 .accountDesc + '~' + data[index].accountNumber + '~' +
                                 data[index].currency + '~' + data[index]
-                                .availableBalance + '~' + data[index].accountMandate + '~' + data[index].currencyCode
+                                .availableBalance + '~' + data[index].accountMandate + '~' +
+                                data[index].currencyCode
                         }).text(data[index].accountType + '~' + data[index].accountNumber +
                             '~' + data[index].currency + '~' + data[index].availableBalance
                         ));
@@ -2580,7 +2593,9 @@
                             let from_account_number = from_account_[2];
                             var form_account_currency = from_account_[3];
                             var from_account_mandate = from_account_[5]
-                            {{--  console.log(from_account_mandate)  --}}
+                            var from_account_currCode = from_account_[6]
+                            var narration = $("#others_form_narration").val()
+                            {{-- console.log(from_account_mandate) --}}
 
                             $.ajax({
 
@@ -2595,8 +2610,10 @@
                                     'receiver_name': receiver_name.trim(),
                                     'receiver_phone': receiver_phoneNum,
                                     'sender_name': sender_name.trim(),
-                                    'account_currency' : form_account_currency,
-                                    'account_mandate' : from_account_mandate
+                                    'account_currency': form_account_currency,
+                                    'account_mandate': from_account_mandate,
+                                    'currCode': from_account_currCode,
+                                    'narration' : narration
                                 },
                                 headers: {
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

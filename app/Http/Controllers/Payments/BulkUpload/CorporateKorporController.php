@@ -24,7 +24,8 @@ class CorporateKorporController extends Controller
             'receiver_phone' => 'required',
             'sender_name' => 'required' ,
             'account_currency' => 'required',
-            'account_mandate' => 'required'
+            'account_mandate' => 'required',
+            'currCode' => 'required'
         ]);
 
         // return $request;
@@ -52,6 +53,8 @@ class CorporateKorporController extends Controller
         $receiverPhone = $request->receiver_phone;
         $user_ip_address =$request->ip();
         $account_currency = $request->account_currency;
+        $currCode = $request->currCode;
+        $narration = $request->narration ;
 
 
 
@@ -60,7 +63,7 @@ class CorporateKorporController extends Controller
             'user_mandate' => $mandate,
             'account_mandate' => $request->account_mandate,
             'postBy' => $sender_name,
-            'destinationAccountId' => $receiverPhone,
+            'credit_account' => $receiverPhone,
             'account_no' => $debitAccount,
             'customer_no' => $customer_no,
             'user_alias' => $sender_name,
@@ -68,7 +71,9 @@ class CorporateKorporController extends Controller
             'amount' => $amount,
             'receiver_address' => $receiverAddress,
             'receiver_name' => $receiverName,
-
+            'currCode' => $currCode,
+            'narration' => $narration ,
+            'userID' => $userID
         ];
 
         // return $data;
@@ -76,24 +81,31 @@ class CorporateKorporController extends Controller
 
         try {
 
-            dd(env('CIB_API_BASE_URL') . "send-korpor-gone-for-pending");
+            // dd(env('CIB_API_BASE_URL') . "send-korpor-gone-for-pending");
 
-            $response = Http::post(env('CIB_API_BASE_URL') . "send-korpor-gone-for-pending", $data);
+            $response = Http::post(env('CIB_API_BASE_URL') ."send-korpor-gone-for-pending", $data);
 
 
             // return $response;
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);
+
         } catch (\Exception $e) {
 
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
 
-            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+            return response()->json([
+
+            ]);
+            return $response ;
+            return false ;
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
+
+            return $base_response->api_response('500', "Internal Server Error",  NuLL); // return API BASERESPONSE
 
 
         }

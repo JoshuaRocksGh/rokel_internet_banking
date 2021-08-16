@@ -71,12 +71,12 @@
                                         <thead>
                                             <tr class="bg-info text-white">
                                                 <th>Rquest Id</th>
-                                                <th>Transfer Purpose</th>
-                                                <th>Amount</th>
                                                 <th>Req-Type</th>
-                                                <th>Initiated By</th>
-                                                <th>Posted Date</th>
                                                 <th>Account No</th>
+                                                <th>Amount</th>
+                                                <th>Transfer Purpose</th>
+                                                <th>Posted Date</th>
+                                                <th>Initiated By</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -410,6 +410,8 @@
                                 request_type = 'International Bank Transfer'
                             } else if (data[index].request_type == 'CHQR') {
                                 request_type = 'Cheque Book Request'
+                            } else if (data[index].request_type == "KORP"){
+                                request_type = 'E-Korpor'
                             } else {
                                 request_type = 'Others'
                                 if (request_type = 'Others') {
@@ -421,12 +423,13 @@
 
                             table.row.add([
                                 data[index].request_id,
-                                data[index].narration,
-                                amount,
                                 request_type,
-                                data[index].postedby,
-                                dd + '/' + mm + '/' + yyyy,
                                 data[index].account_no,
+                                amount,
+                                data[index].narration,
+                                dd + '/' + mm + '/' + yyyy,
+                                data[index].postedby,
+
                                 `<a onclick="window.open('{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }}', '_blank', 'location=yes,height=670,width=1200,scrollbars=yes,status=yes')">
                                         <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
                                     </a>

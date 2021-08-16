@@ -431,7 +431,10 @@
                             let request_type = 'Cheque Book Request'
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
 
-                        } else {
+                        } else if(request_type == 'KORP') {
+                            let request_type = 'E-Korpor Transaction'
+                            request_type != null ? append_approval_details("Request Type", request_type) : '';
+                        }else {
                             let request_type = ''
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
                         }
