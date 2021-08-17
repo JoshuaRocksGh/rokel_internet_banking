@@ -82,7 +82,7 @@ use App\Http\Controllers\Transfers\SchedulePayment\SchedulePaymentController;
 use App\Http\Controllers\Transfers\StandingOrderController;
 use App\Http\Controllers\TransferStatus\TransferStatusController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SelfEnrollController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -103,6 +103,10 @@ Route::get('/', [AuthenticationLoginController::class, 'login'])->name('login');
 Route::post('/login', [AuthenticationLoginController::class, 'login_'])->name('login');
 
 Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('login');
+
+Route::get('/self_enroll', [AuthenticationLoginController::class, 'self_enroll'])->name('self_enroll');
+Route::post('/validate-customer', [SelfEnrollController::class, 'validateCustomer'])->name('validate-customer');
+
 
 // Route::get('/logout', [AuthenticationLoginController::class, 'logout'])->name('logout');
 
@@ -197,7 +201,7 @@ Route::post('/korpor-otp', [KorporController::class, 'korpor_otp'])->name('korpo
 Route::post('/redeem-korpor', [KorporController::class, 'redeem_korpor'])->name('redeem-korpor');
 Route::post('/redeemed-korpor', [KorporController::class, 'send_redeemed_request'])->name('redeemed-korpor');
 
-// Route ofr corporate korpor payment 
+// Route ofr corporate korpor payment
 Route::post('/corporate-initiate-korpor', [BulkUploadCorporateKorporController::class, 'corporate_initiate_korpor'])->name('corporate-initiate-korpor');
 
 
