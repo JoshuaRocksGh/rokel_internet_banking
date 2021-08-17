@@ -62,15 +62,17 @@ class ApprovedRequestController extends Controller
 
             // return $response;
 
+            // dd($response) ;
+
             $result = new ApiBaseResponse();
             return $result->api_response($response);
         } catch (\Exception $e) {
 
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
 
             return $base_response->api_response('500', "Internal Server Error", (string) $e->getMessage()); // return API BASERESPONSE
 
