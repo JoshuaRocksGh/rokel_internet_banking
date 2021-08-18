@@ -6,19 +6,31 @@ use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
-use RealRashid\SweetAlert\Facades\Alert;
+
+use Illuminate\Support\Facades\Log;
 
 
 class LoginController extends Controller
 {
+
     public function login()
     {
+        if (session()->get('userToken')) {
+            return redirect('/home');
+        }
+
         return view('pages.authentication.login');
+    }
+
+    public function self_enroll()
+    {
+        return view('self_enroll');
     }
 
 
@@ -59,7 +71,7 @@ class LoginController extends Controller
 
         // return $data;
 
-       // dd(env('API_BASE_URL') . "/user/login");
+        // dd(env('API_BASE_URL') . "/user/login");
 
 
         try {
@@ -109,19 +121,17 @@ class LoginController extends Controller
                         "customerType" => $user_detail->customerType,
                         "checkerMaker" => $user_detail->checkerMaker,
                         // "checkerMaker" => 'M',
-                        "userMandate" => 'A' ,
-                        "headers"=>[
-                            "x-api-key"=> "123",
-                            "x-api-secret"=> "123",
-                            "x-api-source"=> "123",
-                            "x-api-token"=> "123"
-                            ]
+                        "userMandate" => 'A',
+                        "headers" => [
+                            "x-api-key" => "123",
+                            "x-api-secret" => "123",
+                            "x-api-source" => "123",
+                            "x-api-token" => "123"
+                        ]
 
                     ]);
 
-                    $api_headers = [
-
-                    ];
+                    $api_headers = [];
                     // return session();
                     // return session()->get('customerPhone');
 
@@ -161,7 +171,7 @@ class LoginController extends Controller
 
                */
 
-            //   return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
+                    //   return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
                     return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
                 } else {  // API responseCode is not 000
