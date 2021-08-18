@@ -71,11 +71,12 @@
                                         style="zoom: 1;">
                                         <thead>
                                             <tr class="bg-info text-white">
+                                                <th>Rquest Id</th>
                                                 <th>Req-Type</th>
-                                                <th>Status</th>
-                                                <th>Initiated By</th>
-                                                <th>Posted Date</th>
                                                 <th>Account No</th>
+                                                <th>Narration</th>
+                                                <th>Posted Date</th>
+                                                <th>Initiated By</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -339,6 +340,11 @@
             var table = $('.pending_transaction_request').DataTable();
             var nodes = table.rows().nodes();
 
+            table
+                .order([0, 'desc'])
+                .column(0).visible(false, false)
+                .draw();
+
             $(".loans_display_area").hide()
             $(".loans_error_area").hide()
             $(".loans_loading_area").show()
@@ -361,6 +367,19 @@
 
 
                         $.each(data, function(index) {
+
+
+                            let request_id = data[index].request_id;
+                            let customer_no = data[index].customer_no;
+
+                            let today = new Date(data[index].post_date);
+                            let dd = String(today.getDate()).padStart(2, '0');
+                            let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                            let yyyy = today.getFullYear();
+
+                            let amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
+                                data[index].amount))
+
                             let request_type = ''
                             if (data[index].request_type == 'OWN') {
                                 request_type = 'Own Account Transfer'
@@ -374,25 +393,27 @@
                                 request_type = 'Bulk Transfer'
                             } else if (data[index].request_type == 'INT') {
                                 request_type = 'International Bank Transfer'
-                            } else {
+                            }else if (data[index].request_type == 'KORP') {
+                                request_type = 'E-Korpor'
+                            }else {
                                 request_type = 'Others'
                             }
-                            let request_id = data[index].request_id;
-                            let customer_no = data[index].customer_no;
+                            // let request_id = data[index].request_id;
+                            // let customer_no = data[index].customer_no;
 
 
                             table.row.add([
 
+                                data[index].request_id,
                                 request_type,
-                                `<button type="button" class="btn btn-danger disabled btn-xs waves-effect waves-light">Rejected</button>`
-
-                                ,
-                                data[index].postedby,
-                                data[index].post_date,
                                 data[index].account_no,
+                                data[index].narration,
+                                dd + '/' + mm + '/' + yyyy,
+                                data[index].postedby,
+
                                 `
                                                                              <a href="{{ url('approvals-pending-transfer-details/${request_id}/${customer_no}') }} " target="_blank">
-                                                                                <button type="button" class=" btn btn-info btn-xs waves-effect waves-light"> View Details</button>
+                                                                                <button type="button" class=" btn btn-danger disabled btn-xs waves-effect waves-light"> View Details</button>
                                                                             </a>
                                                                             `
 

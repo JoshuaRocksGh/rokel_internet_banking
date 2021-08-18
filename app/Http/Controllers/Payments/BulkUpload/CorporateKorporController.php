@@ -113,4 +113,77 @@ class CorporateKorporController extends Controller
 
     }
 
+    public function corporate_reverse_korpor(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'reference_no' => 'required',
+            'receiver_phoneNo' => 'required',
+            'accountNumber' => 'required' ,
+            'accountCurrency' => 'required' ,
+            'accountMandate' => 'required' ,
+            'accountCurrCode' => 'required'
+        ]);
+
+
+        $base_response = new BaseResponse();
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        // return $request ;
+
+        $authToken = session()->get('userToken');
+        $mandate = session()->get('userMandate');
+        $userID = session()->get('userId');
+        $api_headers = session()->get('headers');
+        $sender_name = session()->get('userAlias');
+        $customer_no = session()->get('customerNumber');
+        $api_headers = session()->get("headers");
+        $reference_no = $request->reference_no;
+        $receiver_phoneNo = $request->receiver_phoneNo;
+        $accountNumber = $request->accountNumber;
+        $accountCurrency = $request->accountCurrency;
+        $accountMandate = $request->accountMandate;
+        $accountCurrCode = $request->accountCurrCode;
+
+        // dd(env('API_BASE_URL') . "payment/unredeemedKorpor/",$accountNumber);
+
+        $data = [
+            'accountNumber' => $accountNumber
+        ];
+
+        // return $data ;
+
+        // dd(env('API_BASE_URL') . "payment/unredeemedKorpor/{$accountNumber}");
+
+        $responses = Http::get(env('API_BASE_URL') . "payment/unredeemedKorpor/{$accountNumber}");
+
+        // dd($response['data']);
+
+        foreach ($responses as $response) {
+
+            dd($response->REMITTANCE_REF);
+            // $response['daa']
+            // if($response['parent'] == 0){
+            //     echo $menu['name'];
+            // }
+        }
+
+        // return response()->json([
+        //     'responseCode' => "750",
+        //     'message' => "Unredeemed Details" ,
+        //     'data'=> $response['data']
+        // ]);
+
+        // if($response->responseCode == "000"){
+
+        // }
+
+
+
+    }
+
 }

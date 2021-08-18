@@ -197,8 +197,11 @@ Route::post('/korpor-otp', [KorporController::class, 'korpor_otp'])->name('korpo
 Route::post('/redeem-korpor', [KorporController::class, 'redeem_korpor'])->name('redeem-korpor');
 Route::post('/redeemed-korpor', [KorporController::class, 'send_redeemed_request'])->name('redeemed-korpor');
 
-// Route ofr corporate korpor payment 
+// Route ofr corporate korpor payment
 Route::post('/corporate-initiate-korpor', [BulkUploadCorporateKorporController::class, 'corporate_initiate_korpor'])->name('corporate-initiate-korpor');
+
+Route::post('corporate-reverse-korpor', [BulkUploadCorporateKorporController::class, 'corporate_reverse_korpor'])->name('corporate-reverse-korpor');
+
 
 
 // Bulk ekorpor
@@ -646,6 +649,7 @@ Route::post('reversed-korpor-request', [KorporController::class, 'send_reversed_
 
 //Route to reverse cardless
 Route::post('reverse-korpor', [KorporController::class, 'reverse_korpor'])->name('reverse-korpor');
+
 
 //route to return interest rate types
 Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_Types'])->name('get-interest-types-api');
