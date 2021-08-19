@@ -789,7 +789,7 @@
             function ajax_post_for_reject() {
                 let narration = $('.swal2-input').val()
                 $('#reject_transaction').text("Processing ...")
-                var customer = @json($customer_no);
+                var customer_no = @json($customer_no);
                 var request_id = @json($request_id);
 
                 console.log(narration)
@@ -800,7 +800,8 @@
                     datatype: 'application/json',
                     data: {
                         'narration': narration,
-                        'request_id': request_id
+                        'request_id': request_id,
+                        'customer_no': customer_no
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

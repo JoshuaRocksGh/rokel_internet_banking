@@ -35,6 +35,10 @@
             src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
         }
 
+        /* input[name="reverse_pin"] {
+            display: none;
+        } */
+
     </style>
 
 
@@ -1026,6 +1030,24 @@
                                                     <div class="col-md-12">
 
 
+                                                        <div class="form-group row account_of_transfer_reverse">
+                                                            <b class="col-md-12 text-primary">Account from
+                                                                which
+                                                                e-korpor transfer was made &nbsp;
+                                                                <span class="text-danger">*</span> </b>
+
+
+                                                            <select
+                                                                class="form-control col-md-12 from_account"
+                                                                id="account_of_transfer_reverse" required>
+                                                                <option value="">Select Account
+                                                                </option>
+
+
+                                                            </select>
+                                                        </div>
+                                                        <hr class="account_of_transfer_reverse">
+                                                        <br class="account_of_transfer_reverse">
 
 
                                                         <div class="form-group row">
@@ -1056,14 +1078,14 @@
 
                                                         </div>
                                                         <br>
-                                                        <div class="form-group row">
+                                                        <div class="form-group row personal_pin">
 
                                                             <b class="col-md-5 text-primary">Enter Pin &nbsp; <span
                                                                     class="text-danger">*</span></b>
 
 
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="reference_pin" placeholder="Enter Pin"
+                                                            <input type="password" class="form-control col-md-7"
+                                                                id="reference_pin" placeholder="Enter Pin" name="reverse_pin"
                                                                 autocomplete="off" required>
                                                             <br>
 
@@ -1730,6 +1752,17 @@
             $(".receipt").hide();
 
             $(".korpor_details").hide();
+
+            var customerType = @json(session()->get('customerType'));
+                console.log(customerType);
+
+                if(customerType == 'C') {
+                    $(".account_of_transfer_reverse").show()
+                    $(".personal_pin").hide();
+                }else{
+                    $(".personal_pin").show()
+                    $(".account_of_transfer_reverse").hide()
+                }
 
             $("#redeem_button").click(function() {
 
@@ -2478,37 +2511,44 @@
             //button to submit for korpor payment for reversal
             $('#reverse_button').click(function() {
 
+                var customerType = @json(session()->get('customerType'));
+                console.log(customerType);
 
-                var reference_no = $("#reference_no").val();
-                var receiver_phoneNo = $("#receiver_phoneNo_reverse").val();
-                var pin = $("#reference_pin").val();
+                if (customerType == 'C') {
+                    // alert("Corporate Reversal");
 
+                    var account_num = $("#account_of_transfer_reverse").val().split("~");
+                    console.log(account_num)
+                    var acc_num = account_num[2];
+                    var acc_currency = account_num[3];
+                    var acc_mandate = account_num[5];
+                    var acc_currCode = account_num[6]
+                    // return false ;
+                    var reference_no = $("#reference_no").val();
+                    var receiver_phoneNo = $("#receiver_phoneNo_reverse").val();
+                    // var pin = $("#reference_pin").val();
 
-
-                // if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
-                //     '' || receiver_address == '') {
-                //     toaster('Field must not be empty', 'error', 10000)
-                //     return false
-                // }
-
-                if (reference_no == "" || receiver_phoneNo == "" || pin == "") {
+                    if (reference_no == "" || receiver_phoneNo == "" || account_num == "" ) {
                     toaster("Fields must not be empty", "error", 10000)
                     return false;
                 } else {
-
+                    $("#reverse-text").hide();
                     $("#spinner-reverse").show();
                     $("#spinner-text-reverse").show();
-                    $("#reverse-text").hide();
+
 
                     $.ajax({
 
                         type: 'POST',
-                        url: 'reverse-korpor',
+                        url: 'corporate-reverse-korpor',
                         datatype: "application/json",
                         data: {
                             'reference_no': reference_no,
                             'receiver_phoneNo': receiver_phoneNo,
-                            'pin': pin
+                            'accountNumber': acc_num,
+                            'accountCurrency': acc_currency,
+                            'accountMandate': acc_mandate,
+                            'accountCurrCode': acc_currCode
                         },
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2517,7 +2557,12 @@
 
 
                             if (response.responseCode == '000') {
-                                toaster(response.message, 'success', 2000)
+                                Swal.fire(
+                                            '',
+                                            response.message,
+                                            'success'
+                                        );
+                                // toaster(response.message, 'success', 2000)
                                 // var data = response.data.loanSchedule
                                 // console.log(response)
                                 $('#spinner-text-reverse').hide()
@@ -2525,7 +2570,7 @@
                                 $('#reverse-text').show();
                                 setTimeout(function() {
                                     window.location.reload();
-                                }, 20000);
+                                }, 2000);
 
                             } else {
 
@@ -2548,6 +2593,86 @@
 
 
                 }
+
+                }else {
+
+                var reference_no = $("#reference_no").val();
+                var receiver_phoneNo = $("#receiver_phoneNo_reverse").val();
+                var pin = $("#reference_pin").val();
+
+
+
+                // if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
+                //     '' || receiver_address == '') {
+                //     toaster('Field must not be empty', 'error', 10000)
+                //     return false
+                // }
+
+                if (reference_no == "" || receiver_phoneNo == "" || pin == "") {
+                    toaster("Fields must not be empty", "error", 10000)
+                    return false;
+                } else {
+                    $("#reverse-text").hide();
+                    $("#spinner-reverse").show();
+                    $("#spinner-text-reverse").show();
+
+
+                    $.ajax({
+
+                        type: 'POST',
+                        url: 'reverse-korpor',
+                        datatype: "application/json",
+                        data: {
+                            'reference_no': reference_no,
+                            'receiver_phoneNo': receiver_phoneNo,
+                            'pin': pin
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+
+
+                            if (response.responseCode == '000') {
+                                Swal.fire(
+                                            '',
+                                            response.message,
+                                            'success'
+                                        );
+                                // toaster(response.message, 'success', 2000)
+                                // var data = response.data.loanSchedule
+                                // console.log(response)
+                                $('#spinner-text-reverse').hide()
+                                $('#spinner-reverse').hide()
+                                $('#reverse-text').show();
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 2000);
+
+                            } else {
+
+                                toaster(response.message, 'error', 9000);
+                                $('#spinner-text-reverse').hide()
+                                $('#spinner-reverse').hide()
+                                $('#reverse-text').show();
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            $('#submit').attr('disabled', false);
+                            $('#spinner').hide()
+                            $('#spinner-text').hide()
+
+                            $('#log_in').show()
+                            $('#error_message').text("Connection Error")
+                            $('#failed_login').show()
+                        }
+                    });
+
+
+                }
+
+                }
+
 
             });
 
@@ -2653,7 +2778,97 @@
 
                         } else {
 
-                            alert("SELF")
+                            // alert("SELF")
+
+                            var from_account_ = $('#account_of_transfer').val().split('~');
+                            // var from_account = from_account_[2]
+                            let from_account_number = from_account_[2];
+                            var form_account_currency = from_account_[3];
+                            var from_account_mandate = from_account_[5]
+                            var from_account_currCode = from_account_[6]
+                            var narration = $("#others_form_narration").val()
+                            // alert('i have been clicked');
+                            let from_account = $('.from_account').val();
+                                let transfer_amount = $('#amount_self').val();
+                                console.log(transfer_amount);
+                                // alert('');
+                                let receiver_name = $('#receiver_name_self').val();
+                                let receiver_phoneNum = $('#receiver_phoneNum_self').val();
+                                let receiver_address = $('#receiver_address_self').val();
+                                let sender_name = @json(session()->get('userAlias'));
+                                let user_pin = $('#user_pin').val();
+                                // console.log(sender_name);
+
+                                let from_account_value = from_account_info[2].trim();
+
+                                function redirect_page() {
+                                    window.location.href = "{{ url('home') }}";
+
+                                };
+                                $.ajax({
+
+                                    'type': 'POST',
+                                    'url': 'corporate-initiate-korpor',
+                                    "datatype": "application/json",
+                                    'data': {
+
+                                        'amount': transfer_amount,
+                                        'debit_account': from_account_number,
+                                        // 'pin_code': user_pin,
+                                        'receiver_address': receiver_address.trim(),
+                                        'receiver_name': receiver_name.trim(),
+                                        'receiver_phone': receiver_phoneNum,
+                                        'sender_name': sender_name.trim(),
+                                        'account_currency': form_account_currency,
+                                        'account_mandate': from_account_mandate,
+                                        'currCode': from_account_currCode,
+                                        'narration' : narration,
+
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
+                                    },
+                                    success: function(response) {
+
+                                        {{-- console.log(response) --}}
+
+                                        if (response.responseCode == '000') {
+                                            var ref_number = response.message
+
+                                            var reference_number = ref_number.split(" ")
+                                            {{-- console.log(reference_number); --}}
+                                            $("#reference_number_receipt").text(
+                                                reference_number[7])
+
+                                            Swal.fire(
+                                                '',
+                                                response.message,
+                                                'success'
+                                            );
+
+                                            setTimeout(function() {
+
+                                                redirect_page();
+                                            }, 3000);
+
+                                            // $(".receipt").show();
+                                            // $('.form_process').hide();
+                                            // toaster(response.message, 'success', 20000);
+                                            // $("#request_form_div").hide();
+                                            // $('.display_button_print').show();
+                                        } else {
+
+                                            toaster(response.message, 'error', 9000);
+
+                                            // $('#spinner').hide();
+                                            // $('#spinner-text').hide();
+                                            // $('.submit-text').show();
+                                            // $('#confirm_payment').show();
+                                            // $('#confirm_button').attr('disabled', false);
+                                        }
+                                    }
+                                });
                         }
 
                     } else {

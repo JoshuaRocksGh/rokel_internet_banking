@@ -87,7 +87,8 @@ class ApprovedRequestController extends Controller
 
         $validator = Validator::make($request->all(), [
             'narration' => 'required',
-            'request_id' => 'required'
+            'request_id' => 'required' ,
+            'customer_no' => 'required'
         ]);
 
 
@@ -101,6 +102,7 @@ class ApprovedRequestController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
+        // return $request ;
 
         $customer_no = session()->get('customerNumber');
         $request_id = $request->request_id;
@@ -109,6 +111,7 @@ class ApprovedRequestController extends Controller
         $userAlias = session()->get('userAlias');
         $userToken = session()->get('userToken');
         $deviceIp = $request->ip();
+        $narration = $request->narration ;
 
         $data = [
             "authToken" => $userToken,
@@ -117,7 +120,8 @@ class ApprovedRequestController extends Controller
             "user_id" => $userId,
             "request_id" => $request_id,
             "user_alias" => $userAlias,
-            "customer_no" => $customer_no
+            "customer_no" => $customer_no ,
+            "narration" => $narration
         ];
 
         // return $data ;
