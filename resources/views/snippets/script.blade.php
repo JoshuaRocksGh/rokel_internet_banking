@@ -84,6 +84,7 @@
 
 <script type='text/javascript' src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'>
 </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
     $.ajaxSetup({
@@ -98,5 +99,25 @@
             }
         });
     });
+
+    function toaster(message, icon, timer) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+
+            timerProgressBar: false,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: icon,
+            title: message,
+            timer: timer
+        })
+    };
 
 </script>

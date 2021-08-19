@@ -106,6 +106,8 @@ Route::get('/login', [AuthenticationLoginController::class, 'login'])->name('log
 
 Route::get('/self_enroll', [AuthenticationLoginController::class, 'self_enroll'])->name('self_enroll');
 Route::post('/validate-customer', [SelfEnrollController::class, 'validateCustomer'])->name('validate-customer');
+Route::post('/confirm-customer', [SelfEnrollController::class, 'confirmCustomer'])->name('confirm-customer');
+Route::post('/register-customer', [SelfEnrollController::class, 'registerCustomer'])->name('register-customer');
 
 
 // Route::get('/logout', [AuthenticationLoginController::class, 'logout'])->name('logout');

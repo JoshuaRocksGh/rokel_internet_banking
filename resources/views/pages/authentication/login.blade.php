@@ -57,7 +57,7 @@
 
                             <label for="user_id">User ID<span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="user_id" placeholder="Enter your email"
-                                parsley-trigger="change" autocomplete="none" required>
+                                parsley-trigger="change" autocomplete="none">
 
                         </div>
 
@@ -70,7 +70,7 @@
                             <label for="password">Password<span class="text-danger">*</span></label>
                             <div class="input-group input-group-merge">
                                 <input type="password" id="password" class="form-control"
-                                    placeholder="Enter your password" autocomplete="none" required>
+                                    placeholder="Enter your password" autocomplete="none">
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>
@@ -106,10 +106,10 @@
 
                     <div id="self_enroll_form1" class="form-group">
 
-                        <label for="account_number"> Account Number <span class="text-danger">*</span></label>
-                        <input class="form-control mb-0" type="number" id="account_number"
+                        <label for="customer_number_input"> Account Number <span class="text-danger">*</span></label>
+                        <input class="form-control mb-0" type="number" id="customer_number_input"
                             placeholder="Enter your account number" pattern="[0-9]*" inputmode="numeric"
-                            parsley-trigger="change" autocomplete="none" required>
+                            parsley-trigger="change" autocomplete="none">
                         <br />
                         <div id="a" class="form-group mb-0 text-center">
                             <button class="btn btn-primary btn-block" id="b_next1" type="submit"><span
@@ -128,21 +128,22 @@
                     </div>
 
                     <div id="self_enroll_form2" class="form-group">
-                        <label for="i_phone_number"> Phone Number<span class="text-danger">*</span></label>
+                        <label for="phone_number_input"> Phone Number<span class="text-danger">*</span></label>
 
-                        <input class="form-control mb-0" type="number" id="i_phone_number"
-                            placeholder="Enter your phone number" parsley-trigger="change" autocomplete="none"
-                            required />
+                        <input class="form-control mb-0" type="number" id="phone_number_input"
+                            placeholder="Enter your phone number" parsley-trigger="change" autocomplete="none" />
                         <br />
-                        <label for="i_id_number"> ID Number<span class="text-danger">*</span></label>
+                        <label for="id_number_input"> ID Number<span class="text-danger">*</span></label>
 
-                        <input class="form-control mb-0" type="text" id="i_id_number" placeholder="Enter your id number"
-                            parsley-trigger="change" autocomplete="none" required />
+                        <input class="form-control mb-0" type="text" id="id_number_input"
+                            placeholder="Enter your id number" parsley-trigger="change" autocomplete="none" />
                         <br />
-                        <label for="i_date_of_birth"> Date of birth<span class="text-danger">*</span></label>
-                        <input class="form-control mb-0" type="date" id="i_date_of_birth"
-                            placeholder="Enter your date of birth" parsley-trigger="change" autocomplete="none"
-                            required />
+                        <label for="date_of_birth_input"> Date of birth<span class="text-danger">*</span></label>
+
+                        <input type="text" id="date_of_birth_input" placeholder="Enter your date of birth"
+                            class="form-control mb-0" parsley-trigger="change" autocomplete="none"
+                            data-provide="datepicker" data-date-autoclose="true">
+
                         <br />
 
 
@@ -161,9 +162,9 @@
 
                     <div id="self_enroll_form3" class="form-group">
 
-                        <label for="i_one_time_pin"> Enter one time pin<span class="text-danger">*</span></label>
-                        <input class="form-control mb-0" type="text" id="i_one_time_pin"
-                            placeholder="Enter one time pin" parsley-trigger="change" autocomplete="none" required />
+                        <label for="one_time_pin_input"> Enter one time pin<span class="text-danger">*</span></label>
+                        <input class="form-control mb-0" type="text" id="one_time_pin_input"
+                            placeholder="Enter one time pin" parsley-trigger="change" autocomplete="none" />
                         <br />
                         <div class="form-group mb-0 text-center">
                             <button class="btn btn-primary btn-block" id="b_next3" type="submit"><span
@@ -171,7 +172,7 @@
                                 <span id="s_loading3">
                                     <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner3"
                                         aria-hidden="true"></span>
-                                    <span id="spinner-text2">Loading...</span>
+                                    <span id="spinner-text3">Loading...</span>
                                 </span>
                             </button>
                             <br />
@@ -341,7 +342,6 @@
 
             success: function (response) {
                 console.log(response);
-                var res = response.data
                 $('#submit').attr('disabled', false);
 
                 if (response.responseCode == "000") {
@@ -377,13 +377,14 @@
         })
     }
 
-    function validateCustomer(accountNumber) {
+
+    function validateCustomer(userData) {
         $.ajax({
             type: "POST",
             url: "../validate-customer",
             datatype: "application/json",
             data: {
-                'accountNumber': accountNumber
+                'customerNumber': userData.customerNumber
             },
             headers: {
                 'X-CSRF-TOKEN': $(
@@ -391,92 +392,221 @@
                     .attr(
                         'content')
             },
-            success: function (response) {
-                if (response.responseCode ==
-                    '000') {
-                    toaster(response.message,
-                        'success',
-                        10000);
-                    console.log("success")
-                } else {
-                    toaster(response.message,
-                        'error',
-                        2000);
-                    console.log("fail")
-                }
+        }).done(response => {
+            if (response.responseCode === '000') {
+                $('#self_enroll_form1').hide()
+                $('#self_enroll_form2').toggle(300)
+                console.log("customer number ajax success")
+                userData.authToken = response.data.authToken;
+            } else {
+                toaster(response.message,
+                    'error',
+                    3000);
+                $('#s_loading1').toggle()
+                $('#s_next1').show()
+                $('#b_next1').attr('disabled', false);
+                return false;
             }
+
+        }).fail(() => {
+            $('#s_loading1').toggle()
+            $('#s_next1').show()
+            $('#b_next1').attr('disabled', false);
+            $('#error_message').text("Connection Error")
+            $('#failed_login').show()
         })
     }
 
+    function confirmCustomer(userData) {
+        $.ajax({
+            type: "POST",
+            url: "../confirm-customer",
+            datatype: "application/json",
+            data: userData,
+            headers: {
+                'X-CSRF-TOKEN': $(
+                        'meta[name="csrf-token"]')
+                    .attr(
+                        'content')
+            },
+        }).done(response => {
+            if (response.responseCode === '000') {
+                console.log("confirmation successful")
+                $('#self_enroll_form2').hide()
+                $('#s_loading2').toggle()
+                $('#self_enroll_form3').toggle(500)
+
+            } else {
+                toaster(response.message,
+                    'error',
+                    2000);
+                return false
+            }
+        }).fail(() => {
+            $('#s_loading2').toggle()
+            $('#s_next2').show()
+            $('#b_next2').attr('disabled', false);
+            $('#error_message').text("Connection Error")
+            $('#failed_login').show()
+        })
+    }
+
+    function registerCustomer(userData) {
+        $.ajax({
+            type: "POST",
+            url: "../register-customer",
+            datatype: "application/json",
+            data: userData,
+            headers: {
+                'X-CSRF-TOKEN': $(
+                        'meta[name="csrf-token"]')
+                    .attr(
+                        'content')
+            },
+        }).done(response => {
+            if (response.responseCode === '000') {
+                toaster(response.message,
+                    'error',
+                    3000);
+                window.location.href = 'login'
+
+            } else {
+                toaster(response.message,
+                    'error',
+                    3000);
+                $('#s_next3').hide()
+                $('#s_loading3').toggle()
+                $('#b_next3').attr('disabled', false);
+                return false;
+            }
+
+        }).fail(() => {
+            $('#s_loading1').toggle()
+            $('#s_next1').show()
+            $('#b_next1').attr('disabled', false);
+            $('#error_message').text("Connection Error")
+            $('#failed_login').show()
+        })
+    }
     $(document).ready(function () {
 
-
-        $('#self_enroll_form').hide()
-
-        $('#failed_login').hide(),
+        let userData = new Object();
+        $('#self_enroll_form').hide(),
+            $('#failed_login').hide(),
             $('#spinner').hide(),
-            $('#spinner-text').hide(),
+            $('#spinner-text').hide()
 
+        $('#submit').on("click", function (e) {
+            e.preventDefault();
+            var email = $("#user_id").val();
+            var password = $('#password').val();
 
-            $('#login_post_form').submit(function (e) {
-                e.preventDefault();
-                var email = $("#user_id").val();
-                var password = $('#password').val();
-                $('#spinner').show(),
-                    $('#spinner-text').show(),
-
-                    $('#log_in').hide(),
-                    $('#submit').attr('disabled', true);
-
-                //var show_error = $('#failed_login').show();
+            if (email === "" || email === undefined) {
+                toaster("Please enter email", "error", 2000)
+            } else if (password === "" || password === undefined) {
+                toaster("Please enter password", "error", 2000)
+            } else {
+                $('#spinner').show()
+                $('#spinner-text').show()
+                $('#log_in').hide()
+                $('#submit').attr('disabled', true);
 
                 login(email, password)
+            }
+        })
 
-            })
-
-        $('#self_enroll').on("click", function () {
-            $('#login_form').hide(),
-                $('#login_page_extras').toggle(300),
-                $('#self_enroll_form2').hide(),
-                $('#self_enroll_form3').hide(),
-                $('#s_loading1').hide(),
-                $('#s_loading2').hide(),
-                $('#s_loading3').hide(),
-                $('#self_enroll_form').toggle(300)
+        $('#self_enroll').on("click", function (e) {
+            console.log("enroll")
+            e.preventDefault();
+            $('#login_form').hide()
+            $('#login_page_extras').toggle(300)
+            $('#self_enroll_form2').hide()
+            $('#self_enroll_form3').hide()
+            $('#s_loading1').hide()
+            $('#s_loading2').hide()
+            $('#s_loading3').hide()
+            $('#self_enroll_form').toggle(300)
             return false;
 
         })
 
-        $('#login_instead').on("click", function () {
+        $('#login_instead').on("click", function (e) {
+            e.preventDefault();
+
             $('#self_enroll_form').hide()
             $('#login_form').toggle(300)
             $('#login_page_extras').toggle(300)
             return false;
 
         })
-
         $('#b_next1').on("click", function (e) {
             e.preventDefault
-            let customerNumber = $("#account_number").val()
-            validateCustomer(customerNumber)
-            console.log('b_next1');
-            $('#self_enroll_form1').hide()
-            // $('#b_next1').hide()
-            $('#s_loading1').toggle()
-            $('#self_enroll_form2').toggle(300)
-            $('#b_next1').attr('disabled', true);
 
+            userData.customerNumber = $("#customer_number_input").val()
+            if (userData.customerNumber === undefined || userData.customerNumber === "") {
+                toaster("Customer Number is required",
+                    'error',
+                    2000);
+                return false
+            } else if (userData.customerNumber.length !== 6) {
+                toaster("invalid customer number", "error", 2000);
+                return false
+            } else {
+                $('#s_next1').hide()
+                $('#s_loading1').toggle()
+                $('#b_next1').attr('disabled', true);
+                validateCustomer(userData)
+            }
         })
 
         $('#b_next2').on("click", function (e) {
+            console.log(userData)
             e.preventDefault
-            console.log('b_next2');
-            $('#self_enroll_form2').hide()
-            // $('#b_next1').hide()
-            $('#s_loading2').toggle()
-            $('#self_enroll_form3').toggle()
-            $('#b_next2').attr('disabled', true);
+            // $('#self_enroll_form2').hide()
+            // $('#s_next2').hide()
+            let dob = $('#date_of_birth_input').val()
+            if (dob === "" || dob === undefined) {
+                toaster("Please enter date of birth", "error", 2000)
+                return false
+            }
+            dob = $("#date_of_birth_input").val().split('/')
+            userData.dateOfBirth = `${dob[2]}-${dob[0]}-${dob[1]}`
+            userData.idNumber = $("#id_number_input").val()
+            userData.phoneNumber = $("#phone_number_input").val()
 
+            if (userData.idNumber === "" || userData.idNumber === undefined) {
+                toaster("Please enter id number", "error", 2000)
+                return false
+            } else if (userData.phoneNumber === "" || userData.phoneNumber === undefined) {
+                toaster("Please enter phone number", "error", 2000)
+                return false
+            } else {
+                $('#s_next2').hide()
+                $('#s_loading2').toggle()
+                $('#b_next2').attr('disabled', true);
+                confirmCustomer(userData)
+                return false
+            }
+        })
+
+        $('#b_next3').on("click", function (e) {
+            e.preventDefault
+
+            userData.oneTimePin = $("#one_time_pin_input").val()
+            if (userData.oneTimePin === undefined || userData.oneTimePin === "") {
+                toaster("one time pin is required",
+                    'error',
+                    2000);
+                return false
+            } else if (userData.oneTimePin.length == 1) {
+                toaster("invalid one time pin", "error", 2000);
+                return false
+            } else {
+                $('#s_next3').hide()
+                $('#s_loading3').toggle()
+                $('#b_next3').attr('disabled', true);
+                registerCustomer(userData)
+            }
         })
 
     })

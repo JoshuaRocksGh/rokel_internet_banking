@@ -42,7 +42,8 @@
 
 <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" />
 
-<link rel="stylesheet" href="{{ asset('assets/css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('assets/css') }}"
+/> --}}
 
 {{-- <link rel="stylesheet" href="{{ asset('assets/css/c_cards.css') }}"/>
 --}}
