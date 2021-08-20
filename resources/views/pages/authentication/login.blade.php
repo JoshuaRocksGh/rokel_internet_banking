@@ -45,7 +45,7 @@
                         @csrf
 
                         <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show"
-                            role="alert" id="failed_login">
+                            role="alert" id="failed_login" style="display: none">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 {{-- <span aria-hidden="true">&times;</span> --}}
                             </button>
@@ -86,9 +86,9 @@
 
                             <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="log_in">Log
                                     In</span>
-                                <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
-                                    aria-hidden="true"></span>
-                                <span id="spinner-text">Loading...</span>
+                                <span class="spinner-border spinner-border-sm mr-1" role="status" style="display: none"
+                                    id="spinner" aria-hidden="true"></span>
+                                <span id="spinner-text" style="display: none">Loading...</span>
                             </button>
                             <br><br>
 
@@ -100,7 +100,7 @@
                         </div>
 
                 </div>
-                <div id="self_enroll_form" class=" form-center">
+                <div id="self_enroll_form" class=" form-center" style="display: none">
                     <h4 class="mt-0">Self Enroll</h4>
                     <br />
 
@@ -224,6 +224,22 @@
         </div> <!-- end .align-items-center.d-flex.h-100-->
     </div>
     <!-- end auth-fluid-form-box-->
+
+    <!-- Success Alert Modal -->
+    <div id="success-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content modal-filled bg-success">
+                <div class="modal-body p-4">
+                    <div class="text-center">
+                        <i class="dripicons-checkmark h1 text-white"></i>
+                        <h4 class="mt-2 text-white">Self Enrollment Successful!</h4>
+                        <p class="mt-3 text-white" id="success_modal_text"></p>
+                        <button type="button" class="btn btn-light my-2" data-dismiss="modal">Continue</button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <!-- Auth fluid right content -->
     <div class="auth-fluid-right text-center bg-auth">
@@ -395,7 +411,7 @@
         }).done(response => {
             if (response.responseCode === '000') {
                 $('#self_enroll_form1').hide()
-                $('#self_enroll_form2').toggle(300)
+                $('#self_enroll_form2').toggle(500)
                 console.log("customer number ajax success")
                 userData.authToken = response.data.authToken;
             } else {
@@ -439,7 +455,10 @@
             } else {
                 toaster(response.message,
                     'error',
-                    2000);
+                    3000);
+                $('#s_loading2').toggle()
+                $('#s_next2').show()
+                $('#b_next2').attr('disabled', false);
                 return false
             }
         }).fail(() => {
@@ -465,16 +484,20 @@
             },
         }).done(response => {
             if (response.responseCode === '000') {
-                toaster(response.message,
-                    'error',
-                    3000);
-                window.location.href = 'login'
+                $('#success_modal_text').text(response.message)
+                $('#success-alert-modal').modal('show');
+                $("#success-alert-modal").on("hidden.bs.modal", () => {
+                    window.location = 'login'
+                });
+                $('#s_loading3').toggle()
+                $('#s_next3').show()
+
 
             } else {
                 toaster(response.message,
                     'error',
                     3000);
-                $('#s_next3').hide()
+                $('#s_next3').show()
                 $('#s_loading3').toggle()
                 $('#b_next3').attr('disabled', false);
                 return false;
@@ -491,10 +514,10 @@
     $(document).ready(function () {
 
         let userData = new Object();
-        $('#self_enroll_form').hide(),
-            $('#failed_login').hide(),
-            $('#spinner').hide(),
-            $('#spinner-text').hide()
+        // $('#self_enroll_form').hide(),
+        // $('#failed_login').hide(),
+        // $('#spinner').hide(),
+        // $('#spinner-text').hide()
 
         $('#submit').on("click", function (e) {
             e.preventDefault();
@@ -502,9 +525,9 @@
             var password = $('#password').val();
 
             if (email === "" || email === undefined) {
-                toaster("Please enter email", "error", 2000)
+                toaster("Please enter email", "error", 3000)
             } else if (password === "" || password === undefined) {
-                toaster("Please enter password", "error", 2000)
+                toaster("Please enter password", "error", 3000)
             } else {
                 $('#spinner').show()
                 $('#spinner-text').show()
@@ -546,10 +569,11 @@
             if (userData.customerNumber === undefined || userData.customerNumber === "") {
                 toaster("Customer Number is required",
                     'error',
-                    2000);
+                    3000
+                );
                 return false
             } else if (userData.customerNumber.length !== 6) {
-                toaster("invalid customer number", "error", 2000);
+                toaster("invalid customer number", "error", 3000);
                 return false
             } else {
                 $('#s_next1').hide()
@@ -566,7 +590,7 @@
             // $('#s_next2').hide()
             let dob = $('#date_of_birth_input').val()
             if (dob === "" || dob === undefined) {
-                toaster("Please enter date of birth", "error", 2000)
+                toaster("Please enter date of birth", "error", 3000)
                 return false
             }
             dob = $("#date_of_birth_input").val().split('/')
@@ -575,10 +599,10 @@
             userData.phoneNumber = $("#phone_number_input").val()
 
             if (userData.idNumber === "" || userData.idNumber === undefined) {
-                toaster("Please enter id number", "error", 2000)
+                toaster("Please enter id number", "error", 3000)
                 return false
             } else if (userData.phoneNumber === "" || userData.phoneNumber === undefined) {
-                toaster("Please enter phone number", "error", 2000)
+                toaster("Please enter phone number", "error", 3000)
                 return false
             } else {
                 $('#s_next2').hide()
@@ -596,10 +620,11 @@
             if (userData.oneTimePin === undefined || userData.oneTimePin === "") {
                 toaster("one time pin is required",
                     'error',
-                    2000);
+                    3000
+                );
                 return false
-            } else if (userData.oneTimePin.length == 1) {
-                toaster("invalid one time pin", "error", 2000);
+            } else if (userData.oneTimePin.length !== 4) {
+                toaster("invalid code", "error", 3000);
                 return false
             } else {
                 $('#s_next3').hide()
