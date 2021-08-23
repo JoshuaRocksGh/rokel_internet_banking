@@ -10,10 +10,10 @@ class LoansController extends Controller
     //
     public function loan_request()
     {
-        return view('pages.loans.loan_request');
-    }
-
-    public function loan_quotation(){
         return view('pages.loans.loan_quotation');
     }
+
+    // public function loan_quotation(){
+    //     return view('pages.loans.loan_quotation');
+    // }
 }
