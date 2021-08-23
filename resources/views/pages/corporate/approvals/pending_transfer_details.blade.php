@@ -434,6 +434,10 @@
                         } else if(request_type == 'KORP') {
                             let request_type = 'E-Korpor Transaction'
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
+                        } else if(request_type == 'BKORP') {
+                            let request_type = 'Bulk E-Korpor Transaction'
+                            request_type != null ? append_approval_details("Request Type", request_type) : '';
+                            request_type != null ? append_approval_details_bulk("Request Type", request_type) : '';
                         }else {
                             let request_type = ''
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
@@ -532,7 +536,7 @@
 
                         console.log(request_type)
 
-                        if (request_type == 'BULK') {
+                        if (request_type == 'BULK' || request_type == 'BKORP'  ) {
                             ajax_call_bulk_details_endpoint(batch_number)
                         }
 

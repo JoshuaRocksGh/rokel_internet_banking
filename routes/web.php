@@ -163,7 +163,16 @@ Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])
 // BULK TRANSFERS
 Route::post('/upload_', [BulkUploadBulkUploadsController::class, 'upload_'])->name('upload_');
 
+
+// BULK KORPOR TRANSFER
+Route::post('/korpor_upload_', [BulkUploadBulkUploadsController::class, 'bulk_korpor_upload_'])->name('korpor-upload_');
+Route::get('/view-bulk-korpor-transfer', [BulkUploadBulkUploadsController::class, 'view_bulk_korpor_transfer'])->name('view-bulk-korpor-transfer');
+Route::get('/post-bulk-korpor-transaction-api', [BulkUploadBulkUploadsController::class, 'post_bulk_korpor_transaction'])->name('post-bulk-korpor-transaction-api');
+
+
+
 Route::get('/download_same_bank_file', [BulkUploadBulkUploadsController::class, 'download_same_bank'])->name('download-same-bank-file');
+Route::get('/download_bulk_korpor_file', [BulkUploadBulkUploadsController::class, 'download_bulk_korpor'])->name('download-bulk-korpor-file');
 Route::get('/download_other_bank_file', [BulkUploadBulkUploadsController::class, 'download_other_bank'])->name('download-other-bank-file');
 Route::get('/view-bulk-transfer', [BulkUploadBulkUploadsController::class, 'view_bulk_transfer'])->name('view-bulk-transfer');
 Route::get('/get-bulk-upload-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_list'])->name('get-bulk-upload-list-api');

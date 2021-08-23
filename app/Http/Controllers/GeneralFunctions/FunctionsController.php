@@ -394,10 +394,20 @@ class FunctionsController extends Controller
 
         $accountNumber = $request->accountNumber;
         $amount = $request->amount;
+        $transfer_type = $request->transfer_type;
         // $feeType = $request->feeType;
 
+        return $request ;
         // ACHP
         // RTG
+
+        If ($transfer_type == "ACH"){
+            $feeType = "ACHP" ;
+        }else if ($transfer_type == "RTGS") {
+            $feeType = "RTGs" ;
+        }else {
+            return false ;
+        }
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -407,7 +417,7 @@ class FunctionsController extends Controller
         $data = [
             "accountNumber" => $accountNumber,
             "amount"    => $amount,
-            "feeType"    => 'ACHP',
+            "feeType"    => $feeType,
             "authToken"    => $authToken,
         ];
 

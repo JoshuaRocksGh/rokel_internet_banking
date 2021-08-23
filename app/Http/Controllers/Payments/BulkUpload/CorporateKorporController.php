@@ -161,11 +161,17 @@ class CorporateKorporController extends Controller
 
         $responses = Http::get(env('API_BASE_URL') . "payment/unredeemedKorpor/{$accountNumber}");
 
-        // dd($response['data']);
+        // dd($responses['data']);
 
-        foreach ($responses as $response) {
+        foreach ($responses['data'] as $response) {
 
-            dd($response->REMITTANCE_REF);
+            if ($reference_no == $response['REMITTANCE_REF']) {
+                dd("Equal");
+            }else {
+                dd("Not Equal");
+            };
+
+            // dd($response['REMITTANCE_REF']);
             // $response['daa']
             // if($response['parent'] == 0){
             //     echo $menu['name'];

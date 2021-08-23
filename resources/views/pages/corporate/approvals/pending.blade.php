@@ -412,7 +412,11 @@
                                 request_type = 'Cheque Book Request'
                             } else if (data[index].request_type == "KORP"){
                                 request_type = 'E-Korpor'
-                            } else {
+                            }  else if (data[index].request_type == "BKORP"){
+                                amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
+                                    data[index].total_amount))
+                                request_type = 'Bulk E-Korpor'
+                            }else {
                                 request_type = 'Others'
                                 if (request_type = 'Others') {
                                     amount = data[index].total_amount

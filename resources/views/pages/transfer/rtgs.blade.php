@@ -1933,7 +1933,7 @@
                         })
                     };
 
-                    function transactionFee(fee_account, fee_amount) {
+                    function transactionFee(fee_account, fee_amount, transfer_type) {
 
 
                         console.log("fee_account" + fee_account);
@@ -1947,6 +1947,7 @@
                             data: {
                                 "accountNumber": fee_account,
                                 "amount": fee_amount,
+                                "transfer_type" : transfer_type
                             },
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
@@ -2166,6 +2167,7 @@
                             console.log(onetime_beneficiary_type);
                             var onetime_beneficiary_type_ = $('#onetime_transfer_mode').val().split('~')
                             $('#type_of_transfer').text(onetime_beneficiary_type_[1])
+                            var transfer_type = onetime_beneficiary_type_[1];
 
                             var transfer_amount = $('#onetime_amount').val();
                             console.log(transfer_amount);
@@ -2226,10 +2228,11 @@
 
                             var fee_account = from_account[2];
                             var fee_amount = transfer_amount;
+                            var transfer_type = onetime_beneficiary_type_[1];
 
                             console.log(fee_account);
                             console.log(fee_amount);
-                            transactionFee(fee_account, fee_amount);
+                            transactionFee(fee_account, fee_amount, transfer_type);
 
 
                             {{-- transactionFee(from_account , fee_amount); --}}
@@ -2268,6 +2271,8 @@
                             console.log(beneficiary_type);
                             var beneficiary_type_ = $('#transfer_mode').val().split('~');
                             $('#type_of_transfer').text(beneficiary_type_[1]);
+                            var transfer_type = beneficiary_type_[1];
+
 
                             var transfer_amount = $('#amount').val();
                             $('#amount_receipt').text(transfer_amount);
@@ -2335,10 +2340,11 @@
 
                             var fee_account = from_account[2];
                             var fee_amount = transfer_amount;
+                            var transfer_type = beneficiary_type_[1];
 
                             console.log(fee_account);
                             console.log(fee_amount);
-                            transactionFee(fee_account, fee_amount);
+                            transactionFee(fee_account, fee_amount, transfer_type);
 
 
                         }

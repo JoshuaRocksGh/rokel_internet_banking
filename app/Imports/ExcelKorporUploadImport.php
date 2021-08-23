@@ -1,21 +1,19 @@
 <?php
 
 namespace App\Imports;
-
-use App\Models\ExcelUpload;
-use Illuminate\Support\Facades\Redirect;
-use Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Model\Frontend\ApplyStudent;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithMappedCells;
-use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\Importable;
+use App\Model\Admin\ParentsDetaills;
+use Illuminate\Support\Facades\DB;
 
-class ExcelUploadImport implements WithHeadingRow, ToCollection
+class ExcelKorporUploadImport implements WithHeadingRow, ToCollection
 {
     private $customer_no;
     private $user_id;
@@ -28,7 +26,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
     private $account_no;
     private $trans_ref_no;
     private $desc;
-    private $bank_code;
+    // private $bank_code;
     private $file;
     private $account_mandate;
 
@@ -41,7 +39,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
     }
 
 
-    public function __construct($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency,  $value_date, $file, $account_mandate)
+    public function __construct($customer_no, $user_id, $user_name, $documentRef, $account_no, $trans_ref_no, $total_amount, $currency,  $value_date, $file, $account_mandate)
     {
         $this->customer_no = $customer_no;
         $this->user_id = $user_id;
@@ -50,7 +48,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
         $this->currency = $currency;
         $this->value_date = $value_date;
         $this->ref_no = $trans_ref_no;
-        $this->bank_code = $bank_code;
+        // $this->bank_code = $bank_code;
         $this->documentRef = $documentRef;
         $this->account_no = $account_no;
         $this->file = $file;
@@ -73,7 +71,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
         $currency = $this->currency;
         $value_date = $this->value_date;
         $ref_no = $this->ref_no;
-        $bank_code = $this->bank_code;
+        // $bank_code = $this->bank_code;
         $documentRef = $this->documentRef;
         $account_no = $this->account_no;
         $file = $this->file;
@@ -182,13 +180,13 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
             // die();
 
 
-            if (null == ($row['account_number'] || $row['name'] ||  $row['amount'] || $row['ref_number'])) {
+            if (null == ($row['telephone_number'] || $row['name'] ||  $row['amount'] || $row['ref_number'])) {
                 // return null;
             } else {
 
 
                 $beneficiaryname = $row['name'];
-                $creditaccountnumber =  $row['account_number'];
+                $creditaccountnumber =  $row['telephone_number'];
 
                 // return response()->json([
                 //     'responseCode' => '526',
@@ -201,12 +199,12 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
                 $query_result = DB::table('tb_corp_bank_import_excel')->insert([
                     'ref_no' => $row['ref_number'],
-                    'bban' => $row['account_number'],
+                    'bban' => $row['telephone_number'],
                     'name' => $row['name'],
                     'amount' => $row['amount'],
                     'trans_desc' => $row['transaction_description'],
                     'value_date' => $value_date,
-                    'bank_code' => $bank_code,
+                    'bank_code' => "BKORP",
                     'user_id' => session()->get('userId'),
                     'customer_no' => $customer_no,
                     'account_no' => $account_no,
@@ -298,3 +296,5 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
     }
 }
+
+
