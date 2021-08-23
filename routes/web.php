@@ -444,7 +444,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
 
     // Loan Screens
-    Route::get('/loan-quotation', [LoansController::class, 'loan_quotation'])->name('loan-quotation');
+    Route::get('/loan-quotation', [LoansController::class, 'loan_request'])->name('loan-quotation');
 
     Route::get('/loan-request', [LoansController::class, 'loan_request'])->name('loan-request');
 
