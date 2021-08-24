@@ -425,8 +425,7 @@
                 <div class="col-md-12 ">
                     <div class="card" style="border-radius: 20px;">
                         <div class="border mt-0 rounded">
-                            <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest
-                                Transactions</h4>
+                            <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest Transactions</h4>
 
                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                 {{-- <div class="col-md-1"></div> --}}
@@ -1437,8 +1436,8 @@
                                                 <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
                                                 <td> <b> ${data[index].description} </b>  </td>
                                                 <td> <b> ${data[index].isoCode}  </b>  </td>
-                                                <td> <b> ${formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
-                                                <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}   </b>  </td>
+                                                <td> <b> ${ formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                                <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
                                             </tr>`
                                             )
 
@@ -1705,8 +1704,13 @@
                         console.log(response);
                         if (response.responseCode == '000') {
 
-                            let data = response.data
-                            console.log(data);
+                            // let data = response.data ;
+                            // console.log(data);
+
+                            var limit = 10;
+                            let data = response.data.slice(0, limit);
+
+                            $("#transaction_history tr").remove();
 
                             $.each(data, function(index) {
                                 console.log(data[index].amount);
@@ -1725,25 +1729,19 @@
 
                                 }
 
+
+
                                 {{-- $("#transaction_history").html("") --}}
-                                $("#transaction_history tr").remove();
+                                // $("#transaction_history td").remove();
+
                                 $("#transaction_history").append(
                                     `
                                             <tr>
                                                 <td>
-                                                    <div class="avatar-sm rounded ${String(icon)}">
-                                                        <i class="${String(color)} font-4 avatar-title text-blue"></i>
-                                                    </div>
-
-                                                </td>
-                                                <td>
                                                     <a href="ecommerce-product-detail.html"
                                                         class="text-body font-weight-semibold transfer_narration">${data[index].narration}</a>
                                                     <small class="d-block transfer_date">${data[index].postingSysDate}</small>
-                                                </td>
-
-                                                <td class="text-right font-weight-semibold text-primary">
-                                                     <span class="account_currency">${global_selected_currency}</span> &nbsp; <span class="transfer_amount">${data[index].amount}</span>
+                                                    <span class="account_currency text-primary">${global_selected_currency}</span> &nbsp; <span class="transfer_amount">${formatToCurrency(parseFloat(data[index].amount))}</span>
                                                 </td>
                                             </tr>
                                             `
@@ -1817,7 +1815,7 @@
                     get_loans();
                     fixed_deposit();
                     account_transaction();
-                }, 200);
+                }, 1000);
 
             })
 

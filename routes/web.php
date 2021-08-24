@@ -187,7 +187,6 @@ Route::post('/get-bulk-detail-list-for-approval', [PendingController::class, 'ge
 
 // LOCAL BANK
 Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
-Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
 // Route::get('/local-bank_', [LocalBankController::class, 'rtgs_'])->name('local-bank_');
 Route::get('/ach', [LocalBankController::class, 'ach'])->name('ach');
 
@@ -409,6 +408,9 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
 
     Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
+
+Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
+
 
     // Route::delete('/delete-beneficiary', [transferController::class, "delete_beneficiary"])->name('delete-beneficiary');
 
