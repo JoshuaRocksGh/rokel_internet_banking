@@ -1732,7 +1732,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="avatar-sm rounded ${String(icon)}">
-                                                        <i class="${String(color)} font-4 avatar-title text-blue"></i>
+                                                        <i class="${String(color)} font-4 avatar-title"></i>
                                                     </div>
 
                                                 </td>
