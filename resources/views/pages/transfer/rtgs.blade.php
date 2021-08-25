@@ -523,9 +523,9 @@
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button"
-                                                            id="confirm_modal_button" data-toggle="modal"
-                                                            data-target="#centermodal">
-                                                            <span id="confirm_transfer">Confirm Transfer</span>
+                                                            id="confirm_modal_button">
+                                                            <span id="confirm_transfer" data-toggle="modal"
+                                                                data-target="#centermodal">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
                                                                 role="status" id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
@@ -758,12 +758,15 @@
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <div class="input-group-prepend">
-                                                                    <input type="text" class="form-control readOnly "
-                                                                        value="1.00" style="width: 100px;">
+                                                                    <input type="text" class="form-control readOnly "id="convertor_rate_"
+                                                                        id="convertor_rate_" style="width: 100px;"
+                                                                        value="1.00" style="width: 100px;" readonly>
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <input type="text" class="form-control"
-                                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                                                    id="converted_amount" placeholder="Converted Amount"
+                                                                    aria-label="converted_amount" 
+                                                                    aria-describedby="basic-addon1" readonly>
                                                             </div>
 
 
@@ -980,12 +983,14 @@
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <div class="input-group-prepend">
-                                                                    <input type="text" class="form-control readOnly "
-                                                                        value="1.00" style="width: 100px;">
+                                                                    <input type="text" class="form-control display_midrate readOnly "
+                                                                        id="convertor_rate"
+                                                                        value="1.00" style="width: 100px;" readonly>
                                                                 </div>
                                                                 &nbsp;&nbsp;
-                                                                <input type="text" class="form-control"
-                                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                                                <input type="text" class="form-control display_converted_amount"
+                                                                    id="converted_amount_" placeholder="Converted Amount"
+                                                                    aria-label="Converted Amount" aria-describedby="basic-addon1">
                                                             </div>
 
 
@@ -1142,8 +1147,15 @@
 
                                             <hr>
                                             <div class="row">
-                                                <h6 class="col-md-5">Enter Amount:</h6>
-                                                <span class="text-primary display_amount col-md-7"></span>
+                                                <h6 class="text-primary col-md-5">Transfer Amount:</h6>
+                                                <h6 class="text-danger text-bold col-md-7 ">
+                                                    <span class="display_currency"></span>
+                                                    &nbsp;
+                                                    <span class="display_transfer_amount"></span>
+                                                </h6>
+
+                                                {{--  <h6 class="col-md-5">Enter Amount:</h6>
+                                                <span class="text-primary display_amount col-md-7"></span>  --}}
 
                                                 <h6 class="col-md-5">Currency Rate:</h6>
                                                 <span class="text-primary display_midrate col-md-7"></span>
@@ -1161,12 +1173,7 @@
                                             <hr style="margin-top: 2px; margin-bottom: 5px; ">
 
                                             <div class="row">
-                                                <h6 class="text-primary col-md-5">Transfer Amount:</h6>
-                                                <h6 class="text-danger text-bold col-md-7 ">
-                                                    <span class="display_currency"></span>
-                                                    &nbsp;
-                                                    <span class="display_transfer_amount"></span>
-                                                </h6>
+
                                             </div>
                                             <hr style="margin-top: 2px; margin-bottom: 5px; ">
 
@@ -1310,6 +1317,46 @@
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
             <script>
+                var c = {}
+
+                var forex_rate = []
+                var cur_1 = "SLL"
+                var cur_2 = "SLL"
+
+                var _cur_ = []
+                var get_cur_1 = []
+                var get_cur_2 = []
+
+                function get_correct_fx_rate() {
+
+
+                    $.ajax({
+                        type: 'GET',
+                        url: 'get-correct-fx-rate-api',
+                        datatype: "application/json",
+                        success: function(response) {
+                            console.log(response.data);
+                            let data = response.data
+
+
+                            if (response.responseCode == '000') {
+                                forex_rate = response.data
+                                console.log(forex_rate)
+                            } else {
+
+                            }
+
+
+                        },
+                        error: function(xhr, status, error) {
+                            setTimeout(function() {
+                                get_correct_fx_rate()
+                            }, $.ajaxSetup().retryAfter)
+                        }
+
+                    })
+                }
+
                 function formatToCurrency(amount) {
                     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
                 };
@@ -1755,6 +1802,7 @@
                         expenseTypes();
                         expenseTypes_onetime();
                         customer();
+                        get_correct_fx_rate();
 
                     }, 500)
 
@@ -1933,7 +1981,7 @@
                         })
                     };
 
-                    function transactionFee(fee_account, fee_amount) {
+                    function transactionFee(fee_account, fee_amount, transfer_type) {
 
 
                         console.log("fee_account" + fee_account);
@@ -1947,6 +1995,7 @@
                             data: {
                                 "accountNumber": fee_account,
                                 "amount": fee_amount,
+                                "transfer_type": transfer_type
                             },
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
@@ -2022,7 +2071,12 @@
 
 
                     $("#amount").keyup(function() {
-                        let amount = $("#amount").val()
+
+                        var from_account = $('#from_account').val()
+                        var to_account = $('#to_account').val()
+                        console.log(forex_rate)
+                        let amount = $(this).val();
+                        currency_convertor(forex_rate, amount);
                         $('.display_transfer_amount').text(formatToCurrency(parseFloat(amount)))
                     })
 
@@ -2112,9 +2166,12 @@
                     })
 
                     $("#onetime_amount").keyup(function() {
-                        var beneficiary_amount = $(this).val();
+
+                        var amount = $(this).val();
+                        console.log(forex_rate)
+                        currency_convertor(forex_rate, amount);
                         $(".display_transfer_amount").text(formatToCurrency(parseFloat(
-                            beneficiary_amount)));
+                            amount)));
                     })
 
 
@@ -2166,6 +2223,7 @@
                             console.log(onetime_beneficiary_type);
                             var onetime_beneficiary_type_ = $('#onetime_transfer_mode').val().split('~')
                             $('#type_of_transfer').text(onetime_beneficiary_type_[1])
+                            var transfer_type = onetime_beneficiary_type_[1];
 
                             var transfer_amount = $('#onetime_amount').val();
                             console.log(transfer_amount);
@@ -2226,10 +2284,11 @@
 
                             var fee_account = from_account[2];
                             var fee_amount = transfer_amount;
+                            var transfer_type = onetime_beneficiary_type_[1];
 
                             console.log(fee_account);
                             console.log(fee_amount);
-                            transactionFee(fee_account, fee_amount);
+                            transactionFee(fee_account, fee_amount, transfer_type);
 
 
                             {{-- transactionFee(from_account , fee_amount); --}}
@@ -2268,6 +2327,8 @@
                             console.log(beneficiary_type);
                             var beneficiary_type_ = $('#transfer_mode').val().split('~');
                             $('#type_of_transfer').text(beneficiary_type_[1]);
+                            var transfer_type = beneficiary_type_[1];
+
 
                             var transfer_amount = $('#amount').val();
                             $('#amount_receipt').text(transfer_amount);
@@ -2335,10 +2396,11 @@
 
                             var fee_account = from_account[2];
                             var fee_amount = transfer_amount;
+                            var transfer_type = beneficiary_type_[1];
 
                             console.log(fee_account);
                             console.log(fee_amount);
-                            transactionFee(fee_account, fee_amount);
+                            transactionFee(fee_account, fee_amount, transfer_type);
 
 
                         }
@@ -2449,7 +2511,9 @@
 
 
                             if (customerType == "C") {
-                                $('#confirm_modal_button').removeAttr("data-target");
+
+                                $('#confirm_transfer').removeAttr('data-toggle');
+                                // $('#confirm_modal_button').removeAttr("data-target");
                                 $('#personal_transfer_receipt').hide();
                                 {{-- alert(customerType); --}}
 
@@ -2515,6 +2579,11 @@
 
                                     {{-- var sec_pin = $('#user_pin').val() --}}
 
+                                    function redirect_page() {
+                                        window.location.href = "{{ url('home') }}";
+
+                                    };
+
                                     $.ajax({
                                         type: "POST",
                                         url: "corporate-onetime-local-bank-transfer-api",
@@ -2551,15 +2620,19 @@
                                                     response.message,
                                                     'success'
                                                 );
+                                                setTimeout(function() {
+
+                                                    redirect_page();
+                                                }, 5000);
 
                                                 $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#back_button').hide();
-                                                $('#print_receipt').show();
+                                                // $('#print_receipt').show();
                                                 $("#related_information_display").removeClass(
                                                     "d-none d-sm-block");
-                                                $(".form_process").hide();
-                                                $(".receipt").show();
+                                                // $(".form_process").hide();
+                                                // $(".receipt").show();
 
                                                 {{-- $(".rtgs_card_right").hide(); --}}
                                                 {{-- $(".success_gif").show(); --}}
@@ -2649,6 +2722,10 @@
 
                                     var sec_pin = $('#user_pin').val()
 
+                                    function redirect_page() {
+                                        window.location.href = "{{ url('home') }}";
+
+                                    };
 
                                     let api_data = {
                                         "from_account": from_account,
@@ -2688,15 +2765,19 @@
                                                     response.message,
                                                     'success'
                                                 );
+                                                setTimeout(function() {
+
+                                                    redirect_page();
+                                                }, 5000);
 
                                                 $('#spinner').hide();
                                                 $('#spinner-text').hide();
                                                 $('#back_button').hide();
-                                                $('#print_receipt').show();
+                                                // $('#print_receipt').show();
                                                 $("#related_information_display").removeClass(
                                                     "d-none d-sm-block");
-                                                $(".form_process").hide();
-                                                $(".receipt").show();
+                                                // $(".form_process").hide();
+                                                // $(".receipt").show();
 
                                                 {{-- $(".rtgs_card_right").hide(); --}}
                                                 {{-- $(".success_gif").show(); --}}
@@ -3074,6 +3155,104 @@
 
 
                 });
+
+                function currency_convertor(forex_rate, amount) {
+
+                    // let amount = $("#amount").val()
+                    let convert_amount_currency = $('#select_currency_').val()
+                    let converted_amount = ''
+
+
+
+                    console.log(convert_amount_currency)
+
+
+
+                    cur_1 = $('#select_currency').val()
+                    cur_2 = $('#select_currency_').val()
+
+
+
+                    let currency_pair_1 = cur_1 + '/ ' + cur_2
+                    let currency_pair_2 = cur_2 + '/ ' + cur_1
+
+                    let to_local_currency = cur_1 + '/ SLL'
+                    let local_currency = ''
+
+
+                    console.log(currency_pair_1)
+                    console.log(currency_pair_2)
+                    console.log(forex_rate)
+
+                    $('#converted_amount').val('')
+                    $('#convertor_rate_').val('')
+
+
+                    if (forex_rate.length > 0) {
+                        $.each(forex_rate, function(index) {
+
+                            if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
+                                    .trim())) {
+                                local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
+                                    .MIDRATE)
+
+                            }
+
+
+
+                            if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
+                                    .trim())) {
+
+                                converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
+                                    .MIDRATE)
+                                $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[
+                                        index].MIDRATE
+                                    .toFixed(2))))
+                                $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
+                                    formatToCurrency(
+                                        parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                                $('#converted_amount').val(formatToCurrency(parseFloat(
+                                    converted_amount.toFixed(
+                                        2))))
+                                $('#converted_amount_').val(formatToCurrency(parseFloat(
+                                    converted_amount.toFixed(
+                                        2))))
+                                $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                                    formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                                console.log(`match 1 => ${converted_amount}`)
+                                console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                            } else if (String(forex_rate[index].PAIR.trim()) == String(
+                                    currency_pair_2
+                                    .trim())) {
+
+                                $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[
+                                        index].MIDRATE
+                                    .toFixed(2))))
+                                $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
+                                    formatToCurrency(
+                                        parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                                converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
+                                    .MIDRATE)
+                                $('#converted_amount').val(formatToCurrency(parseFloat(
+                                    converted_amount.toFixed(
+                                        2))))
+
+                                $('#converted_amount_').val(formatToCurrency(parseFloat(
+                                    converted_amount.toFixed(
+                                        2))))
+                                $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                                    formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                                console.log(`match 2 => ${converted_amount}`)
+                                console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                            } else {
+
+                            }
+                        })
+                    }
+
+                }
             </script>
 
         @endsection

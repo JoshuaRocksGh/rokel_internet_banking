@@ -17,435 +17,404 @@
 
 @section('content')
 
-<div class="container-fluid hide_on_print">
-    <br>
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-md-6">
-            <h4 class="text-primary">
-                <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                BULK KORPOR PAYMENTS
-            </h4>
-        </div>
-
-        <div class="col-md-6 text-right">
-            <h6>
-
-                <span class="flaot-right">
-                    <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank</b>
-                </span>
-
-            </h6>
-
-        </div>
-
-        <div class="col-md-12 ">
-            <hr class="text-primary" style="margin: 0px;">
-        </div>
-
-    </div>
-</div>
-
-    <div>
+    <div class="container-fluid ">
+        <br>
+        <!-- start page title -->
         <div class="row">
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">BULK E-KORPOR UPLOAD</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form id="bulk_upload_form" action="{{ url('korpor_upload_') }}" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                  <label for="exampleFormControlFile1">Example file input</label>
-                                  <input type="file" name="excel_file" id="excel_file" class="form-control-file" >
-                                </div>
-                              </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-                </div>
+            <div class="col-md-6">
+                <h4 class="text-primary">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    BULK E-KORPOR PAYMENTS
+                </h4>
             </div>
+
+            <div class="col-md-6 text-right">
+                <h6>
+
+                    <span class="flaot-right">
+                        <b class="text-primary"> Payments </b> &nbsp; > &nbsp; <b class="text-primary"> E-korpor</b> &nbsp;
+                        > &nbsp;<b class="text-danger">Bulk E-Korpor </b>
+                    </span>
+
+                </h6>
+
+            </div>
+
+            <div class="col-md-12 ">
+                <hr class="text-primary" style="margin: 0px;">
             </div>
 
         </div>
         <br>
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Launch demo modal
-                </button>
-            </div>
-            <br>
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
+
+        <div class="col-md-12">
+            <p class="text-muted font-14 m-r-20 m-b-20">
+                <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please Note:&nbsp;&nbsp;</b> <span
+                        class="">You can download template for upload (<span class="text-danger"><a
+                                href="{{ url('download_bulk_korpor_file') }}" class="text-danger"> Bulk
+                                E-korpor</a></span>)</span> </span>
+
+            </p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+
+                    <form action="{{ url('korpor_upload_') }}" id="bulk_korpor_upload" method="post"
+                        enctype="multipart/form-data">
+                        @csrf
 
                         <div class="row">
 
-
-                            <div class="col-md-12">
-
-
-                                <div class="card-body">
-
-                                    {{-- <h4 class="header-title">Buttons example</h4>
-                                    <p class="sub-header font-13">
-                                        The Buttons extension for DataTables provides a common set of options, API
-                                        methods and styling to display buttons on a page
-                                        that will interact with a DataTable. The core library provides the based
-                                        framework upon which plug-ins can built.
-                                    </p> --}}
-
-                                    <table id="datatable-buttons"
-                                        class="table table-striped table-bordered dt-responsive nowrap w-100 pending_transaction_request"
-                                        style="zoom: 0.9;">
-                                        <thead>
-                                            <tr class="bg-secondary text-white">
-                                                <th>No</th>
-                                                <th>From Account</th>
-                                                <th>Batch NO</th>
-                                                <th>Initiated By</th>
-                                                <th>Date</th>
-                                                <th>Action</th>
-                                            </tr>
-
-                                        </thead>
-
-
-
-                                    </table>
-
-
-                                </div> <!-- end card body-->
-
-
-
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <div class="col-12">
+                                        <label for="inputEmail3" class="col-12 col-form-label text-primary"> Account<span
+                                                class="text-danger"> *</span></label>
+                                        <select class="custom-select " name="my_account" id="my_account" required>
+                                            <option value="">Select Account</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
+                            <div class="col-md-4">
+                                <div class="col-12">
+                                    <label for="inputEmail3" class="col-12 col-form-label text-primary">Total Amount<span
+                                            class="text-danger"> *</span></label>
+                                    <input type="text" name="bulk_amount" id="bulk_amount"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                        class="form-control input-sm" required>
+                                </div>
+                            </div>
 
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <div class="col-12">
+                                        <label for="inputEmail3" class="col-12 col-form-label text-primary">Value Date<span
+                                                class="text-danger"> *</span></label>
+                                        <input type="text" name="value_date" id="value_date"
+                                            class="form-control date-picker-valueDate flatpickr-input input-sm" required>
 
-                        </div> <!-- end card-body -->
-
-
-
-
-                        <!-- Info Alert Modal -->
-                        <div id="info-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                    <div class="modal-body p-4">
-                                        <div class="text-center">
-                                            <i class="dripicons-information h1 text-info"></i>
-                                            <h4 class="mt-2">Heads up!</h4>
-                                            <p class="mt-3">Cras mattis consectetur purus sit amet fermentum. Cras justo
-                                                odio, dapibus ac facilisis in, egestas eget quam.</p>
-                                            <button type="button" class="btn btn-info my-2"
-                                                data-dismiss="modal">Continue</button>
-                                        </div>
                                     </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <div class="col-12">
+                                        <label for="inputEmail3" class="col-12 col-form-label text-primary">Reference
+                                            Number<span class="text-danger"> *</span></label>
+                                        <input type="text" name="reference_no" id="reference_no"
+                                            class="form-control input-sm" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group ">
+                                    <div class="col-12">
+                                        <label for="inputEmail3" class="col-12 col-form-label text-primary">File<span
+                                                class="text-danger"> *</span></label>
+                                        <input type="file" name="excel_file" id="excel_file" class=" input-sm" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
 
 
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group row">
+                                    <div class="col-8 offset-4 text-right">
+                                        <button type="submit"
+                                            class="btn btn-primary btn-sm btn-rounded waves-effect waves-light disappear-after-success"
+                                            id="submit_cheque_request">
+                                            Submit Upload
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div class="row card" id="beneficiary_table" style="zoom: 0.8;">
+                        <br>
+
+                        <div class="col-md-12">
+
+                            @if (session()->has('error'))
+                                <div class="alert alert-danger">
+                                    {{ session()->get('error') }}
+                                </div>
+                            @endif
+
+                            @if (session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @endif
+                        </div>
+
+                        <div class="col-md-12">
+
+                            <table id="datatable-buttons"
+                                class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
+
+                                <thead>
+                                    <tr class="bg-secondary text-white">
+                                        <th> <b> Batch </b> </th>
+                                        <th> <b>Reference </b> </th>
+                                        <th> <b> Debit Account </b> </th>
+                                        <th> <b> Bulk Amount </b> </th>
+                                        <th> <b> Value date </b> </th>
+                                        <th> <b> Bank Type </b> </th>
+                                        <!-- <th> <b> Status </b> </th> -->
+                                        {{-- <th class="text-center"> <b>Actions </b> </th> --}}
+
+                                    </tr>
+                                </thead>
+
+                                <tbody class="">
+
+                                </tbody>
 
 
-                        <!-- Modal -->
-                        <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
-                            aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
-                                                Details</h4>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">×</button>
-                                        </div>
-
-                                        <div class="modal-body">
+                            </table>
+                        </div>
 
 
-                                            <div class="row" id="transaction_summary">
+                    </div>
 
-
-                                                <div class="col-md-12">
-                                                    <div class="border p-3 mt-4 mt-lg-0 rounded">
-                                                        <h4 class="header-title mb-3">Transfer Detail Summary</h4>
-
-                                                        <div class="table-responsive">
-                                                            <table class="table mb-0">
-
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>From Account:</td>
-                                                                        <td>
-                                                                            <span
-                                                                                class="font-13 text-primary text-bold display_from_account_type"
-                                                                                id="display_from_account_type"></span>
-                                                                            <span
-                                                                                class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                                id="display_from_account_name"> </span>
-                                                                            <span
-                                                                                class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                                id="display_from_account_no"></span>
-                                                                        </td>
-                                                                    </tr>
-
-                                                                    <tr>
-                                                                        <td>To Account:</td>
-                                                                        <td>
-
-                                                                            <span
-                                                                                class="font-13 text-primary text-bold display_to_account_type"
-                                                                                id="display_to_account_type"> </span>
-                                                                            <span
-                                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                                id="display_to_account_name"> </span>
-                                                                            <span
-                                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                                id="display_to_account_no"> </span>
-                                                                        </td>
-                                                                    </tr>
-
-                                                                    <tr>
-                                                                        <td>Amount:</td>
-                                                                        <td>
-                                                                            <span
-                                                                                class="font-15 text-primary h3 display_currency"
-                                                                                id="display_currency"> </span>
-                                                                            &nbsp;
-                                                                            <span
-                                                                                class="font-15 text-primary h3 display_transfer_amount"
-                                                                                id="display_transfer_amount"></span>
-
-                                                                        </td>
-                                                                    </tr>
-
-
-                                                                    <tr>
-                                                                        <td>Category:</td>
-                                                                        <td>
-                                                                            <span
-                                                                                class="font-13 text-primary h3 display_category"
-                                                                                id="display_category"></span>
-
-                                                                        </td>
-                                                                    </tr>
-
-
-                                                                    <tr>
-                                                                        <td>Purpose:</td>
-                                                                        <td>
-                                                                            <span
-                                                                                class="font-13 text-primary h3 display_purpose"
-                                                                                id="display_purpose"></span>
-                                                                        </td>
-                                                                    </tr>
-
-
-                                                                    <tr>
-                                                                        <td>Schedule Payment:</td>
-                                                                        <td>
-                                                                            <span
-                                                                                class="font-13 text-primary h3 display_schedule_payment"
-                                                                                id="display_schedule_payment">NO </span>
-                                                                            &nbsp; | &nbsp;
-                                                                            <span
-                                                                                class="font-13 text-primary h3 display_schedule_payment_date"
-                                                                                id="display_schedule_payment_date"> N/A
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr>
-
-
-                                                                    <tr>
-                                                                        <td>Transfer Date: </td>
-                                                                        <td>
-                                                                            <span class="font-13 text-primary h3"
-                                                                                id="display_transfer_date">{{ date('d F, Y') }}</span>
-                                                                        </td>
-                                                                    </tr>
-
-                                                                    <tr>
-                                                                        <td>Posted BY: </td>
-                                                                        <td>
-                                                                            <span class="font-13 text-primary h3"
-                                                                                id="display_posted_by">Kwabena Ampah</span>
-                                                                        </td>
-                                                                    </tr>
-
-                                                                    <tr>
-                                                                        <td>Enter Pin: </td>
-                                                                        <td>
-                                                                            <div class="form-group">
-                                                                                <input type="text" name="user_pin"
-                                                                                    class="form-control" id="user_pin"
-                                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-
-
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <!-- end table-responsive -->
-                                                        <br>
-                                                        <div class="form-group text-center">
-                                                            <span> <button class="btn btn-secondary btn-rounded"
-                                                                    type="button" id="back_button">Back</button> &nbsp;
-                                                            </span>
-                                                            <span>&nbsp; <button class="btn btn-primary btn-rounded"
-                                                                    type="button" id="confirm_button">Confirm Transfer
-                                                                </button></span>
-                                                            <span>&nbsp; <button class="btn btn-light btn-rounded"
-                                                                    type="button" id="receipt_button">Print Receipt
-                                                                </button></span>
-                                                        </div>
-                                                    </div>
-
-                                                </div> <!-- end col -->
-
-
-
-
-
-                                            </div>
-
-
-                                        </div>
-
-
-
-                                        <div class="modal-footer">
-                                            <button type="send" id="send" class="btn btn-primary"
-                                                data-target="#multiple-two" data-toggle="modal"
-                                                data-dismiss="modal">Send</button>
-                                        </div>
-                                    </form>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-
-
-
-
-                    </div> <!-- end col -->
-
-                </div> <!-- end row -->
-
-
-
+                </div>
+                <div class="col-md-1"></div>
             </div>
+        </div>
 
 
-        @endsection
 
-        @section('scripts')
-
-            <!-- third party js -->
-            <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-            </script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-            <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
-            <!-- third party js ends -->
-
-            <!-- Datatables init -->
-            <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
-
-            <script>
-                function get_corporate_requests() {
-                    var table = $('.pending_transaction_request').DataTable();
-                    var nodes = table.rows().nodes();
+    </div>
 
 
-                    $.ajax({
-                        type: "GET",
-                        url: "get-bulk-korpor-upload-list-api",
-                        datatype: "application/json",
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response) {
-                            console.log(response);
-                            if (response.responseCode == '000') {
-
-                                let data = response.data;
-
-                                table.clear().draw()
-
-                                let count = 0
-                                $.each(data, function(index) {
-
-                                    count++
-
-                                    table.row.add([
-                                        count,
-                                        data[index].account_no,
-                                        data[index].batch_no,
-                                        data[index].user_id,
-                                        '09-12-2021',
-                                        `
-                                        <a href="bulk-korpor_detail?customer_no=${data[index].customer_no}&batch_no=${data[index].batch_no}">
-                                            <button class="btn btn-sm btn-info">View More</button>
-                                        </a>
-                                        `
 
 
-                                    ]).draw(false)
+@endsection
 
+@section('scripts')
 
-                                })
+    <!-- third party js -->
+    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
+    </script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
+    <!-- third party js ends -->
 
+    <!-- Datatables init -->
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 
-                            } else {
+    <script>
+        function my_account() {
+            $.ajax({
+                'type': 'GET',
+                'url': 'get-my-account',
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
 
-                            }
+                        $('#my_account').append($('<option>', {
+                            value: data[index].accountType + '~' + data[index].accountDesc +
+                                '~' + data[index].accountNumber + '~' + data[index]
+                                .currency + '~' + data[index].availableBalance + '~' + data[
+                                    index].accountMandate
+                        }).text(data[index].accountType + '~' + data[index].accountNumber +
+                            '~' + data[index].currency + '~' + data[index].availableBalance));
 
-                        },
-                        error: function(xhr, status, error) {
+                    });
+                },
+                error: function(xhr, status, error) {
 
-                        }
-
-                    })
-
-
+                    setTimeout(function() {
+                        my_account();
+                    }, $.ajaxSetup().retryAfter)
                 }
 
-                $(document).ready(function() {
+            })
+        }
 
 
-                    $('.transfer_tab_btn').click(function() {
-                        get_corporate_requests()
-                    })
-                    get_corporate_requests()
-                })
+        var bulk_upload_array_list = []
 
-            </script>
 
-        @endsection
+        function bulk_upload_list(customer_no, status) {
+            var table = $('.bulk_upload_list').DataTable();
+            var nodes = table.rows().nodes();
+            $.ajax({
+                'tpye': 'GET',
+                'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
+                "datatype": "application/json",
+                success: function(response) {
+                    console.log(response.data);
+
+
+                    if (response.responseCode == '000') {
+                        bulk_upload_array_list = response.data;
+
+                        data = bulk_upload_array_list
+
+                        $.each(data, function(index) {
+                            console.log(data[index])
+
+                            let status = ''
+                            let bank_type = ''
+
+                            if (data[index].status == 'A') {
+                                status =
+                                    `<span class="badge badge-success"> &nbsp; Approved &nbsp; </span> `
+                            } else if (data[index].status == 'R') {
+                                status =
+                                    `<span class="badge badge-danger"> &nbsp; Rejected &nbsp; </span> `
+                            } else {
+                                status =
+                                    `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
+                            }
+
+                            if (data[index].bank_code == 'I') {
+                                bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
+                            } else {
+                                bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
+                            }
+
+                            let batch =
+                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&bulk_amount=${data[index].total_amount}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}</a>`
+
+                            let action =
+                                `<span class="btn-group mb-2">
+                                                                                                                                                                                        <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
+                                                                                                                                                                                         &nbsp;
+                                                                                                                                                                                         <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                                                                                                                                                                         </span>  `
+
+                            table.row.add([
+                                batch, data[index].ref_no, data[index].account_no, data[index]
+                                .total_amount, bank_type, data[index].value_date,
+                                // status,
+                                //action
+
+
+                            ]).draw(false)
+
+                        })
+
+                    } else {
+                        $('#beneficiary_table').hide();
+                        $('#beneficiary_list_loader').hide();
+                        $('#beneficiary_list_retry_btn').show();
+                    }
+
+                },
+                error: function(xhr, status, error) {
+
+                    setTimeout(function() {
+                        bulk_upload_list(customer_no, status)
+                    }, $.ajaxSetup().retryAfter)
+                }
+            })
+        }
+
+
+        function formatToCurrency(amount) {
+            return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        };
+
+
+        function toaster(message, icon, timer) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: timer,
+                timerProgressBar: false,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: icon,
+                title: message
+            })
+        }
+
+
+
+        $(document).ready(function() {
+
+
+            let today = new Date();
+            let dd = today.getDate();
+
+            let mm = today.getMonth() + 1;
+            const yyyy = today.getFullYear()
+            console.log(mm)
+            console.log(String(mm).length)
+            if (String(mm).length == 1) {
+                mm = '0' + mm
+            }
+
+            defaultDate = dd + mm + '-' + today.getFullYear()
+            console.log(defaultDate)
+
+
+
+            $(".date-picker-valueDate").flatpickr({
+                altInput: true,
+                altFormat: "j F, Y",
+                dateFormat: "d-m-Y",
+                defaultDate: [defaultDate],
+                position: "below"
+            })
+
+            var customer_no = @json(session('customerNumber'))
+
+            setTimeout(function() {
+                // bulk_upload_list('057725', "P")
+                bulk_upload_list(customer_no, "P")
+                my_account()
+            }, 1000)
+
+            $('#bulk_upload_form').submit(function(e) {
+                $('submit_cheque_request').text('Processing ... ')
+            })
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
+
+        });
+    </script>
+
+@endsection

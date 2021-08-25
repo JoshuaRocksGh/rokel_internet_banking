@@ -163,7 +163,16 @@ Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])
 // BULK TRANSFERS
 Route::post('/upload_', [BulkUploadBulkUploadsController::class, 'upload_'])->name('upload_');
 
+
+// BULK KORPOR TRANSFER
+Route::post('/korpor_upload_', [BulkUploadBulkUploadsController::class, 'bulk_korpor_upload_'])->name('korpor-upload_');
+Route::get('/view-bulk-korpor-transfer', [BulkUploadBulkUploadsController::class, 'view_bulk_korpor_transfer'])->name('view-bulk-korpor-transfer');
+Route::get('/post-bulk-korpor-transaction-api', [BulkUploadBulkUploadsController::class, 'post_bulk_korpor_transaction'])->name('post-bulk-korpor-transaction-api');
+
+
+
 Route::get('/download_same_bank_file', [BulkUploadBulkUploadsController::class, 'download_same_bank'])->name('download-same-bank-file');
+Route::get('/download_bulk_korpor_file', [BulkUploadBulkUploadsController::class, 'download_bulk_korpor'])->name('download-bulk-korpor-file');
 Route::get('/download_other_bank_file', [BulkUploadBulkUploadsController::class, 'download_other_bank'])->name('download-other-bank-file');
 Route::get('/view-bulk-transfer', [BulkUploadBulkUploadsController::class, 'view_bulk_transfer'])->name('view-bulk-transfer');
 Route::get('/get-bulk-upload-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_list'])->name('get-bulk-upload-list-api');
@@ -178,7 +187,6 @@ Route::post('/get-bulk-detail-list-for-approval', [PendingController::class, 'ge
 
 // LOCAL BANK
 Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
-Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
 // Route::get('/local-bank_', [LocalBankController::class, 'rtgs_'])->name('local-bank_');
 Route::get('/ach', [LocalBankController::class, 'ach'])->name('ach');
 
@@ -400,6 +408,9 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
 
     Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
+
+Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
+
 
     // Route::delete('/delete-beneficiary', [transferController::class, "delete_beneficiary"])->name('delete-beneficiary');
 
