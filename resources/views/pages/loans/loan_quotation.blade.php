@@ -84,7 +84,8 @@
 
 
                                                         <select class="form-control col-8 " id="loan_product" required>
-                                                            <option value="">Select Loan Product</option>
+                                                            <option value="" disabled selected>Select Loan Product
+                                                            </option>
                                                         </select>
                                                     </div>
 
@@ -119,7 +120,7 @@
                                                             Tenure In Months
                                                             <span class="text-danger">*</span></b>
                                                         <input type="text" class="form-control col-8"
-                                                            id="tenure_in_months"
+                                                            id="tenure_in_months" required
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
 
@@ -134,7 +135,8 @@
 
                                                         <select class="form-control col-8" id="interest_rate_type"
                                                             required>
-                                                            <option value="">Select Interest Rate Type</option>
+                                                            <option value="" disabled selected>Select Interest Rate Type
+                                                            </option>
                                                         </select>
 
                                                     </div>
@@ -151,7 +153,8 @@
                                                         <select class="form-control col-8 loan_frequencies"
                                                             id="principal_repay_freq"
                                                             placeholder="Select Pick Up Branch" required>
-                                                            <option value="">Select Principal Repay Frequency</option>
+                                                            <option value="" disabled selected>Select Principal Repay
+                                                                Frequency</option>
                                                         </select>
 
                                                     </div>
@@ -166,7 +169,10 @@
                                                         <select class="form-control col-8 loan_frequencies"
                                                             id="interest_repay_freq" placeholder="Select Pick Up Branch"
                                                             required>
-                                                            <option value="">Select Interest Repay Frequency</option>
+
+
+                                                            <option value="" disabled selected>Select Interest Repay
+                                                                Frequency</option>
                                                         </select>
 
                                                     </div>
@@ -179,8 +185,8 @@
                                                         <select class="form-control col-8" id="loan_intro_source"
                                                             placeholder="Select Where You Heard About The Loan"
                                                             required>
-                                                            <option value="">Select Where You Heard About The Loan
-                                                            </option>
+                                                            <option value="" disabled selected>Select Where You
+                                                                Heard About The Loan</option>
                                                         </select>
 
                                                     </div>
@@ -193,7 +199,8 @@
 
                                                         <select class="form-control col-8 " id="loan_sectors"
                                                             placeholder="Select The Sector" required>
-                                                            <option value="">Select The Sector</option>
+                                                            <option value="" disabled selected>Select the sector
+                                                            </option>
                                                         </select>
 
                                                     </div>
@@ -206,7 +213,8 @@
 
                                                         <select class="form-control col-8 " id="loan_sub_sectors"
                                                             placeholder="Select The Sub Sector" required>
-                                                            <option value="">Select The Sub Sector</option>
+                                                            <option value="" disabled selected>Select the sub
+                                                                sector</option>
                                                         </select>
 
                                                     </div>
@@ -219,7 +227,10 @@
 
                                                         <select class="form-control col-8" id="loan_purpose"
                                                             placeholder="Purpose of the loan" required>
-                                                            <option value="">Purpose of the loan</option>
+                                                            <option value="" disabled selected>Purpose
+                                                                of the
+                                                                loan
+                                                            </option>
                                                         </select>
 
                                                     </div>
@@ -403,9 +414,8 @@
     @endsection
 
     @section('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.js" --}}
+    {{-- integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> --}}
 
     <!-- third party js -->
     <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}">
@@ -442,5 +452,7 @@
 
     <!-- Datatables init -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+
+    {{-- Page js --}}
     <script src="{{ asset('assets/js/pages/loans/loan-request.js') }}"> </script>
     @endsection

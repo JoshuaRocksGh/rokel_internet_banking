@@ -480,4 +480,14 @@
         -moz-appearance: textfield;
     }
 
+    option[value=""][disabled] {
+        background-color: #dddddd;
+        color: #1E1F23
+    }
+
+    select:required:invalid {
+        background-color: #fffbfb79;
+        color: #1E1F23
+    }
+
 </style>
