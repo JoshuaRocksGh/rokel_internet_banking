@@ -14,6 +14,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMappedCells;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ExcelUploadImport implements WithHeadingRow, ToCollection
 {
@@ -178,50 +179,96 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
         foreach ($rows as $row) {
 
-            // echo json_encode($rows);
+            // dd($row['account_number']);
+
+            // echo ((object) $rows['account_number']);
+            // die();
+
+            // echo (strlen($row['account_number']));
+            // die();
+
+            // echo substr('abcdef', 1);     // bcdef
+            // echo substr('abcdef', 1, 3);  // bcd
+            // echo substr('abcdef', 0, 4);  // abcd
+            // echo substr('abcdef', 0, 8);  // abcdef
+            // echo substr('abcdef', -1, 1); // f
+
+            // echo substr($row['account_number'], 0, 3);
+            // die();
+
+            // $bank_code = ;
+            // $acc_length =  ;
+
+            // echo (count((array) $row['account_number']));
             // die();
 
 
-            if (null == ($row['account_number'] || $row['name'] ||  $row['amount'] || $row['ref_number'])) {
-                // return null;
-            } else {
+            // echo (json_decode($rows));
 
+            if (004 != substr($row['account_number'], 0, 3) || strlen($row['account_number']) != 18) {
 
-                $beneficiaryname = $row['name'];
-                $creditaccountnumber =  $row['account_number'];
-
-                // return response()->json([
-                //     'responseCode' => '526',
-                //     'message' => 'Insert into database',
-                //     "data"  => $creditaccountnumber
-                // ]);
-
-                $t_amt = $t_amt + (float) $row['amount'];
-
-
-                $query_result = DB::table('tb_corp_bank_import_excel')->insert([
-                    'ref_no' => $row['ref_number'],
-                    'bban' => $row['account_number'],
+                $query_result = DB::table('tb_bulk_transfer_error')->insert([
+                    'acc_number' => $row['account_number'],
                     'name' => $row['name'],
                     'amount' => $row['amount'],
                     'trans_desc' => $row['transaction_description'],
-                    'value_date' => $value_date,
-                    'bank_code' => $bank_code,
-                    'user_id' => session()->get('userId'),
-                    'customer_no' => $customer_no,
-                    'account_no' => $account_no,
-                    'account_mandate' => $account_mandate,
-                    'total_amount' => $total_amount,
-                    'currency' => $currency,
-                    'message' => 'message',
-                    'batch_no' => $batch_no,
-                    'status' => 'P',
-                    'bank_name' => '$bank_name',
-                    'created_at' => NOW(),
-                    'updated_at' => NOW()
-                ]);
+                    'ref_number' => $row['ref_number'],
+                    'bank' => $row['bank'],
+                    'batch_no' => $batch_no
 
-                /*
+
+                ]);
+                DB::commit();
+                die();
+            } else {
+
+                // $str1 = $row['account_number'];
+                // dd($row['account_number']);
+
+                // if ($row['account_number'] ) {
+
+                // };
+
+                if (null == ($row['account_number'] || $row['name'] ||  $row['amount'] || $row['ref_number'])) {
+                    // return null;
+                } else {
+
+
+                    $beneficiaryname = $row['name'];
+                    $creditaccountnumber =  $row['account_number'];
+
+                    // return response()->json([
+                    //     'responseCode' => '526',
+                    //     'message' => 'Insert into database',
+                    //     "data"  => $creditaccountnumber
+                    // ]);
+
+                    $t_amt = $t_amt + (float) $row['amount'];
+
+
+                    $query_result = DB::table('tb_corp_bank_import_excel')->insert([
+                        'ref_no' => $row['ref_number'],
+                        'bban' => $row['account_number'],
+                        'name' => $row['name'],
+                        'amount' => $row['amount'],
+                        'trans_desc' => $row['transaction_description'],
+                        'value_date' => $value_date,
+                        'bank_code' => $bank_code,
+                        'user_id' => session()->get('userId'),
+                        'customer_no' => $customer_no,
+                        'account_no' => $account_no,
+                        'account_mandate' => $account_mandate,
+                        'total_amount' => $total_amount,
+                        'currency' => $currency,
+                        'message' => 'message',
+                        'batch_no' => $batch_no,
+                        'status' => 'P',
+                        'bank_name' => '$bank_name',
+                        'created_at' => NOW(),
+                        'updated_at' => NOW()
+                    ]);
+
+                    /*
                 $query_result = DB::table('tb_corp_bank_req')->insert(
                     [
                         'request_type' => 'BULK',
@@ -245,29 +292,34 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                     ]
                 );
                 */
+                }
+
+                $query_result_ = DB::table('TB_CORP_BANK_BULK_REF')->insert(
+                    [
+
+                        'REF_NO' => $ref_no,
+                        'VALUE_DATE' => $value_date,
+                        'TOTAL_AMOUNT' => $t_amt,
+                        'DESCRIPTION' => 'Description goes here ....',
+                        'USER_ID' => $user_id,
+                        'ACCOUNT_NO' => $account_no,
+                        'ACCOUNT_MANDATE' => $account_mandate,
+                        'BATCH_NO' => $batch_no
+
+                    ]
+                );
+
+                DB::commit();
             }
         }
 
-        $query_result_ = DB::table('TB_CORP_BANK_BULK_REF')->insert(
-            [
 
-                'REF_NO' => $ref_no,
-                'VALUE_DATE' => $value_date,
-                'TOTAL_AMOUNT' => $t_amt,
-                'DESCRIPTION' => 'Description goes here ....',
-                'USER_ID' => $user_id,
-                'ACCOUNT_NO' => $account_no,
-                'ACCOUNT_MANDATE' => $account_mandate,
-                'BATCH_NO' => $batch_no
-
-            ]
-        );
 
 
 
         // echo $query_result;die;
 
-        DB::commit();
+
 
         // if($query_result_){
 
