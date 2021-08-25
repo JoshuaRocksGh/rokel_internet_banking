@@ -758,13 +758,15 @@
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <div class="input-group-prepend">
-                                                                    <input type="text" class="form-control readOnly "
-                                                                        value="1.00" style="width: 100px;">
+                                                                    <input type="text" class="form-control readOnly "id="convertor_rate_"
+                                                                        id="convertor_rate_" style="width: 100px;"
+                                                                        value="1.00" style="width: 100px;" readonly>
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <input type="text" class="form-control"
-                                                                    aria-label="Username" aria-describedby="basic-addon1"
-                                                                    readonly>
+                                                                    id="converted_amount" placeholder="Converted Amount"
+                                                                    aria-label="converted_amount" 
+                                                                    aria-describedby="basic-addon1" readonly>
                                                             </div>
 
 
@@ -981,12 +983,14 @@
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <div class="input-group-prepend">
-                                                                    <input type="text" class="form-control readOnly "
-                                                                        value="1.00" style="width: 100px;">
+                                                                    <input type="text" class="form-control display_midrate readOnly "
+                                                                        id="convertor_rate"
+                                                                        value="1.00" style="width: 100px;" readonly>
                                                                 </div>
                                                                 &nbsp;&nbsp;
-                                                                <input type="text" class="form-control"
-                                                                    aria-label="Username" aria-describedby="basic-addon1">
+                                                                <input type="text" class="form-control display_converted_amount"
+                                                                    id="converted_amount_" placeholder="Converted Amount"
+                                                                    aria-label="Converted Amount" aria-describedby="basic-addon1">
                                                             </div>
 
 
@@ -1143,8 +1147,15 @@
 
                                             <hr>
                                             <div class="row">
-                                                <h6 class="col-md-5">Enter Amount:</h6>
-                                                <span class="text-primary display_amount col-md-7"></span>
+                                                <h6 class="text-primary col-md-5">Transfer Amount:</h6>
+                                                <h6 class="text-danger text-bold col-md-7 ">
+                                                    <span class="display_currency"></span>
+                                                    &nbsp;
+                                                    <span class="display_transfer_amount"></span>
+                                                </h6>
+
+                                                {{--  <h6 class="col-md-5">Enter Amount:</h6>
+                                                <span class="text-primary display_amount col-md-7"></span>  --}}
 
                                                 <h6 class="col-md-5">Currency Rate:</h6>
                                                 <span class="text-primary display_midrate col-md-7"></span>
@@ -1162,12 +1173,7 @@
                                             <hr style="margin-top: 2px; margin-bottom: 5px; ">
 
                                             <div class="row">
-                                                <h6 class="text-primary col-md-5">Transfer Amount:</h6>
-                                                <h6 class="text-danger text-bold col-md-7 ">
-                                                    <span class="display_currency"></span>
-                                                    &nbsp;
-                                                    <span class="display_transfer_amount"></span>
-                                                </h6>
+
                                             </div>
                                             <hr style="margin-top: 2px; margin-bottom: 5px; ">
 
@@ -2160,9 +2166,12 @@
                     })
 
                     $("#onetime_amount").keyup(function() {
-                        var beneficiary_amount = $(this).val();
+
+                        var amount = $(this).val();
+                        console.log(forex_rate)
+                        currency_convertor(forex_rate, amount);
                         $(".display_transfer_amount").text(formatToCurrency(parseFloat(
-                            beneficiary_amount)));
+                            amount)));
                     })
 
 

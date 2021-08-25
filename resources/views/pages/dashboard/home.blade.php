@@ -425,7 +425,8 @@
                 <div class="col-md-12 ">
                     <div class="card" style="border-radius: 20px;">
                         <div class="border mt-0 rounded">
-                            <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest Transactions</h4>
+                            <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest Transactions
+                            </h4>
 
                             <div class="row" style="padding-left: 15px; padding-right: 15px;">
                                 {{-- <div class="col-md-1"></div> --}}
@@ -1247,7 +1248,7 @@
                                         </tr>`
                                     )
 
-                                        loan_count = loan_count + 1 ;
+                                    loan_count = loan_count + 1;
                                 })
 
                                 console.log('i_invest_total: ' + i_invest_total)
@@ -1741,7 +1742,7 @@
                                                     <a href="ecommerce-product-detail.html"
                                                         class="text-body font-weight-semibold transfer_narration">${data[index].narration}</a>
                                                     <small class="d-block transfer_date">${data[index].postingSysDate}</small>
-                                                    <span class="account_currency text-primary">${global_selected_currency}</span> &nbsp; <span class="transfer_amount">${formatToCurrency(parseFloat(data[index].amount))}</span>
+                                                    <span class="account_currency text-primary h4">${global_selected_currency}</span> &nbsp; <span class="transfer_amount h3">${formatToCurrency(parseFloat(data[index].amount))}</span>
                                                 </td>
                                             </tr>
                                             `
