@@ -1,10 +1,10 @@
-function getOptions(optionUrl, optionId) {
+function getOptions(optionUrl, optionId, data) {
     $.ajax({
         type: "GET",
+        data: data,
         url: optionUrl,
         datatype: "application/json",
         success: function (response) {
-            console.log(response.data);
             let data = response.data;
             $.each(data, function (index) {
                 $(optionId).append(
@@ -15,63 +15,13 @@ function getOptions(optionUrl, optionId) {
             });
         },
         error: function (xhr, status, error) {
+            console.log(optionUrl);
+            console.log(error);
             setTimeout(function () {
-                getOptions();
+                getOptions(optionUrl, optionId);
             }, $.ajaxSetup().retryAfter);
         },
     });
-}
-
-function loanFrequencies() {
-    $.ajax({
-        type: "GET",
-        url: "get-loan-frequencies-api",
-        datatype: "application/json",
-        success: function (response) {
-            console.log(response.data);
-            let data = response.data;
-            $.each(data, function (index) {
-                $(".loan_frequencies").append(
-                    $("<option>", {
-                        value: data[index].code,
-                    }).text(data[index].name)
-                );
-            });
-        },
-        error: function (xhr, status, error) {
-            setTimeout(function () {
-                loanFrequencies();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
-
-function interestRepayFrequency() {
-    $.ajax({
-        type: "GET",
-        url: "get-interest-types-api",
-        datatype: "application/json",
-        success: function (response) {
-            console.log(response.data);
-            let data = response.data;
-            $.each(data, function (index) {
-                $("#interest_rate_type").append(
-                    $("<option>", {
-                        value: data[index].code,
-                    }).text(data[index].name)
-                );
-            });
-        },
-        error: function (xhr, status, error) {
-            setTimeout(function () {
-                interestRepayFrequency();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
-
-function formatToCurrency(amount) {
-    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 }
 
 function loanRequestSubmission() {}
@@ -85,10 +35,11 @@ $(function () {
         getOptions("get-loan-products-api", "#loan_product");
         getOptions("get-loan-frequencies-api", ".loan_frequencies");
         getOptions("get-interest-types-api", "#interest_rate_type");
-        // loanFrequencies();
-        // interestRepayFrequency();
+        getOptions("get-loan-intro-source-api", "#loan_intro_source");
+        getOptions("get-loan-sectors-api", "#loan_sectors");
+        getOptions("get-loan-purpose-api", "#loan_purpose");
     }, 1000);
-
+    let loanData = new Object();
     // $(".success-message").hide();
     // $(".appear-button").hide();
     let detailedLoanForm;
@@ -118,8 +69,38 @@ $(function () {
     });
 
     $("#interest_repay_freq").on("change", function () {
-        let optionText = $("#principal_repay_freq option:selected").text();
+        let optionText = $("#interest_repay_freq option:selected").text();
         $(".display_interest_repay_freq").text(optionText);
+    });
+    $("#loan_purpose").on("change", function () {
+        let optionText = $("#loan_purpose option:selected").text();
+        $(".display_loan_purpose").text(optionText);
+    });
+    $("#loan_sectors").on("change", function () {
+        let optionText = $("#loan_sectors option:selected").text();
+        loanData.sectorCode = $("#loan_sectors option:selected").val();
+        if (loanData.sectorCode === "") {
+            $(".loan-sub-sectors-div").hide(300);
+        } else {
+            $("#loan_sub_sectors").text("");
+            $("#loan_sub_sectors").attr("placeholder", "Select The Sub Sector");
+            getOptions(
+                "get-loan-sub-sectors-api",
+                "#loan_sub_sectors",
+                loanData
+            );
+            $(".loan-sub-sectors-div").show(300);
+        }
+        $(".display_loan_sectors").text(optionText);
+    });
+
+    $("#loan_intro_source").on("change", function () {
+        let optionText = $("#loan_intro_source option:selected").text();
+        $(".display_loan_intro_source").text(optionText);
+    });
+    $("#loan_sub_sectors").on("change", function () {
+        let optionText = $("#loan_sub_sectors option:selected").text();
+        $(".display_loan_sub_sectors").text(optionText);
     });
     // $("#pin").keyup(function(){
     //     var pin = $("#pin").val();

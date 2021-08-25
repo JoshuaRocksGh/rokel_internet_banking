@@ -664,7 +664,11 @@ Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_
 Route::get('get-loan-frequencies-api', [FunctionsController::class, 'get_loan_frequencies'])->name('get-loan-frequencies-api');
 
 //route to return loan purposes
-Route::get('get-loan-purpose-api', [FunctionsController::class, 'get_loan_purpose'])->name('get-loan-purpose-api');
+Route::get('get-loan-purpose-api', [FunctionsController::class, 'getLoanPurpose']);
+
+Route::get('get-loan-intro-source-api', [FunctionsController::class, 'getLoanIntroSource']);
+Route::get('get-loan-sectors-api', [FunctionsController::class, 'getLoanSectors']);
+Route::get('get-loan-sub-sectors-api', [FunctionsController::class, 'getLoanSubSectors']);
 
 //route to return standing order frequencies
 Route::get('get-standing-order-frequencies-api', [FunctionsController::class, 'get_standing_order_frequencies'])->name('get-standing-order-frequencies-api');

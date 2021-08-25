@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\AcceptHeader;
+use Illuminate\Support\Facades\Log;
 
 class FunctionsController extends Controller
 {
@@ -329,16 +330,12 @@ class FunctionsController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-
-
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
         ];
 
-
         $response = Http::get(env('API_BASE_URL') . "/loans/loanProducts", $data);
-
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
@@ -353,13 +350,10 @@ class FunctionsController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-
-
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
         ];
-
 
         $response = Http::get(env('API_BASE_URL') . "/loans/interestTypes", $data);
 
@@ -367,22 +361,35 @@ class FunctionsController extends Controller
         return $result->api_response($response);
     }
 
+    public function getLoanIntroSource()
+    {
+        $response = Http::get(env('API_BASE_URL') . "/loans/introSource");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+    public function getLoanSectors()
+    {
+        $response = Http::get(env('API_BASE_URL') . "/loans/sectors");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+    public function getLoanSubSectors(Request $request)
+    {
+        $response = Http::get(env('API_BASE_URL') . "/loans/subSectors/$request->sectorCode");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+    public function getLoanPurpose()
+    {
+        $response = Http::get(env('API_BASE_URL') . "/loans/purpose");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
     //method to return the interest types
     public function get_loan_frequencies()
     {
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
-
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-
-
-        $response = Http::get(env('API_BASE_URL') . "/loans/loanFrequencies", $data);
+        $response = Http::get(env('API_BASE_URL') . "/loans/loanFrequencies");
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
@@ -430,36 +437,6 @@ class FunctionsController extends Controller
         // return $response->status();
         $result = new ApiBaseResponse();
         return $result->api_response($response);
-    }
-
-    public function get_loan_purpose()
-    {
-        // return 'kjsdf';
-
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-        $api_headers = session()->get('headers');
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-
-        $base_response = new BaseResponse();
-
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
-
-        // $response = Http::get(env('API_BASE_URL') . "/loans/purpose", $data);
-        // return $data;
-        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "/loans/purpose", $data);
-
-        $result = new ApiBaseResponse();
-        return $result->api_response($response);
-
-        // return $response;
-        // return $response->status();
     }
 
     public function get_standing_order_frequencies()

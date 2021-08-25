@@ -176,7 +176,7 @@
                                                             &nbsp; <span class="text-danger">*</span></b>
 
 
-                                                        <select class="form-control col-8" id="intro_source"
+                                                        <select class="form-control col-8" id="loan_intro_source"
                                                             placeholder="Select Where You Heard About The Loan"
                                                             required>
                                                             <option value="">Select Where You Heard About The Loan
@@ -191,20 +191,20 @@
                                                             &nbsp; <span class="text-danger">*</span></b>
 
 
-                                                        <select class="form-control col-8 " id="sector"
+                                                        <select class="form-control col-8 " id="loan_sectors"
                                                             placeholder="Select The Sector" required>
                                                             <option value="">Select The Sector</option>
                                                         </select>
 
                                                     </div>
-                                                    <div class="form-group row sub_sector" style="display: none">
+                                                    <div class="form-group row loan-sub-sectors-div"
+                                                        style="display: none">
 
-                                                        <b class="col-4 align-self-center text-primary"
-                                                            id="sub-sector">Sub Sector
+                                                        <b class="col-4 align-self-center text-primary">Sub Sector
                                                             &nbsp; <span class="text-danger">*</span></b>
 
 
-                                                        <select class="form-control col-8 " id="sub_sector"
+                                                        <select class="form-control col-8 " id="loan_sub_sectors"
                                                             placeholder="Select The Sub Sector" required>
                                                             <option value="">Select The Sub Sector</option>
                                                         </select>
@@ -313,16 +313,16 @@
                                         <h6 class="col-md-6">Interest Repay Frequency:</h6>
                                         <h6 class="text-primary display_interest_repay_freq col-md-6"></h6>
                                         <h6 class="col-md-6 loan-detail" style="display: none">Intro Source:</h6>
-                                        <h6 class="text-success loan-detail display_intro_source col-md-6"
+                                        <h6 class="text-primary loan-detail display_loan_intro_source col-md-6"
                                             style="display: none"></h6>
                                         <h6 class="col-md-6 loan-detail" style="display: none">Sector:</h6>
-                                        <h6 class="text-success loan-detail display_sector col-md-6"
+                                        <h6 class="text-primary loan-detail display_loan_sectors col-md-6"
                                             style="display: none"></h6>
-                                        <h6 class="col-md-6 sub_sector" style="display: none">Sub Sector:</h6>
-                                        <h6 class="text-success sub_sector display_sub_sector col-md-6"
+                                        <h6 class="col-md-6 loan-sub-sectors-div" style="display: none">Sub Sector:</h6>
+                                        <h6 class="text-primary loan-sub-sectors-div display_loan_sub_sectors col-md-6"
                                             style="display: none"></h6>
                                         <h6 class="col-md-6 loan-detail" style="display: none">Purpose:</h6>
-                                        <h6 class="text-success loan-detail display_purpose col-md-6"
+                                        <h6 class="text-primary loan-detail display_loan_purpose col-md-6"
                                             style="display: none"></h6>
 
                                     </div>
