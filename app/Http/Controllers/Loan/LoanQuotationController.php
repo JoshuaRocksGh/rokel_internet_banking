@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\classes\WEB\ApiBaseResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class LoanQuotationController extends Controller
 {
@@ -19,13 +20,13 @@ class LoanQuotationController extends Controller
 
         // $base_response = new BaseResponse();
 
-        $loanProduct = $request->loan_product;
-        $loanAmount = $request->loan_amount;
+        $loanProduct = $request->loanProductCode;
+        $loanAmount = $request->loanAmount;
         // $entrySource = $request->entrySource;
-        $tenureInMonths = $request->tenure_in_months;
-        $interestRateType = $request->interest_rate_type;
-        $principalRepayFreq = $request->principal_repay_freq;
-        $interestRepayFrequency = $request->interest_repay_freq;
+        $tenureInMonths = $request->tenureInMonths;
+        $interestRateType = $request->interestRateTypeCode;
+        $principalRepayFreq = $request->principalRepayFreqCode;
+        $interestRepayFrequency = $request->interestRepayFreqCode;
         $data = [
 
             "amount" => $loanAmount,
@@ -39,7 +40,8 @@ class LoanQuotationController extends Controller
             "tenure" => $tenureInMonths
 
         ];
-
+        Log::critical($data);
+        Log::critical($userID);
 
         //for debugging purposes
         // return $data;

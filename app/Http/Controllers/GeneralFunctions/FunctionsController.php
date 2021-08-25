@@ -375,7 +375,7 @@ class FunctionsController extends Controller
     }
     public function getLoanSubSectors(Request $request)
     {
-        $response = Http::get(env('API_BASE_URL') . "/loans/subSectors/$request->sectorCode");
+        $response = Http::get(env('API_BASE_URL') . "/loans/subSectors/$request->loanSectorCode");
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
@@ -404,16 +404,16 @@ class FunctionsController extends Controller
         $transfer_type = $request->transfer_type;
         // $feeType = $request->feeType;
 
-        return $request ;
+        return $request;
         // ACHP
         // RTG
 
-        If ($transfer_type == "ACH"){
-            $feeType = "ACHP" ;
-        }else if ($transfer_type == "RTGS") {
-            $feeType = "RTGs" ;
-        }else {
-            return false ;
+        if ($transfer_type == "ACH") {
+            $feeType = "ACHP";
+        } else if ($transfer_type == "RTGS") {
+            $feeType = "RTGs";
+        } else {
+            return false;
         }
 
         $authToken = session()->get('userToken');

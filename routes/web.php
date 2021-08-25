@@ -409,7 +409,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
 
-Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
+    Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
 
 
     // Route::delete('/delete-beneficiary', [transferController::class, "delete_beneficiary"])->name('delete-beneficiary');
@@ -647,7 +647,7 @@ Route::get('get-loan-products-api', [FunctionsController::class, 'get_Loan_produ
 Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_request'])->name('loan-request-details');
 
 //Route to send loan request details of quotation
-Route::post('loan-quotation-details', [LoanQuotationController::class, 'send_loan_request_quote'])->name('loan-quotation-details');
+Route::post('loan-quotation-details', [LoanQuotationController::class, 'send_loan_request_quote']);
 
 //Route to send unredeem request
 Route::post('unredeem-cardless-request', [CardlessController::class, 'send_unredeemed_request'])->name('unredeem-cardless-request');
