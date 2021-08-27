@@ -505,4 +505,15 @@ class FunctionsController extends Controller
 
         }
     }
+
+    public function reset_security_question($user_id)
+    {
+        $user_id = $user_id;
+        // $userId = $request->query('user_id');
+        // dd($user_id);
+
+        $response = Http::get(env('API_BASE_URL') . "/user/question/{$user_id}");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
 }

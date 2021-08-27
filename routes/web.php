@@ -534,6 +534,12 @@ Route::get('/logout', [LogoutController::class, 'logout_'])->name('logout');
 
 Route::get('/send-email', [MaileController::class, 'send_email'])->name('send-email');
 
+Route::get('post-security-question-api/{user_id}', [FunctionsController::class, 'reset_security_question'])->name('post-security-question-api');
+
+Route::post('forgot-password-api', [AuthenticationLoginController::class, 'forgot_password'])->name('forgot-password-api');
+
+
+
 // GENERAL FUNCTIONS
 Route::get('get-currency-list-api', [FunctionsController::class, 'currency_list'])->name('get-currency-list-api');
 Route::get('get-bank-list-api', [FunctionsController::class, 'bank_list'])->name('get-bank-list-api');
