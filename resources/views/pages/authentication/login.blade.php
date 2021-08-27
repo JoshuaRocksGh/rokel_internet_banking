@@ -5,9 +5,10 @@
 
     <div class="auth-fluid">
         <!--Auth fluid left content -->
-        <div class="auth-fluid-form-box" style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
-                                                            background-size: cover;
-                                                        ">
+        <div class="auth-fluid-form-box"
+            style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
+                                                                                                                                                                    background-size: cover;
+                                                                                                                                                                ">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
@@ -97,10 +98,21 @@
                             </div>
 
                     </div>
+
+                    <form action=""></form>
                     <div id="self_enroll_form" class=" form-center" style="display: none">
                         <h4 class="mt-0">Self Enroll</h4>
                         <br />
 
+                        <div class="alert alert-danger" role="alert" id="error_alert">
+                            <i class="mdi mdi-block-helper mr-2"></i><span id="error_message_"></span>
+                        </div>
+                        <div class="alert alert-warning" role="alert" id="no_question">
+                            <i class="mdi mdi-alert-outline mr-2"></i><span id="no_question_found_"></span>
+                        </div>
+                        <div class="alert alert-success" role="alert" id="reset_success">
+                            <i class="mdi mdi-check-all mr-2"></i><span id="reset_success_message_"></span>
+                        </div>
                         <div id="self_enroll_form1" class="form-group">
 
                             <label for="customer_number_input"> Account Number <span class="text-danger">*</span></label>
@@ -110,7 +122,7 @@
                             <br />
                             <div id="a" class="form-group mb-0 text-center">
                                 <button class="btn btn-primary btn-block" id="b_next1" type="submit"><span
-                                        id="s_next1">next</span>
+                                        id="s_next1">Next</span>
                                     <span id="s_loading1">
                                         <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner1"
                                             aria-hidden="true"></span>
@@ -146,7 +158,7 @@
 
                             <div class="form-group mb-0 text-center">
                                 <button class="btn btn-primary btn-block" id="b_next2" type="submit"><span
-                                        id="s_next2">next</span>
+                                        id="s_next2">Next</span>
                                     <span id="s_loading2">
                                         <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner2"
                                             aria-hidden="true"></span>
@@ -393,7 +405,7 @@
         function validateCustomer(userData) {
             $.ajax({
                 type: "POST",
-                url: "../validate-customer",
+                url: "validate-customer",
                 datatype: "application/json",
                 data: {
                     'customerNumber': userData.customerNumber
@@ -407,13 +419,15 @@
             }).done(response => {
                 if (response.responseCode === '000') {
                     $('#self_enroll_form1').hide()
-                    $('#self_enroll_form2').toggle(500)
+                    $('#self_enroll_form2').toggle('500')
                     console.log("customer number ajax success")
                     userData.authToken = response.data.authToken;
                 } else {
-                    toaster(response.message,
+                    {{-- toaster(response.message,
                         'error',
-                        3000);
+                        3000); --}}
+                    $("#error_alert").toggle('500')
+                    $("#error_message_").text(response.message)
                     $('#s_loading1').toggle()
                     $('#s_next1').show()
                     $('#b_next1').attr('disabled', false);
@@ -432,7 +446,7 @@
         function confirmCustomer(userData) {
             $.ajax({
                 type: "POST",
-                url: "../confirm-customer",
+                url: "confirm-customer",
                 datatype: "application/json",
                 data: userData,
                 headers: {
@@ -449,9 +463,11 @@
                     $('#self_enroll_form3').toggle(500)
 
                 } else {
-                    toaster(response.message,
+                    {{-- toaster(response.message,
                         'error',
-                        3000);
+                        3000); --}}
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text(response.message)
                     $('#s_loading2').toggle()
                     $('#s_next2').show()
                     $('#b_next2').attr('disabled', false);
@@ -490,9 +506,11 @@
 
 
                 } else {
-                    toaster(response.message,
+                    {{-- toaster(response.message,
                         'error',
-                        3000);
+                        3000); --}}
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text(response.message)
                     $('#s_next3').show()
                     $('#s_loading3').toggle()
                     $('#b_next3').attr('disabled', false);
@@ -509,11 +527,19 @@
         }
         $(document).ready(function() {
 
+
             let userData = new Object();
             // $('#self_enroll_form').hide(),
             // $('#failed_login').hide(),
             // $('#spinner').hide(),
             // $('#spinner-text').hide()
+            $("#error_alert").hide()
+            $("#no_question").hide()
+            $("#reset_success").hide()
+            $("#error_message_").hide()
+            $("#no_question_found_").hide()
+            $("#reset_success_message_").hide()
+
 
             $('#submit').on("click", function(e) {
                 e.preventDefault();
@@ -521,9 +547,13 @@
                 var password = $('#password').val();
 
                 if (email === "" || email === undefined) {
-                    toaster("Please enter email", "error", 3000)
+                    {{-- toaster("Please enter email", "error", 3000) --}}
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text('Please enter email')
                 } else if (password === "" || password === undefined) {
-                    toaster("Please enter password", "error", 3000)
+                    {{-- toaster("Please enter password", "error", 3000) --}}
+                    $("#error_alert").toggle(500);
+                    $("#error_message_").text("Please enter password")
                 } else {
                     $('#spinner').show()
                     $('#spinner-text').show()
@@ -537,6 +567,7 @@
             $('#self_enroll').on("click", function(e) {
                 console.log("enroll")
                 e.preventDefault();
+
                 $('#login_form').hide()
                 $('#login_page_extras').toggle(300)
                 $('#self_enroll_form2').hide()
@@ -545,6 +576,7 @@
                 $('#s_loading2').hide()
                 $('#s_loading3').hide()
                 $('#self_enroll_form').toggle(300)
+
                 return false;
 
             })
@@ -563,13 +595,18 @@
 
                 userData.customerNumber = $("#customer_number_input").val()
                 if (userData.customerNumber === undefined || userData.customerNumber === "") {
-                    toaster("Customer Number is required",
+                    {{-- toaster("Customer Number is required",
                         'error',
                         3000
-                    );
+                    ); --}}
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text("Customer Number is required")
+
                     return false
                 } else if (userData.customerNumber.length !== 6) {
-                    toaster("invalid customer number", "error", 3000);
+                    {{-- toaster("invalid customer number", "error", 3000); --}}
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text("Invalid customer number")
                     return false
                 } else {
                     $('#s_next1').hide()
@@ -586,7 +623,9 @@
                 // $('#s_next2').hide()
                 let dob = $('#date_of_birth_input').val()
                 if (dob === "" || dob === undefined) {
-                    toaster("Please enter date of birth", "error", 3000)
+                    {{-- toaster("Please enter date of birth", "error", 3000) --}}
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text("Please enter date of birth")
                     return false
                 }
                 dob = $("#date_of_birth_input").val().split('/')
@@ -595,10 +634,14 @@
                 userData.phoneNumber = $("#phone_number_input").val()
 
                 if (userData.idNumber === "" || userData.idNumber === undefined) {
-                    toaster("Please enter id number", "error", 3000)
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text("Enter id number")
+                    {{-- toaster("Please enter id number", "error", 3000) --}}
                     return false
                 } else if (userData.phoneNumber === "" || userData.phoneNumber === undefined) {
-                    toaster("Please enter phone number", "error", 3000)
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text("Enter phone number")
+                    {{-- toaster("Please enter phone number", "error", 3000) --}}
                     return false
                 } else {
                     $('#s_next2').hide()
@@ -614,13 +657,17 @@
 
                 userData.oneTimePin = $("#one_time_pin_input").val()
                 if (userData.oneTimePin === undefined || userData.oneTimePin === "") {
-                    toaster("one time pin is required",
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text("One time pin is required")
+                    {{-- toaster("one time pin is required",
                         'error',
                         3000
-                    );
+                    ); --}}
                     return false
                 } else if (userData.oneTimePin.length !== 4) {
-                    toaster("invalid code", "error", 3000);
+                    $("#error_alert").toggle('500');
+                    $("#error_message_").text("Invalid code")
+                    {{-- toaster("invalid code", "error", 3000); --}}
                     return false
                 } else {
                     $('#s_next3').hide()

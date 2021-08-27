@@ -7,8 +7,8 @@
         <!--Auth fluid left content -->
         <div class="auth-fluid-form-box"
             style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                background-size: cover;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    background-size: cover;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
@@ -91,8 +91,11 @@
                                     aria-hidden="true"></span>
                                 {{-- <span class="spinner-text">Loading ...</span> --}}
                             </button>
-                            <button class="btn btn-primary btn-block" type="button"
-                                id="security_question_submit">Submit</button>
+                            <button class="btn btn-primary btn-block" type="button" id="security_question_submit">
+                                <span id="security_question_submit_text">Submit</span>
+                                <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"
+                                    id="submit_spinner"></span>
+                            </button>
                             {{-- <button class="btn btn-primary btn-block" type="button"
                                 id="reset_password_submit_btn">Submit</button> --}}
 
@@ -102,6 +105,11 @@
 
                     </form>
                     <!-- end form-->
+                    <br><br>
+                    <p class="text-center"><a href="{{ url('/') }}" id="login_instead" class="text-primary ml-1 "><b>
+                                Login
+                                Instead</b></a>
+                    </p>
 
                     <!-- Footer-->
                     {{-- <footer class="footer footer-alt">
@@ -148,6 +156,7 @@
             $("#reset_success").hide();
             $("#reset_success_message").hide()
             $(".spinner-text").hide();
+            $("#submit_spinner").hide()
 
 
 
@@ -180,9 +189,9 @@
 
                 var enter_user_id = $("#reset_user_id").val()
 
-                ("#user_id_next_btn").attr('disabled', true)
+                $("#user_id_next_btn").attr('disabled', true)
                 $(".spinner-text").show();
-                $("#user_id_next_btn_text").hide()
+                $(".user_id_next_btn_text").hide()
 
                 if (enter_user_id !== '') {
 
@@ -221,9 +230,9 @@
                             } else {
                                 $("#no_question").toggle('500')
                                 $("#no_question_found").text(error)
-                                    ("#user_id_next_btn").attr('disabled', true)
-                                $(".spinner-text").show();
-                                $("#user_id_next_btn_text").hide()
+                                $("#user_id_next_btn").attr('disabled', false)
+                                $(".spinner-text").hide();
+                                $(".user_id_next_btn_text").show()
                             }
 
 
@@ -258,11 +267,15 @@
                     window.location.href = "{{ url('/') }}";
 
                 };
+                $("#security_question_submit").attr('disabled', true)
+                $("#submit_spinner").show();
+                $("#security_question_submit_text").hide()
 
                 if (reset_password == reset_confirm_password) {
 
                     {{-- alert('equal'); --}}
                     {{-- return false; --}}
+
 
                     $.ajax({
                         type: 'POST',
@@ -287,23 +300,32 @@
                             if (response.responseCode == 000) {
                                 $("#reset_success_message").text(response.message)
                                 $("#reset_success").show('500');
+                                $("#security_question_submit").attr('disabled', false)
+                                $("#submit_spinner").hide();
+                                $("#security_question_submit_text").show()
 
 
                                 setTimeout(function() {
 
                                     redirect_page();
-                                }, 5000);
+                                }, 3000);
 
                             } else {
                                 $("#error_alert").toggle('500')
                                 $("#error_message").text(response.message);
+                                $("#security_question_submit").attr('disabled', false)
+                                $("#submit_spinner").hide();
+                                $("#security_question_submit_text").show()
                             }
                         }
                     })
 
                 } else {
                     $("#error_alert").toggle('500');
-                    $("#error_message").text('Password do not match');
+                    $("#error_message").text('Passwords do not match');
+                    $("#security_question_submit").attr('disabled', false)
+                    $("#submit_spinner").hide();
+                    $("#security_question_submit_text").show()
                 }
             })
         })
