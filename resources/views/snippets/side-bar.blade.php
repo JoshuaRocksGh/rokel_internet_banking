@@ -4,48 +4,6 @@
     <div class="h-100" data-simplebar>
 
         <!-- User box -->
-        <div class="user-box text-center">
-            {{-- <img src="../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md"> --}}
-            {{-- <div class="col-md-4">
-                    <div class="avatar-md">
-                        <span class="avatar-title bg-soft-secondary text-secondary font-20 rounded-circle">
-                            MD
-                        </span>
-                    </div>
-                </div> --}}
-            <div class="dropdown">
-                <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
-                    data-toggle="dropdown">Geneva Kennedy</a>
-                <div class="dropdown-menu user-pro-dropdown">
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-user mr-1"></i>
-                        <span>Account</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings mr-1"></i>
-                        <span>Settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-lock mr-1"></i>
-                        <span>Lock Screen</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-log-out mr-1"></i>
-                        <span>Logout</span>
-                    </a>
-
-                </div>
-            </div>
-            <p class="text-muted">Admin Head</p>
-        </div>
 
         <!--- Sidemenu -->
         <div id="sidebar-menu">
@@ -65,10 +23,15 @@
 
                 {{-- <li class="menu-title mt-2">Apps</li> --}}
 
+                @if (Session::has('menus'))
+                @foreach (Session::get('menus') as $menu)
+
+
+                @if ($menu->grouping === "AL")
                 <li>
                     <a href="#sidebarMyAccount" data-toggle="collapse">
                         <i class="mdi mdi-book-account-outline"></i>
-                        <span> Account</span>
+                        <span>{{  $menu->label }}</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarMyAccount">
@@ -119,12 +82,16 @@
         </ul>
     </div>
     </li>
+    @endif
+
+    @if ($menu->grouping === "AB")
+
 
 
     <li>
         <a href="#sidebarTransfer" data-toggle="collapse">
             <i class="mdi mdi-rotate-3d-variant"></i>
-            <span> Transfer </span>
+            <span> {{ $menu->label }} </span>
             <span class="menu-arrow"></span>
         </a>
         <div class="collapse" id="sidebarTransfer">
@@ -187,11 +154,13 @@
     </ul>
 </div>
 </li>
+@endif
 
+@if ($menu->grouping === "AD")
 <li>
     <a href="#sidebarBeneficiary" data-toggle="collapse">
         <i class="mdi mdi-account-multiple-outline"></i>
-        <span>Payments </span>
+        <span>{{ $menu->label }} </span>
         <span class="menu-arrow"></span>
     </a>
     <div class="collapse" id="sidebarBeneficiary">
@@ -274,10 +243,14 @@
 
 </li>
 
+@endif
+
+@if ($menu->grouping==="AF")
+
 <li>
     <a href="#sidebarLoans" data-toggle="collapse">
         <i class="mdi mdi-briefcase-check-outline"></i>
-        <span> Loans </span>
+        <span> {{ $menu->label }} </span>
         <span class="menu-arrow"></span>
     </a>
     <div class="collapse" id="sidebarLoans">
@@ -297,11 +270,13 @@
 </ul>
 </div>
 </li>
+@endif
+@if ($menu->grouping==="AM")
 
 <li>
     <a href="#sidebarMyInvestments" data-toggle="collapse">
         <i class="mdi mdi-domain"></i>
-        <span> Investments </span>
+        <span> {{ $menu->label }} </span>
         <span class="menu-arrow"></span>
     </a>
     <div class="collapse" id="sidebarMyInvestments">
@@ -315,10 +290,15 @@
         </ul>
     </div>
 </li>
+
+@endif
+
+@if($menu->grouping === "AN")
+
 <li>
     <a href="#sidebarTradeFinance" data-toggle="collapse">
         <i class="mdi mdi-briefcase-check-outline"></i>
-        <span> Trade Finance </span>
+        <span> {{ $menu->label}} </span>
         <span class="menu-arrow"></span>
     </a>
     <div class="collapse" id="sidebarTradeFinance">
@@ -329,21 +309,14 @@
         </ul>
     </div>
 </li>
-
-{{-- <li>
-                    <a href="#"> --}}
-{{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
-{{-- <i class="mdi mdi-printer-pos"></i>
-                        <span> POS</span>
-                    </a>
-                </li> --}}
-
+@endif
+@if ($menu->grouping==="AE")
 
 
 <li>
     <a href="#sidebarAccountServices" data-toggle="collapse">
         <i class="mdi mdi-email-multiple-outline"></i>
-        <span> Account Services </span>
+        <span> {{ $menu->label}} </span>
         <span class="menu-arrow"></span>
     </a>
     <div class="collapse" id="sidebarAccountServices">
@@ -439,11 +412,14 @@
 </ul>
 </div>
 </li>
+@endif
+@if ($menu->grouping==="AP")
+
 <li>
     <a href="#approvals" data-toggle="collapse">
         {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
         <i class="mdi mdi-checkbox-multiple-marked-outline"></i>
-        <span> Approvals </span>
+        <span> {{ $menu->label}} </span>
         <span class="menu-arrow"></span>
     </a>
     <div class="collapse" id="approvals">
@@ -464,34 +440,14 @@
     </div>
 </li>
 
-{{-- <li>
-                    <a href="#sidebarChatbot" data-toggle="collapse">
-
-                        <i class="mdi mdi-chat-processing-outline"></i>
-                        <span> Chatbot </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarChatbot">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('WhatsApp-Chatbot') }}">WhatsApp</a>
-</li>
-<li>
-    <a href="{{ url('Facebook-Chatbot') }}">Facebook</a>
-</li>
-<li>
-    <a href="{{ url('Instagram-Chatbot') }}">Instagram</a>
-</li>
-</ul>
-</div>
-</li> --}}
-
+@endif
+@if ($menu->grouping==="AK")
 
 <li>
     <a href="#sidebarSetting" data-toggle="collapse">
         {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
         <i class="mdi mdi-cog-outline"></i>
-        <span> Settings </span>
+        <span> {{ $menu->label}} </span>
         <span class="menu-arrow"></span>
     </a>
     <div class="collapse" id="sidebarSetting">
@@ -519,7 +475,9 @@
 </ul>
 </div>
 </li>
+@endif
 
+@endforeach
 <li>
     <a href="{{ url('branch-locator') }}">
         {{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
@@ -534,6 +492,47 @@
         <span> Logout </span>
     </a>
 </li>
+@endif
+
+
+
+
+
+{{-- <li>
+                    <a href="#"> --}}
+{{-- <i class="mdi mdi-cellphone-message mdi-36px card-icon"></i></i> --}}
+{{-- <i class="mdi mdi-printer-pos"></i>
+                        <span> POS</span>
+                    </a>
+                </li> --}}
+
+
+
+{{-- <li>
+                    <a href="#sidebarChatbot" data-toggle="collapse">
+
+                        <i class="mdi mdi-chat-processing-outline"></i>
+                        <span> Chatbot </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarChatbot">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ url('WhatsApp-Chatbot') }}">WhatsApp</a>
+</li>
+<li>
+    <a href="{{ url('Facebook-Chatbot') }}">Facebook</a>
+</li>
+<li>
+    <a href="{{ url('Instagram-Chatbot') }}">Instagram</a>
+</li>
+</ul>
+</div>
+</li> --}}
+
+
+
+
 
 {{-- Start Comment --}}
 
