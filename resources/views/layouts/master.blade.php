@@ -139,7 +139,7 @@
 
 <body
     style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;"
-    {{-- class="loading" --}}
+    class="loading"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
 

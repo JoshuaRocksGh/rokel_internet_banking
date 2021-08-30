@@ -377,7 +377,7 @@
                                 <div class="form-group row">
                                     <div class="col-8 offset-4 text-right">
                                         <button type="submit" id="btn_proceed_to_loan"
-                                            class="btn  btn-primary btn-sm btn-rounded waves-effect waves-light ">
+                                            class="btn  btn-primary btn-rounded waves-effect waves-light ">
                                             <b className="text-primary" style="font-size: 12px">Proceed To Request Loan
                                             </b>
                                         </button>

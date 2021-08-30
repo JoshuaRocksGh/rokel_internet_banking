@@ -46,7 +46,7 @@
 
 
                     <div class="col-md-6 m-2 h-100" id="transaction_summary"
-                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                        style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230)); display:none;">
                         <br><br><br>
 
                         <div class="row"></div>
@@ -84,29 +84,33 @@
 
 
                                     </div>
+
+                                    <br>
+                                    <div class="form-group">
+
+                                        <button type="button" class="btn btn-rounded btn-secondary mb-2"
+                                            id="save_beneficiary_back">
+                                            <i class="mdi mdi-reply-all-outline"></i> &nbsp; Back
+                                        </button>
+
+
+
+                                        <button type="button" class="btn btn-primary btn-rounded float-right"
+                                            id="add_beneficiary">Add
+                                            Beneficiary &nbsp;
+                                            <i class="fe-arrow-right"></i>
+                                            {{-- <span id="confirm_transfer">Confirm Transfer</span> --}}
+                                            {{-- <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
+                                        aria-hidden="true"></span> --}}
+                                            {{-- <span id="spinner-text">Loading...</span> --}}
+                                        </button>
+
+                                    </div>
                                 </div>
 
                             </form>
                         </div>
-                        <br>
-                        <div class="form-group">
 
-                            <button type="button" class="btn btn-rounded btn-secondary mb-2" id="save_beneficiary_back">
-                                <i class="mdi mdi-reply-all-outline"></i> &nbsp; Back
-                            </button>
-
-
-
-                            <button type="button" class="btn btn-primary btn-rounded float-right" id="add_beneficiary">Add
-                                Beneficiary &nbsp;
-                                <i class="fe-arrow-right"></i>
-                                {{-- <span id="confirm_transfer">Confirm Transfer</span> --}}
-                                {{-- <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
-                                        aria-hidden="true"></span> --}}
-                                {{-- <span id="spinner-text">Loading...</span> --}}
-                            </button>
-
-                        </div>
 
 
                     </div>
@@ -246,132 +250,130 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <scirpt src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'></script>
+    <scirpt src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'>
+        </script>
 
-    <script>
-
-
-        function paymentType() {
-            var payment_type = @json($paymentType);
+        <script>
+            function paymentType() {
+                var payment_type = @json($paymentType);
                 {{-- console.log(payment_type); --}}
-            $.ajax({
-                type: 'GET',
-                url: 'get-payment-types-api',
-                datatype: "application/json",
-                success: function(response) {
-                    {{-- console.log(response) --}}
-                    let data = response.data.data
-                    let description = response.data.data
-                    {{-- console.log(description) --}}
+                $.ajax({
+                    type: 'GET',
+                    url: 'get-payment-types-api',
+                    datatype: "application/json",
+                    success: function(response) {
+                        {{-- console.log(response) --}}
+                        let data = response.data.data
+                        let description = response.data.data
+                        {{-- console.log(description) --}}
 
-                    $.each(description, function(index) {
-                        let desc_type = description[index]
-                        {{-- console.log(desc_type); --}}
+                        $.each(description, function(index) {
+                            let desc_type = description[index]
+                            {{-- console.log(desc_type); --}}
 
-                        if ( payment_type == description[index].paymentType) {
-                            {{-- alert(description[index].description) --}}
-                            $('#hidden_description').val(description[index].description)
-                        }
-                    })
-
-
-                    $.each(data, function(index) {
-                        let type = data[index].paySubTypes
-                        let payment = data[index].paymentType
-                        var description = data[index].description
-                        {{-- console.log(payment); --}}
-                        {{-- console.log(type) --}}
-                        console.log("=========")
-
-                        if (payment_type == payment) {
-
-
-                        $.each(type , function(index) {
-
-                                $('#beneficiary_network').append($('<option>', {
-                                    value: type[index].paymentAccount + '~' +
-                                    type[index].paymentCode + '~' +
-                                    type[index].paymentDescription + '~' +
-                                    type[index].paymentLogo
-                                }).text( type[index].paymentDescription
-                                ));
-
+                            if (payment_type == description[index].paymentType) {
+                                {{-- alert(description[index].description) --}}
+                                $('#hidden_description').val(description[index].description)
+                            }
                         })
 
+
+                        $.each(data, function(index) {
+                            let type = data[index].paySubTypes
+                            let payment = data[index].paymentType
+                            var description = data[index].description
+                            {{-- console.log(payment); --}}
+                            {{-- console.log(type) --}}
+                            console.log("=========")
+
+                            if (payment_type == payment) {
+
+
+                                $.each(type, function(index) {
+
+                                    $('#beneficiary_network').append($('<option>', {
+                                        value: type[index].paymentAccount + '~' +
+                                            type[index].paymentCode + '~' +
+                                            type[index].paymentDescription + '~' +
+                                            type[index].paymentLogo
+                                    }).text(type[index].paymentDescription));
+
+                                })
+
+                            }
+
+
+
+                        })
+                    },
+                    error: function(xhr, status, error) {
+
+                        setTimeout(function() {
+                            paymentType()
+                        }, $.ajaxSetup().retryAfter)
                     }
+                })
+            }
 
+            $(document).ready(function() {
 
+                {{-- $('#save_beneficiary').hide(''); --}}
+                $('#spinner').hide(),
+                    $('#spinner-text').hide(),
+                    $('#marked_fields').show();
 
-                    })
-                },
-                error: function(xhr, status, error) {
-
-                    setTimeout(function() {
-                        paymentType()
-                    }, $.ajaxSetup().retryAfter)
-                }
-            })
-        }
-
-        $(document).ready(function() {
-
-            {{-- $('#save_beneficiary').hide(''); --}}
-            $('#spinner').hide(),
-                $('#spinner-text').hide(),
-                $('#marked_fields').show();
-
-            $('#transaction_summary').hide();
-            $('#account_number_error').hide();
-            $('#account_name_error').hide();
-            $('#beneficiary_name_error').hide();
-        })
-
-
-        setTimeout(function() {
-            paymentType();
-        }, 200);
-
-
-        function toaster(message, icon) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: false,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
+                $('#transaction_summary').hide();
+                $('#account_number_error').hide();
+                $('#account_name_error').hide();
+                $('#beneficiary_name_error').hide();
             })
 
-            Toast.fire({
-                icon: icon,
-                title: message
-            })
-        };
 
-        $('#same_bank_beneficiary_form').submit(function(e) {
-            e.preventDefault()
-
-            var payment_type = @json($paymentType);
+            setTimeout(function() {
+                paymentType();
+            }, 200);
 
 
+            function toaster(message, icon) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
 
-            var beneficiary_name = $('#beneficiary_name').val();
-            $('#display_beneficiary_name').text(beneficiary_name)
-            console.log(beneficiary_name)
+                Toast.fire({
+                    icon: icon,
+                    title: message
+                })
+            };
 
-            var beneficiary_mobile_number = $('#beneficiary_mobile_number').val();
-            $('#display_beneficiary_number').text(beneficiary_mobile_number)
-            console.log(beneficiary_mobile_number);
+            $('#same_bank_beneficiary_form').submit(function(e) {
+                e.preventDefault()
 
-            var beneficiary_network = $('#beneficiary_network').val().split('~');
-            var network_details = beneficiary_network
-            $('#display_beneficiary_network').text(network_details[2])
-            console.log(beneficiary_network)
+                var payment_type = @json($paymentType);
 
-                            {{-- let image = new Image()
+
+
+                var beneficiary_name = $('#beneficiary_name').val();
+                $('#display_beneficiary_name').text(beneficiary_name)
+                console.log(beneficiary_name)
+
+                var beneficiary_mobile_number = $('#beneficiary_mobile_number').val();
+                $('#display_beneficiary_number').text(beneficiary_mobile_number)
+                console.log(beneficiary_mobile_number);
+
+                var beneficiary_network = $('#beneficiary_network').val().split('~');
+                var network_details = beneficiary_network
+                $('#display_beneficiary_network').text(network_details[2])
+                console.log(beneficiary_network)
+
+                {{-- let image = new Image()
                             var base64_string = network_details[3]
                             console.log(base64_string)
                             image.src = "data:image/png;base64," + base64_string
@@ -380,87 +382,87 @@
 
 
 
-            $('#transaction_summary').toggle('500');
-            $('#transaction_form').hide();
+                $('#transaction_summary').toggle('500');
+                $('#transaction_form').hide();
 
-
-        })
-
-        $('#save_beneficiary_back').click(function(e) {
-            e.preventDefault()
-
-            $('#transaction_form').toggle('500');
-            $('#transaction_summary').hide();
-        })
-
-        $('#add_beneficiary').click(function(e) {
-            e.preventDefault();
-
-            var payment_description = $('#hidden_description').val()
-            console.log(payment_description)
-
-            var payment_type = @json($paymentType);
-                console.log(payment_type);
-
-            var approvedBy = payment_description
-
-            var beneficiary_name = $('#beneficiary_name').val();
-            console.log(beneficiary_name);
-
-
-
-            var beneficiary_mobile_number = $('#beneficiary_mobile_number').val();
-            console.log(beneficiary_mobile_number);
-
-
-            var beneficiary_network = $('#beneficiary_network').val().split('~');
-            var modifyBy = beneficiary_network[2]
-            var network_details =  beneficiary_network[1]
-            console.log(beneficiary_network);
-            {{-- $('#display_beneficiary_network').text(network_details[2]) --}}
-
-            function redirect_page() {
-                window.location.href = "{{ url('payment-beneficiary-list') }}";
-
-            };
-
-            $.ajax({
-                type : 'POST' ,
-                url : 'add-mobile-money-beneficiary-api' ,
-                datatype : 'application/json' ,
-                data : {
-                    'account' : beneficiary_mobile_number,
-                    'nickname' : beneficiary_name,
-                    'paymentType' : payment_type,
-                    'payeeName' : network_details,
-                    'approvedBy' : approvedBy,
-                    'modifyBy' : modifyBy
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    console.log(response);
-                    if (response.responseCode == '000') {
-                        Swal.fire(
-                                    '',
-                                    response.message,
-                                    'success'
-                                );
-                                setTimeout(function() {
-
-                                    redirect_page();
-                                }, 2000);
-                    }else {
-                        toaster(response.message, 'error', 10000);
-                    }
-                }
 
             })
 
+            $('#save_beneficiary_back').click(function(e) {
+                e.preventDefault()
+
+                $('#transaction_form').toggle('500');
+                $('#transaction_summary').hide();
+            })
+
+            $('#add_beneficiary').click(function(e) {
+                e.preventDefault();
+
+                var payment_description = $('#hidden_description').val()
+                console.log(payment_description)
+
+                var payment_type = @json($paymentType);
+                console.log(payment_type);
+
+                var approvedBy = payment_description
+
+                var beneficiary_name = $('#beneficiary_name').val();
+                console.log(beneficiary_name);
 
 
-        })
-    </script>
 
-@endsection
+                var beneficiary_mobile_number = $('#beneficiary_mobile_number').val();
+                console.log(beneficiary_mobile_number);
+
+
+                var beneficiary_network = $('#beneficiary_network').val().split('~');
+                var modifyBy = beneficiary_network[2]
+                var network_details = beneficiary_network[1]
+                console.log(beneficiary_network);
+                {{-- $('#display_beneficiary_network').text(network_details[2]) --}}
+
+                function redirect_page() {
+                    window.location.href = "{{ url('payment-beneficiary-list') }}";
+
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'add-mobile-money-beneficiary-api',
+                    datatype: 'application/json',
+                    data: {
+                        'account': beneficiary_mobile_number,
+                        'nickname': beneficiary_name,
+                        'paymentType': payment_type,
+                        'payeeName': network_details,
+                        'approvedBy': approvedBy,
+                        'modifyBy': modifyBy
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.responseCode == '000') {
+                            Swal.fire(
+                                '',
+                                response.message,
+                                'success'
+                            );
+                            setTimeout(function() {
+
+                                redirect_page();
+                            }, 2000);
+                        } else {
+                            toaster(response.message, 'error', 10000);
+                        }
+                    }
+
+                })
+
+
+
+            })
+        </script>
+
+    @endsection

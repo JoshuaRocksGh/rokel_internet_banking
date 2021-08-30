@@ -86,7 +86,7 @@
 
                             <!-- start page title -->
 
-                            <div class="receipt">
+                            <div class="receipt" style="display: none">
                                 <div class="container card card-body">
 
                                     <div class="container">
@@ -223,7 +223,7 @@
                                 <div class="row">
 
                                     <div class="col-md-7 m-2" id="transaction_summary"
-                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));display:none;">
                                         <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10 ">
@@ -419,8 +419,9 @@
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button"
-                                                             id="confirm_modal_button">
-                                                            <span id="confirm_transfer" data-toggle="modal" data-target="#centermodal">Confirm Transfer</span>
+                                                            id="confirm_modal_button">
+                                                            <span id="confirm_transfer" data-toggle="modal"
+                                                                data-target="#centermodal">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
                                                                 role="status" id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>

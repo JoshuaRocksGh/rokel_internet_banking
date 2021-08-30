@@ -19,6 +19,11 @@ class StandingOrderController extends Controller
         return view('pages.transfer.standing_order');
     }
 
+    public function display_standing_order_new()
+    {
+        return view('pages.transfer.standing_order_new');
+    }
+
     //method to send pay load request
     public function standing_order_request(Request $request)
     {
@@ -60,7 +65,9 @@ class StandingOrderController extends Controller
                 "transactionDesc" => $transactionDetails
             ];
 
-        Log::critical($data);
+        return $data;
+
+        // Log::critical($data);
 
         try {
             $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "transfers/standingOrder", $data);

@@ -51,7 +51,7 @@
             <div class="col-md-6">
                 <h4 class="text-primary">
                     <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                    SAME BANK TRANSFER
+                    STANDING ORDER
 
                 </h4>
             </div>
@@ -60,7 +60,7 @@
                 <h6>
 
                     <span class="flaot-right">
-                        <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Same Bank</b>
+                        <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Standing Order</b>
 
 
                     </span>
@@ -108,9 +108,10 @@
                                                     </div>
                                                     <br>
                                                     <div class="page-header">
-                                                        <h2><span id="personal_transfer_receipt">Transfer Receipt</span>
-                                                            <span id="coporate_transfer_approval">Transaction Awaiting
-                                                                Approval</span>
+                                                        <h2><span id="personal_transfer_receipt">Standing Order
+                                                                Receipt</span>
+                                                            {{-- <span id="coporate_transfer_approval">Transaction Awaiting
+                                                                Approval</span> --}}
                                                         </h2>
                                                     </div>
                                                     <br>
@@ -217,6 +218,27 @@
                                                                     <td class="text-right"><span
                                                                             id="purpose_receipt"></span></td>
                                                                     {{-- <td></td> --}}
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Start Date:</td>
+                                                                    <td>
+                                                                        <span
+                                                                            class="font-13 text-primary h3 display_so_start_date"></span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>End Date:</td>
+                                                                    <td>
+                                                                        <span
+                                                                            class="font-13 text-primary h3 display_so_end_date"></span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Frequency:</td>
+                                                                    <td>
+                                                                        <span
+                                                                            class="font-13 text-primary h3 display_frequency_so"></span>
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- <th scope="row">3</th> --}}
@@ -373,12 +395,28 @@
                                                             </tr>
 
 
-                                                            <tr>
+                                                            {{--  <tr>
                                                                 <td>Category:</td>
                                                                 <td>
                                                                     <span class="font-13 text-primary h3 display_category"
                                                                         id="display_category"></span>
 
+                                                                </td>
+                                                            </tr>  --}}
+
+                                                            <tr>
+                                                                <td>Start Date:</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="font-13 text-primary h3 display_so_start_date"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>End Date:</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="font-13 text-primary h3 display_so_end_date"></span>
                                                                 </td>
                                                             </tr>
 
@@ -549,12 +587,12 @@
 
                                                             </div>
 
-                                                            <span class="badge badge-primary float-right"
+                                                            {{-- <span class="badge badge-primary float-right"
                                                                 style="cursor: pointer"><a
                                                                     href="{{ url('add-local-bank-beneficiary') }}"
                                                                     class="text-white" id="add_beneficiary_badge">Create
                                                                     Beneficiary</a>
-                                                            </span>
+                                                            </span> --}}
                                                         </div>
                                                         <hr>
 
@@ -614,7 +652,43 @@
 
                                                             </div>
 
-                                                            <div class="form-group row">
+                                                            <div class="form-group row mb-3">
+                                                                <b class=" col-md-4 text-primary">Start Date &nbsp; <span
+                                                                        class="text-danger">*</span></b>
+
+
+                                                                <input type="date" class="form-control col-md-8"
+                                                                    min="01-01-1997" max="31-12-2030" id="so_start_date"
+                                                                    required>
+
+
+                                                            </div>
+
+                                                            <div class="form-group row mb-3">
+                                                                <b class=" col-md-4 text-primary">End Date</b>
+
+                                                                <input type="date" class="form-control col-md-8"
+                                                                    id="so_end_date" required>
+
+
+                                                            </div>
+
+                                                            {{-- <div class="form-group row">
+
+                                                                <b class="col-md-4 text-primary">Frequency &nbsp; <span
+                                                                        class="text-danger">*</span></b>
+
+
+                                                                <select class="form-control col-md-8 so_frequency"
+                                                                    id="beneficiary_frequency"
+                                                                    placeholder="Select Pick Up Branch" required>
+                                                                    <option value="">--Select Frequency--</option>
+                                                                    <option value="Joshua">Joshua </option>
+                                                                </select>
+
+                                                            </div> --}}
+
+                                                            {{-- <div class="form-group row">
 
                                                                 <b class="col-4 text-primary"> Cur / Rate / Amount</b>
 
@@ -640,7 +714,7 @@
                                                                 </div>
 
 
-                                                            </div>
+                                                            </div> --}}
 
 
                                                             <div class="form-group row">
@@ -649,7 +723,7 @@
                                                                 </b>
 
                                                                 <input type="text" class="form-control col-md-8"
-                                                                    id="purpose" value="Same Bank transfer"
+                                                                    id="purpose" value="Standing Order Transfer"
                                                                     placeholder="Enter purpose of transaction" <div
                                                                     class="form-group row mb-3">
 
@@ -658,7 +732,7 @@
 
 
 
-                                                            <div class="form-group row">
+                                                            {{-- <div class="form-group row">
                                                                 <b class="col-md-4 text-primary">Expense Category &nbsp;
                                                                 </b>
                                                                 <input type="hidden" value="Others" id="category_">
@@ -671,7 +745,7 @@
                                                                 </select>
 
 
-                                                            </div>
+                                                            </div> --}}
 
 
                                                             {{-- <div class="form-group row">
@@ -801,7 +875,29 @@
 
                                                             </div>
 
-                                                            <div class="form-group row">
+                                                            <div class="form-group row mb-3">
+                                                                <b class=" col-md-4 text-primary">Start Date &nbsp; <span
+                                                                        class="text-danger">*</span></b>
+
+
+                                                                <input type="date" class="form-control col-md-8"
+                                                                    min="01-01-1997" max="31-12-2030" id="so_start_date"
+                                                                    required>
+
+
+                                                            </div>
+
+
+                                                            <div class="form-group row mb-3">
+                                                                <b class=" col-md-4 text-primary">End Date</b>
+
+                                                                <input type="date" class="form-control col-md-8"
+                                                                    id="so_end_date" required>
+
+
+                                                            </div>
+
+                                                            {{-- <div class="form-group row">
 
                                                                 <b class="col-4 text-primary"> Cur / Rate / Amount</b>
 
@@ -810,9 +906,9 @@
                                                                         <select name=""
                                                                             class="input-group-text select_currency"
                                                                             id="select_currency__">
-                                                                            {{-- <option value="SLL" selected>SLL</option>
+                                                                            <option value="SLL" selected>SLL</option>
                                                                             <option value="EUR">EURO</option>
-                                                                            <option value="USD">USD</option> --}}
+                                                                            <option value="USD">USD</option>
                                                                         </select>
                                                                     </div>
                                                                     &nbsp;&nbsp;
@@ -832,20 +928,21 @@
                                                                 </div>
 
 
-                                                            </div>
+                                                            </div> --}}
+
                                                             <div class="form-group row mb-3">
                                                                 <b class="col-md-4 text-primary">Purpose of Transfer
                                                                     &nbsp; <span class="text-danger">*</span>
                                                                 </b>
 
                                                                 <input type="text" class="form-control col-md-8"
-                                                                    id="onetime_purpose" value="Same Bank transfer"
+                                                                    id="onetime_purpose" value="Standing Order Transfer"
                                                                     placeholder="Enter purpose of transaction">
 
                                                             </div>
 
 
-                                                            <div class="form-group row">
+                                                            {{-- <div class="form-group row">
                                                                 <b class="col-md-4 text-primary">Expense Category &nbsp;
                                                                 </b>
 
@@ -857,7 +954,7 @@
                                                                 </select>
 
 
-                                                            </div>
+                                                            </div> --}}
 
 
 
@@ -941,6 +1038,15 @@
 
                                                 <p class="col-md-5">Account Currency:</p>
                                                 <span class="text-primary display_to_account_currency col-md-7"></span>
+
+                                                <p class="col-md-5">Start Date:</p>
+                                                <span class="text-primary display_so_start_date col-md-7"></span>
+
+                                                <p class="col-md-5">End Date:</p>
+                                                <span class="text-primary display_so_end_date col-md-7"></span>
+
+                                                <p class="col-md-5">Frequency:</p>
+                                                <span class="text-primary display_frequency_so col-md-7"></span>
                                             </div>
 
                                             <hr>
@@ -952,11 +1058,11 @@
 
                                                 </h4>
 
-                                                <p class="col-md-5">Currency Rate:</p>
-                                                <span class="text-primary display_midrate col-md-7"></span>
+                                                {{-- <p class="col-md-5">Currency Rate:</p> --}}
+                                                {{-- <span class="text-primary display_midrate col-md-7"></span> --}}
 
-                                                <p class="col-md-5">Converted Amount:</p>
-                                                <span class="text-primary display_converted_amount col-md-7"></span>
+                                                {{-- <p class="col-md-5">Converted Amount:</p> --}}
+                                                {{-- <span class="text-primary display_converted_amount col-md-7"></span> --}}
                                             </div>
 
                                             <br>
@@ -1177,6 +1283,32 @@
                 error: function(xhr, status, error) {
                     setTimeout(function() {
                         get_correct_fx_rate()
+                    }, $.ajaxSetup().retryAfter)
+                }
+
+            })
+        }
+
+        function get_so_frequencies() {
+            $.ajax({
+                type: 'GET',
+                url: 'get-standing-order-frequencies-api',
+                datatype: "application/json",
+                success: function(response) {
+                    console.log(response.data);
+                    let data = response.data
+                    $.each(data, function(index) {
+
+                        $('.so_frequency').append($('<option>', {
+                            value: data[index].code
+                        }).text(data[index].name));
+
+                    });
+                },
+                error: function(xhr, status, error) {
+
+                    setTimeout(function() {
+                        get_so_frequencies()
                     }, $.ajaxSetup().retryAfter)
                 }
 
@@ -1421,6 +1553,7 @@
                 get_currency();
                 get_correct_fx_rate();
                 customer();
+                get_so_frequencies();
 
             }, 500);
 
@@ -1963,6 +2096,18 @@
                 }
             });
 
+            $("#so_start_date").change(function() {
+                var display_start_date = $("#so_start_date").val();
+                $(".display_so_start_date").text(display_start_date);
+                console.log(display_start_date);
+            });
+
+            $("#so_end_date").change(function() {
+                var display_end_date = $("#so_end_date").val();
+                $(".display_so_end_date").text(display_end_date);
+                console.log(display_end_date);
+            });
+
 
 
 
@@ -2012,8 +2157,8 @@
                     }
 
                     //set purpose and category values
-                    var category_info = category.split("~")
-                    $("#display_category").text(category_info[1])
+                    {{-- var category_info = category.split("~") --}}
+                    {{-- $("#display_category").text(category_info[1]) --}}
                     {{-- var purpose =
                     $("#display_purpose").text(purpose) --}}
 
@@ -2213,7 +2358,7 @@
 
                             $.ajax({
                                 type: 'POST',
-                                url: 'corporate-same-bank-api',
+                                url: 'corporate-standing-order-request-api',
                                 datatype: "application/json",
                                 data: {
                                     'from_account': from_account_,
@@ -2373,7 +2518,7 @@
 
                             $.ajax({
                                 type: 'POST',
-                                url: 'corporate-same-bank-api',
+                                url: 'corporate-standing-order-request-api',
                                 datatype: "application/json",
                                 data: {
                                     'from_account': from_account_,
@@ -2530,7 +2675,7 @@
 
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'transfer-to-beneficiary-api',
+                                    url: 'initiate-standing-order-request-api',
                                     datatype: "application/json",
                                     data: {
                                         'from_account': from_account_,
@@ -2684,7 +2829,7 @@
 
                                 $.ajax({
                                     type: 'POST',
-                                    url: 'transfer-to-beneficiary-api',
+                                    url: 'initiate-standing-order-request-api',
                                     datatype: "application/json",
                                     data: {
                                         'from_account': from_account_,

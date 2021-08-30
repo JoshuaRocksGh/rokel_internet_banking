@@ -40,7 +40,8 @@ class settingsController extends Controller
         return view('pages.settings.create_originator');
     }
 
-    public function create_originator_api(Request $request){
+    public function create_originator_api(Request $request)
+    {
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         $api_headers = session()->get("headers");

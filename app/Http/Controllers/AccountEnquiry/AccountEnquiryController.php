@@ -12,11 +12,12 @@ class AccountEnquiryController extends Controller
     //method to return the account enquiry screen
     public function account_enquiry(Request $request)
     {
-       // $account_number = $request->query('accountNumber');
+        // $account_number = $request->query('accountNumber');
         return view('pages.accountEnquiry.accountEnquiry');
     }
 
-    public function list_of_accounts(){
+    public function list_of_accounts()
+    {
         return view('pages.accountEnquiry.listOfAccounts');
     }
 
@@ -100,5 +101,4 @@ class AccountEnquiryController extends Controller
 
         return $result->api_response($response);
     }
-
 }

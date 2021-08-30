@@ -404,14 +404,14 @@ class FunctionsController extends Controller
         $transfer_type = $request->transfer_type;
         // $feeType = $request->feeType;
 
-        return $request;
+        // return $request;
         // ACHP
         // RTG
 
         if ($transfer_type == "ACH") {
             $feeType = "ACHP";
         } else if ($transfer_type == "RTGS") {
-            $feeType = "RTGs";
+            $feeType = "RTGS";
         } else {
             return false;
         }
@@ -428,7 +428,7 @@ class FunctionsController extends Controller
             "authToken"    => $authToken,
         ];
 
-        // return $data ;
+        // return $data;
 
         // dd(env('API_BASE_URL') . "transfers/transactionFees");
 

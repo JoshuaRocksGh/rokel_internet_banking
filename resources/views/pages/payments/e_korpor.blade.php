@@ -36,8 +36,8 @@
         }
 
         /* input[name="reverse_pin"] {
-                display: none;
-            } */
+                            display: none;
+                        } */
 
     </style>
 
@@ -741,11 +741,11 @@
 
                                                                                 {{-- value={{ session()->get('userAlias') }} --}}
                                                                                 <input type="text"
-                                                                                    class="form-control col-md-8"
+                                                                                    class="form-control col-md-8 readOnly"
                                                                                     id="receiver_name_self"
-                                                                                    placeholder="Enter Receiver Name"
+                                                                                    {{-- placeholder="Enter Receiver Name" --}}
                                                                                     value="{{ Session()->get('userAlias') }}"
-                                                                                    autocomplete="off" required>
+                                                                                    autocomplete="off" required readonly>
                                                                                 <br>
 
                                                                             </div>
@@ -759,7 +759,7 @@
                                                                                 <input type="text"
                                                                                     class="form-control col-md-8 "
                                                                                     id="receiver_phoneNum_self"
-                                                                                    placeholder="Enter Receiver Phone Number"
+                                                                                    placeholder="Enter Phone Number"
                                                                                     autocomplete="off" required>
                                                                                 {{-- value="{{ session()->get('customerPhone') }} --}}
                                                                                 <br>
@@ -775,7 +775,7 @@
                                                                                 <input type="text"
                                                                                     class="form-control col-md-8 "
                                                                                     id="receiver_address_self"
-                                                                                    placeholder="Enter Receiver Address"
+                                                                                    placeholder="Enter Address"
                                                                                     autocomplete="off" required>
                                                                                 <br>
 

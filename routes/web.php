@@ -395,6 +395,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/international-bank', [transferController::class, 'international_bank_'])->name('international-bank');
 
     Route::get('standing-order', [StandingOrderController::class, 'display_standing_order'])->name('standing-order');
+    Route::get('standing-order-new', [StandingOrderController::class, 'display_standing_order_new'])->name('standing-order-new');
 
     //Add Beneficiary
     Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
@@ -522,6 +523,8 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('change-pin', [settingsController::class, 'change_pin'])->name('change-pin');
 
     Route::get('branch-locator', [branchLocatorController::class, 'branch_locator'])->name('branch-locator');
+
+    //Middleware closing tag below
 });
 
 
@@ -691,4 +694,5 @@ Route::get('get-loan-sub-sectors-api', [FunctionsController::class, 'getLoanSubS
 Route::get('get-standing-order-frequencies-api', [FunctionsController::class, 'get_standing_order_frequencies'])->name('get-standing-order-frequencies-api');
 
 //route to initiate standing order request
-Route::post('initiate-standing-order-request', [StandingOrderController::class, 'standing_order_request'])->name('initiate-standing-order-request');
+Route::post('initiate-standing-order-request-api', [StandingOrderController::class, 'standing_order_request'])->name('initiate-standing-order-request-api');
+Route::post('corporate-standing-order-request-api', [StandingOrderController::class, 'corporate_standing_order_request'])->name('corporate-standing-order-request-api');

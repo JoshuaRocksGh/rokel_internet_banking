@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Http;
 class StatementRequestController extends Controller
 {
     //method to check the statement request for the method
-    public function statement_request(Request $request){
+    public function statement_request(Request $request)
+    {
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userAlias');
@@ -19,6 +20,7 @@ class StatementRequestController extends Controller
         // return $authToken;
 
         // $base_response = new BaseResponse();
+        $deviceIp = request()->ip();
 
         $accountNumber = $request->account_no;
         $branchCode = $request->pick_up_branch;
@@ -32,27 +34,26 @@ class StatementRequestController extends Controller
 
         $data = [
 
-                "accountNumber" => $accountNumber,
-                "medium"=> $medium,
-                "branch"=> $branchCode,
-                "deviceIP"=> "A",
-                "endDate"=> $endDate,
-                "entrySource"=> "C",
-                "pinCode"=> $pincode,
-                "startDate"=> $startDate,
-                "statementType"=> $statementType,
-                "tokenID"=> $authToken,
-                "userID" => $userID,
-                "customer_num"=> $customerNumber
+            "accountNumber" => $accountNumber,
+            // "medium" => $medium,
+            "branch" => $branchCode,
+            "deviceIP" => $deviceIp,
+            "endDate" => $endDate,
+            "entrySource" => "I",
+            "pinCode" => $pincode,
+            "startDate" => $startDate,
+            "statementType" => $statementType,
+            "tokenID" => $authToken,
+            // "userID" => $userID,
+            // "customer_num" => $customerNumber
 
         ];
 
-        return $data; die;
+        // return $data;
         $response = Http::post(env('API_BASE_URL') . "/request/statment", $data);
 
         $result = new ApiBaseResponse();
 
         return $result->api_response($response);
     }
-
 }

@@ -74,17 +74,17 @@ class MobileMoneyController extends Controller
 
         ];
 
-        // return $data ;
+        return $data;
 
-        $response = [
-            'responseCode' => "000",
-            'message' => "Mobile Money transfer Successful"
-        ];
+        // $response = [
+        //     'responseCode' => "000",
+        //     'message' => "Mobile Money transfer Successful"
+        // ];
 
-        return $response;
+        // return $response;
 
         try {
-            $response = Http::post(env('API_BASE_URL') . "beneficiary/addTransferBeneficiary", $data);
+            $response = Http::post(env('API_BASE_URL') . "payment/makePayment", $data);
 
             // return json_decode($response->body());
 
