@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
-            {{--  <li class="d-none d-lg-block">
+            {{-- <li class="d-none d-lg-block">
                 <form class="app-search">
                     <div class="app-search-box dropdown">
                         <div class="input-group">
@@ -86,14 +86,14 @@
                 </div>
             </li> --}}
 
-{{--  <li class="dropdown d-none d-lg-inline-block">
+{{-- <li class="dropdown d-none d-lg-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen"
                     href="#">
                     <i class="fe-maximize noti-icon"></i>
                 </a>
-            </li>  --}}
+            </li> --}}
 
-{{--  <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+{{-- <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-grid noti-icon"></i>
@@ -161,6 +161,45 @@
                 class="align-middle">German</span>
         </a>
 
+        <div class="row no-gutters">
+            <div class="col">
+                <a class="dropdown-icon-item" href="#">
+                    <img src="{{ asset('assets/images/brands/bitbucket.png') }}" alt="bitbucket">
+                    <span>Bitbucket</span>
+                </a>
+            </div>
+            <div class="col">
+                <a class="dropdown-icon-item" href="#">
+                    <img src="{{ asset('assets/images/brands/dropbox.png') }}" alt="dropbox">
+                    <span>Dropbox</span>
+                </a>
+            </div>
+            <div class="col">
+                <a class="dropdown-icon-item" href="#">
+                    <img src="{{ asset('assets/images/brands/g-suite.png') }}" alt="G Suite">
+                    <span>G Suite</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+</li> --}}
+
+<li class="dropdown d-none d-lg-inline-block topbar-dropdown">
+    <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
+        role="button" aria-haspopup="false" aria-expanded="false">
+        <img src="{{ asset('assets/images/flags/GHS.png') }}" alt="user-image" height="16">
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+
+        <!-- item-->
+        <a href="javascript:void(0);" class="dropdown-item">
+            <img src="{{ asset('assets/images/flags/germany.jpg') }}" alt="user-image" class="mr-1" height="12"> <span
+                class="align-middle">German</span>
+        </a>
+
         <!-- item-->
         <a href="javascript:void(0);" class="dropdown-item">
             <img src="{{ asset('assets/images/flags/italy.jpg') }}" alt="user-image" class="mr-1" height="12"> <span
@@ -190,7 +229,7 @@
     </a>
 </li>
 
-{{--  <li class="dropdown notification-list topbar-dropdown">
+{{-- <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-bell noti-icon"></i>
@@ -314,7 +353,13 @@ class="img-fluid rounded-circle" alt="" />
             <i class="fe-user"></i>
             <span>My Account</span>
         </a>
-        {{-- 
+
+        <!-- item-->
+        <a href="javascript:void(0);" class="dropdown-item notify-item">
+            <i class="fe-user"></i>
+            <span>My Account</span>
+        </a>
+        {{--
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings"></i>
@@ -338,11 +383,11 @@ class="img-fluid rounded-circle" alt="" />
     </div>
 </li>
 
-{{--  <li class="dropdown notification-list">
+{{-- <li class="dropdown notification-list">
                 <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-settings noti-icon"></i>
                 </a>
-            </li>  --}}
+            </li> --}}
 
 </ul>
 

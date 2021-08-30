@@ -188,7 +188,7 @@
                         </div>
 
                         <div class="col-md-12">
-                            <a href="{{ url('mobile-money') }}">
+                            <a href="{{ url('payment-type') }}">
                                 <div class="widget-rounded-circle card-box"
                                     style="border-radius: 20px; background-color: #0561ad">
                                     <div class="row">
@@ -199,7 +199,7 @@
                                         </div>
                                         <div class="col-8">
                                             <div class="text-right">
-                                                <h3 class="mt-1 text-white"><span>Mobile Money</span></h3>
+                                                <h3 class="mt-1 text-white"><span>Payments</span></h3>
                                             </div>
                                         </div>
                                     </div> <!-- end row-->
@@ -208,7 +208,7 @@
                         </div> <!-- end col-->
 
                         <div class="col-md-12 ">
-                            <a href="{{ url('airtime-payment') }}">
+                            <a href="{{ url('account-enquiry') }}">
                                 <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
                                     <div class="row">
                                         <div class="col-4">
@@ -218,7 +218,7 @@
                                         </div>
                                         <div class="col-8">
                                             <div class="text-right">
-                                                <h3 class="mt-1 text-white"><span> &nbsp; Airtime Purchase</span></h3>
+                                                <h3 class="mt-1 text-white"><span> &nbsp; Account Enquiry</span></h3>
                                             </div>
                                         </div>
                                     </div> <!-- end row-->
@@ -249,7 +249,7 @@
                         </div> <!-- end col-->
 
                         <div class="col-md-12 ">
-                            <a href="{{ url('korpone-loane-payment') }}">
+                            <a href="{{ url('e-korpor') }}">
                                 <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
                                     <div class=" row">
                                         <div class="col-4">
@@ -259,7 +259,7 @@
                                         </div>
                                         <div class="col-8">
                                             <div class="text-right">
-                                                <h3 class="mt-1 text-white"><span>&nbsp; Korpor</span></h3>
+                                                <h3 class="mt-1 text-white"><span>&nbsp; E-Korpor</span></h3>
                                             </div>
                                         </div>
                                     </div> <!-- end row-->
@@ -1081,7 +1081,7 @@
         <script type="text/javascript">
             var i_have = 0
             var i_owe = 0
-            var i_invest_total = 50000000
+            var i_invest_total = 0
 
             function show_chart(i_have, i_owe, i_invest_total) {
                 var ctx = document.getElementById('myChart').getContext('2d');
