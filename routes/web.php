@@ -374,7 +374,7 @@ Route::get('Instagram-Chatbot', [InstagramChatbotController::class, 'instagram_c
 Route::group(['middleware' => ['userAuth']], function () {
 
     //DashBoard Screen
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index']);
 
     // Account Enquiry Screens
     Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-enquiry');

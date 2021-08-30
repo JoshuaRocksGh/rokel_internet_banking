@@ -97,8 +97,8 @@ class LoginController extends Controller
                     }
                     */
 
-                    $user_detail = $result->data;
-                    $customerType = $user_detail->customerType;
+                    $userDetail = $result->data;
+                    $customerType = $userDetail->customerType;
 
                     // if ($customerType != "I") {
                     //     return  $base_response->api_response("422", "Corporate users not allowed",  null);
@@ -106,21 +106,22 @@ class LoginController extends Controller
 
 
                     session([
-                        "userId" => $user_detail->userId,
-                        "userAlias" => $user_detail->userAlias,
-                        "updateFlag" => $user_detail->updateFlag,
-                        "setPin" => $user_detail->setPin,
-                        "changePassword" => $user_detail->changePassword,
-                        "email" => $user_detail->email,
-                        "firstTimeLogin" => $user_detail->firstTimeLogin,
-                        "userToken" => $user_detail->userToken,
-                        "customerNumber" => $user_detail->customerNumber,
-                        "customerPhone" => $user_detail->customerPhone,
-                        "updateUrl" => $user_detail->updateUrl,
-                        // "c_type" => $user_detail->c_type,
-                        "lastLogin" => $user_detail->lastLogin,
-                        "customerType" => $user_detail->customerType,
-                        "checkerMaker" => $user_detail->checkerMaker,
+                        "userId" => $userDetail->userId,
+                        "userAlias" => $userDetail->userAlias,
+                        "updateFlag" => $userDetail->updateFlag,
+                        "setPin" => $userDetail->setPin,
+                        "changePassword" => $userDetail->changePassword,
+                        "email" => $userDetail->email,
+                        "firstTimeLogin" => $userDetail->firstTimeLogin,
+                        "userToken" => $userDetail->userToken,
+                        "customerNumber" => $userDetail->customerNumber,
+                        "customerPhone" => $userDetail->customerPhone,
+                        "updateUrl" => $userDetail->updateUrl,
+                        // "c_type" => $userDetail->c_type,
+                        "lastLogin" => $userDetail->lastLogin,
+                        "customerType" => $userDetail->customerType,
+                        "checkerMaker" => $userDetail->checkerMaker,
+                        "menus" => $userDetail->menus,
                         // "checkerMaker" => 'M',
                         "userMandate" => 'A',
                         "headers" => [

@@ -21,7 +21,8 @@
 <script
     src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}">
 </script>
-
+<script src="{{ asset('assets/libs/bootstrap-select/js/bootstrap-select.min.js') }} ">
+</script>
 {{-- <script src="{{ asset('assets/libs/bootstrap-tour/js/bootstrap-tour.min.js') }}">
 </script> --}}
 {{-- <script src="{{ asset('assets/js/jquery.userTimeout.js') }}"></script>
