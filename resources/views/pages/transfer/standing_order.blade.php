@@ -42,7 +42,7 @@
 @endsection
 
 @section('content')
-    <div class="">
+    <div class="___class_+?0___">
 
 
         <div class="container-fluid">
@@ -60,7 +60,8 @@
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Standing Order</b>
+                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Standing
+                                Order</b>
 
 
                         </span>
@@ -82,20 +83,22 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <div class="row receipt" style="display: none;">
+                            <div class="receipt">
                                 <div class="container card card-body">
 
                                     <div class="container">
-                                        <div class="">
+                                        <div class="___class_+?19___">
                                             <div class="col-md-12 col-md-offset-3 body-main">
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
+                                                        <div class="col-md-4 "> <img class="img "
+                                                                alt="InvoIce Template"
                                                                 src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
                                                                 style="zoom: 0.6" /> </div>
                                                         <div class="col-md-4"></div>
                                                         <div class="col-md-4 text-right">
-                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
+                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL
+                                                                    BANK</strong>
                                                             </h4>
                                                             <p>25-27 Siaka Stevens St</p>
                                                             <p> Freetown, Sierra Leone</p>
@@ -348,6 +351,26 @@
 
                                                     </div>
 
+                                                    <div class="form-group row">
+                                                        <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
+                                                        <input type="text" class="form-control col-md-8 readOnly"
+                                                            id="saved_account_number" readonly>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <b class="col-md-4 text-primary"> Beneficiary Name</b>
+                                                        <input type="text" class="form-control col-md-8 readOnly "
+                                                            id="saved_beneficiary_name" readonly>
+                                                    </div>
+
+
+
+                                                    <div class="form-group row">
+                                                        <b class="col-md-4 text-primary"> Beneficiary Email</b>
+                                                        <input type="text" class="form-control col-md-8 readOnly"
+                                                            id="saved_beneficiary_email" readonly>
+                                                    </div>
+
                                                     <hr>
 
                                                     <div id="saved_beneficiary_form">
@@ -415,11 +438,11 @@
 
 
                                                         <div class="form-group row mb-3">
-                                                            <b class="col-md-4 text-primary ">Narration &nbsp;
+                                                            <b class="col-md-4 text-primary ">Purpose of Transfer &nbsp;
                                                                 <span class="text-danger">*</span></b>
 
                                                             <input type="text" class="form-control col-md-8" id="purpose"
-                                                                placeholder="Enter purpose of transaction" required>
+                                                                value="Standing Order Transfer" required>
 
                                                         </div>
 
@@ -793,9 +816,9 @@
                                                         &nbsp; </span>
                                                     <span>
                                                         &nbsp;
-                                                        <button class="btn btn-primary btn-rounded" type="button"
-                                                            data-toggle="modal" data-target="#centermodal">
-                                                            <span id="confirm_transfer-text">Confirm Order</span>
+                                                        <button class="btn btn-primary btn-rounded" type="button">
+                                                            <span id="confirm_transfer-text" data-toggle="modal"
+                                                                data-target="#centermodal">Confirm</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
                                                                 role="status" id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
@@ -817,8 +840,8 @@
                                                                 <h3 class="modal-title text-primary text-center"
                                                                     id="myCenterModalLabel">ENTER TRANSACTION
                                                                     PIN</h3>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×</button>
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-hidden="true">×</button>
 
                                                             </div>
                                                             <div class="modal-body transfer_pin_modal">
@@ -1090,7 +1113,9 @@
 
 
 
-            $(() => {
+            $(document).ready(function() {
+
+
 
                 setTimeout(function() {
                     from_account();
@@ -1104,7 +1129,7 @@
                 $("#print_receipt").hide();
                 $("#spinner_text").hide();
                 $("#onetime_beneficiary_form").hide();
-                $(".receipt").hide();
+                {{-- $(".receipt").hide(); --}}
 
 
                 //codes to display self or others transfer
@@ -1186,7 +1211,7 @@
                 $("#transaction_form").show()
                 $("#transaction_summary").hide()
                 $("#related_information_display").show();
-                $(".receipt").hide()
+                {{-- $(".receipt").hide() --}}
 
 
 
@@ -1198,8 +1223,18 @@
 
                 })
 
+                $('#saved_beneficiary').change(function() {
+                    var beneficiary_name = $('#saved_beneficiary').val().split('~');
+                    console.log(beneficiary_name);
+                    $("#saved_beneficiary_name").val(beneficiary_name[1]);
+                    $("#saved_account_number").val(beneficiary_name[2]);
+                    $("#saved_beneficiary_email").val(beneficiary_name[6]);
+                });
+
+
                 $("#from_account").change(function() {
                     var from_account = $(this).val()
+
 
                     if (from_account.trim() == '' || from_account.trim() == undefined) {
                         alert('money')
@@ -1397,13 +1432,14 @@
                     $("#spinner").hide();
                     $("#spinner-text").hide();
 
-                    let from_account = $("#from_account").val();
-                    let beneficiary = $("#saved_beneficiary").val();
-                    let amount = $("#amount").val();
-                    let so_start_date = $("#so_start_date").val();
-                    let so_end_date = $("#so_end_date").val();
-                    let so_frequency = $("#beneficiary_frequency").val();
-                    let narration = $("#purpose").val();
+                    var from_account = $("#from_account").val();
+                    var beneficiary = $("#saved_beneficiary").val();
+                    var amount = $("#amount").val();
+                    var so_start_date = $("#so_start_date").val();
+                    var so_end_date = $("#so_end_date").val();
+                    var so_frequency = $("#beneficiary_frequency").val();
+                    var narration = $("#purpose").val();
+                    $(".display_purpose").text(narration)
 
 
                     if (!validateAll(from_account, beneficiary, amount, so_start_date, so_frequency,
@@ -1412,12 +1448,12 @@
                         return false;
                     }
 
-                    let from_account_info = from_account.split('~');
-                    let to_account_info = beneficiary.split('~');
+                    var from_account_info = from_account.split('~');
+                    var to_account_info = beneficiary.split('~');
 
                     from_account = from_account_info[2];
                     beneficiary = to_account_info[2];
-                    let bankCode = to_account_info[5];
+                    var bankCode = to_account_info[5];
                     console.log(bankCode);
                     // console.log(pin);
 
@@ -1426,17 +1462,41 @@
                     $("#transaction_form").hide()
                     $("#transaction_summary").show()
 
-                    $("#confirm_transfer").click(function(e) {
-                        e.preventDefault();
+                })
+
+                $("#confirm_transfer").click(function(e) {
+                    e.preventDefault();
+
+                    var customerType = @json(session()->get('customerType'));
+
+                    if (customerType == 'C') {
+
+                        var from_account = $("#from_account").val();
+                        var beneficiary = $("#saved_beneficiary").val();
+                        var amount = $("#amount").val();
+                        var so_start_date = $("#so_start_date").val();
+                        var so_end_date = $("#so_end_date").val();
+                        var so_frequency = $("#beneficiary_frequency").val();
+                        var narration = $("#purpose").val();
+                        $(".display_purpose").text(narration)
+
+                        var from_account_info = from_account.split('~');
+                        var to_account_info = beneficiary.split('~');
+
+                        from_account = from_account_info[2];
+                        beneficiary = to_account_info[2];
+                        var bankCode = to_account_info[5];
+                        console.log(bankCode);
+                        // console.log(pin);
                         $("#confirm_transfer-text").hide();
                         $("#spinner").show();
                         $("#spinner-text").show();
-                        let pin = $("#user_pin").val();
+                        var pin = $("#user_pin").val();
                         // console.log(pin);
 
                         $.ajax({
                             type: "POST",
-                            url: "initiate-standing-order-request",
+                            url: "corporate-standing-order-request-api",
                             datatype: "application/json",
                             data: {
                                 'from_account': from_account,
@@ -1464,10 +1524,12 @@
                                         'success'
                                     );
 
+                                    {{-- $(".receipt").show(); --}}
+
                                     $("#spinner").hide();
                                     $("#spinner-text").hide();
-                                    $(".form_process").hide();
-                                    $(".receipt").show();
+                                    {{-- $(".form_process").hide(); --}}
+
                                     // setTimeout(function(){
                                     // window.location.reload();
                                     // }, 2000);
@@ -1483,15 +1545,101 @@
                             }
                         });
 
+                    } else {
 
-                    });
+                        var from_account = $("#from_account").val();
+                        var beneficiary = $("#saved_beneficiary").val();
+                        var amount = $("#amount").val();
+                        var so_start_date = $("#so_start_date").val();
+                        var so_end_date = $("#so_end_date").val();
+                        var so_frequency = $("#beneficiary_frequency").val();
+                        var narration = $("#purpose").val();
+                        $(".display_purpose").text(narration)
+
+
+                        {{-- if (!validateAll(from_account, beneficiary, amount, so_start_date, so_frequency,
+                            narration)) {
+                        toaster('fields cannot be empty', 'error', 2000);
+                        return false;
+                    } --}}
+
+                        var from_account_info = from_account.split('~');
+                        var to_account_info = beneficiary.split('~');
+
+                        from_account = from_account_info[2];
+                        beneficiary = to_account_info[2];
+                        var bankCode = to_account_info[5];
+                        console.log(bankCode);
+                        // console.log(pin);
+                        $("#confirm_transfer-text").hide();
+                        $("#spinner").show();
+                        $("#spinner-text").show();
+                        var pin = $("#user_pin").val();
+                        // console.log(pin);
+
+                        $.ajax({
+                            type: "POST",
+                            url: "initiate-standing-order-request-api",
+                            datatype: "application/json",
+                            data: {
+                                'from_account': from_account,
+                                'amount': amount,
+                                'beneficiary_account': beneficiary,
+                                'standing_order_start_date': so_start_date,
+                                'standing_order_end_date': so_end_date,
+                                'standing_order_frequency': so_frequency,
+                                'narration': narration,
+                                'bank_code': bankCode,
+                                'user_pin': pin
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                    'content')
+                            },
+                            success: function(response) {
+                                console.log(response);
+
+                                if (response.responseCode == '000') {
+
+                                    Swal.fire(
+                                        '',
+                                        response.message,
+                                        'success'
+                                    );
+
+                                    $(".receipt").show();
+
+                                    $("#spinner").hide();
+                                    $("#spinner-text").hide();
+                                    $(".form_process").hide();
+
+                                    // setTimeout(function(){
+                                    // window.location.reload();
+                                    // }, 2000);
+                                } else {
+
+                                    toaster(response.message, 'error', 6000);
+                                    $("#confirm_transfer-text").show();
+                                    $("#spinner").hide();
+                                    $("#spinner-text").hide();
+                                    $(".form_process").hide();
+
+                                }
+                            }
+                        });
+                    }
 
 
 
 
 
-                })
 
-            });
+                });
+
+
+
+
+
+            })
         </script>
     @endsection

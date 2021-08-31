@@ -183,12 +183,12 @@ class LoginController extends Controller
                 }
             } else { // API response status code not 200
 
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'code' => $response->status(),
-                    'message' => $response->body()
-                ]);
+                // DB::table('tb_error_logs')->insert([
+                //     'platform' => 'ONLINE_INTERNET_BANKING',
+                //     'user_id' => 'AUTH',
+                //     'code' => $response->status(),
+                //     'message' => $response->body()
+                // ]);
 
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 

@@ -27,6 +27,28 @@ class StandingOrderController extends Controller
     //method to send pay load request
     public function standing_order_request(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'from_account' =>  'required',
+            'amount' => 'required',
+            'beneficiary_account' => 'required',
+            'standing_order_start_date' => 'required',
+            'standing_order_end_date' => 'required',
+            'standing_order_frequency' => 'required',
+            'narration' => 'required',
+            'bank_code' => 'required',
+            'user_pin' => 'required'
+        ]);
+
+        // return $request;
+
+
+        $base_response = new BaseResponse();
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
 
 
         $authToken = session()->get('userToken');
@@ -65,7 +87,7 @@ class StandingOrderController extends Controller
                 "transactionDesc" => $transactionDetails
             ];
 
-        return $data;
+        // return $data;
 
         // Log::critical($data);
 
@@ -82,18 +104,32 @@ class StandingOrderController extends Controller
                 'user_id' => 'AUTH',
                 'message' => (string) $e->getMessage()
             ]);
-            // return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
 
         }
     }
 
 
+    public function corporate_standing_order_request(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'from_account' =>  'required',
+            'amount' => 'required',
+            'beneficiary_account' => 'required',
+            'standing_order_start_date' => 'required',
+            'standing_order_end_date' => 'required',
+            'standing_order_frequency' => 'required',
+            'narration' => 'required',
+            'bank_code' => 'required',
+            'user_pin' => 'required'
+        ]);
 
 
-    // public function initiate_cardless(Request $request)
-    // {
+        $base_response = new BaseResponse();
 
+        // VALIDATION
+        if ($validator->fails()) {
 
-
-    // }
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+    }
 }

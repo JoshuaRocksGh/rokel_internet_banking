@@ -395,14 +395,14 @@
                                                             </tr>
 
 
-                                                            {{--  <tr>
+                                                            {{-- <tr>
                                                                 <td>Category:</td>
                                                                 <td>
                                                                     <span class="font-13 text-primary h3 display_category"
                                                                         id="display_category"></span>
 
                                                                 </td>
-                                                            </tr>  --}}
+                                                            </tr> --}}
 
                                                             <tr>
                                                                 <td>Start Date:</td>
@@ -417,6 +417,14 @@
                                                                 <td>
                                                                     <span
                                                                         class="font-13 text-primary h3 display_so_end_date"></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Frequency:</td>
+                                                                <td>
+                                                                    <span
+                                                                        class="font-13 text-primary h3 display_frequency_so"></span>
                                                                 </td>
                                                             </tr>
 
@@ -554,7 +562,7 @@
 
                                                     <hr style="padding-top: 0px; padding-bottom: 0px;">
 
-                                                    <div class="form-group no_beneficiary">
+                                                    <div class="form-group no_beneficiary" style="display:none;">
                                                         <div class="alert alert-warning" role="alert">
                                                             <i class="mdi mdi-alert-outline mr-2"></i>
                                                             <strong>No
@@ -670,6 +678,21 @@
                                                                 <input type="date" class="form-control col-md-8"
                                                                     id="so_end_date" required>
 
+
+                                                            </div>
+
+                                                            <div class="form-group row">
+
+                                                                <b class="col-md-4 text-primary">Frequency &nbsp; <span
+                                                                        class="text-danger">*</span></b>
+
+
+                                                                <select class="form-control col-md-8 so_frequency"
+                                                                    id="beneficiary_frequency"
+                                                                    placeholder="Select Pick Up Branch" required>
+                                                                    <option value="">--Select Frequency--</option>
+                                                                    {{-- <option value="Joshua">Joshua </option> --}}
+                                                                </select>
 
                                                             </div>
 
@@ -1643,13 +1666,20 @@
                 }
             });
 
-            $('#to_account').change(function() {
-                var beneficiary_name = $('#to_account').val().split('~');
+            $('#saved_beneficiary').change(function() {
+                var beneficiary_name = $('#saved_beneficiary').val().split('~');
                 console.log(beneficiary_name);
                 $("#saved_beneficiary_name").val(beneficiary_name[1]);
                 $("#saved_account_number").val(beneficiary_name[2]);
-                $("#saved_beneficiary_email").val(beneficiary_name[4]);
+                $("#saved_beneficiary_email").val(beneficiary_name[6]);
             });
+
+            $("#beneficiary_frequency").change(function() {
+                var frequency = $("#beneficiary_frequency").val();
+                var optionText = $("#beneficiary_frequency option:selected").text();
+                $(".display_frequency_so").text(optionText);
+                console.log(frequency);
+            })
 
             // function currency_convertor(forex_rate) {
 
@@ -2007,7 +2037,7 @@
 
             });
 
-            $("#amount_").keyup(function() {
+            $("#amount").keyup(function() {
                 var from_account = $('#from_account').val()
                 var to_account = $("#onetime_account_number").val()
 
@@ -2016,7 +2046,7 @@
                 currency_convertor(forex_rate, amount);
 
                 $(".display_amount").text(formatToCurrency(parseFloat(amount.trim())))
-                $(".display_transfer_amount").text(formatToCurrency(parseFloat(amount.trim())))
+                $("#display_transfer_amount").text(formatToCurrency(parseFloat(amount)))
                 {{-- $('#display_transfer_amount').text(amount); --}}
 
             });
@@ -2753,71 +2783,12 @@
 
                             } else {
 
-
-                                var from_account = $('#from_account').val().split('~');
-                                var from_account_ = from_account[2];
-                                $("#from_account_receipt").text(from_account_);
-
-                                console.log(from_account_);
-
-                                var to_account = $('#to_account').val().split('~');
-                                var to_account_ = to_account[2];
-                                console.log(to_account_)
-                                $("#to_account_receipt").text(to_account_);
-
-                                var beneficiary_name = to_account[1];
-                                console.log(beneficiary_name);
-
-                                var beneficiary_currency = $("#select_currency").val();
-                                console.log(beneficiary_currency);
-
-
-                                var purpose = $('#purpose').val()
-                                {{-- console.log(purpose); --}}
-                                if (purpose == '') {
-                                    $("#purpose_receipt").text("Same Bank Transfer");
-                                    var purpose = $("#purpose").val("Same Bank Transfer");
-                                } else {
-                                    $("#purpose_receipt").text(purpose);
-
-                                }
-                                {{-- $("#purpose_receipt").text(purpose); --}}
-
-                                var beneficiary_email = to_account[4];
-                                console.log(beneficiary_email);
-
-
-                                var transfer_amount = $('#amount').val();
-                                console.log(transfer_amount);
-                                $("#amount_receipt").text(formatToCurrency(parseFloat(
-                                    transfer_amount
-                                    .trim())));
-
-                                var select_currency = $("#select_currency").val();
-                                console.log(select_currency);
-                                $(".receipt_currency").text(select_currency);
-
-                                {{-- var select_frequency = $('#select_frequency').val() --}}
-
-                                var future_payement = $('#future_payement').val();
-                                console.log(future_payement);
-
-                                var category = $('#category').val();
-                                if (category != 'Others') {
-                                    var category_ = $('#category').val().split('~');
-                                    var category = category_[1];
-                                }
-                                $("#category_receipt").text(category);
-
-
-                                var purpose = $('#purpose').val();
-                                $("#display_purpose").text(purpose);
-                                $("#purpose_receipt").text(purpose);
-
-                                {{-- var category_ = $('#category').val().split('~');
-                                var category = category_[1];
-                                console.log(category);
-                                $("#category_receipt").text(category); --}}
+                                var from_account = $("#from_account").val()
+                                var to_account = $("#to_account").val()
+                                var amount = $('#amount').val()
+                                var start_date = $("#so_start_date").val()
+                                var end_date = $("#so_end_date").val()
+                                var beneficiary_frequency = $("#beneficiary_frequency").val()
 
                                 var user_pin = $('#user_pin').val();
                                 console.log(user_pin);
@@ -2832,16 +2803,15 @@
                                     url: 'initiate-standing-order-request-api',
                                     datatype: "application/json",
                                     data: {
-                                        'from_account': from_account_,
-                                        'alias_name': beneficiary_name,
-                                        'to_account': to_account_,
-                                        'account_currency': beneficiary_currency,
-                                        'purpose': purpose,
-                                        'beneficiary_email': beneficiary_email,
-                                        'amount': transfer_amount,
-                                        'schedule_payment_date': future_payement,
-                                        'category': category,
-                                        'secPin': user_pin
+                                        'from_account': from_account,
+                                        'amount': amount,
+                                        'beneficiary_account': beneficiary,
+                                        'standing_order_start_date': so_start_date,
+                                        'standing_order_end_date': so_end_date,
+                                        'standing_order_frequency': so_frequency,
+                                        'narration': narration,
+                                        'bank_code': bankCode,
+                                        'user_pin': pin
                                     },
 
                                     headers: {

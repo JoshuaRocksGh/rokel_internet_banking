@@ -33,11 +33,11 @@
             <div class="col-md-12">
                 <marquee behavior="" direction="">
                     <span>
-                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px'
-                            style='border-radius:5px;'>
+                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px'
+                            height='20px' style='border-radius:5px;'>
                         /
-                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px'
-                            style='border-radius:5px;'>
+                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px'
+                            height='20px' style='border-radius:5px;'>
 
                         <span> <strong> 9.000 / 1.00</strong> </span>
                     </span>
@@ -45,11 +45,11 @@
                     &nbsp; &nbsp;
 
                     <span>
-                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px'
-                            style='border-radius:5px;'>
+                        <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px'
+                            height='20px' style='border-radius:5px;'>
                         /
-                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px'
-                            style='border-radius:5px;'>
+                        <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px'
+                            height='20px' style='border-radius:5px;'>
 
                         <span> <strong> 9.000 / 1.00</strong> </span>
                     </span>
@@ -182,7 +182,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <div class="">
+                        <div class="___class_+?44___">
                             <h2 class="text-primary">Frequently used services</h2>
                             {{-- <hr class="mt-0"> --}}
                         </div>
@@ -1079,11 +1079,17 @@
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
         <script type="text/javascript">
+
+
             var i_have = 0
             var i_owe = 0
             var i_invest_total = 0
 
             function show_chart(i_have, i_owe, i_invest_total) {
+
+                console.log(i_have)
+                console.log(i_owe)
+                console.log(i_invest_total)
                 var ctx = document.getElementById('myChart').getContext('2d');
                 var myChart = new Chart(ctx, {
                     type: 'pie',
@@ -1198,7 +1204,7 @@
                 })
             }
 
-            function fixed_deposit() {
+            function fixed_deposit(account_data) {
 
                 $('.my_investment_loading_area').show()
                 $('.my_investment_error_area').hide()
@@ -1220,6 +1226,7 @@
                         if (response.responseCode == '000') {
 
                             let data = response.data;
+                            {{-- console.log("fixed-deposit" + data) --}}
 
                             if (response.data == null) {
                                 $('.my_investment_loading_area').hide()
@@ -1232,12 +1239,15 @@
                             let loan_count = 0
                             if (response.data.length > 0) {
                                 console.log(response.data.length);
+
+                                account_data.i_invest_total = 0
                                 $.each(data, function(index) {
 
                                     let invest_amount = data[index].dealAmount
                                     invest_amount = invest_amount.replace(/,/g, "");
-                                    i_invest_total += parseFloat(invest_amount)
+                                    account_data.i_invest_total += Math.abs(parseFloat(invest_amount))
 
+                                    console.log(`total investments ${account_data.i_invest_total}`)
                                     $('.fixed_deposit_account').append(
                                         `<tr>
                                             <td><b> ${data[index].sourceAccount} </b></td>
@@ -1251,7 +1261,7 @@
                                     loan_count = loan_count + 1;
                                 })
 
-                                console.log('i_invest_total: ' + i_invest_total)
+                                {{-- console.log('i_invest_total: ' + i_invest_total) --}}
 
                                 $(".loan_count").text(loan_count);
 
@@ -1260,7 +1270,7 @@
                                 $('.my_investment_no_data_found').hide()
                                 $('.my_investment_display_area').show()
 
-                                show_chart(i_have, i_owe, i_invest_total)
+                                {{-- show_chart(i_have, i_owe, i_invest_total) --}}
                             } else {
 
                                 $('#p_fixed_deposit_account').html(
@@ -1292,14 +1302,14 @@
                         $('.my_investment_display_area').hide()
 
                         setTimeout(function() {
-                            fixed_deposit()
+                            fixed_deposit(account_data)
                         }, $.ajaxSetup().retryAfter)
 
                     }
                 })
             }
 
-            function get_accounts() {
+            function get_accounts(account_data) {
 
                 $(".accounts_display_area").hide()
                 $(".accounts_error_area").hide()
@@ -1318,21 +1328,28 @@
                         if (response.responseCode == '000') {
 
                             let data = response.data;
+                            {{-- console.log("accounts" + data) --}}
 
                             let i_have_total = 0
                             let count = 0
 
                             $('.currency_and_savings_account_no').text(data.length)
+                            console.log('my data')
+                            console.log(data)
 
+                            account_data.i_have_total = 0
                             $.each(data, function(index) {
                                 let localEquivalentAvailableBalance = data[index]
                                     .localEquivalentAvailableBalance
                                 localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(
                                     /,/g, "");
 
+                               console.log(typeof(localEquivalentAvailableBalance))
 
 
-                                i_have_total += parseFloat(localEquivalentAvailableBalance)
+                                account_data.i_have_total += Math.abs(parseFloat(
+                                    localEquivalentAvailableBalance))
+                                console.log(`total money ${account_data.i_have_total}`)
                                 $('.casa_list_display').append(
                                     `<tr>
                                         <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
@@ -1346,13 +1363,13 @@
                                 )
                             })
 
-                            console.log('i_have_total: ' + i_have_total)
+                            {{-- console.log('i_have_total: ' + i_have_total) --}}
 
                             {{-- SETTING TABLE VALUES --}}
-                            $('.i_have_amount').text(formatToCurrency(parseFloat(i_have_total)));
+                            $('.i_have_amount').text(formatToCurrency(parseFloat(account_data.i_have_total)));
 
                             {{-- SETTING GRAPH VALUE --}}
-                            i_have = i_have_total
+                            {{-- i_have = i_have_total --}}
 
 
 
@@ -1360,7 +1377,7 @@
                             $(".accounts_loading_area").hide()
                             $(".accounts_display_area").show()
 
-                            show_chart(i_have, i_owe, i_invest_total)
+                            {{-- show_chart(i_have, i_owe, i_invest_total) --}}
 
                         } else {
 
@@ -1377,17 +1394,14 @@
                         $(".accounts_display_area").hide()
                         $(".accounts_error_area").show()
                         setTimeout(function() {
-                            get_accounts()
+                            get_accounts(account_data)
                         }, $.ajaxSetup().retryAfter)
 
                     }
                 })
             }
 
-
-
-
-            function get_loans() {
+            function get_loans(account_data) {
 
                 $(".loan_no_data_found").hide()
                 $(".loans_display_area").hide()
@@ -1407,6 +1421,7 @@
                         if (response.responseCode == '000') {
 
                             var data = response.data;
+                            {{-- console.log("loans" + data) --}}
 
                             if (!response.data) {
 
@@ -1426,11 +1441,13 @@
                                         let i_owe_total = 0
                                         let count = 0
 
+                                        account_data.i_owe_total = 0
                                         $.each(data, function(index) {
                                             let loanBalance = data[index].loanBalance
                                             loanBalance = loanBalance.replace(/,/g, "");
-                                            i_owe_total += parseFloat(loanBalance)
+                                            account_data.i_owe_total += Math.abs(parseFloat(loanBalance))
 
+                                            console.log(`total loans ${account_data.i_owe_total}`)
                                             $('.loans_display').append(
                                                 `
                                             <tr>
@@ -1444,9 +1461,9 @@
 
                                         })
 
-                                        console.log('i_owe_total: ' + i_owe_total)
+                                        {{-- console.log('i_owe_total: ' + i_owe_total) --}}
 
-                                        show_chart(i_have, i_owe, i_invest_total)
+                                        {{-- show_chart(i_have, i_owe, i_invest_total) --}}
                                     } else {
                                         $('#p_loans_display').html(`<h2 class="text-center">No Loan</h2>`)
                                     }
@@ -1476,7 +1493,7 @@
                         $(".loans_loading_area").hide()
                         $(".loans_error_area").show()
                         setTimeout(function() {
-                            get_loans()
+                            get_loans(account_data)
                         }, $.ajaxSetup().retryAfter)
                     }
 
@@ -1807,18 +1824,25 @@
                     get_fx_rate("Note rate")
                     get_fx_rate("Cross rate")
                 }
+                let account_data = new Object()
+                get_accounts(account_data);
+                get_loans(account_data);
+                fixed_deposit(account_data);
+                account_transaction();
+                fx_rates()
+                converter_rates = get_correct_fx_rate()
+                get_currency()
 
                 setTimeout(function() {
-                    fx_rates()
-                    converter_rates = get_correct_fx_rate()
-                    get_currency()
-                    get_accounts();
-                    get_loans();
-                    fixed_deposit();
-                    account_transaction();
-                }, 1000);
+
+
+                    show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
+
+                }, 5000);
 
             })
+
+
 
             $("#account_transaction").change(function() {
                 var account_details = $(this).val().split('~');
