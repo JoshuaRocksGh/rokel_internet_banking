@@ -161,18 +161,19 @@
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
                                                                     {{-- <td></td> --}}
-                                                                    <td class="text-right"><strong><span class="receipt_currency"></span> &nbsp;<span
+                                                                    <td class="text-right"><strong><span
+                                                                                class="receipt_currency"></span> &nbsp;<span
                                                                                 id="amount_receipt"></span></strong>
                                                                     </td>
                                                                 </tr>
-                                                                {{--  <tr>
+                                                                {{-- <tr>
                                                                     <th scope="row">3</th>
                                                                     <td>Transaction Fee </td>
                                                                     <td></td>
                                                                     <td class="text-right"><strong>(<span
                                                                                 class="receipt_currency"></span>)15.00</strong>
                                                                     </td>
-                                                                </tr>  --}}
+                                                                </tr> --}}
                                                                 {{-- <tr>
                                                                     <th scope="row">3</th>
                                                                     <td><strong>Total Amount</strong> </td>
@@ -412,14 +413,14 @@
                                                 <div class="form-group text-center">
 
                                                     <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                            id="back_button"> <i class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button>
+                                                            id="back_button"> <i
+                                                                class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button>
                                                         &nbsp; </span>
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded " type="button"
-                                                            data-toggle="modal" id="confirm_modal_button"
-                                                            data-target="#centermodal">
-                                                            <span id="confirm_transfer">Confirm Transfer</span>
+                                                             id="confirm_modal_button">
+                                                            <span id="confirm_transfer" data-toggle="modal" data-target="#centermodal">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
                                                                 role="status" id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
@@ -550,7 +551,8 @@
                                                                         class="text-danger">*</span></b></label>
 
                                                                 <input type="text" class="form-control col-md-8 mb-2"
-                                                                    id="purpose" value="Own Account" placeholder="Enter purpose of transfer"
+                                                                    id="purpose" value="Own Account"
+                                                                    placeholder="Enter purpose of transfer"
                                                                     autocomplete="off">
 
                                                             </div>
@@ -1046,19 +1048,19 @@
             };
 
 
-        function customer() {
-            var customerType = @json(session()->get('customerType'));
-            console.log(customerType);
+            // function customer() {
+            //     var customerType = @json(session()->get('customerType'));
+            //     console.log(customerType);
 
-            if (customerType == 'C') {
+            //     if (customerType == 'C') {
 
-                $('#coporate_transfer_approval').show();
-                $('#personal_transfer_receipt').hide();
-            } else {
-                $('#personal_transfer_receipt').show();
-                $('#coporate_transfer_approval').hide();
-            }
-        }
+            //         $('#coporate_transfer_approval').show();
+            //         $('#personal_transfer_receipt').hide();
+            //     } else {
+            //         $('#personal_transfer_receipt').show();
+            //         $('#coporate_transfer_approval').hide();
+            //     }
+            // }
 
 
             $(document).ready(function() {
@@ -1560,7 +1562,7 @@
                     }
 
                     $("#display_category").text(category);
-                    {{--  $("#category_receipt").text(category);  --}}
+                    {{-- $("#category_receipt").text(category); --}}
 
 
 
@@ -1586,11 +1588,7 @@
                     var to_account_currency = to_acc_curr[3];
                     console.log(to_account_currency);
 
-                    if (to_account_currency != 'SLL') {
-                        toaster('You can not transfer from' + ' ' + from_account_currency + ' ' + 'to' + ' ' +
-                            to_account_currency, 'error', 10000);
-                        return false;
-                    }
+
 
                     {{-- $("#transaction_summary").show();
                     $("#transaction_form").hide(); --}}
@@ -1603,6 +1601,12 @@
                     } else {
                         $("#transaction_summary").show();
                         $("#transaction_form").hide();
+                    }
+
+                    if (to_account_currency != 'SLL') {
+                        toaster('You can not transfer from' + ' ' + from_account_currency + ' ' + 'to' + ' ' +
+                            to_account_currency, 'error', 10000);
+                        return false;
                     }
                 })
 
@@ -1634,6 +1638,10 @@
                 $('#confirm_transfer').click(function(e) {
                     e.preventDefault();
 
+                    // $('#confirm_modal_button').removeClass('data-toggle');
+
+
+
                     if ($("#terms_and_conditions").is(":checked")) {
 
                         var customerType = @json(session()->get('customerType'));
@@ -1641,6 +1649,7 @@
 
 
                         if (customerType == 'C') {
+                            $('#confirm_transfer').removeAttr('data-toggle');
 
                             {{-- alert('Corporate Account'); --}}
                             {{-- $('#centermodal').modal('hide'); --}}
@@ -1706,6 +1715,11 @@
 
                             {{-- var sec_pin = $('#user_pin').val(); --}}
 
+                            function redirect_page() {
+                                window.location.href = "{{ url('home') }}";
+
+                            };
+
                             $.ajax({
 
                                 type: 'POST',
@@ -1738,8 +1752,13 @@
                                             'success'
                                         );
 
-                                        $(".receipt").show();
-                                        $(".form_process").hide();
+                                        setTimeout(function() {
+
+                                            redirect_page();
+                                        }, 5000);
+
+                                        // $(".receipt").show();
+                                        // $(".form_process").hide();
 
                                         $('#confirm_modal_button').hide();
                                         $('#spinner').hide();

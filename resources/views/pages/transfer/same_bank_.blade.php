@@ -222,18 +222,19 @@
                                                                     {{-- <th scope="row">3</th> --}}
                                                                     <td>Amount</td>
                                                                     {{-- <td></td> --}}
-                                                                    <td class="text-right"><strong><span class="receipt_currency"></span>
+                                                                    <td class="text-right"><strong><span
+                                                                                class="receipt_currency"></span>
                                                                             &nbsp;<span id="amount_receipt"></span></strong>
                                                                     </td>
                                                                 </tr>
-                                                                {{--  <tr>
+                                                                {{-- <tr>
                                                                     <th scope="row">3</th>
                                                                     <td>Transaction Fee </td>
                                                                     <td></td>
                                                                     <td class="text-right"><strong>(<span
                                                                                 class="receipt_currency"></span>) &nbsp;
                                                                             15.00</strong></td>
-                                                                </tr>  --}}
+                                                                </tr> --}}
                                                                 {{-- <tr>
                                                                     <th scope="row">3</th>
                                                                     <td><strong>Total Amount</strong> </td>
@@ -471,9 +472,9 @@
                                                             id="back_button"><i class="mdi mdi-reply-all-outline"></i>
                                                             &nbsp;Back</button> &nbsp; </span>
                                                     <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                            id="confirm_modal_button" data-toggle="modal"
-                                                            data-target="#centermodal">
-                                                            <span id="confirm_transfer">Confirm Transfer</span>
+                                                            id="confirm_modal_button">
+                                                            <span id="confirm_transfer" data-toggle="modal"
+                                                                data-target="#centermodal">Confirm Transfer</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
                                                                 role="status" id="spinner" aria-hidden="true"></span>
                                                             <span id="spinner-text">Loading...</span>
@@ -632,8 +633,8 @@
                                                                             style="width: 100px;" readonly>
                                                                     </div>
                                                                     &nbsp;&nbsp;
-                                                                    <input type="text" class="form-control" id="converted_amount"
-                                                                        placeholder="Converted Amount"
+                                                                    <input type="text" class="form-control"
+                                                                        id="converted_amount" placeholder="Converted Amount"
                                                                         aria-label="converted_amount"
                                                                         aria-describedby="basic-addon1" readonly>
                                                                 </div>
@@ -648,8 +649,9 @@
                                                                 </b>
 
                                                                 <input type="text" class="form-control col-md-8"
-                                                                    id="purpose" value="Same Bank transfer" placeholder="Enter purpose of transaction"
-                                                                    <div class="form-group row mb-3">
+                                                                    id="purpose" value="Same Bank transfer"
+                                                                    placeholder="Enter purpose of transaction" <div
+                                                                    class="form-group row mb-3">
 
 
                                                             </div>
@@ -805,7 +807,8 @@
 
                                                                 <div class="input-group mb-3 col-8" style="padding: 0px;">
                                                                     <div class="input-group-prepend">
-                                                                        <select name="" class="input-group-text select_currency"
+                                                                        <select name=""
+                                                                            class="input-group-text select_currency"
                                                                             id="select_currency__">
                                                                             {{-- <option value="SLL" selected>SLL</option>
                                                                             <option value="EUR">EURO</option>
@@ -822,7 +825,8 @@
                                                                     &nbsp;&nbsp;
                                                                     <input type="text"
                                                                         class="form-control  display_converted_amount"
-                                                                        id="converted_amount_" placeholder="Converted Amount"
+                                                                        id="converted_amount_"
+                                                                        placeholder="Converted Amount"
                                                                         aria-label="Converted Amount"
                                                                         aria-describedby="basic-addon1" readonly>
                                                                 </div>
@@ -1221,60 +1225,60 @@
         }
 
         function get_currency() {
-                {{-- let name = $("#hidden_currency").val();
+            {{-- let name = $("#hidden_currency").val();
                 console.log(name); --}}
-                $.ajax({
-                    type: "GET",
-                    url: "get-currency-list-api",
-                    datatype: "application/json",
-                    success: function(response) {
-                        {{-- console.log(response); --}}
+            $.ajax({
+                type: "GET",
+                url: "get-currency-list-api",
+                datatype: "application/json",
+                success: function(response) {
+                    {{-- console.log(response); --}}
 
-                        let data = response.data
+                    let data = response.data
 
 
-                        _cur_ = data
-                        get_cur_1 = data
-                        get_cur_2 = data
+                    _cur_ = data
+                    get_cur_1 = data
+                    get_cur_2 = data
 
-                        console.log(data);
+                    console.log(data);
 
-                        $.each(data, function(index) {
-                            $('.select_currency').append($('<option>', {
-                                value: data[index].isoCode
-                            }).text(data[index].isoCode));
-                        })
+                    $.each(data, function(index) {
+                        $('.select_currency').append($('<option>', {
+                            value: data[index].isoCode
+                        }).text(data[index].isoCode));
+                    })
 
-                        $('.select_currency option').each(function() {
-                            if ($(this).val() == 'SLL') {
-                                $(this).prop("selected", true);
-                            } else {
+                    $('.select_currency option').each(function() {
+                        if ($(this).val() == 'SLL') {
+                            $(this).prop("selected", true);
+                        } else {
 
-                            }
-                        });
+                        }
+                    });
 
-                        // $.each(data, function(index) {
-                        //     $('#select_currency__').append($('<option>', {
-                        //         value: data[index].isoCode
-                        //     }).text(data[index].isoCode));
-                        // })
+                    // $.each(data, function(index) {
+                    //     $('#select_currency__').append($('<option>', {
+                    //         value: data[index].isoCode
+                    //     }).text(data[index].isoCode));
+                    // })
 
-                        // $('#select_currency__ option').each(function() {
-                        //     if ($(this).val() == 'SLL') {
-                        //         $(this).prop("selected", true);
-                        //     } else {
+                    // $('#select_currency__ option').each(function() {
+                    //     if ($(this).val() == 'SLL') {
+                    //         $(this).prop("selected", true);
+                    //     } else {
 
-                        //     }
-                        // });
+                    //     }
+                    // });
 
-                    },
-                    error: function(xhr, status, error) {
+                },
+                error: function(xhr, status, error) {
 
-                        setTimeout(function() {
-                            get_currency();
-                        }, $.ajaxSetup().retryAfter)
-                    }
-                })
+                    setTimeout(function() {
+                        get_currency();
+                    }, $.ajaxSetup().retryAfter)
+                }
+            })
         }
 
         function to_account() {
@@ -1614,7 +1618,7 @@
                 currency_convertor(forex_rate, amount);
             })
 
-            $("#select_currency__").change(function(){
+            $("#select_currency__").change(function() {
                 currency_converter(forex_rate);
             });
 
@@ -1825,34 +1829,34 @@
 
 
             $("#amount").keyup(function() {
-                    var from_account = $('#from_account').val()
-                    var to_account = $('#to_account').val()
-                    console.log(forex_rate)
-                    let amount = $(this).val();
-                    currency_convertor(forex_rate, amount);
+                var from_account = $('#from_account').val()
+                var to_account = $('#to_account').val()
+                console.log(forex_rate)
+                let amount = $(this).val();
+                currency_convertor(forex_rate, amount);
 
 
-                    if (from_account.trim() == '' || to_account.trim() == '') {
+                if (from_account.trim() == '' || to_account.trim() == '') {
 
-                        toaster('Please select source and destination accounts', 'error', 10000)
-                        $(this).val('')
-                        return false;
+                    toaster('Please select source and destination accounts', 'error', 10000)
+                    $(this).val('')
+                    return false;
+                } else {
+                    var transfer_amount = $(this).val()
+                    if (parseFloat(amt) < parseFloat(transfer_amount)) {
+                        toaster('Insufficient account balance', 'error', 10000)
+                        return false
                     } else {
-                        var transfer_amount = $(this).val()
-                        if (parseFloat(amt) < parseFloat(transfer_amount)) {
-                            toaster('Insufficient account balance', 'error', 10000)
-                            return false
-                        } else {
-                            $(".display_amount").text(formatToCurrency(parseFloat(
-                                transfer_amount)));
-                            $(".display_amount").text(formatToCurrency(parseFloat(
-                                transfer_amount)));
-                        }
-
+                        $(".display_amount").text(formatToCurrency(parseFloat(
+                            transfer_amount)));
+                        $(".display_amount").text(formatToCurrency(parseFloat(
+                            transfer_amount)));
                     }
 
-                    // let amount = $("#amount").val()
-                    $('.display_amount').text(formatToCurrency(parseFloat(amount)))
+                }
+
+                // let amount = $("#amount").val()
+                $('.display_amount').text(formatToCurrency(parseFloat(amount)))
 
             });
 
@@ -1871,7 +1875,13 @@
             });
 
             $("#amount_").keyup(function() {
+                var from_account = $('#from_account').val()
+                var to_account = $("#onetime_account_number").val()
+
                 var amount = ($(this).val());
+                console.log(forex_rate)
+                currency_convertor(forex_rate, amount);
+
                 $(".display_amount").text(formatToCurrency(parseFloat(amount.trim())))
                 $(".display_transfer_amount").text(formatToCurrency(parseFloat(amount.trim())))
                 {{-- $('#display_transfer_amount').text(amount); --}}
@@ -2127,6 +2137,7 @@
                     console.log(customerType);
 
                     if (customerType == "C") {
+                        $('#confirm_transfer').removeAttr('data-toggle');
 
                         if ($('#customCheck1').is(':checked')) {
 
@@ -2195,6 +2206,10 @@
                             $('#spinner-text').show();
                             $("#confirm_modal_button").prop('disabled', true);
 
+                            function redirect_page() {
+                                window.location.href = "{{ url('home') }}";
+
+                            };
 
                             $.ajax({
                                 type: 'POST',
@@ -2230,15 +2245,20 @@
                                             'success'
                                         );
 
-                                        $(".receipt").show();
-                                        $(".form_process").hide();
+                                        setTimeout(function() {
+
+                                            redirect_page();
+                                        }, 5000);
+
+                                        // $(".receipt").show();
+                                        // $(".form_process").hide();
 
 
                                         $('#confirm_modal_button').hide();
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#back_button').hide();
-                                        $('#print_receipt').show();
+                                        // $('#print_receipt').show();
 
 
                                         $(".card_right").hide();
@@ -2346,6 +2366,11 @@
                             $('#spinner-text').show();
                             $("#confirm_modal_button").prop('disabled', true);
 
+                            function redirect_page() {
+                                window.location.href = "{{ url('home') }}";
+
+                            };
+
                             $.ajax({
                                 type: 'POST',
                                 url: 'corporate-same-bank-api',
@@ -2380,15 +2405,19 @@
                                             response.message,
                                             'success'
                                         );
+                                        setTimeout(function() {
 
-                                        $(".receipt").show();
-                                        $(".form_process").hide();
+                                            redirect_page();
+                                        }, 5000);
+
+                                        // $(".receipt").show();
+                                        // $(".form_process").hide();
 
                                         $('#confirm_modal_button').hide();
                                         $('#spinner').hide();
                                         $('#spinner-text').hide();
                                         $('#back_button').hide();
-                                        $('#print_receipt').show();
+                                        // $('#print_receipt').show();
 
 
                                         $(".card_right").hide();
@@ -2957,92 +2986,99 @@
 
         function currency_convertor(forex_rate, amount) {
 
-                // let amount = $("#amount").val()
-                let convert_amount_currency = $('#select_currency_').val()
-                let converted_amount = ''
+            // let amount = $("#amount").val()
+            let convert_amount_currency = $('#select_currency_').val()
+            let converted_amount = ''
 
 
 
-                console.log(convert_amount_currency)
+            console.log(convert_amount_currency)
 
 
 
-                cur_1 = $('#select_currency').val()
-                cur_2 = $('#select_currency_').val()
+            cur_1 = $('#select_currency').val()
+            cur_2 = $('#select_currency_').val()
 
 
 
-                let currency_pair_1 = cur_1 + '/ ' + cur_2
-                let currency_pair_2 = cur_2 + '/ ' + cur_1
+            let currency_pair_1 = cur_1 + '/ ' + cur_2
+            let currency_pair_2 = cur_2 + '/ ' + cur_1
 
-                let to_local_currency = cur_1 + '/ SLL'
-                let local_currency = ''
-
-
-                console.log(currency_pair_1)
-                console.log(currency_pair_2)
-                console.log(forex_rate)
-
-                $('#converted_amount').val('')
-                $('#convertor_rate_').val('')
+            let to_local_currency = cur_1 + '/ SLL'
+            let local_currency = ''
 
 
-                if (forex_rate.length > 0) {
-                    $.each(forex_rate, function(index) {
+            console.log(currency_pair_1)
+            console.log(currency_pair_2)
+            console.log(forex_rate)
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
-                                .trim())) {
-                            local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
-
-                        }
+            $('#converted_amount').val('')
+            $('#convertor_rate_').val('')
 
 
+            if (forex_rate.length > 0) {
+                $.each(forex_rate, function(index) {
 
-                        if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
-                                .trim())) {
+                    if (String(forex_rate[index].PAIR.trim()) == String(to_local_currency
+                            .trim())) {
+                        local_currency = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
 
-                            converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
-                                .MIDRATE)
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                            $('#converted_amount').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 1 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
+                    }
 
-                        } else if (String(forex_rate[index].PAIR.trim()) == String(
-                                currency_pair_2
-                                .trim())) {
 
-                            $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[
-                                    index].MIDRATE
-                                .toFixed(2))))
-                            $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
-                                formatToCurrency(
-                                    parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
-                            converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
-                                .MIDRATE)
-                            $('#converted_amount').val(formatToCurrency(parseFloat(
-                                converted_amount.toFixed(
-                                    2))))
-                            $('.display_converted_amount').text(convert_amount_currency + ' ' +
-                                formatToCurrency(parseFloat(converted_amount.toFixed(2))))
-                            console.log(`match 2 => ${converted_amount}`)
-                            console.log(parseFloat(forex_rate[index].MIDRATE))
 
-                        } else {
+                    if (String(forex_rate[index].PAIR.trim()) == String(currency_pair_1
+                            .trim())) {
 
-                        }
-                    })
-                }
+                        converted_amount = parseFloat(amount) * parseFloat(forex_rate[index]
+                            .MIDRATE)
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_1.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        $('#converted_amount').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 1 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                    } else if (String(forex_rate[index].PAIR.trim()) == String(
+                            currency_pair_2
+                            .trim())) {
+
+                        $('#convertor_rate_').val(formatToCurrency(parseFloat(forex_rate[
+                                index].MIDRATE
+                            .toFixed(2))))
+                        $('.display_midrate').text(currency_pair_2.trim() + ' => ' +
+                            formatToCurrency(
+                                parseFloat(forex_rate[index].MIDRATE.toFixed(2))))
+                        converted_amount = parseFloat(amount) / parseFloat(forex_rate[index]
+                            .MIDRATE)
+                        $('#converted_amount').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+
+                        $('#converted_amount_').val(formatToCurrency(parseFloat(
+                            converted_amount.toFixed(
+                                2))))
+                        $('.display_converted_amount').text(convert_amount_currency + ' ' +
+                            formatToCurrency(parseFloat(converted_amount.toFixed(2))))
+                        console.log(`match 2 => ${converted_amount}`)
+                        console.log(parseFloat(forex_rate[index].MIDRATE))
+
+                    } else {
+
+                    }
+                })
+            }
 
         }
 
@@ -3136,7 +3172,5 @@
             }
 
         }
-
-
     </script>
 @endsection
