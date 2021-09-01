@@ -150,13 +150,12 @@ class BulkUploadsController extends Controller
             Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency, $value_date, $file, $account_mandate), $file);
 
 
-            // $result = DB::table('tb_bulk_transfer_error')
-            // ->where('acc_number', $row['account_number'])
-            // ->where('name', $row['name'])
-            // ->get();
+            $result = DB::table('tb_corp_bank_import_excel')
+                ->where('batch_no', $batch_no)
+                ->get();
 
-            // echo (json_encode($result));
-            // die();
+            echo (json_encode($result));
+            die();
 
             Alert::success("Bulk transfer pending approval");
             return redirect()->route('view-bulk-transfer', [

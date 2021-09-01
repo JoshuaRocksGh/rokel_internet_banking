@@ -2,13 +2,17 @@
 
 @section('content')
 
-    <div class="">
+    <div class="___class_+?0___">
 
         <div class="container-fluid">
             <br>
             <!-- start page title -->
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <a href="{{ url()->previous() }}" type="button" class="btn btn-soft-blue waves-effect waves-light"><i
+                            class="fe-arrow-left"></i>&nbsp;Back</a>
+                </div>
+                <div class="col-md-4">
                     <h4 class="text-primary">
                         <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                         STATEMENT REQUEST
@@ -16,11 +20,12 @@
                     </h4>
                 </div>
 
-                <div class="col-md-6 text-right">
+                <div class="col-md-4 text-right">
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Account Services </b> &nbsp; > &nbsp; <b class="text-danger">STATEMENT
+                            <b class="text-primary"> Account Services </b> &nbsp; > &nbsp; <b
+                                class="text-danger">STATEMENT
                                 REQUEST</b>
 
 

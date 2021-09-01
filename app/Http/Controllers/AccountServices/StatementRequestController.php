@@ -73,11 +73,13 @@ class StatementRequestController extends Controller
 
         ];
 
-        // return $data;
+        return $data;
 
 
         try {
             $response = Http::post(env('API_BASE_URL') . "/request/statment", $data);
+
+            // dd($response) ;
             // return $response;
             $result = new ApiBaseResponse();
 
