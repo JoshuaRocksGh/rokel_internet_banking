@@ -30,24 +30,18 @@
 
                 {{-- @if ($menu->grouping === 'AL') --}}
                 <li>
-                    <a href="#sidebarMyAccount" data-toggle="collapse">
+                    <a href="{{ url('account-enquiry') }}">
                         <i class="mdi mdi-book-account-outline"></i>
                         {{-- <span>{{  $menu->label }}</span> --}}
-                        <span>Account Services</span>
-                        <span class="menu-arrow"></span>
+                        My Account
                     </a>
-                    <div class="collapse" id="sidebarMyAccount">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ url('account-enquiry') }}">Account Statement</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('request-statement') }}">Statement Request</a>
-                            </li>
-                            {{-- <li>
+
+
+
+                    {{-- <li>
                                 <a href="{{ url('close-account') }}">Account Closure</a>
                 </li> --}}
-                <li>
+                {{-- <li>
                     <a href="#budgeting" data-toggle="collapse">
                         <span> Budgeting </span>
                         <span class="menu-arrow"></span>
@@ -56,13 +50,13 @@
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ url('budgeting-spending-statics') }}">Spending
-                                    Statistics</a>
-                            </li>
-
-                        </ul>
-                    </div>
+                Statistics</a>
                 </li>
-                {{-- <li>
+
+            </ul>
+        </div>
+        </li> --}}
+        {{-- <li>
                                 <a href="#sidebarBudgeting" data-toggle="collapse">
                                     <span>Budgeting</span>
                                     <span class="menu-arrow"></span>
@@ -71,18 +65,17 @@
                                     <ul class="nav-second-level">
                                         <li>
                                             <a href="{{ url('cheque-approvals-pending') }}">Pending</a>
-                </li>
-                <li>
-                    <a href="{{ url('cheque-approvals-approved') }}">Approved</a>
-                </li>
-                <li>
-                    <a href="{{ url('cheque-approvals-rejected') }}">Rejected</a>
-                </li>
-            </ul>
-        </div>
-        </li> --}}
+        </li>
+        <li>
+            <a href="{{ url('cheque-approvals-approved') }}">Approved</a>
+        </li>
+        <li>
+            <a href="{{ url('cheque-approvals-rejected') }}">Rejected</a>
+        </li>
         </ul>
     </div>
+    </li> --}}
+
     </li>
 
 
@@ -305,16 +298,30 @@
                     </ul>
                 </div>
             </li>
-
             <li>
-                <a href="{{ url('request-for-letter') }}">Request For Letter</a>
+                <a href="#sidebarRequests" data-toggle="collapse">
+                    {{-- <i class="mdi mdi-credit-card-multiple-outline"></i> --}}
+                    <span> Requests </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarRequests">
+                    <ul class="nav-second-level">
+                        <li>
+                            <a href="{{ url('request-for-letter') }}">Request For Letter</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('request-statement') }}">Statement Request</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('request-draft') }}">Request bank draft</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <li>
                 <a href="{{ url('open-additional-account') }}">Open additional account</a>
             </li>
-            <li>
-                <a href="{{ url('request-draft') }}">Request bank draft</a>
-            </li>
+
 
             <li>
                 <a href="{{ url('add-signature') }}">Add Signatory</a>
