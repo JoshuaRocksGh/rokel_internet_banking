@@ -35,9 +35,6 @@ use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Budgeting\SpendingStaticsController;
 use App\Http\Controllers\BulkUpload\CorporateKorporController;
 use App\Http\Controllers\Cards\CardsController;
-use App\Http\Controllers\Chatbot\FacebookChatbotController;
-use App\Http\Controllers\Chatbot\InstagramChatbotController;
-use App\Http\Controllers\Chatbot\WhatsAppChatbotController;
 use App\Http\Controllers\Cheques\ChequeBookRequestController;
 use App\Http\Controllers\Cheques\ChequesApprovedController;
 use App\Http\Controllers\Cheques\ChequesPendingController;
@@ -301,6 +298,7 @@ Route::get('print-account-statement-history', [AccountEnquiryController::class, 
 Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
 Route::get('list-of-accounts', [AccountEnquiryController::class, 'list_of_accounts'])->name('list-of-accounts');
 
+
 // get account description
 Route::post('get-account-description', [GetAccountDescription::class, 'get_account_description'])->name('get-account-description');
 Route::post('validate-account-no', [FunctionsController::class, 'validate_account_no'])->name('validate-account-no');
@@ -356,16 +354,6 @@ Route::get('set-transaction-limits-api', [settingsController::class, 'set_transa
 
 //route to hit the set transaction limits endpoint
 Route::get('set-transaction-limits-api', [settingsController::class, 'set_transaction_limits_api'])->name('set-transaction-limits-api');
-
-
-//route to display the whatsapp chatbook screen
-Route::get('WhatsApp-Chatbot', [WhatsAppChatbotController::class, 'whatsApp_chatbot'])->name('WhatsApp-Chatbot');
-
-//route to display the facebook chatbot screen
-Route::get('Facebook-Chatbot', [FacebookChatbotController::class, 'facebook_chatbot'])->name('Facebook-Chatbot');
-
-//route to display the instagram chatbot screen
-Route::get('Instagram-Chatbot', [InstagramChatbotController::class, 'instagram_chatbot'])->name('Instagram-Chatbot');
 
 // Route::middleware(['userAuth'])->group(function () {
 
