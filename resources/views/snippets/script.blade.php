@@ -5,64 +5,17 @@
 <!-- Vendor js -->
 <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
-
-{{-- Jequery cdn --}}
-
-
-
 <!-- Plugins js-->
 <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
-<script
-    src="{{ asset('assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}">
-</script>
-<script src="{{ asset('assets/libs/clockpicker/bootstrap-clockpicker.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"> --}}
+{{-- </script> --}}
+{{-- <script src="{{ asset('assets/libs/clockpicker/bootstrap-clockpicker.min.js') }}"></script> --}}
 <script src="{{ asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}">
 </script>
-<script
-    src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}">
+<script src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}">
 </script>
 <script src="{{ asset('assets/libs/bootstrap-select/js/bootstrap-select.min.js') }} ">
 </script>
-{{-- <script src="{{ asset('assets/libs/bootstrap-tour/js/bootstrap-tour.min.js') }}">
-</script> --}}
-{{-- <script src="{{ asset('assets/js/jquery.userTimeout.js') }}"></script>
---}}
-{{-- <script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}">
-</script> --}}
-{{-- <script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js') }}">
-</script> --}}
-{{-- <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}">
-</script> --}}
-
-{{-- <!-- Tour page js -->
-        <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script>
-
-<!-- Tour init js-->
-<script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
-
-<!-- Dashboar 1 init js-->
-{{-- <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}">
-</script> --}}
-
-{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
-
-
-<!-- Init js-->
-{{-- <script src="{{ asset('assets/libs/pages/form-pickers.init.js') }}">
-</script>
-<script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script> --}}
-
-
-
-<!-- Plugin js-->
-{{-- <script src="{{ asset('assets/libs/parsleyjs/parsley.min.js') }}">
-</script> --}}
-
-<!-- Validation init js-->
-{{-- <script src="{{ asset('assets/js/pages/form-validation.init.js') }}">
---}}
-{{-- </script> --}}
-
 
 <!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
