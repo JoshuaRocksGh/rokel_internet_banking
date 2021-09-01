@@ -32,7 +32,7 @@
                     <a href="#sidebarMyAccount" data-toggle="collapse">
                         <i class="mdi mdi-book-account-outline"></i>
                         {{-- <span>{{  $menu->label }}</span> --}}
-                        <span>Account Services</span>
+                        <span>My Accounts</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarMyAccount">
