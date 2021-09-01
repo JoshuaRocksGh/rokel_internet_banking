@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Authentication;
 
 use App\Http\classes\API\BaseResponse;
+use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -96,8 +97,8 @@ class LoginController extends Controller
                     }
                     */
 
-                    $user_detail = $result->data;
-                    $customerType = $user_detail->customerType;
+                    $userDetail = $result->data;
+                    $customerType = $userDetail->customerType;
 
                     // if ($customerType != "I") {
                     //     return  $base_response->api_response("422", "Corporate users not allowed",  null);
@@ -105,21 +106,22 @@ class LoginController extends Controller
 
 
                     session([
-                        "userId" => $user_detail->userId,
-                        "userAlias" => $user_detail->userAlias,
-                        "updateFlag" => $user_detail->updateFlag,
-                        "setPin" => $user_detail->setPin,
-                        "changePassword" => $user_detail->changePassword,
-                        "email" => $user_detail->email,
-                        "firstTimeLogin" => $user_detail->firstTimeLogin,
-                        "userToken" => $user_detail->userToken,
-                        "customerNumber" => $user_detail->customerNumber,
-                        "customerPhone" => $user_detail->customerPhone,
-                        "updateUrl" => $user_detail->updateUrl,
-                        // "c_type" => $user_detail->c_type,
-                        "lastLogin" => $user_detail->lastLogin,
-                        "customerType" => $user_detail->customerType,
-                        "checkerMaker" => $user_detail->checkerMaker,
+                        "userId" => $userDetail->userId,
+                        "userAlias" => $userDetail->userAlias,
+                        "updateFlag" => $userDetail->updateFlag,
+                        "setPin" => $userDetail->setPin,
+                        "changePassword" => $userDetail->changePassword,
+                        "email" => $userDetail->email,
+                        "firstTimeLogin" => $userDetail->firstTimeLogin,
+                        "userToken" => $userDetail->userToken,
+                        "customerNumber" => $userDetail->customerNumber,
+                        "customerPhone" => $userDetail->customerPhone,
+                        "updateUrl" => $userDetail->updateUrl,
+                        // "c_type" => $userDetail->c_type,
+                        "lastLogin" => $userDetail->lastLogin,
+                        "customerType" => $userDetail->customerType,
+                        "checkerMaker" => $userDetail->checkerMaker,
+                        "menus" => $userDetail->menus,
                         // "checkerMaker" => 'M',
                         "userMandate" => 'A',
                         "headers" => [
@@ -181,12 +183,12 @@ class LoginController extends Controller
                 }
             } else { // API response status code not 200
 
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'code' => $response->status(),
-                    'message' => $response->body()
-                ]);
+                // DB::table('tb_error_logs')->insert([
+                //     'platform' => 'ONLINE_INTERNET_BANKING',
+                //     'user_id' => 'AUTH',
+                //     'code' => $response->status(),
+                //     'message' => $response->body()
+                // ]);
 
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
@@ -201,6 +203,65 @@ class LoginController extends Controller
 
             return $base_response->api_response('500', 'CONNECTION SERVER ERROR',  NULL); // return API BASERESPONSE
 
+
+
+        }
+    }
+
+    public function forgot_password(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'security_answer' => 'required',
+            'password' => 'required',
+            'security_question' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        // return $request;
+
+        $base_response = new BaseResponse();
+
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $client_ip = request()->ip();
+
+        $data = [
+            "deviceBrand" => null,
+            "deviceCountry" => null,
+            "deviceId" => "I",
+            "deviceIp" => $client_ip,
+            "newPassword" => $request->password,
+            "securityAnswer" => $request->security_answer,
+            "securityQuestion" => $request->security_question,
+            "userId" => $request->user_id
+        ];
+
+        // return $data;
+
+        try {
+
+            $response = Http::post(env('API_BASE_URL') . "user/forgotPassword", $data);
+
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+            // return json_decode($response->body();
+
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
 
         }

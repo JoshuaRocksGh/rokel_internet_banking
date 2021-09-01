@@ -53,17 +53,23 @@
             <br>
             <!-- start page title -->
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <a href="{{ url()->previous() }}" type="button" class="btn btn-soft-blue waves-effect waves-light"><i
+                            class="fe-arrow-left"></i>&nbsp;Back</a>
+                    {{-- <button type="button" class="btn btn-soft-blue waves-effect waves-light">Blue</button> --}}
+
+                </div>
+                <div class="col-md-4">
                     <h4 class="text-primary">
                         <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                         ACCOUNT STATEMENT
                     </h4>
                 </div>
 
-                <div class="col-md-6 text-right">
+                <div class="col-md-4 text-right">
                     <h6>
 
-                        <span class="flaot-right">
+                        <span class="float-right">
                             <b class="text-primary"> Account </b> &nbsp; > &nbsp; <b class="text-danger">Account
                                 Statement</b>
 
@@ -83,7 +89,7 @@
 
 
         <div class="col-12">
-            <div class="">
+            <div class="___class_+?12___">
                 <div class="card-body">
 
 
@@ -152,11 +158,15 @@
 
                                         <div class="col-md-4">
 
-                                            <h3 class=""> <b>Account Details</b> </h3>
-                                            <h5 class="">Name:&nbsp; <b class="account_description">#############</b> </h5>
-                                            <h5 class="">Account NO:&nbsp; <b class="account_number">#############</b> </h5>
-                                            <h5 class="">Product:&nbsp; <b class="account_product">########</b> </h5>
-                                            <h5 class="">Currency:&nbsp; <b class="account_currency">########</b> </h5>
+                                            <h3 class="___class_+?32___"> <b>Account Details</b> </h3>
+                                            <h5 class="___class_+?33___">Name:&nbsp; <b
+                                                    class="account_description">#############</b> </h5>
+                                            <h5 class="___class_+?35___">Account NO:&nbsp; <b
+                                                    class="account_number">#############</b> </h5>
+                                            <h5 class="___class_+?37___">Product:&nbsp; <b
+                                                    class="account_product">########</b> </h5>
+                                            <h5 class="___class_+?39___">Currency:&nbsp; <b
+                                                    class="account_currency">########</b> </h5>
 
                                         </div>
 
@@ -182,7 +192,7 @@
                                             <button class="btn btn-sm btn-secondary">retry</button>
                                         </div> --}}
 
-                                        <div class="" id="account_balance_info_display">
+                                        <div class="___class_+?44___" id="account_balance_info_display">
 
                                             <div class="alert alert-secondary" role="alert">
                                                 <div class="row">
@@ -196,9 +206,8 @@
 
                                                         <div class="row">
 
-                                                            <select class="form-control col-md-8" id="filter"
-                                                                required>
-                                                                
+                                                            <select class="form-control col-md-8" id="filter" required>
+
                                                                 <option value="all" selected> ALL</option>
                                                                 <option value="credit"> CREDIT </option>
                                                                 <option value="debit"> DEBIT </option>
@@ -243,13 +252,14 @@
                                                             <td>Date</td>
                                                             <td>Amount <span class="account_number_display_"></span>
                                                             </td>
-                                                            <td>Balance<span
-                                                                    class="account_description_display_"></span></td>
-                                                            <td>Purpose of Transfer <span class="account_currency_display_"></span>
+                                                            <td>Balance<span class="account_description_display_"></span>
+                                                            </td>
+                                                            <td>Purpose of Transfer <span
+                                                                    class="account_currency_display_"></span>
                                                             </td>
                                                             <th>Credit Account</th>
                                                             {{-- <td>Transaction Details <span class="account_product_display_"></span> </td> --}}
-                                                            <td>Transaction ID <span class=""></span> </td>
+                                                            <td>Transaction ID <span class="___class_+?59___"></span> </td>
                                                             <th>Batch No</th>
                                                         </tr>
                                                     </thead>
@@ -681,20 +691,20 @@
                 load_data_into_table(load_data, account_number, start_date, end_date)
             })
 
-            $("#filter").change(function(){
+            $("#filter").change(function() {
                 let filter = $(this).val()
 
                 let account = $("#from_account").val()
 
-                if(account == '' || account == undefined){
+                if (account == '' || account == undefined) {
                     return false;
                 }
 
-                if(filter == 'debit'){
+                if (filter == 'debit') {
 
                     $('#table-body-display').empty()
                     {{-- return false --}}
-    
+
                     let data = tranactions
                     var load_data = []
                     $.each(data, function(index) {
@@ -702,42 +712,42 @@
                             {{-- alert(data[index].amount) --}}
                             load_data.push(data[index])
                         } else {
-    
+
                         }
                     })
                     load_data_into_table(load_data, account_number, start_date, end_date)
-            
-                    
-                }else if(filter == 'credit'){
+
+
+                } else if (filter == 'credit') {
                     $('#table-body-display').empty()
-                {{-- return false --}}
+                    {{-- return false --}}
 
-                let data = tranactions
-                var load_data = []
-                $.each(data, function(index) {
-                    if (parseFloat(data[index].amount) > 0) {
-                        {{-- alert(data[index].amount) --}}
-                        load_data.push(data[index])
-                    } else {
+                    let data = tranactions
+                    var load_data = []
+                    $.each(data, function(index) {
+                        if (parseFloat(data[index].amount) > 0) {
+                            {{-- alert(data[index].amount) --}}
+                            load_data.push(data[index])
+                        } else {
 
-                    }
-                })
+                        }
+                    })
 
 
-                load_data_into_table(load_data, account_number, start_date, end_date)
-            
-            }else{
-               
-                let load_data = tranactions
-                load_data_into_table(load_data, account_number, start_date, end_date)
+                    load_data_into_table(load_data, account_number, start_date, end_date)
+
+                } else {
+
+                    let load_data = tranactions
+                    load_data_into_table(load_data, account_number, start_date, end_date)
 
                 }
 
-                {{--  $('#table-body-display').empty()
+                {{-- $('#table-body-display').empty()
 
                 let data = tranactions
 
-                load_data_into_table(tranactions)  --}}
+                load_data_into_table(tranactions) --}}
             })
 
 
@@ -812,12 +822,12 @@
 
 
                 $('#table-body-display').html('')
-                
+
                 var table = $('.account_transaction_display_table').DataTable();
-               
-               
+
+
                 table.clear().draw()
-               
+
 
 
                 if (data.length > 0) {
@@ -866,20 +876,20 @@
                         let yyyy = today.getFullYear();
 
                         table.row.add([
-                            data[index].documentReference,
-                            dd + '/' + mm + '/' + yyyy,
-                            amount,
-                            `${formatToCurrency(parseFloat(data[index].runningBalance))}`,
+                                data[index].documentReference,
+                                dd + '/' + mm + '/' + yyyy,
+                                amount,
+                                `${formatToCurrency(parseFloat(data[index].runningBalance))}`,
 
-                            data[index].narration,
-                            data[index].contraAccount,
-                            data[index].transactionNumber,
-                            data[index].batchNumber,
+                                data[index].narration,
+                                data[index].contraAccount,
+                                data[index].transactionNumber,
+                                data[index].batchNumber,
 
 
-                        ]).order([0, 'desc'])
-                        .column( 0 ).visible( false, false )
-                        .draw(false)
+                            ]).order([0, 'desc'])
+                            .column(0).visible(false, false)
+                            .draw(false)
 
                         {{-- table.row.add([
                             data[index].postingSysDate,
@@ -908,14 +918,14 @@
                 $(".account_transaction_display_table").show();
                 $(".account_transaction_display").show();
 
-             
+
             }
 
 
             function getAccountTransactions(account_number, start_date, end_date, transLimit) {
                 $('#search_transaction').text('Loading ...')
                 var table = $('.account_transaction_display_table').DataTable();
-               
+
 
 
                 $.ajax({

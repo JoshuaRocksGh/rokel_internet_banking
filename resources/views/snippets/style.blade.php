@@ -30,7 +30,8 @@
     type="text/css" id="bs-dark-stylesheet" />
 <link href="{{ asset('assets/css/app-purple-dark.min.css') }}" rel="stylesheet" type="text/css"
     id="app-dark-stylesheet" />
-
+<link href="{{ asset('assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}"
+    rel="stylesheet" type="text/css" />
 
 <!-- Tour css -->
 <link href="{{ asset('assets/libs/hopscotch/css/hopscotch.min.css') }}" rel="stylesheet"
@@ -478,6 +479,16 @@
 
     input[type='number'] {
         -moz-appearance: textfield;
+    }
+
+    option[value=""][disabled] {
+        background-color: #dddddd;
+        color: #1E1F23
+    }
+
+    select:required:invalid {
+        background-color: #fffbfb79;
+        color: #1E1F23
     }
 
 </style>

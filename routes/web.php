@@ -299,6 +299,7 @@ Route::get('print-account-statement', [AccountEnquiryController::class, 'print_a
 Route::get('print-account-statement-history', [AccountEnquiryController::class, 'print_account_statement_history'])->name('print-account-statement-history');
 
 Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
+Route::post('account-balance-info-api', [AccountEnquiryController::class, 'account_balance_info'])->name('account-balance-info-api');
 Route::get('list-of-accounts', [AccountEnquiryController::class, 'list_of_accounts'])->name('list-of-accounts');
 
 // get account description
@@ -374,7 +375,7 @@ Route::get('Instagram-Chatbot', [InstagramChatbotController::class, 'instagram_c
 Route::group(['middleware' => ['userAuth']], function () {
 
     //DashBoard Screen
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index']);
 
     // Account Enquiry Screens
     Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-enquiry');
@@ -395,6 +396,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/international-bank', [transferController::class, 'international_bank_'])->name('international-bank');
 
     Route::get('standing-order', [StandingOrderController::class, 'display_standing_order'])->name('standing-order');
+    Route::get('standing-order-new', [StandingOrderController::class, 'display_standing_order_new'])->name('standing-order-new');
 
     //Add Beneficiary
     Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
@@ -409,7 +411,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
 
-Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
+    Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
 
 
     // Route::delete('/delete-beneficiary', [transferController::class, "delete_beneficiary"])->name('delete-beneficiary');
@@ -522,6 +524,8 @@ Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-ban
     Route::get('change-pin', [settingsController::class, 'change_pin'])->name('change-pin');
 
     Route::get('branch-locator', [branchLocatorController::class, 'branch_locator'])->name('branch-locator');
+
+    //Middleware closing tag below
 });
 
 
@@ -533,6 +537,12 @@ Route::get('/get-expenses', [HomeController::class, 'get_expenses'])->name('get-
 Route::get('/logout', [LogoutController::class, 'logout_'])->name('logout');
 
 Route::get('/send-email', [MaileController::class, 'send_email'])->name('send-email');
+
+Route::get('post-security-question-api/{user_id}', [FunctionsController::class, 'reset_security_question'])->name('post-security-question-api');
+
+Route::post('forgot-password-api', [AuthenticationLoginController::class, 'forgot_password'])->name('forgot-password-api');
+
+
 
 // GENERAL FUNCTIONS
 Route::get('get-currency-list-api', [FunctionsController::class, 'currency_list'])->name('get-currency-list-api');
@@ -647,7 +657,7 @@ Route::get('get-loan-products-api', [FunctionsController::class, 'get_Loan_produ
 Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_request'])->name('loan-request-details');
 
 //Route to send loan request details of quotation
-Route::post('loan-quotation-details', [LoanQuotationController::class, 'send_loan_request_quote'])->name('loan-quotation-details');
+Route::post('loan-quotation-details', [LoanQuotationController::class, 'send_loan_request_quote']);
 
 //Route to send unredeem request
 Route::post('unredeem-cardless-request', [CardlessController::class, 'send_unredeemed_request'])->name('unredeem-cardless-request');
@@ -675,10 +685,15 @@ Route::get('get-interest-types-api', [FunctionsController::class, 'get_Interest_
 Route::get('get-loan-frequencies-api', [FunctionsController::class, 'get_loan_frequencies'])->name('get-loan-frequencies-api');
 
 //route to return loan purposes
-Route::get('get-loan-purpose-api', [FunctionsController::class, 'get_loan_purpose'])->name('get-loan-purpose-api');
+Route::get('get-loan-purpose-api', [FunctionsController::class, 'getLoanPurpose']);
+
+Route::get('get-loan-intro-source-api', [FunctionsController::class, 'getLoanIntroSource']);
+Route::get('get-loan-sectors-api', [FunctionsController::class, 'getLoanSectors']);
+Route::get('get-loan-sub-sectors-api', [FunctionsController::class, 'getLoanSubSectors']);
 
 //route to return standing order frequencies
 Route::get('get-standing-order-frequencies-api', [FunctionsController::class, 'get_standing_order_frequencies'])->name('get-standing-order-frequencies-api');
 
 //route to initiate standing order request
-Route::post('initiate-standing-order-request', [StandingOrderController::class, 'standing_order_request'])->name('initiate-standing-order-request');
+Route::post('initiate-standing-order-request-api', [StandingOrderController::class, 'standing_order_request'])->name('initiate-standing-order-request-api');
+Route::post('corporate-standing-order-request-api', [StandingOrderController::class, 'corporate_standing_order_request'])->name('corporate-standing-order-request-api');

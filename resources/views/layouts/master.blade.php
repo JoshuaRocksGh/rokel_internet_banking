@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>BANKING</title>
+    <title>RC BANKING</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -20,7 +20,13 @@
 
     <style type="text/css">
         .navbar-custom {
-            background-color: {{ env('APPLICATION_CUSTOM_COLOR') }};
+            background-color: {
+                    {
+                    env('APPLICATION_CUSTOM_COLOR')
+                }
+            }
+
+            ;
         }
 
         .purple-color {
@@ -97,7 +103,6 @@
         #datatable-buttons_filter {
             float: right;
         }
-
     </style>
 
 
@@ -127,7 +132,6 @@
             overflow-y: hidden;
 
         }
-
     </style>
 
 
@@ -144,12 +148,12 @@
 
 
     <!-- Pre-loader -->
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div id="status">
 
             <div class="spinner">Loading...</div>
         </div>
-    </div>
+    </div> --}}
     <!-- End Preloader-->
 
     <!-- Begin page -->
@@ -165,7 +169,7 @@
                 @yield('content')
             </div>
 
-            @include('snippets.footer')
+            {{-- @include('snippets.footer') --}}
         </div>
     </div>
 

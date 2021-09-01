@@ -12,11 +12,12 @@ class AccountEnquiryController extends Controller
     //method to return the account enquiry screen
     public function account_enquiry(Request $request)
     {
-       // $account_number = $request->query('accountNumber');
+        // $account_number = $request->query('accountNumber');
         return view('pages.accountEnquiry.accountEnquiry');
     }
 
-    public function list_of_accounts(){
+    public function list_of_accounts()
+    {
         return view('pages.accountEnquiry.listOfAccounts');
     }
 
@@ -101,4 +102,24 @@ class AccountEnquiryController extends Controller
         return $result->api_response($response);
     }
 
+    public function account_balance_info(Request $request)
+    {
+        $accountNumber = $request->accountNumber;
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $result = new ApiBaseResponse();
+
+        $data = [
+            "authToken" => $authToken,
+            "userId" => $accountNumber
+        ];
+
+
+        $response = Http::post(env('API_BASE_URL') . "account/getAccountDescription", $data);
+
+
+        return $result->api_response($response);
+    }
 }

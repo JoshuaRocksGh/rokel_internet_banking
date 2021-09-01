@@ -199,6 +199,8 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                 $t_amt = $t_amt + (float) $row['amount'];
 
 
+
+
                 $query_result = DB::table('tb_corp_bank_import_excel')->insert([
                     'ref_no' => $row['ref_number'],
                     'bban' => $row['account_number'],

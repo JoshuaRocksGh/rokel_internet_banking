@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\AcceptHeader;
+use Illuminate\Support\Facades\Log;
 
 class FunctionsController extends Controller
 {
@@ -297,26 +298,28 @@ class FunctionsController extends Controller
 
     public function lovs_list()
     {
+
+        Log::critical("message");
         $response = Http::get(env('API_BASE_URL') . "account/lovs");
-
-
         $base_response = new BaseResponse();
 
         if ($response->ok()) {    // API response status code is 200
+            $result = json_decode($response);
+            // Log::critical($response->ok());
 
-            $result = json_decode($response->body());
             // return $result->responseCode;
+
             return $base_response->api_response("000", "List of lOVs",  $result); // return API BASERESPONSE
 
         } else { // API response status code not 200
 
-            return $response->body();
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'code' => $response->status(),
-                'message' => $response->body()
-            ]);
+            //     return $response->body();
+            //     DB::table('tb_error_logs')->insert([
+            //         'platform' => 'ONLINE_INTERNET_BANKING',
+            //         'user_id' => 'AUTH',
+            //         'code' => $response->status(),
+            //         'message' => $response->body()
+            //     ]);
 
             return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
@@ -329,16 +332,12 @@ class FunctionsController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-
-
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
         ];
 
-
         $response = Http::get(env('API_BASE_URL') . "/loans/loanProducts", $data);
-
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
@@ -353,13 +352,10 @@ class FunctionsController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-
-
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
         ];
-
 
         $response = Http::get(env('API_BASE_URL') . "/loans/interestTypes", $data);
 
@@ -367,22 +363,35 @@ class FunctionsController extends Controller
         return $result->api_response($response);
     }
 
+    public function getLoanIntroSource()
+    {
+        $response = Http::get(env('API_BASE_URL') . "/loans/introSource");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+    public function getLoanSectors()
+    {
+        $response = Http::get(env('API_BASE_URL') . "/loans/sectors");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+    public function getLoanSubSectors(Request $request)
+    {
+        $response = Http::get(env('API_BASE_URL') . "/loans/subSectors/$request->loanSectorCode");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+    public function getLoanPurpose()
+    {
+        $response = Http::get(env('API_BASE_URL') . "/loans/purpose");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
     //method to return the interest types
     public function get_loan_frequencies()
     {
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
-
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-
-
-        $response = Http::get(env('API_BASE_URL') . "/loans/loanFrequencies", $data);
+        $response = Http::get(env('API_BASE_URL') . "/loans/loanFrequencies");
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
@@ -397,16 +406,16 @@ class FunctionsController extends Controller
         $transfer_type = $request->transfer_type;
         // $feeType = $request->feeType;
 
-        return $request ;
+        // return $request;
         // ACHP
         // RTG
 
-        If ($transfer_type == "ACH"){
-            $feeType = "ACHP" ;
-        }else if ($transfer_type == "RTGS") {
-            $feeType = "RTGs" ;
-        }else {
-            return false ;
+        if ($transfer_type == "ACH") {
+            $feeType = "ACHP";
+        } else if ($transfer_type == "RTGS") {
+            $feeType = "RTGS";
+        } else {
+            return false;
         }
 
         $authToken = session()->get('userToken');
@@ -421,7 +430,7 @@ class FunctionsController extends Controller
             "authToken"    => $authToken,
         ];
 
-        // return $data ;
+        // return $data;
 
         // dd(env('API_BASE_URL') . "transfers/transactionFees");
 
@@ -440,36 +449,6 @@ class FunctionsController extends Controller
         // return $response->status();
         $result = new ApiBaseResponse();
         return $result->api_response($response);
-    }
-
-    public function get_loan_purpose()
-    {
-        // return 'kjsdf';
-
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-        $api_headers = session()->get('headers');
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-
-        $base_response = new BaseResponse();
-
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
-
-        // $response = Http::get(env('API_BASE_URL') . "/loans/purpose", $data);
-        // return $data;
-        $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "/loans/purpose", $data);
-
-        $result = new ApiBaseResponse();
-        return $result->api_response($response);
-
-        // return $response;
-        // return $response->status();
     }
 
     public function get_standing_order_frequencies()
@@ -527,5 +506,16 @@ class FunctionsController extends Controller
             return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
         }
+    }
+
+    public function reset_security_question($user_id)
+    {
+        $user_id = $user_id;
+        // $userId = $request->query('user_id');
+        // dd($user_id);
+
+        $response = Http::get(env('API_BASE_URL') . "/user/question/{$user_id}");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 }

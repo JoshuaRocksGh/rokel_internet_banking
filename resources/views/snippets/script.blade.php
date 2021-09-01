@@ -21,7 +21,8 @@
 <script
     src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}">
 </script>
-
+<script src="{{ asset('assets/libs/bootstrap-select/js/bootstrap-select.min.js') }} ">
+</script>
 {{-- <script src="{{ asset('assets/libs/bootstrap-tour/js/bootstrap-tour.min.js') }}">
 </script> --}}
 {{-- <script src="{{ asset('assets/js/jquery.userTimeout.js') }}"></script>
@@ -53,17 +54,20 @@
 
 
 
+<!-- Plugin js-->
+{{-- <script src="{{ asset('assets/libs/parsleyjs/parsley.min.js') }}">
+</script> --}}
+
+<!-- Validation init js-->
+{{-- <script src="{{ asset('assets/js/pages/form-validation.init.js') }}">
+--}}
+{{-- </script> --}}
+
+
 <!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
 
-
-<!-- Plugin js-->
-<script src="{{ asset('assets/libs/parsleyjs/parsley.min.js') }}"></script>
-
-<!-- Validation init js-->
-{{-- <script src="{{ asset('assets/js/pages/form-validation.init.js') }}">
-</script> --}}
 
 <script>
     function formatToCurrency(amount) {
@@ -120,5 +124,18 @@
             timer: timer
         })
     };
+
+    function formatToCurrency(amount) {
+        return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    }
+
+    function validateAll(...args) {
+        for (arg of args) {
+            if (arg === "" || arg === undefined || arg === null) {
+                return false
+            }
+        }
+        return true
+    }
 
 </script>

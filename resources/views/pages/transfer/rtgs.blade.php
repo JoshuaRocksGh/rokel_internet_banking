@@ -85,7 +85,7 @@
                         <div class="col-md-12">
 
 
-                            <div class="receipt">
+                            <div class="receipt" style="display: none">
                                 <div class="container card card-body">
 
                                     <div class="container">
@@ -307,7 +307,7 @@
                                 <div class="row">
 
                                     <div class="col-md-7  m-2" id="transaction_summary"
-                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226)); display:none;">
                                         <div class="row">
                                             <div class="col-md-1"></div>
                                             <div class="col-md-10 ">
@@ -557,7 +557,7 @@
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
 
-                                                    <div class="form-group row mb-3 no_beneficiary">
+                                                    <div class="form-group row mb-3 no_beneficiary" style="display: none">
                                                         <b class="col-md-4 text-primary ">
 
                                                         </b>
@@ -701,7 +701,7 @@
                                                             </select>
 
                                                         </div>
-                                                        <div class="form-group row">
+                                                        <div class="form-group row" style="display: none">
                                                             <div class="col-md-4"></div>
                                                             <span class="col-md-8 transfer_mode_note"><b>Note:</b> &emsp;
                                                                 <span class="text-danger" id="ach_transfer_mode">Transfer
@@ -758,14 +758,15 @@
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <div class="input-group-prepend">
-                                                                    <input type="text" class="form-control readOnly "id="convertor_rate_"
-                                                                        id="convertor_rate_" style="width: 100px;"
-                                                                        value="1.00" style="width: 100px;" readonly>
+                                                                    <input type="text" class="form-control readOnly "
+                                                                        id="convertor_rate_" id="convertor_rate_"
+                                                                        style="width: 100px;" value="1.00"
+                                                                        style="width: 100px;" readonly>
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <input type="text" class="form-control"
                                                                     id="converted_amount" placeholder="Converted Amount"
-                                                                    aria-label="converted_amount" 
+                                                                    aria-label="converted_amount"
                                                                     aria-describedby="basic-addon1" readonly>
                                                             </div>
 
@@ -927,7 +928,7 @@
                                                             </select>
 
                                                         </div>
-                                                        <div class="form-group row">
+                                                        <div class="form-group row" style="display: none">
                                                             <div class="col-md-4"></div>
                                                             <span class="col-md-8 onetime_transfer_mode_note"><b>Note:</b>
                                                                 &emsp;
@@ -983,14 +984,17 @@
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <div class="input-group-prepend">
-                                                                    <input type="text" class="form-control display_midrate readOnly "
-                                                                        id="convertor_rate"
-                                                                        value="1.00" style="width: 100px;" readonly>
+                                                                    <input type="text"
+                                                                        class="form-control display_midrate readOnly "
+                                                                        id="convertor_rate" value="1.00"
+                                                                        style="width: 100px;" readonly>
                                                                 </div>
                                                                 &nbsp;&nbsp;
-                                                                <input type="text" class="form-control display_converted_amount"
+                                                                <input type="text"
+                                                                    class="form-control display_converted_amount"
                                                                     id="converted_amount_" placeholder="Converted Amount"
-                                                                    aria-label="Converted Amount" aria-describedby="basic-addon1">
+                                                                    aria-label="Converted Amount"
+                                                                    aria-describedby="basic-addon1">
                                                             </div>
 
 
@@ -1154,8 +1158,8 @@
                                                     <span class="display_transfer_amount"></span>
                                                 </h6>
 
-                                                {{--  <h6 class="col-md-5">Enter Amount:</h6>
-                                                <span class="text-primary display_amount col-md-7"></span>  --}}
+                                                {{-- <h6 class="col-md-5">Enter Amount:</h6>
+                                                <span class="text-primary display_amount col-md-7"></span> --}}
 
                                                 <h6 class="col-md-5">Currency Rate:</h6>
                                                 <span class="text-primary display_midrate col-md-7"></span>
@@ -2335,7 +2339,7 @@
                             console.log(transfer_amount);
                             $('#amount_receipt').text(formatToCurrency(parseFloat(transfer_amount)))
 
-                            get_response();
+                            {{-- get_response(); --}}
 
 
                             var category = $('#category').val();
@@ -2400,7 +2404,42 @@
 
                             console.log(fee_account);
                             console.log(fee_amount);
-                            transactionFee(fee_account, fee_amount, transfer_type);
+
+                            $.ajax({
+                                type: 'POST',
+                                url: 'get-transaction-fees',
+                                datatype: 'application/json',
+                                data: {
+                                    "accountNumber": fee_account,
+                                    "amount": fee_amount,
+                                    "transfer_type": transfer_type
+                                },
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                        'content')
+                                },
+                                success: function(response) {
+                                    console.log("=======")
+                                    console.log(response);
+                                    let fee = response.data;
+                                    if (fee == 0) {
+                                        $('.terms_and_conditions_fee').show();
+                                        $('.terms_and_conditions').hide();
+                                        $('.fee_amount').text(response.data);
+
+
+
+                                    } else {
+                                        $('.terms_and_conditions').show();
+                                        $('.terms_and_conditions_fee').hide();
+
+                                    }
+                                }
+
+
+
+                            })
+                            {{-- transactionFee(fee_account, fee_amount, transfer_type); --}}
 
 
                         }

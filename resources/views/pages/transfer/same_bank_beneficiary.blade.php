@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div></div>
-<legend></legend>
+    <div></div>
+    <legend></legend>
 
     <div class="container-fluid">
         <br>
@@ -47,7 +47,7 @@
                         {{-- <div class="col-md-1"></div> --}}
 
                         <div class="col-md-6 m-2" id="transaction_summary"
-                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));display:none">
                             <br><br><br>
 
                             <div class="row"></div>
@@ -123,11 +123,13 @@
                             <div class="form-group">
 
                                 <button type="button" class="btn btn-rounded btn-secondary mb-2" id="save_beneficiary_back">
-                                    <<i class="mdi mdi-reply-all-outline"></i> &nbsp; Back</button>
+                                    <<i class="mdi mdi-reply-all-outline"></i> &nbsp; Back
+                                </button>
 
 
 
-                                <button type="button" class="btn btn-primary btn-rounded float-right" id="add_beneficiary" >Add Beneficiary &nbsp;
+                                <button type="button" class="btn btn-primary btn-rounded float-right"
+                                    id="add_beneficiary">Add Beneficiary &nbsp;
                                     <i class="fe-arrow-right"></i>
                                     {{-- <span id="confirm_transfer">Confirm Transfer</span> --}}
                                     {{-- <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
@@ -171,9 +173,8 @@
                                                 <b class=" col-md-4 text-primary"> Account Name &nbsp; <span
                                                         class="text-danger">*</span></b>
                                                 <div class="col-md-7">
-                                                    <input type="text" class="form-control" id="account_name"
-                                                        parsley-trigger="change" placeholder="Account Name" readonly
-                                                        required>
+                                                    <input type="text" class="form-control readOnly" id="account_name"
+                                                        parsley-trigger="change" placeholder="Account Name" readonly>
                                                 </div>
 
                                             </div>
@@ -182,9 +183,9 @@
                                                 <b class="col-md-4 text-primary"> Account Currency &nbsp; <span
                                                         class="text-danger">*</span></b>
                                                 <div class="col-md-7">
-                                                    <input type="hidden" class="form-control" readonly value=""
-                                                        id="select_currency">
-                                                    <input type="text" class="form-control" readonly value=""
+                                                    <input type="hidden" class="form-control readOnly" readonly value=""
+                                                        id="select_currency" readonly>
+                                                    <input type="text" class="form-control readOnly" readonly value=""
                                                         id="select_currency_i">
                                                 </div>
 
@@ -254,7 +255,8 @@
                                             <div class="form-group text-right ">
 
                                                 <button class="btn btn-primary waves-effect waves-light btn-rounded "
-                                                    type="submit" id="save_beneficiary">Next &nbsp;<i class="fe-arrow-right"></i></button>
+                                                    type="submit" id="save_beneficiary" style="display: none;">Next &nbsp;<i
+                                                        class="fe-arrow-right"></i></button>
                                             </div>
 
                                         </div>
@@ -332,8 +334,8 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
             $(document).ready(function() {
@@ -394,7 +396,8 @@
                                 $('#select_currency_i').val(response.data.accountCurrencyDescription)
                                 $('#select_currency').val(response.data.accountCurrencyCode + '~' +
                                     response.data.accountCurrencyDescription)
-                                $('#display_account_currency').text(response.data.accountCurrencyDescription);
+                                $('#display_account_currency').text(response.data
+                                    .accountCurrencyDescription);
 
                                 $('#save_beneficiary').show('')
 
@@ -581,6 +584,5 @@
                 console.log($bene_id) ; --}}
 
             });
-
         </script>
     @endsection

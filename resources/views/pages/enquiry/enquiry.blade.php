@@ -11,13 +11,17 @@
         <br> <br> <br>
 
         <br>
-        <div class=" card card-body">
+        <div class=" ">
 
             <div class="row ">
 
-                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <a href="{{ url()->previous() }}" type="button"
+                        class="btn btn-soft-blue waves-effect waves-light float-left"><i class="fe-arrow-left"></i>&nbsp;Go
+                        Back</a>
+                </div>
 
-                <div class="col-md-8">
+                <div class="col-md-8 card card-body">
 
 
 
@@ -26,7 +30,7 @@
                         <div class="col-md-2"> </div>
 
                         <div class="col-md-8">
-                            <div class="">
+                            <div class="___class_+?8___">
 
 
                                 <ul class="nav nav-tabs nav-bordered nav-justified">
@@ -50,7 +54,7 @@
                                         </p>
 
                                         <p>
-                                        <div class="">
+                                        <div class="___class_+?17___">
                                             <form autocomplete="off" aria-autocomplete="off">
 
                                                 <div class="form-group">
@@ -106,7 +110,7 @@
                                         </p>
 
                                         <p>
-                                        <div class="">
+                                        <div class="___class_+?32___">
                                             <form>
 
                                                 <div class="form-group">

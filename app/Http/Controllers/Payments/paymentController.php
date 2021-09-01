@@ -121,7 +121,7 @@ class paymentController extends Controller
         } else if ($payment_type == 'AIR') {
             return back();
         } else if ($payment_type == 'UTL') {
-            return view('pages.payments.utility');
+            return view('pages.payments.utility', ['paymentType' => $payment_type]);
         } else if ($payment_type == 'EDU') {
             return back();
         } else if ($payment_type == 'GVT') {

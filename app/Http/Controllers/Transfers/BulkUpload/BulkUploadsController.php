@@ -141,12 +141,34 @@ class BulkUploadsController extends Controller
             $ext = $file->getClientOriginalExtension();
             $name = strtoupper($documentRef) . '~' . strtoupper($trans_ref_no) . '~' . strtoupper($total_amount) . '.' . $ext;
 
+            // return $name;
             $post_date = Carbon::now();
             $post_date = $post_date->toDateTimeString();
 
 
 
             Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency, $value_date, $file, $account_mandate), $file);
+
+
+            // $result = DB::table('tb_corp_bank_import_excel')
+            //     ->where('batch_no', $batch_no)
+            //     ->get();
+
+            // $result = DB::table('tb_corp_bank_import_excel')
+            //     ->where('batch_no', $batch_no)
+            //     ->select('BBAN', 'NAME', 'AMOUNT', 'TRANS_DESC')
+            //     ->get();
+
+
+            // echo (json_encode($result));
+            // die();
+
+            // foreach ($result as $account) {
+            //     echo (json_encode($account));
+            //     die();
+            // }
+
+
             Alert::success("Bulk transfer pending approval");
             return redirect()->route('view-bulk-transfer', [
                 'batch_no' => $batch_no,
@@ -501,7 +523,8 @@ class BulkUploadsController extends Controller
         }
     }
 
-    public function view_bulk_korpor_transfer(Request $request) {
+    public function view_bulk_korpor_transfer(Request $request)
+    {
 
 
         $batch_no = $request->query('batch_no');
@@ -626,6 +649,4 @@ class BulkUploadsController extends Controller
 
         }
     }
-
 }
-

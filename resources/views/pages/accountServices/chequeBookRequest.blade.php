@@ -82,7 +82,7 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <div class="receipt">
+                            <div class="receipt" style="display: noneS">
                                 <div class="container card card-body">
 
                                     <div class="container">
@@ -666,13 +666,13 @@
                                         response.message,
                                         'success'
                                     )
-                                    $("#request_form_div").hide()
+                                    {{-- $("#request_form_div").hide()
                                     $(".disappear-after-success").hide()
-                                    {{-- $(".hh").text(response.message) --}}
+                                    $(".hh").text(response.message)
                                     $("#request_detail_div").show()
                                     $(".display_button_print").show();
                                     $(".receipt").show();
-                                    $(".form_process").hide();
+                                    $(".form_process").hide(); --}}
 
 
                                 } else {
@@ -682,7 +682,7 @@
                                     $('#spinner-text').hide()
                                     $(".submit-text").show()
                                     $(".form_process").show();
-                                    $(".receipt").hide();
+                                    {{-- $(".receipt").hide(); --}}
 
                                 }
                             }

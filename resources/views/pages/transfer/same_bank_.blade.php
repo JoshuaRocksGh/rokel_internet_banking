@@ -85,7 +85,7 @@
 
                             {{-- RECEIPT --}}
 
-                            <div class="receipt">
+                            <div class="receipt" style="display: none">
                                 <div class="container card card-body">
 
                                     <div class="container">
@@ -287,7 +287,7 @@
                                     {{-- SUMMARY FORM GOES HERE --}}
 
                                     <div class="col-md-7" id="transaction_summary"
-                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));display: none">
                                         <br><br>
                                         <div class="col-md-12">
                                             <div class="card border p-3 mt-4 mt-lg-0 rounded">

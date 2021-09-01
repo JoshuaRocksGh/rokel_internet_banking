@@ -43,7 +43,7 @@
                     <div class="row">
 
                         <div class="col-md-6 m-2 " id="local_bank_beneficiary_summary"
-                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));">
+                            style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));display:none;">
                             <br><br><br>
 
                             <div class="col-md-12">
@@ -204,8 +204,8 @@
                                             <b class="col-4 text-primary">Bank Swift Code &nbsp;<span
                                                     class="text-danger">*</span></b>
                                             <div class="col-7">
-                                                <input type="text" class="form-control" id="swift_code"
-                                                    placeholder="Bank Swift Code" required>
+                                                <input type="text" class="form-control readOnly" id="swift_code"
+                                                    placeholder="Bank Swift Code" readonly>
                                             </div>
 
                                         </div>
@@ -434,15 +434,15 @@
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js"
-            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+                crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
             function bank_list() {
                 $.ajax({
                     type: 'GET',
-                    url:  'get-bank-list-api',
+                    url: 'get-bank-list-api',
                     datatype: "application/json",
                     success: function(response) {
                         console.log(response.data);
@@ -451,14 +451,16 @@
 
                             $('#select_bank').append($('<option>', {
                                 value: data[index].bankCode + '~' + data[index]
-                                    .bankDescription
+                                    .bankDescription + '~' + data[index].bankSwiftCode
                             }).text(data[index].bankDescription));
 
                         });
 
                     },
-                    error : function (xhr, status, error) {
-                        setTimeout ( function(){ bank_list() }, $.ajaxSetup().retryAfter )
+                    error: function(xhr, status, error) {
+                        setTimeout(function() {
+                            bank_list()
+                        }, $.ajaxSetup().retryAfter)
                     }
 
                 })
@@ -467,7 +469,7 @@
             function get_currency() {
                 $.ajax({
                     type: 'GET',
-                    url:  'get-currency-list-api',
+                    url: 'get-currency-list-api',
                     datatype: "application/json",
                     success: function(response) {
                         {{-- console.log(response.data); --}}
@@ -483,7 +485,9 @@
 
                     },
                     error: function(xhr, status, error) {
-                        setTimeout ( function(){ get_currency() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            get_currency()
+                        }, $.ajaxSetup().retryAfter)
                     }
 
                 })
@@ -528,7 +532,9 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        setTimeout ( function(){ validate_account_number() }, $.ajaxSetup().retryAfter )
+                        setTimeout(function() {
+                            validate_account_number()
+                        }, $.ajaxSetup().retryAfter)
                     }
 
                 })
@@ -601,6 +607,7 @@
 
                 $("#select_bank").change(function() {
                     var bank_name = $(this).val().split("~");
+                    $("#swift_code").val(bank_name[2])
                     console.log(bank_name);
                 })
 
@@ -732,7 +739,7 @@
 
                     $.ajax({
                         type: 'POST',
-                        url:  'add-local-bank-beneficiary-api',
+                        url: 'add-local-bank-beneficiary-api',
                         datatype: "application/json",
                         'data': {
                             'bank_name': select_bank,
@@ -771,6 +778,5 @@
                 })
 
             });
-
         </script>
     @endsection

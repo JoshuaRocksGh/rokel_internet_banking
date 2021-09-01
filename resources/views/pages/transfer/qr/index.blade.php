@@ -20,7 +20,7 @@
                     <h6>
 
                         <span class="flaot-right">
-                            {{--  <b class="text-primary"> Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Local Bank</b>  --}}
+                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Generate QR</b>
 
 
                         </span>
@@ -44,74 +44,80 @@
 
                         <div class="col-md-12">
 
-                        <div class="row">
+                            <div class="row">
 
-                            <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
 
-                            <div class="col-md-10 qr_card m-2"
-                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                <div class="col-md-10 m-2"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
 
-                                <div class="row">
+                                    <div class="row">
 
-                                    <div class="col-md-7" id="request_form_div">
-                                        <br><br><br>
-                                        <div class="">
+                                        <div class="col-md-7" id="request_form_div">
+                                            <br><br><br>
+                                            <div class="">
 
-                                            <table class="table mb-0 table-striped table-bordered">
+                                                <table class="table mb-0 table-striped table-bordered">
 
-                                                <tbody>
-                                                    <tr class="bg-primary text-white">
-                                                        <td>QR Content</td>
-                                                    </tr>
+                                                    <tbody>
+                                                        <tr class="bg-primary text-white">
+                                                            <td>QR Content</td>
+                                                        </tr>
 
-                                                    <tr>
-                                                    </tr>
+                                                        <tr>
+                                                        </tr>
 
-                                                </tbody>
-
-
-                                            </table>
-
-                                            <p>
+                                                    </tbody>
 
 
-                                            <form role="form" class="parsley-examples">
-                                                <div class="form-group row">
-                                                    <label for="inputEmail3" class="col-4 col-form-label text-primary">MY Account &nbsp;<span
-                                                            class="text-danger">*</span></label>
-                                                    <div class="col-8">
-                                                        <select class="custom-select text-primary" id="my_account" required>
-                                                            <option value="">Select Account</option>
-                                                        </select>
+                                                </table>
+
+                                                <p>
+
+
+                                                <form role="form" class="parsley-examples">
+                                                    <div class="container">
+                                                        <div class="form-group row">
+                                                            <b for="inputEmail3" class="text-primary col-md-4">My Account
+                                                                &nbsp;<span class="text-danger ">*</span></b>
+                                                            <div class="col-md-8">
+                                                                <select class="custom-select text-primary" id="my_account"
+                                                                    required>
+                                                                    <option value="">Select Account</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <b for="hori-pass2" class="col-4 col-form-label text-primary">
+                                                                Enter Amount &nbsp;
+                                                                <span class="text-danger">*</span></b>
+                                                            <div class="col-8">
+                                                                <input type="text" class="form-control" id="pin"
+                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
 
 
-                                                <div class="form-group row">
-                                                    <label for="hori-pass2" class="col-4 col-form-label text-primary">
-                                                        Enter Amount &nbsp;
-                                                        <span class="text-danger">*</span></label>
-                                                    <div class="col-8">
-                                                        <input type="text" class="form-control" id="pin"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
+
+
+
+                                                    <div class="form-group row">
+                                                        <div class="col-8 offset-4 text-right">
+                                                            <button type="button"
+                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                id="submit_cheque_request">
+                                                                Generate QR Photo
+                                                            </button>
+
+                                                        </div>
                                                     </div>
-                                                </div>
 
 
-                                                <div class="form-group row">
-                                                    <div class="col-8 offset-4 text-right">
-                                                        <button type="button"
-                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                            id="submit_cheque_request">
-                                                            Generate QR Photo
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-
-
-                                                {{-- <div class="form-group row">
+                                                    {{-- <div class="form-group row">
 
 
                                                             <div class="col-7 offset-4 text-right">
@@ -127,72 +133,72 @@
                                                     </div> --}}
 
 
-                                            </form>
+                                                </form>
+
+                                                </p>
+
+
+                                            </div> <!-- end card-box -->
+
+
+                                        </div>
+
+
+                                        <div class="col-md-5 disappear-after-success" id="request_detail_div">
+                                            <br><br><br>
+                                            <table class="table mb-0 table-striped table-bordered">
+
+                                                <tbody>
+                                                    <tr class="bg-primary text-white">
+                                                        <td>QR Image</td>
+                                                    </tr>
+                                                    <tr class="">
+
+                                                        <td>
+                                                            <p>
+                                                                <img src="{{ asset('assets/images/qr.png') }}"
+                                                                    class="img-fluid" alt="">
+                                                            </p>
+                                                        </td>
+
+
+
+                                                    </tr>
+
+
+                                                </tbody>
+
+                                            </table>
+
+                                            <br>
+
+
+                                        </div> <!-- end col -->
+
+                                        <div class="col-md-5 text-center">
+                                            {{-- <span class="hh"><span> --}}
+                                            <p class="display-4 text-center text-success success-message ">
 
                                             </p>
+                                        </div>
 
 
-                                        </div> <!-- end card-box -->
+                                        <!-- end row -->
+
 
 
                                     </div>
-
-
-                                    <div class="col-md-5 disappear-after-success" id="request_detail_div">
-                                        <br><br><br>
-                                        <table class="table mb-0 table-striped table-bordered">
-
-                                            <tbody>
-                                                <tr class="bg-primary text-white">
-                                                    <td>QR Image</td>
-                                                </tr>
-                                                <tr class="">
-
-                                                    <td>
-                                                        <p>
-                                                            <img src="{{ asset('assets/images/qr.png') }}" class="img-fluid"
-                                                                alt="">
-                                                        </p>
-                                                    </td>
-
-
-
-                                                </tr>
-
-
-                                            </tbody>
-
-                                        </table>
-
-                                        <br>
-
-
-                                    </div> <!-- end col -->
-
-                                    <div class="col-md-5 text-center">
-                                        {{-- <span class="hh"><span> --}}
-                                        <p class="display-4 text-center text-success success-message ">
-
-                                        </p>
-                                    </div>
-
-
-                                    <!-- end row -->
-
-
 
                                 </div>
 
+                                <div class="col-md-1"></div>
                             </div>
-
-                            <div class="col-md-1"></div>
-                        </div>
 
                         </div>
                     </div>
                 </div>
 
-                {{--  <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-1"></div>
 
                     <div class=" card card-body col-md-10">
@@ -207,7 +213,7 @@
 
                     <div class="col-md-1"></div>
 
-                </div>   --}}
+                </div> --}}
 
             </div>
         </div>
@@ -221,7 +227,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script>
         var qr;
-
     </script>
 
 
@@ -229,7 +234,7 @@
         function my_account() {
             $.ajax({
                 type: 'GET',
-                url:  'get-my-account',
+                url: 'get-my-account',
                 datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
@@ -254,7 +259,7 @@
         function branches() {
             $.ajax({
                 type: 'GET',
-                url:  'get-bank-branches-list-api',
+                url: 'get-bank-branches-list-api',
                 datatype: "application/json",
                 success: function(response) {
                     console.log(response.data);
@@ -390,7 +395,7 @@
                     $.ajax({
 
                         type: 'POST',
-                        url:  'submit-cheque-book-request',
+                        url: 'submit-cheque-book-request',
                         datatype: "application/json",
                         'data': {
                             'accountNumber': accountNumber.trim(),
@@ -432,6 +437,5 @@
 
 
         });
-
     </script>
 @endsection
