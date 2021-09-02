@@ -110,7 +110,8 @@ class StandingOrderController extends Controller
     }
 
 
-    public function corporate_standing_order_request(Request $request) {
+    public function corporate_standing_order_request(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'from_account' =>  'required',
             'amount' => 'required',
@@ -122,6 +123,8 @@ class StandingOrderController extends Controller
             'bank_code' => 'required',
             'user_pin' => 'required'
         ]);
+
+        return $request;
 
 
         $base_response = new BaseResponse();

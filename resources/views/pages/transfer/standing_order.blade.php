@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <div class="receipt">
+                            <div class="receipt" style="display:none;">
                                 <div class="container card card-body">
 
                                     <div class="container">
@@ -658,10 +658,12 @@
 
                                     <div class="col-md-7 m-2" id="transaction_summary"
                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));display:none;">
-                                        <div class="row">
-                                            <div class="col-md-1"></div>
-                                            <div class="col-md-10 ">
-                                                <br><br><br>
+                                        <div class="___class_+?99___">
+                                            <br><br>
+                                            <div class="col-md-12 card border p-3 mt-4 mt-lg-0 rounded">
+
+
+                                                <h4 class="header-title mb-3">Transfer Detail Summary</h4>
 
                                                 <div class="table-responsive card table_over_flow">
                                                     <table class="table mb-0 table-bordered table-striped  ">
@@ -812,12 +814,12 @@
 
                                                     <span> <button class="btn btn-secondary btn-rounded" type="button"
                                                             id="back_button"> <i
-                                                                class="fe-arrow-left"></i>&nbsp;Back</button>
+                                                                class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button>
                                                         &nbsp; </span>
                                                     <span>
                                                         &nbsp;
                                                         <button class="btn btn-primary btn-rounded" type="button">
-                                                            <span id="confirm_transfer-text" data-toggle="modal"
+                                                            <span id="confirm_transfer_text" data-toggle="modal"
                                                                 data-target="#centermodal">Confirm</span>
                                                             <span class="spinner-border spinner-border-sm mr-1"
                                                                 role="status" id="spinner" aria-hidden="true"></span>
@@ -877,7 +879,7 @@
 
 
                                             </div>
-                                            <div class="col-md-1"></div>
+
                                         </div>
 
                                     </div>
@@ -1129,7 +1131,6 @@
                 $("#print_receipt").hide();
                 $("#spinner_text").hide();
                 $("#onetime_beneficiary_form").hide();
-                {{-- $(".receipt").hide(); --}}
 
 
                 //codes to display self or others transfer
@@ -1141,7 +1142,7 @@
                     // var pickUpBranch = $("#pUBranch").val();
                     // if (pickUpBranch != "") {
 
-                    //     let branch_info = pickUpBranch.split("~")
+                    //     let branch_info = pickUpBranch.split("~"
                     //     $(".display_pick_up_branch").text(branch_info[1]);
                     //     console.log(branch_info[1]);
                     //     console.log(pickUpBranch);
@@ -1211,7 +1212,7 @@
                 $("#transaction_form").show()
                 $("#transaction_summary").hide()
                 $("#related_information_display").show();
-                {{-- $(".receipt").hide() --}}
+
 
 
 
@@ -1237,8 +1238,16 @@
 
 
                     if (from_account.trim() == '' || from_account.trim() == undefined) {
-                        alert('money')
+                        // set summary values for display
+                        $(".display_from_account_type").text('')
+                        $(".display_from_account_name").text('')
+                        $(".display_from_account_no").text('')
+                        $(".display_from_account_currency").text('')
+
+                        $(".display_currency").text('')
+                        {{-- alert('money') --}}
                         $(".from_account_display_info").hide()
+                        $(".display_from_account_amount").text('')
 
                     } else {
                         from_account_info = from_account.split("~")
@@ -1428,7 +1437,7 @@
 
                 $("#next_button").click(function(e) {
                     e.preventDefault();
-                    $("#confirm_transfer-text").show();
+                    $("#confirm_transfer_text").show();
                     $("#spinner").hide();
                     $("#spinner-text").hide();
 
@@ -1470,6 +1479,7 @@
                     var customerType = @json(session()->get('customerType'));
 
                     if (customerType == 'C') {
+                        $('#confirm_transfer_text').removeAttr('data-toggle');
 
                         var from_account = $("#from_account").val();
                         var beneficiary = $("#saved_beneficiary").val();
@@ -1491,7 +1501,7 @@
                         $("#confirm_transfer-text").hide();
                         $("#spinner").show();
                         $("#spinner-text").show();
-                        var pin = $("#user_pin").val();
+                        {{-- var pin = $("#user_pin").val(); --}}
                         // console.log(pin);
 
                         $.ajax({
@@ -1507,7 +1517,7 @@
                                 'standing_order_frequency': so_frequency,
                                 'narration': narration,
                                 'bank_code': bankCode,
-                                'user_pin': pin
+
                             },
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
@@ -1524,7 +1534,6 @@
                                         'success'
                                     );
 
-                                    {{-- $(".receipt").show(); --}}
 
                                     $("#spinner").hide();
                                     $("#spinner-text").hide();
@@ -1607,6 +1616,7 @@
                                         'success'
                                     );
 
+                                    $(".receipt").removeAttr('style');
                                     $(".receipt").show();
 
                                     $("#spinner").hide();
@@ -1622,7 +1632,7 @@
                                     $("#confirm_transfer-text").show();
                                     $("#spinner").hide();
                                     $("#spinner-text").hide();
-                                    $(".form_process").hide();
+                                    $(".form_process").show();
 
                                 }
                             }
