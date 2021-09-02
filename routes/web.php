@@ -296,6 +296,7 @@ Route::get('print-account-statement', [AccountEnquiryController::class, 'print_a
 Route::get('print-account-statement-history', [AccountEnquiryController::class, 'print_account_statement_history'])->name('print-account-statement-history');
 
 Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
+Route::post('account-balance-info-api', [AccountEnquiryController::class, 'account_balance_info'])->name('account-balance-info-api');
 Route::get('list-of-accounts', [AccountEnquiryController::class, 'list_of_accounts'])->name('list-of-accounts');
 
 
