@@ -89,16 +89,18 @@
                                 <div class="container card card-body">
 
                                     <div class="container">
-                                        <div class="">
+                                        <div class="___class_+?19___">
                                             <div class="col-md-12 col-md-offset-3 body-main">
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
+                                                        <div class="col-md-4 "> <img class="img "
+                                                                alt="InvoIce Template"
                                                                 src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
                                                                 style="zoom: 0.6" /> </div>
                                                         <div class="col-md-4"></div>
                                                         <div class="col-md-4 text-right">
-                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
+                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL
+                                                                    BANK</strong>
                                                             </h4>
                                                             <p>25-27 Siaka Stevens St</p>
                                                             <p> Freetown, Sierra Leone</p>
@@ -286,7 +288,7 @@
 
                                     {{-- SUMMARY FORM GOES HERE --}}
 
-                                    <div class="col-md-7" id="transaction_summary"
+                                    <div class="col-md-7 m-2" id="transaction_summary"
                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));display: none">
                                         <br><br>
                                         <div class="col-md-12">
@@ -552,7 +554,8 @@
                                                             <span class="badge badge-primary float-right"
                                                                 style="cursor: pointer"><a
                                                                     href="{{ url('add-local-bank-beneficiary') }}"
-                                                                    class="text-white" id="add_beneficiary_badge">Create
+                                                                    class="text-white"
+                                                                    id="add_beneficiary_badge">Create
                                                                     Beneficiary</a>
                                                             </span>
                                                         </div>
@@ -565,7 +568,8 @@
                                                         <div class="col-md-12">
 
                                                             <div class="form-group row">
-                                                                <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
+                                                                <b class="col-md-4 text-primary"> Beneficiary A/C
+                                                                    Number</b>
                                                                 <input type="text" class="form-control col-md-8 readOnly"
                                                                     id="saved_account_number" readonly>
                                                             </div>
@@ -749,7 +753,8 @@
                                                         <div class="col-md-12">
 
                                                             <div class="form-group row">
-                                                                <b class="col-md-4 text-primary"> Beneficiary A/C Number</b>
+                                                                <b class="col-md-4 text-primary"> Beneficiary A/C
+                                                                    Number</b>
                                                                 <input type="text" class="form-control col-md-8 "
                                                                     id="onetime_account_number"
                                                                     placeholder="Enter Account Number"
@@ -981,11 +986,11 @@
                     </div>
                 </div> <!-- end card-body -->
 
-                <div class="">
+                <div class="___class_+?207___">
 
 
 
-                    <div class="">
+                    <div class="___class_+?208___">
 
 
                     </div> <!-- end col -->
@@ -1001,7 +1006,7 @@
 
                 </div>
 
-                <div class="" id="">
+                <div class="___class_+?209___" id="">
 
 
 
@@ -1019,7 +1024,8 @@
                             <div class="modal-header">
                                 <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER TRANSACTION
                                     PIN</h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
 
                             </div>
                             <div class="modal-body transfer_pin_modal">
@@ -1029,7 +1035,8 @@
                                     <div class="col-md-9  text-center">
                                         <form action="#" autocomplete="off" aria-autocomplete="off">
                                             <input type="text" name="user_pin" maxlength="4" autocomplete="off"
-                                                aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin"
+                                                aria-autocomplete="off" class="form-control key hide_on_print"
+                                                id="user_pin"
                                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                             <br>
                                             <button class="btn btn-success waves-effect waves-light" type="button"
@@ -1052,13 +1059,15 @@
 
 
                 <!-- Center modal content -->
-                <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true" style="zoom: 0.9;">
+                <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true"
+                    style="zoom: 0.9;">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title text-primary" id="myCenterModalLabel">Aquiring a Savings
                                     Account</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">Ã—</button>
                             </div>
                             <div class="modal-body">
                                 <div class=" ">
@@ -1081,7 +1090,8 @@
                                 <div class="modal-header">
                                     <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
                                         Details</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×</button>
                                 </div>
 
                                 <div class="modal-body">
