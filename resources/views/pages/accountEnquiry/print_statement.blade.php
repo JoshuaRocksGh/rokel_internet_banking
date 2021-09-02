@@ -63,7 +63,7 @@
 
                                 <div class="col-xs-5 col-md-3">
                                     <h3 class="___class_+?17___"> <b>Account Details</b> </h3>
-                                    <h5 class="___class_+?18___">Name: <b class="account_description">Kwabena Ampah</b>
+                                    <h5 class="___class_+?18___">Name: <b class="account_description">Joshua Tetteh</b>
                                     </h5>
                                     <h5 class="___class_+?20___">Account NO: <b class="account_number">012453234578521</b>
                                     </h5>
@@ -188,7 +188,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
-                        console.log(response);
+                        console.log("transaction history" + response);
                         if (response.responseCode == '000') {
 
                             tranactions = response.data
@@ -214,21 +214,16 @@
             function getAccountBalanceInfo(account_number) {
                 $.ajax({
                     "type": "POST",
-                    "url": "api/account-balance-info",
+                    "url": "account-balance-info-api",
                     datatype: "application/json",
                     data: {
                         "accountNumber": account_number,
-                        "authToken": "15D2A303-98FD-43A6-86E4-F24FC7436069",
-                        "endDate": "",
-                        "entrySource": "A",
-                        "startDate": "",
-                        "transLimit": "string"
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
-                        console.log(response);
+                        console.log("Account Balance info =>" + response);
                         if (response.responseCode == '000') {
 
                             let data = response.data
@@ -296,8 +291,8 @@
                     })
 
                     setTimeout(function() {
-                        {{--  window.print();  --}}
-                        {{--  window.close();  --}}
+                        window.print();
+                        window.close();
                     }, 2000)
 
 

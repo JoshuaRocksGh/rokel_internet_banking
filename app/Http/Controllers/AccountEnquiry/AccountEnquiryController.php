@@ -101,4 +101,25 @@ class AccountEnquiryController extends Controller
 
         return $result->api_response($response);
     }
+
+    public function account_balance_info(Request $request)
+    {
+        $accountNumber = $request->accountNumber;
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $result = new ApiBaseResponse();
+
+        $data = [
+            "authToken" => $authToken,
+            "userId" => $accountNumber
+        ];
+
+
+        $response = Http::post(env('API_BASE_URL') . "account/getAccountDescription", $data);
+
+
+        return $result->api_response($response);
+    }
 }
