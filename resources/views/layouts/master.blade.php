@@ -6,8 +6,8 @@
     <meta charset="utf-8" />
     <title>RC BANKING</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
+    <meta content="Internet Banking Application" name="Internet Banking Portal for Rokel Commercial Bank." />
+    <meta content="Banking Application" name="Union Systems Global" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- App favicon -->
@@ -145,6 +145,7 @@
     style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;"
     class="loading"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+    {{-- data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false},  "showRightSidebarOnPageLoad": true}'> --}}
 
 
     <!-- Pre-loader -->
@@ -169,7 +170,6 @@
                 @yield('content')
             </div>
 
-            {{-- @include('snippets.footer') --}}
         </div>
     </div>
 
@@ -177,11 +177,7 @@
 
 
     @yield('scripts')
-    {{-- @include('sweetalert::alert') --}}
 
 </body>
-{{-- <script src="bootstrap.min.js"></script> --}}
-{{-- <script src="//code.jquery.com/jquery-1.12.1.min.js"></script> --}}
-{{-- <script src="dist/jquery.userTimeout.js"></script> --}}
 
 </html>

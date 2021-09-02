@@ -2,22 +2,17 @@
 <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
 <!-- Plugins css -->
-<link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet"
-    type="text/css" />
-<link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}"
-    rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
 
 <!-- Plugins css -->
-<link
-    href="{{ asset('assets/libs/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}"
-    rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/libs/clockpicker/bootstrap-clockpicker.min.css') }}"
-    rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}"
-    rel="stylesheet" type="text/css" />
-<link
-    href="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}"
-    rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/libs/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet"
+    type="text/css" />
+<link href="{{ asset('assets/libs/clockpicker/bootstrap-clockpicker.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet"
+    type="text/css" />
+<link href="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet"
+    type="text/css" />
 
 
 <!-- App css -->
@@ -26,28 +21,21 @@
 <link href="{{ asset('assets/css/app-purple.min.css') }}" rel="stylesheet" type="text/css"
     id="app-default-stylesheet" />
 
-<link href="{{ asset('assets/css/bootstrap-purple-dark.min.css') }}" rel="stylesheet"
-    type="text/css" id="bs-dark-stylesheet" />
-<link href="{{ asset('assets/css/app-purple-dark.min.css') }}" rel="stylesheet" type="text/css"
-    id="app-dark-stylesheet" />
-<link href="{{ asset('assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}"
-    rel="stylesheet" type="text/css" />
+{{-- <link href="{{ asset('assets/css/bootstrap-purple-dark.min.css') }}" rel="stylesheet" type="text/css"
+id="bs-dark-stylesheet" /> --}}
+{{-- <link href="{{ asset('assets/css/app-purple-dark.min.css') }}" rel="stylesheet" type="text/css" --}}
+{{-- id="app-dark-stylesheet" /> --}}
+<link href="{{ asset('assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet"
+    type="text/css" />
 
 <!-- Tour css -->
-<link href="{{ asset('assets/libs/hopscotch/css/hopscotch.min.css') }}" rel="stylesheet"
-    type="text/css" />
+<link href="{{ asset('assets/libs/hopscotch/css/hopscotch.min.css') }}" rel="stylesheet" type="text/css" />
 
 
 <!-- icons -->
 <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" />
-
-{{-- <link rel="stylesheet" href="{{ asset('assets/css') }}"
-/> --}}
-
-{{-- <link rel="stylesheet" href="{{ asset('assets/css/c_cards.css') }}"/>
---}}
 
 
 <style>
@@ -328,14 +316,14 @@
     }
 
     .customize_card {
-        box-shadow:
+        /* box-shadow:
             0 2.8px 2.2px rgba(0, 0, 0, 0.034),
             0 6.7px 5.3px rgba(0, 0, 0, 0.048),
             0 12.5px 10px rgba(0, 0, 0, 0.06),
             0 22.3px 17.9px rgba(0, 0, 0, 0.072),
             0 41.8px 33.4px rgba(0, 0, 0, 0.086),
             0 100px 80px rgba(0, 0, 0, 0.12);
-        height: 100%;
+        height: 100%; */
         box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
     }
 
@@ -491,4 +479,17 @@
         color: #1E1F23
     }
 
+    .btn-primary:active {
+        background-color: #0561ad;
+        border-color: #0561ad;
+    }
+
+    .div-card {
+        background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));
+        box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
+    }
+
+    body {
+        font-size: .85rem;
+    }
 </style>
