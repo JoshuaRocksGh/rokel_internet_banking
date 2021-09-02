@@ -70,10 +70,10 @@
                     <div class="col-md-12">
                         <div class="card-box"
                             style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                            <div class="row">
+                            <div class="row" >
                                 <div class="col-md-2"></div>
-                                <div class="col-md-8">
-                                    <canvas id="myChart" width="300" height="250"></canvas>
+                                <div class="col-md-8" style="zoom:0.8;">
+                                    <canvas id="myChart" width="200" height="200"></canvas>
                                 </div>
                                 <div class="col-md-2"></div>
                             </div>
@@ -166,20 +166,6 @@
             <div class="col-md-6">
                 <div class="row">
 
-                    <div class="col-md-12">
-
-
-                        <div class="card card-body" style="height:170px;">
-
-                            <div class="ribbon-content">
-                                <h1>HI, {{ session()->get('userAlias') }}</h1>
-
-                                <h4>Welcome to Rokels Internet banking platform.</h4>
-                                <br>
-                                <h5 class="mb-0">Last Login: {{ date('d M Y @ H:i:s') }}.</h5>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-md-6">
                         <div class="___class_+?44___">
@@ -1079,8 +1065,6 @@
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
         <script type="text/javascript">
-
-
             var i_have = 0
             var i_owe = 0
             var i_invest_total = 0
@@ -1344,7 +1328,7 @@
                                 localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(
                                     /,/g, "");
 
-                               console.log(typeof(localEquivalentAvailableBalance))
+                                console.log(typeof(localEquivalentAvailableBalance))
 
 
                                 account_data.i_have_total += Math.abs(parseFloat(
