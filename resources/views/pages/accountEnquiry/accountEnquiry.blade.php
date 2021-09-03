@@ -200,6 +200,8 @@
 
                     {{-- <div class="row"> --}}
                     <div class="customize_card col-12 div-card" id="transaction_summary">
+
+
                         <div class=" p-3 mt-4 mt-lg-0 rounded">
                             {{-- <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2> --}}
                             {{-- <div class="text-center" id="account_balance_info_loader">
@@ -263,9 +265,14 @@
 
 
 
+
+                            </div>
+                            <div class="alert alert-warning bg-warning text-white border-0" role="alert"
+                                id="window_width_error" style="display: none">
+                                <span>Window width too small to display table</span>
                             </div>
 
-                            <table role="table"
+                            <table role="table" id="table-view"
                                 class="table table-bordered table-striped mb-0 account_transaction_display_table">
                                 {{-- <tbody> --}}
                                 <thead role="rowgroup">
@@ -620,20 +627,21 @@
                 $('.account_currency').text(from_account_info[3])
 
             });
-    //         var $window = $(window);
-    //          var $pane = $('#pane1');
 
-    // function checkWidth() {
-    //     var windowsize = $window.width();
-    //     if (windowsize > 750) {
-    //         $pane.jScrollPane({
-    //            scrollbarWidth:15,
-    //            scrollbarMargin:52
-    //         });
-    //     }
-    // }
-    //          checkWidth();
-            // $(window).resize(checkWidth);
+
+    function checkWidth() {
+        console.log("A")
+        if ($(window).width() < 750) {
+           $("#table-view").hide()
+           $("#window_width_error").show()
+
+        }else{
+            $("#table-view").show()
+           $("#window_width_error").hide()
+        }
+    }
+             checkWidth();
+             $(window).on('resize', () => {checkWidth()});
 
             $('#search_transaction').click(function() {
 
