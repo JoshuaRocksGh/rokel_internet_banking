@@ -554,7 +554,7 @@
                                                                     class="text-danger">*</span></b></label>
 
                                                             <input type="text" class="form-control col-md-8 mb-2"
-                                                                id="purpose" value="Own Account"
+                                                                id="purpose" value=""
                                                                 placeholder="Enter purpose of transfer"
                                                                 autocomplete="off">
 
@@ -570,7 +570,8 @@
 
                                                             <select class="form-control col-md-8 mb-2" id="category"
                                                                 required>
-                                                                <option value="">Select Category</option>
+                                                                <option selected disabled value="">Select Category
+                                                                </option>
 
                                                             </select>
 
