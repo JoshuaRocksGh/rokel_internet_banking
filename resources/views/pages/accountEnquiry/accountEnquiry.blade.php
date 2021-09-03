@@ -98,32 +98,30 @@
 
                     <div class="col-md-12">
 
-                        <div class="row card-box div-card" id="transaction_form">
+                        <div class="row card-box div-card  justify-content-md-around" id="transaction_form">
 
-                            <div class="col-md-8 align-self-center">
+                            <div class="col-md-6 align-self-center">
                                 {{-- <p>Select Acount</p> --}}
                                 <div class="form-group row ">
-                                    <b class="col-md-3 text-primary">Select Account :</b>
-                                    <select class="form-control col-md-8" id="from_account" required>
+                                    <b class="col-md-3 text-primary align-self-center">Select Account :</b>
+                                    <select class="form-control col-md-9" id="from_account" required>
                                         <option value="" disabled selected> -- Select Your Account --
                                         </option>
                                     </select>
                                 </div>
 
                                 <div class="form-group row">
-                                    <b class="col-md-3 text-primary">Date Interval :</b>
-                                    <div class="col-md-8">
-                                        <div class="row justify-content-between">
-                                            <input type="date" id="startDate" class="form-control col-md-5">
-                                            <input type="date" id="endDate" class="form-control col-md-5">
-                                        </div>
-
-                                    </div>
-
+                                    <b class="col-md-3 text-primary align-self-center">Start Date :</b>
+                                    <input type="date" id="startDate" class=" col-md-9 form-control ">
                                 </div>
-                                <button class="btn btn-primary mt-1 mr-md-5 float-md-right"
-                                    id="search_transaction">Search</button>
-
+                                <div class="form-group row">
+                                    <b class="col-md-3 text-primary align-self-center">End Date :</b>
+                                    <input type="date" id="endDate" class=" col-md-9 form-control ">
+                                </div>
+                                <div class="form-group row justify-content-end">
+                                    <button class="btn btn-primary mt-1 waves-effect waves-light"
+                                        id="search_transaction">Search</button>
+                                </div>
                                 {{-- <div class="form-group row">
                                                 <b class="col-md-3 text-primary">Amount Interval :</b>
 
@@ -267,26 +265,32 @@
 
                             </div>
 
-                            <table class="table table-bordered table-striped mb-0 account_transaction_display_table">
+                            <table role="table"
+                                class="table table-bordered table-striped mb-0 account_transaction_display_table">
                                 {{-- <tbody> --}}
-                                <thead>
-                                    <tr class="bg-primary text-white ">
-                                        <td>Document Ref</td>
-                                        <td>Date</td>
-                                        <td>Amount <span class="account_number_display_"></span>
-                                        </td>
-                                        <td>Balance<span class="account_description_display_"></span>
-                                        </td>
-                                        <td>Purpose of Transfer <span class="account_currency_display_"></span>
-                                        </td>
-                                        <th>Credit Account</th>
+                                <thead role="rowgroup">
+
+                                    <tr role="row" class="bg-primary text-white ">
+                                        <th role="columnheader" scope="col">Document Ref</th>
+                                        <th role="columnheader" scope="col">Date</th>
+                                        <th role="columnheader" scope="col">Amount <span
+                                                class="account_number_display_"></span>
+                                        </th>
+                                        <th role="columnheader" scope="col">Balance<span
+                                                class="account_description_display_"></span>
+                                        </th>
+                                        <th role="columnheader" scope="col">Purpose of Transfer <span
+                                                class="account_currency_display_"></span>
+                                        </th>
+                                        <th role="columnheader" scope="col">Credit Account</th>
                                         {{-- <td>Transaction Details <span class="account_product_display_"></span> </td> --}}
-                                        <td>Transaction ID <span class="___class_+?59___"></span> </td>
-                                        <th>Batch No</th>
+                                        <th role="columnheader" scope="col">Transaction ID <span
+                                                class="___class_+?59___"></span> </th>
+                                        <th role="columnheader" scope="col">Batch No</th>
                                     </tr>
                                 </thead>
 
-                                <tbody id="table-body-display">
+                                <tbody role="rowgroup" id="table-body-display">
 
                                     {{-- </tbody> --}}
 
@@ -537,14 +541,16 @@
                             });
 
                         } else {
+                            toaster(response.message, "error", 3000)
 
                         }
 
 
 
 
-
                     } else {
+                        toaster(response.message, "error", 3000)
+
 
                     }
 
@@ -564,21 +570,14 @@
 
 
             let today = new Date();
-            let dd = today.getDate();
+            let day = today.getDate().toString().padStart(2, "0");
+            let month=(today.getMonth() + 1).toString().padStart(2, "0");
+            let start_date = today.getFullYear()  + '-' + month + '-01'
+            let end_date = today.getFullYear() + '-' + month + '-' + day
+            let thisDay= endDate;
 
-            let mm = today.getMonth() + 1;
-            const yyyy = today.getFullYear()
-            console.log(mm)
-            console.log(String(mm).length)
-            if (String(mm).length == 1) {
-                mm = '0' + mm
-            }
-
-            defaultStartDate = '01-' + mm + '-' + today.getFullYear()
-            defaultEndDate = '30-' + mm + '-' + today.getFullYear()
-
-            console.log(defaultStartDate)
-            console.log(defaultEndDate)
+            $("#startDate").val(start_date)
+            $('#endDate').val(end_date)
 
             {{-- $('#myTable').DataTable( {
                 dom: 'Bfrtip',
@@ -597,35 +596,13 @@
             } ); --}}
 
 
-            $(".date-picker-startDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: [defaultStartDate],
-                position: "center"
-            })
-
-            $(".date-picker-endDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: [defaultEndDate],
-                position: "center"
-            })
-
-
-
             var account_number = "account_number";
-            var start_date = defaultStartDate;
-            var end_date = defaultEndDate;
+
             var transLimit = "10";
 
             var tranactions = []
 
-            setTimeout(function() {
-                get_accounts()
-
-            }, 500);
+             get_accounts()
 
             $("#from_account").change(function() {
                 var from_account = $(this).val();
@@ -641,27 +618,42 @@
                 $(".account_number").text(from_account_info[2])
                 $(".display_from_account_currency").text(from_account_info[3])
                 $('.account_currency').text(from_account_info[3])
-                //$(".display_currency").text(from_account_info[3]) // set summary currency
-
-                //amt = from_account_info[4].trim()
-
-                //$(".display_from_account_amount").text(formatToCurrency(Parse(from_account_info[4].trim())))
-
-                //$(".from_account_display_info").show()
-
-
-
 
             });
+    //         var $window = $(window);
+    //          var $pane = $('#pane1');
+
+    // function checkWidth() {
+    //     var windowsize = $window.width();
+    //     if (windowsize > 750) {
+    //         $pane.jScrollPane({
+    //            scrollbarWidth:15,
+    //            scrollbarMargin:52
+    //         });
+    //     }
+    // }
+    //          checkWidth();
+            // $(window).resize(checkWidth);
 
             $('#search_transaction').click(function() {
 
-                let start_date = $('#startDate').val()
-                let end_date = $('#endDate').val()
+                start_date = $('#startDate').val()
+                 end_date = $('#endDate').val()
+                if(start_date > today){
+                    toaster("Start Date can't be greater than today", "warning", 3000)
+                    return false
+                }else if (end_date > today){
+                    toaster("End Date can't be greater than today", "warning", 3000)
+                    return false
+                }else if(start_date > end_date  ){
+                    toaster("Start Date can't be greater than End Date", "warning", 3000)
+                    return false
+                }
 
                 var from_account = $('#from_account').val()
-
-                if (from_account.trim() == '' || from_account.trim() == undefined) {
+                console.log(start_date)
+                if (!validateAll(from_account) ){
+                    toaster("please select an account", "warning", 3000)
                     $('#search_transaction').text('Search')
                     return false;
                 } else {
@@ -964,7 +956,10 @@
                         console.log(response);
                         if (response.responseCode == '000') {
                             tranactions = response.data
+                            if (response.data.length === 0 ) {
+                                toaster(response.message, "warning", 3000)
 
+                            }
                             $('#search_transaction').text('Search')
                             load_data_into_table(tranactions, account_number, start_date, end_date)
 
@@ -979,6 +974,7 @@
                             $(".account_transaction_display").hide();
                             $(".account_transaction_display_table").hide();
                             $("#account_transaction_retry_btn").show();
+                            toaster(response.message, "warning", 3000)
                         }
 
                     },
@@ -988,6 +984,8 @@
                         $(".account_transaction_display").hide();
                         $(".account_transaction_display_table").hide();
                         $("#account_transaction_retry_btn").show();
+                        toaster(response.message, "error", 3000)
+
                         setTimeout(function() {
                             getAccountTransactions(account_number, start_date, end_date,
                                 transLimit)
