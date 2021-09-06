@@ -38,13 +38,13 @@ class OwnAccountController extends Controller
     public function own_account_transfer(Request $req)
     {
         $validator = Validator::make($req->all(), [
-            'from_account' => 'required',
-            'to_account' => 'required',
-            'transfer_amount' => 'required',
-            // 'category' => 'required',
+            'fromAccount' => 'required',
+            'toAccount' => 'required',
+            'amount' => 'required',
+            'category' => 'required',
             'purpose' => 'required',
             'secPin' => 'required',
-            'account_currency' => 'required'
+            'currency' => 'required'
 
         ]);
         // return $req ;
@@ -64,12 +64,12 @@ class OwnAccountController extends Controller
 
 
         $data = [
-            "amount" => $req->transfer_amount,
+            "amount" => $req->amount,
             "authToken" => $authToken,
             "channel" => 'MOB',
-            "creditAccount" => $req->to_account,
-            "currency" => $req->account_currency,
-            "debitAccount" => $req->from_account,
+            "creditAccount" => $req->toAccount,
+            "currency" => $req->currency,
+            "debitAccount" => $req->fromAccount,
             "deviceIp" => $client_ip,
             "entrySource" => 'I',
             "narration" => $req->purpose,
@@ -115,14 +115,12 @@ class OwnAccountController extends Controller
     public function corporate_own_account_transfer(Request $req)
     {
         $validator = Validator::make($req->all(), [
-            'from_account' => 'required',
-            'to_account' => 'required',
-            'transfer_amount' => 'required',
-            // 'category' => 'required',
+            'fromAccount' => 'required',
+            'toAccount' => 'required',
+            'amount' => 'required',
+            'category' => 'required',
             'purpose' => 'required',
             'currency' => 'required'
-
-
         ]);
         // return $req ;
 
@@ -164,15 +162,15 @@ class OwnAccountController extends Controller
         $data = [
 
 
-            "account_no" => $req->from_account,
+            "account_no" => $req->fromAccount,
             "authToken" => $authToken,
             "channel" => 'NET',
-            "destinationAccountId" => $req->to_account,
-            "amount" => $req->transfer_amount,
+            "destinationAccountId" => $req->toAccount,
+            "amount" => $req->amount,
             "currency" => $req->currency,
             "narration" => $req->purpose,
             "postBy" => $userID,
-            "account_mandate" => $req->account_mandate,
+            "account_mandate" => $req->accountMandate,
             "user_mandate" => $userMandate,
             // "appBy" => '';
             "customerTel" => $customerPhone,

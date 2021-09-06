@@ -141,8 +141,9 @@
                     &nbsp; </span>
                 <span>
                     &nbsp;
-                    <button class="btn btn-primary btn-rounded " type="button" id="confirm_modal_button">
-                        <span id="confirm_transfer" data-toggle="modal" data-target="#centermodal">Confirm
+                    <button class="btn btn-primary btn-rounded " type="button" id="confirm_transfer_button"
+                        data-toggle="modal" data-target="#centermodal">
+                        <span id="confirm_transfer">Confirm
                             Transfer</span>
                         <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
                             aria-hidden="true" style="display: none"></span>
