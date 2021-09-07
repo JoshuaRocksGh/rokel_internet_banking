@@ -100,39 +100,7 @@
                     </tbody>
                 </table>
             </div>
-            <!-- Center modal content -->
-            <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header text-center ">
-
-                        </div>
-                        <div class="modal-body transfer_pin_modal">
-                            <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER TRANSACTION
-                                PIN</h3>
-                            <div class="row">
-                                <div class="col-md-2"></div>
-                                <div class="col-md-9  text-center">
-                                    <form action="#" autocomplete="off" aria-autocomplete="off">
-                                        <input type="text" name="user_pin" maxlength="4" autocomplete="off"
-                                            aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                        <br>
-                                        <button class="btn btn-success" type="button" id="transfer_pin"
-                                            data-dismiss="modal">Submit</button>
-                                    </form>
-
-                                </div>
-                                <div class="col-md-1"></div>
-                            </div>
-                        </div>
-                        <br>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
+            @include("snippets.pinCodeModal")
             <br>
             <div class="form-group text-center">
 
@@ -141,8 +109,7 @@
                     &nbsp; </span>
                 <span>
                     &nbsp;
-                    <button class="btn btn-primary btn-rounded " type="button" id="confirm_transfer_button"
-                        data-toggle="modal" data-target="#centermodal">
+                    <button class="btn btn-primary btn-rounded " type="button" id="confirm_transfer_button">
                         <span id="confirm_transfer">Confirm
                             Transfer</span>
                         <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"

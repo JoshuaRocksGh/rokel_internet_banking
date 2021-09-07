@@ -8,7 +8,6 @@ function accountApi(url, data) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
-            // {{-- console.log(response.responseCode) --}}
             if (response.responseCode == "000") {
                 $("#related_information_display").removeClass(
                     "d-none d-sm-block"
@@ -169,7 +168,6 @@ function get_currency() {
             get_cur_1 = data;
             get_cur_2 = data;
 
-            console.log(data);
             $.each(data, function (index) {
                 $("#select_currency__").append(
                     $("<option>", {
@@ -203,12 +201,8 @@ function get_correct_fx_rate() {
         url: "get-correct-fx-rate-api",
         datatype: "application/json",
         success: function (response) {
-            console.log("fx:");
-
-            console.log(response.data);
             if (response.responseCode == "000") {
                 forex_rate = response.data;
-                console.log(forex_rate);
             } else {
             }
         },
@@ -291,8 +285,6 @@ function currency_convertor(forex_rate) {
                             parseFloat(converted_amount.toFixed(2))
                         )
                 );
-                console.log(`match 1 => ${converted_amount}`);
-                console.log(parseFloat(forex_rate[index].MIDRATE));
             } else if (
                 String(forex_rate[index].PAIR.trim()) ==
                 String(currency_pair_2.trim())
@@ -321,8 +313,6 @@ function currency_convertor(forex_rate) {
                             parseFloat(converted_amount.toFixed(2))
                         )
                 );
-                console.log(`match 2 => ${converted_amount}`);
-                console.log(parseFloat(forex_rate[index].MIDRATE));
             } else {
             }
         });
@@ -336,6 +326,9 @@ $(() => {
     transferInfo.amount = "";
     let fromAccount = new Object();
     let toAccount = new Object();
+    let confirmationCompleted = false;
+    let validationsCompleted = false;
+
     get_account();
     expenseTypes();
     get_currency();
@@ -505,11 +498,6 @@ $(() => {
         e.preventDefault();
         transferInfo.category = $("#category").val();
         transferInfo.purpose = $("#purpose").val();
-        console.log(fromAccount.info);
-        console.log(toAccount.info);
-        console.log(transferInfo.amount);
-        console.log(transferInfo.category);
-        console.log(transferInfo.purpose);
         if (
             !validateAll(
                 fromAccount.info,
@@ -522,6 +510,11 @@ $(() => {
             toaster("please complete all required fields", "warning", 3000);
             return false;
         }
+        if (transferInfo.amount <= 0) {
+            toaster("invalid transfer amount", "warning", 3000);
+            return false;
+        }
+
         if (transferInfo.category !== "Others") {
             transferInfo.category = $("#category").val().split("~")[1];
         }
@@ -530,13 +523,19 @@ $(() => {
 
         $("#transaction_form").hide();
         $("#transaction_summary").show();
+        validationsCompleted = true;
     });
 
     $("#confirm_transfer_button").on("click", (e) => {
         e.preventDefault();
         // $('#confirm_modal_button').removeClass('data-toggle');
+
         if (!$("#terms_and_conditions").is(":checked")) {
             toaster("Accept Terms & Conditions to continue", "error", 3000);
+            return false;
+        }
+        if (!validationsCompleted) {
+            somethingWentWrongHandler();
             return false;
         }
         $("#from_account_receipt").text(fromAccount.accountNumber);
@@ -550,27 +549,30 @@ $(() => {
         transferInfo.currency = fromAccount.currency;
         // $("#spinner").show();
         // $("#spinner-text").show();
+        confirmationCompleted = true;
         if (customerType === "C") {
-            console.log("a");
-            $("#confirm_transfer").prop("disabled", true);
-            $("#confirm_transfer").removeAttr("data-toggle");
-            $("#confirm_transfer").hide();
-            $("#confirm_modal_button").prop("disabled", true);
             transferInfo.accountMandate = fromAccount.info.split("~")[5];
             accountApi("corporate-own-account-api", transferInfo);
         } else {
-            console.log("b");
-            // $("#confirm_modal_button").show();
-            $("#transfer_pin").on("click", function (e) {
-                e.preventDefault;
-                transferInfo.secPin = $("#user_pin").val();
-                if (transferInfo.secPin.length !== 4) {
-                    console.log("here");
-                    return false;
-                }
-                accountApi("own-account-api", transferInfo);
-            });
+            $("#centermodal").modal("show");
         }
+    });
+
+    // $("#confirm_modal_button").show();
+    $("#transfer_pin").on("click", function (e) {
+        e.preventDefault;
+        if (!confirmationCompleted) {
+            somethingWentWrongHandler();
+            return false;
+        }
+        transferInfo.secPin = $("#user_pin").val();
+        if (transferInfo.secPin.length !== 4) {
+            toaster("invalid pin", "warning", 3000);
+            return false;
+        }
+        accountApi("own-account-api", transferInfo);
+        $("#user_pin").val("").text("");
+        confirmationCompleted = false;
     });
 });
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class OwnAccountController extends Controller
@@ -37,14 +38,15 @@ class OwnAccountController extends Controller
 
     public function own_account_transfer(Request $req)
     {
+        Log::alert($req);
         $validator = Validator::make($req->all(), [
-            'fromAccount' => 'required',
-            'toAccount' => 'required',
-            'amount' => 'required',
-            'category' => 'required',
             'purpose' => 'required',
-            'secPin' => 'required',
-            'currency' => 'required'
+            'category' => 'required',
+            'amount' => 'required',
+            'toAccount' => 'required',
+            'fromAccount' => 'required',
+            'currency' => 'required',
+            'secPin' => 'required'
 
         ]);
         // return $req ;
@@ -54,24 +56,33 @@ class OwnAccountController extends Controller
 
         // VALIDATION
         if ($validator->fails()) {
-
+            Log::alert($validator);
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         $client_ip = request()->ip();
+        $api_headers = session()->get('headers');
 
 
         $data = [
             "amount" => $req->amount,
             "authToken" => $authToken,
+            "brand" => "A",
             "channel" => 'MOB',
             "creditAccount" => $req->toAccount,
             "currency" => $req->currency,
             "debitAccount" => $req->fromAccount,
             "deviceIp" => $client_ip,
             "entrySource" => 'I',
+
+            "expenseType" => $req->category,
+            "country" => "GH",
+            "deviceId" => "device",
+            "manufacturer" => "null",
+            "deviceName" => "WEB",
+
             "narration" => $req->purpose,
             "secPin" => $req->secPin,
             "userName" => $userID,
@@ -92,9 +103,10 @@ class OwnAccountController extends Controller
 
         try {
 
-            $response = Http::post(env('API_BASE_URL') . "transfers/sameBank", $data);
+            $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "transfers/sameBank", $data);
 
             $result = new ApiBaseResponse();
+            Log::alert($response);
             return $result->api_response($response);
             // return json_decode($response->body();
 
