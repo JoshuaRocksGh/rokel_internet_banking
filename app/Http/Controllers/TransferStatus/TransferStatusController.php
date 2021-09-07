@@ -11,4 +11,9 @@ class TransferStatusController extends Controller
     {
         return view('pages.transfer_status.index');
     }
+
+    public function ach_pending()
+    {
+        return view('pages.transfer_status.ach_transfer_status');
+    }
 }

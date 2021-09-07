@@ -6,9 +6,7 @@
     <div class="auth-fluid">
         <!--Auth fluid left content -->
         <div class="auth-fluid-form-box"
-            style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;
-                                                                                                                                                                        background-size: cover;
-                                                                                                                                                                    ">
+            style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;background-size: cover; ">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
@@ -250,98 +248,213 @@
 
 
         <!-- Auth fluid right content -->
-        <div class="auth-fluid-right text-center bg-auth">
+
+
+        <div class="auth-fluid-right " id=""
+            style="background-image:  linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),url({{ asset('assets/images/background-card.jpg') }});background-repeat: no-repeat;background-size: cover;">
             <div class="auth-user-testimonial">
                 <div id="login_page_extras">
-                    <div class="row">
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-4">
-                            <div class="text-center card-box">
-                                <div class="pt-2 pb-2">
-                                    {{-- <img src="../assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image"> --}}
+
+                    <div class="container-fluid">
+
+                        <div class="card d-flex h-100" style="background-color: rgba(245, 245, 245, 0);zoom: 0.8 ;">
+
+                            <div class="card-body pb-0">
+                                <div class="row">
+
+                                    <div class="col-md-7">
+                                        <br><br><br>
+                                        <h1 class="text-right text-white"
+                                            style="font-size:58px;font-family: 'Oswald', sans-serif;">
+                                            . . . Do more
+                                            with<br>
+                                            BestMobile App
+                                        </h1>
+
+                                        <div class="demo text-center">
+                                            <br>
+                                            <p>BestMobile App</p>
+                                            <p class="word-wrap">
+                                                <span class="word wisteria">anywhere...</span>
+                                                <span class="word belize">anytime...</span>
+                                                <span class="word pomegranate">secure...</span>
+                                                <span class="word green">convenient...</span>
+                                                <span class="word midnight">fast...</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+
+                                                {{-- <div class="col-md-1"></div> --}}
+
+                                                <div class="col-md-12 flow-act text-center">
+
+                                                </div>
+
+                                                {{-- <div class="col-md-2"></div> --}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    {{-- Carousel --}}
+                                    <div class="col-md-5 text-center">
+                                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="0"
+                                                    class="active"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img src="{{ asset('assets/images/mobile-login.png') }}" alt="image"
+                                                        class="img-fluid rounded" width="200" />
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid rounded" alt="image" width="200"
+                                                        src="{{ asset('assets/images/mobile-home.png') }}">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid rounded" alt="image" width="200"
+                                                        src="{{ asset('assets/images/home-summary.png') }}">
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                                data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                                data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
 
 
-                                    <i class="fas fa-book-open text-primary font-22" style="font-size: 100px;"></i>
-                                    <h4 class="mt-3 font-16"><a href="{{ url('account-creation') }}"
-                                            class="text-dark">Open
-                                            An
-                                            Account</a>
-                                    </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br><br><br><br><br>
+                            <div class="___class_+?100___">
+                                {{-- NEW LAYOUT --}}
+                                <div class="___class_+?77___" style="zoom: 0.8">
+                                    <div class="col-md-12 pb-0">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <a href="{{ url('account-creation') }}">
+                                                    <div class="text-center card-box">
+                                                        <div class="pt-1 pb-1">
+                                                            {{-- <img src="../assets/images/users/user-3.jpg" class="rounded-circle img-thumbnail avatar-xl" alt="profile-image"> --}}
 
-                                    <a href="{{ url('account-creation') }}" class="p-text">
-                                        <button type="button"
-                                            class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
-                                    </a>
 
-                                </div> <!-- end .padding -->
-                            </div> <!-- end card-box-->
-                        </div> <!-- end col -->
+                                                            <i class="fas fa-book-open text-blue font-22"
+                                                                style="font-size: 100px;"></i>
+                                                            <h4 class="mt-3 font-28"><a
+                                                                    href="{{ url('account-creation') }}"
+                                                                    class="text-blue">Open
+                                                                    An
+                                                                    Account</a>
+                                                            </h4>
 
-                        <div class="col-lg-4">
-                            <div class="text-center card-box">
-                                <div class="pt-2 pb-2">
-                                    <i class=" fas fa-desktop text-primary font-22" style="font-size: 100px;"></i>
-                                    <h4 class="mt-3 font-16"><a href="{{ url('enquiry') }}"
-                                            class="text-dark">Enquiries/Complaints</a>
-                                    </h4>
-                                    <a href="{{ url('enquiry') }}" class="p-text">
-                                        <button type="button"
-                                            class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
-                                    </a>
+                                                            {{-- <a href="{{ url('account-creation') }}"
+                                                                class="p-text">
+                                                                <button type="button"
+                                                                    class="btn btn-primary btn-lg waves-effect waves-light">Here</button>
+                                                            </a> --}}
 
-                                </div> <!-- end .padding -->
-                            </div> <!-- end card-box-->
-                        </div> <!-- end col -->
+                                                        </div> <!-- end .padding -->
+                                                    </div> <!-- end card-box-->
+                                                </a>
 
-                        <div class="col-lg-2"></div>
-                    </div>
-                    <!-- end row -->
+                                            </div>
+                                            <div class="col-md-3">
 
-                    <div class="row">
-                        <div class="col-lg-2">
+                                                <div class="col-md-12">
+                                                    <a href="{{ url('branches') }}">
+                                                        <div class="text-center card-box">
+                                                            <div class="pt-1 pb-1">
+
+                                                                <i class=" fas fa-map-marked-alt text-blue font-22"
+                                                                    style="font-size: 100px;"></i>
+
+                                                                <h4 class="mt-3 font-28 text-blue">Branches</h4>
+                                                                {{-- <a href="{{ url('branches') }}" class="text-white">
+                                                                <button type="button"
+                                                                    class="btn btn-primary btn-lg waves-effect waves-light">
+                                                                    Here</button> --}}
+                                                    </a>
+
+                                                </div> <!-- end .padding -->
+                                            </div> <!-- end card-box-->
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url('enquiry') }}">
+                                            <div class="text-center card-box">
+                                                <div class="pt-1 pb-1">
+                                                    <i class=" fas fa-desktop text-blue font-22"
+                                                        style="font-size: 100px;"></i>
+                                                    <h4 class="mt-3 font-28 "><a href="{{ url('enquiry') }}"
+                                                            class="text-blue">Enquiries</a>
+                                                    </h4>
+
+                                                    {{-- <a href="{{ url('enquiry') }}" class="p-text">
+                                                    <button type="button"
+                                                        class="btn btn-primary btn-lg waves-effect waves-light">Here</button>
+                                                </a> --}}
+
+                                                </div> <!-- end .padding -->
+                                            </div> <!-- end card-box-->
+                                        </a>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url('faq') }}">
+                                            <div class="col-md-12">
+                                                <div class="text-center card-box">
+                                                    <div class="pt-1 pb-1">
+
+                                                        <i class="fas fa-headset text-blue font-22"
+                                                            style="font-size: 100px;"></i>
+
+                                                        <h4 class="mt-3 font-28"><a href="{{ url('faq') }}"
+                                                                class="text-blue">FAQ</a>
+                                                        </h4>
+
+                                                        {{-- <a href="{{ url('faq') }}" class="p-text">
+                                                        <button type="button"
+                                                            class="btn btn-primary btn-lg waves-effect waves-light">Here</button>
+                                                    </a> --}}
+
+                                                    </div> <!-- end .padding -->
+                                                </div> <!-- end card-box-->
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
 
                         </div>
-                        <div class="col-lg-4">
-                            <div class="text-center card-box">
-                                <div class="pt-2 pb-2">
 
-                                    <i class="fas fa-headset text-primary font-22" style="font-size: 100px;"></i>
 
-                                    <h4 class="mt-3 font-16"><a href="{{ url('faq') }}" class="text-dark">FAQ</a>
-                                    </h4>
-
-                                    <a href="{{ url('faq') }}" class="p-text">
-                                        <button type="button"
-                                            class="btn btn-primary btn-sm waves-effect waves-light">Here</button>
-                                    </a>
-
-                                </div> <!-- end .padding -->
-                            </div> <!-- end card-box-->
-                        </div> <!-- end col -->
-
-                        <div class="col-lg-4">
-                            <div class="text-center card-box">
-                                <div class="pt-2 pb-2">
-
-                                    <i class=" fas fa-map-marked-alt text-primary font-22" style="font-size: 100px;"></i>
-
-                                    <h4 class="mt-3 font-16">Branches</h4>
-                                    <a href="{{ url('branches') }}" class="text-dark">
-                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">
-                                            Here</button>
-                                    </a>
-
-                                </div> <!-- end .padding -->
-                            </div> <!-- end card-box-->
-                        </div> <!-- end col -->
                     </div>
-                    <div class="col-lg-2"></div>
                 </div>
-                <!-- end row -->
 
-            </div> <!-- end auth-user-testimonial-->
+            </div>
+
+
         </div>
-        <!-- end Auth fluid right content -->
+        <!-- end row -->
+
+    </div> <!-- end auth-user-testimonial-->
+    </div>
+    <!-- end Auth fluid right content -->
 
 
     </div>
@@ -372,10 +485,13 @@
                     if (response.responseCode == "000") {
                         if (response.data.firstTimeLogin == true) {
                             window.location = 'change-password';
+                            $('#submit').attr('disabled', true);
                         } else {
                             window.location = 'home';
+                            $('#submit').attr('disabled', true);
                         }
                     } else {
+                        {{-- $('#submit').attr('disabled', true); --}}
                         $('#spinner').hide()
                         $('#spinner-text').hide()
                         $('#log_in').show()

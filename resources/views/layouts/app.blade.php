@@ -28,7 +28,6 @@
 
         }
 
-
     </style>
 
     @include('snippets.style')
@@ -36,7 +35,7 @@
 
 </head>
 
-<body class="loading auth-fluid-pages pb-0" >
+<body class="loading auth-fluid-pages pb-0">
 
 
     @yield('content')

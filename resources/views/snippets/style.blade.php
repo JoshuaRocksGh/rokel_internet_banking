@@ -37,6 +37,10 @@ id="bs-dark-stylesheet" /> --}}
 
 <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
 
 <style>
     {
@@ -492,4 +496,112 @@ id="bs-dark-stylesheet" /> --}}
     body {
         font-size: .85rem;
     }
+
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
+    {{-- body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+} --}} .demo {
+        font-weight: 500;
+        font-size: 36px;
+        position: absolute;
+        width: 450px;
+        left: 50%;
+        margin-left: -225px;
+        height: 40px;
+        top: 50%;
+        margin-top: -20px;
+    }
+
+    p {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+    }
+
+    .word {
+        position: absolute;
+        width: 220px;
+        opacity: 0;
+    }
+
+    .wisteria {
+        color: #8e44ad;
+    }
+
+    .belize {
+        color: #2980b9;
+    }
+
+    .pomegranate {
+        color: #c0392b;
+    }
+
+    .green {
+        color: #16a085;
+    }
+
+    .midnight {
+        color: #B89C72;
+    }
+
+    .word {
+        animation-iteration-count: infinite;
+        animation-name: anim;
+        animation-duration: 7.5s;
+        /*calculate the exact time for looping*/
+    }
+
+    .word:nth-child(2) {
+        animation-delay: 1.5s;
+    }
+
+    .word:nth-child(3) {
+        animation-delay: 3s;
+    }
+
+    .word:nth-child(4) {
+        animation-delay: 4.5s;
+    }
+
+    .word:nth-child(5) {
+        animation-delay: 6s;
+    }
+
+    @keyframes anim {
+
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        6.66% {
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        20% {
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        46.66% {
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+
+        /*we give long pause after animation is done by this method*/
+        100% {
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+
+    }
+
 </style>

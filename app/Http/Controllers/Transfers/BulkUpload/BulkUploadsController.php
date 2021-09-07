@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -92,6 +93,8 @@ class BulkUploadsController extends Controller
     public function upload_(Request $request)
     {
 
+        // return $request;
+
 
         // $documentRef = time();
         // $account_no = $request->account_no;
@@ -100,7 +103,7 @@ class BulkUploadsController extends Controller
         // $total_amount = $request->total_amount;
         // $value_date = $request->value_date;
 
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'excel_file' => 'required|mimes:xls,xlsx',
             'my_account' => 'required',
             'bulk_amount' => 'required',
@@ -108,6 +111,22 @@ class BulkUploadsController extends Controller
             'value_date' => 'required',
         ]);
 
+        $base_response = new BaseResponse();
+
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+        // $this->validate($request, [
+        //     'excel_file' => 'required|mimes:xls,xlsx',
+        //     'my_account' => 'required',
+        //     'bulk_amount' => 'required',
+        //     'reference_no' => 'required',
+        //     'value_date' => 'required',
+        // ]);
+
+        // return $request;
 
         $user_id = session()->get('userId');
         $customer_no = session()->get('customerNumber');
@@ -131,6 +150,7 @@ class BulkUploadsController extends Controller
         $currency = $account_info[3];
 
         $account_mandate = $account_info[5];
+        // return $account_info;
 
         if ($request->file()) {
 
@@ -154,22 +174,39 @@ class BulkUploadsController extends Controller
             //     ->where('batch_no', $batch_no)
             //     ->get();
 
-            // $result = DB::table('tb_corp_bank_import_excel')
-            //     ->where('batch_no', $batch_no)
-            //     ->select('BBAN', 'NAME', 'AMOUNT', 'TRANS_DESC')
-            //     ->get();
+            $result = DB::table('tb_corp_bank_import_excel')
+                ->where('batch_no', $batch_no)
+                ->select('BBAN', 'NAME', 'AMOUNT', 'TRANS_DESC')
+                ->get();
 
 
-            // echo (json_encode($result));
+            // $bank_details = $result->BBAN;
+
+            // echo ($result);
             // die();
 
-            // foreach ($result as $account) {
-            //     echo (json_encode($account));
-            //     die();
-            // }
+            // echo (json_encode($bank_details));
+            // $yes = $account->BBAN ;
+            // die();
 
+            foreach ($result as $account) {
+                // echo ($account);
+                // $response = $account['BBAN'];
+                // echo (json_encode($account->BBAN));
+                if (strlen($account->BBAN) != 18 || substr($account->BBAN, 0, 3) != '004') {
 
-            Alert::success("Bulk transfer pending approval");
+                    // return view('pages.transfer.bulkTransfers.view_bulk_error_transfer', ['account' => $account]);
+                    Alert::error("Error Uploading Bulk Transfer");
+                    return redirect()->route('view-error-bulk-transfer', [
+                        'batch_no' => $batch_no,
+                        'bulk_amount' => $total_amount,
+                        'bank_type' => $bank_code,
+                        'bank_type' => $bank_code
+                    ]);
+                }
+            }
+
+            Alert::success("Bulk Transfer Upload Successful");
             return redirect()->route('view-bulk-transfer', [
                 'batch_no' => $batch_no,
                 'bulk_amount' => $total_amount,
@@ -180,6 +217,7 @@ class BulkUploadsController extends Controller
             // return $upload;
 
         } else {
+            return false;
         }
     }
 
@@ -218,6 +256,27 @@ class BulkUploadsController extends Controller
         // }
 
         return view('pages.transfer.bulkTransfers.view_bulk_trasnfer', [
+            'customer_no' => $customer_no,
+            'batch_no' => $batch_no,
+            'account_no' => $account_no,
+            'bank_type' => $bank_type,
+        ]);
+    }
+
+    public function view_error_bulk_transfer(Request $request)
+    {
+
+        $batch_no = $request->query('batch_no');
+        $account_no = $request->query('account_no');
+        $bank_type = $request->query('bank_type');
+
+        $customer_no = session()->get('customerNumber');
+
+        // if (null !== ($request->query('batch_no') || $request->query('account_no') || $request->query('bank_type'))) {
+        //     return back();
+        // }
+
+        return view('pages.transfer.bulkTransfers.view_bulk_error_transfer', [
             'customer_no' => $customer_no,
             'batch_no' => $batch_no,
             'account_no' => $account_no,

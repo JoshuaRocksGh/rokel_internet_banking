@@ -52,14 +52,18 @@
             <br>
             <!-- start page title -->
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <a href="{{ url()->previous() }}" type="button" class="btn btn-soft-blue waves-effect waves-light"><i
+                            class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
+                </div>
+                <div class="col-md-4">
                     <h4 class="text-primary">
                         <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                         TRANSFER BENEFICIARY LIST
                     </h4>
                 </div>
 
-            <div class="col-md-6 text-right">
+                <div class="col-md-4 text-right">
                     <h6>
 
                         <span class="flaot-right">
@@ -83,7 +87,7 @@
         <div class="row">
             <br>
             <div class="col-12">
-                <div class="">
+                <div class="___class_+?15___">
 
                     <div class="card-body">
 
@@ -361,19 +365,19 @@
                     console.log(bene_id);
                     return false;
                     $.ajax({
-                            type: "delete",
-                            url: "delete-beneficiary",
-                            datatype: "application/json",
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
-                                    .attr('content')
-                            },
-                            success: function(resposne) {
-                                console.log(resposne)
-                            }
-                        })
+                        type: "delete",
+                        url: "delete-beneficiary",
+                        datatype: "application/json",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]')
+                                .attr('content')
+                        },
+                        success: function(resposne) {
+                            console.log(resposne)
+                        }
+                    })
 
-                        var bene_id = $(".delete_beneficiary_data").list().attr("data-value");
+                    var bene_id = $(".delete_beneficiary_data").list().attr("data-value");
                     console.log(bene_id);
                     return false;
                     {{-- e.preventDefault();

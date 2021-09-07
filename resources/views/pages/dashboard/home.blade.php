@@ -61,82 +61,165 @@
         </div>
 
 
-        <div class="row">
-            <div class="col-md-6">
-
-                <div class="row">
-
-
-                    <div class="col-md-12">
-                        <div class="card-box"
-                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                            <div class="row" >
-                                <div class="col-md-2"></div>
-                                <div class="col-md-8" style="zoom:0.8;">
-                                    <canvas id="myChart" width="200" height="200"></canvas>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ url('payment-type') }}">
+                        <div class="widget-rounded-circle card-box"
+                            style="background-image: url({{ asset('assets/images/light-blue.png') }});background-repeat: no-repeat;background-size: cover; ">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-sm rounded-circle bg-white ">
+                                        <i class="fe-log-out font-5 avatar-title text-info"></i>
+                                    </div>
                                 </div>
-                                <div class="col-md-2"></div>
-                            </div>
-
-                            <div class="row" style="padding-bottom: 10px;">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-10">
-
-                                    <div class="card-body">
-
-                                        <ul class="list-group">
-                                            <li class="list-group-item d-flex justify-content-between align-items-center active"
-                                                style="font-size: 17px">
-
-                                                <strong>Total Local Amount: </strong>
-                                                <strong>
-
-                                                    SLL <span class="i_have_amount open-money"></span>
-                                                    <span class="i_have_amount_ close-money">***********</span>
-                                                    &nbsp;&nbsp;&nbsp;
-                                                    <i class="fas fa-eye  float-right eye-open text-white"
-                                                        data-toggle="tooltip" data-placement="bottom" title=""
-                                                        data-original-title="More Info"></i>
-                                                    <i class="fa fa-eye-slash  float-right eye-close text-white"
-                                                        data-toggle="tooltip" data-placement="bottom" title=""
-                                                        data-original-title="More Info"></i>
-
-                                                </strong>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
-                                                <span
-                                                    class="badge badge-success badge-pill currency_and_savings_account_no"></span>
-                                            </li>
-
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <strong class="text-warning">INVESTMENTS</strong>
-                                                <span class="badge badge-warning badge-pill">0</span>
-                                            </li>
-                                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <strong class="text-danger"> LOANS </strong>
-                                                <span class="badge badge-danger badge-pill loan_count">0</span>
-                                            </li>
-
-                                        </ul>
-
-                                    </div> <!-- end card-body -->
-
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span>Payments</span></h3>
+                                    </div>
                                 </div>
-                                <div class="col-md-1"></div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{{ url('account-enquiry') }}">
+                        <div class="widget-rounded-circle card-box bg-warning"
+                            style="background-image: url({{ asset('assets/images/blue.jpeg') }});background-repeat: no-repeat;background-size: cover; ">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-sm rounded-circle bg-white">
+                                        <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-primary "><span> &nbsp; Account Enquiry</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="#">
+                        <div class="widget-rounded-circle card-box custom-color-gold bg-success"
+                            style="background-image: url({{ asset('assets/images/pink.jpeg') }});background-repeat: no-repeat;background-size: cover;border-radius: 5px; ">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="avatar-sm rounded-circle bg-white">
+                                        <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span> &nbsp; Transfers</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="{{ url('e-korpor') }}">
+                        <div class="widget-rounded-circle card-box bg-danger"
+                            style="background-image: url({{ asset('assets/images/red-blue.jpeg') }});background-repeat: no-repeat;background-size: cover; ">
+                            <div class=" row">
+                                <div class="col-4">
+                                    <div class="avatar-sm rounded-circle bg-white ">
+                                        <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="text-right">
+                                        <h3 class="mt-1 text-white"><span>&nbsp; E-Korpor</span></h3>
+                                    </div>
+                                </div>
+                            </div> <!-- end row-->
+                        </div> <!-- end widget-rounded-circle-->
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="row">
+
+
+                        <div class="col-md-12">
+                            <div class="card-box"
+                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8" style="zoom:0.8;">
+                                        <canvas id="myChart" width="200" height="200"></canvas>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+
+                                <div class="row" style="padding-bottom: 10px;">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+
+                                        <div class="card-body">
+
+                                            <ul class="list-group">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center active"
+                                                    style="font-size: 17px">
+
+                                                    <strong>Total Local Amount: </strong>
+                                                    <strong>
+
+                                                        SLL <span class="i_have_amount open-money"></span>
+                                                        <span class="i_have_amount_ close-money">***********</span>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <i class="fas fa-eye  float-right eye-open text-white"
+                                                            data-toggle="tooltip" data-placement="bottom" title=""
+                                                            data-original-title="More Info"></i>
+                                                        <i class="fa fa-eye-slash  float-right eye-close text-white"
+                                                            data-toggle="tooltip" data-placement="bottom" title=""
+                                                            data-original-title="More Info"></i>
+
+                                                    </strong>
+                                                </li>
+                                                <li
+                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
+                                                    <span
+                                                        class="badge badge-success badge-pill currency_and_savings_account_no"></span>
+                                                </li>
+
+                                                <li
+                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <strong class="text-warning">INVESTMENTS</strong>
+                                                    <span class="badge badge-warning badge-pill">0</span>
+                                                </li>
+                                                <li
+                                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <strong class="text-danger"> LOANS </strong>
+                                                    <span class="badge badge-danger badge-pill loan_count">0</span>
+                                                </li>
+
+                                            </ul>
+
+                                        </div> <!-- end card-body -->
+
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+
+
                             </div>
-
-
                         </div>
+
+
+
                     </div>
 
+                    <div class="row">
 
-
-                </div>
-
-                <div class="row">
-
-                    {{-- <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                         <a href="{{ url('manage-cards') }}">
 
                             <div class="card" style="border-radius: 20px;">
@@ -158,297 +241,301 @@
                             </div> <!-- end card-box-->
                         </a>
                     </div> --}}
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+
+
+                        <div class="col-md-6">
+                            <div class="___class_+?44___">
+                                <h2 class="text-primary">Frequently used services</h2>
+                                {{-- <hr class="mt-0"> --}}
+                            </div>
+
+                            <div class="col-md-12">
+                                <a href="{{ url('payment-type') }}">
+                                    <div class="widget-rounded-circle card-box"
+                                        style="border-radius: 20px; background-color: #0561ad">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="avatar-md rounded-circle bg-white ">
+                                                    <i class="fe-log-out font-5 avatar-title text-info"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-right">
+                                                    <h3 class="mt-1 text-white"><span>Payments</span></h3>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end row-->
+                                    </div> <!-- end widget-rounded-circle-->
+                                </a>
+                            </div> <!-- end col-->
+
+                            <div class="col-md-12 ">
+                                <a href="{{ url('account-enquiry') }}">
+                                    <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="avatar-md rounded-circle bg-white">
+                                                    <i class="fe-send font-20 avatar-title text-white text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-right">
+                                                    <h3 class="mt-1 text-white"><span> &nbsp; Account Enquiry</span></h3>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end row-->
+                                    </div> <!-- end widget-rounded-circle-->
+                                </a>
+                            </div> <!-- end col-->
+
+
+                            <div class="col-md-12 ">
+                                <a href="#">
+                                    <div class="widget-rounded-circle card-box custom-color-gold bg-success"
+                                        style="border-radius: 20px;">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="avatar-md rounded-circle bg-white">
+                                                    <i
+                                                        class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-right">
+                                                    <h3 class="mt-1 text-white"><span> &nbsp; Transfers</span></h3>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end row-->
+                                    </div> <!-- end widget-rounded-circle-->
+                                </a>
+                            </div> <!-- end col-->
+
+                            <div class="col-md-12 ">
+                                <a href="{{ url('e-korpor') }}">
+                                    <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
+                                        <div class=" row">
+                                            <div class="col-4">
+                                                <div class="avatar-md rounded-circle bg-white ">
+                                                    <i
+                                                        class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-right">
+                                                    <h3 class="mt-1 text-white"><span>&nbsp; E-Korpor</span></h3>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end row-->
+                                    </div> <!-- end widget-rounded-circle-->
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                                    </li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100"
+                                            src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}"
+                                            alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100"
+                                            src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}"
+                                            alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
 
 
             </div>
 
-            <div class="col-md-6">
-                <div class="row">
+            <div class="row">
+                <div class="col-md-8 mt-1">
+                    <div class="col-md-12">
+                        <div class="card-box">
+
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                        <strong class="text-success">CURRENT & SAVINGS</strong>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                        <strong class="text-warning">INVESTMENTS</strong>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <strong class="text-danger">LOANS</strong>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home">
+                                    <p>
+
+                                    <div class="table-responsive table-bordered accounts_display_area">
+                                        <table id="" class="table mb-0 ">
+                                            <thead>
+                                                <tr class="bg-info text-white ">
+                                                    <td> <b> Account No </b> </td>
+                                                    <td> <b> Description </b> </td>
+                                                    <td> <b> Product </b> </td>
+                                                    <td> <b> Cur </b> </td>
+                                                    <td> <b> OverDraft </b> </td>
+                                                    {{-- <td> <b> Ledger Bal </b> </td> --}}
+                                                    <td> <b> Av. Bal </b> </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="casa_list_display">
 
 
-                    <div class="col-md-6">
-                        <div class="___class_+?44___">
-                            <h2 class="text-primary">Frequently used services</h2>
-                            {{-- <hr class="mt-0"> --}}
-                        </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
 
-                        <div class="col-md-12">
-                            <a href="{{ url('payment-type') }}">
-                                <div class="widget-rounded-circle card-box"
-                                    style="border-radius: 20px; background-color: #0561ad">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="avatar-md rounded-circle bg-white ">
-                                                <i class="fe-log-out font-5 avatar-title text-info"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-8">
-                                            <div class="text-right">
-                                                <h3 class="mt-1 text-white"><span>Payments</span></h3>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </a>
-                        </div> <!-- end col-->
+                                    </p>
 
-                        <div class="col-md-12 ">
-                            <a href="{{ url('account-enquiry') }}">
-                                <div class="widget-rounded-circle card-box bg-warning" style="border-radius: 20px;">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="avatar-md rounded-circle bg-white">
-                                                <i class="fe-send font-20 avatar-title text-white text-warning"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-8">
-                                            <div class="text-right">
-                                                <h3 class="mt-1 text-white"><span> &nbsp; Account Enquiry</span></h3>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </a>
-                        </div> <!-- end col-->
-
-
-                        <div class="col-md-12 ">
-                            <a href="#">
-                                <div class="widget-rounded-circle card-box custom-color-gold bg-success"
-                                    style="border-radius: 20px;">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="avatar-md rounded-circle bg-white">
-                                                <i
-                                                    class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-8">
-                                            <div class="text-right">
-                                                <h3 class="mt-1 text-white"><span> &nbsp; Transfers</span></h3>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </a>
-                        </div> <!-- end col-->
-
-                        <div class="col-md-12 ">
-                            <a href="{{ url('e-korpor') }}">
-                                <div class="widget-rounded-circle card-box bg-danger" style="border-radius: 20px;">
-                                    <div class=" row">
-                                        <div class="col-4">
-                                            <div class="avatar-md rounded-circle bg-white ">
-                                                <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col-8">
-                                            <div class="text-right">
-                                                <h3 class="mt-1 text-white"><span>&nbsp; E-Korpor</span></h3>
-                                            </div>
-                                        </div>
-                                    </div> <!-- end row-->
-                                </div> <!-- end widget-rounded-circle-->
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100"
-                                        src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}" alt="First slide">
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}"
-                                        alt="Second slide">
+
+                                <div class="tab-pane show " id="profile">
+
+                                    <p id="p_fixed_deposit_account">
+
+                                    <div class="table-responsive table-bordered my_investment_display_area">
+                                        <table id="" class="table mb-0 ">
+                                            <thead>
+                                                <tr class="bg-info text-white ">
+                                                    <td> <b> Account No </b> </td>
+                                                    <td> <b> Deal Amount </b> </td>
+                                                    <td> <b> Tunure </b> </td>
+                                                    <td> <b> FixedInterestRate </b> </td>
+                                                    <td> <b> Rollover </b> </td>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody class="fixed_deposit_account">
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
+
+                                    </p>
+
                                 </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}"
-                                        alt="Third slide">
+
+                                <div class="tab-pane" id="messages">
+                                    <p id="p_loans_display">
+
+                                    <div class="table-responsive table-bordered loans_display_area">
+                                        <table id="" class="table mb-0 ">
+                                            <thead>
+                                                <tr class="bg-info text-white ">
+                                                    <td> <b> Facility No </b> </td>
+                                                    <td> <b> Description </b> </td>
+                                                    <td> <b> Cur </b> </td>
+                                                    <td> <b> Amount Granted </b> </td>
+                                                    <td> <b> Loan Bal </b> </td>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody class="loans_display">
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
+
+                                    </p>
+
                                 </div>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                                data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                                data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
+                        </div> <!-- end card-box-->
                     </div>
-
                 </div>
 
-            </div>
+                <div class="col-md-4 mt-1">
+                    <div class="col-md-12 ">
+                        <div class="card" style="border-radius: 20px;">
+                            <div class="border mt-0 rounded">
+                                <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest
+                                    Transactions
+                                </h4>
 
+                                <div class="row" style="padding-left: 15px; padding-right: 15px;">
+                                    {{-- <div class="col-md-1"></div> --}}
+                                    <div class="col-md-12">
+                                        <select name="" class="form-control" id="account_transaction">
+                                            <option value=""> -- Select Account -- </option>
+                                            {{-- <option value="">04785505050</option> --}}
+                                        </select>
+                                    </div>
+                                    {{-- <div class="col-md-1"></div> --}}
+                                </div>
 
-        </div>
+                                <legend></legend>
 
-        <div class="row">
-            <div class="col-md-8 mt-1">
-                <div class="col-md-12">
-                    <div class="card-box">
-
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                    <strong class="text-success">CURRENT & SAVINGS</strong>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                    <strong class="text-warning">INVESTMENTS</strong>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                    <strong class="text-danger">LOANS</strong>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="home">
-                                <p>
-
-                                <div class="table-responsive table-bordered accounts_display_area">
-                                    <table id="" class="table mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Account No </b> </td>
-                                                <td> <b> Description </b> </td>
-                                                <td> <b> Product </b> </td>
-                                                <td> <b> Cur </b> </td>
-                                                <td> <b> OverDraft </b> </td>
-                                                {{-- <td> <b> Ledger Bal </b> </td> --}}
-                                                <td> <b> Av. Bal </b> </td>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="casa_list_display">
+                                <div class="table-responsive" style="height: 360px; zoom:0.9">
+                                    <table class="table table-centered table-nowrap mb-0">
+                                        <tbody id="transaction_history">
 
 
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- end table-responsive -->
+                            </div> <!-- end .border-->
 
-                                </p>
-
-                            </div>
-
-                            <div class="tab-pane show " id="profile">
-
-                                <p id="p_fixed_deposit_account">
-
-                                <div class="table-responsive table-bordered my_investment_display_area">
-                                    <table id="" class="table mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Account No </b> </td>
-                                                <td> <b> Deal Amount </b> </td>
-                                                <td> <b> Tunure </b> </td>
-                                                <td> <b> FixedInterestRate </b> </td>
-                                                <td> <b> Rollover </b> </td>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody class="fixed_deposit_account">
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
-
-                                </p>
-
-                            </div>
-
-                            <div class="tab-pane" id="messages">
-                                <p id="p_loans_display">
-
-                                <div class="table-responsive table-bordered loans_display_area">
-                                    <table id="" class="table mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Facility No </b> </td>
-                                                <td> <b> Description </b> </td>
-                                                <td> <b> Cur </b> </td>
-                                                <td> <b> Amount Granted </b> </td>
-                                                <td> <b> Loan Bal </b> </td>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody class="loans_display">
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
-
-                                </p>
-
-                            </div>
                         </div>
-                    </div> <!-- end card-box-->
-                </div>
-            </div>
-
-            <div class="col-md-4 mt-1">
-                <div class="col-md-12 ">
-                    <div class="card" style="border-radius: 20px;">
-                        <div class="border mt-0 rounded">
-                            <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest Transactions
-                            </h4>
-
-                            <div class="row" style="padding-left: 15px; padding-right: 15px;">
-                                {{-- <div class="col-md-1"></div> --}}
-                                <div class="col-md-12">
-                                    <select name="" class="form-control" id="account_transaction">
-                                        <option value=""> -- Select Account -- </option>
-                                        {{-- <option value="">04785505050</option> --}}
-                                    </select>
-                                </div>
-                                {{-- <div class="col-md-1"></div> --}}
-                            </div>
-
-                            <legend></legend>
-
-                            <div class="table-responsive" style="height: 360px; zoom:0.9">
-                                <table class="table table-centered table-nowrap mb-0">
-                                    <tbody id="transaction_history">
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- end table-responsive -->
-                        </div> <!-- end .border-->
-
                     </div>
                 </div>
+
             </div>
 
-        </div>
 
 
+            <div class="row">
 
-        <div class="row">
-
-            {{-- <div class="col-md-5 col-xl-5">
+                {{-- <div class="col-md-5 col-xl-5">
                 <h5 class="page-title">MY ACCOUNTS </h5>
                 <div class="widget-rounded-circle card-box">
                     <div class="row">
@@ -461,7 +548,7 @@
 
             </div> <!-- end col--> --}}
 
-            {{-- <div class="container-fluid">
+                {{-- <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6 col-xl-3">
                         <div class="card-box">
@@ -476,9 +563,9 @@
 
 
 
-            <!-- end row-->
+                <!-- end row-->
 
-            {{-- <div class="container-fluid">
+                {{-- <div class="container-fluid">
                 <div class="">
                     <div class="row">
 
@@ -868,7 +955,7 @@
 
             </div> --}}
 
-            {{-- <div class="row ">
+                {{-- <div class="row ">
 
 
                 <div class="card-body col-md-6 col-xl-6 col-sm-6 col-xs-12">
@@ -1028,314 +1115,314 @@
 
 
 
-        </div> <!-- container -->
+            </div> <!-- container -->
 
 
 
 
-    @endsection
+        @endsection
 
 
-    @section('scripts')
-        <!-- Plugins js-->
-        <script src="{{ asset('assets/js/chart.js') }}"></script>
+        @section('scripts')
+            <!-- Plugins js-->
+            <script src="{{ asset('assets/js/chart.js') }}"></script>
 
 
-        <!-- Tour page js -->
-        <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script>
-        <!-- Tour init js-->
-        {{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
+            <!-- Tour page js -->
+            <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script>
+            <!-- Tour init js-->
+            {{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
 
-        <!-- Chart JS -->
-        {{-- <script src="{{ asset('assets/libs/chart.js/Chart.bundle.min.js') }}"></script> --}}
+            <!-- Chart JS -->
+            {{-- <script src="{{ asset('assets/libs/chart.js/Chart.bundle.min.js') }}"></script> --}}
 
-        <script src="{{ asset('assets/libs/moment/min/moment.min.js') }}"></script>
-        <script src="{{ asset('assets/libs/jquery.scrollto/jquery.scrollTo.min.js') }}"></script>
+            <script src="{{ asset('assets/libs/moment/min/moment.min.js') }}"></script>
+            <script src="{{ asset('assets/libs/jquery.scrollto/jquery.scrollTo.min.js') }}"></script>
 
-        <!-- Chat app -->
-        {{-- <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script> --}}
+            <!-- Chat app -->
+            {{-- <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script> --}}
 
-        <!-- Todo app -->
-        <script src="{{ asset('assets/js/pages/jquery.todo.js') }}"></script>
+            <!-- Todo app -->
+            <script src="{{ asset('assets/js/pages/jquery.todo.js') }}"></script>
 
-        <!-- Dashboard init JS -->
-        <script src="{{ asset('assets/js/pages/dashboard-3.init.js') }}"></script>
+            <!-- Dashboard init JS -->
+            <script src="{{ asset('assets/js/pages/dashboard-3.init.js') }}"></script>
 
-        <!-- App js-->
-        <script src="{{ asset('assets/js/app.min.js') }}"></script>
+            <!-- App js-->
+            <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
-        <script type="text/javascript">
-            var i_have = 0
-            var i_owe = 0
-            var i_invest_total = 0
+            <script type="text/javascript">
+                var i_have = 0
+                var i_owe = 0
+                var i_invest_total = 0
 
-            function show_chart(i_have, i_owe, i_invest_total) {
+                function show_chart(i_have, i_owe, i_invest_total) {
 
-                console.log(i_have)
-                console.log(i_owe)
-                console.log(i_invest_total)
-                var ctx = document.getElementById('myChart').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['I HAVE', 'Investments', 'I OWE'],
-                        datasets: [{
-                            label: 'MY ACCOUNTS',
-                            data: [i_have, i_owe, i_invest_total],
-                            backgroundColor: [
+                    console.log(i_have)
+                    console.log(i_owe)
+                    console.log(i_invest_total)
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['I HAVE', 'Investments', 'I OWE'],
+                            datasets: [{
+                                label: 'MY ACCOUNTS',
+                                data: [i_have, i_owe, i_invest_total],
+                                backgroundColor: [
 
-                                'rgb(75,192,192)',
-                                'rgba(231, 223, 10, 1)',
-                                'rgb(233,55,93)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
+                                    'rgb(75,192,192)',
+                                    'rgba(231, 223, 10, 1)',
+                                    'rgb(233,55,93)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
 
-                                'rgb(75,192,192)',
-                                'rgba(231, 223, 10, 1)',
-                                'rgb(233,55,93)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
+                                    'rgb(75,192,192)',
+                                    'rgba(231, 223, 10, 1)',
+                                    'rgb(233,55,93)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
 
-                });
-            }
-        </script>
+                    });
+                }
+            </script>
 
-        <script>
-            // function(e, legendItem, legend) {
-            //     const index = legendItem.datasetIndex;
-            //     const ci = legend.chart;
-            //     if (ci.isDatasetVisible(index)) {
-            //         ci.hide(index);
-            //         legendItem.hidden = true;
-            //     } else {
-            //         ci.show(index);
-            //         legendItem.hidden = false;
-            //     }
-            // }
-            $(document).ready(function() {
-                $('.close-money').show()
-                $('.open-money').hide()
-
-                $('.eye-open').hide()
-                $('.eye-close').show()
-
-                $('.eye-open').click(function() {
+            <script>
+                // function(e, legendItem, legend) {
+                //     const index = legendItem.datasetIndex;
+                //     const ci = legend.chart;
+                //     if (ci.isDatasetVisible(index)) {
+                //         ci.hide(index);
+                //         legendItem.hidden = true;
+                //     } else {
+                //         ci.show(index);
+                //         legendItem.hidden = false;
+                //     }
+                // }
+                $(document).ready(function() {
+                    $('.close-money').show()
+                    $('.open-money').hide()
 
                     $('.eye-open').hide()
                     $('.eye-close').show()
 
-                    $('.open-money').hide()
-                    $('.close-money').show()
+                    $('.eye-open').click(function() {
+
+                        $('.eye-open').hide()
+                        $('.eye-close').show()
+
+                        $('.open-money').hide()
+                        $('.close-money').show()
+
+                    })
+
+                    $('.eye-close').click(function() {
+
+                        $('.eye-close').hide()
+                        $('.eye-open').show()
+
+                        $('.open-money').show()
+                        $('.close-money').hide()
+                    })
 
                 })
 
-                $('.eye-close').click(function() {
-
-                    $('.eye-close').hide()
-                    $('.eye-open').show()
-
-                    $('.open-money').show()
-                    $('.close-money').hide()
-                })
-
-            })
-
-            {{-- function formatToCurrency(amount) {
+                {{-- function formatToCurrency(amount) {
                 return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
             }; --}}
 
-            function account_transaction() {
-                $.ajax({
-                    type: 'GET',
-                    url: 'get-my-account',
-                    datatype: "application/json",
-                    success: function(response) {
-                        console.log(response.data);
-                        let data = response.data
-                        $.each(data, function(index) {
-                            $('#account_transaction').append($('<option>', {
-                                value: data[index].accountType + '~' + data[index]
-                                    .accountDesc + '~' + data[index].accountNumber +
-                                    '~' + data[index].currency + '~' + data[index]
-                                    .availableBalance
-                            }).text(data[index].accountNumber + ' ' + '-' + ' ' + data[index]
-                                .currency + ' ' + '-' + ' ' +
-                                formatToCurrency(parseFloat(data[index].availableBalance.trim()))));
-                            //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+                function account_transaction() {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'get-my-account',
+                        datatype: "application/json",
+                        success: function(response) {
+                            console.log(response.data);
+                            let data = response.data
+                            $.each(data, function(index) {
+                                $('#account_transaction').append($('<option>', {
+                                    value: data[index].accountType + '~' + data[index]
+                                        .accountDesc + '~' + data[index].accountNumber +
+                                        '~' + data[index].currency + '~' + data[index]
+                                        .availableBalance
+                                }).text(data[index].accountNumber + ' ' + '-' + ' ' + data[index]
+                                    .currency + ' ' + '-' + ' ' +
+                                    formatToCurrency(parseFloat(data[index].availableBalance.trim()))));
+                                //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
 
-                        });
-                        {{-- let name = $("from_acc_currency").val(); --}}
+                            });
+                            {{-- let name = $("from_acc_currency").val(); --}}
 
-                        {{-- console.log(response); --}}
-                        {{-- let currency = response.data[0].currency; --}}
-                        {{-- console.log(currency); --}}
+                            {{-- console.log(response); --}}
+                            {{-- let currency = response.data[0].currency; --}}
+                            {{-- console.log(currency); --}}
 
-                        {{-- $.each(currency, function(index) {
+                            {{-- $.each(currency, function(index) {
                             let data = currency[index].description ;
                             console.log(data);
                         }) --}}
 
-                    },
+                        },
 
-                })
-            }
+                    })
+                }
 
-            function fixed_deposit(account_data) {
+                function fixed_deposit(account_data) {
 
-                $('.my_investment_loading_area').show()
-                $('.my_investment_error_area').hide()
-                $('.my_investment_no_data_found').hide()
-                $('.my_investment_display_area').hide()
+                    $('.my_investment_loading_area').show()
+                    $('.my_investment_error_area').hide()
+                    $('.my_investment_no_data_found').hide()
+                    $('.my_investment_display_area').hide()
 
-                $.ajax({
+                    $.ajax({
 
-                    type: "GET",
-                    url: "fixed-deposit-account-api",
-                    datatype: "application/json",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        {{-- console.log(response); --}}
+                        type: "GET",
+                        url: "fixed-deposit-account-api",
+                        datatype: "application/json",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            {{-- console.log(response); --}}
 
 
-                        if (response.responseCode == '000') {
+                            if (response.responseCode == '000') {
 
-                            let data = response.data;
-                            {{-- console.log("fixed-deposit" + data) --}}
+                                let data = response.data;
+                                {{-- console.log("fixed-deposit" + data) --}}
 
-                            if (response.data == null) {
-                                $('.my_investment_loading_area').hide()
-                                $('.my_investment_error_area').hide()
-                                $('.my_investment_no_data_found').show()
-                                $('.my_investment_display_area').hide()
-                                return false;
-                            }
+                                if (response.data == null) {
+                                    $('.my_investment_loading_area').hide()
+                                    $('.my_investment_error_area').hide()
+                                    $('.my_investment_no_data_found').show()
+                                    $('.my_investment_display_area').hide()
+                                    return false;
+                                }
 
-                            let loan_count = 0
-                            if (response.data.length > 0) {
-                                console.log(response.data.length);
+                                let loan_count = 0
+                                if (response.data.length > 0) {
+                                    console.log(response.data.length);
 
-                                account_data.i_invest_total = 0
-                                $.each(data, function(index) {
+                                    account_data.i_invest_total = 0
+                                    $.each(data, function(index) {
 
-                                    let invest_amount = data[index].dealAmount
-                                    invest_amount = invest_amount.replace(/,/g, "");
-                                    account_data.i_invest_total += Math.abs(parseFloat(invest_amount))
+                                        let invest_amount = data[index].dealAmount
+                                        invest_amount = invest_amount.replace(/,/g, "");
+                                        account_data.i_invest_total += Math.abs(parseFloat(invest_amount))
 
-                                    console.log(`total investments ${account_data.i_invest_total}`)
-                                    $('.fixed_deposit_account').append(
-                                        `<tr>
+                                        console.log(`total investments ${account_data.i_invest_total}`)
+                                        $('.fixed_deposit_account').append(
+                                            `<tr>
                                             <td><b> ${data[index].sourceAccount} </b></td>
                                             <td><b> ${data[index].dealAmount} </b></td>
                                             <td><b> ${data[index].tenure} </b></td>
                                             <td><b> ${data[index].fixedInterestRate} </b></td>
                                             <td><b> ${rollover_ } </b></td>
                                         </tr>`
-                                    )
+                                        )
 
-                                    loan_count = loan_count + 1;
-                                })
+                                        loan_count = loan_count + 1;
+                                    })
 
-                                {{-- console.log('i_invest_total: ' + i_invest_total) --}}
+                                    {{-- console.log('i_invest_total: ' + i_invest_total) --}}
 
-                                $(".loan_count").text(loan_count);
+                                    $(".loan_count").text(loan_count);
 
-                                $('.my_investment_loading_area').hide()
-                                $('.my_investment_error_area').hide()
-                                $('.my_investment_no_data_found').hide()
-                                $('.my_investment_display_area').show()
+                                    $('.my_investment_loading_area').hide()
+                                    $('.my_investment_error_area').hide()
+                                    $('.my_investment_no_data_found').hide()
+                                    $('.my_investment_display_area').show()
 
-                                {{-- show_chart(i_have, i_owe, i_invest_total) --}}
+                                    {{-- show_chart(i_have, i_owe, i_invest_total) --}}
+                                } else {
+
+                                    $('#p_fixed_deposit_account').html(
+                                        `<h2 class="text-center text-warning">No Investment</h2>`)
+
+                                    $('.my_investment_loading_area').hide()
+                                    $('.my_investment_error_area').hide()
+                                    $('.my_investment_no_data_found').show()
+                                    $('.my_investment_display_area').hide()
+
+                                }
+
+
                             } else {
-
-                                $('#p_fixed_deposit_account').html(
-                                    `<h2 class="text-center text-warning">No Investment</h2>`)
-
                                 $('.my_investment_loading_area').hide()
-                                $('.my_investment_error_area').hide()
-                                $('.my_investment_no_data_found').show()
+                                $('.my_investment_error_area').show()
+                                $('.my_investment_no_data_found').hide()
                                 $('.my_investment_display_area').hide()
-
                             }
 
 
-                        } else {
+
+                        },
+                        error: function(xhr, status, error) {
+
                             $('.my_investment_loading_area').hide()
                             $('.my_investment_error_area').show()
                             $('.my_investment_no_data_found').hide()
                             $('.my_investment_display_area').hide()
+
+                            setTimeout(function() {
+                                fixed_deposit(account_data)
+                            }, $.ajaxSetup().retryAfter)
+
                         }
+                    })
+                }
+
+                function get_accounts(account_data) {
+
+                    $(".accounts_display_area").hide()
+                    $(".accounts_error_area").hide()
+                    $(".accounts_loading_area").show()
+
+                    $.ajax({
+                        "type": "GET",
+                        "url": "get-accounts-api",
+                        datatype: "application/json",
+
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.responseCode == '000') {
+
+                                let data = response.data;
+                                {{-- console.log("accounts" + data) --}}
+
+                                let i_have_total = 0
+                                let count = 0
+
+                                $('.currency_and_savings_account_no').text(data.length)
+                                console.log('my data')
+                                console.log(data)
+
+                                account_data.i_have_total = 0
+                                $.each(data, function(index) {
+                                    let localEquivalentAvailableBalance = data[index]
+                                        .localEquivalentAvailableBalance
+                                    localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(
+                                        /,/g, "");
+
+                                    console.log(typeof(localEquivalentAvailableBalance))
 
 
-
-                    },
-                    error: function(xhr, status, error) {
-
-                        $('.my_investment_loading_area').hide()
-                        $('.my_investment_error_area').show()
-                        $('.my_investment_no_data_found').hide()
-                        $('.my_investment_display_area').hide()
-
-                        setTimeout(function() {
-                            fixed_deposit(account_data)
-                        }, $.ajaxSetup().retryAfter)
-
-                    }
-                })
-            }
-
-            function get_accounts(account_data) {
-
-                $(".accounts_display_area").hide()
-                $(".accounts_error_area").hide()
-                $(".accounts_loading_area").show()
-
-                $.ajax({
-                    "type": "GET",
-                    "url": "get-accounts-api",
-                    datatype: "application/json",
-
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        if (response.responseCode == '000') {
-
-                            let data = response.data;
-                            {{-- console.log("accounts" + data) --}}
-
-                            let i_have_total = 0
-                            let count = 0
-
-                            $('.currency_and_savings_account_no').text(data.length)
-                            console.log('my data')
-                            console.log(data)
-
-                            account_data.i_have_total = 0
-                            $.each(data, function(index) {
-                                let localEquivalentAvailableBalance = data[index]
-                                    .localEquivalentAvailableBalance
-                                localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(
-                                    /,/g, "");
-
-                                console.log(typeof(localEquivalentAvailableBalance))
-
-
-                                account_data.i_have_total += Math.abs(parseFloat(
-                                    localEquivalentAvailableBalance))
-                                console.log(`total money ${account_data.i_have_total}`)
-                                $('.casa_list_display').append(
-                                    `<tr>
+                                    account_data.i_have_total += Math.abs(parseFloat(
+                                        localEquivalentAvailableBalance))
+                                    console.log(`total money ${account_data.i_have_total}`)
+                                    $('.casa_list_display').append(
+                                        `<tr>
                                         <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
                                         <td> <b> ${data[index].accountDesc} </b>  </td>
                                         <td> <b> ${data[index].accountType}  </b>  </td>
@@ -1344,96 +1431,96 @@
                                         {{-- <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td> --}}
                                         <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
                                     </tr>`
-                                )
-                            })
+                                    )
+                                })
 
-                            {{-- console.log('i_have_total: ' + i_have_total) --}}
+                                {{-- console.log('i_have_total: ' + i_have_total) --}}
 
-                            {{-- SETTING TABLE VALUES --}}
-                            $('.i_have_amount').text(formatToCurrency(parseFloat(account_data.i_have_total)));
+                                {{-- SETTING TABLE VALUES --}}
+                                $('.i_have_amount').text(formatToCurrency(parseFloat(account_data.i_have_total)));
 
-                            {{-- SETTING GRAPH VALUE --}}
-                            {{-- i_have = i_have_total --}}
+                                {{-- SETTING GRAPH VALUE --}}
+                                {{-- i_have = i_have_total --}}
 
 
 
-                            $(".accounts_error_area").hide()
+                                $(".accounts_error_area").hide()
+                                $(".accounts_loading_area").hide()
+                                $(".accounts_display_area").show()
+
+                                {{-- show_chart(i_have, i_owe, i_invest_total) --}}
+
+                            } else {
+
+                                $(".accounts_error_area").hide()
+                                $(".accounts_loading_area").hide()
+                                $(".accounts_display_area").show()
+
+                            }
+
+                        },
+                        error: function(xhr, status, error) {
+
                             $(".accounts_loading_area").hide()
-                            $(".accounts_display_area").show()
-
-                            {{-- show_chart(i_have, i_owe, i_invest_total) --}}
-
-                        } else {
-
-                            $(".accounts_error_area").hide()
-                            $(".accounts_loading_area").hide()
-                            $(".accounts_display_area").show()
+                            $(".accounts_display_area").hide()
+                            $(".accounts_error_area").show()
+                            setTimeout(function() {
+                                get_accounts(account_data)
+                            }, $.ajaxSetup().retryAfter)
 
                         }
+                    })
+                }
 
-                    },
-                    error: function(xhr, status, error) {
+                function get_loans(account_data) {
 
-                        $(".accounts_loading_area").hide()
-                        $(".accounts_display_area").hide()
-                        $(".accounts_error_area").show()
-                        setTimeout(function() {
-                            get_accounts(account_data)
-                        }, $.ajaxSetup().retryAfter)
+                    $(".loan_no_data_found").hide()
+                    $(".loans_display_area").hide()
+                    $(".loans_error_area").hide()
+                    $(".loans_loading_area").show()
 
-                    }
-                })
-            }
+                    $.ajax({
+                        "type": "GET",
+                        "url": "get-loan-accounts-api",
+                        datatype: "application/json",
 
-            function get_loans(account_data) {
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.responseCode == '000') {
 
-                $(".loan_no_data_found").hide()
-                $(".loans_display_area").hide()
-                $(".loans_error_area").hide()
-                $(".loans_loading_area").show()
+                                var data = response.data;
+                                {{-- console.log("loans" + data) --}}
 
-                $.ajax({
-                    "type": "GET",
-                    "url": "get-loan-accounts-api",
-                    datatype: "application/json",
+                                if (!response.data) {
 
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        if (response.responseCode == '000') {
-
-                            var data = response.data;
-                            {{-- console.log("loans" + data) --}}
-
-                            if (!response.data) {
-
-                                return false
-                                $('.loan_no_data_found').show()
-                                $(".loans_display_area").hide()
-                            } else {
-                                if (response.data == null) {
-                                    $('#p_loans_display').html(`<h2 class="text-center text-danger">No Loan</h2>`)
+                                    return false
+                                    $('.loan_no_data_found').show()
+                                    $(".loans_display_area").hide()
                                 } else {
+                                    if (response.data == null) {
+                                        $('#p_loans_display').html(`<h2 class="text-center text-danger">No Loan</h2>`)
+                                    } else {
 
-                                    if (response.data.length > 0) {
-                                        $('#p_loans_display').show()
-                                        $(".loans_display_area").show()
-                                        console.log("response");
+                                        if (response.data.length > 0) {
+                                            $('#p_loans_display').show()
+                                            $(".loans_display_area").show()
+                                            console.log("response");
 
-                                        let i_owe_total = 0
-                                        let count = 0
+                                            let i_owe_total = 0
+                                            let count = 0
 
-                                        account_data.i_owe_total = 0
-                                        $.each(data, function(index) {
-                                            let loanBalance = data[index].loanBalance
-                                            loanBalance = loanBalance.replace(/,/g, "");
-                                            account_data.i_owe_total += Math.abs(parseFloat(loanBalance))
+                                            account_data.i_owe_total = 0
+                                            $.each(data, function(index) {
+                                                let loanBalance = data[index].loanBalance
+                                                loanBalance = loanBalance.replace(/,/g, "");
+                                                account_data.i_owe_total += Math.abs(parseFloat(loanBalance))
 
-                                            console.log(`total loans ${account_data.i_owe_total}`)
-                                            $('.loans_display').append(
-                                                `
+                                                console.log(`total loans ${account_data.i_owe_total}`)
+                                                $('.loans_display').append(
+                                                    `
                                             <tr>
                                                 <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
                                                 <td> <b> ${data[index].description} </b>  </td>
@@ -1441,153 +1528,153 @@
                                                 <td> <b> ${ formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
                                                 <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
                                             </tr>`
-                                            )
+                                                )
 
-                                        })
+                                            })
 
-                                        {{-- console.log('i_owe_total: ' + i_owe_total) --}}
+                                            {{-- console.log('i_owe_total: ' + i_owe_total) --}}
 
-                                        {{-- show_chart(i_have, i_owe, i_invest_total) --}}
-                                    } else {
-                                        $('#p_loans_display').html(`<h2 class="text-center">No Loan</h2>`)
+                                            {{-- show_chart(i_have, i_owe, i_invest_total) --}}
+                                        } else {
+                                            $('#p_loans_display').html(`<h2 class="text-center">No Loan</h2>`)
+                                        }
                                     }
+
+
                                 }
 
 
+
+                            } else if (response.responseCode == '00') {
+                                $(".loan_no_data_found").show()
+                                $(".loans_error_area").hide()
+                                $(".loans_loading_area").hide()
+                                $(".loans_display_area").hide()
+                            } else {
+                                $(".loan_no_data_found").hide()
+                                {{-- $(".loans_error_area").hide()
+                            $(".loans_loading_area").hide()
+                            $(".loans_display_area").show() --}}
+
+                            }
+
+                        },
+                        error: function(xhr, status, error) {
+                            $(".loans_display_area").hide()
+                            $(".loans_loading_area").hide()
+                            $(".loans_error_area").show()
+                            setTimeout(function() {
+                                get_loans(account_data)
+                            }, $.ajaxSetup().retryAfter)
+                        }
+
+                    })
+                }
+
+                function get_currency() {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'get-currency-list-api',
+                        datatype: "application/json",
+                        success: function(response) {
+                            console.log(response.data);
+                            let data = response.data
+                            $.each(data, function(index) {
+                                $('.select_currency').append($('<option>', {
+                                    value: data[index].isoCode
+                                }).text('(' + data[index].isoCode + ') ~ ' + data[index]
+                                    .description));
+                            });
+
+                        },
+
+                    })
+                };
+
+
+                function formatToCurrency(amount) {
+                    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+                };
+
+
+                function get_correct_fx_rate() {
+
+                    $(".currency_converter_display_area").hide()
+                    $(".currency_converter_error_area").hide()
+                    $(".currency_converter_loading_area").show()
+
+                    $.ajax({
+                        type: 'GET',
+                        url: 'get-correct-fx-rate-api',
+                        datatype: "application/json",
+                        success: function(response) {
+                            console.log(response.data);
+                            let data = response.data
+                            console.log(data)
+                            if (response.responseCode == '000') {
+
+                                $(".currency_converter_loading_area").hide()
+                                $(".currency_converter_error_area").hide()
+                                $(".currency_converter_display_area").show()
+
+                                $('#hide_fx_rate').val(JSON.stringify(data))
+
+                            } else {
+                                $(".currency_converter_display_area").hide()
+                                $(".currency_converter_loading_area").hide()
+                                $(".currency_converter_error_area").show()
                             }
 
 
 
-                        } else if (response.responseCode == '00') {
-                            $(".loan_no_data_found").show()
-                            $(".loans_error_area").hide()
-                            $(".loans_loading_area").hide()
-                            $(".loans_display_area").hide()
-                        } else {
-                            $(".loan_no_data_found").hide()
-                            {{-- $(".loans_error_area").hide()
-                            $(".loans_loading_area").hide()
-                            $(".loans_display_area").show() --}}
-
-                        }
-
-                    },
-                    error: function(xhr, status, error) {
-                        $(".loans_display_area").hide()
-                        $(".loans_loading_area").hide()
-                        $(".loans_error_area").show()
-                        setTimeout(function() {
-                            get_loans(account_data)
-                        }, $.ajaxSetup().retryAfter)
-                    }
-
-                })
-            }
-
-            function get_currency() {
-                $.ajax({
-                    type: 'GET',
-                    url: 'get-currency-list-api',
-                    datatype: "application/json",
-                    success: function(response) {
-                        console.log(response.data);
-                        let data = response.data
-                        $.each(data, function(index) {
-                            $('.select_currency').append($('<option>', {
-                                value: data[index].isoCode
-                            }).text('(' + data[index].isoCode + ') ~ ' + data[index]
-                                .description));
-                        });
-
-                    },
-
-                })
-            };
-
-
-            function formatToCurrency(amount) {
-                return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-            };
-
-
-            function get_correct_fx_rate() {
-
-                $(".currency_converter_display_area").hide()
-                $(".currency_converter_error_area").hide()
-                $(".currency_converter_loading_area").show()
-
-                $.ajax({
-                    type: 'GET',
-                    url: 'get-correct-fx-rate-api',
-                    datatype: "application/json",
-                    success: function(response) {
-                        console.log(response.data);
-                        let data = response.data
-                        console.log(data)
-                        if (response.responseCode == '000') {
-
-                            $(".currency_converter_loading_area").hide()
-                            $(".currency_converter_error_area").hide()
-                            $(".currency_converter_display_area").show()
-
-                            $('#hide_fx_rate').val(JSON.stringify(data))
-
-                        } else {
+                        },
+                        error: function(xhr, status, error) {
                             $(".currency_converter_display_area").hide()
                             $(".currency_converter_loading_area").hide()
                             $(".currency_converter_error_area").show()
+
+                            setTimeout(function() {
+                                get_correct_fx_rate()
+                            }, $.ajaxSetup().retryAfter)
                         }
 
+                    })
+                };
 
+                function get_fx_rate(rate_type) {
 
-                    },
-                    error: function(xhr, status, error) {
-                        $(".currency_converter_display_area").hide()
-                        $(".currency_converter_loading_area").hide()
-                        $(".currency_converter_error_area").show()
+                    $(".cross_rate_display_area").hide()
+                    $(".cross_rates_error_area").hide()
+                    $(".cross_rates_loading_area").show()
 
-                        setTimeout(function() {
-                            get_correct_fx_rate()
-                        }, $.ajaxSetup().retryAfter)
-                    }
+                    $.ajax({
+                        "type": "GET",
+                        "url": "get-fx-rate-api?rateType=" + rate_type,
+                        datatype: "application/json",
 
-                })
-            };
-
-            function get_fx_rate(rate_type) {
-
-                $(".cross_rate_display_area").hide()
-                $(".cross_rates_error_area").hide()
-                $(".cross_rates_loading_area").show()
-
-                $.ajax({
-                    "type": "GET",
-                    "url": "get-fx-rate-api?rateType=" + rate_type,
-                    datatype: "application/json",
-
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        if (response.responseCode == '000') {
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.responseCode == '000') {
 
 
 
-                            let data = response.data;
+                                let data = response.data;
 
 
-                            if (response.data.length > 0) {
-                                if (rate_type == "Note rate") {
-                                    $.each(data, function(index) {
-                                        let flag_1 = ``
-                                        let flag_2 = ``
-                                        console.log(data[index].pair);
-                                        let pair = data[index].pair.split('/')
-                                        flag_1 = `assets/images/flags/${pair[0].trim()}.png`
-                                        flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                        $('.display_cross_rates').append(
-                                            `
+                                if (response.data.length > 0) {
+                                    if (rate_type == "Note rate") {
+                                        $.each(data, function(index) {
+                                            let flag_1 = ``
+                                            let flag_2 = ``
+                                            console.log(data[index].pair);
+                                            let pair = data[index].pair.split('/')
+                                            flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                                            flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                                            $('.display_cross_rates').append(
+                                                `
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <tr>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <td style="zoom: 0.8;">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
@@ -1599,18 +1686,18 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <td> <b> ${parseFloat(data[index].sell)} </b> </td>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             </tr>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         `
-                                        );
-                                    });
-                                } else if (rate_type == "Cross rate") {
-                                    $.each(data, function(index) {
-                                        let flag_1 = ``
-                                        let flag_2 = ``
-                                        console.log(data[index].pair);
-                                        let pair = data[index].pair.split('/')
-                                        flag_1 = `assets/images/flags/${pair[0].trim()}.png`
-                                        flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                        $('.display_cross_rates').append(
-                                            `
+                                            );
+                                        });
+                                    } else if (rate_type == "Cross rate") {
+                                        $.each(data, function(index) {
+                                            let flag_1 = ``
+                                            let flag_2 = ``
+                                            console.log(data[index].pair);
+                                            let pair = data[index].pair.split('/')
+                                            flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                                            flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                                            $('.display_cross_rates').append(
+                                                `
                                         <tr>
                                             <td style="zoom: 0.8;">
                                                 <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
@@ -1622,38 +1709,38 @@
                                             <td> <b> ${parseFloat(data[index].sell)} </b> </td>
                                         </tr>
                                     `
-                                        );
-                                    });
+                                            );
+                                        });
+                                    }
+
                                 }
 
+
+                                $(".cross_rates_error_area").hide()
+                                $(".cross_rates_loading_area").hide()
+                                $(".cross_rate_display_area").show()
+
+                            } else {
+
+                                $(".cross_rates_error_area").hide()
+                                $(".cross_rates_loading_area").hide()
+                                $(".cross_rate_display_area").show()
                             }
 
-
-                            $(".cross_rates_error_area").hide()
+                        },
+                        error: function(xhr, status, error) {
+                            $(".cross_rate_display_area").hide()
                             $(".cross_rates_loading_area").hide()
-                            $(".cross_rate_display_area").show()
+                            $(".cross_rates_error_area").show()
+                            setTimeout(function() {
+                                get_fx_rate()
+                            }, $.ajaxSetup().retryAfter)
 
-                        } else {
-
-                            $(".cross_rates_error_area").hide()
-                            $(".cross_rates_loading_area").hide()
-                            $(".cross_rate_display_area").show()
                         }
+                    })
+                }
 
-                    },
-                    error: function(xhr, status, error) {
-                        $(".cross_rate_display_area").hide()
-                        $(".cross_rates_loading_area").hide()
-                        $(".cross_rates_error_area").show()
-                        setTimeout(function() {
-                            get_fx_rate()
-                        }, $.ajaxSetup().retryAfter)
-
-                    }
-                })
-            }
-
-            //     {{-- function dynamic_display(first, second, third){
+                //     {{-- function dynamic_display(first, second, third){
                     //      $(".cross_rate_display_area").hide()
                     //      $(".cross_rates_error_area").hide()
 
@@ -1666,78 +1753,78 @@
 
 
 
-            let today = new Date();
-            let dd = today.getDate();
+                let today = new Date();
+                let dd = today.getDate();
 
-            let mm = today.getMonth() + 1;
-            const yyyy = today.getFullYear()
-            console.log(mm)
-            console.log(String(mm).length)
-            if (String(mm).length == 1) {
-                mm = '0' + mm
-            }
+                let mm = today.getMonth() + 1;
+                const yyyy = today.getFullYear()
+                console.log(mm)
+                console.log(String(mm).length)
+                if (String(mm).length == 1) {
+                    mm = '0' + mm
+                }
 
-            var end_date = '01-' + mm + '-' + today.getFullYear();
-            var start_date = '30-' + mm + '-' + (Number(today.getFullYear()) - 1);
-            var transLimit = 20;
+                var end_date = '01-' + mm + '-' + today.getFullYear();
+                var start_date = '30-' + mm + '-' + (Number(today.getFullYear()) - 1);
+                var transLimit = 20;
 
 
 
-            function getAccountTransactions(account_number, start_date, end_date, transLimit) {
-                {{-- var table = $('.account_transaction_display_table').DataTable();
+                function getAccountTransactions(account_number, start_date, end_date, transLimit) {
+                    {{-- var table = $('.account_transaction_display_table').DataTable();
                         var nodes = table.rows().nodes(); --}}
 
 
-                $.ajax({
-                    "type": "POST",
-                    "url": "account-transaction-history",
-                    datatype: "application/json",
-                    data: {
-                        "accountNumber": account_number,
-                        "endDate": end_date,
-                        "entrySource": "A",
-                        "startDate": start_date,
-                        "transLimit": transLimit
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        if (response.responseCode == '000') {
+                    $.ajax({
+                        "type": "POST",
+                        "url": "account-transaction-history",
+                        datatype: "application/json",
+                        data: {
+                            "accountNumber": account_number,
+                            "endDate": end_date,
+                            "entrySource": "A",
+                            "startDate": start_date,
+                            "transLimit": transLimit
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.responseCode == '000') {
 
-                            // let data = response.data ;
-                            // console.log(data);
+                                // let data = response.data ;
+                                // console.log(data);
 
-                            var limit = 10;
-                            let data = response.data.slice(0, limit);
+                                var limit = 10;
+                                let data = response.data.slice(0, limit);
 
-                            $("#transaction_history tr").remove();
+                                $("#transaction_history tr").remove();
 
-                            $.each(data, function(index) {
-                                console.log(data[index].amount);
-                                var transfer_amount = parseFloat(data[index].amount);
+                                $.each(data, function(index) {
+                                    console.log(data[index].amount);
+                                    var transfer_amount = parseFloat(data[index].amount);
 
-                                let icon = "";
-                                let color = "";
+                                    let icon = "";
+                                    let color = "";
 
-                                if (transfer_amount > 0) {
-                                    icon = "fe-arrow-down-left ";
-                                    color = "bg-soft-blue";
-                                } else {
-                                    icon = "fe-arrow-down-right ";
-                                    color = "bg-soft-danger";
-
-
-                                }
+                                    if (transfer_amount > 0) {
+                                        icon = "fe-arrow-down-left ";
+                                        color = "bg-soft-blue";
+                                    } else {
+                                        icon = "fe-arrow-down-right ";
+                                        color = "bg-soft-danger";
 
 
+                                    }
 
-                                {{-- $("#transaction_history").html("") --}}
-                                // $("#transaction_history td").remove();
 
-                                $("#transaction_history").append(
-                                    `
+
+                                    {{-- $("#transaction_history").html("") --}}
+                                    // $("#transaction_history td").remove();
+
+                                    $("#transaction_history").append(
+                                        `
                                             <tr>
                                                 <td>
                                                     <a href="ecommerce-product-detail.html"
@@ -1747,132 +1834,132 @@
                                                 </td>
                                             </tr>
                                             `
-                                )
-                            })
+                                    )
+                                })
 
 
 
-                        } else {
+                            } else {
 
 
-                        }
+                            }
 
-                    },
-                    error: function(xhr, status, error) {
-                        {{-- $("#account_transaction_loader").hide();
+                        },
+                        error: function(xhr, status, error) {
+                            {{-- $("#account_transaction_loader").hide();
                                 $(".account_transaction_display").hide();
                                 $(".account_transaction_display_table").hide();
                                 $("#account_transaction_retry_btn").show(); --}}
-                        console.log(xhr, status, error);
-                    }
-                })
-            }
-
-            var global_selected_currency = "";
-
-
-
-            $(document).ready(function() {
-
-                {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
-
-                $('.loan_no_data_found').hide()
-                $(".i_owe_display_no_data").hide()
-
-                $(".i_have_display_no_data").hide()
-                $(".fd_display_no_data").hide()
-                $(".fd_display").hide()
-
-                $(".cross_rate_display_area").hide()
-                $(".cross_rates_error_area").hide()
-                $(".cross_rates_loading_area").show()
-
-                $(".loans_display_area").hide()
-                $(".loans_error_area").hide()
-                $(".loans_loading_area").show()
-
-                $(".accounts_display_area").hide()
-                $(".accounts_error_area").hide()
-                $(".accounts_loading_area").show()
-
-                $(".currency_converter_display_area").hide()
-                $(".currency_converter_error_area").hide()
-                $(".currency_converter_loading_area").show()
-
-
-
-                var converter_rates = []
-
-                function fx_rates() {
-                    get_fx_rate("Transfer rate")
-                    get_fx_rate("Note rate")
-                    get_fx_rate("Cross rate")
+                            console.log(xhr, status, error);
+                        }
+                    })
                 }
-                let account_data = new Object()
-                get_accounts(account_data);
-                get_loans(account_data);
-                fixed_deposit(account_data);
-                account_transaction();
-                fx_rates()
-                converter_rates = get_correct_fx_rate()
-                get_currency()
 
-                setTimeout(function() {
-
-
-                    show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
-
-                }, 5000);
-
-            })
+                var global_selected_currency = "";
 
 
 
-            $("#account_transaction").change(function() {
-                var account_details = $(this).val().split('~');
-                var account_number = account_details[2];
-                var account_currency = account_details[3];
+                $(document).ready(function() {
 
-                global_selected_currency = account_details[3]
+                    {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
 
-                {{-- var start_date = start_date; --}}
-                {{-- var end_date = end_date; --}}
-                {{-- var transLimit = transLimit; --}}
-                $(".account_currency").text(account_currency);
+                    $('.loan_no_data_found').hide()
+                    $(".i_owe_display_no_data").hide()
 
-                console.log(account_details);
-                console.log(account_number);
-                console.log(start_date);
-                console.log(end_date);
-                console.log(transLimit);
+                    $(".i_have_display_no_data").hide()
+                    $(".fd_display_no_data").hide()
+                    $(".fd_display").hide()
 
-                getAccountTransactions(account_number, start_date, end_date, transLimit)
+                    $(".cross_rate_display_area").hide()
+                    $(".cross_rates_error_area").hide()
+                    $(".cross_rates_loading_area").show()
 
-                {{-- let data = --}}
+                    $(".loans_display_area").hide()
+                    $(".loans_error_area").hide()
+                    $(".loans_loading_area").show()
 
+                    $(".accounts_display_area").hide()
+                    $(".accounts_error_area").hide()
+                    $(".accounts_loading_area").show()
 
-            })
-        </script>
-
-        {{-- <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script> --}}
-
+                    $(".currency_converter_display_area").hide()
+                    $(".currency_converter_error_area").hide()
+                    $(".currency_converter_loading_area").show()
 
 
-        {{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
+
+                    var converter_rates = []
+
+                    function fx_rates() {
+                        get_fx_rate("Transfer rate")
+                        get_fx_rate("Note rate")
+                        get_fx_rate("Cross rate")
+                    }
+                    let account_data = new Object()
+                    get_accounts(account_data);
+                    get_loans(account_data);
+                    fixed_deposit(account_data);
+                    account_transaction();
+                    fx_rates()
+                    converter_rates = get_correct_fx_rate()
+                    get_currency()
+
+                    setTimeout(function() {
+
+
+                        show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
+
+                    }, 5000);
+
+                })
+
+
+
+                $("#account_transaction").change(function() {
+                    var account_details = $(this).val().split('~');
+                    var account_number = account_details[2];
+                    var account_currency = account_details[3];
+
+                    global_selected_currency = account_details[3]
+
+                    {{-- var start_date = start_date; --}}
+                    {{-- var end_date = end_date; --}}
+                    {{-- var transLimit = transLimit; --}}
+                    $(".account_currency").text(account_currency);
+
+                    console.log(account_details);
+                    console.log(account_number);
+                    console.log(start_date);
+                    console.log(end_date);
+                    console.log(transLimit);
+
+                    getAccountTransactions(account_number, start_date, end_date, transLimit)
+
+                    {{-- let data = --}}
+
+
+                })
+            </script>
+
+            {{-- <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script> --}}
+
+
+
+            {{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
             <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
             <script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script> --}}
 
 
 
-        <!-- third party js -->
-        {{-- <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+            <!-- third party js -->
+            {{-- <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"> --}}
-        {{-- </script> --}}
+            {{-- </script> --}}
 
-        {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+            {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
             <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
@@ -1881,11 +1968,11 @@
             <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
             <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
             <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-        <!-- third party js ends -->
+            <!-- third party js ends -->
 
-        <!-- Datatables init -->
-        {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
-        <!-- Vendor js -->
+            <!-- Datatables init -->
+            {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
+            <!-- Vendor js -->
 
 
-    @endsection
+        @endsection

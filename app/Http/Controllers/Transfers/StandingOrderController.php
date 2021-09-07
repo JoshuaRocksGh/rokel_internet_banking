@@ -116,9 +116,9 @@ class StandingOrderController extends Controller
             'from_account' =>  'required',
             'amount' => 'required',
             'beneficiary_account' => 'required',
-            'standing_order_start_date' => 'required',
-            'standing_order_end_date' => 'required',
-            'standing_order_frequency' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'frequency' => 'required',
             'narration' => 'required',
             'bank_code' => 'required',
             'user_pin' => 'required'

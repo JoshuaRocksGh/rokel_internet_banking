@@ -15,7 +15,7 @@
             <div class="col-md-2">
                 <br>
                 <a href="{{ url()->previous() }}" type="button"
-                    class="btn btn-soft-blue waves-effect waves-light float-left"><i class="fe-arrow-left"></i>&nbsp;Go
+                    class="btn btn-soft-blue waves-effect waves-light float-left"><i class="mdi mdi-reply-all-outline"></i>&nbsp;Go
                     Back</a>
 
             </div>
