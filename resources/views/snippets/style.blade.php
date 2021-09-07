@@ -37,6 +37,10 @@ id="bs-dark-stylesheet" /> --}}
 
 <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" />
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+
 
 <style>
     /* {
@@ -497,106 +501,111 @@ id="bs-dark-stylesheet" /> --}}
         font: 400 0.9rem Lato;
     }
 
-    /*
-    @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
 
-        // Force table to not be like tables anymore
-        table,
-        thead,
-        tbody,
-        th,
-        td,
-        tr {
-            display: block;
+    {{-- body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+} --}} .demo {
+        font-weight: 500;
+        font-size: 36px;
+        position: absolute;
+        width: 450px;
+        left: 50%;
+        margin-left: -225px;
+        height: 40px;
+        top: 50%;
+        margin-top: -20px;
+    }
+
+    p {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+    }
+
+    .word {
+        position: absolute;
+        width: 220px;
+        opacity: 0;
+    }
+
+    .wisteria {
+        color: #8e44ad;
+    }
+
+    .belize {
+        color: #2980b9;
+    }
+
+    .pomegranate {
+        color: #c0392b;
+    }
+
+    .green {
+        color: #16a085;
+    }
+
+    .midnight {
+        color: #B89C72;
+    }
+
+    .word {
+        animation-iteration-count: infinite;
+        animation-name: anim;
+        animation-duration: 7.5s;
+        /*calculate the exact time for looping*/
+    }
+
+    .word:nth-child(2) {
+        animation-delay: 1.5s;
+    }
+
+    .word:nth-child(3) {
+        animation-delay: 3s;
+    }
+
+    .word:nth-child(4) {
+        animation-delay: 4.5s;
+    }
+
+    .word:nth-child(5) {
+        animation-delay: 6s;
+    }
+
+    @keyframes anim {
+
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
         }
 
-        // Hide table headers (but not display: none;, for accessibility)
-        thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
+        6.66% {
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        tr {
-            margin: 0 0 1rem 0;
+        20% {
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        tr:nth-child(odd) {
-            background: #ccc;
+        46.66% {
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         }
 
-        td {
-            // Behave  like a "row"
-            border: none;
-            border-bottom: 1px solid #eee;
-            position: relative;
-            padding-left: 50%;
-
+        /*we give long pause after animation is done by this method*/
+        100% {
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         }
 
-        td:before {
-            // Now like a table header
-            position: absolute;
-            // Top/left values mimic padding /
-            top: 0;
-            left: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: nowrap;
-        }
+    }
 
-       //
-	//	Label the data
-  //  You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-
-        td:nth-of-type(1):before {
-            content: " Date";
-            font-size: 1rem;
-            color: #0561ad;
-            font-weight: bold;
-        }
-
-        td:nth-of-type(2):before {
-            content: " Amount";
-            font-size: 1rem;
-            color: #0561ad;
-            font-weight: bold;
-        }
-
-        td:nth-of-type(3):before {
-            content: " Balance";
-            font-size: 1rem;
-            color: #0561ad;
-            font-weight: bold;
-        }
-
-        td:nth-of-type(4):before {
-            content: " Purpose Of Transfer";
-            font-size: 1rem;
-            color: #0561ad;
-            font-weight: bold;
-        }
-
-        td:nth-of-type(5):before {
-            content: " Credit Account";
-            font-size: 1rem;
-            color: #0561ad;
-            font-weight: bold;
-        }
-
-        td:nth-of-type(6):before {
-            content: " Transaction Id";
-            font-size: 1rem;
-            color: #0561ad;
-            font-weight: bold;
-        }
-
-        td:nth-of-type(7):before {
-            content: " Batch No";
-            font-size: 1rem;
-            color: #0561ad;
-            font-weight: bold;
-        }
-    } */
 </style>

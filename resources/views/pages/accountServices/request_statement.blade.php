@@ -201,36 +201,45 @@
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                     <br><br>
                                     <div class=" col-md-12 card card-body">
+                                        <h4 class="text-primary">Account Info.</h4>
+                                        <hr class="mt-0">
                                         {{-- <br><br> --}}
                                         <div class="row">
                                             <span class="col-md-12 success-message"></span>
-                                            <h6 class="col-md-5">Account Name:</h6>
+                                            <p class="col-md-5">Account Name:</p>
                                             <span class="text-primary display_my_account_name col-md-7"></span>
 
-                                            <h6 class="col-md-5">Account Number:</h6>
+                                            <p class="col-md-5">Account Number:</p>
                                             <span class="text-primary display_my_account_no col-md-7"></span>
 
-                                            <h6 class="col-md-5">Available Balance:</h6>
+                                            <p class="col-md-5">Available Balance:</p>
                                             <span class="text-primary display_my_account_amount col-md-7"></span>
 
-                                            <h6 class="col-md-5">Account Currency:</h6>
+                                            <p class="col-md-5">Account Currency:</p>
                                             <span class="text-primary display_my_account_currency col-md-7"></span>
-
-                                            <h6 class="col-md-5">Type Of Statement:</h6>
-                                            <span class="text-success display_type_of_statement col-md-7"></span>
-
-                                            <h6 class="col-md-5">Medium:</h6>
-                                            <span class="text-success display_medium col-md-7"></span>
-
-                                            <h6 class="col-md-5">Pick Up Branch:</h6>
-                                            <span class="text-success display_pick_up_branch col-md-7"></span>
-
-                                            <h6 class="col-md-5">Start Date:</h6>
-                                            <span class="text-success display_trans_startDate col-md-7"></span>
-
-                                            <h6 class="col-md-5">End Date:</h6>
-                                            <span class="text-success display_trans_endDate col-md-7"></span>
                                         </div>
+
+                                        <h4 class="text-primary">Request Info</h4>
+                                        <hr class="mt-0">
+
+                                        <div class="row">
+
+                                            <p class="col-md-5">Type Of Statement:</p>
+                                            <span class="text-primary display_type_of_statement col-md-7"></span>
+
+                                            <p class="col-md-5">Medium:</p>
+                                            <span class="text-primary display_medium col-md-7"></span>
+
+                                            <p class="col-md-5">Pick Up Branch:</p>
+                                            <span class="text-primary display_pick_up_branch col-md-7"></span>
+
+                                            <p class="col-md-5">Start Date:</p>
+                                            <span class="text-primary display_trans_startDate col-md-7"></span>
+
+                                            <p class="col-md-5">End Date:</p>
+                                            <span class="text-primary display_trans_endDate col-md-7"></span>
+                                        </div>
+
                                     </div>
 
                                     <div class="form-group text-center display_button_print">

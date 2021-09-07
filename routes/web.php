@@ -172,6 +172,7 @@ Route::get('/download_same_bank_file', [BulkUploadBulkUploadsController::class, 
 Route::get('/download_bulk_korpor_file', [BulkUploadBulkUploadsController::class, 'download_bulk_korpor'])->name('download-bulk-korpor-file');
 Route::get('/download_other_bank_file', [BulkUploadBulkUploadsController::class, 'download_other_bank'])->name('download-other-bank-file');
 Route::get('/view-bulk-transfer', [BulkUploadBulkUploadsController::class, 'view_bulk_transfer'])->name('view-bulk-transfer');
+Route::get('/view-error-bulk-transfer', [BulkUploadBulkUploadsController::class, 'view_error_bulk_transfer'])->name('view-error-bulk-transfer');
 Route::get('/get-bulk-upload-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_list'])->name('get-bulk-upload-list-api');
 Route::get('/get-bulk-upload-detail-list-api', [BulkUploadBulkUploadsController::class, 'get_bulk_upload_file_details'])->name('get-bulk-upload-detail-list-api');
 Route::get('/post-bulk-transaction-api', [BulkUploadBulkUploadsController::class, 'post_bulk_transaction'])->name('post-bulk-transaction-api');
@@ -386,6 +387,9 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('standing-order', [StandingOrderController::class, 'display_standing_order'])->name('standing-order');
     Route::get('standing-order-new', [StandingOrderController::class, 'display_standing_order_new'])->name('standing-order-new');
 
+    //Transfer Pending
+    Route::get('/ach-transfer-pending', [TransferStatusController::class, 'ach_pending'])->name('ach-transfer-pending');
+
     //Add Beneficiary
     Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
 
@@ -478,6 +482,8 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('stop-cheque', [AccountServicesController::class, 'stop_cheque'])->name('stop-cheque');
 
     Route::get('request-atm', [AccountServicesController::class, 'request_atm'])->name('request-atm');
+
+    Route::get('block-debit-card', [AccountServicesController::class, 'block_atm'])->name('block-debit-card');
 
     Route::get('activate-card', [CardsController::class, 'activate_card'])->name('activate-card');
 
@@ -621,6 +627,13 @@ Route::get('get-kyc-details', [KYCKycController::class, 'kyc_update'])->name('ge
 
 //route for atm card
 Route::post('atm-card-request-api', [AtmCardRequestController::class, 'atm_card_request'])->name('atm-card-request-api');
+
+//Activate  Card
+Route::post('activate-card-request-api', [AtmCardRequestController::class, 'activate_card_request'])->name('activate-card-request-api');
+
+//Block Card
+Route::post('block-card-request-api', [AtmCardRequestController::class, 'block_card_request'])->name('block-card-request-api');
+
 
 // ROUTE FOR ACCOUNT CREATION
 Route::post('savings-account-creation-api', [SavingsAccountCreationController::class, 'savings_account_creation'])->name('savings-account-creation-api');

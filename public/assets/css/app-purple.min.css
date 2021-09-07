@@ -3386,8 +3386,9 @@ body.authentication-bg-pattern {
     min-height: 100vh;
     flex-direction: row;
     align-items: stretch;
-    background: url(../images/bg-auth.jpeg) center;
+    /* background: url(../images/background2.jpg) center; */
     background-size: cover;
+    /* opacity: 0.6; */
 }
 
 .auth-fluid .auth-fluid-form-box {
@@ -3416,7 +3417,7 @@ body.authentication-bg-pattern {
     position: absolute;
     margin: 0 auto;
     padding: 0 1.75rem;
-    bottom: 3rem;
+    bottom: 0rem;
     left: 0;
     right: 0;
 }

@@ -38,13 +38,17 @@
 
 @section('content')
 
-    <div class="">
+    <div class="___class_+?0___">
 
         <div class="container-fluid hide_on_print">
             <br>
             <!-- start page title -->
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
+                    <a href="{{ url()->previous() }}" type="button" class="btn btn-soft-blue waves-effect waves-light"><i
+                            class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
+                </div>
+                <div class="col-md-4">
                     <h4 class="text-primary">
                         <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                         CHEQUE BOOK REQUEST
@@ -52,11 +56,12 @@
                     </h4>
                 </div>
 
-                <div class="col-md-6 text-right">
+                <div class="col-md-4 text-right">
                     <h6>
 
                         <span class="flaot-right">
-                            <b class="text-primary"> Account Services </b> &nbsp; > &nbsp; <b class="text-danger">CHEQUE
+                            <b class="text-primary"> Account Services </b> &nbsp; > &nbsp; <b
+                                class="text-danger">CHEQUE
                                 BOOK REQUEST</b>
 
 
@@ -82,20 +87,22 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <div class="receipt" style="display: noneS">
+                            <div class="receipt" style="display: none">
                                 <div class="container card card-body">
 
                                     <div class="container">
-                                        <div class="">
+                                        <div class="___class_+?19___">
                                             <div class="col-md-12 col-md-offset-3 body-main">
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
+                                                        <div class="col-md-4 "> <img class="img "
+                                                                alt="InvoIce Template"
                                                                 src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
                                                                 style="zoom: 0.6" /> </div>
                                                         <div class="col-md-4"></div>
                                                         <div class="col-md-4 text-right">
-                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL BANK</strong>
+                                                            <h4 class="text-primary"><strong>ROKEL COMMERCIAL
+                                                                    BANK</strong>
                                                             </h4>
                                                             <p>25-27 Siaka Stevens St</p>
                                                             <p> Freetown, Sierra Leone</p>
@@ -147,7 +154,8 @@
                                                                 <tr>
                                                                     {{-- <th scope="row">1</th> --}}
                                                                     <td>Pickup Branch</td>
-                                                                    <td class="text-right"><span id="pickup_branch"></span>
+                                                                    <td class="text-right"><span
+                                                                            id="pickup_branch"></span>
                                                                     </td>
                                                                     {{-- <td></td> --}}
                                                                 </tr>
@@ -192,7 +200,7 @@
                             <div class="form_process">
 
                                 <div class="row ">
-                                    <div class=" col-md-7 m-2" id="request_form_div"
+                                    <div class=" col-md-7 m-2 h-100" id="request_form_div" mh-100
                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                         <br><br><br>
 
@@ -201,7 +209,7 @@
                                             @csrf
                                             <div class="row container">
                                                 <div class="col-md-1"></div>
-                                                <div class="col-md-9">
+                                                <div class="col-md-10">
 
                                                     {{-- <br><br><br> --}}
                                                     <div class="row">
@@ -210,23 +218,26 @@
                                                         <div class="col-md-12">
 
                                                             <div class="form-group row mb-3">
-                                                                <b class="col-md-6 text-primary">My Account &nbsp; <span
+                                                                <b class="col-md-12 text-primary">Account which cheque
+                                                                    book will be made for &nbsp; <span
                                                                         class="text-danger">*</span> </b>
 
 
-                                                                <select class="form-control col-md-6 " id="my_account"
+                                                                <select class="form-control col-md-12 " id="my_account"
                                                                     required>
                                                                     <option value="">Select Account</option>
                                                                 </select>
                                                             </div>
+                                                            <br>
+                                                            <hr class="mt-0">
 
                                                             <div class="form-group row mb-3">
 
-                                                                <b class="col-md-6 text-primary" for="leaflet">
-                                                                    Leftlets
+                                                                <b class="col-md-4 text-primary" for="leaflet">
+                                                                    Number of Leftlets
                                                                     <span class="text-danger">*</span></b>
 
-                                                                <select class="form-control col-md-6" id="leaflet" required>
+                                                                <select class="form-control col-md-8" id="leaflet" required>
                                                                     <option value="">-- Select number --</option>
                                                                     <option value="25">25</option>
                                                                     <option value="50">50</option>
@@ -236,19 +247,19 @@
 
                                                             <div class="form-group row mb-3">
 
-                                                                <b class="col-md-6 text-primary">Branch
+                                                                <b class="col-md-4 text-primary">Pick up Branch
                                                                     <span class="text-danger">*</span></b>
 
-                                                                <select class="form-control col-md-6" id="branch" required>
+                                                                <select class="form-control col-md-8" id="branch" required>
                                                                     <option value="">-- Selected Branch --</option>
                                                                 </select>
                                                             </div>
 
                                                             <div class="form-group row mb-3 pin">
-                                                                <b class="col-md-6 text-primary">Enter Pin
+                                                                <b class="col-md-4 text-primary">Enter Pin
                                                                     <span class="text-danger">*</span></b>
 
-                                                                <input type="text" class="form-control col-md-6" id="pin"
+                                                                <input type="text" class="form-control col-md-8" id="pin"
                                                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
 
@@ -257,9 +268,9 @@
 
 
 
-                                                            <div class="form-group text-right ">
+                                                            <div class="form-group text-right">
                                                                 <button type="button"
-                                                                    class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                                    class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success m-2"
                                                                     id="submit_cheque_request">
                                                                     <span class="submit-text">Submit</span>
                                                                     <span class="spinner-border spinner-border-sm mr-1"
@@ -307,27 +318,36 @@
                                         style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                         <br><br>
                                         <div class=" col-md-12 card card-body">
+                                            <h4 class="text-primary">Account Info.</h4>
+                                            <hr class="mt-0">
                                             {{-- <br><br> --}}
                                             <div class="row">
                                                 <span class="col-md-12 success-message"></span>
-                                                <h6 class="col-md-5">Account Name:</h6>
+                                                <p class="col-md-5">Account Name:</p>
                                                 <span class="text-primary display_my_account_name col-md-7"></span>
 
-                                                <h6 class="col-md-5">Account Number:</h6>
+                                                <p class="col-md-5">Account Number:</p>
                                                 <span class="text-primary display_my_account_no col-md-7"></span>
 
-                                                <h6 class="col-md-5">Account Currency:</h6>
+                                                <p class="col-md-5">Account Currency:</p>
                                                 <span class="text-primary display_my_account_currency col-md-7"></span>
 
-                                                <h6 class="col-md-5">Available Balance:</h6>
+                                                <p class="col-md-5">Available Balance:</p>
                                                 <span class="text-primary display_my_account_amount col-md-7"></span>
-
-                                                <h6 class="col-md-5">Number Of Leaves:</h6>
-                                                <span class="text-success display_leaflet col-md-7"></span>
-
-                                                <h6 class="col-md-5">Pick Up Branch:</h6>
-                                                <span class="text-success display_branch col-md-7"></span>
                                             </div>
+
+                                            <h4 class="text-primary">Request Info.</h4>
+                                            <hr class="mt-0">
+
+                                            <div class="row">
+
+                                                <p class="col-md-5">Number Of Leaves:</p>
+                                                <span class="text-primary display_leaflet col-md-7"></span>
+
+                                                <p class="col-md-5">Pick Up Branch:</p>
+                                                <span class="text-primary display_branch col-md-7"></span>
+                                            </div>
+
                                         </div>
 
                                         <div class="form-group text-center display_button_print">
@@ -375,8 +395,9 @@
                                 '~' + data[index].accountNumber + '~' + data[index]
                                 .currency + '~' + data[index].availableBalance + '~' + data[
                                     index].accountMandate
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance));
+                        }).text(data[index].accountType + '|' + data[index].accountNumber +
+                            '|' + data[index].currency + '  ' + data[index].availableBalance
+                        ));
 
                     });
                 },

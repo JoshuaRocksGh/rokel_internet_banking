@@ -1008,7 +1008,7 @@
                         url: 'get-my-account',
                         datatype: "application/json",
                         success: function(response) {
-                            // console.log(response.data);
+                            console.log(response);
                             let data = response.data
                             $.each(data, function(index) {
 
@@ -1481,12 +1481,13 @@
 
                     })
 
-                    $("#confirm_transfer").click(function(e) {
+                    $("#confirm_transfer_text").click(function(e) {
                         e.preventDefault();
 
                         var customerType = @json(session()->get('customerType'));
 
                         if (customerType == 'C') {
+                            {{-- alert('Corporate'); --}}
                             $('#confirm_transfer_text').removeAttr('data-toggle');
 
                             var from_account = $("#from_account").val();
@@ -1499,14 +1500,20 @@
                             $(".display_purpose").text(narration)
 
                             var from_account_info = from_account.split('~');
+                            console.log("===")
+                            console.log(from_account_info)
                             var to_account_info = beneficiary.split('~');
+                            console.log("///")
+                            console.log(to_account_info)
+                            var currency = from_account_info[3]
 
                             from_account = from_account_info[2];
                             beneficiary = to_account_info[2];
+
                             var bankCode = to_account_info[5];
                             // console.log(bankCode);
                             // console.log(pin);
-                            $("#confirm_transfer-text").hide();
+                            $("#confirm_transfer_text").hide();
                             $("#spinner").show();
                             $("#spinner-text").show();
                             {{-- var pin = $("#user_pin").val(); --}}
@@ -1520,9 +1527,9 @@
                                     'from_account': from_account,
                                     'amount': amount,
                                     'beneficiary_account': beneficiary,
-                                    'standing_order_start_date': so_start_date,
-                                    'standing_order_end_date': so_end_date,
-                                    'standing_order_frequency': so_frequency,
+                                    'start_date': so_start_date,
+                                    'end_date': so_end_date,
+                                    'frequency': so_frequency,
                                     'narration': narration,
                                     'bank_code': bankCode,
 
@@ -1553,7 +1560,7 @@
                                     } else {
 
                                         toaster(response.message, 'error', 6000);
-                                        $("#confirm_transfer-text").show();
+                                        $("#confirm_transfer_text").show();
                                         $("#spinner").hide();
                                         $("#spinner-text").hide();
                                         $(".form_process").hide();
@@ -1564,79 +1571,88 @@
 
                         } else {
 
-                            var from_account = $("#from_account").val();
-                            var beneficiary = $("#saved_beneficiary").val();
-                            var amount = $("#amount").val();
-                            var so_start_date = $("#so_start_date").val();
-                            var so_end_date = $("#so_end_date").val();
-                            var so_frequency = $("#beneficiary_frequency").val();
-                            var narration = $("#purpose").val();
-                            $(".display_purpose").text(narration)
+                            $("#confirm_transfer").click(function(e) {
+                                e.preventDefault()
 
-                            var from_account_info = from_account.split('~');
-                            var to_account_info = beneficiary.split('~');
+                                var from_account = $("#from_account").val();
+                                var beneficiary = $("#saved_beneficiary").val();
+                                var amount = $("#amount").val();
+                                var so_start_date = $("#so_start_date").val();
+                                var so_end_date = $("#so_end_date").val();
+                                var so_frequency = $("#beneficiary_frequency").val();
+                                var narration = $("#purpose").val();
+                                $(".display_purpose").text(narration)
 
-                            from_account = from_account_info[2];
-                            beneficiary = to_account_info[2];
-                            var bankCode = to_account_info[5];
-                            // console.log(bankCode);
-                            // console.log(pin);
-                            $("#confirm_transfer-text").hide();
-                            $("#spinner").show();
-                            $("#spinner-text").show();
-                            var pin = $("#user_pin").val();
-                            // console.log(pin);
+                                var from_account_info = from_account.split('~');
+                                var to_account_info = beneficiary.split('~');
 
-                            $.ajax({
-                                type: "POST",
-                                url: "initiate-standing-order-request-api",
-                                datatype: "application/json",
-                                data: {
-                                    'from_account': from_account,
-                                    'amount': amount,
-                                    'beneficiary_account': beneficiary,
-                                    'standing_order_start_date': so_start_date,
-                                    'standing_order_end_date': so_end_date,
-                                    'standing_order_frequency': so_frequency,
-                                    'narration': narration,
-                                    'bank_code': bankCode,
-                                    'user_pin': pin
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-                                    console.log(response);
+                                from_account = from_account_info[2];
+                                beneficiary = to_account_info[2];
+                                var bankCode = to_account_info[5];
+                                // console.log(bankCode);
+                                // console.log(pin);
+                                $("#confirm_transfer_text").hide();
+                                $("#spinner").show();
+                                $("#spinner-text").show();
+                                var pin = $("#user_pin").val();
+                                // console.log(pin);
 
-                                    if (response.responseCode == '000') {
 
-                                        Swal.fire(
-                                            '',
-                                            response.message,
-                                            'success'
-                                        );
+                                $.ajax({
+                                    type: "POST",
+                                    url: "initiate-standing-order-request-api",
+                                    datatype: "application/json",
+                                    data: {
+                                        'from_account': from_account,
+                                        'amount': amount,
+                                        'beneficiary_account': beneficiary,
+                                        'standing_order_start_date': so_start_date,
+                                        'standing_order_end_date': so_end_date,
+                                        'standing_order_frequency': so_frequency,
+                                        'narration': narration,
+                                        'bank_code': bankCode,
+                                        'user_pin': pin
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                            'content')
+                                    },
+                                    success: function(response) {
+                                        console.log(response);
 
-                                        $(".receipt").removeAttr('style');
-                                        $(".receipt").show();
-                                        $("#spinner").hide();
-                                        $("#spinner-text").hide();
-                                        $(".form_process").hide();
-                                    } else {
+                                        if (response.responseCode == '000') {
 
-                                        toaster(response.message, 'error', 6000);
-                                        $("#confirm_transfer-text").show();
-                                        $("#spinner").hide();
-                                        $("#spinner-text").hide();
-                                        $(".form_process").show();
+                                            Swal.fire(
+                                                '',
+                                                response.message,
+                                                'success'
+                                            );
 
+                                            $(".receipt").removeAttr('style');
+                                            $(".receipt").show();
+                                            $("#spinner").hide();
+                                            $("#spinner-text").hide();
+                                            $(".form_process").hide();
+                                        } else {
+
+                                            toaster(response.message, 'error', 6000);
+                                            $("#confirm_transfer_text").show();
+                                            $("#spinner").hide();
+                                            $("#spinner-text").hide();
+                                            $(".form_process").show();
+
+                                        }
+
+                                    },
+                                    error: function() {
+                                        console.log("something went wrong")
                                     }
-
-                                },
-                                error: function() {
-                                    console.log("something went wrong")
-                                }
+                                })
                             })
+
+
+
+
 
                         }
 

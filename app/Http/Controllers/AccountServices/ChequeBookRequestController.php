@@ -33,6 +33,7 @@ class ChequeBookRequestController extends Controller
             "accountNumber" => $accountNumber,
             "branch" => $branchCode,
             "deviceIP" => "A",
+            "Channel" => "NET",
             "numberOfLeaves" => $numberOfLeaves,
             "pinCode" => $pinCode,
             "tokenID" => $authToken

@@ -19,13 +19,13 @@ class StatementRequestController extends Controller
         $validator = Validator::make($request->all(), [
             'account_no' => 'required',
             'type_of_statement' => 'required',
-            'pick_up_branch' => 'required',
+            // 'pick_up_branch' => 'required',
             'transStartDate' => 'required',
             'transEndDate' => 'required',
             'medium' => 'required',
             'pin' => 'required'
         ]);
-        // return $request;
+        return $request;
 
 
 
@@ -60,6 +60,7 @@ class StatementRequestController extends Controller
 
             "accountNumber" => $accountNumber,
             // "medium" => $medium,
+            "channel" => "NET",
             "branch" => $branchCode,
             "deviceIP" => $deviceIp,
             "endDate" => $endDate,
@@ -73,13 +74,13 @@ class StatementRequestController extends Controller
 
         ];
 
-        return $data;
+        // return $data;
 
 
         try {
             $response = Http::post(env('API_BASE_URL') . "/request/statment", $data);
 
-            // dd($response) ;
+            // dd($response);
             // return $response;
             $result = new ApiBaseResponse();
 
