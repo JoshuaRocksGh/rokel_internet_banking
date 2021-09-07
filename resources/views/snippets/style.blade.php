@@ -43,7 +43,7 @@ id="bs-dark-stylesheet" /> --}}
 
 
 <style>
-    {
+    /* {
             {
             -- .btn-primary {
                 box-shadow: 0 0 0 0 rgb(6 55 195 / 70%) !important;
@@ -51,7 +51,7 @@ id="bs-dark-stylesheet" /> --}}
 
             --
         }
-    }
+    } */
 
     .form-group {
         margin-bottom: 0.4rem !Important;
@@ -494,7 +494,11 @@ id="bs-dark-stylesheet" /> --}}
     }
 
     body {
-        font-size: .85rem;
+        font-size: .9rem;
+    }
+
+    select {
+        font: 400 0.9rem Lato;
     }
 
     @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);

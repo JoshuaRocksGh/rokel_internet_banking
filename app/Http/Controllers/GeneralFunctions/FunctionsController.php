@@ -81,7 +81,7 @@ class FunctionsController extends Controller
 
 
 
-    public function get_correct_fx_rate(Request $request)
+    public function get_correct_fx_rate()
     {
 
         $response = Http::get(env('API_BASE_URL') . "utilities/getCorrectFxRates");

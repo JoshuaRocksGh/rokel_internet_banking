@@ -99,37 +99,31 @@
 
                         <div class="col-md-12">
 
-                            <div class="row card-box div-card" id="transaction_form">
-                                <br>
-                                <div class="row m-1">
+                            <div class="row card-box div-card  justify-content-md-around" id="transaction_form">
 
-                                    <div class="col-md-8">
-                                        {{-- <p>Select Acount</p> --}}
-                                        <div class="form-group row ">
-                                            <b class="col-md-3 text-primary">Select Account :</b>
-                                            <select class="form-control col-md-8" id="from_account" required>
-                                                <option value="" disabled selected> -- Select Your Account --
-                                                </option>
-                                            </select>
-                                        </div>
+                                <div class="col-md-6 align-self-center">
+                                    {{-- <p>Select Acount</p> --}}
+                                    <div class="form-group row ">
+                                        <b class="col-md-3 text-primary align-self-center">Select Account :</b>
+                                        <select class="form-control col-md-9" id="from_account" required>
+                                            <option value="" disabled selected> -- Select Your Account --
+                                            </option>
+                                        </select>
+                                    </div>
 
-                                        <div class="form-group row">
-                                            <b class="col-md-3 text-primary">Date Interval :</b>
-                                            <div class="col-md-8">
-                                                <div class="row">
-                                                    <input type="text" id="startDate"
-                                                        class="form-control date-picker-startDate flatpickr-input input-sm col-md-5"
-                                                        readonly="readonly">
-                                                    <p class="col-md-1"></p>
-                                                    <input type="text" id="endDate"
-                                                        class="form-control date-picker-endDate flatpickr-input input-sm col-md-6"
-                                                        readonly="readonly">
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        {{-- <div class="form-group row">
+                                    <div class="form-group row">
+                                        <b class="col-md-3 text-primary align-self-center">Start Date :</b>
+                                        <input type="date" id="startDate" class=" col-md-9 form-control ">
+                                    </div>
+                                    <div class="form-group row">
+                                        <b class="col-md-3 text-primary align-self-center">End Date :</b>
+                                        <input type="date" id="endDate" class=" col-md-9 form-control ">
+                                    </div>
+                                    <div class="form-group row justify-content-end">
+                                        <button class="btn btn-primary mt-1 waves-effect waves-light"
+                                            id="search_transaction">Search</button>
+                                    </div>
+                                    {{-- <div class="form-group row">
                                                 <b class="col-md-3 text-primary">Amount Interval :</b>
 
                                                 <div class="col-md-8">
@@ -149,165 +143,174 @@
                                                 </div>
                                             </div> --}}
 
-                                        <button class="btn btn-primary btn-sm  mb-2" id="search_transaction"
-                                            style="float: right; margin-right:70px;">Search</button>
-
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h5 class="text-bold text-center"> <b>Account Details</b> </h5>
-                                            </div>
-                                            <div class="col-5">
-                                                <h5 class="___class_+?33___">Name:&nbsp; </h5>
-                                            </div>
-                                            <div class="col-7">
-                                                <h5>
-                                                    <b class="account_description"></b>
-                                                </h5>
-                                            </div>
-                                            <div class="col-5">
-                                                <h5 class="___class_+?35___">Account No:&nbsp; </h5>
-                                            </div>
-                                            <div class="col-7">
-                                                <h5>
-                                                    <b class="account_number"></b>
-                                                </h5>
-                                            </div>
-                                            <div class="col-5">
-
-                                                <h5 class="___class_+?37___">Product:&nbsp; </h5>
-
-                                            </div>
-                                            <div class="col-7">
-                                                <h5>
-                                                    <b class="account_product"></b>
-                                                </h5>
-                                            </div>
-                                            <div class="col-5">
-
-                                                <h5 class="___class_+?39___">Currency:&nbsp;
-                                                </h5>
-                                            </div>
-                                            <div class="col-7">
-                                                <h5>
-                                                    <b class="account_currency"></b>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
 
 
                                 </div>
-                            </div>
 
-                            {{-- <div class="row"> --}}
-                            <div class="customize_card div-card" id="transaction_summary">
-                                <div class=" p-3 mt-4 mt-lg-0 rounded">
-                                    {{-- <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2> --}}
-                                    <br>
-                                    {{-- <div class="text-center" id="account_balance_info_loader">
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h4 class="text-bold text-center"> <b>Account Details</b> </h4>
+                                        </div>
+                                        <div class="col-5">
+                                            <h4>Name:&nbsp; </h4>
+                                        </div>
+                                        <div class="col-7">
+                                            <h4>
+                                                <b class="account_description"></b>
+                                            </h4>
+                                        </div>
+                                        <div class="col-5">
+                                            <h4>Account No:&nbsp; </h4>
+                                        </div>
+                                        <div class="col-7">
+                                            <h4>
+                                                <b class="account_number"></b>
+                                            </h4>
+                                        </div>
+                                        <div class="col-5">
+
+                                            <h4>Product:&nbsp; </h4>
+
+                                        </div>
+                                        <div class="col-7">
+                                            <h4>
+                                                <b class="account_product"></b>
+                                            </h4>
+                                        </div>
+                                        <div class="col-5">
+
+                                            <h4>Currency:&nbsp;
+                                            </h4>
+                                        </div>
+                                        <div class="col-7">
+                                            <h4>
+                                                <b class="account_currency"></b>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+                        {{-- <div class="row"> --}}
+                        <div class="customize_card col-12 div-card" id="transaction_summary">
+
+
+                            <div class=" p-3 mt-4 mt-lg-0 rounded">
+                                {{-- <h2 class=" m-t-0 text-primary">ACCOUNT BALANCE DETAIL FOR KWABENA AMPAH </h2> --}}
+                                {{-- <div class="text-center" id="account_balance_info_loader">
                                             <div class="spinner-border text-primary avatar-sm" role="status"></div>
                                         </div> --}}
 
-                                    {{-- <div class="text-center" id="account_balance_info_retry_btn">
+                                {{-- <div class="text-center" id="account_balance_info_retry_btn">
                                             <button class="btn btn-sm btn-secondary">retry</button>
                                         </div> --}}
 
-                                    <div class="___class_+?44___" id="account_balance_info_display">
+                                {{-- <div class="___class_+?44___" id="account_balance_info_display"> --}}
 
-                                        <div class="alert alert-secondary" role="alert">
-                                            <div class="row">
+                                <div class="alert alert-secondary" id="account_balance_info_display" role="alert">
+                                    <div class="row">
 
-                                                <div class="col-md-6">
-                                                    <h5>Account Number: <strong class="display_account_number"></strong>
-                                                    </h5>
-                                                    <h5> Date Range: <strong class="display_search_date_range"></strong>
-                                                    </h5>
-                                                </div>
-
-                                                <div class="col-md-4">
-
-                                                    {{-- <div class="row"> --}}
-
-                                                    <select class="form-control col-md-8" id="filter" required>
-
-                                                        <option value="all" selected> ALL</option>
-                                                        <option value="credit"> CREDIT </option>
-                                                        <option value="debit"> DEBIT </option>
-                                                    </select>
-
-                                                    {{-- </div> --}}
-                                                </div>
-
-                                                <div class="col-md-2">
-                                                    <span style="float: right">
-                                                        &nbsp;&nbsp;
-                                                        <span id="pdf_print">
-                                                            {{-- <a href="{{ url('print-account-statement') }}">
-                                                        <img src="{{ asset('assets/images/pdf.png') }}" alt=""
-                                                            style="width: 22px; height: 25px;">
-                                                        </a> --}}
-                                                        </span>
-
-                                                        &nbsp;&nbsp;&nbsp;
-                                                    </span>
-                                                    <span style="float: right">
-                                                        <span id="excel_print">
-                                                            {{-- <a href="{{ url('print-account-statement') }}">
-                                                        <img src="{{ asset('assets/images/excel.png') }}" alt=""
-                                                            style="width: 22px; height: 25px;">
-                                                        </a> --}}
-                                                        </span>
-
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-
-
+                                        <div class="col-md-6">
+                                            <h5>Account Number: <strong class="display_account_number"></strong>
+                                            </h5>
+                                            <h5> Date Range: <strong class="display_search_date_range"></strong>
+                                            </h5>
                                         </div>
 
-                                        <table
-                                            class="table table-bordered table-striped mb-0 account_transaction_display_table">
-                                            <tbody>
-                                                <thead>
-                                                    <tr class="bg-info text-white ">
-                                                        <td>Document Ref</td>
-                                                        <td>Date</td>
-                                                        <td>Amount <span class="account_number_display_"></span>
-                                                        </td>
-                                                        <td>Balance<span class="account_description_display_"></span>
-                                                        </td>
-                                                        <td>Purpose of Transfer <span
-                                                                class="account_currency_display_"></span>
-                                                        </td>
-                                                        <th>Credit Account</th>
-                                                        {{-- <td>Transaction Details <span class="account_product_display_"></span> </td> --}}
-                                                        <td>Transaction ID <span class="___class_+?59___"></span> </td>
-                                                        <th>Batch No</th>
-                                                    </tr>
-                                                </thead>
+                                        <div class="col-md-4">
 
-                                            <tbody id="table-body-display">
+                                            {{-- <div class="row"> --}}
 
-                                            </tbody>
+                                            <select class="form-control col-md-8" id="filter" required>
 
-                                            </tbody>
-                                        </table>
+                                                <option value="all" selected> ALL</option>
+                                                <option value="credit"> CREDIT </option>
+                                                <option value="debit"> DEBIT </option>
+                                            </select>
+
+                                            {{-- </div> --}}
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <span style="float: right">
+                                                &nbsp;&nbsp;
+                                                <span id="pdf_print">
+                                                    {{-- <a href="{{ url('print-account-statement') }}">
+                                                <img src="{{ asset('assets/images/pdf.png') }}" alt=""
+                                                    style="width: 22px; height: 25px;">
+                                                </a> --}}
+                                                </span>
+
+                                                &nbsp;&nbsp;&nbsp;
+                                            </span>
+                                            <span style="float: right">
+                                                <span id="excel_print">
+                                                    {{-- <a href="{{ url('print-account-statement') }}">
+                                                <img src="{{ asset('assets/images/excel.png') }}" alt=""
+                                                    style="width: 22px; height: 25px;">
+                                                </a> --}}
+                                                </span>
+
+                                            </span>
+                                        </div>
+
                                     </div>
-                                    <!-- end table-responsive -->
+
+
+
+
+                                </div>
+                                <div class="alert alert-warning bg-warning text-white border-0" role="alert"
+                                    id="window_width_error" style="display: none">
+                                    <span>Window width too small to display table</span>
                                 </div>
 
+                                <table role="table" id="table-view"
+                                    class="table table-bordered table-striped mb-0 account_transaction_display_table">
+                                    {{-- <tbody> --}}
+                                    <thead role="rowgroup">
+
+                                        <tr role="row" class="bg-primary text-white ">
+                                            <th role="columnheader" scope="col">Document Ref</th>
+                                            <th role="columnheader" scope="col">Date</th>
+                                            <th role="columnheader" scope="col">Amount <span
+                                                    class="account_number_display_"></span>
+                                            </th>
+                                            <th role="columnheader" scope="col">Balance<span
+                                                    class="account_description_display_"></span>
+                                            </th>
+                                            <th role="columnheader" scope="col">Purpose of Transfer <span
+                                                    class="account_currency_display_"></span>
+                                            </th>
+                                            <th role="columnheader" scope="col">Credit Account</th>
+                                            {{-- <td>Transaction Details <span class="account_product_display_"></span> </td> --}}
+                                            <th role="columnheader" scope="col">Transaction ID <span
+                                                    class="___class_+?59___"></span> </th>
+                                            <th role="columnheader" scope="col">Batch No</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody role="rowgroup" id="table-body-display">
+
+                                        {{-- </tbody> --}}
+
+                                    </tbody>
+                                </table>
+                                {{-- </div> --}}
+                                <!-- end table-responsive -->
                             </div>
-                            {{-- </div> --}}
-                            {{-- <div class="row">
+
+                        </div>
+                        {{-- </div> --}}
+                        {{-- <div class="row">
                                 <div class="col-md-12">
 
 
@@ -330,7 +333,7 @@
                                 </div>
                             </div> --}}
 
-                            {{-- <div class="row ">
+                        {{-- <div class="row ">
 
                                 <div class="col-md-12">
 
@@ -394,7 +397,7 @@
                                 </div>
                             </div> --}}
 
-                            {{-- <div class="row">
+                        {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="text-center" id="account_transaction_loader">
                                         <div class="spinner-border text-primary avatar-sm" role="status"></div>
@@ -404,19 +407,19 @@
                                     <div class="text-center currency_converter_error_area"
                                         id="account_transaction_retry_btn">
                                         <img src="{{ asset('assets/images/api-error.gif') }}" class="img-fluid" alt=""
-                        style="width: 180px; height:130px;">
-                        <legend></legend>
-                        <button class="btn btn-secondary"> <i class="fe-rotate-ccw"></i> &nbsp; Please
-                            retry</button>
-                    </div>
-
-                    <div class="text-center" id="account_transaction_retry_btn">
-                        <button class="btn btn-sm btn-secondary">retry</button>
-                    </div>
+                    style="width: 180px; height:130px;">
+                    <legend></legend>
+                    <button class="btn btn-secondary"> <i class="fe-rotate-ccw"></i> &nbsp; Please
+                        retry</button>
                 </div>
-            </div> --}}
 
-                            {{-- <div class="row">
+                <div class="text-center" id="account_transaction_retry_btn">
+                    <button class="btn btn-sm btn-secondary">retry</button>
+                </div>
+            </div>
+        </div> --}}
+
+                        {{-- <div class="row">
                                 <div class="col-md-12">
 
                                     <table id="datatable-buttons" class="table table-bordered table-striped dt-responsive nowrap w-100">
@@ -446,7 +449,7 @@
 
 
 
-                            {{-- <h4 class="header-title">Buttons example</h4>
+                        {{-- <h4 class="header-title">Buttons example</h4>
                                             <p class="sub-header font-13">
                                                 The Buttons extension for DataTables provides a common set of options, API
                                                 methods and styling to display buttons on a page
@@ -455,24 +458,20 @@
                                             </p> --}}
 
 
-                        </div> <!-- end card body-->
+                    </div> <!-- end card body-->
 
 
-                    </div>
-
-
-
-                </div> <!-- end card-body -->
+                </div>
 
 
 
-            </div> <!-- end col -->
-
-        </div> <!-- end row -->
+            </div> <!-- end card-body -->
 
 
 
-    </div>
+        </div> <!-- end col -->
+
+    </div> <!-- end row -->
 
 
 @endsection
@@ -550,14 +549,16 @@
                             });
 
                         } else {
+                            toaster(response.message, "error", 3000)
 
                         }
 
 
 
 
-
                     } else {
+                        toaster(response.message, "error", 3000)
+
 
                     }
 
@@ -577,21 +578,14 @@
 
 
             let today = new Date();
-            let dd = today.getDate();
+            let day = today.getDate().toString().padStart(2, "0");
+            let month = (today.getMonth() + 1).toString().padStart(2, "0");
+            let start_date = today.getFullYear() + '-' + month + '-01'
+            let end_date = today.getFullYear() + '-' + month + '-' + day
+            let thisDay = endDate;
 
-            let mm = today.getMonth() + 1;
-            const yyyy = today.getFullYear()
-            console.log(mm)
-            console.log(String(mm).length)
-            if (String(mm).length == 1) {
-                mm = '0' + mm
-            }
-
-            defaultStartDate = '01-' + mm + '-' + today.getFullYear()
-            defaultEndDate = '30-' + mm + '-' + today.getFullYear()
-
-            console.log(defaultStartDate)
-            console.log(defaultEndDate)
+            $("#startDate").val(start_date)
+            $('#endDate').val(end_date)
 
             {{-- $('#myTable').DataTable( {
                 dom: 'Bfrtip',
@@ -610,35 +604,13 @@
             } ); --}}
 
 
-            $(".date-picker-startDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: [defaultStartDate],
-                position: "center"
-            })
-
-            $(".date-picker-endDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: [defaultEndDate],
-                position: "center"
-            })
-
-
-
             var account_number = "account_number";
-            var start_date = defaultStartDate;
-            var end_date = defaultEndDate;
+
             var transLimit = "10";
 
             var tranactions = []
 
-            setTimeout(function() {
-                get_accounts()
-
-            }, 500);
+            get_accounts()
 
             $("#from_account").change(function() {
                 var from_account = $(this).val();
@@ -654,27 +626,45 @@
                 $(".account_number").text(from_account_info[2])
                 $(".display_from_account_currency").text(from_account_info[3])
                 $('.account_currency').text(from_account_info[3])
-                //$(".display_currency").text(from_account_info[3]) // set summary currency
 
-                //amt = from_account_info[4].trim()
-
-                //$(".display_from_account_amount").text(formatToCurrency(Parse(from_account_info[4].trim())))
-
-                //$(".from_account_display_info").show()
+            });
 
 
+            function checkWidth() {
+                console.log("A")
+                if ($(window).width() < 750) {
+                    $("#table-view").hide()
+                    $("#window_width_error").show()
 
-
+                } else {
+                    $("#table-view").show()
+                    $("#window_width_error").hide()
+                }
+            }
+            checkWidth();
+            $(window).on('resize', () => {
+                checkWidth()
             });
 
             $('#search_transaction').click(function() {
 
-                let start_date = $('#startDate').val()
-                let end_date = $('#endDate').val()
+                start_date = $('#startDate').val()
+                end_date = $('#endDate').val()
+                if (start_date > today) {
+                    toaster("Start Date can't be greater than today", "warning", 3000)
+                    return false
+                } else if (end_date > today) {
+                    toaster("End Date can't be greater than today", "warning", 3000)
+                    return false
+                } else if (start_date > end_date) {
+                    toaster("Start Date can't be greater than End Date", "warning", 3000)
+                    return false
+                }
 
                 var from_account = $('#from_account').val()
-
-                if (from_account.trim() == '' || from_account.trim() == undefined) {
+                console.log(start_date)
+                if (!validateAll(from_account)) {
+                    toaster("please select an account", "warning", 3000)
                     $('#search_transaction').text('Search')
                     return false;
                 } else {
@@ -977,7 +967,10 @@
                         console.log(response);
                         if (response.responseCode == '000') {
                             tranactions = response.data
+                            if (response.data.length === 0) {
+                                toaster(response.message, "warning", 3000)
 
+                            }
                             $('#search_transaction').text('Search')
                             load_data_into_table(tranactions, account_number, start_date, end_date)
 
@@ -992,6 +985,7 @@
                             $(".account_transaction_display").hide();
                             $(".account_transaction_display_table").hide();
                             $("#account_transaction_retry_btn").show();
+                            toaster(response.message, "warning", 3000)
                         }
 
                     },
@@ -1001,6 +995,8 @@
                         $(".account_transaction_display").hide();
                         $(".account_transaction_display_table").hide();
                         $("#account_transaction_retry_btn").show();
+                        toaster(response.message, "error", 3000)
+
                         setTimeout(function() {
                             getAccountTransactions(account_number, start_date, end_date,
                                 transLimit)
