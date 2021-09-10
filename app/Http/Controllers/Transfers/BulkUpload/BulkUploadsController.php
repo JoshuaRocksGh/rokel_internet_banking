@@ -224,10 +224,51 @@ class BulkUploadsController extends Controller
     public function get_bulk_upload_list(Request $request)
     {
 
+        // return $request;
+
+        $customerNumber = $request->query("customer_no");
+        // return $customerNumber;
+
+        $files = DB::table('tb_corp_bank_import_excel')
+            ->distinct()
+            ->where('customer_no', $customerNumber)
+            ->where('status', 'P')
+            ->orderBy('batch_no', 'desc')
+            ->get(['batch_no', 'account_no', 'bank_code', 'status', 'ref_no', 'total_amount', 'value_date']);
+
+        return [
+            'responseCode' => '000',
+            'message' => "Available Uploads",
+            'data' => $files
+        ];
+    }
+
+    public function get_bulk_korpor_upload_list(Request $request)
+    {
+        // return $request;
+        $customerNumber = $request->query("customer_no");
+        // return $customerNumber;
+
+        $files = DB::table('tb_corp_korpor_import_excel')
+            ->distinct()
+            ->where('customer_no', $customerNumber)
+            ->where('status', 'P')
+            ->orderBy('batch_no', 'desc')
+            ->get(['batch_no', 'account_no', 'bank_code', 'status', 'ref_no', 'total_amount', 'value_date']);
+
+        return [
+            'responseCode' => '000',
+            'message' => "Available Uploads",
+            'data' => $files
+        ];
+    }
+
+    public function get_bulk_korpor_upload_file_details(Request $request)
+    {
         $customerNumber = $request->query("customer_no");
         // return $customer_no;
 
-        $files = DB::table('tb_corp_bank_import_excel')
+        $files = DB::table('tb_corp_korpor_import_excel')
             ->distinct()
             ->where('customer_no', $customerNumber)
             ->where('status', 'P')
@@ -263,6 +304,26 @@ class BulkUploadsController extends Controller
         ]);
     }
 
+    public function view_bulk_transfer_korpor(Request $request)
+    {
+        $batch_no = $request->query('batch_no');
+        $account_no = $request->query('account_no');
+        $bank_type = $request->query('bank_type');
+
+        $customer_no = session()->get('customerNumber');
+
+        // if (null !== ($request->query('batch_no') || $request->query('account_no') || $request->query('bank_type'))) {
+        //     return back();
+        // }
+
+        return view('pages.transfer.bulkTransfers.view_bulk_transfer_korpor', [
+            'customer_no' => $customer_no,
+            'batch_no' => $batch_no,
+            'account_no' => $account_no,
+            'bank_type' => $bank_type,
+        ]);
+    }
+
     public function view_error_bulk_transfer(Request $request)
     {
 
@@ -284,6 +345,22 @@ class BulkUploadsController extends Controller
         ]);
     }
 
+    public function bulk_korpor_error_transfer(Request $request)
+    {
+        $batch_no = $request->query('batch_no');
+        $account_no = $request->query('account_no');
+        $bank_type = $request->query('bank_type');
+
+        $customer_no = session()->get('customerNumber');
+
+        return view('pages.payments.korpor.bulk_korpor_error_payment', [
+            'customer_no' => $customer_no,
+            'batch_no' => $batch_no,
+            'account_no' => $account_no,
+            'bank_type' => $bank_type,
+        ]);
+    }
+
     public function get_bulk_upload_file_details(Request $request)
     {
 
@@ -293,6 +370,27 @@ class BulkUploadsController extends Controller
 
 
         $bulk_details = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get();
+        $bulk_info = DB::table('TB_CORP_BANK_BULK_REF')->where('batch_no', $batch_no)->first();
+
+
+        return response()->json([
+            'responseCode' => '000',
+            'message' => "Detail of upload transfer",
+            'data' => [
+                'bulk_info' => $bulk_info,
+                'bulk_details' => $bulk_details
+            ]
+        ], 200);
+    }
+
+    public function get_bulk_korpor_file_details(Request $request)
+    {
+        $batch_no = $request->query('batch_no');
+        $account_no = $request->query('account_no');
+        $bank_type = $request->query('bank_type');
+
+
+        $bulk_details = DB::table('tb_corp_korpor_import_excel')->where('batch_no', $batch_no)->get();
         $bulk_info = DB::table('TB_CORP_BANK_BULK_REF')->where('batch_no', $batch_no)->first();
 
 
@@ -324,11 +422,13 @@ class BulkUploadsController extends Controller
 
         // return $data;
 
-        // return response()->json([
-        //     'responseCode' => '422',
-        //     'message' => 'View Error From Api',
-        //     'data' => $data
-        // ], 200);
+        return response()->json([
+            'responseCode' => '422',
+            'message' => 'View Error From Api',
+            'data' => $data
+        ], 200);
+
+        die();
 
         /*
         $credit_data = [];
@@ -413,6 +513,112 @@ class BulkUploadsController extends Controller
         }
     }
 
+    public function post_bulk_korpor_transactions(Request $request)
+    {
+
+        $batch_no = $request->query('batch_no');
+        // $batch_no = $request->batch_no;
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+
+
+        $data = DB::table('tb_corp_korpor_import_excel')->where('batch_no', $batch_no)->get()->toArray();
+
+
+
+        // return $data;
+
+        // return response()->json([
+        //     'responseCode' => '422',
+        //     'message' => 'View Korpor Error TO Api',
+        //     'data' => $data
+        // ], 200);
+
+        // // die();
+
+        /*
+        $credit_data = [];
+        $debit_data = [];
+
+        foreach ($files as $data) {
+
+            $credit['creditAccount'] = $data->BBAN;
+            $credit['creditAmount'] = (float) $data->AMOUNT;
+            $credit['creditBranch'] = '001';
+            $credit['debitCurrency'] = 'SLL';
+            $credit['creditNarration'] =  $data->TRANS_DESC;
+            $credit['creditProdRef'] = $data->REF_NO;
+
+            array_push($credit_data, $credit);
+        }
+
+        $debit_data['debitAccount'] = $files[0]->ACCOUNT_NO;
+        $debit_data['debitAmount'] = (float) $files[0]->TOTAL_AMOUNT;
+        $debit_data['debitCurrency'] = 'SLL';
+        $debit_data['debitNarration'] = $files[0]->TRANS_DESC;
+        $debit_data['debitProdRef'] = $files[0]->REF_NO;
+
+        $data = [
+            "approvedBy" => "string",
+            "branch" => "string",
+            "channelCode" => "string",
+            "department" => "rr",
+            "postedBy" => "KOBBY",
+            "referenceNo" => "string",
+            "transType" => "string",
+            "unit" => "yyy",
+            "debitAccounts" => [$debit_data],
+            "creditAccounts" => $credit_data,
+        ];
+
+        // return  $data;
+
+        */
+        // dd(env('CIB_API_BASE_URL') . "post-bulk-upload-list");
+        $response = Http::post(env('CIB_API_BASE_URL') . "post-bulk-korpor-upload-list", $data);
+        // return (array) $response;
+        // $result = new ApiBaseResponse();
+        $base_response = new BaseResponse();
+
+        if ($response->ok()) {    // API response status code is 200
+
+            // return $response->body();
+            $result = json_decode($response->body());
+            // return $result->responseCode;
+
+            // return $result;
+
+
+            if ($result->responseCode == '000') {
+
+                $update_db = DB::table('tb_corp_korpor_import_excel')
+                    ->where('batch_no', $batch_no)
+                    ->update([
+                        'status' => 'A'
+                    ]);
+
+                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            } else {   // API responseCode is not 000
+
+                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            }
+        } else { // API response status code not 200
+
+            return $response->body();
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'code' => $response->status(),
+                'message' => $response->body()
+            ]);
+
+            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+
+        }
+    }
 
 
     public function reject_bulk_transaction(Request $request)
@@ -519,16 +725,22 @@ class BulkUploadsController extends Controller
 
     public function bulk_korpor_upload_(Request $request)
     {
+        // return $request;
 
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'excel_file' => 'required|mimes:xls,xlsx',
             'my_account' => 'required',
             'bulk_amount' => 'required',
             'reference_no' => 'required',
             'value_date' => 'required',
-
-
         ]);
+
+        $base_response = new BaseResponse();
+
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
 
         // return $request;
 
@@ -549,7 +761,7 @@ class BulkUploadsController extends Controller
         $account_no = $account_info[2];
         $currency = $account_info[3];
 
-        // return $account_info ;
+        // return $account_info;
 
         $account_mandate = $account_info[5];
 
@@ -568,6 +780,27 @@ class BulkUploadsController extends Controller
 
 
             Excel::import(new ExcelKorporUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $trans_ref_no, $total_amount, $currency, $value_date, $file, $account_mandate), $file);
+            $results = DB::table('tb_corp_korpor_import_excel')
+                ->where('batch_no', $batch_no)
+                ->select('NAME', 'MOBILE_NO', 'AMOUNT', 'ADDRESS',)
+                ->get();
+
+            // return response()->json($result);
+            foreach ($results as $result) {
+                if (strlen($result->MOBILE_NO) != 10 || strlen($result->MOBILE_NO) > 10 || $result->NAME == "" || $result->ADDRESS == "") {
+                    Alert::error("Error Uploading Bulk Korpor");
+                    return redirect()->route('bulk-korpor-error-transfer', [
+                        'batch_no' => $batch_no,
+                        'bulk_amount' => $total_amount,
+                        // 'bank_type' => $bank_code,
+                        // 'bank_type' => $bank_code
+                    ]);
+                }
+            }
+
+
+
+            // return false;
             Alert::success("Bulk E-Korpor Pending Approval");
             return redirect()->route('view-bulk-korpor-transfer', [
                 'batch_no' => $batch_no,

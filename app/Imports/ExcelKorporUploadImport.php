@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Imports;
+
 use Maatwebsite\Excel\Facades\Excel;
 use App\Model\Frontend\ApplyStudent;
 use Carbon\Carbon;
@@ -29,7 +30,6 @@ class ExcelKorporUploadImport implements WithHeadingRow, ToCollection
     // private $bank_code;
     private $file;
     private $account_mandate;
-
 
 
 
@@ -176,11 +176,11 @@ class ExcelKorporUploadImport implements WithHeadingRow, ToCollection
 
         foreach ($rows as $row) {
 
-            // echo json_encode($rows);
+            // echo json_encode($row);
             // die();
 
 
-            if (null == ($row['telephone_number'] || $row['name'] ||  $row['amount'] || $row['ref_number'])) {
+            if (null == ($row['telephone_number'] || $row['name'] ||  $row['amount'] || $row['id_number'])) {
                 // return null;
             } else {
 
@@ -197,9 +197,8 @@ class ExcelKorporUploadImport implements WithHeadingRow, ToCollection
                 $t_amt = $t_amt + (float) $row['amount'];
 
 
-                $query_result = DB::table('tb_corp_bank_import_excel')->insert([
+                $query_result = DB::table('tb_corp_korpor_import_excel')->insert([
                     'ref_no' => $row['ref_number'],
-                    'bban' => $row['telephone_number'],
                     'name' => $row['name'],
                     'amount' => $row['amount'],
                     'trans_desc' => $row['transaction_description'],
@@ -216,7 +215,12 @@ class ExcelKorporUploadImport implements WithHeadingRow, ToCollection
                     'status' => 'P',
                     'bank_name' => '$bank_name',
                     'created_at' => NOW(),
-                    'updated_at' => NOW()
+                    'updated_at' => NOW(),
+                    'gender' => $row['gender'],
+                    'age' => $row['age'],
+                    'mobile_no' => $row['telephone_number'],
+                    'id_number' => $row['id_number'],
+                    'address' => $row['address'],
                 ]);
 
                 /*
@@ -252,7 +256,7 @@ class ExcelKorporUploadImport implements WithHeadingRow, ToCollection
                 'REF_NO' => $ref_no,
                 'VALUE_DATE' => $value_date,
                 'TOTAL_AMOUNT' => $t_amt,
-                'DESCRIPTION' => 'Description goes here ....',
+                'DESCRIPTION' => $ref_no,
                 'USER_ID' => $user_id,
                 'ACCOUNT_NO' => $account_no,
                 'ACCOUNT_MANDATE' => $account_mandate,
@@ -296,5 +300,3 @@ class ExcelKorporUploadImport implements WithHeadingRow, ToCollection
 
     }
 }
-
-

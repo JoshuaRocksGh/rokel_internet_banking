@@ -34,7 +34,10 @@
                     <div class="col-md-1"></div>
 
                     <div class="  card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">DETAIL OF BULK UPLOAD</h2>
+                        <a href="{{ url()->previous() }}" type="button"
+                            class="btn btn-soft-blue waves-effect waves-light float-left"><i
+                                class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
+                        <h2 class="header-title text-primary">DETAIL OF BULK UPLOAD</h2>
                         <hr>
                         {{-- <p class="text-muted font-14 m-b-20">
                             Parsley is a javascript form validation library. It helps you provide your
@@ -81,7 +84,7 @@
 
                             </div>
 
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group row">
                                         <div class="col-8 offset-4 text-right">
@@ -101,10 +104,17 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                         </form>
+                        <br>
+
+                        <div>
+                            <h3 class="text-danger" id="wrong_account_number"><b>- Invalid Recipient Details</b></h3>
+                            <h3 class="text-danger" id="insufficient_balance"><b>- Insufficient Funds</b></h3>
+                        </div>
+                        <br>
 
                         <div class="row card" id="beneficiary_table" style="zoom: 0.8;">
                             <br>
@@ -116,9 +126,10 @@
                                     <thead>
                                         <tr class="bg-secondary text-white">
                                             <th>No</th>
-                                            <th>Credit Acc</th>
-                                            <th>Amount</th>
                                             <th>Name</th>
+                                            <th>Phone Number</th>
+                                            <th>Address</th>
+                                            <th>Amount</th>
                                         </tr>
                                     </thead>
 
@@ -204,17 +215,18 @@
                 };
 
 
-
+                $("#wrong_account_number").hide()
+                $("#insufficient_balance").hide()
 
                 function bulk_upload_detail_list(customer_no, batch_no) {
                     var table = $('.bulk_upload_list').DataTable();
                     var nodes = table.rows().nodes();
                     $.ajax({
                         tpye: 'GET',
-                        url: 'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
+                        url: 'get-bulk-korpor-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
                         datatype: "application/json",
                         success: function(response) {
-                            {{-- console.log(response.data); --}}
+                            console.log(response.data);
 
 
                             if (response.responseCode == '000') {
@@ -234,45 +246,54 @@
 
                                 $.each(data, function(index) {
                                     console.log(data[index])
+                                    if (data[index].MOBILE_NO.length != 10 || data[index].MOBILE_NO.length >
+                                        10 || data[index].NAME == "" || data[index].ADDRESS == "" || data[index]
+                                        .ID_NUMBER == "") {
+                                        console.log(data[index].BBAN)
 
-                                    let status = ''
-                                    let bank_type = ''
+                                        $("#wrong_account_number").show();
 
-                                    if (data[index].STATUS == 'A') {
-                                        status =
-                                            `<span class="badge badge-success"> &nbsp; Approved &nbsp; </span> `
-                                    } else if (data[index].STATUS == 'R') {
-                                        status =
-                                            `<span class="badge badge-danger"> &nbsp; Rejected &nbsp; </span> `
-                                    } else {
-                                        status =
-                                            `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
+                                        let status = ''
+                                        let bank_type = ''
+
+                                        if (data[index].STATUS == 'A') {
+                                            status =
+                                                `<span class="badge badge-success"> &nbsp; Approved &nbsp; </span> `
+                                        } else if (data[index].STATUS == 'R') {
+                                            status =
+                                                `<span class="badge badge-danger"> &nbsp; Rejected &nbsp; </span> `
+                                        } else {
+                                            status =
+                                                `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
+                                        }
+
+                                        if (data[index].BANK_CODE == 'SAB') {
+                                            bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
+                                        } else {
+                                            bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
+                                        }
+
+                                        let batch =
+                                            `<a href="{{ url('bulkFile/${data[index].BATCH_NO}') }}">${data[index].BATCH_NO}</a>`
+
+                                        let action =
+                                            `<span class="btn-group mb-2">
+                                              <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>&nbsp;
+                                              <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
+                                        </span>  `
+
+                                        table.row.add([
+                                            data[index].ID,
+                                            data[index].NAME,
+                                            data[index].MOBILE_NO,
+                                            data[index].ADDRESS,
+                                            formatToCurrency(parseFloat(data[index].AMOUNT)),
+                                            {{-- data[index].NAME, --}}
+
+
+                                        ]).draw(false)
+
                                     }
-
-                                    if (data[index].BANK_CODE == 'SAB') {
-                                        bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
-                                    } else {
-                                        bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
-                                    }
-
-                                    let batch =
-                                        `<a href="{{ url('bulkFile/${data[index].BATCH_NO}') }}">${data[index].BATCH_NO}</a>`
-
-                                    let action =
-                                        `<span class="btn-group mb-2">
-                                                                                                                                                                                                                                                                                                                                                                <button class="btn btn-sm btn-success" style="zoom:0.8;"> Approved</button>
-                                                                                                                                                                                                                                                                                                                                                                 &nbsp;
-                                                                                                                                                                                                                                                                                                                                                                 <button class="btn btn-sm btn-danger" style="zoom:0.8;"> Reject</button>
-                                                                                                                                                                                                                                                                                                                                                                 </span>  `
-
-                                    table.row.add([
-                                        data[index].ID,
-                                        data[index].BBAN,
-                                        formatToCurrency(parseFloat(data[index].AMOUNT)),
-                                        data[index].NAME,
-
-
-                                    ]).draw(false)
 
                                 })
 

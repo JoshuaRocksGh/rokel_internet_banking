@@ -160,7 +160,7 @@
                 @yield('content')
             </div>
 
-            @include('snippets.footer')
+            {{-- @include('snippets.footer') --}}
         </div>
     </div>
 

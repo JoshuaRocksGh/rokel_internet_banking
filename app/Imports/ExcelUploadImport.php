@@ -220,7 +220,8 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                     'status' => 'P',
                     'bank_name' => '$bank_name',
                     'created_at' => NOW(),
-                    'updated_at' => NOW()
+                    'updated_at' => NOW(),
+                    
                 ]);
 
                 /*
@@ -256,7 +257,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
                 'REF_NO' => $ref_no,
                 'VALUE_DATE' => $value_date,
                 'TOTAL_AMOUNT' => $t_amt,
-                'DESCRIPTION' => 'Description goes here ....',
+                'DESCRIPTION' => $ref_no,
                 'USER_ID' => $user_id,
                 'ACCOUNT_NO' => $account_no,
                 'ACCOUNT_MANDATE' => $account_mandate,
