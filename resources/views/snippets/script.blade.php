@@ -59,7 +59,7 @@
         });
     });
 
-    function toaster(message, icon, timer) {
+    function toaster(message, icon, timer = 3000) {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -85,7 +85,7 @@
 
     function validateAll(...args) {
         for (arg of args) {
-            if (arg === "" || arg === undefined || arg === null) {
+            if (arg === "" || arg === undefined || arg === null || arg == NaN) {
                 return false
             }
         }

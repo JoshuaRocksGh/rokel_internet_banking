@@ -182,12 +182,12 @@
                                                                 </div>
                                                                 &nbsp;&nbsp;
                                                                 <div class="input-group-prepend">
-                                                                    <input type="text" class="form-control"
+                                                                    <input type="text" class="form-control readOnly"
                                                                         id="convertor_rate" placeholder="0.00" readonly
                                                                         style="width: 100px;">
                                                                 </div>
                                                                 &nbsp;&nbsp;
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control readOnly"
                                                                     id="converted_amount" placeholder="Converted Amount"
                                                                     aria-label="Converted Amount"
                                                                     aria-describedby="basic-addon1" readonly>
@@ -529,5 +529,6 @@
         var customerType = @json(session()->get('customerType'));
         // console.log(@json(session()->get('')))
     </script>
+    <script src="{{ asset("assets/js/functions/currencyConverter.js") }}"></script>
     <script src="{{ asset("assets/js/pages/transfer/ownAccount.js") }}"> </script>
     @endsection

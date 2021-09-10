@@ -191,9 +191,7 @@ function get_currency() {
     });
 }
 
-var forex_rate = [];
-var cur_1 = "SLL";
-var cur_2 = "SLL";
+var forexRate = [];
 
 function get_correct_fx_rate() {
     $.ajax({
@@ -202,7 +200,7 @@ function get_correct_fx_rate() {
         datatype: "application/json",
         success: function (response) {
             if (response.responseCode == "000") {
-                forex_rate = response.data;
+                forexRate = response.data;
             } else {
             }
         },
@@ -231,93 +229,93 @@ function formatToCurrency(amount) {
     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 }
 
-function currency_convertor(forex_rate) {
-    let amount = $("#amount").val();
-    let convert_amount_currency = $("#select_currency__").val();
-    let converted_amount = "";
-    cur_1 = $("#select_currency").val();
-    cur_2 = $("#select_currency__").val();
+// function currency_convertor(forex_rate) {
+//     let amount = $("#amount").val();
+//     let convert_amount_currency = $("#select_currency__").val();
+//     let converted_amount = "";
+//     cur_1 = $("#select_currency").val();
+//     cur_2 = $("#select_currency__").val();
 
-    let currency_pair_1 = cur_1 + "/ " + cur_2;
-    let currency_pair_2 = cur_2 + "/ " + cur_1;
+//     let currency_pair_1 = cur_1 + "/ " + cur_2;
+//     let currency_pair_2 = cur_2 + "/ " + cur_1;
 
-    let to_local_currency = cur_1 + "/ SLL";
-    let local_currency = "";
+//     let to_local_currency = cur_1 + "/ SLL";
+//     let local_currency = "";
 
-    $("#converted_amount").val("");
-    $("#convertor_rate").val("");
+//     $("#converted_amount").val("");
+//     $("#convertor_rate").val("");
 
-    if (forex_rate.length > 0) {
-        $.each(forex_rate, function (index) {
-            if (
-                String(forex_rate[index].PAIR.trim()) ==
-                String(to_local_currency.trim())
-            ) {
-                local_currency =
-                    parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE);
-            }
+//     if (forex_rate.length > 0) {
+//         $.each(forex_rate, function (index) {
+//             if (
+//                 String(forex_rate[index].PAIR.trim()) ==
+//                 String(to_local_currency.trim())
+//             ) {
+//                 local_currency =
+//                     parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE);
+//             }
 
-            if (
-                String(forex_rate[index].PAIR.trim()) ==
-                String(currency_pair_1.trim())
-            ) {
-                converted_amount =
-                    parseFloat(amount) * parseFloat(forex_rate[index].MIDRATE);
-                $("#convertor_rate").val(
-                    formatToCurrency(
-                        parseFloat(forex_rate[index].MIDRATE.toFixed(2))
-                    )
-                );
-                $(".display_midrate").text(
-                    currency_pair_1.trim() +
-                        " => " +
-                        formatToCurrency(
-                            parseFloat(forex_rate[index].MIDRATE.toFixed(2))
-                        )
-                );
-                $("#converted_amount").val(
-                    formatToCurrency(parseFloat(converted_amount.toFixed(2)))
-                );
-                $(".display_converted_amount").text(
-                    convert_amount_currency +
-                        " " +
-                        formatToCurrency(
-                            parseFloat(converted_amount.toFixed(2))
-                        )
-                );
-            } else if (
-                String(forex_rate[index].PAIR.trim()) ==
-                String(currency_pair_2.trim())
-            ) {
-                $("#convertor_rate").val(
-                    formatToCurrency(
-                        parseFloat(forex_rate[index].MIDRATE.toFixed(2))
-                    )
-                );
-                $(".display_midrate").text(
-                    currency_pair_2.trim() +
-                        " => " +
-                        formatToCurrency(
-                            parseFloat(forex_rate[index].MIDRATE.toFixed(2))
-                        )
-                );
-                converted_amount =
-                    parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE);
-                $("#converted_amount").val(
-                    formatToCurrency(parseFloat(converted_amount.toFixed(2)))
-                );
-                $(".display_converted_amount").text(
-                    convert_amount_currency +
-                        " " +
-                        formatToCurrency(
-                            parseFloat(converted_amount.toFixed(2))
-                        )
-                );
-            } else {
-            }
-        });
-    }
-}
+//             if (
+//                 String(forex_rate[index].PAIR.trim()) ==
+//                 String(currency_pair_1.trim())
+//             ) {
+//                 converted_amount =
+//                     parseFloat(amount) * parseFloat(forex_rate[index].MIDRATE);
+//                 $("#convertor_rate").val(
+//                     formatToCurrency(
+//                         parseFloat(forex_rate[index].MIDRATE.toFixed(2))
+//                     )
+//                 );
+//                 $(".display_midrate").text(
+//                     currency_pair_1.trim() +
+//                         " => " +
+//                         formatToCurrency(
+//                             parseFloat(forex_rate[index].MIDRATE.toFixed(2))
+//                         )
+//                 );
+//                 $("#converted_amount").val(
+//                     formatToCurrency(parseFloat(converted_amount.toFixed(2)))
+//                 );
+//                 $(".display_converted_amount").text(
+//                     convert_amount_currency +
+//                         " " +
+//                         formatToCurrency(
+//                             parseFloat(converted_amount.toFixed(2))
+//                         )
+//                 );
+//             } else if (
+//                 String(forex_rate[index].PAIR.trim()) ==
+//                 String(currency_pair_2.trim())
+//             ) {
+//                 $("#convertor_rate").val(
+//                     formatToCurrency(
+//                         parseFloat(forex_rate[index].MIDRATE.toFixed(2))
+//                     )
+//                 );
+//                 $(".display_midrate").text(
+//                     currency_pair_2.trim() +
+//                         " => " +
+//                         formatToCurrency(
+//                             parseFloat(forex_rate[index].MIDRATE.toFixed(2))
+//                         )
+//                 );
+//                 converted_amount =
+//                     parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE);
+//                 $("#converted_amount").val(
+//                     formatToCurrency(parseFloat(converted_amount.toFixed(2)))
+//                 );
+//                 $(".display_converted_amount").text(
+//                     convert_amount_currency +
+//                         " " +
+//                         formatToCurrency(
+//                             parseFloat(converted_amount.toFixed(2))
+//                         )
+//                 );
+//             } else {
+//             }
+//         });
+//     }
+// }
 
 $(() => {
     let transferInfo = new Object();
@@ -333,6 +331,22 @@ $(() => {
     expenseTypes();
     get_currency();
     get_correct_fx_rate();
+
+    function handleConversion() {
+        let conversionData = currencyConvertor(
+            forexRate,
+            transferInfo.amount,
+            fromAccount.currency,
+            $("#select_currency__").val()
+        );
+        console.log(conversionData);
+        let { convertedAmount, midrate, currencyPair } = conversionData;
+
+        $(".display_midrate").text(`${currencyPair} => ${midrate}`);
+        $("#convertor_rate").val(midrate);
+        $("#converted_amount").val(convertedAmount);
+        $(".display_converted_amount").text(convertedAmount);
+    }
 
     if (customerType == "C") {
         $("#coporate_transfer_approval").show();
@@ -460,11 +474,11 @@ $(() => {
         if (transferInfo.amount === "" || transferInfo.amount === undefined) {
             return false;
         }
-        currency_convertor(forex_rate);
+        handleConversion();
     });
 
     $("#amount").on("keyup", function () {
-        if (fromAccount.info.trim() == "" || toAccount.info.trim() == "") {
+        if (!validateAll(fromAccount.info, toAccount.info)) {
             toaster(
                 "Please select source and destination accounts",
                 "error",
@@ -475,23 +489,18 @@ $(() => {
         }
 
         transferInfo.amount = $(this).val();
+
         if (transferInfo.amount === "" || transferInfo.amount === undefined) {
             $(".display_transfer_amount").text("");
             // $(".display_from_account_currency").text("");
             $(".display_midrate").text("");
             $(".display_converted_amount").text("");
             return false;
-        } else if (
-            fromAccount.accountBalance < parseFloat(transferInfo.amount)
-        ) {
-            toaster("Insufficient account balance", "error", 3000);
-            return false;
-        } else {
-            $(".display_transfer_amount").text(
-                formatToCurrency(parseFloat(transferInfo.amount))
-            );
-            currency_convertor(forex_rate);
         }
+        $(".display_transfer_amount").text(
+            formatToCurrency(parseFloat(transferInfo.amount))
+        );
+        handleConversion();
     });
 
     $("#next_button").on("click", function (e) {
@@ -512,6 +521,10 @@ $(() => {
         }
         if (transferInfo.amount <= 0) {
             toaster("invalid transfer amount", "warning", 3000);
+            return false;
+        }
+        if (transferInfo.amount > fromAccount.accountBalance) {
+            toaster("Insufficient account balance", "warning", 3000);
             return false;
         }
 

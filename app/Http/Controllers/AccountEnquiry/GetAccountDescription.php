@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class GetAccountDescription extends Controller
 {
@@ -62,27 +63,15 @@ class GetAccountDescription extends Controller
         };
 
         // return $request;
-        $account_no = $request->accountNumber;
-
-
+        $accountNo = $request->accountNumber;
         $base_response = new BaseResponse();
-
         $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
-
-
         $data = [
             "authToken" => $authToken,
-            "userId"    => $account_no
+            "userId"    => $accountNo
         ];
 
-        return $data;
-
         $response = Http::post(env('API_BASE_URL') . "/account/getAccountDescription", $data);
-
-        // return $response->body();
-
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
