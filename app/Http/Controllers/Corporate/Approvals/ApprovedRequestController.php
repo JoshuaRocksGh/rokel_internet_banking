@@ -23,7 +23,7 @@ class ApprovedRequestController extends Controller
 
 
 
-
+        // return $request;
 
         $base_response = new BaseResponse();
 
@@ -60,7 +60,7 @@ class ApprovedRequestController extends Controller
 
             $response = Http::post(env('CIB_API_BASE_URL') . "request-approval", $data);
 
-            // return $response;
+            return $response;
 
             // dd($response) ;
 
@@ -87,7 +87,7 @@ class ApprovedRequestController extends Controller
 
         $validator = Validator::make($request->all(), [
             'narration' => 'required',
-            'request_id' => 'required' ,
+            'request_id' => 'required',
             'customer_no' => 'required'
         ]);
 
@@ -111,7 +111,7 @@ class ApprovedRequestController extends Controller
         $userAlias = session()->get('userAlias');
         $userToken = session()->get('userToken');
         $deviceIp = $request->ip();
-        $narration = $request->narration ;
+        $narration = $request->narration;
 
         $data = [
             "authToken" => $userToken,
@@ -120,7 +120,7 @@ class ApprovedRequestController extends Controller
             "user_id" => $userId,
             "request_id" => $request_id,
             "user_alias" => $userAlias,
-            "customer_no" => $customer_no ,
+            "customer_no" => $customer_no,
             "narration" => $narration
         ];
 

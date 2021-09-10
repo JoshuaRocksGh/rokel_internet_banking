@@ -34,7 +34,7 @@
                     <div class="col-md-1"></div>
 
                     <div class="  card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">DETAIL OF BULK UPLOAD</h2>
+                        <h2 class="header-title m-t-0 text-primary">DETAIL OF BULK KORPOR UPLOAD</h2>
                         <hr>
                         {{-- <p class="text-muted font-14 m-b-20">
                             Parsley is a javascript form validation library. It helps you provide your
@@ -116,9 +116,11 @@
                                     <thead>
                                         <tr class="bg-secondary text-white">
                                             <th>No</th>
-                                            <th>Credit Acc</th>
-                                            <th>Amount</th>
                                             <th>Name</th>
+                                            <th>Phone Number</th>
+                                            <th>Address</th>
+                                            <th>Amount</th>
+
                                         </tr>
                                     </thead>
 
@@ -211,10 +213,10 @@
                     var nodes = table.rows().nodes();
                     $.ajax({
                         tpye: 'GET',
-                        url: 'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
+                        url: 'get-bulk-korpor-upload-detail-list?customer_no=' + customer_no + '&batch_no=' + batch_no,
                         datatype: "application/json",
                         success: function(response) {
-                            {{-- console.log(response.data); --}}
+                            console.log(response.data);
 
 
                             if (response.responseCode == '000') {
@@ -267,9 +269,11 @@
 
                                     table.row.add([
                                         data[index].ID,
-                                        data[index].BBAN,
-                                        formatToCurrency(parseFloat(data[index].AMOUNT)),
                                         data[index].NAME,
+                                        data[index].MOBILE_NO,
+                                        data[index].ADDRESS,
+                                        formatToCurrency(parseFloat(data[index].AMOUNT)),
+
 
 
                                     ]).draw(false)
@@ -365,7 +369,7 @@
 
                 function submit_upload(batch_no) {
 
-                    const ipAPI = 'post-bulk-transaction-api?batch_no=' + batch_no
+                    const ipAPI = 'post-bulk-korpor-transaction-api?batch_no=' + batch_no
 
                     Swal.queue([{
                         title: 'Are you sure',
@@ -386,7 +390,7 @@
                                         })
 
                                         setTimeout(function() {
-                                            window.location = "{{ url('bulk-transfer') }}"
+                                            window.location = "{{ url('bulk-korpor') }}"
                                         }, 2000)
                                     } else {
                                         Swal.insertQueueStep({

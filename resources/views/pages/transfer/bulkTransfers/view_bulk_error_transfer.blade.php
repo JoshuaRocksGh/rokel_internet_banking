@@ -108,6 +108,13 @@
 
 
                         </form>
+                        <br>
+
+                        <div>
+                            <h3 class="text-danger" id="wrong_account_number"><b>- Invalid Account Number</b></h3>
+                            <h3 class="text-danger" id="insufficient_balance"><b>- Insufficient Funds</b></h3>
+                        </div>
+                        <br>
 
                         <div class="row card" id="beneficiary_table" style="zoom: 0.8;">
                             <br>
@@ -207,7 +214,8 @@
                 };
 
 
-
+                $("#wrong_account_number").hide()
+                $("#insufficient_balance").hide()
 
                 function bulk_upload_detail_list(customer_no, batch_no) {
                     var table = $('.bulk_upload_list').DataTable();
@@ -241,6 +249,7 @@
                                             0, 3) != 004) {
                                         console.log(data[index].BBAN)
 
+                                        $("#wrong_account_number").show();
 
                                         let status = ''
                                         let bank_type = ''

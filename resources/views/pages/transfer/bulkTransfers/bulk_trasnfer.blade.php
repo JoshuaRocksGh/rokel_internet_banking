@@ -100,10 +100,10 @@
                                                 class="text-danger"> *</span></label>
                                         <select class="custom-select " name="my_account" id="my_account" required>
                                             <option value="">Select Account</option>
-                                            <option
+                                            {{-- <option
                                                 value="Corporate Acc~MARIAMA KAMARA~004004110449140121~SLL~150000000~1A or 2B">
                                                 Corporate Acc||004004110449140121||SLL 150000000
-                                            </option>
+                                            </option> --}}
                                         </select>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                                                 class="text-danger">
                                                 *</span></label>
                                         <input type="date" id="value_date" name="value_date" placeholder="Enter value date"
-                                            class="form-control">
+                                            class="form-control" required>
                                         {{-- parsley-trigger="change" autocomzplete="none" --}}
                                         {{-- data-provide="datepicker" data-date-autoclose="true" --}}
                                     </div>
