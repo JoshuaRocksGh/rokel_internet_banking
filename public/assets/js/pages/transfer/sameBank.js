@@ -1,5 +1,44 @@
 let forexRate = [];
 
+function makeTransfer(url, data) {
+    $.ajax({
+        type: "POST",
+        url: url,
+        datatype: "application/json",
+        data: data,
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            if (response.responseCode == "000") {
+                $("#related_information_display").removeClass(
+                    "d-none d-sm-block"
+                );
+                toaster(response.message, "success", 3000);
+                $(".receipt").show();
+                $(".form_process").hide();
+                $("#confirm_modal_button").hide();
+                $("#spinner").hide();
+                $("#spinner-text").hide();
+                $("#back_button").hide();
+                $("#print_receipt").show();
+                $(".rtgs_card_right").hide();
+                $(".success_gif").show();
+            } else {
+                toaster(response.message, "error", 3000);
+                $(".receipt").hide();
+                $("#confirm_transfer").show();
+                $("#confirm_modal_button").prop("disabled", false);
+                $("#spinner").hide();
+                $("#spinner-text").hide();
+                $("#back_button").show();
+                $("#print_receipt").hide();
+                $("#related_information_display").show();
+                $(".success_gif").hide();
+            }
+        },
+    });
+}
 function getCorrectFxRate() {
     $.ajax({
         type: "GET",
@@ -249,6 +288,7 @@ $(function () {
     let onetimeTransactionDetails = new Object();
     let confirmationCompleted = false;
     let validationsCompleted = false;
+    let transferInfo = new Object();
 
     customer();
     function updateTransactionType() {
@@ -320,11 +360,8 @@ $(function () {
             $("#saved_beneficiary_form").show(300);
             $(".badge").hide(300);
             $(".select_beneficiary").show();
-            $("#from_account").trigger("change");
             $("#to_account").trigger("change");
             $("#amount").trigger("change");
-            $("#purpose").trigger("change");
-            $("#category").trigger("change");
         }
         if (transactionType === "onetime") {
             $("#amount").val("");
@@ -332,19 +369,9 @@ $(function () {
             $("#saved_beneficiary_form").hide(300);
             $(".select_beneficiary").hide(300);
             $(".badge").show(300);
-            $("#onetime_from_account").trigger("change");
-            $("#pnetome_to_account").trigger("change");
+            $("#onetome_to_account").trigger("change");
             $("#onetime_amount").trigger("change");
-            $("#onetime_purpose").trigger("change");
-            $("#onetime_category").trigger("change");
         }
-    });
-
-    // hide select accounts info
-    $("#back_button").click(function (e) {
-        e.preventDefault();
-        $("#transaction_form").toggle();
-        $("#transaction_summary").hide();
     });
 
     // {{-- Event on From Account field --}}
@@ -518,7 +545,7 @@ $(function () {
 
     $("#onetime_purpose").on("keyup", function () {
         onetimeTransactionDetails.purpose = $(this).val();
-        $("#display_onetime_purpose").text(transactionDetails.purpose);
+        $("#display_purpose").text(onetimeTransactionDetails.purpose);
     });
 
     $("#onetime_beneficiary_email").on("keyup", function () {
@@ -527,8 +554,6 @@ $(function () {
 
     // NEXT BUTTON CLICK
     $("#next_button").on("click", function () {
-        let tDetails = new Object();
-
         if (transactionType === "onetime") {
             onetimeToAccount.email = $("#onetime_beneficiary_email").val();
             if (!validateEmail(onetimeToAccount.email)) {
@@ -536,155 +561,107 @@ $(function () {
                 return false;
             }
             let { purpose, category, amount } = onetimeTransactionDetails;
-            tDetails = {
+            transferInfo = {
                 purpose,
                 category,
                 amount,
             };
-            tDetails.beneficiaryEmail = onetimeToAccount.email;
-            tDetails.beneficiaryName = onetimeToAccount.name;
-            tDetails.beneficiaryAccount = onetimeToAccount.accountNumber;
+            transferInfo.beneficiaryEmail = onetimeToAccount.email;
+            transferInfo.beneficiaryName = onetimeToAccount.name;
+            transferInfo.beneficiaryAccount = onetimeToAccount.accountNumber;
         } else if (transactionType === "beneficiary") {
             let { purpose, category, amount } = transactionDetails;
-            tDetails = {
+            transferInfo = {
                 purpose,
                 category,
                 amount,
             };
-            tDetails.beneficiaryEmail = toAccount.email;
-            tDetails.beneficiaryName = toAccount.name;
-            tDetails.beneficiaryAccount = toAccount.accountNumber;
+            transferInfo.beneficiaryEmail = toAccount.email;
+            transferInfo.beneficiaryName = toAccount.name;
+            transferInfo.beneficiaryAccount = toAccount.accountNumber;
         } else {
             somethingWentWrongHandler();
         }
 
-        console.log(tDetails);
-        if (tDetails.amount <= 0 || isNaN(tDetails.amount)) {
+        console.log(transferInfo);
+        if (transferInfo.amount <= 0 || isNaN(transferInfo.amount)) {
             toaster("invalid transfer amount", "warning");
             return false;
         }
-        if (parseFloat(tDetails.amount) > parseFloat(fromAccount.balance)) {
+        if (parseFloat(transferInfo.amount) > parseFloat(fromAccount.balance)) {
             toaster("Insufficient account balance", "warning");
             return false;
         }
         if (
             !validateAll(
                 fromAccount.info,
-                tDetails.accountNumber,
-                tDetails.amount,
-                tDetails.category,
-                tDetails.purpose
+                transferInfo.beneficiaryAccount,
+                transferInfo.amount,
+                transferInfo.category,
+                transferInfo.purpose
             )
         ) {
             toaster("Field must not be empty", "warning");
             return false;
         }
 
-        tDetails.fromAccount = fromAccount.accountNumber;
-        tDetails.beneficiaryName = bDetails.name;
-        tDetails.toAccount = bDetails.accountNumber;
-        tDetails.currency = fromAccount.currency;
-        tDetails.beneficiaryEmail = bDetails.email;
-        console.log(tDetails);
+        transferInfo.fromAccount = fromAccount.accountNumber;
+        transferInfo.currency = fromAccount.currency;
+        console.log(transferInfo);
         validationsCompleted = true;
         $("#transaction_form").hide();
         $("#transaction_summary").show();
     });
 
-    $("#confirm_modal_button").on("click", function (e) {
+    $("#confirm_transfer_button").on("click", function (e) {
         e.preventDefault();
-        if ($("#terms_and_conditions").is(":checked")) {
-            $("#to_account_receipt").text(onetime_account_number);
-            $(".receipt_currency").text(onetime_currency);
-            $("#purpose_receipt").text(purpose);
-
-            $("#amount_receipt").text(
-                formatToCurrency(parseFloat(transfer_amount.trim()))
-            );
-
-            var user_pin = $("#user_pin").val();
-            console.log(user_pin);
-
-            $("#confirm_transfer").hide();
-            $("#spinner").show();
-            $("#spinner-text").show();
-            $("#confirm_modal_button").prop("disabled", true);
-            $("#from_account_receipt").text(from_account_);
-            $("#to_account_receipt").text(to_account_);
-            $("#display_purpose").text(purpose);
-            $("#purpose_receipt").text(purpose);
-            $(".receipt_currency").text(select_currency);
-
-            $("#category_receipt").text(category);
-
-            toaster("Accept Terms & Conditions to continue", "error");
+        if (!$("#terms_and_conditions").is(":checked")) {
+            toaster("Accept Terms & Conditions to continue", "warning", 3000);
             return false;
         }
+        if (!validationsCompleted) {
+            somethingWentWrongHandler();
+            return false;
+        }
+        $("#from_account_receipt").text(transferInfo.fromAccount);
+        $("#to_account_receipt").text(transferInfo.beneficiaryAccount);
+        $("#amount_receipt").text(parseFloat(transferInfo.amount));
+        $("#category_receipt").text(transferInfo.category);
+        $("#purpose_receipt").text(transferInfo.purpose);
+        $(".receipt_currency").text(transferInfo.currency);
+
+        confirmationCompleted = true;
+        if (customerType === "C") {
+            // transferInfo.accountMandate = fromAccount.info.split("~")[5];
+            makeTransfer("corporate-own-account-api", transferInfo);
+        } else {
+            $("#centermodal").modal("show");
+        }
+    });
+
+    $("#transfer_pin").on("click", function (e) {
+        e.preventDefault;
+        if (!confirmationCompleted) {
+            somethingWentWrongHandler();
+            return false;
+        }
+        transferInfo.secPin = $("#user_pin").val();
+        if (transferInfo.secPin.length !== 4) {
+            toaster("invalid pin", "warning", 3000);
+            return false;
+        }
+        console.log("av");
+        console.log(transferInfo);
+        makeTransfer("transfer-to-beneficiary-api", transferInfo);
+        $("#user_pin").val("").text("");
+        confirmationCompleted = false;
+    });
+
+    $("#back_button").on("click", function (e) {
+        e.preventDefault();
+        validationsCompleted = false;
+        confirmationCompleted = false;
+        $("#transaction_form").toggle();
+        $("#transaction_summary").hide();
     });
 });
-
-// $.ajax({
-//     type: "POST",
-//     url: "corporate-same-bank-api",
-//     datatype: "application/json",
-//     data: {
-//         from_account: from_account_,
-//         alias_name: onetime_beneficiary_name,
-//         to_account: onetime_account_number,
-//         account_currency: onetime_currency,
-//         purpose: purpose,
-//         beneficiary_email: onetime_beneficiary_email,
-//         amount: transfer_amount,
-//         schedule_payment_date: onetime_future_payement,
-//         category: category,
-//         account_mandate: account_mandate,
-//     },
-//     headers: {
-//         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-//             "content"
-//         ),
-//     },
-//     success: function (response) {
-//         // {{-- console.log(response); --}}
-
-//         if (response.responseCode == "000") {
-//             $("#related_information_display").removeClass(
-//                 "d-none d-sm-block"
-//             );
-//             Swal.fire("", response.message, "success");
-
-//             setTimeout(function () {
-//                 redirect_page();
-//             }, 5000);
-
-//             // $(".receipt").show();
-//             // $(".form_process").hide();
-
-//             $("#confirm_modal_button").hide();
-//             $("#spinner").hide();
-//             $("#spinner-text").hide();
-//             $("#back_button").hide();
-//             // $('#print_receipt').show();
-
-//             $(".card_right").hide();
-//             $(".success_gif").show();
-//         } else {
-//             toaster(response.message, "error", 10000);
-
-//             $(".receipt").hide();
-
-//             $("#confirm_transfer").show();
-//             $("#confirm_modal_button").prop(
-//                 "disabled",
-//                 false
-//             );
-//             $("#spinner").hide();
-//             $("#spinner-text").hide();
-//             $("#back_button").show();
-//             $("#print_receipt").hide();
-//             // {{-- $("#related_information_display").addClass("d-none d-sm-block"); --}}
-//             $("#related_information_display").show();
-//             $(".success_gif").hide();
-//         }
-//     },
-// });

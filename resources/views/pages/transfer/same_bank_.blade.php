@@ -87,202 +87,7 @@
                     <div class="col-md-12">
 
                         {{-- RECEIPT --}}
-
-                        <div class="receipt" style="display: none">
-                            <div class="container card card-body">
-
-                                <div class="container">
-                                    <div class="___class_+?19___">
-                                        <div class="col-md-12 col-md-offset-3 body-main">
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
-                                                            src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
-                                                            style="zoom: 0.6" /> </div>
-                                                    <div class="col-md-4"></div>
-                                                    <div class="col-md-4 text-right">
-                                                        <h4 class="text-primary"><strong>ROKEL COMMERCIAL
-                                                                BANK</strong>
-                                                        </h4>
-                                                        <p>25-27 Siaka Stevens St</p>
-                                                        <p> Freetown, Sierra Leone</p>
-                                                        <p>rokelsl@rokelbank.sl</p>
-                                                        <p>(+232)-76-22-25-01</p>
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <div class="page-header">
-                                                    <h2><span id="personal_transfer_receipt">Transfer Receipt</span>
-                                                        <span id="coporate_transfer_approval">Transaction Awaiting
-                                                            Approval</span>
-                                                    </h2>
-                                                </div>
-                                                <br>
-                                                {{-- <div class="row">
-                                                        <div class="col-md-12 text-center">
-                                                            <h2>INVOICE</h2>
-                                                            <h5>04854654101</h5>
-                                                        </div>
-                                                    </div> --}}
-                                                <br />
-                                                {{-- <div class="table-responsive">
-                                                        <table class="table mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th><h5>Description</h5></th>
-                                                                    <th><h5>Further Details</h5></th>
-                                                                    <th><h5>Amount</h5></th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="col-md-9">
-                                                                        From Account Number<br>
-                                                                        004004110449140121
-                                                                    </td>
-                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 50,000 </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="col-md-9">
-                                                                        To Account Number<br>
-                                                                        004004110445350137
-                                                                    </td>
-                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 5,200 </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="col-md-9">Category Type</td>
-                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 25,000 </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="col-md-9">Purpose of Transfer</td>
-                                                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 2,200 </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="col-md-9"> Transfer Amount</td>
-                                                                    <td class="text-right">
-                                                                        <p> <strong>Shipment and Taxes:</strong> </p>
-                                                                        <p> <strong>Total Amount: </strong> </p>
-                                                                        <p> <strong>Discount: </strong> </p>
-                                                                        <p> <strong>Payable Amount: </strong> </p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 500 </strong> </p>
-                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 82,900</strong> </p>
-                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 3,000 </strong> </p>
-                                                                        <p> <strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900</strong> </p>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr style="color: #F81D2D;">
-                                                                    <td class="text-right">
-                                                                        <h4><strong>Total:</strong></h4>
-                                                                    </td>
-                                                                    <td class="text-left">
-                                                                        <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> 79,900 </strong></h4>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div> --}}
-                                                <div class="table-responsive">
-                                                    <table class="table mb-0">
-                                                        <thead class="thead-light">
-                                                            <tr>
-                                                                {{-- <th>#</th> --}}
-                                                                <th>Description</th>
-                                                                <th class="text-right">Further Details</th>
-                                                                {{-- <th>Amount </th> --}}
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                {{-- <th scope="row">1</th> --}}
-                                                                <td>Transfer From Account Number</td>
-                                                                <td class="text-right"><span
-                                                                        id="from_account_receipt"></span></td>
-                                                                {{-- <td></td> --}}
-                                                            </tr>
-                                                            <tr>
-                                                                {{-- <th scope="row">2</th> --}}
-                                                                <td>Transfer To Account Number</td>
-                                                                <td class="text-right"><span
-                                                                        id="to_account_receipt"></span></td>
-                                                                {{-- <td></td> --}}
-                                                            </tr>
-                                                            <tr>
-                                                                {{-- <th scope="row">3</th> --}}
-                                                                <td>Transfer Category</td>
-                                                                <td class="text-right"><span
-                                                                        id="category_receipt"></span></td>
-                                                                {{-- <td></td> --}}
-                                                            </tr>
-                                                            <tr>
-                                                                {{-- <th scope="row">3</th> --}}
-                                                                <td>Transfer Purpose</td>
-                                                                <td class="text-right"><span
-                                                                        id="purpose_receipt"></span></td>
-                                                                {{-- <td></td> --}}
-                                                            </tr>
-                                                            <tr>
-                                                                {{-- <th scope="row">3</th> --}}
-                                                                <td>Amount</td>
-                                                                {{-- <td></td> --}}
-                                                                <td class="text-right"><strong><span
-                                                                            class="receipt_currency"></span>
-                                                                        &nbsp;<span id="amount_receipt"></span></strong>
-                                                                </td>
-                                                            </tr>
-                                                            {{-- <tr>
-                                                                    <th scope="row">3</th>
-                                                                    <td>Transaction Fee </td>
-                                                                    <td></td>
-                                                                    <td class="text-right"><strong>(<span
-                                                                                class="receipt_currency"></span>) &nbsp;
-                                                                            15.00</strong></td>
-                                                                </tr> --}}
-                                                            {{-- <tr>
-                                                                    <th scope="row">3</th>
-                                                                    <td><strong>Total Amount</strong> </td>
-                                                                    <td></td>
-                                                                    <td><strong><span
-                                                                                id="total_amount_receipt"></span></strong>
-                                                                    </td>
-                                                                </tr> --}}
-                                                            <tr>
-                                                                {{-- <th scope="row">3</th> --}}
-                                                                {{-- <td></td> --}}
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div> <!-- end table-responsive-->
-                                                <br>
-                                                <div>
-                                                    <div class="col-md-12">
-                                                        <p><b>Date Posted :</b> {{ date('d F, Y') }}</p> <br /> <br />
-                                                        <p><b>Posted By : {{ session('userId') }}</b></p>
-                                                    </div>
-                                                </div>
-                                                <br><br>
-                                                <div class="row">
-                                                    <div class="col-md-5"></div>
-                                                    <div class="col-md-2">
-                                                        <button
-                                                            class="btn btn-light btn-rounded hide_on_print text-center"
-                                                            type="button" onclick="window.print()">Print
-                                                            Receipt
-                                                        </button>
-
-
-                                                    </div>
-                                                    <div class="col-md-5"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include("snippets.receipt")
 
                         <div class="form_process">
 
@@ -476,9 +281,8 @@
                                                         id="back_button"><i class="mdi mdi-reply-all-outline"></i>
                                                         &nbsp;Back</button> &nbsp; </span>
                                                 <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                        id="confirm_modal_button">
-                                                        <span id="confirm_transfer" data-toggle="modal"
-                                                            data-target="#centermodal">Confirm Transfer</span>
+                                                        id="confirm_transfer_button">
+                                                        <span id="confirm_transfer">Confirm Transfer</span>
                                                         <span class="spinner-border spinner-border-sm mr-1"
                                                             role="status" id="spinner" aria-hidden="true"
                                                             style="display: none"></span>
@@ -1005,61 +809,15 @@
 
 
             <!-- end row -->
-
-
-
         </div>
 
         <div class="___class_+?209___" id="">
-
-
-
-
-
-
-
-
         </div>
 
-        <!-- Center modal content -->
-        <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER TRANSACTION
-                            PIN</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-
-                    </div>
-                    <div class="modal-body transfer_pin_modal">
-
-                        <div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-9  text-center">
-                                <form action="#" autocomplete="off" aria-autocomplete="off">
-                                    <input type="text" name="user_pin" maxlength="4" autocomplete="off"
-                                        aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin"
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                    <br>
-                                    <button class="btn btn-success waves-effect waves-light" type="button"
-                                        id="transfer_pin" data-dismiss="modal">Submit</button>
-                                </form>
-
-                            </div>
-                            <div class="col-md-1"></div>
-                        </div>
-                    </div>
-                    <br>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-
+        @include("snippets.pinCodeModal")
         {{-- IMAGE MODAL --}}
 
-
+        {{--
         <!-- Center modal content -->
         <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true" style="zoom: 0.9;">
             <div class="modal-dialog modal-dialog-centered">
@@ -1077,7 +835,7 @@
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+        </div><!-- /.modal --> --}}
 
 
 
@@ -1147,9 +905,8 @@
 
 
 @section('scripts')
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script> --}}
 <script>
     const customerType = @json(session()->get('customerType'))
 </script>

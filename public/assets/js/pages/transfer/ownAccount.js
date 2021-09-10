@@ -1,4 +1,4 @@
-function accountApi(url, data) {
+function makeTransfer(url, data) {
     $.ajax({
         type: "POST",
         url: url,
@@ -544,7 +544,7 @@ $(() => {
         // $('#confirm_modal_button').removeClass('data-toggle');
 
         if (!$("#terms_and_conditions").is(":checked")) {
-            toaster("Accept Terms & Conditions to continue", "error", 3000);
+            toaster("Accept Terms & Conditions to continue", "warning", 3000);
             return false;
         }
         if (!validationsCompleted) {
@@ -560,12 +560,11 @@ $(() => {
         transferInfo.toAccount = toAccount.accountNumber;
         transferInfo.fromAccount = fromAccount.accountNumber;
         transferInfo.currency = fromAccount.currency;
-        // $("#spinner").show();
-        // $("#spinner-text").show();
+
         confirmationCompleted = true;
         if (customerType === "C") {
             transferInfo.accountMandate = fromAccount.info.split("~")[5];
-            accountApi("corporate-own-account-api", transferInfo);
+            makeTransfer("corporate-own-account-api", transferInfo);
         } else {
             $("#centermodal").modal("show");
         }
@@ -583,7 +582,7 @@ $(() => {
             toaster("invalid pin", "warning", 3000);
             return false;
         }
-        accountApi("own-account-api", transferInfo);
+        makeTransfer("own-account-api", transferInfo);
         $("#user_pin").val("").text("");
         confirmationCompleted = false;
     });
