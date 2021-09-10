@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class SameBankController extends Controller
 {
@@ -22,52 +23,29 @@ class SameBankController extends Controller
 
     public function transfer_to_beneficiary(Request $req)
     {
-        $validator = Validator::make($req->all(), [
-            'from_account' => 'required',
-            'to_account' => 'required',
-            'amount' => 'required',
-            'category' => 'required',
-            'account_currency' => 'required',
-            'purpose' => 'required',
-            'alias_name' => 'required',
-            // 'type' => 'required',
-            'amount' => 'required',
-            'secPin' => 'required',
-            'category' => 'required',
-            "account_currency" => 'required'
+        // $validator = Validator::make($req->all(), [
+        //     'from_account' => 'required',
+        //     'to_account' => 'required',
+        //     'amount' => 'required',
+        //     'category' => 'required',
+        //     'account_currency' => 'required',
+        //     'purpose' => 'required',
+        //     'alias_name' => 'required',
+        //     // 'type' => 'required',
+        //     'amount' => 'required',
+        //     'secPin' => 'required',
+        //     'category' => 'required',
+        //     "account_currency" => 'required'
 
-        ]);
-
-        // return $req ;
-
-        // return [
-        //     'responseCode' => '000',
-        //     'message' => 'Money transferred successfully',
-        //     'data' => null
-        // ];
-
+        // ]);
 
         $base_response = new BaseResponse();
 
         // VALIDATION
-        if ($validator->fails()) {
+        // if ($validator->fails()) {
 
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
-        // return $req;
-
-
-
-
-
-        $user_pin = $req->secPin;
-
-        // return $user_pin;
-        // if ($user_pin != '123456') {
-
-        //     return $base_response->api_response('098', 'Incorrect Pin',  null); // return API BASERESPONSE
-
-        // }
+        //     return $base_response->api_response('500', $validator->errors(), NULL);
+        // };
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -92,17 +70,22 @@ class SameBankController extends Controller
 
             "amount" => (float) $req->amount,
             "authToken" => $authToken,
-            "creditAccount" => $req->to_account,
+            "brand" => "string",
+            "creditAccount" => $req->beneficiaryAccount,
             "channel" => "MOB",
-            "currency" => $req->account_currency,
-            "debitAccount" => $req->from_account,
+            "country" => "SL",
+            "currency" => $req->currency,
+            "debitAccount" => $req->fromAccount,
+            "deviceId" => "string",
+            "deviceName" => "string",
             "deviceIp" => $client_ip,
             "entrySource" => 'I',
+            "expenseType" => $req->category,
+            "manufacturer" => "string",
             "narration" => $req->purpose,
-            "secPin" => $user_pin,
+            "secPin" => $req->secPin,
             "userName" => $userID,
-            "category" => $req->category,
-            "beneficiaryEmail" => $req->beneficiary_email
+            "beneficiaryEmail" => $req->beneficiaryEmail
         ];
 
 
@@ -137,6 +120,7 @@ class SameBankController extends Controller
             // return $response;
 
             $result = new ApiBaseResponse();
+            Log::alert($response);
             return $result->api_response($response);
         } catch (\Exception $e) {
 

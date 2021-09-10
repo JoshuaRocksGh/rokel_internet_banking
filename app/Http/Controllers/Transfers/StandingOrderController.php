@@ -25,22 +25,87 @@ class StandingOrderController extends Controller
     }
 
     //method to send pay load request
-    public function standing_order_request(Request $request)
+    public function standing_order_request(Request $req)
     {
-        $validator = Validator::make($request->all(), [
-            'from_account' =>  'required',
+        $validator = Validator::make($req->all(), [
+            'fromAccount' =>  'required',
             'amount' => 'required',
-            'beneficiary_account' => 'required',
-            'standing_order_start_date' => 'required',
-            'standing_order_end_date' => 'required',
-            'standing_order_frequency' => 'required',
-            'narration' => 'required',
-            'bank_code' => 'required',
-            'user_pin' => 'required'
+            'toAccount' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required',
+            'frequency' => 'required',
+            'purpose' => 'required',
+            'bankCode' => 'required',
+            'secPin' => 'required'
         ]);
 
         // return $request;
+        $base_response = new BaseResponse();
 
+        // VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
+
+
+        $authToken = session()->get('userToken');
+        $api_headers = session()->get('headers');
+        $terminalId = get_current_user();
+
+
+        $data =
+            [
+                "amount" => $req->account,
+                "authToken" => $authToken,
+                "bankCode" => $req->backCode,
+                "creditAccount" => $req->toAccount,
+                "debitAccount" => $req->fromAccount,
+                "deviceIp" => $terminalId,
+                "effectiveDate" => $req->startDate,
+                "expiryDate" => $req->endDate,
+                "frequency" => $req->frequency,
+                "pinCode" => $req->secPin,
+                "transactionDesc" => $req->purpose
+            ];
+
+        // return $data;
+
+        // Log::critical($data);
+
+        try {
+            $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "transfers/standingOrder", $data);
+            // return $response;
+            Log::alert($response);
+            $result = new ApiBaseResponse();
+
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+        }
+    }
+
+
+    public function corporate_standing_order_request(Request $req)
+    {
+        $validator = Validator::make($req->all(), [
+            'fromAccount' =>  'required',
+            'amount' => 'required',
+            'toAccount' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required',
+            'frequency' => 'required',
+            'purpose' => 'required',
+            'bankCode' => 'required',
+            'secPin' => 'required'
+        ]);
 
         $base_response = new BaseResponse();
 
@@ -52,39 +117,23 @@ class StandingOrderController extends Controller
 
 
         $authToken = session()->get('userToken');
-        // $userID = session()->get('userId');
         $api_headers = session()->get('headers');
-        // $sender_name = session()->get('userAlias');
-        // $ip_address =
-        // return $api_headers;
-
-        $accLink = $request->from_account;
-        // $approvalTerminal = get_current_user();
-        // $approvedBy = $sender_name;
-        $bank_code = $request->bank_code;
-        $beneficiaryAccount = $request->beneficiary_account;
-        $dueAmount = $request->amount;
-        $dueDate = $request->standing_order_end_date;
-        $startDate = $request->standing_order_start_date;
-        $frequencyCode = $request->standing_order_frequency;
-        // $postedBy = $sender_name;
         $terminalId = get_current_user();
-        $transactionDetails = $request->narration;
-        $pin_code = $request->user_pin;
+
 
         $data =
             [
-                "amount" => $dueAmount,
+                "amount" => $req->account,
                 "authToken" => $authToken,
-                "bankCode" => $bank_code,
-                "creditAccount" => $beneficiaryAccount,
-                "debitAccount" => $accLink,
+                "bankCode" => $req->backCode,
+                "creditAccount" => $req->toAccount,
+                "debitAccount" => $req->fromAccount,
                 "deviceIp" => $terminalId,
-                "effectiveDate" => $startDate,
-                "expiryDate" => $dueDate,
-                "frequency" => $frequencyCode,
-                "pinCode" => $pin_code,
-                "transactionDesc" => $transactionDetails
+                "effectiveDate" => $req->startDate,
+                "expiryDate" => $req->endDate,
+                "frequency" => $req->frequency,
+                "pinCode" => $req->secPin,
+                "transactionDesc" => $req->purpose
             ];
 
         // return $data;
@@ -107,32 +156,5 @@ class StandingOrderController extends Controller
             return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
 
         }
-    }
-
-
-    public function corporate_standing_order_request(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'from_account' =>  'required',
-            'amount' => 'required',
-            'beneficiary_account' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'frequency' => 'required',
-            'narration' => 'required',
-            'bank_code' => 'required',
-            'user_pin' => 'required'
-        ]);
-
-        return $request;
-
-
-        $base_response = new BaseResponse();
-
-        // VALIDATION
-        if ($validator->fails()) {
-
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
     }
 }
