@@ -92,4 +92,11 @@
         return true
     }
 
+    function somethingWentWrongHandler(){
+        toaster("Something went wrong ... please hold on", "error", 3000)
+        setTimeout(() => {
+            location.reload();
+            }, 3000);
+    }
+
 </script>
