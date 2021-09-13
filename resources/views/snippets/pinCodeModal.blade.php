@@ -46,9 +46,10 @@
     .pinCodeModal .body .form-control {
         border-radius: 0.8rem;
         border: 4px solid #4d90fe;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         box-shadow: inset 0 0 10px 0px #dedede;
         height: 50px;
-
+        text-align: center;
+        font-size: 75px;
     }
 </style>
