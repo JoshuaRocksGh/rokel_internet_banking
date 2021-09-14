@@ -24,7 +24,9 @@ function postStandingOrder(url, data) {
                 $("#confirm_transfer_text").show();
                 $("#spinner").hide();
                 $("#spinner-text").hide();
-                $(".form_process").hide();
+                $("#confirm_modal_button").prop("disabled", false);
+
+                // $(".form_process").hide();
                 console.log("api error");
             }
         },
@@ -110,7 +112,7 @@ function get_so_frequencies() {
 function get_benerficiary() {
     $.ajax({
         type: "GET",
-        url: "get-transfer-beneficiary-api?beneType=OTB",
+        url: "get-transfer-beneficiary-api?beneType=SAB",
         datatype: "application/json",
         success: function (response) {
             // console.log(response.data);
@@ -474,6 +476,7 @@ $(document).ready(function () {
         }
         confirmationCompleted = true;
         if (customerType == "C") {
+            $("#confirm_transfer_button").prop("disabled", true);
             $("#confirm_transfer_text").hide();
             $("#spinner").show();
             $("#spinner-text").show();
@@ -499,6 +502,9 @@ $(document).ready(function () {
         }
         console.log("av");
         console.log(standingOrderData);
+        $("#confirm_transfer_text").hide();
+        $("#spinner").show();
+        $("#spinner-text").show();
         postStandingOrder(
             "initiate-standing-order-request-api",
             standingOrderData

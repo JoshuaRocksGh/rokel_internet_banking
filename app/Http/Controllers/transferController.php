@@ -9,6 +9,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -44,7 +45,8 @@ class transferController extends Controller
 
     public function international_bank()
     {
-        return view('pages.transfer.international_bank_beneficiary');
+        $response = Http::get(env('API_BASE_URL') . "/utilities/getInternationalBanks");
+        return view('pages.transfer.international_bank_beneficiary')->with('banks', $response['data']);
     }
 
     public function international_bank_()

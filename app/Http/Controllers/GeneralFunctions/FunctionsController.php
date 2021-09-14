@@ -278,7 +278,16 @@ class FunctionsController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
+    public function international_bank_list()
+    {
 
+        $response = Http::get(env('API_BASE_URL') . "/utilities/getInternationalBanks");
+        Log::alert($response);
+        //return $response;
+        // return $response->status();
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
 
     public function branches_list()
     {
