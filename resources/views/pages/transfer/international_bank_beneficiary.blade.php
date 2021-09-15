@@ -10,6 +10,25 @@
         }
     }
 
+    .bootstrap-select .btn {
+        display: inline-block;
+        width: 100%;
+        height: calc(1.5em + 0.9rem + 2px);
+        padding: 0.45rem 1.9rem 0.45rem 0.9rem;
+        /* font-size: 0.8125rem; */
+        font-size: 0.9rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #6c757d;
+        vertical-align: middle;
+        background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.9rem center/8px 10px;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
     @font-face {
         font-family: 'password';
         font-style: normal;
@@ -153,8 +172,7 @@
                                                                                 class="text-danger">*</span></label>
 
                                                                         <select class="selectpicker"
-                                                                            data-live-search="true"
-                                                                            data-style="btn-light" id="bank_name"
+                                                                            data-live-search="true" id="bank_name"
                                                                             required>
                                                                             <option value="">Bank Name</option>
                                                                             @foreach($banks as $key => $bank)

@@ -15,7 +15,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class transferController extends Controller
 {
-    //
 
     public function transfer()
     {
@@ -45,7 +44,7 @@ class transferController extends Controller
 
     public function international_bank()
     {
-        $response = Http::get(env('API_BASE_URL') . "/utilities/getInternationalBanks");
+        $response = Http::get(env('API_BASE_URL') . "/utilities/getBanks");
         return view('pages.transfer.international_bank_beneficiary')->with('banks', $response['data']);
     }
 

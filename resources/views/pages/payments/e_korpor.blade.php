@@ -2,161 +2,166 @@
 
 @section('styles')
 
-    <style>
-        @media print {
-            .hide_on_print {
-                display: none;
+<style>
+    @media print {
+        .hide_on_print {
+            display: none;
+        }
+
+        ;
+    }
+
+    @page {
+        size: A4;
+
+            {
+                {
+                -- margin: 10px;
+                --
             }
+        }
+    }
 
-            ;
+    @media print {
+
+        html,
+        body {
+            width: 210mm;
+            height: 297mm;
         }
 
-        @page {
-            size: A4;
-            {{-- margin: 10px; --}}
-        }
-
-        @media print {
-
-            html,
-            body {
-                width: 210mm;
-                height: 297mm;
-            }
-
-            /* ... the rest of the rules ... */
-        }
+        /* ... the rest of the rules ... */
+    }
 
 
-        @font-face {
-            font-family: 'password';
-            font-style: normal;
-            font-weight: 400;
-            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
-        }
+    @font-face {
+        font-family: 'password';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+    }
 
-        /* input[name="reverse_pin"] {
+    /* input[name="reverse_pin"] {
                             display: none;
                         } */
-
-    </style>
+</style>
 
 
 @endsection
 
 @section('content')
 
-    <div class="">
+<div class="">
 
-        <div class="container-fluid">
-            <br>
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="text-primary">
-                        <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                        E-Korpor
-                    </h4>
-                </div>
+    <div class="container-fluid">
+        <br>
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="text-primary">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    E-Korpor
+                </h4>
+            </div>
 
-                <div class="col-md-6 text-right">
-                    <h6>
+            <div class="col-md-6 text-right">
+                <h6>
 
-                        <span class="flaot-right">
-                            <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">E-Korpor
-                                Payment</b>
+                    <span class="flaot-right">
+                        <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">E-Korpor
+                            Payment</b>
 
 
-                        </span>
+                    </span>
 
-                    </h6>
-
-                </div>
-
-                <div class="col-md-12 ">
-                    <hr class="text-primary" style="margin: 0px;">
-                </div>
+                </h6>
 
             </div>
+
+            <div class="col-md-12 ">
+                <hr class="text-primary" style="margin: 0px;">
+            </div>
+
         </div>
-        <br>
+    </div>
+    <br>
 
-        <div class="">
+    <div class="">
 
-            <ul class="nav nav-pills navtab-bg nav-justified">
-                <li class="nav-item">
-                    <a href="#send_korpor_page" data-toggle="tab" aria-expanded="true"
-                        class="nav-link active send_korpor_tab">
-                        Send E-Korpor
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#reverse_korpor_page" data-toggle="tab" aria-expanded="false"
-                        class="nav-link reverse_korpor_tab">
-                        Reverse E-Korpor
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#redeem_korpor_page" data-toggle="tab" aria-expanded="false"
-                        class="nav-link redeem_korpor_tab">
-                        Redeem E-Korpor
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#korpor_trans_page" data-toggle="tab" aria-expanded="false" class="nav-link korpor_trans_tab">
-                        E-Korpor Transactions
-                    </a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane show active" id="send_korpor_page">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card-body">
-                                <div class="row">
+        <ul class="nav nav-pills navtab-bg nav-justified">
+            <li class="nav-item">
+                <a href="#send_korpor_page" data-toggle="tab" aria-expanded="true"
+                    class="nav-link active send_korpor_tab">
+                    Send E-Korpor
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#reverse_korpor_page" data-toggle="tab" aria-expanded="false"
+                    class="nav-link reverse_korpor_tab">
+                    Reverse E-Korpor
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#redeem_korpor_page" data-toggle="tab" aria-expanded="false"
+                    class="nav-link redeem_korpor_tab">
+                    Redeem E-Korpor
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#korpor_trans_page" data-toggle="tab" aria-expanded="false" class="nav-link korpor_trans_tab">
+                    E-Korpor Transactions
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane show active" id="send_korpor_page">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-body">
+                            <div class="row">
 
-                                    <div class="col-md-12">
+                                <div class="col-md-12">
 
-                                        <div class="receipt">
-                                            <div class="container card card-body">
+                                    <div class="receipt">
+                                        <div class="container card card-body">
 
-                                                <div class="container">
-                                                    <div class="">
-                                                        <div class="col-md-12 col-md-offset-3 body-main">
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-                                                                    <div class="col-md-4 "> <img class="img "
-                                                                            alt="InvoIce Template"
-                                                                            src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
-                                                                            style="zoom: 0.6" /> </div>
-                                                                    <div class="col-md-4"></div>
-                                                                    <div class="col-md-4 text-right">
-                                                                        <h4 class="text-primary"><strong>ROKEL COMMERCIAL
-                                                                                BANK</strong>
-                                                                        </h4>
-                                                                        <p>25-27 Siaka Stevens St</p>
-                                                                        <p> Freetown, Sierra Leone</p>
-                                                                        <p>rokelsl@rokelbank.sl</p>
-                                                                        <p>(+232)-76-22-25-01</p>
-                                                                    </div>
+                                            <div class="container">
+                                                <div class="">
+                                                    <div class="col-md-12 col-md-offset-3 body-main">
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="col-md-4 "> <img class="img "
+                                                                        alt="InvoIce Template"
+                                                                        src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
+                                                                        style="zoom: 0.6" /> </div>
+                                                                <div class="col-md-4"></div>
+                                                                <div class="col-md-4 text-right">
+                                                                    <h4 class="text-primary"><strong>ROKEL COMMERCIAL
+                                                                            BANK</strong>
+                                                                    </h4>
+                                                                    <p>25-27 Siaka Stevens St</p>
+                                                                    <p> Freetown, Sierra Leone</p>
+                                                                    <p>rokelsl@rokelbank.sl</p>
+                                                                    <p>(+232)-76-22-25-01</p>
                                                                 </div>
-                                                                <br>
-                                                                <div class="page-header">
-                                                                    <h2><span id="personal_transfer_receipt">E-Korpor
-                                                                            Transfer Receipt</span>
-                                                                        {{-- <span id="coporate_transfer_approval">Transaction Awaiting
+                                                            </div>
+                                                            <br>
+                                                            <div class="page-header">
+                                                                <h2><span id="personal_transfer_receipt">E-Korpor
+                                                                        Transfer Receipt</span>
+                                                                    {{-- <span id="coporate_transfer_approval">Transaction Awaiting
                                                                             Approval</span> --}}
-                                                                    </h2>
-                                                                </div>
-                                                                <br>
-                                                                {{-- <div class="row">
+                                                                </h2>
+                                                            </div>
+                                                            <br>
+                                                            {{-- <div class="row">
                                                                     <div class="col-md-12 text-center">
                                                                         <h2>INVOICE</h2>
                                                                         <h5>04854654101</h5>
                                                                     </div>
                                                                 </div> --}}
-                                                                <br />
-                                                                {{-- <div class="table-responsive">
+                                                            <br />
+                                                            {{-- <div class="table-responsive">
                                                                     <table class="table mb-0">
                                                                         <thead>
                                                                             <tr>
@@ -214,60 +219,60 @@
                                                                         </tbody>
                                                                     </table>
                                                                 </div> --}}
-                                                                <div class="table-responsive">
-                                                                    <table class="table mb-0">
-                                                                        <thead class="thead-light">
-                                                                            <tr>
-                                                                                {{-- <th>#</th> --}}
-                                                                                <th>Description</th>
-                                                                                <th class="text-right">Further Details</th>
-                                                                                {{-- <th>Amount </th> --}}
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                {{-- <th scope="row">1</th> --}}
-                                                                                <td>Transfer From Account Number</td>
-                                                                                <td class="text-right"><span
-                                                                                        id="from_account_receipt"></span>
-                                                                                </td>
-                                                                                {{-- <td></td> --}}
-                                                                            </tr>
-                                                                            <tr>
-                                                                                {{-- <th scope="row">2</th> --}}
-                                                                                <td>Receiver Name</td>
-                                                                                <td class="text-right"><span
-                                                                                        id="receiver_name_receipt"></span>
-                                                                                </td>
-                                                                                {{-- <td></td> --}}
-                                                                            </tr>
-                                                                            <tr>
-                                                                                {{-- <th scope="row">3</th> --}}
-                                                                                <td>Receiver Telephone</td>
-                                                                                <td class="text-right"><span
-                                                                                        id="receiver_telephone_receipt"></span>
-                                                                                </td>
-                                                                                {{-- <td></td> --}}
-                                                                            </tr>
-                                                                            <tr>
-                                                                                {{-- <th scope="row">3</th> --}}
-                                                                                <td>Reference Number</td>
-                                                                                <td class="text-right"><span
-                                                                                        id="reference_number_receipt"></span>
-                                                                                </td>
-                                                                                {{-- <td></td> --}}
-                                                                            </tr>
-                                                                            <tr>
-                                                                                {{-- <th scope="row">3</th> --}}
-                                                                                <td>Amount</td>
-                                                                                {{-- <td></td> --}}
-                                                                                <td class="text-right"><strong><span
-                                                                                            class="receipt_currency"></span>
-                                                                                        &nbsp;<span
-                                                                                            id="amount_receipt"></span></strong>
-                                                                                </td>
-                                                                            </tr>
-                                                                            {{-- <tr>
+                                                            <div class="table-responsive">
+                                                                <table class="table mb-0">
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            {{-- <th>#</th> --}}
+                                                                            <th>Description</th>
+                                                                            <th class="text-right">Further Details</th>
+                                                                            {{-- <th>Amount </th> --}}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            {{-- <th scope="row">1</th> --}}
+                                                                            <td>Transfer From Account Number</td>
+                                                                            <td class="text-right"><span
+                                                                                    id="from_account_receipt"></span>
+                                                                            </td>
+                                                                            {{-- <td></td> --}}
+                                                                        </tr>
+                                                                        <tr>
+                                                                            {{-- <th scope="row">2</th> --}}
+                                                                            <td>Receiver Name</td>
+                                                                            <td class="text-right"><span
+                                                                                    id="receiver_name_receipt"></span>
+                                                                            </td>
+                                                                            {{-- <td></td> --}}
+                                                                        </tr>
+                                                                        <tr>
+                                                                            {{-- <th scope="row">3</th> --}}
+                                                                            <td>Receiver Telephone</td>
+                                                                            <td class="text-right"><span
+                                                                                    id="receiver_telephone_receipt"></span>
+                                                                            </td>
+                                                                            {{-- <td></td> --}}
+                                                                        </tr>
+                                                                        <tr>
+                                                                            {{-- <th scope="row">3</th> --}}
+                                                                            <td>Reference Number</td>
+                                                                            <td class="text-right"><span
+                                                                                    id="reference_number_receipt"></span>
+                                                                            </td>
+                                                                            {{-- <td></td> --}}
+                                                                        </tr>
+                                                                        <tr>
+                                                                            {{-- <th scope="row">3</th> --}}
+                                                                            <td>Amount</td>
+                                                                            {{-- <td></td> --}}
+                                                                            <td class="text-right"><strong><span
+                                                                                        class="receipt_currency"></span>
+                                                                                    &nbsp;<span
+                                                                                        id="amount_receipt"></span></strong>
+                                                                            </td>
+                                                                        </tr>
+                                                                        {{-- <tr>
                                                                                 <th scope="row">3</th>
                                                                                 <td>Transaction Fee </td>
                                                                                 <td></td>
@@ -275,7 +280,7 @@
                                                                                             class="receipt_currency"></span>) &nbsp;
                                                                                         15.00</strong></td>
                                                                             </tr> --}}
-                                                                            {{-- <tr>
+                                                                        {{-- <tr>
                                                                                 <th scope="row">3</th>
                                                                                 <td><strong>Total Amount</strong> </td>
                                                                                 <td></td>
@@ -283,151 +288,151 @@
                                                                                             id="total_amount_receipt"></span></strong>
                                                                                 </td>
                                                                             </tr> --}}
-                                                                            <tr>
-                                                                                {{-- <th scope="row">3</th> --}}
-                                                                                {{-- <td></td> --}}
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div> <!-- end table-responsive-->
-                                                                <br>
-                                                                <div>
-                                                                    <div class="col-md-12">
-                                                                        <p><b>Date Posted :</b> {{ date('d F, Y') }}</p>
-                                                                        <br /> <br />
-                                                                        <p><b>Posted By : {{ session('userId') }}</b></p>
-                                                                    </div>
+                                                                        <tr>
+                                                                            {{-- <th scope="row">3</th> --}}
+                                                                            {{-- <td></td> --}}
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div> <!-- end table-responsive-->
+                                                            <br>
+                                                            <div>
+                                                                <div class="col-md-12">
+                                                                    <p><b>Date Posted :</b> {{ date('d F, Y') }}</p>
+                                                                    <br /> <br />
+                                                                    <p><b>Posted By : {{ session('userId') }}</b></p>
                                                                 </div>
-                                                                <br><br>
-                                                                <div class="row">
-                                                                    <div class="col-md-5"></div>
-                                                                    <div class="col-md-2">
-                                                                        <button
-                                                                            class="btn btn-light btn-rounded hide_on_print text-center"
-                                                                            type="button" onclick="window.print()">Print
-                                                                            Receipt
-                                                                        </button>
+                                                            </div>
+                                                            <br><br>
+                                                            <div class="row">
+                                                                <div class="col-md-5"></div>
+                                                                <div class="col-md-2">
+                                                                    <button
+                                                                        class="btn btn-light btn-rounded hide_on_print text-center"
+                                                                        type="button" onclick="window.print()">Print
+                                                                        Receipt
+                                                                    </button>
 
 
-                                                                    </div>
-                                                                    <div class="col-md-5"></div>
                                                                 </div>
+                                                                <div class="col-md-5"></div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="form_process">
-                                            <div class="row">
+                                    <div class="form_process">
+                                        <div class="row">
 
 
 
-                                                <div class="col-md-7" id="transaction_summary"
-                                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                                    <br><br><br>
-                                                    <div class="col-md-12">
-                                                        <div class="card border p-3 mt-4 mt-lg-0 rounded">
-                                                            <h4 class="header-title mb-3">E-Korpor Transfer Summary</h4>
+                                            <div class="col-md-7" id="transaction_summary"
+                                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                                <br><br><br>
+                                                <div class="col-md-12">
+                                                    <div class="card border p-3 mt-4 mt-lg-0 rounded">
+                                                        <h4 class="header-title mb-3">E-Korpor Transfer Summary</h4>
 
-                                                            <p class="display-4 text-center text-success success-message ">
-                                                            </p>
+                                                        <p class="display-4 text-center text-success success-message ">
+                                                        </p>
 
-                                                            <div class="table-responsive table-striped table-bordered">
-                                                                <table class="table mb-0">
+                                                        <div class="table-responsive table-striped table-bordered">
+                                                            <table class="table mb-0">
 
-                                                                    <tbody>
-                                                                        {{-- <tr class="success_gif">
+                                                                <tbody>
+                                                                    {{-- <tr class="success_gif">
                                                                             <td class="text-center bg-white" colspan="2">
                                                                                 <img src="{{ asset('land_asset/images/statement_success.gif') }}"
-                                                                                    style="zoom: 0.5" alt="">
-                                                                            </td>
-                                                                        </tr> --}}
-                                                                        <tr>
-                                                                            <td>From Account:</td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="font-13 text-primary text-bold display_from_account_type"
-                                                                                    id="display_from_account_type"></span>
-                                                                                <span
-                                                                                    class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                                    id="display_from_account_name"> </span>
-                                                                                <span
-                                                                                    class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                                    id="display_from_account_no"></span>
-                                                                            </td>
-                                                                        </tr>
+                                                                    style="zoom: 0.5" alt="">
+                                                                    </td>
+                                                                    </tr> --}}
+                                                                    <tr>
+                                                                        <td>From Account:</td>
+                                                                        <td>
+                                                                            <span
+                                                                                class="font-13 text-primary text-bold display_from_account_type"
+                                                                                id="display_from_account_type"></span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                                                id="display_from_account_name"> </span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                                                id="display_from_account_no"></span>
+                                                                        </td>
+                                                                    </tr>
 
-                                                                        <tr>
-                                                                            <td>Receiver Name</td>
-                                                                            <td>
+                                                                    <tr>
+                                                                        <td>Receiver Name</td>
+                                                                        <td>
 
-                                                                                <span
-                                                                                    class="font-13 text-primary text-bold display_to_account_type"
-                                                                                    id="display_receiver_name"> </span>
-                                                                                <span
-                                                                                    class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                                    id="display_to_account_name"> </span>
-                                                                                <span
-                                                                                    class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                                    id="display_to_account_no"> </span>
+                                                                            <span
+                                                                                class="font-13 text-primary text-bold display_to_account_type"
+                                                                                id="display_receiver_name"> </span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                                id="display_to_account_name"> </span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                                                id="display_to_account_no"> </span>
 
 
-                                                                                {{-- <span class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                                            {{-- <span class="d-block font-13 text-primary text-bold display_to_account_name"
                                                                                     id="online_display_beneficiary_alias_name"> </span> --}}
 
-                                                                                <span
-                                                                                    class="font-13 text-primary h3 online_display_beneficiary_account_no"
-                                                                                    id="online_display_beneficiary_account_no">
-                                                                                </span>
-                                                                                {{-- &nbsp; | &nbsp; --}}
-                                                                                <span
-                                                                                    class="font-13 text-primary h3 online_display_beneficiary_account_currency"
-                                                                                    id="online_display_beneficiary_account_currency">
-                                                                                </span>
+                                                                            <span
+                                                                                class="font-13 text-primary h3 online_display_beneficiary_account_no"
+                                                                                id="online_display_beneficiary_account_no">
+                                                                            </span>
+                                                                            {{-- &nbsp; | &nbsp; --}}
+                                                                            <span
+                                                                                class="font-13 text-primary h3 online_display_beneficiary_account_currency"
+                                                                                id="online_display_beneficiary_account_currency">
+                                                                            </span>
 
-                                                                                <span
-                                                                                    class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
-                                                                                    id="online_display_beneficiary_email">
-                                                                                </span>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                                                id="online_display_beneficiary_email">
+                                                                            </span>
 
-                                                                                <span
-                                                                                    class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
-                                                                                    id="online_display_beneficiary_phone">
-                                                                                </span>
-
-
-                                                                            </td>
-                                                                        </tr>
+                                                                            <span
+                                                                                class="d-block font-13 text-primary text-bold online_display_beneficiary_phone"
+                                                                                id="online_display_beneficiary_phone">
+                                                                            </span>
 
 
+                                                                        </td>
+                                                                    </tr>
 
 
-                                                                        <tr>
-                                                                            <td>Receiver Telephone:</td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="font-13 text-primary h3 display_category"
-                                                                                    id="display_receiver_telephone"></span>
-
-                                                                            </td>
-                                                                        </tr>
 
 
-                                                                        <tr>
-                                                                            <td>Receiver Address:</td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="font-13 text-primary h3 display_purpose"
-                                                                                    id="display_receiver_address"></span>
-                                                                            </td>
-                                                                        </tr>
+                                                                    <tr>
+                                                                        <td>Receiver Telephone:</td>
+                                                                        <td>
+                                                                            <span
+                                                                                class="font-13 text-primary h3 display_category"
+                                                                                id="display_receiver_telephone"></span>
+
+                                                                        </td>
+                                                                    </tr>
 
 
-                                                                        {{-- <tr>
+                                                                    <tr>
+                                                                        <td>Receiver Address:</td>
+                                                                        <td>
+                                                                            <span
+                                                                                class="font-13 text-primary h3 display_purpose"
+                                                                                id="display_receiver_address"></span>
+                                                                        </td>
+                                                                    </tr>
+
+
+                                                                    {{-- <tr>
                                                                         <td>Schedule Payment:</td>
                                                                         <td>
                                                                             <span
@@ -440,38 +445,38 @@
                                                                             </span>
                                                                         </td>
                                                                     </tr> --}}
-                                                                        <tr>
-                                                                            <td>Amount:</td>
-                                                                            <td>
-                                                                                <span
-                                                                                    class="font-15 text-primary h3 display_currency"
-                                                                                    id="display_currency"> </span>
-                                                                                &nbsp;
-                                                                                <span
-                                                                                    class="font-15 text-primary h3 display_converted_amount"
-                                                                                    id="display_transfer_amount"></span>
+                                                                    <tr>
+                                                                        <td>Amount:</td>
+                                                                        <td>
+                                                                            <span
+                                                                                class="font-15 text-primary h3 display_currency"
+                                                                                id="display_currency"> </span>
+                                                                            &nbsp;
+                                                                            <span
+                                                                                class="font-15 text-primary h3 display_converted_amount"
+                                                                                id="display_transfer_amount"></span>
 
-                                                                            </td>
-                                                                        </tr>
+                                                                        </td>
+                                                                    </tr>
 
 
-                                                                        <tr>
-                                                                            <td>Transfer Date: </td>
-                                                                            <td>
-                                                                                <span class="font-13 text-primary h3"
-                                                                                    id="display_transfer_date">{{ date('d F, Y') }}</span>
-                                                                            </td>
-                                                                        </tr>
+                                                                    <tr>
+                                                                        <td>Transfer Date: </td>
+                                                                        <td>
+                                                                            <span class="font-13 text-primary h3"
+                                                                                id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                                        </td>
+                                                                    </tr>
 
-                                                                        <tr>
-                                                                            <td>Posted BY: </td>
-                                                                            <td>
-                                                                                <span class="font-13 text-primary h3"
-                                                                                    id="display_posted_by">{{ session('userId') }}</span>
-                                                                            </td>
-                                                                        </tr>
+                                                                    <tr>
+                                                                        <td>Posted BY: </td>
+                                                                        <td>
+                                                                            <span class="font-13 text-primary h3"
+                                                                                id="display_posted_by">{{ session('userId') }}</span>
+                                                                        </td>
+                                                                    </tr>
 
-                                                                        {{-- <tr class="hide_on_print">
+                                                                    {{-- <tr class="hide_on_print">
                                                                         <td>Enter Pin: </td>
                                                                         <td>
 
@@ -481,228 +486,228 @@
                                                                         </td>
                                                                     </tr> --}}
 
-                                                                        <tr>
+                                                                    <tr>
 
-                                                                            <td colspan="2">
+                                                                        <td colspan="2">
 
-                                                                                <div class="alert alert-info form-control col-md-12"
-                                                                                    role="alert">
-                                                                                    <div
-                                                                                        class="custom-control custom-checkbox">
-                                                                                        <input type="checkbox"
-                                                                                            class="custom-control-input"
-                                                                                            name="terms_and_conditions"
-                                                                                            name="terms_and_conditions"
-                                                                                            id="terms_and_conditions">
-                                                                                        <label class="custom-control-label "
-                                                                                            for="terms_and_conditions">
-                                                                                            <b>
-                                                                                                By checking this box, you
-                                                                                                agree to
-                                                                                                abide by the Terms and
-                                                                                                Conditions
+                                                                            <div class="alert alert-info form-control col-md-12"
+                                                                                role="alert">
+                                                                                <div
+                                                                                    class="custom-control custom-checkbox">
+                                                                                    <input type="checkbox"
+                                                                                        class="custom-control-input"
+                                                                                        name="terms_and_conditions"
+                                                                                        name="terms_and_conditions"
+                                                                                        id="terms_and_conditions">
+                                                                                    <label class="custom-control-label "
+                                                                                        for="terms_and_conditions">
+                                                                                        <b>
+                                                                                            By checking this box, you
+                                                                                            agree to
+                                                                                            abide by the Terms and
+                                                                                            Conditions
 
-                                                                                            </b>
-                                                                                        </label>
-                                                                                    </div>
-
-
+                                                                                        </b>
+                                                                                    </label>
                                                                                 </div>
-                                                                            </td>
-                                                                        </tr>
 
 
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                            <!-- end table-responsive -->
-                                                            <br>
-                                                            <div class="form-group text-center">
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
 
-                                                                <span> <button class="btn btn-secondary btn-rounded"
-                                                                        type="button" id="back_button"><i
-                                                                            class="mdi mdi-reply-all-outline"></i>
-                                                                        &nbsp;Back</button> &nbsp; </span>
-                                                                <span>&nbsp; <button class="btn btn-primary btn-rounded"
-                                                                        type="button" id="confirm_modal_button"
-                                                                        data-toggle="modal" data-target="#centermodal">
-                                                                        <span id="confirm_transfer">Submit</span>
-                                                                        <span class="spinner-border spinner-border-sm mr-1"
-                                                                            role="status" id="spinner"
-                                                                            aria-hidden="true"></span>
-                                                                        <span id="spinner-text">Loading...</span>
-                                                                    </button></span>
-                                                                {{-- <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <!-- end table-responsive -->
+                                                        <br>
+                                                        <div class="form-group text-center">
+
+                                                            <span> <button class="btn btn-secondary btn-rounded"
+                                                                    type="button" id="back_button"><i
+                                                                        class="mdi mdi-reply-all-outline"></i>
+                                                                    &nbsp;Back</button> &nbsp; </span>
+                                                            <span>&nbsp; <button class="btn btn-primary btn-rounded"
+                                                                    type="button" id="confirm_modal_button"
+                                                                    data-toggle="modal" data-target="#centermodal">
+                                                                    <span id="confirm_transfer">Submit</span>
+                                                                    <span class="spinner-border spinner-border-sm mr-1"
+                                                                        role="status" id="spinner"
+                                                                        aria-hidden="true"></span>
+                                                                    <span id="spinner-text">Loading...</span>
+                                                                </button></span>
+                                                            {{-- <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
                                                                         type="button" id="print_receipt" onclick="window.print()">Print
                                                                         Receipt
                                                                     </button></span> --}}
-                                                            </div>
                                                         </div>
+                                                    </div>
 
-                                                    </div> <!-- end col -->
+                                                </div> <!-- end col -->
 
-                                                </div>
+                                            </div>
 
-                                                <div class=" col-md-7 m-2" id="request_form_div"
-                                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                                    <br><br><br>
+                                            <div class=" col-md-7 m-2" id="request_form_div"
+                                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                                <br><br><br>
 
-                                                    <form action="#" class="select_beneficiary"
-                                                        id="send_korpor_payment_details_form" autocomplete="off"
-                                                        aria-autocomplete="none">
-                                                        @csrf
-                                                        <div class="row container">
-                                                            <div class="col-md-1"></div>
-                                                            <div class="col-md-10">
+                                                <form action="#" class="select_beneficiary"
+                                                    id="send_korpor_payment_details_form" autocomplete="off"
+                                                    aria-autocomplete="none">
+                                                    @csrf
+                                                    <div class="row container">
+                                                        <div class="col-md-1"></div>
+                                                        <div class="col-md-10">
 
-                                                                {{-- <br><br><br> --}}
-                                                                <div class="row">
-                                                                    {{-- <div class="col-md-1"></div> --}}
+                                                            {{-- <br><br><br> --}}
+                                                            <div class="row">
+                                                                {{-- <div class="col-md-1"></div> --}}
 
-                                                                    <div class="col-md-12">
+                                                                <div class="col-md-12">
 
-                                                                        <div class="form-group row ">
-                                                                            <b class="col-md-12 text-primary">Account from
-                                                                                which
-                                                                                the money will
-                                                                                be tansfered &nbsp;
-                                                                                <span class="text-danger">*</span> </b>
-
-
-                                                                            <select
-                                                                                class="form-control col-md-12 from_account"
-                                                                                id="account_of_transfer" required>
-                                                                                <option value="">Select Account
-                                                                                </option>
+                                                                    <div class="form-group row ">
+                                                                        <b class="col-md-12 text-primary">Account from
+                                                                            which
+                                                                            the money will
+                                                                            be tansfered &nbsp;
+                                                                            <span class="text-danger">*</span> </b>
 
 
-                                                                            </select>
+                                                                        <select
+                                                                            class="form-control col-md-12 from_account"
+                                                                            id="account_of_transfer" required>
+                                                                            <option value="">Select Account
+                                                                            </option>
+
+
+                                                                        </select>
+                                                                    </div>
+                                                                    <hr style="padding-top: 0px; padding-bottom: 0px;">
+
+
+                                                                    <div class="form-group row">
+
+                                                                        <b class="col-md-5 text-primary"> Type of
+                                                                            Transfer &nbsp; <span
+                                                                                class="text-danger">*</span></b>
+
+                                                                        <div class="row col-md-7 ">
+                                                                            <div
+                                                                                class="radio radio-primary form-check-inline m-1 col-md-5 destination">
+                                                                                <input type="radio" id="inlineRadio1"
+                                                                                    value="SELF" name="radioInline">
+                                                                                <label for="inlineRadio1"> Self </label>
+                                                                            </div>
+                                                                            <div
+                                                                                class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
+                                                                                <input type="radio" id="inlineRadio2"
+                                                                                    value="OTHERS" name="radioInline"
+                                                                                    checked>
+                                                                                <label for="inlineRadio2">
+                                                                                    Others</label>
+                                                                            </div>
+
                                                                         </div>
-                                                                        <hr style="padding-top: 0px; padding-bottom: 0px;">
+
+                                                                    </div>
+
+                                                                    <hr style="padding-top: 0px; padding-bottom: 0px;">
+
+
+                                                                    <div class="others_form">
 
 
                                                                         <div class="form-group row">
 
-                                                                            <b class="col-md-5 text-primary"> Type of
-                                                                                Transfer &nbsp; <span
+                                                                            <b class="col-md-4 text-primary"> Receiver
+                                                                                Name
+                                                                                &nbsp; <span
                                                                                     class="text-danger">*</span></b>
 
-                                                                            <div class="row col-md-7 ">
-                                                                                <div
-                                                                                    class="radio radio-primary form-check-inline m-1 col-md-5 destination">
-                                                                                    <input type="radio" id="inlineRadio1"
-                                                                                        value="SELF" name="radioInline">
-                                                                                    <label for="inlineRadio1"> Self </label>
-                                                                                </div>
-                                                                                <div
-                                                                                    class="radio  radio-primary form-check-inline m-1 col-md-5 transfer_type">
-                                                                                    <input type="radio" id="inlineRadio2"
-                                                                                        value="OTHERS" name="radioInline"
-                                                                                        checked>
-                                                                                    <label for="inlineRadio2">
-                                                                                        Others</label>
-                                                                                </div>
 
-                                                                            </div>
+                                                                            <input type="text"
+                                                                                class="form-control col-md-8 "
+                                                                                id="receiver_name"
+                                                                                placeholder="Enter Receiver Name"
+                                                                                autocomplete="off" required>
+                                                                            <br>
 
                                                                         </div>
 
-                                                                        <hr style="padding-top: 0px; padding-bottom: 0px;">
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-4 text-primary"> Receiver
+                                                                                Telphone &nbsp; <span
+                                                                                    class="text-danger">*</span></b>
+
+                                                                            <input type="text"
+                                                                                class="form-control col-md-8 "
+                                                                                id="receiver_phoneNum"
+                                                                                placeholder="Enter Receiver Phone Number"
+                                                                                autocomplete="off"
+                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                                                required>
+                                                                            <br>
+
+                                                                        </div>
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-4 text-primary"> Receiver
+                                                                                Address: &nbsp; <span
+                                                                                    class="text-danger">*</span></b>
+
+                                                                            <input type="text"
+                                                                                class="form-control col-md-8 "
+                                                                                id="receiver_address"
+                                                                                placeholder="Enter Receiver Address"
+                                                                                autocomplete="off" required>
+                                                                            <br>
+
+                                                                        </div>
+
+                                                                        <div class="form-group row mb-3">
+
+                                                                            <b class="col-md-4 text-primary">Amount&nbsp;
+                                                                                <span class="text-danger">*</span></b>
 
 
-                                                                        <div class="others_form">
-
-
-                                                                            <div class="form-group row">
-
-                                                                                <b class="col-md-4 text-primary"> Receiver
-                                                                                    Name
-                                                                                    &nbsp; <span
-                                                                                        class="text-danger">*</span></b>
-
-
-                                                                                <input type="text"
-                                                                                    class="form-control col-md-8 "
-                                                                                    id="receiver_name"
-                                                                                    placeholder="Enter Receiver Name"
-                                                                                    autocomplete="off" required>
-                                                                                <br>
-
-                                                                            </div>
-
-                                                                            <div class="form-group row">
-
-                                                                                <b class="col-md-4 text-primary"> Receiver
-                                                                                    Telphone &nbsp; <span
-                                                                                        class="text-danger">*</span></b>
-
-                                                                                <input type="text"
-                                                                                    class="form-control col-md-8 "
-                                                                                    id="receiver_phoneNum"
-                                                                                    placeholder="Enter Receiver Phone Number"
-                                                                                    autocomplete="off"
-                                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                                    required>
-                                                                                <br>
-
-                                                                            </div>
-
-                                                                            <div class="form-group row">
-
-                                                                                <b class="col-md-4 text-primary"> Receiver
-                                                                                    Address: &nbsp; <span
-                                                                                        class="text-danger">*</span></b>
-
-                                                                                <input type="text"
-                                                                                    class="form-control col-md-8 "
-                                                                                    id="receiver_address"
-                                                                                    placeholder="Enter Receiver Address"
-                                                                                    autocomplete="off" required>
-                                                                                <br>
-
-                                                                            </div>
-
-                                                                            <div class="form-group row mb-3">
-
-                                                                                <b class="col-md-4 text-primary">Amount&nbsp;
-                                                                                    <span class="text-danger">*</span></b>
-
-
-                                                                                <div class="input-group mb-1 col-8"
-                                                                                    style="padding: 0px;">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <input type="text"
-                                                                                            class="input-group-text select_currency"
-                                                                                            id="select_currency"
-                                                                                            style="width: 80px;" readonly>
-                                                                                    </div>
-
-                                                                                    &nbsp;&nbsp;
-                                                                                    <input type="text" class="form-control "
-                                                                                        id="amount"
-                                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                                        required>
+                                                                            <div class="input-group mb-1 col-8"
+                                                                                style="padding: 0px;">
+                                                                                <div class="input-group-prepend">
+                                                                                    <input type="text"
+                                                                                        class="input-group-text select_currency"
+                                                                                        id="select_currency"
+                                                                                        style="width: 80px;" readonly>
                                                                                 </div>
 
-
-
+                                                                                &nbsp;&nbsp;
+                                                                                <input type="text" class="form-control "
+                                                                                    id="amount"
+                                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                    required>
                                                                             </div>
 
-                                                                            <div class="form-group row">
-                                                                                <b class="col-md-4 text-primary">Purpose of
-                                                                                    Transfer<span
-                                                                                        class="text-danger">*</span></b>
 
-                                                                                <input type="text"
-                                                                                    class="form-control col-md-8 "
-                                                                                    id="others_form_narration"
-                                                                                    placeholder="Enter Naration"
-                                                                                    autocomplete="off" required
-                                                                                    value="E-Korpor Transfer">
 
-                                                                            </div>
+                                                                        </div>
 
-                                                                            {{-- <div class="form-group row">
+                                                                        <div class="form-group row">
+                                                                            <b class="col-md-4 text-primary">Purpose of
+                                                                                Transfer<span
+                                                                                    class="text-danger">*</span></b>
+
+                                                                            <input type="text"
+                                                                                class="form-control col-md-8 "
+                                                                                id="others_form_narration"
+                                                                                placeholder="Enter Naration"
+                                                                                autocomplete="off" required
+                                                                                value="E-Korpor Transfer">
+
+                                                                        </div>
+
+                                                                        {{-- <div class="form-group row">
 
                                                                                 <b class="col-md-5 text-primary " for="pin">
                                                                                     Enter Your Pin
@@ -715,7 +720,7 @@
 
                                                                             </div> --}}
 
-                                                                            {{-- <div class="form-group text-right ">
+                                                                        {{-- <div class="form-group text-right ">
                                                                                 <button type="button"
                                                                                     class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
                                                                                     id="confirm_button">
@@ -727,86 +732,88 @@
                                                                                     <span id="spinner-text">Loading...</span>
                                                                                 </button>
                                                                             </div> --}}
+                                                                    </div>
+
+                                                                    <div class="self_form">
+
+
+                                                                        <div class="form-group row">
+
+                                                                            <b class="col-md-4 text-primary"> Receiver
+                                                                                Name
+                                                                                &nbsp; <span
+                                                                                    class="text-danger">*</span></b>
+
+                                                                            {{-- value={{ session()->get('userAlias') }}
+                                                                            --}}
+                                                                            <input type="text"
+                                                                                class="form-control col-md-8 readOnly"
+                                                                                id="receiver_name_self"
+                                                                                {{-- placeholder="Enter Receiver Name" --}}
+                                                                                value="{{ Session()->get('userAlias') }}"
+                                                                                autocomplete="off" required readonly>
+                                                                            <br>
+
                                                                         </div>
 
-                                                                        <div class="self_form">
+                                                                        <div class="form-group row">
 
+                                                                            <b class="col-md-4 text-primary"> Receiver
+                                                                                Telephone: &nbsp; <span
+                                                                                    class="text-danger">*</span></b>
 
-                                                                            <div class="form-group row">
+                                                                            <input type="text"
+                                                                                class="form-control col-md-8 "
+                                                                                id="receiver_phoneNum_self"
+                                                                                placeholder="Enter Phone Number"
+                                                                                autocomplete="off" required>
+                                                                            {{-- value="{{ session()->get('customerPhone') }}
+                                                                            --}}
+                                                                            <br>
+                                                                            {{-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" --}}
+                                                                        </div>
 
-                                                                                <b class="col-md-4 text-primary"> Receiver
-                                                                                    Name
-                                                                                    &nbsp; <span
-                                                                                        class="text-danger">*</span></b>
+                                                                        <div class="form-group row">
 
-                                                                                {{-- value={{ session()->get('userAlias') }} --}}
-                                                                                <input type="text"
-                                                                                    class="form-control col-md-8 readOnly"
-                                                                                    id="receiver_name_self"
-                                                                                    {{-- placeholder="Enter Receiver Name" --}}
-                                                                                    value="{{ Session()->get('userAlias') }}"
-                                                                                    autocomplete="off" required readonly>
-                                                                                <br>
+                                                                            <b class="col-md-4 text-primary"> Receiver
+                                                                                Address: &nbsp; <span
+                                                                                    class="text-danger">*</span></b>
 
-                                                                            </div>
+                                                                            <input type="text"
+                                                                                class="form-control col-md-8 "
+                                                                                id="receiver_address_self"
+                                                                                placeholder="Enter Address"
+                                                                                autocomplete="off" required>
+                                                                            <br>
 
-                                                                            <div class="form-group row">
+                                                                        </div>
 
-                                                                                <b class="col-md-4 text-primary"> Receiver
-                                                                                    Telephone: &nbsp; <span
-                                                                                        class="text-danger">*</span></b>
+                                                                        <div class="form-group row mb-3">
 
-                                                                                <input type="text"
-                                                                                    class="form-control col-md-8 "
-                                                                                    id="receiver_phoneNum_self"
-                                                                                    placeholder="Enter Phone Number"
-                                                                                    autocomplete="off" required>
-                                                                                {{-- value="{{ session()->get('customerPhone') }} --}}
-                                                                                <br>
-                                                                                {{-- oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" --}}
-                                                                            </div>
+                                                                            <b class="col-md-4 text-primary">Amount&nbsp;
+                                                                                <span class="text-danger">*</span></b>
 
-                                                                            <div class="form-group row">
-
-                                                                                <b class="col-md-4 text-primary"> Receiver
-                                                                                    Address: &nbsp; <span
-                                                                                        class="text-danger">*</span></b>
-
-                                                                                <input type="text"
-                                                                                    class="form-control col-md-8 "
-                                                                                    id="receiver_address_self"
-                                                                                    placeholder="Enter Address"
-                                                                                    autocomplete="off" required>
-                                                                                <br>
-
-                                                                            </div>
-
-                                                                            <div class="form-group row mb-3">
-
-                                                                                <b class="col-md-4 text-primary">Amount&nbsp;
-                                                                                    <span class="text-danger">*</span></b>
-
-                                                                                <div class="input-group mb-1 col-8"
-                                                                                    style="padding: 0px;">
-                                                                                    <div class="input-group-prepend">
-                                                                                        <input type="text"
-                                                                                            class="input-group-text select_currency"
-                                                                                            id="" style="width: 80px;"
-                                                                                            readonly>
-                                                                                    </div>
-
-                                                                                    &nbsp;&nbsp;
-                                                                                    <input type="text" class="form-control "
-                                                                                        id="amount_self"
-                                                                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
-                                                                                        required>
+                                                                            <div class="input-group mb-1 col-8"
+                                                                                style="padding: 0px;">
+                                                                                <div class="input-group-prepend">
+                                                                                    <input type="text"
+                                                                                        class="input-group-text select_currency"
+                                                                                        id="" style="width: 80px;"
+                                                                                        readonly>
                                                                                 </div>
 
-
-
+                                                                                &nbsp;&nbsp;
+                                                                                <input type="text" class="form-control "
+                                                                                    id="amount_self"
+                                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                                                                    required>
                                                                             </div>
 
-                                                                            {{-- <div class="form-group row">
+
+
+                                                                        </div>
+
+                                                                        {{-- <div class="form-group row">
 
                                                                                 <b class="col-md-5 text-primary " for="pin">
                                                                                     Enter Your Pin
@@ -820,46 +827,44 @@
                                                                             </div> --}}
 
 
-                                                                        </div>
-
-
-                                                                        <div class="form-group text-right mt-2">
-                                                                            <button type="button"
-                                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
-                                                                                id="confirm_next_button">
-                                                                                <span class="submit-text">&nbsp; Next
-                                                                                    &nbsp;<i
-                                                                                        class="fe-arrow-right"></i></span>
-                                                                                <span
-                                                                                    class="spinner-border spinner-border-sm mr-1"
-                                                                                    id="spinner-self" role="status"
-                                                                                    aria-hidden="true"></span>
-                                                                                <span
-                                                                                    id="spinner-text-self">Loading...</span>
-                                                                            </button>
-                                                                        </div>
-
                                                                     </div>
 
-                                                                    {{-- <div class="col-md-1"></div> --}}
+
+                                                                    <div class="form-group text-right mt-2">
+                                                                        <button type="button"
+                                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
+                                                                            id="confirm_next_button">
+                                                                            <span class="submit-text">&nbsp; Next
+                                                                                &nbsp;<i
+                                                                                    class="fe-arrow-right"></i></span>
+                                                                            <span
+                                                                                class="spinner-border spinner-border-sm mr-1"
+                                                                                id="spinner-self" role="status"
+                                                                                aria-hidden="true"></span>
+                                                                            <span
+                                                                                id="spinner-text-self">Loading...</span>
+                                                                        </button>
+                                                                    </div>
+
                                                                 </div>
 
-
-
-
-
-
-
-
-
+                                                                {{-- <div class="col-md-1"></div> --}}
                                                             </div>
 
 
-                                                            <div class="col-md-1"></div>
+
+
+
+
+
+
 
                                                         </div>
 
 
+                                                        <div class="col-md-1"></div>
+
+                                                    </div>
 
 
 
@@ -869,232 +874,234 @@
 
 
 
-                                                    </form>
 
 
-                                                </div> <!-- end col -->
-
-                                                <div class="col-md-4 m-2 others_summary"
-                                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                                    <br><br>
-                                                    <div class=" col-md-12 card card-body">
-                                                        <h4 class="text-primary">Sender Acc. Info</h4>
-                                                        <hr class="mt-0">
-
-                                                        <div class="row">
-                                                            {{-- <span class="col-md-12 success-message"></span> --}}
-                                                            <p class="col-md-5">Account Name:</p>
-                                                            <span
-                                                                class="text-primary display_from_account_name col-md-7"></span>
-
-                                                            <p class="col-md-5">Account Number:</p>
-                                                            <span
-                                                                class="text-primary display_from_account_no col-md-7"></span>
-
-                                                            <p class="col-md-5">Available Balance:</p>
-                                                            <span
-                                                                class="text-primary display_from_account_amount col-md-7"></span>
-
-                                                            <p class="col-md-5">Account Currency:</p>
-                                                            <span class="text-primary display_currency col-md-7"></span>
-
-                                                        </div>
+                                                </form>
 
 
+                                            </div> <!-- end col -->
 
-                                                        <h4 class="text-primary">Receiver Acc. Info</h4>
-                                                        <hr class="mt-0">
-                                                        <div class="row">
-                                                            <p class="col-md-5">Receiver Name: </p>
-                                                            <span
-                                                                class="text-primary display_receiver_name col-md-7"></span>
+                                            <div class="col-md-4 m-2 others_summary"
+                                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                                <br><br>
+                                                <div class=" col-md-12 card card-body">
+                                                    <h4 class="text-primary">Sender Acc. Info</h4>
+                                                    <hr class="mt-0">
 
-                                                            <p class="col-md-5">Receiver Phone Number:</p>
-                                                            <span
-                                                                class="text-primary display_receiver_phoneNum col-md-7"></span>
+                                                    <div class="row">
+                                                        {{-- <span class="col-md-12 success-message"></span> --}}
+                                                        <p class="col-md-5">Account Name:</p>
+                                                        <span
+                                                            class="text-primary display_from_account_name col-md-7"></span>
 
-                                                            <p class="col-md-5">Receiver Address:</p>
-                                                            <span
-                                                                class="text-primary display_receiver_address col-md-7"></span>
+                                                        <p class="col-md-5">Account Number:</p>
+                                                        <span
+                                                            class="text-primary display_from_account_no col-md-7"></span>
 
-                                                            {{-- <p class="col-md-5">Amount:</p>
+                                                        <p class="col-md-5">Available Balance:</p>
+                                                        <span
+                                                            class="text-primary display_from_account_amount col-md-7"></span>
+
+                                                        <p class="col-md-5">Account Currency:</p>
+                                                        <span class="text-primary display_currency col-md-7"></span>
+
+                                                    </div>
+
+
+
+                                                    <h4 class="text-primary">Receiver Acc. Info</h4>
+                                                    <hr class="mt-0">
+                                                    <div class="row">
+                                                        <p class="col-md-5">Receiver Name: </p>
+                                                        <span
+                                                            class="text-primary display_receiver_name col-md-7"></span>
+
+                                                        <p class="col-md-5">Receiver Phone Number:</p>
+                                                        <span
+                                                            class="text-primary display_receiver_phoneNum col-md-7"></span>
+
+                                                        <p class="col-md-5">Receiver Address:</p>
+                                                        <span
+                                                            class="text-primary display_receiver_address col-md-7"></span>
+
+                                                        {{-- <p class="col-md-5">Amount:</p>
                                                             <span class="text-primary display_amount col-md-7"></span> --}}
-                                                        </div>
-                                                        <hr class="mt-0">
-                                                        <div class="row">
-                                                            <p class="col-md-5 mt-2 text-primary">Transfer Amount:</p>
-                                                            <h4 class="row col-md-7">
-                                                                <span
-                                                                    class="text-danger display_transfer_currency col-md-4"></span>
-                                                                <span class="text-danger display_amount col-md-8"></span>
-
-                                                            </h4>
-
-                                                        </div>
                                                     </div>
+                                                    <hr class="mt-0">
+                                                    <div class="row">
+                                                        <p class="col-md-5 mt-2 text-primary">Transfer Amount:</p>
+                                                        <h4 class="row col-md-7">
+                                                            <span
+                                                                class="text-danger display_transfer_currency col-md-4"></span>
+                                                            <span class="text-danger display_amount col-md-8"></span>
 
-                                                    <div class="form-group text-center display_button_print">
+                                                        </h4>
 
-                                                        <span>&nbsp;
-                                                            <span>&nbsp; <button class="btn btn-light btn-rounded"
-                                                                    type="button" id="print_receipt"
-                                                                    onclick="window.print()">Print
-                                                                    Receipt
-                                                                </button></span>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-4 m-2 self_summary"
-                                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                                    <br><br>
-                                                    <div class=" col-md-12 card card-body">
-                                                        {{-- <br><br> --}}
-                                                        <div class="row">
-                                                            {{-- <span class="col-md-12 success-message"></span> --}}
-                                                            <p class="col-md-5">Account Name:</p>
-                                                            <span
-                                                                class="text-primary display_from_account_name_self col-md-7"></span>
+                                                <div class="form-group text-center display_button_print">
 
-                                                            <h6 class="col-md-5">Account Number:</h6>
-                                                            <span
-                                                                class="text-primary display_from_account_no_self col-md-7"></span>
-
-                                                            <h6 class="col-md-5">Available Balance:</h6>
-                                                            <span
-                                                                class="text-primary display_from_account_amount_self col-md-7"></span>
-
-                                                            <h6 class="col-md-5">Account Currency:</h6>
-                                                            <span
-                                                                class="text-primary display_currency_self col-md-7"></span>
-
-                                                            <h6 class="col-md-5">Amount:</h6>
-                                                            <span class="text-primary display_amount_self col-md-7"></span>
-
-
-                                                            <h6 class="col-md-5">Receiver Name: </h6>
-                                                            <span
-                                                                class="text-success display_receiver_name_self col-md-7">{{ session()->get('userAlias') }}</span>
-
-                                                            <h6 class="col-md-5">Receiver Phone Number:</h6>
-                                                            <span
-                                                                class="text-success display_receiver_phoneNum_self col-md-7">{{ session()->get('customerPhone') }}</span>
-
-                                                            <h6 class="col-md-5">Receiver Address:</h6>
-                                                            <span
-                                                                class="text-success display_receiver_address_self col-md-7"></span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group text-center display_button_print">
-
-                                                        <span>&nbsp;
-                                                            <span>&nbsp; <button class="btn btn-light btn-rounded"
-                                                                    type="button" id="print_receipt"
-                                                                    onclick="window.print()">Print
-                                                                    Receipt
-                                                                </button></span>
-                                                    </div>
+                                                    <span>&nbsp;
+                                                        <span>&nbsp; <button class="btn btn-light btn-rounded"
+                                                                type="button" id="print_receipt"
+                                                                onclick="window.print()">Print
+                                                                Receipt
+                                                            </button></span>
                                                 </div>
-
-
                                             </div>
+
+                                            <div class="col-md-4 m-2 self_summary"
+                                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                                <br><br>
+                                                <div class=" col-md-12 card card-body">
+                                                    {{-- <br><br> --}}
+                                                    <div class="row">
+                                                        {{-- <span class="col-md-12 success-message"></span> --}}
+                                                        <p class="col-md-5">Account Name:</p>
+                                                        <span
+                                                            class="text-primary display_from_account_name_self col-md-7"></span>
+
+                                                        <h6 class="col-md-5">Account Number:</h6>
+                                                        <span
+                                                            class="text-primary display_from_account_no_self col-md-7"></span>
+
+                                                        <h6 class="col-md-5">Available Balance:</h6>
+                                                        <span
+                                                            class="text-primary display_from_account_amount_self col-md-7"></span>
+
+                                                        <h6 class="col-md-5">Account Currency:</h6>
+                                                        <span
+                                                            class="text-primary display_currency_self col-md-7"></span>
+
+                                                        <h6 class="col-md-5">Amount:</h6>
+                                                        <span class="text-primary display_amount_self col-md-7"></span>
+
+
+                                                        <h6 class="col-md-5">Receiver Name: </h6>
+                                                        <span
+                                                            class="text-success display_receiver_name_self col-md-7">{{ session()->get('userAlias') }}</span>
+
+                                                        <h6 class="col-md-5">Receiver Phone Number:</h6>
+                                                        <span
+                                                            class="text-success display_receiver_phoneNum_self col-md-7">{{ session()->get('customerPhone') }}</span>
+
+                                                        <h6 class="col-md-5">Receiver Address:</h6>
+                                                        <span
+                                                            class="text-success display_receiver_address_self col-md-7"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group text-center display_button_print">
+
+                                                    <span>&nbsp;
+                                                        <span>&nbsp; <button class="btn btn-light btn-rounded"
+                                                                type="button" id="print_receipt"
+                                                                onclick="window.print()">Print
+                                                                Receipt
+                                                            </button></span>
+                                                </div>
+                                            </div>
+
+
                                         </div>
-
-
-
-
                                     </div>
+
+
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-                <div class="tab-pane" id="reverse_korpor_page">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6  m-2" id="request_form_div"
-                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                        <br><br><br>
+            </div>
 
-                                        <form action="#" class="select_beneficiary" id="reverse_korpor_payment_details_form"
-                                            autocomplete="off" aria-autocomplete="none">
-                                            @csrf
+            <div class="tab-pane" id="reverse_korpor_page">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6  m-2" id="request_form_div"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                    <br><br><br>
 
-                                            <div class="col-md-12">
-                                                {{-- <br><br><br> --}}
-                                                <div class="row">
-                                                    {{-- <div class="col-md-1"></div> --}}
+                                    <form action="#" class="select_beneficiary" id="reverse_korpor_payment_details_form"
+                                        autocomplete="off" aria-autocomplete="none">
+                                        @csrf
 
-                                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            {{-- <br><br><br> --}}
+                                            <div class="row">
+                                                {{-- <div class="col-md-1"></div> --}}
 
-
-                                                        <div class="form-group row account_of_transfer_reverse">
-                                                            <b class="col-md-12 text-primary">Account from
-                                                                which
-                                                                e-korpor transfer was made &nbsp;
-                                                                <span class="text-danger">*</span> </b>
+                                                <div class="col-md-12">
 
 
-                                                            <select class="form-control col-md-12 from_account"
-                                                                id="account_of_transfer_reverse" required>
-                                                                <option value="">Select Account
-                                                                </option>
+                                                    <div class="form-group row account_of_transfer_reverse">
+                                                        <b class="col-md-12 text-primary">Account from
+                                                            which
+                                                            e-korpor transfer was made &nbsp;
+                                                            <span class="text-danger">*</span> </b>
 
 
-                                                            </select>
-                                                        </div>
-                                                        <hr class="account_of_transfer_reverse">
-                                                        <br class="account_of_transfer_reverse">
+                                                        <select class="form-control col-md-12 from_account"
+                                                            id="account_of_transfer_reverse" required>
+                                                            <option value="">Select Account
+                                                            </option>
 
 
-                                                        <div class="form-group row">
+                                                        </select>
+                                                    </div>
+                                                    <hr class="account_of_transfer_reverse">
+                                                    <br class="account_of_transfer_reverse">
 
-                                                            <b class="col-md-5 text-primary"> Reference Number &nbsp; <span
-                                                                    class="text-danger">*</span></b>
+
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-5 text-primary"> Reference Number &nbsp; <span
+                                                                class="text-danger">*</span></b>
 
 
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="reference_no" placeholder="0098348789"
-                                                                autocomplete="off" required>
-                                                            <br>
-
-                                                        </div>
-
+                                                        <input type="text" class="form-control col-md-7"
+                                                            id="reference_no" placeholder="0098348789"
+                                                            autocomplete="off" required>
                                                         <br>
-                                                        <div class="form-group row">
 
-                                                            <b class="col-md-5 text-primary"> Receiver Phone Number:
-                                                                &nbsp; <span class="text-danger">*</span></b>
+                                                    </div>
 
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="receiver_phoneNo_reverse"
-                                                                placeholder="enter phone number" autocomplete="off"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                required>
-                                                            <br>
+                                                    <br>
+                                                    <div class="form-group row">
 
-                                                        </div>
+                                                        <b class="col-md-5 text-primary"> Receiver Phone Number:
+                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                        <input type="text" class="form-control col-md-7"
+                                                            id="receiver_phoneNo_reverse"
+                                                            placeholder="enter phone number" autocomplete="off"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                            required>
                                                         <br>
-                                                        <div class="form-group row personal_pin">
 
-                                                            <b class="col-md-5 text-primary">Enter Pin &nbsp; <span
-                                                                    class="text-danger">*</span></b>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-group row personal_pin">
 
-
-                                                            <input type="password" class="form-control col-md-7"
-                                                                id="reference_pin" placeholder="Enter Pin"
-                                                                name="reverse_pin" autocomplete="off" required>
-                                                            <br>
-
-                                                        </div>
+                                                        <b class="col-md-5 text-primary">Enter Pin &nbsp; <span
+                                                                class="text-danger">*</span></b>
 
 
+                                                        <input type="password" class="form-control col-md-7"
+                                                            id="reference_pin" placeholder="Enter Pin"
+                                                            name="reverse_pin" autocomplete="off" required>
                                                         <br>
-                                                        {{-- <div class="form-group row">
+
+                                                    </div>
+
+
+                                                    <br>
+                                                    {{-- <div class="form-group row">
 
                                                             <b class="col-md-5 text-primary" for="pin">
                                                                 Enter Your Pin
@@ -1106,1937 +1113,555 @@
 
 
                                                         </div> --}}
-                                                        <br><br><br>
-                                                        <div class="form-group text-right ">
-                                                            <button type="button"
-                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                                id="reverse_button">
-                                                                <span id="reverse-text">Reverse</span>
-                                                                <span class="spinner-border spinner-border-sm mr-1"
-                                                                    id="spinner-reverse" role="status"
-                                                                    aria-hidden="true"></span>
-                                                                <span id="spinner-text-reverse">Loading...</span>
-                                                            </button>
-                                                        </div>
-
-
+                                                    <br><br><br>
+                                                    <div class="form-group text-right ">
+                                                        <button type="button"
+                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                            id="reverse_button">
+                                                            <span id="reverse-text">Reverse</span>
+                                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                                id="spinner-reverse" role="status"
+                                                                aria-hidden="true"></span>
+                                                            <span id="spinner-text-reverse">Loading...</span>
+                                                        </button>
                                                     </div>
 
-                                                    {{-- <div class="col-md-1"></div> --}}
+
                                                 </div>
 
+                                                {{-- <div class="col-md-1"></div> --}}
                                             </div>
-                                        </form>
 
-                                    </div>
-                                    <div class="col-md-5">
-                                        <br>
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div id="carouselExampleControls" class="carousel slide"
-                                                    data-ride="carousel" style="min-height: 120px; max-height: auto;">
-                                                    <div class="carousel-inner" role="listbox">
-                                                        <div class="carousel-item active">
-                                                            <img class="d-block img-fluid" style="min-height: 100%"
-                                                                src="{{ asset('assets/images/ads/sim_korpor_ad_5.jpeg') }}"
-                                                                alt="First slide">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img class="d-block img-fluid" style="height: auto;"
-                                                                src="{{ asset('assets/images/ads/sim_korpor_ad_6.jpeg') }}"
-                                                                alt="Second slide">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img class="d-block img-fluid" style="min-height"
-                                                                src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
-                                                                alt="Third slide">
-                                                        </div>
-                                                    </div>
-                                                    <a class="carousel-control-prev" href="#carouselExampleControls"
-                                                        role="button" data-slide="prev">
-                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                        <span class="sr-only">Previous</span>
-                                                    </a>
-                                                    <a class="carousel-control-next" href="#carouselExampleControls"
-                                                        role="button" data-slide="next">
-                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                        <span class="sr-only">Next</span>
-                                                    </a>
-                                                </div>
-
-
-                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
+
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="redeem_korpor_page">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6  m-2" id="request_form_div"
-                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                        <br><br><br>
-
-                                        <form action="#" class="select_beneficiary" id="redeem_korpor_payment_details_form"
-                                            autocomplete="off" aria-autocomplete="none">
-                                            @csrf
-
-                                            <div class="col-md-12">
-                                                {{-- <br><br><br> --}}
-                                                <div class="row">
-                                                    {{-- <div class="col-md-1"></div> --}}
-
-                                                    <div class="col-md-12 redeem_korpor">
-
-                                                        <p class="text-muted font-14 m-b-20">
-                                                            <span> <i class="fa fa-info-circle  text-red"></i> <b
-                                                                    style="color:red;">Please
-                                                                    Note:&nbsp;&nbsp;</b> <span class="">Enter the
-                                                                    remittance and phone number for korpor payment details.
-
-                                                                    <hr>
-                                                        </p>
-
-
-                                                        <div class="form-group row">
-
-                                                            <b class="col-md-5 text-primary"> Mobile Number &nbsp; <span
-                                                                    class="text-danger">*</span></b>
-
-
-                                                            <input type="text" class="form-control col-md-7" id="mobile_no"
-                                                                autocomplete="off" required>
-                                                            <br>
-
-                                                        </div>
-
-                                                        <br>
-                                                        <div class="form-group row">
-
-                                                            <b class="col-md-5 text-primary"> Remittance Number:
-                                                                &nbsp; <span class="text-danger">*</span></b>
-
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="remittance_no" placeholder="enter phone number"
-                                                                autocomplete="off"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                required>
-                                                            <br>
-
-                                                        </div>
-
-
-                                                        <br>
-                                                        {{-- <div class="form-group row">
-
-                                                                                                        <b class="col-md-5 text-primary" for="pin">
-                                                                                                            Enter Your Pin
-                                                                                                            <span class="text-danger">*</span></b>
-                                                                                                        <input type="password" class="form-control col-md-7"
-                                                                                                            id="user_pin_reverse"
-                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-
-
-                                                                                                    </div> --}}
-                                                        <br><br><br>
-                                                        <div class="form-group text-right ">
-                                                            <button type="button"
-                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
-                                                                id="redeem_button">
-                                                                <span id="next-text">Next</span>
-                                                                <span class="spinner-border spinner-border-sm mr-1"
-                                                                    id="spinner-next" role="status"
-                                                                    aria-hidden="true"></span>
-                                                                <span id="spinner-text-next">Loading...</span>
-                                                            </button>
-                                                        </div>
-
-
-                                                    </div>
-                                                    <div class="col-md-12 korpor_details">
-
-                                                        <div class="form-group row">
-
-                                                            <b class="col-md-5 text-primary"> Receiver's Name:</b>
-
-
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="receiver_name_redeem" autocomplete="off" readonly>
-                                                            <br>
-
-                                                        </div>
-
-                                                        <br>
-                                                        <div class="form-group row">
-
-                                                            <b class="col-md-5 text-primary"> Receiver's Phone:
-                                                            </b>
-
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="receiver_phone_redeem" autocomplete="off"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                readonly>
-                                                            <br>
-
-                                                        </div>
-
-
-                                                        <br>
-                                                        {{-- <div class="form-group row">
-
-                                                                                                        <b class="col-md-5 text-primary" for="pin">
-                                                                                                            Enter Your Pin
-                                                                                                            <span class="text-danger">*</span></b>
-                                                                                                        <input type="password" class="form-control col-md-7"
-                                                                                                            id="user_pin_reverse"
-                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-
-
-                                                                                                    </div> --}}
-                                                        <div class="form-group row">
-
-                                                            <b class="col-md-5 text-primary"> Receiver Address:
-                                                            </b>
-
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="receiver_address_redeem" autocomplete="off"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                readonly>
-                                                            <br>
-
-                                                        </div>
-                                                        <br>
-
-                                                        <div class="form-group row">
-
-                                                            <b class="col-md-5 text-primary"> Amount:</b>
-
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="receiver_amount_redeem" autocomplete="off"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                readonly>
-                                                            <br>
-
-                                                        </div>
-                                                        <br>
-
-                                                        <div class="form-group row">
-
-                                                            <b class="col-md-5 text-primary"> Enter OTP:
-                                                                &nbsp; <span class="text-danger">*</span></b>
-
-                                                            <input type="text" class="form-control col-md-7"
-                                                                id="receiver_otp_redeem" placeholder="One Time Password"
-                                                                autocomplete="off"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                                required>
-                                                            <br>
-
-                                                        </div>
-
-
-
-                                                        <br><br><br>
-                                                        <div class="form-group text-right ">
-                                                            <button type="button"
-                                                                class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                                id="done_button">
-                                                                <span id="redeem-text">Redeem</span>
-                                                                <span class="spinner-border spinner-border-sm mr-1"
-                                                                    id="spinner-redeem" role="status"
-                                                                    aria-hidden="true"></span>
-                                                                <span id="spinner-text-redeem">Loading...</span>
-                                                            </button>
-                                                        </div>
-
-
-                                                    </div>
-
-                                                    {{-- <div class="col-md-1"></div> --}}
-                                                </div>
-
-                                            </div>
-                                        </form>
-
-                                    </div>
-                                    <div class="col-md-5">
-                                        <br>
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div id="carouselExampleControls" class="carousel slide"
-                                                    data-ride="carousel" style="min-height: 120px; max-height: auto;">
-                                                    <div class="carousel-inner" role="listbox">
-                                                        <div class="carousel-item active">
-                                                            <img class="d-block img-fluid" style="min-height: 100%"
-                                                                src="{{ asset('assets/images/ads/sim_korpor_ad_9.jpeg') }}"
-                                                                alt="First slide">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img class="d-block img-fluid" style="height: auto;"
-                                                                src="{{ asset('assets/images/ads/sim_korpor_ad_10.jpeg') }}"
-                                                                alt="Second slide">
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <img class="d-block img-fluid" style="min-height"
-                                                                src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
-                                                                alt="Third slide">
-                                                        </div>
-                                                    </div>
-                                                    <a class="carousel-control-prev" href="#carouselExampleControls"
-                                                        role="button" data-slide="prev">
-                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                        <span class="sr-only">Previous</span>
-                                                    </a>
-                                                    <a class="carousel-control-next" href="#carouselExampleControls"
-                                                        role="button" data-slide="next">
-                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                        <span class="sr-only">Next</span>
-                                                    </a>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="korpor_trans_page">
-
-                    <div class="col-md-12">
-                        <div class="cards_table row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id=""
-                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                <div class="p-3 mt-4 mt-lg-0 rounded">
+                                <div class="col-md-5">
                                     <br>
-
-                                    <div class="card-box">
-                                        <ul class="nav nav-tabs">
-                                            <li class="nav-item">
-                                                <a href="#home" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link  text-primary">
-                                                    <b>Unreedeemed/Pending</b>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#profile" data-toggle="tab" aria-expanded="true"
-                                                    class="nav-link active text-primary">
-                                                    <b>Completed</b>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#messages" data-toggle="tab" aria-expanded="false"
-                                                    class="nav-link text-primary">
-                                                    <b>Reversed</b>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div class="tab-pane" id="home">
-
-                                                <div class="card mb-2 bg-info">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-sm-8">
-                                                                <form class="form-inline">
-                                                                    <div class="form-group">
-                                                                        <select class="form-control unredeemed" required>
-                                                                            <option value="">Select Account Number</option>
-
-
-                                                                        </select>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <div class="text-sm-right">
-                                                                    <button type="button"
-                                                                        class="btn btn-primary waves-effect waves-light"
-                                                                        id="submit_account_no_unredeemed"><i
-                                                                            class="mdi mdi-plus-circle mr-1"></i>Submit</button>
-                                                                </div>
-                                                            </div><!-- end col-->
-                                                        </div>
-                                                    </div> <!-- end card-body-->
-                                                </div> <!-- end card-->
-
-                                                <div class="table-responsive table-bordered accounts_display_area">
-                                                    <table id="" class="table table-striped mb-0 ">
-                                                        <thead>
-                                                            <tr class="bg-primary text-white ">
-                                                                <td> <b> Reference Number </b> </td>
-                                                                <td> <b> Receiver Name </b> </td>
-                                                                <td> <b> Receiver Telephone </b> </td>
-                                                                <td> <b> Receiver Address </b> </td>
-                                                                <td> <b> Amount </b> </td>
-                                                                <td> <b>Status</b></td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody style="background-color:white;"
-                                                            class="unredeem_korpor_list_display">
-
-
-                                                        </tbody>
-                                                    </table>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div id="carouselExampleControls" class="carousel slide"
+                                                data-ride="carousel" style="min-height: 120px; max-height: auto;">
+                                                <div class="carousel-inner" role="listbox">
+                                                    <div class="carousel-item active">
+                                                        <img class="d-block img-fluid" style="min-height: 100%"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_5.jpeg') }}"
+                                                            alt="First slide">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block img-fluid" style="height: auto;"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_6.jpeg') }}"
+                                                            alt="Second slide">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block img-fluid" style="min-height"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
+                                                            alt="Third slide">
+                                                    </div>
                                                 </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleControls"
+                                                    role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleControls"
+                                                    role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
                                             </div>
-                                            <div class="tab-pane show active" id="profile">
-
-                                                <div class="card mb-2 bg-info">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-sm-8">
-                                                                <form class="form-inline">
-                                                                    <div class="form-group">
-                                                                        <select class="form-control redeemed" required>
-                                                                            <option value="">Select Account Number</option>
 
 
-                                                                        </select>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <div class="text-sm-right">
-                                                                    <button type="button"
-                                                                        class="btn btn-primary waves-effect waves-light"
-                                                                        id="submit_account_no_redeemed"><i
-                                                                            class="mdi mdi-plus-circle mr-1"></i>Submit</button>
-                                                                </div>
-                                                            </div><!-- end col-->
-                                                        </div>
-                                                    </div> <!-- end card-body-->
-                                                </div> <!-- end card-->
-
-                                                <div class="table-responsive table-bordered accounts_display_area">
-                                                    <table id="" class="table mb-0 ">
-                                                        <thead>
-                                                            <tr class="bg-primary text-white ">
-                                                                <td> <b> Reference Number </b> </td>
-                                                                <td> <b> Receiver Name </b> </td>
-                                                                <td> <b> Receiver Telephone </b> </td>
-                                                                <td> <b> Receiver Address </b> </td>
-                                                                <td> <b> Amount </b> </td>
-                                                                <td> <b>Status</b></td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody style="background-color:white;"
-                                                            class="redeemed_korpor_list_display">
-
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="messages">
-
-                                                <div class="card mb-2 bg-info">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-sm-8">
-                                                                <form class="form-inline">
-                                                                    <div class="form-group">
-                                                                        <select class="form-control reversed" required>
-                                                                            <option value="">Select Account Number</option>
-
-
-                                                                        </select>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <div class="text-sm-right">
-                                                                    <button type="button"
-                                                                        class="btn btn-primary waves-effect waves-light"
-                                                                        id="submit_account_no_reversed"><i
-                                                                            class="mdi mdi-plus-circle mr-1"></i>Submit</button>
-                                                                </div>
-                                                            </div><!-- end col-->
-                                                        </div>
-                                                    </div> <!-- end card-body-->
-                                                </div> <!-- end card-->
-
-
-                                                <div class="table-responsive table-bordered accounts_display_area">
-                                                    <table id="" class="table mb-0 ">
-                                                        <thead>
-                                                            <tr class="bg-primary text-white ">
-                                                                <td> <b> Reference Number </b> </td>
-                                                                <td> <b> Receiver's Name </b> </td>
-                                                                <td> <b> Receiver's Address </b> </td>
-                                                                <td> <b> Amount </b> </td>
-                                                                <td> <b>Status</b></td>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody style="background-color:white;"
-                                                            class="reversed_korpor_list_display">
-
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Center modal content -->
-                <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header text-center ">
-
-                            </div>
-                            <div class="modal-body transfer_pin_modal">
-                                <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER TRANSACTION
-                                    PIN</h3>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-9  text-center">
-                                        <form action="#" autocomplete="off" aria-autocomplete="off">
-                                            <input type="text" name="user_pin" maxlength="4" autocomplete="off"
-                                                aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin"
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                            <br>
-                                            <button class="btn btn-success" type="button" id="transfer_pin"
-                                                data-dismiss="modal">Submit</button>
-                                        </form>
-
-                                    </div>
-                                    <div class="col-md-1"></div>
-                                </div>
-                            </div>
-                            <br>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- /.modal -->
-
-
             </div>
 
+            <div class="tab-pane" id="redeem_korpor_page">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6  m-2" id="request_form_div"
+                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                    <br><br><br>
+
+                                    <form action="#" class="select_beneficiary" id="redeem_korpor_payment_details_form"
+                                        autocomplete="off" aria-autocomplete="none">
+                                        @csrf
+
+                                        <div class="col-md-12">
+                                            {{-- <br><br><br> --}}
+                                            <div class="row">
+                                                {{-- <div class="col-md-1"></div> --}}
+
+                                                <div class="col-md-12 redeem_korpor">
+
+                                                    <p class="text-muted font-14 m-b-20">
+                                                        <span> <i class="fa fa-info-circle  text-red"></i> <b
+                                                                style="color:red;">Please
+                                                                Note:&nbsp;&nbsp;</b> <span class="">Enter the
+                                                                remittance and phone number for korpor payment details.
+
+                                                                <hr>
+                                                    </p>
+
+
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-5 text-primary"> Mobile Number &nbsp; <span
+                                                                class="text-danger">*</span></b>
+
+
+                                                        <input type="text" class="form-control col-md-7" id="mobile_no"
+                                                            autocomplete="off" required>
+                                                        <br>
+
+                                                    </div>
+
+                                                    <br>
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-5 text-primary"> Remittance Number:
+                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                        <input type="text" class="form-control col-md-7"
+                                                            id="remittance_no" placeholder="enter phone number"
+                                                            autocomplete="off"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                            required>
+                                                        <br>
+
+                                                    </div>
+
+
+                                                    <br>
+                                                    {{-- <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary" for="pin">
+                                                                                                            Enter Your Pin
+                                                                                                            <span class="text-danger">*</span></b>
+                                                                                                        <input type="password" class="form-control col-md-7"
+                                                                                                            id="user_pin_reverse"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                                                    </div> --}}
+                                                    <br><br><br>
+                                                    <div class="form-group text-right ">
+                                                        <button type="button"
+                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
+                                                            id="redeem_button">
+                                                            <span id="next-text">Next</span>
+                                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                                id="spinner-next" role="status"
+                                                                aria-hidden="true"></span>
+                                                            <span id="spinner-text-next">Loading...</span>
+                                                        </button>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-12 korpor_details">
+
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-5 text-primary"> Receiver's Name:</b>
+
+
+                                                        <input type="text" class="form-control col-md-7"
+                                                            id="receiver_name_redeem" autocomplete="off" readonly>
+                                                        <br>
+
+                                                    </div>
+
+                                                    <br>
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-5 text-primary"> Receiver's Phone:
+                                                        </b>
+
+                                                        <input type="text" class="form-control col-md-7"
+                                                            id="receiver_phone_redeem" autocomplete="off"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                            readonly>
+                                                        <br>
+
+                                                    </div>
+
+
+                                                    <br>
+                                                    {{-- <div class="form-group row">
+
+                                                                                                        <b class="col-md-5 text-primary" for="pin">
+                                                                                                            Enter Your Pin
+                                                                                                            <span class="text-danger">*</span></b>
+                                                                                                        <input type="password" class="form-control col-md-7"
+                                                                                                            id="user_pin_reverse"
+                                                                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+
+
+                                                                                                    </div> --}}
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-5 text-primary"> Receiver Address:
+                                                        </b>
+
+                                                        <input type="text" class="form-control col-md-7"
+                                                            id="receiver_address_redeem" autocomplete="off"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                            readonly>
+                                                        <br>
+
+                                                    </div>
+                                                    <br>
+
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-5 text-primary"> Amount:</b>
+
+                                                        <input type="text" class="form-control col-md-7"
+                                                            id="receiver_amount_redeem" autocomplete="off"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                            readonly>
+                                                        <br>
+
+                                                    </div>
+                                                    <br>
+
+                                                    <div class="form-group row">
+
+                                                        <b class="col-md-5 text-primary"> Enter OTP:
+                                                            &nbsp; <span class="text-danger">*</span></b>
+
+                                                        <input type="text" class="form-control col-md-7"
+                                                            id="receiver_otp_redeem" placeholder="One Time Password"
+                                                            autocomplete="off"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                                            required>
+                                                        <br>
+
+                                                    </div>
+
+
+
+                                                    <br><br><br>
+                                                    <div class="form-group text-right ">
+                                                        <button type="button"
+                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                            id="done_button">
+                                                            <span id="redeem-text">Redeem</span>
+                                                            <span class="spinner-border spinner-border-sm mr-1"
+                                                                id="spinner-redeem" role="status"
+                                                                aria-hidden="true"></span>
+                                                            <span id="spinner-text-redeem">Loading...</span>
+                                                        </button>
+                                                    </div>
+
+
+                                                </div>
+
+                                                {{-- <div class="col-md-1"></div> --}}
+                                            </div>
+
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="col-md-5">
+                                    <br>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div id="carouselExampleControls" class="carousel slide"
+                                                data-ride="carousel" style="min-height: 120px; max-height: auto;">
+                                                <div class="carousel-inner" role="listbox">
+                                                    <div class="carousel-item active">
+                                                        <img class="d-block img-fluid" style="min-height: 100%"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_9.jpeg') }}"
+                                                            alt="First slide">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block img-fluid" style="height: auto;"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_10.jpeg') }}"
+                                                            alt="Second slide">
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <img class="d-block img-fluid" style="min-height"
+                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
+                                                            alt="Third slide">
+                                                    </div>
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleControls"
+                                                    role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleControls"
+                                                    role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="korpor_trans_page">
+
+                <div class="col-md-12">
+                    <div class="cards_table row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id=""
+                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                            <div class="p-3 mt-4 mt-lg-0 rounded">
+                                <br>
+
+                                <div class="card-box">
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                            <a href="#home" data-toggle="tab" aria-expanded="false"
+                                                class="nav-link  text-primary">
+                                                <b>Unredeemed/Pending</b>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#profile" data-toggle="tab" aria-expanded="true"
+                                                class="nav-link active text-primary">
+                                                <b>Completed</b>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#messages" data-toggle="tab" aria-expanded="false"
+                                                class="nav-link text-primary">
+                                                <b>Reversed</b>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane" id="home">
+
+                                            <div class="card mb-2 bg-info">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <form class="form-inline">
+                                                                <div class="form-group">
+                                                                    <select class="form-control unredeemed" required>
+                                                                        <option value="">Select Account Number</option>
+
+
+                                                                    </select>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="text-sm-right">
+                                                                <button type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="submit_account_no_unredeemed"><i
+                                                                        class="mdi mdi-plus-circle mr-1"></i>Submit</button>
+                                                            </div>
+                                                        </div><!-- end col-->
+                                                    </div>
+                                                </div> <!-- end card-body-->
+                                            </div> <!-- end card-->
+
+                                            <div class="table-responsive table-bordered accounts_display_area">
+                                                <table id="" class="table table-striped mb-0 ">
+                                                    <thead>
+                                                        <tr class="bg-primary text-white ">
+                                                            <td> <b> Reference Number </b> </td>
+                                                            <td> <b> Receiver Name </b> </td>
+                                                            <td> <b> Receiver Telephone </b> </td>
+                                                            <td> <b> Receiver Address </b> </td>
+                                                            <td> <b> Amount </b> </td>
+                                                            <td> <b>Status</b></td>
+                                                            <td> <b>More</b></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="background-color:white;"
+                                                        class="unredeem_korpor_list_display">
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane show active" id="profile">
+
+                                            <div class="card mb-2 bg-info">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <form class="form-inline">
+                                                                <div class="form-group">
+                                                                    <select class="form-control redeemed" required>
+                                                                        <option value="">Select Account Number</option>
+
+
+                                                                    </select>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="text-sm-right">
+                                                                <button type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="submit_account_no_redeemed"><i
+                                                                        class="mdi mdi-plus-circle mr-1"></i>Submit</button>
+                                                            </div>
+                                                        </div><!-- end col-->
+                                                    </div>
+                                                </div> <!-- end card-body-->
+                                            </div> <!-- end card-->
+
+                                            <div class="table-responsive table-bordered accounts_display_area">
+                                                <table id="" class="table mb-0 ">
+                                                    <thead>
+                                                        <tr class="bg-primary text-white ">
+                                                            <td> <b> Reference Number </b> </td>
+                                                            <td> <b> Receiver Name </b> </td>
+                                                            <td> <b> Receiver Telephone </b> </td>
+                                                            <td> <b> Receiver Address </b> </td>
+                                                            <td> <b> Amount </b> </td>
+                                                            <td> <b>Status</b></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="background-color:white;"
+                                                        class="redeemed_korpor_list_display">
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="messages">
+
+                                            <div class="card mb-2 bg-info">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <form class="form-inline">
+                                                                <div class="form-group">
+                                                                    <select class="form-control reversed" required>
+                                                                        <option value="">Select Account Number</option>
+
+
+                                                                    </select>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="text-sm-right">
+                                                                <button type="button"
+                                                                    class="btn btn-primary waves-effect waves-light"
+                                                                    id="submit_account_no_reversed"><i
+                                                                        class="mdi mdi-plus-circle mr-1"></i>Submit</button>
+                                                            </div>
+                                                        </div><!-- end col-->
+                                                    </div>
+                                                </div> <!-- end card-body-->
+                                            </div> <!-- end card-->
+
+
+                                            <div class="table-responsive table-bordered accounts_display_area">
+                                                <table id="" class="table mb-0 ">
+                                                    <thead>
+                                                        <tr class="bg-primary text-white ">
+                                                            <td> <b> Reference Number </b> </td>
+                                                            <td> <b> Receiver's Name </b> </td>
+                                                            <td> <b> Receiver's Address </b> </td>
+                                                            <td> <b> Amount </b> </td>
+                                                            <td> <b>Status</b></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="background-color:white;"
+                                                        class="reversed_korpor_list_display">
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center modal content -->
+            <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header text-center ">
+
+                        </div>
+                        <div class="modal-body transfer_pin_modal">
+                            <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER TRANSACTION
+                                PIN</h3>
+                            <div class="row">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-9  text-center">
+                                    <form action="#" autocomplete="off" aria-autocomplete="off">
+                                        <input type="text" name="user_pin" maxlength="4" autocomplete="off"
+                                            aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                        <br>
+                                        <button class="btn btn-success" type="button" id="transfer_pin"
+                                            data-dismiss="modal">Submit</button>
+                                    </form>
+
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+
+
         </div>
-
-
-
 
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <script>
-        function from_account() {
-            $.ajax({
-                'type': 'GET',
-                'url': 'get-accounts-api',
-                "datatype": "application/json",
-                success: function(response) {
-                    console.log(response.data);
-                    let data = response.data
-                    $.each(data, function(index) {
 
-                        $('.from_account').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber + '~' +
-                                data[index].currency + '~' + data[index]
-                                .availableBalance + '~' + data[index].accountMandate + '~' +
-                                data[index].currencyCode
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance
-                        ));
+</div>
 
-                        $('.unredeemed').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber + '~' +
-                                data[index].currency + '~' + data[index]
-                                .availableBalance
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance
-                        ));
 
-                        $('.reversed').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber + '~' +
-                                data[index].currency + '~' + data[index]
-                                .availableBalance
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance
-                        ));
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    const customerType = @json(session()->get('customerType'));
+    const userAlias = @json(session()->get('userAlias'))
+</script>
+<script src={{ asset("assets/js/pages/payments/e-korpor.js") }}>
 
-                        $('.redeemed').append($('<option>', {
-                            value: data[index].accountType + '~' + data[index]
-                                .accountDesc + '~' + data[index].accountNumber + '~' +
-                                data[index].currency + '~' + data[index]
-                                .availableBalance
-                        }).text(data[index].accountType + '~' + data[index].accountNumber +
-                            '~' + data[index].currency + '~' + data[index].availableBalance
-                        ));
-
-                    });
-                },
-                error: function(xhr, status, error) {
-
-                    setTimeout(function() {
-                        from_account()
-                    }, $.ajaxSetup().retryAfter)
-
-                }
-
-            })
-        }
-
-
-
-
-        function toaster(message, icon, timer) {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: timer,
-                timerProgressBar: false,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-
-            Toast.fire({
-                icon: icon,
-                title: message
-            })
-        }
-
-
-
-        $(document).ready(function() {
-
-            $("#transaction_summary").hide();
-            $("#spinner").hide();
-            $("#spinner-text").hide();
-            $("#spinner-reverse").hide();
-            $("#spinner-text-reverse").hide();
-            $("#spinner-text-self").hide();
-            $("#spinner-self").hide();
-            $("#spinner-text-next").hide();
-            $("#spinner-next").hide();
-            $(".self_form").hide();
-            $(".self_summary").hide();
-            $("#spinner-redeem").hide();
-            $("#spinner-text-redeem").hide();
-            $(".receipt").hide();
-
-            $(".korpor_details").hide();
-
-            var customerType = @json(session()->get('customerType'));
-            console.log(customerType);
-
-            if (customerType == 'C') {
-                $(".account_of_transfer_reverse").show()
-                $(".personal_pin").hide();
-            } else {
-                $(".personal_pin").show()
-                $(".account_of_transfer_reverse").hide()
-            }
-
-            $("#redeem_button").click(function() {
-
-                let mobile_no = $("#mobile_no").val();
-                console.log(mobile_no);
-                let remittance_no = $("#remittance_no").val();
-                console.log(remittance_no);
-
-                if (mobile_no == '' || remittance_no == '') {
-                    toaster("fields must not be empty", "error", 2000);
-                    return false;
-                }
-
-                $.ajax({
-
-                    type: 'POST',
-                    url: 'korpor-otp',
-                    datatype: "application/json",
-                    data: {
-                        "remittance_no": remittance_no,
-                        "mobile_no": mobile_no
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-
-                        console.log(response)
-
-                        if (response.responseCode == '000') {
-                            toaster(response.message, 'success', 20000);
-
-                            $(".redeem_korpor").hide();
-                            $(".korpor_details").show();
-                            let receiver_name = response.data.beneficiaryName;
-                            console.log(receiver_name);
-                            $("#receiver_name_redeem").text(receiver_name);
-                            $("#receiver_name_redeem").val(receiver_name);
-                            let receiver_address = response.data.beneficiaryAddress;
-                            // $("#receiver_address_redeem").text(receiver_address);
-                            $("#receiver_address_redeem").val(receiver_address);
-                            let receiver_amount = response.data.remittanceAmount;
-                            $("#receiver_amount_redeem").val(receiver_amount);
-
-                            let receiver_num = $("#mobile_no").val();
-                            $("#receiver_phone_redeem").val(receiver_num);
-
-                            let accountNo = response.data.accountNumber;
-
-                            $("#done_button").click(function() {
-
-                                let otp = $("#receiver_otp_redeem").val();
-                                if (otp == '') {
-                                    toaster("Kindly enter the otp", 'error', 20000);
-                                    return false;
-                                }
-
-                                $.ajax({
-                                    type: 'POST',
-                                    url: 'redeem-korpor',
-                                    datatype: "application/json",
-                                    data: {
-                                        "redeem_amount": receiver_amount,
-                                        "redeem_receiver_name": receiver_name,
-                                        "redeem_receiver_phone": receiver_num,
-                                        "redeem_account": accountNo,
-                                        "redeem_remittance_no": remittance_no,
-                                        "otp_number": otp
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $(
-                                            'meta[name="csrf-token"]').attr(
-                                            'content')
-                                    },
-                                    success: function(response) {
-
-                                        console.log(response)
-
-                                        if (response.responseCode ==
-                                            '000') {
-                                            toaster(response.message,
-                                                'success', 20000);
-
-                                            setTimeout(function() {
-                                                window.location
-                                                    .reload();
-                                            }, 30000);
-                                        } else {
-                                            toaster(response.message,
-                                                'error', 20000);
-
-                                        }
-                                    }
-
-                                });
-
-
-                            });
-
-
-
-                            // $("#request_form_div").hide();
-                            // $('.display_button_print').show();
-                            // alert("done test");
-
-                        } else {
-
-                            toaster(response.message, 'error', 9000);
-
-                            $('#spinner').hide();
-                            $('#spinner-text').hide();
-                            $('.submit-text').show();
-                            // $('#confirm_payment').show();
-                            // $('#confirm_button').attr('disabled', false);
-                        }
-                    }
-                });
-
-
-            });
-
-
-            // $("#")
-            // $('#print_receipt').hide();
-
-            $(".display_button_print").hide();
-
-
-            //codes to display self or others transfer
-            $("#inlineRadio1").click(function() {
-                var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
-                // console.log(destination_type);
-                $('.display_receiver_name').text(@json(session()->get('userAlias')))
-                $(".self_form").toggle('500');
-                {{-- $(".self_summary").toggle('500'); --}}
-                $(".others_form").hide();
-                {{-- $(".others_summary").hide(); --}}
-            });
-
-            $("#inlineRadio2").click(function() {
-                var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
-                // console.log(destination_type);
-                $('.display_receiver_name').text('')
-                $(".others_form").toggle('500');
-                {{-- $(".others_summary").toggle('500'); --}}
-                $(".self_form").hide();
-                {{-- $(".self_summary").hide(); --}}
-
-
-            });
-
-
-            setTimeout(function() {
-                from_account();
-                // get_unredeemed_korpor();
-
-
-            }, 200);
-
-            function sweet_alert(message, icon, timer) {
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 5000,
-                    timerProgressBar: false,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-
-                Toast.fire({
-                    icon: icon,
-                    title: message
-                })
-            }
-
-            {{-- hide select accounts info --}}
-            $(".from_account_display_info").hide()
-            $(".to_account_display_info").hide()
-            $("#schedule_payment_date").hide()
-            $("#frequency").hide()
-            $('#schedule_payment_contraint_input').hide()
-            $('.display_schedule_payment_date').text('N/A')
-
-            $("#korpor_payment_form").show()
-            $("#korpor_payment_summary").hide()
-
-            //show card after the from_account value changes
-            $(".from_account").change(function() {
-                var from_account = $(this).val()
-                {{-- alert(from_account) --}}
-                if (from_account == '' || from_account.trim() == undefined) {
-                    {{-- alert('money') --}}
-                    // $(".from_account_display_info").hide()
-
-                } else {
-                    from_account_info = from_account.split("~")
-
-
-                    // var to_account = $('#to_account').val()
-
-                    // set summary values for display
-                    $(".display_from_account_type").text(from_account_info[0].trim())
-                    $(".display_from_account_name").text(from_account_info[1].trim())
-                    $(".display_from_account_no").text(from_account_info[2].trim())
-                    $(".display_from_account_currency").text(from_account_info[3].trim())
-                    $(".select_currency").val(from_account_info[3].trim())
-                    $('.display_transfer_currency').text(from_account_info[3].trim())
-                    $("#display_currency").text(from_account_info[3].trim())
-                    $("#from_account_receipt").text(from_account_info[2].trim())
-                    $(".receipt_currency").text(from_account_info[3].trim())
-
-
-                    $(".display_currency").text(from_account_info[3].trim()) // set summary currency
-
-                    amt = from_account_info[4].trim()
-
-                    $(".display_from_account_amount").text(formatToCurrency(Number(from_account_info[4]
-                        .trim())))
-                    $(".from_account_display_info").show()
-
-                    //set summary value for display for self
-
-                    $(".display_from_account_type_self").text(from_account_info[0].trim())
-                    $(".display_from_account_name_self").text(from_account_info[1].trim())
-                    $(".display_from_account_no_self").text(from_account_info[2].trim())
-                    $(".display_from_account_currency_self").text(from_account_info[3].trim())
-
-                    $(".display_currency_self").text(from_account_info[3].trim()) // set summary currency
-
-                    amt = from_account_info[4].trim()
-
-                    $(".display_from_account_amount_self").text(formatToCurrency(Number(from_account_info[4]
-                        .trim())))
-                    $(".from_account_display_info_self").show()
-                }
-
-
-
-
-
-            });
-
-            //for testing process
-            $('.from_account').change(function() {
-                var from_account = $('.from_account').val();
-                console.log(from_account);
-                // alert(from_account);
-            });
-
-            $('.unredeemed').change(function() {
-                var account = $('.unredeemed').val();
-                console.log(account);
-            })
-
-            $('#amount').keyup(function() {
-                var amount_ = $(this).val();
-                var amount = $('#amount').val();
-                $(".display_amount").text(formatToCurrency(parseFloat(amount_)))
-                console.log(amount);
-            });
-
-            $('#receiver_name').change(function() {
-                var receiver_name = $('#receiver_name').val();
-                console.log(receiver_name);
-            });
-
-            $('#receiver_phoneNum').change(function() {
-                var receiver_phoneNum = $('#receiver_phoneNum').val();
-                console.log(receiver_phoneNum);
-            });
-
-            $('#receiver_address').change(function() {
-                var receiver_address = $('#receiver_address').val();
-                console.log(receiver_address);
-            });
-
-            $('#user_pin').change(function() {
-                var user_pin = $('#user_pin').val();
-                console.log(user_pin);
-            });
-            //end of testing process
-
-
-            //display for others
-            $("#receiver_name").keyup(function() {
-                var receiver_name = $("#receiver_name").val();
-                $(".display_receiver_name").text(receiver_name);
-            });
-
-            $("#receiver_phoneNum").keyup(function() {
-                var receiver_phoneNum = $("#receiver_phoneNum").val();
-                $(".display_receiver_phoneNum").text(receiver_phoneNum);
-            });
-
-            $("#receiver_address").keyup(function() {
-                var receiver_address = $("#receiver_address").val();
-                $(".display_receiver_address").text(receiver_address);
-            })
-
-            $("#amount").change(function() {
-                var amount = $("#amount").val();
-                $(".display_amount").text(amount);
-            });
-
-            //korpor transfer details for self
-            $('#amount_self').keyup(function() {
-                var amount_ = $(this).val();
-                var amount = $('#amount_self').val();
-                $('.display_amount').text(formatToCurrency(parseFloat(amount_)))
-                console.log(amount);
-            });
-
-            $('#receiver_name_self').click(function() {
-                var receiver_name = $('#receiver_name_self').val();
-                console.log(receiver_name);
-            });
-
-            $('#receiver_phoneNum_self').change(function() {
-                var receiver_phoneNum = $('#receiver_phoneNum_self').val();
-                console.log(receiver_phoneNum);
-            });
-
-            $('#receiver_address_self').keyup(function() {
-                var receiver_address_ = $(this).val()
-                var receiver_address = $('#receiver_address_self').val();
-                $('.display_receiver_address').text(receiver_address_)
-                console.log(receiver_address);
-            });
-
-            $('#user_pin_self').change(function() {
-                var user_pin = $('#user_pin_self').val();
-                console.log(user_pin);
-            });
-            //end of testing process
-
-
-            $("#receiver_name_self").click(function() {
-                var receiver_name = @json(session()->get('userAlias'));
-                $(".display_receiver_name_self").text(receiver_name);
-                $(".display_receiver_name").text(receiver_name)
-            });
-
-            $("#receiver_phoneNum_self").keyup(function() {
-                var receiver_phoneNum_ = $(this).val()
-                var receiver_phoneNum = $("#receiver_phoneNum_self").val();
-                $(".display_receiver_phoneNum_self").text(receiver_phoneNum);
-                $('.display_receiver_phoneNum').text(receiver_phoneNum_)
-            });
-
-
-
-            $("#amount_self").change(function() {
-                var amount = $("#amount_self").val();
-                $(".display_amount_self").text(amount);
-            });
-
-            $(".reference_no").change(function() {
-                var reference_no = $(".reference_no").val();
-                console.log(reference_no);
-            });
-
-
-            $(".receiver_phoneNo_reverse").change(function() {
-                var receiver_phoneNo = $(".receiver_phoneNo_reverse").val();
-                console.log(receiver_phoneNo);
-            });
-
-
-            //method to format currency amount
-            function formatToCurrency(amount) {
-                return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-            }
-
-            //button to submit for list of redeemed/completed transactions
-            $('#submit_account_no_redeemed').click(function() {
-
-                let from_account = $(".redeemed").val();
-
-                //validate if account has been selected...
-                if (from_account == '') {
-                    toaster('Select an account to show list of redeemed transactions', 'error', 20000);
-                    return false;
-                }
-
-                let from_account_info = from_account.split("~")
-                let from_account_value = from_account_info[2].trim();
-                console.log(from_account_value);
-
-                $.ajax({
-
-                    type: 'POST',
-                    url: 'redeemed-korpor',
-                    datatype: "application/json",
-                    data: {
-                        'accountNo': from_account_value,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-
-                        console.log(response)
-
-                        if (response.data.length > 0) {
-                            toaster(response.message, 'success', 2000);
-                            let data = response.data;
-
-                            let unredeemed_cardless_list = response.data;
-                            console.log(unredeemed_cardless_list);
-                            $.each(data, function(index) {
-                                $('.redeemed_korpor_list_display').append(
-                                    `<tr>
-
-                                                                <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
-                                                                <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
-                                                                <td> <b> ${data[index].BENEF_TEL}  </b>  </td>
-                                                                <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
-                                                                <td> <b> ${formatToCurrency(parseFloat(data[index].REMITTANCE_AMOUNT))}</b></td>
-                                                                <td> <strong><span class="badge badge-success">&nbsp;Completed&nbsp;</span></strong> </td>
-                                                                </tr>`
-                                )
-                            })
-
-                        }
-                    }
-                });
-            });
-
-            //button to submit account unredeemed request
-            $('#submit_account_no_unredeemed').click(function() {
-
-
-                let from_account = $(".unredeemed").val();
-
-                //validate if account has been selected...
-                if (from_account == '') {
-                    toaster('Select an account to show list of unredeemed transactions', 'error', 20000);
-                    return false;
-                }
-                let from_account_info = from_account.split("~")
-                let from_account_value = from_account_info[2].trim();
-                console.log(from_account_value);
-
-                $.ajax({
-
-                    type: 'POST',
-                    url: 'unredeem-korpor-request',
-                    datatype: "application/json",
-                    data: {
-                        'accountNo': from_account_value,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-
-                        console.log(response)
-
-                        if (response.data.length > 0) {
-                            let data = response.data;
-
-                            let unredeemed_korpor_list = response.data;
-                            console.log(unredeemed_korpor_list);
-                            $.each(data, function(index) {
-                                $('.unredeem_korpor_list_display').append(
-                                    `<tr>
-
-                                                            <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
-                                                            <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
-                                                            <td> <b> ${data[index].BENEF_TEL}  </b>  </td>
-                                                            <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
-                                                            <td> <b> ${formatToCurrency(parseFloat(data[index].REMITTANCE_AMOUNT))}</b></td>
-                                                            <td> <strong><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></strong> </td>
-                                                            </tr>`
-                                )
-                            })
-
-                        }
-                    }
-                });
-
-
-            });
-
-            //button to submit account no for reversed korpor transaction.
-            $('#submit_account_no_reversed').click(function() {
-                let from_account = $(".reversed").val();
-
-                //validate if account has been selected...
-                if (from_account == '') {
-                    toaster('Select an account to show list of reversed transactions', 'error', 20000);
-                    return false;
-                }
-                let from_account_info = from_account.split("~")
-                let from_account_value = from_account_info[2].trim();
-                console.log(from_account_value);
-
-                $.ajax({
-
-                    type: 'POST',
-                    url: 'reversed-korpor-request',
-                    datatype: "application/json",
-                    data: {
-                        'accountNo': from_account_value,
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-
-                        console.log(response)
-                        toaster(response.message, 'error', 20000);
-
-                        if (response.data.length > 0) {
-                            let data = response.data;
-
-                            let unredeemed_korpor_list = response.data;
-                            console.log(unredeemed_korpor_list);
-                            $.each(data, function(index) {
-                                $('.reversed_korpor_list_display').append(
-                                    `<tr>
-
-                                                            <td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
-                                                            <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
-                                                            <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
-                                                            <td> <b> ${formatToCurrency(parseFloat(data[index].REMITTANCE_AMOUNT))}</b></td>
-                                                            <td> <h5><span class="badge badge-danger">&nbsp;Cancelled&nbsp;</span></h5> </td>
-                                                            </tr>`
-                                )
-                            })
-
-                        }
-                    }
-                });
-
-
-            });
-
-
-            //button to submit korpor payment transaction for others
-            $('#confirm_button').click(function() {
-                // alert('i have been clicked');
-                var from_account = $('.from_account').val();
-
-                // let from_account = from_account_value;
-                let transfer_amount = $('#amount').val();
-                console.log(transfer_amount);
-                // alert('');
-                let receiver_name = $('#receiver_name').val();
-                let receiver_phoneNum = $('#receiver_phoneNum').val();
-                let receiver_address = $('#receiver_address').val();
-                let sender_name = @json(session()->get('userAlias'));
-                let user_pin = $('#user_pin').val();
-                // console.log(sender_name);
-
-
-
-
-
-                if (from_account.trim() == '' || transfer_amount == '' || receiver_name == '' ||
-                    receiver_phoneNum == '' || receiver_address == '' || user_pin == '') {
-                    // alert('fields must not be empty');
-                    toaster('Fields must not be empty', 'error', 10000);
-                    return false;
-                } else {
-
-                    //hide the payment form and show the summary form
-                    $("#korpor_payment_form").hide()
-                    $("#korpor_payment_summary").show();
-
-                    amt = from_account_info[4].trim();
-                    if (amt < transfer_amount) {
-                        toaster('Insufficient account balance', 'error', 9000);
-                        return false
-                    } else {
-
-                        //display this is the payment summary
-                        $("#display_amount").text(transfer_amount);
-                        $("#display_receiver_name").text(receiver_name);
-                        $("#display_receiver_address").text(receiver_name);
-                        $("#display_receiver_phoneNum").text(receiver_phoneNum);
-
-
-
-                    }
-
-                    if (user_pin == "") {
-                        toaster('enter your pin', 'error', 9000);
-                        // console.log("Error is from here.");
-                        return false;
-                    } else {
-
-                        $('#spinner').show(),
-                            $('#spinner-text').show(),
-                            // $('#print_receipt').hide();
-                            $('.submit-text').hide();
-                        let from_account_value = from_account_info[2].trim();
-
-                    }
-                }
-            });
-
-            $("#back_button").click(function(e) {
-                e.preventDefault();
-                $("#request_form_div").show();
-                $("#transaction_summary").hide();
-            })
-
-            //button to submit korpor payment transaction for self.
-            $('#confirm_next_button').click(function(e) {
-                e.preventDefault();
-                var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
-                if (destination_type == "OTHERS") {
-                    {{-- alert(destination_type) --}}
-
-                    var from_account_ = $('.from_account').val();
-
-
-                    var receiver_name_ = $("#receiver_name").val()
-                    $("#display_receiver_name").text(receiver_name_)
-                    $("#receiver_name_receipt").text(receiver_name_)
-
-                    var receiver_phone_ = $("#receiver_phoneNum").val()
-                    $("#display_receiver_telephone").text(receiver_phone_)
-                    $("#receiver_telephone_receipt").text(receiver_phone_)
-
-                    var receiver_address_ = $("#receiver_address").val()
-                    $("#display_receiver_address").text(receiver_address_)
-
-                    var amount_ = $("#amount").val()
-                    $("#display_transfer_amount").text(formatToCurrency(Number(amount_)))
-                    $("#amount_receipt").text(formatToCurrency(Number(amount_)))
-
-                    // write an if statement for transfer amount if its less
-
-
-                    if (from_account_.trim() == '' || amount_ == '' || receiver_name_ == '' ||
-                        receiver_phone_ == '' || receiver_address_ == '') {
-                        // alert('fields must not be empty');
-                        toaster('Fields must not be empty', 'error', 10000);
-                        return false;
-                    } else {
-                        $('#transaction_summary').show();
-                        $("#request_form_div").hide();
-                    }
-                } else {
-                    {{-- alert("SELF") --}}
-
-                    var from_account_self_ = $('.from_account').val();
-
-                    var receiver_name_self_ = $("#receiver_name_self").val()
-
-                    $("#display_receiver_name").text(@json(session()->get('userAlias')))
-                    $("#receiver_name_receipt").text(@json(session()->get('userAlias')))
-
-                    var receiver_phoneNum_self_ = $("#receiver_phoneNum_self").val()
-                    $("#display_receiver_telephone").text(receiver_phoneNum_self_)
-                    $("#receiver_telephone_receipt").text(receiver_phoneNum_self_)
-
-                    var receiver_address_self = $("#receiver_address_self").val()
-                    $("#display_receiver_address").text(receiver_address_self)
-
-
-                    var amount_self_ = $("#amount_self").val()
-                    $("#display_transfer_amount").text(formatToCurrency(Number(amount_self_)))
-                    $("#amount_receipt").text(formatToCurrency(Number(amount_self_)))
-
-                    if (from_account_self_.trim() == '' || amount_self_ == '' || receiver_name_self_ ==
-                        '' || receiver_phoneNum_self_ == '' || receiver_address_self == '') {
-                        // alert('fields must not be empty');
-                        toaster('Fields must not be empty', 'error', 10000);
-                        return false;
-                    } else {
-
-                        $('#transaction_summary').show();
-                        $("#request_form_div").hide();
-                        return false;
-
-                    }
-
-                }
-
-
-                // alert('i have been clicked');
-                let from_account = $('.from_account').val();
-                let transfer_amount = $('#amount_self').val();
-                console.log(transfer_amount);
-                // alert('');
-                let receiver_name = $('#receiver_name_self').val();
-                let receiver_phoneNum = $('#receiver_phoneNum_self').val();
-                let receiver_address = $('#receiver_address_self').val();
-                let sender_name = @json(session()->get('userAlias'));
-                let user_pin = $('#user_pin_self').val();
-                // console.log(sender_name);
-
-
-
-                //
-
-                if (from_account.trim() == '' || transfer_amount == '' || receiver_name == '' ||
-                    receiver_phoneNum == '' || user_pin == '') {
-                    // alert('fields must not be empty');
-                    toaster('Fields must not be empty', 'error', 10000);
-                    return false;
-                } else {
-
-                    //hide the payment form and show the summary form
-                    $("#korpor_payment_form").hide()
-                    $("#korpor_payment_summary").show();
-
-                    amt = from_account_info[4].trim();
-                    if (amt < transfer_amount) {
-                        toaster('Insufficient account balance', 'error', 9000);
-                        return false
-                    } else {
-
-                        //display this is the payment summary
-                        $("#display_amount").text(transfer_amount);
-                        $("#display_receiver_name").text(receiver_name);
-                        $("#display_receiver_address").text(receiver_name);
-                        $("#display_receiver_phoneNum").text(receiver_phoneNum);
-
-
-
-                    }
-
-                    if (user_pin == "") {
-                        toaster('enter your pin', 'error', 9000);
-                        // console.log("Error is from here.");
-                        return false;
-                    } else {
-
-                        $('#spinner').show(),
-                            $('#spinner-text').show(),
-                            // $('#print_receipt').hide();
-                            $('.submit-text').hide();
-                        let from_account_value = from_account_info[2].trim();
-
-                    }
-                }
-            });
-
-            //button to submit for korpor payment for reversal
-            $('#reverse_button').click(function() {
-
-                var customerType = @json(session()->get('customerType'));
-                console.log(customerType);
-
-                if (customerType == 'C') {
-                    // alert("Corporate Reversal");
-
-                    var account_num = $("#account_of_transfer_reverse").val().split("~");
-                    console.log(account_num)
-                    var acc_num = account_num[2];
-                    var acc_currency = account_num[3];
-                    var acc_mandate = account_num[5];
-                    var acc_currCode = account_num[6]
-                    // return false ;
-                    var reference_no = $("#reference_no").val();
-                    var receiver_phoneNo = $("#receiver_phoneNo_reverse").val();
-                    // var pin = $("#reference_pin").val();
-
-                    if (reference_no == "" || receiver_phoneNo == "" || account_num == "") {
-                        toaster("Fields must not be empty", "error", 10000)
-                        return false;
-                    } else {
-                        $("#reverse-text").hide();
-                        $("#spinner-reverse").show();
-                        $("#spinner-text-reverse").show();
-
-
-                        $.ajax({
-
-                            type: 'POST',
-                            url: 'corporate-reverse-korpor',
-                            datatype: "application/json",
-                            data: {
-                                'reference_no': reference_no,
-                                'receiver_phoneNo': receiver_phoneNo,
-                                'accountNumber': acc_num,
-                                'accountCurrency': acc_currency,
-                                'accountMandate': acc_mandate,
-                                'accountCurrCode': acc_currCode
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response) {
-
-
-                                if (response.responseCode == '000') {
-                                    Swal.fire(
-                                        '',
-                                        response.message,
-                                        'success'
-                                    );
-                                    // toaster(response.message, 'success', 2000)
-                                    // var data = response.data.loanSchedule
-                                    // console.log(response)
-                                    $('#spinner-text-reverse').hide()
-                                    $('#spinner-reverse').hide()
-                                    $('#reverse-text').show();
-                                    setTimeout(function() {
-                                        window.location.reload();
-                                    }, 2000);
-
-                                } else {
-
-                                    toaster(response.message, 'error', 9000);
-                                    $('#spinner-text-reverse').hide()
-                                    $('#spinner-reverse').hide()
-                                    $('#reverse-text').show();
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                $('#submit').attr('disabled', false);
-                                $('#spinner').hide()
-                                $('#spinner-text').hide()
-
-                                $('#log_in').show()
-                                $('#error_message').text("Connection Error")
-                                $('#failed_login').show()
-                            }
-                        });
-
-
-                    }
-
-                } else {
-
-                    var reference_no = $("#reference_no").val();
-                    var receiver_phoneNo = $("#receiver_phoneNo_reverse").val();
-                    var pin = $("#reference_pin").val();
-
-
-
-                    // if (from_account == '' || amount == '' || receiver_name == '' || receiver_phoneNum ==
-                    //     '' || receiver_address == '') {
-                    //     toaster('Field must not be empty', 'error', 10000)
-                    //     return false
-                    // }
-
-                    if (reference_no == "" || receiver_phoneNo == "" || pin == "") {
-                        toaster("Fields must not be empty", "error", 10000)
-                        return false;
-                    } else {
-                        $("#reverse-text").hide();
-                        $("#spinner-reverse").show();
-                        $("#spinner-text-reverse").show();
-
-
-                        $.ajax({
-
-                            type: 'POST',
-                            url: 'reverse-korpor',
-                            datatype: "application/json",
-                            data: {
-                                'reference_no': reference_no,
-                                'receiver_phoneNo': receiver_phoneNo,
-                                'pin': pin
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response) {
-
-
-                                if (response.responseCode == '000') {
-                                    Swal.fire(
-                                        '',
-                                        response.message,
-                                        'success'
-                                    );
-                                    // toaster(response.message, 'success', 2000)
-                                    // var data = response.data.loanSchedule
-                                    // console.log(response)
-                                    $('#spinner-text-reverse').hide()
-                                    $('#spinner-reverse').hide()
-                                    $('#reverse-text').show();
-                                    setTimeout(function() {
-                                        window.location.reload();
-                                    }, 2000);
-
-                                } else {
-
-                                    toaster(response.message, 'error', 9000);
-                                    $('#spinner-text-reverse').hide()
-                                    $('#spinner-reverse').hide()
-                                    $('#reverse-text').show();
-                                }
-                            },
-                            error: function(xhr, status, error) {
-                                $('#submit').attr('disabled', false);
-                                $('#spinner').hide()
-                                $('#spinner-text').hide()
-
-                                $('#log_in').show()
-                                $('#error_message').text("Connection Error")
-                                $('#failed_login').show()
-                            }
-                        });
-
-
-                    }
-
-                }
-
-
-            });
-
-
-            // button to submit for both others and self transaction
-            $("#confirm_modal_button").click(function(e) {
-                e.preventDefault()
-
-                if ($("#terms_and_conditions").is(":checked")) {
-
-                    var customerType = @json(session()->get('customerType'));
-                    {{-- alert(customerType); --}}
-
-                    if (customerType == "C") {
-                        {{-- alert('Corporate Account'); --}}
-
-                        $('#confirm_transfer').hide()
-                        $('#spinner').show();
-                        $('#spinner-text').show();
-                        $("#confirm_modal_button").prop('disabled', true);
-
-                        var destination_type = $('input[type="radio"][name="radioInline"]:checked').val();
-
-                        if (destination_type == "OTHERS") {
-                            {{-- alert(destination_type) --}}
-
-                            var from_account_ = $('#account_of_transfer').val().split('~');
-                            console.log("========")
-                            console.log(from_account_)
-
-                            var from_account = from_account_[2]
-
-
-                            // let from_account = from_account_value;
-                            let transfer_amount = $('#amount').val();
-                            console.log(transfer_amount);
-                            // alert('');
-                            let receiver_name = $('#receiver_name').val();
-                            let receiver_phoneNum = $('#receiver_phoneNum').val();
-                            let receiver_address = $('#receiver_address').val();
-                            let sender_name = @json(session()->get('userAlias'));
-                            let user_pin = $('#user_pin').val();
-                            let from_account_number = from_account_[2];
-                            var form_account_currency = from_account_[3];
-                            var from_account_mandate = from_account_[5]
-                            var from_account_currCode = from_account_[6]
-                            var narration = $("#others_form_narration").val()
-                            {{-- console.log(from_account_mandate) --}}
-
-                            $.ajax({
-
-                                'type': 'POST',
-                                'url': 'corporate-initiate-korpor',
-                                "datatype": "application/json",
-                                'data': {
-                                    'amount': transfer_amount,
-                                    'debit_account': from_account_number,
-                                    // 'pin_code': user_pin,
-                                    'receiver_address': receiver_address.trim(),
-                                    'receiver_name': receiver_name.trim(),
-                                    'receiver_phone': receiver_phoneNum,
-                                    'sender_name': sender_name.trim(),
-                                    'account_currency': form_account_currency,
-                                    'account_mandate': from_account_mandate,
-                                    'currCode': from_account_currCode,
-                                    'narration': narration
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                success: function(response) {
-
-                                    console.log(response)
-
-
-                                    if (response.responseCode == '000') {
-                                        var ref_number = response.message
-
-                                        var reference_number = ref_number.split(" ")
-                                        {{-- console.log(reference_number); --}}
-                                        $("#reference_number_receipt").text(reference_number[7])
-
-
-                                        Swal.fire(
-                                            '',
-                                            response.message,
-                                            'success'
-                                        );
-                                        $(".receipt").show();
-                                        $('.form_process').hide();
-                                    } else {
-
-                                        toaster(response.message, 'error', 9000);
-
-                                        //$('#spinner').hide();
-                                        //$('#spinner-text').hide();
-                                        //$('.submit-text').show();
-                                        // $('#confirm_payment').show();
-                                        // $('#confirm_button').attr('disabled', false);
-                                    }
-                                }
-                            });
-
-                        } else {
-
-                            // alert("SELF")
-
-                            var from_account_ = $('#account_of_transfer').val().split('~');
-                            // var from_account = from_account_[2]
-                            let from_account_number = from_account_[2];
-                            var form_account_currency = from_account_[3];
-                            var from_account_mandate = from_account_[5]
-                            var from_account_currCode = from_account_[6]
-                            var narration = $("#others_form_narration").val()
-                            // alert('i have been clicked');
-                            let from_account = $('.from_account').val();
-                            let transfer_amount = $('#amount_self').val();
-                            console.log(transfer_amount);
-                            // alert('');
-                            let receiver_name = $('#receiver_name_self').val();
-                            let receiver_phoneNum = $('#receiver_phoneNum_self').val();
-                            let receiver_address = $('#receiver_address_self').val();
-                            let sender_name = @json(session()->get('userAlias'));
-                            let user_pin = $('#user_pin').val();
-                            // console.log(sender_name);
-
-                            let from_account_value = from_account_info[2].trim();
-
-                            function redirect_page() {
-                                window.location.href = "{{ url('home') }}";
-
-                            };
-                            $.ajax({
-
-                                'type': 'POST',
-                                'url': 'corporate-initiate-korpor',
-                                "datatype": "application/json",
-                                'data': {
-
-                                    'amount': transfer_amount,
-                                    'debit_account': from_account_number,
-                                    // 'pin_code': user_pin,
-                                    'receiver_address': receiver_address.trim(),
-                                    'receiver_name': receiver_name.trim(),
-                                    'receiver_phone': receiver_phoneNum,
-                                    'sender_name': sender_name.trim(),
-                                    'account_currency': form_account_currency,
-                                    'account_mandate': from_account_mandate,
-                                    'currCode': from_account_currCode,
-                                    'narration': narration,
-
-                                },
-                                headers: {
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                        'content')
-                                },
-                                success: function(response) {
-
-                                    {{-- console.log(response) --}}
-
-                                    if (response.responseCode == '000') {
-                                        var ref_number = response.message
-
-                                        var reference_number = ref_number.split(" ")
-                                        {{-- console.log(reference_number); --}}
-                                        $("#reference_number_receipt").text(
-                                            reference_number[7])
-
-                                        Swal.fire(
-                                            '',
-                                            response.message,
-                                            'success'
-                                        );
-
-                                        setTimeout(function() {
-
-                                            redirect_page();
-                                        }, 3000);
-
-                                        // $(".receipt").show();
-                                        // $('.form_process').hide();
-                                        // toaster(response.message, 'success', 20000);
-                                        // $("#request_form_div").hide();
-                                        // $('.display_button_print').show();
-                                    } else {
-
-                                        toaster(response.message, 'error', 9000);
-
-                                        // $('#spinner').hide();
-                                        // $('#spinner-text').hide();
-                                        // $('.submit-text').show();
-                                        // $('#confirm_payment').show();
-                                        // $('#confirm_button').attr('disabled', false);
-                                    }
-                                }
-                            });
-                        }
-
-                    } else {
-
-                        $("#transfer_pin").click(function(e) {
-                            e.preventDefault()
-                            {{-- alert("post to API"); --}}
-
-                            var destination_type = $(
-                                'input[type="radio"][name="radioInline"]:checked').val();
-                            if (destination_type == "OTHERS") {
-                                {{-- alert(destination_type) --}}
-
-                                var from_account = $('.from_account').val();
-
-                                // let from_account = from_account_value;
-                                let transfer_amount = $('#amount').val();
-                                console.log(transfer_amount);
-                                // alert('');
-                                let receiver_name = $('#receiver_name').val();
-                                let receiver_phoneNum = $('#receiver_phoneNum').val();
-                                let receiver_address = $('#receiver_address').val();
-                                let sender_name = @json(session()->get('userAlias'));
-                                let user_pin = $('#user_pin').val();
-                                let from_account_value = from_account_info[2].trim();
-
-                                $.ajax({
-
-                                    'type': 'POST',
-                                    'url': 'initiate-korpor',
-                                    "datatype": "application/json",
-                                    'data': {
-                                        'amount': transfer_amount,
-                                        'debit_account': from_account_value,
-                                        'pin_code': user_pin,
-                                        'receiver_address': receiver_address.trim(),
-                                        'receiver_name': receiver_name.trim(),
-                                        'receiver_phone': receiver_phoneNum,
-                                        'sender_name': sender_name.trim()
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                            'content')
-                                    },
-                                    success: function(response) {
-
-                                        console.log(response)
-
-
-                                        if (response.responseCode == '000') {
-                                            var ref_number = response.message
-
-                                            var reference_number = ref_number.split(" ")
-                                            {{-- console.log(reference_number); --}}
-                                            $("#reference_number_receipt").text(
-                                                reference_number[7])
-
-
-                                            Swal.fire(
-                                                '',
-                                                response.message,
-                                                'success'
-                                            );
-                                            $(".receipt").show();
-                                            $('.form_process').hide();
-                                        } else {
-
-                                            toaster(response.message, 'error', 9000);
-
-                                            //$('#spinner').hide();
-                                            //$('#spinner-text').hide();
-                                            //$('.submit-text').show();
-                                            // $('#confirm_payment').show();
-                                            // $('#confirm_button').attr('disabled', false);
-                                        }
-                                    }
-                                });
-
-                            } else {
-                                {{-- alert("SELF") --}}
-
-                                // alert('i have been clicked');
-                                let from_account = $('.from_account').val();
-                                let transfer_amount = $('#amount_self').val();
-                                console.log(transfer_amount);
-                                // alert('');
-                                let receiver_name = $('#receiver_name_self').val();
-                                let receiver_phoneNum = $('#receiver_phoneNum_self').val();
-                                let receiver_address = $('#receiver_address_self').val();
-                                let sender_name = @json(session()->get('userAlias'));
-                                let user_pin = $('#user_pin').val();
-                                // console.log(sender_name);
-
-                                let from_account_value = from_account_info[2].trim();
-
-                                $.ajax({
-
-                                    'type': 'POST',
-                                    'url': 'initiate-korpor',
-                                    "datatype": "application/json",
-                                    'data': {
-                                        'amount': transfer_amount,
-                                        'debit_account': from_account_value,
-                                        'pin_code': user_pin,
-                                        'receiver_address': receiver_address.trim(),
-                                        'receiver_name': receiver_name.trim(),
-                                        'receiver_phone': receiver_phoneNum,
-                                        'sender_name': sender_name.trim()
-                                    },
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
-                                            'content')
-                                    },
-                                    success: function(response) {
-
-                                        {{-- console.log(response) --}}
-
-                                        if (response.responseCode == '000') {
-                                            var ref_number = response.message
-
-                                            var reference_number = ref_number.split(" ")
-                                            {{-- console.log(reference_number); --}}
-                                            $("#reference_number_receipt").text(
-                                                reference_number[7])
-
-                                            Swal.fire(
-                                                '',
-                                                response.message,
-                                                'success'
-                                            );
-                                            $(".receipt").show();
-                                            $('.form_process').hide();
-                                            // toaster(response.message, 'success', 20000);
-                                            // $("#request_form_div").hide();
-                                            // $('.display_button_print').show();
-                                        } else {
-
-                                            toaster(response.message, 'error', 9000);
-
-                                            // $('#spinner').hide();
-                                            // $('#spinner-text').hide();
-                                            // $('.submit-text').show();
-                                            // $('#confirm_payment').show();
-                                            // $('#confirm_button').attr('disabled', false);
-                                        }
-                                    }
-                                });
-                            }
-                        })
-
-                    }
-
-
-                } else {
-                    toaster('Accept Terms & Conditions to continue', 'error', 6000)
-                    console.log("UNCHECKED");
-                    return false;
-                }
-            })
-
-
-
-
-
-
-
-
-        });
-    </script>
+</script>
 @endsection
