@@ -310,8 +310,8 @@
                 })
             }
 
-            $('#beneficiary_list_retry_btn').hide();
-            $('#beneficiary_table').hide();
+            {{-- $('#beneficiary_list_retry_btn').hide();
+            $('#beneficiary_table').hide(); --}}
 
             function beneficiary_details() {
                 $.ajax({

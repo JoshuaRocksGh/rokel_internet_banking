@@ -15,7 +15,8 @@
             <div class="col-md-2">
                 <br>
                 <a href="{{ url()->previous() }}" type="button"
-                    class="btn btn-soft-blue waves-effect waves-light float-left"><i class="mdi mdi-reply-all-outline"></i>&nbsp;Go
+                    class="btn btn-soft-blue waves-effect waves-light float-left"><i
+                        class="mdi mdi-reply-all-outline"></i>&nbsp;Go
                     Back</a>
 
             </div>
@@ -97,12 +98,21 @@
 
 
 
-                        <p class="sub-header font-18 purple-color">
-                            ACCOUNT CREATION
-                            <button type="button" class="btn btn-info btn-sm float-right mod-open" data-toggle="modal"
-                                data-target="#centermodal"> <span class="fe-info mr-1"></span> info</button>
+                        <h3 class="sub-header font-18 purple-color">
+                        <div class="row">
+                            <div class="col-md-4">
+                                ACCOUNT CREATION
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-info btn-sm text-right mod-open" data-toggle="modal"
+                                    data-target="#centermodal"> <span class="fe-info mr-1"></span> info</button>
+                            </div>
+                        </div>
 
-                        </p>
+
+
+                        </h3>
                         <hr>
                         <div class="row">
                             <div class="col-lg-4">

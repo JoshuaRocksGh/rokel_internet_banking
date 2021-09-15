@@ -19,7 +19,7 @@
             <br>
             <div class="col-md-2">
                 <a href="{{ url('/') }}" type="button" class="btn btn-soft-blue waves-effect waves-light float-left"><i
-                        class="fe-arrow-left"></i>&nbsp;Go
+                        class="mdi mdi-reply-all-outline"></i>&nbsp;Go
                     Back</a>
             </div>
             <div class="col-md-8">
