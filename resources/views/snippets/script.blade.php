@@ -15,8 +15,12 @@
 </script>
 <script src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}">
 </script>
-<script src="{{ asset('assets/libs/bootstrap-select/js/bootstrap-select.min.js') }} ">
+{{-- <script src="{{ asset('assets/libs/bootstrap-select/js/bootstrap-select.min.js') }} ">
+</script> --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 <!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}"></script>

@@ -25,8 +25,8 @@
 id="bs-dark-stylesheet" /> --}}
 {{-- <link href="{{ asset('assets/css/app-purple-dark.min.css') }}" rel="stylesheet" type="text/css" --}}
 {{-- id="app-dark-stylesheet" /> --}}
-<link href="{{ asset('assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet"
-    type="text/css" />
+{{-- <link href="{{ asset('assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet"
+type="text/css" /> --}}
 
 <!-- Tour css -->
 <link href="{{ asset('assets/libs/hopscotch/css/hopscotch.min.css') }}" rel="stylesheet" type="text/css" />
@@ -503,11 +503,19 @@ id="bs-dark-stylesheet" /> --}}
 
     @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
 
-    {{-- body {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  font-size: 40px;
-} --}} .demo {
+        {
+            {
+            -- body {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 600;
+                font-size: 40px;
+            }
+
+            --
+        }
+    }
+
+    .demo {
         font-weight: 500;
         font-size: 36px;
         position: absolute;
@@ -607,5 +615,4 @@ id="bs-dark-stylesheet" /> --}}
         }
 
     }
-
 </style>
