@@ -910,8 +910,8 @@
 <script>
     const customerType = @json(session()->get('customerType'))
 </script>
-<script src="{{ asset("assets/js/functions/validateEmail.js") }}"></script>
-<script src="{{ asset("assets/js/functions/currencyConverter.js") }}"></script>
-<script src="{{ asset("assets/js/pages/transfer/sameBank.js") }}"></script>
+<script src="{{ asset('assets/js/functions/validateEmail.js') }}"></script>
+<script src="{{ asset('assets/js/functions/currencyConverter.js') }}"></script>
+<script src="{{ asset('assets/js/pages/transfer/sameBank.js') }}"></script>
 
 @endsection

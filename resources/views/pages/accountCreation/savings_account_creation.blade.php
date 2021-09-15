@@ -99,16 +99,17 @@
 
 
                         <h3 class="sub-header font-18 purple-color">
-                        <div class="row">
-                            <div class="col-md-4">
-                                ACCOUNT CREATION
+                            <div class="row">
+                                <div class="col-md-4">
+                                    ACCOUNT CREATION
+                                </div>
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-info btn-sm text-right mod-open"
+                                        data-toggle="modal" data-target="#centermodal"> <span class="fe-info mr-1"></span>
+                                        info</button>
+                                </div>
                             </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <button type="button" class="btn btn-info btn-sm text-right mod-open" data-toggle="modal"
-                                    data-target="#centermodal"> <span class="fe-info mr-1"></span> info</button>
-                            </div>
-                        </div>
 
 
 
@@ -181,9 +182,17 @@
 
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <b for="billing-phone">Firstname</b>
+                                                        <b for="billing-phone">First Name</b>
                                                         <input class="form-control" type="text" placeholder="Firstname"
                                                             id="firstname" required />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <b for="billing-phone">Other Name</b>
+                                                        <input class="form-control" type="text" placeholder="Othername"
+                                                            id="othername" required />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -194,7 +203,7 @@
                                                                 <div class="form-group">
 
                                                                     <div class="radio form-check-inline radio-primary">
-                                                                        <input type="radio" id="radio1" value="Male"
+                                                                        <input type="radio" id="radio1" value="M"
                                                                             name="radioInline" required>
                                                                         <label for="inlineRadio1">Male </label>
                                                                     </div>
@@ -206,7 +215,7 @@
                                                                 <div class="form-group">
 
                                                                     <div class="radio form-check-inline radio-primary">
-                                                                        <input type="radio" id="radio2" value="Female"
+                                                                        <input type="radio" id="radio2" value="F"
                                                                             name="radioInline" required>
                                                                         <label for="inlineRadio2">Female </label>
                                                                     </div>
@@ -239,15 +248,28 @@
 
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label>Country</label>
-                                                        {{-- <select class="selectpicker" data-live-search="true" id="country"> --}}
+                                                        <label>Nationality</label>
+
 
                                                         <select data-toggle="select2" title="Country"
                                                             class="form-control country select-picker" id="country"
                                                             required>
                                                             <option value="" disabled selected>Select Country</option>
-                                                            {{-- <option value="AF~Afghanistan">Afghanistan</option>
-                                                            <option value="AL~Albania">Albania</option> --}}
+
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label>Residence Status</label>
+
+
+                                                        <select data-toggle="select2" title="Residence"
+                                                            class="form-control country select-picker" id="residence_status"
+                                                            required>
+                                                            <option value="" selected> -- Select --</option>
+
 
                                                         </select>
                                                     </div>
@@ -331,128 +353,144 @@
 
                                                 <div class="___class_+?105___">
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <b>ID Type</b>
-                                                            <select class="custom-select" id="id_type" required>
-                                                                <option value="">ID Type</option>
-                                                                {{-- <option value="Passport">Passport</option>
+                                                        <div class="">
+                                                            <div class="
+                                                            form-group">
+                                                            <b>Tax Identification Number</b></label>
+                                                            <input class="form-control" type="text"
+                                                                placeholder="Tin Number" id="tin_number" required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <b>ID Type</b>
+                                                        <select class="custom-select" id="id_type" required>
+                                                            <option value="">ID Type</option>
+                                                            {{-- <option value="Passport">Passport</option>
                                                                 <option value="Driver license">Driver license</option>
                                                                 <option value="Voter ID">Voter ID</option>
                                                                 <option value="4">Ghana Card</option> --}}
-                                                            </select>
-                                                        </div>
+                                                        </select>
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <b>ID Number</b></label>
-                                                            <input class="form-control" type="text"
-                                                                placeholder="ID Number" id="id_number" required />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <b for="billing-last-name">Date of Issue</b>
-                                                            <input class="form-control" type="date"
-                                                                placeholder="Date of Issue" id="issue_date" required />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <b for="billing-last-name">Date of Expiry</b>
-                                                            <input class="form-control" type="date" placeholder=" "
-                                                                id="expiry_date" required />
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="form-group mb-3">
-                                                        <b for="example-fileinput">Upload Image of Selected ID</b>
-                                                        <input type="file" id="image_upload" class="form-control-file"
-                                                            required><br>
-                                                        <input type="hidden" id="image_upload_">
-                                                        <img class="img-fluid display_selected_id_image"
-                                                            id="display_selected_id_image" src="#" alt="your image" />
-                                                    </div>
-
-
                                                 </div>
-                                                <!-- end row-->
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <b>ID Number</b></label>
+                                                        <input class="form-control" type="text" placeholder="ID Number"
+                                                            id="id_number" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <b for="billing-last-name">Date of Issue</b>
+                                                        <input class="form-control" type="date"
+                                                            placeholder="Date of Issue" id="issue_date" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <b for="billing-last-name">Date of Expiry</b>
+                                                        <input class="form-control" type="date" placeholder=" "
+                                                            id="expiry_date" required />
+                                                    </div>
+                                                </div>
 
 
-                                                <div class="row mt-4">
-
-                                                    <div class="col-xl-7">
-
-                                                    </div> <!-- end col -->
-
-
-
-                                                    <div class="col-xl-5">
-                                                        <button type="button" class="btn btn-secondary btn-rounded"
-                                                            data-toggle="pill" href="#custom-v-pills-personal-details"
-                                                            role="tab" aria-controls="custom-v-pills-personal-details">
-                                                            <i class="fe-arrow-left"></i> Previous </button>
-
-                                                        <button class="btn btn-primary btn-rounded float-right"
-                                                            type="submit" id="submit2">
-                                                            Next <i class="fe-arrow-right"></i>
-                                                        </button>
-
-                                                    </div> <!-- end col -->
-
-                                                </div> <!-- end row -->
+                                                <div class="form-group mb-3">
+                                                    <b for="example-fileinput">Upload Image of Selected ID</b>
+                                                    <input type="file" id="image_upload" class="form-control-file"
+                                                        required><br>
+                                                    <input type="hidden" id="image_upload_">
+                                                    <img class="img-fluid display_selected_id_image"
+                                                        id="display_selected_id_image" src="#" alt="your image" />
+                                                </div>
 
 
-                                            </form>
                                         </div>
+                                        <!-- end row-->
+
+
+                                        <div class="row mt-4">
+
+                                            <div class="col-xl-7">
+
+                                            </div> <!-- end col -->
+
+
+
+                                            <div class="col-xl-5">
+                                                <button type="button" class="btn btn-secondary btn-rounded"
+                                                    data-toggle="pill" href="#custom-v-pills-personal-details" role="tab"
+                                                    aria-controls="custom-v-pills-personal-details">
+                                                    <i class="fe-arrow-left"></i> Previous </button>
+
+                                                <button class="btn btn-primary btn-rounded float-right" type="submit"
+                                                    id="submit2">
+                                                    Next <i class="fe-arrow-right"></i>
+                                                </button>
+
+                                            </div> <!-- end col -->
+
+                                        </div> <!-- end row -->
+
+
+                                        </form>
                                     </div>
+                                </div>
 
-                                    <div class="tab-pane fade" id="custom-v-pills-bio-details" role="tabpanel"
-                                        aria-labelledby="custom-v-pills-bio-details-tab">
-                                        <div>
-                                            <h5 class="mb-3 mt-1 bg-light p-2">Bio Details</h5>
-
-
-                                            <!-- Passport Picture Upload-->
-                                            <form action="" id="bio_details" autocomplete="off" aria-autocomplete="off">
-                                                <div class="form-group mb-3">
-                                                    <b for="example-fileinput">Picture(Passport)</b>
-                                                    <input type="file" id="passport_picture" class="form-control-file"
-                                                        required><br>
-                                                    <input type="hidden" id="passport_picture_">
-                                                    <img class="img-fluid img_display display_passport_picture previewImg1"
-                                                        id="previewImg1" src="#" alt="your image" />
-                                                </div>
-
-                                                <!-- Paper and Image Capture-->
+                                <div class="tab-pane fade" id="custom-v-pills-bio-details" role="tabpanel"
+                                    aria-labelledby="custom-v-pills-bio-details-tab">
+                                    <div>
+                                        <h5 class="mb-3 mt-1 bg-light p-2">Bio Details</h5>
 
 
-                                                <div class="form-group mb-3">
-                                                    <b for="example-fileinput">Selfie with a signed paper</b>
-                                                    <input type="file" id="selfie_upload" class="form-control-file"
-                                                        required><br>
-                                                    <input type="hidden" id="selfie_upload_">
-                                                    <img class="img-fluid img_display display_selfie previewImg2"
-                                                        id="previewImg2" src="#" alt="your image" />
-                                                </div>
-                                                <!-- Cash on Delivery box-->
+                                        <!-- Passport Picture Upload-->
+                                        <form action="" id="bio_details" autocomplete="off" aria-autocomplete="off">
+                                            <div class="form-group mb-3">
+                                                <b for="example-fileinput">Picture(Passport)</b>
+                                                <input type="file" id="passport_picture" class="form-control-file"
+                                                    required><br>
+                                                <input type="hidden" id="passport_picture_">
+                                                <img class="img-fluid img_display display_passport_picture previewImg1"
+                                                    id="previewImg1" src="#" alt="your image" />
+                                            </div>
 
-                                                <!-- end Cash on Delivery box-->
-                                                <ul class="list-inline wizard mb-0">
-                                                    <li class=" list-inline-item"><button type="button"
-                                                            class="btn btn-secondary btn-rounded" id="bio-previous-btn"
-                                                            data-toggle="pill" href="#custom-v-pills-contact-and-id-details"
-                                                            role="tab"
-                                                            aria-controls="custom-v-pills-contact-and-id-details">
-                                                            <i class="fe-arrow-left"></i> Previous </button></li>
+                                            <!-- Paper and Image Capture-->
 
-                                                    <li class="list-inline-item float-right"><button
-                                                            class="btn btn-primary btn-rounded float-right" type="submit"
-                                                            id="final_submit">
-                                                            Next <i class="fe-arrow-right"></i>
-                                                        </button></li>
-                                                </ul>
-                                                {{-- <div class="row mt-4">
+
+                                            <div class="form-group mb-3">
+                                                <b for="example-fileinput">Picture of a signed paper</b>
+                                                <input type="file" id="selfie_upload" class="form-control-file"
+                                                    required><br>
+                                                <input type="hidden" id="selfie_upload_">
+                                                <img class="img-fluid img_display display_selfie previewImg2"
+                                                    id="previewImg2" src="#" alt="your image" />
+                                            </div>
+
+                                            <div class="form-group mb-3">
+                                                <b for="example-fileinput">Proof of address</b>
+                                                <input type="file" id="proof_of_address" class="form-control-file"
+                                                    required><br>
+                                                <input type="hidden" id="proof_of_address_">
+                                                <img class="img-fluid img_display display_proof_of_address previewImg3"
+                                                    id="previewImg3" src="#" alt="your image" />
+                                            </div>
+                                            <!-- Cash on Delivery box-->
+
+                                            <!-- end Cash on Delivery box-->
+                                            <ul class="list-inline wizard mb-0">
+                                                <li class=" list-inline-item"><button type="button"
+                                                        class="btn btn-secondary btn-rounded" id="bio-previous-btn"
+                                                        data-toggle="pill" href="#custom-v-pills-contact-and-id-details"
+                                                        role="tab" aria-controls="custom-v-pills-contact-and-id-details">
+                                                        <i class="fe-arrow-left"></i> Previous </button></li>
+
+                                                <li class="list-inline-item float-right"><button
+                                                        class="btn btn-primary btn-rounded float-right" type="submit"
+                                                        id="final_submit">
+                                                        Next <i class="fe-arrow-right"></i>
+                                                    </button></li>
+                                            </ul>
+                                            {{-- <div class="row mt-4">
                                                 <div class="col-sm-7">
 
                                                 </div> <!-- end col -->
@@ -469,172 +507,191 @@
                                                 </div> <!-- end col -->
                                             </div> <!-- end row--> --}}
 
-                                            </form>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="summary-v-pills-payment" role="tabpanel"
+                                    aria-labelledby="custom-v-pills-bio-details-tab">
+                                    <div>
+                                        <h5 class="mb-3 mt-1 bg-light p-2">Personal Details</h5>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+
+                                                    <p class="col-6"><span
+                                                            class="font-weight-light">Title:</span> </p>
+                                                    <span class="font-weight-semibold col-6" id="display_title"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span
+                                                            class="font-weight-light">Surname:</span></p>
+                                                    <span class="font-weight-semibold col-6" id="display_surname"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">First
+                                                            Name:</span></p>
+                                                    <span class="font-weight-semibold col-6" id="display_firstname"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">Other
+                                                            Name:</span></p>
+                                                    <span class="font-weight-semibold col-6" id="display_othername"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">
+                                                            Gender:</span></p>
+                                                    <span class="font-weight-semibold col-6"
+                                                        id="display_select_gender"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light"> Date of
+                                                            Birth:</span>
+                                                    </p> <span class="font-weight-semibold col-6" id="display_DOB"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light"> Place
+                                                            of Birth:</span>
+                                                    </p><span class="font-weight-semibold col-6"
+                                                        id="display_birth_place"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">
+                                                            Country: </span></p>
+                                                    <span class="font-weight-semibold col-6" id="display_country"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">
+                                                            Residence Status: </span></p>
+                                                    <span class="font-weight-semibold col-6"
+                                                        id="display_residence_status"></span>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <h5 class="mb-3 mt-4 bg-light p-2"> Contact & ID Details</h5>
+                                        <div id="row">
+                                            <div class="col-12">
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">Mobile
+                                                            Number:</span>
+                                                    </p> <span class="font-weight-semibold col-6"
+                                                        id="display_mobile_number"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span
+                                                            class="font-weight-light">Email:</span></p> <span
+                                                        class="font-weight-semibold col-6" id="display_email"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">City:</span>
+                                                    </p> <span class="font-weight-semibold col-6" id="display_city"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">Town:</span>
+                                                    </p> <span class="font-weight-semibold col-6" id="display_town"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light">
+                                                            Residential
+                                                            Address:</span></p><span class="font-weight-semibold col-6"
+                                                        id="display_residential_address"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light ">Tin
+                                                            Number:<span></p>
+                                                    <span class="font-weight-semibold col-6"
+                                                        id="display_tin_number"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light ">ID
+                                                            Type:<span></p>
+                                                    </span><span class="font-weight-semibold col-6"
+                                                        id="display_id_type"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light ">ID
+                                                            Number:<span></p>
+                                                    <span class="font-weight-semibold col-6" id="display_id_number"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light ">Date
+                                                            Issued:<span></p>
+                                                    <span class="font-weight-semibold col-6"
+                                                        id="display_issue_date"></span>
+                                                </div>
+                                                <div class="row">
+
+                                                    <p class="col-6"><span class="font-weight-light ">Date of
+                                                            Expiry:<span>
+                                                    </p><span class="font-weight-semibold col-6"
+                                                        id="display_expiry_date"></span>
+                                                </div>
+                                            </div>
+                                            <p class="mb-1"><span class="font-weight-light "> <b> ID image:
+                                                    </b> <br> <img class="img-fluid display_selected_id_image"
+                                                        id="previewImg" src="#" alt="your image" /><span
+                                                        class="font-weight-semibold mr-3" id="display_title">
+                                                        &nbsp</span>
+                                        </div>
+                                        <h5 class="mb-3 mt-4 bg-light p-2"> Bio Details</h5>
+                                        <div>
+                                            <p class="mb-1"><span class="font-weight-light mr-2"><b>
+                                                        Passport Picture: </b>
+                                                    <br> <img class="img-fluid display_passport_picture previewImg1"
+                                                        id="_passport_picture_summary" src="#" alt="your image" /><span
+                                                        class="font-weight-semibold mr-3" id="display_title">
+                                                        &nbsp</span></span></p>
+                                            <p class="mb-1"><span class="font-weight-light mr-2"> <b> Signature
+                                                        Image: </b>
+                                                    <br> <img class="img-fluid display_selfie previewImg2"
+                                                        id="selfie_picture_summary" src="#" alt="your image" /><span
+                                                        class="font-weight-semibold mr-3" id="display_title">
+                                                        &nbsp</span></span></p>
+
+                                            <p class="mb-1"><span class="font-weight-light mr-2"> <b> Address
+                                                        Image: </b>
+                                                    <br> <img class="img-fluid display_proof_of_address previewImg3"
+                                                        id="address_picture_summary" src="#" alt="your image" /><span
+                                                        class="font-weight-semibold mr-3" id="display_title">
+                                                        &nbsp</span></span></p>
+                                        </div>
+
                                     </div>
 
-                                    <div class="tab-pane fade" id="summary-v-pills-payment" role="tabpanel"
-                                        aria-labelledby="custom-v-pills-bio-details-tab">
-                                        <div>
-                                            <h5 class="mb-3 mt-1 bg-light p-2">Personal Details</h5>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="row">
+                                    <ul class="list-inline wizard mb-0">
+                                        <li class=" list-inline-item"><button type="button"
+                                                class="btn btn-secondary btn-rounded" id="bio-previous-btn"
+                                                data-toggle="pill" href="#custom-v-pills-bio-details" role="tab"
+                                                aria-controls="custom-v-pills-bio-details"><i class="fe-arrow-left"></i>
+                                                Previous</button></li>
 
-                                                        <p class="col-6"><span
-                                                                class="font-weight-light">Title:</span> </p>
-                                                        <span class="font-weight-semibold col-6" id="display_title"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span
-                                                                class="font-weight-light">Surname:</span></p>
-                                                        <span class="font-weight-semibold col-6"
-                                                            id="display_surname"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span
-                                                                class="font-weight-light">Firstname:</span></p>
-                                                        <span class="font-weight-semibold col-6"
-                                                            id="display_firstname"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light">
-                                                                Gender:</span></p>
-                                                        <span class="font-weight-semibold col-6"
-                                                            id="display_select_gender"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light"> Date of
-                                                                Birth:</span>
-                                                        </p> <span class="font-weight-semibold col-6"
-                                                            id="display_DOB"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light"> Place
-                                                                of Birth:</span>
-                                                        </p><span class="font-weight-semibold col-6"
-                                                            id="display_birth_place"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light">
-                                                                Country: </span></p>
-                                                        <span class="font-weight-semibold col-6"
-                                                            id="display_country"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h5 class="mb-3 mt-4 bg-light p-2"> Contact & ID Details</h5>
-                                            <div id="row">
-                                                <div class="col-12">
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light">Mobile
-                                                                Number:</span>
-                                                        </p> <span class="font-weight-semibold col-6"
-                                                            id="display_mobile_number"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span
-                                                                class="font-weight-light">Email:</span></p> <span
-                                                            class="font-weight-semibold col-6" id="display_email"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span
-                                                                class="font-weight-light">City:</span></p> <span
-                                                            class="font-weight-semibold col-6" id="display_city"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span
-                                                                class="font-weight-light">Town:</span></p> <span
-                                                            class="font-weight-semibold col-6" id="display_town"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light">
-                                                                Residential
-                                                                Address:</span></p><span class="font-weight-semibold col-6"
-                                                            id="display_residential_address"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light ">ID
-                                                                Type:<span></p>
-                                                        </span><span class="font-weight-semibold col-6"
-                                                            id="display_id_type"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light ">ID
-                                                                Number:<span></p>
-                                                        <span class="font-weight-semibold col-6"
-                                                            id="display_id_number"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light ">Date
-                                                                Issued:<span></p>
-                                                        <span class="font-weight-semibold col-6"
-                                                            id="display_issue_date"></span>
-                                                    </div>
-                                                    <div class="row">
-
-                                                        <p class="col-6"><span class="font-weight-light ">Date of
-                                                                Expiry:<span>
-                                                        </p><span class="font-weight-semibold col-6"
-                                                            id="display_expiry_date"></span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-1"><span class="font-weight-light "> <b> ID image:
-                                                        </b> <br> <img class="img-fluid display_selected_id_image"
-                                                            id="previewImg" src="#" alt="your image" /><span
-                                                            class="font-weight-semibold mr-3" id="display_title">
-                                                            &nbsp</span>
-                                            </div>
-                                            <h5 class="mb-3 mt-4 bg-light p-2"> Bio Details</h5>
-                                            <div>
-                                                <p class="mb-1"><span class="font-weight-light mr-2"><b>
-                                                            Passport Picture: </b>
-                                                        <br> <img class="img-fluid display_passport_picture previewImg1"
-                                                            id="_passport_picture_summary" src="#" alt="your image" /><span
-                                                            class="font-weight-semibold mr-3" id="display_title">
-                                                            &nbsp</span></span></p>
-                                                <p class="mb-1"><span class="font-weight-light mr-2"> <b> Selfie
-                                                            Image: </b>
-                                                        <br> <img class="img-fluid display_selfie previewImg2"
-                                                            id="selfie_picture_summary" src="#" alt="your image" /><span
-                                                            class="font-weight-semibold mr-3" id="display_title">
-                                                            &nbsp</span></span></p>
-                                            </div>
-
-                                        </div>
-
-                                        <ul class="list-inline wizard mb-0">
-                                            <li class=" list-inline-item"><button type="button"
-                                                    class="btn btn-secondary btn-rounded" id="bio-previous-btn"
-                                                    data-toggle="pill" href="#custom-v-pills-bio-details" role="tab"
-                                                    aria-controls="custom-v-pills-bio-details"><i
-                                                        class="fe-arrow-left"></i>
-                                                    Previous</button></li>
-
-                                            <li class="list-inline-item float-right"><button
-                                                    class="btn btn-primary btn-rounded float-right " type="button"
-                                                    id="confirm_submit">
-                                                    <span id="confirm_submit_text">Confirm & Submit</span>
-                                                    <span class="spinner-border spinner-border-sm mr-1" role="status"
-                                                        id="spinner" aria-hidden="true"></span>
-                                                    <span id="spinner-text">Loading...</span>
-                                                </button></li>
-                                        </ul>
-                                        {{-- <div class="row mt-4">
+                                        <li class="list-inline-item float-right"><button
+                                                class="btn btn-primary btn-rounded float-right " type="button"
+                                                id="confirm_submit">
+                                                <span id="confirm_submit_text">Confirm & Submit</span>
+                                                <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                    id="spinner" aria-hidden="true"></span>
+                                                <span id="spinner-text">Loading...</span>
+                                            </button></li>
+                                    </ul>
+                                    {{-- <div class="row mt-4">
                                                 <div class="col-sm-5">
 
                                                 </div> <!-- end col -->
@@ -647,57 +704,57 @@
                                             </div> <!-- end row--> --}}
 
 
-                                    </div>
-
-
-                                    <!-- Full width modal content -->
-                                    <div id="full-width-modal" class="modal fade" tabindex="-1" role="dialog"
-                                        aria-labelledby="fullWidthModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-full-width">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="fullWidthModalLabel">Modal Heading</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-hidden="true">×</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h6>Text in a modal</h6>
-                                                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-                                                    <hr>
-                                                    <h6>Overflowing text to show scroll behavior</h6>
-                                                    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                                                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-                                                        ac
-                                                        consectetur ac, vestibulum at eros.</p>
-                                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                                                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-                                                        auctor.
-                                                    </p>
-                                                    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-                                                        cursus
-                                                        magna, vel scelerisque nisl consectetur et. Donec sed odio dui.
-                                                        Donec
-                                                        ullamcorper nulla non metus auctor fringilla.</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
                                 </div>
-                            </div>
-                        </div> <!-- end col-->
-                    </div> <!-- end row-->
 
-                </div>
+
+                                <!-- Full width modal content -->
+                                <div id="full-width-modal" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-labelledby="fullWidthModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-full-width">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="fullWidthModalLabel">Modal Heading</h4>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">×</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h6>Text in a modal</h6>
+                                                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                                                <hr>
+                                                <h6>Overflowing text to show scroll behavior</h6>
+                                                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                                                    dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
+                                                    ac
+                                                    consectetur ac, vestibulum at eros.</p>
+                                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                                                    Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+                                                    auctor.
+                                                </p>
+                                                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
+                                                    cursus
+                                                    magna, vel scelerisque nisl consectetur et. Donec sed odio dui.
+                                                    Donec
+                                                    ullamcorper nulla non metus auctor fringilla.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+                            </div>
+                        </div>
+                    </div> <!-- end col-->
+                </div> <!-- end row-->
 
             </div>
 
-
         </div>
+
+
+    </div>
 
     </div>
 

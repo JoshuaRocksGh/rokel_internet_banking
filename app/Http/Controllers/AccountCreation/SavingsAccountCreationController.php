@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AccountCreation;
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
+use DateTime;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,42 +18,80 @@ class SavingsAccountCreationController extends Controller
     //
     public function savings_account_creation(Request $request)
     {
-        // $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
 
-        //     "title" =>  'required' ,
-        //     "surname" =>  'required' ,
-        //     "firstname" =>  'required' ,
-        //     "gender" =>  'required' ,
-        //     "birthday" =>  'required' ,
-        //     "birth_place" =>  'required' ,
-        //     "country" =>  'required' ,
-        //     "mobile_number" =>  'required' ,
-        //     "email" =>  'required' ,
-        //     "city" =>  'required' ,
-        //     "town" =>  'required' ,
-        //     "residential_address" =>  'required' ,
-        //     "id_type" =>  'required' ,
-        //     "id_number" =>  'required' ,
-        //     "issue_date" =>  'required' ,
-        //     "expiry_date" =>  'required' ,
-        //     "id_iamge" =>  'required' ,
-        //     "passport_picture" =>  'required' ,
-        //     "signed_selfie_paper" => 'required'
+            "title" =>  'required',
+            "surname" =>  'required',
+            "firstname" =>  'required',
+            "othername" =>  'required',
+            "gender" =>  'required',
+            "birthday" =>  'required',
+            "birth_place" =>  'required',
+            "country" =>  'required',
+            "residence_status" =>  'required',
+            "mobile_number" =>  'required',
+            "email" =>  'required',
+            "city" =>  'required',
+            "town" =>  'required',
+            "residential_address" =>  'required',
+            "id_type" =>  'required',
+            "id_number" =>  'required',
+            "tin_number" =>  'required',
+            "issue_date" =>  'required',
+            "expiry_date" =>  'required',
+            "id_image" =>  'required',
+            "passport_picture" =>  'required',
+            "signed_selfie_paper" => 'required',
+            "proof_of_address" => 'required'
+        ]);
+
+        // return $request;
+
+        $base_response = new BaseResponse();
+
+        //VALIDATION
+        if ($validator->fails()) {
+
+            return $base_response->api_response('500', $validator->errors(), "");
+        };
+
+
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        // return $request;
+
+
+
+        $passport_picture_ = $request->passport_picture;
+        $passport_picture_1 = explode(',', $passport_picture_);
+        $passport_picture = $passport_picture_1[1];
+        // return response()->json([
+        //     "message" => $passport_picture_
         // ]);
 
-        // return $request ;
 
-        // $base_response = new BaseResponse();
+        $signed_selfie_paper_ = $request->signed_selfie_paper;
+        $proof_of_address_1 = explode(',', $signed_selfie_paper_);
+        $signed_selfie_paper = $proof_of_address_1[1];
 
-        // VALIDATION
-        // if ($validator->fails()) {
 
-        //     return $base_response->api_response('500', $validator->errors(), "");
-        // };
+        // $passport_picture_ = explode(',', $request->passport_picture);
+        // $signed_selfie_paper_ = explode(',', $$request->signed_selfie_paper);
 
-        // $authToken = session()->get('userToken');
-        // $userID = session()->get('userId');
+        $proof_of_address_ = $request->proof_of_address;
+        $proof_of_address_1 = explode(',', $proof_of_address_);
+        $proof_of_address = $proof_of_address_1[1];
 
+
+        // $id_image = ltrim($request->id_image, "data:image/png;base64,");
+        // $passport_picture = ltrim($request->passport_picture, "data:image/png;base64,");
+        // $signed_selfie_paper = ltrim($request->signed_selfie_paper, "data:image/png;base64,");
+        // $proof_of_address = ltrim($request->proof_of_address, "data:image/png;base64,");
+        $now = new DateTime();
+        $date = $now->format('Y-m-d');
+        $api_headers = session()->get('headers');
 
         $data = [
 
@@ -63,115 +102,106 @@ class SavingsAccountCreationController extends Controller
             "corporateTin" => null,
             "createdAccountNumber" => null,
             "createdCustomerNumber" => null,
-            "custCategory" => null,
-            "custType" => null,
-            "dateOfIncorporation" => null,
-            "docRef" => null,
-            "domicileCountry" => null,
+            "custCategory" => "ID",
+            "custType" => "I",
+            "dateOfIncorporation" => $date,
+            "docRef" => 400,
+            "domicileCountry" => $request->country,
+            "entrySource" => "WEB",
             "fingerPrint" => null,
-            "kycDoc" => null,
-            "mandate" => null,
+            "kycDoc" => "WEB",
+            "mandate" => "SELF TO SIGN",
             "natureOfBusiness" => null,
-            "noCrTrans" => null,
-            "noDbTrans" => null,
+            "noCrTrans" => 1,
+            "noDbTrans" => 1,
             "occupation" => null,
-            "postedBy" => null,
+            "postedBy" => $request->firstname,
             "preferredLanguage" => null,
-            "proofOfAddress" => null,
+            "proofOfAddress" => 'proof_of_address',
             "reason" => null,
-            "relationDetails" => null,
-
-            [
+            "relationDetails" => [
 
                 "approvalPanel" => null,
                 "countryOfResidence" => $request->country,
                 "dob" => $request->birthday,
                 "documentExpiry" => $request->expiry_date,
-                "documentId" => $request->id_type,
-                "documentType" => null,
+                "documentId" => $request->id_number,
+                "documentType" => $request->id_type,
                 "email" => $request->email,
                 "firstName" => $request->firstname,
-                "homeAddress" => $request->residential_address,
-                "homeAddress1" => null,
-                "issueAuthority" => null,
+                "homeAddress" => $request->town,
+                "homeAddress1" => $request->residential_address,
+                "issueAuthority" => $request->issueAuthority,
                 "issueDate" => $request->issue_date,
                 "lastName" => $request->surname,
                 "nationality" => $request->country,
-                "otherName" => "string",
+                "otherName" => $request->othername,
                 "personalPhone" => $request->mobile_number,
-                "picture" => $request->passport_picture,
+                "picture" => 'passport_picture',
                 "placeOfBirth" => $request->birth_place,
                 "sex" => $request->gender,
-                "signature" => null,
-                "staffCategory" => null,
-                "suffix" => null,
-                "tin" => null,
+                "signature" => 'signed_selfie_paper',
+                "staffCategory" => 'N',
+                "suffix" => 'stg',
+                "tin" => $request->tin_number,
                 "title" => $request->title,
-                "workAddress" => "string"
+                "workAddress" => 'sng'
 
             ],
 
-            "relationshipManagerCode" => null,
-            "residenceStatus" => null,
+            "relationshipManagerCode" => 1204,
+            "residenceStatus" => $request->residence_status,
             "rfId" => null,
             "riskCode" => null,
             "sourceOfFunds" => null,
             "sourceOfWorth" => null,
-            "subProduct" => null,
-            "subSector" => null,
-            "subSegment" => null,
-            "terminal" => null,
-            "totalCrTrans" => null,
-            "totalDbTrans" => null,
-            "userBranch" => null,
-            "userName" => null,
+            "subProduct" => 220,
+            "subSector" => 9901,
+            "subSegment" => 1001,
+            "terminal" => "WEB",
+            "totalCrTrans" => 1,
+            "totalDbTrans" => 1,
+            "userBranch" => 001,
+            "userName" => "BANKOWNER",
+            "userId" => "WEB USER",
             "worthValue" => null,
-            "idImage" => $request->id_image,
-            "signedPaper" => $request->signed_selfie_paper,
+            // "idImage" => $id_image,
+            // "signedPaper" => $signed_selfie_paper,
 
-            "town" => $request->town
+            // "town" => $request->town
 
         ];
 
 
 
-        // return $data ;
+        return $data;
 
-        // $response = [
-        //     "responseCode" => "000" ,
-        //     "message" => "Account Successfully Created",
+        try {
 
-        // ];
+            // dd((env('API_BASE_URL') . "account/openAccountNew"));
 
-        // $data = [
-        //     "authToken" => "authToken",
-        //     "userId"    => "userID"
-        // ];
-        // $datas = json_encode($data);
-        // $response = Http::withBody(
-        //     $datas,
-        //     'application/json'
-        // )->post(env('API_BASE_URL') . "/account/openAccountNew");
+            $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "account/openAccountNew", $data);
 
-        // return $response;
-        // try {
+            // return response()->json([
+            //     'message' => $response
+            // ]);
 
-        // $response = Http::post(env('API_BASE_URL') . "/account/openAccountNew", $data);
-        // $result = new ApiBaseResponse();
-        return ($data);
-        // return json_decode($response->body();
+            // dd($response);
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+            // return json_decode($response->body();
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
-        //     DB::table('error_logs')->insert([
-        //         'platform' => 'ONLINE_INTERNET_BANKING',
-        //         'user_id' => 'AUTH',
-        //         'message' => (string) $e->getMessage()
-        //     ]);
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
 
-        //     return $base_response->api_response('500', $e->getMessage(),  ""); // return API BASERESPONSE
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
 
-        // }
+        }
     }
 }

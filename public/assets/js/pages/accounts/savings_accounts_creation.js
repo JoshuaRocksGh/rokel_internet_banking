@@ -66,31 +66,57 @@ function lovs_list() {
             let title_list = response.data.titleList;
             let country_list = response.data.nationalityList;
             let id_list = response.data.documentTypeList;
+            let residence_list = response.data.residentStatusList;
 
             console.log(id_list);
 
             $.each(title_list, function (index) {
                 $("#title").append(
                     $("<option>", {
-                        value: title_list[index].description,
+                        value:
+                            title_list[index].actualCode +
+                            "~" +
+                            title_list[index].description,
                     }).text(title_list[index].description)
                 );
             });
             $.each(country_list, function (index) {
                 $("#country").append(
                     $("<option>", {
-                        value: country_list[index].description,
+                        value:
+                            country_list[index].actualCode +
+                            "~" +
+                            country_list[index].description,
                     }).text(country_list[index].description)
+                );
+            });
+
+            $.each(residence_list, function (index) {
+                $("#residence_status").append(
+                    $("<option>", {
+                        value:
+                            residence_list[index].actualCode +
+                            "~" +
+                            residence_list[index].description,
+                    }).text(residence_list[index].description)
                 );
             });
 
             $.each(id_list, function (index) {
                 $("#id_type").append(
                     $("<option>", {
-                        value: id_list[index].description,
+                        value:
+                            title_list[index].actualCode +
+                            "~" +
+                            id_list[index].description,
                     }).text(id_list[index].description)
                 );
             });
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                lovs_list();
+            }, $.ajaxSetup().retryAfter);
         },
     });
 }
@@ -119,10 +145,11 @@ $(() => {
         var title = $("#title").val();
         var surname = $("#surname").val();
         var firstname = $("#firstname").val();
+        var othername = $("#othername").val();
         var gender = $("#select_gender input[type='radio']:checked").val();
         var birthday = $("#DOB").datepicker().val();
         var birth_place = $("#birth_place").val();
-        var country = $("#country").val();
+        var country = $("#country").val().split("~");
 
         $("#custom-v-pills-personal-details-tab").removeClass("active show");
         $("#custom-v-pills-contact-and-id-details-tab").addClass("active show");
@@ -139,6 +166,8 @@ $(() => {
         var title = $("#title").val();
         var surname = $("#surname").val();
         var firstname = $("#firstname").val();
+        var othername = $("#othername").val();
+
         var gender = $("#select_gender input[type='radio']:checked").val();
         var birthday = $("#DOB").datepicker().val();
         var birth_place = $("#birth_place").val();
@@ -195,6 +224,7 @@ $(() => {
         var residential_address = $("#residential_address").val();
         var id_type = $("#id_type").val();
         var id_number = $("#id_number").val();
+        var tin_number = $("#tin_number").val();
         var issue_date = $("#issue_date").datepicker().val();
         var expiry_date = $("#expiry_date").datepicker().val();
         //                var image_upload = $('#image_upload').val(this.files && this.files.length ? this.files[0].name.split('.')[0] : '');
@@ -242,6 +272,9 @@ $(() => {
         var firstname = $("#firstname").val();
         $("#display_firstname").text(firstname);
 
+        var othername = $("#othername").val();
+        $("#display_othername").text(othername);
+
         var gender = $("#select_gender input[type='radio']:checked").val();
         $("#display_select_gender").text(gender);
 
@@ -254,6 +287,10 @@ $(() => {
         var country = $("#country").val();
         var country_info = country.split("~");
         $("#display_country").text(country_info[1]);
+
+        var residence_status = $("#residence_status").val();
+        var residence_status_info = residence_status.split("~");
+        $("#display_residence_status").text(residence_status_info[1]);
 
         // Contact & ID Details
         var mobile_number = $("#mobile_number").val();
@@ -276,6 +313,9 @@ $(() => {
 
         var id_number = $("#id_number").val();
         $("#display_id_number").text(id_number);
+
+        var tin_number = $("#tin_number").val();
+        $("#display_tin_number").text(tin_number);
 
         var issue_date = $("#issue_date").datepicker().val();
         $("#display_issue_date").text(issue_date);
@@ -342,18 +382,44 @@ $(() => {
         $(".display_selfie").show();
     });
 
+    $("#proof_of_address").change(function () {
+        var file = $("#selfie_upload[type=file]").get(0).files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                $(".display_proof_of_address").attr("src", reader.result);
+            };
+
+            reader.readAsDataURL(file);
+
+            reader.onload = function () {
+                // {{--  alert(reader.result)  --}}
+                $(".display_proof_of_address").attr("src", reader.result);
+                $("#proof_of_address_").val(reader.result);
+            };
+        }
+
+        $(".display_proof_of_address").show();
+    });
+
     $("#confirm_submit").click(function (e) {
         e.preventDefault();
 
         // Personal Details
-        var title = $("#title").val();
-        $("#display_title").text(title);
+        var title_ = $("#title").val().split("~");
+        var title = title_[0];
+        $("#display_title").text(title_[1]);
 
         var surname = $("#surname").val();
         $("#display_surname").text(surname);
 
         var firstname = $("#firstname").val();
         $("#display_firstname").text(firstname);
+
+        var othername = $("#othername").val();
+        $("#display_othername").text(othername);
 
         var gender = $("#select_gender input[type='radio']:checked").val();
         $("#display_select_gender").text(gender);
@@ -367,7 +433,12 @@ $(() => {
         var country = $("#country").val();
         var country_info = country.split("~");
         $("#display_country").text(country_info[1]);
-        var country_ = country[1];
+        var country_ = country_info[0];
+
+        var residence_status = $("#residence_status").val();
+        var residence_status_info = residence_status.split("~");
+        $("#display_residence_status").text(residence_status_info[1]);
+        var residence_status_ = residence_status_info[0];
 
         // Contact & ID Details
         var mobile_number = $("#mobile_number").val();
@@ -385,11 +456,16 @@ $(() => {
         var residential_address = $("#residential_address").val();
         $("#display_residential_address").text(residential_address);
 
-        var id_type = $("#id_type").val();
-        $("#display_id_type").text(id_type);
+        var id_type_ = $("#id_type").val().split("~");
+        var id_type = id_type_[0];
+        var issueAuthority = id_type_[1];
+        $("#display_id_type").text(id_type_[1]);
 
         var id_number = $("#id_number").val();
         $("#display_id_number").text(id_number);
+
+        var tin_number = $("#tin_number").val();
+        $("#display_tin_number").text(tin_number);
 
         var issue_date = $("#issue_date").datepicker().val();
         $("#display_issue_date").text(issue_date);
@@ -403,11 +479,13 @@ $(() => {
 
         var signed_selfie_paper = $("#selfie_upload_").val();
 
-        $("#spinner").show();
-        $("#spinner-text").show();
+        var proof_of_address = $("#proof_of_address_").val();
 
-        $("#confirm_submit_text").hide(),
-            $("#confirm_submit").attr("disabled", true);
+        // $("#spinner").show();
+        // $("#spinner-text").show();
+
+        // $("#confirm_submit_text").hide();
+        // $("#confirm_submit").attr("disabled", true);
 
         $.ajax({
             type: "POST",
@@ -417,22 +495,27 @@ $(() => {
                 title: title,
                 surname: surname,
                 firstname: firstname,
+                othername: othername,
                 gender: gender,
                 birthday: birthday,
                 birth_place: birth_place,
-                country: country,
+                country: country_,
+                residence_status: residence_status_,
                 mobile_number: mobile_number,
                 email: email,
                 city: city,
                 town: town,
+                issueAuthority: issueAuthority,
                 residential_address: residential_address,
                 id_type: id_type,
                 id_number: id_number,
+                tin_number: tin_number,
                 issue_date: issue_date,
                 expiry_date: expiry_date,
                 id_image: id_image,
                 passport_picture: passport_picture,
                 signed_selfie_paper: signed_selfie_paper,
+                proof_of_address: proof_of_address,
             },
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -440,7 +523,8 @@ $(() => {
             success: function (response) {
                 console.log(response);
                 if (response.responseCode == "000") {
-                    toaster(response.message, "success", 3000);
+                    Swal.fire("", response.message, "success");
+                    // toaster(response.message, "success", 3000);
                 } else {
                     toaster(response.message, "error", 3000);
 
