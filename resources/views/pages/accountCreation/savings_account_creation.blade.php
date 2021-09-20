@@ -400,7 +400,7 @@
                                                     <input type="file" id="image_upload" class="form-control-file"
                                                         required><br>
                                                     <input type="hidden" id="image_upload_">
-                                                    <img class="img-fluid display_selected_id_image"
+                                                    <img class="img-fluid display_selected_id_image" width="300"
                                                         id="display_selected_id_image" src="#" alt="your image" />
                                                 </div>
 
@@ -451,7 +451,7 @@
                                                     required><br>
                                                 <input type="hidden" id="passport_picture_">
                                                 <img class="img-fluid img_display display_passport_picture previewImg1"
-                                                    id="previewImg1" src="#" alt="your image" />
+                                                    width="300" id="previewImg1" src="#" alt="your image" />
                                             </div>
 
                                             <!-- Paper and Image Capture-->
@@ -462,7 +462,7 @@
                                                 <input type="file" id="selfie_upload" class="form-control-file"
                                                     required><br>
                                                 <input type="hidden" id="selfie_upload_">
-                                                <img class="img-fluid img_display display_selfie previewImg2"
+                                                <img class="img-fluid img_display display_selfie previewImg2" width="300"
                                                     id="previewImg2" src="#" alt="your image" />
                                             </div>
 
@@ -472,7 +472,7 @@
                                                     required><br>
                                                 <input type="hidden" id="proof_of_address_">
                                                 <img class="img-fluid img_display display_proof_of_address previewImg3"
-                                                    id="previewImg3" src="#" alt="your image" />
+                                                    width="300" id="previewImg3" src="#" alt="your image" />
                                             </div>
                                             <!-- Cash on Delivery box-->
 

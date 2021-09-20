@@ -256,6 +256,7 @@ Route::get('/one-time-payment', [paymentController::class, 'one_time'])->name('o
 
 // Route::get('/approvals-pending/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending'])->name('approvals-pending/request_id/customer_no');
 Route::get('/get-pending-requests', [GeneralFunctionsFunctionsController::class, 'get_pending_requests'])->name('get-pending-requests');
+Route::get('/get-transfer-status', [GeneralFunctionsFunctionsController::class, 'get_transfer_requests'])->name('get-transfer-status');
 Route::get('/approvals-pending-transfer-details', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details');
 Route::get('/approvals-pending-transfer-details/{request_id}/{customer_no}', [PendingController::class, 'approvals_pending_transfer_details'])->name('approvals-pending-transfer-details/{request_id}/{customer_no}');
 Route::get('/pending-request-details-api', [PendingController::class, 'pending_request_details'])->name('pending-request-details-api');
@@ -288,8 +289,6 @@ Route::get('/enquiry', [EnquiryController::class, 'index'])->name('enquiry');
 Route::get('/settings', [settingsController::class, 'settings'])->name('settings');
 
 
-// TRANSFER STATUS
-Route::get('/transfer-status', [TransferStatusController::class, 'transfer_status'])->name('transfer-status');
 
 
 // Auth::routes();
@@ -374,6 +373,8 @@ Route::group(['middleware' => ['userAuth']], function () {
     // Account Enquiry Screens
     Route::get('account-enquiry', [AccountEnquiryController::class, 'account_enquiry'])->name('account-enquiry');
 
+    Route::get('my-accounts', [AccountEnquiryController::class, 'my_accounts'])->name('my-accounts');
+
     Route::get('request-statement', [AccountServicesController::class, 'request_statement'])->name('request-statement');
 
     Route::get('close-account', [AccountServicesController::class, 'close_account'])->name('close-account');
@@ -390,10 +391,14 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/international-bank', [transferController::class, 'international_bank_'])->name('international-bank');
 
     Route::get('standing-order', [StandingOrderController::class, 'display_standing_order'])->name('standing-order');
-    Route::get('standing-order-new', [StandingOrderController::class, 'display_standing_order_new'])->name('standing-order-new');
+    // Route::get('standing-order-new', [StandingOrderController::class, 'display_standing_order_new'])->name('standing-order-new');
 
     //Transfer Pending
     Route::get('/ach-transfer-pending', [TransferStatusController::class, 'ach_pending'])->name('ach-transfer-pending');
+
+
+    // TRANSFER STATUS
+    Route::get('/transfer-status', [TransferStatusController::class, 'transfer_status'])->name('transfer-status');
 
     //Add Beneficiary
     Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');

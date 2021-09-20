@@ -56,14 +56,16 @@ function from_account() {
                             "~" +
                             data[index].currency +
                             "~" +
-                            data[index].availableBalance,
+                            data[index].availableBalance +
+                            "~" +
+                            data[index].accountMandate,
                     }).text(
                         data[index].accountType +
-                            "~" +
+                            "||" +
                             data[index].accountNumber +
-                            "~" +
+                            "||" +
                             data[index].currency +
-                            "~" +
+                            " " +
                             data[index].availableBalance
                     )
                 );
@@ -253,7 +255,7 @@ $(document).ready(function () {
 
     $("#from_account").on("change", function () {
         fromAccount.info = $(this).val();
-
+        // console.log(fromAccount.info);
         if (!validateAll(fromAccount.info)) {
             $(".display_from_account_type").text("");
             $(".display_from_account_name").text("");
@@ -266,17 +268,21 @@ $(document).ready(function () {
         }
 
         let accountDetails = fromAccount.info.split("~");
+        console.log(accountDetails);
         fromAccount.type = accountDetails[0].trim();
         fromAccount.name = accountDetails[1].trim();
         fromAccount.accountNumber = accountDetails[2].trim();
         fromAccount.currency = accountDetails[3].trim();
         fromAccount.balance = parseFloat(accountDetails[4].trim());
+        fromAccount.mandate = accountDetails[5].trim();
         // if (customerType === "C") {
         // fromAccount.bankCode = accountDetails[5].trim();
         fromAccount.bankCode = "aaa";
         // }
-        const { type, name, accountNumber, currency, balance } = fromAccount;
+        const { type, name, accountNumber, currency, balance, mandate } =
+            fromAccount;
         // set summary values for display
+        // console.log(fromAccount);
         if (accountNumber === toAccount.accountNumber) {
             toaster("can not transfer to same account", "warning", 3000);
             $(this).val("");
@@ -416,6 +422,7 @@ $(document).ready(function () {
         $(".display_purpose").text(standingOrderData.purpose);
         console.log(
             fromAccount.accountNumber,
+            fromAccount.mandate,
             toAccount.accountNumber,
             standingOrderData.amount,
             standingOrderData.startDate,
@@ -426,6 +433,7 @@ $(document).ready(function () {
         if (
             !validateAll(
                 fromAccount.accountNumber,
+                fromAccount.mandate,
                 toAccount.accountNumber,
                 standingOrderData.amount,
                 standingOrderData.startDate,
@@ -458,9 +466,11 @@ $(document).ready(function () {
             return false;
         }
         standingOrderData.fromAccount = fromAccount.accountNumber;
+        standingOrderData.mandate = fromAccount.mandate;
         standingOrderData.toAccount = toAccount.accountNumber;
         standingOrderData.currency = fromAccount.currency;
         standingOrderData.bankCode = fromAccount.bankCode;
+        // standingOrderData.bankCode = fromAccount.mandate;
         console.log(standingOrderData);
         validationsCompleted = true;
 
@@ -480,6 +490,8 @@ $(document).ready(function () {
             $("#confirm_transfer_text").hide();
             $("#spinner").show();
             $("#spinner-text").show();
+            // console.log(standingOrderData);
+            // return false;
             postStandingOrder(
                 "corporate-standing-order-request-api",
                 standingOrderData

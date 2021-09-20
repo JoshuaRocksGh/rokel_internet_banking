@@ -16,6 +16,11 @@ class AccountEnquiryController extends Controller
         return view('pages.accountEnquiry.accountEnquiry');
     }
 
+    public function my_accounts()
+    {
+        return view('pages.accountEnquiry.myAccounts');
+    }
+
     public function list_of_accounts()
     {
         return view('pages.accountEnquiry.listOfAccounts');

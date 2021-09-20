@@ -30,15 +30,23 @@
 
                 {{-- @if ($menu->grouping === 'AL') --}}
                 <li>
-                    <a href="{{ url('account-enquiry') }}">
+                    <a href="#sidebarMyAccount" data-toggle="collapse">
                         <i class="mdi mdi-book-account-outline"></i>
-                        {{-- <span>{{  $menu->label }}</span> --}}
                         <span> My Account</span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="sidebarMyAccount">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ url('my-accounts') }}">Accounts</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('account-enquiry') }}">Account Enquiry</a>
+                            </li>
+                        </ul>
+                    </div>
 
                 </li>
-
-
                 <li>
                     <a href="#sidebarTransfer" data-toggle="collapse">
                         <i class="mdi mdi-rotate-3d-variant"></i>
@@ -67,6 +75,9 @@
                             </li>
                             <li>
                                 <a href="{{ url('standing-order') }}">Standing Order</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('transfer-status') }}">Transfer Status</a>
                             </li>
                             {{-- <li>
                                 <a href="{{ url('standing-order-new') }}">Standing Order New</a>
@@ -320,16 +331,14 @@
                             <li>
                                 <a href="{{ url('approvals-rejected') }}">Rejected</a>
                             </li>
-                            <li>
-                                <a href="{{ url('transfer-status') }}">Transfer Status</a>
-                            </li>
+
                         </ul>
                     </div>
                 </li>
 
-                <li>
+                {{-- <li>
                     <a href="#transfer_status" data-toggle="collapse">
-                        {{-- <i class="mdi mdi-account-circle-outline"></i> --}}
+                        <i class="mdi mdi-account-circle-outline"></i>
                         <i class="mdi mdi-checkbox-multiple-marked-outline"></i>
                         <span> Transfer Status</span>
                         <span class="menu-arrow"></span>
@@ -339,18 +348,18 @@
                             <li>
                                 <a href="{{ url('ach-transfer-pending') }}">ACH Transfer</a>
                             </li>
-                            {{-- <li>
+                            <li>
                                 <a href="{{ url('approvals-approved') }}">Approved</a>
-                            </li> --}}
-                            {{-- <li>
+                            </li>
+                            <li>
                                 <a href="{{ url('approvals-rejected') }}">Rejected</a>
-                            </li> --}}
-                            {{-- <li>
+                            </li>
+                            <li>
                                 <a href="{{ url('transfer-status') }}">Transfer Status</a>
-                            </li> --}}
+                            </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
                 <li><a>
                         <i class="mdi mdi-cog-outline"></i>

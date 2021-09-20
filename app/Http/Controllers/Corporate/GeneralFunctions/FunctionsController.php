@@ -39,4 +39,23 @@ class FunctionsController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
+
+    public function get_transfer_requests(Request $request)
+    {
+        $customerNumber = $request->query('customerNumber');
+
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+
+        $base_response = new BaseResponse();
+
+        // dd(env('API_BASE_URL') . "transfers/achBankTransferStatus/$customerNumber");
+
+        $response = Http::get(env('API_BASE_URL') . "transfers/achBankTransferStatus/$customerNumber");
+
+        // return $response;
+        // return $response->status();
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
 }

@@ -65,8 +65,8 @@
             <div class="row">
                 <div class="col-md-3">
                     <a href="{{ url('payment-type') }}">
-                        <div class="widget-rounded-circle card-box"
-                            style="background-image: url({{ asset('assets/images/light-blue.png') }});background-repeat: no-repeat;background-size: cover; ">
+                        <div class="widget-rounded-circle card-box bg-info"
+                            style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                             <div class="row">
                                 <div class="col-4">
                                     <div class="avatar-sm rounded-circle bg-white ">
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span>Payments</span></h3>
+                                        <h3 class="mt-1 text-white "><span><b>Payments</b></span></h3>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
@@ -85,7 +85,7 @@
                 <div class="col-md-3">
                     <a href="{{ url('account-enquiry') }}">
                         <div class="widget-rounded-circle card-box bg-warning"
-                            style="background-image: url({{ asset('assets/images/blue.jpeg') }});background-repeat: no-repeat;background-size: cover; ">
+                            style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                             <div class="row">
                                 <div class="col-4">
                                     <div class="avatar-sm rounded-circle bg-white">
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="text-right">
-                                        <h3 class="mt-1 text-primary "><span> &nbsp; Account Enquiry</span></h3>
+                                        <h3 class="mt-1 text-white "><span> &nbsp;<b>Account Enquiry</b> </span></h3>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
@@ -104,7 +104,7 @@
                 <div class="col-md-3">
                     <a href="#">
                         <div class="widget-rounded-circle card-box custom-color-gold bg-success"
-                            style="background-image: url({{ asset('assets/images/pink.jpeg') }});background-repeat: no-repeat;background-size: cover;border-radius: 5px; ">
+                            style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                             <div class="row">
                                 <div class="col-4">
                                     <div class="avatar-sm rounded-circle bg-white">
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span> &nbsp; Transfers</span></h3>
+                                        <h3 class="mt-1 text-white"><span> &nbsp;<b>Transfers</b> </span></h3>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
@@ -123,7 +123,7 @@
                 <div class="col-md-3">
                     <a href="{{ url('e-korpor') }}">
                         <div class="widget-rounded-circle card-box bg-danger"
-                            style="background-image: url({{ asset('assets/images/red-blue.jpeg') }});background-repeat: no-repeat;background-size: cover; ">
+                            style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                             <div class=" row">
                                 <div class="col-4">
                                     <div class="avatar-sm rounded-circle bg-white ">
@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="text-right">
-                                        <h3 class="mt-1 text-white"><span>&nbsp; E-Korpor</span></h3>
+                                        <h3 class="mt-1 text-white"><span>&nbsp;<b>E-Korpor</b> </span></h3>
                                     </div>
                                 </div>
                             </div> <!-- end row-->
@@ -141,6 +141,187 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-9">
+                    <div class="card-box"
+                        style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                    <strong class="text-success">CURRENT & SAVINGS</strong>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                    <strong class="text-warning">INVESTMENTS</strong>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                    <strong class="text-danger">LOANS</strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home">
+                                <p>
+
+                                <div class="table-responsive table-bordered accounts_display_area">
+                                    <table id="" class="table mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Account No </b> </td>
+                                                <td> <b> Description </b> </td>
+                                                <td> <b> Product </b> </td>
+                                                <td> <b> Cur </b> </td>
+                                                <td> <b> OverDraft </b> </td>
+                                                {{-- <td> <b> Ledger Bal </b> </td> --}}
+                                                <td> <b> Av. Bal </b> </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="casa_list_display">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+
+                                </p>
+
+                            </div>
+
+                            <div class="tab-pane show " id="profile">
+
+                                <p id="p_fixed_deposit_account">
+
+                                <div class="table-responsive table-bordered my_investment_display_area">
+                                    <table id="" class="table mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Account No </b> </td>
+                                                <td> <b> Deal Amount </b> </td>
+                                                <td> <b> Tunure </b> </td>
+                                                <td> <b> FixedInterestRate </b> </td>
+                                                <td> <b> Rollover </b> </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="fixed_deposit_account">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+
+                                </p>
+
+                            </div>
+
+                            <div class="tab-pane" id="messages">
+                                <p id="p_loans_display">
+
+                                <div class="table-responsive table-bordered loans_display_area">
+                                    <table id="" class="table mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Facility No </b> </td>
+                                                <td> <b> Description </b> </td>
+                                                <td> <b> Cur </b> </td>
+                                                <td> <b> Amount Granted </b> </td>
+                                                <td> <b> Loan Bal </b> </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="loans_display">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table-responsive -->
+
+                                </p>
+
+                            </div>
+                        </div>
+                    </div> <!-- end card-box-->
+                    {{-- <br> --}}
+                    <div class="card " style="border-radius: 20px;">
+                        <div class="border mt-0 rounded p-2"
+                            style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <h4 class="header-title p-2 mb-0 text-primary col-md-4 " style="font-weight: bolder">
+                                        Latest
+                                        Transactions</h4>
+
+                                    <div class="col-md-8">
+                                        <select name="" class="form-control" id="account_transaction">
+                                            <option value=""> -- Select Account -- </option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row" style="padding-left: 15px; padding-right: 15px;">
+
+
+
+                            </div>
+
+                            <legend></legend>
+
+                            <div class="table-responsive" style="height: 150px; zoom:0.9">
+                                <table class="table table-centered table-nowrap mb-0">
+                                    <tbody id="transaction_history">
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
+                        </div> <!-- end .border-->
+
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel"
+                        style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                            </li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}"
+                                    alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}"
+                                    alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}"
+                                    alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
 
                 <div class="col-md-6">
 
@@ -341,39 +522,7 @@
 
                         <div class="col-md-6">
 
-                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-                                    </li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img class="d-block w-100"
-                                            src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}"
-                                            alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100"
-                                            src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}" alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}"
-                                            alt="Third slide">
-                                    </div>
-                                </div>
-                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                                    data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                                    data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
+
                         </div>
 
                     </div>
@@ -386,146 +535,13 @@
             <div class="row">
                 <div class="col-md-8 mt-1">
                     <div class="col-md-12">
-                        <div class="card-box">
 
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
-                                        <strong class="text-success">CURRENT & SAVINGS</strong>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
-                                        <strong class="text-warning">INVESTMENTS</strong>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                        <strong class="text-danger">LOANS</strong>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="home">
-                                    <p>
-
-                                    <div class="table-responsive table-bordered accounts_display_area">
-                                        <table id="" class="table mb-0 ">
-                                            <thead>
-                                                <tr class="bg-info text-white ">
-                                                    <td> <b> Account No </b> </td>
-                                                    <td> <b> Description </b> </td>
-                                                    <td> <b> Product </b> </td>
-                                                    <td> <b> Cur </b> </td>
-                                                    <td> <b> OverDraft </b> </td>
-                                                    {{-- <td> <b> Ledger Bal </b> </td> --}}
-                                                    <td> <b> Av. Bal </b> </td>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="casa_list_display">
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- end table-responsive -->
-
-                                    </p>
-
-                                </div>
-
-                                <div class="tab-pane show " id="profile">
-
-                                    <p id="p_fixed_deposit_account">
-
-                                    <div class="table-responsive table-bordered my_investment_display_area">
-                                        <table id="" class="table mb-0 ">
-                                            <thead>
-                                                <tr class="bg-info text-white ">
-                                                    <td> <b> Account No </b> </td>
-                                                    <td> <b> Deal Amount </b> </td>
-                                                    <td> <b> Tunure </b> </td>
-                                                    <td> <b> FixedInterestRate </b> </td>
-                                                    <td> <b> Rollover </b> </td>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody class="fixed_deposit_account">
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- end table-responsive -->
-
-                                    </p>
-
-                                </div>
-
-                                <div class="tab-pane" id="messages">
-                                    <p id="p_loans_display">
-
-                                    <div class="table-responsive table-bordered loans_display_area">
-                                        <table id="" class="table mb-0 ">
-                                            <thead>
-                                                <tr class="bg-info text-white ">
-                                                    <td> <b> Facility No </b> </td>
-                                                    <td> <b> Description </b> </td>
-                                                    <td> <b> Cur </b> </td>
-                                                    <td> <b> Amount Granted </b> </td>
-                                                    <td> <b> Loan Bal </b> </td>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody class="loans_display">
-
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- end table-responsive -->
-
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div> <!-- end card-box-->
                     </div>
                 </div>
 
                 <div class="col-md-4 mt-1">
                     <div class="col-md-12 ">
-                        <div class="card" style="border-radius: 20px;">
-                            <div class="border mt-0 rounded">
-                                <h4 class="header-title p-2 mb-0 text-primary" style="font-weight: bolder">Latest
-                                    Transactions
-                                </h4>
 
-                                <div class="row" style="padding-left: 15px; padding-right: 15px;">
-                                    {{-- <div class="col-md-1"></div> --}}
-                                    <div class="col-md-12">
-                                        <select name="" class="form-control" id="account_transaction">
-                                            <option value=""> -- Select Account -- </option>
-                                            {{-- <option value="">04785505050</option> --}}
-                                        </select>
-                                    </div>
-                                    {{-- <div class="col-md-1"></div> --}}
-                                </div>
-
-                                <legend></legend>
-
-                                <div class="table-responsive" style="height: 360px; zoom:0.9">
-                                    <table class="table table-centered table-nowrap mb-0">
-                                        <tbody id="transaction_history">
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
-                            </div> <!-- end .border-->
-
-                        </div>
                     </div>
                 </div>
 
@@ -1827,10 +1843,14 @@
                                         `
                                             <tr>
                                                 <td>
-                                                    <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold transfer_narration">${data[index].narration}</a>
-                                                    <small class="d-block transfer_date">${data[index].postingSysDate}</small>
-                                                    <span class="account_currency text-primary h4">${global_selected_currency}</span> &nbsp; <span class="transfer_amount h3">${formatToCurrency(parseFloat(data[index].amount))}</span>
+                                                    <div class="row">
+                                                        <p class="d-block font-weight-semibold transfer_date col-md-3 ">${data[index].postingSysDate}</p>
+                                                        <a href="ecommerce-product-detail.html"
+                                                        class="text-body font-weight-semibold transfer_narration col-md-4 text-center">${data[index].narration}</a>
+
+                                                        <span class="account_currency text-primary h4 col-md-4 text-center m-0">${global_selected_currency} &nbsp; <span class="transfer_amount h4">${formatToCurrency(parseFloat(data[index].amount))}</span></span>
+                                                    </div>
+                                                    <hr class="mt-0">
                                                 </td>
                                             </tr>
                                             `

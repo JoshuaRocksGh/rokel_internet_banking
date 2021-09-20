@@ -633,7 +633,7 @@ $(function () {
         confirmationCompleted = true;
         if (customerType === "C") {
             // transferInfo.accountMandate = fromAccount.info.split("~")[5];
-            makeTransfer("corporate-own-account-api", transferInfo);
+            makeTransfer("corporate-same-bank-api", transferInfo);
         } else {
             $("#centermodal").modal("show");
         }

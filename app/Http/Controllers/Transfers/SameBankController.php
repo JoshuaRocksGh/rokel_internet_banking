@@ -23,29 +23,29 @@ class SameBankController extends Controller
 
     public function transfer_to_beneficiary(Request $req)
     {
-        // $validator = Validator::make($req->all(), [
-        //     'from_account' => 'required',
-        //     'to_account' => 'required',
-        //     'amount' => 'required',
-        //     'category' => 'required',
-        //     'account_currency' => 'required',
-        //     'purpose' => 'required',
-        //     'alias_name' => 'required',
-        //     // 'type' => 'required',
-        //     'amount' => 'required',
-        //     'secPin' => 'required',
-        //     'category' => 'required',
-        //     "account_currency" => 'required'
+        $validator = Validator::make($req->all(), [
+            'from_account' => 'required',
+            'to_account' => 'required',
+            'amount' => 'required',
+            'category' => 'required',
+            'account_currency' => 'required',
+            'purpose' => 'required',
+            'alias_name' => 'required',
+            // 'type' => 'required',
+            'amount' => 'required',
+            'secPin' => 'required',
+            'category' => 'required',
+            "account_currency" => 'required'
 
-        // ]);
+        ]);
 
         $base_response = new BaseResponse();
 
         // VALIDATION
-        // if ($validator->fails()) {
+        if ($validator->fails()) {
 
-        //     return $base_response->api_response('500', $validator->errors(), NULL);
-        // };
+            return $base_response->api_response('500', $validator->errors(), NULL);
+        };
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
