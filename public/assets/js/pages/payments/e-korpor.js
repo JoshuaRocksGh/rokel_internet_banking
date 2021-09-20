@@ -130,8 +130,6 @@ $(document).ready(function () {
 
     $(".korpor_details").hide();
 
-    console.log(customerType);
-
     if (customerType == "C") {
         $(".account_of_transfer_reverse").show();
         $(".personal_pin").hide();
@@ -616,12 +614,60 @@ $(document).ready(function () {
 
                                                     </tr>`
                         );
+                        $(`#${data[index].REMITTANCE_REF}`).on("click", () => {
+                            console.log(data[index]);
+                            korporReversal(data[index]);
+                        });
                     });
                 }
             },
         });
     });
 
+    function korporReversal(data) {
+        $("#centermodal").modal("show");
+        // kor;
+        $("#transfer_pin").on("click", () => {
+            let userPin = $("#user_pin").val();
+            if (userPin.length !== 4) {
+                toaster("invalid pin", "warning");
+                $("#user_pin").val("");
+                userPin = "";
+                console.log(userPin);
+                return false;
+            }
+            let korporData = new Object();
+            korporData.pinCode = userPin;
+            korporData.referenceNo = data.REMITTANCE_REF;
+            korporData.beneficiaryMobileNo = data.BENEF_TEL;
+            reverseKorpor("reverse-korpor", korporData);
+            $("#user_pin").val("");
+            userPin = "";
+        });
+    }
+    function reverseKorpor(url, data) {
+        // console.log("here");
+        $.ajax({
+            type: "POST",
+            url: url,
+            datatype: "application/json",
+            data: data,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                console.log(response);
+                if (response.code === "000") {
+                    console.log(a);
+                    toaster(response.message, "success");
+                    // window.ref;
+                } else {
+                    console.log(response.code);
+                    console.log(response);
+                }
+            },
+        });
+    }
     //button to submit account no for reversed korpor transaction.
     $("#submit_account_no_reversed").click(function () {
         let from_account = $(".reversed").val();
