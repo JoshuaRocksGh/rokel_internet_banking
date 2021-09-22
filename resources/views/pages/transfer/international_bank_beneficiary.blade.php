@@ -1,7 +1,10 @@
 @extends('layouts.master')
 
 @section('styles')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap4.min.css"
+    integrity="sha512-MMojOrCQrqLg4Iarid2YMYyZ7pzjPeXKRvhW9nZqLo6kPBBTuvNET9DBVWptAo/Q20Fy11EIHM5ig4WlIrJfQw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
     @media print {
@@ -90,8 +93,6 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    <br><br>
-
 
     <div class="row">
         <div class="col-12">
@@ -110,7 +111,7 @@
                                 <div class=" ">
                                     <div class="card-body">
 
-                                        <br><br><br>
+                                        {{-- <br><br><br> --}}
 
                                         <div id="rootwizard">
                                             <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-3">
@@ -155,13 +156,12 @@
                                                                         <label for="form-group"
                                                                             class="text-primary">Bank Country &nbsp;
                                                                             <span class="text-danger">*</span></label>
-                                                                        <select class="custom-select" id="bank_country"
-                                                                            name="bank_country" required>
-                                                                            <option value="">Bank Country</option>
-                                                                            <option value="Ghana">Ghana</option>
-
+                                                                        {{-- <select class="custom-select" id="bank_country" --}}
+                                                                        <select id="bank_country" required>
+                                                                            <option selected disabled>Bank Country
+                                                                            </option>
                                                                         </select>
-                                                                        <br><br>
+                                                                        {{-- <br><br> --}}
 
                                                                     </div>
 
@@ -183,7 +183,7 @@
                                                                             @endforeach
 
                                                                         </select>
-                                                                        <br><br>
+                                                                        {{-- <br><br> --}}
                                                                     </div>
 
                                                                     <div class="col-md-6">
@@ -731,13 +731,10 @@
         </div> <!-- end col -->
     </div> <!-- end row -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-
-    {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
-
-    <script src={{ asset("assets/js/pages/transfer/beneficiary/international_bank_beneficiary.js") }}> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"
+        integrity="sha512-pF+DNRwavWMukUv/LyzDyDMn8U2uvqYQdJN0Zvilr6DDo/56xPDZdDoyPDYZRSL4aOKO/FGKXTpzDyQJ8je8Qw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src={{ asset("assets/js/pages/transfer/beneficiary/international_bank_beneficiary.js") }}></script>
 
 
 

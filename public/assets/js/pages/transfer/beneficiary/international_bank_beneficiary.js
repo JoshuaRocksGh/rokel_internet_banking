@@ -67,7 +67,21 @@ function get_currency() {
 
 //     })
 // };
-
+function getCountries() {
+    $.ajax({
+        type: "GET",
+        url: "get-countries-list-api",
+        datatype: "application/json",
+        success: (response) => {
+            let data = response.data;
+            let selectize = $("#bank_country").selectize()[0].selectize;
+            $.each(data, (i) => {
+                let { codeType, description } = data[i];
+                selectize.addOption({ value: codeType, text: description });
+            });
+        },
+    });
+}
 function bank_branches_list() {
     $.ajax({
         type: "GET",
@@ -92,9 +106,15 @@ function bank_branches_list() {
 }
 
 $(document).ready(function () {
+    $("#bank_country").selectize({
+        sortField: "text",
+    });
+
     get_currency();
+    getCountries();
     bank_list();
     bank_branches_list();
+    // $(".selectpicker").selectpicker();
 
     $("#rootwizard").click(function (e) {
         e.preventDefault();
