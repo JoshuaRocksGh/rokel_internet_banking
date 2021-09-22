@@ -67,7 +67,7 @@
             <div class="col-md-6 text-right">
                 <h6>
 
-                    <span class="flaot-right">
+                    <span class="float-right">
                         <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">E-Korpor
                             Payment</b>
 
@@ -95,12 +95,12 @@
                     Send E-Korpor
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="#reverse_korpor_page" data-toggle="tab" aria-expanded="false"
                     class="nav-link reverse_korpor_tab">
                     Reverse E-Korpor
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a href="#redeem_korpor_page" data-toggle="tab" aria-expanded="false"
                     class="nav-link redeem_korpor_tab">
@@ -1608,9 +1608,9 @@
                     </div>
                 </div>
             </div>
-
+            @include("snippets.pinCodeModal")
             <!-- Center modal content -->
-            <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+            {{-- <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header text-center ">
@@ -1640,7 +1640,7 @@
                     <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
-            </div>
+            </div> --}}
             <!-- /.modal -->
 
 

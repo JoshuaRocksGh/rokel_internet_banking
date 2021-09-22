@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class KorporController extends Controller
@@ -58,35 +59,35 @@ class KorporController extends Controller
 
 
         // return $deviceIP ;
-        $user_ip_address =$request->ip();
+        $user_ip_address = $request->ip();
 
         // return $user_ip_address ;
 
         $data = [
-                // "amount"=>$amount,
-                // "debitAccount"=>"004001100241700194",
-                // "deviceIP"=> "A",
-                // "fee"=> "",
-                // "pinCode"=> "1234",
-                // "receiverAddress"=> "P.0 BOX 259 AD",
-                // "receiverName"=> "Josh",
-                // "receiverPhone"=> "0549380507",
-                // "senderName"=>"ATO",
-                // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
-                "amount"=> $amount,
-                "debitAccount"=> $debitAccount,
-                "deviceIP"=> $user_ip_address,
-                "fee"=> '0',
-                "pinCode"=> $pinCode,
-                "receiverAddress"=> $receiverAddress,
-                "receiverName"=> $receiverName,
-                "receiverPhone"=> $receiverPhone,
-                "senderName"=> $sender_name,
-                "tokenID"=> $authToken
+            // "amount"=>$amount,
+            // "debitAccount"=>"004001100241700194",
+            // "deviceIP"=> "A",
+            // "fee"=> "",
+            // "pinCode"=> "1234",
+            // "receiverAddress"=> "P.0 BOX 259 AD",
+            // "receiverName"=> "Josh",
+            // "receiverPhone"=> "0549380507",
+            // "senderName"=>"ATO",
+            // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
+            "amount" => $amount,
+            "debitAccount" => $debitAccount,
+            "deviceIP" => $user_ip_address,
+            "fee" => '0',
+            "pinCode" => $pinCode,
+            "receiverAddress" => $receiverAddress,
+            "receiverName" => $receiverName,
+            "receiverPhone" => $receiverPhone,
+            "senderName" => $sender_name,
+            "tokenID" => $authToken
 
-            ];
+        ];
 
-            // return $data;
+        // return $data;
 
 
 
@@ -122,7 +123,8 @@ class KorporController extends Controller
         }
     }
 
-    public function send_unredeemed_request(Request $request){
+    public function send_unredeemed_request(Request $request)
+    {
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         $api_headers = session()->get("headers");
@@ -156,7 +158,8 @@ class KorporController extends Controller
     }
 
     //method to send reversed korpor request for list of reversed korpor transactions.
-    public function send_reversed_request(Request $request){
+    public function send_reversed_request(Request $request)
+    {
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         $api_headers = session()->get("headers");
@@ -228,26 +231,26 @@ class KorporController extends Controller
         // return $user_ip_address ;
 
         $data = [
-                // "amount"=>$amount,
-                // "debitAccount"=>"004001100241700194",
-                // "deviceIP"=> "A",
-                // "fee"=> "",
-                // "pinCode"=> "1234",
-                // "receiverAddress"=> "P.0 BOX 259 AD",
-                // "receiverName"=> "Josh",
-                // "receiverPhone"=> "0549380507",
-                // "senderName"=>"ATO",
-                // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
+            // "amount"=>$amount,
+            // "debitAccount"=>"004001100241700194",
+            // "deviceIP"=> "A",
+            // "fee"=> "",
+            // "pinCode"=> "1234",
+            // "receiverAddress"=> "P.0 BOX 259 AD",
+            // "receiverName"=> "Josh",
+            // "receiverPhone"=> "0549380507",
+            // "senderName"=>"ATO",
+            // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
 
-                    "beneficiaryTel"=> $receiverPhone,
-                    "remittanceNumber"=> $remittance_no
+            "beneficiaryTel" => $receiverPhone,
+            "remittanceNumber" => $remittance_no
 
-                    // "beneficiaryTel"=> "0549380507",
-                    // "remittanceNumber"=> "617432"
+            // "beneficiaryTel"=> "0549380507",
+            // "remittanceNumber"=> "617432"
 
-            ];
+        ];
 
-            // return $data;
+        // return $data;
 
 
 
@@ -319,38 +322,38 @@ class KorporController extends Controller
         $redeem_receiver_phone = $request->redeem_receiver_phone;
         $redeem_account = $request->redeem_account;
         $redeem_remittance_no = $request->redeem_remittance_no;
-        $otp_number =$request->otp_number;
+        $otp_number = $request->otp_number;
 
         // return $user_ip_address ;
 
         $data = [
-                // "amount"=>$amount,
-                // "debitAccount"=>"004001100241700194",
-                // "deviceIP"=> "A",
-                // "fee"=> "",
-                // "pinCode"=> "1234",
-                // "receiverAddress"=> "P.0 BOX 259 AD",
-                // "receiverName"=> "Josh",
-                // "receiverPhone"=> "0549380507",
-                // "senderName"=>"ATO",
-                // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
+            // "amount"=>$amount,
+            // "debitAccount"=>"004001100241700194",
+            // "deviceIP"=> "A",
+            // "fee"=> "",
+            // "pinCode"=> "1234",
+            // "receiverAddress"=> "P.0 BOX 259 AD",
+            // "receiverName"=> "Josh",
+            // "receiverPhone"=> "0549380507",
+            // "senderName"=>"ATO",
+            // "tokenID"=>"CA00BAB3-CCCD-4025-BEAC-8CE5853938A1"
 
 
-                "amount"=> $redeem_amount,
-                "beneficiaryName"=> $redeem_receiver_name,
-                "beneficiaryTel"=> $redeem_receiver_phone,
-                "creditAccount"=> $redeem_account,
-                "otpNumber"=> $otp_number,
-                "remittanceNumber"=>$redeem_remittance_no
-                    // "beneficiaryTel"=> $receiverPhone,
-                    // "remittanceNumber"=> $remittance_no
+            "amount" => $redeem_amount,
+            "beneficiaryName" => $redeem_receiver_name,
+            "beneficiaryTel" => $redeem_receiver_phone,
+            "creditAccount" => $redeem_account,
+            "otpNumber" => $otp_number,
+            "remittanceNumber" => $redeem_remittance_no
+            // "beneficiaryTel"=> $receiverPhone,
+            // "remittanceNumber"=> $remittance_no
 
-                    // "beneficiaryTel"=> "0549380507",
-                    // "remittanceNumber"=> "617432"
+            // "beneficiaryTel"=> "0549380507",
+            // "remittanceNumber"=> "617432"
 
-            ];
+        ];
 
-            // return $data;
+        // return $data;
 
 
 
@@ -387,7 +390,8 @@ class KorporController extends Controller
     }
 
     //method to show redeemed cardless transactions...
-    public function send_redeemed_request(Request $request){
+    public function send_redeemed_request(Request $request)
+    {
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         $api_headers = session()->get("headers");
@@ -421,23 +425,24 @@ class KorporController extends Controller
     }
 
 
-    public function reverse_korpor(Request $request){
+    public function reverse_korpor(Request $request)
+    {
 
-        $validator = Validator::make($request->all(), [
-            'reference_no' => 'required',
-            'receiver_phoneNo' => 'required',
-            'pin' => 'required'
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'reference_no' => 'required',
+        //     'receiver_phoneNo' => 'required',
+        //     'pin' => 'required'
+        // ]);
 
         // return $request ;
 
         $base_response = new BaseResponse();
 
         // VALIDATION
-        if ($validator->fails()) {
+        // if ($validator->fails()) {
 
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
+        //     return $base_response->api_response('500', $validator->errors(), NULL);
+        // };
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -446,26 +451,32 @@ class KorporController extends Controller
         // return $authToken;
 
         // $base_response = new BaseResponse();
+        $data = [
+            "beneficiaryMobileNo" => $request->beneficiaryMobileNo,
+            "customberNumber" => session()->get('customerNumber'),
+            "pinCode" => $request->pinCode,
+            "postedBy" => $userID,
+            "referenceNo" => $request->referenceNo
+        ];
 
-
-
+        Log::alert($data);
         // $accountNumber = $request->accountNo;
         // $accountNumber = "004001100241700194";
-        $beneficiaryMobileNo = $request->receiver_phoneNo;
-        $customerNo = session()->get('customerNumber');
-        $postedBy = session()->get('userId');
-        $referenceNo = $request->reference_no;
-        $pinCode = $request->pin;
+        // $beneficiaryMobileNo = $request->receiver_phoneNo;
+        // $customerNo = session()->get('customerNumber');
+        // $postedBy = session()->get('userId');
+        // $referenceNo = $request->reference_no;
+        // $pinCode = $request->pin;
 
-        $data = [
+        // $data = [
 
-            "beneficiaryMobileNo"=> $beneficiaryMobileNo,
-            "customberNumber"=> $customerNo,
-            "pinCode"=> $pinCode,
-            "postedBy"=> $postedBy,
-            "referenceNo"=> $referenceNo
+        //     "beneficiaryMobileNo"=> $beneficiaryMobileNo,
+        //     "customberNumber"=> $customerNo,
+        //     "pinCode"=> $pinCode,
+        //     "postedBy"=> $postedBy,
+        //     "referenceNo"=> $referenceNo
 
-        ];
+        // ];
 
 
         // for debugging purposes
@@ -503,9 +514,4 @@ class KorporController extends Controller
     {
         return view('pages.payments.korpor.bulk_korpor_details');
     }
-
-
-
 }
-
-
