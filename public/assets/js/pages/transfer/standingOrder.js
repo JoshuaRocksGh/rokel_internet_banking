@@ -11,7 +11,8 @@ function postStandingOrder(url, data) {
             console.log(response);
 
             if (response.responseCode == "000") {
-                toaster(response.message, "success");
+                // toaster(response.message, "success");
+                Swal.fire("", response.message, "success");
                 $("#spinner").hide();
                 $("#spinner-text").hide();
                 $("#back_button").hide();
@@ -93,12 +94,12 @@ function get_so_frequencies() {
         url: "get-standing-order-frequencies-api",
         datatype: "application/json",
         success: function (response) {
-            // console.log(response.data);
+            console.log(response.data);
             let data = response.data;
             $.each(data, function (index) {
                 $(".so_frequency").append(
                     $("<option>", {
-                        value: data[index].code,
+                        value: data[index].code + "~" + data[index].name,
                     }).text(data[index].name)
                 );
             });
@@ -397,9 +398,19 @@ $(document).ready(function () {
     });
 
     $("#beneficiary_frequency").on("change", function () {
-        standingOrderData.frequency = $("#beneficiary_frequency").val();
-        var optionText = $("#beneficiary_frequency option:selected").text();
-        $(".display_frequency_so").text(optionText);
+        if (customerType == "C") {
+            var standing_order = $("#beneficiary_frequency").val().split("~");
+            // var standing_order_ = standing_order;
+            standingOrderData.frequency = $("#beneficiary_frequency").val();
+            var optionText = $("#beneficiary_frequency option:selected").text();
+            $(".display_frequency_so").text(standing_order[1]);
+        } else {
+            var standing_order = $("#beneficiary_frequency").val().split("~");
+            // var standing_order_ = standing_order;
+            standingOrderData.frequency = standing_order[0];
+            var optionText = $("#beneficiary_frequency option:selected").text();
+            $(".display_frequency_so").text(standing_order[1]);
+        }
     });
 
     $("#purpose").on("change", function () {
@@ -466,8 +477,10 @@ $(document).ready(function () {
             return false;
         }
         standingOrderData.fromAccount = fromAccount.accountNumber;
+        // standingOrderData.fromAccountName = fromAccount.name;
         standingOrderData.mandate = fromAccount.mandate;
         standingOrderData.toAccount = toAccount.accountNumber;
+        standingOrderData.toAccountName = toAccount.name;
         standingOrderData.currency = fromAccount.currency;
         standingOrderData.bankCode = fromAccount.bankCode;
         // standingOrderData.bankCode = fromAccount.mandate;

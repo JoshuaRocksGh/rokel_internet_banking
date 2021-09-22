@@ -92,8 +92,105 @@ class SavingsAccountCreationController extends Controller
         $now = new DateTime();
         $date = $now->format('Y-m-d');
         $api_headers = session()->get('headers');
+        // $data = json_encode({
 
-        $data = [
+        // }, true);
+        $data1 = [
+            "city" =>
+            $request->city,
+            "companyName" => null,
+            "constitutionCode" => null,
+            "corporateTin" => null,
+            "createdAccountNumber" => null,
+            "createdCustomerNumber" => null,
+            "custCategory" => "ID",
+            "custType" => "I",
+            "dateOfIncorporation" => $date,
+            "docRef" => "400",
+            "domicileCountry" =>
+            $request->country,
+            "entrySource" => "M",
+            "fingerPrint" => "sng",
+            "kycDoc" => "mobile",
+            "mandate" => "self to sign",
+            "natureOfBusiness" => null,
+            "noCrTrans" => "1",
+            "noDbTrans" => "1",
+            "occupation" => null,
+            "postedBy" =>
+            $request->firstname . " " . $request->surname,
+            "preferredLanguage" => null,
+            "proofOfAddress" => $proof_of_address,
+            "reason" => null,
+            "relationDetails" => [
+                [
+                    "approvalPanel" => null,
+                    "countryOfResidence" =>
+                    $request->country,
+                    "dob" =>
+                    $request->birthday,
+                    "documentExpiry"
+                    => $request->expiry_date,
+                    "documentId"
+                    => $request->id_number,
+                    "documentType" =>
+                    $request->id_type,
+                    "email" =>
+                    $request->email,
+                    "firstName"
+                    => $request->firstname,
+                    "homeAddress" =>
+                    $request->town,
+                    "homeAddress1" =>
+                    $request->residential_address,
+                    "issueAuthority" =>
+                    $request->issueAuthority,
+                    "issueDate" =>
+                    $request->issue_date,
+                    "lastName" =>
+                    $request->surname,
+                    "nationality" =>
+                    $request->country,
+                    "otherName" =>
+                    $request->othername,
+                    "personalPhone" =>
+                    $request->mobile_number,
+                    "picture" =>
+                    $passport_picture,
+                    "placeOfBirth"
+                    => $request->birth_place,
+                    "sex" =>
+                    $request->gender,
+                    "signature" =>
+                    $signed_selfie_paper,
+                    "staffCategory" => "N",
+                    "suffix" => "stg",
+                    "tin"
+                    => $request->tin_number,
+                    "title" =>
+                    $request->title,
+                    "workAddress" => "sng"
+                ]
+            ],
+            "relationshipManagerCode" => "1204",
+            "residenceStatus" =>
+            $request->residence_status,
+            "rfId" => null,
+            "riskCode" => null,
+            "sourceOfFunds" => null,
+            "sourceOfWorth" => null,
+            "subProduct" => "220",
+            "subSector" => "9901",
+            "subSegment" => "1001",
+            "terminal" => null,
+            "totalCrTrans" => "1",
+            "totalDbTrans" => "1",
+            "userBranch" => "001",
+            "userId" => "Mobile User",
+            "userName" => "BANKOWNER",
+            "worthValue" => ""
+        ];
+        /*   $data = [
 
             "city" => $request->city,
             "companyName" => null,
@@ -106,17 +203,17 @@ class SavingsAccountCreationController extends Controller
             "dateOfIncorporation" => $date,
             "docRef" => '400',
             "domicileCountry" => $request->country,
-            "entrySource" => "WEB",
-            "fingerPrint" => null,
-            "kycDoc" => "WEB",
+            "entrySource" => "M",
+            "fingerPrint" => "sng",
+            "kycDoc" => "Mobile",
             "mandate" => "SELF TO SIGN",
             "natureOfBusiness" => null,
-            "noCrTrans" => '1',
-            "noDbTrans" => '1',
+            "noCrTrans" => "1",
+            "noDbTrans" => "1",
             "occupation" => null,
             "postedBy" => $request->firstname . " " . $request->surname,
             "preferredLanguage" => null,
-            "proofOfAddress" => 'proof_of_address',
+            "proofOfAddress" => "proof_of_address",
             "reason" => null,
             "relationDetails" => [
 
@@ -136,10 +233,10 @@ class SavingsAccountCreationController extends Controller
                 "nationality" => $request->country,
                 "otherName" => $request->othername,
                 "personalPhone" => $request->mobile_number,
-                "picture" => 'passport_picture',
+                "picture" => "passport_picture",
                 "placeOfBirth" => $request->birth_place,
                 "sex" => $request->gender,
-                "signature" => 'signed_selfie_paper',
+                "signature" => "signed_selfie_paper",
                 "staffCategory" => 'N',
                 "suffix" => 'stg',
                 "tin" => $request->tin_number,
@@ -163,7 +260,7 @@ class SavingsAccountCreationController extends Controller
             "userBranch" => '001',
             "userName" => "BANKOWNER",
             "userId" => "WEB USER",
-            "worthValue" => null,
+            "worthValue" => "",
             // "idImage" => $id_image,
             // "signedPaper" => $signed_selfie_paper,
 
@@ -171,15 +268,15 @@ class SavingsAccountCreationController extends Controller
 
         ];
 
+*/
 
-
-        return $data;
+        return $data1;
 
         try {
 
             // dd((env('API_BASE_URL') . "account/openAccountNew"));
 
-            $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "account/openAccountNew", $data);
+            return $response = Http::post(env('API_BASE_URL') . "account/openAccountNew", $data1);
 
             // return response()->json([
             //     'message' => $response

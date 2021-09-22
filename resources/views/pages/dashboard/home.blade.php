@@ -142,7 +142,7 @@
             </div>
             <div class="row">
                 <div class="col-md-9">
-                    <div class="card-box"
+                    <div class="card-box h-50"
                         style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
                         <ul class="nav nav-tabs">
@@ -193,7 +193,7 @@
 
                             <div class="tab-pane show " id="profile">
 
-                                <p id="p_fixed_deposit_account">
+                                <p id="fixed_deposit_account">
 
                                 <div class="table-responsive table-bordered my_investment_display_area">
                                     <table id="" class="table mb-0 ">
@@ -325,7 +325,7 @@
 
                 <div class="col-md-6">
 
-                    <div class="row">
+                    {{-- <div class="row">
 
 
                         <div class="col-md-12">
@@ -396,7 +396,7 @@
 
 
 
-                    </div>
+                    </div> --}}
 
                     <div class="row">
 
@@ -431,10 +431,10 @@
                     <div class="row">
 
 
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="___class_+?44___">
                                 <h2 class="text-primary">Frequently used services</h2>
-                                {{-- <hr class="mt-0"> --}}
+
                             </div>
 
                             <div class="col-md-12">
@@ -518,7 +518,7 @@
                                 </a>
                             </div>
 
-                        </div>
+                        </div> --}}
 
                         <div class="col-md-6">
 
