@@ -136,7 +136,7 @@ class StandingOrderController extends Controller
                 "authToken" => $authToken,
                 // "bankCode" => $req->backCode,
                 "destinationAccountId" => $req->toAccount,
-                "debitAccount" => $req->fromAccount,
+                "account_no" => $req->fromAccount,
                 "deviceIp" => $terminalId,
                 "effectiveDate" => $req->startDate,
                 "expiryDate" => $req->endDate,
@@ -152,6 +152,7 @@ class StandingOrderController extends Controller
                 "customer_no" => $customerNumber,
                 "user_alias" => $userAlias,
                 "user_mandate" => $userMandate,
+                "beneficiaryName" => $req->toAccountName,
                 "documentRef" => strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 2) . time()),
             ];
 
@@ -162,6 +163,9 @@ class StandingOrderController extends Controller
         try {
             $response = Http::post(env('CIB_API_BASE_URL') . "standing-order-gone-for-pending", $data);
             // return $response;
+            // return response()->json([
+            //     'Api_response' => $response
+            // ]);
             $result = new ApiBaseResponse();
 
             return $result->api_response($response);
