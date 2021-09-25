@@ -112,6 +112,99 @@ function from_account() {
     });
 }
 
+function korporReversal(data) {
+    $("#centermodal").modal("show");
+    $("#transfer_pin").on("click", () => {
+        let userPin = $("#user_pin").val();
+        if (userPin.length !== 4) {
+            toaster("invalid pin", "warning");
+            $("#user_pin").val("");
+            userPin = "";
+            return false;
+        }
+        let korporData = new Object();
+        korporData.pinCode = userPin;
+        korporData.referenceNo = data.REMITTANCE_REF;
+        korporData.beneficiaryMobileNo = data.BENEF_TEL;
+        reverseKorpor("reverse-korpor", korporData);
+        $("#user_pin").val("");
+        userPin = "";
+    });
+}
+function reverseKorpor(url, data) {
+    $.ajax({
+        type: "POST",
+        url: url,
+        datatype: "application/json",
+        data: data,
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            if (response.responseCode === "000") {
+                toaster(response.message, "success");
+                // window.ref;
+            } else {
+                toaster(response.message, "error");
+            }
+        },
+    });
+}
+function getKorporHistory(url, fromAccountNo, target) {
+    $.ajax({
+        type: "POST",
+        url: url,
+        datatype: "application/json",
+        data: {
+            accountNo: fromAccountNo,
+        },
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            if (response.data.length > 0) {
+                let data = response.data;
+                $(`${target}`).empty();
+                let extracolumn;
+                if (!target.includes("reversal")) {
+                    let badgeColor;
+                    let badgeText;
+                    if (target.includes("reversed")) {
+                        badgeColor = "danger";
+                        badgeText = "Cancelled";
+                    } else if (target.includes("completed")) {
+                        badgeColor = "success";
+                        badgeText = "Completed";
+                    } else {
+                        badgeColor = "warning";
+                        badgeText = "Pending";
+                    }
+                    extracolumn = `<td> <strong><span class="badge badge-${badgeColor}">&nbsp;${badgeText}&nbsp;</span></strong> </td>`;
+                }
+                $.each(data, function (index) {
+                    if (target.includes("reversal")) {
+                        extracolumn = `<td> <button class="badge badge-danger" id="${data[index].REMITTANCE_REF}" korporData="${data[index].BENEF_TEL}~${data[index].REMITTANCE_REF}"> &nbsp;Reverse&nbsp;</button> </td>`;
+                    }
+                    $(`${target}`).append(
+                        `<tr><td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
+                        <td> <b> ${data[index].BENEF_NAME}  </b>  </td>
+                        <td> <b> ${data[index].BENEF_TEL}  </b>  </td>
+                        <td> <b> ${data[index].BENEF_ADDRESS1}  </b>  </td>
+                        <td> <b> ${formatToCurrency(
+                            parseFloat(data[index].REMITTANCE_AMOUNT)
+                        )}</b></td>${extracolumn}</tr>`
+                    );
+                    if (target.includes("reversal")) {
+                        $(`#${data[index].REMITTANCE_REF}`).on("click", () => {
+                            korporReversal(data[index]);
+                        });
+                    }
+                });
+            }
+        },
+    });
+}
+
 $(document).ready(function () {
     $("#transaction_summary").hide();
     $("#spinner").hide();
@@ -471,268 +564,52 @@ $(document).ready(function () {
     }
 
     //button to submit for list of redeemed/completed transactions
-    $("#submit_account_no_redeemed").click(function () {
-        let from_account = $(".redeemed").val();
-
-        //validate if account has been selected...
-        if (from_account == "") {
-            toaster(
-                "Select an account to show list of redeemed transactions",
-                "error",
-                20000
-            );
-            return false;
-        }
-
-        let from_account_info = from_account.split("~");
-        let from_account_value = from_account_info[2].trim();
-        console.log(from_account_value);
-
-        $.ajax({
-            type: "POST",
-            url: "redeemed-korpor",
-            datatype: "application/json",
-            data: {
-                accountNo: from_account_value,
-            },
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-            success: function (response) {
-                console.log(response);
-
-                if (response.data.length > 0) {
-                    toaster(response.message, "success", 2000);
-                    let data = response.data;
-
-                    let unredeemed_cardless_list = response.data;
-                    console.log(unredeemed_cardless_list);
-                    $.each(data, function (index) {
-                        $(".redeemed_korpor_list_display").append(
-                            `<tr>
-
-                                                        <td> <b> ${
-                                                            data[index]
-                                                                .REMITTANCE_REF
-                                                        } </b>  </td>
-                                                        <td> <b> ${
-                                                            data[index]
-                                                                .BENEF_NAME
-                                                        }  </b>  </td>
-                                                        <td> <b> ${
-                                                            data[index]
-                                                                .BENEF_TEL
-                                                        }  </b>  </td>
-                                                        <td> <b> ${
-                                                            data[index]
-                                                                .BENEF_ADDRESS1
-                                                        }  </b>  </td>
-                                                        <td> <b> ${formatToCurrency(
-                                                            parseFloat(
-                                                                data[index]
-                                                                    .REMITTANCE_AMOUNT
-                                                            )
-                                                        )}</b></td>
-                                                        <td> <strong><span class="badge badge-success">&nbsp;Completed&nbsp;</span></strong> </td>
-                                                        </tr>`
-                        );
-                    });
-                }
-            },
-        });
+    $("#submit_account_no_redeemed").on("click", function () {
+        let fromAccount = $(".redeemed").val();
+        handleKorporHistory(
+            "redeemed-korpor",
+            fromAccount,
+            ".redeemed_korpor_list_display"
+        );
     });
 
     //button to submit account unredeemed request
-    $("#submit_account_no_unredeemed").click(function () {
-        let from_account = $(".unredeemed").val();
+    $("#submit_account_no_unredeemed").on("click", function () {
+        let fromAccount = $("#unredeemed_history_account").val();
+        handleKorporHistory(
+            "unredeem-korpor-request",
+            fromAccount,
+            "#unredeemed_korpor_history_display"
+        );
+    });
 
-        //validate if account has been selected...
-        if (from_account == "") {
+    $("#submit_unredeemed_account").on("click", () => {
+        let fromAccount = $("#unredeemed_account").val();
+        handleKorporHistory(
+            "unredeem-korpor-request",
+            fromAccount,
+            "#korpor_reversal_list_display"
+        );
+    });
+    $("#submit_account_no_reversed").on("click", function () {
+        let fromAccount = $(".reversed").val();
+        handleKorporHistory(
+            "reversed-korpor-request",
+            fromAccount,
+            ".reversed_korpor_list_display"
+        );
+    });
+    function handleKorporHistory(url, fromAccount, target) {
+        if (!fromAccount) {
             toaster(
                 "Select an account to show list of unredeemed transactions",
-                "error",
-                20000
+                "warning"
             );
             return false;
         }
-        let from_account_info = from_account.split("~");
-        let from_account_value = from_account_info[2].trim();
-        console.log(from_account_value);
-
-        $.ajax({
-            type: "POST",
-            url: "unredeem-korpor-request",
-            datatype: "application/json",
-            data: {
-                accountNo: from_account_value,
-            },
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-            success: function (response) {
-                console.log(response);
-
-                if (response.data.length > 0) {
-                    let data = response.data;
-
-                    let unredeemed_korpor_list = response.data;
-                    console.log(unredeemed_korpor_list);
-                    $.each(data, function (index) {
-                        console.log(data[index]);
-                        $(".unredeem_korpor_list_display").append(
-                            `<tr>
-
-                                                    <td> <b> ${
-                                                        data[index]
-                                                            .REMITTANCE_REF
-                                                    } </b>  </td>
-                                                    <td> <b> ${
-                                                        data[index].BENEF_NAME
-                                                    }  </b>  </td>
-                                                    <td> <b> ${
-                                                        data[index].BENEF_TEL
-                                                    }  </b>  </td>
-                                                    <td> <b> ${
-                                                        data[index]
-                                                            .BENEF_ADDRESS1
-                                                    }  </b>  </td>
-                                                    <td> <b> ${formatToCurrency(
-                                                        parseFloat(
-                                                            data[index]
-                                                                .REMITTANCE_AMOUNT
-                                                        )
-                                                    )}</b></td>
-                                                    <td> <strong><span class="badge badge-warning">&nbsp;Pending&nbsp;</span></strong> </td>
-                                                    <td> <button class="badge badge-danger" id="${
-                                                        data[index]
-                                                            .REMITTANCE_REF
-                                                    }" korporData="${
-                                data[index].BENEF_TEL
-                            }~${
-                                data[index].REMITTANCE_REF
-                            }"> &nbsp;Reverse&nbsp;</button> </td>
-
-                                                    </tr>`
-                        );
-                        $(`#${data[index].REMITTANCE_REF}`).on("click", () => {
-                            console.log(data[index]);
-                            korporReversal(data[index]);
-                        });
-                    });
-                }
-            },
-        });
-    });
-
-    function korporReversal(data) {
-        $("#centermodal").modal("show");
-        // kor;
-        $("#transfer_pin").on("click", () => {
-            let userPin = $("#user_pin").val();
-            if (userPin.length !== 4) {
-                toaster("invalid pin", "warning");
-                $("#user_pin").val("");
-                userPin = "";
-                console.log(userPin);
-                return false;
-            }
-            let korporData = new Object();
-            korporData.pinCode = userPin;
-            korporData.referenceNo = data.REMITTANCE_REF;
-            korporData.beneficiaryMobileNo = data.BENEF_TEL;
-            reverseKorpor("reverse-korpor", korporData);
-            $("#user_pin").val("");
-            userPin = "";
-        });
+        let fromAccountNo = fromAccount.split("~")[2].trim("");
+        getKorporHistory(url, fromAccountNo, target);
     }
-    function reverseKorpor(url, data) {
-        // console.log("here");
-        $.ajax({
-            type: "POST",
-            url: url,
-            datatype: "application/json",
-            data: data,
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-            success: function (response) {
-                console.log(response);
-                if (response.code === "000") {
-                    console.log(a);
-                    toaster(response.message, "success");
-                    // window.ref;
-                } else {
-                    console.log(response.code);
-                    console.log(response);
-                }
-            },
-        });
-    }
-    //button to submit account no for reversed korpor transaction.
-    $("#submit_account_no_reversed").click(function () {
-        let from_account = $(".reversed").val();
-
-        //validate if account has been selected...
-        if (from_account == "") {
-            toaster(
-                "Select an account to show list of reversed transactions",
-                "error",
-                20000
-            );
-            return false;
-        }
-        let from_account_info = from_account.split("~");
-        let from_account_value = from_account_info[2].trim();
-        console.log(from_account_value);
-
-        $.ajax({
-            type: "POST",
-            url: "reversed-korpor-request",
-            datatype: "application/json",
-            data: {
-                accountNo: from_account_value,
-            },
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-            success: function (response) {
-                console.log(response);
-                toaster(response.message, "error", 20000);
-
-                if (response.data.length > 0) {
-                    let data = response.data;
-
-                    let unredeemed_korpor_list = response.data;
-                    console.log(unredeemed_korpor_list);
-                    $.each(data, function (index) {
-                        $(".reversed_korpor_list_display").append(
-                            `<tr>
-
-                                                    <td> <b> ${
-                                                        data[index]
-                                                            .REMITTANCE_REF
-                                                    } </b>  </td>
-                                                    <td> <b> ${
-                                                        data[index].BENEF_NAME
-                                                    }  </b>  </td>
-                                                    <td> <b> ${
-                                                        data[index]
-                                                            .BENEF_ADDRESS1
-                                                    }  </b>  </td>
-                                                    <td> <b> ${formatToCurrency(
-                                                        parseFloat(
-                                                            data[index]
-                                                                .REMITTANCE_AMOUNT
-                                                        )
-                                                    )}</b></td>
-                                                    <td> <h5><span class="badge badge-danger">&nbsp;Cancelled&nbsp;</span></h5> </td>
-                                                    </tr>`
-                        );
-                    });
-                }
-            },
-        });
-    });
 
     //button to submit korpor payment transaction for others
     $("#confirm_button").click(function () {
@@ -1337,7 +1214,7 @@ $(document).ready(function () {
                         // alert('i have been clicked');
                         let from_account = $(".from_account").val();
                         let transfer_amount = $("#amount_self").val();
-                        console.log(transfer_amount);
+                        // console.log(transfer_amount);
                         // alert('');
                         let receiver_name = $("#receiver_name_self").val();
                         let receiver_phoneNum = $(
@@ -1404,8 +1281,7 @@ $(document).ready(function () {
                 });
             }
         } else {
-            toaster("Accept Terms & Conditions to continue", "error", 6000);
-            console.log("UNCHECKED");
+            toaster("Accept Terms & Conditions to continue", "error");
             return false;
         }
     });

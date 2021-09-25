@@ -95,12 +95,12 @@
                     Send E-Korpor
                 </a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a href="#reverse_korpor_page" data-toggle="tab" aria-expanded="false"
                     class="nav-link reverse_korpor_tab">
                     Reverse E-Korpor
                 </a>
-            </li> --}}
+            </li>
             <li class="nav-item">
                 <a href="#redeem_korpor_page" data-toggle="tab" aria-expanded="false"
                     class="nav-link redeem_korpor_tab">
@@ -577,7 +577,8 @@
                                                                         <select
                                                                             class="form-control col-md-12 from_account"
                                                                             id="account_of_transfer" required>
-                                                                            <option value="">Select Account
+                                                                            <option disabled selected value="">Select
+                                                                                Account
                                                                             </option>
 
 
@@ -1019,166 +1020,63 @@
             </div>
 
             <div class="tab-pane" id="reverse_korpor_page">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6  m-2" id="request_form_div"
-                                    style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                    <br><br><br>
+                <div class="col-md-12">
+                    <div class="cards_table row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id=""
+                            style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                            <div class="p-3 mt-4 mt-lg-0 rounded">
+                                <br>
 
-                                    <form action="#" class="select_beneficiary" id="reverse_korpor_payment_details_form"
-                                        autocomplete="off" aria-autocomplete="none">
-                                        @csrf
-
-                                        <div class="col-md-12">
-                                            {{-- <br><br><br> --}}
-                                            <div class="row">
-                                                {{-- <div class="col-md-1"></div> --}}
-
-                                                <div class="col-md-12">
-
-
-                                                    <div class="form-group row account_of_transfer_reverse">
-                                                        <b class="col-md-12 text-primary">Account from
-                                                            which
-                                                            e-korpor transfer was made &nbsp;
-                                                            <span class="text-danger">*</span> </b>
-
-
-                                                        <select class="form-control col-md-12 from_account"
-                                                            id="account_of_transfer_reverse" required>
-                                                            <option value="">Select Account
-                                                            </option>
-
-
-                                                        </select>
-                                                    </div>
-                                                    <hr class="account_of_transfer_reverse">
-                                                    <br class="account_of_transfer_reverse">
-
-
-                                                    <div class="form-group row">
-
-                                                        <b class="col-md-5 text-primary"> Reference Number &nbsp; <span
-                                                                class="text-danger">*</span></b>
-
-
-                                                        <input type="text" class="form-control col-md-7"
-                                                            id="reference_no" placeholder="0098348789"
-                                                            autocomplete="off" required>
-                                                        <br>
-
-                                                    </div>
-
-                                                    <br>
-                                                    <div class="form-group row">
-
-                                                        <b class="col-md-5 text-primary"> Receiver Phone Number:
-                                                            &nbsp; <span class="text-danger">*</span></b>
-
-                                                        <input type="text" class="form-control col-md-7"
-                                                            id="receiver_phoneNo_reverse"
-                                                            placeholder="enter phone number" autocomplete="off"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                                            required>
-                                                        <br>
-
-                                                    </div>
-                                                    <br>
-                                                    <div class="form-group row personal_pin">
-
-                                                        <b class="col-md-5 text-primary">Enter Pin &nbsp; <span
-                                                                class="text-danger">*</span></b>
-
-
-                                                        <input type="password" class="form-control col-md-7"
-                                                            id="reference_pin" placeholder="Enter Pin"
-                                                            name="reverse_pin" autocomplete="off" required>
-                                                        <br>
-
-                                                    </div>
-
-
-                                                    <br>
-                                                    {{-- <div class="form-group row">
-
-                                                            <b class="col-md-5 text-primary" for="pin">
-                                                                Enter Your Pin
-                                                                <span class="text-danger">*</span></b>
-                                                            <input type="password" class="form-control col-md-7"
-                                                                id="user_pin_reverse"
-                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-
-
-                                                        </div> --}}
-                                                    <br><br><br>
-                                                    <div class="form-group text-right ">
-                                                        <button type="button"
-                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
-                                                            id="reverse_button">
-                                                            <span id="reverse-text">Reverse</span>
-                                                            <span class="spinner-border spinner-border-sm mr-1"
-                                                                id="spinner-reverse" role="status"
-                                                                aria-hidden="true"></span>
-                                                            <span id="spinner-text-reverse">Loading...</span>
-                                                        </button>
-                                                    </div>
-
-
-                                                </div>
-
-                                                {{-- <div class="col-md-1"></div> --}}
-                                            </div>
-
-                                        </div>
-                                    </form>
-
-                                </div>
-                                <div class="col-md-5">
-                                    <br>
-                                    <div class="card">
+                                <div class="card-box">
+                                    <b class="text-primary">Unredeemed</b>
+                                    <div class="card mb-2 bg-info">
                                         <div class="card-body">
-                                            <div id="carouselExampleControls" class="carousel slide"
-                                                data-ride="carousel" style="min-height: 120px; max-height: auto;">
-                                                <div class="carousel-inner" role="listbox">
-                                                    <div class="carousel-item active">
-                                                        <img class="d-block img-fluid" style="min-height: 100%"
-                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_5.jpeg') }}"
-                                                            alt="First slide">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img class="d-block img-fluid" style="height: auto;"
-                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_6.jpeg') }}"
-                                                            alt="Second slide">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img class="d-block img-fluid" style="min-height"
-                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
-                                                            alt="Third slide">
-                                                    </div>
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <form class="form-inline">
+                                                        <div class="form-group">
+                                                            <select class="form-control unredeemed"
+                                                                id="unredeemed_account" required>
+                                                                <option disabled selected value="">Select Account Number
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <a class="carousel-control-prev" href="#carouselExampleControls"
-                                                    role="button" data-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#carouselExampleControls"
-                                                    role="button" data-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="sr-only">Next</span>
-                                                </a>
+                                                <div class="col-sm-4">
+                                                    <div class="text-sm-right">
+                                                        <button type="button"
+                                                            class="btn btn-primary waves-effect waves-light"
+                                                            id="submit_unredeemed_account"><i
+                                                                class="mdi mdi-plus-circle mr-1"></i>Submit</button>
+                                                    </div>
+                                                </div><!-- end col-->
                                             </div>
+                                        </div> <!-- end card-body-->
+                                    </div> <!-- end card-->
 
-
-                                        </div>
+                                    <div class="table-responsive table-bordered accounts_display_area">
+                                        <table id="" class="table table-striped mb-0 ">
+                                            <thead>
+                                                <tr class="bg-primary text-white ">
+                                                    <td> <b> Reference Number </b> </td>
+                                                    <td> <b> Receiver Name </b> </td>
+                                                    <td> <b> Receiver Telephone </b> </td>
+                                                    <td> <b> Receiver Address </b> </td>
+                                                    <td> <b> Amount </b> </td>
+                                                    <td> <b> Reverse </b></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="background-color:white;" id="korpor_reversal_list_display">
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="tab-pane" id="redeem_korpor_page">
@@ -1458,10 +1356,10 @@
                                                         <div class="col-sm-8">
                                                             <form class="form-inline">
                                                                 <div class="form-group">
-                                                                    <select class="form-control unredeemed" required>
-                                                                        <option value="">Select Account Number</option>
-
-
+                                                                    <select class="form-control unredeemed"
+                                                                        id="unredeemed_history_account" required>
+                                                                        <option disabled selected value="">Select
+                                                                            Account Number</option>
                                                                     </select>
                                                                 </div>
                                                             </form>
@@ -1488,13 +1386,10 @@
                                                             <td> <b> Receiver Address </b> </td>
                                                             <td> <b> Amount </b> </td>
                                                             <td> <b>Status</b></td>
-                                                            <td> <b>More</b></td>
                                                         </tr>
                                                     </thead>
                                                     <tbody style="background-color:white;"
-                                                        class="unredeem_korpor_list_display">
-
-
+                                                        id="unredeemed_korpor_history_display">
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -1581,8 +1476,9 @@
                                                     <thead>
                                                         <tr class="bg-primary text-white ">
                                                             <td> <b> Reference Number </b> </td>
-                                                            <td> <b> Receiver's Name </b> </td>
-                                                            <td> <b> Receiver's Address </b> </td>
+                                                            <td> <b> Receiver Name </b> </td>
+                                                            <td> <b> Receiver Telephone </b> </td>
+                                                            <td> <b> Receiver Address </b> </td>
                                                             <td> <b> Amount </b> </td>
                                                             <td> <b>Status</b></td>
                                                         </tr>
