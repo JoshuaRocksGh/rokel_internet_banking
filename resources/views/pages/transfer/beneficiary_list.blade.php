@@ -167,9 +167,9 @@
                                             <div class="spinner-border text-primary avatar-lg" role="status"></div>
                                         </div>
                                         <br><br><br><br>
-                                        <div class="text-center" id="beneficiary_list_retry_btn">
+                                        {{-- <div class="text-center" id="beneficiary_list_retry_btn">
                                             <button class="btn btn-lg btn-secondary">Retry</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
 
@@ -291,7 +291,7 @@
 
                                     `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${ data[index].BENEF_TYPE}&bene_id=${ data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
 
-                                    &emsp;&emsp; <a class='delete_beneficiary_data' href='delete-beneficiary?bene_id=${ data[index].BENE_ID}'><span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-value="${ data[index].BENE_ID}"></span></a>`,
+                                    &emsp;&emsp; <a onclick="doSomething()"  data-value="${ data[index].BENE_ID}"><span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-value="${ data[index].BENE_ID}"></span></a>`,
 
 
 
@@ -336,10 +336,46 @@
                 })
             }
 
+            function confirm_deletion() {
+                {{-- alert(); --}}
+
+                var bene_ID = $(".delete_beneficiary_data").attr("data-value")
+                alert(bene_ID);
+            }
+
+            function delete_beneficiary() {
+                {{-- alert("delete function called"); --}}
+                Swal.fire({
+                    title: 'Do you want to Delete Beneficiary?',
+                    showDenyButton: false,
+                    showCancelButton: true,
+                    confirmButtonText: `Proceed`,
+                    confirmButtonColor: '#18c40d',
+                    cancelButtonColor: '#df1919',
+                    {{-- denyButtonText: `Don't save`, --}}
+                }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        {{-- var bene_ID = $(".delete_beneficiary_data").attr("data-value") --}}
+                        confirm_deletion()
+
+                    } else if (result.isDenied) {
+                        Swal.fire('Failed to delete beneficiary', '', 'info')
+                    }
+                })
+            }
+
+            function doSomething() {
+                {{-- alert("Click event is triggered on the link."); --}}
+                var bene_ID = $(".delete_beneficiary_data").attr("data-value")
+                delete_beneficiary();
+            }
+
 
             $(document).ready(function() {
 
                 $('#beneficiary_list_loader').show();
+                $('#beneficiary_table').hide();
                 setTimeout(function() {
                     beneficiary_list();
                 }, 2000);
@@ -359,7 +395,7 @@
                     alert('hhh')
                 })
 
-                $("#confirm_delete").click(function(e) {
+                $("#delete_beneficiary_data").click(function(e) {
                     e.preventDefault();
                     var bene_id = $(".delete_beneficiary_data").attr("data-value");
                     console.log(bene_id);
@@ -385,6 +421,14 @@
 
 
                 })
+
+                {{-- $("#delete a").click(function() {
+                    alert("delete");
+                }) --}}
+
+                $("button").click(function() {
+                    $("a")[0].click();
+                });
             })
         </script>
     @endsection

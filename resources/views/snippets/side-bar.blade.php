@@ -361,7 +361,7 @@
                     </div>
                 </li> --}}
 
-                <li><a>
+                <li><a href="#sidebarSetting" data-toggle="collapse">
                         <i class="mdi mdi-cog-outline"></i>
                         <span> Settings </span>
                         <span class="menu-arrow"></span>
