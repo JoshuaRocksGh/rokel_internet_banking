@@ -4,69 +4,58 @@ function get_currency() {
         url: "get-currency-list-api",
         datatype: "application/json",
         success: function (response) {
-            // {{-- console.log(response.data); --}}
             let data = response.data;
-            $.each(data, function (index) {
-                $("#currency").append(
-                    $("<option>", {
-                        value:
-                            data[index].isoCode + "~" + data[index].description,
-                    }).text(data[index].isoCode + "~" + data[index].description)
-                );
+            let selectize = $("#currency").selectize()[0].selectize;
+            selectize.clearOptions();
+            $.each(data, (i) => {
+                let { isoCode, description } = data[i];
+                selectize.addOption({ value: isoCode, text: description });
             });
+            selectize.setValue(data[0].isoCode);
         },
     });
 }
 
-// function bank_list() {
-//     $.ajax({
-//         type: "GET",
-//         url: "get-bank-list-api",
-//         datatype: "application/json",
-//         success: function (response) {
-//             console.log(response.data);
-//             let data = response.data;
-//             $.each(data, function (index) {
-//                 $("#bank_name").append(
-//                     $("<option>", {
-//                         value:
-//                             data[index].bankCode +
-//                             "~" +
-//                             data[index].bankDescription,
-//                     }).text(data[index].bankDescription)
-//                 );
-//             });
-//             console.log("done");
-//             $("#bank_name").selectpicker();
-//         },
-//         error: function (xhr, status, error) {
-//             console.log(error);
-//             console.log(status);
-//         },
-//         timeout: 20000,
-//     });
-// }
+function getNationalities() {
+    $.ajax({
+        type: "GET",
+        url: "get-lovs-list-api",
+        datatype: "application/json",
+        success: function (response) {
+            let data = response.data;
+            console.log(data);
+            // let selectize = $("#currency").selectize()[0].selectize;
+            // selectize.clearOptions();
+            // $.each(data, (i) => {
+            //     let { isoCode, description } = data[i];
+            //     selectize.addOption({ value: isoCode, text: description });
+            // });
+            // selectize.setValue(data[0].isoCode);
+        },
+    });
+}
 
-// function bank_list() {
-//     $.ajax({
-//         type: 'GET',
-//         url:  'get-bank-list-api',
-//         datatype: "application/json",
-//         success: function(response) {
-//             console.log(response.data);
-//             let data = response.data
-//             $.each(data, function(index) {
+function getBanksInCountry(countryCode) {
+    $.ajax({
+        type: "GET",
+        url: "get-international-bank-list-api",
+        data: {
+            countryCode,
+        },
+        datatype: "application/json",
+        success: (response) => {
+            let data = response.data;
+            let selectize = $("#bank_name").selectize()[0].selectize;
+            selectize.clearOptions();
+            $.each(data, (i) => {
+                let { BICODE, BANK_DESC } = data[i];
+                selectize.addOption({ value: BICODE, text: BANK_DESC });
+            });
+            selectize.setValue(data[0].BICODE);
+        },
+    });
+}
 
-//                 $('#bank_name').append($('<option>', {
-//                     value: data[index].bankCode + '~' + data[index].bankDescription
-//                 }).text(data[index].bankDescription));
-
-//             });
-
-//         },
-
-//     })
-// };
 function getCountries() {
     $.ajax({
         type: "GET",
@@ -75,98 +64,82 @@ function getCountries() {
         success: (response) => {
             let data = response.data;
             let selectize = $("#bank_country").selectize()[0].selectize;
+            let countryOfResidence = $("#country_of_residence").selectize()[0]
+                .selectize;
+            selectize.clearOptions();
+            countryOfResidence.clearOptions();
             $.each(data, (i) => {
                 let { codeType, description } = data[i];
+                countryOfResidence.addOption({
+                    value: codeType,
+                    text: description,
+                });
                 selectize.addOption({ value: codeType, text: description });
             });
+            countryOfResidence.setValue(data[0].codeType);
+            selectize.setValue(data[0].codeType);
         },
-    });
-}
-function bank_branches_list() {
-    $.ajax({
-        type: "GET",
-        url: "get-bank-branches-list-api",
-        datatype: "application/json",
-        success: function (response) {
-            console.log(response.data);
-            let data = response.data;
-            $.each(data, function (index) {
-                $("#bank_branch").append(
-                    $("<option>", {
-                        value:
-                            data[index].branchCode +
-                            "~" +
-                            data[index].branchDescription,
-                    }).text(data[index].branchDescription)
-                );
-            });
-        },
-        timeout: 20000,
     });
 }
 
 $(document).ready(function () {
-    $("#bank_country").selectize({
+    $("selectize").selectize({
         sortField: "text",
     });
 
     get_currency();
     getCountries();
-    bank_list();
-    bank_branches_list();
-    // $(".selectpicker").selectpicker();
+    let bankDetails = new Object();
+    let accountDetails = new Object();
+    let beneDetails = new Object();
 
     $("#rootwizard").click(function (e) {
         e.preventDefault();
         return false;
     });
-    $("#bank_name").selectpicker();
+
+    $("#bank_country").on("change", () => {
+        let selectize = $("#bank_country").selectize()[0].selectize;
+        bankDetails.countryCode = selectize.getValue();
+        if (bankDetails.countryCode) {
+            getBanksInCountry(bankDetails.countryCode);
+        }
+    });
+
+    $("#bank_name").on("change", () => {
+        let selectize = $("#bank_name").selectize()[0].selectize;
+        bankDetails.bankCode = selectize.getValue();
+        if (!bankDetails.bankCode) {
+            $("#swift_code").val("");
+            return false;
+        }
+        $("#swift_code").val(bankDetails.bankCode);
+    });
+
     $("#details_tab").addClass("active show");
     $("#international_bank_account_details").hide();
     $("#international_bank_beneficiary_details").hide();
     $("#international_bank_summary").hide();
 
-    $("#bank_details_next_btn").click(function (e) {
+    $("#bank_details_next_btn").on("click", (e) => {
         e.preventDefault();
 
-        var bank_country = $("#bank_country").val();
-        var bank_city = $("#bank_city").val();
-        var bank_branch = $("#bank_branch").val();
-        var bank_name = $("#bank_name").val();
-        var bank_address = $("#bank_address").val();
-        var swift_code = $("#swift_code").val();
-
-        if (
-            bank_country == "" ||
-            bank_country == undefined ||
-            bank_city == "" ||
-            bank_city == undefined ||
-            bank_branch == "" ||
-            bank_branch == undefined ||
-            bank_name == "" ||
-            bank_name == undefined ||
-            bank_address == "" ||
-            bank_address == undefined ||
-            swift_code == "" ||
-            swift_code == undefined
-        ) {
-            toaster("Fields must not be empty", "error", 6000);
-
+        if (!bankDetails.bankCode || !bankDetails.countryCode) {
+            toaster("Fields must not be empty", "warning");
             return false;
         } else {
-            $("#details_tab").addClass("active show");
+            $("#details_tab").removeClass("active show");
             $("#account_tab").addClass("active show");
-            $("#first").addClass("active show");
+            $("#first").removeClass("active show");
             $("#second").addClass("active show");
-
             $("#international_bank_details").hide();
-            $("#international_bank_account_details").toggle("500");
+            $("#international_bank_account_details").show(500);
         }
     });
 
     // Return to Beneficiary Bank Details
 
-    $("#account_deatils_back_btn").click(function (e) {
+    $("#account_details_back_btn").on("click", (e) => {
         e.preventDefault();
 
         $("#account_tab").removeClass("active show");
@@ -176,59 +149,46 @@ $(document).ready(function () {
         $("#first").addClass("active");
 
         $("#international_bank_account_details").hide();
-        $("#international_bank_details").toggle("500");
+        $("#international_bank_details").show(500);
     });
 
-    $("#account_details_next_btn").click(function (e) {
+    $("#account_details_next_btn").on("click", (e) => {
         e.preventDefault();
-
-        var acc_number = $("#acc_number").val();
-        var acc_name = $("#acc_name").val();
-        var currency = $("#currency").val();
-        var firstname = $("#firstname").val();
-        var lastname = $("#lastname").val();
-        var middlename = $("#middlename").val();
+        accountDetails.accountNumber = $("#acc_number").val();
+        accountDetails.accountName = $("#acc_name").val();
+        accountDetails.currency = $("#currency")[0].selectize.getValue();
+        accountDetails.firstName = $("#firstname").val();
+        accountDetails.lastName = $("#lastname").val();
+        accountDetails.middleName = $("#middlename").val();
+        let { accountNumber, accountName, currency, firstName, lastName } =
+            accountDetails;
 
         if (
-            acc_number == "" ||
-            acc_number == undefined ||
-            acc_name == "" ||
-            acc_name == undefined ||
-            currency == "" ||
-            currency == undefined ||
-            firstname == "" ||
-            firstname == undefined ||
-            lastname == "" ||
-            lastname == undefined ||
-            middlename == "" ||
-            middlename == undefined
+            !accountNumber ||
+            !accountName ||
+            !currency ||
+            !firstName ||
+            !lastName
         ) {
-            toaster("Fields must not be empty", "error", 6000);
-
+            toaster("Fields must not be empty", "warning");
             return false;
-        } else {
-            $("#account_tab").addClass("active show");
-            $("#beneficiary_tab").addClass("active show");
-
-            $("#second").addClass("active show");
-            $("#third").addClass("active show");
-
-            $("#international_bank_account_details").hide();
-            $("#international_bank_beneficiary_details").toggle("500");
         }
+        $("#account_tab").removeClass("active show");
+        $("#beneficiary_tab").addClass("active show");
+        $("#second").removeClass("active show");
+        $("#third").addClass("active show");
+        $("#international_bank_account_details").hide();
+        $("#international_bank_beneficiary_details").show(500);
     });
 
     $("#beneficiary_details_back_btn").click(function (e) {
         e.preventDefault();
-
         $("#beneficiary_tab").removeClass("active show");
         $("#account_tab").addClass("active show");
-
         $("#third").removeClass("active show");
         $("#second").addClass("active show");
-
         $("#international_bank_beneficiary_details").hide();
-        $("#international_bank_account_details").toggle("500");
+        $("#international_bank_account_details").show(500);
     });
 
     $("#beneficiary_details_submit_btn").click(function (e) {
@@ -380,7 +340,6 @@ $(document).ready(function () {
         var send_email = $(
             "#transfer_email input[type='checkbox']:checked"
         ).val();
-        // {{-- console.log(send_email); --}}
         if (send_email == "on") {
             var transfer_email = "Y";
         } else {
@@ -390,28 +349,6 @@ $(document).ready(function () {
         function redirect_page() {
             window.location.href = "{{ url('beneficiary-list') }}";
         }
-
-        console.log(bank_country);
-        console.log(bank_city);
-        console.log(bank_branch);
-        console.log(bank_name);
-        console.log(bank_address);
-        console.log(swift_code);
-        console.log(acc_number);
-        console.log(acc_name);
-        console.log(currency);
-        console.log(firstname);
-        console.log(lastname);
-        console.log(middlename);
-        console.log(beneficiary_name);
-        console.log(beneficiary_email);
-        console.log(nationality);
-        console.log(country_of_residence);
-        console.log(city);
-        console.log(address);
-        console.log(telephone);
-        console.log(send_email);
-        // {{-- console.log(bank_country); --}}
 
         $.ajax({
             type: "POST",

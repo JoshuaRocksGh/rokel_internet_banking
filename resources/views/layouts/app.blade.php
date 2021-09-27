@@ -3,13 +3,12 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>BANKING</title>
+    <title>RC BANKING</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
+    <meta content="Internet Banking Application" name="Internet Banking Portal for Rokel Commercial Bank." />
+    <meta content="Banking Application" name="Union Systems Global" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -27,10 +26,16 @@
             border-color: #0561ad;
 
         }
-
     </style>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        $.ajaxSetup({
+   timeout: 3000,
+   retryAfter: 5000
+});
+    </script>
     @include('snippets.style')
+    @include('snippets.script')
 
 
 </head>
@@ -40,7 +45,6 @@
 
     @yield('content')
 
-    @include('snippets.script')
 
     @yield('scripts')
 </body>

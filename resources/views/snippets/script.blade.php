@@ -1,7 +1,16 @@
 <!-- Third Party js-->
 {{-- <script src="{{ asset('land_asset/js/jquery.min.js') }}"></script> --}}
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script> --}}
+
+
+<script type="text/javascript">
+    if(typeof jQuery == 'undefined'){
+        var oScriptElem = document.createElement("script");
+        oScriptElem.type = "text/javascript";
+        oScriptElem.src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js";
+        document.head.insertBefore(oScriptElem, document.head.getElementsByTagName("script")[0])
+    console.log("done")
+    }
+</script>
 
 <!-- Vendor js -->
 <script src="{{ asset('assets/js/vendor.min.js') }}" defer></script>

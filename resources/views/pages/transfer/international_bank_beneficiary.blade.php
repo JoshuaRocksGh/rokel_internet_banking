@@ -157,7 +157,8 @@
                                                                             class="text-primary">Bank Country &nbsp;
                                                                             <span class="text-danger">*</span></label>
                                                                         {{-- <select class="custom-select" id="bank_country" --}}
-                                                                        <select id="bank_country" required>
+                                                                        <select class="selectize" id="bank_country"
+                                                                            required>
                                                                             <option selected disabled>Bank Country
                                                                             </option>
                                                                         </select>
@@ -171,22 +172,22 @@
                                                                             &nbsp; <span
                                                                                 class="text-danger">*</span></label>
 
-                                                                        <select class="selectpicker"
+                                                                        <select class="selectize"
                                                                             data-live-search="true" id="bank_name"
                                                                             required>
                                                                             <option value="">Bank Name</option>
-                                                                            @foreach($banks as $key => $bank)
-                                                                            <option
+                                                                            {{-- @foreach($banks as $key => $bank) --}}
+                                                                            {{-- <option
                                                                                 value="{{ $bank['bankCode'] }}~{{ $bank['bankDescription'] }}">
-                                                                                {{ $bank['bankDescription']}}
-                                                                            </option>
-                                                                            @endforeach
+                                                                            {{ $bank['bankDescription']}}
+                                                                            </option> --}}
+                                                                            {{-- @endforeach --}}
 
                                                                         </select>
                                                                         {{-- <br><br> --}}
                                                                     </div>
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-6" style="display: none">
                                                                         <label for="form-group"
                                                                             class="text-primary">Bank City
                                                                             &nbsp; <span
@@ -201,7 +202,7 @@
 
                                                                     </div>
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-6" style="display: none">
                                                                         <label for="form-group"
                                                                             class="text-primary">Bank Branch
                                                                             &nbsp;<span
@@ -218,7 +219,7 @@
 
 
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-6" style="display: none">
                                                                         <label for="form-group"
                                                                             class="text-primary">Bank Address
                                                                             &nbsp;<span
@@ -254,8 +255,7 @@
 
                                                 <div class="tab-pane fade" id="second">
                                                     <form id="international_bank_account_details"
-                                                        class="form-horizontal" autocomplete="off"
-                                                        aria-autocomplete="off">
+                                                        class="form-horizontal">
                                                         <div class="row">
                                                             <div class="col-12">
                                                                 <b class="text-primary"> Beneficiary Account
@@ -291,9 +291,10 @@
                                                                             &nbsp;<span
                                                                                 class="text-danger">*</span></label>
 
-                                                                        <select class="custom-select" id="currency"
+                                                                        <select class="selectize" id="currency"
                                                                             name="currency" required>
-                                                                            <option value="">Currency</option>
+                                                                            <option disabled selected value="">Currency
+                                                                            </option>
                                                                             {{-- <option value="GHS">GHS</option> --}}
 
                                                                         </select>
@@ -323,8 +324,8 @@
                                                                     <div class="col-md-6">
                                                                         <label
                                                                             class="form-group text-primary">Middlename
-                                                                            &nbsp;<span
-                                                                                class="text-danger">*</span></label>
+                                                                            &nbsp;</label>
+                                                                        {{-- <span class="text-danger">*</span> --}}
                                                                         <input type="text" id="middlename"
                                                                             name="middlename" class="form-control"
                                                                             placeholder="Middlename" required>
@@ -339,7 +340,7 @@
                                                         <ul class="list-inline wizard mb-0">
                                                             <li class=" list-inline-item"><button
                                                                     class="btn btn-secondary btn-rounded waves-effect waves-light"
-                                                                    type="button" id="account_deatils_back_btn">
+                                                                    type="button" id="account_details_back_btn">
                                                                     &nbsp;<i class="mdi mdi-reply-all"></i> Back
                                                                     &nbsp;</button></li>
 
@@ -407,7 +408,7 @@
                                                                             of Residence &nbsp;<span
                                                                                 class="text-danger">*</span></label>
 
-                                                                        <select class="custom-select"
+                                                                        <select class="selectize"
                                                                             id="country_of_residence" name="residence"
                                                                             required>
                                                                             <option value="">Country of residence
@@ -418,7 +419,7 @@
                                                                         <br><br>
                                                                     </div>
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-6" style="display: none">
                                                                         {{-- <input type="text" id="surname3" name="surname3" class="form-control" required> --}}
                                                                         <label class="form-group text-primary">City
                                                                             &nbsp;<span
