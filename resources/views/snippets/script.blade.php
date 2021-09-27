@@ -8,7 +8,6 @@
         oScriptElem.type = "text/javascript";
         oScriptElem.src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js";
         document.head.insertBefore(oScriptElem, document.head.getElementsByTagName("script")[0])
-    console.log("done")
     }
 </script>
 
@@ -26,13 +25,20 @@
 </script> --}}
 {{-- <script src="{{ asset('assets/libs/bootstrap-select/js/bootstrap-select.min.js') }} ">
 </script> --}}
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous" defer>
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+</script>
+
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script> --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
 <!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}" defer></script>
+<script src="{{ asset('assets/js/functions/getAccounts.js') }}" defer></script>
 
 
 
@@ -106,5 +112,4 @@
             location.reload();
             }, 3000);
     }
-    console.log("abv")
 </script>

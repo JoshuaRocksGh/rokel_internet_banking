@@ -117,41 +117,24 @@ class FunctionsController extends Controller
 
     public function get_accounts()
     {
-        // return 'kjsdf';
-
-
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         $api_headers = session()->get('headers');
-
-        // return response()->json([
-        //     'responseCode' => '$result->responseCode',
-        //     'message' => '$result->message',
-        //     'data' => $api_headers
-        // ], 200);
-
-        // return $api_headers;
-
         $data = [
             "authToken" => $authToken,
             "userId"    => $userID
         ];
 
-        $base_response = new BaseResponse();
-
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
-
         $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "account/getAccounts", $data);
-        // $response = Http::post(env('API_BASE_URL') . "account/getAccounts", $data);
+        if ($response->ok()) { // API response status code is 200
 
+            $res = json_decode($response->body());
+            session([
+                "customerAccounts" => $res->data
+            ]);
+        }
         $result = new ApiBaseResponse();
         return $result->api_response($response);
-
-        // return $response;
-        // return $response->status();
-
-
     }
 
 

@@ -165,7 +165,8 @@
     <!-- End Preloader-->
 
     <!-- Begin page -->
-    <div id="wrapper" style="zoom: 0.9;">
+    {{-- <div id="wrapper" style="zoom: 0.9;"> --}}
+    <div id="wrapper">
         @include('sweetalert::alert')
 
         @include('snippets.nav')
@@ -173,7 +174,8 @@
         @include('snippets.side-bar')
 
         <div class="content-page">
-            <div class="content" style="zoom: 0.9 ;">
+            {{-- <div class="content" style="zoom: 0.9 ;"> --}}
+            <div class="content">
                 @yield('content')
             </div>
 

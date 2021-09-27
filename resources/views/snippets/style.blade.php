@@ -2,17 +2,9 @@
 <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
 <!-- Plugins css -->
-{{-- <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" /> --}}
-{{-- <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
---}}
 
-{{-- <link href="{{ asset('assets/libs/clockpicker/bootstrap-clockpicker.min.css') }}" rel="stylesheet" type="text/css"
-/> --}}
-{{-- <link href="{{ asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet"
-type="text/css" /> --}}
-<link href="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet"
-    type="text/css" />
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
 <!-- App css -->
 <link href="{{ asset('assets/css/bootstrap-purple.min.css') }}" rel="stylesheet" type="text/css"
@@ -20,19 +12,13 @@ type="text/css" /> --}}
 <link href="{{ asset('assets/css/app-purple.min.css') }}" rel="stylesheet" type="text/css"
     id="app-default-stylesheet" />
 
-
-<!-- Tour css -->
-{{-- <link href="{{ asset('assets/libs/hopscotch/css/hopscotch.min.css') }}" rel="stylesheet" type="text/css" /> --}}
-
-
-<!-- icons -->
 <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
-<link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}" /> --}}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+{{-- <link rel="preconnect" href="https://fonts.googleapis.com"> --}}
+{{-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
+{{-- <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet"> --}}
 
 
 <style>
