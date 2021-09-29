@@ -255,7 +255,6 @@
 
                             <div class="col-md-8">
                                 <select name="" class="form-control" id="account_transaction">
-                                    {{-- <option value=""> -- Select Account -- </option> --}}
                                     @foreach($accounts as $i => $account)
                                     <option value={{$account->accountNumber}}>
                                         {{$account->accountDesc ." ~ " .$account->accountNumber }}</option>

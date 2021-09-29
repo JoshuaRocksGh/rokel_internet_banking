@@ -308,138 +308,138 @@ function account_transaction() {
                 // };
 
 
-                function get_correct_fx_rate() {
+                // function get_correct_fx_rate() {
 
-                    $(".currency_converter_display_area").hide()
-                    $(".currency_converter_error_area").hide()
-                    $(".currency_converter_loading_area").show()
+                //     $(".currency_converter_display_area").hide()
+                //     $(".currency_converter_error_area").hide()
+                //     $(".currency_converter_loading_area").show()
 
-                    $.ajax({
-                        type: 'GET',
-                        url: 'get-correct-fx-rate-api',
-                        datatype: "application/json",
-                        success: function(response) {
-                            let data = response.data
-                            if (response.responseCode == '000') {
+                //     $.ajax({
+                //         type: 'GET',
+                //         url: 'get-correct-fx-rate-api',
+                //         datatype: "application/json",
+                //         success: function(response) {
+                //             let data = response.data
+                //             if (response.responseCode == '000') {
 
-                                $(".currency_converter_loading_area").hide()
-                                $(".currency_converter_error_area").hide()
-                                $(".currency_converter_display_area").show()
+                //                 $(".currency_converter_loading_area").hide()
+                //                 $(".currency_converter_error_area").hide()
+                //                 $(".currency_converter_display_area").show()
 
-                                $('#hide_fx_rate').val(JSON.stringify(data))
+                //                 $('#hide_fx_rate').val(JSON.stringify(data))
 
-                            } else {
-                                $(".currency_converter_display_area").hide()
-                                $(".currency_converter_loading_area").hide()
-                                $(".currency_converter_error_area").show()
-                            }
-
-
-
-                        },
-                        error: function(xhr, status, error) {
-                            $(".currency_converter_display_area").hide()
-                            $(".currency_converter_loading_area").hide()
-                            $(".currency_converter_error_area").show()
-
-                            setTimeout(function() {
-                                get_correct_fx_rate()
-                            }, $.ajaxSetup().retryAfter)
-                        }
-
-                    })
-                };
-
-                function get_fx_rate(rate_type) {
-
-                    $(".cross_rate_display_area").hide()
-                    $(".cross_rates_error_area").hide()
-                    $(".cross_rates_loading_area").show()
-
-                    $.ajax({
-                        "type": "GET",
-                        "url": "get-fx-rate-api?rateType=" + rate_type,
-                        datatype: "application/json",
-
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response) {
-                            if (response.responseCode == '000') {
+                //             } else {
+                //                 $(".currency_converter_display_area").hide()
+                //                 $(".currency_converter_loading_area").hide()
+                //                 $(".currency_converter_error_area").show()
+                //             }
 
 
 
-                                let data = response.data;
+                //         },
+                //         error: function(xhr, status, error) {
+                //             $(".currency_converter_display_area").hide()
+                //             $(".currency_converter_loading_area").hide()
+                //             $(".currency_converter_error_area").show()
+
+                //             setTimeout(function() {
+                //                 get_correct_fx_rate()
+                //             }, $.ajaxSetup().retryAfter)
+                //         }
+
+                //     })
+                // };
+
+                // function get_fx_rate(rate_type) {
+
+                //     $(".cross_rate_display_area").hide()
+                //     $(".cross_rates_error_area").hide()
+                //     $(".cross_rates_loading_area").show()
+
+                //     $.ajax({
+                //         "type": "GET",
+                //         "url": "get-fx-rate-api?rateType=" + rate_type,
+                //         datatype: "application/json",
+
+                //         headers: {
+                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                //         },
+                //         success: function(response) {
+                //             if (response.responseCode == '000') {
 
 
-                                if (response.data.length > 0) {
-                                    if (rate_type == "Note rate") {
-                                        $.each(data, function(index) {
-                                            let flag_1 = ``
-                                            let flag_2 = ``
-                                            let pair = data[index].pair.split('/')
-                                            flag_1 = `assets/images/flags/${pair[0].trim()}.png`
-                                            flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                            $('.display_cross_rates').append(
-                                                `<tr>
-                                            <td style="zoom: 0.8;">
-                                             <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                             /
-                                             <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
-                                            </td>
-                                             <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                             <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                            </tr>`); });
-                                    } else if (rate_type == "Cross rate") {
-                                        $.each(data, function(index) {
-                                            let flag_1 = ``
-                                            let flag_2 = ``
-                                            let pair = data[index].pair.split('/')
-                                            flag_1 = `assets/images/flags/${pair[0].trim()}.png`
-                                            flag_2 = `assets/images/flags/${pair[1].trim()}.png`
-                                            $('.display_cross_rates').append(
-                                                `
-                                        <tr>
-                                            <td style="zoom: 0.8;">
-                                                <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
-                                                /
-                                                <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                                            </td>
-                                            <td> <b> ${parseFloat(data[index].buy)} </b> </td>
-                                            <td> <b> ${parseFloat(data[index].sell)} </b> </td>
-                                        </tr>
-                                    `
-                                            );
-                                        });
-                                    }
-
-                                }
+                //                 let data = response.data;
 
 
-                                $(".cross_rates_error_area").hide()
-                                $(".cross_rates_loading_area").hide()
-                                $(".cross_rate_display_area").show()
+                //                 if (response.data.length > 0) {
+                //                     if (rate_type == "Note rate") {
+                //                         $.each(data, function(index) {
+                //                             let flag_1 = ``
+                //                             let flag_2 = ``
+                //                             let pair = data[index].pair.split('/')
+                //                             flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                //                             flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                //                             $('.display_cross_rates').append(
+                //                                 `<tr>
+                //                             <td style="zoom: 0.8;">
+                //                              <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                //                              /
+                //                              <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
+                //                             </td>
+                //                              <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                //                              <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                //                             </tr>`); });
+                //                     } else if (rate_type == "Cross rate") {
+                //                         $.each(data, function(index) {
+                //                             let flag_1 = ``
+                //                             let flag_2 = ``
+                //                             let pair = data[index].pair.split('/')
+                //                             flag_1 = `assets/images/flags/${pair[0].trim()}.png`
+                //                             flag_2 = `assets/images/flags/${pair[1].trim()}.png`
+                //                             $('.display_cross_rates').append(
+                //                                 `
+                //                         <tr>
+                //                             <td style="zoom: 0.8;">
+                //                                 <img src='${flag_1}' width='40px' height='20px' style='border-radius:5px;'>
+                //                                 /
+                //                                 <img src='${flag_2}' width='40px' height='20px' style='border-radius:5px;'>
 
-                            } else {
+                //                             </td>
+                //                             <td> <b> ${parseFloat(data[index].buy)} </b> </td>
+                //                             <td> <b> ${parseFloat(data[index].sell)} </b> </td>
+                //                         </tr>
+                //                     `
+                //                             );
+                //                         });
+                //                     }
 
-                                $(".cross_rates_error_area").hide()
-                                $(".cross_rates_loading_area").hide()
-                                $(".cross_rate_display_area").show()
-                            }
+                //                 }
 
-                        },
-                        error: function(xhr, status, error) {
-                            $(".cross_rate_display_area").hide()
-                            $(".cross_rates_loading_area").hide()
-                            $(".cross_rates_error_area").show()
-                            setTimeout(function() {
-                                get_fx_rate()
-                            }, $.ajaxSetup().retryAfter)
 
-                        }
-                    })
-                }
+                //                 $(".cross_rates_error_area").hide()
+                //                 $(".cross_rates_loading_area").hide()
+                //                 $(".cross_rate_display_area").show()
+
+                //             } else {
+
+                //                 $(".cross_rates_error_area").hide()
+                //                 $(".cross_rates_loading_area").hide()
+                //                 $(".cross_rate_display_area").show()
+                //             }
+
+                //         },
+                //         error: function(xhr, status, error) {
+                //             $(".cross_rate_display_area").hide()
+                //             $(".cross_rates_loading_area").hide()
+                //             $(".cross_rates_error_area").show()
+                //             setTimeout(function() {
+                //                 get_fx_rate()
+                //             }, $.ajaxSetup().retryAfter)
+
+                //         }
+                //     })
+                // }
 
                 function getAccountTransactions(accountNumber, transLimit) {
                                         $.ajax({
@@ -482,7 +482,7 @@ function account_transaction() {
                                                         ${formatToCurrency(parseFloat(data[index].amount))}</span></span>
                                                 </td>
                                             </tr>
-                                            `
+                                          `
                                     )
                                 })
 
@@ -503,14 +503,8 @@ function account_transaction() {
                     })
                 }
 
-                var global_selected_currency = "";
-
-
 
                 $(document).ready(function() {
-
-                    // {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
-
                     $('.loan_no_data_found').hide()
                     $(".i_owe_display_no_data").hide()
 
@@ -525,9 +519,6 @@ function account_transaction() {
                     $(".loans_display_area").hide()
                     $(".loans_error_area").hide()
                     $(".loans_loading_area").show()
-
-                    // $(".accounts_display_area").hide()
-                    // $(".accounts_error_area").hide()
                     $(".accounts_loading_area").show()
 
                     $(".currency_converter_display_area").hide()
