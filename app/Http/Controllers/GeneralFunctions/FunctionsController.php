@@ -378,7 +378,10 @@ class FunctionsController extends Controller
     }
     public function getLoanSubSectors(Request $request)
     {
-        $response = Http::get(env('API_BASE_URL') . "/loans/subSectors/$request->loanSectorCode");
+        $code = $request->loanSectorsCode;
+        Log::alert($code);
+        $response = Http::get(env('API_BASE_URL') . "/loans/subSectors/{$request->loanSectorsCode}");
+
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }

@@ -24,6 +24,26 @@ function getOptions(optionUrl, optionId, data) {
     });
 }
 
+function get_currency() {
+    $.ajax({
+        type: "GET",
+        url: "get-branches-api",
+        datatype: "application/json",
+        success: function (response) {
+            let data = response.data;
+            let selectize = $(".selectize").selectize({
+                sortField: "text",
+            }).selectize()[0].selectize;
+            selectize.clearOptions();
+            $.each(data, (i) => {
+                let { isoCode, description } = data[i];
+                selectize.addOption({ value: isoCode, text: description });
+            });
+            selectize.setValue(data[0].isoCode);
+        },
+    });
+}
+
 function getAccountDetails() {
     $.ajax({
         type: "GET",
@@ -65,6 +85,8 @@ function getLoanQuotationDetails(loanData) {
                 $("#atm_request_summary").hide();
                 $("#payment_schedule").show();
                 $(".spinner-load").hide();
+                $(".submit-text").show();
+                $(".spinner-load").hide();
                 $.each(data, function (index) {
                     model_data = data[index];
                     table.row
@@ -96,7 +118,7 @@ function getLoanQuotationDetails(loanData) {
 function loanRequestSubmission() {}
 
 $(() => {
-    // $(".loan-detail").show();
+    
 
     setTimeout((e) => {
         getAccountDetails();
@@ -190,6 +212,7 @@ $(() => {
         ).val();
         $(".display_loan_intro_source").text(loanData.loanIntroSource);
     });
+
     $("#loan_sub_sectors").on("change", (e) => {
         loanData.loanSubSectors = $("#loan_sub_sectors option:selected").text();
         loanData.loanSubSectorsCode = $(
@@ -209,27 +232,26 @@ $(() => {
 
     $("#btn_submit_loan_quotation").on("click", (e) => {
         if (detailedLoanForm) {
-            loanRequestSubmission();
+            console.log(loanData);
+            return false;
+            // loanRequestSubmission();
             detailedLoanForm = false;
         }
 
         if (
-            validateAll(
-                loanData.loanProductCode,
-                loanData.loanAmount,
-                loanData.tenureInMonths,
-                loanData.principalRepayFreqCode,
-                loanData.interestRateTypeCode,
-                loanData.interestRepayFreqCode
-            )
+            !loanData.loanProductCode ||
+            !loanData.loanAmount ||
+            !loanData.tenureInMonths ||
+            !loanData.principalRepayFreqCode ||
+            !loanData.interestRateTypeCode ||
+            !loanData.interestRepayFreqCode
         ) {
-            $(".submit-text").hide();
-            $(".spinner-load").show();
-
-            // get loan quotation details
-            getLoanQuotationDetails(loanData);
-        } else {
-            toaster("Please fill all required fields", "warning", );
+            toaster("Please complete all required fields", "warning");
+            return false;
         }
+
+        $(".submit-text").hide();
+        $(".spinner-load").show();
+        getLoanQuotationDetails(loanData);
     });
 });

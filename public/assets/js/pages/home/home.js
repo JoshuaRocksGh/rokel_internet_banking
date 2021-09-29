@@ -217,23 +217,23 @@ function account_transaction() {
 
                                 var data = response.data;
                                 if (!response.data) {
-
-                                    return false
                                     $('.loan_no_data_found').show()
                                     $(".loans_display_area").hide()
+                                    return false;
+                                    
                                 } else {
                                     if (response.data == null) {
-                                        $('#p_loans_display').html(`<h2 class="text-center text-danger">No Loan</h2>`)
+                                        $('#p_loans_display').html(`<h2 class="text-center text-danger">No Loan</h2>`);
                                     } else {
 
                                         if (response.data.length > 0) {
                                             $('#p_loans_display').show()
                                             $(".loans_display_area").show()
 
-                                            let i_owe_total = 0
-                                            let count = 0
+                                            let i_owe_total = 0; 
+                                            let count = 0;
 
-                                            account_data.i_owe_total = 0
+                                            account_data.i_owe_total = 0;
                                             $.each(data, function(index) {
                                                 let loanBalance = data[index].loanBalance
                                                 loanBalance = loanBalance.replace(/,/g, "");
@@ -533,10 +533,11 @@ function account_transaction() {
             
                     $("#account_transaction").on("change",function() {
                         let accountNumber = $(this).val()
+
                         if (!accountNumber) {
                             return false
                         }
-                        getAccountTransactions(accountNumber, 20)
+                        // getAccountTransactions(accountNumber, 20)
                     })
 
                 })

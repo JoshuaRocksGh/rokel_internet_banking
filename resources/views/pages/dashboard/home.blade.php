@@ -257,9 +257,10 @@
                                 <select name="" class="form-control" id="account_transaction">
                                     @foreach($accounts as $i => $account)
                                     <option value={{$account->accountNumber}}>
-                                        {{$account->accountDesc ." ~ " .$account->accountNumber }}</option>
+                                        {{$account->accountDesc ." ~ " .$account->accountNumber}}</option>
                                     @endforeach
-                                </select> </div>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="row" style="padding-left: 15px; padding-right: 15px;">
@@ -270,10 +271,22 @@
 
                     <legend></legend>
 
-                    <div class="table-responsive">
-                        <table class="table table-centered table-nowrap mb-0">
+                    <div class="table-responsive table-bordered ">
+                        <table class="table table-centered mb-0">
+                            <thead>
+                                <tr class="bg-info text-white">
+                                    <td> <b> Date & Time </b> </td>
+                                    <td> <b> Batch </b> </td>
+                                    <td> <b> Description </b> </td>
+                                    <td> <b> Amount </b> </td>
+                                    <td> <b> Balance </b> </td>
+                                </tr>
+                            </thead>
                             <tbody id="transaction_history">
-
+                                <tr class="text-center ">
+                                    <td colspan="5"> <img src="{{ asset("assets/images/placeholders/no_data.svg") }}"
+                                            alt="no data available" width="150"></td>
+                                </tr>
 
                             </tbody>
                         </table>

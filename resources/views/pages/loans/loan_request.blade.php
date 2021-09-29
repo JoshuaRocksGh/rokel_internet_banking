@@ -1,55 +1,17 @@
 @extends('layouts.master')
 
-{{-- @section('styles')
 
-<!-- third party css -->
-<link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}"
-rel="stylesheet" type="text/css" />
-<link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet"
-    type="text/css" />
-<link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
-    type="text/css" />
-<link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
-    type="text/css" />
-<!-- third party css end -->
-@endsection --}}
 
 @section('content')
 
-<div class="">
-
-    <div class="container-fluid">
-        <br>
-        <!-- start page title -->
-        <div class="row">
-            <div class="col-md-6">
-                <h4 class="text-primary">
-                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                    LOAN REQUEST
-
-                </h4>
-            </div>
-
-            <div class="col-md-6 text-right">
-                <h6>
-
-                    <span class="flaot-right">
-                        <b class="text-primary"> LOANS </b> &nbsp; > &nbsp; <b class="text-danger">LOAN REQUEST</b>
 
 
-                    </span>
-
-                </h6>
-
-            </div>
-
-            <div class="col-md-12 ">
-                <hr class="text-primary" style="margin: 0px;">
-            </div>
-
-        </div>
-    </div>
-
+<div>
+    @php
+    $currentPath = "Loan Request" ;
+    $basePath = "Loans";
+    $pageTitle = "Loan Request"; @endphp
+    @include("snippets.pageHeader")
 
     <div class="row">
         <div class="col-12">
@@ -230,6 +192,20 @@ rel="stylesheet" type="text/css" />
                                                         </select>
 
                                                     </div>
+                                                    <div class="form-group row loan-detail" style="display: none">
+
+                                                        <b class="col-4 align-self-center text-primary">
+                                                            Product Branch
+                                                            &nbsp; <span class="text-danger">*</span></b>
+
+
+                                                        <select class="selectize col-8" id="product_branch"
+                                                            placeholder="Select pick up branch" required>
+                                                            <option value="" disabled selected>Select pick up branch
+                                                            </option>
+                                                        </select>
+
+                                                    </div>
                                                     {{-- <div class="form-group row">
 
                                                         <b class="col-md-4 align-self-center text-primary"
@@ -255,7 +231,7 @@ rel="stylesheet" type="text/css" />
                                                     <br>
                                                     <div class="form-group text-right yes_beneficiary">
                                                         <button type="button"
-                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
+                                                            class="btn btn-primary btn-rounded waves-effect waves-light "
                                                             id="btn_submit_loan_quotation">
                                                             <span class="submit-text">Proceed</span>
                                                             <span
@@ -364,7 +340,7 @@ rel="stylesheet" type="text/css" />
 
             <div class="card" id="payment_schedule" style="display: none">
                 <div class="show col-md-12" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
+                    <div class="card-body ">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="col-md-4 text-left">
@@ -382,7 +358,7 @@ rel="stylesheet" type="text/css" />
                                 </div>
                             </div>
                         </div>
-                        <div class="table-responsive table-bordered">
+                        <div class="table-responsive p-2 table-striped table-bordered">
                             <table class="table mb-0 loan_payment_schedule w-100">
                                 <thead>
                                     <tr class="bg-primary text-white ">
@@ -410,40 +386,6 @@ rel="stylesheet" type="text/css" />
     @endsection
 
     @section('scripts')
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.js" --}}
-    {{-- integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> --}}
 
-    {{-- <!-- third party js -->
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-        --}}
-    {{-- 
-    </script> --}}
-    {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-    <!-- third party js ends -->
-
-    <!-- Datatables init -->
-
-    {{-- Page js --}}
     <script src="{{ asset('assets/js/pages/loans/loan-request.js') }}"> </script>
     @endsection
