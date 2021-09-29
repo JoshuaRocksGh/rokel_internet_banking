@@ -10,6 +10,6 @@ class GenerateQRController extends Controller
 
     public function index()
     {
-        return view('pages.transfer.qr.index');
+        return view('pages.transfer.qr.qr_transfer');
     }
 }

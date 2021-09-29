@@ -580,6 +580,14 @@
                                                                             <option disabled selected value="">Select
                                                                                 Account
                                                                             </option>
+                                                                            @foreach(Session::get('customerAccounts')
+                                                                            as $i =>
+                                                                            $account)
+                                                                            <option
+                                                                                value={{$account->accountType ."~" .$account->accountDesc ."~" .$account->accountNumber ."~" .$account->currency ."~".$account->availableBalance   ."~" .$account->accountMandate ."~"  .$account->currencyCode}}>
+                                                                                {{$account->accountNumber ."~" .$account->currency ."~" .$account->availableBalance }}
+                                                                            </option>
+                                                                            @endforeach
 
 
                                                                         </select>
@@ -1039,6 +1047,14 @@
                                                                 id="unredeemed_account" required>
                                                                 <option disabled selected value="">Select Account Number
                                                                 </option>
+
+                                                                @foreach(Session::get('customerAccounts') as $i =>
+                                                                $account)
+                                                                <option
+                                                                    value={{$account->accountType ." ~ " .$account->accountDesc ." ~ " .$account->accountNumber ." ~ " .$account->currency ." ~ ".$account->availableBalance }}>
+                                                                    {{$account->accountNumber ." ~ " .$account->currency ." ~ " .$account->availableBalance }}
+                                                                </option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </form>
@@ -1360,7 +1376,16 @@
                                                                         id="unredeemed_history_account" required>
                                                                         <option disabled selected value="">Select
                                                                             Account Number</option>
+                                                                        @foreach(Session::get('customerAccounts') as
+                                                                        $i =>
+                                                                        $account)
+                                                                        <option
+                                                                            value={{$account->accountType ." ~ " .$account->accountDesc ." ~ " .$account->accountNumber ." ~ " .$account->currency ." ~ ".$account->availableBalance }}>
+                                                                            {{$account->accountNumber ." ~ " .$account->currency ." ~ " .$account->availableBalance }}
+                                                                        </option>
+                                                                        @endforeach
                                                                     </select>
+
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -1403,9 +1428,17 @@
                                                             <form class="form-inline">
                                                                 <div class="form-group">
                                                                     <select class="form-control redeemed" required>
-                                                                        <option value="">Select Account Number</option>
+                                                                        <option disabled selected value="">Select
+                                                                            Account Number</option>
 
-
+                                                                        @foreach(Session::get('customerAccounts') as
+                                                                        $i =>
+                                                                        $account)
+                                                                        <option
+                                                                            value={{$account->accountType ." ~ " .$account->accountDesc ." ~ " .$account->accountNumber ." ~ " .$account->currency ." ~ ".$account->availableBalance }}>
+                                                                            {{$account->accountNumber ." ~ " .$account->currency ." ~ " .$account->availableBalance }}
+                                                                        </option>
+                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                             </form>
@@ -1451,8 +1484,16 @@
                                                             <form class="form-inline">
                                                                 <div class="form-group">
                                                                     <select class="form-control reversed" required>
-                                                                        <option value="">Select Account Number</option>
-
+                                                                        <option value="" selected disabled>Select
+                                                                            Account Number</option>
+                                                                        @foreach(Session::get('customerAccounts') as
+                                                                        $i =>
+                                                                        $account)
+                                                                        <option
+                                                                            value={{$account->accountType ." ~ " .$account->accountDesc ." ~ " .$account->accountNumber ." ~ " .$account->currency ." ~ ".$account->availableBalance }}>
+                                                                            {{$account->accountNumber ." ~ " .$account->currency ." ~ " .$account->availableBalance }}
+                                                                        </option>
+                                                                        @endforeach
 
                                                                     </select>
                                                                 </div>

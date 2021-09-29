@@ -86,11 +86,10 @@ class LoginController extends Controller
 
                 if ($result->responseCode == '000') { // API responseCode is 000
                     $userDetail = $result->data;
-                    if ($userDetail->c_type == 'C') {
-                        return  $base_response->api_response('900', 'This is a corporate user, Use our corporate platform instead',  NULL);
+                    Log::alert($response);
+                    if ($userDetail->customerType == 'C') {
+                        return  $base_response->api_response('900', 'Corporate account, use our corporate platform instead',  NULL);
                     }
-                    $customerType = $userDetail->customerType;
-
                     session([
                         "userId" => $userDetail->userId,
                         "userAlias" => $userDetail->userAlias,

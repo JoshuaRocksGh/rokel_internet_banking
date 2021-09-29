@@ -147,7 +147,6 @@ $(() => {
         var firstname = $("#firstname").val();
         var othername = $("#othername").val();
         var gender = $("#select_gender input[type='radio']:checked").val();
-        var birthday = $("#DOB").datepicker().val();
         var birth_place = $("#birth_place").val();
         var country = $("#country").val().split("~");
 
@@ -159,6 +158,46 @@ $(() => {
         //            alert(title + ' ' + surname + ' ' + firstname + ' ' + gender + ' ' + birthday + ' ' + birth_place + ' ' + country);
     });
 
+    $("#submit1").on("click", () => {
+
+        let title = $("#title").val();
+        let surname = $("#surname").val();
+        let firstname = $("#firstname").val();
+        let othername = $("#othername").val();
+        let gender = $("#select_gender input[type='radio']:checked").val();
+        let birth_place = $("#birth_place").val();
+        let country = $("#country").val();
+        let year = new Date().getFullYear()
+        let DOByear = $("#DOB").val().split("-")[0]
+        
+        if (!title, !surname, !firstname, !othername, !gender, !birth_place, !country, !year) {
+            toaster("Please complete the fields", "warning")
+            return false
+        }
+        if (year - DOByear < 18) {
+            toaster("Should be older than 18", "warning")
+            return false
+        }
+    })
+    $("#submit2").on("click", () => {
+        let today = new Date();
+        let dd = String(today.getDate()).padStart(2, '0');
+        let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        let yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+
+        let issueDate = $("#issue_date").val()
+        let expiryDate = $("#expiry_date").val()
+        if (issueDate > expiryDate) {
+            toaster("issue date should not be ahead of expiry date", "warning")
+            return false
+        }
+        if (issueDate > today) {
+            toaster("issue date should not be ahead of today", "warning")
+            return false
+        }
+        
+    })
     // Personal Details form
     $("#next1").click(function (e) {
         e.preventDefault();
@@ -169,7 +208,7 @@ $(() => {
         var othername = $("#othername").val();
 
         var gender = $("#select_gender input[type='radio']:checked").val();
-        var birthday = $("#DOB").datepicker().val();
+        // var birthday = $("#DOB").datepicker().val();
         var birth_place = $("#birth_place").val();
         var country = $("#country").val();
 
@@ -225,8 +264,8 @@ $(() => {
         var id_type = $("#id_type").val();
         var id_number = $("#id_number").val();
         var tin_number = $("#tin_number").val();
-        var issue_date = $("#issue_date").datepicker().val();
-        var expiry_date = $("#expiry_date").datepicker().val();
+        // var issue_date = $("#issue_date").datepicker().val();
+        // var expiry_date = $("#expiry_date").datepicker().val();
         //                var image_upload = $('#image_upload').val(this.files && this.files.length ? this.files[0].name.split('.')[0] : '');
         //                console.log(image_upload);
 
@@ -278,9 +317,9 @@ $(() => {
         var gender = $("#select_gender input[type='radio']:checked").val();
         $("#display_select_gender").text(gender);
 
-        var birthday = $("#DOB").datepicker().val();
-        $("#display_DOB").text(birthday);
-
+        // var birthday = $("#DOB").datepicker().val();
+        $("#display_DOB").text($("#DOB").val);
+        
         var birth_place = $("#birth_place").val();
         $("#display_birth_place").text(birth_place);
 
@@ -317,11 +356,11 @@ $(() => {
         var tin_number = $("#tin_number").val();
         $("#display_tin_number").text(tin_number);
 
-        var issue_date = $("#issue_date").datepicker().val();
-        $("#display_issue_date").text(issue_date);
+        // var issue_date = $("#issue_date").datepicker().val();
+        $("#display_issue_date").text($("#issue_date").val());
 
-        var expiry_date = $("#expiry_date").datepicker().val();
-        $("#display_expiry_date").text(expiry_date);
+        // var expiry_date = $("#expiry_date").datepicker().val();
+        $("#display_expiry_date").text($("#expiry_date").val());
 
         var file = $("input[type=file]").get(0).files[0];
 
@@ -424,8 +463,7 @@ $(() => {
         var gender = $("#select_gender input[type='radio']:checked").val();
         $("#display_select_gender").text(gender);
 
-        var birthday = $("#DOB").datepicker().val();
-        $("#display_DOB").text(birthday);
+        $("#display_DOB").text($("#DOB").val());
 
         var birth_place = $("#birth_place").val();
         $("#display_birth_place").text(birth_place);
@@ -467,11 +505,9 @@ $(() => {
         var tin_number = $("#tin_number").val();
         $("#display_tin_number").text(tin_number);
 
-        var issue_date = $("#issue_date").datepicker().val();
-        $("#display_issue_date").text(issue_date);
+        $("#display_issue_date").text($("#issue_date").val());
 
-        var expiry_date = $("#expiry_date").datepicker().val();
-        $("#display_expiry_date").text(expiry_date);
+        $("#display_expiry_date").text($("#expiry_date").val());
 
         var id_image = $("#image_upload_").val();
 

@@ -78,6 +78,7 @@ class paymentController extends Controller
     //method to return the korpone loane payment screen
     public function e_korpor()
     {
+
         return view("pages.payments.e_korpor");
     }
 

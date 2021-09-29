@@ -229,7 +229,7 @@ $(() => {
             // get loan quotation details
             getLoanQuotationDetails(loanData);
         } else {
-            toaster("Please fill all required fields", "error", 2000);
+            toaster("Please fill all required fields", "warning", );
         }
     });
 });
