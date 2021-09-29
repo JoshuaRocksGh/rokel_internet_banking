@@ -296,15 +296,15 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{ asset('assets/images/ads/sim_korpor_ad_2.jpeg') }}"
+                            <img class="d-block w-100" src="{{ asset('assets/images/rokel/sim_korpor_2.jpeg') }}"
                                 alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('assets/images/ads/rcb_cashless.jpeg') }}"
+                            <img class="d-block w-100" src="{{ asset('assets/images/rokel/rcb_cashless.jpeg') }}"
                                 alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{ asset('assets/images/ads/transfer.jpeg') }}"
+                            <img class="d-block w-100" src="{{ asset('assets/images/rokel/transfer.jpeg') }}"
                                 alt="Third slide">
                         </div>
                     </div>
@@ -326,114 +326,8 @@
 
 
 @section('scripts')
-<!-- Plugins js-->
-{{-- <script src="{{ asset('assets/js/chart.js') }}"></script> --}}
 
-
-<!-- Tour page js -->
-{{-- <script src="{{ asset('assets/libs/hopscotch/js/hopscotch.min.js') }}"></script> --}}
-<!-- Tour init js-->
-{{-- <script src="{{ asset('assets/js/pages/tour.init.js') }}"></script> --}}
-
-<!-- Chart JS -->
-{{-- <script src="{{ asset('assets/libs/chart.js/Chart.bundle.min.js') }}"></script> --}}
-
-{{-- <script src="{{ asset('assets/libs/moment/min/moment.min.js') }}"></script> --}}
-{{-- <script src="{{ asset('assets/libs/jquery.scrollto/jquery.scrollTo.min.js') }}"></script> --}}
-
-<!-- Chat app -->
-{{-- <script src="{{ asset('assets/js/pages/jquery.chat.js') }}"></script> --}}
-
-<!-- Todo app -->
-{{-- <script src="{{ asset('assets/js/pages/jquery.todo.js') }}"></script> --}}
-
-<!-- Dashboard init JS -->
-{{-- <script src="{{ asset('assets/js/pages/dashboard-3.init.js') }}"></script> --}}
-
-<!-- App js-->
-{{-- <script src="{{ asset('assets/js/app.min.js') }}"></script> --}}
-{{-- 
-<script type="text/javascript">
-    var i_have = 0
-                var i_owe = 0
-                var i_invest_total = 0
-
-                function show_chart(i_have, i_owe, i_invest_total) {
-
-                    console.log(i_have)
-                    console.log(i_owe)
-                    console.log(i_invest_total)
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'pie',
-                        data: {
-                            labels: ['I HAVE', 'Investments', 'I OWE'],
-                            datasets: [{
-                                label: 'MY ACCOUNTS',
-                                data: [i_have, i_owe, i_invest_total],
-                                backgroundColor: [
-
-                                    'rgb(75,192,192)',
-                                    'rgba(231, 223, 10, 1)',
-                                    'rgb(233,55,93)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-
-                                    'rgb(75,192,192)',
-                                    'rgba(231, 223, 10, 1)',
-                                    'rgb(233,55,93)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-
-                    });
-                }
-</script> --}}
-
-<script src="{{ asset("assets/js/pages/home/home.js") }}">
-</script>
-
-{{-- <script src="{{ asset('assets/customjs/currency_converter.js') }}"></script> --}}
-
-
-
-{{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}"></script>
-<script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-
-<script src="{{ asset('assets/libs/selectize/js/standalone/selectize.min.js') }}"></script> --}}
-
-
-
-<!-- third party js -->
-{{-- <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-    --}}
-            {{-- 
-</script> --}}
-
-{{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-<script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-<!-- third party js ends -->
-
-<!-- Datatables init -->
-{{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
-<!-- Vendor js -->
+<script src="{{ asset("assets/js/pages/home/home.js") }}"></script>
 
 
 @endsection

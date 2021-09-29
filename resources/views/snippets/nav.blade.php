@@ -22,36 +22,28 @@
         </li>
 
 
-        {{-- <li class="notification-list .d-sm-none mt-3 ml-2"> --}}
-        {{-- <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" href="#" role="button" --}}
-        {{-- aria-haspopup="false" aria-expanded="false"> --}}
-
-        {{-- <span class="fs-6" style="color:white">
-            {{ session()->get('userAlias') }}
+        {{-- <li class="notification-list .d-sm-none mt-3 ml-2">
+            <span class="fs-6" style="color:white">
+                {{ session()->get('userAlias') }}
         </span>
 
         </li> --}}
 
 
     </ul>
-    <ul class="list-unstyled topnav-menu float-right mb-0">
-        <li class="dropdown notification-list topbar-dropdown">
-            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#"
-                role="button" aria-haspopup="false" aria-expanded="false">
+    <div class="ml-auto justify-content-end mr-lg-4" style="display: flex; align-items: center;">
+
+        <ul class="list-unstyled topnav-menu float-right mb-0">
+            {{-- <li class="dropdown notification-list topbar-dropdown"> --}}
+            <a class="nav-link  nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button"
+                aria-haspopup="false" aria-expanded="false">
                 <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
-                <span class="pro-user-name ml-1 text-black-50">
-                    <b> {{ session()->get('userAlias') }} </b> <i class="mdi mdi-chevron-down"></i>
+                <span class=" ml-1 text-black-50">
+                    <b> {{ session()->get('userAlias') }} </b>
                 </span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                <a href="{{ url('logout') }}" class="dropdown-item notify-item">
-                    <i class="fe-log-out"></i>
-                    <span>Logout</span>
-                </a>
-
-            </div>
-        </li>
-    </ul>
+        </ul>
+    </div>
     {{-- <div class="clearfix"></div> --}}
 </div>
 <!-- end Topbar -->
