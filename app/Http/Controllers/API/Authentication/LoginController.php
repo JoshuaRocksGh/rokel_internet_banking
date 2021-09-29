@@ -49,7 +49,7 @@ class LoginController extends Controller
                     $result_data = $result->data;
 
                     if ($result_data->c_type == 'C') {
-                        return  $base_response->api_response('900', 'This is a corporate user not allowed here',  NULL);
+                        return  $base_response->api_response('900', 'This is a corporate user, Use our corporate platform instead',  NULL);
                     }
 
                     // return $result_data->user_id;

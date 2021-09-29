@@ -475,8 +475,8 @@ function account_transaction() {
                                     $("#transaction_history").append(
                                         `
                                             <tr class="${color}">
-                                                <td class="${color}">
-                                                        ${data[index].postingSysDate}
+                                                <td class="${color}"> </td>
+                                                     <td>   ${data[index].postingSysDate}
                                                         ${data[index].narration}
                                                         ${global_selected_currency}
                                                         ${formatToCurrency(parseFloat(data[index].amount))}</span></span>

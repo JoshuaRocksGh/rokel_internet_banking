@@ -147,6 +147,7 @@
     </script>
 
     @include('snippets.script')
+    @include('extras.datatables')
 
 </head>
 

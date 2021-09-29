@@ -85,30 +85,15 @@ class LoginController extends Controller
 
 
                 if ($result->responseCode == '000') { // API responseCode is 000
-
-                    $result_data = $result->data;
-
-                    // return (string) json_decode($result_data);
-
-                    // CHECK FOR USER TYPE PERSONAL OR CORPORATE
-                    /*
-                    if ($result_data->c_type == 'C') {
-                        return  $base_response->api_response('900', 'This is a corporate user not allowed here',  NULL);
-                    }
-                    */
-
                     $userDetail = $result->data;
+                    if ($userDetail->c_type == 'C') {
+                        return  $base_response->api_response('900', 'This is a corporate user, Use our corporate platform instead',  NULL);
+                    }
                     $customerType = $userDetail->customerType;
-
-                    // if ($customerType != "I") {
-                    //     return  $base_response->api_response("422", "Corporate users not allowed",  null);
-                    // }
-
 
                     session([
                         "userId" => $userDetail->userId,
                         "userAlias" => $userDetail->userAlias,
-                        // "updateFlag" => $userDetail->updateFlag,
                         "setPin" => $userDetail->setPin,
                         "changePassword" => $userDetail->changePassword,
                         "email" => $userDetail->email,
@@ -116,13 +101,12 @@ class LoginController extends Controller
                         "userToken" => $userDetail->userToken,
                         "customerNumber" => $userDetail->customerNumber,
                         "customerPhone" => $userDetail->customerPhone,
-                        // "updateUrl" => $userDetail->updateUrl,
                         // "c_type" => $userDetail->c_type,
                         "lastLogin" => $userDetail->lastLogin,
                         "customerType" => $userDetail->customerType,
                         "checkerMaker" => $userDetail->checkerMaker,
                         // "menus" => $userDetail->menus,
-                        // "customerAccounts" => $userDetail->accountsList,
+                        "customerAccounts" => $userDetail->accountsList,
                         // "checkerMaker" => 'M',
                         "userMandate" => 'A',
                         "headers" => [
@@ -133,46 +117,6 @@ class LoginController extends Controller
                         ]
 
                     ]);
-
-                    $api_headers = [];
-                    // return session();
-                    // return session()->get('customerPhone');
-
-                    $authToken = session()->get('userToken');
-
-                    $userID = session()->get('userId');
-                    // return $authToken;
-                    // return session();
-
-                    // return redirect()->route('home');
-
-                    // return $result_data->user_id;
-
-
-                    /*
-
-                    // return $result_data->user_id;
-                    try {
-                        $id = DB::table('users')->insert([
-                            'email' => $result_data->email,
-                            'user_id' => $result_data->user_id,
-                            'customer_no' => $result_data->customer_no,
-                            'f_login' => $result_data->f_login,
-                            'c_type' => $result_data->c_type,
-                        ]);
-                        // dd($id);
-                    } catch (\Exception $th) {
-                        //  return $th->getMessage();
-                         DB::table('tb_error_logs')->insert([
-                            'platform' => 'ONLINE_INTERNET_BANKING',
-                            'user_id' => 'AUTH',
-                            'message' => (string) $th->getMessage()
-                        ]);
-
-                         return $th->getMessage();
-                    }
-
-               */
 
                     //   return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
                     return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
@@ -229,8 +173,8 @@ class LoginController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
+        // $authToken = session()->get('userToken');
+        // $userID = session()->get('userId');
         $client_ip = request()->ip();
 
         $data = [

@@ -29,7 +29,7 @@
 
                 <!-- title-->
                 <p class="text-muted mb-4">
-                    <h2 class="text-primary"> Internet Banking </h2>
+                    <h2 class="text-primary"> Personal Internet Banking </h2>
                 </p>
                 <br><br>
                 <div id="login_form" class="form-center">
