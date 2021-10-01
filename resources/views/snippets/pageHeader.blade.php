@@ -2,8 +2,8 @@
     <br>
     <div class="row">
         <div class="col">
-            <a href="{{ url()->previous() }}" type="button" class="btn btn-soft-blue waves-effect waves-light"><i
-                    class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
+            <a href="{{ url()->previous() }}" type="button" class="btn btn-soft-blue waves-effect waves-light"
+                id="page_back_button"><i class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
         </div>
         <div class="col">
             <h4 class="text-primary text-uppercase">

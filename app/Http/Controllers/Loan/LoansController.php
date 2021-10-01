@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Loan;
 
 use App\Http\Controllers\Controller;
+use App\Http\classes\WEB\ApiBaseResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class LoansController extends Controller
 {
@@ -12,8 +15,4 @@ class LoansController extends Controller
     {
         return view('pages.loans.loan_request');
     }
-
-    // public function loan_quotation(){
-    //     return view('pages.loans.loan_quotation');
-    // }
 }

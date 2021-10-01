@@ -380,7 +380,7 @@
 </li>
 
 <li>
-    <a href="{{ url('logout') }}">
+    <a href="#" id="sidebar_logout">
         <i data-feather="power" class="icon-dual-activity"></i>
         <span> Logout </span>
     </a>
@@ -398,3 +398,31 @@
 
 </div>
 <!-- Left Sidebar End -->
+<script>
+    $('#sidebar_logout').on("click", (e) => {
+e.preventDefault()
+Swal.fire({
+  title: 'Are you sure?',
+  text: "This will clear your session!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#01abe5',
+  cancelButtonColor: '#f1556c',
+  confirmButtonText: 'Log me out!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+     title: "Logout successful!",
+     html: 'Redirecting ...',
+     icon: 'success',
+     showConfirmButton: "false"
+    }
+    )
+    setTimeout(() => {
+        window.location.replace('logout')
+    }, 3000);
+  }
+})
+    } )
+
+</script>

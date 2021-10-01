@@ -78,8 +78,8 @@
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-
-            timerProgressBar: false,
+            timerProgressBar: true,
+            timer: timer,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
@@ -89,7 +89,6 @@
         Toast.fire({
             icon: icon,
             title: message,
-            timer: timer
         })
     };
 

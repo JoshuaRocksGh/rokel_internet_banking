@@ -129,9 +129,11 @@ class FunctionsController extends Controller
         if ($response->ok()) { // API response status code is 200
 
             $res = json_decode($response->body());
-            session([
-                "customerAccounts" => $res->data
-            ]);
+            if ($res->responseCode === "000") {
+                session([
+                    "customerAccounts" => $res->data
+                ]);
+            }
         }
         $result = new ApiBaseResponse();
         return $result->api_response($response);

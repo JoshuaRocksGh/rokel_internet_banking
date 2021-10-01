@@ -532,11 +532,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     //Middleware closing tag below
 });
 
-
-// Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/get-expenses', [HomeController::class, 'get_expenses'])->name('get-expenses');
-// Logout controller
-
 
 Route::get('/logout', [LogoutController::class, 'logout_'])->name('logout');
 
@@ -671,6 +667,7 @@ Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_re
 
 //Route to send loan request details of quotation
 Route::post('loan-quotation-details', [LoanQuotationController::class, 'send_loan_request_quote']);
+Route::post('loan-orignation-api', [LoansController::class, 'send_loan_request_quote']);
 
 //Route to send unredeem request
 Route::post('unredeem-cardless-request', [CardlessController::class, 'send_unredeemed_request'])->name('unredeem-cardless-request');

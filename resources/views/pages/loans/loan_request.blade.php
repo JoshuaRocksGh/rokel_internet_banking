@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 
-
 @section('content')
 
 
@@ -110,7 +109,7 @@
 
                                                         <select class="form-control col-8 loan_frequencies"
                                                             id="principal_repay_freq"
-                                                            placeholder="Select Pick Up Branch" required>
+                                                            placeholder="Select Principal Repay Frequency" required>
                                                             <option value="" disabled selected>Select Principal Repay
                                                                 Frequency</option>
                                                         </select>
@@ -125,8 +124,8 @@
 
 
                                                         <select class="form-control col-8 loan_frequencies"
-                                                            id="interest_repay_freq" placeholder="Select Pick Up Branch"
-                                                            required>
+                                                            id="interest_repay_freq" placeholder="Select Interest Repay
+                                                            Frequency" required>
 
 
                                                             <option value="" disabled selected>Select Interest Repay
@@ -174,6 +173,7 @@
                                                             <option value="" disabled selected>Select the sub
                                                                 sector</option>
                                                         </select>
+                                                        @include("snippets.loading")
 
                                                     </div>
                                                     <div class="form-group row loan-detail" style="display: none">
@@ -199,7 +199,7 @@
                                                             &nbsp; <span class="text-danger">*</span></b>
 
 
-                                                        <select class="selectize col-8" id="product_branch"
+                                                        <select class="form-control col-8" id="product_branch"
                                                             placeholder="Select pick up branch" required>
                                                             <option value="" disabled selected>Select pick up branch
                                                             </option>
@@ -232,7 +232,7 @@
                                                     <div class="form-group text-right yes_beneficiary">
                                                         <button type="button"
                                                             class="btn btn-primary btn-rounded waves-effect waves-light "
-                                                            id="btn_submit_loan_quotation">
+                                                            id="btn_loan_request">
                                                             <span class="submit-text">Proceed</span>
                                                             <span
                                                                 class="spinner-border spinner-border-sm mr-1 spinner-load"
@@ -306,6 +306,9 @@
                                             style="display: none"></h6>
                                         <h6 class="col-md-6 loan-detail" style="display: none">Purpose:</h6>
                                         <h6 class="text-primary loan-detail display_loan_purpose col-md-6"
+                                            style="display: none"></h6>
+                                        <h6 class="col-md-6 loan-detail" style="display: none">Product Branch:</h6>
+                                        <h6 class="text-primary loan-detail product-branch display_product_branch col-md-6"
                                             style="display: none"></h6>
 
                                     </div>
