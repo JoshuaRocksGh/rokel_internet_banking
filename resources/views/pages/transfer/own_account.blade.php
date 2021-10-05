@@ -11,6 +11,21 @@
         ;
     }
 
+    label {
+        align-self: center;
+        font-weight: bold;
+    }
+
+    /* .details-showcase {
+        font-size: 13px !important;
+        margin: 10px 10px !important;
+    } */
+    .details-text {
+        font-size: 0.85rem;
+        margin-bottom: 3px;
+        margin-top: 2px;
+    }
+
     @page {
         size: A4;
     }
@@ -92,8 +107,9 @@
                                     <div class="row justify-content-center">
                                         <div class="col-md-">
                                             <div class="form-group row ">
-                                                <b class="col-md-4 text-primary mb-1">Transfer Account
-                                                    &nbsp; <span class="text-danger">*</span> </b>
+                                                <label for="from_account" class="col-md-4 text-primary mb-1">Transfer
+                                                    Account
+                                                    &nbsp; <span class="text-danger">*</span> </label>
                                                 <select class="form-control col-md-8 mb-2" id="from_account" required>
                                                     <option selected disabled value=""> --- Select Account ---
                                                     </option>
@@ -116,15 +132,15 @@
                                             </div>
                                             <div class="form-group row">
 
-                                                <b class="col-md-4 text-primary">Actual Amount &nbsp; <span
-                                                        class="text-danger">*</span></b>
+                                                <label for="amount" class="col-md-4 text-primary">Actual Amount &nbsp;
+                                                    <span class="text-danger">*</span></label>
 
                                                 <div class="input-group mb-3 col-8" style="padding: 0px;">
                                                     <div class="input-group-prepend">
                                                         <input type="text" class="input-group-text "
-                                                            id="select_currency" style="width: 80px;" readonly>
-                                                        {{-- <select name="" class="input-group-text select_currency" id="select_currency">
-                                                                                 </select> --}}
+                                                            id="select_currency" placeholder="SSL" style="width: 80px;"
+                                                            readonly>
+
                                                     </div>
 
                                                     &nbsp;&nbsp;
@@ -139,8 +155,9 @@
 
                                             <div class="form-group row">
 
-                                                <b class="col-4 text-primary"> Cur / Rate / Converted
-                                                    Amount</b>
+                                                <label for="select_currency__" class="col-4 text-primary"> Cur / Rate /
+                                                    Converted
+                                                    Amount</label>
 
                                                 <div class="input-group mb-3 col-8" style="padding: 0px;">
                                                     <div class="input-group-prepend">
@@ -197,54 +214,53 @@
                         </div>
 
                         <br><br>
-                        <div class="col-md-4 m-2 site-card">
-                            <h4 class="text-primary">Sender Acc. Info</h4>
-                            <hr class="mt-0">
+                        <div class="col-md-4 m-2 site-card details-showcase">
+                            <h4 class="text-primary mb-0">Sender Acc. Info</h4>
+                            <hr class="mt-0 mb-2">
                             <div class="row">
-                                <p class="col-md-5">Account Description:</p>
+                                <p class="col-md-5 details-text">Account Description:</p>
                                 <span class="text-primary display_from_account_name col-md-7"></span>
 
-                                <p class="col-md-5">Account Number:</p>
+                                <p class="col-md-5 details-text">Account Number:</p>
                                 <span class="text-primary display_from_account_no col-md-7"></span>
 
-                                <p class="col-md-5">Available Balance:</p>
+                                <p class="col-md-5 details-text">Available Balance:</p>
 
                                 <span class="text-primary display_from_account_amount col-md-7"></span>
 
 
-                                <p class="col-md-5">Account Currency:</p>
+                                <p class="col-md-5 details-text">Account Currency:</p>
                                 <span class="text-primary display_from_account_currency col-md-7"></span>
                             </div>
 
-                            <h4 class="text-primary">Receiver Acc. Info</h4>
-                            <hr class="mt-0">
+                            <h4 class="text-primary mb-0">Receiver Acc. Info</h4>
+                            <hr class="mt-0 mb-2">
                             <div class="row">
-                                <p class="col-md-5">Account Number:</p>
+                                <p class="col-md-5 details-text">Account Number:</p>
                                 <p class="text-primary display_to_account_no col-md-7"></p>
 
-                                <p class="col-md-5">Account Balance:</p>
+                                <p class="col-md-5 details-text">Account Balance:</p>
                                 <p class="text-primary display_to_account_amount col-md-7"></p>
 
-                                <p class="col-md-5">Account Currency:</p>
+                                <p class="col-md-5 details-text">Account Currency:</p>
                                 <p class="text-primary display_to_account_currency col-md-7"></p>
                             </div>
+                            <h4 class="text-primary mb-0">Transfer Info</h4>
 
-                            <hr>
+                            <hr class="mt-0 mb-2">
                             <div class="row">
-                                <p class="text-primary col-md-5 mt-2">Transfer Amount:</p>
-                                <h4 class="text-danger text-bold col-md-7 ">
-                                    <span class="display_from_account_currency mt-0"></span>
+                                <p class="col-md-5 details-text">Transfer Amount:</p>
+
+                                <span class=" text-danger text-bol  col-md-7 mt-0"><b
+                                        class="display_from_account_currency"> </b>
                                     &nbsp;
-                                    <b class="mt-0" style="font-style: 16px"><span
-                                            class="display_transfer_amount"></span></b>
-                                </h4>
-                            </div>
-                            <div class="row">
-                                <h6 class="col-md-5">Currency Rate:</h6>
+                                    <b class="mt-0 display_transfer_amount"> </b></span>
+                                <p class="col-md-5 details-text">Currency Rate:</p>
                                 <span class="text-primary display_midrate col-md-7"></span>
 
-                                <h6 class="col-md-5">Converted Amount:</h6>
-                                <span class="text-primary display_converted_amount col-md-7"></span>
+                                <p class="col-md-5 details-text">Converted Amount:</p><span class="col-md-7">
+                                    <span class="text-primary display_conversion_currency"> </span>
+                                    <span class="text-primary display_converted_amount"></span></span>
                             </div>
                         </div>
                     </div>
