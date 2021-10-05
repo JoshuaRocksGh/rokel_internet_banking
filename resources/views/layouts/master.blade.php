@@ -51,16 +51,7 @@
 
         .btn-primary {
             color: #fff;
-            background-color: #0561ad;
-            border-color: #0561ad;
             box-shadow: 0 0 0 0 rgb(6 55 195 / 70%);
-        }
-
-        .btn-primary:hover {
-
-            background-color: #2793ec;
-            border-color: #0561ad;
-
         }
 
         .p-text {
@@ -71,13 +62,13 @@
             color: white;
         }
 
-        .card-background-image {
+        /* .card-background-image {
 
             background-image: url("{{ asset('assets/images/login-bg.jpg') }}");
             background-repeat: no-repeat;
             background-size: cover;
 
-        }
+        } */
 
         /* Works on Firefox */
         * {
@@ -137,8 +128,7 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js">
         $.ajaxSetup({
         timeout: 3000,
         retryAfter: 5000
@@ -176,7 +166,6 @@
         @include('snippets.side-bar')
 
         <div class="content-page">
-            {{-- <div class="content" style="zoom: 0.9 ;"> --}}
             <div class="content">
                 @yield('content')
             </div>

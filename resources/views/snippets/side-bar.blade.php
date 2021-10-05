@@ -415,12 +415,13 @@ Swal.fire({
      title: "Logout successful!",
      html: 'Redirecting ...',
      icon: 'success',
-     showConfirmButton: "false"
+     showConfirmButton: "false",
+    //  timer: "3000"
     }
     )
     setTimeout(() => {
         window.location.replace('logout')
-    }, 3000);
+    }, 1000);
   }
 })
     } )

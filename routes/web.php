@@ -118,13 +118,13 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'email_reset_pa
 Route::get('/change-password', [ResetPasswordController::class, 'change_password'])->name('change-password');
 
 
-Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
+// Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
 
-Route::get('/forget-password', [loginController::class, 'forget_password'])->name('forget-password');
+// Route::get('/forget-password', [loginController::class, 'forget_password'])->name('forget-password');
 
 
 //Route to control the reset-success screen
-Route::get('/reset-success', [ResetPasswordController::class, 'reset_success'])->name('reset-success');
+// Route::get('/reset-success', [ResetPasswordController::class, 'reset_success'])->name('reset-success');
 // Transfer Routes
 // Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');

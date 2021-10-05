@@ -48,15 +48,19 @@
                 <div class="row" style="zoom: 0.9">
                     <div class="col-md-12">
 
-                        <div class="row card-box div-card  justify-content-md-around" id="transaction_form">
+                        <div class="row site-card justify-content-md-around" id="transaction_form">
 
                             <div class="col-md-6 align-self-center">
                                 {{-- <p>Select Acount</p> --}}
                                 <div class="form-group row ">
                                     <b class="col-md-3 text-primary align-self-center">Select Account :</b>
                                     <select class="form-control col-md-9" id="from_account" required>
-                                        <option value="" disabled selected> -- Select Your Account --
-                                        </option>
+                                        <option value="" disabled selected> -- Select Your Account -- </option>
+                                        @foreach(session()->get('customerAccounts') as $i => $account)
+                                        <option
+                                            value="{{$account->accountType ."~" .$account->accountDesc ."~" .$account->accountNumber ."~" .$account->currency}}">
+                                            {{$account->accountDesc ."~" .$account->accountNumber}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -120,58 +124,59 @@
                         </div>
                     </div>
 
-                    <div class="customize_card col-12 div-card" id="transaction_summary">
-                        <div class=" p-3 mt-4 mt-lg-0 rounded">
-                            <div class="alert alert-secondary" id="account_balance_info_display" role="alert">
-                                <div class="row">
+                    <div class=" col-12 site-card" id="transaction_summary">
+                        <div class="alert alert-secondary" id="account_balance_info_display" role="alert">
+                            <div class="row">
 
-                                    <div class="col-md-6">
-                                        <h5>Account Number: <strong class="display_account_number"></strong>
-                                        </h5>
-                                        <h5> Date Range: <strong class="display_search_date_range"></strong>
-                                        </h5>
-                                    </div>
+                                <div class="col-md-6">
+                                    <h5>Account Number: <strong class="display_account_number"></strong>
+                                    </h5>
+                                    <h5> Date Range: <strong class="display_search_date_range"></strong>
+                                    </h5>
+                                </div>
 
-                                    <div class="col-md-4">
-                                        <select class="form-control col-md-8" id="filter" required>
+                                <div class="col-md-4">
+                                    <select class="form-control col-md-8" id="filter" required>
 
-                                            <option value="all" selected> ALL</option>
-                                            <option value="credit"> CREDIT </option>
-                                            <option value="debit"> DEBIT </option>
-                                        </select>
+                                        <option value="all" selected> ALL</option>
+                                        <option value="credit"> CREDIT </option>
+                                        <option value="debit"> DEBIT </option>
+                                    </select>
 
-                                        {{-- </div> --}}
-                                    </div>
+                                    {{-- </div> --}}
+                                </div>
 
-                                    <div class="col-md-2">
-                                        <span style="float: right">
-                                            &nbsp;&nbsp;
-                                            <span id="pdf_print">
-                                                <a href="{{ url('print-account-statement') }}">
-                                                    <img src="{{ asset('assets/images/pdf.png') }}" alt=""
-                                                        style="width: 22px; height: 25px;">
-                                                </a>
-                                            </span>
-
-                                            &nbsp;&nbsp;&nbsp;
+                                <div class="col-md-2">
+                                    <span style="float: right">
+                                        &nbsp;&nbsp;
+                                        <span id="pdf_print">
+                                            <a href="{{ url('print-account-statement') }}">
+                                                <img src="{{ asset('assets/images/pdf.png') }}" alt=""
+                                                    style="width: 22px; height: 25px;">
+                                            </a>
                                         </span>
-                                        <span style="float: right">
-                                            <span id="excel_print">
-                                                <a href="{{ url('print-account-statement') }}">
-                                                    <img src="{{ asset('assets/images/excel.png') }}" alt=""
-                                                        style="width: 22px; height: 25px;">
-                                                </a>
-                                            </span>
 
+                                        &nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    <span style="float: right">
+                                        <span id="excel_print">
+                                            <a href="{{ url('print-account-statement') }}">
+                                                <img src="{{ asset('assets/images/excel.png') }}" alt=""
+                                                    style="width: 22px; height: 25px;">
+                                            </a>
                                         </span>
-                                    </div>
+
+                                    </span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="table-responsive  ">
+
                             <table role="table" id="table-view"
-                                class="table table-responsive table-bordered table-striped account_transaction_display_table">
+                                class="table p-3 table-bordered table-striped table-centered account_transaction_display_table">
                                 <thead>
 
-                                    <tr class="bg-primary text-white ">
+                                    <tr class="bg-info text-white ">
                                         <th scope="col">Document Ref</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Amount <span class="account_number_display_"></span>
@@ -182,12 +187,18 @@
                                                 class="account_currency_display_"></span>
                                         </th>
                                         <th scope="col">Credit Account</th>
-                                        <th scope="col">Transaction ID <span class="___class_+?59___"></span> </th>
+                                        <th scope="col">Transaction ID </th>
                                         <th scope="col">Batch No</th>
+                                        <th scope="col">Attachment</th>
+                                        <th scope="col">Receipt</th>
                                     </tr>
                                 </thead>
 
                                 <tbody role="rowgroup" id="table-body-display">
+                                    <td colspan="100%" class="text-center">
+
+                                        {!! $noDataAvailable !!}
+                                    </td>
                                 </tbody>
                             </table>
                         </div>
@@ -206,7 +217,7 @@
 @section('scripts')
 
 
-<script src="{{ asset('assets/js/pages/accounts/datatables.init.js') }}" defer></script>
+{{-- <script src="{{ asset('assets/js/pages/accounts/datatables.init.js') }}" defer></script> --}}
 <script src="{{ asset("assets/js/pages/accounts/accountEnquiry.js") }}"></script>
 
 @endsection

@@ -7,7 +7,13 @@
         height: 5.5rem
     }
 
+    table {
+        font-size: 0.78rem;
+        /* width: 100%; */
+    }
+
     .dashboard-table {
+
         min-height: 150px
     }
 </style>
@@ -19,29 +25,7 @@
 <div class="container-fluid ">
     <div class="row">
         <div class="col-md-12">
-            <marquee behavior="" direction="">
-                <span>
-                    <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px'
-                        style='border-radius:5px;'>
-                    /
-                    <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px'
-                        style='border-radius:5px;'>
-
-                    <span> <strong> 9.000 / 1.00</strong> </span>
-                </span>
-
-                &nbsp; &nbsp;
-
-                <span>
-                    <img src="{{ asset('assets/images/flags/EUR.png') }}" class="img-fluid" width='40px' height='20px'
-                        style='border-radius:5px;'>
-                    /
-                    <img src="{{ asset('assets/images/flags/GBP.png') }}" class="img-fluid" width='40px' height='20px'
-                        style='border-radius:5px;'>
-
-                    <span> <strong> 9.000 / 1.00</strong> </span>
-                </span>
-
+            <marquee behavior="" direction="left" id="fx_rate_marquee" style="display: flex">
 
             </marquee>
             <legend></legend>
@@ -188,55 +172,56 @@
                         </div>
 
                         <div class="tab-pane show " id="profile">
+                            <div class="table-responsive table-bordered my_investment_display_area">
+                                <table id="fixed_deposit_list" class="table mb-0 ">
+                                    <thead>
+                                        <tr class="bg-info text-white ">
+                                            <td> <b> Account No </b> </td>
+                                            <td> <b> Deal Amount </b> </td>
+                                            <td> <b> Tunure </b> </td>
+                                            <td> <b> FixedInterestRate </b> </td>
+                                            <td> <b> Rollover </b> </td>
 
-                            <p id="fixed_deposit_account">
+                                        </tr>
+                                    </thead>
+                                    <tbody id="fixed_deposit_list_body">
+                                        <td colspan="100%" class="text-center">
+                                            {{-- global noDataAvailable image variable shared with all views --}}
+                                            {!! $noDataAvailable !!}
+                                        </td>
 
-                                <div class="table-responsive table-bordered my_investment_display_area">
-                                    <table id="" class="table mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Account No </b> </td>
-                                                <td> <b> Deal Amount </b> </td>
-                                                <td> <b> Tunure </b> </td>
-                                                <td> <b> FixedInterestRate </b> </td>
-                                                <td> <b> Rollover </b> </td>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody class="fixed_deposit_account">
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
 
                             </p>
 
                         </div>
 
                         <div class="tab-pane" id="messages">
-                            <p id="p_loans_display">
+                            <div class="table-responsive table-bordered loans_display_area">
+                                <table id="loans_list" class="table mb-0 ">
+                                    <thead>
+                                        <tr class="bg-info text-white ">
+                                            <td> <b> Facility No </b> </td>
+                                            <td> <b> Description </b> </td>
+                                            <td> <b> Currency </b> </td>
+                                            <td> <b> Amount Granted </b> </td>
+                                            <td> <b> Loan Balance </b> </td>
 
-                                <div class="table-responsive table-bordered loans_display_area">
-                                    <table id="" class="table mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Facility No </b> </td>
-                                                <td> <b> Description </b> </td>
-                                                <td> <b> Currency </b> </td>
-                                                <td> <b> Amount Granted </b> </td>
-                                                <td> <b> Loan Balance </b> </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="loans_list_body">
+                                        <td colspan="100%" class="text-center">
+                                            {{-- global noDataAvailable image variable shared with all views --}}
+                                            {!! $noDataAvailable !!}
+                                        </td>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody class="loans_display">
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
 
                             </p>
 
@@ -245,13 +230,14 @@
                 </div> <!-- end card-box-->
                 {{-- <br> --}}
                 {{-- <div class="card " style="border-radius: 20px;"> --}}
-                <div class="border mt-0 dashboard-table rounded p-2"
-                    style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                <div class="border mt-0 site-card dashboard-table rounded p-2">
                     <div class="container-fluid">
                         <div class="row">
-                            <h4 class="header-title p-2 mb-0 text-primary col-md-4 " style="font-weight: bolder">
-                                Latest
-                                Transactions</h4>
+                            <a class="col-md-4" href="{{ url('account-enquiry') }}">
+                                <h4 class="header-title p-2 mb-0 text-primary  " style="font-weight: bolder">
+                                    Latest
+                                    Transactions </h4>
+                            </a>
 
                             <div class="col-md-8">
                                 <select name="" class="form-control" id="account_transaction">
@@ -271,22 +257,25 @@
 
                     <legend></legend>
 
-                    <div class="table-responsive table-bordered ">
-                        <table class="table table-centered mb-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-centered mb-0" id="transaction_history">
                             <thead>
                                 <tr class="bg-info text-white">
-                                    <td> <b> Date & Time </b> </td>
-                                    <td> <b> Batch </b> </td>
-                                    <td> <b> Description </b> </td>
+                                    <td> <b> Date</b> </td>
                                     <td> <b> Amount </b> </td>
                                     <td> <b> Balance </b> </td>
+                                    <td> <b> Description </b> </td>
+                                    <td> <b> Account </b> </td>
+                                    <td> <b> Transaction ID </b> </td>
+                                    <td> <b> Batch Number </b> </td>
                                 </tr>
                             </thead>
-                            <tbody id="transaction_history">
-                                <tr class="text-center ">
-                                    <td colspan="5"> <img src="{{ asset("assets/images/placeholders/no_data.svg") }}"
-                                            alt="no data available" width="150"></td>
-                                </tr>
+                            <tbody id="transaction_history_body">
+
+                                <td colspan="100%" class="text-center">
+                                    {{-- global noDataAvailable image variable shared with all views --}}
+                                    {!! $noDataAvailable !!}
+                                </td>
 
                             </tbody>
                         </table>
@@ -338,8 +327,13 @@
 
 
 @section('scripts')
+<script>
+    let noDataAvailable =   {!! json_encode($noDataAvailable) !!} 
+</script>
+<script src="{{ asset("assets/js/pages/home/home.js") }}">
 
-<script src="{{ asset("assets/js/pages/home/home.js") }}"></script>
+</script>
+
 
 
 @endsection

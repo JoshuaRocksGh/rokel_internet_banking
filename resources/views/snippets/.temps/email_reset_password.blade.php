@@ -31,83 +31,84 @@
                     </div>
                 </div>
 
+                <div id="password_reset_area">
+                    <!-- title-->
+                    <h4 class="mt-0"><b>Reset Password</b></h4>
+                    <p class="text-muted mb-4">Enter the required deatils to reset password</p>
 
-                <!-- title-->
-                <h4 class="mt-0"><b>Reset Password</b></h4>
-                <p class="text-muted mb-4">Enter the required deatils to reset password</p>
-
-                <!-- form -->
-                <form action="#" autocomplete="off" aria-autocomplete="off">
-                    <div class="alert alert-danger text-white bg-danger" role="alert" id="error_alert"
-                        style="display: none">
-                        {{-- <span id="error_message"></span> --}}
-                    </div>
-                    <div class="alert alert-warning text-white bg-warning " role="alert" id="no_question"
-                        style="display: none">
-                        {{-- <span id="no_question_found"></span> --}}
-                    </div>
-                    <div class="alert alert-success bg-success text-white" role="alert" id="reset_success"
-                        style="display: none">
-                        {{-- <span id="reset_success_message"></span> --}}
-                    </div>
-
-
-                    <div class="form-group" id="user_id">
-                        <label for="pass_email">Enter User ID</label>
-                        <div class="input-group input-group-merge">
-                            <input type="email" id="reset_user_id" name="reset_user_id" class="form-control"
-                                autocomplete="off" aria-autocomplete="off">
+                    <!-- form -->
+                    <form action="#" autocomplete="off" aria-autocomplete="off">
+                        <div class="alert alert-danger text-white bg-danger" role="alert" id="error_alert"
+                            style="display: none">
+                            {{-- <span id="error_message"></span> --}}
                         </div>
-                    </div>
-
-                    <div class="form-group" id="security_question_form">
-                        <label id="security_question"></label>
-                        <br>
-                        <div class="input-group input-group-merge">
-                            <input type="email" id="security_question_answer" name="security_question_answer"
-                                class="form-control" autocomplete="off" aria-autocomplete="off">
-
-                            <input type="text" id="security_question_code" hidden>
+                        <div class="alert alert-warning text-white bg-warning " role="alert" id="no_question"
+                            style="display: none">
+                            {{-- <span id="no_question_found"></span> --}}
+                        </div>
+                        <div class="alert alert-success bg-success text-white" role="alert" id="reset_success"
+                            style="display: none">
+                            {{-- <span id="reset_success_message"></span> --}}
                         </div>
 
-                        <div class="form-group">
-                            <label for="pass_email">Enter Password</label>
+
+                        <div class="form-group" id="user_id">
+                            <label for="pass_email">Enter User ID</label>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="reset_password" name="reset_password" class="form-control"
+                                <input type="email" id="reset_user_id" name="reset_user_id" class="form-control"
                                     autocomplete="off" aria-autocomplete="off">
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="pass_email">Confirm Password</label>
+                        <div class="form-group" id="security_question_form" style="display:none;">
+                            <label id="security_question"></label>
+                            <br>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="reset_confirm_password" name="reset_confirm_password"
-                                    class="form-control">
+                                <input type="email" id="security_question_answer" name="security_question_answer"
+                                    class="form-control" autocomplete="off" aria-autocomplete="off">
+
+                                <input type="text" id="security_question_code" hidden>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pass_email">Enter Password</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="reset_password" name="reset_password"
+                                        class="form-control" autocomplete="off" aria-autocomplete="off">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pass_email">Confirm Password</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="reset_confirm_password" name="reset_confirm_password"
+                                        class="form-control">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group mb-0 text-center">
-                        <button class="btn btn-primary btn-block" type="button" id="user_id_next_btn">
-                            <span class="user_id_next_btn_text">Next</span>
-                            <span class="spinner-border spinner-border-sm mr-1 spinner-text" role="status"
-                                aria-hidden="true"></span>
-                            <span class="spinner-text">Loading</span>
-                            {{-- <span class="spinner-text">Loading ...</span> --}}
-                        </button>
-                        <button class="btn btn-primary btn-block" type="button" id="security_question_submit">
-                            <span id="security_question_submit_text">Submit</span>
-                            <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"
-                                id="submit_spinner"></span>
-                        </button>
-                        {{-- <button class="btn btn-primary btn-block" type="button"
+                        <div class="form-group mb-0 text-center">
+                            <button class="btn btn-primary btn-block" type="button" id="user_id_next_btn">
+                                <span class="user_id_next_btn_text">Next</span>
+                                <span class="spinner-border spinner-border-sm mr-1 spinner-text" role="status"
+                                    aria-hidden="true"></span>
+                                <span class="spinner-text">Loading</span>
+                                {{-- <span class="spinner-text">Loading ...</span> --}}
+                            </button>
+                            <button class="btn btn-primary btn-block" type="button" id="security_question_submit">
+                                <span id="security_question_submit_text">Submit</span>
+                                <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"
+                                    id="submit_spinner"></span>
+                            </button>
+                            {{-- <button class="btn btn-primary btn-block" type="button"
                                 id="reset_password_submit_btn">Submit</button> --}}
 
-                        {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
-                    </div>
+                            {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
+                        </div>
 
 
-                </form>
+                    </form>
+                </div>
                 <!-- end form-->
                 <br><br>
                 <p class="text-center"><a href="{{ url('/') }}" id="login_instead" class="text-primary ml-1 "><b>
@@ -163,28 +164,17 @@
             $("#reset_password_submit").hide();
             $("#security_question_submit").hide();
             $("#reset_password_submit_btn").hide()
-            // $("#error_alert").hide();
-            // $('#no_question').hide();
-            // $("#reset_success").hide();
             $("#reset_success_message").hide()
             $(".spinner-text").hide();
             $("#submit_spinner").hide()
 
             $("#user_id_next_btn").click(function(e) {
                 e.preventDefault()
-                // $("#error_alert").hide();
-                // $("#no_question").hide()
-
-
-
                 var enter_user_id = $("#reset_user_id").val()
-
                 $("#user_id_next_btn").attr('disabled', true)
                 $(".spinner-text").show();
                 $(".user_id_next_btn_text").hide()
-
                 if (enter_user_id !== '') {
-
                     $.ajax({
                         type: "GET",
                         url: 'post-security-question-api/' + enter_user_id,
@@ -326,9 +316,6 @@
                     })
 
                 } else {
-
-                    // $("#error_alert").toggle('500');
-                    // $("#error_message").text;
                     error_alert('Passwords do not match', "#error_alert")
                     $("#security_question_submit").attr('disabled', false)
                     $("#submit_spinner").hide();

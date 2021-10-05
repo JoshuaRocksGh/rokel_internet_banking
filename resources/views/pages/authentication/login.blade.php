@@ -7,7 +7,7 @@
     <!--Auth fluid left content -->
     <div class="auth-fluid-form-box py-0"
         style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;background-size: cover; ">
-        <div class="align-items-center d-flex h-100">
+        <div class="align-items-center d-flex">
             <div class="card-body">
 
                 <!-- Logo -->
@@ -47,8 +47,8 @@
 
                         <div class="form-group">
 
-                            <label for="user_id">User ID<span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" id="user_id" placeholder="Enter your email"
+                            {{-- <label for="user_id">User ID<span class="text-danger">*</span></label> --}}
+                            <input class="form-control" type="text" id="user_id" placeholder="Enter Email"
                                 parsley-trigger="change" autocomplete="off" aria-autocomplete="off">
 
                         </div>
@@ -56,12 +56,12 @@
 
 
                         <div class="form-group">
-                            <a href="{{ url('forgot-password') }}" class="text-muted float-right"><small>Forgot your
+                            <a href="#" class="text-muted float-right" id="forgot_password"><small>Forgot your
                                     password?</small></a>
-                            <label for="password">Password<span class="text-danger">*</span></label>
+                            {{-- <label for="password">Password<span class="text-danger">*</span></label> --}}
                             <div class="input-group input-group-merge">
-                                <input type="password" id="password" class="form-control"
-                                    placeholder="Enter your password" autocomplete="off" aria-autocomplete="off">
+                                <input type="password" id="password" class="form-control" placeholder="Enter Password"
+                                    autocomplete="off" aria-autocomplete="off">
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>
@@ -93,6 +93,71 @@
                         </div>
                     </form>
 
+                </div>
+                <div id="password_reset_area" style="display:none">
+                    <!-- title-->
+                    <h4 class="mt-0 mb-4"><b>Reset Password</b></h4>
+                    {{-- <p class="text-muted mb-4">Enter the required details to reset password</p> --}}
+
+                    <!-- form -->
+                    <form action="#" autocomplete="off" aria-autocomplete="off">
+                        <div class="alert alert-danger text-white bg-danger" role="alert" id="error_alert"
+                            style="display: none">
+                            {{-- <span id="error_message"></span> --}}
+                        </div>
+                        <div class="alert alert-warning text-white bg-warning " role="alert" id="no_question"
+                            style="display: none">
+                            {{-- <span id="no_question_found"></span> --}}
+                        </div>
+                        <div class="alert alert-success bg-success text-white" role="alert" id="reset_success"
+                            style="display: none">
+                            {{-- <span id="reset_success_message"></span> --}}
+                        </div>
+
+
+                        <div class="form-group" id="user_id">
+                            {{-- <label for="pass_email">Enter User ID</label> --}}
+                            <div class="input-group input-group-merge ">
+                                <input type="email" id="reset_user_id" placeholder="Enter User ID" name="reset_user_id"
+                                    class="form-control" autocomplete="off" aria-autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="security_question_form" style="display: none">
+                            <input type="email" id="security_question_answer" name="security_question_answer"
+                                class="form-control" autocomplete="off" aria-autocomplete="off">
+                            <input type="text" id="security_question_code" hidden>
+                            <br>
+                            <input type="password" placeholder="Enter New Password" id="reset_password"
+                                name="reset_password" class="form-control" autocomplete="off" aria-autocomplete="off">
+                            <br>
+                            <input type="password" placeholder="Confirm Password" id="reset_confirm_password"
+                                name="reset_confirm_password" class="form-control">
+                        </div>
+
+                        <div class="form-group mb-0 text-center">
+                            <br>
+                            <button class="btn btn-primary btn-block" type="button" id="user_id_next_btn">
+                                <span class="user_id_next_btn_text">Next</span>
+                                <span class="spinner-border spinner-border-sm mr-1 spinner-text-next"
+                                    style="display: none" role="status" aria-hidden="true"></span>
+                                <span class="spinner-text-next" style="display: none">Loading</span>
+                                {{-- <span class="spinner-text">Loading ...</span> --}}
+                            </button>
+                            <button class="btn btn-primary btn-block" style="display: none" type="button"
+                                id="security_question_submit">
+                                <span id="security_question_submit_text">Submit</span>
+                                <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"
+                                    id="submit_spinner" style="display: none"></span>
+                            </button>
+                            {{-- <button class="btn btn-primary btn-block" type="button"
+                                id="reset_password_submit_btn">Submit</button> --}}
+
+                            {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
+                        </div>
+
+
+                    </form>
                 </div>
 
 
@@ -460,314 +525,7 @@
 
 @section('scripts')
 
-<script>
-    function login(email, password) {
-            $.ajax({
-                type: "POST",
-                url: "login",
-                datatype: "application/json",
-                data: {
-                    "user_id": email,
-                    "password": password,
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-
-                success: function(response) {
-                    console.log(response);
-                    $('#submit').attr('disabled', false);
-
-                    if (response.responseCode == "000") {
-                        if (response.data.firstTimeLogin == true) {
-                            window.location = 'change-password';
-                            $('#submit').attr('disabled', true);
-                        } else {
-                            window.location = 'home';
-                            $('#submit').attr('disabled', true);
-                        }
-                    } else {
-                        {{-- $('#submit').attr('disabled', true); --}}
-                        $('#spinner').hide()
-                        $('#spinner-text').hide()
-                        $('#log_in').show()
-                        error_alert(response.message, "#failed_login")
-                    }
-                },
-                error: function(xhr, status, error) {
-                    $('#submit').attr('disabled', false);
-                    $('#spinner').hide()
-                    $('#spinner-text').hide()
-                    $('#log_in').show()
-                    error_alert("Connection Error", "#failed_login")
-                    console.log('Ajax request failed...');
-                }
-            })
-        }
-
-
-        function error_alert(message, targetId) {
-            $(targetId).text(message)
-            $(targetId).show(200);
-
-            setTimeout(() => {
-                $(targetId).hide(200)
-            }, 3000)
-
-        }
-
-        function validateCustomer(userData) {
-            $.ajax({
-                type: "POST",
-                url: "validate-customer",
-                datatype: "application/json",
-                data: {
-                    'customerNumber': userData.customerNumber
-                },
-                headers: {
-                    'X-CSRF-TOKEN': $(
-                            'meta[name="csrf-token"]')
-                        .attr(
-                            'content')
-                },
-            }).done(response => {
-                if (response.responseCode === '000') {
-                    $('#self_enroll_form1').hide()
-                    $('#self_enroll_form2').toggle('500')
-
-                    $("#id_number_input").attr("placeholder", `Enter your ID number: ${response.data.idType}`);
-
-                    console.log(response)
-                    userData.authToken = response.data.authToken;
-                } else {
-                    error_alert(response.message, "#self_enroll_message")
-                    $('#s_loading1').toggle()
-                    $('#s_next1').show()
-                    $('#b_next1').attr('disabled', false);
-                    return false;
-                }
-
-            }).fail(() => {
-                $('#s_loading1').toggle()
-                $('#s_next1').show()
-                $('#b_next1').attr('disabled', false);
-                error_alert("Connection Error", "#self_enroll_message")
-
-            })
-        }
-
-        function confirmCustomer(userData) {
-            $.ajax({
-                type: "POST",
-                url: "confirm-customer",
-                datatype: "application/json",
-                data: userData,
-                headers: {
-                    'X-CSRF-TOKEN': $(
-                            'meta[name="csrf-token"]')
-                        .attr(
-                            'content')
-                },
-            }).done(response => {
-                if (response.responseCode === '000') {
-                    console.log("confirmation successful")
-                    console.log(response)
-                    $('#self_enroll_form2').hide()
-                    $('#s_loading2').toggle()
-                    $('#self_enroll_form3').toggle(500)
-
-                } else {
-                    error_alert(response.message, "#self_enroll_message")
-                    $('#s_loading2').toggle()
-                    $('#s_next2').show()
-                    $('#b_next2').attr('disabled', false);
-                    return false
-                }
-            }).fail(() => {
-                $('#s_loading2').toggle()
-                $('#s_next2').show()
-                $('#b_next2').attr('disabled', false);
-                error_alert("Connection Error", "#self_enroll_message")
-            })
-        }
-
-        function registerCustomer(userData) {
-            $.ajax({
-                type: "POST",
-                url: "../register-customer",
-                datatype: "application/json",
-                data: userData,
-                headers: {
-                    'X-CSRF-TOKEN': $(
-                            'meta[name="csrf-token"]')
-                        .attr(
-                            'content')
-                },
-            }).done(response => {
-                if (response.responseCode === '000') {
-                    // $('#success_modal_text').text(response.message)
-                    // $('#success-alert-modal').modal('show');
-                    // $("#success-alert-modal").on("hidden.bs.modal", () => {
-                    //     window.location = 'login'
-                    // });
-                    console.log(response.message)
-                    $("#one_time_input_area").hide(300)
-                    $('#self_enroll_message').text(response.message)
-                    $("#self_enroll_message").toggleClass("alert-danger alert-success bg-danger bg-success")
-                    $("#self_enroll_message").show
-                    // $('#s_loading3').toggle()
-                    // $('#s_next3').show()
-                    setTimeout(() => {
-                        window.location = 'login'
-                    }, 5000)
-
-
-                } else {
-                    error_alert(response.message, "#self_enroll_message")
-                    $('#s_next3').show()
-                    $('#s_loading3').toggle()
-                    $('#b_next3').attr('disabled', false);
-                    return false;
-                }
-
-            }).fail(() => {
-                $('#s_loading3').toggle()
-                $('#s_next3').show()
-                $('#b_next3').attr('disabled', false);
-                error_alert("Connection Error", "#self_enroll_message")
-            })
-        }
-        $(document).ready(function() {
-
-
-            let userData = new Object();
-            // $('#self_enroll_form').hide(),
-            // $('#failed_login').hide(),
-            // $('#spinner').hide(),
-            // $('#spinner-text').hide()
-            // $("#error_alert").hide()
-            // $("#no_question").hide()
-            // $("#reset_success").hide()
-            // $("#error_message_").hide()
-            // $("#no_question_found_").hide()
-            // $("#reset_success_message_").hide()
-
-            $('#submit').on("click", function(e) {
-                e.preventDefault();
-                var email = $("#user_id").val();
-                var password = $('#password').val();
-
-                if (email === "" || email === undefined) {
-                    error_alert("Please enter email", "#failed_login")
-
-                } else if (password === "" || password === undefined) {
-                    error_alert("Please enter password", "#failed_login")
-
-                } else {
-                    $('#spinner').show()
-                    $('#spinner-text').show()
-                    $('#log_in').hide()
-                    $('#submit').attr('disabled', true);
-
-                    login(email, password)
-                }
-            })
-
-            $('#self_enroll').on("click", function(e) {
-                console.log("enroll")
-                e.preventDefault();
-
-                $('#login_form').hide()
-                $('#login_page_extras').toggle(300)
-                $('#self_enroll_form2').hide()
-                $('#self_enroll_form3').hide()
-                $('#s_loading1').hide()
-                $('#s_loading2').hide()
-                $('#s_loading3').hide()
-                $('#self_enroll_form').toggle(300)
-                $('#customer_number_input').focus()
-                return false;
-
-            })
-
-            $('#login_instead').on("click", function(e) {
-                e.preventDefault();
-
-                $('#self_enroll_form').hide()
-                $('#login_form').toggle(300)
-                $('#login_page_extras').toggle(300)
-                return false;
-
-            })
-            $('#b_next1').on("click", function(e) {
-                e.preventDefault
-
-                userData.customerNumber = $("#customer_number_input").val()
-                if (userData.customerNumber === undefined || userData.customerNumber === "") {
-
-                    error_alert("Customer Number is required", "#self_enroll_message")
-
-                    return false
-                } else if (userData.customerNumber.length !== 6) {
-                    error_alert("Invalid customer number", "#self_enroll_message")
-                    return false
-                } else {
-                    $('#s_next1').hide()
-                    $('#s_loading1').toggle()
-                    $('#b_next1').attr('disabled', true);
-                    validateCustomer(userData)
-                }
-            })
-
-            $('#b_next2').on("click", function(e) {
-                console.log(userData)
-                e.preventDefault
-                let dob = $('#date_of_birth_input').val()
-                if (dob === "" || dob === undefined) {
-                    error_alert("Please enter date of birth", "#self_enroll_message")
-                    return false
-                }
-                dob = $("#date_of_birth_input").val().split('/')
-                userData.dateOfBirth = `${dob[2]}-${dob[0]}-${dob[1]}`
-                userData.idNumber = $("#id_number_input").val()
-                userData.phoneNumber = $("#phone_number_input").val()
-
-                if (userData.idNumber === "" || userData.idNumber === undefined) {
-                    error_alert("Enter id number", "#self_enroll_message")
-
-                    return false
-                } else if (userData.phoneNumber === "" || userData.phoneNumber === undefined) {
-                    error_alert("Enter phone number", "#self_enroll_message")
-                    return false
-                } else {
-                    $('#s_next2').hide()
-                    $('#s_loading2').toggle()
-                    $('#b_next2').attr('disabled', true);
-                    confirmCustomer(userData)
-                    return false
-                }
-            })
-
-            $('#b_next3').on("click", function(e) {
-                e.preventDefault
-
-                userData.oneTimePin = $("#one_time_pin_input").val()
-                if (userData.oneTimePin === undefined || userData.oneTimePin === "") {
-                    error_alert("One time pin is required", "#self_enroll_message")
-                    return false
-                } else if (userData.oneTimePin.length !== 4) {
-                    error_alert("Invalid code", "#self_enroll_message")
-
-                    return false
-                } else {
-                    $('#s_next3').hide()
-                    $('#s_loading3').toggle()
-                    $('#b_next3').attr('disabled', true);
-                    registerCustomer(userData)
-                }
-            })
-
-        })
+<script src="{{ asset("assets/js/pages/login.js")}}">
 </script>
 
 
