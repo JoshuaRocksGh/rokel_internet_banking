@@ -395,8 +395,8 @@
                                 '~' + data[index].accountNumber + '~' + data[index]
                                 .currency + '~' + data[index].availableBalance + '~' + data[
                                     index].accountMandate
-                        }).text(data[index].accountType + '|' + data[index].accountNumber +
-                            '|' + data[index].currency + '  ' + data[index].availableBalance
+                        }).text(data[index].accountType + '||' + data[index].accountNumber +
+                            '||' + data[index].currency + '  ' + data[index].availableBalance
                         ));
 
                     });

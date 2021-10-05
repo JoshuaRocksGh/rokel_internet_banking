@@ -6,16 +6,16 @@
 @section('content')
 
 
-    @include("snippets.top_navbar", ['page_title' => 'SAVINGS ACCOUNT'])
+    @include("snippets.top_navbar", ['page_title' => 'ACCOUNT OPENING'])
 
-    <div class="container" style="zoom: 0.8;">
+    <div class="container-fluid" style="zoom: 0.8;">
         <br><br><br><br>
         <div class="row">
 
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <br>
                 <a href="{{ url()->previous() }}" type="button"
-                    class="btn btn-soft-blue waves-effect waves-light float-left"><i
+                    class="btn btn-soft-blue btn-sm waves-effect waves-light float-left"><i
                         class="mdi mdi-reply-all-outline"></i>&nbsp;Go
                     Back</a>
 
@@ -101,7 +101,7 @@
                         <h3 class="sub-header font-18 purple-color">
                             <div class="row">
                                 <div class="col-md-4">
-                                    ACCOUNT CREATION
+                                    SAVINGS ACCOUNT OPENING
                                 </div>
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
@@ -116,7 +116,7 @@
                         </h3>
                         <hr>
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-md-4">
                                 <br><br>
                                 <div class="nav nav-pills flex-column navtab-bg nav-pills-tab text-center" id="v-pills-tab"
                                     role="tablist" aria-orientation="vertical">
@@ -144,7 +144,7 @@
                                 </div>
 
                             </div> <!-- end col-->
-                            <div class="col-lg-8">
+                            <div class="col-md-8">
 
                                 <div class="tab-content p-3">
                                     <div class="tab-pane fade active show" id="custom-v-pills-personal-details"
@@ -192,7 +192,7 @@
                                                     <div class="form-group">
                                                         <b for="billing-phone">Other Name</b>
                                                         <input class="form-control" type="text" placeholder="Othername"
-                                                            id="othername" required />
+                                                            id="othername" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -364,7 +364,7 @@
                                                     <div class="form-group">
                                                         <b>ID Type</b>
                                                         <select class="custom-select" id="id_type" required>
-                                                            <option value="">ID Type</option>
+                                                            <option value="">-- Select ID Type -- </option>
                                                             {{-- <option value="Passport">Passport</option>
                                                                 <option value="Driver license">Driver license</option>
                                                                 <option value="Voter ID">Voter ID</option>
@@ -396,11 +396,11 @@
 
 
                                                 <div class="form-group mb-3">
-                                                    <b for="example-fileinput">Upload Image of Selected ID</b>
+                                                    <h4 for="example-fileinput">Upload Image of Selected ID</h4>
                                                     <input type="file" id="image_upload" class="form-control-file"
                                                         required><br>
                                                     <input type="hidden" id="image_upload_">
-                                                    <img class="img-fluid display_selected_id_image" width="300"
+                                                    <img class="img-fluid display_selected_id_image text-center w-50 h-50"
                                                         id="display_selected_id_image" src="#" alt="your image" />
                                                 </div>
 
@@ -445,35 +445,43 @@
 
                                         <!-- Passport Picture Upload-->
                                         <form action="" id="bio_details" autocomplete="off" aria-autocomplete="off">
-                                            <div class="form-group mb-3">
-                                                <b for="example-fileinput">Picture(Passport)</b>
-                                                <input type="file" id="passport_picture" class="form-control-file"
-                                                    required><br>
-                                                <input type="hidden" id="passport_picture_">
-                                                <img class="img-fluid img_display display_passport_picture previewImg1"
-                                                    width="300" id="previewImg1" src="#" alt="your image" />
+                                            <div class="row">
+                                                <div class="col-md-6 form-group mb-3">
+                                                    <h4 for="example-fileinput">Picture(Passport)</h4>
+                                                    <input type="file" id="passport_picture" class="form-control-file"
+                                                        required><br>
+                                                    <input type="hidden" id="passport_picture_">
+                                                    <img class="img-fluid img_display display_passport_picture previewImg1 w-50 h-50"
+                                                        id="previewImg1" src="#" alt="your image" />
+                                                </div>
+
+                                                <!-- Paper and Image Capture-->
+
+
+                                                <div class="col-md-6 form-group mb-3">
+                                                    <h4 for="example-fileinput">Picture of a signed paper</h4>
+                                                    <input type="file" id="selfie_upload" class="form-control-file"
+                                                        required><br>
+                                                    <input type="hidden" id="selfie_upload_">
+                                                    <img class="img-fluid img_display display_selfie previewImg2 w-50 h-50"
+                                                        id="previewImg2" src="#" alt="your image" />
+                                                </div>
+                                                <div class="col-md-6 form-group mb-3">
+                                                    <h4 for="example-fileinput">Proof of address</h4>
+                                                    <input type="file" id="proof_of_address" class="form-control-file"
+                                                        required><br>
+                                                    <input type="hidden" id="proof_of_address_">
+                                                    <img class="img-fluid img_display display_proof_of_address previewImg3 w-50 h-50"
+                                                        id="previewImg3" src="#" alt="your image" />
+                                                </div>
+
+
                                             </div>
 
-                                            <!-- Paper and Image Capture-->
 
 
-                                            <div class="form-group mb-3">
-                                                <b for="example-fileinput">Picture of a signed paper</b>
-                                                <input type="file" id="selfie_upload" class="form-control-file"
-                                                    required><br>
-                                                <input type="hidden" id="selfie_upload_">
-                                                <img class="img-fluid img_display display_selfie previewImg2" width="300"
-                                                    id="previewImg2" src="#" alt="your image" />
-                                            </div>
 
-                                            <div class="form-group mb-3">
-                                                <b for="example-fileinput">Proof of address</b>
-                                                <input type="file" id="proof_of_address" class="form-control-file"
-                                                    required><br>
-                                                <input type="hidden" id="proof_of_address_">
-                                                <img class="img-fluid img_display display_proof_of_address previewImg3"
-                                                    width="300" id="previewImg3" src="#" alt="your image" />
-                                            </div>
+
                                             <!-- Cash on Delivery box-->
 
                                             <!-- end Cash on Delivery box-->
@@ -644,33 +652,53 @@
                                                         id="display_expiry_date"></span>
                                                 </div>
                                             </div>
-                                            <p class="mb-1"><span class="font-weight-light "> <b> ID image:
-                                                    </b> <br> <img class="img-fluid display_selected_id_image"
+                                            <p class="mb-1"><span class="font-weight-light ">
+                                                    <h4> ID image:
+                                                    </h4> <br> <img class="img-fluid display_selected_id_image w-50 h-50"
                                                         id="previewImg" src="#" alt="your image" /><span
                                                         class="font-weight-semibold mr-3" id="display_title">
                                                         &nbsp</span>
                                         </div>
                                         <h5 class="mb-3 mt-4 bg-light p-2"> Bio Details</h5>
-                                        <div>
-                                            <p class="mb-1"><span class="font-weight-light mr-2"><b>
-                                                        Passport Picture: </b>
-                                                    <br> <img class="img-fluid display_passport_picture previewImg1"
-                                                        id="_passport_picture_summary" src="#" alt="your image" /><span
-                                                        class="font-weight-semibold mr-3" id="display_title">
-                                                        &nbsp</span></span></p>
-                                            <p class="mb-1"><span class="font-weight-light mr-2"> <b> Signature
-                                                        Image: </b>
-                                                    <br> <img class="img-fluid display_selfie previewImg2"
-                                                        id="selfie_picture_summary" src="#" alt="your image" /><span
-                                                        class="font-weight-semibold mr-3" id="display_title">
-                                                        &nbsp</span></span></p>
 
-                                            <p class="mb-1"><span class="font-weight-light mr-2"> <b> Address
-                                                        Image: </b>
-                                                    <br> <img class="img-fluid display_proof_of_address previewImg3"
-                                                        id="address_picture_summary" src="#" alt="your image" /><span
-                                                        class="font-weight-semibold mr-3" id="display_title">
-                                                        &nbsp</span></span></p>
+                                        <div>
+                                            <div class="row">
+                                                <p class="mb-1 col-md-6"><span class="font-weight-light mr-2">
+                                                        <h4>Passport Picture: </h4>
+                                                        <br> <img
+                                                            class="img-fluid display_passport_picture previewImg1 w-50 h-50"
+                                                            id="_passport_picture_summary" src="#" alt="your image" /><span
+                                                            class="font-weight-semibold mr-3" id="display_title">
+                                                            &nbsp</span>
+                                                    </span></p>
+
+                                                <p class="mb-1 col-md-6"><span class="font-weight-light mr-2">
+                                                        <h4>
+                                                            Signature
+                                                            Image: </h4>
+                                                        <br> <img class="img-fluid display_selfie previewImg2 w-50 h-50"
+                                                            id="selfie_picture_summary" src="#" alt="your image" /><span
+                                                            class="font-weight-semibold mr-3" id="display_title">
+                                                            &nbsp</span>
+                                                    </span></p>
+
+                                                <p class="mb-1 col-md-6"><span class="font-weight-light mr-2">
+                                                        <h4>
+                                                            Address
+                                                            Image: </h4>
+                                                        <br> <img
+                                                            class="img-fluid display_proof_of_address previewImg3 w-50 h-50"
+                                                            id="address_picture_summary" src="#" alt="your image" /><span
+                                                            class="font-weight-semibold mr-3" id="display_title">
+                                                            &nbsp</span>
+                                                    </span></p>
+
+
+                                            </div>
+
+
+
+
                                         </div>
 
                                     </div>
@@ -750,6 +778,8 @@
                 </div> <!-- end row-->
 
             </div>
+
+            <div class="col-md-"></div>
 
         </div>
 

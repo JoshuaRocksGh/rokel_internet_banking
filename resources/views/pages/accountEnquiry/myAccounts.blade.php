@@ -238,7 +238,7 @@
             console.log(i_invest_total)
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: ['I HAVE', 'Investments', 'I OWE'],
                     datasets: [{
@@ -246,21 +246,21 @@
                         data: [i_have, i_owe, i_invest_total],
                         backgroundColor: [
 
-                            'rgb(75,192,192)',
-                            'rgba(231, 223, 10, 1)',
-                            'rgb(233,55,93)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgb(75,192,192, 0.5)',
+                            'rgba(231, 223, 10, 0.5)',
+                            'rgb(233,55,93, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(153, 102, 255, 0.5)',
+                            'rgba(255, 159, 64, 0.5)'
                         ],
                         borderColor: [
 
-                            'rgb(75,192,192)',
-                            'rgba(231, 223, 10, 1)',
-                            'rgb(233,55,93)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            'rgb(75,192,192 ,0.5)',
+                            'rgba(231, 223, 10, 0.5)',
+                            'rgb(233,55,93,0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(153, 102, 255, 0.5)',
+                            'rgba(255, 159, 64, 0.5)'
                         ],
                         borderWidth: 1
                     }]

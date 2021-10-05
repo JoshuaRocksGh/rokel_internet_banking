@@ -65,6 +65,8 @@ function lovs_list() {
             console.log(response);
             let title_list = response.data.titleList;
             let country_list = response.data.nationalityList;
+            // let country_list = country_list_.sort();
+            console.log(country_list);
             let id_list = response.data.documentTypeList;
             let residence_list = response.data.residentStatusList;
 
@@ -81,6 +83,9 @@ function lovs_list() {
                 );
             });
             $.each(country_list, function (index) {
+                // let cList_ = country_list[index].actualCode;
+                // let cList = cList_.sort();
+                // console.log(cList_);
                 $("#country").append(
                     $("<option>", {
                         value:
@@ -383,7 +388,7 @@ $(() => {
     });
 
     $("#proof_of_address").change(function () {
-        var file = $("#selfie_upload[type=file]").get(0).files[0];
+        var file = $("#proof_of_address[type=file]").get(0).files[0];
 
         if (file) {
             var reader = new FileReader();
@@ -410,7 +415,7 @@ $(() => {
         // Personal Details
         var title_ = $("#title").val().split("~");
         var title = title_[0];
-        $("#display_title").text(title_[1]);
+        $("#display_title").text(title);
 
         var surname = $("#surname").val();
         $("#display_surname").text(surname);
@@ -522,6 +527,8 @@ $(() => {
             },
             success: function (response) {
                 console.log(response);
+                // var res = JSON.parse(response);
+                // console.log(res);
                 if (response.responseCode == "000") {
                     Swal.fire("", response.message, "success");
                     // toaster(response.message, "success", 3000);

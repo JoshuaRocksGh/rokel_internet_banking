@@ -137,15 +137,15 @@
                             <li>
                                 <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ url('bulk-upload-payment') }}">Bulk Upload (Mobile Money)</a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="{{ url('request-blink') }}">Request Blink Pay </a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="{{ url('order-blink-payment') }}">Order Blink Pay </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="{{ url('payment-beneficiary') }}">Add Beneficiary</a>
                             </li>
@@ -192,7 +192,7 @@
                         </ul>
                     </div>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#sidebarTradeFinance" data-toggle="collapse">
                         <i class="mdi mdi-briefcase-check-outline"></i>
                         <span> Trade Finance </span>
@@ -205,7 +205,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
 
 
                 <li>
