@@ -16,14 +16,16 @@
 <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 <style>
-    /* {
-            {
-            -- .btn-primary {
-                box-shadow: 0 0 0 0 rgb(6 55 195 / 70%) !important;
-            }
+    /* *:focus {
+        outline: 0 !important;
+        box-shadow:
+            0 0 0 .2rem #fff,
+            0 0 0 .35rem #069 !important;
+    } */
 
-            --
-        }
+    /* *:focus-visible {
+        outline: 0 !important;
+        box-shadow: none !important;
     } */
 
     .form-group {
@@ -55,6 +57,7 @@
         border-top: 13px solid #0561ad;
         border-bottom: 13px solid transparent;
     }
+
 
 
     .rtgs_card::after {

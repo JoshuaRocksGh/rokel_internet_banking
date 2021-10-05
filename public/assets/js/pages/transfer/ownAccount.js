@@ -41,81 +41,6 @@ function makeTransfer(url, data) {
     });
 }
 
-function get_account() {
-    $.ajax({
-        type: "GET",
-        url: "get-my-account",
-        datatype: "application/json",
-        success: function (response) {
-            if (response.responseCode == "000") {
-                let data = response.data;
-                $.each(data, function (index) {
-                    $("#from_account").append(
-                        $("<option>", {
-                            value:
-                                data[index].accountType +
-                                "~" +
-                                data[index].accountDesc +
-                                "~" +
-                                data[index].accountNumber +
-                                "~" +
-                                data[index].currency +
-                                "~" +
-                                data[index].availableBalance +
-                                "~" +
-                                data[index].accountMandate,
-                        }).text(
-                            data[index].accountNumber +
-                                "~" +
-                                data[index].currency +
-                                " ~ " +
-                                formatToCurrency(
-                                    parseFloat(data[index].availableBalance)
-                                )
-                        )
-                    );
-                    $("#to_account").append(
-                        $("<option>", {
-                            value:
-                                data[index].accountType +
-                                "~" +
-                                data[index].accountDesc +
-                                "~" +
-                                data[index].accountNumber +
-                                "~" +
-                                data[index].currency +
-                                "~" +
-                                data[index].availableBalance +
-                                "~" +
-                                data[index].accountMandate,
-                        }).text(
-                            data[index].accountNumber +
-                                "~" +
-                                data[index].currency +
-                                "~" +
-                                formatToCurrency(
-                                    parseFloat(data[index].availableBalance)
-                                )
-                        )
-                    );
-                });
-            } else {
-                toater(response.message, "warning", 3000);
-                setTimeout(() => {
-                    if (response.data == null) {
-                        window.location = "logout";
-                    }
-                }, 1500);
-            }
-        },
-        error: function (xhr, status, error) {
-            setTimeout(function () {
-                get_account();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
-
 function expenseTypes() {
     $.ajax({
         type: "GET",
@@ -212,111 +137,6 @@ function get_correct_fx_rate() {
     });
 }
 
-// function customer() {
-//     var customerType = @json(session()->get('customerType'));
-//     console.log(customerType);
-
-//     if (customerType == 'C') {
-
-//         $('#coporate_transfer_approval').show();
-//         $('#personal_transfer_receipt').hide();
-//     } else {
-//         $('#personal_transfer_receipt').show();
-//         $('#coporate_transfer_approval').hide();
-//     }
-// }
-function formatToCurrency(amount) {
-    return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-}
-
-// function currency_convertor(forex_rate) {
-//     let amount = $("#amount").val();
-//     let convert_amount_currency = $("#select_currency__").val();
-//     let converted_amount = "";
-//     cur_1 = $("#select_currency").val();
-//     cur_2 = $("#select_currency__").val();
-
-//     let currency_pair_1 = cur_1 + "/ " + cur_2;
-//     let currency_pair_2 = cur_2 + "/ " + cur_1;
-
-//     let to_local_currency = cur_1 + "/ SLL";
-//     let local_currency = "";
-
-//     $("#converted_amount").val("");
-//     $("#convertor_rate").val("");
-
-//     if (forex_rate.length > 0) {
-//         $.each(forex_rate, function (index) {
-//             if (
-//                 String(forex_rate[index].PAIR.trim()) ==
-//                 String(to_local_currency.trim())
-//             ) {
-//                 local_currency =
-//                     parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE);
-//             }
-
-//             if (
-//                 String(forex_rate[index].PAIR.trim()) ==
-//                 String(currency_pair_1.trim())
-//             ) {
-//                 converted_amount =
-//                     parseFloat(amount) * parseFloat(forex_rate[index].MIDRATE);
-//                 $("#convertor_rate").val(
-//                     formatToCurrency(
-//                         parseFloat(forex_rate[index].MIDRATE.toFixed(2))
-//                     )
-//                 );
-//                 $(".display_midrate").text(
-//                     currency_pair_1.trim() +
-//                         " => " +
-//                         formatToCurrency(
-//                             parseFloat(forex_rate[index].MIDRATE.toFixed(2))
-//                         )
-//                 );
-//                 $("#converted_amount").val(
-//                     formatToCurrency(parseFloat(converted_amount.toFixed(2)))
-//                 );
-//                 $(".display_converted_amount").text(
-//                     convert_amount_currency +
-//                         " " +
-//                         formatToCurrency(
-//                             parseFloat(converted_amount.toFixed(2))
-//                         )
-//                 );
-//             } else if (
-//                 String(forex_rate[index].PAIR.trim()) ==
-//                 String(currency_pair_2.trim())
-//             ) {
-//                 $("#convertor_rate").val(
-//                     formatToCurrency(
-//                         parseFloat(forex_rate[index].MIDRATE.toFixed(2))
-//                     )
-//                 );
-//                 $(".display_midrate").text(
-//                     currency_pair_2.trim() +
-//                         " => " +
-//                         formatToCurrency(
-//                             parseFloat(forex_rate[index].MIDRATE.toFixed(2))
-//                         )
-//                 );
-//                 converted_amount =
-//                     parseFloat(amount) / parseFloat(forex_rate[index].MIDRATE);
-//                 $("#converted_amount").val(
-//                     formatToCurrency(parseFloat(converted_amount.toFixed(2)))
-//                 );
-//                 $(".display_converted_amount").text(
-//                     convert_amount_currency +
-//                         " " +
-//                         formatToCurrency(
-//                             parseFloat(converted_amount.toFixed(2))
-//                         )
-//                 );
-//             } else {
-//             }
-//         });
-//     }
-// }
-
 $(() => {
     let transferInfo = new Object();
     transferInfo.purpose = "";
@@ -327,7 +147,6 @@ $(() => {
     let confirmationCompleted = false;
     let validationsCompleted = false;
 
-    get_account();
     expenseTypes();
     get_currency();
     get_correct_fx_rate();
@@ -348,22 +167,17 @@ $(() => {
         $(".display_converted_amount").text(convertedAmount);
     }
 
-    if (customerType == "C") {
-        $("#coporate_transfer_approval").show();
-        $("#personal_transfer_receipt").hide();
-    } else {
-        $("#personal_transfer_receipt").show();
-        $("#coporate_transfer_approval").hide();
-    }
+    $("#personal_transfer_receipt").show();
+    $("#coporate_transfer_approval").hide();
 
-    let now = new Date();
+    // let now = new Date();
 
-    let day = ("0" + now.getDate()).slice(-2);
-    let month = ("0" + (now.getMonth() + 1)).slice(-2);
+    // let day = ("0" + now.getDate()).slice(-2);
+    // let month = ("0" + (now.getMonth() + 1)).slice(-2);
 
-    let today = now.getFullYear() + "-" + month + "-" + day;
+    // let today = now.getFullYear() + "-" + month + "-" + day;
 
-    $("#future_payment").text(today).datepicker("setDate", new Date());
+    // $("#future_payment").text(today).datepicker("setDate", new Date());
 
     // {{-- hide select accounts info --}}
     $(".from_account_display_info").hide();
@@ -384,7 +198,7 @@ $(() => {
     $("#from_account").on("change", function () {
         fromAccount.info = $(this).val();
 
-        if (fromAccount.info == undefined || fromAccount.info.trim() == "") {
+        if (!fromAccount.info) {
             $(".from_account_display_info").hide();
             $(".display_from_account_type").text("");
             $(".display_from_account_name").text("");
@@ -471,14 +285,14 @@ $(() => {
     });
 
     $("#select_currency__").on("change", function () {
-        if (transferInfo.amount === "" || transferInfo.amount === undefined) {
+        if (!transferInfo.amount) {
             return false;
         }
         handleConversion();
     });
 
     $("#amount").on("keyup", function () {
-        if (!validateAll(fromAccount.info, toAccount.info)) {
+        if (!fromAccount.info || !toAccount.info) {
             toaster(
                 "Please select source and destination accounts",
                 "error",
@@ -490,7 +304,7 @@ $(() => {
 
         transferInfo.amount = $(this).val();
 
-        if (transferInfo.amount === "" || transferInfo.amount === undefined) {
+        if (!transferInfo.amount) {
             $(".display_transfer_amount").text("");
             // $(".display_from_account_currency").text("");
             $(".display_midrate").text("");
@@ -508,13 +322,11 @@ $(() => {
         transferInfo.category = $("#category").val();
         transferInfo.purpose = $("#purpose").val();
         if (
-            !validateAll(
-                fromAccount.info,
-                toAccount.info,
-                transferInfo.amount,
-                transferInfo.category,
-                transferInfo.purpose
-            )
+            !!fromAccount.info ||
+            !toAccount.info ||
+            !transferInfo.amount ||
+            !transferInfo.category ||
+            !transferInfo.purpose
         ) {
             toaster("please complete all required fields", "warning", 3000);
             return false;
@@ -562,12 +374,8 @@ $(() => {
         transferInfo.currency = fromAccount.currency;
 
         confirmationCompleted = true;
-        if (customerType === "C") {
-            transferInfo.accountMandate = fromAccount.info.split("~")[5];
-            makeTransfer("corporate-own-account-api", transferInfo);
-        } else {
-            $("#centermodal").modal("show");
-        }
+
+        $("#centermodal").modal("show");
     });
 
     // $("#confirm_modal_button").show();

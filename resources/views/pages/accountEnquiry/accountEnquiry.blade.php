@@ -56,11 +56,7 @@
                                     <b class="col-md-3 text-primary align-self-center">Select Account :</b>
                                     <select class="form-control col-md-9" id="from_account" required>
                                         <option value="" disabled selected> -- Select Your Account -- </option>
-                                        @foreach(session()->get('customerAccounts') as $i => $account)
-                                        <option
-                                            value="{{$account->accountType ."~" .$account->accountDesc ."~" .$account->accountNumber ."~" .$account->currency}}">
-                                            {{$account->accountDesc ."~" .$account->accountNumber}}</option>
-                                        @endforeach
+                                        @include("snippets.accounts")
                                     </select>
                                 </div>
 

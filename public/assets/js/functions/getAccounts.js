@@ -7,7 +7,18 @@ function getAccounts(account_data) {
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
-        success: function (response) {},
+        success: function (response) {
+            if (response.responseCode == "000") {
+                console.log("acc");
+            } else {
+                toater(response.message, "error");
+                setTimeout(() => {
+                    if (response.data == null) {
+                        window.location = "logout";
+                    }
+                }, 1500);
+            }
+        },
         error: function (xhr, status, error) {
             setTimeout(function () {
                 getAccounts(account_data);
