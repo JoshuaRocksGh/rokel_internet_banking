@@ -165,10 +165,10 @@ $(() => {
         $("#convertor_rate").val(midrate);
         $("#converted_amount").val(convertedAmount);
         $(".display_converted_amount").text(convertedAmount);
+        $(".display_conversion_currency").text($("#select_currency__").val());
     }
 
     $("#personal_transfer_receipt").show();
-    $("#coporate_transfer_approval").hide();
 
     // let now = new Date();
 
@@ -213,6 +213,7 @@ $(() => {
             ) {
                 toaster("Can not send to same account", "warning", 2000);
                 $(this).val("");
+                fromAccount.info = "";
                 $(".display_from_account_type").text("");
                 $(".display_from_account_name").text("");
                 $(".display_from_account_no").text("");
@@ -243,7 +244,7 @@ $(() => {
 
     $("#to_account").on("change", function () {
         toAccount.info = $(this).val();
-        if (toAccount.info.trim() == "" || toAccount.info.trim() == undefined) {
+        if (!toAccount.info) {
             $(".display_to_account_type").text("");
             $(".display_to_account_name").text("");
             $(".display_to_account_no").text("");
@@ -258,6 +259,7 @@ $(() => {
             ) {
                 toaster("Can not send to same account", "warning", 2000);
                 $(this).val("");
+                toAccount.info = "";
                 $(".display_to_account_type").text("");
                 $(".display_to_account_name").text("");
                 $(".display_to_account_no").text("");
@@ -292,12 +294,9 @@ $(() => {
     });
 
     $("#amount").on("keyup", function () {
+        transferInfo.amount = "";
         if (!fromAccount.info || !toAccount.info) {
-            toaster(
-                "Please select source and destination accounts",
-                "error",
-                3000
-            );
+            toaster("Please select source and destination accounts", "warning");
             $(this).val("");
             return false;
         }
@@ -312,7 +311,7 @@ $(() => {
             return false;
         }
         $(".display_transfer_amount").text(
-            formatToCurrency(parseFloat(transferInfo.amount))
+            formatToCurrency(transferInfo.amount)
         );
         handleConversion();
     });
@@ -322,7 +321,7 @@ $(() => {
         transferInfo.category = $("#category").val();
         transferInfo.purpose = $("#purpose").val();
         if (
-            !!fromAccount.info ||
+            !fromAccount.info ||
             !toAccount.info ||
             !transferInfo.amount ||
             !transferInfo.category ||
