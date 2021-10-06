@@ -135,12 +135,12 @@ Route::get('/add-beneficiary/own-account-beneficiary', [transferController::clas
 Route::get('/get-my-account', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-account');
 Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
 
-//CORPORATE OWN ACCOUNT API
-Route::post('/corporate-own-account-api', [TransferOwnAccountController::class, 'corporate_own_account_transfer'])->name('corporate-own-account-api');
-Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
-Route::post('/corporate-saved-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_saved_beneficiary'])->name('corporate-saved-local-bank-transfer-api');
-Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary'])->name('corporate-onetime-local-bank-transfer-api');
+// //CORPORATE OWN ACCOUNT API
+// Route::post('/corporate-own-account-api', [TransferOwnAccountController::class, 'corporate_own_account_transfer'])->name('corporate-own-account-api');
 // Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
+// Route::post('/corporate-saved-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_saved_beneficiary'])->name('corporate-saved-local-bank-transfer-api');
+// Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary'])->name('corporate-onetime-local-bank-transfer-api');
+// // Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
 
 
 //Standing order page
@@ -189,7 +189,7 @@ Route::post('/get-bulk-detail-list-for-approval', [PendingController::class, 'ge
 
 
 // LOCAL BANK
-Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
+// Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
 // Route::get('/local-bank_', [LocalBankController::class, 'rtgs_'])->name('local-bank_');
 Route::get('/ach', [LocalBankController::class, 'ach'])->name('ach');
 
@@ -413,7 +413,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
 
-    Route::get('/local-bank', [LocalBankController::class, 'rtgs'])->name('local-bank');
+    Route::get('/local-bank', [LocalBankController::class, 'local_bank'])->name('local-bank');
 
 
     // Route::delete('/delete-beneficiary', [transferController::class, "delete_beneficiary"])->name('delete-beneficiary');

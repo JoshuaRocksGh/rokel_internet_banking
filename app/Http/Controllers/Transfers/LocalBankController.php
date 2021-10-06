@@ -14,19 +14,19 @@ class LocalBankController extends Controller
 {
     //
 
-    public function other_local_bank()
-    {
-        return view('pages.transfer.other_local_bank_');
-    }
+    // public function other_local_bank()
+    // {
+    //     return view('pages.transfer.other_local_bank_');
+    // }
 
     public function ach()
     {
         return view('pages.transfer.ach');
     }
 
-    public function rtgs()
+    public function local_bank()
     {
-        return view('pages.transfer.rtgs');
+        return view('pages.transfer.local_bank');
     }
     // public function rtgs_()
     // {

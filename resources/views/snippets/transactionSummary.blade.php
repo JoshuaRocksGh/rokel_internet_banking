@@ -11,7 +11,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>From Account:</td>
+                        <td>Sender Details:</td>
                         <td>
                             <span class="d-block font-13 text-primary text-bold display_from_account_name"
                                 id="display_from_account_name"> </span>
@@ -21,14 +21,17 @@
                     </tr>
 
                     <tr>
-                        <td>To Account:</td>
+                        <td>Receiver Details:</td>
                         <td>
                             <span class="d-block font-13 text-primary text-bold display_to_account_name"
                                 id="display_to_account_name"> </span>
 
                             <span class="d-block font-13 text-primary text-bold display_to_account_no"
                                 id="display_to_account_no"> </span>
-
+                            <span class="d-block font-13 text-primary text-bold display_to_bank_name"
+                                style="display: none"> </span>
+                            {{-- <span class="d-block font-13 text-primary text-bold display_to_account_address"
+                                style="display: none"> </span> --}}
                         </td>
                     </tr>
 

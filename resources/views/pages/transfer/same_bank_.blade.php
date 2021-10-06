@@ -406,56 +406,6 @@ $currentPath ="Same Bank";
                             <br>
                         </div>
                     </div>
-                    <!-- end card-body -->
-                    {{-- <!-- Modal -->
-            <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
-                aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
-                            <div class="modal-header">
-                                <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
-                                    Details</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-
-                            <div class="modal-body">
-
-                                From: <span class="font-13 text-primary" id="display_from_account"> &nbsp
-                                </span><br><br>
-                                To: <span class="font-13 text-muted" id="display_to_account"> &nbsp
-                                </span><br><br>
-                                Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp
-                                </span><br><br>
-                                Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp
-                                </span><br><br>
-                                Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp
-                                </span><br><br>
-                                Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee">
-                                </span><br><br>
-                                Total: <span class="font-13 text-muted" id="display_total"> &nbsp
-                                </span><br><br>
-
-                                <div class="form-group">
-                                    <label class="font-16 purple-color">Enter Pin</label>
-                                    <input type="text" class="form-control" id="pin" data-toggle="input-mask"
-                                        placeholder="enter pin" required
-                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-                                </div>
-
-                            </div>
-
-
-
-                            <div class="modal-footer">
-                                <button type="send" id="send" class="btn btn-primary" data-target="#multiple-two"
-                                    data-toggle="modal" data-dismiss="modal">Send</button>
-                            </div>
-                        </form>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal --> --}}
                 </div> <!-- end col -->
             </div> <!-- end row -->
         </div>
@@ -465,8 +415,6 @@ $currentPath ="Same Bank";
 
 
     @section('scripts')
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script> --}}
     <script src="{{ asset('assets/js/functions/validateEmail.js') }}"></script>
     <script src="{{ asset('assets/js/functions/currencyConverter.js') }}"></script>
     <script src="{{ asset('assets/js/pages/transfer/sameBank.js') }}"></script>

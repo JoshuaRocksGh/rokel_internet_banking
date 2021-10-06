@@ -4,27 +4,26 @@
 
 @section('styles')
 
-    <style>
-        @media print {
-            .hide_on_print {
-                display: none
-            }
+<style>
+    @media print {
+        .hide_on_print {
+            display: none
         }
+    }
 
-        @font-face {
-            font-family: 'password';
-            font-style: normal;
-            font-weight: 400;
-            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
-        }
+    @font-face {
+        font-family: 'password';
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+    }
 
-        input.key {
-            font-family: 'password';
-            width: 100px;
-            height: 26px;
-        }
-
-    </style>
+    input.key {
+        font-family: 'password';
+        width: 100px;
+        height: 26px;
+    }
+</style>
 
 
 @endsection
@@ -33,33 +32,34 @@
 
 @section('content')
 
-    <div <legend>
-        </legend>
+<div <legend>
+    </legend>
 
-        <div class="row">
-            <div class="col-12">
-                <div class="">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-2"></div>
+    <div class="row">
+        <div class="col-12">
+            <div class="">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2"></div>
 
-                            <div class="col-md-8">
-                                <h2 class="header-title m-t-0 text-primary">OTHER LOCAL BANK TRANSFER</h2>
+                        <div class="col-md-8">
+                            <h2 class="header-title m-t-0 text-primary">OTHER LOCAL BANK TRANSFER</h2>
 
-                                <p class="text-muted font-14 m-b-20">
-                                    Parsley is a javascript form validation library. It helps you provide your
-                                    users with feedback on their form submission before sending it to your
-                                    server.
-                                    <hr>
-                                </p>
+                            <p class="text-muted font-14 m-b-20">
+                                Parsley is a javascript form validation library. It helps you provide your
+                                users with feedback on their form submission before sending it to your
+                                server.
+                                <hr>
+                            </p>
 
 
 
-                                <p class="row" id="transaction_form">
+                            <p class="row" id="transaction_form">
 
 
                                 <div class="col-md-12">
-                                    <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
+                                    <form action="#" id="payment_details_form" autocomplete="off"
+                                        aria-autocomplete="none">
                                         @csrf
 
                                         <div class="row">
@@ -72,7 +72,8 @@
 
 
                                                     <select class="custom-select " id="from_account" required>
-                                                        <option value="">Select Account<span class="text-danger">*</span>
+                                                        <option value="">Select Account<span
+                                                                class="text-danger">*</span>
                                                         </option>
 
 
@@ -91,7 +92,8 @@
                                                                         class="d-block display_from_account_no text-primary"></small>
                                                                 </td>
 
-                                                                <td class="text-right font-weight-semibold text-primary">
+                                                                <td
+                                                                    class="text-right font-weight-semibold text-primary">
                                                                     <span
                                                                         class="display_from_account_currency text-primary"></span>
                                                                     <span
@@ -110,15 +112,16 @@
                                                 <div class="form-group hide-for-demo-purpose">
 
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input radio" type="radio" name="onetime"
-                                                            id="inlineRadio1" value="beneficiary" checked="checked">
+                                                        <input class="form-check-input radio" type="radio"
+                                                            name="onetime" id="inlineRadio1" value="beneficiary"
+                                                            checked="checked">
                                                         <label class="form-check-label" for="inlineRadio1">Select
                                                             beneficiary</label>
                                                     </div>
                                                     &nbsp;&nbsp;
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input radio" type="radio" name="onetime"
-                                                            id="inlineRadio2" value="onetime">
+                                                        <input class="form-check-input radio" type="radio"
+                                                            name="onetime" id="inlineRadio2" value="onetime">
                                                         <label class="form-check-label" for="inlineRadio2">Onetime
                                                             beneficiary</label>
                                                     </div>
@@ -128,7 +131,8 @@
 
                                                 <div class="form-group">
                                                     {{-- <label for="form-group"> Amount<span class="text-danger">*</span></label> --}}
-                                                    <label class="">Enter Amount <span class="text-danger">*</span></label>
+                                                    <label class="">Enter Amount <span
+                                                            class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" id="amount"
                                                         placeholder="Amount: 0.00"
                                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
@@ -160,10 +164,12 @@
 
 
                                                 <div class="form-group mb-0">
-                                                    <input type="checkbox" class="custom-control-inputt" id="invoice_check">
+                                                    <input type="checkbox" class="custom-control-inputt"
+                                                        id="invoice_check">
                                                     &nbsp; &nbsp; <label class="h6">Invoice Attachment ?
-                                                        <span class="badge badge-primary text-right" style="cursor: pointer"
-                                                            data-toggle="modal" data-target="#centermodal">View</span>
+                                                        <span class="badge badge-primary text-right"
+                                                            style="cursor: pointer" data-toggle="modal"
+                                                            data-target="#centermodal">View</span>
                                                     </label>
                                                     <span class="hide_invoice">
                                                         <br>
@@ -221,7 +227,8 @@
                                                     <br> --}}
 
                                                     <label for="form-group">Select Account</label>
-                                                    <span class="badge badge-primary float-right" style="cursor: pointer"><a
+                                                    <span class="badge badge-primary float-right"
+                                                        style="cursor: pointer"><a
                                                             href="{{ url('add-local-bank-beneficiary') }}"
                                                             class="text-white">Create Beneficiary</a> </span>
                                                     <select class="custom-select" id="to_account" required>
@@ -239,7 +246,8 @@
                                                                 <td>
                                                                     <a
                                                                         class="text-body font-weight-semibold display_to_account_name"></a>
-                                                                    <small class="d-block display_to_account_no"></small>
+                                                                    <small
+                                                                        class="d-block display_to_account_no"></small>
                                                                 </td>
 
                                                                 <td class="text-right font-weight-semibold">
@@ -266,7 +274,8 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label class="">Bank Name <span class="text-danger">*</span></label>
+                                                        <label class="">Bank Name <span
+                                                                class="text-danger">*</span></label>
                                                         <input type="email" class="form-control"
                                                             id="onetime_beneficiary_bank_name" placeholder="Bank Name"
                                                             required>
@@ -347,282 +356,279 @@
                                 {{-- <div class="col-md-5 text-center" style="margin-top: 80px;">
 
                                     <img src="{{ asset('assets/images/same_bank.jpg') }}" class="img-fluid" alt="">
-                                </div> <!-- end col --> --}}
+                        </div> <!-- end col --> --}}
 
 
-                                <!-- end row -->
-
-
-
-                                </p>
-
-                                <div class="row" id="transaction_summary">
-
-
-                                    <div class="col-md-12">
-                                        <div class="border p-3 mt-4 mt-lg-0 rounded card">
-                                            <h4 class="header-title mb-3">Transfer Detail Summary</h4>
-
-                                            <p class="display-4 text-center text-success success-message "></p>
-
-                                            <div class="table-responsive">
-                                                <table class="table mb-0 table-bordered table-striped">
-
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>From Account:</td>
-                                                            <td>
-                                                                <span
-                                                                    class="font-13 text-primary text-bold display_from_account_type"
-                                                                    id="display_from_account_type"></span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_from_account_name"
-                                                                    id="display_from_account_name"> </span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_from_account_no"
-                                                                    id="display_from_account_no"></span>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>To Account:</td>
-                                                            <td>
-
-                                                                <span
-                                                                    class="font-13 text-primary text-bold display_to_account_type"
-                                                                    id="display_to_account_type"> </span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                    id="display_to_account_name"> </span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
-                                                                    id="online_display_beneficiary_bank_name"></span>
-                                                                <span
-                                                                    class="d-block font-13 text-primary text-bold display_to_account_no"
-                                                                    id="display_to_account_no"> </span>
+                        <!-- end row -->
 
 
 
+                        </p>
 
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Amount:</td>
-                                                            <td>
-                                                                <span class="font-15 text-primary h3 display_currency"
-                                                                    id="display_currency"> </span>
-                                                                &nbsp;
-                                                                <span
-                                                                    class="font-15 text-primary h3 display_transfer_amount"
-                                                                    id="display_transfer_amount"></span>
-
-                                                            </td>
-                                                        </tr>
+                        <div class="row" id="transaction_summary">
 
 
-                                                        <tr>
-                                                            <td>Category:</td>
-                                                            <td>
-                                                                <span class="font-13 text-primary h3 display_category"
-                                                                    id="display_category"></span>
+                            <div class="col-md-12">
+                                <div class="border p-3 mt-4 mt-lg-0 rounded card">
+                                    <h4 class="header-title mb-3">Transfer Detail Summary</h4>
 
-                                                            </td>
-                                                        </tr>
+                                    <p class="display-4 text-center text-success success-message "></p>
 
+                                    <div class="table-responsive">
+                                        <table class="table mb-0 table-bordered table-striped">
 
-                                                        <tr>
-                                                            <td>Purpose:</td>
-                                                            <td>
-                                                                <span class="font-13 text-primary h3 display_purpose"
-                                                                    id="display_purpose"></span>
-                                                            </td>
-                                                        </tr>
+                                            <tbody>
+                                                <tr>
+                                                    <td>From Account:</td>
+                                                    <td>
+                                                        <span
+                                                            class="font-13 text-primary text-bold display_from_account_type"
+                                                            id="display_from_account_type"></span>
+                                                        <span
+                                                            class="d-block font-13 text-primary text-bold display_from_account_name"
+                                                            id="display_from_account_name"> </span>
+                                                        <span
+                                                            class="d-block font-13 text-primary text-bold display_from_account_no"
+                                                            id="display_from_account_no"></span>
+                                                    </td>
+                                                </tr>
 
+                                                <tr>
+                                                    <td>To Account:</td>
+                                                    <td>
 
-                                                        <tr>
-                                                            <td>Schedule Payment:</td>
-                                                            <td>
-                                                                <span
-                                                                    class="font-13 text-primary h3 display_schedule_payment"
-                                                                    id="display_schedule_payment">NO </span>
-                                                                &nbsp; | &nbsp;
-                                                                <span
-                                                                    class="font-13 text-primary h3 display_schedule_payment_date"
-                                                                    id="display_schedule_payment_date"> N/A
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-
-
-                                                        <tr>
-                                                            <td>Transfer Date: </td>
-                                                            <td>
-                                                                <span class="font-13 text-primary h3"
-                                                                    id="display_transfer_date">{{ date('d F, Y') }}</span>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Posted BY: </td>
-                                                            <td>
-                                                                <span class="font-13 text-primary h3"
-                                                                    id="display_posted_by">Kwabena Ampah</span>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>Enter Pin: </td>
-                                                            <td>
-
-                                                                <input type="text" name="user_pin"
-                                                                    class="form-control key hide_on_print" id="user_pin"
-                                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-
-                                                            </td>
-                                                        </tr>
-
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <!-- end table-responsive -->
-                                            <br>
-                                            <div class="form-group text-center">
-
-                                                <span> <button class="btn btn-secondary btn-rounded" type="button"
-                                                        id="back_button">Back</button> &nbsp; </span>
-                                                <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
-                                                        id="confirm_button"><span id="confirm_transfer">Confirm
-                                                            Transfer</span>
-                                                        <span class="spinner-border spinner-border-sm mr-1" role="status"
-                                                            id="spinner" aria-hidden="true"></span>
-                                                        <span id="spinner-text">Loading...</span>
-                                                    </button></span>
-                                                <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
-                                                        type="button" id="print_receipt" onclick="window.print()">Print
-                                                        Receipt
-                                                    </button></span>
-                                            </div>
-                                        </div>
-
-                                    </div> <!-- end col -->
+                                                        <span
+                                                            class="font-13 text-primary text-bold display_to_account_type"
+                                                            id="display_to_account_type"> </span>
+                                                        <span
+                                                            class="d-block font-13 text-primary text-bold display_to_account_name"
+                                                            id="display_to_account_name"> </span>
+                                                        <span
+                                                            class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                                            id="online_display_beneficiary_bank_name"></span>
+                                                        <span
+                                                            class="d-block font-13 text-primary text-bold display_to_account_no"
+                                                            id="display_to_account_no"> </span>
 
 
 
 
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Amount:</td>
+                                                    <td>
+                                                        <span class="font-15 text-primary h3 display_currency"
+                                                            id="display_currency"> </span>
+                                                        &nbsp;
+                                                        <span class="font-15 text-primary h3 display_transfer_amount"
+                                                            id="display_transfer_amount"></span>
+
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>Category:</td>
+                                                    <td>
+                                                        <span class="font-13 text-primary h3 display_category"
+                                                            id="display_category"></span>
+
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>Purpose:</td>
+                                                    <td>
+                                                        <span class="font-13 text-primary h3 display_purpose"
+                                                            id="display_purpose"></span>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>Schedule Payment:</td>
+                                                    <td>
+                                                        <span class="font-13 text-primary h3 display_schedule_payment"
+                                                            id="display_schedule_payment">NO </span>
+                                                        &nbsp; | &nbsp;
+                                                        <span
+                                                            class="font-13 text-primary h3 display_schedule_payment_date"
+                                                            id="display_schedule_payment_date"> N/A
+                                                        </span>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>Transfer Date: </td>
+                                                    <td>
+                                                        <span class="font-13 text-primary h3"
+                                                            id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Posted BY: </td>
+                                                    <td>
+                                                        <span class="font-13 text-primary h3"
+                                                            id="display_posted_by">Kwabena Ampah</span>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Enter Pin: </td>
+                                                    <td>
+
+                                                        <input type="text" name="user_pin"
+                                                            class="form-control key hide_on_print" id="user_pin"
+                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
+                                    <br>
+                                    <div class="form-group text-center">
+
+                                        <span> <button class="btn btn-secondary btn-rounded" type="button"
+                                                id="back_button">Back</button> &nbsp; </span>
+                                        <span>&nbsp; <button class="btn btn-primary btn-rounded" type="button"
+                                                id="confirm_button"><span id="confirm_transfer">Confirm
+                                                    Transfer</span>
+                                                <span class="spinner-border spinner-border-sm mr-1" role="status"
+                                                    id="spinner" aria-hidden="true"></span>
+                                                <span id="spinner-text">Loading...</span>
+                                            </button></span>
+                                        <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print"
+                                                type="button" id="print_receipt" onclick="window.print()">Print
+                                                Receipt
+                                            </button></span>
+                                    </div>
+                                </div>
+
+                            </div> <!-- end col -->
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-md-2"></div>
+
+                </div> <!-- end card-body -->
+
+
+
+                <!-- Center modal content -->
+                <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true"
+                    style="zoom: 0.9;">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-primary" id="myCenterModalLabel">Aquiring a Savings
+                                    Account</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã—</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class=" ">
+                                    <img src="" id="display_invoice_attachment" class="img-fluid" />
+                                </div>
+
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+
+
+                <!-- Modal -->
+                <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
+                                <div class="modal-header">
+                                    <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
+                                        Details</h4>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">×</button>
+                                </div>
+
+                                <div class="modal-body">
+
+                                    From: <span class="font-13 text-primary" id="display_from_account"> &nbsp
+                                    </span><br><br>
+                                    To: <span class="font-13 text-muted" id="display_to_account"> &nbsp
+                                    </span><br><br>
+                                    Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp
+                                    </span><br><br>
+                                    Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp
+                                    </span><br><br>
+                                    Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp
+                                    </span><br><br>
+                                    Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee">
+                                    </span><br><br>
+                                    Total: <span class="font-13 text-muted" id="display_total"> &nbsp
+                                    </span><br><br>
+
+                                    <div class="form-group">
+                                        <label class="font-16 purple-color">Enter Pin</label>
+                                        <input type="text" class="form-control" id="user_pin" data-toggle="input-mask"
+                                            placeholder="enter pin" required
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                    </div>
 
                                 </div>
 
 
 
-                            </div>
-
-                            <div class="col-md-2"></div>
-
-                        </div> <!-- end card-body -->
-
-
-
-                        <!-- Center modal content -->
-                        <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true"
-                            style="zoom: 0.9;">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title text-primary" id="myCenterModalLabel">Aquiring a Savings
-                                            Account</h4>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">Ã—</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class=" ">
-                                            <img src="" id="display_invoice_attachment" class="img-fluid" />
-                                        </div>
-
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
-
-
-
-                        <!-- Modal -->
-                        <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
-                            aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
-                                                Details</h4>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">×</button>
-                                        </div>
-
-                                        <div class="modal-body">
-
-                                            From: <span class="font-13 text-primary" id="display_from_account"> &nbsp
-                                            </span><br><br>
-                                            To: <span class="font-13 text-muted" id="display_to_account"> &nbsp
-                                            </span><br><br>
-                                            Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp
-                                            </span><br><br>
-                                            Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp
-                                            </span><br><br>
-                                            Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp
-                                            </span><br><br>
-                                            Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee">
-                                            </span><br><br>
-                                            Total: <span class="font-13 text-muted" id="display_total"> &nbsp
-                                            </span><br><br>
-
-                                            <div class="form-group">
-                                                <label class="font-16 purple-color">Enter Pin</label>
-                                                <input type="text" class="form-control" id="user_pin"
-                                                    data-toggle="input-mask" placeholder="enter pin" required
-                                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-                                            </div>
-
-                                        </div>
-
-
-
-                                        <div class="modal-footer">
-                                            <button type="send" id="send" class="btn btn-primary"
-                                                data-target="#multiple-two" data-toggle="modal"
-                                                data-dismiss="modal">Send</button>
-                                        </div>
-                                    </form>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
+                                <div class="modal-footer">
+                                    <button type="send" id="send" class="btn btn-primary" data-target="#multiple-two"
+                                        data-toggle="modal" data-dismiss="modal">Send</button>
+                                </div>
+                            </form>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
 
 
 
 
-                    </div> <!-- end col -->
+            </div> <!-- end col -->
 
-                </div> <!-- end row -->
-
-
-
-            </div>
-
-
-        @endsection
-
-        @section('scripts')
+        </div> <!-- end row -->
 
 
 
-            <script src="https://code.jquery.com/jquery-3.6.0.js"
-                integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    </div>
 
-            <script>
-                $(document).ready(function() {
+
+    @endsection
+
+    @section('scripts')
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        $(document).ready(function() {
+                    console.log("A ME")
                     {{-- $('.hide-for-demo-purpose').hide() --}}
                     $('#spinner').hide(),
                         $('#spinner-text').hide(),
@@ -1360,7 +1366,8 @@
 
 
                 });
+                console.log("A ME")
 
-            </script>
+    </script>
 
-        @endsection
+    @endsection
