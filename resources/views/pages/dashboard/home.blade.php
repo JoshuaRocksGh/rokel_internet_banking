@@ -241,10 +241,7 @@
 
                             <div class="col-md-8">
                                 <select name="" class="form-control" id="account_transaction">
-                                    @foreach($accounts as $i => $account)
-                                    <option value={{$account->accountNumber}}>
-                                        {{$account->accountDesc ." ~ " .$account->accountNumber}}</option>
-                                    @endforeach
+                                    @include("snippets.accounts")
                                 </select>
                             </div>
                         </div>

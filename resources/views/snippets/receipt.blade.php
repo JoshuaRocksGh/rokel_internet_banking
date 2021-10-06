@@ -22,8 +22,6 @@
                         <br>
                         <div class="page-header">
                             <h2><span id="personal_transfer_receipt">Transfer Receipt</span>
-                                <span id="coporate_transfer_approval">Transaction Awaiting
-                                    Approval</span>
                             </h2>
                         </div>
                         <br>

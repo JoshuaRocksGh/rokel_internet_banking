@@ -103,9 +103,8 @@
                             <div class=" container">
                                 <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="off">
                                     @csrf
-                                    <br>
                                     <div class="row justify-content-center">
-                                        <div class="col-md-">
+                                        <div class="col">
                                             <div class="form-group row ">
                                                 <label for="from_account" class="col-md-4 text-primary mb-1">Transfer
                                                     Account
@@ -208,74 +207,73 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>
+                    </div>
+                    <br><br>
+                    <div class="col-md-4 m-2 site-card details-showcase">
+                        <h4 class="text-primary mb-0">Sender Acc. Info</h4>
+                        <hr class="mt-0 mb-2">
+                        <div class="row">
+                            <p class="col-md-5 details-text">Account Description:</p>
+                            <span class="text-primary display_from_account_name col-md-7"></span>
 
-                        <br><br>
-                        <div class="col-md-4 m-2 site-card details-showcase">
-                            <h4 class="text-primary mb-0">Sender Acc. Info</h4>
-                            <hr class="mt-0 mb-2">
-                            <div class="row">
-                                <p class="col-md-5 details-text">Account Description:</p>
-                                <span class="text-primary display_from_account_name col-md-7"></span>
+                            <p class="col-md-5 details-text">Account Number:</p>
+                            <span class="text-primary display_from_account_no col-md-7"></span>
 
-                                <p class="col-md-5 details-text">Account Number:</p>
-                                <span class="text-primary display_from_account_no col-md-7"></span>
+                            <p class="col-md-5 details-text">Available Balance:</p>
 
-                                <p class="col-md-5 details-text">Available Balance:</p>
-
-                                <span class="text-primary display_from_account_amount col-md-7"></span>
+                            <span class="text-primary display_from_account_amount col-md-7"></span>
 
 
-                                <p class="col-md-5 details-text">Account Currency:</p>
-                                <span class="text-primary display_from_account_currency col-md-7"></span>
-                            </div>
+                            <p class="col-md-5 details-text">Account Currency:</p>
+                            <span class="text-primary display_from_account_currency col-md-7"></span>
+                        </div>
 
-                            <h4 class="text-primary mb-0">Receiver Acc. Info</h4>
-                            <hr class="mt-0 mb-2">
-                            <div class="row">
-                                <p class="col-md-5 details-text">Account Number:</p>
-                                <p class="text-primary display_to_account_no col-md-7"></p>
+                        <h4 class="text-primary mb-0">Receiver Acc. Info</h4>
+                        <hr class="mt-0 mb-2">
+                        <div class="row">
+                            <p class="col-md-5 details-text">Account Number:</p>
+                            <p class="text-primary display_to_account_no col-md-7"></p>
 
-                                <p class="col-md-5 details-text">Account Balance:</p>
-                                <p class="text-primary display_to_account_amount col-md-7"></p>
+                            <p class="col-md-5 details-text">Account Balance:</p>
+                            <p class="text-primary display_to_account_amount col-md-7"></p>
 
-                                <p class="col-md-5 details-text">Account Currency:</p>
-                                <p class="text-primary display_to_account_currency col-md-7"></p>
-                            </div>
-                            <h4 class="text-primary mb-0">Transfer Info</h4>
+                            <p class="col-md-5 details-text">Account Currency:</p>
+                            <p class="text-primary display_to_account_currency col-md-7"></p>
+                        </div>
+                        <h4 class="text-primary mb-0">Transfer Info</h4>
 
-                            <hr class="mt-0 mb-2">
-                            <div class="row">
-                                <p class="col-md-5 details-text">Transfer Amount:</p>
+                        <hr class="mt-0 mb-2">
+                        <div class="row">
+                            <p class="col-md-5 details-text">Transfer Amount:</p>
 
-                                <span class=" text-danger text-bol  col-md-7 mt-0"><b
-                                        class="display_from_account_currency"> </b>
-                                    &nbsp;
-                                    <b class="mt-0 display_transfer_amount"> </b></span>
-                                <p class="col-md-5 details-text">Currency Rate:</p>
-                                <span class="text-primary display_midrate col-md-7"></span>
+                            <span class=" text-danger text-bol  col-md-7 mt-0"><b class="display_from_account_currency">
+                                </b>
+                                &nbsp;
+                                <b class="mt-0 display_transfer_amount"> </b></span>
+                            <p class="col-md-5 details-text">Currency Rate:</p>
+                            <span class="text-primary display_midrate col-md-7"></span>
 
-                                <p class="col-md-5 details-text">Converted Amount:</p><span class="col-md-7">
-                                    <span class="text-primary display_conversion_currency"> </span>
-                                    <span class="text-primary display_converted_amount"></span></span>
-                            </div>
+                            <p class="col-md-5 details-text">Converted Amount:</p><span class="col-md-7">
+                                <span class="text-primary display_conversion_currency"> </span>
+                                <span class="text-primary display_converted_amount"></span></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8  card-body">
-                <hr>
-            </div>
+        </div>
+        <div class="col-md-8  card-body">
+            <hr>
+        </div>
 
-            <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
 
-        </div> <!-- end card-body -->
+    </div> <!-- end card-body -->
 
 
-        {{-- <!-- Modal -->
+    {{-- <!-- Modal -->
         <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="multiple-oneModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -319,7 +317,7 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal --> --}}
-    </div> <!-- end col -->
+</div> <!-- end col -->
 </div> <!-- end row -->
 @endsection
 @section("scripts")

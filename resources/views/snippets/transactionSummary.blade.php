@@ -1,4 +1,4 @@
-<div class="col-md-7 site-card m-2" id="transaction_summary">
+<div class="col-md-7 site-card m-2" id="transaction_summary" style="display:none">
     <div class="row justify-content-center">
         <br>
         <div class="table-responsive card table_over_flow">

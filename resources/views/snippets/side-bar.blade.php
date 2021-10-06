@@ -402,28 +402,16 @@
     $('#sidebar_logout').on("click", (e) => {
 e.preventDefault()
 Swal.fire({
-  title: 'Are you sure?',
-  text: "This will clear your session!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#01abe5',
-  cancelButtonColor: '#f1556c',
-  confirmButtonText: 'Log me out!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire({
      title: "Logout successful!",
      html: 'Redirecting ...',
      icon: 'success',
      showConfirmButton: "false",
     //  timer: "3000"
-    }
-    )
+    })
     setTimeout(() => {
         window.location.replace('logout')
     }, 1000);
-  }
-})
-    } )
+  })
+    // } )
 
 </script>

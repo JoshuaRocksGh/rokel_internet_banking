@@ -20,45 +20,6 @@ let datatableOptions = {
     ],
 };
 
-// function account_transaction() {
-//     $.ajax({
-//         type: "GET",
-//         url: "get-my-account",
-//         datatype: "application/json",
-//         success: function (response) {
-//             let data = response.data;
-//             $.each(data, function (index) {
-//                 $("#account_transaction").append(
-//                     $("<option>", {
-//                         value:
-//                             data[index].accountType +
-//                             "~" +
-//                             data[index].accountDesc +
-//                             "~" +
-//                             data[index].accountNumber +
-//                             "~" +
-//                             data[index].currency +
-//                             "~" +
-//                             data[index].availableBalance,
-//                     }).text(
-//                         data[index].accountNumber +
-//                             " " +
-//                             "-" +
-//                             " " +
-//                             data[index].currency +
-//                             " " +
-//                             "-" +
-//                             " " +
-//                             formatToCurrency(
-//                                 parseFloat(data[index].availableBalance.trim())
-//                             )
-//                     )
-//                 );
-//             });
-//         },
-//     });
-// }
-
 function fixed_deposit() {
     $.ajax({
         type: "GET",
@@ -232,7 +193,6 @@ function getCorrectFxRates() {
                 $.each(data, (i) => {
                     let { PAIR, MIDRATE } = data[i];
                     let [currency1, currency2] = PAIR.split("/");
-                    // let currencyList = ["SSL", "USD", "EUR", "GBP"]
                     let baseFlagsPath = "assets/images/flags/";
                     let imageProps =
                         "class='img-fluid'  style='height:13px; border-radius:1px;'";
@@ -259,7 +219,7 @@ $(document).ready(function () {
     fixed_deposit();
 
     $("#account_transaction").on("change", function () {
-        let accountNumber = $(this).val();
+        let accountNumber = $(this).val().split("~")[2];
 
         if (!accountNumber) {
             return false;

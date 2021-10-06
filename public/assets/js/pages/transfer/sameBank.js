@@ -10,6 +10,7 @@ function makeTransfer(url, data) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
+            console.log(response);
             if (response.responseCode == "000") {
                 $("#related_information_display").removeClass(
                     "d-none d-sm-block"
@@ -53,55 +54,6 @@ function getCorrectFxRate() {
         error: function (xhr, status, error) {
             setTimeout(function () {
                 getCorrectFxRate();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
-
-function getFromAccount() {
-    $.ajax({
-        type: "GET",
-        url: "get-my-account",
-        datatype: "application/json",
-        success: function (response) {
-            console.log(response.data);
-            if (response.responseCode == "000") {
-                let data = response.data;
-                $.each(data, function (index) {
-                    $("#from_account").append(
-                        $("<option>", {
-                            value:
-                                data[index].accountType +
-                                "~" +
-                                data[index].accountDesc +
-                                "~" +
-                                data[index].accountNumber +
-                                "~" +
-                                data[index].currency +
-                                "~" +
-                                data[index].availableBalance +
-                                "~" +
-                                data[index].accountMandate,
-                        }).text(
-                            data[index].accountNumber +
-                                "~" +
-                                data[index].currency +
-                                " ~ " +
-                                formatToCurrency(
-                                    parseFloat(data[index].availableBalance)
-                                )
-                        )
-                    );
-                });
-            } else {
-                if (response.data == null) {
-                    window.location = "logout";
-                }
-            }
-        },
-        error: function (xhr, status, error) {
-            setTimeout(function () {
-                getFromAccount();
             }, $.ajaxSetup().retryAfter);
         },
     });
@@ -242,7 +194,7 @@ function getAccountDescription(account) {
                 console.log(account);
                 handleToAccount(account);
             } else {
-                toaster("failed to get account detail", "warning");
+                toaster(response.message, "warning");
                 account.name = "";
                 account.currency = "";
                 handleToAccount(account);
@@ -263,23 +215,12 @@ function handleToAccount(account) {
     }
 }
 
-function customer() {
-    if (customerType == "C") {
-        $("#coporate_transfer_approval").show();
-        $("#personal_transfer_receipt").hide();
-    } else {
-        $("#personal_transfer_receipt").show();
-        $("#coporate_transfer_approval").hide();
-    }
-}
-
 $(function () {
-    getFromAccount();
+    // getFromAccount();
     getToAccount();
     expenseTypes();
     getCurrency();
     getCorrectFxRate();
-    customer();
     let toAccount = new Object();
     let onetimeToAccount = new Object();
     let fromAccount = new Object();
@@ -289,8 +230,6 @@ $(function () {
     let confirmationCompleted = false;
     let validationsCompleted = false;
     let transferInfo = new Object();
-
-    customer();
     function updateTransactionType() {
         if ($("#onetime_toggle").is(":checked")) {
             transactionType = "onetime";
@@ -395,9 +334,6 @@ $(function () {
         fromAccount.accountNumber = accountDetails[2].trim();
         fromAccount.currency = accountDetails[3].trim();
         fromAccount.balance = parseFloat(accountDetails[4].trim());
-        if (customerType === "c") {
-            fromAccount.accountMandate = accountDetails[5].trim();
-        }
         // set summary values for display
         const { name, accountNumber, currency, balance } = fromAccount;
         if (accountNumber === onetimeToAccount.accountNumber) {
@@ -533,12 +469,14 @@ $(function () {
         if (onetimeToAccount.accountNumber === $(this).val()) {
             return false;
         }
+        onetimeToAccount.accountNumber = "";
         if ($(this).val() === fromAccount.accountNumber) {
             toaster("Cannot send to same account", "warning");
             return false;
         }
         onetimeToAccount.accountNumber = $(this).val();
-        if (onetimeToAccount.accountNumber > 17) {
+        if (onetimeToAccount.accountNumber.length > 17) {
+            console.log("a");
             getAccountDescription(onetimeToAccount);
         }
     });
@@ -631,12 +569,8 @@ $(function () {
         $(".receipt_currency").text(transferInfo.currency);
 
         confirmationCompleted = true;
-        if (customerType === "C") {
-            // transferInfo.accountMandate = fromAccount.info.split("~")[5];
-            makeTransfer("corporate-same-bank-api", transferInfo);
-        } else {
-            $("#centermodal").modal("show");
-        }
+
+        $("#centermodal").modal("show");
     });
 
     $("#transfer_pin").on("click", function (e) {

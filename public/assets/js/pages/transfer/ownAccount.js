@@ -12,7 +12,15 @@ function makeTransfer(url, data) {
                 $("#related_information_display").removeClass(
                     "d-none d-sm-block"
                 );
-                toaster(response.message, "success", 3000);
+                swal.fire({
+                    title: "Logout successful!",
+                    html: response.message,
+                    icon: "success",
+                    showConfirmButton: "false",
+                    timer: "2000",
+                });
+
+                // (, "success", 3000);
                 $(".receipt").show();
                 $(".form_process").hide();
                 $("#confirm_modal_button").hide();
