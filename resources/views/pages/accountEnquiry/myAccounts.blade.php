@@ -25,13 +25,13 @@
         <!-- start page title -->
         <div class="row">
             <div class="col-md-4">
-                <a href="{{ url()->previous() }}" type="button" class="btn btn-soft-blue waves-effect waves-light"><i
+                <a href="{{ url()->previous() }}" type="button" class="btn btn-soft-blue btn-sm waves-effect waves-light"><i
                         class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
-                {{-- <button type="button" class="btn btn-soft-blue waves-effect waves-light">Blue</button> --}}
+
 
             </div>
             <div class="col-md-4">
-                <h4 class="text-primary">
+                <h4 class="text-primary text-center">
                     <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                     ACCOUNTS
                 </h4>
@@ -101,7 +101,7 @@
 
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <strong class="text-warning">INVESTMENTS</strong>
-                                        <span class="badge badge-warning badge-pill">0</span>
+                                        <span class="badge badge-warning badge-pill investment_count">0</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <strong class="text-danger"> LOANS </strong>
@@ -238,7 +238,7 @@
             console.log(i_invest_total)
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: ['I HAVE', 'Investments', 'I OWE'],
                     datasets: [{
@@ -246,21 +246,21 @@
                         data: [i_have, i_owe, i_invest_total],
                         backgroundColor: [
 
-                            'rgb(75,192,192)',
-                            'rgba(231, 223, 10, 1)',
-                            'rgb(233,55,93)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgb(75,192,192, 0.5)',
+                            'rgba(231, 223, 10, 0.5)',
+                            'rgb(233,55,93, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(153, 102, 255, 0.5)',
+                            'rgba(255, 159, 64, 0.5)'
                         ],
                         borderColor: [
 
-                            'rgb(75,192,192)',
-                            'rgba(231, 223, 10, 1)',
-                            'rgb(233,55,93)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            'rgb(75,192,192 ,0.5)',
+                            'rgba(231, 223, 10, 0.5)',
+                            'rgb(233,55,93,0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(153, 102, 255, 0.5)',
+                            'rgba(255, 159, 64, 0.5)'
                         ],
                         borderWidth: 1
                     }]
@@ -382,7 +382,8 @@
                             return false;
                         }
 
-                        let loan_count = 0
+                        {{-- let loan_count = 0 --}}
+                        let fixed_deposit_count = 0
                         if (response.data.length > 0) {
                             console.log(response.data.length);
 
@@ -404,12 +405,14 @@
                                         </tr>`
                                 )
 
-                                loan_count = loan_count + 1;
+                                {{-- loan_count = loan_count + 1; --}}
+                                fixed_deposit_count = fixed_deposit_count + 1;
                             })
 
                             {{-- console.log('i_invest_total: ' + i_invest_total) --}}
 
-                            $(".loan_count").text(loan_count);
+                            {{-- $(".loan_count").text(loan_count); --}}
+                            $(".investment_count").text(fixed_deposit_count);
 
                             $('.my_investment_loading_area').hide()
                             $('.my_investment_error_area').hide()
@@ -579,6 +582,8 @@
                                 $('#p_loans_display').html(`<h2 class="text-center text-danger">No Loan</h2>`)
                             } else {
 
+                                let loan_count = 0
+
                                 if (response.data.length > 0) {
                                     $('#p_loans_display').show()
                                     $(".loans_display_area").show()
@@ -604,8 +609,12 @@
                                                 <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
                                             </tr>`
                                         )
+                                        loan_count = loan_count + 1;
+
 
                                     })
+
+                                    $(".loan_count").text(loan_count);
 
                                     {{-- console.log('i_owe_total: ' + i_owe_total) --}}
 
