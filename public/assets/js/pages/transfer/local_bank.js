@@ -1,4 +1,46 @@
 let forexRate = [];
+
+function makeTransfer(data) {
+    $.ajax({
+        type: "POST",
+        url: "local-bank-transfer-api",
+        datatype: "application/json",
+        data: data,
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            console.log(response);
+            if (response.responseCode == "000") {
+                $("#related_information_display").removeClass(
+                    "d-none d-sm-block"
+                );
+                toaster(response.message, "success", 3000);
+                $(".receipt").show();
+                $(".form_process").hide();
+                $("#confirm_modal_button").hide();
+                $("#spinner").hide();
+                $("#spinner-text").hide();
+                $("#back_button").hide();
+                $("#print_receipt").show();
+                $(".rtgs_card_right").hide();
+                $(".success_gif").show();
+            } else {
+                toaster(response.message, "error", 3000);
+                $(".receipt").hide();
+                $("#confirm_transfer").show();
+                $("#confirm_modal_button").prop("disabled", false);
+                $("#spinner").hide();
+                $("#spinner-text").hide();
+                $("#back_button").show();
+                $("#print_receipt").hide();
+                $("#related_information_display").show();
+                $(".success_gif").hide();
+            }
+        },
+    });
+}
+
 function getCorrectFxRate() {
     $.ajax({
         type: "GET",
@@ -24,8 +66,6 @@ function getLocalbanksList() {
         url: "get-bank-list-api",
         datatype: "application/json",
         success: function (response) {
-            console.log("bank list");
-            console.log(response.data);
             let data = response.data;
             $.each(data, function (index) {
                 $("#onetime_beneficiary_bank_name").append(
@@ -96,7 +136,6 @@ function transactionFee(fee_account, fee_amount, transfer_type) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
-            console.log(response.data);
             let fee = response.data;
             if (fee != "0") {
                 $(".terms_and_conditions_fee").show();
@@ -118,12 +157,8 @@ function getExpenseTypes() {
         url: "get-expenses",
         datatype: "application/json",
         success: function (response) {
-            // {{-- console.log(response.data); --}}
             let data = response.data;
-
             let exType = response.data.expenseName;
-            console.log(name);
-
             $.each(data, function (index) {
                 $("#category").append(
                     $("<option>", {
@@ -151,13 +186,12 @@ function getExpenseTypes() {
     });
 }
 
-function getBeneficiary() {
+function getBeneficiaries() {
     $.ajax({
         type: "GET",
         url: "get-transfer-beneficiary-api?beneType=OTB",
         datatype: "application/json",
         success: function (response) {
-            console.log(response.data);
             let data = response.data;
 
             if (!response.data) {
@@ -205,18 +239,14 @@ function getBeneficiary() {
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
-                getBeneficiary();
+                getBeneficiaries();
             }, $.ajaxSetup().retryAfter);
         },
     });
 }
 
-function get_response() {
-    alert("Function Called");
-}
-
 $(document).ready(function () {
-    getBeneficiary();
+    getBeneficiaries();
     getLocalbanksList();
     getCurrency();
     getExpenseTypes();
@@ -253,7 +283,6 @@ $(document).ready(function () {
             displayRate = "#convertor_rate";
             converted = "#converted_amount";
         }
-        console.log(amount);
         if (!fromAccount.currency || !amount || isNaN(amount) || amount <= 0) {
             $(".display_midrate").text("");
             $(".display_converted_amount").text("");
@@ -266,7 +295,6 @@ $(document).ready(function () {
             fromAccount.currency,
             toCur
         );
-        console.log(conversionData);
         let { convertedAmount, midrate, currencyPair } = conversionData;
         $(displayMidrate).text(`${currencyPair} => ${midrate}`);
         $(displayRate).val(midrate);
@@ -287,7 +315,6 @@ $(document).ready(function () {
             $("#onetime_beneficiary_form").show(500);
             $("#saved_benefciary_form").hide();
             $(".dtac").hide();
-            console.log("A");
             $("#onetome_to_account").trigger("change");
             $("#onetime_amount").trigger("change");
         } else {
@@ -425,19 +452,14 @@ $(document).ready(function () {
         }
         transactionDetails.amount = parseFloat($("#amount").val());
         const { amount } = transactionDetails;
-        console.log("a");
-        console.log(amount);
         if (amount <= 0 || !amount) {
             toaster("invalid amount", "warning");
             $(this).val("");
             transactionDetails.amount = "";
-            console.log("b");
         }
         if (isNaN(amount)) {
-            console.log(amount);
             $(".display_transfer_amount").text("");
             transactionDetails.amount = "";
-            console.log("c");
         } else {
             $(".display_transfer_amount").text(amount);
         }
@@ -499,7 +521,6 @@ $(document).ready(function () {
 
     $("#onetime_beneficiary_account_number").keyup(function () {
         onetimeTransactionDetails.accountNumber = $(this).val();
-        console.log("A");
         const { accountNumber } = onetimeTransactionDetails;
         // if (accountNumber === fromAccount.accountNumber) {
         //     toaster("Cannot send to same account", "warning");
@@ -585,10 +606,10 @@ $(document).ready(function () {
 
     // NEXT BUTTON CLICK
     $("#next_button").on("click", function () {
-        console.log(fromAccount);
-        console.log(transactionDetails);
-        console.log("=====================");
-        console.log(onetimeTransactionDetails);
+        // console.log(fromAccount);
+        // console.log(transactionDetails);
+        // console.log("=====================");
+        // console.log(onetimeTransactionDetails);
         // $("#transaction_summary").show();
         // //enable extras in summary and receipt
         // $(".display_to_bank_name").show();
@@ -657,6 +678,7 @@ $(document).ready(function () {
     });
 
     $("#confirm_transfer_button").on("click", function (e) {
+        console.log(transferInfo);
         e.preventDefault();
         if (!$("#terms_and_conditions").is(":checked")) {
             toaster("Accept Terms & Conditions to continue", "warning", 3000);
@@ -684,17 +706,19 @@ $(document).ready(function () {
         }
         transferInfo.secPin = $("#user_pin").val();
         if (transferInfo.secPin.length !== 4) {
-            toaster("invalid pin", "warning", 3000);
+            toaster("invalid pin", "warning");
             return false;
         }
         console.log(transferInfo);
-        // makeTransfer("transfer-to-beneficiary-api", transferInfo);
+        makeTransfer(transferInfo);
         $("#user_pin").val("").text("");
         confirmationCompleted = false;
     });
 
     $("#back_button").click(function (e) {
         e.preventDefault();
+        validationsCompleted = false;
+        confirmationCompleted = false;
         $("#transaction_form").show();
         $("#transaction_summary").hide();
     });

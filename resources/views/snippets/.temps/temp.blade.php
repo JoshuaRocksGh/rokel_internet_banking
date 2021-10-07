@@ -606,3 +606,286 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+{{-- Standing Order Receipt --}}
+
+
+<div class="receipt" style="display:none;">
+    <div class="container card card-body">
+
+        <div class="container">
+            <div class="___class_+?19___">
+                <div class="col-md-12 col-md-offset-3 body-main">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4 "> <img class="img " alt="InvoIce Template"
+                                    src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
+                                    style="zoom: 0.6" /> </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4 text-right">
+                                <h4 class="text-primary"><strong>ROKEL COMMERCIAL
+                                        BANK</strong>
+                                </h4>
+                                <p>25-27 Siaka Stevens St</p>
+                                <p> Freetown, Sierra Leone</p>
+                                <p>rokelsl@rokelbank.sl</p>
+                                <p>(+232)-76-22-25-01</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="page-header">
+                            <h2>Standing Order Receipt </h2>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="page-header">
+                        <h2>Standing Order Receipt </h2>
+                    </div>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    {{-- <th>#</th> --}}
+                                    <th>Description</th>
+                                    <th>Further Details</th>
+                                    {{-- <th>Amount (<span id="receipt_currency"></span>)</th> --}}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    {{-- <th scope="row">1</th> --}}
+                                    <td>Transfer From Account Number</td>
+                                    <td><span class="font-13 text-primary text-bold display_from_account_no"></span>
+                                    </td>
+                                    {{-- <td></td> --}}
+                                </tr>
+                                <tr>
+                                    {{-- <th scope="row">2</th> --}}
+                                    <td>Transfer To Account Number</td>
+                                    <td><span class="font-13 text-primary text-bold display_to_account_no"></span>
+                                    </td>
+                                    {{-- <td></td> --}}
+                                </tr>
+                                <tr>
+                                    {{-- <th scope="row">3</th> --}}
+                                    <td>Narration</td>
+                                    <td><span class="font-13 text-primary text-bold display_purpose"></span>
+                                    </td>
+                                    {{-- <td></td> --}}
+                                </tr>
+                                <tr>
+                                    <td>Start Date:</td>
+                                    <td>
+                                        <span class="font-13 text-primary h3 display_so_start_date"></span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>End Date:</td>
+                                    <td>
+                                        <span class="font-13 text-primary h3 display_so_end_date"></span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Frequency:</td>
+                                    <td>
+                                        <span class="font-13 text-primary h3 display_frequency_so"></span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Transfer Date: </td>
+                                    <td>
+                                        <span class="font-13 text-primary h3"
+                                            id="display_transfer_date">{{ date('d F , Y') }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {{-- <th scope="row">3</th> --}}
+                                    <td>Amount</td>
+                                    {{-- <td></td> --}}
+                                    <td><strong>(<span class="display_currency"></span>)<span
+                                                class="display_transfer_amount"></span></strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {{-- <th scope="row">3</th> --}}
+                                    <td>Transaction Fee </td>
+                                    {{-- <td></td> --}}
+                                    <td><strong>(<span class="display_currency"></span>)15.00</strong>
+                                    </td>
+                                </tr>
+                                {{-- <tr>
+                                            <th scope="row">3</th>
+                                            <td><strong>Total Amount</strong> </td>
+                                            <td></td>
+                                            <td><strong><span
+                                                        id="total_amount_receipt"></span></strong>
+                                            </td>
+                                        </tr> --}}
+                                <tr>
+                                    {{-- <th scope="row">3</th> --}}
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <!-- end table-responsive-->
+                    <br>
+                    <div>
+                        <div class="col-md-12">
+                            <p><b>Date Posted :</b> {{ date('d F, Y') }}
+                            </p> <br /> <br />
+                            <p><b>Posted By : {{ session('userId') }}</b></p>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-2">
+                            <button class="btn btn-light btn-rounded hide_on_print text-center" type="button"
+                                onclick="window.print()">Print
+                                Receipt
+                            </button>
+
+
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{-- transaction summary --}}
+
+<div class="col-md-7 site-card m-2" id="transaction_summary">
+    <div class="___class_+?99___">
+        {{-- <br><br>
+        <div class="col-md-12 card border p-3 mt-4 mt-lg-0 rounded">
+--}}
+
+        <h4 class="header-title mb-3">Transfer Detail Summary</h4>
+
+        <div class="table-responsive card table_over_flow">
+            <table class="table mb-0 table-bordered table-striped  ">
+
+                <tbody>
+                    <tr>
+                        <td>From Account:</td>
+                        <td>
+                            {{-- <span class="font-13 text-primary text-bold display_from_account_type"
+                                        id="display_from_account_type"></span> --}}
+                            <span class="d-block font-13 text-primary text-bold display_from_account_name"
+                                id="display_from_account_name"> </span>
+                            <span class="d-block font-13 text-primary text-bold display_from_account_no"
+                                id="display_from_account_no"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>To Account:</td>
+                        <td>
+
+                            {{-- <span class="font-13 text-primary text-bold display_to_account_type"
+                                        id="display_to_account_type"> </span> --}}
+                            <span class="d-block font-13 text-primary text-bold display_to_account_name"
+                                id="display_to_account_name"> </span>
+                            {{-- <span class="d-block font-13 text-primary text-bold online_display_beneficiary_email"
+                                        id="online_display_beneficiary_bank_name"></span> --}}
+                            <span class="d-block font-13 text-primary text-bold display_to_account_no"
+                                id="display_to_account_no"> </span>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Amount:</td>
+                        <td>
+                            <span class="font-15 text-primary h3 display_currency" id="display_currency"> </span>
+                            &nbsp;
+                            <span class="font-15 text-primary h3 display_transfer_amount"
+                                id="display_transfer_amount"></span>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Narration:</td>
+                        <td>
+                            <span class="font-13 text-primary h3 display_purpose"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Start Date:</td>
+                        <td>
+                            <span class="font-13 text-primary h3 display_so_start_date"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>End Date:</td>
+                        <td>
+                            <span class="font-13 text-primary h3 display_so_end_date"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Frequency:</td>
+                        <td>
+                            <span class="font-13 text-primary h3 display_frequency_so"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Transfer Date: </td>
+                        <td>
+                            <span class="font-13 text-primary h3" id="display_transfer_date">{{ date('d F, Y') }}</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Posted BY: </td>
+                        <td>
+                            <span class="font-13 text-primary h3"
+                                id="display_posted_by">{{ session()->get('userAlias') }}</span>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- end table-responsive -->
+
+
+
+        <br>
+        <div class="form-group text-center">
+
+            <span> <button class="btn btn-secondary btn-rounded" type="button" id="back_button"> <i
+                        class="mdi mdi-reply-all-outline"></i>&nbsp;Back</button>
+                &nbsp; </span>
+            <span>
+                &nbsp;
+                <button class="btn btn-primary btn-rounded" id="confirm_transfer_button" type="button">
+                    <span id="confirm_transfer_text">Confirm</span>
+                    <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner" aria-hidden="true"
+                        style="display: none"></span>
+                    <span id="spinner-text" style="display: none">Loading...</span>
+                </button>
+            </span>
+
+            <span>&nbsp; <button class="btn btn-light btn-rounded hide_on_print" type="button" id="print_receipt"
+                    style="display: none" onclick="window.print()">Print
+                    Receipt
+                </button></span>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>

@@ -567,14 +567,13 @@ Route::get('get-payment-types-api', [FunctionsController::class, 'payment_types'
 // Transfers
 Route::get('/get-transfer-beneficiary-api', [FunctionsController::class, 'get_transfer_beneficiary'])->name('get-transfer-beneficiary-api');
 Route::post('/transfer-to-beneficiary-api', [SameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary-api');
-Route::post('/transfer-to-same-bank-beneficiary-onetime-api', [SameBankController::class, 'one_time_beneficiary'])->name('transfer-to-same-bank-beneficiary-onetime-api');
 Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
 // Route::get('standing-order',[])
 
 // OTHER LOCAL BANK
-Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');
-Route::post('/onetime-beneficiary-local-bank-api', [APITransferLocalBankController::class, 'onetime_beneficiary_transfer'])->name('onetime-beneficiary-local-bank-api');
+// Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');
+Route::post('/local-bank-transfer-api', [APITransferLocalBankController::class, 'localBankTransfer'])->name('onetime-beneficiary-local-bank-api');
 
 // INTERNATIONAL BANK TRANSFER
 Route::post('/international-bank-transfer-api', [TransferInternationalBankController::class, 'international_bank_transfer'])->name('international-bank-transfer-api');

@@ -58,7 +58,7 @@
                     <div class="col-md-12">
                         {{-- RECEIPT --}}
                         @include("snippets.receipt")
-                        {{-- @include("snippets.pinCodeModal") --}}
+                        @include("snippets.pinCodeModal")
                         <div class="form_process">
 
                             <div class="row">

@@ -37,58 +37,9 @@ function postStandingOrder(url, data) {
         },
     });
 }
-function from_account() {
-    $.ajax({
-        type: "GET",
-        url: "get-my-account",
-        datatype: "application/json",
-        success: function (response) {
-            console.log(response);
-            let data = response.data;
-            $.each(data, function (index) {
-                $("#from_account").append(
-                    $("<option>", {
-                        value:
-                            data[index].accountType +
-                            "~" +
-                            data[index].accountDesc +
-                            "~" +
-                            data[index].accountNumber +
-                            "~" +
-                            data[index].currency +
-                            "~" +
-                            data[index].availableBalance +
-                            "~" +
-                            data[index].accountMandate,
-                    }).text(
-                        data[index].accountType +
-                            "||" +
-                            data[index].accountNumber +
-                            "||" +
-                            data[index].currency +
-                            " " +
-                            data[index].availableBalance
-                    )
-                );
-                // $('#to_account').append($('<option>', {
-                //     value: data[index].accountType + '~' + data[index]
-                //         .accountNumber + '~' + data[index].currency + '~' +
-                //         data[index].availableBalance
-                // }).text(data[index].accountType + '~' + data[index].accountNumber +
-                //     '~' + data[index].currency + '~' + data[index].availableBalance
-                // ));
-            });
-        },
-        error: function (xhr, status, error) {
-            setTimeout(function () {
-                from_account();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
 
 //function to get the loan products accessible to the customer of the bank.
-function get_so_frequencies() {
+function getStandingOrderFrequencies() {
     $.ajax({
         type: "GET",
         url: "get-standing-order-frequencies-api",
@@ -106,13 +57,13 @@ function get_so_frequencies() {
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
-                get_so_frequencies();
+                getStandingOrderFrequencies();
             }, $.ajaxSetup().retryAfter);
         },
     });
 }
 
-function get_benerficiary() {
+function getBeneficiaries() {
     $.ajax({
         type: "GET",
         url: "get-transfer-beneficiary-api?beneType=SAB",
@@ -166,98 +117,24 @@ function get_benerficiary() {
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
-                get_benerficiary();
+                getBeneficiaries();
             }, $.ajaxSetup().retryAfter);
         },
     });
 }
 
 $(document).ready(function () {
-    from_account();
-    get_benerficiary();
-    get_so_frequencies();
+    getBeneficiaries();
+    getStandingOrderFrequencies();
     let standingOrderData = new Object();
     let fromAccount = new Object();
     let toAccount = new Object();
     let validationsCompleted = false;
     let confirmationCompleted = false;
-    //codes to display self or others transfer
-    // $("#inlineRadio1").click(function () {
-    //     var beneficiary_type = $(
-    //         'input[type="radio"][name="radioInline"]:checked'
-    //     ).val();
-    //     // console.log(beneficiary_type);
-    //     // $(".display_beneficiary_type").text(beneficiary_type);
-    //     // $('.display_pick_up_branch').text("");
-    //     // var pickUpBranch = $("#pUBranch").val();
-    //     // if (pickUpBranch != "") {
-
-    //     //     let branch_info = pickUpBranch.split("~"
-    //     //     $(".display_pick_up_branch").text(branch_info[1]);
-    //     //     console.log(branch_info[1]);
-    //     //     console.log(pickUpBranch);
-    //     //     console.log(branch_info[1]);
-    //     // }
-    //     $("#saved_beneficiary_form").hide();
-    //     $(".select_saved_beneficiary").hide();
-    //     $("#onetime_beneficiary_form").show(200);
-    // });
-
-    // $("#inlineRadio2").click(function () {
-    //     var beneficiary_type = $(
-    //         'input[type="radio"][name="radioInline"]:checked'
-    //     ).val();
-    //     // console.log(beneficiary_type);
-    //     // $(".display_beneficiary_type").text(destination_type);
-    //     // $(".display_pick_up_branch").text('');
-    //     $("#saved_beneficiary_form").show();
-    //     $(".select_saved_beneficiary").show();
-    //     $("#onetime_beneficiary_form").hide();
-    // });
-
-    // $(".radio").click(function() {
-    //     var type = $("input[type='radio']:checked").val();
-
-    //     if (type == "beneficiary") {
-    //         $("#beneficiary_selected").show();
-    //         $("#onetime_beneficiary").hide();
-    //     }
-
-    //     if (type == "onetime") {
-    //         $("#onetime_beneficiary").show();
-    //         $("#beneficiary_selected").hide();
-
-    //     }
-    // })
-    // $("#checkmeout0").click(function() {
-    //     if ($(this).is(":checked")){
-    //         {{-- alert("Checked!"); --}}
-    // $("#onetime_beneficiary_form").toggle(500);
-    // $("#saved_beneficiary_form").hide();
-    // $(".bene_details").hide();
-
-    // }else{
-    // $("#saved_beneficiary_form").toggle(500);
-    // $(".bene_details").toggle(500);
-    // $("#onetime_beneficiary_form").hide();
-
-    // {{-- alert("Unchecked!"); --}}
-    // }
-    // })
-
-    // {
-    // {
-    // --hide % 20 select % 20 accounts % 20 info--
-    // }
-    // }
-    // $(".display_schedule_payment_date").text("N/A");
-
-    //changes to be made after alteration
-
     $("#from_account").on("change", function () {
         fromAccount.info = $(this).val();
         // console.log(fromAccount.info);
-        if (!validateAll(fromAccount.info)) {
+        if (!fromAccount.info) {
             $(".display_from_account_type").text("");
             $(".display_from_account_name").text("");
             $(".display_from_account_no").text("");
@@ -276,14 +153,9 @@ $(document).ready(function () {
         fromAccount.currency = accountDetails[3].trim();
         fromAccount.balance = parseFloat(accountDetails[4].trim());
         fromAccount.mandate = accountDetails[5].trim();
-        // if (customerType === "C") {
-        // fromAccount.bankCode = accountDetails[5].trim();
         fromAccount.bankCode = "aaa";
-        // }
         const { type, name, accountNumber, currency, balance, mandate } =
             fromAccount;
-        // set summary values for display
-        // console.log(fromAccount);
         if (accountNumber === toAccount.accountNumber) {
             toaster("can not transfer to same account", "warning", 3000);
             $(this).val("");
@@ -301,7 +173,7 @@ $(document).ready(function () {
 
     $("#saved_beneficiary").on("change", function () {
         toAccount.info = $(this).val();
-        if (!validateAll(toAccount.info)) {
+        if (!toAccount.info) {
             $(".to_account_display_info").hide();
             $(".to_account_display_info").hide();
             $(".display_to_account_name").text("");
@@ -335,37 +207,6 @@ $(document).ready(function () {
         $(".to_account_display_info").show();
     });
 
-    // $("#saved_beneficiary").change(function() {
-    // let saved_beneficiary = $(this).val()
-
-    // if (saved_beneficiary.trim() == '' || saved_beneficiary.trim() == undefined) {
-    // alert('money')
-    // $(".saved_beneficiary_display_info").hide()
-
-    // } else {
-    // saved_beneficiary_info = saved_beneficiary.split("~")
-
-    // // var to_account = $('#to_account').val()
-
-    // // set summary values for display
-    // $(".display_to_account_name").text(saved_beneficiary_info[0].trim())
-    // $(".display_to_account_no").text(saved_beneficiary_info[1].trim())
-    // $(".display_saved_beneficiary_no").text(saved_beneficiary_info[2].trim())
-    // // $(".display_from_account_currency").text(from_account_info[3].trim())
-
-    // // $(".display_currency").text(from_account_info[3].trim()) // set summary currency
-
-    // amt = saved_beneficiary_info[4].trim()
-    // // $(".display_saved_beneficiary_amount").text(formatToCurrency(parseFloat(
-    // // from_account_info[4]
-    // // .trim())))
-    // {{-- alert('and show '  + from_account_info[3].trim()) --}}
-    // $(".from_account_display_info").show()
-
-    // // alert(from_account_info[0]);
-    // }
-
-    // })
     let today = new Date();
     let day = today.getDate().toString().padStart(2, "0");
     let month = (today.getMonth() + 1).toString().padStart(2, "0");
@@ -398,19 +239,11 @@ $(document).ready(function () {
     });
 
     $("#beneficiary_frequency").on("change", function () {
-        if (customerType == "C") {
-            var standing_order = $("#beneficiary_frequency").val().split("~");
-            // var standing_order_ = standing_order;
-            standingOrderData.frequency = $("#beneficiary_frequency").val();
-            var optionText = $("#beneficiary_frequency option:selected").text();
-            $(".display_frequency_so").text(standing_order[1]);
-        } else {
-            var standing_order = $("#beneficiary_frequency").val().split("~");
-            // var standing_order_ = standing_order;
-            standingOrderData.frequency = standing_order[0];
-            var optionText = $("#beneficiary_frequency option:selected").text();
-            $(".display_frequency_so").text(standing_order[1]);
-        }
+        var standing_order = $("#beneficiary_frequency").val().split("~");
+        // var standing_order_ = standing_order;
+        standingOrderData.frequency = standing_order[0];
+        var optionText = $("#beneficiary_frequency option:selected").text();
+        $(".display_frequency_so").text(standing_order[1]);
     });
 
     $("#purpose").on("change", function () {
@@ -418,22 +251,13 @@ $(document).ready(function () {
         $(".display_purpose").text(standingOrderData.purpose);
     });
 
-    // $("#loan_product").change(function(){
-    // var loan_product = $("#loan_product").val();
-    // var optionText = $("#loan_product option:selected").text();
-    // $(".display_loan_product").text(optionText);
-    // console.log(loan_product);
-    // });
-
-    // $(".display_transfer_amount").text(formatToCurrency(parseFloat(transfer_amount)));
-
     $("#next_button").on("click", function (e) {
         e.preventDefault();
         // $("#confirm_transfer_text").show();
         $(".display_purpose").text(standingOrderData.purpose);
         console.log(
             fromAccount.accountNumber,
-            fromAccount.mandate,
+            // fromAccount.mandate,
             toAccount.accountNumber,
             standingOrderData.amount,
             standingOrderData.startDate,
@@ -442,16 +266,14 @@ $(document).ready(function () {
             standingOrderData.purpose
         );
         if (
-            !validateAll(
-                fromAccount.accountNumber,
-                fromAccount.mandate,
-                toAccount.accountNumber,
-                standingOrderData.amount,
-                standingOrderData.startDate,
-                standingOrderData.endDate,
-                standingOrderData.frequency,
-                standingOrderData.purpose
-            )
+            !fromAccount.accountNumber ||
+            // fromAccount.mandate ||
+            !toAccount.accountNumber ||
+            !standingOrderData.amount ||
+            !standingOrderData.startDate ||
+            !standingOrderData.endDate ||
+            !standingOrderData.frequency ||
+            !standingOrderData.purpose
         ) {
             toaster("fields cannot be empty", "warning");
             return false;
@@ -498,20 +320,7 @@ $(document).ready(function () {
             return false;
         }
         confirmationCompleted = true;
-        if (customerType == "C") {
-            $("#confirm_transfer_button").prop("disabled", true);
-            $("#confirm_transfer_text").hide();
-            $("#spinner").show();
-            $("#spinner-text").show();
-            // console.log(standingOrderData);
-            // return false;
-            postStandingOrder(
-                "corporate-standing-order-request-api",
-                standingOrderData
-            );
-        } else {
-            $("#centermodal").modal("show");
-        }
+        $("#centermodal").modal("show");
     });
 
     $("#transfer_pin").on("click", function (e) {

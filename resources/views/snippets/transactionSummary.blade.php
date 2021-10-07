@@ -97,7 +97,7 @@
                 </tbody>
             </table>
         </div>
-        @include("snippets.pinCodeModal")
+        {{-- @include("snippets.pinCodeModal") --}}
         <br>
         <div class="form-group text-center">
 
