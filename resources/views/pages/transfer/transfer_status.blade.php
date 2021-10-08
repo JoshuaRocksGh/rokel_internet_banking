@@ -5,6 +5,10 @@
         text-align: center;
         font-size: 0.8 rem
     }
+
+    .table-sm {
+        font-size: 0.8rem !important;
+    }
 </style>
 @section('content')
 
@@ -66,68 +70,78 @@ $currentPath = "Tansfer Status";
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title text-danger" id="transfer_status">Transfer Details</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 class="modal-title text-primary" id="transfer_status">Transfer Details</h3>
             </div>
             <div class="modal-body">
-                <div class="col-md-12">
-                    <h4 class="text-primary">Bank Details</h4>
+                <h4 class="text-primary">Sender Info</h4>
+                <table class="table table-bordered table-sm">
+                    <tbody>
+                        <tr>
+                            <th class="col-5"> Account Name</th>
+                            <td id="sender_name"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5"> Account Number:</th>
+                            <td id="sender_account"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5"> Customer Number</th>
+                            <td id="sender_customer_number"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4 class="text-primary">Beneficiary Info</h4>
 
+                <table class="table table-bordered table-sm">
+                    <tbody>
+                        <tr>
+                            <th class="col-5">Beneficiary Name</th>
+                            <td id="beneficiary_name"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5">Beneficiary Account Number:</th>
+                            <td id="beneficiary_account"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5">Beneficiary Bank</th>
+                            <td id="beneficiary_bank"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4 class="text-primary">Beneficiary Info</h4>
 
-                    <div class="form-group row">
-                        <label class="col-md-5">Bank Name:</label>
-                        <span class="col-md-7" id="beneficiary_details_bank_name"></span>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-md-5">Swift Code:</label>
-                        <span class="col-md-7" id="beneficiary_details_bank_swift_code"></span>
-                    </div>
-                    <hr>
-
-                    <h4 class="text-primary">Account Details</h4>
-
-                    <div class="form-group row">
-                        <label class="col-md-5">Account Name:</label>
-                        <span class="col-md-7" id="beneficiary_details_account_name"></span>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-md-5">Account Number:</label>
-                        <span class="col-md-7" id="beneficiary_details_account_number"></span>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-md-5">Currency:</label>
-                        <span class="col-md-7" id="beneficiary_details_account_currency"></span>
-                    </div>
-                    <hr>
-
-                    <h4 class="text-primary">Beneficiary Details </h4>
-                    <div class="form-group row">
-                        <label class="col-md-5">Nickname:</label>
-                        <span class="col-md-7" id="beneficiary_details_name"></span>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-5">Address:</label>
-                        <span class="col-md-7" id="beneficiary_details_address"></span>
-                    </div>
-                    {{-- <div class="form-group row">
-                                            <label class="col-md-5">Telephone:</label>
-                                            <span class="col-md-7" id="beneficiary_details_telephone"></span>
-                                        </div> --}}
-                    <div class="form-group row">
-                        <label class="col-md-5">Email:</label>
-                        <span class="col-md-7" id="beneficiary_details_email"></span>
-                    </div>
-                </div>
+                <table class="table table-bordered table-sm">
+                    <tbody>
+                        <tr>
+                            <th class="col-5">Amount</th>
+                            <td id="transfer_amount"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5">Batch Number</th>
+                            <td id="batch_number"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5">Channel</th>
+                            <td id="transfer_channel"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5">Transfer Date</th>
+                            <td id="transfer_date"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5">Transfer Stage</th>
+                            <td id="transfer_stage"></td>
+                        </tr>
+                        <tr>
+                            <th class="col-5">Transfer Status</th>
+                            <td id="transfer_status"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 

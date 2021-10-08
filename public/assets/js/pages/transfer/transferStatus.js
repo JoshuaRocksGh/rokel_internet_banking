@@ -68,7 +68,22 @@ function getTransferStatus(customerNumber) {
                     "button",
                     function () {
                         let data = JSON.parse($(this).attr("extra-data"));
-                        $("#transfer_status_modal");
+                        console.log(data);
+                        $("#sender_name").val(data.payerAccountDescription);
+                        $("#sender_account").val(data.payerAccount);
+                        $("#sender_customer_number").val(
+                            data.payerCustomerNumber
+                        );
+                        $("#beneficiary_name").val(data.beneficiaryName);
+                        $("#beneficiary_account").val(data.beneficiaryAccount);
+                        $("#beneficiary_bank").val(data.beneficiaryBank);
+                        $("#transfer_amount").val(data.amount);
+                        $("#batch_number").val(data.batchNumber);
+                        $("#transfer_channel").val(data.channel);
+                        $("#transfer_date").val(data.postingDate);
+                        $("#transfer_stage").val(data.stage);
+                        $("#transfer_status").val(data.status);
+                        $("#transfer_status_modal").modal("show");
                     }
                 );
             }
