@@ -162,7 +162,7 @@ function getAccountTransactions(accountNumber, transLimit) {
                     table.row
                         .add([
                             tData.postingSysDate,
-                            `${dd}/${mm}/${yyyy} ${tData.postingSysTime}`,
+                            `${dd}/${mm}/${yyyy}`,
                             formattedTransferAmount,
                             tData.runningBalance,
                             tData.narration,

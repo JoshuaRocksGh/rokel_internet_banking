@@ -1,0 +1,30 @@
+a:hover {
+    text-decoration: none !important;
+}
+
+.bg-success {
+    background-color: #1abc9c !important;
+}
+
+.text-success {
+    color: #1abc9c !important;
+}
+
+.bg-warning {
+    background-color: #f7b84b !important;
+}
+
+.text-warning {
+    color: #f7b84b !important;
+}
+.text-primary {
+    color: #0072cf !important;
+}
+.form-control:focus {
+    /* border-color: #17a2b8; */
+    border-color: #ced4da;
+}
+select:active,
+select:hover {
+    outline: none;
+}
