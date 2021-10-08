@@ -15,7 +15,7 @@ function makeTransfer(url, data) {
                 $("#related_information_display").removeClass(
                     "d-none d-sm-block"
                 );
-                toaster(response.message, "success", 3000);
+                transactionSuccessToaster(response.message, "success", 3000);
                 $(".receipt").show();
                 $(".form_process").hide();
                 $("#confirm_modal_button").hide();
@@ -341,8 +341,9 @@ $(function () {
             transactionType === "onetime" &&
             accountNumber === onetimeToAccount.accountNumber
         ) {
-            toaster("can not transfer to same account", "warning", 3000);
+            toaster("can not transfer to same account", "warning");
             $(this).val("");
+            fromAccount.info = "";
             return false;
         }
         if (currency !== "SLL") {
@@ -383,6 +384,7 @@ $(function () {
         if (toAccount.info === fromAccount.info) {
             toaster("can not transfer to same account", "warning", 3000);
             $(this).val("");
+            toAccount.info = "";
             return false;
         }
         let accountDetails = toAccount.info.split("~");
@@ -411,7 +413,7 @@ $(function () {
         if (!fromAccount.info || !toAccount.info) {
             toaster("Please select source and destination accounts", "warning");
             $(this).val("");
-            transactionDetails.account = "";
+            transactionDetails.amount = "";
             return false;
         }
         transactionDetails.amount = parseFloat($(this).val()).toFixed(2);
@@ -446,9 +448,10 @@ $(function () {
     });
 
     $("#onetime_amount").on("keyup", function () {
-        if (!fromAccount.info || onetimeToAccount.name) {
-            toaster("Please select source and destination accounts", "warning");
+        if (!fromAccount.info) {
+            toaster("Please select source account", "warning");
             $(this).val("");
+            onetimeToAccount.amount = "";
             return false;
         }
         onetimeTransactionDetails.amount = parseFloat($(this).val()).toFixed(2);
@@ -489,7 +492,6 @@ $(function () {
         }
         onetimeToAccount.accountNumber = $(this).val();
         if (onetimeToAccount.accountNumber.length > 17) {
-            console.log("a");
             getAccountDescription(onetimeToAccount);
         }
     });
@@ -506,6 +508,7 @@ $(function () {
     // NEXT BUTTON CLICK
     $("#next_button").on("click", function () {
         if (transactionType === "onetime") {
+            onetimeToAccount.name = $("#onetime_beneficiary_name");
             onetimeToAccount.email = $("#onetime_beneficiary_email").val();
             if (!onetimeToAccount.email) {
                 toaster("Please enter valid beneficiary email", "warning");

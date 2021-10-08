@@ -12,7 +12,7 @@ let datatableOptions = {
         {
             targets: "_all",
             render: function (data, type, row) {
-                return data.length > 45 && !data.includes("<b>")
+                return data && data.length > 45 && !data.includes("<b>")
                     ? data.substr(0, 45) + "…"
                     : data;
             },

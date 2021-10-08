@@ -73,6 +73,17 @@
         });
     });
 
+    function transactionSuccessToaster(message, timer=3000){
+        Swal.fire({title:  "Transaction Successful",
+        text: message,
+        imageUrl: 'land_asset/images/statement_success.gif',
+        imageHeight: "10rem", width: "20rem",
+        imageAlt: 'success image', confirmButtonColor: "#0388cb",
+            timer: timer
+        })
+
+
+    }
     function toaster(message, icon, timer = 3000) {
         const Toast = Swal.mixin({
             toast: true,
