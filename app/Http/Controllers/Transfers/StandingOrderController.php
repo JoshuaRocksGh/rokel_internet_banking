@@ -22,41 +22,22 @@ class StandingOrderController extends Controller
     //method to send pay load request
     public function standing_order_request(Request $req)
     {
-        $validator = Validator::make($req->all(), [
-            'fromAccount' =>  'required',
-            'amount' => 'required',
-            'toAccount' => 'required',
-            'startDate' => 'required',
-            'endDate' => 'required',
-            'frequency' => 'required',
-            'purpose' => 'required',
-            'bankCode' => 'required',
-            'secPin' => 'required'
-        ]);
-
         // return $request;
         $base_response = new BaseResponse();
 
-        // VALIDATION
-        if ($validator->fails()) {
-
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
-
-
         $authToken = session()->get('userToken');
         $api_headers = session()->get('headers');
-        $terminalId = get_current_user();
+        $clientIp = request()->ip();
 
 
         $data =
             [
-                "amount" => $req->account,
+                "amount" => $req->amount,
                 "authToken" => $authToken,
-                "bankCode" => $req->backCode,
+                "bankCode" => $req->bankCode,
                 "creditAccount" => $req->toAccount,
                 "debitAccount" => $req->fromAccount,
-                "deviceIp" => $terminalId,
+                "deviceIp" => $clientIp,
                 "effectiveDate" => $req->startDate,
                 "expiryDate" => $req->endDate,
                 "frequency" => $req->frequency,
@@ -64,9 +45,12 @@ class StandingOrderController extends Controller
                 "transactionDesc" => $req->purpose
             ];
 
+        Log::alert($data);
+
         try {
             $response = Http::withHeaders($api_headers)->post(env('API_BASE_URL') . "transfers/standingOrder", $data);
             // return $response;
+            Log::alert("message");
             Log::alert($response);
             $result = new ApiBaseResponse();
 

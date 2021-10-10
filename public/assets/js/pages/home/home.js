@@ -12,7 +12,7 @@ let datatableOptions = {
         {
             targets: "_all",
             render: function (data, type, row) {
-                return data.length > 45 && !data.includes("<b>")
+                return data && data.length > 45 && !data.includes("<b>")
                     ? data.substr(0, 45) + "…"
                     : data;
             },
@@ -162,7 +162,7 @@ function getAccountTransactions(accountNumber, transLimit) {
                     table.row
                         .add([
                             tData.postingSysDate,
-                            `${dd}/${mm}/${yyyy} ${tData.postingSysTime}`,
+                            `${dd}/${mm}/${yyyy}`,
                             formattedTransferAmount,
                             tData.runningBalance,
                             tData.narration,

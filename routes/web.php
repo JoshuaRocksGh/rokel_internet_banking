@@ -705,4 +705,4 @@ Route::get('get-standing-order-frequencies-api', [FunctionsController::class, 'g
 
 //route to initiate standing order request
 Route::post('initiate-standing-order-request-api', [StandingOrderController::class, 'standing_order_request'])->name('initiate-standing-order-request-api');
-Route::post('corporate-standing-order-request-api', [StandingOrderController::class, 'corporate_standing_order_request'])->name('corporate-standing-order-request-api');
+// Route::post('corporate-standing-order-request-api', [StandingOrderController::class, 'corporate_standing_order_request'])->name('corporate-standing-order-request-api');

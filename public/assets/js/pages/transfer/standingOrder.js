@@ -11,8 +11,7 @@ function postStandingOrder(url, data) {
             console.log(response);
 
             if (response.responseCode == "000") {
-                // toaster(response.message, "success");
-                Swal.fire("", response.message, "success");
+                transactionSuccessToaster(response.message);
                 $("#spinner").hide();
                 $("#spinner-text").hide();
                 $("#back_button").hide();
@@ -34,6 +33,10 @@ function postStandingOrder(url, data) {
         error: function (error) {
             console.log(error);
             toaster(error, "error");
+            $("#confirm_transfer_text").show();
+            $("#spinner").hide();
+            $("#spinner-text").hide();
+            $("#confirm_modal_button").prop("disabled", false);
         },
     });
 }
@@ -95,9 +98,9 @@ function getBeneficiaries() {
                                     "~" +
                                     data[index].BANK_SWIFT_CODE +
                                     "~" +
-                                    data[index].EMAIL +
-                                    "~" +
-                                    JSON.stringify(data[index]),
+                                    data[index].EMAIL,
+                                // "~" +
+                                // JSON.stringify(data[index]),
                             }).text(
                                 data[index].NICKNAME.toUpperCase() +
                                     " - " +
@@ -183,12 +186,12 @@ $(document).ready(function () {
         }
 
         let accountDetails = toAccount.info.split("~");
-        toAccount.type = accountDetails[0].trim();
+        toAccount.bank = accountDetails[0].trim();
         toAccount.name = accountDetails[1].trim();
         toAccount.accountNumber = accountDetails[2].trim();
         toAccount.currency = accountDetails[3].trim();
         toAccount.email = accountDetails[6].trim();
-        const { type, name, accountNumber, currency, email } = toAccount;
+        const { bank, name, accountNumber, currency, email } = toAccount;
 
         if (accountNumber === fromAccount.accountNumber) {
             toaster("can not transfer to same account", "warning", 3000);
@@ -199,7 +202,7 @@ $(document).ready(function () {
         $("#saved_account_number").val(accountNumber);
         $("#saved_beneficiary_email").val(email);
 
-        $(".display_to_account_type").text(type);
+        $(".display_to_account_type").text(bank);
         $(".display_to_account_name").text(name);
         $(".display_to_account_no").text(accountNumber);
         // $(".display_to_account_amount").text(to_account_info[4]);

@@ -4,7 +4,10 @@
 
 <style>
     .display-card {
-        height: 5.5rem
+        height: 5.5rem;
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 
     table {
@@ -37,17 +40,16 @@
         <div class="row">
             <div class="col-md-3">
                 <a href="{{ url('payment-type') }}">
-                    <div class="widget-rounded-circle card-box display-card bg-info"
-                        style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <div class="widget-rounded-circle card-box display-card bg-info">
                         <div class="row">
                             <div class="col-4">
                                 <div class="avatar-sm rounded-circle bg-white ">
                                     <i class="fe-log-out font-5 avatar-title text-info"></i>
                                 </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-8 align-self-center">
                                 <div class="text-right">
-                                    <h3 class="mt-1 text-white "><span><b>Payments</b></span></h3>
+                                    <span class="mt-1 text-white "><span><b>Payments</b></span></span>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -56,17 +58,16 @@
             </div>
             <div class="col-md-3">
                 <a href="{{ url('account-enquiry') }}">
-                    <div class="widget-rounded-circle card-box  display-card bg-warning"
-                        style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <div class="widget-rounded-circle card-box  display-card bg-warning">
                         <div class="row">
                             <div class="col-4">
                                 <div class="avatar-sm rounded-circle bg-white">
                                     <i class="fe-send font-20 avatar-title text-white text-warning"></i>
                                 </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-8 align-self-center">
                                 <div class="text-right">
-                                    <h3 class="mt-1 text-white "><span> &nbsp;<b>Account Enquiry</b> </span></h3>
+                                    <span class="mt-1 text-white "><span> &nbsp;<b>Account Enquiry</b> </span></span>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -75,17 +76,16 @@
             </div>
             <div class="col-md-3">
                 <a href="#">
-                    <div class="widget-rounded-circle card-box display-card custom-color-gold bg-success"
-                        style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <div class="widget-rounded-circle card-box display-card custom-color-gold bg-success">
                         <div class="row">
                             <div class="col-4">
                                 <div class="avatar-sm rounded-circle bg-white">
                                     <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
                                 </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-8 align-self-center">
                                 <div class="text-right">
-                                    <h3 class="mt-1 text-white"><span> &nbsp;<b>Transfers</b> </span></h3>
+                                    <span class="mt-1 text-white"><span> &nbsp;<b>Transfers</b> </span></span>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -94,17 +94,16 @@
             </div>
             <div class="col-md-3">
                 <a href="{{ url('e-korpor') }}">
-                    <div class="widget-rounded-circle card-box display-card bg-danger"
-                        style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+                    <div class="widget-rounded-circle card-box display-card bg-danger">
                         <div class=" row">
                             <div class="col-4">
                                 <div class="avatar-sm rounded-circle bg-white ">
                                     <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
                                 </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-8 align-self-center">
                                 <div class="text-right">
-                                    <h3 class="mt-1 text-white"><span>&nbsp;<b>E-Korpor</b> </span></h3>
+                                    <span class="mt-1 text-white"><span>&nbsp;<b>E-Korpor</b> </span></span>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -178,8 +177,8 @@
                                         <tr class="bg-info text-white ">
                                             <td> <b> Account No </b> </td>
                                             <td> <b> Deal Amount </b> </td>
-                                            <td> <b> Tunure </b> </td>
-                                            <td> <b> FixedInterestRate </b> </td>
+                                            <td> <b> Tenure </b> </td>
+                                            <td> <b> Interest Rate </b> </td>
                                             <td> <b> Rollover </b> </td>
 
                                         </tr>
@@ -228,8 +227,6 @@
                         </div>
                     </div>
                 </div> <!-- end card-box-->
-                {{-- <br> --}}
-                {{-- <div class="card " style="border-radius: 20px;"> --}}
                 <div class="border mt-0 site-card dashboard-table rounded p-2">
                     <div class="container-fluid">
                         <div class="row">
@@ -263,8 +260,8 @@
                                     <td> <b> Balance </b> </td>
                                     <td> <b> Description </b> </td>
                                     <td> <b> Account </b> </td>
-                                    <td> <b> Transaction ID </b> </td>
-                                    <td> <b> Batch Number </b> </td>
+                                    <td> <b> ID </b> </td>
+                                    <td> <b> Batch No </b> </td>
                                 </tr>
                             </thead>
                             <tbody id="transaction_history_body">

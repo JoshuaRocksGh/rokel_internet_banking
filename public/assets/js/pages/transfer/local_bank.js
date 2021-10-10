@@ -15,7 +15,7 @@ function makeTransfer(data) {
                 $("#related_information_display").removeClass(
                     "d-none d-sm-block"
                 );
-                toaster(response.message, "success", 3000);
+                transactionSuccessToaster(response.message);
                 $(".receipt").show();
                 $(".form_process").hide();
                 $("#confirm_modal_button").hide();

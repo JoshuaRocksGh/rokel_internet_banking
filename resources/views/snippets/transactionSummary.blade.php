@@ -5,7 +5,7 @@
             <table class="table mb-0 table-bordered table-striped  ">
 
                 <tbody>
-                    <tr class="success_gif" style="display: none">
+                    <tr class="success_gif">
                         <td class="text-center bg-white" colspan="2">
                             <img src="{{ asset('land_asset/images/statement_success.gif') }}" style="zoom: 0.5" alt="">
                         </td>

@@ -42,11 +42,7 @@ class FunctionsController extends Controller
 
     public function get_transfer_requests(Request $request)
     {
-        $customerNumber = $request->query('customerNumber');
-
-        $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
+        $customerNumber = $request->customerNumber;
         $base_response = new BaseResponse();
 
         // dd(env('API_BASE_URL') . "transfers/achBankTransferStatus/$customerNumber");

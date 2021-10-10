@@ -47,18 +47,15 @@
                                     </tr>
                                     <tr>
                                         {{-- <th scope="row">2</th> --}}
-                                        <td>Transfer To Account Number</td>
+                                        <td>Beneficiary Account Number</td>
                                         <td class="text-right"><span id="to_account_receipt"></span></td>
                                         {{-- <td></td> --}}
                                     </tr>
                                     <tr id="display_receipt_bank" style="display:none">
-                                        <th scope="row">3</th>
-                                        <td><strong>Recipient Bank</strong> </td>
-                                        <td></td>
+                                        <td><strong>Beneficiary Bank</strong> </td>
                                         <td><strong><span id="receipt_bank"></span></strong>
-                                        </td>
                                     </tr>
-                                    <tr>
+                                    <tr id="display_receipt_category">
                                         {{-- <th scope="row">3</th> --}}
                                         <td>Transfer Category</td>
                                         <td class="text-right"><span id="category_receipt"></span></td>
@@ -79,11 +76,9 @@
                                         </td>
                                     </tr>
                                     <tr id="receipt_transfer_fee">
-                                        <th scope="row">3</th>
                                         <td>Transaction Fee </td>
-                                        <td></td>
                                         <td class="text-right"><strong>
-                                                <spaan class="receipt_tansfer_fee"></spaan>0.00
+                                                <span class="receipt_tansfer_fee"></span>0.00
                                             </strong>
                                         </td>
                                     </tr>
