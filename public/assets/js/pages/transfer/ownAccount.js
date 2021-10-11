@@ -176,7 +176,7 @@ $(() => {
         $(".display_conversion_currency").text($("#select_currency__").val());
     }
 
-    $("#personal_transfer_receipt").show();
+    // $("#personal_transfer_receipt").show();
 
     // let now = new Date();
 
@@ -188,14 +188,14 @@ $(() => {
     // $("#future_payment").text(today).datepicker("setDate", new Date());
 
     // {{-- hide select accounts info --}}
-    $(".from_account_display_info").hide();
-    $(".to_account_display_info").hide();
+    // $(".from_account_display_info").hide();
+    // $(".to_account_display_info").hide();
     // $("#schedule_payment_date").hide();
     // $("#frequency").hide();
     // $("#schedule_payment_contraint_input").hide();
 
-    $("#transaction_form").show();
-    $("#transaction_summary").hide();
+    // $("#transaction_form").show();
+    // $("#transaction_summary").hide();
 
     $("#back_button").on("click", function (e) {
         e.preventDefault();
@@ -205,7 +205,6 @@ $(() => {
 
     $("#from_account").on("change", function () {
         fromAccount.info = $(this).val();
-
         if (!fromAccount.info) {
             $(".from_account_display_info").hide();
             $(".display_from_account_type").text("");

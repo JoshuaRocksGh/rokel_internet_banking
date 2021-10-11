@@ -1,70 +1,19 @@
 @extends('layouts.master')
-
-
-
-@section('styles')
-
-<style>
-    @media print {
-        .hide_on_print {
-            display: none
-        }
-    }
-
-    @font-face {
-        font-family: 'password';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 40px;
-        src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
-    }
-
-    input.key {
-        font-family: 'password';
-        width: 300px;
-        height: 80px;
-        font-size: 100px;
-    }
-
-    .table_over_flow {
-        overflow-y: hidden;
-
-    }
-</style>
-
-
+@section('content')
+@php
+$pageTitle ="LOCAL BANK TRANSFER";
+$basePath ="Transfer";
+$currentPath ="Local Bank";
+@endphp
+@include("pages.transfer.transfers_master")
+@endsection
+@section('scripts')
+<script src="{{ asset("assets/js/pages/transfer/local_bank.js") }}"> </script>
 @endsection
 
 
-
-@section('content')
-
-<div>
-
-
-    @php
-    $pageTitle ="LOCAL BANK TRANSFER";
-    $basePath ="Transfer";
-    $currentPath ="Local Bank";
-    @endphp
-    @include("snippets.pageHeader")
-
-
-
-    <div class="row">
-        <div class="col-12">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        {{-- RECEIPT --}}
-                        @include("snippets.receipt")
-                        @include("snippets.pinCodeModal")
-                        <div class="form_process">
-
-                            <div class="row">
-                                @include('snippets.transactionSummary')
-
-                                <div class="col-md-7 site-card m-2" id="transaction_form">
+{{-- 
+                                        <div class="col-md-7 site-card m-2" id="transaction_form">
                                     <br>
                                     <form action="#" class="select_beneficiary" id="payment_details_form"
                                         autocomplete="off" aria-autocomplete="none">
@@ -215,7 +164,6 @@
                                                             </option>
                                                             <option value="ACH">ACH</option>
                                                             <option value="RTGS">RTGS</option>
-                                                            {{-- <option value="003~INSTANT">INSTANT </option> --}}
                                                         </select>
 
                                                     </div>
@@ -270,10 +218,7 @@
                                                                 <select name=""
                                                                     class="input-group-text select_conversion_currency"
                                                                     id="conversion_currency">
-                                                                    {{-- <option value="SLL" selected>SLL</option>
-                                                                    <option value="EUR">EURO</option>
-                                                                    <option value="USD">USD</option> --}}
-                                                                </select>
+                                                                                                                    </select>
                                                             </div>
                                                             &nbsp;&nbsp;
                                                             <div class="input-group-prepend">
@@ -335,19 +280,7 @@
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                                             id="onetime_beneficiary_account_number" required>
                                                     </div>
-                                                    {{-- <div class="row mb-1">
-                                                        <b class="text-primary col-md-4">Beneficiary A/C Currency &nbsp;
-                                                            <span class="text-danger">*</span></b>
-                                                        <input class="form-control col-md-8" type="text"
-                                                            id="onetime_beneficiary_account_currency" required>
-                                                        <select class="form-control col-md-8"
-                                                            id="onetime_beneficiary_account_currency" required>
-                                                            <option disabled selected>---Not Selected---</option>
-
-                                                        </select>
-                                                    </div> --}}
-
-                                                    <div class="row mb-1">
+                                                                                        <div class="row mb-1">
                                                         <b class="text-primary col-md-4">Beneficiary Name &nbsp; <span
                                                                 class="text-danger">*</span></b>
                                                         <input class="form-control col-md-8" type="text"
@@ -366,36 +299,7 @@
                                                         <input class="form-control col-md-8" type="email"
                                                             id="onetime_beneficiary_email">
                                                     </div>
-                                                    {{-- <hr> --}}
-
-                                                    {{-- 
-                                                    <div class="form-group row">
-
-                                                        <b class="col-md-4 text-primary"> Transfer Type &nbsp; <span
-                                                                class="text-danger">*</span></b>
-
-                                                        <div class="row col-md-8 ">
-
-                                                            <div
-                                                                class="radio  radio-primary form-check-inline m-1 col-md-5 onetime_transfer_type">
-                                                                <input type="radio" id="onetime_inlineRadio2"
-                                                                    value="INVOICE" name="onetime_radioInline">
-                                                                <label for="inlineRadio2"> YES</label>
-                                                            </div>
-
-                                                            <div
-                                                                class="radio radio-primary form-check-inline m-1 col-md-5 onetime_transfer_type">
-                                                                <input type="radio" id="onetime_inlineRadio1"
-                                                                    value="NORMAL" name="onetime_radioInline" checked>
-                                                                <label for="inlineRadio1"> NO </label>
-                                                            </div>
-
-
-                                                        </div>
-
-                                                    </div> --}}
-
-                                                    <div class="form-group row attach_invoice" style="display: none">
+                                                                                                     <div class="form-group row attach_invoice" style="display: none">
                                                         <b class="text-primary col-md-4">Attach Invoice</b>
 
                                                         <div class="custom-file col-md-8 attach_file">
@@ -418,7 +322,6 @@
                                                             </option>
                                                             <option value="ACH">ACH</option>
                                                             <option value="RTGS">RTGS</option>
-                                                            {{-- <option value="003~INSTANT">INSTANT </option> --}}
                                                         </select>
 
                                                     </div>
@@ -524,16 +427,11 @@
                                     </form>
 
 
-                                </div> <!-- end col -->
-
-                                {{-- <button class="m-2 btn btn-info d-none d-sm-block">Related Information</button> --}}
-                                {{-- LEFT CARD --}}
+                                </div> <!-- end col --> --}}
 
 
-                                <div class="col-md-4 m-2 site-card" id="related_information_display">
-                                    {{-- style="background-image: linear-gradient(to bottom right, white, rgb(201, 223, 230));"> --}}
+{{-- <div class="col-md-4 m-2 site-card" id="related_information_display">
 
-                                    {{-- <br><br> --}}
                                     <h4 class="text-primary">Sender Acc. Info</h4>
                                     <hr class="mt-0">
                                     <div class="row mt-0">
@@ -551,10 +449,7 @@
                                         <h6 class="col-md-5">Account Currency:</h6>
                                         <span class="text-primary display_from_account_currency col-md-7"></span>
 
-                                        {{-- <h6 class="col-md-5">Account Currency:</h6>
-                                            <span class="text-primary display_from_account_currency col-md-7"></span> --}}
-
-                                    </div>
+                                                                     </div>
 
                                     <hr>
                                     <h4 class="text-primary">Receiver Acc. Info </h4>
@@ -583,10 +478,6 @@
                                             &nbsp;
                                             <span class="display_transfer_amount"></span>
                                         </h6>
-
-                                        {{-- <h6 class="col-md-5">Enter Amount:</h6>
-                                                <span class="text-primary display_amount col-md-7"></span> --}}
-
                                         <h6 class="col-md-5">Currency Rate:</h6>
                                         <span class="text-primary display_midrate col-md-7"></span>
 
@@ -598,31 +489,10 @@
                                     <br>
                                     <hr style="margin-top: 2px; margin-bottom: 5px; ">
 
-                                    <div class="row">
-
-                                    </div>
                                     <hr style="margin-top: 2px; margin-bottom: 5px; ">
 
                                     <div class="row">
                                         <h6 class="text-primary col-md-5">Transaction Fee:</h6>
                                         <h6 class="text-danger text-bold col-md-7"></h6>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
-                    </div>
-                </div>
-            </div> <!-- end card-body -->
-
-        </div>
-
-
-        @endsection
-
-        @section('scripts')
-        <script src="{{ asset('assets/js/functions/validateEmail.js') }}"></script>
-        <script src="{{ asset('assets/js/functions/currencyConverter.js') }}"></script>
-        <script src="{{ asset("assets/js/pages/transfer/local_bank.js") }}"> </script>
-
-        @endsection
+                                </div> --}}

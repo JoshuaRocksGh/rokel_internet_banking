@@ -18,7 +18,8 @@ a:hover {
     color: #f7b84b !important;
 }
 .text-primary {
-    color: #0072cf !important;
+    color: #0561ad !important;
+    /* color: #0072cf !important; */
 }
 .form-control:focus {
     /* border-color: #17a2b8; */
@@ -27,4 +28,16 @@ a:hover {
 select:active,
 select:hover {
     outline: none;
+}
+.form-control {
+    /* height: 2.8rem; */
+    font-size: 0.9rem;
+}
+
+.input-group-text {
+    font-size: 0.9rem;
+}
+body {
+    /* zoom: 0.96; */
+    font-family: Roboto;
 }

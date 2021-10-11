@@ -129,7 +129,6 @@ function getToAccount() {
                     );
                 });
             } else {
-                // {{-- $('.yes_beneficiary').hide() --}}
                 $(".no_beneficiary").show();
             }
         },

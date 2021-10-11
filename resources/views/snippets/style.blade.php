@@ -1,11 +1,10 @@
 <!-- App favicon -->
 <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+    rel="stylesheet">
 <!-- Plugins css -->
-{{-- 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> --}}
-
 
 <link href="{{ asset('assets/css/bootstrap-purple.min.css') }}" rel="stylesheet" type="text/css"
     id="bs-default-stylesheet" />
@@ -414,7 +413,7 @@
         padding: 40px 30px !important;
         position: relative;
         box-shadow: 0 1px 21px #808080;
-        font-size: 10px
+        /* font-size: 10px */
     }
 
     .main thead {
@@ -465,7 +464,7 @@
     .btn-primary {
         background-color: #00bdf3 !important;
         border-color: #00bdf3 !important;
-        height: 3rem;
+        /* height: 3rem; */
     }
 
     .btn-primary:hover {
@@ -503,9 +502,6 @@
         color: #0388cb !important;
     }
 
-    .form-control {
-        height: 2.8rem;
-    }
 
     .div-card {
         background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));
@@ -517,7 +513,7 @@
     }
 
     select {
-        font: 400 0.9rem Lato;
+        font: 400 0.9rem;
     }
 
     @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
