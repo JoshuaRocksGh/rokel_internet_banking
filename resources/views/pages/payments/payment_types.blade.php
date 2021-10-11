@@ -1,161 +1,243 @@
 @extends('layouts.master')
+@section('styles')
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+<style>
+    .payments-text {
+        font-size: 0.825rem !important;
+        font-weight: bold !important;
+    }
 
-@section('content')
+    .slick-current .box-circle {
+        background-color: white !important
+    }
 
-    <div class="container-fluid">
-        <br>
-        <!-- start page title -->
-        <div class="row">
-            <div class="col-md-6">
-                <h4 class="text-primary">
-                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                    PAYMENT TYPES
+    .display-card {
+        height: 4rem;
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 0.25rem;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
 
-                </h4>
-            </div>
+    .slick-arrow {
+        /* background-color: #0388cb; */
+        width: 30px;
+        height: 30px;
+    }
 
-            <div class="col-md-6 text-right">
-                <h6>
+    .box-circle {
+        position: absolute;
+        top: 7%;
+        left: 92%;
+        border-radius: 50%;
+        height: 0.8rem;
+        width: 0.8rem;
+        border: solid white 2px;
+    }
 
-                    <span class="flaot-right">
-                        <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">Payment Types</b>
+    .slick-arrow::before {
+        color: #000000;
+        font-size: 2rem
+            /* border-radius: 50% */
+    }
+</style>
+<style>
+    .tab-pane {
+        animation: slide-right 300ms ease-out;
+    }
 
-
-                    </span>
-
-                </h6>
-
-            </div>
-
-            <div class="col-md-12 ">
-                <hr class="text-primary" style="margin: 0px;">
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <br><br>
-            <div class="container-fluid">
-                <div class="row">
-
-                    <div class="col-md-1"></div>
-
-                    <div class="col-md-10">
-                        <div class="col-md-12">
-                            <div class="container">
-
-                                <div class="text-center" id="loader">
-                                    <div class="spinner-border avatar-lg text-primary m-2" role="status"></div>
-                                    {{-- <div class="spinner-grow avatar-lg text-secondary m-2" role="status"></div> --}}
-                                </div><!-- end col -->
-                                <div class="row payment_types_card">
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-1"></div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-    <script>
-        function paymentType() {
-            $.ajax({
-                type: 'GET',
-                url: 'get-payment-types-api',
-                datatype: "application/json",
-                success: function(response) {
-                    {{-- console.log(response.data.data) --}}
-
-                    $('#loader').hide();
-
-                    let data = response.data.data
-                    console.log(data)
-                    if (data.length > 0) {
-
-                        $.each(data, function(index) {
-                            let description = data[index].description
-                            let payment_type_code = data[index].paymentType
-                            let color = [
-                                'bg-success',
-                                'bg-info',
-                                'bg-warning',
-                                'bg-danger',
-                                'bg-primary',
-                                'bg-pink',
-                                'bg-blue',
-                                'bg-secondary',
-                                'bg-dark'
-                            ]
-                            let card_color = color[index]
-                            {{-- let card_color = color --}}
-                            {{-- let randomItem = card_color[Math.floor(Math.random() * card_color.length)]; --}}
-                            {{-- console.log(randomItem) --}}
-                            {{-- console.log(description)
-                            console.log(card_color) --}}
-
-
-                            $('.payment_types_card').append(
-                                `
-                                <div class="col-md-4">
-                                    <a href="{{ url('payment-type/${payment_type_code}') }}">
-
-
-                                        <div class="card text-white ${card_color} text-xs-center">
-                                            <div class="card-body">
-                                                <blockquote class="card-bodyquote">
-                                                    <h3 class="text-white">${data[index].description}</h3>
-                                                    {{-- <footer>Someone famous in <cite title="Source Title">Source Title</cite>
-                                                    </footer> --}}
-                                                </blockquote>
-                                            </div>
-                                        </div> <!-- end card-box-->
-
-                                        </a>
-                                    </div> <!-- end col -->
-                                `
-                            )
-                        })
-                    } else {
-                        return false;
-                    }
-
-
-                },
-                error: function(xhr, status, error) {
-                    $('#loader').show();
-
-                    setTimeout(function() {
-                        paymentType()
-                    }, $.ajaxSetup().retryAfter)
-                }
-            })
+    @keyframes slide-right {
+        0% {
+            opacity: 0;
+            transform: translateX(100%);
         }
 
-        $(document).ready(function() {
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 
-            setTimeout(function() {
-                paymentType()
-            }, 200)
-        })
-    </script>
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
 
+        to {
+            opacity: 1;
+        }
+    }
+
+    label {
+        align-self: center;
+        margin-bottom: 0;
+        /* font-weight: 400; */
+        /* font-size: 1rem */
+    }
+
+    input {
+        align-self: center !important;
+    }
+
+    form-control {
+        align-self: center !important;
+    }
+
+    .switch-text {
+        position: absolute;
+        left: 70%;
+        transform: translate(-50%, -50%);
+    }
+
+    .switch {
+        border-radius: 33px !important;
+        height: 2rem;
+        border: 1px solid #dbdee0 !important;
+        font-size: 0.75rem;
+        line-height: normal;
+        /* left: 2px; */
+        background-color: white;
+        color: #6c757d;
+        animation: fadein 1000ms;
+        font-weight: bold
+    }
+
+    .switch:hover {
+        border-color: #00bdf3 !important
+    }
+
+    .switch .leftbtn {
+        border-radius: 0 50% 50% 0
+    }
+
+    .switch.active {
+        background-color: #00bdf3 !important;
+        color: white;
+    }
+
+
+    .next-button {
+        height: 2rem !important;
+        font-size: 0.9rem !important;
+        margin-top: 2rem !important;
+        line-height: normal !important;
+    }
+</style>
 @endsection
+@section('content')
+@php
+$pageTitle = "payment type";
+$basePath = "Payment";
+$currentPath = "Make Payment";
+@endphp
+
+@include('snippets.pageHeader')
+
+<div class="row">
+    <div class="col-12 py-3 px-5">
+        <br><br>
+        <div class="site-card justify-content-center">
+            {{-- =================================== --}}
+            {{-- Select Account  --}}
+            {{-- =================================== --}}
+            <div class=" mb-1 px-3 row justify-content-center ">
+                <label class="col-md-8 text-primary">Account to transfer from</label>
+
+                <select class="form-control col-md-8" id="from_account" required>
+                    <option disabled selected value=""> -- Select Account --
+                    </option>
+                    @include("snippets.accounts")
+                </select>
+
+                <hr class="col-md-8">
+            </div>
+
+            {{-- ============================================= --}}
+            {{-- SELECT PAYMENT TYPE --}}
+            {{-- ============================================= --}}
+
+            <div class=" mb-1 px-3 row justify-content-center ">
+                <div class="col-12">
+                    <label class="col-md-8 mb-2 text-primary">Select Payment Type</label>
+                    <div class="payments-carousel">
+                    </div>
+                    <hr class="col-md-8">
+
+                </div>
+                <div class="col-8">
+                    <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
+                        <li class="nav-item w-50" role="presentation" style="position: absolute">
+                            <button class="switch w-100  nav-link active" id="beneficiary_tab" data-toggle="pill"
+                                href="#beneficiary_view" type="button" role="tab" aria-controls="beneficiary_view"
+                                aria-selected="false">
+                                Beneficiary</button>
+                        </li>
+                        <li class="nav-item w-50" role="presentation">
+                            <button class=" switch leftbtn w-100 nav-link " id="onetime_tab" data-toggle="pill"
+                                href="#onetime_view" type="button" role="tab" aria-controls="onetime_view"
+                                aria-selected="true">
+                                <div class="switch-text">Onetime</div>
+                            </button>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+                <div class="tab-content col-md-8" id="onetime_bene_tabContent">
+
+
+                    {{-- ============================================= --}}
+                    {{-- beneficiary toggle --}}
+                    {{-- ============================================= --}}
+                    <div class="tab-pane fade  show active" id="beneficiary_view" role="tabpanel"
+                        aria-labelledby="beneficiary_tab">
+                        <div class="row mb-1">
+                            <label class="text-primary col-md-4 bene_details">Beneficiary
+                            </label>
+                            <select class="form-control col-md-8 bene_details" id="to_account" required>
+                                <option value=""><b>-- Select Beneficiary --</b> </option>
+
+                            </select>
+                        </div>
+                    </div>
+                    {{-- ============================================= --}}
+                    {{-- Onetime toggle --}}
+                    {{-- ============================================= --}}
+                    <div class="tab-pane fade" id="onetime_view" role="tabpanel" aria-labelledby="onetime_tab">
+                        <div class="row mb-1">
+                            <label class="text-primary onetime-label col-md-4"></label>
+                            <select class="form-control col-md-8" id="onetime_beneficiary_bank_name" required>
+                                <option disabled selected>---Not Selected---</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 text-primary"> Phone Number</label>
+                            <input type="text" class="form-control col-md-8 " id="onetime_account_number"
+                                placeholder="Enter Account Number"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        </div>
+                    </div>
+
+                    <button class="btn mt-5 float-right font-weight-bold font-11 btn-primary next-button btn-rounded"
+                        id="next_button">
+                        &nbsp; Proceed &nbsp; <i class="fe-arrow-right"></i></button>
+
+                    {{-- <hr class="my-2"> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@endsection
+
+@section('scripts')
+<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{ asset('assets/js/pages/payments/paymentTypes.js')  }}" @endsection

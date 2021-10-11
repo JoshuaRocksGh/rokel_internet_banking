@@ -128,6 +128,8 @@
 
 
 
+    @yield('styles')
+
     <script src="https://code.jquery.com/jquery-3.5.1.js">
         $.ajaxSetup({
         timeout: 3000,
@@ -136,7 +138,6 @@
     </script>
 
     @include('snippets.script')
-    @yield('styles')
 
     @include('extras.datatables')
 
@@ -159,7 +160,7 @@
     <!-- Begin page -->
     {{-- <div id="wrapper" style="zoom: 0.9;"> --}}
     <div id="wrapper">
-        @include('sweetalert::alert')
+        {{-- @include('sweetalert::alert') --}}
 
         @include('snippets.nav')
 
@@ -173,7 +174,7 @@
         </div>
     </div>
 
-
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     @yield('scripts')
 
