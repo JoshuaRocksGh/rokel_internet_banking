@@ -154,31 +154,37 @@
                                     @if ($currentPath === "Local Bank")
                                     <div class="form-group row ">
                                         <label class="text-primary col-md-4">Beneficiary Bank</label>
-                                        <input class="form-control col-md-8 readOnly" type="text"
-                                            id="beneficiary_bank_name" readonly>
+                                        <input
+                                            class="form-control col-md-8 display_to_account display_to_account_bank readOnly"
+                                            type="text" id="beneficiary_bank_name" readonly>
                                     </div>
                                     @endif
                                     <div class="form-group row">
                                         <label class="col-md-4 text-primary"> Beneficiary A/C
                                             Number</label>
-                                        <input type="text" class="form-control col-md-8 readOnly"
+                                        <input type="text"
+                                            class="form-control  display_to_account display_to_account_no col-md-8 readOnly"
                                             id="saved_beneficiary_account_number" readonly>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-md-4 text-primary"> Beneficiary Name</label>
-                                        <input type="text" class="form-control col-md-8 readOnly "
+                                        <input type="text"
+                                            class="form-control display_to_account display_to_account_name col-md-8 readOnly "
                                             id="saved_beneficiary_name" readonly>
                                     </div>
+                                    @if($currentPath !=="Own Account")
                                     <div class="form-group row">
                                         <label class="col-md-4 text-primary"> Beneficiary Email</label>
-                                        <input type="text" class="form-control col-md-8 readOnly"
+                                        <input type="text"
+                                            class="form-control display_to_account display_to_account_email col-md-8 readOnly"
                                             id="saved_beneficiary_email" readonly>
                                     </div>
+                                    @endif
                                     @if ($currentPath === "Local Bank")
                                     <div class="row mb-1">
                                         <label class="text-primary col-md-4">Beneficiary Address</label>
-                                        <input class="form-control col-md-8 readOnly" type="text"
+                                        <input class="form-control col-md-8  readOnly" type="text"
                                             id="beneficiary_address" readonly>
                                     </div>
                                     @endif

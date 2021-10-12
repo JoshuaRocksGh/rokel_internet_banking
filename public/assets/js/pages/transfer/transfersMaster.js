@@ -165,7 +165,6 @@ function handleToAccount(account) {
 }
 
 $(() => {
-    toaster(transferType, "success");
     let transferInfo = new Object();
     let fromAccount = new Object();
     $(".account_currency").text("SLL");
