@@ -8,5 +8,5 @@ $currentPath ="Same Bank";
 @include("pages.transfer.transfers_master")
 @endsection
 @section('scripts')
-<script src="{{ asset('assets/js/pages/transfer/sameBank.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/pages/transfer/sameBank.js') }}"></script> --}}
 @endsection

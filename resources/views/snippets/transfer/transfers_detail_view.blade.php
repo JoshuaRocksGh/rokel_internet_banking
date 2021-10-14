@@ -1,4 +1,4 @@
-<section class="col-md-5  px-3">
+<section class="col-md-5  px-3" id="transfer_details_view">
     <div class="site-card px-5 h-100">
 
 
@@ -47,6 +47,7 @@
             <span class="text-primary display_to_account display_to_account_currency col-md-7"></span>
 
             @if ($currentPath==="Local Bank")
+
             <p class="col-md-5 transfer-detail-text">Receiver Address:</p>
             <span class="text-primary display_to_account display_to_account_address col-md-7"></span>
             @endif
@@ -60,6 +61,10 @@
         <h3 class="text-primary transfer-detail-header">Transfer Info</h3>
         <hr class="mt-0">
         <div class="row">
+            @if ($currentPath === "Local Bank")
+            <p class="col-md-5 transfer-detail-text">Transfer Type:</p>
+            <span class="text-primary display_to_account display_to_transfer_type col-md-7"></span>
+            @endif
             <p class="col-md-5 transfer-detail-text">Transfer Amount:</p>
             <span class="row col-md-7">
                 <span class="text-danger display_transfer_currency col-md-4"></span>

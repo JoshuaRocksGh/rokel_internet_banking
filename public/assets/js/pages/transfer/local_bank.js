@@ -1,64 +1,64 @@
-let forexRate = [];
+// let forexRate = [];
 
-function makeTransfer(data) {
-    $.ajax({
-        type: "POST",
-        url: "local-bank-transfer-api",
-        datatype: "application/json",
-        data: data,
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-        success: function (response) {
-            console.log(response);
-            if (response.responseCode == "000") {
-                $("#related_information_display").removeClass(
-                    "d-none d-sm-block"
-                );
-                transactionSuccessToaster(response.message);
-                $(".receipt").show();
-                $(".form_process").hide();
-                $("#confirm_modal_button").hide();
-                $("#spinner").hide();
-                $("#spinner-text").hide();
-                $("#back_button").hide();
-                $("#print_receipt").show();
-                $(".rtgs_card_right").hide();
-                $(".success_gif").show();
-            } else {
-                toaster(response.message, "error", 3000);
-                $(".receipt").hide();
-                $("#confirm_transfer").show();
-                $("#confirm_modal_button").prop("disabled", false);
-                $("#spinner").hide();
-                $("#spinner-text").hide();
-                $("#back_button").show();
-                $("#print_receipt").hide();
-                $("#related_information_display").show();
-                $(".success_gif").hide();
-            }
-        },
-    });
-}
+// function makeTransfer(data) {
+//     $.ajax({
+//         type: "POST",
+//         url: "local-bank-transfer-api",
+//         datatype: "application/json",
+//         data: data,
+//         headers: {
+//             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+//         },
+//         success: function (response) {
+//             console.log(response);
+//             if (response.responseCode == "000") {
+//                 $("#related_information_display").removeClass(
+//                     "d-none d-sm-block"
+//                 );
+//                 transactionSuccessToaster(response.message);
+//                 $(".receipt").show();
+//                 $(".form_process").hide();
+//                 $("#confirm_modal_button").hide();
+//                 $("#spinner").hide();
+//                 $("#spinner-text").hide();
+//                 $("#back_button").hide();
+//                 $("#print_receipt").show();
+//                 $(".rtgs_card_right").hide();
+//                 $(".success_gif").show();
+//             } else {
+//                 toaster(response.message, "error", 3000);
+//                 $(".receipt").hide();
+//                 $("#confirm_transfer").show();
+//                 $("#confirm_modal_button").prop("disabled", false);
+//                 $("#spinner").hide();
+//                 $("#spinner-text").hide();
+//                 $("#back_button").show();
+//                 $("#print_receipt").hide();
+//                 $("#related_information_display").show();
+//                 $(".success_gif").hide();
+//             }
+//         },
+//     });
+// }
 
-function getCorrectFxRate() {
-    $.ajax({
-        type: "GET",
-        url: "get-correct-fx-rate-api",
-        datatype: "application/json",
-        success: function (response) {
-            if (response.responseCode == "000") {
-                forexRate = response.data;
-            } else {
-            }
-        },
-        error: function (xhr, status, error) {
-            setTimeout(function () {
-                getCorrectFxRate();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
+// function getCorrectFxRate() {
+//     $.ajax({
+//         type: "GET",
+//         url: "get-correct-fx-rate-api",
+//         datatype: "application/json",
+//         success: function (response) {
+//             if (response.responseCode == "000") {
+//                 forexRate = response.data;
+//             } else {
+//             }
+//         },
+//         error: function (xhr, status, error) {
+//             setTimeout(function () {
+//                 getCorrectFxRate();
+//             }, $.ajaxSetup().retryAfter);
+//         },
+//     });
+// }
 
 function getLocalbanksList() {
     $.ajax({
@@ -88,39 +88,39 @@ function getLocalbanksList() {
     });
 }
 
-var c = {};
+// var c = {};
 
-function getCurrency() {
-    $.ajax({
-        type: "GET",
-        url: "get-currency-list-api",
-        datatype: "application/json",
-        success: function (response) {
-            let data = response.data;
+// function getCurrency() {
+//     $.ajax({
+//         type: "GET",
+//         url: "get-currency-list-api",
+//         datatype: "application/json",
+//         success: function (response) {
+//             let data = response.data;
 
-            $.each(data, function (index) {
-                if (data[index].isoCode === "SLL") {
-                    $(".select_conversion_currency").append(
-                        $("<option selected>", {
-                            value: data[index].isoCode,
-                        }).text(data[index].isoCode)
-                    );
-                } else {
-                    $(".select_conversion_currency").append(
-                        $("<option>", {
-                            value: data[index].isoCode,
-                        }).text(data[index].isoCode)
-                    );
-                }
-            });
-        },
-        error: function (xhr, status, error) {
-            setTimeout(function () {
-                getCurrency();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
+//             $.each(data, function (index) {
+//                 if (data[index].isoCode === "SLL") {
+//                     $(".select_conversion_currency").append(
+//                         $("<option selected>", {
+//                             value: data[index].isoCode,
+//                         }).text(data[index].isoCode)
+//                     );
+//                 } else {
+//                     $(".select_conversion_currency").append(
+//                         $("<option>", {
+//                             value: data[index].isoCode,
+//                         }).text(data[index].isoCode)
+//                     );
+//                 }
+//             });
+//         },
+//         error: function (xhr, status, error) {
+//             setTimeout(function () {
+//                 getCurrency();
+//             }, $.ajaxSetup().retryAfter);
+//         },
+//     });
+// }
 
 function transactionFee(fee_account, fee_amount, transfer_type) {
     $.ajax({
@@ -149,42 +149,42 @@ function transactionFee(fee_account, fee_amount, transfer_type) {
     });
 }
 
-function getExpenseTypes() {
-    let name = $("#category_").val();
+// function getExpenseTypes() {
+//     let name = $("#category_").val();
 
-    $.ajax({
-        type: "GET",
-        url: "get-expenses",
-        datatype: "application/json",
-        success: function (response) {
-            let data = response.data;
-            let exType = response.data.expenseName;
-            $.each(data, function (index) {
-                $("#category").append(
-                    $("<option>", {
-                        value:
-                            data[index].expenseCode +
-                            "~" +
-                            data[index].expenseName,
-                    }).text(data[index].expenseName)
-                );
-                $("#onetime_category").append(
-                    $("<option>", {
-                        value:
-                            data[index].expenseCode +
-                            "~" +
-                            data[index].expenseName,
-                    }).text(data[index].expenseName)
-                );
-            });
-        },
-        error: function (xhr, status, error) {
-            setTimeout(function () {
-                getExpenseTypes();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
+//     $.ajax({
+//         type: "GET",
+//         url: "get-expenses",
+//         datatype: "application/json",
+//         success: function (response) {
+//             let data = response.data;
+//             let exType = response.data.expenseName;
+//             $.each(data, function (index) {
+//                 $("#category").append(
+//                     $("<option>", {
+//                         value:
+//                             data[index].expenseCode +
+//                             "~" +
+//                             data[index].expenseName,
+//                     }).text(data[index].expenseName)
+//                 );
+//                 $("#onetime_category").append(
+//                     $("<option>", {
+//                         value:
+//                             data[index].expenseCode +
+//                             "~" +
+//                             data[index].expenseName,
+//                     }).text(data[index].expenseName)
+//                 );
+//             });
+//         },
+//         error: function (xhr, status, error) {
+//             setTimeout(function () {
+//                 getExpenseTypes();
+//             }, $.ajaxSetup().retryAfter);
+//         },
+//     });
+// }
 
 function getBeneficiaries() {
     $.ajax({
@@ -232,8 +232,6 @@ function getBeneficiaries() {
                         );
                     });
                 } else {
-                    // $('.yes_beneficiary').hide()
-                    // $('.no_beneficiary').show()
                 }
             }
         },

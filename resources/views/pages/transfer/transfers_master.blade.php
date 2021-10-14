@@ -3,8 +3,12 @@
     <div class="col-12 py-3 px-5">
         @include("snippets.pinCodeModal")
         <div class="form_process row">
-            @include('snippets.transfer.bank_transfer_form')
-            @include('snippets.transactionSummary')
+            <section class="col-md-7 px-3">
+
+                @include('snippets.transfer.bank_transfer_form')
+                @include('snippets.transactionSummary')
+            </section>
+
             @include('snippets.transfer.transfers_detail_view')
         </div>
         <div class="col-md-10">

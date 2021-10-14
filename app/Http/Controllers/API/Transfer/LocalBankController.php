@@ -220,23 +220,25 @@ class LocalBankController extends Controller
             "bankName" => $request->bankName,
             "beneficiaryAddress" => $request->beneficiaryAddress,
             "beneficiaryName" => $request->beneficiaryName,
-            "creditAccount" => $request->beneficiaryAccount,
-            "email" => $request->beneficiaryEmail,
-            "debitAccount" => $request->fromAccount,
-            "deviceIp" => $clientIp,
-            "secPin" => $request->secPin,
-            "transactionDetails" => $request->purpose,
-            "transferCurrency" => $request->currency,
-            "expenseType" => $request->category,
-            "userName" => $userID,
-            "entrySource" => 'MOB',
-            "deviceId" => "a",
-            "manufacturer" => "a",
             "brand" => "a",
             "channel" => "a",
             "country" => "a",
+            "creditAccount" => $request->toAccount,
+            "debitAccount" => $request->fromAccount,
+            "deviceId" => "a",
+            "deviceIp" => $clientIp,
+            "deviceName" => "a",
+            "entrySource" => 'MOB',
+            "expenseType" => $request->category,
+            "manufacturer" => "a",
+            "secPin" => $request->secPin,
+            "transactionDetails" => $request->purpose,
+            "transferCurrency" => $request->currency,
+            "userName" => $userID,
+            "email" => $request->beneficiaryEmail,
 
         ];
+        // return $data;
         try {
 
             Log::alert($mode);

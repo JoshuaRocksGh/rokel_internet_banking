@@ -45,7 +45,7 @@
         <div class="col-12">
             <div class="___class_+?15___">
 
-                <div class="card-body">
+                <div class="card-body ">
 
                     <div class="row">
                         {{-- <div class="col-md-1"></div> --}}
