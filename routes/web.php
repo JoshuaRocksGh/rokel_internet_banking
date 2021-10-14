@@ -323,9 +323,6 @@ Route::post('bulkupload.import', [BulkUploadsController::class, 'import'])->name
 //route to display the pay again payment screen
 Route::get('pay-again', [paymentController::class, 'pay_again_payment'])->name('pay-again');
 
-//route to display the qr payment screen
-Route::get('qr-payment', [paymentController::class, 'qr_payment'])->name('qr-payment');
-
 //route to hit for complaint api
 Route::post('complaint-api', [ComplaintController::class, 'make_complaint_api'])->name('complaint-api');
 
@@ -429,8 +426,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
 
-    Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
-
+    Route::get('qr-payment', [paymentController::class, 'qr_payment']);
     Route::get('airtime-payment', [paymentController::class, 'airtime_payment'])->name('airtime-payment');
 
     Route::get('cardless-payment', [paymentController::class, 'cardless_payment'])->name('cardless-payment');
@@ -665,8 +661,8 @@ Route::get('get-loan-products-api', [FunctionsController::class, 'get_Loan_produ
 Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_request'])->name('loan-request-details');
 
 //Route to send loan request details of quotation
-Route::post('loan-quotation-details', [LoanQuotationController::class, 'send_loan_request_quote']);
-Route::post('loan-orignation-api', [LoansController::class, 'send_loan_request_quote']);
+Route::post('loan-quotation-details', [LoansController::class, 'send_loan_request_quote']);
+Route::post('post-loan-origination-api', [LoansController::class, 'postLoanOrigination']);
 
 //Route to send unredeem request
 Route::post('unredeem-cardless-request', [CardlessController::class, 'send_unredeemed_request'])->name('unredeem-cardless-request');

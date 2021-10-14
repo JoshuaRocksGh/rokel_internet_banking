@@ -99,15 +99,3 @@
         </div>
     </div>
 </section>
-
-<style>
-    .transfer-detail-header {
-        font-size: 1rem;
-        margin-top: 1.5rem;
-    }
-
-    .transfer-detail-text {
-        font-size: 0.8rem;
-        margin-bottom: 0.4rem;
-    }
-</style>

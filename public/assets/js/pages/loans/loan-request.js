@@ -104,7 +104,7 @@ function getLoanQuotationDetails(loanData) {
 function loanRequestSubmission() {
     $.ajax({
         type: "POST",
-        url: "post-loan-origination",
+        url: "post-loan-origination-api",
         datatype: "application/json",
         success: function (response) {
             console.log(response);
@@ -186,7 +186,7 @@ $(() => {
     $("#loan_sectors").on("change", () => {
         loanData.loanSectors = $("#loan_sectors option:selected").text();
         loanData.loanSectorsCode = $("#loan_sectors option:selected").val();
-        if (loanData.loanSectorCode === "") {
+        if (loanData.loanSectorsCode === "") {
             $(".loan-sub-sectors-div").hide(300);
         } else {
             $("#loan_sub_sectors")
@@ -264,6 +264,17 @@ $(() => {
     $("#btn_loan_request").on("click", (e) => {
         if (loanFormStage === "final") {
             console.log(loanData);
+            console.log(loanData.loanProductCode);
+            console.log(loanData.loanAmount);
+            console.log(loanData.tenureInMonths);
+            console.log(loanData.principalRepayFreqCode);
+            console.log(loanData.interestRateTypeCode);
+            console.log(loanData.interestRepayFreqCode);
+            console.log(loanData.loanIntroSourceCode);
+            console.log(loanData.loanSectorsCode);
+            console.log(loanData.loanSubSectorsCode);
+            console.log(loanData.loanPurpose);
+            console.log(loanData.productBranch);
             if (
                 !loanData.loanProductCode ||
                 !loanData.loanAmount ||
@@ -272,18 +283,18 @@ $(() => {
                 !loanData.interestRateTypeCode ||
                 !loanData.interestRepayFreqCode ||
                 !loanData.loanIntroSourceCode ||
-                !loanData.loanSectorCode ||
+                !loanData.loanSectorsCode ||
                 !loanData.loanSubSectorsCode ||
-                !loanData.productPurpose ||
+                !loanData.loanPurpose ||
                 !loanData.productBranch
             ) {
+                console.log("A");
                 toaster("Please complete all required fields", "warning");
                 return false;
             }
 
-            return false;
-            // loanRequestSubmission();
-            loanFormStage = false;
+            loanRequestSubmission();
+            // loanFormStage = false;
         }
 
         if (
