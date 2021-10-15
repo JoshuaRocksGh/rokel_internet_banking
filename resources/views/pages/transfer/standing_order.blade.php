@@ -8,7 +8,7 @@ $currentPath = "Standing Order";
 @include('pages.transfer.transfers_master')
 @endsection
 @section('scripts')
-<script src="{{ asset('assets/js/pages/transfer/standingOrder.js') }}">
+{{-- <script src="{{ asset('assets/js/pages/transfer/standingOrder.js') }}"> --}}
 </script>
 @endsection
 

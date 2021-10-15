@@ -133,7 +133,7 @@ Route::get('/add-beneficiary/own-account-beneficiary', [transferController::clas
 
 // OWN ACCOUNT
 Route::get('/get-my-account', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-account');
-Route::post('/own-account-api', [TransferOwnAccountController::class, 'own_account_transfer'])->name('own-account-api');
+Route::post('/own-account-transfer-api', [TransferOwnAccountController::class, 'own_account_transfer']);
 
 // //CORPORATE OWN ACCOUNT API
 // Route::post('/corporate-own-account-api', [TransferOwnAccountController::class, 'corporate_own_account_transfer'])->name('corporate-own-account-api');
@@ -323,9 +323,6 @@ Route::post('bulkupload.import', [BulkUploadsController::class, 'import'])->name
 //route to display the pay again payment screen
 Route::get('pay-again', [paymentController::class, 'pay_again_payment'])->name('pay-again');
 
-//route to display the qr payment screen
-Route::get('qr-payment', [paymentController::class, 'qr_payment'])->name('qr-payment');
-
 //route to hit for complaint api
 Route::post('complaint-api', [ComplaintController::class, 'make_complaint_api'])->name('complaint-api');
 
@@ -429,8 +426,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
 
-    Route::get('/qr-transfer', [GenerateQRController::class, 'index'])->name('qr-transfer');
-
+    Route::get('qr-payment', [paymentController::class, 'qr_payment']);
     Route::get('airtime-payment', [paymentController::class, 'airtime_payment'])->name('airtime-payment');
 
     Route::get('cardless-payment', [paymentController::class, 'cardless_payment'])->name('cardless-payment');
@@ -566,7 +562,7 @@ Route::get('get-payment-types-api', [FunctionsController::class, 'payment_types'
 
 // Transfers
 Route::get('/get-transfer-beneficiary-api', [FunctionsController::class, 'get_transfer_beneficiary'])->name('get-transfer-beneficiary-api');
-Route::post('/transfer-to-beneficiary-api', [SameBankController::class, 'transfer_to_beneficiary'])->name('transfer-to-beneficiary-api');
+Route::post('/same-bank-transfer-api', [SameBankController::class, 'transfer_to_beneficiary']);
 Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
 Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
 // Route::get('standing-order',[])
@@ -665,8 +661,8 @@ Route::get('get-loan-products-api', [FunctionsController::class, 'get_Loan_produ
 Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_request'])->name('loan-request-details');
 
 //Route to send loan request details of quotation
-Route::post('loan-quotation-details', [LoanQuotationController::class, 'send_loan_request_quote']);
-Route::post('loan-orignation-api', [LoansController::class, 'send_loan_request_quote']);
+Route::post('loan-quotation-details', [LoansController::class, 'send_loan_request_quote']);
+Route::post('post-loan-origination-api', [LoansController::class, 'postLoanOrigination']);
 
 //Route to send unredeem request
 Route::post('unredeem-cardless-request', [CardlessController::class, 'send_unredeemed_request'])->name('unredeem-cardless-request');
@@ -704,5 +700,5 @@ Route::get('get-loan-sub-sectors-api', [FunctionsController::class, 'getLoanSubS
 Route::get('get-standing-order-frequencies-api', [FunctionsController::class, 'get_standing_order_frequencies'])->name('get-standing-order-frequencies-api');
 
 //route to initiate standing order request
-Route::post('initiate-standing-order-request-api', [StandingOrderController::class, 'standing_order_request'])->name('initiate-standing-order-request-api');
+Route::post('standing-order-transfer-api', [StandingOrderController::class, 'standing_order_request']);
 // Route::post('corporate-standing-order-request-api', [StandingOrderController::class, 'corporate_standing_order_request'])->name('corporate-standing-order-request-api');

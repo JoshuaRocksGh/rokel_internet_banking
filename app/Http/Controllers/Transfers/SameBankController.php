@@ -35,7 +35,7 @@ class SameBankController extends Controller
             "amount" => (float) $req->amount,
             "authToken" => $authToken,
             "brand" => "string",
-            "creditAccount" => $req->beneficiaryAccount,
+            "creditAccount" => $req->toAccount,
             "channel" => "MOB",
             "country" => "SL",
             "currency" => $req->currency,

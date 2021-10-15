@@ -8,7 +8,7 @@ $currentPath ="Local Bank";
 @include("pages.transfer.transfers_master")
 @endsection
 @section('scripts')
-<script src="{{ asset("assets/js/pages/transfer/local_bank.js") }}"> </script>
+{{-- <script src="{{ asset("assets/js/pages/transfer/local_bank.js") }}"> </script> --}}
 @endsection
 
 
