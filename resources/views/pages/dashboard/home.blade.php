@@ -117,69 +117,67 @@
                     style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
 
                     <ul class="nav nav-tabs">
-                        <li class="nav-item">
+                        <li class="nav-item" id="accounts">
                             <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
                                 <strong class="text-success">CURRENT & SAVINGS</strong>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                        <li class="nav-item" id="investments">
+                            <a href="#investments_tab" data-toggle="tab" aria-expanded="true" class="nav-link ">
                                 <strong class="text-warning">INVESTMENTS</strong>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        <li class="nav-item" id="loans">
+                            <a href="#loans_tab" data-toggle="tab" aria-expanded="false" class="nav-link">
                                 <strong class="text-danger">LOANS</strong>
                             </a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="home">
-                            <p>
 
-                                <div class="table-responsive table-bordered accounts_display_area">
-                                    <table id="" class="table mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Account No </b> </td>
-                                                <td> <b> Description </b> </td>
-                                                <td> <b> Product </b> </td>
-                                                <td> <b> Currency </b> </td>
-                                                <td> <b> Balance </b> </td>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="casa_list_display">
-                                            @foreach($accounts as $i => $account)
-                                            <tr>
-                                                <td> <a
-                                                        href="{{ url('account-enquiry?accountNumber='.$account->accountNumber)}}">
-                                                        <b class="text-primary">{{$account->accountNumber}}</b> </a>
-                                                </td>
-                                                <td> <b> {{ $account->accountDesc }} </b> </td>
-                                                <td> <b> {{ $account->accountType}} </b> </td>
-                                                <td> <b> {{ $account->currency}} </b> </td>
-                                                <td> <b> {{ $account->availableBalance}} </b> </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- end table-responsive -->
+                            <div class="table-responsive table-bordered accounts_display_area">
+                                <table id="" class="table mb-0 ">
+                                    <thead>
+                                        <tr class="bg-info text-white ">
+                                            <td> <b> Account No </b> </td>
+                                            <td> <b> Description </b> </td>
+                                            <td> <b> Product </b> </td>
+                                            <td> <b> Currency </b> </td>
+                                            <td> <b> Balance </b> </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="casa_list_display">
+                                        @foreach($accounts as $i => $account)
+                                        <tr>
+                                            <td> <a
+                                                    href="{{ url('account-enquiry?accountNumber='.$account->accountNumber)}}">
+                                                    <b class="text-primary">{{$account->accountNumber}}</b> </a>
+                                            </td>
+                                            <td> <b> {{ $account->accountDesc }} </b> </td>
+                                            <td> <b> {{ $account->accountType}} </b> </td>
+                                            <td> <b> {{ $account->currency}} </b> </td>
+                                            <td> <b> {{ $account->availableBalance}} </b> </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table-responsive -->
 
-                            </p>
 
                         </div>
 
-                        <div class="tab-pane show " id="profile">
+                        <div class="tab-pane show " id="investments_tab">
                             <div class="table-responsive table-bordered my_investment_display_area">
                                 <table id="fixed_deposit_list" class="table mb-0 ">
                                     <thead>
                                         <tr class="bg-info text-white ">
-                                            <td> <b> Account No </b> </td>
-                                            <td> <b> Deal Amount </b> </td>
-                                            <td> <b> Tenure </b> </td>
-                                            <td> <b> Interest Rate </b> </td>
-                                            <td> <b> Rollover </b> </td>
+                                            <th> <b> Account No </b> </th>
+                                            <th> <b> Deal Amount </b> </th>
+                                            <th> <b> Tenure </b> </th>
+                                            <th> <b> Interest Rate </b> </th>
+                                            <th> <b> Rollover </b> </th>
 
                                         </tr>
                                     </thead>
@@ -193,22 +191,18 @@
                                 </table>
                             </div>
                             <!-- end table-responsive -->
-
-                            </p>
-
                         </div>
 
-                        <div class="tab-pane" id="messages">
+                        <div class="tab-pane" id="loans_tab">
                             <div class="table-responsive table-bordered loans_display_area">
                                 <table id="loans_list" class="table mb-0 ">
                                     <thead>
                                         <tr class="bg-info text-white ">
-                                            <td> <b> Facility No </b> </td>
-                                            <td> <b> Description </b> </td>
-                                            <td> <b> Currency </b> </td>
-                                            <td> <b> Amount Granted </b> </td>
-                                            <td> <b> Loan Balance </b> </td>
-
+                                            <th> <b> Facility No </b> </th>
+                                            <th> <b> Description </b> </th>
+                                            <th> <b> Currency </b> </th>
+                                            <th> <b> Amount Granted </b> </th>
+                                            <th> <b> Loan Balance </b> </th>
                                         </tr>
                                     </thead>
                                     <tbody id="loans_list_body">
@@ -221,9 +215,6 @@
                                 </table>
                             </div>
                             <!-- end table-responsive -->
-
-                            </p>
-
                         </div>
                     </div>
                 </div> <!-- end card-box-->
@@ -255,13 +246,13 @@
                         <table class="table table-bordered table-striped table-centered mb-0" id="transaction_history">
                             <thead>
                                 <tr class="bg-info text-white">
-                                    <td> <b> Date</b> </td>
-                                    <td> <b> Amount </b> </td>
-                                    <td> <b> Balance </b> </td>
-                                    <td> <b> Description </b> </td>
-                                    <td> <b> Account </b> </td>
-                                    <td> <b> ID </b> </td>
-                                    <td> <b> Batch No </b> </td>
+                                    <th> <b> Date</b> </th>
+                                    <th> <b> Amount </b> </th>
+                                    <th> <b> Balance </b> </th>
+                                    <th> <b> Description </b> </th>
+                                    <th> <b> Account </b> </th>
+                                    <th> <b> ID </b> </th>
+                                    <th> <b> Batch No </b> </th>
                                 </tr>
                             </thead>
                             <tbody id="transaction_history_body">

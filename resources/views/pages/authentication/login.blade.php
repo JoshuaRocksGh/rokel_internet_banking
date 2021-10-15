@@ -28,15 +28,10 @@
                 </div>
 
                 <!-- title-->
-                <p class="text-muted mb-4">
-                    <h2 class="text-primary"> Personal Internet Banking </h2>
-                </p>
-                <br><br>
+                <h1 class="text-primary page-header my-5 text-center font-20 "> Personal Internet Banking </h1>
                 <div id="login_form" class="form-center">
 
-                    <h4 class="mt-0">Sign In</h4>
-
-                    <br />
+                    <h2 class="mt-0 text-left font-weight-bold font-18 mb-4">Sign In</h2>
                     <!-- form -->
                     <form action="POST" id="login_post_form" autocomplete="off" aria-autocomplete="off">
                         @csrf
@@ -96,7 +91,7 @@
                 </div>
                 <div id="password_reset_area" style="display:none">
                     <!-- title-->
-                    <h4 class="mt-0 mb-4"><b>Reset Password</b></h4>
+                    <h2 class="mt-0 mb-4 font-weight-bold font-18 text-left">Reset Password</h2>
                     {{-- <p class="text-muted mb-4">Enter the required details to reset password</p> --}}
 
                     <!-- form -->
@@ -162,8 +157,7 @@
 
 
                 <div id="self_enroll_form" class=" form-center" style="display: none">
-                    <h4 class="mt-0">Self Enroll</h4>
-                    <br />
+                    <h2 class="mt-0 text-left my-4 font-18 font-weight-bold">Self Enroll</h2>
 
                     <div class="alert alert-danger bg-danger text-white border-0" role="alert" id="self_enroll_message"
                         style="display: none">
@@ -172,10 +166,9 @@
                     <div id="self_enroll_form1" class="form-group">
                         <form action="POST" id="parent_self_enroll_form_1">
                             @csrf
-                            <label for="customer_number_input"> Account Number <span
-                                    class="text-danger">*</span></label>
+                            <label class="my-2 text-muted" for="customer_number_input"> Customer Number</label>
                             <input class="form-control mb-0" type="number" id="customer_number_input"
-                                placeholder="Enter your account number" pattern="[0-9]*" inputmode="numeric"
+                                placeholder="Enter your customer number" pattern="[0-9]*" inputmode="numeric"
                                 parsley-trigger="change" autocomplete="none">
                             <br />
                             <div id="a" class="form-group mb-0 text-center">

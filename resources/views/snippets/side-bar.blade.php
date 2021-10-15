@@ -274,7 +274,7 @@
     <a href="{{ url('open-additional-account') }}">Open additional account</a>
 </li>
 
-
+{{-- 
 <li>
     <a href="{{ url('add-signature') }}">Add Signatory</a>
 </li>
@@ -285,7 +285,7 @@
     <a href="{{ url('kyc-update') }}">
         <span> Update Company Info </span>
     </a>
-</li>
+</li> --}}
 <li>
     <a href="{{ url('complaint') }}">
         <span>Make Complaint</span>

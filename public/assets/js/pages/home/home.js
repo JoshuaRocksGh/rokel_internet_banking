@@ -12,15 +12,19 @@ let datatableOptions = {
         {
             targets: "_all",
             render: function (data, type, row) {
-                return data && data.length > 45 && !data.includes("<b>")
-                    ? data.substr(0, 45) + "…"
-                    : data;
+                if (data === null || data === undefined) {
+                    return "";
+                } else {
+                    return data.length > 45 && !data.includes("<b>")
+                        ? data.substr(0, 45) + "…"
+                        : data;
+                }
             },
         },
     ],
 };
 
-function fixed_deposit() {
+function fixedDeposit() {
     $.ajax({
         type: "GET",
         url: "fixed-deposit-account-api",
@@ -29,6 +33,7 @@ function fixed_deposit() {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
+            console.log(response);
             if (response.responseCode == "000") {
                 let data = response.data;
                 let noInvestments = noDataAvailable.replace(
@@ -46,26 +51,29 @@ function fixed_deposit() {
                 let table = $("#fixed_deposit_list").DataTable(
                     datatableOptions
                 );
+
                 $.each(data, function (i) {
-                    table.row.add([
-                        data[i].sourceAccount,
-                        data[i].dealAmount,
-                        data[i].tenure,
-                        data[i].fixedInterestRate,
-                        rollover_,
-                    ]);
+                    table.row
+                        .add([
+                            data[i].sourceAccount,
+                            formatToCurrency(data[i].dealAmount),
+                            data[i].tenure,
+                            data[i].fixedInterestRate,
+                            data[i].rollover,
+                        ])
+                        .order([0, "desc"]);
                 });
             }
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
-                fixed_deposit();
+                fixedDeposit();
             }, $.ajaxSetup().retryAfter);
         },
     });
 }
 
-function get_loans() {
+function getLoans() {
     $.ajax({
         type: "GET",
         url: "get-loan-accounts-api",
@@ -76,6 +84,7 @@ function get_loans() {
         },
         success: function (response) {
             if (response.responseCode == "000") {
+                console.log(response);
                 let data = response.data;
                 let noLoans = noDataAvailable.replace("Data", "Loans");
                 $("#loans_list_body").empty();
@@ -88,21 +97,25 @@ function get_loans() {
                     return;
                 }
                 let table = $("#loans_list").DataTable(datatableOptions);
+
                 $.each(data, function (i) {
                     let facilityNo = `<b class="text-danger">${data[i].facilityNo} </b>`;
-                    table.row.add([
-                        facilityNo,
-                        data[i].description,
-                        data[i].isoCode,
-                        formatToCurrency(data[i].amountGranted),
-                        formatToCurrency(data[i].loanBalance),
-                    ]);
+                    table.row
+                        .add([
+                            facilityNo,
+                            data[i].description,
+                            data[i].isoCode,
+                            formatToCurrency(data[i].amountGranted),
+                            formatToCurrency(data[i].loanBalance),
+                        ])
+                        .order([0, "desc"])
+                        .draw(false);
                 });
             }
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
-                get_loans();
+                getLoans();
             }, $.ajaxSetup().retryAfter);
         },
     });
@@ -124,6 +137,7 @@ function getAccountTransactions(accountNumber, transLimit) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
+            console.log(response);
             if (response.responseCode == "000") {
                 let data = response.data;
                 let noTransactions = noDataAvailable.replace(
@@ -164,7 +178,7 @@ function getAccountTransactions(accountNumber, transLimit) {
                             tData.postingSysDate,
                             `${dd}/${mm}/${yyyy}`,
                             formattedTransferAmount,
-                            tData.runningBalance,
+                            formatToCurrency(tData.runningBalance),
                             tData.narration,
                             tData.contraAccount,
                             tData.transactionNumber,
@@ -215,8 +229,15 @@ function getCorrectFxRates() {
 
 $(document).ready(function () {
     getCorrectFxRates();
-    get_loans();
-    fixed_deposit();
+    getLoans();
+    fixedDeposit();
+
+    $("#loans").on("click", () => {
+        $("#loans_list").DataTable().draw();
+    });
+    $("#investments").on("click", () => {
+        $("#fixed_deposit_list").DataTable().draw();
+    });
 
     $("#account_transaction").on("change", function () {
         let accountNumber = $(this).val().split("~")[2];

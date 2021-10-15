@@ -193,14 +193,14 @@ function getSecurityQuestion(resetUserId) {
             } else {
                 error_alert(response.message, "#no_question");
                 $("#user_id_next_btn").attr("disabled", false);
-                $(".spinner-text").hide();
+                $(".spinner-text-next").hide();
                 $(".user_id_next_btn_text").show();
             }
         },
         error: function (xhr, status, error) {
             error_alert("please check your connection", "#no_question");
             $("#user_id_next_btn").attr("disabled", false);
-            $(".spinner-text").hide();
+            $(".spinner-text-next").hide();
             $(".user_id_next_btn_text").show();
         },
     });

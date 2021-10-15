@@ -25,21 +25,3 @@
     </div>
 
 </div>
-
-<style>
-    .header-icon {
-        height: 1.5rem;
-        width: 1.5rem
-    }
-
-    .page-header {
-        font-size: 1.1rem;
-        font-weight: 600
-    }
-
-    .btn-soft-blue {
-        color: #4a81d4;
-        background-color: rgba(74, 129, 212, 0.18);
-        border-color: rgba(74, 129, 212, 0.12);
-    }
-</style>
