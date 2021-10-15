@@ -8,7 +8,7 @@ $basePath = "Loans";
 $pageTitle = "Loan Request"; @endphp
 @include("snippets.pageHeader")
 
-
+@include("snippets.pinCodeModal")
 <div class="card-body py-3 px-md-3">
     <div class="row">
         <div class="col-md-7 px-3">

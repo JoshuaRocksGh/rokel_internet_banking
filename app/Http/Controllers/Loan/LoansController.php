@@ -16,7 +16,7 @@ class LoansController extends Controller
         return view('pages.loans.loan_request');
     }
 
-    public function send_loan_request_quote(Request $request)
+    public function sendLoanRequestQuote(Request $request)
     {
 
         $authToken = session()->get('userToken');
@@ -47,6 +47,34 @@ class LoansController extends Controller
         ];
         $response = Http::post(env('API_BASE_URL') . "/loans/loanQuotation", $data);
         // return $response;die();
+        $result = new ApiBaseResponse();
+
+        return $result->api_response($response);
+    }
+
+    public function postLoanOrigination(Request $request)
+    {
+        Log::alert("request");
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $data = [
+
+            "amount" => $request->loanAmount,
+            "authToken" => $authToken,
+            "customerNumber" => session()->get("customerNumber"),
+            "entrySource" => "i",
+            "introSource" => "MOB",
+            "otherPurpose" => "other",
+            "pBranch" => $request->productBranchCode,
+            "pin" => $request->secPin,
+            "postedBy" => $userID,
+            "productCode" => $request->loanProductCode,
+            "purpose" => $request->loanPurpose,
+            "sector" => $request->loanSectorCode,
+            "subSector" => $request->loanSubSectorCode,
+        ];
+        // return $data;
+        $response = Http::post(env('API_BASE_URL') . "/loans/loanOrigination", $data);
         $result = new ApiBaseResponse();
 
         return $result->api_response($response);

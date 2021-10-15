@@ -661,8 +661,8 @@ Route::get('get-loan-products-api', [FunctionsController::class, 'get_Loan_produ
 Route::post('loan-request-details', [LoanRequestController::class, 'send_loan_request'])->name('loan-request-details');
 
 //Route to send loan request details of quotation
-Route::post('loan-quotation-details', [LoansController::class, 'send_loan_request_quote']);
-Route::post('post-loan-origination-api', [LoansController::class, 'postLoanOrigination']);
+Route::post('loan-quotation-details', [LoansController::class, 'sendLoanRequestQuote']);
+Route::post('loan-origination-api', [LoansController::class, 'postLoanOrigination']);
 
 //Route to send unredeem request
 Route::post('unredeem-cardless-request', [CardlessController::class, 'send_unredeemed_request'])->name('unredeem-cardless-request');

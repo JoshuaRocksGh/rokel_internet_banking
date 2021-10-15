@@ -380,9 +380,9 @@ class FunctionsController extends Controller
     }
     public function getLoanSubSectors(Request $request)
     {
-        $code = $request->loanSectorsCode;
-        Log::alert($code);
-        $response = Http::get(env('API_BASE_URL') . "/loans/subSectors/{$request->loanSectorsCode}");
+        // $code = $request->loanSectorCode;
+        // Log::alert($code);
+        $response = Http::get(env('API_BASE_URL') . "/loans/subSectors/{$request->loanSectorCode}");
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
@@ -472,35 +472,22 @@ class FunctionsController extends Controller
         ];
 
         $base_response = new BaseResponse();
-
-        // return $data;
-        // return env('API_BASE_URL') ."account/getAccounts";
-
-        // $response = Http::get(env('API_BASE_URL') . "/loans/purpose", $data);
-        // return $data;
         $response = Http::withHeaders($api_headers)->get(env('API_BASE_URL') . "/transfers/standingOrderFrequencies", $data);
 
         $result = new ApiBaseResponse();
         return $result->api_response($response);
-
-        // return $response;
-        // return $response->status();
     }
 
     public function payment_types()
     {
         $response = Http::get(env('API_BASE_URL') . "payment/paymentType");
-
         $base_response = new BaseResponse();
-
         if ($response->ok()) {    // API response status code is 200
-
             $result = json_decode($response->body());
             // return $result->responseCode;
             return $base_response->api_response("000", "payment types",  $result); // return API BASERESPONSE
 
         } else { // API response status code not 200
-
             return $response->body();
             DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
@@ -508,7 +495,6 @@ class FunctionsController extends Controller
                 'code' => $response->status(),
                 'message' => $response->body()
             ]);
-
             return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
         }
@@ -517,9 +503,6 @@ class FunctionsController extends Controller
     public function reset_security_question($user_id)
     {
         $user_id = $user_id;
-        // $userId = $request->query('user_id');
-        // dd($user_id);
-
         $response = Http::get(env('API_BASE_URL') . "/user/question/{$user_id}");
         $result = new ApiBaseResponse();
         return $result->api_response($response);
