@@ -9,7 +9,8 @@ function paymentType() {
             let data = response.data.data;
             if (data.length > 0) {
                 $.each(data, function (i) {
-                    const { paymentType, description } = data[i];
+                    const { label, paySubTypes, paymentType, description } =
+                        data[i];
                     let color = [
                         "bg-success",
                         "bg-info",
@@ -21,10 +22,9 @@ function paymentType() {
                         "bg-secondary",
                         "bg-dark",
                     ];
-                    // <div class="avatar-sm rounded-circle bg-white ">
-                    //     <i class="fe-smartphone text-white font-20 avatar-title text-danger"></i>
-                    // </div>
-                    let paymentCard = `<div class=" mx-2 display-card payments ${color[i]}">
+                    if (!label) return;
+                    let subTypes = JSON.stringify(paySubTypes);
+                    let paymentCard = `<div class=" mx-2 display-card payments ${color[i]}" data-label='${label}' data-subTypes='${subTypes}'>
                     <span class="box-circle"></span>
                     <span class="mt-1 text-white payments-text" id=${paymentType}>${description}</span>
                 </div>`;
@@ -56,6 +56,7 @@ function initPaymentsCarousel() {
                 breakpoint: 1300,
                 settings: {
                     slidesToShow: 3,
+                    centerMode: true,
                 },
             },
             {
@@ -76,21 +77,36 @@ function initPaymentsCarousel() {
     });
 
     let payments = document.querySelectorAll(".payments");
-    payments.forEach((item) => {
+    payments.forEach((item, i) => {
         item.addEventListener("click", (e) => {
             card = e.currentTarget;
-            console.log(card);
-            // card.classList.add('card--opened');
-            // document.querySelector('body').classList.add('no-scroll');
+            const subTypes = JSON.parse($(card).attr("data-subTypes"));
+            const label = $(card).attr("data-label");
+            $("#payment-select").empty();
+            $("#payment-select").append(
+                `<option selected disabled class="text-capitalize"> --- ${label} --- </option>`
+            );
+            subTypes.forEach((subType, i) => {
+                let {
+                    paymentLabel,
+                    paymentCode,
+                    paymentAccount,
+                    paymentDescription,
+                } = subType;
+                paymentLabel = paymentLabel.toLowerCase();
+                paymentDescription = paymentDescription.toLowerCase();
+                $("#subtype_label").val(paymentLabel).text(paymentLabel);
+                let option = `<option class="text-capitalize" value='${paymentCode}~${paymentAccount}'> ${paymentDescription}</option> `;
+                $("#subtype_select").append(option);
+                $("#subtype_div").show();
+            });
         });
+        if (i === 0) {
+            $(item).trigger("click");
+        }
     });
 }
 
 $(document).ready(function () {
-    //             $(document).ready(function(){
-    //   $('.owl-carousel').slick();
-    // });
-    setTimeout(function () {
-        paymentType();
-    }, 200);
+    paymentType();
 });

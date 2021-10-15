@@ -31,8 +31,8 @@
 
     .box-circle {
         position: absolute;
-        top: 7%;
-        left: 92%;
+        top: 5px;
+        right: 5px;
         border-radius: 50%;
         height: 0.8rem;
         width: 0.8rem;
@@ -189,8 +189,8 @@ $currentPath = "Make Payment";
 
 
 
-                <div class="tab-content col-md-8" id="onetime_bene_tabContent">
 
+                <div class="tab-content col-md-8" id="onetime_bene_tabContent">
 
                     {{-- ============================================= --}}
                     {{-- beneficiary toggle --}}
@@ -200,8 +200,8 @@ $currentPath = "Make Payment";
                         <div class="row mb-1">
                             <label class="text-primary col-md-4 bene_details">Beneficiary
                             </label>
-                            <select class="form-control col-md-8 bene_details" id="to_account" required>
-                                <option value=""><b>-- Select Beneficiary --</b> </option>
+                            <select class="form-control text-capitalize col-md-8 bene_details" id="to_account" required>
+                                <option value="">-- Select Beneficiary --</option>
 
                             </select>
                         </div>
@@ -210,16 +210,16 @@ $currentPath = "Make Payment";
                     {{-- Onetime toggle --}}
                     {{-- ============================================= --}}
                     <div class="tab-pane fade" id="onetime_view" role="tabpanel" aria-labelledby="onetime_tab">
-                        <div class="row mb-1">
-                            <label class="text-primary onetime-label col-md-4"></label>
-                            <select class="form-control col-md-8" id="onetime_beneficiary_bank_name" required>
-                                <option disabled selected>---Not Selected---</option>
-
+                        <div class="row mb-1 text-capitalize" id="subtype_div" style="display: none">
+                            <label class="text-primary col-md-4 " id="subtype_label">
+                            </label>
+                            <select class="form-control col-md-8 " id="subtype-select" required>
                             </select>
                         </div>
+
                         <div class="form-group row">
-                            <label class="col-md-4 text-primary"> Phone Number</label>
-                            <input type="text" class="form-control col-md-8 " id="onetime_account_number"
+                            <label class="col-md-4 text-primary" id="payment_label"></label>
+                            <input type="text" class="form-control col-md-8 " id="payment_label_input"
                                 placeholder="Enter Account Number"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </div>
