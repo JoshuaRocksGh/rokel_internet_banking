@@ -22,9 +22,9 @@ function beneficiary_list() {
                             data[index].EMAIL,
                             data[index].BANK_NAME,
 
-                            `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${data[index].BENEF_TYPE}&bene_id=${data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>
+                            `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${data[index].BENEF_TYPE}&bene_id=${data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>`,
 
-                        &emsp;&emsp; <a onclick="doSomething()"  data-value="${data[index].BENE_ID}"><span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-value="${data[index].BENE_ID}"></span></a>`,
+                            // &emsp;&emsp; <a onclick="doSomething()"  data-value="${data[index].BENE_ID}"><span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-value="${data[index].BENE_ID}"></span></a>`,
                         ])
                         .draw(false);
                 });
@@ -84,7 +84,8 @@ function doSomething() {
 
 $(document).ready(function () {
     $("#beneficiary_list_loader").show();
-    $("#beneficiary_table").hide();
+    // $("#beneficiary_table").hide();
+    $("#edit_modal").modal("show");
     setTimeout(function () {
         beneficiary_list();
     }, 2000);
@@ -124,7 +125,7 @@ $(document).ready(function () {
         console.log(bene_id);
         return false;
     });
-    $("button").click(function () {
-        $("a")[0].click();
-    });
+    // $("button").click(function () {
+    //     $("a")[0].click();
+    // });
 });
