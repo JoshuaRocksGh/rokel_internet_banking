@@ -23,11 +23,16 @@ function paymentType() {
                         "bg-dark",
                     ];
                     if (!label) return;
+                    paySubTypes.forEach((e) => {
+                        delete e.paymentLogo;
+                    });
                     let subTypes = JSON.stringify(paySubTypes);
-                    let paymentCard = `<div class=" mx-2 display-card payments ${color[i]}" data-label='${label}' data-subTypes='${subTypes}'>
+                    let beneList = JSON.stringify(new Array());
+                    let paymentCard = `<div class=" mx-2 display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
                     <span class="box-circle"></span>
-                    <span class="mt-1 text-white payments-text" id=${paymentType}>${description}</span>
-                </div>`;
+                    <span class="mt-1 text-white payments-text" id='${paymentType}_text'>${description}</span>
+                    <span id='${paymentType}_data' data-bene-list='${beneList}' data-label='${label}' data-subTypes='${subTypes}' hidden disabled style="display:none"></span>
+        </div>`;
                     $(".payments-carousel").append(paymentCard);
                 });
                 initPaymentsCarousel();
@@ -44,6 +49,34 @@ function paymentType() {
         },
     });
 }
+
+function getPaymentBeneficiaries() {
+    $.ajax({
+        type: "GET",
+        url: "payment-beneficiary-list-api",
+        datatype: "application/json",
+        success: function (response) {
+            let data = response.data;
+            if (data.length > 0) {
+                $.each(data, (i) => {
+                    let { paymentType } = data[i];
+                    beneficiary = JSON.stringify(data[i]);
+                    // $(`${paymentType}_card`).attr("data-bene");
+                });
+            } else {
+                return false;
+            }
+        },
+        error: function (xhr, status, error) {
+            $("#loader").show();
+
+            setTimeout(function () {
+                paymentType();
+            }, $.ajaxSetup().retryAfter);
+        },
+    });
+}
+
 function initPaymentsCarousel() {
     $(".payments-carousel").slick({
         slidesToShow: 5,
@@ -80,12 +113,15 @@ function initPaymentsCarousel() {
     payments.forEach((item, i) => {
         item.addEventListener("click", (e) => {
             card = e.currentTarget;
-            const subTypes = JSON.parse($(card).attr("data-subTypes"));
-            const label = $(card).attr("data-label");
-            $("#payment-select").empty();
-            $("#payment-select").append(
+            dataspan = "#" + $(card).attr("data-span") + "_data";
+            const subTypes = JSON.parse($(dataspan).attr("data-subTypes"));
+            const label = $(dataspan).attr("data-label").toLowerCase();
+            console.log($(dataspan));
+            $("#subtype_select").empty();
+            $("#subtype_select").append(
                 `<option selected disabled class="text-capitalize"> --- ${label} --- </option>`
             );
+            $("#subtype_label").val(label).text(label);
             subTypes.forEach((subType, i) => {
                 let {
                     paymentLabel,
@@ -95,7 +131,11 @@ function initPaymentsCarousel() {
                 } = subType;
                 paymentLabel = paymentLabel.toLowerCase();
                 paymentDescription = paymentDescription.toLowerCase();
-                $("#subtype_label").val(paymentLabel).text(paymentLabel);
+                $("#payment_label").val(paymentLabel).text(paymentLabel);
+                $("#payment_label_input").attr(
+                    "placeholder",
+                    `Enter ${paymentLabel}`
+                );
                 let option = `<option class="text-capitalize" value='${paymentCode}~${paymentAccount}'> ${paymentDescription}</option> `;
                 $("#subtype_select").append(option);
                 $("#subtype_div").show();
@@ -107,6 +147,7 @@ function initPaymentsCarousel() {
     });
 }
 
-$(document).ready(function () {
+$(() => {
     paymentType();
+    getPaymentBeneficiaries();
 });

@@ -211,20 +211,19 @@ $currentPath = "Make Payment";
                     {{-- ============================================= --}}
                     <div class="tab-pane fade" id="onetime_view" role="tabpanel" aria-labelledby="onetime_tab">
                         <div class="row mb-1 text-capitalize" id="subtype_div" style="display: none">
-                            <label class="text-primary col-md-4 " id="subtype_label">
+                            <label class="text-primary text-capitalize col-md-4 " id="subtype_label">
                             </label>
-                            <select class="form-control col-md-8 " id="subtype-select" required>
+                            <select class="form-control text-capitalize col-md-8 " id="subtype_select" required>
                             </select>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 text-primary" id="payment_label"></label>
-                            <input type="text" class="form-control col-md-8 " id="payment_label_input"
+                            <label class="col-md-4 text-capitalize text-primary" id="payment_label"></label>
+                            <input type="text" class="form-control text-capitalize col-md-8 " id="payment_label_input"
                                 placeholder="Enter Account Number"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         </div>
                     </div>
-
                     <button class="btn mt-5 float-right font-weight-bold font-11 btn-primary next-button btn-rounded"
                         id="next_button">
                         &nbsp; Proceed &nbsp; <i class="fe-arrow-right"></i></button>

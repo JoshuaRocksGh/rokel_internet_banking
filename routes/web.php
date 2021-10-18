@@ -33,9 +33,7 @@ use App\Http\Controllers\BENEFICIARY\Transfer\SameBankController as TransferSame
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Budgeting\SpendingStaticsController;
-use App\Http\Controllers\BulkUpload\CorporateKorporController;
 use App\Http\Controllers\Cards\CardsController;
-use App\Http\Controllers\Cheques\ChequeBookRequestController;
 use App\Http\Controllers\Cheques\ChequesApprovedController;
 use App\Http\Controllers\Cheques\ChequesPendingController;
 use App\Http\Controllers\Cheques\ChequesRejectedController;
@@ -49,11 +47,8 @@ use App\Http\Controllers\Enquiry\EnquiryController;
 use App\Http\Controllers\FAQ\FAQController;
 use App\Http\Controllers\FixedDeposit\FixedDepositAccountController;
 use App\Http\Controllers\GeneralFunctions\FunctionsController;
-use App\Http\Controllers\Loan\LoanProductsController;
 use App\Http\Controllers\Loan\LoanRequestController;
-use App\Http\Controllers\Loan\LoanQuotationController;
 use App\Http\Controllers\Loan\LoansController;
-use App\Http\Controllers\loginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MaileController;
 use App\Http\Controllers\Payments\Bulk\BulkKorporController;
@@ -66,14 +61,12 @@ use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\ChangePasswordController;
 use App\Http\Controllers\Settings\ChangePinController;
 use App\Http\Controllers\Settings\settingsController;
-use App\Http\Controllers\Start\LandingPageController;
 use App\Http\Controllers\TradeFinance\TradeFinanceController;
 use App\Http\Controllers\transferController;
 use App\Http\Controllers\Transfers\BulkUpload\BulkUploadsController as BulkUploadBulkUploadsController;
 use App\Http\Controllers\Transfers\LocalBankController;
 use App\Http\Controllers\Transfers\MultipleTransfersController;
 use App\Http\Controllers\Transfers\OwnAccountController;
-use App\Http\Controllers\Transfers\QR\GenerateQRController;
 use App\Http\Controllers\Transfers\SameBankController;
 use App\Http\Controllers\Transfers\SchedulePayment\SchedulePaymentController;
 use App\Http\Controllers\Transfers\StandingOrderController;
@@ -605,7 +598,7 @@ Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::clas
 Route::post('add-mobile-money-beneficiary-api', [MobileMoneyBeneficiaryController::class, 'add_mobile_money_beneficary'])->name('add-mobile-money-beneficiary-api');
 
 //=======EDIT PAYMENT BENEFICARY
-Route::get('payment-beneficiary-list-api', [paymentController::class, 'all_paymentbeneficiary_list'])->name('payment-beneficiary-list-api');
+Route::get('payment-beneficiary-list-api', [paymentController::class, 'paymentBeneficiaries']);
 
 Route::post('international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
 Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');

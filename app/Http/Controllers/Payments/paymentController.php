@@ -138,21 +138,10 @@ class paymentController extends Controller
         return view('pages.payments.payment_beneficiary_list');
     }
 
-    public function all_paymentbeneficiary_list()
+    public function paymentBeneficiaries()
     {
-
-        $authToken = session()->get('userToken');
         $userID = session()->get('userId');
-
-
-
-        $data = [
-            "authToken" => $authToken,
-            "userId"    => $userID
-        ];
-
         $response = Http::get(env('API_BASE_URL') . "beneficiary/getPaymentBeneficiaries/$userID");
-
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
