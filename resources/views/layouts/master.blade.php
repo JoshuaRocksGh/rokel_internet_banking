@@ -151,11 +151,9 @@
     <!-- Pre-loader -->
     <div id="preloader">
         <div id="status">
-
-            <div class="spinner">Loading...</div>
+            <img class="pulse" style="width: 50px" src="assets/images/logoRKB.png" />
         </div>
-    </div>
-    <!-- End Preloader-->
+    </div> <!-- End Preloader-->
 
     <!-- Begin page -->
     {{-- <div id="wrapper" style="zoom: 0.9;"> --}}
@@ -174,7 +172,8 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
+    </script>
 
     @yield('scripts')
 

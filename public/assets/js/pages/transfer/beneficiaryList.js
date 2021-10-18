@@ -1,6 +1,4 @@
 function beneficiary_list() {
-    var table = $(".beneficiary_list_display").DataTable();
-    var nodes = table.rows().nodes();
     $.ajax({
         tpye: "GET",
         url: "all-beneficiary-list",
@@ -8,12 +6,13 @@ function beneficiary_list() {
         success: function (response) {
             let data = response.data;
             if (response.responseCode == "000") {
-                $("#beneficiary_table").show();
                 $("#beneficiary_list_loader").hide();
                 $("#beneficiary_list_retry_btn").hide();
+                let table = $(".beneficiary_list_display").DataTable({
+                    destroy: true,
+                });
                 $.each(data, function (index) {
-                    model_data = data[index];
-
+                    beneData = JSON.stringify(data[index]);
                     table.row
                         .add([
                             data[index].NICKNAME,
@@ -22,11 +21,19 @@ function beneficiary_list() {
                             data[index].EMAIL,
                             data[index].BANK_NAME,
 
-                            `&emsp;&emsp; <a class='beneficiary_data' data-value='${data[index]}' href='edit-beneficiary?bene_type=${data[index].BENEF_TYPE}&bene_id=${data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>`,
+                            // `&emsp;&emsp; <a class='beneficiary_data' data-value='${beneData}' href='edit-beneficiary?bene_type=${data[index].BENEF_TYPE}&bene_id=${data[index].BENE_ID}'> <span class="fe-edit noti-icon text-primary"></span></a>`,
+                            `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-value='${beneData}'> <span class="fe-edit noti-icon text-info"></span></a>`,
 
                             // &emsp;&emsp; <a onclick="doSomething()"  data-value="${data[index].BENE_ID}"><span class="fe-trash noti-icon text-danger delete_beneficiary_data" data-value="${data[index].BENE_ID}"></span></a>`,
                         ])
                         .draw(false);
+                });
+                let payments = document.querySelectorAll(".edit-beneficiary");
+                payments.forEach((item, i) => {
+                    item.addEventListener("click", (e) => {
+                        editButton = e.currentTarget;
+                        $("#edit_modal").modal("show");
+                    });
                 });
             } else {
                 $("#beneficiary_table").hide();
@@ -37,72 +44,26 @@ function beneficiary_list() {
     });
 }
 
-function beneficiary_details() {
-    $.ajax({
-        tpye: "GET",
-        url: "all-beneficiary-list",
-        datatype: "application/json",
-        success: function (response) {
-            let data = response.data;
+// function beneficiary_details() {
+//     $.ajax({
+//         tpye: "GET",
+//         url: "all-beneficiary-list",
+//         datatype: "application/json",
+//         success: function (response) {
+//             let data = response.data;
 
-            $.each(data, function (index) {
-                let bene_id = data[index].BENE_ID;
+//             $.each(data, function (index) {
+//                 let bene_id = data[index].BENE_ID;
 
-                console.log(data[index].BENE_ID);
-            });
-        },
-    });
-}
-
-function confirm_deletion() {
-    var bene_ID = $(".delete_beneficiary_data").attr("data-value");
-    alert(bene_ID);
-}
-
-function delete_beneficiary() {
-    Swal.fire({
-        title: "Do you want to Delete Beneficiary?",
-        showDenyButton: false,
-        showCancelButton: true,
-        confirmButtonText: `Proceed`,
-        confirmButtonColor: "#18c40d",
-        cancelButtonColor: "#df1919",
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            confirm_deletion();
-        } else if (result.isDenied) {
-            Swal.fire("Failed to delete beneficiary", "", "info");
-        }
-    });
-}
-
-function doSomething() {
-    var bene_ID = $(".delete_beneficiary_data").attr("data-value");
-    delete_beneficiary();
-}
+//                 console.log(data[index].BENE_ID);
+//             });
+//         },
+//     });
+// }
 
 $(document).ready(function () {
     $("#beneficiary_list_loader").show();
-    // $("#beneficiary_table").hide();
-    $("#edit_modal").modal("show");
-    setTimeout(function () {
-        beneficiary_list();
-    }, 2000);
-
-    $("#beneficiary_list_retry_btn").click(function (e) {
-        e.preventDefault();
-        $("#beneficiary_list_retry_btn").hide();
-        $("#beneficiary_list_loader").show();
-
-        setTimeout(function () {
-            beneficiary_list();
-        }, 2000);
-    });
-
-    $(".hell").click(function () {
-        alert("hhh");
-    });
+    beneficiary_list();
 
     $("#delete_beneficiary_data").click(function (e) {
         e.preventDefault();

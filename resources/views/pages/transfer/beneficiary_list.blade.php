@@ -160,7 +160,6 @@
                                             <input type="hidden" value="" id="currency_i">
                                             <select class="custom-select" id="select_currency" required>
                                                 <option value="">Select Currency</option>
-
                                             </select>
                                         </div>
                                     </div>
@@ -173,7 +172,6 @@
                                             <input type="text" class="form-control" id="beneficiary_name"
                                                 placeholder="Beneficiary Name" required>
                                         </div>
-
                                     </div>
                                     <br>
                                     <div class="form-group row">
@@ -183,7 +181,6 @@
                                             <input type="text" class="form-control" id="beneficiary_address"
                                                 placeholder="Beneficiary Address" required>
                                         </div>
-
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-4">Beneficiary Phone Number:<span
@@ -193,7 +190,6 @@
                                                 placeholder="Beneficiary Phone Number" required>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="col-4">Beneficiary Email:<span
                                                 class="text-danger">*</span></label>
@@ -202,16 +198,13 @@
                                                 placeholder="Beneficiary Email" required>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-
                                         <div class="checkbox checkbox-primary mb-2" id="transfer_email">
                                             <input id="checkbox2" type="checkbox">
                                             <label class="custom-control-label" for="checkbox2">
                                                 Email beneficiary when a transfer is made
                                             </label>
                                         </div>
-
                                     </div>
                                     {{-- 
                                     <p class="sub-header font-13">
@@ -220,120 +213,9 @@
                                         the beneficiary each time a transfer is made
                                     </p> --}}
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
-                    {{-- <div class="col-md-6">
-                                    <label class="purple-color"> Personal Details</label>
-                                    
-                                    <button class="btn btn-primary btn-rounded waves-effect waves-light"
-                                        type="submit" id="save_beneficiary_next">Next</button>
-                                    </form>
-
-
-                                    <form action="#" method="POST" id="local_bank_beneficiary_summary"
-                                        autocomplete="off" aria-autocomplete="off">
-                                        <div class="card-box">
-                                            @csrf
-                                            <div class="form-group">
-                                                <label class="purple-color"> Bank Details
-                                                    Summary</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label> Select Bank:&emsp;</label>
-                                                <span class="font-weight-light mr-2"
-                                                    id="display_selected_bank"> &nbsp</span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account Number:&emsp;</label><span
-                                                    class="font-weight-light mr-2"
-                                                    id="display_account_number"> &nbsp</span>
-
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account Name:&emsp;</label><span
-                                                    class="font-weight-light mr-2"
-                                                    id="display_account_name"> &nbsp</span>
-
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account Currency:&emsp;</label><span
-                                                    class="font-weight-light mr-2"
-                                                    id="display_account_currency"> &nbsp</span>
-
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bank Swift Code:&emsp;</label><span
-                                                    class="font-weight-light mr-2"
-                                                    id="display_swift_code"> &nbsp</span>
-
-
-                                            </div>
-
-                                            <br>
-
-
-                                            <div class="form-group">
-                                                <label>Beneficiary Name:&emsp;</label><span
-                                                    class="font-weight-light mr-2"
-                                                    id="display_beneficiary_name"> &nbsp</span>
-
-
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Beneficiary Address:&emsp;</label><span
-                                                    class="font-weight-light mr-2"
-                                                    id="display_beneficiary_address"> &nbsp</span>
-
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Phone Number:&emsp;</label><span
-                                                    class="font-weight-light mr-2"
-                                                    id="display_beneficiary_phone"> &nbsp</span>
-
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Beneficiary Email:&emsp;</label><span
-                                                    class="font-weight-light mr-2"
-                                                    id="display_beneficiary_email"> &nbsp</span>
-
-
-                                            </div>
-
-                                            <div class="form-group">
-
-                                            </div>
-
-                                            <div class="form-group">
-
-                                                <div class="">
-                                                    <label>Email beneficiary when a transfer is
-                                                        made:&emsp;</label><span
-                                                        class="font-weight-light mr-2"
-                                                        id="display_transfer_email"> &nbsp</span>
-
-                                                </div>
-
-                                            </div>
-                                            <button type="submit"
-                                                class="btn btn-secondary btn-rounded waves-effect waves-light"
-                                                id="save_beneficiary_back">Back</button>&emsp;&emsp;
-                                            <button
-                                                class="btn btn-primary btn-rounded waves-effect waves-light"
-                                                type="submit" id="save_beneficiary">Save
-                                                Beneficiary</button>
-                                        </div>
-                                    </form>
-
-                                </div> <!-- end col --> --}}
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>

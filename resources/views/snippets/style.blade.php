@@ -5,7 +5,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
     rel="stylesheet">
 <!-- Plugins css -->
-
+<link href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/wickedcss.min.css" rel="stylesheet" type="text/css"
+    id="wicked_css">
 <link href="{{ asset('assets/css/bootstrap-purple.min.css') }}" rel="stylesheet" type="text/css"
     id="bs-default-stylesheet" />
 <link href="{{ asset('assets/css/app-purple.min.css') }}" rel="stylesheet" type="text/css"
