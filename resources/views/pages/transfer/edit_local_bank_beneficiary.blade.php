@@ -2,18 +2,21 @@
 
 @section('content')
 
-<div ></div>   <legend></legend>
+<div></div>
+<legend></legend>
 
-    <div class="row">
-        <div class="col-12">
-            <br>
-            <div class="card">
-                <div class="card-body card-background-image">
-                    <div class="row">
-                        <div class="col-md-1"></div>
+<div class="row">
+    <div class="col-12">
+        <br>
+        <div class="card">
+            <div class="card-body card-background-image">
+                <div class="row">
+                    <div class="col-md-1"></div>
 
-                        <div class="col-md-10">
-                            <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;" onclick="window.history.back()"><i class="fe-arrow-left"></i>  &emsp; MANAGE OTHER LOCAL BANK BENEFICIARY</h2>
+                    <div class="col-md-10">
+                        <h2 class="header-title m-t-0 text-primary" style="cursor: pointer;"
+                            onclick="window.history.back()"><i class="fe-arrow-left"></i> &emsp; MANAGE OTHER LOCAL BANK
+                            BENEFICIARY</h2>
 
                         <p class="text-muted font-14 m-b-20">
                             Parsley is a javascript form validation library. It helps you provide your
@@ -23,208 +26,217 @@
                         <hr>
 
 
-                            <div class="row" id="transaction_form">
+                        <div class="row" id="transaction_form">
 
 
-                                <div class="col-md-6">
+                            <div class="col-md-6">
 
-                                    <form  action="#" id="local_bank_beneficiary_details" autocomplete="off" aria-autocomplete="off">
+                                <form action="#" id="local_bank_beneficiary_details" autocomplete="off"
+                                    aria-autocomplete="off">
 
-                                            <label class="purple-color"> Bank Details</label>
+                                    <label class="purple-color"> Bank Details</label>
 
-                                        <div class="form-group row">
-                                            <label class="col-3"> Select Bank:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="hidden" value="" id="bank_i">
-                                                <select class="custom-select " id="select_bank" required>
-                                                    <option value="" >Select Bank</option>
-                                                    {{--  <option value="Stanbic Bank">Stanbic Bank</option>
-                                                    <option value="GCB Bank">GCB Bank</option>
-                                                    <option value="Standard Chartered Bank">Standard Chartered Bank</option>
-                                                    <option value="Zenith Bank">Zenith Bank</option>
-                                                    <option value="Cal Bank">Cal Bank</option>
-                                                    <option value="FNB Bank">FNB Bank</option>  --}}
-                                                </select>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label class="col-3"> Select Bank:<span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="hidden" value="" id="bank_i">
+                                            <select class="custom-select " id="select_bank" required>
+                                                <option value="">Select Bank</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                                            {{-- <span class="text-danger" id="select_bank_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                    {{-- <span class="text-danger" id="select_bank_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
+
+                                    <label class="purple-color"> Account Details</label>
+                                    <div class="form-group row">
+                                        <label class="col-3">Account Number:<span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="number" class="form-control" id="account_number"
+                                                placeholder="Account Number" required>
                                         </div>
 
-                                        <label class="purple-color"> Account Details</label>
-                                        <div class="form-group row">
-                                            <label class="col-3">Account Number:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="number" class="form-control" id="account_number" placeholder="Account Number"  required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                        {{-- <span class="text-danger" id="account_number_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-3">Account Name:<span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" id="account_name"
+                                                placeholder="Account Name" required>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-3">Account Name:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="account_name" placeholder="Account Name" required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-                                         <div class="form-group row">
-                                            <label class="col-3">Account Currency:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="hidden" value="" id="currency_i">
-                                                <select class="custom-select" id="select_currency" required>
-                                                    <option value="">Select Currency</option>
-                                                    {{-- <option value="001~SLL">SLL</option>
-                                                    <option value="002~USD">USD</option>
-                                                    <option value="003~EUR">EUR</option>
-                                                    <option value="004~GBP">GBP</option> --}}
-                                                </select>
-                                            </div>
-
-                                            {{-- <input type="text" class="form-control" id="account_n" placeholder="Account Name" required> --}}
-                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-                                         <div class="form-group row">
-                                            <label class="col-3">Bank Swift Code:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="swift_code" placeholder="Bank Swift Code" required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-
 
                                     </div>
-                                    <div class="col-md-6">
-                                         <label class="purple-color"> Personal Details</label>
-                                        <div class="form-group row ">
-                                            <label class="col-3">Beneficiary Name:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name" required>
-                                            </div>
+                                    {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
-                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+                                    <div class="form-group row">
+                                        <label class="col-3">Account Currency:<span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="hidden" value="" id="currency_i">
+                                            <select class="custom-select" id="select_currency" required>
+                                                <option value="">Select Currency</option>
 
-                                         </div>
-                                         <br>
-                                         <div class="form-group row">
-                                            <label class="col-3">Beneficiary Address:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="text" class="form-control" id="beneficiary_address" placeholder="Beneficiary Address" required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-                                         <div class="form-group row">
-                                            <label class="col-3">Beneficiary Phone Number:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="number" class="form-control" id="beneficiary_number" placeholder="Beneficiary Phone Number" required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-
-                                         <div class="form-group row">
-                                            <label class="col-3">Beneficiary Email:<span class="text-danger">*</span></label>
-                                            <div class="col-7">
-                                                <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Email" required>
-                                            </div>
-
-                                            {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
-
-                                         </div>
-
-                                        <div class="form-group">
-
-                                            <div class="checkbox checkbox-primary mb-2" id="transfer_email">
-                                                <input id="checkbox2" type="checkbox">
-                                                <label class="custom-control-label" for="checkbox2">
-                                                    Email beneficiary when a transfer is made
-                                                </label>
-                                            </div>
-
+                                            </select>
                                         </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-3">Bank Swift Code:<span class="text-danger">*</span></label>
+                                        <div class="col-7">
+                                            <input type="text" class="form-control" id="swift_code"
+                                                placeholder="Bank Swift Code" required>
+                                        </div>
+                                    </div>
 
-                                        <p class="sub-header font-13">
-                                            Providing  beneficiary email  and  checking
-                                            the box, enables us to send an alert mail to
-                                            the beneficiary each time a transfer is made
-                                        </p>
-                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="save_beneficiary_next">Next</button>
-                                    </form>
+                                    {{-- <span class="text-danger" id="account_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
 
 
-                                    <form action="#" method="POST"  id="local_bank_beneficiary_summary" autocomplete="off" aria-autocomplete="off">
-                                        <div class="card-box">
+
+                            </div>
+                            <div class="col-md-6">
+                                <label class="purple-color"> Personal Details</label>
+                                <div class="form-group row ">
+                                    <label class="col-3">Beneficiary Name:<span class="text-danger">*</span></label>
+                                    <div class="col-7">
+                                        <input type="text" class="form-control" id="beneficiary_name"
+                                            placeholder="Beneficiary Name" required>
+                                    </div>
+
+                                    {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <label class="col-3">Beneficiary Address:<span class="text-danger">*</span></label>
+                                    <div class="col-7">
+                                        <input type="text" class="form-control" id="beneficiary_address"
+                                            placeholder="Beneficiary Address" required>
+                                    </div>
+
+                                    {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-3">Beneficiary Phone Number:<span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-7">
+                                        <input type="number" class="form-control" id="beneficiary_number"
+                                            placeholder="Beneficiary Phone Number" required>
+                                    </div>
+
+                                    {{-- <span class="text-danger" id="beneficiary_name_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-3">Beneficiary Email:<span class="text-danger">*</span></label>
+                                    <div class="col-7">
+                                        <input type="email" class="form-control" id="beneficiary_email"
+                                            placeholder="Beneficiary Email" required>
+                                    </div>
+
+                                    {{-- <span class="text-danger" id="beneficiary_email_error"><i class="fas fa-times-circle"></i>This field is reqiured</span> --}}
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                        <input id="checkbox2" type="checkbox">
+                                        <label class="custom-control-label" for="checkbox2">
+                                            Email beneficiary when a transfer is made
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <p class="sub-header font-13">
+                                    Providing beneficiary email and checking
+                                    the box, enables us to send an alert mail to
+                                    the beneficiary each time a transfer is made
+                                </p>
+                                <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit"
+                                    id="save_beneficiary_next">Next</button>
+                                </form>
+
+
+                                <form action="#" method="POST" id="local_bank_beneficiary_summary" autocomplete="off"
+                                    aria-autocomplete="off">
+                                    <div class="card-box">
                                         @csrf
                                         <div class="form-group">
                                             <label class="purple-color"> Bank Details Summary</label>
-                                         </div>
+                                        </div>
                                         <div class="form-group">
                                             <label> Select Bank:&emsp;</label>
-                                            <span class="font-weight-light mr-2" id="display_selected_bank"> &nbsp</span>
+                                            <span class="font-weight-light mr-2" id="display_selected_bank">
+                                                &nbsp</span>
                                         </div>
 
                                         {{--  <label class="purple-color">  Account Details</label>  --}}
                                         <div class="form-group">
-                                            <label>Account Number:&emsp;</label><span class="font-weight-light mr-2" id="display_account_number"> &nbsp</span>
+                                            <label>Account Number:&emsp;</label><span class="font-weight-light mr-2"
+                                                id="display_account_number"> &nbsp</span>
                                             {{-- <input type="number" class="form-control" id="account_number" placeholder="Account Number" required> --}}
 
 
                                         </div>
                                         <div class="form-group">
-                                            <label>Account Name:&emsp;</label><span class="font-weight-light mr-2" id="display_account_name"> &nbsp</span>
+                                            <label>Account Name:&emsp;</label><span class="font-weight-light mr-2"
+                                                id="display_account_name"> &nbsp</span>
                                             {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
 
 
-                                         </div>
-                                         <div class="form-group">
-                                            <label>Account Currency:&emsp;</label><span class="font-weight-light mr-2" id="display_account_currency"> &nbsp</span>
-                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
-
-
-                                         </div>
-                                         <div class="form-group">
-                                            <label>Bank Swift Code:&emsp;</label><span class="font-weight-light mr-2" id="display_swift_code"> &nbsp</span>
-                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
-
-
-                                         </div>
-
-                                         <br>
-
-
-                                         {{--  <label class="purple-color"> Personal Details</label>  --}}
+                                        </div>
                                         <div class="form-group">
-                                            <label>Beneficiary Name:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_name"> &nbsp</span>
+                                            <label>Account Currency:&emsp;</label><span class="font-weight-light mr-2"
+                                                id="display_account_currency"> &nbsp</span>
+                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Bank Swift Code:&emsp;</label><span class="font-weight-light mr-2"
+                                                id="display_swift_code"> &nbsp</span>
+                                            {{-- <input type="text" class="form-control" id="account_name" placeholder="Account Name"> --}}
+
+
+                                        </div>
+
+                                        <br>
+
+
+                                        {{--  <label class="purple-color"> Personal Details</label>  --}}
+                                        <div class="form-group">
+                                            <label>Beneficiary Name:&emsp;</label><span class="font-weight-light mr-2"
+                                                id="display_beneficiary_name"> &nbsp</span>
                                             {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
 
 
-                                         </div>
+                                        </div>
 
-                                         <div class="form-group">
-                                            <label>Beneficiary Address:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_address"> &nbsp</span>
+                                        <div class="form-group">
+                                            <label>Beneficiary Address:&emsp;</label><span
+                                                class="font-weight-light mr-2" id="display_beneficiary_address">
+                                                &nbsp</span>
                                             {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
 
 
-                                         </div>
-                                         <div class="form-group">
-                                            <label>Beneficiary Phone Number:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_phone"> &nbsp</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Beneficiary Phone Number:&emsp;</label><span
+                                                class="font-weight-light mr-2" id="display_beneficiary_phone">
+                                                &nbsp</span>
                                             {{-- <input type="text" class="form-control" id="beneficiary_name" placeholder="Beneficiary Name"> --}}
 
 
-                                         </div>
-                                         <div class="form-group">
-                                            <label>Beneficiary Email:&emsp;</label><span class="font-weight-light mr-2" id="display_beneficiary_email"> &nbsp</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Beneficiary Email:&emsp;</label><span class="font-weight-light mr-2"
+                                                id="display_beneficiary_email"> &nbsp</span>
                                             {{-- <input type="email" class="form-control" id="beneficiary_email" placeholder="Beneficiary Name"> --}}
 
 
-                                         </div>
+                                        </div>
 
                                         <div class="form-group">
 
@@ -234,7 +246,9 @@
 
                                             <div class="">
                                                 {{-- <input id="checkbox2" type="checkbox"> --}}
-                                                <label>Email beneficiary when a transfer is made:&emsp;</label><span class="font-weight-light mr-2" id="display_transfer_email"> &nbsp</span>
+                                                <label>Email beneficiary when a transfer is made:&emsp;</label><span
+                                                    class="font-weight-light mr-2" id="display_transfer_email">
+                                                    &nbsp</span>
 
                                             </div>
 
@@ -246,98 +260,101 @@
                                             the beneficiary each time a transfer is made
                                         </p> --}}
 
-                                        <button type="submit" class="btn btn-secondary btn-rounded waves-effect waves-light"  id="save_beneficiary_back">Back</button>&emsp;&emsp;
+                                        <button type="submit"
+                                            class="btn btn-secondary btn-rounded waves-effect waves-light"
+                                            id="save_beneficiary_back">Back</button>&emsp;&emsp;
 
-                                        <button class="btn btn-primary btn-rounded waves-effect waves-light" type="submit" id="save_beneficiary">Save Beneficiary</button>
+                                        <button class="btn btn-primary btn-rounded waves-effect waves-light"
+                                            type="submit" id="save_beneficiary">Save Beneficiary</button>
                                     </div>
-                                    </form>
+                                </form>
 
-                                </div> <!-- end col -->
+                            </div> <!-- end col -->
 
-                                {{-- <div class="col-md-5 text-center d-none d-md-block" style="margin-top: 80px;">
+                            {{-- <div class="col-md-5 text-center d-none d-md-block" style="margin-top: 80px;">
 
                                     <img src="{{ asset('assets/images/transfer1.png') }}" class="img-fluid" alt="" >
-                                </div> <!-- end col --> --}}
+                        </div> <!-- end col --> --}}
 
 
-                                <!-- end row -->
+                        <!-- end row -->
 
 
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-1"></div>
+
+            </div> <!-- end card-body -->
+
+
+            <!-- Modal -->
+            <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
+                aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
+                            <div class="modal-header">
+                                <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
+                                    Details</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+
+                            <div class="modal-body">
+
+                                From: <span class="font-13 text-primary" id="display_from_account"> &nbsp
+                                </span><br><br>
+                                To: <span class="font-13 text-muted" id="display_to_account"> &nbsp </span><br><br>
+                                Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp
+                                </span><br><br>
+                                Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp </span><br><br>
+                                Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp
+                                </span><br><br>
+                                Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee">
+                                </span><br><br>
+                                Total: <span class="font-13 text-muted" id="display_total"> &nbsp </span><br><br>
+
+                                <div class="form-group">
+                                    <label class="font-16 purple-color">Enter Pin</label>
+                                    <input type="text" class="form-control" id="pin" data-toggle="input-mask"
+                                        placeholder="enter pin" required
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
+
+                                </div>
 
                             </div>
 
-                        </div>
-
-                        <div class="col-md-1"></div>
-
-                    </div> <!-- end card-body -->
 
 
-                    <!-- Modal -->
-                    <div id="multiple-one" class="modal fade" tabindex="-1" role="dialog"
-                        aria-labelledby="multiple-oneModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="POST" id="confirm_details" autocomplete="off" aria-autocomplete="off">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title font-16 purple-color" id="multiple-oneModalLabel">Confirm
-                                            Details</h4>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">×</button>
-                                    </div>
-
-                                    <div class="modal-body">
-
-                                        From: <span class="font-13 text-primary" id="display_from_account"> &nbsp
-                                        </span><br><br>
-                                        To: <span class="font-13 text-muted" id="display_to_account"> &nbsp </span><br><br>
-                                        Schedule Payments: <span class="font-13 text-muted" id="display_payments"> &nbsp
-                                        </span><br><br>
-                                        Amount: <span class="font-13 text-muted" id="display_amount"> &nbsp </span><br><br>
-                                        Naration: <span class="font-13 text-muted" id="display_naration"> &nbsp
-                                        </span><br><br>
-                                        Transaction fee: <span class="font-13 text-muted" id="display_trasaction_fee">
-                                        </span><br><br>
-                                        Total: <span class="font-13 text-muted" id="display_total"> &nbsp </span><br><br>
-
-                                        <div class="form-group">
-                                            <label class="font-16 purple-color">Enter Pin</label>
-                                            <input type="text" class="form-control" id="pin" data-toggle="input-mask"
-                                                placeholder="enter pin" required
-                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-                                        </div>
-
-                                    </div>
-
-
-
-                                    <div class="modal-footer">
-                                        <button type="send" id="send" class="btn btn-primary" data-target="#multiple-two"
-                                            data-toggle="modal" data-dismiss="modal">Send</button>
-                                    </div>
-                                </form>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
+                            <div class="modal-footer">
+                                <button type="send" id="send" class="btn btn-primary" data-target="#multiple-two"
+                                    data-toggle="modal" data-dismiss="modal">Send</button>
+                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
 
 
 
-                </div> <!-- end col -->
+        </div> <!-- end col -->
 
-            </div> <!-- end row -->
-
-
-
-        </div>
+    </div> <!-- end row -->
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-        <script>
-{{--
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    {{--
 
             function get_currency() {
                 $.ajax({
@@ -744,5 +761,5 @@
 
             });
 
-        </script>
-    @endsection
+</script>
+@endsection

@@ -112,7 +112,7 @@
                         <a href="{{ url('e-korpor') }}">E-Korpor</a>
                     </li>
                     <li>
-                        <a href="{{ url('qr-transfer') }}">
+                        <a href="{{ url('qr-payment') }}">
                             <span> QR Payment</span>
                         </a>
                     </li>
@@ -350,26 +350,26 @@
     </a>
     <div class="collapse" id="sidebarSetting">
         <ul class="nav-second-level">
-            <li>
+            {{-- <li>
                 <a href="{{ url('create-originator') }}">Create Originator</a>
-            </li>
-            <li>
-                <a href="{{ url('set-transaction-limit') }}">Set Transaction Limits</a>
-            </li>
-            <li>
-                <a href="{{ url('update-company-info') }}">Update Company Information</a>
-            </li>
-            <li>
-                <a href="{{ url('forgot-transaction-pin') }}">Forgot Transaction PIN</a>
-            </li>
+</li> --}}
+<li>
+    <a href="{{ url('set-transaction-limit') }}">Set Transaction Limits</a>
+</li>
+{{-- <li>
+    <a href="{{ url('update-company-info') }}">Update Company Information</a>
+</li> --}}
+{{-- <li>
+    <a href="{{ url('forgot-transaction-pin') }}">Forgot Transaction PIN</a>
+</li> --}}
 
-            <li>
-                <a href="{{ url('change-pin') }}">Pin Setup</a>
-            </li>
+<li>
+    <a href="{{ url('change-pin') }}">Pin Setup</a>
+</li>
 
 
-        </ul>
-    </div>
+</ul>
+</div>
 </li>
 
 <li>
