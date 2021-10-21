@@ -13,9 +13,20 @@
 
     }
 
-    td,
+    /* td,
     th {
         white-space: nowrap
+    } */
+    .bg-same-bank {
+        background-color: #dc3545 !important;
+    }
+
+    .bg-other-bank {
+        background-color: #1abc9c !important;
+    }
+
+    .bg-international-bank {
+        background-color: #17a2b8 !important;
     }
 
     .current-type .box-circle {
@@ -74,19 +85,19 @@ $currentPath = "Transfer Beneficiary";
                 <h2 class="font-17 text-left font-weight-bold text-capitalize mb-3 text-primary">select Beneficiary type
                 </h2>
                 <div class="row mb-4 justify-content-center mx-auto" style="max-width: 750px;">
-                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type current-type display-card bg-danger"
+                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type current-type display-card bg-same-bank"
                         data-value="SAB" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>Same Bank</span>
                     </div>
 
-                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type display-card  bg-success" data-value="OTB"
-                        id=''>
+                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type display-card  bg-other-bank"
+                        data-value="OTB" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>Other Local Bank</span>
                     </div>
-                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type display-card  bg-info" data-value="INT"
-                        id=''>
+                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type display-card  bg-international-bank"
+                        data-value="INTB" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>International Bank</span>
                     </div>
@@ -104,7 +115,7 @@ $currentPath = "Transfer Beneficiary";
                         <button type="button" class="btn btn-primary dropdown-toggle btn-rounded" data-toggle="dropdown"
                             id="dropdownMenuButton"> Add
                             Beneficiary </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-l+abelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{ url('add-same-bank-beneficiary') }}">Same
                 Bank</a>
                 <a class="dropdown-item" href="{{ url('add-local-bank-beneficiary') }}">Other
@@ -120,10 +131,10 @@ $currentPath = "Transfer Beneficiary";
             class="table table-bordered table-striped table-centered dt-responsive w-100 mb-0 beneficiary_list_display">
             <thead>
                 <tr class="bg-info text-white">
-                    <th> <b> Alias </b> </th>
-                    <th> <b> Account Number </b> </th>
                     <th> <b> Beneficiary Name </b> </th>
-                    {{-- <th> <b> Beneficiary Email </b> </th> --}}
+                    <th> <b> Account Number </b> </th>
+                    {{-- <th> <b>  </b> </th> --}}
+                    <th> <b> Beneficiary Email </b> </th>
                     <th> <b> Beneficiary Bank </b> </th>
                     <th class="text-center"> <b>Actions </b> </th>
                 </tr>
@@ -143,7 +154,9 @@ $currentPath = "Transfer Beneficiary";
 @endsection
 
 @section('scripts')
+<script>
+    const noDataAvailable =   {!! json_encode($noDataAvailable) !!}
+</script>
 <script src="{{ asset("assets/js/pages/transfer/beneficiaryList.js") }}">
-
 </script>
 @endsection

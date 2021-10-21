@@ -115,8 +115,9 @@
 <div class="modal fade" id="edit_modal" data-backdrop="static" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h5 class="modal-title text-white font-weight-bold">Beneficiary Form</h5>
+            <div class="modal-header bg-info" id="beneficiary_form_header">
+                <h5 class="modal-title text-white text-capitalize font-weight-bold" id="beneficiary_form_title">
+                    Beneficiary Form</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -124,10 +125,6 @@
             <div class="modal-body">
 
                 {{-- form body start --}}
-
-
-
-
                 <div class="card px-0 pb-0 ">
                     <div class="row">
                         <div class="col-md-12 mx-0">
@@ -138,17 +135,28 @@
                                             Details</span>
                                     </li>
                                     <li id="personal" class="fas fa-user-circle"><span>Beneficiary Details</span></li>
-                                    <li id="payment" class="fas fa-bahai"><span>Summary</span></li>
+                                    {{-- <li id="payment" class="fas fa-bahai"><span>Summary</span></li> --}}
                                 </ul> <!-- fieldsets -->
-                                <fieldset class="current-fs first-fs">
+                                <fieldset class="current-fs first-fs" data-value="account">
                                     <div class="card inner-card">
                                         <h2 class=" font-18 font-weight-bold mb-3">Account Details</h2>
-                                        <div class="form-group row">
+                                        <div class="form-group row international-bank-form" style="display: none">
+                                            <label class="col-md-4"> Select Country:</label>
+                                            <div class="col-md-8">
+                                                <input type="hidden" value="" id="bank_i">
+                                                <select class="form-control form-control-sm " id="select_country"
+                                                    required>
+                                                    <option selected disabled value="">--- Select Country ---</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row other-bank-form international-bank-form"
+                                            style="display: none">
                                             <label class="col-md-4"> Select Bank:</label>
                                             <div class="col-md-8">
                                                 <input type="hidden" value="" id="bank_i">
-                                                <select class="form-control form-control-sm " id="select_bank" required>
-                                                    <option selected disabled value="">Select Bank</option>
+                                                <select class="form-control form-control-sm " id="select_bank">
+                                                    <option selected disabled value=""> --- Select Bank ---</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -157,39 +165,33 @@
                                             <label class="col-md-4">Account Number:</label>
                                             <div class="col-md-8">
                                                 <input type="number" class="form-control form-control-sm"
-                                                    id="account_number" placeholder="Account Number" required>
+                                                    id="account_number" placeholder="Enter Account Number">
                                             </div>
 
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-group row same-bank-form" id="account_name_display"
+                                            style="display:none">
                                             <label class="col-md-4">Account Name:</label>
                                             <div class="col-md-8">
                                                 <input type="text" class="form-control form-control-sm"
-                                                    id="account_name" placeholder="Account Name" required>
+                                                    id="account_name" placeholder="Account Name" disabled>
                                             </div>
                                         </div>
                                     </div>
 
 
                                 </fieldset>
-                                <fieldset>
+                                <fieldset class="last-fs" data-value="beneficiary">
                                     <div class="card inner-card">
                                         <h2 class="font-18 font-weight-bold mb-3">Beneficiary Details</h2>
                                         <div class="form-group row ">
                                             <label class="col-4"> Name:</label>
                                             <div class="col-8">
                                                 <input type="text" class="form-control form-control-sm"
-                                                    id="beneficiary_name" placeholder="Enter Beneficiary Name" required>
+                                                    id="beneficiary_name" placeholder="Enter Beneficiary Name">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-4">Address:</label>
-                                            <div class="col-8">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="beneficiary_address" placeholder="Enter Beneficiary Address"
-                                                    required>
-                                            </div>
-                                        </div>
+
                                         {{-- <div class="form-group row">
                                             <label class="col-4">Phone Number:</label>
                                             <div class="col-8">
@@ -203,14 +205,37 @@
                                             <label class="col-4">Email:</label>
                                             <div class="col-8">
                                                 <input type="email" class="form-control form-control-sm"
-                                                    id="beneficiary_email" placeholder="Enter Beneficiary Email"
-                                                    required>
+                                                    id="beneficiary_email" placeholder="Enter Beneficiary Email">
                                             </div>
                                         </div>
+                                        <div class="form-group row other-bank-form international-bank-form"
+                                            style="display: none">
+                                            <label class="col-4">Address:</label>
+                                            <div class="col-8">
+                                                <input type="text" class="form-control form-control-sm"
+                                                    id="beneficiary_address" placeholder="Enter Beneficiary Address">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-3">
+
+                                            <div class="checkbox checkbox-primary mb-2" id="transfer_email">
+                                                <input id="send_email_check" type="checkbox">
+                                                <label for="send_email_check">
+                                                    Email beneficiary when a transfer is made
+                                                </label>
+                                            </div>
+                                            <p class=" text-left sub-header font-13">
+                                                Providing beneficiary email and checking
+                                                the box, enables us to send an alert mail to
+                                                the beneficiary each time a transfer is made
+                                            </p>
+                                        </div>
+
+
                                     </div>
 
-                                </fieldset>
-                                <fieldset class="last-fs">
+                                    {{-- </fieldset data-type="summary"> --}}
+                                    {{-- <fieldset class="last-fs">
                                     <div class="form-card">
                                         <h2 class="fs-title">Summary</h2>
                                         <div class="form-group">
@@ -230,7 +255,7 @@
                                             the beneficiary each time a transfer is made
                                         </p>
                                     </div>
-                                </fieldset>
+                                </fieldset> --}}
 
                             </form>
                         </div>
@@ -252,4 +277,6 @@
 <span id="beneficiary_modal_backup" hidden disabled style="display: none"></span>
 <script src="assets/js/pages/payments/beneficiary_form.js">
 
+</script>
+<script src="assets/js/functions/validateEmail.js">
 </script>
