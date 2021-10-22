@@ -8,8 +8,12 @@ $(() => {
         qrData.accountNumber = $("#accounts").val().split("~")[2];
     });
 
-    $("#amount").on("keyup", () => {
-        qrData.amount = $("#amount").val();
+    $("#receive_payment_tab").on("click", () => {
+        $("#amount_view").show(500);
+    });
+
+    $("#cash_in_tab").on("click", () => {
+        $("#amount_view").hide(500);
     });
 
     $("#generate_qr").on("click", () => {
@@ -18,10 +22,14 @@ $(() => {
             toaster("select account number", "warning");
             return false;
         }
-        if (!amount || isNaN(amount)) {
-            console.log(amount);
-            toaster("invalid amount", "warning");
-            return false;
+        if (isCashIn) {
+            qrData.amount = $("#amount").val();
+            if (!amount || isNaN(amount)) {
+                toaster("invalid amount", "warning");
+                return false;
+            }
+        } else {
+            delete qrCode.amount;
         }
         $("#qrcode").empty();
         let qrCode = new QRCode(document.getElementById("qrcode"), {
@@ -31,7 +39,6 @@ $(() => {
             logoHeight: 80,
             width: 200,
             height: 200,
-            // logoBackgroundColor: "#ffffff",
             logoBackgroundTransparent: true,
         });
     });

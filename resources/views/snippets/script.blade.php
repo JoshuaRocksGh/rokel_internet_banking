@@ -84,24 +84,41 @@
 
 
     }
-    function toaster(message, icon, timer = 3000) {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: timer,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
+    // function toaster(message, icon, timer = 3000) {
+    //     const Toast = Swal.mixin({
+    //         toast: true,
+    //         position: 'top-end',
+    //         showConfirmButton: false,
+    //         timerProgressBar: true,
+    //         timer: timer,
+    //         didOpen: (toast) => {
+    //             toast.addEventListener('mouseenter', Swal.stopTimer)
+    //             toast.addEventListener('mouseleave', Swal.resumeTimer)
+    //         }
+    //     })
 
-        Toast.fire({
-            icon: icon,
-            title: message,
+    //     Toast.fire({
+    //         icon: icon,
+    //         title: message,
+    //     })
+    // };
+     function toaster(message, icon, timer = 3000){
+    let color = "#17a2b8"
+        if (icon.toLowerCase()==="success"){
+          color = "#1abc9c"
+      }else if (icon.toLowerCase()==="warning"){
+          color="#fd7e14"
+        }else if (icon.toLowerCase() === "error"){
+            color = "#dc3545"
+}
+        Swal.fire({
+        html: `<span class="font-16 ">${message}</span>`,
+        icon: icon,
+        confirmButtonColor: color,
+        width: 400,
+        // timer: timer
         })
-    };
+     }
 
     function formatToCurrency(amount) {
         return parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");

@@ -43,8 +43,8 @@
             <p class="col-md-5 transfer-detail-text">Receiver Email:</p>
             <span class="text-primary display_to_account display_to_receiver_email col-md-7"></span>
             @endif
-            <p class="col-md-5 transfer-detail-text">Account Currency:</p>
-            <span class="text-primary display_to_account display_to_account_currency col-md-7"></span>
+            {{-- <p class="col-md-5 transfer-detail-text">Account Currency:</p>
+            <span class="text-primary display_to_account display_to_account_currency col-md-7"></span> --}}
 
             @if ($currentPath==="Local Bank")
 

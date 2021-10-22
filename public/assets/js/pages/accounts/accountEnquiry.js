@@ -213,9 +213,9 @@ $(function () {
                 let attachment = ``;
 
                 if (data[index].imageCheck == "0") {
-                    attachment = `<i class="fe-file-text text-center text-danger">`;
+                    attachment = `<i class="fe-file-text d-block text-center bg">`;
                 } else {
-                    attachment = `<i  class="fe-minus text-center text-secondary">`;
+                    attachment = `<i class="fe-file-text d-block text-center text-danger">`;
                 }
 
                 let sysDate = new Date(data[index].postingSysDate);

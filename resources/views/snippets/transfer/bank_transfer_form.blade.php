@@ -12,8 +12,7 @@
                         <label class="col-md-12 text-primary">Account to transfer from</label>
 
                         <select class="form-control col-md-12" id="from_account" required>
-                            <option disabled selected value=""> -- Select Account --
-                            </option>
+                            <option disabled selected value=""> --- Select Source Account --- </option>
                             @include("snippets.accounts")
                         </select>
 
@@ -53,15 +52,22 @@
                         {{-- beneficiary view --}}
                         {{-- =============================================================== --}}
 
+                        @php
+                        if($currentPath === "Own Account"){
+                        $destination = "Destination A/C";
+                        }else {
+                        $destination = "Beneficiary A/C";
+                        }
+                        @endphp
                         <div class="tab-pane fade show active" id="beneficiary_view" role="tabpanel"
                             aria-labelledby="beneficiary_tab">
                             <div class="col-12">
 
                                 <div class="form-group row">
-                                    <label class="col-md-4 text-primary"> Select Beneficiary</label>
+                                    <label class="col-md-4 text-primary"> {{ $destination }} </label>
                                     <select class="form-control col-md-8 select_beneficiary" id="to_account" required>
                                         <option disabled selected value=""> -- Select
-                                            Beneficiary --</option>
+                                            {{ $destination }} --</option>
                                         @if ($currentPath === "Own Account")
                                         @include('snippets.accounts')
                                         @endif
@@ -69,14 +75,14 @@
                                 </div>
                                 @if ($currentPath === "Local Bank" || $currentPath === "International Bank")
                                 <div class="form-group row ">
-                                    <label class="text-primary col-md-4">Beneficiary Bank</label>
+                                    <label class="text-primary col-md-4">{{ $destination }} Bank</label>
                                     <input
                                         class="form-control col-md-8 display_to_account display_to_account_bank readOnly"
                                         type="text" id="beneficiary_bank_name" readonly>
                                 </div>
                                 @endif
                                 <div class="form-group row">
-                                    <label class="col-md-4 text-primary"> Beneficiary A/C
+                                    <label class="col-md-4 text-primary"> {{ $destination }}
                                         Number</label>
                                     <input type="text"
                                         class="form-control  display_to_account display_to_account_no col-md-8 readOnly"
@@ -84,14 +90,14 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-md-4 text-primary"> Beneficiary Name</label>
+                                    <label class="col-md-4 text-primary"> {{ $destination }} Name</label>
                                     <input type="text"
                                         class="form-control display_to_account display_to_account_name col-md-8 readOnly "
                                         id="saved_beneficiary_name" readonly>
                                 </div>
                                 @if($currentPath !=="Own Account")
                                 <div class="form-group row">
-                                    <label class="col-md-4 text-primary"> Beneficiary Email</label>
+                                    <label class="col-md-4 text-primary"> {{ $destination }} Email</label>
                                     <input type="text"
                                         class="form-control display_to_account display_to_receiver_email col-md-8 readOnly"
                                         id="saved_beneficiary_email" readonly>

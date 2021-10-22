@@ -238,7 +238,7 @@ class LocalBankController extends Controller
             "email" => $request->beneficiaryEmail,
 
         ];
-        // return $data;
+        return $data;
         try {
 
             Log::alert($mode);

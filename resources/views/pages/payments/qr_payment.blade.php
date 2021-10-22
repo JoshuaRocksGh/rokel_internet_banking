@@ -28,25 +28,23 @@ $basePath = "Payment"
     <div class="col-md-7" id="qr_form">
         <h2 class="subHeader">QR Content</h2>
         <form role="form" class="container">
-            <div>
-                <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
+            <div class="mb-3">
+                <ul class="nav w-100 active nav-fill nav-pills" id="qr_type_switch" role="tablist">
                     <li class="nav-item w-50" role="presentation" style="position: absolute">
-                        <button class="switch w-100  nav-link active" id="beneficiary_tab" data-toggle="pill"
-                            href="#beneficiary_view" type="button" role="tab" aria-controls="beneficiary_view"
-                            aria-selected="false">
+                        <button class="switch w-100  nav-link active" id="receive_payment_tab" data-toggle="pill"
+                            type="button" role="tab" aria-selected="false">
                             Recieve Payment</button>
                     </li>
                     <li class="nav-item w-50" role="presentation">
-                        <button class=" switch leftbtn w-100 nav-link " id="onetime_tab" data-toggle="pill"
-                            href="#onetime_view" type="button" role="tab" aria-controls="onetime_view"
-                            aria-selected="true">
+                        <button class=" switch leftbtn w-100 nav-link " id="cash_in_tab" data-toggle="pill"
+                            type="button" role="tab" aria-selected="true">
                             <div class="switch-text">Cash in</div>
                         </button>
                     </li>
 
                 </ul>
             </div>
-            <div class="form-group mt-3 row">
+            <div class="form-group  row">
                 <label for="accounts" class="text-primary col-form-label col-md-4">Select Account
                 </label>
                 <select class="form-control col-md-8" id="accounts">
@@ -55,7 +53,7 @@ $basePath = "Payment"
                 </select>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row" id="amount_view">
                 <label for="pin" class="col-4 col-form-label text-primary">
                     Enter Amount </label>
                 <input type="text" class="form-control col-8" placeholder="Enter a fixed amount to receive" id="amount"

@@ -11,11 +11,11 @@ function makeTransfer(url, data) {
             console.log(response);
             if (response.responseCode == "000") {
                 swal.fire({
-                    title: "Logout successful!",
+                    title: "Transfer successful!",
                     html: response.message,
                     icon: "success",
                     showConfirmButton: "false",
-                    timer: "2000",
+                    timer: "3000",
                 });
                 $("#success-message").text(response.message);
                 $("#spinner").hide();

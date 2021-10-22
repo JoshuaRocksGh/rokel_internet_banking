@@ -32,26 +32,26 @@ function getTransferStatus(customerNumber) {
         },
         success: function (response) {
             if (response.responseCode == "000") {
-                console.log(response);
+                // console.log(response);
                 let data = response.data;
 
                 $("#transfer_status_body").empty();
                 let table = $("#transfer_status_table").DataTable(
                     datatableOptions
                 );
-                console.log(table);
+                // console.log(table);
                 $.each(data, function (i) {
                     // console.log(data[i]);
                     formattedAmount = `<b class="text-success">${formatToCurrency(
                         data[i].amount
                     )}<b>`;
                     extraData = JSON.stringify(data[i]);
-                    console.log(extraData);
+                    // console.log(extraData);
                     let button = `
-                        <button type="button" class="btn btn-info btn-xs waves-effect waves-light" extra-data='${extraData}'> View Details</button>`;
+                        <button type="button" class="btn btn-info btn-sm waves-effect waves-light" extra-data='${extraData}'> Details</button>`;
                     table.row
                         .add([
-                            data[i].postingDate,
+                            data[i].postingDate.split(" ")[0],
                             data[i].beneficiaryName,
                             formattedAmount,
                             data[i].payerAccountDescription,
@@ -68,21 +68,21 @@ function getTransferStatus(customerNumber) {
                     "button",
                     function () {
                         let data = JSON.parse($(this).attr("extra-data"));
-                        console.log(data);
-                        $("#sender_name").val(data.payerAccountDescription);
-                        $("#sender_account").val(data.payerAccount);
-                        $("#sender_customer_number").val(
-                            data.payerCustomerNumber
+                        console.table(data);
+                        $("#sender_name").text(data.payerAccountDescription);
+                        $("#sender_account").text(data.payerAccount);
+                        $("#sender_customer_number").text(data.customerNumber);
+                        $("#beneficiary_name").text(data.beneficiaryName);
+                        $("#beneficiary_account").text(data.beneficiaryAccount);
+                        $("#beneficiary_bank").text(data.beneficiaryBank);
+                        $("#transfer_amount").text(
+                            formatToCurrency(data.amount)
                         );
-                        $("#beneficiary_name").val(data.beneficiaryName);
-                        $("#beneficiary_account").val(data.beneficiaryAccount);
-                        $("#beneficiary_bank").val(data.beneficiaryBank);
-                        $("#transfer_amount").val(data.amount);
-                        $("#batch_number").val(data.batchNumber);
-                        $("#transfer_channel").val(data.channel);
-                        $("#transfer_date").val(data.postingDate);
-                        $("#transfer_stage").val(data.stage);
-                        $("#transfer_status").val(data.status);
+                        $("#batch_number").text(data.batchNumber);
+                        $("#transfer_channel").text(data.channel);
+                        $("#transfer_date").text(data.postingDate);
+                        $("#transfer_stage").text(data.stage);
+                        $("#transfer_status").text(data.status);
                         $("#transfer_status_modal").modal("show");
                     }
                 );

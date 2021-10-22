@@ -1,13 +1,18 @@
 @extends('layouts.master')
 
 <style>
-    .table td {
+    td {
         text-align: center;
-        font-size: 0.8 rem
+        font-size: 0.8rem !important;
     }
 
     .table-sm {
         font-size: 0.8rem !important;
+    }
+
+    h4 {
+        font-size: 1rem !important;
+        font-weight: bold !important;
     }
 </style>
 @section('content')
@@ -32,10 +37,10 @@ $currentPath = "Tansfer Status";
 
                             <div class="table-responsive">
 
-                                <table class="table table-bordered table-striped table-centered mb-0"
+                                <table class="table table-bordered mt-5 table-striped table-centered mb-0"
                                     id="transfer_status_table">
                                     <thead>
-                                        <tr class="bg-info text-white text-center">
+                                        <tr class="bg-info  text-white text-center">
                                             <td> <b> Date</b></td>
                                             <td> <b> Beneficiary Name</b></td>
                                             <td> <b> Amount</b></td>
@@ -69,11 +74,13 @@ $currentPath = "Tansfer Status";
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title text-primary" id="transfer_status">Transfer Details</h3>
+            <div class="modal-header bg-info">
+                <h3 class="modal-title modal-title font-18 font-weight-bold text-white" id="transfer_status_title">
+                    Transfer
+                    Details</h3>
             </div>
             <div class="modal-body">
-                <h4 class="text-primary">Sender Info</h4>
+                <h4 class="text-primary text-center">Sender Info</h4>
                 <table class="table table-bordered table-sm">
                     <tbody>
                         <tr>
@@ -90,7 +97,7 @@ $currentPath = "Tansfer Status";
                         </tr>
                     </tbody>
                 </table>
-                <h4 class="text-primary">Beneficiary Info</h4>
+                <h4 class="text-primary text-center">Beneficiary Info</h4>
 
                 <table class="table table-bordered table-sm">
                     <tbody>
@@ -108,7 +115,7 @@ $currentPath = "Tansfer Status";
                         </tr>
                     </tbody>
                 </table>
-                <h4 class="text-primary">Beneficiary Info</h4>
+                <h4 class="text-primary text-center">Transfer Info</h4>
 
                 <table class="table table-bordered table-sm">
                     <tbody>
