@@ -1,56 +1,3 @@
-//      function get_accounts() {
-
-//     $.ajax({
-//         "type": "GET",
-//         "url": "get-accounts-api",
-//         datatype: "application/json",
-
-//         headers: {
-//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         },
-//         success: function(response) {
-//             console.log(response);
-//             if (response.responseCode == '000') {
-
-//                 let data = response.data
-//                 if (data.length > 0) {
-
-//                     $.each(data, function(index) {
-//                         $('#from_account').append($('<option>', {
-//                             value: data[index].accountType + '~' + data[
-//                                     index].accountDesc + '~' + data[
-//                                     index].accountNumber + '~' + data[
-//                                     index].currency + '~' + data[index]
-//                                 .availableBalance
-//                         }).text(data[index].accountType + '' + ' - ' + '' + data[index]
-//                             .accountNumber + '' + ' - ' + '' + data[index]
-//                             .currency + '' + ' - ' + '' + formatToCurrency(parseFloat(
-//                                 data[
-//                                     index]
-//                                 .availableBalance))));
-//                         //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
-
-//                     });
-
-//                 } else {
-//                     toaster(response.message, "error", 3000)
-
-//                 }
-
-//             } else {
-//                 toaster(response.message, "error", 3000)
-
-//             }
-
-//         },
-//         error: function(xhr, status, error) {
-//             setTimeout(function() {
-//                 get_accounts()
-//             }, $.ajaxSetup().retryAfter)
-//         }
-//     })
-// }
-
 $(function () {
     // console.log("a")
     let today = new Date();
@@ -220,28 +167,6 @@ $(function () {
         load_data_into_table(load_data, account_number, start_date, end_date);
     });
 
-    // {{-- $("#account_balance_info_retry_btn").click(function() {
-    //     $("#account_balance_info_display").hide();
-    //     $("#account_balance_info_retry_btn").hide();
-    //     $("#account_balance_info_loader").show();
-    //     getAccountBalanceInfo(account_number);
-    // }) --}}
-
-    // {{-- $("#account_transaction_retry_btn").click(function() {
-    //     $(".account_transaction_display").hide();
-    //     $(".account_transaction_display_table").hide();
-    //     $("#account_transaction_retry_btn").hide();
-    //     $("#account_transaction_loader").show();
-    //     let account_number = @json($account_number);
-    //     let start_date = $('.date-picker-startDate').val();
-    //     let end_date = $('.date-picker-endDate').val();
-    //     let transLimit = "10";
-    //     console.log(start_date)
-    //     console.log(end_date)
-    //     console.log(account_number)
-    //     getAccountTransactions(account_number, start_date, end_date);
-    // }) --}}
-
     function load_data_into_table(data, account_number, start_date, end_date) {
         // {{-- $('#table-body-display').empty() --}}
 
@@ -288,9 +213,9 @@ $(function () {
                 let attachment = ``;
 
                 if (data[index].imageCheck == "0") {
-                    attachment = `<i  class="fe-minus text-secondary">`;
+                    attachment = `<i class="fe-file-text text-center text-danger">`;
                 } else {
-                    attachment = `<i class="fe-file-text text-danger">`;
+                    attachment = `<i  class="fe-minus text-center text-secondary">`;
                 }
 
                 let sysDate = new Date(data[index].postingSysDate);
@@ -309,10 +234,10 @@ $(function () {
 
                         data[index].narration,
                         data[index].contraAccount,
-                        data[index].transactionNumber,
+                        // data[index].transactionNumber,
                         data[index].batchNumber,
                         attachment,
-                        attachment,
+                        // attachment,
                     ])
                     .order([0, "desc"])
                     .column(0)

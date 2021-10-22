@@ -72,7 +72,7 @@
             }
         });
     });
-
+    const ACCOUNT_NUMBER_LENGTH = 18
     function transactionSuccessToaster(message, timer=3000){
         Swal.fire({title:  "Transaction Successful",
         text: message,

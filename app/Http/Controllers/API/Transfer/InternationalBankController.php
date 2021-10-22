@@ -3,86 +3,58 @@
 namespace App\Http\Controllers\API\Transfer;
 
 use App\Http\classes\API\BaseResponse;
-use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator;
+use App\Http\classes\WEB\ApiBaseResponse;
 
 class InternationalBankController extends Controller
 {
     //
 
-    public function international_bank_transfer(Request $request){
-        $validator = Validator::make($request->all(), [
-
-        ]);
-
-
-        // return $request;
-
+    public function international_bank_transfer(Request $req)
+    {
         $base_response = new BaseResponse();
-
-
-
-        // VALIDATION
-        if ($validator->fails()) {
-
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
-        // return $req;
-
-
-        $user = (object) UserAuth::getDetails();
-        //return $user;
-
         $authToken = session()->get('userToken');
-        $userID = session()->get('userId');
-
+        $userId = session()->get('userId');
         $data = [
-
+            "amount" => $req->amount,
+            "authToken" => $authToken,
+            "beneBankSwift" => $req->bankCode,
+            "beneficiaryAccount" => $req->toAccount,
+            "beneficiaryAddress1" => $req->beneficiaryAddress,
+            "beneficiaryAddress2" => "string",
+            "beneficiaryAddress3" => "string",
+            "beneficiaryName" => $req->beneficiaryName,
+            "brand" => "string",
+            "channel" => "string",
+            "chargeAccount" => $req->fromAccount,
+            "country" => $req->bankCountryCode,
+            "debitAccount" => $req->fromAccount,
+            "deviceId" => "string",
+            "deviceIp" => "string",
+            "deviceName" => "string",
+            "entrySource" => "MOB",
+            "expenseType" => $req->category,
+            "isoCode" => "string",
+            "manufacturer" => "string",
+            "pinCode" => $req->secPin,
+            "remitInfo1" => "string",
+            "remitInfo2" => "string",
+            "remitInfo3" => "string",
+            "remittanceCode" => "string",
+            "userName" => $userId
         ];
+        return $data;
 
 
         try {
             $response = Http::post(env('API_BASE_URL') . " ", $data);
 
-            //return $response;
-            // return json_decode($response->body());
-
-            if ($response->ok()) { // API response status code is 200
-
-                $result = json_decode($response->body());
-                //return $result;
-
-                if ($result->responseCode == '000') {
-
-                    // $result_data = $result->data;
-                    // return $result_data;
-
-                    return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-
-
-                } else {  // API responseCode is not 000
-
-                    return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-                }
-            } else { // API response status code not 200
-
-                DB::table('tb_error_logs')->insert([
-                    'platform' => 'ONLINE_INTERNET_BANKING',
-                    'user_id' => 'AUTH',
-                    'code' => $response->status(),
-                    'message' => $response->body()
-                ]);
-
-                return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-            }
-        }catch (\Exception $e) {
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        } catch (\Exception $e) {
 
             DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
@@ -91,10 +63,6 @@ class InternationalBankController extends Controller
             ]);
 
             return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
-
-
         }
-
-
     }
 }

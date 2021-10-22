@@ -82,11 +82,11 @@
                 {{-- <li>
                                 <a href="{{ url('standing-order-new') }}">Standing Order New</a>
                 </li> --}}
-                <li>
+                {{-- <li>
                     <a href="{{ url('add-beneficiary') }}">Add Beneficiary</a>
-                </li>
+                </li> --}}
                 <li>
-                    <a href="{{ url('beneficiary-list') }}">Beneficiary List</a>
+                    <a href="{{ url('beneficiary-list') }}">Beneficiaries</a>
                 </li>
             </ul>
         </div>

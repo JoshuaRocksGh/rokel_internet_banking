@@ -26,6 +26,12 @@
         overflow-y: hidden;
 
     }
+
+    h4,
+    h5 {
+        font-size: 0.9rem;
+
+    }
 </style>
 
 @include("extras.datatables")
@@ -83,16 +89,16 @@
                                         <h4>Name:&nbsp; </h4>
                                     </div>
                                     <div class="col-7">
-                                        <h4>
-                                            <b class="account_description"></b>
+                                        <h4 class="account_description">
+
                                         </h4>
                                     </div>
                                     <div class="col-5">
                                         <h4>Account No:&nbsp; </h4>
                                     </div>
                                     <div class="col-7">
-                                        <h4>
-                                            <b class="account_number"></b>
+                                        <h4 class="account_number">
+
                                         </h4>
                                     </div>
                                     <div class="col-5">
@@ -101,8 +107,8 @@
 
                                     </div>
                                     <div class="col-7">
-                                        <h4>
-                                            <b class="account_product"></b>
+                                        <h4 class="account_product">
+
                                         </h4>
                                     </div>
                                     <div class="col-5">
@@ -111,8 +117,8 @@
                                         </h4>
                                     </div>
                                     <div class="col-7">
-                                        <h4>
-                                            <b class="account_currency"></b>
+                                        <h4 class="account_currency">
+
                                         </h4>
                                     </div>
                                 </div>
@@ -183,10 +189,10 @@
                                                 class="account_currency_display_"></span>
                                         </th>
                                         <th scope="col">Credit Account</th>
-                                        <th scope="col">Transaction ID </th>
+                                        {{-- <th scope="col">Transaction ID </th> --}}
                                         <th scope="col">Batch No</th>
                                         <th scope="col">Attachment</th>
-                                        <th scope="col">Receipt</th>
+                                        {{-- <th scope="col">Receipt</th> --}}
                                     </tr>
                                 </thead>
 

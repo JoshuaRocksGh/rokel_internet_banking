@@ -1,5 +1,4 @@
 let beneficiaryDetails;
-
 function getLocalBanks() {
     return $.ajax({
         type: "GET",
@@ -159,7 +158,7 @@ async function prepareBeneficiaryForm(currentType, mode) {
         $("#beneficiary_form_title").text(`${mode} Same Bank Beneficiary`);
         $("#account_number").on("keyup", () => {
             console.log("here");
-            if ($("#account_number").val().length > 17) {
+            if ($("#account_number").val().length >= ACCOUNT_NUMBER_LENGTH) {
                 getAccountDescription($("#account_number").val());
             }
         });
@@ -289,7 +288,10 @@ function validateFormInputs(whatToCheck) {
         //     "data-bank-swift-code"
         // );
         beneficiaryDetails.bankCountry = $("#select_country").val();
-        if (!beneficiaryDetails.accountNumber) {
+        if (
+            !beneficiaryDetails.accountNumber ||
+            beneficiaryDetails.accountNumber < ACCOUNT_NUMBER_LENGTH
+        ) {
             fail = true;
         }
         console.log(type);

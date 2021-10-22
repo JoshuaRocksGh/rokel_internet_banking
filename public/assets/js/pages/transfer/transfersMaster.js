@@ -60,23 +60,19 @@ function getToAccount(endPoint) {
                                 "~" +
                                 data[index].BEN_ACCOUNT +
                                 "~" +
-                                data[index].BEN_ACCOUNT_CURRENCY +
-                                "~" +
                                 data[index].EMAIL +
                                 "~" +
                                 data[index].BANK_NAME +
                                 "~" +
                                 data[index].BANK_SWIFT_CODE +
                                 "~" +
-                                data[index].ADDRESS_1,
+                                data[index].ADDRESS_1 +
+                                "~" +
+                                data[index].BANK_COUNTRY,
                         }).text(
-                            data[index].BENEF_TYPE +
-                                "~" +
-                                data[index].BEN_ACCOUNT +
-                                "~" +
-                                data[index].NICKNAME +
-                                "~" +
-                                data[index].BEN_ACCOUNT_CURRENCY
+                            data[index].BEN_ACCOUNT +
+                                " || " +
+                                data[index].NICKNAME
                         )
                     );
                 });
@@ -88,6 +84,70 @@ function getToAccount(endPoint) {
             setTimeout(function () {
                 getToAccount();
             }, $.ajaxSetup().retryAfter);
+        },
+    });
+}
+function getCountries() {
+    return $.ajax({
+        type: "GET",
+        url: "get-countries-list-api",
+        datatype: "application/json",
+        success: function (response) {
+            let data = response.data;
+            if (data.length > 1) {
+                $.each(data, (i) => {
+                    let { actualCode, codeType, description } = data[i];
+                    option = `<option value="${codeType}"  data-country-code="${actualCode}">${description}</option>`;
+                    $("#onetime_select_country").append(option);
+                });
+            } else {
+                toaster(response.message);
+            }
+        },
+    });
+}
+
+function getInternationalBanks(countryCode) {
+    return $.ajax({
+        type: "GET",
+        url: "get-international-bank-list-api",
+        data: {
+            countryCode,
+        },
+        datatype: "application/json",
+        success: function (response) {
+            let data = response.data;
+            // console.log(data);
+            if (data.length > 1) {
+                $.each(data, (i) => {
+                    let { BICODE, BANK_DESC, COUNTRY } = data[i];
+                    option = `<option value="${BICODE}" data-bank-country="${COUNTRY}" >${BANK_DESC}</option>`;
+                    $("#onetime_select_bank").append(option);
+                });
+            } else {
+                toaster(response.message);
+            }
+        },
+    });
+}
+
+function getLocalBanks() {
+    return $.ajax({
+        type: "GET",
+        url: "get-bank-list-api",
+        datatype: "application/json",
+        success: function (response) {
+            let data = response.data;
+            // console.log(data);
+            if (data.length > 1) {
+                $.each(data, (i) => {
+                    let { bankCode, bankDescription, bankSwiftCode } = data[i];
+                    option = `<option value="${bankCode}" data-bank-swift-code="${bankSwiftCode}">${bankDescription}</option>`;
+                    $("#onetime_select_bank").append(option);
+                });
+            } else {
+                toaster(response.message);
+            }
         },
     });
 }
@@ -208,6 +268,7 @@ $(() => {
         }
     }
     if (transferType !== "Own Account") {
+        let beneCode;
         if (transferType === "Same Bank") {
             beneCode = "SAB";
         } else if (transferType === "Local Bank") {
@@ -216,8 +277,12 @@ $(() => {
         } else if (transferType === "Standing Order") {
             getStandingOrderFrequencies();
             beneCode = "SAB";
+        } else if (transferType === "International Bank") {
+            beneCode = "INTB";
         }
-        getToAccount(`get-transfer-beneficiary-api?beneType=${beneCode}`);
+        if (beneCode) {
+            getToAccount(`get-transfer-beneficiary-api?beneType=${beneCode}`);
+        }
     }
     expenseTypes();
 
@@ -281,7 +346,7 @@ $(() => {
         toAccount.accountNumber = accountData[2];
         toAccount.currency = accountData[3];
         if (transferType !== "Own Account") {
-            toAccount.email = accountData[4].trim();
+            toAccount.email = accountData[3].trim();
             $(".display_to_receiver_email")
                 .val(toAccount.email)
                 .text(toAccount.email);
@@ -295,15 +360,21 @@ $(() => {
 
         $(".display_to_account_currency").text(toAccount.currency);
 
-        if (transferType === "Local Bank") {
-            toAccount.bank = accountData[5].trim();
-            toAccount.bankCode = accountData[6].trim();
-            toAccount.address = accountData[7].trim();
+        if (
+            transferType === "Local Bank" ||
+            transferType === "International Bank"
+        ) {
+            toAccount.bank = accountData[4].trim();
+            toAccount.bankCode = accountData[5].trim();
+            toAccount.address = accountData[6].trim();
 
             $(".display_to_account_address").text(toAccount.address);
             $("#beneficiary_address").val(toAccount.address);
             $(".display_to_bank_name").text(toAccount.bank);
             $("#beneficiary_bank_name").val(toAccount.bank);
+        }
+        if (transferType === "International Bank") {
+            toAccount.bankCountryCode = accountData[7].trim();
         }
     });
 
@@ -323,9 +394,9 @@ $(() => {
             formatToCurrency(transferInfo.amount)
         );
     });
-
+    // ===================================================
     //  isOnetimeTransfer
-
+    // ===================================================
     $("#onetime_account_number").on("keyup", function () {
         if (onetimeToAccount.accountNumber === $(this).val()) {
             return false;
@@ -336,14 +407,38 @@ $(() => {
             return false;
         }
         onetimeToAccount.accountNumber = $(this).val();
-        if (onetimeToAccount.accountNumber.length > 17) {
-            getAccountDescription(onetimeToAccount);
+        if (transferType === "Same Bank") {
+            if (onetimeToAccount.accountNumber.length > 17) {
+                getAccountDescription(onetimeToAccount);
+            }
+        } else {
+            handleToAccount(onetimeToAccount);
         }
     });
     $("#onetime_beneficiary_email").on("keyup", function () {
         onetimeToAccount.email = $(this).val();
         $(".display_to_receiver_email").text(onetimeToAccount.email);
     });
+
+    // international bank
+    if (transferType === "International Bank") {
+        getCountries();
+        $("#onetime_select_country").on("change", () => {
+            transferInfo.bankCountryCode = $("#onetime_select_country").val();
+            getInternationalBanks(transferInfo.bankCountryCode);
+        });
+        $("#onetime_select_bank").on("change", () => {
+            transferInfo.bankCode = $("#onetime_select_bank").val();
+        });
+    }
+
+    // Local Bank
+    if (transferType === "Local Bank") {
+        getLocalBanks();
+        $("#onetime_select_bank").on("change", () => {
+            transferInfo.bankCode = $(this).val();
+        });
+    }
 
     // =========================================================
     //Other Checks
@@ -426,12 +521,19 @@ $(() => {
             }
         }
         // Local Bank Checks
-        if (transferType === "Local Bank") {
-            if (!transferInfo.mode) {
+        if (
+            transferType === "Local Bank" ||
+            transferType === "International Bank"
+        ) {
+            if (transferType === "Local Bank" && !transferInfo.mode) {
                 pass = "false";
+            }
+            if (transferType === "International Bank") {
+                transferInfo.bankCountryCode = toAccount.bankCountryCode;
             }
             transferInfo.beneficiaryAddress = toAccount.address;
             transferInfo.bankName = toAccount.bank;
+            transferInfo.bankCode = toAccount.bankCode;
         }
 
         transferInfo.fromAccount = fromAccount.accountNumber;

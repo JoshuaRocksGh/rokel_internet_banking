@@ -23,7 +23,8 @@
                     {{-- ============================================================== --}}
                     {{-- Beneficiary and Onetime Switch --}}
                     {{-- ============================================================== --}}
-                    @if ($currentPath === "Local Bank" || $currentPath === "Same Bank")
+                    @if ($currentPath === "Local Bank" || $currentPath === "Same Bank" || $currentPath ===
+                    "International Bank")
 
                     <div class="mb-2">
                         <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
@@ -66,7 +67,7 @@
                                         @endif
                                     </select>
                                 </div>
-                                @if ($currentPath === "Local Bank")
+                                @if ($currentPath === "Local Bank" || $currentPath === "International Bank")
                                 <div class="form-group row ">
                                     <label class="text-primary col-md-4">Beneficiary Bank</label>
                                     <input
@@ -96,7 +97,7 @@
                                         id="saved_beneficiary_email" readonly>
                                 </div>
                                 @endif
-                                @if ($currentPath === "Local Bank")
+                                @if ($currentPath === "Local Bank" || $currentPath ==="International Bank")
                                 <div class="row mb-1">
                                     <label class="text-primary col-md-4">Beneficiary Address</label>
                                     <input class="form-control col-md-8  readOnly" type="text" id="beneficiary_address"
@@ -109,14 +110,24 @@
                         {{-- onetime view --}}
                         {{-- =============================================================== --}}
 
-                        @if ($currentPath === "Local Bank" || $currentPath === "Same Bank")
+                        @if ($currentPath === "Local Bank" || $currentPath === "Same Bank" || $currentPath ===
+                        "International Bank")
                         <div class="tab-pane fade" id="onetime_view" role="tabpanel" aria-labelledby="onetime_tab">
                             <div class="col-12">
-                                @if ($currentPath === "Local Bank")
+                                @if ($currentPath ==="International Bank")
+                                <div class="row mb-1">
+                                    <label class="text-primary col-md-4">Bank Country</label>
+                                    <select class="form-control col-md-8" id="onetime_select_country" required>
+                                        <option disabled selected>--- Not Selected ---</option>
+
+                                    </select>
+                                </div>
+                                @endif
+                                @if ($currentPath === "Local Bank" ||$currentPath ==="International Bank")
                                 <div class="row mb-1">
                                     <label class="text-primary col-md-4">Transfer Bank</label>
-                                    <select class="form-control col-md-8" id="onetime_beneficiary_bank_name" required>
-                                        <option disabled selected>---Not Selected---</option>
+                                    <select class="form-control col-md-8" id="onetime_select_bank" required>
+                                        <option disabled selected>--- Not Selected ---</option>
 
                                     </select>
                                 </div>
@@ -148,11 +159,12 @@
                                     <input type="text" class="form-control col-md-8 " id="onetime_beneficiary_email"
                                         placeholder="Enter Beneficiary Email">
                                 </div>
-                                @if ($currentPath === "Local Bank")
+                                @if ($currentPath === "Local Bank" || $currentPath === "International Bank")
                                 <div class="row mb-1">
                                     <label class="text-primary col-md-4">Beneficiary Address</label>
                                     <input class="form-control col-md-8" type="text"
-                                        id="onetime_beneficiary_account_address">
+                                        id="onetime_beneficiary_account_address"
+                                        placeholder="Enter Beneficiary Address">
                                 </div>
                                 @endif
                             </div>
@@ -174,18 +186,19 @@
 
                             <div class="input-group mb-1 col-md-8" style="padding: 0px;">
                                 <div class="input-group-prepend">
-                                    <input type="text" class="input-group-text account_currency " style="width: 80px;"
-                                        readonly>
+                                    <input type="text" placeholder="SSL" class="input-group-text account_currency "
+                                        style="width: 80px;" readonly>
                                 </div>
 
                                 &nbsp;&nbsp;
-                                <input type="text" class="form-control " id="amount"
+                                <input type="text" class="form-control " placeholder="Enter Amount To Transfer"
+                                    id="amount"
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
                                     required>
                             </div>
                         </div>
 
-                        @if ($currentPath === "Local Bank")
+                        @if ($currentPath === "Local Bank" )
                         <div class="form-group row">
                             <label class="text-primary col-md-4"> Transfer Mode</label>
 
