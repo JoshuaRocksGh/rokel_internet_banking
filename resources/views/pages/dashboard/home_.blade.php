@@ -25,7 +25,7 @@
 @section('content')
 
 <!-- Start Content-->
-@if(config("app.cooporate"))
+@if(config("app.corporate"))
 <div class="container-fluid ">
     <div class="row">
         <div class="col-md-12">

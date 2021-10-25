@@ -88,9 +88,9 @@ class LoginController extends Controller
             } // API responseCode is 000
 
             $userDetail = $result->data;
-            if (!config("app.cooporate") && $userDetail->customerType === 'C') {
+            if (!config("app.corporate") && $userDetail->customerType === 'C') {
                 return  $base_response->api_response('900', 'Corporate account, use our corporate platform instead',  NULL);
-            } elseif (config("app.cooporate") && $userDetail->customerType !== 'C') {
+            } elseif (config("app.corporate") && $userDetail->customerType !== 'C') {
                 return  $base_response->api_response('900', 'Personal account, use our personal internet banking instead',  NULL);
             }
 

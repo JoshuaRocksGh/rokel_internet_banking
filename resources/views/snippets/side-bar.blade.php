@@ -50,7 +50,7 @@
                             <li>
                                 <a href="{{ url('standing-order') }}">Standing Order</a>
                             </li>
-                            @if (config("app.cooporate"))
+                            @if (config("app.corporate"))
                             <li>
                                 <a href="{{ url('bulk-transfer') }}">Bulk Transfer </a>
                             </li>
@@ -90,7 +90,7 @@
                             <li>
                                 <a href="{{ url('payment-beneficiary-list') }}">Beneficiaries</a>
                             </li>
-                            @if (config("app.cooporate"))
+                            @if (config("app.corporate"))
                             <li>
                                 <a href="{{ url('bulk-korpor') }}">Bulk E-Korpor</a>
                             </li>
@@ -206,7 +206,7 @@
                         </ul>
                     </div>
                 </li>
-                @if (config("app.cooporate"))
+                @if (config("app.corporate"))
                 <li>
                     <a href="#approvals" data-toggle="collapse">
                         <i class="mdi mdi-checkbox-multiple-marked-outline"></i>
@@ -241,7 +241,7 @@
                             <li>
                                 <a href="{{ url('set-transaction-limit') }}">Set Transaction Limits</a>
                             </li>
-                            @if (config("app.cooporate"))
+                            @if (config("app.corporate"))
                             <li>
                                 <a href="{{ url('update-company-info') }}">Update Company Information</a>
                             </li>

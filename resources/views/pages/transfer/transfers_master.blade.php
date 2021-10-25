@@ -19,7 +19,7 @@
 <script>
     var transferType = @json($currentPath) 
 </script>
-@if (config("app.cooporate"))
+@if (config("app.corporate"))
 <script>
     const ISCORPORATE = true;
 </script>
@@ -31,7 +31,7 @@
 <script src="{{ asset('assets/js/pages/transfer/transfersMaster.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/validateEmail.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/currencyConverter.js') }}" defer></script>
-@if (config("app.cooporate"))
+@if (config("app.corporate"))
 <script src="{{ asset('assets/js/pages/transfer/transfersMasterCoorporateOverride.js') }}" defer>
 </script>
 @endif

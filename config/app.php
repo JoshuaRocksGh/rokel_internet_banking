@@ -29,7 +29,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-    'cooporate' => (bool) env("APP_COOPORATE", false),
+    'corporate' => (bool) env("APP_CORPORATE", false),
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
