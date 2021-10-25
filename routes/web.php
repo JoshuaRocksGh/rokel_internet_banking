@@ -255,6 +255,7 @@ Route::get('print-account-statement-history', [AccountEnquiryController::class, 
 Route::post('account-transaction-history', [AccountEnquiryController::class, 'account_transaction_history'])->name('account-transaction-history');
 Route::post('account-balance-info-api', [AccountEnquiryController::class, 'account_balance_info'])->name('account-balance-info-api');
 Route::get('list-of-accounts', [AccountEnquiryController::class, 'list_of_accounts'])->name('list-of-accounts');
+Route::post('account-trans-document-api', [AccountEnquiryController::class, 'accountTransDocument']);
 
 
 // get account description

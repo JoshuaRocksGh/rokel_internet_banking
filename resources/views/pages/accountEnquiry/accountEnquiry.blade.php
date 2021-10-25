@@ -1,6 +1,12 @@
 @extends('layouts.master')
 @section('styles')
 <style>
+    .carousel-control-next,
+    .carousel-control-prev,
+    .carousel-indicators {
+        filter: invert(100%);
+    }
+
     @media print {
         .hide_on_print {
             display: none
@@ -51,13 +57,10 @@
     <div class="col-12">
         <div class="___class_+?12___">
             <div class="card-body">
-                <div class="row" style="zoom: 0.9">
+                <div class="row">
                     <div class="col-md-12">
-
                         <div class="row site-card justify-content-md-around" id="transaction_form">
-
                             <div class="col-md-6 align-self-center">
-                                {{-- <p>Select Acount</p> --}}
                                 <div class="form-group row ">
                                     <b class="col-md-3 text-primary align-self-center">Select Account :</b>
                                     <select class="form-control col-md-9" id="from_account" required>
@@ -144,8 +147,6 @@
                                         <option value="credit"> CREDIT </option>
                                         <option value="debit"> DEBIT </option>
                                     </select>
-
-                                    {{-- </div> --}}
                                 </div>
 
                                 <div class="col-md-2">
@@ -189,16 +190,13 @@
                                                 class="account_currency_display_"></span>
                                         </th>
                                         <th scope="col">Credit Account</th>
-                                        {{-- <th scope="col">Transaction ID </th> --}}
                                         <th scope="col">Batch No</th>
                                         <th scope="col">Attachment</th>
-                                        {{-- <th scope="col">Receipt</th> --}}
                                     </tr>
                                 </thead>
 
                                 <tbody role="rowgroup" id="table-body-display">
                                     <td colspan="100%" class="text-center">
-
                                         {!! $noDataAvailable !!}
                                     </td>
                                 </tbody>
@@ -212,13 +210,42 @@
 </div>
 
 
+<div class="modal fade" id="attachment_modal" tabindex="-1" role="dialog" aria-labelledby="attachment_modal_title"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-white font-weight-bold" id="attachment_modal_title">Attachments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="attachment_carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                    </ol>
+                    <div class="carousel-inner">
+
+                    </div>
+                    <a class="carousel-control-prev" href="#attachment_carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#attachment_carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @endsection
 
 @section('scripts')
 @include("extras.datatables")
-
 <script src="{{ asset("assets/js/pages/accounts/accountEnquiry.js") }}"></script>
 
 @endsection

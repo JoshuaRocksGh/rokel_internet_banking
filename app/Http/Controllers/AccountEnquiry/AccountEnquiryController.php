@@ -106,6 +106,13 @@ class AccountEnquiryController extends Controller
 
         return $result->api_response($response);
     }
+    public function accountTransDocument(Request $res)
+    {
+        $response = Http::post(env('API_BASE_URL') . "/account/transDocuments/" . $res->batchNumber);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
 
     public function account_balance_info(Request $request)
     {

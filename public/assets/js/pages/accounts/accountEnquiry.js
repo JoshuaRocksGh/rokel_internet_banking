@@ -69,7 +69,6 @@ $(function () {
         var load_data = [];
         $.each(data, function (index) {
             if (parseFloat(data[index].amount) > 0) {
-                // {{-- alert(data[index].amount) --}}
                 load_data.push(data[index]);
             } else {
             }
@@ -89,13 +88,10 @@ $(function () {
 
         if (filter == "debit") {
             $("#table-body-display").empty();
-            // {{-- return false --}}
-
             let data = transactions;
             var load_data = [];
             $.each(data, function (index) {
                 if (parseFloat(data[index].amount) < 0) {
-                    // {{-- alert(data[index].amount) --}}
                     load_data.push(data[index]);
                 } else {
                 }
@@ -108,13 +104,10 @@ $(function () {
             );
         } else if (filter == "credit") {
             $("#table-body-display").empty();
-            // {{-- return false --}}
-
             let data = transactions;
             var load_data = [];
             $.each(data, function (index) {
                 if (parseFloat(data[index].amount) > 0) {
-                    // {{-- alert(data[index].amount) --}}
                     load_data.push(data[index]);
                 } else {
                 }
@@ -135,12 +128,6 @@ $(function () {
                 end_date
             );
         }
-
-        // {{-- $('#table-body-display').empty()
-
-        // let data = transactions
-
-        // load_data_into_table(transactions) --}}
     });
 
     $("#all_transaction").click(function () {
@@ -168,8 +155,6 @@ $(function () {
     });
 
     function load_data_into_table(data, account_number, start_date, end_date) {
-        // {{-- $('#table-body-display').empty() --}}
-
         $("#table-body-display tr").remove();
         $(".account_transaction_display").hide();
         $(".account_transaction_display_table").hide();
@@ -212,8 +197,9 @@ $(function () {
 
                 let attachment = ``;
 
-                if (data[index].imageCheck == "0") {
-                    attachment = `<i class="fe-file-text d-block text-center bg">`;
+                if (data[index].imageCheck == "1") {
+                    attachment = `<a href="#" data-value='${data[index].batchNumber}' class="attachment-icon" >
+                     <i class="fe-file-text d-block text-center text-success"></a>`;
                 } else {
                     attachment = `<i class="fe-file-text d-block text-center text-danger">`;
                 }
@@ -231,18 +217,20 @@ $(function () {
                         `${formatToCurrency(
                             parseFloat(data[index].runningBalance)
                         )}`,
-
                         data[index].narration,
                         data[index].contraAccount,
-                        // data[index].transactionNumber,
                         data[index].batchNumber,
                         attachment,
-                        // attachment,
                     ])
                     .order([0, "desc"])
                     .column(0)
                     .visible(false, false)
                     .draw(false);
+            });
+            $(".attachment-icon").on("click", function (e) {
+                e.preventDefault();
+                const docId = $(this).attr("data-value");
+                getTransDocument(docId);
             });
         } else {
         }
@@ -252,7 +240,6 @@ $(function () {
         $(".account_transaction_display_table").show();
         $(".account_transaction_display").show();
     }
-
     function getAccountTransactions(account_number, start_date, end_date) {
         $("#search_transaction").text("Loading ...");
         $.ajax({
@@ -294,7 +281,7 @@ $(function () {
                     $(".account_transaction_display").hide();
                     $(".account_transaction_display_table").hide();
                     $("#account_transaction_retry_btn").show();
-                    toaster(response.message, "warning", 3000);
+                    toaster(response.message, "warning");
                 }
             },
             error: function (xhr, status, error) {
@@ -303,8 +290,6 @@ $(function () {
                 $(".account_transaction_display").hide();
                 $(".account_transaction_display_table").hide();
                 $("#account_transaction_retry_btn").show();
-                // toaster(error, "error", 3000);
-
                 setTimeout(function () {
                     getAccountTransactions(
                         account_number,
@@ -315,63 +300,39 @@ $(function () {
             },
         });
     }
-
-    // {{-- function getAccountBalanceInfo($account_number) {
-    //     $.ajax({
-    //         "type": "POST",
-    //         "url": "api/account-balance-info",
-    //         datatype: "application/json",
-    //         data: {
-    //             "accountNumber": account_number,
-    //             "authToken": "15D2A303-98FD-43A6-86E4-F24FC7436069",
-    //             "endDate": "",
-    //             "entrySource": "A",
-    //             "startDate": "",
-    //             "transLimit": "string"
-    //         },
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //         },
-    //         success: function(response) {
-    //             console.log(response);
-    //             if (response.responseCode == '000') {
-
-    //                 let account_info = response.data;
-    //                 console.log(account_info)
-    //                 $('.account_number_display').text(account_info.ACCOUNT_NUMBER)
-    //                 $('.account_description_display').text(account_info.ACCOUNT_DESCRIPTION)
-    //                 $('.account_currency_display').text(account_info.CURRENCY)
-    //                 $('.account_product_display').text(account_info.PRODUCT)
-
-    //                 $('.account_ledger_bal_display').text(account_info.LEGDER_BALANCE)
-    //                 $('.account_available_bal_display').text(account_info.AVAILABLE_BALANCE)
-    //                 $('.account_amount_in_arrears_display').text(account_info
-    //                     .AMOUNT_IN_ARREAS)
-    //                 $('.account_overdrawn_limit_display').text(account_info.OVERDRAFT_LIMIT)
-    //                 $('.account_accrued_credit_interest_display').text(account_info
-    //                     .ACCRUED_CREDIT_INTREST)
-    //                 $('.account_credit_interest_rate_display').text(account_info
-    //                     .CREDIT_INTEREST_RATE)
-    //                 $('.account_accrued_debit_interest_display').text(account_info
-    //                     .ACCRUED_DEBIT_INTEREST)
-    //                 $('.account_debit_interest_rate_display').text(account_info
-    //                     .DEBIT_INTERST_RATE)
-
-    //                 $("#account_balance_info_loader").hide();
-    //                 $("#account_balance_info_retry_btn").hide();
-    //                 $("#account_balance_info_display").show();
-
-    //             } else {
-    //                 $("#account_balance_info_loader").hide();
-    //                 $("#account_balance_info_display").hide();
-    //                 $("#account_balance_info_retry_btn").show();
-    //             }
-    //         },
-    //         error: function(xhr, status, error) {
-    //             $("#account_balance_info_loader").hide();
-    //             $("#account_balance_info_display").hide();
-    //             $("#account_balance_info_retry_btn").show();
-    //         }
-    //     })
-    // } --}}
+    function getTransDocument(batchNumber) {
+        $.ajax({
+            type: "POST",
+            url: "account-trans-document-api",
+            datatype: "application/json",
+            data: { batchNumber },
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            success: function (response) {
+                console.log(response);
+                if (response.responseCode == "000") {
+                    const data = response.data;
+                    $.each(data, (i) => {
+                        console.log(i);
+                        Object.entries(data[i]).forEach(([key, value], j) => {
+                            if (key.includes("image")) {
+                                let active = j === 0 ? "active" : "";
+                                let img = `<div class="carousel-item ${active}">
+                                <img class="d-block w-100" src="data:image/jpg;base64,${value}" alt="slide-${j}">
+                                </div>`;
+                                $(".carousel-inner").append(img);
+                                let indicator = `<li data-target="#attachment_carousel" data-slide-to="${j}" class="${active}"></li>
+                              `;
+                                $(".carousel-indicators").append(indicator);
+                            }
+                        });
+                    });
+                    $("#attachment_modal").modal("show");
+                } else {
+                    $("#search_transaction").text("Search");
+                }
+            },
+        });
+    }
 });
