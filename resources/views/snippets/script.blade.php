@@ -3,7 +3,7 @@
 
 
 <script type="text/javascript">
-    if(typeof jQuery == 'undefined'){
+    if(typeof jQuery === 'undefined'){
         var oScriptElem = document.createElement("script");
         oScriptElem.type = "text/javascript";
         oScriptElem.src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js";
@@ -15,25 +15,6 @@
 <script src="{{ asset('assets/js/vendor.min.js') }}" defer></script>
 
 <!-- Plugins js-->
-{{-- <script src="{{ asset('assets/libs/flatpickr/flatpickr.min.js') }}" defer></script> --}}
-{{-- <script src="{{ asset('assets/libs/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"> --}}
-{{-- </script> --}}
-{{-- <script src="{{ asset('assets/libs/clockpicker/bootstrap-clockpicker.min.js') }}"></script> --}}
-{{-- <script src="{{ asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" defer>
-</script>
-<script src="{{ asset('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}" defer>
-</script> --}}
-{{-- <script src="{{ asset('assets/libs/bootstrap-select/js/bootstrap-select.min.js') }} ">
-</script> --}}
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous" defer>
-</script> --}}
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
-</script> --}}
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script> --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
 <!-- App js-->
@@ -49,22 +30,10 @@
 
 </script>
 
-{{--
-<script type='text/javascript' defer>
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-    }
-
-</script>
-
-<script type='text/javascript' src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit' defer>
-</script> --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10" defer></script>
 
 <script defer>
+    const ACCOUNT_NUMBER_LENGTH = 18
     $("input[type=number]").on("focus", function () {
         $(this).on("keydown", function (event) {
             if (event.keyCode === 38 || event.keyCode === 40) {
@@ -72,7 +41,7 @@
             }
         });
     });
-    const ACCOUNT_NUMBER_LENGTH = 18
+
     function transactionSuccessToaster(message, timer=3000){
         Swal.fire({title:  "Transaction Successful",
         text: message,
@@ -81,27 +50,8 @@
         imageAlt: 'success image', confirmButtonColor: "#0388cb",
             timer: timer
         })
-
-
     }
-    // function toaster(message, icon, timer = 3000) {
-    //     const Toast = Swal.mixin({
-    //         toast: true,
-    //         position: 'top-end',
-    //         showConfirmButton: false,
-    //         timerProgressBar: true,
-    //         timer: timer,
-    //         didOpen: (toast) => {
-    //             toast.addEventListener('mouseenter', Swal.stopTimer)
-    //             toast.addEventListener('mouseleave', Swal.resumeTimer)
-    //         }
-    //     })
 
-    //     Toast.fire({
-    //         icon: icon,
-    //         title: message,
-    //     })
-    // };
      function toaster(message, icon, timer = 3000){
     let color = "#17a2b8"
         if (icon.toLowerCase()==="success"){

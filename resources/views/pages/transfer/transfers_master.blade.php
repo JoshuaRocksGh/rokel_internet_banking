@@ -19,6 +19,19 @@
 <script>
     var transferType = @json($currentPath) 
 </script>
+@if (config("app.cooporate"))
+<script>
+    const ISCORPORATE = true;
+</script>
+@else
+<script>
+    const ISCORPORATE = false;
+</script>
+@endif
 <script src="{{ asset('assets/js/pages/transfer/transfersMaster.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/validateEmail.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/currencyConverter.js') }}" defer></script>
+@if (config("app.cooporate"))
+<script src="{{ asset('assets/js/pages/transfer/transfersMasterCoorporateOverride.js') }}" defer>
+</script>
+@endif

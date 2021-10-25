@@ -1,34 +1,22 @@
 <!-- App favicon -->
 <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
     rel="stylesheet">
 <!-- Plugins css -->
-<link href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/wickedcss.min.css" rel="stylesheet" type="text/css"
-    id="wicked_css">
+{{-- <link href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/wickedcss.min.css" rel="stylesheet" type="text/css"
+    id="wicked_css"> --}}
 <link href="{{ asset('assets/css/bootstrap-purple.min.css') }}" rel="stylesheet" type="text/css"
     id="bs-default-stylesheet" />
 <link href="{{ asset('assets/css/app-purple.min.css') }}" rel="stylesheet" type="text/css"
     id="app-default-stylesheet" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> --}}
 <link href="{{ asset('assets/css/rokel.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
 <style>
-    /* *:focus {
-        outline: 0 !important;
-        box-shadow:
-            0 0 0 .2rem #fff,
-            0 0 0 .35rem #069 !important;
-    } */
-
-    /* *:focus-visible {
-        outline: 0 !important;
-        box-shadow: none !important;
-    } */
-
     .form-group {
         margin-bottom: 0.4rem !Important;
     }
@@ -37,264 +25,6 @@
         background-color: #eceff1 !Important;
     }
 
-    .rtgs_card {
-        box-shadow:
-            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-            0 12.5px 10px rgba(0, 0, 0, 0.06),
-            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-            0 100px 80px rgba(0, 0, 0, 0.12);
-        height: 100%;
-    }
-
-    .rtgs_card::before {
-        position: absolute;
-        content: '';
-        top: 30px;
-        left: -25px;
-        border-left: 13px solid transparent;
-        border-right: 13px solid #0561ad;
-        border-top: 13px solid #0561ad;
-        border-bottom: 13px solid transparent;
-    }
-
-
-
-    .rtgs_card::after {
-        position: absolute;
-        content: 'Please fill the form below';
-        top: -5px;
-        left: -25px;
-        padding: 0.5rem;
-        width: 20rem;
-        background: #0561ad;
-        color: #fff;
-        text-align: center;
-        box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
-
-    }
-
-    .success_message::before {
-        position: absolute;
-        content: '';
-        top: 30px;
-        left: -25px;
-        border-left: 13px solid transparent;
-        border-right: 13px solid #0561ad;
-        border-top: 13px solid #0561ad;
-        border-bottom: 13px solid transparent;
-    }
-
-    .success_message::after {
-        position: absolute;
-        content: 'Request Successful';
-        top: -5px;
-        left: -25px;
-        padding: 0.5rem;
-        width: 20rem;
-        background: #0561ad;
-        color: #fff;
-        text-align: center;
-        box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
-
-    }
-
-    .card_box_shadow {
-        box-shadow:
-            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-            0 12.5px 10px rgba(0, 0, 0, 0.06),
-            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-            0 100px 80px rgba(0, 0, 0, 0.12);
-        height: 100%;
-    }
-
-
-    .rtgs_card_right::before {
-        position: absolute;
-        display: block;
-        content: '';
-        top: 30px;
-        left: -25px;
-        border-left: 13px solid transparent;
-        border-right: 13px solid #0561ad;
-        border-top: 13px solid #0561ad;
-        border-bottom: 13px solid transparent;
-
-            {
-                {
-                --transform%20%3A%20rotate(45deg)%3B--
-            }
-        }
-    }
-
-    .success_card_right::after {
-        position: absolute;
-        content: 'Request Successful';
-        top: -5px;
-
-            {
-                {
-                --right%3A%20-14px%3B--
-            }
-        }
-
-        left: -25px;
-        padding: 0.5rem;
-        width: 10rem;
-        background:#0561ad;
-        color: #fff;
-        text-align: center;
-        font-family: 'Roboto',
-        sans-serif;
-        box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
-    }
-
-
-    .rtgs_card_right::after {
-        position: absolute;
-        content: 'Related Information';
-        top: -5px;
-
-            {
-                {
-                --right%3A%20-14px%3B--
-            }
-        }
-
-        left: -25px;
-        padding: 0.5rem;
-        width: 10rem;
-        background:#0561ad;
-        color: #fff;
-        text-align: center;
-        font-family: 'Roboto',
-        sans-serif;
-        box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
-    }
-
-    .rtgs_summary_card::before {
-        position: absolute;
-        content: '';
-        top: 30px;
-        left: -25px;
-        border-left: 13px solid transparent;
-        border-right: 13px solid #0561ad;
-        border-top: 13px solid #0561ad;
-        border-bottom: 13px solid transparent;
-    }
-
-    .rtgs_summary_card::after {
-        position: absolute;
-        content: 'Transfer Summary';
-        top: -5px;
-
-            {
-                {
-                --right%3A%20-14px%3B--
-            }
-        }
-
-        left: -25px;
-        padding: 0.5rem;
-        width: 20rem;
-        background:#0561ad;
-        color: #fff;
-        text-align: center;
-        font-family: 'Roboto',
-        sans-serif;
-        box-shadow: 4px 4px 15px rgba(26, 35, 126, 0.2);
-    }
-
-    .rtgs_summary_card {
-        box-shadow:
-            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-            0 12.5px 10px rgba(0, 0, 0, 0.06),
-            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-            0 100px 80px rgba(0, 0, 0, 0.12);
-
-    }
-
-        {
-            {
-            --CSS%20FOR%20QR--
-        }
-    }
-
-    .qr_card {
-        box-shadow:
-            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-            0 12.5px 10px rgba(0, 0, 0, 0.06),
-            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-            0 100px 80px rgba(0, 0, 0, 0.12);
-    }
-
-    .qr_card::before {
-        position: absolute;
-        content: '';
-        top: 30px;
-        left: -25px;
-        border-left: 13px solid transparent;
-        border-right: 13px solid #0561ad;
-        border-top: 13px solid #0561ad;
-        border-bottom: 13px solid transparent;
-    }
-
-    .qr_card::after {
-        position: absolute;
-        content: 'Generate QR to receive Payments';
-        top: -5px;
-        left: -25px;
-        padding: 0.5rem;
-        width: 20rem;
-        background: #0561ad;
-        color: #fff;
-        text-align: center;
-        font-family: 'Roboto', sans-serif;
-        box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
-    }
-
-    .rtgs_card_statement {
-        box-shadow:
-            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-            0 12.5px 10px rgba(0, 0, 0, 0.06),
-            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-            0 100px 80px rgba(0, 0, 0, 0.12);
-        height: 100%;
-    }
-
-    .rtgs_card_statement::before {
-        position: absolute;
-        content: '';
-        top: 30px;
-        left: -25px;
-        border-left: 13px solid transparent;
-        border-right: 13px solid #0561ad;
-        border-top: 13px solid #0561ad;
-        border-bottom: 13px solid transparent;
-    }
-
-    .rtgs_card_statement::after {
-        position: absolute;
-        content: 'Account Statement';
-        top: -5px;
-        left: -25px;
-        padding: 0.5rem;
-        width: 20rem;
-        background: #0561ad;
-        color: #fff;
-        text-align: center;
-        box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
-
-    }
 
     .site-shadow {
         box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
@@ -507,28 +237,6 @@
     .div-card {
         background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));
         box-shadow: 4px 4px 15px rgb(26 35 126 / 20%);
-    }
-
-    body {
-        font-size: .9rem;
-    }
-
-    select {
-        font: 400 0.9rem;
-    }
-
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
-
-        {
-            {
-            -- body {
-                font-family: 'Open Sans', sans-serif;
-                font-weight: 600;
-                font-size: 40px;
-            }
-
-            --
-        }
     }
 
     .demo {

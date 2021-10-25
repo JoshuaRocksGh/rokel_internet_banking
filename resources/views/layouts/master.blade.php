@@ -25,38 +25,18 @@
                     env('APPLICATION_CUSTOM_COLOR')
                 }
             }
-
-            ;
         }
 
-        .purple-color {
-            color: ##0561ad !important;
-        }
-
-        .btn-color {
-            background-color: #0561ad;
-            color: white;
-        }
-
-
-        .custom-color-gold {
-            background-color: #a19472;
-        }
-
-        .custom-text-color-gold {
-            color: #a19472;
-        }
-
-
+        /* 
 
         .btn-primary {
             color: #fff;
             box-shadow: 0 0 0 0 rgb(6 55 195 / 70%);
-        }
+        } */
 
-        .p-text {
+        /* .p-text {
             color: white;
-        }
+        } */
 
         .card-icon {
             color: white;
@@ -139,7 +119,7 @@
 
     @include('snippets.script')
 
-    @include('extras.datatables')
+    {{-- @include('extras.datatables') --}}
 
 </head>
 
@@ -156,10 +136,7 @@
     </div> <!-- End Preloader-->
 
     <!-- Begin page -->
-    {{-- <div id="wrapper" style="zoom: 0.9;"> --}}
     <div id="wrapper">
-        {{-- @include('sweetalert::alert') --}}
-
         @include('snippets.nav')
 
         @include('snippets.side-bar')
@@ -172,11 +149,25 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
-    </script>
+    {{-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
+    </script> --}}
 
     @yield('scripts')
-
+    <script>
+        $('#sidebar_logout').on("click", (e) => {
+    e.preventDefault()
+    Swal.fire({
+         title: "Logout successful!",
+         html: 'Redirecting ...',
+         icon: 'success',
+         showConfirmButton: false,
+        })
+        setTimeout(() => {
+            window.location.replace('logout')
+        }, 1000);
+      })
+    
+    </script>
 </body>
 
 </html>

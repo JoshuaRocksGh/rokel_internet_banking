@@ -4,15 +4,14 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>BANKING</title>
+    <title>RC BANKING</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
+    <meta content="Internet Banking Application" name="Internet Banking Portal for Rokel Commercial Bank." />
+    <meta content="Banking Application" name="Union Systems Global" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
-
 
 
     @include('snippets.style')
@@ -20,7 +19,13 @@
 
     <style type="text/css">
         .navbar-custom {
-            background-color: {{ env('APPLICATION_CUSTOM_COLOR') }};
+            background-color: {
+                    {
+                    env('APPLICATION_CUSTOM_COLOR')
+                }
+            }
+
+            ;
         }
 
         .purple-color {
@@ -97,7 +102,6 @@
         #datatable-buttons_filter {
             float: right;
         }
-
     </style>
 
 
@@ -127,7 +131,6 @@
             overflow-y: hidden;
 
         }
-
     </style>
 
 

@@ -66,4 +66,56 @@ class SameBankController extends Controller
             return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
         }
     }
+
+    public function corporate_same_bank(Request $request)
+    {
+        $base_response = new BaseResponse();
+        $authToken = session()->get('userToken');
+        $userID = session()->get('userId');
+        $userAlias = session()->get('userAlias');
+        $customerPhone = session()->get('customerPhone');
+        $customerNumber = session()->get('customerNumber');
+        $userMandate = session()->get('userMandate');
+
+        $from_account = $request->fromAccount;
+        $to_account = $request->beneficiaryAccount;
+
+        $data = [
+            "account_no" => $from_account,
+            "authToken" => $authToken,
+            "channel" => 'NET',
+            "destinationAccountId" => $to_account,
+            "beneficiaryName" => $request->beneficiaryName,
+            "currency" => $request->currency,
+            "account_mandate" => $request->mandate,
+            "amount" => $request->amount,
+            "narration" => $request->purpose,
+            "postBy" => $userID,
+            // "appBy" => '';
+            "customerTel" => $customerPhone,
+            "transBy" => $userAlias,
+            "customer_no" => $customerNumber,
+            "user_alias" => $userAlias,
+            "user_mandate" => $userMandate,
+            "expense_type" => $request->category,
+            "documentRef" => strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 2) . time()),
+        ];
+
+        try {
+            $response = Http::post(env('CIB_API_BASE_URL') . "same-bank-gone-for-pending", $data);
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+
+
+        }
+    }
 }

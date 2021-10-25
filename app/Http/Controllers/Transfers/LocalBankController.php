@@ -5,99 +5,70 @@ namespace App\Http\Controllers\Transfers;
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Http\Request;
 
 class LocalBankController extends Controller
 {
-    //
-
-    // public function other_local_bank()
-    // {
-    //     return view('pages.transfer.other_local_bank_');
-    // }
-
-    public function ach()
-    {
-        return view('pages.transfer.ach');
-    }
 
     public function local_bank()
     {
         return view('pages.transfer.local_bank');
     }
-    // public function rtgs_()
-    // {
-    //     return view('pages.transfer.rtgs_new');
-    // }
 
-    public function transfer_to_other_bank_beneficiary_api(Request $req)
+    public function localBankTransfer(Request $request)
     {
-        $validator = Validator::make($req->all(), [
-            'from_account' => 'required',
-            'to_account' => 'required',
-            'bank_name' => 'required',
-            'amount' => 'required',
-            'category' => 'required',
-            'currency' => 'required',
-            'bank_name' => 'required',
-            'beneficiaryName' => 'required',
-            'naration' => 'required'
-        ]);
 
-        // return [
-        //     'responseCode' => '000',
-        //     'message' => 'Money transferred successfully',
-        //     'data' => null
-        // ];
-
-        // return $req;
 
         $base_response = new BaseResponse();
 
         // VALIDATION
-        if ($validator->fails()) {
-
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
-        // return $req;
-
-
-
-        $user_pin = $req->secPin;
-
+        // return $request ;
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $data = [
 
-            "amount" => (float) $req->amount,
+
+        $clientIp = request()->ip();
+        $mode = $request->mode;
+        if ($mode == "ACH") {
+            $url = 'achBankTransfer';
+        } else if ($mode == "RTGS") {
+            $url = 'rtgsBankTransfer';
+        } else {
+            return $base_response->api_response('500', "Invalid Transaction Type",  NULL); // return API BASERESPONSE
+        }
+
+        $data = [
+            "amount" => (float)$request->amount,
             "authToken" => $authToken,
-            "bankName" => $req->bank_name,
-            "beneficiaryAddress" => null,
-            "beneficiaryName" => $req->beneficiaryName,
-            "creditAccount" => $req->to_account,
-            "debitAccount" => $req->from_account,
-            "deviceIp" => null,
-            "secPin" => $user_pin,
-            "transactionDetails" => $req->naration,
-            "transactionId" => null,
-            "transferCurrency" => $req->currency,
-            "payment_date" => $req->payment_date
+            "bankName" => $request->bankName,
+            "beneficiaryAddress" => $request->beneficiaryAddress,
+            "beneficiaryName" => $request->beneficiaryName,
+            "brand" => "a",
+            "channel" => "a",
+            "country" => "a",
+            "creditAccount" => $request->toAccount,
+            "debitAccount" => $request->fromAccount,
+            "deviceId" => "a",
+            "deviceIp" => $clientIp,
+            "deviceName" => "a",
+            "entrySource" => 'MOB',
+            "expenseType" => $request->category,
+            "manufacturer" => "a",
+            "secPin" => $request->secPin,
+            "transactionDetails" => $request->purpose,
+            "transferCurrency" => $request->currency,
+            "userName" => $userID,
+            "email" => $request->beneficiaryEmail,
 
         ];
-
-
-        // return $data ;
+        return $data;
         try {
-
-            $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
-
-            // return $response;
-
+            $response = Http::post(env('API_BASE_URL') . "transfers/$url", $data);
             $result = new ApiBaseResponse();
             return $result->api_response($response);
         } catch (\Exception $e) {
@@ -114,76 +85,51 @@ class LocalBankController extends Controller
         }
     }
 
-    public function transfer_to_other_bank_onetime_beneficiary_api(Request $req)
+    public function corporate_saved_beneficiary(Request $request)
     {
-        $validator = Validator::make($req->all(), [
-            'from_account' => 'required',
-            'beneficiary_name' => 'required',
-            'to_account' => 'required',
-            'bankName' => 'required',
-            'account_currency' => 'required',
-            // 'beneficiary_email' => 'required' ,
-            'beneficiary_phone' => 'required',
-            'amount' => 'required',
-            'category' => 'required',
-            'naration' => 'required',
-            'secPin' => 'required',
-            'naration' => 'required'
-
-        ]);
-
-
         $base_response = new BaseResponse();
-
-        // VALIDATION
-        if ($validator->fails()) {
-
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
-        return $req;
-
-
-        $user_pin = $req->secPin;
-
-        // return $user_pin;
-        // if ($user_pin != '123456') {
-
-        //     return $base_response->api_response('999', 'Incorrect Pin',  null); // return API BASERESPONSE
-
-        // }
-
-
+        $beneficiary_type = $request->beneficiary_type;
+        $bank_name = $request->bank_name;
+        $explode_bank_name = explode('||', $bank_name);
+        $bankName = $explode_bank_name[0];
+        $this_bank = trim($bankName);
+        $client_ip = request()->ip();
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
+        $userAlias = session()->get('userAlias');
+        $customerPhone = session()->get('customerPhone');
+        $customerNumber = session()->get('customerNumber');
+        $userMandate = session()->get('userMandate');
 
+        if ($beneficiary_type == "ACH") {
+            $url_endpoint = 'ach-bank-gone-for-pending';
+        } else if ($beneficiary_type == "RTGS") {
+            $url_endpoint = 'rtgs-bank-gone-for-pending';
+        } else if ($beneficiary_type == "INSTANT") {
+            $url_endpoint = 'instantBankTransfer';
+        } else {
+            $url_endpoint = '';
+        }
         $data = [
-
-            "amount" => (float) $req->amount,
-            "authToken" => $authToken,
-            "bankName" => $req->bankName,
-            "beneficiaryAddress" => null,
-            "beneficiaryName" => $req->alias_name,
-            "creditAccount" => $req->to_account,
-            "debitAccount" => $req->from_account_,
-            "deviceIp" => null,
-            "secPin" => $user_pin,
-            "transactionDetails" => null,
-            "transactionId" => null,
-            "transferCurrency" => $req->currency_,
-            "payment_date" => $req->payment_date
-
-
-
+            "customer_no" => $customerNumber,
+            "user_id" => $userID,
+            "user_alias" => $userAlias,
+            "account_mandate" => $request->account_mandate,
+            "account_no" => $request->from_account,
+            "bank_code" => null,
+            "bank_name" => $this_bank,
+            "bene_account" => $request->to_account,
+            "bene_name" => $request->beneficiary_name,
+            "bene_address" => $request->beneficiary_address,
+            "bene_tel" => null,
+            "amount" => $request->amount,
+            "currency" => $request->currency,
+            "currency_iso" => $request->currency_iso,
+            "narration" => $request->purpose,
+            "expense_type" => $request->category,
         ];
-        // return $data ;
-
-
         try {
-
-            $response = Http::post(env('API_BASE_URL') . "transfers/otherBank", $data);
-
-            // return $response;
-
+            $response = Http::post(env('CIB_API_BASE_URL') . $url_endpoint, $data);
             $result = new ApiBaseResponse();
             return $result->api_response($response);
         } catch (\Exception $e) {
@@ -194,7 +140,7 @@ class LocalBankController extends Controller
                 'message' => (string) $e->getMessage()
             ]);
 
-            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', 'SERVER ERROR',  NULL); // return API BASERESPONSE
 
 
         }

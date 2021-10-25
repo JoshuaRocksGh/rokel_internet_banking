@@ -2,6 +2,8 @@
 
 return [
 
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -13,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Rokel Internet Banking'),
 
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
-
+    'cooporate' => (bool) env("APP_COOPORATE", false),
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

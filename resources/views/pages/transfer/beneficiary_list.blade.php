@@ -85,18 +85,18 @@ $currentPath = "Transfer Beneficiary";
                 <h2 class="font-17 text-left font-weight-bold text-capitalize mb-3 text-primary">select Beneficiary type
                 </h2>
                 <div class="row mb-4 justify-content-center mx-auto" style="max-width: 750px;">
-                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type current-type display-card bg-same-bank"
+                    <div class="col-md-3 mb-2 mx-2 mx-lg-3  beneficiary-type current-type display-card bg-same-bank"
                         data-value="SAB" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>Same Bank</span>
                     </div>
 
-                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type display-card  bg-other-bank"
+                    <div class="col-md-3 mb-2 mx-2 mx-lg-3 beneficiary-type display-card  bg-other-bank"
                         data-value="OTB" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>Other Local Bank</span>
                     </div>
-                    <div class="col-md-3 mb-2 mx-2 mx-lg-4 beneficiary-type display-card  bg-international-bank"
+                    <div class="col-md-3 mb-2 mx-2 mx-lg-3 beneficiary-type display-card  bg-international-bank"
                         data-value="INTB" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>International Bank</span>
@@ -110,42 +110,27 @@ $currentPath = "Transfer Beneficiary";
                     <button type="button" class="btn px-3 btn-sm font-14 font-weight-bold btn-info btn-rounded"
                         id="add_beneficiary"><i class="pr-2 fa fa-user-plus"></i>Add</button>
                 </div>
-                {{-- <div class="row justify-content-end pr-4">
-                    <div class="dropdown drop-left text-sm-right">
-                        <button type="button" class="btn btn-primary dropdown-toggle btn-rounded" data-toggle="dropdown"
-                            id="dropdownMenuButton"> Add
-                            Beneficiary </button>
-                        <div class="dropdown-menu" aria-l+abelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ url('add-same-bank-beneficiary') }}">Same
-                Bank</a>
-                <a class="dropdown-item" href="{{ url('add-local-bank-beneficiary') }}">Other
-                    Local Bank
-                </a>
-                <a class="dropdown-item" href="{{ url('add-international-bank-beneficiary') }}">International
-                    Bank </a>
-            </div>
-        </div>
-    </div> --}}
-    <div class="p-3 mt-3 rounded-lg m-2 customize_card table-responsive" id="transaction_summary">
-        <table id="beneficiary_list"
-            class="table table-bordered table-striped table-centered dt-responsive w-100 mb-0 beneficiary_list_display">
-            <thead>
-                <tr class="bg-info text-white">
-                    <th> <b> Beneficiary Name </b> </th>
-                    <th> <b> Account Number </b> </th>
-                    {{-- <th> <b>  </b> </th> --}}
-                    <th> <b> Beneficiary Email </b> </th>
-                    <th> <b> Beneficiary Bank </b> </th>
-                    <th class="text-center"> <b>Actions </b> </th>
-                </tr>
-            </thead>
 
-        </table>
-    </div>
-</div> <!-- end card body-->
-</div>
-{{-- <div class="col-md-1"></div> --}}
-</div> <!-- end card-body -->
+                <div class="p-3 mt-3 rounded-lg m-2 customize_card table-responsive" id="transaction_summary">
+                    <table id="beneficiary_list"
+                        class="table table-bordered table-striped table-centered dt-responsive w-100 mb-0 beneficiary_list_display">
+                        <thead>
+                            <tr class="bg-info text-white">
+                                <th> <b> Beneficiary Name </b> </th>
+                                <th> <b> Account Number </b> </th>
+                                {{-- <th> <b>  </b> </th> --}}
+                                <th> <b> Beneficiary Email </b> </th>
+                                <th> <b> Beneficiary Bank </b> </th>
+                                <th class="text-center"> <b>Actions </b> </th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div> <!-- end card body-->
+        </div>
+        {{-- <div class="col-md-1"></div> --}}
+    </div> <!-- end card-body -->
 </div> <!-- end col -->
 
 
@@ -154,6 +139,7 @@ $currentPath = "Transfer Beneficiary";
 @endsection
 
 @section('scripts')
+@include("extras.datatables")
 <script>
     const noDataAvailable =   {!! json_encode($noDataAvailable) !!}
 </script>

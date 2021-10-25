@@ -155,6 +155,7 @@ $currentPath = "Tansfer Status";
 @endsection
 
 @section('scripts')
+@include("extras.datatables")
 <script>
     const customerNumber = @json(session()->get('customerNumber'));
 </script>

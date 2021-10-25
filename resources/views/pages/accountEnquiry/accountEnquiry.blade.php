@@ -217,9 +217,8 @@
 @endsection
 
 @section('scripts')
+@include("extras.datatables")
 
-
-{{-- <script src="{{ asset('assets/js/pages/accounts/datatables.init.js') }}" defer></script> --}}
 <script src="{{ asset("assets/js/pages/accounts/accountEnquiry.js") }}"></script>
 
 @endsection

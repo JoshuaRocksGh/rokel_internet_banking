@@ -11,25 +11,20 @@ use App\Http\Controllers\AccountServices\ComplaintController;
 use App\Http\Controllers\AccountServices\KYC\KycController as KYCKycController;
 use App\Http\Controllers\AccountServices\StatementRequestController;
 use App\Http\Controllers\AccountServices\StopChequeController;
-use App\Http\Controllers\API\Transfer\InternationalBankController as TransferInternationalBankController;
-use App\Http\Controllers\API\Transfer\LocalBankController as APITransferLocalBankController;
-use App\Http\Controllers\API\Transfer\OwnAccountController as TransferOwnAccountController;
-use App\Http\Controllers\API\Transfer\SameBankController as APITransferSameBankController;
 use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\KycController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
-use App\Http\Controllers\BENEFICIARY\Payment\AirtimePaymentController;
-use App\Http\Controllers\BENEFICIARY\Payment\MobileMoneyBeneficiaryController;
-use App\Http\Controllers\BENEFICIARY\Payment\MobileMoneyController as PaymentMobileMoneyController;
-use App\Http\Controllers\BENEFICIARY\Payment\PaymentTypesController;
-use App\Http\Controllers\BENEFICIARY\Transfer\DeleteBeneficiaryController;
-use App\Http\Controllers\BENEFICIARY\Transfer\EditBeneficiaryController;
-use App\Http\Controllers\BENEFICIARY\Transfer\EditLocalBankController;
-use App\Http\Controllers\BENEFICIARY\Transfer\EditSameBankController;
-use App\Http\Controllers\BENEFICIARY\Transfer\InternationalBankController;
-use App\Http\Controllers\BENEFICIARY\Transfer\LocalBankController as TransferLocalBankController;
-use App\Http\Controllers\BENEFICIARY\Transfer\TransferBeneficiaryController;
+use App\Http\Controllers\Payments\Beneficiary\AirtimePaymentController;
+use App\Http\Controllers\Payments\Beneficiary\MobileMoneyBeneficiaryController;
+use App\Http\Controllers\Payments\Beneficiary\MobileMoneyController as PaymentMobileMoneyController;
+use App\Http\Controllers\Payments\Beneficiary\PaymentTypesController;
+use App\Http\Controllers\Transfer\Beneficiary\EditBeneficiaryController;
+use App\Http\Controllers\Transfer\Beneficiary\EditLocalBankController;
+use App\Http\Controllers\Transfer\Beneficiary\EditSameBankController;
+use App\Http\Controllers\Transfer\Beneficiary\InternationalBankController;
+use App\Http\Controllers\Transfer\Beneficiary\LocalBankController as TransferLocalBankController;
+use App\Http\Controllers\Transfer\Beneficiary\TransferBeneficiaryController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Budgeting\SpendingStaticsController;
@@ -70,7 +65,7 @@ use App\Http\Controllers\Transfers\OwnAccountController;
 use App\Http\Controllers\Transfers\SameBankController;
 use App\Http\Controllers\Transfers\SchedulePayment\SchedulePaymentController;
 use App\Http\Controllers\Transfers\StandingOrderController;
-use App\Http\Controllers\TransferStatus\TransferStatusController;
+use App\Http\Controllers\Transfers\TransferStatusController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SelfEnrollController;
 /*
@@ -110,45 +105,11 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'email_reset_pa
 //Route to control the change-password screen
 Route::get('/change-password', [ResetPasswordController::class, 'change_password'])->name('change-password');
 
-
-// Route::get('/reset-password', [loginController::class, 'reset_password'])->name('reset-password');
-
-// Route::get('/forget-password', [loginController::class, 'forget_password'])->name('forget-password');
-
-
-//Route to control the reset-success screen
-// Route::get('/reset-success', [ResetPasswordController::class, 'reset_success'])->name('reset-success');
-// Transfer Routes
-// Route::get('/transfer', [transferController::class, 'transfer'])->name('transfer');
 Route::get('/add-beneficiary/own-account-beneficiary', [transferController::class, 'own_account_beneficiary'])->name('own-account-beneficiary');
-
-
-
-// OWN ACCOUNT
-Route::get('/get-my-account', [TransferOwnAccountController::class, 'get_my_accounts'])->name('get-my-account');
-Route::post('/own-account-transfer-api', [TransferOwnAccountController::class, 'own_account_transfer']);
-
-// //CORPORATE OWN ACCOUNT API
-// Route::post('/corporate-own-account-api', [TransferOwnAccountController::class, 'corporate_own_account_transfer'])->name('corporate-own-account-api');
-// Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
-// Route::post('/corporate-saved-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_saved_beneficiary'])->name('corporate-saved-local-bank-transfer-api');
-// Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary'])->name('corporate-onetime-local-bank-transfer-api');
-// // Route::post('/corporate-same-bank-api', [SameBankController::class, 'corporate_same_bank'])->name('corporate-same-bank-api');
-
-
-//Standing order page
-
-Route::post('/submit-own-account-transfer', [OwnAccountController::class, 'submit_own_account_transfer'])->name('submit-own-account-transfer');
-
-// SAME ACCOUNT
-// Route::get('/same-bank', [SameBankController::class, 'same_bank'])->name('same-bank');
 
 
 // MULTIPLE TRANSFERS
 Route::get('/multiple-transfers', [MultipleTransfersController::class, 'index'])->name('multiple-transfers');
-
-
-// QR TRANSFERS
 
 // BULK TRANSFERS
 Route::post('/upload_', [BulkUploadBulkUploadsController::class, 'upload_'])->name('upload_');
@@ -182,8 +143,6 @@ Route::post('/get-bulk-detail-list-for-approval', [PendingController::class, 'ge
 
 
 // LOCAL BANK
-// Route::get('/other-local-bank', [LocalBankController::class, 'other_local_bank'])->name('other-local-bank');
-// Route::get('/local-bank_', [LocalBankController::class, 'rtgs_'])->name('local-bank_');
 Route::get('/ach', [LocalBankController::class, 'ach'])->name('ach');
 
 
@@ -391,18 +350,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/transfer-status', [TransferStatusController::class, 'transfer_status'])->name('transfer-status');
 
     //Add Beneficiary
-    Route::get('/add-beneficiary', [transferController::class, 'add_beneficiary'])->name('add-beneficiary');
-
-    Route::get('/add-same-bank-beneficiary', [transferController::class, 'same_bank_beneficiary'])->name('add-same-bank-beneficiary');
-
-    Route::get('/add-local-bank-beneficiary', [transferController::class, 'local_bank'])->name('add-local-bank-beneficiary');
-
-    Route::get('/add-international-bank-beneficiary', [transferController::class, 'international_bank'])->name('add-international-bank-beneficiary');
-
     Route::get('/beneficiary-list', [transferController::class, 'beneficiary_list'])->name('beneficiary-list');
-
-    Route::get('/edit-same-bank-beneficiary', [TransferSameBankController::class, 'edit_same_bank_beneficiary'])->name('edit-same-bank-beneficiary');
-
     Route::get('/local-bank', [LocalBankController::class, 'local_bank'])->name('local-bank');
 
 
@@ -521,7 +469,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     //Middleware closing tag below
 });
 
-Route::get('/get-expenses', [HomeController::class, 'get_expenses'])->name('get-expenses');
+// Route::get('/get-expenses', [HomeController::class, 'get_expenses'])->name('get-expenses');
 
 Route::get('/logout', [LogoutController::class, 'logout_'])->name('logout');
 
@@ -552,26 +500,26 @@ Route::get('get-payment-types-api', [FunctionsController::class, 'payment_types'
 
 
 // >>>>>>>>>>>>>>>>>>>>>>>>> API ROUTES <<<<<<<<<<<<<<<<<<<<<<<<<<
+Route::get('/get-my-account', [OwnAccountController::class, 'get_my_accounts']);
 
 // Transfers
 Route::get('/get-transfer-beneficiary-api', [FunctionsController::class, 'get_transfer_beneficiary'])->name('get-transfer-beneficiary-api');
 Route::post('/same-bank-transfer-api', [SameBankController::class, 'transfer_to_beneficiary']);
-Route::get('/get-my-account', [APITransferSameBankController::class, 'beneficiary_payment_from_account'])->name('get-my-account');
-Route::get('/get-same-bank-beneficiary', [APITransferSameBankController::class, 'beneficiary_payment_to_account'])->name('get-same-bank-beneficiary');
-// Route::get('standing-order',[])
-
-// OTHER LOCAL BANK
-// Route::post('/saved-beneficiary-local-bank-transfer-api', [APITransferLocalBankController::class, 'saved_beneficiary_transfer'])->name('saved-beneficiary-local-bank-transfer-api');
-Route::post('/local-bank-transfer-api', [APITransferLocalBankController::class, 'localBankTransfer'])->name('onetime-beneficiary-local-bank-api');
-
-// INTERNATIONAL BANK TRANSFER
+Route::post('/local-bank-transfer-api', [LocalBankController::class, 'localBankTransfer']);
 Route::post('/international-bank-transfer-api', [TransferInternationalBankController::class, 'international_bank_transfer'])->name('international-bank-transfer-api');
+Route::post('/own-account-transfer-api', [OwnAccountController::class, 'own_account_transfer']);
+
+//CORPORATE OWN ACCOUNT API
+Route::post('/corporate-own-account-transfer-api', [OwnAccountController::class, 'corporate_own_account_transfer']);
+Route::post('/corporate-same-bank-transfer-api', [SameBankController::class, 'corporate_same_bank']);
+Route::post('/corporate-saved-local-bank-transfer-api', [LocalBankController::class, 'corporateLocalBankTransfer']);
+Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary']);
+
+
 
 // Transfers Add Beneficiary
 Route::post('/save-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'saveBeneficiary']);
 Route::delete('/delete-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'deleteBeneficiary']);
-// Route::post('add-local-bank-beneficiary-api', [TransferLocalBankController::class, 'local_bank'])->name('add-local-bank-beneficiary-api');
-// Route::get('get-local-bank-beneficiary-api', [TransferLocalBankController::class, 'currency_list'])->name('get-local-bank-beneficiary-api');
 
 // EDIT BENEFICIARY
 Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->name('edit-beneficiary');
@@ -594,10 +542,6 @@ Route::post('add-mobile-money-beneficiary-api', [MobileMoneyBeneficiaryControlle
 
 //=======EDIT PAYMENT BENEFICARY
 Route::get('payment-beneficiary-list-api', [paymentController::class, 'paymentBeneficiaries']);
-
-Route::post('international-bank-beneficiary-api', [InternationalBankController::class, 'international_bank_'])->name('international-bank-beneficiary-api');
-Route::post('international-bank-transfer-beneficiary-api', [APITransferLocalBankController::class, 'international_bank_transfer_beneficiary'])->name('international-bank-transfer-beneficiary-api');
-Route::post('international-bank-onetime-api', [APITransferLocalBankController::class, 'international_bank_onetime_transfer'])->name('international-bank-onetime-api');
 
 // PAYMENT API'S
 Route::post('mobile-money-api', [PaymentMobileMoneyController::class, 'mobile_money'])->name('mobile-money-api');

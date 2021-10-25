@@ -317,6 +317,7 @@ $(() => {
         fromAccount.accountNumber = accountData[2].trim();
         fromAccount.currency = accountData[3].trim();
         fromAccount.accountBalance = parseFloat(accountData[4].trim());
+        fromAccount.accountMandate = accountData[5];
         // set summary values for display
         // $(".display_from_account_type").text(fromAccount.type);
         $(".display_from_account_name").text(fromAccount.name);
@@ -586,6 +587,15 @@ $(() => {
         validationsCompleted = true;
     });
 
+    function corporateSpecific() {
+        console.log(transferInfo);
+        const endPoint =
+            "corporate-" +
+            transferType.toLowerCase().trim().replace(" ", "-") +
+            "-transfer-api";
+        makeTransfer(endPoint, transferInfo);
+    }
+
     $("#confirm_transfer_button").on("click", (e) => {
         e.preventDefault();
         if (!$("#terms_and_conditions").is(":checked")) {
@@ -598,6 +608,10 @@ $(() => {
         }
         console.log(transferInfo);
         confirmationCompleted = true;
+        if (ISCORPORATE) {
+            corporateSpecific();
+            return;
+        }
         $("#centermodal").modal("show");
     });
 

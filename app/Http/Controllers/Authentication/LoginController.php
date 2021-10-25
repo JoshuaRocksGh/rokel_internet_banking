@@ -13,12 +13,31 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
-
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Log;
 
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
     public function login()
     {
@@ -37,26 +56,9 @@ class LoginController extends Controller
 
     public function login_(Request $req)
     {
-
-        $validator = Validator::make($req->all(), [
-            'user_id' => 'required',
-            'password' => 'required'
-        ]);
-
         $base_response = new BaseResponse();
-
-        // VALIDATION
-        if ($validator->fails()) {
-
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
-        // return $req;
-
-        // return $req;
         $user_id = strtoupper($req->user_id);
         $password = $req->password;
-
-        // return $user_id . " - " . $password;
         $data =  [
             "appVersion" => "string",
             "brand" => "string",
@@ -69,74 +71,60 @@ class LoginController extends Controller
             "password" => $password,
             "userId" => $user_id
         ];
-
-        // return $data;
-
-        // dd(env('API_BASE_URL') . "/user/login");
-
-
         try {
 
             $response = Http::post(env('API_BASE_URL') . "user/login", $data);
 
-            if ($response->ok()) { // API response status code is 200
-
-                $result = json_decode($response->body());
-
-
-                if ($result->responseCode == '000') { // API responseCode is 000
-                    $userDetail = $result->data;
-                    Log::alert($response);
-                    if ($userDetail->customerType == 'C') {
-                        return  $base_response->api_response('900', 'Corporate account, use our corporate platform instead',  NULL);
-                    }
-                    session([
-                        "userId" => $userDetail->userId,
-                        "userAlias" => $userDetail->userAlias,
-                        "setPin" => $userDetail->setPin,
-                        "changePassword" => $userDetail->changePassword,
-                        "email" => $userDetail->email,
-                        "firstTimeLogin" => $userDetail->firstTimeLogin,
-                        "userToken" => $userDetail->userToken,
-                        "customerNumber" => $userDetail->customerNumber,
-                        "customerPhone" => $userDetail->customerPhone,
-                        // "c_type" => $userDetail->c_type,
-                        "lastLogin" => $userDetail->lastLogin,
-                        "customerType" => $userDetail->customerType,
-                        "checkerMaker" => $userDetail->checkerMaker,
-                        // "menus" => $userDetail->menus,
-                        "customerAccounts" => $userDetail->accountsList,
-                        // "checkerMaker" => 'M',
-                        "userMandate" => 'A',
-                        "headers" => [
-                            "x-api-key" => "123",
-                            "x-api-secret" => "123",
-                            "x-api-source" => "123",
-                            "x-api-token" => "123"
-                        ]
-
-                    ]);
-
-                    //   return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
-                    return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-                } else {  // API responseCode is not 000
-
-                    return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-                }
-            } else { // API response status code not 200
-
-                // DB::table('tb_error_logs')->insert([
-                //     'platform' => 'ONLINE_INTERNET_BANKING',
-                //     'user_id' => 'AUTH',
-                //     'code' => $response->status(),
-                //     'message' => $response->body()
-                // ]);
-
+            if (!$response->ok()) { // API response status code is 200
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
             }
+            $result = json_decode($response->body());
+
+
+            if (!$result->responseCode == '000') {
+                // API responseCode is not 000
+                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+            } // API responseCode is 000
+
+            $userDetail = $result->data;
+            if (!config("app.cooporate") && $userDetail->customerType === 'C') {
+                return  $base_response->api_response('900', 'Corporate account, use our corporate platform instead',  NULL);
+            } elseif (config("app.cooporate") && $userDetail->customerType !== 'C') {
+                return  $base_response->api_response('900', 'Personal account, use our personal internet banking instead',  NULL);
+            }
+
+            session([
+                "userId" => $userDetail->userId,
+                "userAlias" => $userDetail->userAlias,
+                "setPin" => $userDetail->setPin,
+                "changePassword" => $userDetail->changePassword,
+                "email" => $userDetail->email,
+                "firstTimeLogin" => $userDetail->firstTimeLogin,
+                "userToken" => $userDetail->userToken,
+                "customerNumber" => $userDetail->customerNumber,
+                "customerPhone" => $userDetail->customerPhone,
+                // "c_type" => $userDetail->c_type,
+                "lastLogin" => $userDetail->lastLogin,
+                "customerType" => $userDetail->customerType,
+                "checkerMaker" => $userDetail->checkerMaker,
+                // "menus" => $userDetail->menus,
+                "customerAccounts" => $userDetail->accountsList,
+                // "checkerMaker" => 'M',
+                "userMandate" => 'A',
+                "headers" => [
+                    "x-api-key" => "123",
+                    "x-api-secret" => "123",
+                    "x-api-source" => "123",
+                    "x-api-token" => "123"
+                ]
+
+            ]);
+
+            //   return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
+            return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+
+
         } catch (\Exception $e) {
 
             DB::table('tb_error_logs')->insert([

@@ -2,7 +2,7 @@ a:hover {
     text-decoration: none !important;
 }
 
-.bg-success {
+/* .bg-success {
     background-color: #1abc9c !important;
 }
 
@@ -19,8 +19,7 @@ a:hover {
 }
 .text-primary {
     color: #0561ad !important;
-    /* color: #0072cf !important; */
-}
+} */
 .form-control:focus {
     /* border-color: #17a2b8; */
     border-color: #ced4da;
@@ -37,10 +36,9 @@ select:hover {
 .input-group-text {
     font-size: 0.9rem;
 }
-body {
-    /* zoom: 0.96; */
+/* body {
     font-family: Roboto;
-}
+} */
 .tab-pane {
     animation: slide-right 300ms ease-out;
 }
