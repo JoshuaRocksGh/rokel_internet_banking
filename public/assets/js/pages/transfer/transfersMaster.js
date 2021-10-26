@@ -1,4 +1,5 @@
 function makeTransfer(url, data) {
+    siteLoading("show");
     $.ajax({
         type: "POST",
         url: url,
@@ -9,6 +10,8 @@ function makeTransfer(url, data) {
         },
         success: function (response) {
             console.log(response);
+            siteLoading("hide");
+
             if (response.responseCode == "000") {
                 swal.fire({
                     title: "Transfer successful!",
@@ -35,6 +38,11 @@ function makeTransfer(url, data) {
                 $("#related_information_display").show();
                 $(".success_gif").hide();
             }
+        },
+        error: function (error) {
+            // console.log(error.statusText, );
+            siteLoading("hide");
+            toaster(error.statusText, error);
         },
     });
 }
@@ -329,7 +337,7 @@ $(() => {
         $(".display_from_account_balance").text(
             formatToCurrency(fromAccount.accountBalance)
         );
-
+        console.log(fromAccount);
         if (transferInfo.amount) {
             $(".display_transfer_currency").text(fromAccount.currency);
         }
@@ -461,13 +469,11 @@ $(() => {
         $("#so_start_date").on("change", function () {
             transferInfo.startDate = $("#so_start_date").val();
             $(".display_so_start_date").text(transferInfo.startDate);
-            // console.log(display_start_date);
         });
 
         $("#so_end_date").on("change", function () {
             transferInfo.endDate = $("#so_end_date").val();
             $(".display_so_end_date").text(transferInfo.endDate);
-            // console.log(display_end_date);
         });
 
         //standing order frequency
@@ -483,12 +489,6 @@ $(() => {
     // conclusions
     // {{-- ----------------- --}}
     $("#next_button").on("click", (e) => {
-        // Swal.fire({
-        //     background: none,
-        //     showConfirmButton: false,
-        //     imageUrl: "assets/images/animations/animation_200_kuppmt6p.gif",
-        // });
-        // return;
         let pass = true;
         transferInfo.purpose =
             transferType === "Standing Order"
@@ -588,6 +588,7 @@ $(() => {
     });
 
     function corporateSpecific() {
+        transferInfo.accountMandate = fromAccount.accountMandate;
         console.log(transferInfo);
         const endPoint =
             "corporate-" +

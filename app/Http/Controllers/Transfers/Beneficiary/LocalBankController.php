@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BENEFICIARY\Transfer;
+namespace App\Http\Controllers\Transfers\beneficiary;
 
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
@@ -86,7 +86,7 @@ class LocalBankController extends Controller
                 "bankBranch" => null,
                 "bankCity" => null,
                 "bankCountry" => null,
-                "bankName" => $req->bank_name .''.'||'.''. $req->bank_swift_code,
+                "bankName" => $req->bank_name . '' . '||' . '' . $req->bank_swift_code,
                 "bankSwiftCode" => $req->currency_code
             ],
 

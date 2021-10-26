@@ -19,12 +19,12 @@ use App\Http\Controllers\Payments\Beneficiary\AirtimePaymentController;
 use App\Http\Controllers\Payments\Beneficiary\MobileMoneyBeneficiaryController;
 use App\Http\Controllers\Payments\Beneficiary\MobileMoneyController as PaymentMobileMoneyController;
 use App\Http\Controllers\Payments\Beneficiary\PaymentTypesController;
-use App\Http\Controllers\Transfer\Beneficiary\EditBeneficiaryController;
-use App\Http\Controllers\Transfer\Beneficiary\EditLocalBankController;
-use App\Http\Controllers\Transfer\Beneficiary\EditSameBankController;
-use App\Http\Controllers\Transfer\Beneficiary\InternationalBankController;
-use App\Http\Controllers\Transfer\Beneficiary\LocalBankController as TransferLocalBankController;
-use App\Http\Controllers\Transfer\Beneficiary\TransferBeneficiaryController;
+use App\Http\Controllers\Transfers\Beneficiary\EditBeneficiaryController;
+use App\Http\Controllers\Transfers\Beneficiary\EditLocalBankController;
+use App\Http\Controllers\Transfers\Beneficiary\EditSameBankController;
+use App\Http\Controllers\Transfers\Beneficiary\InternationalBankController;
+use App\Http\Controllers\Transfers\Beneficiary\LocalBankController as TransferLocalBankController;
+use App\Http\Controllers\Transfers\Beneficiary\TransferBeneficiaryController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
 use App\Http\Controllers\Budgeting\SpendingStaticsController;
@@ -513,7 +513,7 @@ Route::post('/own-account-transfer-api', [OwnAccountController::class, 'own_acco
 //CORPORATE OWN ACCOUNT API
 Route::post('/corporate-own-account-transfer-api', [OwnAccountController::class, 'corporate_own_account_transfer']);
 Route::post('/corporate-same-bank-transfer-api', [SameBankController::class, 'corporate_same_bank']);
-Route::post('/corporate-saved-local-bank-transfer-api', [LocalBankController::class, 'corporateLocalBankTransfer']);
+Route::post('/corporate-local-bank-transfer-api', [LocalBankController::class, 'corporateLocalBankTransfer']);
 Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary']);
 
 

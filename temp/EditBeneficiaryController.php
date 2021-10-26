@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BENEFICIARY\Transfer;
+namespace App\Http\Controllers\Transfer\beneficiary;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,21 +16,17 @@ class EditBeneficiaryController extends Controller
         // return $bene_type ;
         // return $bene_id ;
 
-        if ($bene_type == "SAB"){
+        if ($bene_type == "SAB") {
 
             return redirect()->route('edit-same-bank-beneficiary', ['bene_type' => $bene_type, 'bene_id' => $bene_id]);
-
-        }else if ($bene_type == "OTB"){
+        } else if ($bene_type == "OTB") {
 
             return redirect()->route('edit-other-local-bank-beneficiary', ['bene_type' => $bene_type, 'bene_id' => $bene_id]);
-
-        }else if ($bene_type == "INTB"){
+        } else if ($bene_type == "INTB") {
 
             return redirect()->route('edit-international-bank-beneficiary', ['bene_type' => $bene_type, 'bene_id' => $bene_id]);
-
-        }else {
+        } else {
             return back();
         }
-
     }
 }

@@ -128,6 +128,7 @@ $(document).ready(function () {
             const currentType = e.currentTarget;
             $(".beneficiary-type").removeClass("current-type");
             $(currentType).addClass("current-type");
+            $("#beneficiary_type_title").text();
             drawBeneficiaryTable();
         });
     });

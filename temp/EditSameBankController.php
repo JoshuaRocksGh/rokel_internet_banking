@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BENEFICIARY\Transfer;
+namespace App\Http\Controllers\Transfer\beneficiary;
 
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;

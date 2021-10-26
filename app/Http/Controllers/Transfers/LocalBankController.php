@@ -66,7 +66,7 @@ class LocalBankController extends Controller
             "email" => $request->beneficiaryEmail,
 
         ];
-        return $data;
+        // return $data;
         try {
             $response = Http::post(env('API_BASE_URL') . "transfers/$url", $data);
             $result = new ApiBaseResponse();
@@ -85,27 +85,21 @@ class LocalBankController extends Controller
         }
     }
 
-    public function corporate_saved_beneficiary(Request $request)
+    public function corporateLocalBankTransfer(Request $request)
     {
         $base_response = new BaseResponse();
-        $beneficiary_type = $request->beneficiary_type;
-        $bank_name = $request->bank_name;
-        $explode_bank_name = explode('||', $bank_name);
-        $bankName = $explode_bank_name[0];
-        $this_bank = trim($bankName);
-        $client_ip = request()->ip();
-        $authToken = session()->get('userToken');
+        $mode = $request->mode;
         $userID = session()->get('userId');
         $userAlias = session()->get('userAlias');
         $customerPhone = session()->get('customerPhone');
         $customerNumber = session()->get('customerNumber');
         $userMandate = session()->get('userMandate');
 
-        if ($beneficiary_type == "ACH") {
+        if ($mode == "ACH") {
             $url_endpoint = 'ach-bank-gone-for-pending';
-        } else if ($beneficiary_type == "RTGS") {
+        } else if ($mode == "RTGS") {
             $url_endpoint = 'rtgs-bank-gone-for-pending';
-        } else if ($beneficiary_type == "INSTANT") {
+        } else if ($mode == "INSTANT") {
             $url_endpoint = 'instantBankTransfer';
         } else {
             $url_endpoint = '';
@@ -114,17 +108,17 @@ class LocalBankController extends Controller
             "customer_no" => $customerNumber,
             "user_id" => $userID,
             "user_alias" => $userAlias,
-            "account_mandate" => $request->account_mandate,
-            "account_no" => $request->from_account,
-            "bank_code" => null,
-            "bank_name" => $this_bank,
-            "bene_account" => $request->to_account,
-            "bene_name" => $request->beneficiary_name,
-            "bene_address" => $request->beneficiary_address,
-            "bene_tel" => null,
+            "account_mandate" => $request->accountMandate,
+            "account_no" => $request->fromAccount,
+            "bank_code" => $request->bankCode,
+            "bank_name" => $request->bankName,
+            "bene_account" => $request->toAccount,
+            "bene_name" => $request->beneficiaryName,
+            "bene_address" => $request->beneficiaryAddress,
+            "bene_tel" => $customerPhone,
             "amount" => $request->amount,
             "currency" => $request->currency,
-            "currency_iso" => $request->currency_iso,
+            "currency_iso" => "A",
             "narration" => $request->purpose,
             "expense_type" => $request->category,
         ];

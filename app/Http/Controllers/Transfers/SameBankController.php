@@ -76,18 +76,15 @@ class SameBankController extends Controller
         $customerPhone = session()->get('customerPhone');
         $customerNumber = session()->get('customerNumber');
         $userMandate = session()->get('userMandate');
-
-        $from_account = $request->fromAccount;
-        $to_account = $request->beneficiaryAccount;
-
+        // return $request;
         $data = [
-            "account_no" => $from_account,
+            "account_no" => $request->fromAccount,
             "authToken" => $authToken,
             "channel" => 'NET',
-            "destinationAccountId" => $to_account,
+            "destinationAccountId" => $request->toAccount,
             "beneficiaryName" => $request->beneficiaryName,
             "currency" => $request->currency,
-            "account_mandate" => $request->mandate,
+            "account_mandate" => $request->accountMandate,
             "amount" => $request->amount,
             "narration" => $request->purpose,
             "postBy" => $userID,
@@ -100,7 +97,7 @@ class SameBankController extends Controller
             "expense_type" => $request->category,
             "documentRef" => strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 2) . time()),
         ];
-
+        // return $data;
         try {
             $response = Http::post(env('CIB_API_BASE_URL') . "same-bank-gone-for-pending", $data);
             $result = new ApiBaseResponse();

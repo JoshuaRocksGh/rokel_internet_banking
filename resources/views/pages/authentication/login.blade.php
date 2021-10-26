@@ -28,7 +28,15 @@
                 </div>
 
                 <!-- title-->
-                <h1 class="text-primary page-header my-5 text-center font-20 "> Personal Internet Banking </h1>
+                @php
+                if( (!config("app.corporate"))){
+                $TYPE = "Personal";}
+                else {
+                $TYPE = "Corporate";
+                }
+                @endphp
+                <h1 class="text-primary page-header my-5 text-center font-20 "> {{ $TYPE }} Internet Banking </h1>
+
                 <div id="login_form" class="form-center">
 
                     <h2 class="mt-0 text-left font-weight-bold font-18 mb-4">Sign In</h2>
@@ -51,8 +59,11 @@
 
 
                         <div class="form-group">
+                            @if (!config("app.corporate"))
+
                             <a href="#" class="text-muted float-right" id="forgot_password"><small>Forgot your
                                     password?</small></a>
+                            @endif
                             {{-- <label for="password">Password<span class="text-danger">*</span></label> --}}
                             <div class="input-group input-group-merge">
                                 <input type="password" id="password" class="form-control" placeholder="Enter Password"
@@ -81,14 +92,18 @@
 
                             {{-- <button class="btn btn-primary btn-block" type="submit">Log In </button> --}}
 
+                            @if (!config("app.corporate"))
 
                             <p class="___class_+?29___"><a href="#" id="self_enroll" class="text-primary ml-1"><b>Self
                                         Enroll
                                         Here!</b></a></p>
+                            @endif
                         </div>
                     </form>
 
                 </div>
+                @if (!config("app.corporate"))
+
                 <div id="password_reset_area" style="display:none">
                     <!-- title-->
                     <h2 class="mt-0 mb-4 font-weight-bold font-18 text-left">Reset Password</h2>
@@ -154,6 +169,8 @@
 
                     </form>
                 </div>
+                @endif
+                @if (!config("app.corporate"))
 
 
                 <div id="self_enroll_form" class=" form-center" style="display: none">
@@ -263,13 +280,15 @@
 
 
                 </div>
-
+                @endif
                 </form>
                 <!-- end form-->
 
                 <!-- Footer-->
 
                 <br><br><br>
+                @if (!config("app.corporate"))
+
                 <div class="text-center d-lg-none" id="">
                     {{-- <div class="row "> --}}
 
@@ -298,6 +317,8 @@
                     </div>
                     {{-- </div> --}}
                 </div>
+                @endif
+
             </div> <!-- end .card-body -->
         </div> <!-- end .align-items-center.d-flex.h-100-->
     </div>
@@ -311,6 +332,8 @@
     <div class="auth-fluid-right " id=""
         style="background-image:  linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),url({{ asset('assets/images/background-card.jpg') }});background-repeat: no-repeat;background-size: cover;">
         <div class="auth-user-testimonial">
+            @if (!config("app.corporate"))
+
             <div id="login_page_extras">
 
                 <div class="container-fluid">
@@ -504,6 +527,8 @@
 
 
 </div>
+@endif
+
 <!-- end row -->
 
 </div> <!-- end auth-user-testimonial-->

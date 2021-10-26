@@ -54,6 +54,7 @@
 
      function toaster(message, icon, timer = 3000){
     let color = "#17a2b8"
+    if(icon.constructor === String){
         if (icon.toLowerCase()==="success"){
           color = "#1abc9c"
       }else if (icon.toLowerCase()==="warning"){
@@ -68,7 +69,8 @@
         width: 400,
         // timer: timer
         })
-     }
+    }
+ }
 
     function formatToCurrency(amount) {
         return parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
@@ -88,5 +90,15 @@
         setTimeout(() => {
             location.reload();
             }, 3000);
+    }
+    function siteLoading(state){
+   if (state === "show"){
+       $(".preloader").fadeIn(500);
+        $("#preloader").css("background-color", "#4fc6e17a")
+        return
+   }
+    $(".preloader").fadeOut(500);
+    $("#preloader").css("background-color", "#fff")
+    return
     }
 </script>

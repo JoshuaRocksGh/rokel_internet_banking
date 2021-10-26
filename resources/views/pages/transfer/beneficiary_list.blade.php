@@ -86,25 +86,26 @@ $currentPath = "Transfer Beneficiary";
                 </h2>
                 <div class="row mb-4 justify-content-center mx-auto" style="max-width: 750px;">
                     <div class="col-md-3 mb-2 mx-2 mx-lg-3  beneficiary-type current-type display-card bg-same-bank"
-                        data-value="SAB" id=''>
+                        data-value="SAB" data-title="Same Bank" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>Same Bank</span>
                     </div>
 
                     <div class="col-md-3 mb-2 mx-2 mx-lg-3 beneficiary-type display-card  bg-other-bank"
-                        data-value="OTB" id=''>
+                        data-value="OTB" data-title="Other Bank" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>Other Local Bank</span>
                     </div>
                     <div class="col-md-3 mb-2 mx-2 mx-lg-3 beneficiary-type display-card  bg-international-bank"
-                        data-value="INTB" id=''>
+                        data-value="INTB" data-title="International Bank" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>International Bank</span>
                     </div>
                 </div>
                 <hr>
                 <div class="row justify-content-center">
-                    <h3 class="font-15 text-capitalize text-center mx-3 font-weight-bold align-self-center my-auto"><i
+                    <h3 id="beneficiary_type_title"
+                        class="font-15 text-capitalize text-center mx-3 font-weight-bold align-self-center my-auto"><i
                             class="font-18 text-info mx-2 fa fa-user-friends"></i>Same Bank
                         Beneficiaries</h3>
                     <button type="button" class="btn px-3 btn-sm font-14 font-weight-bold btn-info btn-rounded"

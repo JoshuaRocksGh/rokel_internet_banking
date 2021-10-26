@@ -122,6 +122,7 @@ function getAccountDescription(accountNumber) {
 }
 
 function saveBeneficiary(data) {
+    siteLoading("show");
     $.ajax({
         type: "POST",
         url: "save-transfer-beneficiary-api",
@@ -131,6 +132,8 @@ function saveBeneficiary(data) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: (res) => {
+            siteLoading("hide");
+
             console.log(res);
             if (res.responseCode === "000") {
                 $("#edit_modal").modal("hide");
@@ -140,6 +143,8 @@ function saveBeneficiary(data) {
             }
         },
         error: (err) => {
+            siteLoading("hide");
+
             toaster(err.statusText, "error");
         },
     });

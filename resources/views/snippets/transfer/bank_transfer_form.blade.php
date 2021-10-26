@@ -148,8 +148,8 @@
                                 @if($currentPath === "Same Bank")
                                 <div class="form-group row">
                                     <label class="col-md-4 text-primary"> Beneficiary A/C Name</label>
-                                    <input type="text" class="form-control col-md-8" id="onetime_beneficiary_name"
-                                        readonly>
+                                    <input type="text" class="form-control readOnly col-md-8"
+                                        placeholder="Beneficiary Name" id="onetime_beneficiary_name" readonly>
                                 </div>
                                 @else
                                 <div class="form-group row">

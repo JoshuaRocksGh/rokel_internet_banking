@@ -129,9 +129,9 @@
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
     <!-- Pre-loader -->
-    <div id="preloader">
-        <div id="status">
-            <img class="pulse" style="width: 50px" src="assets/images/logoRKB.png" />
+    <div id="preloader" class="preloader">
+        <div id="status" class="preloader">
+            <img class="pulse" style="width: 100px; top: -50px;" src="assets/images/logoRKB.png" />
         </div>
     </div> <!-- End Preloader-->
 

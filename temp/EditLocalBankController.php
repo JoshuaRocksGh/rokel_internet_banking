@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BENEFICIARY\Transfer;
+namespace App\Http\Controllers\Transfer\beneficiary;
 
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
@@ -22,13 +22,13 @@ class EditLocalBankController extends Controller
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
 
-        $bene_id = $request->bene_id ;
+        $bene_id = $request->bene_id;
 
 
         // http://192.168.1.195:9096/beneficiary/getTransferBeneficiariesById?beneId=20210408135826
 
 
-        $response = Http::get(env('API_BASE_URL') ."beneficiary/getTransferBeneficiariesById?beneId=$bene_id");
+        $response = Http::get(env('API_BASE_URL') . "beneficiary/getTransferBeneficiariesById?beneId=$bene_id");
 
         // return $response;
         // return $response->status();
@@ -36,5 +36,4 @@ class EditLocalBankController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
-
 }
