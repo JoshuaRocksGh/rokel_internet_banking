@@ -31,12 +31,12 @@
         <div class="row">
             <div class="col-md-4">
                 <a href="{{ url()->previous() }}" type="button"
-                    class="btn btn-soft-blue waves-effect waves-light float-left"><i
+                    class="btn btn-sm btn-soft-blue waves-effect waves-light float-left"><i
                         class="mdi mdi-reply-all-outline"></i>&nbsp;Go
                     Back</a>
             </div>
             <div class="col-md-4">
-                <h4 class="text-primary">
+                <h4 class="text-primary mb-0 page-header text-center text-uppercase">
                     <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                     BULK TRANSFER UPLOAD
 
@@ -64,10 +64,10 @@
                 <span> <i class="fa fa-info-circle  text-red"></i> <b style="color:red;">Please Note:&nbsp;&nbsp;</b> <span
                         class="___class_+?11___">You can download template for upload (<span class="text-danger"><a
                                 href="{{ url('download_same_bank_file') }}" class="text-danger"> Same Bank</a></span>)
-                        and
+                        {{-- and
                         (<span> <a href="{{ url('download_other_bank_file') }}" class="text-danger"> Other ACH Bank
                             </a>
-                        </span>)</span> </span>
+                        </span>)</span> </span> --}}
 
             </p>
         </div>
@@ -100,10 +100,8 @@
                                                 class="text-danger"> *</span></label>
                                         <select class="custom-select " name="my_account" id="my_account" required>
                                             <option value="">Select Account</option>
-                                            {{-- <option
-                                                value="Corporate Acc~MARIAMA KAMARA~004004110449140121~SLL~150000000~1A or 2B">
-                                                Corporate Acc||004004110449140121||SLL 150000000
-                                            </option> --}}
+                                            @include("snippets.accounts")
+
                                         </select>
                                     </div>
                                 </div>
@@ -114,9 +112,9 @@
                                         <label for="inputEmail3" class="col-12 col-form-label text-primary">Bank Type<span
                                                 class="text-danger"> *</span></label>
                                         <select class="custom-select " name="bank_type" id="bank_type" required>
-                                            <option value=""> ---Select Type --</option>
-                                            <option value="SAB"> Same Bank </option>
-                                            <option value="OTB"> Other Bank </option>
+                                            {{-- <option value=""> ---Select Type --</option> --}}
+                                            <option value="SAB" selected> Same Bank </option>
+                                            {{-- <option value="OTB"> Other Bank </option> --}}
                                         </select>
                                     </div>
                                 </div>

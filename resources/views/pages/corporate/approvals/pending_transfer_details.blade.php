@@ -58,119 +58,125 @@
             <div class="col-12">
                 <div class="">
                     <div class=" card-body ">
-                                                                                <div class="              row">
-                    {{-- <div class="col-md-1"></div> --}}
+                        <div class="              row">
+                            {{-- <div class="col-md-1"></div> --}}
 
-                    <div class="col-md-8">
+                            <div class="col-md-8">
 
-                        <div class="receipt">
-                            <div class="container card card-body">
+                                <div class="receipt">
+                                    <div class="container card card-body">
 
-                                <div class="container">
-                                    <div class="">
+                                        <div class="container">
+                                            <div class="">
                                                 <div class=" col-md-12
                                         body-main">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-4 "> <img class="img "
-                                                        alt="InvoIce Template"
-                                                        src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
-                                                        style="zoom: 0.6" /> </div>
-                                                <div class="col-md-4"></div>
-                                                <div class="col-md-4 text-right">
-                                                    <h4 class="text-primary"><strong>ROKEL COMMERCIAL
-                                                            BANK</strong>
-                                                    </h4>
-                                                    <p>25-27 Siaka Stevens St</p>
-                                                    <p> Freetown, Sierra Leone</p>
-                                                    <p>rokelsl@rokelbank.sl</p>
-                                                    <p>(+232)-76-22-25-01</p>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="page-header">
-                                                <h2>Approval Form</h2>
-                                            </div>
-                                            <br>
-                                            <div class="col-md-1"></div>
-
-                                            <div class="container col-md-10 text-center">
-                                                <div class="col-md-12">
-                                                    <div id="approval_details"></div>
-
-
-                                                    <div class="mt-1">
-
-                                                        <div class="col-md-12 mb-3 pending_status">
-                                                            <div class="row">
-                                                                <div class="col-md-2"></div>
-                                                                <button
-                                                                    class="btn btn-danger waves-effect waves-light col-md-3 btn-lg"
-                                                                    id="reject_transaction" type="button">Reject
-                                                                    <i class="mdi mdi-cancel"></i>
-                                                                </button>
-                                                                <div class="col-md-2"></div>
-                                                                <button
-                                                                    class="btn btn-success waves-effect waves-light col-md-3 btn-lg"
-                                                                    data-toggle="modal" data-target="#success-alert-modal"
-                                                                    id="approve_transaction" type="button">Approve
-                                                                    <i class="mdi mdi-check-all"></i>
-                                                                </button>
-                                                                <div class="col-md-2"></div>
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-4 "> <img class="img "
+                                                                    alt="InvoIce Template"
+                                                                    src="{{ asset('assets/images/' . env('APPLICATION_INFO_LOGO_LIGHT')) }} "
+                                                                    style="zoom: 0.6" /> </div>
+                                                            <div class="col-md-4"></div>
+                                                            <div class="col-md-4 text-right">
+                                                                <h4 class="text-primary"><strong>ROKEL COMMERCIAL
+                                                                        BANK</strong>
+                                                                </h4>
+                                                                <p>25-27 Siaka Stevens St</p>
+                                                                <p> Freetown, Sierra Leone</p>
+                                                                <p>rokelsl@rokelbank.sl</p>
+                                                                <p>(+232)-76-22-25-01</p>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-12 approved_status" style="display: none">
-                                                            <div class="row">
-                                                                <div class="col-md-3"></div>
-                                                                <div class="col-md-6">
-                                                                    <div class="alert alert-success" role="alert">
-                                                                        <i class="mdi mdi-check-all"></i>
-                                                                        <strong>Transaction Approved </strong>
+                                                        <br>
+                                                        <div class="page-header">
+                                                            <h2>Approval Form</h2>
+                                                        </div>
+                                                        <br>
+                                                        <div class="col-md-1"></div>
+
+                                                        <div class="container col-md-10 text-center">
+                                                            <div class="col-md-12">
+                                                                <div id="approval_details"></div>
+
+
+                                                                <div class="mt-1">
+
+                                                                    <div class="col-md-12 mb-3 pending_status">
+                                                                        <div class="row">
+                                                                            <div class="col-md-2"></div>
+                                                                            <button
+                                                                                class="btn btn-danger waves-effect waves-light col-md-3 btn-lg"
+                                                                                id="reject_transaction" type="button">Reject
+                                                                                <i class="mdi mdi-cancel"></i>
+                                                                            </button>
+                                                                            <div class="col-md-2"></div>
+                                                                            <button
+                                                                                class="btn btn-success waves-effect waves-light col-md-3 btn-lg"
+                                                                                data-toggle="modal"
+                                                                                data-target="#success-alert-modal"
+                                                                                id="approve_transaction"
+                                                                                type="button">Approve
+                                                                                <i class="mdi mdi-check-all"></i>
+                                                                            </button>
+                                                                            <div class="col-md-2"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 approved_status"
+                                                                        style="display: none">
+                                                                        <div class="row">
+                                                                            <div class="col-md-3"></div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="alert alert-success"
+                                                                                    role="alert">
+                                                                                    <i class="mdi mdi-check-all"></i>
+                                                                                    <strong>Transaction Approved </strong>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 rejected_status"
+                                                                        style="display: none">
+                                                                        <div class="row">
+                                                                            <div class="col-md-3"></div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="alert alert-danger"
+                                                                                    role="alert">
+                                                                                    <i class="mdi mdi-cancel"></i>
+                                                                                    <strong>Transaction Rejected</strong>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3"></div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-12 mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4"></div>
+                                                                            <div class="col-md-4">
+                                                                                {{-- <button type="button" class="btn btn-blue btn-sm waves-effect waves-light">Btn Small</button> --}}
+
+                                                                            </div>
+                                                                            <div class="col-md-4"></div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3"></div>
+
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-12 rejected_status" style="display: none">
-                                                            <div class="row">
-                                                                <div class="col-md-3"></div>
-                                                                <div class="col-md-6">
-                                                                    <div class="alert alert-danger" role="alert">
-                                                                        <i class="mdi mdi-cancel"></i>
-                                                                        <strong>Transaction Rejected</strong>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3"></div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-md-12 mb-3">
-                                                            <div class="row">
-                                                                <div class="col-md-4"></div>
-                                                                <div class="col-md-4">
-                                                                    {{-- <button type="button" class="btn btn-blue btn-sm waves-effect waves-light">Btn Small</button> --}}
-
-                                                                </div>
-                                                                <div class="col-md-4"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1"></div>
+                                                        <div class="col-md-1"></div>
 
 
-                                            <br><br>
+                                                        <br><br>
 
-                                            {{-- <div>
+                                                        {{-- <div>
                                                             <div class="col-md-12">
                                                                 <p><b>Date Posted :</b> {{ date('d F, Y') }}</p> <br /> <br />
                                                                 <p><b>Posted By : {{ session('userId') }}</b></p>
                                                             </div>
                                                         </div> --}}
-                                            <br><br>
-                                            {{-- <div class="row">
+                                                        <br><br>
+                                                        {{-- <div class="row">
                                                             <div class="col-md-5"></div>
                                                             <div class="col-md-2">
                                                                   <button class="btn btn-light btn-rounded hide_on_print text-center"
@@ -182,20 +188,20 @@
                                                             </div>
                                                             <div class="col-md-5"></div>
                                                         </div> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="card ">
-                        <div class="p-3 mt-4 mt-lg-0">
-                            <h4 class="mb-1 text-center">Account Mandate</h4>
-                            <h2 id="account_mandate"></h2>
-                            {{-- <div class="table-responsive">
+                            <div class="col-md-4">
+                                <div class="card ">
+                                    <div class="p-3 mt-4 mt-lg-0">
+                                        <h4 class="mb-1 text-center">Account Mandate</h4>
+                                        <h2 id="account_mandate"></h2>
+                                        {{-- <div class="table-responsive">
                                             <table class="table mb-0 table-bordered">
                                                 <tbody>
                                                     <tr>
@@ -205,15 +211,15 @@
                                             </table>
                                         </div> --}}
 
-                        </div>
-                    </div>
+                                    </div>
+                                </div>
 
-                    {{-- <br> --}}
-                    <div class="card">
-                        <div class="p-3 mt-4 mt-lg-0">
-                            <h4 class="mb-1 text-center">Initiated By</h4>
-                            <h2 id="initiated_by"></h2>
-                            {{-- <div class="table-responsive">
+                                {{-- <br> --}}
+                                <div class="card">
+                                    <div class="p-3 mt-4 mt-lg-0">
+                                        <h4 class="mb-1 text-center">Initiated By</h4>
+                                        <h2 id="initiated_by"></h2>
+                                        {{-- <div class="table-responsive">
                                                 <table class="table mb-0 table-bordered">
                                                     <tbody>
                                                         <tr>
@@ -223,91 +229,91 @@
                                                 </table>
                                             </div> --}}
 
-                        </div>
-                    </div>
+                                    </div>
+                                </div>
 
-                    {{-- <br> --}}
-                    <div class="card">
-                        <div class="p-3 mt-4 mt-lg-0">
-                            <h4 class="mb-1 text-center">Approvers</h4>
-                            <span id="approvers_list"></span>
+                                {{-- <br> --}}
+                                <div class="card">
+                                    <div class="p-3 mt-4 mt-lg-0">
+                                        <h4 class="mb-1 text-center">Approvers</h4>
+                                        <span id="approvers_list"></span>
 
-                            {{-- <h2 class="approvers">Jonas Korankye</h2>
+                                        {{-- <h2 class="approvers">Jonas Korankye</h2>
                                         <h2 class="approvers">Joshua Tetteh</h2> --}}
 
 
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+
                         </div>
                     </div>
 
-
-
-                </div>
-
-
-
-            </div>
-        </div>
-
-    </div> <!-- end card-body -->
+                </div> <!-- end card-body -->
 
 
 
-    </div> <!-- end col -->
+            </div> <!-- end col -->
 
-    </div> <!-- end row -->
-
-
-
-    <!--  Modal content for the Large example -->
-    <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title text-info" id="myLargeModalLabel"> BULK TRANSACTION DETAILS</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <div class=" card-body table-responsive">
-
-                                <table id="datatable-buttons"
-                                    class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
-
-                                    <thead>
-                                        <tr class="bg-secondary text-white">
-                                            <th>No</th>
-                                            <th>
-                                                <span id="bulk_header">Credit Acc</span>
-                                                <span id="bkorp_header">Mobile Number</span>
-                                            </th>
-                                            <th>Name</th>
-                                            <th>Amount</th>
-
-                                        </tr>
-                                    </thead>
-
-                                    <tbody class="bulk_upload_list_body">
-
-                                    </tbody>
+        </div> <!-- end row -->
 
 
-                                </table>
+
+        <!--  Modal content for the Large example -->
+        <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title text-info" id="myLargeModalLabel"> BULK TRANSACTION DETAILS</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class=" card-body table-responsive">
+
+                                    <table id="datatable-buttons"
+                                        class="table table-bordered table-striped dt-responsive nowrap w-100 bulk_upload_list">
+
+                                        <thead>
+                                            <tr class="bg-secondary text-white">
+                                                <th>No</th>
+                                                <th>
+                                                    <span id="bulk_header">Credit Acc</span>
+                                                    <span id="bkorp_header">Mobile Number</span>
+                                                </th>
+                                                <th>Name</th>
+                                                <th>Amount</th>
+
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="bulk_upload_list_body">
+
+                                        </tbody>
 
 
-                            </div> <!-- end card body-->
+                                    </table>
 
+
+                                </div> <!-- end card body-->
+
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
+        <!-- /.modal -->
 
 
 
@@ -520,6 +526,8 @@
                         if (pending_approvers == null || pending_approvers == undefined) {
                             var approvers = 'PENDING APPROVAL'
                             $('#approvers_list').append(`<h2 class="approvers">${approvers}</h2>`)
+                        } else {
+                            $('#approvers_list').append(`<h2 class="approvers">${pending_approvers}</h2>`)
                         }
 
 
@@ -819,22 +827,27 @@
                     },
                     success: function(response) {
                         console.log(response)
-                        if (response.responseCode == '000') {
-                            Swal.fire('', response.message, 'success');
+                        let res = JSON.parse(response);
+                        if (res.responseCode == '000') {
+                            Swal.fire('', res.message, 'success');
+                            getAccounts();
 
-                            {{-- setTimeout(function() {
-                                window.location = 'approvals-pending'
-                            }, 3000) --}}
 
                             setTimeout(function() {
-                                window.opener.location.reload();
-                                window.close();
+                                window.location = 'approvals-pending'
                             }, 3000)
 
 
+                            {{-- setTimeout(function() {
+
+                                window.opener.location.reload();
+                                window.close();
+                            }, 3000) --}}
+
 
                         } else {
-                            Swal.fire('', response.message, 'error');
+
+                            Swal.fire('', res.message, 'error');
 
                         }
 

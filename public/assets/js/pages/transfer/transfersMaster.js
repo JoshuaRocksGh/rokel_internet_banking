@@ -1,3 +1,5 @@
+// const { get } = require("jquery");
+
 function makeTransfer(url, data) {
     siteLoading("show");
     $.ajax({
@@ -20,6 +22,7 @@ function makeTransfer(url, data) {
                     showConfirmButton: "false",
                     timer: "3000",
                 });
+                getAccounts();
                 $("#success-message").text(response.message);
                 $("#spinner").hide();
                 $("#spinner-text").hide();
