@@ -135,7 +135,7 @@ class paymentController extends Controller
     public function beneficiary_list()
     {
 
-        return view('pages.payments.payment_beneficiary_list');
+        return view('pages.payments.payments_beneficiary_list');
     }
 
     public function paymentBeneficiaries()

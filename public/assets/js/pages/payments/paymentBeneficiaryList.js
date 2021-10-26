@@ -1,40 +1,44 @@
+const pageData = new Object();
 function getBeneficiaryList() {
     $.ajax({
         tpye: "GET",
-        url: "all-beneficiary-list",
+        url: "payment-beneficiary-list-api",
         datatype: "application/json",
         success: function (response) {
             if (response.responseCode == "000") {
                 const data = response.data;
                 console.log(data);
-                // $("#beneficiary_list_loader").hide();
-                // $("#beneficiary_list_retry_btn").hide();
-                sameBankBeneficiaries = [];
-                otherBankBeneficiaries = [];
-                internationalBeneficiaries = [];
                 $.each(data, function (i) {
-                    if (
-                        data[i].BENEF_TYPE === "SAB" ||
-                        data[i].TRANS_TYPE === "SAM"
-                    ) {
-                        sameBankBeneficiaries.push(data[i]);
-                    } else if (
-                        data[i].BENEF_TYPE === "OTB" ||
-                        data[i].TRANS_TYPE === "OTR"
-                    ) {
-                        otherBankBeneficiaries.push(data[i]);
-                    } else if (
-                        data[i].BENEF_TYPE === "INTB" ||
-                        data[i].TRANS_TYPE === "INT"
-                    ) {
-                        internationalBeneficiaries.push(data[i]);
+                    const type = data[i].PAYMENT_TYPE;
+                    if (!pageData["bene_" + type]) {
+                        pageData["bene_" + type] = [];
                     }
+                    pageData["bene_" + type].push(data[i]);
                 });
                 drawBeneficiaryTable();
             } else {
                 $("#beneficiary_table").hide();
                 $("#beneficiary_list_loader").hide();
                 $("#beneficiary_list_retry_btn").show();
+            }
+        },
+    });
+}
+
+function getPaymentTypes() {
+    $.ajax({
+        tpye: "GET",
+        url: "get-payment-types-api",
+        datatype: "application/json",
+        success: function (response) {
+            if (response.responseCode == "000") {
+                const data = response.data.data;
+                $.each(data, function (i) {
+                    console.log(data[i]);
+                    const type = data[i].paymentType;
+                    pageData["pay_" + type] = data[i];
+                });
+            } else {
             }
         },
     });
@@ -73,17 +77,9 @@ function drawBeneficiaryTable() {
         .clear();
     let noBeneficiaries = noDataAvailable.replace("Data", "Beneficiaries");
     let data = [];
-
     $("#beneficiary_list tbody").empty();
     const currentType = $(".current-type").attr("data-value");
-    if (currentType === "SAB") {
-        data = sameBankBeneficiaries;
-    } else if (currentType === "OTB") {
-        data = otherBankBeneficiaries;
-    } else if (currentType === "INTB") {
-        data = internationalBeneficiaries;
-    }
-
+    data = pageData["bene_" + currentType];
     if (data.length < 1) {
         $("#beneficiary_list tbody")
             .append(`<td colspan="100%" class="text-center">
@@ -95,14 +91,13 @@ function drawBeneficiaryTable() {
         table.row
             .add([
                 data[index].NICKNAME,
-                data[index].BEN_ACCOUNT,
-                data[index].EMAIL,
-                data[index].BANK_NAME,
-
+                data[index].ACCOUNT,
+                data[index].PAYEE_NAME,
                 `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-value='${beneData}'> <span class="fe-edit noti-icon text-info"></span></a>`,
             ])
             .draw("full-reset");
     });
+    // return;
     let editButtons = document.querySelectorAll(".edit-beneficiary");
     editButtons.forEach((item, i) => {
         item.addEventListener("click", (e) => {
@@ -110,14 +105,14 @@ function drawBeneficiaryTable() {
             const beneficiaryData = JSON.parse(
                 $(editButton).attr("data-value")
             );
-            editBankBeneficiary(beneficiaryData, currentType);
         });
     });
 }
 
 $(document).ready(function () {
-    $("#beneficiary_list_loader").show();
+    // $("#beneficiary_list_loader").show();
     getBeneficiaryList();
+    getPaymentTypes();
     $("#add_beneficiary").on("click", () => {
         addBankBeneficiary($(".current-type").attr("data-value"));
     });
