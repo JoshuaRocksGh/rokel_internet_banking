@@ -51,7 +51,7 @@
 
                             <div class="form-group">
 
-                                {{-- <label for="user_id">User ID<span class="text-danger">*</span></label> --}}
+                                <label for="user_id">User ID<span class="text-danger">*</span></label>
                                 <input class="form-control" type="text" id="user_id" placeholder="Enter Email"
                                     parsley-trigger="change" autocomplete="off" aria-autocomplete="off">
 
@@ -65,7 +65,7 @@
                                     <a href="#" class="text-muted float-right" id="forgot_password"><small>Forgot your
                                             password?</small></a>
                                 @endif
-                                {{-- <label for="password">Password<span class="text-danger">*</span></label> --}}
+                                <label for="password">Password<span class="text-danger">*</span></label>
                                 <div class="input-group input-group-merge">
                                     <input type="password" id="password" class="form-control" placeholder="Enter Password"
                                         autocomplete="off" aria-autocomplete="off">
