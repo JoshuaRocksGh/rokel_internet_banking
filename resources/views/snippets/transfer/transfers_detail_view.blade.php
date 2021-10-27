@@ -1,5 +1,5 @@
-<section class="col-md-5  px-3" id="transfer_details_view">
-    <div class="site-card px-5 h-100">
+<section class="col-md-5  px-2" id="transfer_details_view">
+    <div class="site-card px-2 h-100">
 
 
         {{-- =============================================================== --}}
@@ -30,26 +30,26 @@
         <h3 class="text-primary transfer-detail-header">Receiver Account Info</h3>
         <hr class="mt-0">
         <div class="row">
-            @if ($currentPath==="Local Bank")
-            <p class="col-md-5 transfer-detail-text">Bank Name:</p>
-            <span class="text-primary display_to_account display_to_bank_name col-md-7"></span>
+            @if ($currentPath === 'Local Bank')
+                <p class="col-md-5 transfer-detail-text">Bank Name:</p>
+                <span class="text-primary display_to_account display_to_bank_name col-md-7"></span>
             @endif
             <p class="col-md-5 transfer-detail-text">Receiver Name:</p>
             <span class="text-primary display_to_account display_to_account_name col-md-7"></span>
 
             <p class="col-md-5 transfer-detail-text">Receiver Account:</p>
             <span class="text-primary display_to_account display_to_account_no col-md-7"></span>
-            @if($currentPath !=="Own Account")
-            <p class="col-md-5 transfer-detail-text">Receiver Email:</p>
-            <span class="text-primary display_to_account display_to_receiver_email col-md-7"></span>
+            @if ($currentPath !== 'Own Account')
+                <p class="col-md-5 transfer-detail-text">Receiver Email:</p>
+                <span class="text-primary display_to_account display_to_receiver_email col-md-7"></span>
             @endif
             {{-- <p class="col-md-5 transfer-detail-text">Account Currency:</p>
             <span class="text-primary display_to_account display_to_account_currency col-md-7"></span> --}}
 
-            @if ($currentPath==="Local Bank")
+            @if ($currentPath === 'Local Bank')
 
-            <p class="col-md-5 transfer-detail-text">Receiver Address:</p>
-            <span class="text-primary display_to_account display_to_account_address col-md-7"></span>
+                <p class="col-md-5 transfer-detail-text">Receiver Address:</p>
+                <span class="text-primary display_to_account display_to_account_address col-md-7"></span>
             @endif
 
         </div>
@@ -61,9 +61,9 @@
         <h3 class="text-primary transfer-detail-header">Transfer Info</h3>
         <hr class="mt-0">
         <div class="row">
-            @if ($currentPath === "Local Bank")
-            <p class="col-md-5 transfer-detail-text">Transfer Type:</p>
-            <span class="text-primary display_to_account display_to_transfer_type col-md-7"></span>
+            @if ($currentPath === 'Local Bank')
+                <p class="col-md-5 transfer-detail-text">Transfer Type:</p>
+                <span class="text-primary display_to_account display_to_transfer_type col-md-7"></span>
             @endif
             <p class="col-md-5 transfer-detail-text">Transfer Amount:</p>
             <span class="row col-md-7">
@@ -71,16 +71,16 @@
                 <span class="text-danger display_transfer_amount col-md-8"></span>
 
             </span>
-            @if ($currentPath === "Standing Order")
+            @if ($currentPath === 'Standing Order')
 
-            <p class="col-md-5 transfer-detail-text ">Start Date:</p>
-            <span class="text-primary display_so_start_date col-md-7"></span>
+                <p class="col-md-5 transfer-detail-text ">Start Date:</p>
+                <span class="text-primary display_so_start_date col-md-7"></span>
 
-            <p class="col-md-5 transfer-detail-text">End Date:</p>
-            <span class="text-primary display_so_end_date col-md-7"></span>
+                <p class="col-md-5 transfer-detail-text">End Date:</p>
+                <span class="text-primary display_so_end_date col-md-7"></span>
 
-            <p class="col-md-5 transfer-detail-text">Frequency:</p>
-            <span class="text-primary display_frequency_so col-md-7"></span>
+                <p class="col-md-5 transfer-detail-text">Frequency:</p>
+                <span class="text-primary display_frequency_so col-md-7"></span>
             @endif
             {{-- <p class="col-md-5 transfer-detail-text">Currency Rate:</p>
             <span class="text-primary display_midrate col-md-7"></span>
@@ -88,7 +88,7 @@
             <p class="col-md-5 transfer-detail-text">Converted Amount:</p>
             <span class="text-primary display_converted_amount col-md-7"></span> --}}
 
-            <div class="col-12 mt-3 mb-2">
+            <div class="col-12 mt-0 mb-2">
                 <hr style="margin-top: 2px; margin-bottom: 5px;">
 
                 <hr style="margin-top: 2px; margin-bottom: 5px;">

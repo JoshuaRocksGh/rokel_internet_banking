@@ -89,10 +89,12 @@ class LoginController extends Controller
 
             $userDetail = $result->data;
             if (!config("app.corporate") && $userDetail->customerType === 'C') {
-                return  $base_response->api_response('900', 'Corporate account, use our corporate platform instead',  NULL);
+                return  $base_response->api_response('900', 'Corporate account, use Corporate Internet Banking platform',  NULL);
             } elseif (config("app.corporate") && $userDetail->customerType !== 'C') {
-                return  $base_response->api_response('900', 'Personal account, use our personal internet banking instead',  NULL);
+                return  $base_response->api_response('900', 'Personal account, use Personal Internet Banking platform',  NULL);
             }
+
+            // return response()->json($userDetail);
 
             session([
                 "userId" => $userDetail->userId,
