@@ -8,14 +8,15 @@ function getBeneficiaryList() {
             if (response.responseCode == "000") {
                 const data = response.data;
                 console.log(data);
-                $.each(data, function (i) {
-                    const type = data[i].PAYMENT_TYPE;
-                    if (!pageData["bene_" + type]) {
-                        pageData["bene_" + type] = [];
-                    }
-                    pageData["bene_" + type].push(data[i]);
-                });
-                drawBeneficiaryTable();
+                if (data && data.length > 0) {
+                    $.each(pageData.payTypes, (i) => {
+                        const type = pageData.payTypes[i];
+                        pageData["bene_" + type] = data.filter(
+                            (e) => e.PAYMENT_TYPE === type
+                        );
+                    });
+                    drawBeneficiaryTable();
+                }
             } else {
             }
         },
@@ -35,9 +36,12 @@ function getPaymentTypes() {
         success: function (response) {
             if (response.responseCode == "000") {
                 const data = response.data.data;
+                pageData.payTypes = [];
                 $.each(data, function (i) {
                     console.log(data[i]);
+
                     const type = data[i].paymentType;
+                    pageData.payTypes.push(type);
                     pageData["pay_" + type] = data[i];
                 });
             } else {
@@ -74,6 +78,8 @@ function drawBeneficiaryTable() {
     let table = $("#beneficiary_list")
         .DataTable({
             destroy: true,
+            pageLength: 5,
+            lengthChange: false,
             columnDefs: [
                 {
                     targets: "_all",
@@ -87,7 +93,7 @@ function drawBeneficiaryTable() {
     $("#beneficiary_list tbody").empty();
     const currentType = $(".current-type").attr("data-value");
     data = pageData["bene_" + currentType];
-    if (data.length < 1) {
+    if (data && data.length < 1) {
         $("#beneficiary_list tbody")
             .append(`<td colspan="100%" class="text-center">
         ${noBeneficiaries} </td>`);
@@ -119,7 +125,6 @@ function drawBeneficiaryTable() {
             editPaymentBeneficiary(beneficiaryData, currentType);
         });
     });
-
     siteLoading("hide");
 }
 async function initPage() {

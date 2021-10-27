@@ -16,7 +16,7 @@ use App\Http\Controllers\Authentication\KycController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
 use App\Http\Controllers\Payments\Beneficiary\AirtimePaymentController;
-use App\Http\Controllers\Payments\Beneficiary\MobileMoneyBeneficiaryController;
+use App\Http\Controllers\Payments\Beneficiary\PaymentBeneficiaryController;
 use App\Http\Controllers\Payments\Beneficiary\MobileMoneyController as PaymentMobileMoneyController;
 use App\Http\Controllers\Payments\Beneficiary\PaymentTypesController;
 use App\Http\Controllers\Transfers\Beneficiary\EditBeneficiaryController;
@@ -266,13 +266,6 @@ Route::post('validate-account-no', [FunctionsController::class, 'validate_accoun
 //route to take import of the bulk upload payment screen
 Route::post('bulkupload.import', [BulkUploadsController::class, 'import'])->name('bulkupload.import');
 
-//route to display the cardless payment screen
-
-//route to display the korpone loane payment screen
-// Route::get('korpone-loane-payment', [paymentController::class, 'korpone_loane_payment'])->name('korpone-loane-payment');
-
-//route to display order blink payment screen
-
 //route to display the pay again payment screen
 Route::get('pay-again', [paymentController::class, 'pay_again_payment'])->name('pay-again');
 
@@ -521,6 +514,11 @@ Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankC
 // Transfers Add Beneficiary
 Route::post('/save-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'saveBeneficiary']);
 Route::delete('/delete-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'deleteBeneficiary']);
+
+// Transfers Add Beneficiary
+Route::post('/save-payment-beneficiary-api', [PaymentBeneficiaryController::class, 'savePaymentBeneficiary']);
+Route::delete('/delete-payment-beneficiary-api', [PaymentBeneficiaryController::class, 'deletePaymentBeneficiary']);
+
 
 // EDIT BENEFICIARY
 Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->name('edit-beneficiary');

@@ -86,6 +86,7 @@ class TransferBeneficiaryController extends Controller
             } else {
                 $response = Http::post(env('API_BASE_URL') . "/beneficiary/addTransferBeneficiary", $data);
             }
+
             $result = new ApiBaseResponse();
             return $result->api_response($response);
         } catch (\Exception $e) {
