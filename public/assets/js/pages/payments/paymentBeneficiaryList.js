@@ -17,10 +17,12 @@ function getBeneficiaryList() {
                 });
                 drawBeneficiaryTable();
             } else {
-                $("#beneficiary_table").hide();
-                $("#beneficiary_list_loader").hide();
-                $("#beneficiary_list_retry_btn").show();
             }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                // getBeneficiaryList();
+            }, $.ajaxSetup().retryAfter);
         },
     });
 }
@@ -40,6 +42,11 @@ function getPaymentTypes() {
                 });
             } else {
             }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                // getPaymentTypes();
+            }, $.ajaxSetup().retryAfter);
         },
     });
 }
@@ -87,15 +94,19 @@ function drawBeneficiaryTable() {
         return;
     }
     $.each(data, (index) => {
-        beneData = JSON.stringify(data[index]);
-        table.row
-            .add([
-                data[index].NICKNAME,
-                data[index].ACCOUNT,
-                data[index].PAYEE_NAME,
-                `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-value='${beneData}'> <span class="fe-edit noti-icon text-info"></span></a>`,
-            ])
-            .draw("full-reset");
+        const beneData = JSON.stringify(data[index]);
+        const editIcon = `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-value='${beneData}'> <span class="fe-edit noti-icon text-info"></span></a>`;
+        const { NICKNAME, ACCOUNT, PAYEE_NAME } = data[index];
+        const logo = pageData["pay_" + currentType].paySubTypes.find(
+            (e) => e.paymentCode === PAYEE_NAME
+        ).paymentLogo;
+        const img = logo
+            ? "data:image/jpg;base64," + logo
+            : "assets/images/add.png";
+        const payeeImage = `<img src="${img}" class="payment_icon">`;
+        const payeeText = `<span> ${PAYEE_NAME} </span>`;
+        const payee = `<div class="d-flex m-0">${payeeImage}${payeeText}</div>`;
+        table.row.add([NICKNAME, ACCOUNT, payee, editIcon]).draw("full-reset");
     });
     // return;
     let editButtons = document.querySelectorAll(".edit-beneficiary");
@@ -105,18 +116,23 @@ function drawBeneficiaryTable() {
             const beneficiaryData = JSON.parse(
                 $(editButton).attr("data-value")
             );
+            editPaymentBeneficiary(beneficiaryData, currentType);
         });
     });
-}
 
+    siteLoading("hide");
+}
+async function initPage() {
+    siteLoading("show");
+    await getPaymentTypes();
+    await getBeneficiaryList();
+}
 $(document).ready(function () {
     // $("#beneficiary_list_loader").show();
-    getBeneficiaryList();
-    getPaymentTypes();
+    initPage();
     $("#add_beneficiary").on("click", () => {
-        addBankBeneficiary($(".current-type").attr("data-value"));
+        addPaymentBeneficiary($(".current-type").attr("data-value"));
     });
-
     let beneficiaryType = document.querySelectorAll(".beneficiary-type");
     beneficiaryType.forEach((item, i) => {
         item.addEventListener("click", (e) => {

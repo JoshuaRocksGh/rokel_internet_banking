@@ -49,7 +49,7 @@ class LocalBankController extends Controller
             "beneficiaryAddress" => $request->beneficiaryAddress,
             "beneficiaryName" => $request->beneficiaryName,
             "brand" => "a",
-            "channel" => "a",
+            "channel" => "MOB",
             "country" => "a",
             "creditAccount" => $request->toAccount,
             "debitAccount" => $request->fromAccount,
@@ -61,7 +61,7 @@ class LocalBankController extends Controller
             "manufacturer" => "a",
             "secPin" => $request->secPin,
             "transactionDetails" => $request->purpose,
-            "transferCurrency" => $request->currency,
+            "transferCurrency" => "$request->currencyCode",
             "userName" => $userID,
             "email" => $request->beneficiaryEmail,
 

@@ -65,6 +65,13 @@
         width: 0.8rem;
         border: solid white 2px;
     }
+
+    .payment_icon {
+        height: 25px;
+        width: 40px;
+        border-radius: 3px;
+        margin-right: 1rem;
+    }
 </style>
 
 @endsection

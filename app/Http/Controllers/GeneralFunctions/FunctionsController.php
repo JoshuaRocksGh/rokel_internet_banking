@@ -480,21 +480,15 @@ class FunctionsController extends Controller
 
     public function payment_types()
     {
-        $response = Http::get(env('API_BASE_URL') . "payment/paymentType");
-        $base_response = new BaseResponse();
-        if ($response->ok()) {    // API response status code is 200
+        try {
+            $response = Http::get(env('API_BASE_URL') . "payment/paymentType");
+            $base_response = new BaseResponse();
+            // API response status code is 200
             $result = json_decode($response->body());
             // return $result->responseCode;
             return $base_response->api_response("000", "payment types",  $result); // return API BASERESPONSE
 
-        } else { // API response status code not 200
-            return $response->body();
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'code' => $response->status(),
-                'message' => $response->body()
-            ]);
+        } catch (\Exception $e) {
             return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
         }
