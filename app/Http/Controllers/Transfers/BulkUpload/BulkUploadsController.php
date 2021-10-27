@@ -285,6 +285,7 @@ class BulkUploadsController extends Controller
 
     public function view_bulk_transfer(Request $request)
     {
+        // return $request;
 
         $batch_no = $request->query('batch_no');
         $account_no = $request->query('account_no');
@@ -363,7 +364,7 @@ class BulkUploadsController extends Controller
 
     public function get_bulk_upload_file_details(Request $request)
     {
-
+        // return $request;
         $batch_no = $request->query('batch_no');
         $account_no = $request->query('account_no');
         $bank_type = $request->query('bank_type');
