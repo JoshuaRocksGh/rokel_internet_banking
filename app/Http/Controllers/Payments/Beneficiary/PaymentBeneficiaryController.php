@@ -8,44 +8,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
-class MobileMoneyBeneficiaryController extends Controller
+class PaymentBeneficiaryController extends Controller
 {
-    //
 
-    public function add_mobile_money_beneficary(Request $request)
+    public function savePaymentBeneficiary(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
-
-            'account' => 'required',
-            'nickname' => 'required',
-            'paymentType' => 'required',
-            'payeeName' => 'required'
-        ]);
-
-        // return $request ;
-
         $base_response = new BaseResponse();
-
-        // VALIDATION
-        if ($validator->fails()) {
-
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
-        // return $req;
-
-        // $type = $request->paymentType;
-        // $thisType = explode('~', $type);
-        // $paymentType = $thisType[0] ;
-        // return $paymentType;
-
         $userID = session()->get('userId');
 
         $data = [
             "account" => $request->account,
-            "beneID" => null,
+            "beneID" => $request->Id,
             "nickname" => $request->nickname,
             "payeeName" => $request->payeeName,
             "paymentType" => $request->paymentType,
@@ -62,12 +39,16 @@ class MobileMoneyBeneficiaryController extends Controller
             ],
             "userID" => $userID
         ];
-
+        Log::alert($data);
         // return $data ;
         // dd(env('API_BASE_URL') . "beneficiary/addPaymentBeneficiary");
 
         try {
-            $response = Http::post(env('API_BASE_URL') . "beneficiary/addPaymentBeneficiary", $data);
+            if ($request->mode === "EDIT") {
+                $response = Http::put(env('API_BASE_URL') . "/beneficiary/updatePaymentBeneficiary", $data);
+            } else {
+                $response = Http::post(env('API_BASE_URL') . "/beneficiary/addPaymentBeneficiary", $data);
+            }
 
             // return json_decode($response->body());
 
@@ -75,15 +56,18 @@ class MobileMoneyBeneficiaryController extends Controller
             return $result->api_response($response);
         } catch (\Exception $e) {
 
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
-
-            return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', "CONNECTION ERROR",  NULL); // return API BASERESPONSE
 
 
         }
+    }
+
+    public function deletePaymentBeneficiary(Request $req)
+    {
+        $response = Http::delete(
+            env('API_BASE_URL') . "/beneficiary/deletePaymentBeneficiary/" . $req->beneficiaryId
+        );
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 }

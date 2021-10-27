@@ -56,8 +56,8 @@ async function addPaymentBeneficiary(currentType) {
 }
 
 async function prepareBeneficiaryForm(currentType, mode) {
-    $("#edit_modal").attr("data-mode", mode);
-    $("#edit_modal").attr("data-type", currentType);
+    $("#edit_modal").attr("data-mode", mode.toUpperCase());
+    $("#edit_modal").attr("data-type", currentType.toUpperCase());
     console.log(currentType);
     const { description, paySubTypes, label } = pageData["pay_" + currentType];
     $("#beneficiary_form_title").text(`${mode} ${description} Beneficiary`);
@@ -98,16 +98,22 @@ async function editPaymentBeneficiary(data, type) {
         .prop("selected", true)
         .trigger("change");
     $("#beneficiary_name").val(data.NICKNAME);
+    if (!pageData.beneficiary) {
+        pageData.beneficiary = {};
+    } // prepopulate bene form
     pageData.beneficiary.Id = data.BENE_ID;
-    // prepopulate bene form
     $("#edit_modal").modal("show");
 }
 
 function initBeneficiaryForm() {
     $("#save_btn").click(function () {
+        if (!pageData.beneficiary) pageData.beneficiary = {};
         pageData.beneficiary.account = $("#payment_label_input").val();
         pageData.beneficiary.nickname = $("#beneficiary_name").val();
         pageData.beneficiary.payeeName = $("#payment_subtype").val();
+        pageData.beneficiary.paymentType = $("#edit_modal").attr("data-type");
+        pageData.beneficiary.mode = $("#edit_modal").attr("data-mode");
+
         if (
             !pageData.beneficiary.account ||
             !pageData.beneficiary.nickname ||

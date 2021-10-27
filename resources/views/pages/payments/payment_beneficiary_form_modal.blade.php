@@ -5,7 +5,7 @@
 
     #payment_type_image {
         background-position: center;
-        background-size: cover;
+        background-size: contain;
         transition: all .5s ease-in-out;
         border-radius: 10px;
         height: 80px;
@@ -26,7 +26,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="d-flex justify-content-center mb-2">
+                <div class="d-flex justify-content-center mt-2 mb-4">
                     <div id="payment_type_image">
                         {{-- <h3 class="font-16 font-weight-bold">Beneficiary
                             Info</h3> --}}

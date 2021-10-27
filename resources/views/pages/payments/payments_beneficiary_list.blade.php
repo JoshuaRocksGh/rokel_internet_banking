@@ -13,20 +13,25 @@
 
     }
 
-    /* td,
-    th {
-        white-space: nowrap
-    } */
-    .bg-same-bank {
+
+    .bg-MOM {
         background-color: #dc3545 !important;
     }
 
-    .bg-other-bank {
+    .bg-AIR {
         background-color: #1abc9c !important;
     }
 
-    .bg-international-bank {
+    .bg-UTL {
         background-color: #17a2b8 !important;
+    }
+
+    .bg-EDU {
+        background-color: #c122e0 !important;
+    }
+
+    .bg-GVT {
+        background-color: #e08926 !important;
     }
 
     .current-type .box-circle {
@@ -92,21 +97,31 @@ $currentPath = "payment Beneficiary";
                 <h2 class="font-17 text-left font-weight-bold text-capitalize mb-3 text-primary">select Beneficiary type
                 </h2>
                 <div class="row mb-4 justify-content-center mx-auto" style="max-width: 750px;">
-                    <div class="col-12 mb-2 mx-2 mx-lg-3  beneficiary-type current-type display-card bg-same-bank"
+                    <div class="col-12 mb-2 mx-2 mx-lg-3  beneficiary-type current-type display-card bg-MOM"
                         data-value="MOM" data-title="Mobile Money" id=''>
                         <span class="box-circle"></span>
-                        <span class="mt-1 beneficiary-text" id=''>Mobile Money</span>
+                        <span class="beneficiary-text" id=''>Mobile Money</span>
                     </div>
 
-                    <div class="col-12 mb-2 mx-2 mx-lg-3 beneficiary-type display-card  bg-other-bank" data-value="AIR"
+                    <div class="col-12 mb-2 mx-2 mx-lg-3 beneficiary-type display-card bg-AIR  " data-value="AIR"
                         data-title="Airtime" id=''>
                         <span class="box-circle"></span>
-                        <span class="mt-1 beneficiary-text" id=''>Airtime</span>
+                        <span class="beneficiary-text" id=''>Airtime</span>
                     </div>
-                    <div class="col-12 mb-2 mx-2 mx-lg-3 beneficiary-type display-card  bg-international-bank"
-                        data-value="UTL" data-title="Utility" id=''>
+                    <div class="col-12 mb-2 mx-2 mx-lg-3 beneficiary-type display-card bg-UTL " data-value="UTL"
+                        data-title="Utility" id=''>
                         <span class="box-circle"></span>
-                        <span class="mt-1 beneficiary-text" id=''>Utility </span>
+                        <span class="beneficiary-text" id=''>Utility </span>
+                    </div>
+                    <div class="col-12 mb-2 mx-2 mx-lg-3 beneficiary-type display-card bg-EDU  " data-value="EDU"
+                        data-title="Education" id=''>
+                        <span class="box-circle"></span>
+                        <span class="beneficiary-text" id=''>Education </span>
+                    </div>
+                    <div class="col-12 mb-2 mx-2 mx-lg-3 beneficiary-type display-card bg-GVT  " data-value="GVT"
+                        data-title="Government tax" id=''>
+                        <span class="box-circle"></span>
+                        <span class="beneficiary-text" id=''>Government tax </span>
                     </div>
                 </div>
                 <hr>
