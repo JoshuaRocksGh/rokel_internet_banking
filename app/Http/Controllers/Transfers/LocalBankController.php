@@ -87,6 +87,8 @@ class LocalBankController extends Controller
 
     public function corporateLocalBankTransfer(Request $request)
     {
+
+        // return $request;
         $base_response = new BaseResponse();
         $mode = $request->mode;
         $userID = session()->get('userId');
@@ -122,6 +124,8 @@ class LocalBankController extends Controller
             "narration" => $request->purpose,
             "expense_type" => $request->category,
         ];
+
+        // return $data;
         try {
             $response = Http::post(env('CIB_API_BASE_URL') . $url_endpoint, $data);
             $result = new ApiBaseResponse();
