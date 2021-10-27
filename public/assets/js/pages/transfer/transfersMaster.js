@@ -328,7 +328,8 @@ $(() => {
         fromAccount.accountNumber = accountData[2].trim();
         fromAccount.currency = accountData[3].trim();
         fromAccount.accountBalance = parseFloat(accountData[4].trim());
-        fromAccount.accountMandate = accountData[5];
+        fromAccount.currencyCode = accountData[5].trim();
+        fromAccount.accountMandate = accountData[6];
         // set summary values for display
         // $(".display_from_account_type").text(fromAccount.type);
         $(".display_from_account_name").text(fromAccount.name);
@@ -542,6 +543,7 @@ $(() => {
 
         transferInfo.fromAccount = fromAccount.accountNumber;
         transferInfo.currency = fromAccount.currency;
+        transferInfo.currencyCode = fromAccount.currencyCode;
         console.log(transferInfo);
         if (
             !transferInfo.fromAccount ||

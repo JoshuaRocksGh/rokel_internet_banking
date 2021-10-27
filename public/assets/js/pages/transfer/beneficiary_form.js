@@ -152,7 +152,8 @@ function saveBeneficiary(data) {
 //Adding Beneficiary
 async function addBankBeneficiary(currentType) {
     await prepareBeneficiaryForm(currentType, "Add");
-    console.log("returned");
+    $("#delete_btn").hide();
+    $(".modal-footer").removeClass("justify-content-between");
 }
 
 async function prepareBeneficiaryForm(currentType, mode) {

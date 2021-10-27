@@ -144,8 +144,7 @@
                                             <label class="col-md-4"> Select Country:</label>
                                             <div class="col-md-8">
                                                 <input type="hidden" value="" id="bank_i">
-                                                <select class="form-control form-control-sm " id="select_country"
-                                                    required>
+                                                <select class="form-control " id="select_country" required>
                                                     <option selected disabled value="">--- Select Country ---</option>
                                                 </select>
                                             </div>
@@ -155,7 +154,7 @@
                                             <label class="col-md-4"> Select Bank:</label>
                                             <div class="col-md-8">
                                                 <input type="hidden" value="" id="bank_i">
-                                                <select class="form-control form-control-sm " id="select_bank">
+                                                <select class="form-control " id="select_bank">
                                                     <option selected disabled value=""> --- Select Bank ---</option>
                                                 </select>
                                             </div>
@@ -164,8 +163,8 @@
                                         <div class="form-group row">
                                             <label class="col-md-4">Account Number:</label>
                                             <div class="col-md-8">
-                                                <input type="number" class="form-control form-control-sm"
-                                                    id="account_number" placeholder="Enter Account Number">
+                                                <input type="number" class="form-control" id="account_number"
+                                                    placeholder="Enter Account Number">
                                             </div>
 
                                         </div>
@@ -173,8 +172,8 @@
                                             style="display:none">
                                             <label class="col-md-4">Account Name:</label>
                                             <div class="col-md-8">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="account_name" placeholder="Account Name" disabled>
+                                                <input type="text" class="form-control" id="account_name"
+                                                    placeholder="Account Name" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -187,15 +186,15 @@
                                         <div class="form-group row ">
                                             <label class="col-4"> Name:</label>
                                             <div class="col-8">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="beneficiary_name" placeholder="Enter Beneficiary Name">
+                                                <input type="text" class="form-control" id="beneficiary_name"
+                                                    placeholder="Enter Beneficiary Name">
                                             </div>
                                         </div>
 
                                         {{-- <div class="form-group row">
                                             <label class="col-4">Phone Number:</label>
                                             <div class="col-8">
-                                                <input type="number" class="form-control form-control-sm"
+                                                <input type="number" class="form-control"
                                                     id="beneficiary_number" placeholder="Enter Beneficiary Phone Number"
                                                     required>
                                             </div>
@@ -204,16 +203,16 @@
                                         <div class="form-group row">
                                             <label class="col-4">Email:</label>
                                             <div class="col-8">
-                                                <input type="email" class="form-control form-control-sm"
-                                                    id="beneficiary_email" placeholder="Enter Beneficiary Email">
+                                                <input type="email" class="form-control" id="beneficiary_email"
+                                                    placeholder="Enter Beneficiary Email">
                                             </div>
                                         </div>
                                         <div class="form-group row other-bank-form international-bank-form"
                                             style="display: none">
                                             <label class="col-4">Address:</label>
                                             <div class="col-8">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="beneficiary_address" placeholder="Enter Beneficiary Address">
+                                                <input type="text" class="form-control" id="beneficiary_address"
+                                                    placeholder="Enter Beneficiary Address">
                                             </div>
                                         </div>
                                         <div class="form-group mt-3">
@@ -230,33 +229,8 @@
                                                 the beneficiary each time a transfer is made
                                             </p>
                                         </div>
-
-
                                     </div>
-
-                                    {{-- </fieldset data-type="summary"> --}}
-                                    {{-- <fieldset class="last-fs">
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Summary</h2>
-                                        <div class="form-group">
-
-                                            <div class="checkbox checkbox-primary mb-2" id="transfer_email">
-                                                <input id="checkbox2" type="checkbox">
-                                                <label class="custom-control-label" for="checkbox2">
-                                                    Email beneficiary when a transfer is made
-                                                </label>
-                                            </div>
-
-                                        </div>
-
-                                        <p class="sub-header font-13">
-                                            Providing beneficiary email and checking
-                                            the box, enables us to send an alert mail to
-                                            the beneficiary each time a transfer is made
-                                        </p>
-                                    </div>
-                                </fieldset> --}}
-
+                                </fieldset>
                             </form>
                         </div>
                     </div>
@@ -265,17 +239,17 @@
 
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-sm btn-danger" id="delete_btn">Delete</button>
-                <div> <button type="button" class="btn btn-sm btn-secondary previous action-button-previous"
+                <button type="button" class="btn btn-danger" id="delete_btn">Delete</button>
+                <div> <button type="button" class="btn btn-secondary previous action-button-previous mx-2"
                         disabled>previous</button>
-                    <button type="button" class="btn btn-sm btn-primary next action-button">next</button>
+                    <button type="button" class="btn btn-primary next action-button">next</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <span id="beneficiary_modal_backup" hidden disabled style="display: none"></span>
-<script src="assets/js/pages/payments/beneficiary_form.js">
+<script src="assets/js/pages/transfer/beneficiary_form.js">
 
 </script>
 <script src="assets/js/functions/validateEmail.js">

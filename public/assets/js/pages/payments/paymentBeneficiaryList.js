@@ -1,41 +1,52 @@
+const pageData = new Object();
 function getBeneficiaryList() {
     $.ajax({
         tpye: "GET",
-        url: "all-beneficiary-list",
+        url: "payment-beneficiary-list-api",
         datatype: "application/json",
         success: function (response) {
             if (response.responseCode == "000") {
                 const data = response.data;
                 console.log(data);
-                // $("#beneficiary_list_loader").hide();
-                // $("#beneficiary_list_retry_btn").hide();
-                sameBankBeneficiaries = [];
-                otherBankBeneficiaries = [];
-                internationalBeneficiaries = [];
                 $.each(data, function (i) {
-                    if (
-                        data[i].BENEF_TYPE === "SAB" ||
-                        data[i].TRANS_TYPE === "SAM"
-                    ) {
-                        sameBankBeneficiaries.push(data[i]);
-                    } else if (
-                        data[i].BENEF_TYPE === "OTB" ||
-                        data[i].TRANS_TYPE === "OTR"
-                    ) {
-                        otherBankBeneficiaries.push(data[i]);
-                    } else if (
-                        data[i].BENEF_TYPE === "INTB" ||
-                        data[i].TRANS_TYPE === "INT"
-                    ) {
-                        internationalBeneficiaries.push(data[i]);
+                    const type = data[i].PAYMENT_TYPE;
+                    if (!pageData["bene_" + type]) {
+                        pageData["bene_" + type] = [];
                     }
+                    pageData["bene_" + type].push(data[i]);
                 });
                 drawBeneficiaryTable();
             } else {
-                $("#beneficiary_table").hide();
-                $("#beneficiary_list_loader").hide();
-                $("#beneficiary_list_retry_btn").show();
             }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                // getBeneficiaryList();
+            }, $.ajaxSetup().retryAfter);
+        },
+    });
+}
+
+function getPaymentTypes() {
+    $.ajax({
+        tpye: "GET",
+        url: "get-payment-types-api",
+        datatype: "application/json",
+        success: function (response) {
+            if (response.responseCode == "000") {
+                const data = response.data.data;
+                $.each(data, function (i) {
+                    console.log(data[i]);
+                    const type = data[i].paymentType;
+                    pageData["pay_" + type] = data[i];
+                });
+            } else {
+            }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                // getPaymentTypes();
+            }, $.ajaxSetup().retryAfter);
         },
     });
 }
@@ -73,17 +84,9 @@ function drawBeneficiaryTable() {
         .clear();
     let noBeneficiaries = noDataAvailable.replace("Data", "Beneficiaries");
     let data = [];
-
     $("#beneficiary_list tbody").empty();
     const currentType = $(".current-type").attr("data-value");
-    if (currentType === "SAB") {
-        data = sameBankBeneficiaries;
-    } else if (currentType === "OTB") {
-        data = otherBankBeneficiaries;
-    } else if (currentType === "INTB") {
-        data = internationalBeneficiaries;
-    }
-
+    data = pageData["bene_" + currentType];
     if (data.length < 1) {
         $("#beneficiary_list tbody")
             .append(`<td colspan="100%" class="text-center">
@@ -91,18 +94,21 @@ function drawBeneficiaryTable() {
         return;
     }
     $.each(data, (index) => {
-        beneData = JSON.stringify(data[index]);
-        table.row
-            .add([
-                data[index].NICKNAME,
-                data[index].BEN_ACCOUNT,
-                data[index].EMAIL,
-                data[index].BANK_NAME,
-
-                `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-value='${beneData}'> <span class="fe-edit noti-icon text-info"></span></a>`,
-            ])
-            .draw("full-reset");
+        const beneData = JSON.stringify(data[index]);
+        const editIcon = `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-value='${beneData}'> <span class="fe-edit noti-icon text-info"></span></a>`;
+        const { NICKNAME, ACCOUNT, PAYEE_NAME } = data[index];
+        const logo = pageData["pay_" + currentType].paySubTypes.find(
+            (e) => e.paymentCode === PAYEE_NAME
+        ).paymentLogo;
+        const img = logo
+            ? "data:image/jpg;base64," + logo
+            : "assets/images/add.png";
+        const payeeImage = `<img src="${img}" class="payment_icon">`;
+        const payeeText = `<span> ${PAYEE_NAME} </span>`;
+        const payee = `<div class="d-flex m-0">${payeeImage}${payeeText}</div>`;
+        table.row.add([NICKNAME, ACCOUNT, payee, editIcon]).draw("full-reset");
     });
+    // return;
     let editButtons = document.querySelectorAll(".edit-beneficiary");
     editButtons.forEach((item, i) => {
         item.addEventListener("click", (e) => {
@@ -110,18 +116,23 @@ function drawBeneficiaryTable() {
             const beneficiaryData = JSON.parse(
                 $(editButton).attr("data-value")
             );
-            editBankBeneficiary(beneficiaryData, currentType);
+            editPaymentBeneficiary(beneficiaryData, currentType);
         });
     });
+
+    siteLoading("hide");
 }
-
+async function initPage() {
+    siteLoading("show");
+    await getPaymentTypes();
+    await getBeneficiaryList();
+}
 $(document).ready(function () {
-    $("#beneficiary_list_loader").show();
-    getBeneficiaryList();
+    // $("#beneficiary_list_loader").show();
+    initPage();
     $("#add_beneficiary").on("click", () => {
-        addBankBeneficiary($(".current-type").attr("data-value"));
+        addPaymentBeneficiary($(".current-type").attr("data-value"));
     });
-
     let beneficiaryType = document.querySelectorAll(".beneficiary-type");
     beneficiaryType.forEach((item, i) => {
         item.addEventListener("click", (e) => {

@@ -28,10 +28,10 @@ select:active,
 select:hover {
     outline: none;
 }
-.form-control {
-    /* height: 2.8rem; */
+/* .form-control {
+    /* height: 2.8rem; 
     font-size: 0.9rem;
-}
+ */
 
 .input-group-text {
     font-size: 0.9rem;
