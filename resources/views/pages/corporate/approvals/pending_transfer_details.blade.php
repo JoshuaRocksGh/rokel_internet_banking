@@ -235,7 +235,7 @@
                                 {{-- <br> --}}
                                 <div class="card">
                                     <div class="p-3 mt-4 mt-lg-0">
-                                        <h4 class="mb-1 text-center">Approvers</h4>
+                                        <h4 class="mb-1 text-center">Status</h4>
                                         <span id="approvers_list"></span>
 
                                         {{-- <h2 class="approvers">Jonas Korankye</h2>
@@ -244,6 +244,32 @@
 
                                     </div>
                                 </div>
+
+
+                                <div class="">
+                                    <div class="card-box">
+                                        <h4 class="header-title mb-1 text-center">Approvers</h4>
+
+
+                                        <div class="table-responsive">
+                                            <table class="table mb-0">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Mandate</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="approvers_list">
+
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end table-responsive-->
+
+                                    </div> <!-- end card-box -->
+                                </div> <!-- end col -->
+
+
 
 
 
@@ -346,12 +372,13 @@
                 url: "../../pending-request-details-api?customer_no=" + customer + "&request_id=" + request,
                 datatype: 'application/json',
                 success: function(response) {
-                    console.log(response.data);
+                    console.log(response);
 
                     if (response.responseCode == '000') {
 
-                        let pending_request = response.data;
-                        console.log(pending_request);
+                        let pending_request = response.data[0];
+                        let approvers_mandate = response.data[1]
+                        {{-- console.log(pending_request); --}}
 
                         if (pending_request == null || pending_request == '') {
                             {{-- Swal.fire('', 'Request does not exit', 'error'); --}}
@@ -546,6 +573,21 @@
                             ajax_call_bulk_korpor_details_endpoint(batch_number)
                         }
 
+                        $.each(approvers_mandate, function(index) {
+
+                            let appr_man = approvers_mandate[index]
+                            console.log(appr_man)
+
+                            $('.approvers_list').append(
+                                `
+                                <tr>
+                                    <td>${approvers_mandate[index].first_name} ${approvers_mandate[index].surname}</td>
+                                    <td>${approvers_mandate[index].approver_state}</td>
+                                </tr>
+                                `
+                            )
+
+                        })
 
                         let request_status = response.data.request_status
 
