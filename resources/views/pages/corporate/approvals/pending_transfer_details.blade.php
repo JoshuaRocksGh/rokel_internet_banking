@@ -325,26 +325,10 @@
 
 @section('scripts')
     <!-- third party js -->
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
-    <!-- third party js ends -->
 
-    <!-- Datatables init -->
-    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> --}}
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @include('extras.datatables')
+
+
 
     <script>
         function account_mandate() {
@@ -603,11 +587,15 @@
         }
 
         function ajax_call_bulk_details_endpoint(batch_no) {
-            var table = $('.bulk_upload_list').DataTable();
+            var table = $('.bulk_upload_list').DataTable({
+                destroy: true
+            });
             var nodes = table.rows().nodes();
 
             var customer = @json($customer_no);
             var request = @json($request_id);
+            {{-- alert(batch_no)
+            return false; --}}
 
 
 
@@ -631,14 +619,14 @@
 
                         $.each(details, function(index) {
 
-                            {{-- $('.bulk_upload_list_body').append(`
+                            $('.bulk_upload_list_body').append(`
                                     <tr class="">
                                         <th>${count}</th>
                                         <th>${details[index].bban}</th>
                                         <th>${formatToCurrency(parseFloat(details[index].amount))}</th>
                                         <th>${details[index].name}</th>
                                     </tr>
-                                `) --}}
+                                `)
 
                             table.row.add([
                                 count,
@@ -658,11 +646,11 @@
 
 
                 },
-                error: function(xhr, status, error) {
+                {{-- error: function(xhr, status, error) {
                     setTimeout(function() {
                         ajax_call_bulk_details_endpoint(batch_no)
                     }, $.ajaxSetup().retryAfter)
-                }
+                } --}}
             })
 
         }

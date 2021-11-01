@@ -149,7 +149,7 @@ class BulkUploadsController extends Controller
         $account_no = $account_info[2];
         $currency = $account_info[3];
 
-        $account_mandate = $account_info[5];
+        $account_mandate = $account_info[6];
         // return $account_info;
 
         if ($request->file()) {
@@ -423,13 +423,13 @@ class BulkUploadsController extends Controller
 
         // return $data;
 
-        return response()->json([
-            'responseCode' => '422',
-            'message' => 'View Error From Api',
-            'data' => $data
-        ], 200);
+        // return response()->json([
+        //     'responseCode' => '422',
+        //     'message' => 'View Error From Api',
+        //     'data' => $data
+        // ], 200);
 
-        die();
+        // die();
 
         /*
         $credit_data = [];

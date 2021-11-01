@@ -120,7 +120,7 @@ class LocalBankController extends Controller
             "bene_tel" => $customerPhone,
             "amount" => $request->amount,
             "currency" => $request->currency,
-            "currency_iso" => "A",
+            "currency_iso" => $request->currencyCode,
             "narration" => $request->purpose,
             "expense_type" => $request->category,
         ];
