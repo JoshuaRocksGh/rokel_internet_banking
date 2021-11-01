@@ -502,13 +502,14 @@ Route::post('/same-bank-transfer-api', [SameBankController::class, 'transfer_to_
 Route::post('/local-bank-transfer-api', [LocalBankController::class, 'localBankTransfer']);
 Route::post('/international-bank-transfer-api', [TransferInternationalBankController::class, 'international_bank_transfer'])->name('international-bank-transfer-api');
 Route::post('/own-account-transfer-api', [OwnAccountController::class, 'own_account_transfer']);
+Route::post('standing-order-transfer-api', [StandingOrderController::class, 'standing_order_request']);
 
 //CORPORATE OWN ACCOUNT API
 Route::post('/corporate-own-account-transfer-api', [OwnAccountController::class, 'corporate_own_account_transfer']);
 Route::post('/corporate-same-bank-transfer-api', [SameBankController::class, 'corporate_same_bank']);
 Route::post('/corporate-local-bank-transfer-api', [LocalBankController::class, 'corporateLocalBankTransfer']);
 Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary']);
-
+Route::post('corporate-standing-order-transfer-api', [StandingOrderController::class, 'corporate_standing_order_request']);
 
 
 // Transfers Add Beneficiary
@@ -629,7 +630,3 @@ Route::get('get-loan-sub-sectors-api', [FunctionsController::class, 'getLoanSubS
 
 //route to return standing order frequencies
 Route::get('get-standing-order-frequencies-api', [FunctionsController::class, 'get_standing_order_frequencies'])->name('get-standing-order-frequencies-api');
-
-//route to initiate standing order request
-Route::post('standing-order-transfer-api', [StandingOrderController::class, 'standing_order_request']);
-// Route::post('corporate-standing-order-request-api', [StandingOrderController::class, 'corporate_standing_order_request'])->name('corporate-standing-order-request-api');

@@ -143,94 +143,100 @@ $currentPath = "Make Payment";
     <div class="col-12 py-3 px-5">
         <br><br>
         <div class="site-card justify-content-center">
-            {{-- =================================== --}}
-            {{-- Select Account  --}}
-            {{-- =================================== --}}
-            <div class=" mb-1 px-3 row justify-content-center ">
-                <label class="col-md-8 text-primary">Account to transfer from</label>
-
-                <select class="form-control col-md-8" id="from_account" required>
-                    <option disabled selected value=""> -- Select Account --
-                    </option>
-                    @include("snippets.accounts")
-                </select>
-
-                <hr class="col-md-8">
-            </div>
 
             {{-- ============================================= --}}
             {{-- SELECT PAYMENT TYPE --}}
             {{-- ============================================= --}}
 
             <div class=" mb-1 px-3 row justify-content-center ">
-                <div class="col-12">
+                <div class="col-3">
                     <label class="col-md-8 mb-2 text-primary">Select Payment Type</label>
                     <div class="payments-carousel">
                     </div>
                     <hr class="col-md-8">
 
                 </div>
-                <div class="col-8">
-                    <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
-                        <li class="nav-item w-50" role="presentation" style="position: absolute">
-                            <button class="switch w-100  nav-link active" id="beneficiary_tab" data-toggle="pill"
-                                href="#beneficiary_view" type="button" role="tab" aria-controls="beneficiary_view"
-                                aria-selected="false">
-                                Beneficiary</button>
-                        </li>
-                        <li class="nav-item w-50" role="presentation">
-                            <button class=" switch leftbtn w-100 nav-link " id="onetime_tab" data-toggle="pill"
-                                href="#onetime_view" type="button" role="tab" aria-controls="onetime_view"
-                                aria-selected="true">
-                                <div class="switch-text">Onetime</div>
-                            </button>
-                        </li>
+                <div class="col-9">
+                    {{-- =================================== --}}
+                    {{-- Select Account  --}}
+                    {{-- =================================== --}}
+                    <div class=" mb-1 px-3 row justify-content-center ">
+                        <label class="col-md-8 text-primary">Account to transfer from</label>
 
-                    </ul>
-                </div>
+                        <select class="form-control col-md-8" id="from_account" required>
+                            <option disabled selected value=""> -- Select Account --
+                            </option>
+                            @include("snippets.accounts")
+                        </select>
+
+                        <hr class="col-md-8">
+                    </div>
+                    <div>
+                        {{-- <div class="col-8"> --}}
+                        <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
+                            <li class="nav-item w-50" role="presentation" style="position: absolute">
+                                <button class="switch w-100  nav-link active" id="beneficiary_tab" data-toggle="pill"
+                                    href="#beneficiary_view" type="button" role="tab" aria-controls="beneficiary_view"
+                                    aria-selected="false">
+                                    Beneficiary</button>
+                            </li>
+                            <li class="nav-item w-50" role="presentation">
+                                <button class=" switch leftbtn w-100 nav-link " id="onetime_tab" data-toggle="pill"
+                                    href="#onetime_view" type="button" role="tab" aria-controls="onetime_view"
+                                    aria-selected="true">
+                                    <div class="switch-text">Onetime</div>
+                                </button>
+                            </li>
+
+                        </ul>
+                        {{-- </div> --}}
 
 
 
 
-                <div class="tab-content col-md-8" id="onetime_bene_tabContent">
+                        <div class="tab-content col-md-8" id="onetime_bene_tabContent">
 
-                    {{-- ============================================= --}}
-                    {{-- beneficiary toggle --}}
-                    {{-- ============================================= --}}
-                    <div class="tab-pane fade  show active" id="beneficiary_view" role="tabpanel"
-                        aria-labelledby="beneficiary_tab">
-                        <div class="row mb-1">
-                            <label class="text-primary col-md-4 bene_details">Beneficiary
-                            </label>
-                            <select class="form-control text-capitalize col-md-8 bene_details" id="to_account" required>
-                                <option value="">-- Select Beneficiary --</option>
+                            {{-- ============================================= --}}
+                            {{-- beneficiary toggle --}}
+                            {{-- ============================================= --}}
+                            <div class="tab-pane fade  show active" id="beneficiary_view" role="tabpanel"
+                                aria-labelledby="beneficiary_tab">
+                                <div class="row mb-1">
+                                    <label class="text-primary col-md-4 bene_details">Beneficiary
+                                    </label>
+                                    <select class="form-control text-capitalize col-md-8 bene_details" id="to_account"
+                                        required>
+                                        <option value="">-- Select Beneficiary --</option>
 
-                            </select>
+                                    </select>
+                                </div>
+                            </div>
+                            {{-- ============================================= --}}
+                            {{-- Onetime toggle --}}
+                            {{-- ============================================= --}}
+                            <div class="tab-pane fade" id="onetime_view" role="tabpanel" aria-labelledby="onetime_tab">
+                                <div class="row mb-1 text-capitalize" id="subtype_div" style="display: none">
+                                    <label class="text-primary text-capitalize col-md-4 " id="subtype_label">
+                                    </label>
+                                    <select class="form-control text-capitalize col-md-8 " id="subtype_select" required>
+                                    </select>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-capitalize text-primary" id="payment_label"></label>
+                                    <input type="text" class="form-control text-capitalize col-md-8 "
+                                        id="payment_label_input" placeholder="Enter Account Number"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                </div>
+                            </div>
+                            <button
+                                class="btn mt-5 float-right font-weight-bold font-11 btn-primary next-button btn-rounded"
+                                id="next_button">
+                                &nbsp; Proceed &nbsp; <i class="fe-arrow-right"></i></button>
+
+                            {{-- <hr class="my-2"> --}}
                         </div>
                     </div>
-                    {{-- ============================================= --}}
-                    {{-- Onetime toggle --}}
-                    {{-- ============================================= --}}
-                    <div class="tab-pane fade" id="onetime_view" role="tabpanel" aria-labelledby="onetime_tab">
-                        <div class="row mb-1 text-capitalize" id="subtype_div" style="display: none">
-                            <label class="text-primary text-capitalize col-md-4 " id="subtype_label">
-                            </label>
-                            <select class="form-control text-capitalize col-md-8 " id="subtype_select" required>
-                            </select>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-4 text-capitalize text-primary" id="payment_label"></label>
-                            <input type="text" class="form-control text-capitalize col-md-8 " id="payment_label_input"
-                                placeholder="Enter Account Number"
-                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                        </div>
-                    </div>
-                    <button class="btn mt-5 float-right font-weight-bold font-11 btn-primary next-button btn-rounded"
-                        id="next_button">
-                        &nbsp; Proceed &nbsp; <i class="fe-arrow-right"></i></button>
-
-                    {{-- <hr class="my-2"> --}}
                 </div>
             </div>
         </div>

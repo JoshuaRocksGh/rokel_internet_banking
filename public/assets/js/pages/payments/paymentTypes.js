@@ -28,7 +28,7 @@ function paymentType() {
                     });
                     let subTypes = JSON.stringify(paySubTypes);
                     let beneList = JSON.stringify(new Array());
-                    let paymentCard = `<div class=" mx-2 display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
+                    let paymentCard = `<div class=" mx-2 my-2 display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
                     <span class="box-circle"></span>
                     <span class="mt-1 text-white payments-text" id='${paymentType}_text'>${description}</span>
                     <span id='${paymentType}_data' data-bene-list='${beneList}' data-label='${label}' data-subTypes='${subTypes}' hidden disabled style="display:none"></span>
@@ -78,36 +78,36 @@ function getPaymentBeneficiaries() {
 }
 
 function initPaymentsCarousel() {
-    $(".payments-carousel").slick({
-        slidesToShow: 5,
-        // variableWidth: true,
-        //   infinite: false,
-        focusOnSelect: true,
-        centerMode: true,
-        responsive: [
-            {
-                breakpoint: 1300,
-                settings: {
-                    slidesToShow: 3,
-                    centerMode: true,
-                },
-            },
-            {
-                breakpoint: 780,
-                settings: {
-                    slidesToShow: 3,
-                    centerMode: false,
-                },
-            },
-            {
-                breakpoint: 550,
-                settings: {
-                    centerMode: false,
-                    slidesToShow: 1,
-                },
-            },
-        ],
-    });
+    // $(".payments-carousel").slick({
+    //     slidesToShow: 5,
+    //     // variableWidth: true,
+    //     //   infinite: false,
+    //     focusOnSelect: true,
+    //     centerMode: true,
+    //     responsive: [
+    //         {
+    //             breakpoint: 1300,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 centerMode: true,
+    //             },
+    //         },
+    //         {
+    //             breakpoint: 780,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 centerMode: false,
+    //             },
+    //         },
+    //         {
+    //             breakpoint: 550,
+    //             settings: {
+    //                 centerMode: false,
+    //                 slidesToShow: 1,
+    //             },
+    //         },
+    //     ],
+    // });
 
     let payments = document.querySelectorAll(".payments");
     payments.forEach((item, i) => {

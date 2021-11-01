@@ -74,27 +74,23 @@ class LoginController extends Controller
         try {
 
             $response = Http::post(env('API_BASE_URL') . "user/login", $data);
-
             if (!$response->ok()) { // API response status code is 200
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
             }
             $result = json_decode($response->body());
 
 
-            if (!$result->responseCode == '000') {
+            if ($result->responseCode !== '000') {
                 // API responseCode is not 000
                 return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
             } // API responseCode is 000
-
             $userDetail = $result->data;
             if (!config("app.corporate") && $userDetail->customerType === 'C') {
                 return  $base_response->api_response('900', 'Corporate account, use Corporate Internet Banking platform',  NULL);
             } elseif (config("app.corporate") && $userDetail->customerType !== 'C') {
                 return  $base_response->api_response('900', 'Personal account, use Personal Internet Banking platform',  NULL);
             }
-
-            // return response()->json($userDetail);
 
             session([
                 "userId" => $userDetail->userId,

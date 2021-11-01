@@ -457,7 +457,7 @@ $(() => {
     //Other Checks
     // =========================================================
     $("#transfer_mode").change(function () {
-        transferInfo.mode = $(this).val();
+        transferInfo.mode = $("#transfer_mode").val();
         $(".display_to_transfer_type").text(transferInfo.mode);
     });
 
@@ -531,7 +531,7 @@ $(() => {
             transferType === "International Bank"
         ) {
             if (transferType === "Local Bank" && !transferInfo.mode) {
-                pass = "false";
+                pass = false;
             }
             if (transferType === "International Bank") {
                 transferInfo.bankCountryCode = toAccount.bankCountryCode;
