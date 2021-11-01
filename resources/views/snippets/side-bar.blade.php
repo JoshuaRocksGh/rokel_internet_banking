@@ -224,9 +224,9 @@
                                 <li>
                                     <a href="{{ url('approvals-rejected') }}">Rejected</a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="#">All</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </li>

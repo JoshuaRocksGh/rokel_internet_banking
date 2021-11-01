@@ -21,15 +21,19 @@
         <br>
         <!-- start page title -->
         <div class="row">
-            <div class="col-md-6">
-                <h4 class="text-primary">
+            <div class="col-md-4">
+                <a href="{{ url()->previous() }}" type="button" class="btn btn-sm btn-soft-blue waves-effect waves-light"
+                    id="page_back_button"><i class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-primary mb-0 page-header text-center text-uppercase">
                     <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
                     APPROVED TRANSACTION
 
                 </h4>
             </div>
 
-            <div class="col-md-6 text-right">
+            <div class="col-md-4 text-right">
                 <h6>
 
                     <span class="flaot-right">
@@ -107,7 +111,8 @@
                                         <div class="text-center">
                                             <i class="dripicons-information h1 text-info"></i>
                                             <h4 class="mt-2">Heads up!</h4>
-                                            <p class="mt-3">Cras mattis consectetur purus sit amet fermentum. Cras justo
+                                            <p class="mt-3">Cras mattis consectetur purus sit amet fermentum. Cras
+                                                justo
                                                 odio, dapibus ac facilisis in, egestas eget quam.</p>
                                             <button type="button" class="btn btn-info my-2"
                                                 data-dismiss="modal">Continue</button>
@@ -315,29 +320,13 @@
 
 @section('scripts')
 
-    <!-- third party js -->
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
-    <!-- third party js ends -->
-
-    <!-- Datatables init -->
-    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+    @include("extras.datatables")
 
     <script>
         function get_corporate_requests(customerNumber, requestStatus) {
-            var table = $('.pending_transaction_request').DataTable();
+            var table = $('.pending_transaction_request').DataTable({
+                destroy: true
+            });
             var nodes = table.rows().nodes();
 
 
@@ -396,7 +385,7 @@
                                 request_type = 'Bulk Transfer'
                             } else if (data[index].request_type == 'INT') {
                                 request_type = 'International Bank Transfer'
-                            }else if (data[index].request_type == 'KORP') {
+                            } else if (data[index].request_type == 'KORP') {
                                 request_type = 'E-Korpor'
                             } else {
                                 request_type = 'Others'

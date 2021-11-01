@@ -9,6 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class PendingController extends Controller
@@ -102,6 +103,8 @@ class PendingController extends Controller
     public function get_bulk_detail_list_for_approval(Request $request)
     {
 
+        // return $request;
+
 
 
         $batch_no = $request->batch_no;
@@ -126,10 +129,13 @@ class PendingController extends Controller
         // return $data ;
         try {
 
-            // dd(env('CIB_API_BASE_URL') . "/get-detail-pending-request-api?customer_no=$customer_no&request_id=$request_id");
-            $response = Http::get(env('CIB_API_BASE_URL') . "get-bulk-upload-detail-list-api?batch_no=$batch_no");
 
-            // return $response;
+            $url = \config('bulk_url.url');
+            // return $url;
+            // dd($url . "get-bulk-upload-detail-list-api?batch_no=$batch_no");
+            $response = Http::get($url . "get-bulk-upload-detail-list-api?batch_no=$batch_no");
+
+            // return response()->json($response);
 
             $result = new ApiBaseResponse();
 

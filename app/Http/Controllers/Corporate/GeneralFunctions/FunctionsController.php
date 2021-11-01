@@ -30,7 +30,7 @@ class FunctionsController extends Controller
             "userId"    => $userID
         ];
 
-        // dd ((env('CIB_API_BASE_URL') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus")) ;
+        // dd((env('CIB_API_BASE_URL') . "/pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus"));
 
         $response = Http::get(env('CIB_API_BASE_URL') . "pending-request-api?customerNumber=$customerNumber&requestStatus=$requestStatus");
 

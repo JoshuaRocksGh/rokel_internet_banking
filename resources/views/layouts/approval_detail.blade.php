@@ -102,6 +102,7 @@
         #datatable-buttons_filter {
             float: right;
         }
+
     </style>
 
 
@@ -131,11 +132,13 @@
             overflow-y: hidden;
 
         }
+
     </style>
 
 
 
     @yield('styles')
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 
 </head>
