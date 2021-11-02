@@ -1,4 +1,16 @@
-<div class="site-card h-100" id="transaction_form"> <br>
+<style>
+    .input-span {
+        position: absolute;
+        top: 0.8rem;
+        right: 0.5rem;
+        z-index: 222;
+    }
+
+    .text-rokel-blue {
+        color: #00bdf3 !important
+    }
+</style>
+<div class="site-card px-4 h-100" id="transaction_form"> <br>
     <div class="container">
         <form action="#" id="payment_details_form" autocomplete="off" aria-autocomplete="none">
             @csrf
@@ -22,26 +34,27 @@
                     {{-- ============================================================== --}}
                     {{-- Beneficiary and Onetime Switch --}}
                     {{-- ============================================================== --}}
-                    @if ($currentPath === 'Local Bank' || $currentPath === 'Same Bank' || $currentPath === 'International Bank')
+                    @if ($currentPath === 'Local Bank' || $currentPath === 'Same Bank' || $currentPath ===
+                    'International Bank')
 
-                        <div class="mb-2">
-                            <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
-                                <li class="nav-item w-50" role="presentation" style="position: absolute">
-                                    <button class="switch w-100  nav-link active" id="beneficiary_tab"
-                                        data-toggle="pill" href="#beneficiary_view" type="button" role="tab"
-                                        aria-controls="beneficiary_view" aria-selected="false">
-                                        Beneficiary</button>
-                                </li>
-                                <li class="nav-item w-50" role="presentation">
-                                    <button class=" switch leftbtn w-100 nav-link " id="onetime_tab" data-toggle="pill"
-                                        href="#onetime_view" type="button" role="tab" aria-controls="onetime_view"
-                                        aria-selected="true">
-                                        <div class="switch-text">Onetime</div>
-                                    </button>
-                                </li>
+                    <div class="mb-2">
+                        <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
+                            <li class="nav-item w-50" role="presentation" style="position: absolute">
+                                <button class="switch w-100  nav-link active" id="beneficiary_tab" data-toggle="pill"
+                                    href="#beneficiary_view" type="button" role="tab" aria-controls="beneficiary_view"
+                                    aria-selected="false">
+                                    Beneficiary</button>
+                            </li>
+                            <li class="nav-item w-50" role="presentation">
+                                <button class=" switch leftbtn w-100 nav-link " id="onetime_tab" data-toggle="pill"
+                                    href="#onetime_view" type="button" role="tab" aria-controls="onetime_view"
+                                    aria-selected="true">
+                                    <div class="switch-text">Onetime</div>
+                                </button>
+                            </li>
 
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>
                     @endif
 
                     <div class="tab-content" id="onetime_bene_tabContent">
@@ -52,11 +65,11 @@
                         {{-- =============================================================== --}}
 
                         @php
-                            if ($currentPath === 'Own Account') {
-                                $destination = 'Destination A/C';
-                            } else {
-                                $destination = 'Beneficiary A/C';
-                            }
+                        if ($currentPath === 'Own Account') {
+                        $destination = 'Destination A/C';
+                        } else {
+                        $destination = 'Beneficiary A/C';
+                        }
                         @endphp
                         <div class="tab-pane fade show active" id="beneficiary_view" role="tabpanel"
                             aria-labelledby="beneficiary_tab">
@@ -68,17 +81,17 @@
                                         <option disabled selected value=""> -- Select
                                             {{ $destination }} --</option>
                                         @if ($currentPath === 'Own Account')
-                                            @include('snippets.accounts')
+                                        @include('snippets.accounts')
                                         @endif
                                     </select>
                                 </div>
                                 @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank')
-                                    <div class="form-group row ">
-                                        <label class="text-primary col-md-4">{{ $destination }} Bank</label>
-                                        <input
-                                            class="form-control col-md-8 display_to_account display_to_account_bank readOnly"
-                                            type="text" id="beneficiary_bank_name" readonly>
-                                    </div>
+                                <div class="form-group row ">
+                                    <label class="text-primary col-md-4">{{ $destination }} Bank</label>
+                                    <input
+                                        class="form-control col-md-8 display_to_account display_to_account_bank readOnly"
+                                        type="text" id="beneficiary_bank_name" readonly>
+                                </div>
                                 @endif
                                 <div class="form-group row">
                                     <label class="col-md-4 text-primary"> {{ $destination }}
@@ -95,19 +108,19 @@
                                         id="saved_beneficiary_name" readonly>
                                 </div>
                                 @if ($currentPath !== 'Own Account')
-                                    <div class="form-group row">
-                                        <label class="col-md-4 text-primary"> {{ $destination }} Email</label>
-                                        <input type="text"
-                                            class="form-control display_to_account display_to_receiver_email col-md-8 readOnly"
-                                            id="saved_beneficiary_email" readonly>
-                                    </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-primary"> {{ $destination }} Email</label>
+                                    <input type="text"
+                                        class="form-control display_to_account display_to_receiver_email col-md-8 readOnly"
+                                        id="saved_beneficiary_email" readonly>
+                                </div>
                                 @endif
                                 @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank')
-                                    <div class="row mb-1">
-                                        <label class="text-primary col-md-4">Beneficiary Address</label>
-                                        <input class="form-control col-md-8  readOnly" type="text"
-                                            id="beneficiary_address" readonly>
-                                    </div>
+                                <div class="row mb-1">
+                                    <label class="text-primary col-md-4">Beneficiary Address</label>
+                                    <input class="form-control col-md-8  readOnly" type="text" id="beneficiary_address"
+                                        readonly>
+                                </div>
                                 @endif
                             </div>
                         </div>
@@ -115,64 +128,70 @@
                         {{-- onetime view --}}
                         {{-- =============================================================== --}}
 
-                        @if ($currentPath === 'Local Bank' || $currentPath === 'Same Bank' || $currentPath === 'International Bank')
-                            <div class="tab-pane fade" id="onetime_view" role="tabpanel" aria-labelledby="onetime_tab">
-                                <div class="col-12">
-                                    @if ($currentPath === 'International Bank')
-                                        <div class="row mb-1">
-                                            <label class="text-primary col-md-4">Bank Country</label>
-                                            <select class="form-control col-md-8" id="onetime_select_country" required>
-                                                <option disabled selected>--- Not Selected ---</option>
+                        @if ($currentPath === 'Local Bank' || $currentPath === 'Same Bank' || $currentPath ===
+                        'International Bank')
+                        <div class="tab-pane fade" id="onetime_view" role="tabpanel" aria-labelledby="onetime_tab">
+                            <div class="col-12">
+                                @if ($currentPath === 'International Bank')
+                                <div class="row mb-1">
+                                    <label class="text-primary col-md-4">Bank Country</label>
+                                    <select class="form-control col-md-8" id="onetime_select_country" required>
+                                        <option disabled selected>--- Not Selected ---</option>
 
-                                            </select>
-                                        </div>
-                                    @endif
-                                    @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank')
-                                        <div class="row mb-1">
-                                            <label class="text-primary col-md-4">Transfer Bank</label>
-                                            <select class="form-control col-md-8" id="onetime_select_bank" required>
-                                                <option disabled selected>--- Not Selected ---</option>
-
-                                            </select>
-                                        </div>
-                                    @endif
-                                    <div class="form-group row">
-                                        <label class="col-md-4 text-primary"> Beneficiary A/C
-                                            Number</label>
-                                        <input type="text" class="form-control col-md-8 " id="onetime_account_number"
-                                            placeholder="Enter Account Number"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                    </div>
-                                    @if ($currentPath === 'Same Bank')
-                                        <div class="form-group row">
-                                            <label class="col-md-4 text-primary"> Beneficiary A/C Name</label>
-                                            <input type="text" class="form-control readOnly col-md-8"
-                                                placeholder="Beneficiary Name" id="onetime_beneficiary_name" readonly>
-                                        </div>
-                                    @else
-                                        <div class="form-group row">
-                                            <label class="col-md-4 text-primary"> Beneficiary A/C Name</label>
-                                            <input type="text" class="form-control col-md-8"
-                                                placeholder="Enter Beneficiary Name" id="onetime_beneficiary_name">
-                                        </div>
-
-
-                                    @endif
-                                    <div class="form-group row">
-                                        <label class="col-md-4 text-primary"> Beneficiary Email</label>
-                                        <input type="text" class="form-control col-md-8 " id="onetime_beneficiary_email"
-                                            placeholder="Enter Beneficiary Email">
-                                    </div>
-                                    @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank')
-                                        <div class="row mb-1">
-                                            <label class="text-primary col-md-4">Beneficiary Address</label>
-                                            <input class="form-control col-md-8" type="text"
-                                                id="onetime_beneficiary_account_address"
-                                                placeholder="Enter Beneficiary Address">
-                                        </div>
-                                    @endif
+                                    </select>
                                 </div>
+                                @endif
+                                @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank')
+                                <div class="row mb-1">
+                                    <label class="text-primary col-md-4">Transfer Bank</label>
+                                    <select class="form-control col-md-8" id="onetime_select_bank" required>
+                                        <option disabled selected>--- Not Selected ---</option>
+
+                                    </select>
+                                </div>
+                                @endif
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-primary"> Beneficiary A/C
+                                        Number</label>
+                                    <input type="text" class="form-control col-md-8 " id="onetime_account_number"
+                                        placeholder="Enter Account Number"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                </div>
+                                @if ($currentPath === 'Same Bank')
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-primary"> Beneficiary A/C Name</label>
+                                    <div class="input-group px-0 col-md-8" style="position: relative">
+                                        <input type="text" class="form-control readOnly " placeholder="Beneficiary Name"
+                                            id="onetime_beneficiary_name" readonly>
+                                        <span class="spinner-grow-sm input-span  spinner-grow text-rokel-blue"
+                                            role="status" id="onetime_beneficiary_name_loader" style="display: none">
+                                            {{-- <span class="sr-only">Loading...</span> --}}
+                                        </span>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-primary"> Beneficiary A/C Name</label>
+                                    <input type="text" class="form-control col-md-8"
+                                        placeholder="Enter Beneficiary Name" id="onetime_beneficiary_name">
+                                </div>
+
+
+                                @endif
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-primary"> Beneficiary Email</label>
+                                    <input type="text" class="form-control col-md-8 " id="onetime_beneficiary_email"
+                                        placeholder="Enter Beneficiary Email">
+                                </div>
+                                @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank')
+                                <div class="row mb-1">
+                                    <label class="text-primary col-md-4">Beneficiary Address</label>
+                                    <input class="form-control col-md-8" type="text" id="onetime_beneficiary_address"
+                                        placeholder="Enter Beneficiary Address">
+                                </div>
+                                @endif
                             </div>
+                        </div>
                         @endif
                     </div>
 
@@ -203,44 +222,44 @@
                         </div>
 
                         @if ($currentPath === 'Local Bank')
-                            <div class="form-group row">
-                                <label class="text-primary col-md-4"> Transfer Mode</label>
+                        <div class="form-group row">
+                            <label class="text-primary col-md-4"> Transfer Mode</label>
 
-                                <select class="form-control col-md-8 " id="transfer_mode" required>
-                                    <option disabled selected> -- Select Transfer Mode --
-                                    </option>
-                                    <option value="ACH">ACH</option>
-                                    <option value="RTGS">RTGS</option>
-                                </select>
-                            </div>
+                            <select class="form-control col-md-8 " id="transfer_mode" required>
+                                <option disabled selected> -- Select Transfer Mode --
+                                </option>
+                                <option value="ACH">ACH</option>
+                                <option value="RTGS">RTGS</option>
+                            </select>
+                        </div>
                         @endif
                         @if ($currentPath === 'Standing Order')
 
-                            <div class="form-group row mb-3">
-                                <label class=" col-md-4 text-primary">Start Date</label>
-                                <input type="date" class="form-control col-md-8" min="01-01-1997" max="31-12-2030"
-                                    id="so_start_date" required>
-                            </div>
-                            <div class="form-group row mb-3">
-                                <label class=" col-md-4 text-primary">End Date</label>
-                                <input type="date" class="form-control col-md-8" id="so_end_date" required>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-4 text-primary">Frequency</label>
-                                <select class="form-control col-md-8 so_frequency" id="beneficiary_frequency"
-                                    placeholder="Select Pick Up Branch" required>
-                                    <option disabled selected value="">--Select Frequency--
-                                    </option>
-                                </select>
-                            </div>
+                        <div class="form-group row mb-3">
+                            <label class=" col-md-4 text-primary">Start Date</label>
+                            <input type="date" class="form-control col-md-8" min="01-01-1997" max="31-12-2030"
+                                id="so_start_date" required>
+                        </div>
+                        <div class="form-group row mb-3">
+                            <label class=" col-md-4 text-primary">End Date</label>
+                            <input type="date" class="form-control col-md-8" id="so_end_date" required>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 text-primary">Frequency</label>
+                            <select class="form-control col-md-8 so_frequency" id="beneficiary_frequency"
+                                placeholder="Select Pick Up Branch" required>
+                                <option disabled selected value="">--Select Frequency--
+                                </option>
+                            </select>
+                        </div>
                         @endif
                         @if ($currentPath !== 'Standing Order')
-                            <div class="form-group row">
-                                <label class="col-md-4 text-primary">Purpose of Transfer
-                                </label>
-                                <input type="text" class="form-control col-md-8" id="purpose"
-                                    placeholder="Enter purpose of transaction" class="form-group row mb-3">
-                            </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 text-primary">Purpose of Transfer
+                            </label>
+                            <input type="text" class="form-control col-md-8" id="purpose"
+                                placeholder="Enter purpose of transaction" class="form-group row mb-3">
+                        </div>
                         @endif
                         <div class="form-group row">
                             <label class="col-md-4 text-primary">Expense Category &nbsp;
@@ -266,7 +285,6 @@
 
     </div>
 </div>
-
 {{-- <div class="form-group row">
                             <b class="col-md-4 text-primary"> Cur / Rate / Amount</b>
                             <div class="input-group mb-1 col-md-8" style="padding: 0px;">
