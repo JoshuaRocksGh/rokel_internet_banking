@@ -180,6 +180,7 @@ class BulkUploadsController extends Controller
                 ->get();
 
 
+            // return response()->json($result);
             // $bank_details = $result->BBAN;
 
             // echo ($result);
@@ -190,6 +191,7 @@ class BulkUploadsController extends Controller
             // die();
 
             foreach ($result as $account) {
+                // return response()->json($account->BBAN);
                 // echo ($account);
                 // $response = $account['BBAN'];
                 // echo (json_encode($account->BBAN));
@@ -327,6 +329,8 @@ class BulkUploadsController extends Controller
 
     public function view_error_bulk_transfer(Request $request)
     {
+
+        // return $request;
 
         $batch_no = $request->query('batch_no');
         $account_no = $request->query('account_no');

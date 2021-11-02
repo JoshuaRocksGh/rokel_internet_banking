@@ -235,7 +235,7 @@
                                 {{-- <br> --}}
                                 <div class="card">
                                     <div class="p-3 mt-4 mt-lg-0">
-                                        <h4 class="mb-1 text-center">Approvers</h4>
+                                        <h4 class="mb-1 text-center">Status</h4>
                                         <span id="approvers_list"></span>
 
                                         {{-- <h2 class="approvers">Jonas Korankye</h2>
@@ -244,6 +244,32 @@
 
                                     </div>
                                 </div>
+
+
+                                <div class="">
+                                    <div class="card-box">
+                                        <h4 class="header-title mb-1 text-center">Approvers</h4>
+
+
+                                        <div class="table-responsive">
+                                            <table class="table mb-0">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Mandate</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="approvers_list">
+
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end table-responsive-->
+
+                                    </div> <!-- end card-box -->
+                                </div> <!-- end col -->
+
+
 
 
 
@@ -346,12 +372,13 @@
                 url: "../../pending-request-details-api?customer_no=" + customer + "&request_id=" + request,
                 datatype: 'application/json',
                 success: function(response) {
-                    console.log(response.data);
+                    console.log(response);
 
                     if (response.responseCode == '000') {
 
-                        let pending_request = response.data;
-                        console.log(pending_request);
+                        let pending_request = response.data[0];
+                        let approvers_mandate = response.data[1]
+                        {{-- console.log(pending_request); --}}
 
                         if (pending_request == null || pending_request == '') {
                             {{-- Swal.fire('', 'Request does not exit', 'error'); --}}
@@ -443,6 +470,24 @@
                         let debit_account = pending_request.account_no;
                         debit_account != null ? append_approval_details("Debit Account", debit_account) : '';
 
+                        let currency = pending_request.currency;
+
+                        currency = pending_request.currency == ('ACH' || 'RTGS') ? pending_request.currency :
+                            pending_request.currency;
+                        currency != null ? append_approval_details("Currency", currency) : '';
+
+
+
+                        let amount = pending_request.amount;
+                        amount != null ? append_approval_details("Amount", formatToCurrency(parseFloat(
+                            amount))) : '';
+
+
+
+                        let total_amount = pending_request.total_amount;
+                        total_amount != null ? append_approval_details("Total Amount", formatToCurrency(
+                            parseFloat(total_amount))) : '';
+
 
 
                         let bank_name = pending_request.bank_name;
@@ -460,21 +505,7 @@
                         beneficiary_name != null ? append_approval_details("Beneficiary Name",
                             beneficiary_name) : '';
 
-                        let currency = pending_request.currency;
 
-                        currency = pending_request.currency == ('ACH' || 'RTGS') ? pending_request.currency :
-                            pending_request.currency;
-                        currency != null ? append_approval_details("Currency", currency) : '';
-
-                        let amount = pending_request.amount;
-                        amount != null ? append_approval_details("Amount", formatToCurrency(parseFloat(
-                            amount))) : '';
-
-
-
-                        let total_amount = pending_request.total_amount;
-                        total_amount != null ? append_approval_details("Total Amount", formatToCurrency(
-                            parseFloat(total_amount))) : '';
 
                         let narration = pending_request.narration;
                         narration != null ? append_approval_details("Narration", narration) : '';
@@ -489,11 +520,19 @@
                         reference_number != null ? append_approval_details("Reference Number",
                             reference_number) : '';
 
-                        let frequency = pending_request.frequency;
-                        frequency != null ? append_approval_details("Frequency", frequency) : '';
+
 
                         let order_number = pending_request.order_number;
                         order_number != null ? append_approval_details("Order Number", order_number) : '';
+
+                        let start_date = pending_request.trans_start;
+                        start_date != null ? append_approval_details('Start Date', start_date) : '';
+
+                        let end_date = pending_request.trans_end;
+                        end_date != null ? append_approval_details("End Date", end_date) : '';
+
+                        let frequency = pending_request.frequency;
+                        frequency != null ? append_approval_details("Frequency", frequency) : '';
 
                         let cheque_number_from = pending_request.cheque_from;
                         cheque_number_from != null ? append_approval_details("Cheque Number From",
@@ -546,6 +585,21 @@
                             ajax_call_bulk_korpor_details_endpoint(batch_number)
                         }
 
+                        $.each(approvers_mandate, function(index) {
+
+                            let appr_man = approvers_mandate[index]
+                            console.log(appr_man)
+
+                            $('.approvers_list').append(
+                                `
+                                <tr>
+                                    <td>${approvers_mandate[index].first_name} ${approvers_mandate[index].surname}</td>
+                                    <td>${approvers_mandate[index].approver_state}</td>
+                                </tr>
+                                `
+                            )
+
+                        })
 
                         let request_status = response.data.request_status
 
