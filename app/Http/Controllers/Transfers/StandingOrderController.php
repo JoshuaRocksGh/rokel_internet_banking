@@ -20,7 +20,7 @@ class StandingOrderController extends Controller
     }
 
     //method to send pay load request
-    public function standing_order_request(Request $req)
+    public function standingOrderTransfer(Request $req)
     {
         // return $request;
         $base_response = new BaseResponse();
@@ -32,17 +32,17 @@ class StandingOrderController extends Controller
 
         $data =
             [
-                "amount" => $req->amount,
+                "amount" => $req->transferAmount,
                 "authToken" => $authToken,
                 "bankCode" => $req->bankCode,
-                "creditAccount" => $req->toAccount,
-                "debitAccount" => $req->fromAccount,
+                "creditAccount" => $req->accountNumber,
+                "debitAccount" => $req->beneficiaryAccountNumber,
                 "deviceIp" => $clientIp,
-                "effectiveDate" => $req->startDate,
-                "expiryDate" => $req->endDate,
-                "frequency" => $req->frequency,
+                "effectiveDate" => $req->soStartDate,
+                "expiryDate" => $req->soEndDate,
+                "frequency" => $req->soFrequencyCode,
                 "pinCode" => $req->secPin,
-                "transactionDesc" => $req->purpose
+                "transactionDesc" => $req->transferPurpose
             ];
 
         Log::alert($data);
@@ -86,19 +86,19 @@ class StandingOrderController extends Controller
         // return ($req);
         $data =
             [
-                "amount" => $req->amount,
+                "amount" => $req->transferAmount,
                 "authToken" => $authToken,
                 // "bankCode" => $req->backCode,
-                "destinationAccountId" => $req->toAccount,
-                "account_no" => $req->fromAccount,
+                "destinationAccountId" => $req->accountNumber,
+                "account_no" => $req->beneficiaryAccountNumber,
                 "deviceIp" => $terminalId,
-                "effectiveDate" => $req->startDate,
-                "expiryDate" => $req->endDate,
-                "frequency" => $req->frequency,
+                "effectiveDate" => $req->soStartDate,
+                "expiryDate" => $req->soEndndDate,
+                "frequency" => $req->soFrequency,
                 // "pinCode" => $req->secPin,
-                "narration" => $req->purpose,
+                "narration" => $req->transferPurpose,
                 "channel" => 'NET',
-                "currency" => $req->currency,
+                "currency" => $req->accountCurrency,
                 "account_mandate" => $req->accountMandate,
                 "postBy" => $userID,
                 "customerTel" => $customerPhone,

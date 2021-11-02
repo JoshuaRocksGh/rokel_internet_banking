@@ -52,21 +52,21 @@ class OwnAccountController extends Controller
 
 
         $data = [
-            "amount" => $req->amount,
+            "amount" => $req->transferAmount,
             "authToken" => $authToken,
             "brand" => "A",
             "channel" => 'MOB',
-            "creditAccount" => $req->toAccount,
-            "currency" => $req->currency,
-            "debitAccount" => $req->fromAccount,
+            "creditAccount" => $req->beneficiaryAccountNumber,
+            "currency" => $req->accountCurrency,
+            "debitAccount" => $req->accountNumber,
             "deviceIp" => $client_ip,
             "entrySource" => 'I',
-            "expenseType" => $req->category,
+            "expenseType" => $req->transferCategory,
             "country" => "GH",
             "deviceId" => "device",
             "manufacturer" => "null",
             "deviceName" => "WEB",
-            "narration" => $req->purpose,
+            "narration" => $req->transferPurpose,
             "secPin" => $req->secPin,
             "userName" => $userID,
             // "category" => $req->category,
@@ -110,25 +110,8 @@ class OwnAccountController extends Controller
 
     public function corporate_own_account_transfer(Request $req)
     {
-        $validator = Validator::make($req->all(), [
-            'fromAccount' => 'required',
-            'toAccount' => 'required',
-            'amount' => 'required',
-            'category' => 'required',
-            'purpose' => 'required',
-            'currency' => 'required'
-        ]);
-        // return $req;
 
         $base_response = new BaseResponse();
-
-
-        // VALIDATION
-        if ($validator->fails()) {
-
-            return $base_response->api_response('500', $validator->errors(), NULL);
-        };
-
 
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
@@ -141,13 +124,13 @@ class OwnAccountController extends Controller
         $data = [
 
 
-            "account_no" => $req->fromAccount,
+            "account_no" => $req->accountNumber,
             "authToken" => $authToken,
             "channel" => 'NET',
-            "destinationAccountId" => $req->toAccount,
-            "amount" => $req->amount,
-            "currency" => $req->currency,
-            "narration" => $req->purpose,
+            "destinationAccountId" => $req->beneficiaryAccountNumber,
+            "amount" => $req->transferAmount,
+            "currency" => $req->transferCurrency,
+            "narration" => $req->transferPurpose,
             "postBy" => $userID,
             "account_mandate" => $req->accountMandate,
             "user_mandate" => $userMandate,
@@ -157,7 +140,7 @@ class OwnAccountController extends Controller
             "user_id" => $userID,
             "customer_no" => $customerNumber,
             "user_alias" => $userAlias,
-            "expense_type" => $req->category
+            "expense_type" => $req->transferCategory
             // $documentRef => strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 2) . time());
 
         ];
