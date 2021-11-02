@@ -94,7 +94,7 @@ async function prepareBeneficiaryForm(currentType, mode) {
 async function editPaymentBeneficiary(data, type) {
     await prepareBeneficiaryForm(type, "Edit");
     $("#payment_label_input").val(data.ACCOUNT);
-    $(`#payment_subtype option[value=${data.PAYEE_NAME}]`)
+    $(`#payment_subtype option[value="${data.PAYEE_NAME}"]`)
         .prop("selected", true)
         .trigger("change");
     $("#beneficiary_name").val(data.NICKNAME);
