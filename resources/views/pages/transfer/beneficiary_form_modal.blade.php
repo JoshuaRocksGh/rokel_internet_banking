@@ -176,6 +176,14 @@
                                                     placeholder="Account Name" disabled>
                                             </div>
                                         </div>
+                                        <div class="form-group row same-bank-form" id="account_currency_display"
+                                            style="display:none">
+                                            <label class="col-md-4">Account Currency:</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control" id="account_currency"
+                                                    placeholder="Account Currency" disabled>
+                                            </div>
+                                        </div>
                                     </div>
 
 
@@ -200,7 +208,8 @@
                                             </div>
                                         </div> --}}
 
-                                        <div class="form-group row">
+                                        <div class="form-group row other-bank-form international-bank-form"
+                                            style="display: none">
                                             <label class="col-4">Email:</label>
                                             <div class="col-8">
                                                 <input type="email" class="form-control" id="beneficiary_email"
@@ -249,8 +258,9 @@
     </div>
 </div>
 <span id="beneficiary_modal_backup" hidden disabled style="display: none"></span>
-<script src="assets/js/pages/transfer/beneficiary_form.js">
-
+<script src="assets/js/pages/transfer/beneficiary/beneficiaryForm.js">
+</script>
+<script src="assets/js/pages/transfer/beneficiary/saveBeneficiary.js">
 </script>
 <script src="assets/js/functions/validateEmail.js">
 </script>
