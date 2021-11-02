@@ -20,6 +20,12 @@ a:hover {
 .text-primary {
     color: #0561ad !important;
 } */
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #eef0f2;
+    opacity: 1;
+}
+
 .form-control:focus {
     /* border-color: #17a2b8; */
     border-color: #ced4da;
