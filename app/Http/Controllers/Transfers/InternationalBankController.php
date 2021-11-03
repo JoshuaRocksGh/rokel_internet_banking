@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Transfer;
+namespace App\Http\Controllers\Transfers;
 
 use App\Http\classes\API\BaseResponse;
 use App\Http\Controllers\Controller;
@@ -13,44 +13,44 @@ class InternationalBankController extends Controller
 {
     //
 
-    public function international_bank_transfer(Request $req)
+    public function internationalBankTransfer(Request $req)
     {
         $base_response = new BaseResponse();
         $authToken = session()->get('userToken');
         $userId = session()->get('userId');
         $data = [
-            "amount" => $req->amount,
+            "amount" => $req->transferAmount,
             "authToken" => $authToken,
             "beneBankSwift" => $req->bankCode,
-            "beneficiaryAccount" => $req->toAccount,
+            "beneficiaryAccount" => $req->beneficiaryAccountNumber,
             "beneficiaryAddress1" => $req->beneficiaryAddress,
             "beneficiaryAddress2" => "string",
             "beneficiaryAddress3" => "string",
             "beneficiaryName" => $req->beneficiaryName,
             "brand" => "string",
-            "channel" => "string",
-            "chargeAccount" => $req->fromAccount,
+            "channel" => "MOB",
+            "chargeAccount" => $req->accountNumber,
             "country" => $req->bankCountryCode,
-            "debitAccount" => $req->fromAccount,
+            "debitAccount" => $req->accountNumber,
             "deviceId" => "string",
             "deviceIp" => "string",
             "deviceName" => "string",
             "entrySource" => "MOB",
-            "expenseType" => $req->category,
-            "isoCode" => "string",
+            "expenseType" => $req->transferCategory,
+            "isoCode" => "USD",
             "manufacturer" => "string",
             "pinCode" => $req->secPin,
-            "remitInfo1" => "string",
+            "remitInfo1" => $req->transferPurpose,
             "remitInfo2" => "string",
             "remitInfo3" => "string",
-            "remittanceCode" => "string",
+            "remittanceCode" => "IPI",
             "userName" => $userId
         ];
-        return $data;
+        // return $data;
 
 
         try {
-            $response = Http::post(env('API_BASE_URL') . " ", $data);
+            $response = Http::post(env('API_BASE_URL') . "/transfers/swiftTransfer", $data);
 
             $result = new ApiBaseResponse();
             return $result->api_response($response);

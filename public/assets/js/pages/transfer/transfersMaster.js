@@ -1,5 +1,3 @@
-// const { get } = require("jquery");
-
 function makeTransfer(url, data) {
     siteLoading("show");
     $.ajax({
@@ -11,16 +9,14 @@ function makeTransfer(url, data) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
-            console.log(response);
             siteLoading("hide");
-
+            console.log(response);
             if (response.responseCode == "000") {
                 swal.fire({
                     title: "Transfer successful!",
                     html: response.message,
                     icon: "success",
                     showConfirmButton: "false",
-                    timer: "3000",
                 });
                 getAccounts();
                 $("#success-message").text(response.message);
@@ -43,11 +39,18 @@ function makeTransfer(url, data) {
             }
         },
         error: function (error) {
-            // console.log(error.statusText, );
             siteLoading("hide");
             toaster(error.statusText, error);
         },
     });
+}
+
+function corporateSpecific(transferInfo) {
+    const endPoint =
+        "corporate-" +
+        transferType.toLowerCase().trim().replace(" ", "-") +
+        "-transfer-api";
+    makeTransfer(endPoint, transferInfo);
 }
 
 function getToAccount(endPoint) {
@@ -56,11 +59,9 @@ function getToAccount(endPoint) {
         url: endPoint,
         datatype: "application/json",
         success: function (response) {
-            console.log(response);
             let data = response.data;
             if (response.data.length > 0) {
                 $(".no_beneficiary").hide();
-                console.log(response.data);
                 $.each(data, function (index) {
                     $("#to_account").append(
                         $("<option>", {
@@ -79,7 +80,9 @@ function getToAccount(endPoint) {
                                 "~" +
                                 data[index].ADDRESS_1 +
                                 "~" +
-                                data[index].BANK_COUNTRY,
+                                data[index].BANK_COUNTRY +
+                                "~" +
+                                data[index].BEN_ACCOUNT_CURRENCY,
                         }).text(
                             data[index].BEN_ACCOUNT +
                                 " || " +
@@ -106,6 +109,10 @@ function getCountries() {
         success: function (response) {
             let data = response.data;
             if (data.length > 1) {
+                $("#onetime_select_country").empty();
+                $("#onetime_select_country").append(
+                    `<option selected disabled value=""> --- Select Country ---</option>`
+                );
                 $.each(data, (i) => {
                     let { actualCode, codeType, description } = data[i];
                     option = `<option value="${codeType}"  data-country-code="${actualCode}">${description}</option>`;
@@ -128,8 +135,11 @@ function getInternationalBanks(countryCode) {
         datatype: "application/json",
         success: function (response) {
             let data = response.data;
-            // console.log(data);
             if (data.length > 1) {
+                $("#onetime_select_bank").empty();
+                $("#onetime_select_bank").append(
+                    `<option selected disabled value=""> --- Select Bank ---</option>`
+                );
                 $.each(data, (i) => {
                     let { BICODE, BANK_DESC, COUNTRY } = data[i];
                     option = `<option value="${BICODE}" data-bank-country="${COUNTRY}" >${BANK_DESC}</option>`;
@@ -149,8 +159,11 @@ function getLocalBanks() {
         datatype: "application/json",
         success: function (response) {
             let data = response.data;
-            // console.log(data);
             if (data.length > 1) {
+                $("#onetime_select_bank").empty();
+                $("#onetime_select_bank").append(
+                    `<option selected disabled value=""> --- Select Bank ---</option>`
+                );
                 $.each(data, (i) => {
                     let { bankCode, bankDescription, bankSwiftCode } = data[i];
                     option = `<option value="${bankCode}" data-bank-swift-code="${bankSwiftCode}">${bankDescription}</option>`;
@@ -224,44 +237,51 @@ function getStandingOrderFrequencies() {
 }
 
 function getAccountDescription(account) {
+    $("#onetime_beneficiary_name_loader").show();
     $.ajax({
         type: "POST",
         url: "get-account-description",
         datatype: "application/json",
         data: {
-            authToken: "string",
-            accountNumber: account.accountNumber,
+            accountNumber: account.beneficiaryAccountNumber,
         },
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
-
         success: function (response) {
             if (response.responseCode == "000") {
                 details = response.data;
-                account.name = details.accountDescription;
-                account.currency = details.accountCurrencyIso;
-                console.log(account);
+                account.beneficiaryAccountName = details.accountDescription;
+                account.beneficiaryAccountCurrency = details.accountCurrencyIso;
                 handleToAccount(account);
             } else {
                 toaster(response.message, "warning");
-                account.name = "";
-                account.currency = "";
+                account.beneficiaryAccountName = "";
+                account.beneficiaryAccountCurrency = "";
                 handleToAccount(account);
             }
+            $("#onetime_beneficiary_name_loader").hide();
         },
     });
 }
 
 function handleToAccount(account) {
-    let { name, currency, accountNumber } = account;
-    $("#onetime_beneficiary_name").val(name);
-    $(".display_to_account_name").text(name);
-    $(".display_to_account_currency").text(currency);
-    $(".display_to_account_no").text(accountNumber);
+    let {
+        beneficiaryName,
+        beneficiaryAccountCurrency,
+        beneficiaryAccountNumber,
+    } = account;
+    $("#onetime_beneficiary_name").val(beneficiaryName);
+    $(".display_to_account_name").text(beneficiaryName);
+    $(".display_to_account_currency").text(beneficiaryAccountCurrency);
+    $(".display_to_account_no").text(beneficiaryAccountNumber);
 }
 
 $(() => {
+    // $("#transaction_form").hide();
+    // $("#transaction_summary").show();
+    // $(".show-on-success").show();
+
     let transferInfo = new Object();
     let fromAccount = new Object();
     $(".account_currency").text("SLL");
@@ -269,12 +289,31 @@ $(() => {
     let onetimeToAccount = new Object();
     let confirmationCompleted = false;
     let validationsCompleted = false;
-
     let isOnetimeTransfer = false;
-    function updateTransactionType() {
-        if ($("#onetime_toggle").is(":checked")) {
+
+    function renderOwnAccounts() {
+        $("#to_account").empty()
+            .append(`<option disabled selected value=""> -- Select
+         Destination Account --</option>`);
+
+        userAccounts
+            .filter(
+                (account) => account.accountNumber !== fromAccount.accountNumber
+            )
+            .forEach((account) =>
+                $("#to_account").append(`<option
+        value=" ${account.accountType} ~ ${account.accountDesc} ~ ${account.accountNumber} ~ ${account.currency} ~ ${account.availableBalance}">
+         ${account.accountDesc}  ||  ${account.accountNumber} || ${account.currency} || ${account.availableBalance} 
+    </option>`)
+            );
+    }
+
+    function updateTransactionType(type) {
+        if (type === "onetime") {
             isOnetimeTransfer = true;
-        } else {
+            $("#save_as_beneficiary").addClass("show-on-success");
+        } else if (type === "beneficiary") {
+            $("#save_as_beneficiary").hide();
             isOnetimeTransfer = false;
         }
     }
@@ -284,12 +323,14 @@ $(() => {
             beneCode = "SAB";
         } else if (transferType === "Local Bank") {
             beneCode = "OTB";
+            getLocalBanks();
             // $("onetime_beneficiary_name").removeAttribute("readonly");
         } else if (transferType === "Standing Order") {
-            getStandingOrderFrequencies();
             beneCode = "SAB";
+            getStandingOrderFrequencies();
         } else if (transferType === "International Bank") {
             beneCode = "INTB";
+            getCountries();
         }
         if (beneCode) {
             getToAccount(`get-transfer-beneficiary-api?beneType=${beneCode}`);
@@ -300,128 +341,161 @@ $(() => {
     // HANDLE BENE TOGGLE
     $("#onetime_tab").on("click", () => {
         $(".display_to_account").text("");
-        updateTransactionType();
-        $(".display_to_account_no").text(onetimeToAccount.accountNumber);
-        if (onetimeToAccount.name) {
-            $("#onetime_beneficiary_name").val(onetimeToAccount.name);
-            $(".display_to_account_name").text(onetimeToAccount.name);
-            $(".display_to_account_currency").text(onetimeToAccount.currency);
+        $(".display_to_account_no").text(
+            onetimeToAccount.beneficiaryAccountNumber
+        );
+        if (onetimeToAccount.beneficiaryName) {
+            $("#onetime_beneficiary_name").val(
+                onetimeToAccount.beneficiaryName
+            );
+            $(".display_to_account_name").text(
+                onetimeToAccount.beneficiaryName
+            );
+            $(".display_to_account_currency").text(
+                onetimeToAccount.beneficiaryAccountCurrency
+            );
         }
+        updateTransactionType("onetime");
     });
     $("#beneficiary_tab").on("click", () => {
-        updateTransactionType();
+        updateTransactionType("beneficiary");
         $(".display_to_account").text("");
         $("#to_account").trigger("change");
     });
 
     $("#from_account").on("change", function () {
-        fromAccount.info = $(this).val();
+        let accountInfo = $(this).val();
 
-        if (!fromAccount.info) {
+        if (!accountInfo) {
             $(".display_from_account").val("").text("");
             $(".account_currency").text("SLL");
             return false;
         }
-        const accountData = fromAccount.info.split("~");
-        fromAccount.type = accountData[0].trim();
-        fromAccount.name = accountData[1].trim();
-        fromAccount.accountNumber = accountData[2].trim();
-        fromAccount.currency = accountData[3].trim();
-        fromAccount.accountBalance = parseFloat(accountData[4].trim());
-        fromAccount.currencyCode = accountData[5].trim();
-        fromAccount.accountMandate = accountData[6];
-        // set summary values for display
-        // $(".display_from_account_type").text(fromAccount.type);
-        $(".display_from_account_name").text(fromAccount.name);
-        $(".display_from_account_no").text(fromAccount.accountNumber);
-        $(".display_from_account_currency").text(fromAccount.currency);
-        $(".account_currency")
-            .text(fromAccount.currency)
-            .val(fromAccount.currency);
+        const accountData = accountInfo.split("~");
+        // let accountType = accountData[0].trim();
+        let accountName = accountData[1].trim();
+        let accountNumber = accountData[2].trim();
+        let accountCurrency = accountData[3].trim();
+        let accountBalance = parseFloat(accountData[4].trim());
+        let accountCurrencyCode = accountData[5].trim();
+        let accountMandate = accountData[6];
+        fromAccount = {
+            accountName,
+            accountNumber,
+            accountCurrency,
+            accountBalance,
+            accountCurrencyCode,
+            accountMandate,
+        };
+        $(".display_from_account_name").text(accountName);
+        $(".display_from_account_no").text(accountNumber);
+        $(".display_from_account_currency").text(accountCurrency);
+        $(".account_currency").text(accountCurrency).val(accountCurrency);
         $(".display_from_account_balance").text(
-            formatToCurrency(fromAccount.accountBalance)
+            formatToCurrency(accountBalance)
         );
-        console.log(fromAccount);
         if (transferInfo.amount) {
-            $(".display_transfer_currency").text(fromAccount.currency);
+            $(".display_transfer_currency").text(accountCurrency);
+        }
+        if (transferType === "Own Account") {
+            renderOwnAccounts();
         }
     });
 
     $("#to_account").on("change", function () {
-        toAccount.info = $(this).val();
-        if (!toAccount.info) {
+        const beneficiaryInfo = $(this).val();
+        if (!beneficiaryInfo) {
             $(".display_to_account").val("").text("");
             return false;
         }
-        const accountData = toAccount.info.split("~");
-        toAccount.type = accountData[0];
-        toAccount.name = accountData[1];
-        toAccount.accountNumber = accountData[2];
-        toAccount.currency = accountData[3];
+        let accountData = beneficiaryInfo.split("~");
+        let beneficiaryType = accountData[0];
+        let beneficiaryName = accountData[1];
+        let beneficiaryAccountNumber = accountData[2];
+        let beneficiaryAccountCurrency = accountData[8];
+        let beneficiaryEmail,
+            beneficiaryAddress,
+            bankName,
+            bankCode,
+            bankCountryCode;
         if (transferType !== "Own Account") {
-            toAccount.email = accountData[3].trim();
+            beneficiaryEmail = accountData[3].trim();
             $(".display_to_receiver_email")
-                .val(toAccount.email)
-                .text(toAccount.email);
+                .val(beneficiaryEmail)
+                .text(beneficiaryEmail);
         }
         // set summary values for display
-        $(".display_to_account_type").text(toAccount.type).val(toAccount.type);
-        $(".display_to_account_name").text(toAccount.name).val(toAccount.name);
+        $(".display_to_account_type")
+            .text(beneficiaryType)
+            .val(beneficiaryType);
+        $(".display_to_account_name")
+            .text(beneficiaryName)
+            .val(beneficiaryName);
         $(".display_to_account_no")
-            .text(toAccount.accountNumber)
-            .val(toAccount.accountNumber);
+            .text(beneficiaryAccountNumber)
+            .val(beneficiaryAccountNumber);
 
-        $(".display_to_account_currency").text(toAccount.currency);
+        $(".display_to_account_currency").text(beneficiaryAccountCurrency);
 
         if (
             transferType === "Local Bank" ||
             transferType === "International Bank"
         ) {
-            toAccount.bank = accountData[4].trim();
-            toAccount.bankCode = accountData[5].trim();
-            toAccount.address = accountData[6].trim();
+            bankName = accountData[4].trim();
+            bankCode = accountData[5].trim();
+            beneficiaryAddress = accountData[6].trim();
 
-            $(".display_to_account_address").text(toAccount.address);
-            $("#beneficiary_address").val(toAccount.address);
-            $(".display_to_bank_name").text(toAccount.bank);
-            $("#beneficiary_bank_name").val(toAccount.bank);
+            $(".display_to_account_address").text(beneficiaryAddress);
+            $("#beneficiary_address").val(beneficiaryAddress);
+            $(".display_to_bank_name").text(bankName);
+            $("#beneficiary_bank_name").val(bankName);
         }
         if (transferType === "International Bank") {
-            toAccount.bankCountryCode = accountData[7].trim();
+            bankCountryCode = accountData[7].trim();
         }
+        toAccount = {
+            beneficiaryName,
+            beneficiaryAccountNumber,
+            beneficiaryAccountCurrency,
+            beneficiaryEmail,
+            beneficiaryAddress,
+            bankCode,
+            bankName,
+            bankCountryCode,
+        };
     });
 
     $("#amount").on("keyup", function () {
-        transferInfo.amount = $(this).val();
-        if (!transferInfo.amount) {
+        transferInfo.transferAmount = $(this).val();
+        if (!transferInfo.transferAmount) {
             $(".display_transfer_amount").text("");
             $(".display_transfer_currency").text("");
             return false;
         }
-        if (!fromAccount.currency) {
+        if (!fromAccount.accountCurrency) {
             $(".display_transfer_currency").text("SLL");
         } else {
-            $(".display_transfer_currency").text(fromAccount.currency);
+            $(".display_transfer_currency").text(fromAccount.accountCurrency);
         }
         $(".display_transfer_amount").text(
-            formatToCurrency(transferInfo.amount)
+            formatToCurrency(transferInfo.transferAmount)
         );
     });
     // ===================================================
     //  isOnetimeTransfer
     // ===================================================
     $("#onetime_account_number").on("keyup", function () {
-        if (onetimeToAccount.accountNumber === $(this).val()) {
+        if (onetimeToAccount.beneficiaryAccountNumber === $(this).val()) {
             return false;
         }
-        onetimeToAccount.accountNumber = "";
-        if ($(this).val() === fromAccount.accountNumber) {
+        onetimeToAccount.beneficiaryAccountNumber = "";
+        if ($(this).val() === fromAccount.beneficiaryAccountNumber) {
             toaster("Cannot send to same account", "warning");
             return false;
         }
-        onetimeToAccount.accountNumber = $(this).val();
+        onetimeToAccount.beneficiaryAccountNumber = $(this).val();
         if (transferType === "Same Bank") {
-            if (onetimeToAccount.accountNumber.length > 17) {
+            if (onetimeToAccount.beneficiaryAccountNumber.length > 17) {
                 getAccountDescription(onetimeToAccount);
             }
         } else {
@@ -429,36 +503,56 @@ $(() => {
         }
     });
     $("#onetime_beneficiary_email").on("keyup", function () {
-        onetimeToAccount.email = $(this).val();
-        $(".display_to_receiver_email").text(onetimeToAccount.email);
+        onetimeToAccount.beneficiaryEmail = $(this).val();
+        $(".display_to_receiver_email").text(onetimeToAccount.beneficiaryEmail);
     });
-
-    // international bank
-    if (transferType === "International Bank") {
-        getCountries();
-        $("#onetime_select_country").on("change", () => {
-            transferInfo.bankCountryCode = $("#onetime_select_country").val();
-            getInternationalBanks(transferInfo.bankCountryCode);
-        });
+    // ###### ================================
+    // ######   international and local bank
+    // ###### ================================
+    if (
+        transferType === "International Bank" ||
+        transferType === "Local Bank"
+    ) {
         $("#onetime_select_bank").on("change", () => {
-            transferInfo.bankCode = $("#onetime_select_bank").val();
+            onetimeToAccount.bankCode = $("#onetime_select_bank").val();
+            onetimeToAccount.bankName = $(
+                "#onetime_select_bank option:selected"
+            ).text();
+            $(".display_to_bank_name").text(onetimeToAccount.bankName);
         });
-    }
-
-    // Local Bank
-    if (transferType === "Local Bank") {
-        getLocalBanks();
-        $("#onetime_select_bank").on("change", () => {
-            transferInfo.bankCode = $(this).val();
+        $("#onetime_beneficiary_name").on("keyup", () => {
+            onetimeToAccount.beneficiaryName = $(
+                "#onetime_beneficiary_name"
+            ).val();
+            $(".display_to_account_name").text(
+                onetimeToAccount.beneficiaryName
+            );
         });
+        $("#onetime_beneficiary_address").on("keyup", () => {
+            onetimeToAccount.beneficiaryAddress = $(
+                "#onetime_beneficiary_address"
+            ).val();
+            $(".display_to_account_address").text(
+                onetimeToAccount.beneficiaryAddress
+            );
+        });
+        // international bank
+        if (transferType === "International Bank") {
+            $("#onetime_select_country").on("change", () => {
+                onetimeToAccount.bankCountryCode = $(
+                    "#onetime_select_country"
+                ).val();
+                getInternationalBanks(onetimeToAccount.bankCountryCode);
+                $("#onetime_select_bank").prop("selectedIndex", -1);
+            });
+        }
     }
-
     // =========================================================
     //Other Checks
     // =========================================================
     $("#transfer_mode").change(function () {
-        transferInfo.mode = $("#transfer_mode").val();
-        $(".display_to_transfer_type").text(transferInfo.mode);
+        transferInfo.transferMode = $("#transfer_mode").val();
+        $(".display_to_transfer_type").text(transferInfo.transferMode);
     });
 
     // Standing order date checks
@@ -466,24 +560,25 @@ $(() => {
         let today = new Date();
         let day = today.getDate().toString().padStart(2, "0");
         let month = (today.getMonth() + 1).toString().padStart(2, "0");
-        transferInfo.startDate = today.getFullYear() + "-" + month + "-01";
-        transferInfo.endDate = today.getFullYear() + "-" + month + "-" + day;
-        transferInfo.thisDay = transferInfo.endDate;
+        transferInfo.soStartDate = today.getFullYear() + "-" + month + "-01";
+        transferInfo.soEndDate = today.getFullYear() + "-" + month + "-" + day;
+        transferInfo.soCurrentDate = transferInfo.endDate;
 
         $("#so_start_date").on("change", function () {
-            transferInfo.startDate = $("#so_start_date").val();
-            $(".display_so_start_date").text(transferInfo.startDate);
+            transferInfo.soStartDate = $("#so_start_date").val();
+            $(".display_so_start_date").text(transferInfo.soStartDate);
         });
 
         $("#so_end_date").on("change", function () {
-            transferInfo.endDate = $("#so_end_date").val();
-            $(".display_so_end_date").text(transferInfo.endDate);
+            transferInfo.soEndDate = $("#so_end_date").val();
+            $(".display_so_end_date").text(transferInfo.soEndDate);
         });
 
         //standing order frequency
         $("#beneficiary_frequency").on("change", function () {
             let standing_order = $("#beneficiary_frequency").val().split("~");
-            transferInfo.frequency = standing_order[0];
+            transferInfo.soFrequencyCode = standing_order[0];
+            transferInfo.soFrequency = standing_order[1];
             // var optionText = $("#beneficiary_frequency option:selected").text();
             $(".display_frequency_so").text(standing_order[1]);
         });
@@ -494,116 +589,91 @@ $(() => {
     // {{-- ----------------- --}}
     $("#next_button").on("click", (e) => {
         let pass = true;
-        transferInfo.purpose =
+        transferInfo.transferPurpose =
             transferType === "Standing Order"
                 ? "Standing Order"
                 : $("#purpose").val();
-        $(".display_purpose").text(transferInfo.purpose);
-        transferInfo.category = $("#category").val();
-        if (transferInfo.category !== "Others") {
-            transferInfo.category = $("#category").val().split("~")[1];
+        $(".display_purpose").text(transferInfo.transferPurpose);
+        transferInfo.transferCategory = $("#category").val();
+        if (transferInfo.transferCategory !== "Others") {
+            transferInfo.transferCategory = $("#category").val().split("~")[1];
         }
-        $(".display_category").text(transferInfo.category);
+        $(".display_category").text(transferInfo.transferCategory);
 
         e.preventDefault();
         if (isOnetimeTransfer) {
-            // onetime checks for other transfers aside own account
-            transferInfo.toAccount = onetimeToAccount.accountNumber;
             if (transferType !== "Own Account")
-                onetimeToAccount.email = $("#onetime_beneficiary_email").val();
-            if (validateEmail(onetimeToAccount.email)) {
+                onetimeToAccount.beneficiaryEmail = $(
+                    "#onetime_beneficiary_email"
+                ).val();
+            if (!validateEmail(onetimeToAccount.beneficiaryEmail)) {
                 toaster("Please enter valid beneficiary email", "warning");
                 return false;
             }
-            transferInfo.beneficiaryEmail = onetimeToAccount.email;
-            transferInfo.beneficiaryName = onetimeToAccount.name;
+            transferInfo = Object.assign(transferInfo, onetimeToAccount);
         } else {
-            transferInfo.toAccount = toAccount.accountNumber;
-            transferInfo.beneficiaryName = toAccount.name;
-            // benefiiciary checks for other transfers aside own account
-            if (transferType !== "Own Account") {
-                transferInfo.beneficiaryEmail = toAccount.email;
-            }
+            transferInfo = Object.assign(transferInfo, toAccount);
         }
         // Local Bank Checks
-        if (
-            transferType === "Local Bank" ||
-            transferType === "International Bank"
-        ) {
-            if (transferType === "Local Bank" && !transferInfo.mode) {
-                pass = false;
-            }
-            if (transferType === "International Bank") {
-                transferInfo.bankCountryCode = toAccount.bankCountryCode;
-            }
-            transferInfo.beneficiaryAddress = toAccount.address;
-            transferInfo.bankName = toAccount.bank;
-            transferInfo.bankCode = toAccount.bankCode;
+        if (transferType === "Local Bank" && !transferInfo.transferMode) {
+            pass = false;
         }
-
-        transferInfo.fromAccount = fromAccount.accountNumber;
-        transferInfo.currency = fromAccount.currency;
-        transferInfo.currencyCode = fromAccount.currencyCode;
-        console.log(transferInfo);
+        transferInfo = Object.assign(transferInfo, fromAccount);
         if (
-            !transferInfo.fromAccount ||
-            !transferInfo.toAccount ||
-            !transferInfo.amount ||
-            !transferInfo.category ||
-            !transferInfo.purpose ||
-            !pass
+            !pass ||
+            !transferInfo.accountNumber ||
+            !transferInfo.beneficiaryAccountNumber ||
+            !transferInfo.transferAmount ||
+            !transferInfo.transferCategory ||
+            !transferInfo.transferPurpose
         ) {
             toaster("complete all fields", "warning");
             return false;
         }
 
-        if (transferInfo.amount <= 0 || isNaN(transferInfo.amount)) {
+        if (
+            transferInfo.transferAmount <= 0 ||
+            isNaN(transferInfo.transferAmount)
+        ) {
             toaster("invalid transfer amount", "warning");
             return false;
         }
-        if (transferInfo.amount > fromAccount.accountBalance) {
+        if (transferInfo.transferAmount > fromAccount.accountBalance) {
             toaster("Insufficient account balance", "warning");
             return false;
         }
-        if (transferInfo.toAccount === transferInfo.fromAccount) {
+        if (
+            transferInfo.beneficiaryAccountNumber === transferInfo.accountNumber
+        ) {
             toaster("cannot send to the same account", "warning");
             return false;
         }
         if (transferType === "Standing Order") {
-            const { startDate, endDate, thisDay } = transferInfo;
-            if (startDate < thisDay) {
+            const { soStartDate, soEndDate, soCurrentDate } = transferInfo;
+            if (soStartDate < soCurrentDate) {
                 toaster("Start date can't be less than today", "warning");
                 return false;
-            } else if (endDate < thisDay) {
+            } else if (soEndDate < soCurrentDate) {
                 toaster("End date can't be less than today", "warning");
                 return false;
-            } else if (startDate > endDate) {
+            } else if (soStartDate > soEndDate) {
                 toaster("Start date can't be greater than end date", "warning");
                 return false;
-            } else if (!transferInfo.frequency) {
+            } else if (!transferInfo.soFrequencyCode) {
                 toaster("Select order frequency", "warning");
                 return false;
             }
         }
-
         $("#transaction_form").hide();
         $("#transaction_summary").show();
         // $("#transfer_details_view").hide();
         validationsCompleted = true;
     });
 
-    function corporateSpecific() {
-        transferInfo.accountMandate = fromAccount.accountMandate;
-        console.log(transferInfo);
-        const endPoint =
-            "corporate-" +
-            transferType.toLowerCase().trim().replace(" ", "-") +
-            "-transfer-api";
-        makeTransfer(endPoint, transferInfo);
-    }
-
     $("#confirm_transfer_button").on("click", (e) => {
         e.preventDefault();
+        console.log(transferInfo);
+
         if (!$("#terms_and_conditions").is(":checked")) {
             toaster("Accept Terms & Conditions to continue", "warning");
             return false;
@@ -612,10 +682,9 @@ $(() => {
             somethingWentWrongHandler();
             return false;
         }
-        console.log(transferInfo);
         confirmationCompleted = true;
         if (ISCORPORATE) {
-            corporateSpecific();
+            corporateSpecific(transferInfo);
             return;
         }
         $("#centermodal").modal("show");
@@ -646,5 +715,10 @@ $(() => {
         $("#transaction_form").show();
         $("#transfer_details_view").show();
         validationsCompleted = false;
+    });
+
+    $("#save_as_beneficiary").on("click", () => {
+        const beneData = Object.assign({}, transferInfo);
+        beneData.accountNumber = transferInfo.console.log(beneData);
     });
 });

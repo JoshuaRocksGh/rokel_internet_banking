@@ -33,7 +33,7 @@ class LocalBankController extends Controller
 
 
         $clientIp = request()->ip();
-        $mode = $request->mode;
+        $mode = $request->transferMode;
         if ($mode == "ACH") {
             $url = 'achBankTransfer';
         } else if ($mode == "RTGS") {
@@ -43,7 +43,7 @@ class LocalBankController extends Controller
         }
 
         $data = [
-            "amount" => (float)$request->amount,
+            "amount" => (float)$request->transferAmount,
             "authToken" => $authToken,
             "bankName" => $request->bankName,
             "beneficiaryAddress" => $request->beneficiaryAddress,
@@ -51,17 +51,17 @@ class LocalBankController extends Controller
             "brand" => "a",
             "channel" => "MOB",
             "country" => "a",
-            "creditAccount" => $request->toAccount,
-            "debitAccount" => $request->fromAccount,
+            "creditAccount" => $request->beneficiaryAccountNumber,
+            "debitAccount" => $request->accountNumber,
             "deviceId" => "a",
             "deviceIp" => $clientIp,
             "deviceName" => "a",
             "entrySource" => 'MOB',
-            "expenseType" => $request->category,
+            "expenseType" => $request->transferCategory,
             "manufacturer" => "a",
             "secPin" => $request->secPin,
-            "transactionDetails" => $request->purpose,
-            "transferCurrency" => "$request->currencyCode",
+            "transactionDetails" => $request->transferPurpose,
+            "transferCurrency" => "$request->accountCurrencyCode",
             "userName" => $userID,
             "email" => $request->beneficiaryEmail,
 
@@ -90,7 +90,7 @@ class LocalBankController extends Controller
 
         // return $request;
         $base_response = new BaseResponse();
-        $mode = $request->mode;
+        $mode = $request->transferMode;
         $userID = session()->get('userId');
         $userAlias = session()->get('userAlias');
         $customerPhone = session()->get('customerPhone');
@@ -111,18 +111,18 @@ class LocalBankController extends Controller
             "user_id" => $userID,
             "user_alias" => $userAlias,
             "account_mandate" => $request->accountMandate,
-            "account_no" => $request->fromAccount,
+            "account_no" => $request->accountNumber,
             "bank_code" => $request->bankCode,
             "bank_name" => $request->bankName,
-            "bene_account" => $request->toAccount,
+            "bene_account" => $request->beneficiaryAccountNumber,
             "bene_name" => $request->beneficiaryName,
             "bene_address" => $request->beneficiaryAddress,
             "bene_tel" => $customerPhone,
-            "amount" => $request->amount,
-            "currency" => $request->currency,
+            "amount" => $request->transferamount,
+            "currency" => $request->accountCurrency,
             "currency_iso" => $request->currencyCode,
-            "narration" => $request->purpose,
-            "expense_type" => $request->category,
+            "narration" => $request->transferpurpose,
+            "expense_type" => $request->transfercategory,
         ];
 
         // return $data;

@@ -21,7 +21,7 @@ class SameBankController extends Controller
     }
 
 
-    public function transfer_to_beneficiary(Request $req)
+    public function sameBankTransfer(Request $req)
     {
 
 
@@ -32,21 +32,21 @@ class SameBankController extends Controller
 
 
         $data = [
-            "amount" => (float) $req->amount,
+            "amount" => (float) $req->transferAmount,
             "authToken" => $authToken,
             "brand" => "string",
-            "creditAccount" => $req->toAccount,
+            "creditAccount" => $req->beneficiaryAccountNumber,
             "channel" => "MOB",
             "country" => "SL",
-            "currency" => $req->currency,
-            "debitAccount" => $req->fromAccount,
+            "currency" => $req->accountCurrency,
+            "debitAccount" => $req->accountNumber,
             "deviceId" => "string",
             "deviceName" => "string",
             "deviceIp" => $client_ip,
             "entrySource" => 'MOB',
-            "expenseType" => $req->category,
+            "expenseType" => $req->transferCategory,
             "manufacturer" => "string",
-            "narration" => $req->purpose,
+            "narration" => $req->transferPurpose,
             "secPin" => $req->secPin,
             "userName" => $userID,
             "beneficiaryEmail" => $req->beneficiaryEmail
@@ -78,15 +78,15 @@ class SameBankController extends Controller
         $userMandate = session()->get('userMandate');
         // return $request;
         $data = [
-            "account_no" => $request->fromAccount,
+            "account_no" => $request->accountNumber,
             "authToken" => $authToken,
             "channel" => 'NET',
-            "destinationAccountId" => $request->toAccount,
+            "destinationAccountId" => $request->beneficiaryAccountNumber,
             "beneficiaryName" => $request->beneficiaryName,
-            "currency" => $request->currency,
+            "currency" => $request->accountCurrency,
             "account_mandate" => $request->accountMandate,
-            "amount" => $request->amount,
-            "narration" => $request->purpose,
+            "amount" => $request->transferAmount,
+            "narration" => $request->transferPurpose,
             "postBy" => $userID,
             // "appBy" => '';
             "customerTel" => $customerPhone,
@@ -94,7 +94,7 @@ class SameBankController extends Controller
             "customer_no" => $customerNumber,
             "user_alias" => $userAlias,
             "user_mandate" => $userMandate,
-            "expense_type" => $request->category,
+            "expense_type" => $request->transferCategory,
             "documentRef" => strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 2) . time()),
         ];
         // return $data;

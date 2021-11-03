@@ -1,12 +1,11 @@
 function getBeneficiaryList() {
     $.ajax({
         tpye: "GET",
-        url: "all-beneficiary-list",
+        url: "transfer-beneficiary-list",
         datatype: "application/json",
         success: function (response) {
             if (response.responseCode == "000") {
                 const data = response.data;
-                console.log(data);
                 // $("#beneficiary_list_loader").hide();
                 // $("#beneficiary_list_retry_btn").hide();
                 sameBankBeneficiaries = [];
@@ -40,6 +39,7 @@ function getBeneficiaryList() {
     });
 }
 function beneficiarySaved() {
+    $("#edit_modal").modal("hide");
     Swal.fire({
         width: 300,
         title: "<h2 class='text-success font-16 font-weight-bold'>Beneficiary Saved</h2>",

@@ -6,8 +6,11 @@ function getLocalBanks() {
         datatype: "application/json",
         success: function (response) {
             let data = response.data;
-            console.log(data);
             if (data.length > 1) {
+                $("#select_bank").empty();
+                $("#select_bank").append(
+                    `<option selected disabled value=""> --- Select Bank ---</option>`
+                );
                 $.each(data, (i) => {
                     let { bankCode, bankDescription, bankSwiftCode } = data[i];
                     option = `<option value="${bankCode}" data-bank-swift-code="${bankSwiftCode}">${bankDescription}</option>`;
@@ -28,8 +31,11 @@ function getCountries() {
         datatype: "application/json",
         success: function (response) {
             let data = response.data;
-            console.log(data);
             if (data.length > 1) {
+                $("#select_country").empty();
+                $("#select_country").append(
+                    `<option selected disabled value=""> --- Select Country ---</option>`
+                );
                 $.each(data, (i) => {
                     let { actualCode, codeType, description } = data[i];
                     option = `<option value="${codeType}"  data-country-code="${actualCode}">${description}</option>`;
@@ -52,8 +58,11 @@ function getInternationalBanks(countryCode) {
         datatype: "application/json",
         success: function (response) {
             let data = response.data;
-            console.log(data);
             if (data.length > 1) {
+                $("#select_bank").empty();
+                $("#select_bank").append(
+                    `<option selected disabled value=""> --- Select Bank ---</option>`
+                );
                 $.each(data, (i) => {
                     let { BICODE, BANK_DESC, COUNTRY } = data[i];
                     option = `<option value="${BICODE}" data-bank-country="${COUNTRY}" >${BANK_DESC}</option>`;
@@ -78,7 +87,6 @@ function deleteBeneficiary(beneficiaryId) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: (res) => {
-            console.log(res);
             if (res.responseCode === "000") {
                 $("#edit_modal").modal("hide");
                 beneficiaryDeleted();
@@ -87,7 +95,6 @@ function deleteBeneficiary(beneficiaryId) {
             }
         },
         error: (err) => {
-            console.log(err);
             toaster(err.statusText, "error");
         },
     });
@@ -106,11 +113,12 @@ function getAccountDescription(accountNumber) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: (res) => {
-            console.log(res);
             if (res.responseCode === "000") {
                 $("#account_name").val(res.data.accountDescription);
+                $("#account_currency").val(res.data.accountCurrencyIso);
             } else {
                 $("#account_name").val("");
+                $("#account_currency").val("");
                 toaster(res.message, "error");
             }
         },
@@ -121,34 +129,6 @@ function getAccountDescription(accountNumber) {
     });
 }
 
-function saveBeneficiary(data) {
-    siteLoading("show");
-    $.ajax({
-        type: "POST",
-        url: "save-transfer-beneficiary-api",
-        datatype: "application/json",
-        data,
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-        success: (res) => {
-            siteLoading("hide");
-
-            console.log(res);
-            if (res.responseCode === "000") {
-                $("#edit_modal").modal("hide");
-                beneficiarySaved();
-            } else {
-                toaster(res.message, "error");
-            }
-        },
-        error: (err) => {
-            siteLoading("hide");
-
-            toaster(err.statusText, "error");
-        },
-    });
-}
 //Adding Beneficiary
 async function addBankBeneficiary(currentType) {
     await prepareBeneficiaryForm(currentType, "Add");
@@ -163,7 +143,6 @@ async function prepareBeneficiaryForm(currentType, mode) {
         $("#beneficiary_form_header").addClass("bg-same-bank");
         $("#beneficiary_form_title").text(`${mode} Same Bank Beneficiary`);
         $("#account_number").on("keyup", () => {
-            console.log("here");
             if ($("#account_number").val().length >= ACCOUNT_NUMBER_LENGTH) {
                 getAccountDescription($("#account_number").val());
             }
@@ -300,7 +279,6 @@ function validateFormInputs(whatToCheck) {
         ) {
             fail = true;
         }
-        console.log(type);
         if (type === "SAB") {
             beneficiaryDetails.bankName = "ROKEL COMMERCIAL BANK";
             beneficiaryDetails.accountName = $("#account_name").val();
@@ -338,7 +316,6 @@ function validateFormInputs(whatToCheck) {
         }
     }
 
-    console.log(beneficiaryDetails);
     if (fail) {
         toaster("all fields required", "warning");
         return false;

@@ -19,11 +19,6 @@ use App\Http\Controllers\Payments\Beneficiary\AirtimePaymentController;
 use App\Http\Controllers\Payments\Beneficiary\PaymentBeneficiaryController;
 use App\Http\Controllers\Payments\Beneficiary\MobileMoneyController as PaymentMobileMoneyController;
 use App\Http\Controllers\Payments\Beneficiary\PaymentTypesController;
-use App\Http\Controllers\Transfers\Beneficiary\EditBeneficiaryController;
-use App\Http\Controllers\Transfers\Beneficiary\EditLocalBankController;
-use App\Http\Controllers\Transfers\Beneficiary\EditSameBankController;
-use App\Http\Controllers\Transfers\Beneficiary\InternationalBankController;
-use App\Http\Controllers\Transfers\Beneficiary\LocalBankController as TransferLocalBankController;
 use App\Http\Controllers\Transfers\Beneficiary\TransferBeneficiaryController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
@@ -63,6 +58,7 @@ use App\Http\Controllers\Transfers\LocalBankController;
 use App\Http\Controllers\Transfers\MultipleTransfersController;
 use App\Http\Controllers\Transfers\OwnAccountController;
 use App\Http\Controllers\Transfers\SameBankController;
+use App\Http\Controllers\Transfers\InternationalBankController;
 use App\Http\Controllers\Transfers\SchedulePayment\SchedulePaymentController;
 use App\Http\Controllers\Transfers\StandingOrderController;
 use App\Http\Controllers\Transfers\TransferStatusController;
@@ -498,11 +494,11 @@ Route::get('/get-my-account', [OwnAccountController::class, 'get_my_accounts']);
 
 // Transfers
 Route::get('/get-transfer-beneficiary-api', [FunctionsController::class, 'get_transfer_beneficiary'])->name('get-transfer-beneficiary-api');
-Route::post('/same-bank-transfer-api', [SameBankController::class, 'transfer_to_beneficiary']);
+Route::post('/same-bank-transfer-api', [SameBankController::class, 'sameBankTransfer']);
 Route::post('/local-bank-transfer-api', [LocalBankController::class, 'localBankTransfer']);
-Route::post('/international-bank-transfer-api', [TransferInternationalBankController::class, 'international_bank_transfer'])->name('international-bank-transfer-api');
+Route::post('/international-bank-transfer-api', [InternationalBankController::class, 'internationalBankTransfer'])->name('international-bank-transfer-api');
 Route::post('/own-account-transfer-api', [OwnAccountController::class, 'own_account_transfer']);
-Route::post('standing-order-transfer-api', [StandingOrderController::class, 'standing_order_request']);
+Route::post('standing-order-transfer-api', [StandingOrderController::class, 'standingOrderTransfer']);
 
 //CORPORATE OWN ACCOUNT API
 Route::post('/corporate-own-account-transfer-api', [OwnAccountController::class, 'corporate_own_account_transfer']);
@@ -515,27 +511,11 @@ Route::post('corporate-standing-order-transfer-api', [StandingOrderController::c
 // Transfers Add Beneficiary
 Route::post('/save-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'saveBeneficiary']);
 Route::delete('/delete-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'deleteBeneficiary']);
+Route::get('/transfer-beneficiary-list', [transferController::class, 'all_beneficiary_list']);
 
-// Transfers Add Beneficiary
+// Payment Add Beneficiary
 Route::post('/save-payment-beneficiary-api', [PaymentBeneficiaryController::class, 'savePaymentBeneficiary']);
 Route::delete('/delete-payment-beneficiary-api', [PaymentBeneficiaryController::class, 'deletePaymentBeneficiary']);
-
-
-// EDIT BENEFICIARY
-Route::get('/edit-beneficiary', [EditBeneficiaryController::class, 'index'])->name('edit-beneficiary');
-
-
-Route::post('/edit-same-bank-api', [EditSameBankController::class, 'get_same_bank_beneficiary'])->name('edit-same-bank-api');
-Route::put('/edit-same-bank-beneficiary-api', [EditSameBankController::class, 'update_same_bank_beneficiary'])->name('edit-same-bank-beneficiary-api');
-// -------- OTHER LOCAL BANK -----------
-Route::get('/edit-other-local-bank-beneficiary', [TransferLocalBankController::class, 'edit_local_bank_beneficiary'])->name('edit-other-local-bank-beneficiary');
-Route::post('/edit-local-bank-api', [EditLocalBankController::class, 'update_local_bank_beneficiary'])->name('edit-local-bank-api');
-// -------- INTENATIONAL BANK -----------
-Route::get('/edit-international-bank-beneficiary', [InternationalBankController::class, 'edit_international_bank_beneficiary'])->name('edit-international-bank-beneficiary');
-// EDIT BENEFICIARY DATA
-Route::get('/all-beneficiary-list', [transferController::class, 'all_beneficiary_list'])->name('all-beneficiary-list');
-Route::put('edit-local-bank-beneficiary-api', [TransferLocalBankController::class, 'edit_local_bank'])->name('edit-local-bank-beneficiary-api');
-
 
 //=======ADD PAYMENT BENEFICARY
 Route::post('add-mobile-money-beneficiary-api', [MobileMoneyBeneficiaryController::class, 'add_mobile_money_beneficary'])->name('add-mobile-money-beneficiary-api');

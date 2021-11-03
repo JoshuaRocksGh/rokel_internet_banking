@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
-use App\Http\classes\WEB\UserAuth;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 class transferController extends Controller
@@ -43,7 +40,7 @@ class transferController extends Controller
         return view('pages.transfer.forex_rate');
     }
 
-    public function all_beneficiary_list()
+    public function transferBeneficiaryList()
     {
         // $authToken = session()->get('userToken');
         $userID = session()->get('userId');

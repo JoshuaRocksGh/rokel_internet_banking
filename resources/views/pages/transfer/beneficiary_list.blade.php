@@ -144,6 +144,7 @@ $currentPath = "Transfer Beneficiary";
 <script>
     const noDataAvailable =   {!! json_encode($noDataAvailable) !!}
 </script>
-<script src="{{ asset("assets/js/pages/transfer/beneficiaryList.js") }}">
+<script src="{{ asset("assets/js/pages/transfer/beneficiary/beneficiaryList.js") }}">
 </script>
+
 @endsection
