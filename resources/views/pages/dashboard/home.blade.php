@@ -62,11 +62,12 @@
                         </div> <!-- end widget-rounded-circle-->
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-3">
+                <div class="col-md-6 col-lg-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     <a href="#">
                         <div class="widget-rounded-circle card-box home-card "
                             style="background-color: rgba(253, 235, 205, 1);">
-                            <div class="row">
+                            <div class="row ">
                                 <div class="col-4">
                                     <div class="avatar-sm rounded-circle bg-white">
                                         <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
@@ -76,10 +77,22 @@
                                     <div class="text-right">
                                         <h3 class="mt-1 text-black"><span> &nbsp;<b>Transfers</b> </span></h3>
                                     </div>
+
                                 </div>
                             </div> <!-- end row-->
                         </div> <!-- end widget-rounded-circle-->
                     </a>
+                    <div class="dropdown-menu" style="background-color: rgba(253, 235, 205, 1);">
+                        <a class="dropdown-item" href="{{ url('own-account') }}">Own Account</a>
+                        <a class="dropdown-item " href="{{ url('same-bank') }}">Same Bank</a>
+                        <a class="dropdown-item" href="{{ url('local-bank') }}">Other Bank</a>
+                        <a class="dropdown-item" href="{{ url('international-bank') }}">International Bank</a>
+                        <a class="dropdown-item" href="{{ url('standing-order') }}">Standing Order</a>
+                        @if (config('app.corporate'))
+                            <a class="dropdown-item" href="{{ url('bulk-transfer') }}">Bulk Transfer</a>
+                        @endif
+                        {{-- <a class="dropdown-item" href="#">Another link</a> --}}
+                    </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <a href="{{ url('e-korpor') }}">
@@ -107,15 +120,18 @@
                         style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;zoom:0.8;">
                         <div class="row">
                             <div class="col-md-4">
-                                <h3 class="text-center text-dark"><b>Account Balance</b></h3>
+                                {{-- <h3 class="text-center text-dark"><b>Account Balance</b></h3> --}}
+                                <br>
+
+
+                                <canvas id="myChart" width="100" height="100">
+
+                                </canvas>
+                                <br>
                                 <div class="d-flex justify-content-center">
                                     <div class="spinner-border avatar-lg text-primary  m-2 canvas_spinner" role="status">
                                     </div>
                                 </div>
-
-                                <canvas id="myChart" width="50" height="50">
-                                    {{-- <p>hello</p> --}}
-                                </canvas>
 
                             </div>
 
@@ -142,18 +158,63 @@
                                             </strong>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
-                                            <span
-                                                class="badge badge-success badge-pill currency_and_savings_account_no"></span>
+                                            <a href="#"><strong class="text-success casa_chart">
+                                                    CURRENT &
+                                                    SAVINGS
+                                                    ACCOUNT</strong></a>
+
+                                            {{-- <strong class="text-success total_casa_amount float-right"></strong> --}}
+                                            <strong>
+
+                                                SLL <span class="text-success total_casa_amount open-money"></span>
+                                                <span class="i_have_amount_ close-money">***********</span>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
+                                                    data-placement="bottom" title="" data-original-title="More Info"></i>
+                                                <i class="fa fa-eye-slash  float-right eye-close text-white"
+                                                    data-toggle="tooltip" data-placement="bottom" title=""
+                                                    data-original-title="More Info"></i>
+
+                                            </strong>
+
                                         </li>
 
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong class="text-warning">INVESTMENTS</strong>
-                                            <span class="badge badge-warning badge-pill investment_count">0</span>
+                                            <a href="#"><strong
+                                                    class="text-warning investment_chart">INVESTMENTS</strong></a>
+
+                                            {{-- <strong class="total_investment_amount"></strong> --}}
+                                            {{-- <span class="badge badge-warning badge-pill investment_count">0</span> --}}
+                                            <strong>
+
+                                                SLL <span class="text-warning total_investment_amount open-money"></span>
+                                                <span class="i_have_amount_ close-money">***********</span>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
+                                                    data-placement="bottom" title="" data-original-title="More Info"></i>
+                                                <i class="fa fa-eye-slash  float-right eye-close text-white"
+                                                    data-toggle="tooltip" data-placement="bottom" title=""
+                                                    data-original-title="More Info"></i>
+
+                                            </strong>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong class="text-danger"> LOANS </strong>
-                                            <span class="badge badge-danger badge-pill loan_count">0</span>
+                                            <a href="#"><strong class="text-danger loans_chart"> LOANS </strong></a>
+
+                                            {{-- <strong class="total_loan_account"></strong> --}}
+                                            {{-- <span class="badge badge-danger badge-pill loan_count">0</span> --}}
+                                            <strong>
+
+                                                SLL <span class="text-danger total_loan_account open-money"></span>
+                                                <span class="i_have_amount_ close-money">***********</span>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
+                                                    data-placement="bottom" title="" data-original-title="More Info"></i>
+                                                <i class="fa fa-eye-slash  float-right eye-close text-white"
+                                                    data-toggle="tooltip" data-placement="bottom" title=""
+                                                    data-original-title="More Info"></i>
+
+                                            </strong>
                                         </li>
 
                                     </ul>
@@ -321,17 +382,20 @@
 
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active"
+                                    id="casa_chart_tab">
                                     <strong class="text-success">CURRENT & SAVINGS</strong>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link ">
+                                <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link "
+                                    id="investment_chart_tab">
                                     <strong class="text-warning">INVESTMENTS</strong>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link"
+                                    id="loans_chart_tab">
                                     <strong class="text-danger">LOANS</strong> &nbsp;
                                 </a>
                             </li>
@@ -340,7 +404,9 @@
                             <div class="tab-pane active" id="home">
                                 <p>
 
-                                <div class="table-responsive table-bordered accounts_display_area">
+                                    {{-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> --}}
+
+                                    {{-- <div class="table-responsive table-bordered accounts_display_area">
                                     <table id="" class="table table-striped mb-0 ">
                                         <thead>
                                             <tr class="bg-info text-white ">
@@ -348,8 +414,8 @@
                                                 <td> <b> Description </b> </td>
                                                 <td> <b> Product </b> </td>
                                                 <td> <b> Cur </b> </td>
-                                                {{-- <td> <b> OverDraft </b> </td> --}}
-                                                {{-- <td> <b> Ledger Bal </b> </td> --}}
+                                                <td> <b> OverDraft </b> </td>
+                                                <td> <b> Ledger Bal </b> </td>
                                                 <td> <b> Av. Bal </b> </td>
                                             </tr>
                                         </thead>
@@ -358,8 +424,8 @@
 
                                         </tbody>
                                     </table>
-                                </div>
-                                <!-- end table-responsive -->
+                                </div> --}}
+
 
                                 </p>
 
@@ -528,6 +594,7 @@
             @section('scripts')
                 <!-- Plugins js-->
                 <script src="{{ asset('assets/js/chart.js') }}"></script>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
                 <!-- Tour page js -->
@@ -547,13 +614,13 @@
                     var i_owe = 0
                     var i_invest_total = 0
 
-                    function show_chart(i_have, i_owe, i_invest_total) {
+                    {{-- function show_chart(i_have, i_owe, i_invest_total) {
                         $(".canvas_spinner").hide()
                         console.log(i_have)
                         console.log(i_owe)
                         console.log(i_invest_total)
                         var ctx = document.getElementById('myChart').getContext('2d');
-                        {{-- ctx.height = 100; --}}
+                        ctx.height = 100;
                         var myChart = new Chart(ctx, {
                             type: 'doughnut',
                             data: {
@@ -584,6 +651,59 @@
                             },
 
                         });
+                    } --}}
+                </script>
+
+                <script>
+                    var i_have = 0
+                    var i_owe = 0
+                    var i_invest_total = 0
+
+                    function show_chart(i_have, i_owe, i_invest_total) {
+                        $(".canvas_spinner").hide()
+                        console.log(i_have)
+                        console.log(i_owe)
+                        console.log(i_invest_total)
+                        const data = {
+                            labels: ['I HAVE', 'Investments', 'I OWE'],
+                            datasets: [{
+                                label: 'MY ACCOUNTS',
+                                backgroundColor: [
+                                    'rgb(75,192,192, 0.5)',
+                                    'rgba(231, 223, 10, 0.5)',
+                                    'rgb(233,55,93, 0.5)',
+                                    'rgba(75, 192, 192, 0.5)',
+                                    'rgba(153, 102, 255, 0.5)',
+                                    'rgba(255, 159, 64, 0.5)'
+                                ],
+                                //borderColor: 'rgb(255, 99, 132)',
+                                data: [i_have, i_owe, i_invest_total],
+                                hoverOffset: 10
+                            }]
+                        };
+
+                        const config = {
+                            type: 'doughnut',
+                            data: data,
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: {
+                                        position: 'top',
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'MY ACCOUNT'
+                                    }
+                                }
+                            },
+                        };
+                        // === include 'setup' then 'config' above ===
+
+                        const myChart = new Chart(
+                            document.getElementById('myChart'),
+                            config
+                        );
                     }
                 </script>
 
@@ -677,7 +797,7 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                {{-- console.log(response); --}}
+                                console.log(response);
 
                                 let data = response.data;
                                 let noInvestments = noDataAvailable.replace(
@@ -707,19 +827,31 @@
 
                                         account_data.i_invest_total = 0
                                         $.each(data, function(index) {
+                                            console.log(data[index])
+
 
                                             let invest_amount = data[index].dealAmount
                                             invest_amount = invest_amount.replace(/,/g, "");
                                             account_data.i_invest_total += Math.abs(parseFloat(invest_amount))
 
+                                            $(".total_investment_amount").text(
+                                                `${formatToCurrency(parseFloat(account_data.i_invest_total))}`)
+
+                                            var data_rollover = data[index].rollover
+                                            if (data_rollover == "Y") {
+                                                var rollover_ = "Yes"
+                                            } else {
+                                                var rollover_ = "No"
+                                            }
+
                                             console.log(`total investments ${account_data.i_invest_total}`)
                                             $('.fixed_deposit_account').append(
                                                 `<tr>
                                                     <td><b> ${data[index].interestAccount} </b></td>
-                                                    <td><b> ${data[index].dealAmount} </b></td>
+                                                    <td><b class="float-right"> ${ formatToCurrency(parseFloat(data[index].dealAmount))} </b></td>
                                                     <td><b> ${data[index].tenure} </b></td>
                                                     <td><b> ${data[index].fixedInterestRate} </b></td>
-                                                    {{-- <td><b> ${rollover_ } </b></td> --}}
+                                                    <td><b> ${rollover_ } </b></td>
                                                 </tr>`
                                             )
 
@@ -801,6 +933,8 @@
                             },
                             success: function(response) {
                                 console.log(response);
+
+
                                 if (response.responseCode == '000') {
 
                                     let data = response.data;
@@ -809,12 +943,19 @@
                                     let i_have_total = 0
                                     let count = 0
 
+
                                     $('.currency_and_savings_account_no').text(data.length)
                                     console.log('my data')
                                     console.log(data)
 
                                     account_data.i_have_total = 0
                                     $.each(data, function(index) {
+                                        getAccountTransactions(data[index].accountNumber, start_date,
+                                            end_date,
+                                            transLimit)
+
+
+
                                         let localEquivalentAvailableBalance = data[index]
                                             .localEquivalentAvailableBalance
                                         localEquivalentAvailableBalance = localEquivalentAvailableBalance.replace(
@@ -826,6 +967,8 @@
                                         account_data.i_have_total += Math.abs(parseFloat(
                                             localEquivalentAvailableBalance))
                                         console.log(`total money ${account_data.i_have_total}`)
+                                        $(".total_casa_amount").text(
+                                            `${formatToCurrency(parseFloat(account_data.i_have_total))}`)
                                         $('.casa_list_display').append(
                                             `<tr>
                                         <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
@@ -834,10 +977,11 @@
                                         <td> <b> ${data[index].currency}  </b>  </td>
                                         {{-- <td>  <b> 0.00  </b> </td> --}}
                                         {{-- <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td> --}}
-                                        <td> <b> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
+                                        <td> <b class="float-right"> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
                                     </tr>`
                                         )
                                     })
+
 
                                     {{-- console.log('i_have_total: ' + i_have_total) --}}
 
@@ -925,6 +1069,8 @@
                                                     let loanBalance = data[index].loanBalance
                                                     loanBalance = loanBalance.replace(/,/g, "");
                                                     account_data.i_owe_total += Math.abs(parseFloat(loanBalance))
+                                                    $(".total_loan_account").text(formatToCurrency(parseFloat(
+                                                        account_data.i_owe_total)))
 
                                                     console.log(`total loans ${account_data.i_owe_total}`)
                                                     $('.loans_display').append(
@@ -933,8 +1079,8 @@
                                                 <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
                                                 <td> <b> ${data[index].description} </b>  </td>
                                                 <td> <b> ${data[index].isoCode}  </b>  </td>
-                                                <td> <b> ${ formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
-                                                <td> <b> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
+                                                <td> <b class="float-right"> ${ formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                                <td> <b class="float-right"> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
                                             </tr>`
                                                     )
                                                     loan_count = loan_count + 1;
@@ -1262,15 +1408,13 @@
                     }
 
                     var end_date = '01-' + mm + '-' + today.getFullYear();
-                    var start_date = '30-' + mm + '-' + (Number(today.getFullYear()) - 1);
+                    var start_date = '30-' + `${ mm - 3}` + '-' + (Number(today.getFullYear()) - 1);
                     var transLimit = 20;
+                    console.log(end_date)
 
-
+                    let cus_accounts = []
 
                     function getAccountTransactions(account_number, start_date, end_date, transLimit) {
-                        {{-- var table = $('.account_transaction_display_table').DataTable();
-                        var nodes = table.rows().nodes(); --}}
-
 
                         $.ajax({
                             "type": "POST",
@@ -1287,7 +1431,17 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                console.log(response);
+
+                                console.log("=========")
+                                cus_accounts.push(response.data)
+                                console.log(response.data)
+
+                                console.log("=========")
+
+
+
+
+
                                 if (response.responseCode == '000') {
 
                                     // let data = response.data ;
@@ -1296,51 +1450,6 @@
                                     var limit = 10;
                                     let data = response.data.slice(0, limit);
 
-                                    $("#transaction_history tr").remove();
-
-                                    $.each(data, function(index) {
-                                        console.log(data[index].amount);
-                                        var transfer_amount = parseFloat(data[index].amount);
-
-                                        let icon = "";
-                                        let color = "";
-
-                                        if (transfer_amount > 0) {
-                                            icon = "fe-arrow-down-left ";
-                                            color = "bg-soft-blue";
-                                        } else {
-                                            icon = "fe-arrow-down-right ";
-                                            color = "bg-soft-danger";
-
-
-                                        }
-
-
-
-                                        {{-- $("#transaction_history").html("") --}}
-                                        // $("#transaction_history td").remove();
-
-                                        $("#transaction_history").append(
-                                            `
-                                            <tr>
-                                                <td>
-                                                    <div class="row">
-                                                        <p class="d-block font-weight-semibold transfer_date col-md-3 ">${data[index].postingSysDate}</p>
-                                                        <a href="ecommerce-product-detail.html"
-                                                        class="text-body font-weight-semibold transfer_narration col-md-4 text-center">${data[index].narration}</a>
-
-                                                        <span class="account_currency text-primary h4 col-md-4 text-center m-0">${global_selected_currency} &nbsp; <span class="transfer_amount h4">${formatToCurrency(parseFloat(data[index].amount))}</span></span>
-                                                    </div>
-                                                    <hr class="mt-0">
-                                                </td>
-                                            </tr>
-                                            `
-                                        )
-                                    })
-
-
-
-                                } else {
 
 
                                 }
@@ -1358,9 +1467,44 @@
 
                     var global_selected_currency = "";
 
+                    function line_graph() {
+                        console.log(cus_accounts)
+                    }
+
 
 
                     $(document).ready(function() {
+
+
+                        $(".casa_chart").click(function() {
+                            {{-- alert("welcome") --}}
+                            $("#home").addClass("active")
+                            $("#profile").removeClass('active')
+                            $("#messages").removeClass('active')
+                            $("#casa_chart_tab").addClass("active")
+                            $("#investment_chart_tab").removeClass("active")
+                            $("#loans_chart_tab").removeClass("active")
+                        })
+
+                        $(".investment_chart").click(function() {
+                            {{-- alert("welcome") --}}
+                            $("#profile").addClass("active")
+                            $("#home").removeClass('active')
+                            $("#messages").removeClass('active')
+                            $("#investment_chart_tab").addClass("active")
+                            $("#casa_chart_tab").removeClass("active")
+                            $("#loans_chart_tab").removeClass("active")
+                        })
+
+                        $(".loans_chart").click(function() {
+                            {{-- alert("welcome") --}}
+                            $("#messages").addClass("active")
+                            $("#home").removeClass('active')
+                            $("#profile").removeClass('active')
+                            $("#loans_chart_tab").addClass("active")
+                            $("#casa_chart_tab").removeClass("active")
+                            $("#investment_chart_tab").removeClass("active")
+                        })
 
                         {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
 
@@ -1411,7 +1555,8 @@
 
                             show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
 
-                        }, 5000);
+
+                        }, 2000);
 
                     })
 
@@ -1435,7 +1580,7 @@
                         console.log(end_date);
                         console.log(transLimit);
 
-                        getAccountTransactions(account_number, start_date, end_date, transLimit)
+                        {{-- getAccountTransactions(account_number, start_date, end_date, transLimit) --}}
 
                         {{-- let data = --}}
 
