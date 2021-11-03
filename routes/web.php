@@ -511,7 +511,7 @@ Route::post('corporate-standing-order-transfer-api', [StandingOrderController::c
 // Transfers Add Beneficiary
 Route::post('/save-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'saveBeneficiary']);
 Route::delete('/delete-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'deleteBeneficiary']);
-Route::get('/transfer-beneficiary-list', [transferController::class, 'all_beneficiary_list']);
+Route::get('/transfer-beneficiary-list', [transferController::class, 'transferBeneficiaryList']);
 
 // Payment Add Beneficiary
 Route::post('/save-payment-beneficiary-api', [PaymentBeneficiaryController::class, 'savePaymentBeneficiary']);
