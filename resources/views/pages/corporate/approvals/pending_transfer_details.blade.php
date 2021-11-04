@@ -416,6 +416,10 @@
                             let request_type = 'Other Bank Transfer'
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
 
+                        } else if (request_type == 'INTB') {
+                            let request_type = 'International Bank Transfer'
+                            request_type != null ? append_approval_details("Request Type", request_type) : '';
+
                         } else if (request_type == 'BULK') {
                             let request_type = 'Bulk Payment'
                             request_type != null ? append_approval_details("Request Type", request_type) : '';

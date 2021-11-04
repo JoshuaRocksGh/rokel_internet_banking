@@ -6,7 +6,7 @@
     <div class="auth-fluid">
         <!--Auth fluid left content -->
         <div class="auth-fluid-form-box"
-            style="background-image: url(http://localhost/laravel/int/public/assets/images/login-bg.jpg);background-repeat: no-repeat; background-size: cover;">
+            style="background-image: url({{ asset('assets/images/login-bg.jpg') }});background-repeat: no-repeat;background-size: cover;">
             <div class="align-items-center d-flex h-100">
                 <div class="card-body">
 
@@ -117,7 +117,8 @@
         <!-- end auth-fluid-form-box-->
 
         <!-- Auth fluid right content -->
-        <div class="auth-fluid-right text-center">
+        <div class="auth-fluid-right"
+            style="background-image:  linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),url({{ asset('assets/images/meeting.jpg') }});background-repeat: no-repeat;background-size: cover;">
             <div class="auth-user-testimonial">
             </div> <!-- end auth-user-testimonial-->
         </div>

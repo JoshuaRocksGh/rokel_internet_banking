@@ -380,6 +380,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
     Route::get('payment-beneficiary-list', [paymentController::class, 'beneficiary_list'])->name('payment-beneficiary-list');
 
+    Route::post('corporate-international-bank-transfer-api', [InternationalBankController::class, 'corporate_international_bank']);
 
     // Route::get('payment-beneficiary?beneficiary_type={payment_type_code}', [PaymentTypesController::class, 'add_beneficiary'])->name('payment-beneficiary?beneficiary_type={payment_type_code}');
 

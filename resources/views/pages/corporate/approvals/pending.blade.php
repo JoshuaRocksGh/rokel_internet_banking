@@ -385,7 +385,7 @@
                                     data[index].total_amount))
                                 console.log(data[index].total_amount)
                                 request_type = 'Bulk Transfer'
-                            } else if (data[index].request_type == 'INT') {
+                            } else if (data[index].request_type == 'INTB') {
                                 request_type = 'International Bank Transfer'
                             } else if (data[index].request_type == 'CHQR') {
                                 request_type = 'Cheque Book Request'

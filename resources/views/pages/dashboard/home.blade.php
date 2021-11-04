@@ -158,7 +158,8 @@
                                             </strong>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <a href="#"><strong class="text-success casa_chart">
+                                            <a href="#" data-toggle="modal" data-target="#bs-example-modal-lg"><strong
+                                                    class="text-success casa_chart">
                                                     CURRENT &
                                                     SAVINGS
                                                     ACCOUNT</strong></a>
@@ -180,7 +181,7 @@
                                         </li>
 
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <a href="#"><strong
+                                            <a href="#" data-toggle="modal" data-target="#bs-example-modal-lg"><strong
                                                     class="text-warning investment_chart">INVESTMENTS</strong></a>
 
                                             {{-- <strong class="total_investment_amount"></strong> --}}
@@ -199,7 +200,8 @@
                                             </strong>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <a href="#"><strong class="text-danger loans_chart"> LOANS </strong></a>
+                                            <a href="#" data-toggle="modal" data-target="#bs-example-modal-lg"><strong
+                                                    class="text-danger loans_chart"> LOANS </strong></a>
 
                                             {{-- <strong class="total_loan_account"></strong> --}}
                                             {{-- <span class="badge badge-danger badge-pill loan_count">0</span> --}}
@@ -435,7 +437,7 @@
 
                                 <p id="fixed_deposit_account">
 
-                                <div class="table-responsive table-bordered my_investment_display_area">
+                                    {{-- <div class="table-responsive table-bordered my_investment_display_area">
                                     <table id="" class="table table-striped mb-0 ">
                                         <thead>
                                             <tr class="bg-info text-white ">
@@ -449,14 +451,14 @@
                                         </thead>
                                         <tbody class="fixed_deposit_account">
                                             <td colspan="100%" class="text-center">
-                                                {{-- global noDataAvailable image variable shared with all views --}}
-                                                {{-- {!! $noDataAvailable !!} --}}
+                                                global noDataAvailable image variable shared with all views
+                                                {!! $noDataAvailable !!}
                                             </td>
 
                                         </tbody>
                                     </table>
-                                </div>
-                                <!-- end table-responsive -->
+                                </div> --}}
+                                    <!-- end table-responsive -->
 
                                 </p>
 
@@ -465,7 +467,7 @@
                             <div class="tab-pane" id="messages">
                                 <p id="p_loans_display">
 
-                                <div class="table-responsive table-bordered loans_display_area">
+                                    {{-- <div class="table-responsive table-bordered loans_display_area">
                                     <table id="" class="table table-striped mb-0 ">
                                         <thead>
                                             <tr class="bg-info text-white ">
@@ -482,8 +484,8 @@
 
                                         </tbody>
                                     </table>
-                                </div>
-                                <!-- end table-responsive -->
+                                </div> --}}
+                                    <!-- end table-responsive -->
 
 
                                 </p>
@@ -586,6 +588,85 @@
                             </div>
                         </form>
                     </div>
+                </div>
+
+                <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                {{-- <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4> --}}
+                                {{-- <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">×</button> --}}
+                            </div>
+                            <div class="modal-body">
+                                <div class="table-responsive table-bordered accounts_display_area" style="display: none">
+                                    <h3 class="text-center text-success">CURRENT & SAVINGS ACCOUNT</h3>
+                                    <table id="" class="table table-striped mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Account No </b> </td>
+                                                <td> <b> Description </b> </td>
+                                                <td> <b> Product </b> </td>
+                                                <td> <b> Cur </b> </td>
+                                                {{-- <td> <b> OverDraft </b> </td> --}}
+                                                {{-- <td> <b> Ledger Bal </b> </td> --}}
+                                                <td> <b> Av. Bal </b> </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="casa_list_display">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="table-responsive table-bordered my_investment_display_area"
+                                    style="display: none">
+                                    <h3 class="text-center text-warning">INVESTMENTS</h3>
+                                    <table id="" class="table table-striped mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Account No </b> </td>
+                                                <td> <b> Deal Amount </b> </td>
+                                                <td> <b> Tunure </b> </td>
+                                                <td> <b> FixedInterestRate </b> </td>
+                                                <td> <b> Rollover </b> </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="fixed_deposit_account">
+                                            <td colspan="100%" class="text-center">
+                                                {{-- global noDataAvailable image variable shared with all views --}}
+                                                {{-- {!! $noDataAvailable !!} --}}
+                                            </td>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="table-responsive table-bordered loans_display_area" style="display: none">
+                                    <h3 class="text-center text-danger">LOANS</h3>
+                                    <table id="" class="table table-striped mb-0 ">
+                                        <thead>
+                                            <tr class="bg-info text-white ">
+                                                <td> <b> Facility No </b> </td>
+                                                <td> <b> Description </b> </td>
+                                                <td> <b> Cur </b> </td>
+                                                <td> <b> Amount Granted </b> </td>
+                                                <td> <b> Loan Bal </b> </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="loans_display">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
                 </div>
 
             @endsection
@@ -1478,32 +1559,24 @@
 
                         $(".casa_chart").click(function() {
                             {{-- alert("welcome") --}}
-                            $("#home").addClass("active")
-                            $("#profile").removeClass('active')
-                            $("#messages").removeClass('active')
-                            $("#casa_chart_tab").addClass("active")
-                            $("#investment_chart_tab").removeClass("active")
-                            $("#loans_chart_tab").removeClass("active")
+                            $(".accounts_display_area").show()
+                            $(".my_investment_display_area").hide()
+                            $(".loans_display_area").hide()
                         })
 
                         $(".investment_chart").click(function() {
                             {{-- alert("welcome") --}}
-                            $("#profile").addClass("active")
-                            $("#home").removeClass('active')
-                            $("#messages").removeClass('active')
-                            $("#investment_chart_tab").addClass("active")
-                            $("#casa_chart_tab").removeClass("active")
-                            $("#loans_chart_tab").removeClass("active")
+                            $(".my_investment_display_area").show()
+                            $(".accounts_display_area").hide()
+                            $(".loans_display_area").hide()
                         })
 
                         $(".loans_chart").click(function() {
                             {{-- alert("welcome") --}}
-                            $("#messages").addClass("active")
-                            $("#home").removeClass('active')
-                            $("#profile").removeClass('active')
-                            $("#loans_chart_tab").addClass("active")
-                            $("#casa_chart_tab").removeClass("active")
-                            $("#investment_chart_tab").removeClass("active")
+                            $(".loans_display_area").show()
+                            $(".my_investment_display_area").hide()
+                            $(".accounts_display_area").hide()
+
                         })
 
                         {{-- dynamic_display("cross_rate_display_area", "cross_rates_error_area", "cross_rates_loading_area") --}}
