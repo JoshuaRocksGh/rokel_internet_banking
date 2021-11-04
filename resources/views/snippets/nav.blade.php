@@ -22,12 +22,12 @@
         </li>
 
 
-        {{-- <li class="notification-list .d-sm-none mt-3 ml-2">
+        <li class="notification-list .d-sm-none mt-3 ml-2">
             <span class="fs-6" style="color:white">
                 {{ session()->get('userAlias') }}
-        </span>
+            </span>
 
-        </li> --}}
+        </li>
 
 
     </ul>

@@ -406,6 +406,10 @@
                             <div class="tab-pane active" id="home">
                                 <p>
 
+                                    <canvas id="casa_myChart" width="100" height="100">
+
+                                    </canvas>
+
                                     {{-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> --}}
 
                                     {{-- <div class="table-responsive table-bordered accounts_display_area">
@@ -783,6 +787,130 @@
 
                         const myChart = new Chart(
                             document.getElementById('myChart'),
+                            config
+                        );
+                    }
+
+                    function account_line_chart(cus_accounts) {
+
+                        {{-- console.log("========")
+                        console.log(cus_accounts)
+                        console.log("========") --}}
+
+
+                        let apiData = cus_accounts
+
+
+                        let datasets = []
+                        var numbers = []
+                        var dates = []
+                        $.each(apiData, function(index) {
+
+
+                            {{-- console.log("=======")
+                            console.log(apiData[index])
+                            console.log("=======") --}}
+                            let apiDataResult = apiData[index]
+
+                            for (let i = 0; apiDataResult.length; i++) {
+                                for (let j = 0; j < apiDataResult[i].length; j++) {
+                                    console.log("=======")
+                                    console.log(apiDataResult[i][j]);
+                                    console.log("=======")
+
+                                }
+                            }
+
+                            $.each(apiDataResult, function(index) {
+
+
+
+                                numbers.push(apiDataResult[index].runningBalance)
+                                var d = apiDataResult[index].valueDate
+                                d = d.split(' ')[0];
+                                dates.push(d)
+                                console.log(d);
+
+
+
+                            })
+
+                        })
+
+                        const smallest_number = Math.min(...numbers);
+                        const largest_number = Math.max(...numbers);
+
+                        let uniqueDates = [...new Set(dates)];
+                        console.log(uniqueDates)
+
+                        console.log('Smallest Value:', smallest_number);
+                        console.log('Largest Value:', largest_number);
+
+
+                        const NUMBER_CFG = {
+
+                            min: smallest_number,
+                            max: largest_number
+                        };
+
+
+                        const labels = uniqueDates;
+
+                        return false
+
+                        const data = {
+                            labels: labels,
+                            datasets: [{
+                                    label: 'Dataset 1',
+                                    data: Utils.numbers(NUMBER_CFG),
+                                    borderColor: Utils.CHART_COLORS.red,
+                                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+                                    yAxisID: 'y',
+                                    tension: 0.3
+                                },
+                                {
+                                    label: 'Dataset 2',
+                                    data: Utils.numbers(NUMBER_CFG),
+                                    borderColor: Utils.CHART_COLORS.blue,
+                                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+                                    yAxisID: 'y',
+                                    tension: 0.3
+                                }
+                            ]
+                        };
+
+                        const config = {
+                            type: 'line',
+                            data: data,
+                            options: {
+                                responsive: true,
+                                interaction: {
+                                    mode: 'index',
+                                    intersect: false,
+                                },
+                                stacked: true,
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        text: 'Chart.js Line Chart - Multi Axis'
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        type: 'linear',
+                                        display: true,
+                                        position: 'left',
+                                    },
+
+                                }
+                            },
+                        };
+
+
+                        // === include 'setup' then 'config' above ===
+
+                        const myChart = new Chart(
+                            document.getElementById('casa_myChart'),
                             config
                         );
                     }
@@ -1512,21 +1640,17 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-
-                                console.log("=========")
-                                cus_accounts.push(response.data)
-                                console.log(response.data)
-
-                                console.log("=========")
-
-
-
-
+                                console.log(response)
 
                                 if (response.responseCode == '000') {
 
                                     // let data = response.data ;
                                     // console.log(data);
+
+                                    cus_accounts.push(response.data)
+                                    {{-- console.log(response.data) --}}
+
+
 
                                     var limit = 10;
                                     let data = response.data.slice(0, limit);
@@ -1549,7 +1673,10 @@
                     var global_selected_currency = "";
 
                     function line_graph() {
+                        console.log("========")
                         console.log(cus_accounts)
+                        console.log("========")
+
                     }
 
 
@@ -1627,7 +1754,10 @@
                             getCorrectFxRates()
 
                             show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
-
+                            setTimeout(function() {
+                                {{-- line_graph() --}}
+                                account_line_chart(cus_accounts)
+                            }, 5000)
 
                         }, 2000);
 

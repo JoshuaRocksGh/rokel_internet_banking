@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label for="new_password">Security Question</label>
                             <div class="input-group input-group-merge">
-                                <select class="form-control" id="security_questions">
+                                <select class="form-control" id="security_questions" required>
                                     <option value="">Select Security Queston</option>
                                 </select>
 
@@ -59,16 +59,23 @@
                         <div class="form-group">
                             <label for="security_answer">Security Answer</label>
                             <div class="input-group input-group-merge">
-                                <input type="text" id="security_answer" class="form-control"
-                                    placeholder="Security Answer">
+                                <input type="text" id="security_answer" class="form-control" placeholder="Security Answer"
+                                    required>
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="security_answer">New User ID</label>
+                            <div class="input-group input-group-merge">
+                                <input type="text" id="user_id" class="form-control" placeholder="User Id" required>
+                            </div>
+                        </div>
 
                         <div class="form-group">
-                            <label for="new_password">New Password</label>
+                            <label for="new_pin">New Password</label>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="new_password" class="form-control" placeholder="New Password">
+                                <input type="password" id="new_password" class="form-control" placeholder="New Password"
+                                    required>
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>
@@ -77,11 +84,11 @@
                             </div>
                         </div>
 
-
                         <div class="form-group">
-                            <label for="new_pin">New PIN</label>
+                            <label for="new_pin">Confirm Password</label>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="new_pin" class="form-control" placeholder="New PIN">
+                                <input type="password" id="confirm_new_password" class="form-control"
+                                    placeholder="Confirm Password" required>
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>
@@ -92,8 +99,9 @@
 
 
                         <div class="form-group mb-0 text-center">
-                            <button class="btn btn-primary btn-block" type="submit" id="submit"><span id="set_password">Set
-                                    Pin & Password</span>
+                            <button class="btn btn-primary btn-block" type="submit" id="submit"><span
+                                    id="set_password">Change
+                                    Password</span>
                                 <span class="spinner-border spinner-border-sm mr-1" role="status" id="spinner"
                                     aria-hidden="true"></span>
                                 <span id="spinner-text">Loading...</span>
@@ -165,6 +173,12 @@
                 get_security_question();
             }, 2000);
 
+            function hide_alert() {
+                setTimeout(function() {
+                    $('#failed_login').hide()
+                }, 3000)
+            }
+
             $('#failed_login').hide(),
                 $('#spinner').hide(),
                 $('#spinner-text').hide(),
@@ -176,8 +190,8 @@
                     var security_question = $("#security_questions").val();
                     var security_answer = $('#security_answer').val();
                     var new_password = $('#new_password').val();
-                    var new_pin = $('#new_pin').val();
-
+                    var confirm_new_password = $('#confirm_new_password').val();
+                    var user_id = $("#user_id").val()
                     $('#spinner').show(),
                         $('#spinner-text').show(),
 
@@ -185,40 +199,56 @@
                         $('#submit').attr('disabled', true);
 
                     //var show_error = $('#failed_login').show();
-                    $.ajax({
-                        "type": "POST",
-                        "url": "post-change-password",
-                        "datatype": "application/json",
-                        data: {
-                            "security_question": security_question,
-                            "security_answer": security_answer,
-                            "new_password": new_password,
-                            "new_pin": new_pin,
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
 
-                        success: function(response) {
-                            console.log(response);
-                            var res = response.data
-                            $('#submit').attr('disabled', false);
+                    if (new_password == confirm_new_password) {
+                        $.ajax({
+                            "type": "POST",
+                            "url": "post-change-password",
+                            "datatype": "application/json",
+                            data: {
+                                "security_question": security_question,
+                                "security_answer": security_answer,
+                                "new_password": new_password,
+                                "confirm_new_password": confirm_new_password,
+                                "user_id": user_id
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
 
-                            if (response.responseCode == "000") {
+                            success: function(response) {
+                                console.log(response);
+                                var res = response.data
+                                $('#submit').attr('disabled', false);
 
-                                window.location = 'home';
+                                if (response.responseCode == "000") {
 
-                            } else {
-                                $('#spinner').hide()
-                                $('#spinner-text').hide()
+                                    window.location = 'home';
 
-                                $('#set_password').show()
-                                $('#error_message').text(response.message)
-                                $('#failed_login').show()
+                                } else {
+                                    $('#spinner').hide()
+                                    $('#spinner-text').hide()
 
+                                    $('#set_password').show()
+                                    $('#error_message').text(response.message)
+                                    $('#failed_login').toggle('500')
+                                    $('#submit').attr('disabled', false);
+                                    hide_alert()
+
+                                }
                             }
-                        }
-                    })
+                        })
+                    } else {
+                        $('#spinner').hide()
+                        $('#spinner-text').hide()
+
+                        $('#set_password').show()
+                        $('#error_message').text("Passwords do not match")
+                        $('#failed_login').toggle('500')
+                        $('#submit').attr('disabled', false);
+                        hide_alert()
+                    }
+
                 })
 
 
