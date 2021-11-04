@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('styles')
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+{{-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"> --}}
 <style>
     .payments-text {
         font-size: 0.825rem !important;
         font-weight: bold !important;
     }
 
-    .slick-current .box-circle {
+    .current-type .box-circle {
         background-color: white !important
     }
 
@@ -25,12 +25,6 @@
 
     }
 
-    .slick-arrow {
-        /* background-color: #0388cb; */
-        width: 30px;
-        height: 30px;
-    }
-
     .box-circle {
         position: absolute;
         top: 5px;
@@ -39,12 +33,6 @@
         height: 0.8rem;
         width: 0.8rem;
         border: solid white 2px;
-    }
-
-    .slick-arrow::before {
-        color: #000000;
-        font-size: 2rem
-            /* border-radius: 50% */
     }
 </style>
 <style>
@@ -141,7 +129,6 @@ $currentPath = "Make Payment";
 
 <div class="row">
     <div class="col-12 py-3 px-5">
-        <br><br>
         <div class="site-card justify-content-center">
 
             {{-- ============================================= --}}
@@ -149,52 +136,51 @@ $currentPath = "Make Payment";
             {{-- ============================================= --}}
 
             <div class=" mb-1 px-3 row justify-content-center ">
-                <div class="col-3">
-                    <label class="col-md-8 mb-2 text-primary">Select Payment Type</label>
-                    <div class="payments-carousel">
+                <div class="col-3 col-lg-4">
+                    <label class="mb-2 d-block text-center font-weight-bold text-primary">Select Payment Type</label>
+                    <div class="payments-carousel mx-auto" style="max-width: 20rem">
                     </div>
                     <hr class="col-md-8">
 
                 </div>
-                <div class="col-9">
+                <div class="col-9 col-lg-8">
                     {{-- =================================== --}}
                     {{-- Select Account  --}}
                     {{-- =================================== --}}
-                    <div class=" mb-1 px-3 row justify-content-center ">
-                        <label class="col-md-8 text-primary">Account to transfer from</label>
+                    <div class=" mb-1 mx-auto px-5" style="max-width: 45rem">
+                        <label class="d-block text-center font-weight-bold mb-1 text-primary"> Select Account To
+                            Transfer
+                            From</label>
 
-                        <select class="form-control col-md-8" id="from_account" required>
-                            <option disabled selected value=""> -- Select Account --
+                        <select data-style="" data-style-base="form-control select-control" class="form-control"
+                            id="from_account" required>
+                            <option disabled selected value=""> --- Select Account ---
                             </option>
                             @include("snippets.accounts")
                         </select>
 
-                        <hr class="col-md-8">
-                    </div>
-                    <div>
-                        {{-- <div class="col-8"> --}}
-                        <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
-                            <li class="nav-item w-50" role="presentation" style="position: absolute">
-                                <button class="switch w-100  nav-link active" id="beneficiary_tab" data-toggle="pill"
-                                    href="#beneficiary_view" type="button" role="tab" aria-controls="beneficiary_view"
-                                    aria-selected="false">
-                                    Beneficiary</button>
-                            </li>
-                            <li class="nav-item w-50" role="presentation">
-                                <button class=" switch leftbtn w-100 nav-link " id="onetime_tab" data-toggle="pill"
-                                    href="#onetime_view" type="button" role="tab" aria-controls="onetime_view"
-                                    aria-selected="true">
-                                    <div class="switch-text">Onetime</div>
-                                </button>
-                            </li>
-
-                        </ul>
+                        <hr class="">
                         {{-- </div> --}}
+                        {{-- <div class="px-5"> --}}
+                        <div style="position: relative">
+                            <ul class="nav w-100 active nav-fill nav-pills" id="onetime_bene_tab" role="tablist">
+                                <li class="nav-item w-50" role="presentation" style="position: absolute">
+                                    <button class="switch w-100  nav-link active" id="beneficiary_tab"
+                                        data-toggle="pill" href="#beneficiary_view" type="button" role="tab"
+                                        aria-controls="beneficiary_view" aria-selected="false">
+                                        Beneficiary</button>
+                                </li>
+                                <li class="nav-item w-50" role="presentation">
+                                    <button class=" switch leftbtn w-100 nav-link " id="onetime_tab" data-toggle="pill"
+                                        href="#onetime_view" type="button" role="tab" aria-controls="onetime_view"
+                                        aria-selected="true">
+                                        <div class="switch-text">Onetime</div>
+                                    </button>
+                                </li>
 
-
-
-
-                        <div class="tab-content col-md-8" id="onetime_bene_tabContent">
+                            </ul>
+                        </div>
+                        <div class="tab-content mx-2" id="onetime_bene_tabContent">
 
                             {{-- ============================================= --}}
                             {{-- beneficiary toggle --}}
@@ -202,11 +188,12 @@ $currentPath = "Make Payment";
                             <div class="tab-pane fade  show active" id="beneficiary_view" role="tabpanel"
                                 aria-labelledby="beneficiary_tab">
                                 <div class="row mb-1">
-                                    <label class="text-primary col-md-4 bene_details">Beneficiary
+                                    <label class="text-primary col-md-4 bene_details">Select Beneficiary
                                     </label>
-                                    <select class="form-control text-capitalize col-md-8 bene_details" id="to_account"
+                                    <select data-style="" data-style-base="form-control select-control"
+                                        class="form-control text-capitalize col-md-8 bene_details" id="to_account"
                                         required>
-                                        <option value="">-- Select Beneficiary --</option>
+                                        <option value="">--- Select Beneficiary ---</option>
 
                                     </select>
                                 </div>
@@ -218,7 +205,8 @@ $currentPath = "Make Payment";
                                 <div class="row mb-1 text-capitalize" id="subtype_div" style="display: none">
                                     <label class="text-primary text-capitalize col-md-4 " id="subtype_label">
                                     </label>
-                                    <select class="form-control text-capitalize col-md-8 " id="subtype_select" required>
+                                    <select data-style="" data-style-base="form-control select-control"
+                                        class="form-control text-capitalize col-md-8 " id="subtype_select" required>
                                     </select>
                                 </div>
 
@@ -229,22 +217,27 @@ $currentPath = "Make Payment";
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                 </div>
                             </div>
-                            <button
-                                class="btn mt-5 float-right font-weight-bold font-11 btn-primary next-button btn-rounded"
-                                id="next_button">
-                                &nbsp; Proceed &nbsp; <i class="fe-arrow-right"></i></button>
-
-                            {{-- <hr class="my-2"> --}}
+                            <div class="form-group row">
+                                <label class="col-md-4 text-capitalize text-primary">Enter Amount</label>
+                                <input type="text" class="form-control text-capitalize col-md-8 " id="amount"
+                                    placeholder="Enter Amount To Transfer"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                            </div>
                         </div>
+                        <button
+                            class="btn mt-5 font-weight-bold float-right font-11 btn-primary next-button btn-rounded"
+                            id="next_button">
+                            &nbsp; Proceed &nbsp; <i class="fe-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 @endsection
 
 @section('scripts')
-<script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+{{-- <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
+</script> --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
 <script src="{{ asset('assets/js/pages/payments/paymentTypes.js')  }}" @endsection
