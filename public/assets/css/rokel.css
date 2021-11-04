@@ -2,26 +2,26 @@ a:hover {
     text-decoration: none !important;
 }
 
-/* .bg-success {
-    background-color: #1abc9c !important;
+.bootstrap-select .dropdown-toggle:focus {
+    outline: 0 !important;
 }
 
-.text-success {
-    color: #1abc9c !important;
+.bootstrap-select .dropdown-menu li a:hover,
+.selected {
+    background-color: #00bef37a !important;
+    color: white !important;
+    font-weight: bold;
 }
 
-.bg-warning {
-    background-color: #f7b84b !important;
+.bootstrap-select .dropdown-menu .selected {
+    background-color: #00bdf3 !important;
 }
-
-.text-warning {
-    color: #f7b84b !important;
+.bootstrap-select .dropdown-menu .selected .disabled {
+    background-color: #eef0f2;
 }
-.text-primary {
-    color: #0561ad !important;
-} */
 .form-control:disabled,
-.form-control[readonly] {
+.form-control[readonly],
+.disabled {
     background-color: #eef0f2;
     opacity: 1;
 }
