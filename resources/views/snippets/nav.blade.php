@@ -39,7 +39,7 @@
                 aria-haspopup="false" aria-expanded="false">
                 <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
                 <span class=" ml-1 text-black-50">
-                    <b> {{ session()->get('userAlias') }} </b>
+                    <b> {{ session()->get('userId') }} </b>
                 </span>
             </a>
         </ul>
