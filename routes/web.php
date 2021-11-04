@@ -458,6 +458,8 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('branch-locator', [branchLocatorController::class, 'branch_locator'])->name('branch-locator');
 
     //Middleware closing tag below
+
+    Route::post('post-change-password', [ChangePasswordController::class, 'post_chnage_password']);
 });
 
 // Route::get('/get-expenses', [HomeController::class, 'get_expenses'])->name('get-expenses');
