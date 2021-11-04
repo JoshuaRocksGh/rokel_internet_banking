@@ -102,7 +102,7 @@ function drawBeneficiaryTable() {
     $.each(data, (index) => {
         const beneData = JSON.stringify(data[index]);
         const editIcon = `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-value='${beneData}'> <span class="fe-edit noti-icon text-info"></span></a>`;
-        const { NICKNAME, ACCOUNT, PAYEE_NAME, PAYMENT_TYPE } = data[index];
+        const { NICKNAME, ACCOUNT, PAYEE_NAME } = data[index];
         console.log(data[index]);
         const logo = pageData["pay_" + currentType].paySubTypes.find(
             (e) => e.paymentCode === PAYEE_NAME
