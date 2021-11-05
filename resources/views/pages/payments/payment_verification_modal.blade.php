@@ -33,39 +33,39 @@
             </div>
             <div class="modal-body p-0">
                 <div class='mx-3 py-3 row justify-content-center mb-1 detail-card'>
-                    <div class='account-icon'><span>A</span></div>
+                    <div class='account-icon'><span id="details_icon_text">A</span></div>
                     <div class='ml-3'>
-                        <div class='font-16 font-weight-bold'>USER NAME HERE</div>
-                        <div class='font-14'>USER NUMBER HERE</div>
+                        <div class='font-16 font-weight-bold' id="details_recipient_name"></div>
+                        <div class='font-14 text-center' id="details_recipient_number"></div>
                     </div>
                 </div>
                 <div class='mx-3 px-3 py-1 mb-1 detail-card'>
                     <div class='font-14 py-2 font-weight-bold text-primary'>Details</div>
                     <div class="d-item">
-                        <span> from</span><span class="font-weight-bold" id="account_id"> </span>
+                        <span> from</span><span class="font-weight-bold" id="details_from_account"> </span>
                     </div>
                     <div class="d-item">
-                        <span> To</span><span class="font-weight-bold" id="beneficiary_id"> </span>
+                        <span> To</span><span class="font-weight-bold" id="details_to_account"> </span>
 
                     </div>
                     <div class="d-item">
                         <span> Amount</span><span class="font-weight-bold" id="details_amount"> </span>
                     </div>
                     <div class="d-item">
-                        <span> Narration</span><span class="font-weight-bold" id="narration"> </span>
+                        <span> Narration</span><span class="font-weight-bold" id="details_narration"> </span>
 
                     </div>
                     <div class="d-item">
-                        <span> Expense Time</span><span class="font-weight-bold" id="expense_type"> </span>
+                        <span> Expense Type</span><span class="font-weight-bold" id="details_expense_type"> </span>
                     </div>
                     <div class="d-item">
-                        <span> Transaction Fee</span><span class="font-weight-bold" id="trans_fee"> </span>
+                        <span> Transaction Fee</span><span class="font-weight-bold" id="details_trans_fee"> </span>
                     </div>
 
                 </div>
                 <div class='mx-3 px-3 py-1 detail-card total bg-info'>
                     <div class="d-item text-white my-1 font-weight-bold">
-                        <span> TOTAL</span><span id="total_amount">SLL xxx</span>
+                        <span> TOTAL</span><span id="details_total_amount">SLL xxx</span>
 
                     </div>
                 </div>
