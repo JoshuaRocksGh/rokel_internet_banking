@@ -46,6 +46,7 @@ function getPaymentTypes() {
                 });
             } else {
             }
+            getBeneficiaryList();
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
@@ -129,14 +130,10 @@ function drawBeneficiaryTable() {
     });
     siteLoading("hide");
 }
-async function initPage() {
-    siteLoading("show");
-    await getPaymentTypes();
-    await getBeneficiaryList();
-}
+
 $(document).ready(function () {
-    // $("#beneficiary_list_loader").show();
-    initPage();
+    siteLoading("show");
+    getPaymentTypes();
     $("#add_beneficiary").on("click", () => {
         addPaymentBeneficiary($(".current-type").attr("data-value"));
     });

@@ -1,5 +1,5 @@
 <!-- Center modal content -->
-<div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 1054">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content pinCodeModal">
             <div class="modal-header text-center ">

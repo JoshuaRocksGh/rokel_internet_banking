@@ -167,7 +167,6 @@ class OwnAccountController extends Controller
             // return json_decode($response->body();
 
         } catch (\Exception $e) {
-
             DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',
                 'user_id' => 'AUTH',
