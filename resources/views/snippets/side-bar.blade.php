@@ -72,7 +72,7 @@
                     <div class="collapse" id="sidebarBeneficiary">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ url('payment-type') }}">Make Payment</a>
+                                <a href="{{ url('payments') }}">Make Payment</a>
                             </li>
                             <li>
                                 <a href="{{ url('cardless-payment') }}">Cardless</a>

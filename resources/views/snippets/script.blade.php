@@ -10,18 +10,11 @@
         document.head.insertBefore(oScriptElem, document.head.getElementsByTagName("script")[0])
     }
 </script>
-
-<!-- Vendor js -->
 <script src="{{ asset('assets/js/vendor.min.js') }}" defer></script>
-
-<!-- Plugins js-->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-
-<!-- App js-->
 <script src="{{ asset('assets/js/app.min.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/getAccounts.js') }}" defer></script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
 
 <script defer>
     function formatToCurrency(amount) {
@@ -101,4 +94,9 @@
     $("#preloader").css("background-color", "#fff")
     return
     }
+
+    //intitialize all form-control to bootstrap select
+    $(()=>{
+        $('.form-control').selectpicker({style: "",  baseStyle:"form-control"})
+    })
 </script>
