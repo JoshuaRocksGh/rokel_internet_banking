@@ -504,9 +504,6 @@ class FunctionsController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
-<<<<<<< HEAD
-}
-=======
 
     public function recipientNameEnquiry(Request $req)
     {
@@ -522,4 +519,3 @@ class FunctionsController extends Controller
         return $result->api_response($response);
     }
 }
->>>>>>> ab818b26263bbe6f9e03bb7d74214fe09529498d
