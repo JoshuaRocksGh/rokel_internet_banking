@@ -22,12 +22,12 @@
         </li>
 
 
-        {{-- <li class="notification-list .d-sm-none mt-3 ml-2">
+        <li class="notification-list .d-sm-none mt-3 ml-2">
             <span class="fs-6" style="color:white">
                 {{ session()->get('userAlias') }}
-        </span>
+            </span>
 
-        </li> --}}
+        </li>
 
 
     </ul>
@@ -39,7 +39,7 @@
                 aria-haspopup="false" aria-expanded="false">
                 <img src="{{ asset('assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
                 <span class=" ml-1 text-black-50">
-                    <b> {{ session()->get('userAlias') }} </b>
+                    <b> {{ session()->get('userId') }} </b>
                 </span>
             </a>
         </ul>
