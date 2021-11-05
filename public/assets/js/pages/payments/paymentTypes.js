@@ -9,22 +9,23 @@ function paymentType() {
             let data = response.data.data;
             pageData.payTypes = [];
             if (data.length > 0) {
+                let color = [
+                    "bg-success",
+                    "bg-info",
+                    "bg-warning",
+                    "bg-danger",
+                    "bg-primary",
+                    "bg-pink",
+                    "bg-blue",
+                    "bg-secondary",
+                    "bg-dark",
+                ];
+                $(".payments-carousel").empty();
                 $.each(data, function (i) {
                     const type = data[i].paymentType;
                     pageData.payTypes.push(type);
                     pageData["pay_" + type] = data[i];
                     const { label, paymentType, description } = data[i];
-                    let color = [
-                        "bg-success",
-                        "bg-info",
-                        "bg-warning",
-                        "bg-danger",
-                        "bg-primary",
-                        "bg-pink",
-                        "bg-blue",
-                        "bg-secondary",
-                        "bg-dark",
-                    ];
                     if (!label) return;
                     let paymentCard = `<div class="display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
                     <span class="box-circle"></span>
