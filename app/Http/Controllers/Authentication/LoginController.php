@@ -48,10 +48,6 @@ class LoginController extends Controller
         return view('pages.authentication.login');
     }
 
-    public function self_enroll()
-    {
-        return view('self_enroll');
-    }
 
 
     public function login_(Request $req)
@@ -127,13 +123,13 @@ class LoginController extends Controller
 
         } catch (\Exception $e) {
 
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
 
-            return $base_response->api_response('500', 'CONNECTION SERVER ERROR',  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', 'Error: Failed To Contact Server',  NULL); // return API BASERESPONSE
 
 
 
@@ -187,11 +183,11 @@ class LoginController extends Controller
 
         } catch (\Exception $e) {
 
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
 
             return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
