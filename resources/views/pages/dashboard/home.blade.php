@@ -791,26 +791,49 @@
                         );
                     }
 
-                    function account_line_chart(cus_accounts) {
+                    function account_line_chart(cus_accounts, acc_line_details) {
 
-                        {{-- console.log("========")
-                        console.log(cus_accounts)
-                        console.log("========") --}}
+                        //console.log("========")
+                        //console.log(acc_line_details)
+                        //console.log("========")
+
+                        let acc_dataset = []
+                        let chart_data_details = new Array
+                        {{-- let show_chart_data = [] --}}
+                        let acc_chart_details = acc_line_details
 
 
+                        $.each(acc_chart_details, function(index) {
+
+                            let chart_res = acc_chart_details[index]
+
+                            //console.log("========")
+                            //console.log(chart_res)
+                            //console.log("========")
+
+
+                            let new_chart_res = chart_res[1]
+
+                            chart_data_details.push(
+
+                                {
+                                    label: `${chart_res[0]}`,
+                                    data: `${chart_res[1]}`,
+                                    borderColor: 'rgb(75,192,192, 0.5)',
+                                    backgroundColor: 'rgba(231, 223, 10, 0.5)',
+                                    yAxisID: 'y',
+                                    tension: 0.3
+                                }
+
+
+
+                            )
+
+
+
+                        })
 
                         let apiData = cus_accounts
-
-                        for (let i = 0; apiDataResult.length; i++) {
-                            for (let j = 0; j < apiDataResult[i].length; j++) {
-                                console.log("=======")
-                                console.log(apiDataResult[i][j]);
-                                console.log("=======")
-
-                            }
-                        }
-
-
 
                         let datasets = []
                         var numbers = []
@@ -818,20 +841,10 @@
                         $.each(apiData, function(index) {
 
 
-                            {{-- console.log("=======")
-                            console.log(apiData[index])
-                            console.log("=======") --}}
+                            //console.log("=======")
+                            //console.log(apiData[index])
+                            //console.log("=======")
                             let apiDataResult = apiData[index]
-
-                            for (let i = 0; apiData.length; i++) {
-                                for (let j = 0; j < apiData[i].length; j++) {
-                                    console.log("=======")
-                                    console.log(apiData[i][j]);
-                                    console.log("=======")
-
-                                }
-                            }
-
                             $.each(apiDataResult, function(index) {
 
 
@@ -840,7 +853,7 @@
                                 var d = apiDataResult[index].valueDate
                                 d = d.split(' ')[0];
                                 dates.push(d)
-                                console.log(d);
+                                //console.log(d);
 
 
 
@@ -851,11 +864,13 @@
                         const smallest_number = Math.min(...numbers);
                         const largest_number = Math.max(...numbers);
 
-                        let uniqueDates = [...new Set(dates)];
+                        let uniqueDates = [...new Set(dates)].sort();
                         console.log(uniqueDates)
 
                         console.log('Smallest Value:', smallest_number);
                         console.log('Largest Value:', largest_number);
+                        //console.log('Dataset:', acc_dataset);
+                        console.log('Data:', chart_data_details);
 
 
                         const NUMBER_CFG = {
@@ -867,27 +882,11 @@
 
                         const labels = uniqueDates;
 
-                        return false
+                        {{-- return false --}}
 
                         const data = {
                             labels: labels,
-                            datasets: [{
-                                    label: 'Dataset 1',
-                                    data: Utils.numbers(NUMBER_CFG),
-                                    borderColor: Utils.CHART_COLORS.red,
-                                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
-                                    yAxisID: 'y',
-                                    tension: 0.3
-                                },
-                                {
-                                    label: 'Dataset 2',
-                                    data: Utils.numbers(NUMBER_CFG),
-                                    borderColor: Utils.CHART_COLORS.blue,
-                                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
-                                    yAxisID: 'y',
-                                    tension: 0.3
-                                }
-                            ]
+                            datasets: chart_data_details
                         };
 
                         const config = {
@@ -1634,6 +1633,8 @@
 
                     let cus_accounts = []
 
+                    let acc_line_details = []
+
                     function getAccountTransactions(account_number, start_date, end_date, transLimit) {
 
                         $.ajax({
@@ -1655,10 +1656,27 @@
 
                                 if (response.responseCode == '000') {
 
-                                    // let data = response.data ;
-                                    // console.log(data);
+                                    let data_ = response.data;
+                                    console.log(data_);
+                                    console.log("========")
+                                    console.log(data_)
+                                    console.log("========")
+
+
+                                    let acc_run_balances = []
 
                                     cus_accounts.push(response.data)
+                                    $.each(data_, function(index) {
+
+                                        acc_run_balances.push(data_[index].runningBalance)
+
+                                    })
+
+                                    var details = [account_number, acc_run_balances]
+
+                                    acc_line_details.push(details)
+
+
                                     {{-- console.log(response.data) --}}
 
 
@@ -1684,9 +1702,9 @@
                     var global_selected_currency = "";
 
                     function line_graph() {
-                        console.log("========")
+
                         console.log(cus_accounts)
-                        console.log("========")
+
 
                     }
 
@@ -1767,7 +1785,7 @@
                             show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
                             setTimeout(function() {
                                 {{-- line_graph() --}}
-                                account_line_chart(cus_accounts)
+                                account_line_chart(cus_accounts, acc_line_details)
                             }, 5000)
 
                         }, 2000);

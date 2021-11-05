@@ -481,8 +481,11 @@ class FunctionsController extends Controller
     public function payment_types()
     {
         try {
-            $response = Http::get(env('API_BASE_URL') . "payment/paymentType");
             $base_response = new BaseResponse();
+
+
+            $response = Http::get(env('API_BASE_URL') . "payment/paymentType");
+
             // API response status code is 200
             $result = json_decode($response->body());
             // return $result->responseCode;
