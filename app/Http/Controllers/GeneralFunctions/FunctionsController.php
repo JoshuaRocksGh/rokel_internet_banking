@@ -501,4 +501,18 @@ class FunctionsController extends Controller
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }
+
+    public function recipientNameEnquiry(Request $req)
+    {
+        $data = [
+            'payNumber' => $req->beneficiaryAccount,
+            'paymentCode' => $req->payeeName,
+            'paymentType' => $req->paymentType
+        ];
+        // return $data;
+        $response = Http::post(env('API_BASE_URL') . "/payment/nameEnquiry", $data);
+        // return $response;
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
 }
