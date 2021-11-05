@@ -798,7 +798,18 @@
                         console.log("========") --}}
 
 
+
                         let apiData = cus_accounts
+
+                        for (let i = 0; apiDataResult.length; i++) {
+                            for (let j = 0; j < apiDataResult[i].length; j++) {
+                                console.log("=======")
+                                console.log(apiDataResult[i][j]);
+                                console.log("=======")
+
+                            }
+                        }
+
 
 
                         let datasets = []
@@ -812,10 +823,10 @@
                             console.log("=======") --}}
                             let apiDataResult = apiData[index]
 
-                            for (let i = 0; apiDataResult.length; i++) {
-                                for (let j = 0; j < apiDataResult[i].length; j++) {
+                            for (let i = 0; apiData.length; i++) {
+                                for (let j = 0; j < apiData[i].length; j++) {
                                     console.log("=======")
-                                    console.log(apiDataResult[i][j]);
+                                    console.log(apiData[i][j]);
                                     console.log("=======")
 
                                 }
