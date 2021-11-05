@@ -26,12 +26,13 @@ function paymentType() {
                         "bg-dark",
                     ];
                     if (!label) return;
-                    let paymentCard = `<div class=" mx-2 my-2 display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
+                    let paymentCard = `<div class="display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
                     <span class="box-circle"></span>
-                    <span class="mt-1 text-white payments-text" id='${paymentType}_text'>${description}</span>
+                    <span id='${paymentType}_text'>${description}</span>
         </div>`;
                     $(".payments-carousel").append(paymentCard);
                 });
+                getPaymentBeneficiaries();
             } else {
                 return false;
             }
@@ -93,25 +94,31 @@ function initPaymentsCarousel() {
             $(item).trigger("click");
         }
     });
+    siteLoading("hide");
 }
 function populateBeneficiariesSelect(type) {
     const beneData = pageData["bene_" + type];
+
     $("#to_account").empty();
-    $("#to_account").append(
-        `<option selected disabled> --- Select Beneficiary --- </option>`
-    );
-    beneData.forEach((bene, i) => {
-        let { ACCOUNT, NICKNAME, PAYEE_NAME } = bene;
-        const paymentLogo = pageData["pay_" + type].paySubTypes.find(
-            (e) => e.paymentCode === PAYEE_NAME
-        ).paymentLogo;
-        let logo = paymentLogo
-            ? "data:image/jpg;base64," + paymentLogo
-            : "assets/images/add.png";
-        let content = `<span class='row text-capitalize'><img src='${logo}' class='ml-2 mr-3' style='width:2rem'><span class='mr-3'>${ACCOUNT}</span> <span>${NICKNAME}</span></span>`;
-        let option = `<option data-content="${content}"  value='${ACCOUNT}'> </option> `;
-        $("#to_account").append(option);
-    });
+    if (beneData.length < 1) {
+        $("#to_account").append(noSavedBeneficiariesOption);
+    } else {
+        $("#to_account").append(
+            `<option selected disabled> --- Select Beneficiary --- </option>`
+        );
+        beneData.forEach((bene, i) => {
+            let { ACCOUNT, NICKNAME, PAYEE_NAME } = bene;
+            const paymentLogo = pageData["pay_" + type].paySubTypes.find(
+                (e) => e.paymentCode === PAYEE_NAME
+            ).paymentLogo;
+            let logo = paymentLogo
+                ? "data:image/jpg;base64," + paymentLogo
+                : "assets/images/add.png";
+            let content = `<span class='row text-capitalize'><img src='${logo}' class='ml-2 mr-3' style='width:2rem'><span class='mr-3'>${ACCOUNT}</span> <span>${NICKNAME}</span></span>`;
+            let option = `<option data-content="${content}" data-type='${PAYEE_NAME}' value='${ACCOUNT}'> </option> `;
+            $("#to_account").append(option);
+        });
+    }
     $("#to_account").selectpicker("refresh");
 }
 
@@ -142,14 +149,76 @@ function populateSubtypesSelect(type) {
     });
     $("#subtype_select").selectpicker("refresh");
 }
-async function initPage() {
-    await paymentType();
-    await getPaymentBeneficiaries();
-}
+
 $(() => {
-    initPage();
+    let isOnetimePayment = false;
+    let paymentInfo = new Object();
+    siteLoading("show");
+    paymentType();
     $(".form-control").selectpicker("refresh");
 
-    // paymentType();
-    // getPaymentBeneficiaries();
+    function updateTransactionType(type) {
+        if (type === "onetime") {
+            isOnetimePayment = true;
+        } else if (type === "beneficiary") {
+            isOnetimePayment = false;
+        }
+    }
+
+    $("#beneficiary_tab").on("click", () => {
+        updateTransactionType("beneficiary");
+        $(".display_to_account").text("");
+        $("#to_account").trigger("change");
+    });
+
+    $("#onetime_tab").on("click", () => {
+        updateTransactionType("onetime");
+        $(".display_to_account").text("");
+        $("#to_account").trigger("change");
+    });
+
+    $("#confirm_transfer_button").on("click", (e) => {
+        e.preventDefault();
+        $("#centermodal").modal("show");
+    });
+
+    $("#next_button").on("click", (e) => {
+        e.preventDefault();
+        let account = $("#from_account").val();
+        let amount = $("#amount").val();
+        let beneficiaryAccount, payeeName;
+
+        if (!isOnetimePayment) {
+            console.log(isOnetimePayment);
+            beneficiaryAccount = $("#to_account").val();
+            payeeName = $("#to_account option:selected").attr("data-type");
+        } else {
+            payeeName = $("#subtype_select").val();
+            beneficiaryAccount = $("#onetime_to_account").val();
+        }
+        console.table({ amount, account, beneficiaryAccount, payeeName });
+        if (!amount || !account || !beneficiaryAccount || !payeeName) {
+            toaster("all fields required", "warning");
+            return;
+        }
+        transferInfo = {
+            amount,
+            account,
+            beneficiaryAccount,
+            payeeName,
+        };
+
+        $("#payment_verification_modal").modal("show");
+    });
+
+    $("#transfer_pin").on("click", (e) => {
+        e.preventDefault;
+        paymentInfo.secPin = $("#user_pin").val();
+        if (paymentInfo.secPin.length !== 4) {
+            toaster("invalid pin", "warning");
+            return false;
+        }
+        makePayment(endPoint, transferInfo);
+        $("#user_pin").val("").text("");
+    });
 });
