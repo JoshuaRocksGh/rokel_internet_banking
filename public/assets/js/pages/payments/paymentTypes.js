@@ -9,22 +9,23 @@ function paymentType() {
             let data = response.data.data;
             pageData.payTypes = [];
             if (data.length > 0) {
+                let color = [
+                    "bg-success",
+                    "bg-info",
+                    "bg-warning",
+                    "bg-danger",
+                    "bg-primary",
+                    "bg-pink",
+                    "bg-blue",
+                    "bg-secondary",
+                    "bg-dark",
+                ];
+                $(".payments-carousel").empty();
                 $.each(data, function (i) {
                     const type = data[i].paymentType;
                     pageData.payTypes.push(type);
                     pageData["pay_" + type] = data[i];
                     const { label, paymentType, description } = data[i];
-                    let color = [
-                        "bg-success",
-                        "bg-info",
-                        "bg-warning",
-                        "bg-danger",
-                        "bg-primary",
-                        "bg-pink",
-                        "bg-blue",
-                        "bg-secondary",
-                        "bg-dark",
-                    ];
                     if (!label) return;
                     let paymentCard = `<div class="display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
                     <span class="box-circle"></span>
@@ -46,7 +47,111 @@ function paymentType() {
         },
     });
 }
+function makePayment() {
+    siteLoading("show");
+    $.ajax({
+        type: "POST",
+        url: "make-payment-api",
+        datatype: "application/json",
+        data: pageData.paymentInfo,
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            siteLoading("hide");
+            console.log(response);
+            if (response.responseCode == "000") {
+                getAccounts();
+                Swal.fire({
+                    width: 400,
+                    title: `<h2 class='text-success font-16 font-weight-bold'>${response.message}</h2>`,
+                    imageUrl: "assets/images/animations/payment_successful.gif",
+                    imageHeight: 200,
+                    confirmButtonColor: "#1abc9c",
+                }).then((result) => {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    width: 400,
+                    title: `<h2 class='text-danger font-16 font-weight-bold'>${response.message}</h2>`,
+                    imageUrl:
+                        "assets/images/animations/payment_unsuccessful.gif",
+                    imageHeight: 200,
+                    confirmButtonColor: "#dc3545",
+                });
+            }
+        },
+        error: function (error) {
+            siteLoading("hide");
+            toaster(error.statusText, error);
+        },
+    });
+}
 
+function getRecipientName() {
+    siteLoading("show");
+    $.ajax({
+        type: "POST",
+        url: "payment-name-enquiry-api",
+        datatype: "application/json",
+        data: pageData.paymentInfo,
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            console.log(response);
+            if (response.responseCode == "000") {
+                siteLoading("hide");
+                pageData.paymentInfo.recipientName = response.data;
+                paymentVerification();
+            }
+        },
+        error: function (xhr, status, error) {
+            $("#loader").show();
+
+            setTimeout(function () {
+                paymentType();
+            }, $.ajaxSetup().retryAfter);
+        },
+    });
+}
+
+function paymentVerification() {
+    const {
+        paymentType,
+        account,
+        beneficiaryAccount,
+        amount,
+        recipientName,
+        payeeName,
+    } = pageData.paymentInfo;
+    const { paymentDescription, paymentAccount } = pageData[
+        "pay_" + paymentType
+    ].paySubTypes.find((e) => e.paymentCode === payeeName);
+    const formattedAmount = formatToCurrency(amount)
+        ? formatToCurrency(amount)
+        : 0.0;
+    const expensetype = pageData["pay_" + paymentType].description;
+    const transFee = "0";
+    const currency = "SLL";
+    const totalAmount = parseFloat(amount) + parseFloat(transFee);
+    $("#details_from_account").text(account);
+    $("#details_to_account").text(recipientName);
+    $("#details_icon_text").text(recipientName[0]);
+    $("#details_amount").text(currency + " " + formattedAmount);
+    $("#details_recipient_number").text(beneficiaryAccount);
+    $("#details_recipient_name").text(recipientName);
+    $("#details_trans_fee").text(currency + " " + formatToCurrency(transFee));
+    $("#details_narration").text(paymentDescription);
+    $("#details_expense_type").text(expensetype);
+    $("#details_total_amount").text(
+        currency + " " + formatToCurrency(totalAmount)
+    );
+    pageData.paymentInfo.paymentAccount = paymentAccount;
+    pageData.paymentInfo.paymentDescription = paymentDescription;
+    $("#payment_verification_modal").modal("show");
+}
 function getPaymentBeneficiaries() {
     $.ajax({
         type: "GET",
@@ -84,7 +189,7 @@ function initPaymentsCarousel() {
             $(".payments").removeClass("current-type");
             const type = $(e.currentTarget).attr("data-span");
             $(e.currentTarget).addClass("current-type");
-
+            pageData.currentType = type;
             //populate beneficiaries
             $("#to_account");
             populateBeneficiariesSelect(type);
@@ -96,6 +201,7 @@ function initPaymentsCarousel() {
     });
     siteLoading("hide");
 }
+
 function populateBeneficiariesSelect(type) {
     const beneData = pageData["bene_" + type];
 
@@ -152,7 +258,6 @@ function populateSubtypesSelect(type) {
 
 $(() => {
     let isOnetimePayment = false;
-    let paymentInfo = new Object();
     siteLoading("show");
     paymentType();
     $(".form-control").selectpicker("refresh");
@@ -184,8 +289,11 @@ $(() => {
 
     $("#next_button").on("click", (e) => {
         e.preventDefault();
-        let account = $("#from_account").val();
+        let account = $("#from_account option:selected").attr(
+            "data-account-number"
+        );
         let amount = $("#amount").val();
+        let paymentType = pageData.currentType;
         let beneficiaryAccount, payeeName;
 
         if (!isOnetimePayment) {
@@ -196,29 +304,31 @@ $(() => {
             payeeName = $("#subtype_select").val();
             beneficiaryAccount = $("#onetime_to_account").val();
         }
-        console.table({ amount, account, beneficiaryAccount, payeeName });
         if (!amount || !account || !beneficiaryAccount || !payeeName) {
             toaster("all fields required", "warning");
             return;
         }
-        transferInfo = {
+        pageData.paymentInfo = {
             amount,
             account,
             beneficiaryAccount,
             payeeName,
+            paymentType,
         };
 
-        $("#payment_verification_modal").modal("show");
+        getRecipientName(pageData.paymentInfo);
     });
 
     $("#transfer_pin").on("click", (e) => {
         e.preventDefault;
-        paymentInfo.secPin = $("#user_pin").val();
-        if (paymentInfo.secPin.length !== 4) {
+        const pin = $("#user_pin").val();
+        if (!pin || pin.length !== 4) {
             toaster("invalid pin", "warning");
             return false;
         }
-        makePayment(endPoint, transferInfo);
+        pageData.paymentInfo.pinCode = pin;
+        console.table(pageData.paymentInfo);
+        makePayment();
         $("#user_pin").val("").text("");
     });
 });

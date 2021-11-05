@@ -17,10 +17,7 @@ use App\Http\Controllers\Authentication\ForgotPasswordController;
 use App\Http\Controllers\Authentication\KycController;
 use App\Http\Controllers\Authentication\LoginController as AuthenticationLoginController;
 use App\Http\Controllers\Authentication\ResetPasswordController;
-use App\Http\Controllers\Payments\Beneficiary\AirtimePaymentController;
 use App\Http\Controllers\Payments\Beneficiary\PaymentBeneficiaryController;
-use App\Http\Controllers\Payments\Beneficiary\MobileMoneyController as PaymentMobileMoneyController;
-use App\Http\Controllers\Payments\Beneficiary\PaymentTypesController;
 use App\Http\Controllers\Transfers\Beneficiary\TransferBeneficiaryController;
 use App\Http\Controllers\Branch\BranchesController;
 use App\Http\Controllers\BranchLocator\branchLocatorController;
@@ -48,7 +45,7 @@ use App\Http\Controllers\Payments\BulkUpload\BulkUploadsController;
 use App\Http\Controllers\Payments\BulkUpload\CorporateKorporController as BulkUploadCorporateKorporController;
 use App\Http\Controllers\Payments\CardlessController;
 use App\Http\Controllers\Payments\KorporController;
-use App\Http\Controllers\Payments\MobileMoneyController;
+use App\Http\Controllers\Payments\PaymentsController;
 use App\Http\Controllers\Payments\paymentController;
 use App\Http\Controllers\Settings\ChangePasswordController;
 use App\Http\Controllers\Settings\ChangePinController;
@@ -118,7 +115,7 @@ Route::get('pay-again', [paymentController::class, 'pay_again_payment'])->name('
 Route::get('manage-cards', [CardsController::class, 'block_debit_card'])->name('manage-cards');
 Route::get('replace-card', [CardsController::class, 'replace_card'])->name('replace-card');
 Route::get('biometric-setup', [settingsController::class, 'biometric_setup'])->name('biometric-setup');
-Route::get('/logout', [LogoutController::class, 'logout_'])->name('logout');
+Route::get('/logout', [LogoutController::class, 'logout']);
 Route::get('/send-email', [MaileController::class, 'send_email'])->name('send-email');
 
 //route to display the stop fd screen
@@ -156,8 +153,7 @@ Route::group(['middleware' => ['userAuth']], function () {
 
 
     // --- PAYMENTS
-    Route::get('/payment-type', [PaymentTypesController::class, 'index'])->name('payment-type');
-    Route::get('/payment-type/{payment_type_code}', [PaymentTypesController::class, 'paymentTypes'])->name('/payment-type/{payment_type_code}');
+    Route::get('/payments', [PaymentsController::class, 'paymentTypes'])->name('payment-type');
     Route::get('/mobile-money', [MobileMoneyController::class, 'index'])->name('mobile-money');
     Route::get('qr-payment', [paymentController::class, 'qr_payment']);
     Route::get('cardless-payment', [paymentController::class, 'cardless_payment'])->name('cardless-payment');
@@ -286,7 +282,6 @@ Route::post('get-transaction-fees', [FunctionsController::class, 'get_transactio
 Route::get('get-fx-rate-api', [FunctionsController::class, 'get_fx_rate'])->name('get-fx-rate-api');
 Route::get('get-correct-fx-rate-api', [FunctionsController::class, 'get_correct_fx_rate'])->name('get-correct-fx-rate-api');
 Route::get('get-lovs-list-api', [FunctionsController::class, 'lovs_list'])->name('get-lovs-list-api');
-Route::get('get-payment-types-api', [FunctionsController::class, 'payment_types']);
 Route::post('corporate-international-bank-transfer-api', [InternationalBankController::class, 'corporate_international_bank']);
 
 
@@ -299,34 +294,26 @@ Route::post('/local-bank-transfer-api', [LocalBankController::class, 'localBankT
 Route::post('/international-bank-transfer-api', [InternationalBankController::class, 'internationalBankTransfer'])->name('international-bank-transfer-api');
 Route::post('/own-account-transfer-api', [OwnAccountController::class, 'own_account_transfer']);
 Route::post('standing-order-transfer-api', [StandingOrderController::class, 'standingOrderTransfer']);
-
-//CORPORATE OWN ACCOUNT API
+//CORPORATE transfer
 Route::post('/corporate-own-account-transfer-api', [OwnAccountController::class, 'corporate_own_account_transfer']);
 Route::post('/corporate-same-bank-transfer-api', [SameBankController::class, 'corporate_same_bank']);
 Route::post('/corporate-local-bank-transfer-api', [LocalBankController::class, 'corporateLocalBankTransfer']);
 Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary']);
 Route::post('corporate-standing-order-transfer-api', [StandingOrderController::class, 'corporate_standing_order_request']);
-
-
 // Transfers Add Beneficiary
 Route::post('/save-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'saveBeneficiary']);
 Route::delete('/delete-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'deleteBeneficiary']);
 Route::get('/transfer-beneficiary-list', [transferController::class, 'transferBeneficiaryList']);
 
-// Payment Add Beneficiary
+// Payment
 Route::post('/save-payment-beneficiary-api', [PaymentBeneficiaryController::class, 'savePaymentBeneficiary']);
 Route::delete('/delete-payment-beneficiary-api', [PaymentBeneficiaryController::class, 'deletePaymentBeneficiary']);
-
-//=======ADD PAYMENT BENEFICARY
-Route::post('add-mobile-money-beneficiary-api', [MobileMoneyBeneficiaryController::class, 'add_mobile_money_beneficary'])->name('add-mobile-money-beneficiary-api');
-
-//=======EDIT PAYMENT BENEFICARY
 Route::get('payment-beneficiary-list-api', [paymentController::class, 'paymentBeneficiaries']);
+Route::post('schedule-payment-api', [SchedulePaymentController::class, 'schedule_payment']);
+Route::get('get-payment-types-api', [FunctionsController::class, 'payment_types']);
+Route::post('payment-name-enquiry-api', [FunctionsController::class, 'recipientNameEnquiry']);
+Route::post('make-payment-api', [PaymentsController::class, 'makePayment']);
 
-// PAYMENT API'S
-Route::post('mobile-money-api', [PaymentMobileMoneyController::class, 'mobile_money'])->name('mobile-money-api');
-Route::post('airtime-payment-api', [AirtimePaymentController::class, 'airtime_payment'])->name('airtime-payment-api');
-Route::post('schedule-payment-api', [SchedulePaymentController::class, 'schedule_payment'])->name('schedule-payment-api');
 
 //route for cheque book request api
 Route::get('cheque-book-request-api', [AccountServicesChequeBookRequestController::class, 'cheque_book_request'])->name('cheque-book-request-api');
