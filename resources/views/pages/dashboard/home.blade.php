@@ -167,7 +167,7 @@
                                             {{-- <strong class="text-success total_casa_amount float-right"></strong> --}}
                                             <strong>
 
-                                                SLL <span class="text-success total_casa_amount open-money"></span>
+                                                SLL <span class="text-success total_casa_amount open-money">0.00</span>
                                                 <span class="i_have_amount_ close-money">***********</span>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
@@ -188,7 +188,8 @@
                                             {{-- <span class="badge badge-warning badge-pill investment_count">0</span> --}}
                                             <strong>
 
-                                                SLL <span class="text-warning total_investment_amount open-money"></span>
+                                                SLL <span
+                                                    class="text-warning total_investment_amount open-money">0.00</span>
                                                 <span class="i_have_amount_ close-money">***********</span>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
@@ -207,7 +208,7 @@
                                             {{-- <span class="badge badge-danger badge-pill loan_count">0</span> --}}
                                             <strong>
 
-                                                SLL <span class="text-danger total_loan_account open-money"></span>
+                                                SLL <span class="text-danger total_loan_account open-money">0.00</span>
                                                 <span class="i_have_amount_ close-money">***********</span>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
@@ -594,14 +595,15 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog"
+                <div class="modal fade" id="bs-example-modal-lg" role="dialog"
+                    style="position: absolute; left:50%; top:70%;transform: translate(-50%, -50%);"
                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 {{-- <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4> --}}
-                                {{-- <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">×</button> --}}
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
                                 <div class="table-responsive table-bordered accounts_display_area" style="display: none">
@@ -1053,8 +1055,15 @@
                                             invest_amount = invest_amount.replace(/,/g, "");
                                             account_data.i_invest_total += Math.abs(parseFloat(invest_amount))
 
-                                            $(".total_investment_amount").text(
-                                                `${formatToCurrency(parseFloat(account_data.i_invest_total))}`)
+                                            if (account_data.i_invest_total != null || account_data
+                                                .i_invest_total != "") {
+                                                $(".total_investment_amount").text(
+                                                    `${formatToCurrency(parseFloat(account_data.i_invest_total))}`
+                                                )
+                                            } else {
+                                                $(".total_investment_amount").text("0.00")
+                                            }
+
 
                                             var data_rollover = data[index].rollover
                                             if (data_rollover == "Y") {
@@ -1186,8 +1195,14 @@
                                         account_data.i_have_total += Math.abs(parseFloat(
                                             localEquivalentAvailableBalance))
                                         console.log(`total money ${account_data.i_have_total}`)
-                                        $(".total_casa_amount").text(
-                                            `${formatToCurrency(parseFloat(account_data.i_have_total))}`)
+                                        if (account_data.i_have_total != null || account_data.i_have_total != '') {
+                                            $(".total_casa_amount").text(
+                                                `${formatToCurrency(parseFloat(account_data.i_have_total))}`)
+                                        } else {
+                                            $(".total_casa_amount").text(
+                                                `${formatToCurrency(parseFloat(0.00))}`)
+                                        }
+
                                         $('.casa_list_display').append(
                                             `<tr>
                                         <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
@@ -1287,9 +1302,20 @@
                                                 $.each(data, function(index) {
                                                     let loanBalance = data[index].loanBalance
                                                     loanBalance = loanBalance.replace(/,/g, "");
-                                                    account_data.i_owe_total += Math.abs(parseFloat(loanBalance))
-                                                    $(".total_loan_account").text(formatToCurrency(parseFloat(
-                                                        account_data.i_owe_total)))
+                                                    account_data.i_owe_total += Math.abs(parseFloat(loanBalance));
+
+                                                    console.log("account_data_i_owe_total:",
+                                                        account_data.i_owe_total)
+
+                                                    if (account_data.i_owe_total != null || account_data
+                                                        .i_owe_total != "") {
+                                                        $(".total_loan_account").text(formatToCurrency(parseFloat(
+                                                            account_data.i_owe_total)))
+                                                    } else {
+                                                        $(".total_loan_account").text(formatToCurrency(parseFloat(
+                                                            0.00)))
+                                                    }
+
 
                                                     console.log(`total loans ${account_data.i_owe_total}`)
                                                     $('.loans_display').append(
