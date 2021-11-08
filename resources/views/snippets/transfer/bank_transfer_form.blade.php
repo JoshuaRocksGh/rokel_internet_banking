@@ -23,8 +23,9 @@
                     <div class=" mb-1 px-3 row ">
                         <label class="col-md-12 text-primary">Account to transfer from</label>
 
-                        <select class="form-control col-md-12" id="from_account" required>
-                            <option disabled selected value=""> --- Select Source Account --- </option>
+                        <select class="form-control col-md-12" data-title=" --- Select Source Account ---"
+                            data-none-selected-text="--- Select Source Account ---" id="from_account" required>
+                            {{-- <option disabled selected value=""> --- Select Source Account --- </option> --}}
                             @include("snippets.accounts")
                         </select>
 
@@ -77,9 +78,11 @@
 
                                 <div class="form-group row">
                                     <label class="col-md-4 text-primary"> {{ $destination }} </label>
-                                    <select class="form-control col-md-8 select_beneficiary" id="to_account" required>
-                                        <option disabled selected value=""> -- Select
-                                            {{ $destination }} --</option>
+                                    <select data-title=" --- Select {{ $destination}} ---"
+                                        data-none-selected-text="--- Select {{ $destination}} ---"
+                                        class="form-control col-md-8 select_beneficiary" id="to_account" required>
+                                        {{-- <option disabled selected value=""> -- Select
+                                            {{ $destination }} --</option> --}}
                                         @if ($currentPath === 'Own Account')
                                         @include('snippets.accounts')
                                         @endif

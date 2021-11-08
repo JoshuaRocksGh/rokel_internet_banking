@@ -480,14 +480,12 @@ class FunctionsController extends Controller
 
     public function payment_types()
     {
+        $base_response = new BaseResponse();
         try {
             $response = Http::get(env('API_BASE_URL') . "payment/paymentType");
-            $base_response = new BaseResponse();
-            // API response status code is 200
-            $result = json_decode($response->body());
-            // return $result->responseCode;
-            return $base_response->api_response("000", "payment types",  $result); // return API BASERESPONSE
-
+            $result = new ApiBaseResponse();
+            return $result->api_response($response);
+            // return $base_response->api_response("000", "payment types",  $result); // return API BASERESPONSE
         } catch (\Exception $e) {
             return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
 
@@ -498,6 +496,20 @@ class FunctionsController extends Controller
     {
         $user_id = $user_id;
         $response = Http::get(env('API_BASE_URL') . "/user/question/{$user_id}");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
+    public function recipientNameEnquiry(Request $req)
+    {
+        $data = [
+            'payNumber' => $req->beneficiaryAccount,
+            'paymentCode' => $req->payeeName,
+            'paymentType' => $req->paymentType
+        ];
+        // return $data;
+        $response = Http::post(env('API_BASE_URL') . "/payment/nameEnquiry", $data);
+        // return $response;
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }

@@ -82,8 +82,12 @@
                             </div> <!-- end row-->
                         </div> <!-- end widget-rounded-circle-->
                     </a>
+                    {{-- <select name="" id="">
+                        <option value="">Welcome</option>
+                    </select> --}}
                     <div class="dropdown-menu" style="background-color: rgba(253, 235, 205, 1);">
-                        <a class="dropdown-item" href="{{ url('own-account') }}">Own Account</a>
+                        <a class="dropdown-item" href="{{ url('own-account') }}" id="dropdown_own_account">Own
+                            Account</a>
                         <a class="dropdown-item " href="{{ url('same-bank') }}">Same Bank</a>
                         <a class="dropdown-item" href="{{ url('local-bank') }}">Other Bank</a>
                         <a class="dropdown-item" href="{{ url('international-bank') }}">International Bank</a>
@@ -91,7 +95,7 @@
                         @if (config('app.corporate'))
                             <a class="dropdown-item" href="{{ url('bulk-transfer') }}">Bulk Transfer</a>
                         @endif
-                        {{-- <a class="dropdown-item" href="#">Another link</a> --}}
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -167,7 +171,7 @@
                                             {{-- <strong class="text-success total_casa_amount float-right"></strong> --}}
                                             <strong>
 
-                                                SLL <span class="text-success total_casa_amount open-money"></span>
+                                                SLL <span class="text-success total_casa_amount open-money">0.00</span>
                                                 <span class="i_have_amount_ close-money">***********</span>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
@@ -188,7 +192,8 @@
                                             {{-- <span class="badge badge-warning badge-pill investment_count">0</span> --}}
                                             <strong>
 
-                                                SLL <span class="text-warning total_investment_amount open-money"></span>
+                                                SLL <span
+                                                    class="text-warning total_investment_amount open-money">0.00</span>
                                                 <span class="i_have_amount_ close-money">***********</span>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
@@ -207,7 +212,7 @@
                                             {{-- <span class="badge badge-danger badge-pill loan_count">0</span> --}}
                                             <strong>
 
-                                                SLL <span class="text-danger total_loan_account open-money"></span>
+                                                SLL <span class="text-danger total_loan_account open-money">0.00</span>
                                                 <span class="i_have_amount_ close-money">***********</span>
                                                 &nbsp;&nbsp;&nbsp;
                                                 <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
@@ -379,7 +384,7 @@
 
 
                     </div>
-                    <div class="card-box h-50"
+                    <div class="card-box "
                         style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;zoom:0.9;">
 
                         <ul class="nav nav-tabs">
@@ -402,17 +407,23 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="tab-content">
+                        <div class="tab-content container">
                             <div class="tab-pane active" id="home">
-                                <p>
+                                <canvas id="casa_myChart" style="width:200px;max-width:700px;">
 
-                                    <canvas id="casa_myChart" width="100" height="100">
+                                </canvas>
 
-                                    </canvas>
 
-                                    {{-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> --}}
+                                {{-- <canvas id="myChart" style="width:100%;max-width:700px"></canvas> --}}
 
-                                    {{-- <div class="table-responsive table-bordered accounts_display_area">
+
+
+
+
+
+                                {{-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> --}}
+
+                                {{-- <div class="table-responsive table-bordered accounts_display_area">
                                     <table id="" class="table table-striped mb-0 ">
                                         <thead>
                                             <tr class="bg-info text-white ">
@@ -433,7 +444,7 @@
                                 </div> --}}
 
 
-                                </p>
+
 
                             </div>
 
@@ -583,8 +594,8 @@
                                     <div class="form-group">
                                         <label class="text-dark"><b>Result</b></label>
                                         <div>
-                                            <span type="text" class="form-control readOnly" id="exchange_result"
-                                                readonly></span>
+                                            <input type="text" class="form-control readOnly" id="exchange_result" readonly>
+
                                             {{-- <span ></span> --}}
                                         </div>
                                     </div>
@@ -594,14 +605,15 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog"
+                <div class="modal fade" id="bs-example-modal-lg" role="dialog"
+                    style="position: absolute; left:50%; top:60%;transform: translate(-50%, -50%);"
                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
                                 {{-- <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4> --}}
-                                {{-- <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">×</button> --}}
+                                <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
                                 <div class="table-responsive table-bordered accounts_display_area" style="display: none">
@@ -640,10 +652,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="fixed_deposit_account">
-                                            <td colspan="100%" class="text-center">
-                                                {{-- global noDataAvailable image variable shared with all views --}}
-                                                {{-- {!! $noDataAvailable !!} --}}
-                                            </td>
+
 
                                         </tbody>
                                     </table>
@@ -680,6 +689,7 @@
                 <!-- Plugins js-->
                 <script src="{{ asset('assets/js/chart.js') }}"></script>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 
                 <!-- Tour page js -->
@@ -791,15 +801,54 @@
                         );
                     }
 
-                    function account_line_chart(cus_accounts) {
+                    function account_line_chart(cus_accounts, acc_line_details) {
 
-                        {{-- console.log("========")
-                        console.log(cus_accounts)
-                        console.log("========") --}}
+                        //console.log("========")
+                        //console.log(acc_line_details)
+                        //console.log("========")
 
+                        let acc_dataset = []
+                        let chart_data_details = new Array
+                        {{-- let show_chart_data = [] --}}
+                        let acc_chart_details = acc_line_details
+
+
+                        $.each(acc_chart_details, function(index) {
+
+                            let chart_res = acc_chart_details[index]
+
+                            //console.log("========")
+                            //console.log(chart_res)
+                            //console.log("========")
+
+
+                            let new_chart_res = chart_res[1]
+
+                            chart_data_details.push(
+
+                                {{-- {
+                                    label: `${chart_res[0]}`,
+                                    data: `${chart_res[1]}`,
+                                    borderColor: 'rgb(75,192,192, 0.5)',
+                                    backgroundColor: 'rgba(231, 223, 10, 0.5)',
+                                    yAxisID: 'y',
+                                    tension: 0.3
+                                }, --}} {
+                                    label: `${chart_res[0]} ${chart_res[1]}`,
+                                    data: `${chart_res[2]}`,
+                                    borderColor: "red",
+                                    fill: false
+                                }
+
+
+
+                            )
+
+
+
+                        })
 
                         let apiData = cus_accounts
-
 
                         let datasets = []
                         var numbers = []
@@ -807,20 +856,10 @@
                         $.each(apiData, function(index) {
 
 
-                            {{-- console.log("=======")
-                            console.log(apiData[index])
-                            console.log("=======") --}}
+                            //console.log("=======")
+                            //console.log(apiData[index])
+                            //console.log("=======")
                             let apiDataResult = apiData[index]
-
-                            for (let i = 0; apiDataResult.length; i++) {
-                                for (let j = 0; j < apiDataResult[i].length; j++) {
-                                    console.log("=======")
-                                    console.log(apiDataResult[i][j]);
-                                    console.log("=======")
-
-                                }
-                            }
-
                             $.each(apiDataResult, function(index) {
 
 
@@ -829,7 +868,7 @@
                                 var d = apiDataResult[index].valueDate
                                 d = d.split(' ')[0];
                                 dates.push(d)
-                                console.log(d);
+                                //console.log("d:", d);
 
 
 
@@ -840,11 +879,15 @@
                         const smallest_number = Math.min(...numbers);
                         const largest_number = Math.max(...numbers);
 
-                        let uniqueDates = [...new Set(dates)];
-                        console.log(uniqueDates)
+                        console.log("dates:", dates);
+
+                        let uniqueDates = [...new Set(dates)].sort();
+                        console.log("dates for x-axis:", uniqueDates)
 
                         console.log('Smallest Value:', smallest_number);
                         console.log('Largest Value:', largest_number);
+                        //console.log('Dataset:', acc_dataset);
+                        console.log('chart_data_details:', chart_data_details);
 
 
                         const NUMBER_CFG = {
@@ -856,27 +899,11 @@
 
                         const labels = uniqueDates;
 
-                        return false
+                        {{-- return false --}}
 
                         const data = {
                             labels: labels,
-                            datasets: [{
-                                    label: 'Dataset 1',
-                                    data: Utils.numbers(NUMBER_CFG),
-                                    borderColor: Utils.CHART_COLORS.red,
-                                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
-                                    yAxisID: 'y',
-                                    tension: 0.3
-                                },
-                                {
-                                    label: 'Dataset 2',
-                                    data: Utils.numbers(NUMBER_CFG),
-                                    borderColor: Utils.CHART_COLORS.blue,
-                                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
-                                    yAxisID: 'y',
-                                    tension: 0.3
-                                }
-                            ]
+                            datasets: chart_data_details
                         };
 
                         const config = {
@@ -909,11 +936,38 @@
 
                         // === include 'setup' then 'config' above ===
 
-                        const myChart = new Chart(
+                        {{-- const myChart = new Chart(
                             document.getElementById('casa_myChart'),
                             config
-                        );
+                        ); --}}
+
+                        // w3schools chart
+                        var xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+
+                        new Chart("casa_myChart", {
+                            type: "line",
+                            data: {
+                                labels: uniqueDates,
+                                datasets: chart_data_details
+                            },
+                            options: {
+                                legend: {
+                                    display: true,
+
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Account History'
+                                }
+
+                            }
+                        });
                     }
+                </script>
+
+
+                <script>
+
                 </script>
 
                 <script>
@@ -1043,8 +1097,15 @@
                                             invest_amount = invest_amount.replace(/,/g, "");
                                             account_data.i_invest_total += Math.abs(parseFloat(invest_amount))
 
-                                            $(".total_investment_amount").text(
-                                                `${formatToCurrency(parseFloat(account_data.i_invest_total))}`)
+                                            if (account_data.i_invest_total != null || account_data
+                                                .i_invest_total != "") {
+                                                $(".total_investment_amount").text(
+                                                    `${formatToCurrency(parseFloat(account_data.i_invest_total))}`
+                                                )
+                                            } else {
+                                                $(".total_investment_amount").text("0.00")
+                                            }
+
 
                                             var data_rollover = data[index].rollover
                                             if (data_rollover == "Y") {
@@ -1082,11 +1143,10 @@
                                     } else {
 
                                         $(".fixed_deposit_account").append(
-                                            `<tr colspan="100%">
-                                        <td  class="text-center">${noInvestments} </td>
-                                    </tr>
+                                            `
+                                                <td colspan="100%"  class="text-center">${noInvestments} </td>
 
-                                    `
+                                            `
                                         );
                                         return;
 
@@ -1141,7 +1201,8 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                console.log(response);
+
+                                {{-- console.log("before get account:", response); --}}
 
 
                                 if (response.responseCode == '000') {
@@ -1159,7 +1220,8 @@
 
                                     account_data.i_have_total = 0
                                     $.each(data, function(index) {
-                                        getAccountTransactions(data[index].accountNumber, start_date,
+                                        getAccountTransactions(data[index].accountNumber, data[index].currency,
+                                            start_date,
                                             end_date,
                                             transLimit)
 
@@ -1176,8 +1238,21 @@
                                         account_data.i_have_total += Math.abs(parseFloat(
                                             localEquivalentAvailableBalance))
                                         console.log(`total money ${account_data.i_have_total}`)
-                                        $(".total_casa_amount").text(
-                                            `${formatToCurrency(parseFloat(account_data.i_have_total))}`)
+                                        if (account_data.i_have_total != null || account_data.i_have_total != '') {
+                                            $(".total_casa_amount").text(
+                                                `${formatToCurrency(parseFloat(account_data.i_have_total))}`)
+                                        } else {
+                                            $(".total_casa_amount").text(
+                                                `${formatToCurrency(parseFloat(0.00))}`)
+                                        }
+                                        if (data[index].availableBalance != null || data[index].availableBalance !=
+                                            undefined) {
+                                            var availableBalance = formatToCurrency(parseFloat(data[index]
+                                                .availableBalance))
+                                        } else {
+                                            var availableBalance = "0.00"
+                                        }
+
                                         $('.casa_list_display').append(
                                             `<tr>
                                         <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].accountNumber}') }}"> <b class="text-primary">${data[index].accountNumber} </b> </a></td>
@@ -1186,7 +1261,7 @@
                                         <td> <b> ${data[index].currency}  </b>  </td>
                                         {{-- <td>  <b> 0.00  </b> </td> --}}
                                         {{-- <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td> --}}
-                                        <td> <b class="float-right"> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
+                                        <td> <b class="float-right"> ${availableBalance}   </b></td>
                                     </tr>`
                                         )
                                     })
@@ -1246,7 +1321,15 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                {{-- console.log(response); --}}
+                                console.log("========")
+                                console.log("loan response:", response);
+                                console.log("========")
+
+                                let noLoans = noDataAvailable.replace(
+                                    "Data",
+                                    "Loans"
+                                );
+
                                 if (response.responseCode == '000') {
 
                                     var data = response.data;
@@ -1260,7 +1343,11 @@
                                         $(".loans_display_area").hide()
                                     } else {
                                         if (response.data == null) {
-                                            $('#p_loans_display').html(`<h2 class="text-center text-danger">No Loan</h2>`)
+                                            $("#loans_list_body").append(
+                                                `<td colspan="100%" class="text-center">
+                                                ${noLoans} </td>`
+                                            );
+                                            return;
                                         } else {
 
                                             let loan_count = 0
@@ -1268,7 +1355,7 @@
                                             if (response.data.length > 0) {
                                                 $('#p_loans_display').show()
                                                 $(".loans_display_area").show()
-                                                console.log("response");
+                                                console.log("loans_display length:", response.data.length);
 
                                                 let i_owe_total = 0
                                                 let count = 0
@@ -1277,20 +1364,31 @@
                                                 $.each(data, function(index) {
                                                     let loanBalance = data[index].loanBalance
                                                     loanBalance = loanBalance.replace(/,/g, "");
-                                                    account_data.i_owe_total += Math.abs(parseFloat(loanBalance))
-                                                    $(".total_loan_account").text(formatToCurrency(parseFloat(
-                                                        account_data.i_owe_total)))
+                                                    account_data.i_owe_total += Math.abs(parseFloat(loanBalance));
+
+                                                    console.log("account_data_i_owe_total:",
+                                                        account_data.i_owe_total)
+
+                                                    if (account_data.i_owe_total != null || account_data
+                                                        .i_owe_total != "") {
+                                                        $(".total_loan_account").text(formatToCurrency(parseFloat(
+                                                            account_data.i_owe_total)))
+                                                    } else {
+                                                        $(".total_loan_account").text(formatToCurrency(parseFloat(
+                                                            0.00)))
+                                                    }
+
 
                                                     console.log(`total loans ${account_data.i_owe_total}`)
                                                     $('.loans_display').append(
                                                         `
-                                            <tr>
-                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                                <td> <b> ${data[index].description} </b>  </td>
-                                                <td> <b> ${data[index].isoCode}  </b>  </td>
-                                                <td> <b class="float-right"> ${ formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
-                                                <td> <b class="float-right"> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
-                                            </tr>`
+                                                            <tr>
+                                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                                                <td> <b> ${data[index].description} </b>  </td>
+                                                                <td> <b> ${data[index].isoCode}  </b>  </td>
+                                                                <td> <b class="float-right"> ${ formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                                                <td> <b class="float-right"> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
+                                                            </tr>`
                                                     )
                                                     loan_count = loan_count + 1;
 
@@ -1303,9 +1401,9 @@
 
                                                 {{-- show_chart(i_have, i_owe, i_invest_total) --}}
                                             } else {
-                                                $("#loans_list_body").append(
+                                                $(".loans_display").append(
                                                     `<td colspan="100%" class="text-center">
-                                                ${noLoans} </td>`
+                                                        ${noLoans} </td>`
                                                 );
                                                 return;
                                             }
@@ -1322,6 +1420,11 @@
                                     $(".loans_loading_area").hide()
                                     $(".loans_display_area").hide()
                                 } else {
+                                    $(".loans_display").append(
+                                        `<td colspan="100%" class="text-center">
+                                                        ${noLoans} </td>`
+                                    );
+                                    return;
                                     $(".loan_no_data_found").hide()
                                     {{-- $(".loans_error_area").hide()
                             $(".loans_loading_area").hide()
@@ -1623,7 +1726,9 @@
 
                     let cus_accounts = []
 
-                    function getAccountTransactions(account_number, start_date, end_date, transLimit) {
+                    let acc_line_details = []
+
+                    function getAccountTransactions(account_number, account_currency, start_date, end_date, transLimit) {
 
                         $.ajax({
                             "type": "POST",
@@ -1644,10 +1749,27 @@
 
                                 if (response.responseCode == '000') {
 
-                                    // let data = response.data ;
-                                    // console.log(data);
+                                    let data_ = response.data;
+                                    //console.log(data_);
+                                    //console.log("========")
+                                    //console.log(data_)
+                                    //console.log("========")
+
+
+                                    let acc_run_balances = []
 
                                     cus_accounts.push(response.data)
+                                    $.each(data_, function(index) {
+
+                                        acc_run_balances.push(data_[index].runningBalance)
+
+                                    })
+
+                                    var details = [account_number, account_currency, acc_run_balances]
+
+                                    acc_line_details.push(details)
+
+
                                     {{-- console.log(response.data) --}}
 
 
@@ -1673,15 +1795,17 @@
                     var global_selected_currency = "";
 
                     function line_graph() {
-                        console.log("========")
+
                         console.log(cus_accounts)
-                        console.log("========")
+
 
                     }
 
 
 
                     $(document).ready(function() {
+
+                        $("#dropdown_own_account").click("Alert Clicked")
 
 
                         $(".casa_chart").click(function() {
@@ -1756,7 +1880,7 @@
                             show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
                             setTimeout(function() {
                                 {{-- line_graph() --}}
-                                account_line_chart(cus_accounts)
+                                account_line_chart(cus_accounts, acc_line_details)
                             }, 5000)
 
                         }, 2000);

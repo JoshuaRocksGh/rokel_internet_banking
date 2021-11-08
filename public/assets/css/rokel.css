@@ -2,22 +2,57 @@ a:hover {
     text-decoration: none !important;
 }
 
+.form-control,
+.bootstrap-select .dropdown-toggle {
+    height: auto;
+    transition: all 0.5s;
+    /* z-index: 22299; */
+    /* border-radius: 5px; */
+    /* box-shadow: rgb(0 0 0 / 24%) 0px 1px 1px; */
+    border-color: #d9d9d9;
+}
 .bootstrap-select .dropdown-toggle:focus {
     outline: 0 !important;
 }
 
 .bootstrap-select .dropdown-menu li a:hover,
 .selected {
-    background-color: #00bef37a !important;
+    background-color: #00bdf3 !important;
     color: white !important;
     font-weight: bold;
 }
 
-.bootstrap-select .dropdown-menu .selected {
+/* .bootstrap-select .dropdown-menu .selected {
     background-color: #00bdf3 !important;
 }
 .bootstrap-select .dropdown-menu .selected .disabled {
     background-color: #eef0f2;
+} */
+.account-card {
+    padding: 0.2rem;
+    border-radius: 5px;
+}
+
+/* .bootstrap-select .dropdown-menu li a span.text {
+    display: block;
+} */
+
+.account-icon {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    place-self: center;
+    text-align: center;
+    line-height: 2;
+}
+
+.account-icon span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: large;
 }
 .form-control:disabled,
 .form-control[readonly],
@@ -34,17 +69,11 @@ select:active,
 select:hover {
     outline: none;
 }
-/* .form-control {
-    /* height: 2.8rem; 
-    font-size: 0.9rem;
- */
 
 .input-group-text {
     font-size: 0.9rem;
 }
-/* body {
-    font-family: Roboto;
-} */
+
 .tab-pane {
     animation: slide-right 300ms ease-out;
 }
@@ -74,8 +103,6 @@ select:hover {
 label {
     align-self: center;
     margin-bottom: 0;
-    /* font-weight: 400; */
-    /* font-size: 1rem */
 }
 
 input {

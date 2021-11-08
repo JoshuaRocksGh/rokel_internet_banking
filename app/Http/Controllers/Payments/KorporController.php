@@ -125,6 +125,8 @@ class KorporController extends Controller
 
     public function send_unredeemed_request(Request $request)
     {
+
+        // return $request;
         $authToken = session()->get('userToken');
         $userID = session()->get('userId');
         $api_headers = session()->get("headers");

@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Auth;
 class LogoutController extends Controller
 {
     //
-    public function logout_()
+    public function logout()
     {
         Auth::logout();
         session()->flush();
-        return redirect()->route('login');
+        return redirect('login');
     }
 }

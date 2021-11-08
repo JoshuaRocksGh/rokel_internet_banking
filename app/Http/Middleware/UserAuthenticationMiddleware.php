@@ -20,10 +20,9 @@ class UserAuthenticationMiddleware
     {
 
         // $value = $request->session()->get('key');
-        if (!$request->session()->get('userId') )
-        {
+        if (!$request->session()->get('userId')) {
             session()->flush();
-            return redirect()->route('login');
+            return redirect('login');
         }
         return $next($request);
     }

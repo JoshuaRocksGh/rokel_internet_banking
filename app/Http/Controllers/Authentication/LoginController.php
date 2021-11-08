@@ -48,10 +48,6 @@ class LoginController extends Controller
         return view('pages.authentication.login');
     }
 
-    public function self_enroll()
-    {
-        return view('self_enroll');
-    }
 
 
     public function login_(Request $req)
@@ -89,7 +85,7 @@ class LoginController extends Controller
             } // API responseCode is 000
             $userDetail = $result->data;
 
-            // return response()->json($userDetail);
+            // return response()->json($userDetail->accountsList[0]->accountDesc);
             if (!config("app.corporate") && $userDetail->customerType === 'C') {
                 return  $base_response->api_response('900', 'Corporate account, use Corporate Internet Banking platform',  NULL);
             } elseif (config("app.corporate") && $userDetail->customerType !== 'C') {
@@ -110,7 +106,7 @@ class LoginController extends Controller
                 "lastLogin" => $userDetail->lastLogin,
                 "customerType" => $userDetail->customerType,
                 "checkerMaker" => $userDetail->checkerMaker,
-                // "menus" => $userDetail->menus,
+                "accountDescription" => $userDetail->accountsList[0]->accountDesc,
                 "customerAccounts" => $userDetail->accountsList,
                 // "checkerMaker" => 'M',
                 "userMandate" => 'A',
@@ -129,13 +125,13 @@ class LoginController extends Controller
 
         } catch (\Exception $e) {
 
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
 
-            return $base_response->api_response('500', 'CONNECTION SERVER ERROR',  NULL); // return API BASERESPONSE
+            return $base_response->api_response('500', 'Error: Failed To Contact Server',  NULL); // return API BASERESPONSE
 
 
 
@@ -189,11 +185,11 @@ class LoginController extends Controller
 
         } catch (\Exception $e) {
 
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
+            // DB::table('tb_error_logs')->insert([
+            //     'platform' => 'ONLINE_INTERNET_BANKING',
+            //     'user_id' => 'AUTH',
+            //     'message' => (string) $e->getMessage()
+            // ]);
 
             return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
 
