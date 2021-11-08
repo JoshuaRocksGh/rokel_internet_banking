@@ -97,6 +97,6 @@
 
     //intitialize all form-control to bootstrap select
     $(()=>{
-        $('.form-control').selectpicker({style: "",  baseStyle:"form-control"})
+        $('.form-control').selectpicker({style: "",  baseStyle:"form-control", showTick: "true"})
     })
 </script>
