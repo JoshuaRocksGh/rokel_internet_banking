@@ -22,7 +22,7 @@ function getBeneficiaryList() {
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
-                // getBeneficiaryList();
+                getBeneficiaryList();
             }, $.ajaxSetup().retryAfter);
         },
     });

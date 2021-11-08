@@ -364,7 +364,7 @@ Route::post('change-password-api', [ChangePasswordController::class, 'change_pas
 // Route::post('reverse-cardless', [CardlessController::class, 'reverse_cardless'])->name('reverse-cardless');
 
 //Route to send unredeem request
-Route::post('unredeem-korpor-request', [KorporController::class, 'send_unredeemed_request'])->name('unredeem-korpor-request');
+Route::get('unredeem-korpor-request', [KorporController::class, 'send_unredeemed_request'])->name('unredeem-korpor-request');
 
 //Route to send reversed request
 Route::post('reversed-korpor-request', [KorporController::class, 'send_reversed_request'])->name('reversed-korpor-request');

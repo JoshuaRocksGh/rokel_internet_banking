@@ -6,7 +6,10 @@ function paymentType() {
         datatype: "application/json",
         success: function (response) {
             $("#loader").hide();
-            let data = response.data.data;
+            console.log("response:", response);
+            // return false;
+            let data = response.data;
+            console.log(data);
             pageData.payTypes = [];
             if (data.length > 0) {
                 let color = [

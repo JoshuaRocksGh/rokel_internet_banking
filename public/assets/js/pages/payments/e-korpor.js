@@ -1,5 +1,3 @@
-
-
 function korporReversal(data) {
     $("#centermodal").modal("show");
     $("#transfer_pin").on("click", () => {
@@ -40,7 +38,7 @@ function reverseKorpor(url, data) {
 }
 function getKorporHistory(url, fromAccountNo, target) {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: url,
         datatype: "application/json",
         data: {
@@ -264,7 +262,7 @@ $(document).ready(function () {
     //show card after the from_account value changes
     $(".from_account").change(function () {
         var from_account = $(this).val();
-        // {{-- alert(from_account) --}}
+        console.log(from_account);
         if (from_account == "" || from_account.trim() == undefined) {
             // {{-- alert('money') --}}
             // $(".from_account_display_info").hide()
@@ -274,48 +272,38 @@ $(document).ready(function () {
             // var to_account = $('#to_account').val()
 
             // set summary values for display
-            $(".display_from_account_type").text(from_account_info[0].trim());
-            $(".display_from_account_name").text(from_account_info[1].trim());
-            $(".display_from_account_no").text(from_account_info[2].trim());
-            $(".display_from_account_currency").text(
-                from_account_info[3].trim()
-            );
-            $(".select_currency").val(from_account_info[3].trim());
-            $(".display_transfer_currency").text(from_account_info[3].trim());
-            $("#display_currency").text(from_account_info[3].trim());
-            $("#from_account_receipt").text(from_account_info[2].trim());
-            $(".receipt_currency").text(from_account_info[3].trim());
+            $(".display_from_account_type").text(from_account_info[0]);
+            $(".display_from_account_name").text(from_account_info[1]);
+            $(".display_from_account_no").text(from_account_info[2]);
+            $(".display_from_account_currency").text(from_account_info[3]);
+            $(".select_currency").val(from_account_info[3]);
+            $(".display_transfer_currency").text(from_account_info[3]);
+            $("#display_currency").text(from_account_info[3]);
+            $("#from_account_receipt").text(from_account_info[2]);
+            $(".receipt_currency").text(from_account_info[3]);
 
-            $(".display_currency").text(from_account_info[3].trim()); // set summary currency
+            $(".display_currency").text(from_account_info[3]); // set summary currency
 
-            amt = from_account_info[4].trim();
+            amt = from_account_info[4];
 
             $(".display_from_account_amount").text(
-                formatToCurrency(Number(from_account_info[4].trim()))
+                formatToCurrency(Number(from_account_info[4]))
             );
             $(".from_account_display_info").show();
 
             //set summary value for display for self
 
-            $(".display_from_account_type_self").text(
-                from_account_info[0].trim()
-            );
-            $(".display_from_account_name_self").text(
-                from_account_info[1].trim()
-            );
-            $(".display_from_account_no_self").text(
-                from_account_info[2].trim()
-            );
-            $(".display_from_account_currency_self").text(
-                from_account_info[3].trim()
-            );
+            $(".display_from_account_type_self").text(from_account_info[0]);
+            $(".display_from_account_name_self").text(from_account_info[1]);
+            $(".display_from_account_no_self").text(from_account_info[2]);
+            $(".display_from_account_currency_self").text(from_account_info[3]);
 
-            $(".display_currency_self").text(from_account_info[3].trim()); // set summary currency
+            $(".display_currency_self").text(from_account_info[3]); // set summary currency
 
-            amt = from_account_info[4].trim();
+            amt = from_account_info[4];
 
             $(".display_from_account_amount_self").text(
-                formatToCurrency(Number(from_account_info[4].trim()))
+                formatToCurrency(Number(from_account_info[4]))
             );
             $(".from_account_display_info_self").show();
         }
@@ -490,7 +478,7 @@ $(document).ready(function () {
             );
             return false;
         }
-        let fromAccountNo = fromAccount.split("~")[2].trim("");
+        let fromAccountNo = fromAccount.split("~")[2];
         getKorporHistory(url, fromAccountNo, target);
     }
 
@@ -565,38 +553,43 @@ $(document).ready(function () {
             'input[type="radio"][name="radioInline"]:checked'
         ).val();
         if (destination_type == "OTHERS") {
-            // {{-- alert(destination_type) --}}
+            // alert(destination_type);
 
-            var from_account_ = $(".from_account").val();
+            var from_account_ = $("#account_of_transfer").val();
+            // console.log("from_account_:", from_account_);
 
             var receiver_name_ = $("#receiver_name").val();
             $("#display_receiver_name").text(receiver_name_);
             $("#receiver_name_receipt").text(receiver_name_);
+            // console.log("receiver_name_:", receiver_name_);
 
             var receiver_phone_ = $("#receiver_phoneNum").val();
             $("#display_receiver_telephone").text(receiver_phone_);
             $("#receiver_telephone_receipt").text(receiver_phone_);
+            // console.log("receiver_phone_:", receiver_phone_);
 
             var receiver_address_ = $("#receiver_address").val();
             $("#display_receiver_address").text(receiver_address_);
+            // console.log("receiver_address_:", receiver_address_);
 
             var amount_ = $("#amount").val();
             $("#display_transfer_amount").text(
                 formatToCurrency(Number(amount_))
             );
             $("#amount_receipt").text(formatToCurrency(Number(amount_)));
+            // console.log("amount_:", amount_);
 
             // write an if statement for transfer amount if its less
 
             if (
-                from_account_.trim() == "" ||
+                from_account_ == "" ||
                 amount_ == "" ||
                 receiver_name_ == "" ||
                 receiver_phone_ == "" ||
                 receiver_address_ == ""
             ) {
                 // alert('fields must not be empty');
-                toaster("Fields must not be empty", "error", 10000);
+                // toaster("Fields must not be empty", "error", 10000);
                 return false;
             } else {
                 $("#transaction_summary").show();
@@ -605,7 +598,7 @@ $(document).ready(function () {
         } else {
             // {{-- alert("SELF") --}}
 
-            var from_account_self_ = $(".from_account").val();
+            var from_account_self_ = $("#account_of_transfer").val();
 
             var receiver_name_self_ = $("#receiver_name_self").val();
 
@@ -921,10 +914,13 @@ $(document).ready(function () {
                                 $("#reference_number_receipt").text(
                                     reference_number[7]
                                 );
+                                $(".summary_button").hide();
 
-                                Swal.fire("", response.message, "success");
-                                $(".receipt").show();
-                                $(".form_process").hide();
+                                // Swal.fire("", response.message, "success");
+                                toaster(response.message, "success", 10000);
+
+                                // $(".receipt").show();
+                                // $(".form_process").hide();
                             } else {
                                 toaster(response.message, "error", 9000);
 
@@ -999,11 +995,14 @@ $(document).ready(function () {
                                     reference_number[7]
                                 );
 
-                                Swal.fire("", response.message, "success");
+                                $(".summary_button").hide();
 
-                                setTimeout(function () {
-                                    redirect_page();
-                                }, 3000);
+                                // Swal.fire("", response.message, "success");
+                                toaster(response.message, "success", 10000);
+
+                                // setTimeout(function () {
+                                //     redirect_page();
+                                // }, 3000);
 
                                 // $(".receipt").show();
                                 // $('.form_process').hide();
