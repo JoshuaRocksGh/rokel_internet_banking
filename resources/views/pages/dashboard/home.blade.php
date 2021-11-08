@@ -82,8 +82,12 @@
                             </div> <!-- end row-->
                         </div> <!-- end widget-rounded-circle-->
                     </a>
+                    {{-- <select name="" id="">
+                        <option value="">Welcome</option>
+                    </select> --}}
                     <div class="dropdown-menu" style="background-color: rgba(253, 235, 205, 1);">
-                        <a class="dropdown-item" href="{{ url('own-account') }}">Own Account</a>
+                        <a class="dropdown-item" href="{{ url('own-account') }}" id="dropdown_own_account">Own
+                            Account</a>
                         <a class="dropdown-item " href="{{ url('same-bank') }}">Same Bank</a>
                         <a class="dropdown-item" href="{{ url('local-bank') }}">Other Bank</a>
                         <a class="dropdown-item" href="{{ url('international-bank') }}">International Bank</a>
@@ -91,7 +95,7 @@
                         @if (config('app.corporate'))
                             <a class="dropdown-item" href="{{ url('bulk-transfer') }}">Bulk Transfer</a>
                         @endif
-                        {{-- <a class="dropdown-item" href="#">Another link</a> --}}
+
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -380,7 +384,7 @@
 
 
                     </div>
-                    <div class="card-box h-50"
+                    <div class="card-box "
                         style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;zoom:0.9;">
 
                         <ul class="nav nav-tabs">
@@ -403,17 +407,23 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="tab-content">
+                        <div class="tab-content container">
                             <div class="tab-pane active" id="home">
-                                <p>
+                                <canvas id="casa_myChart" style="width:200px;max-width:700px;">
 
-                                    <canvas id="casa_myChart" width="100" height="100">
+                                </canvas>
 
-                                    </canvas>
 
-                                    {{-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> --}}
+                                {{-- <canvas id="myChart" style="width:100%;max-width:700px"></canvas> --}}
 
-                                    {{-- <div class="table-responsive table-bordered accounts_display_area">
+
+
+
+
+
+                                {{-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> --}}
+
+                                {{-- <div class="table-responsive table-bordered accounts_display_area">
                                     <table id="" class="table table-striped mb-0 ">
                                         <thead>
                                             <tr class="bg-info text-white ">
@@ -434,7 +444,7 @@
                                 </div> --}}
 
 
-                                </p>
+
 
                             </div>
 
@@ -584,8 +594,8 @@
                                     <div class="form-group">
                                         <label class="text-dark"><b>Result</b></label>
                                         <div>
-                                            <span type="text" class="form-control readOnly" id="exchange_result"
-                                                readonly></span>
+                                            <input type="text" class="form-control readOnly" id="exchange_result" readonly>
+
                                             {{-- <span ></span> --}}
                                         </div>
                                     </div>
@@ -596,7 +606,7 @@
                 </div>
 
                 <div class="modal fade" id="bs-example-modal-lg" role="dialog"
-                    style="position: absolute; left:50%; top:70%;transform: translate(-50%, -50%);"
+                    style="position: absolute; left:50%; top:60%;transform: translate(-50%, -50%);"
                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -642,10 +652,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="fixed_deposit_account">
-                                            <td colspan="100%" class="text-center">
-                                                {{-- global noDataAvailable image variable shared with all views --}}
-                                                {{-- {!! $noDataAvailable !!} --}}
-                                            </td>
+
 
                                         </tbody>
                                     </table>
@@ -682,6 +689,7 @@
                 <!-- Plugins js-->
                 <script src="{{ asset('assets/js/chart.js') }}"></script>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 
                 <!-- Tour page js -->
@@ -818,13 +826,18 @@
 
                             chart_data_details.push(
 
-                                {
+                                {{-- {
                                     label: `${chart_res[0]}`,
                                     data: `${chart_res[1]}`,
                                     borderColor: 'rgb(75,192,192, 0.5)',
                                     backgroundColor: 'rgba(231, 223, 10, 0.5)',
                                     yAxisID: 'y',
                                     tension: 0.3
+                                }, --}} {
+                                    label: `${chart_res[0]} ${chart_res[1]}`,
+                                    data: `${chart_res[2]}`,
+                                    borderColor: "red",
+                                    fill: false
                                 }
 
 
@@ -855,7 +868,7 @@
                                 var d = apiDataResult[index].valueDate
                                 d = d.split(' ')[0];
                                 dates.push(d)
-                                //console.log(d);
+                                //console.log("d:", d);
 
 
 
@@ -866,13 +879,15 @@
                         const smallest_number = Math.min(...numbers);
                         const largest_number = Math.max(...numbers);
 
+                        console.log("dates:", dates);
+
                         let uniqueDates = [...new Set(dates)].sort();
-                        console.log(uniqueDates)
+                        console.log("dates for x-axis:", uniqueDates)
 
                         console.log('Smallest Value:', smallest_number);
                         console.log('Largest Value:', largest_number);
                         //console.log('Dataset:', acc_dataset);
-                        console.log('Data:', chart_data_details);
+                        console.log('chart_data_details:', chart_data_details);
 
 
                         const NUMBER_CFG = {
@@ -921,11 +936,38 @@
 
                         // === include 'setup' then 'config' above ===
 
-                        const myChart = new Chart(
+                        {{-- const myChart = new Chart(
                             document.getElementById('casa_myChart'),
                             config
-                        );
+                        ); --}}
+
+                        // w3schools chart
+                        var xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+
+                        new Chart("casa_myChart", {
+                            type: "line",
+                            data: {
+                                labels: uniqueDates,
+                                datasets: chart_data_details
+                            },
+                            options: {
+                                legend: {
+                                    display: true,
+
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Account History'
+                                }
+
+                            }
+                        });
                     }
+                </script>
+
+
+                <script>
+
                 </script>
 
                 <script>
@@ -1101,11 +1143,10 @@
                                     } else {
 
                                         $(".fixed_deposit_account").append(
-                                            `<tr colspan="100%">
-                                        <td  class="text-center">${noInvestments} </td>
-                                    </tr>
+                                            `
+                                                <td colspan="100%"  class="text-center">${noInvestments} </td>
 
-                                    `
+                                            `
                                         );
                                         return;
 
@@ -1160,7 +1201,8 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                console.log(response);
+
+                                {{-- console.log("before get account:", response); --}}
 
 
                                 if (response.responseCode == '000') {
@@ -1178,7 +1220,8 @@
 
                                     account_data.i_have_total = 0
                                     $.each(data, function(index) {
-                                        getAccountTransactions(data[index].accountNumber, start_date,
+                                        getAccountTransactions(data[index].accountNumber, data[index].currency,
+                                            start_date,
                                             end_date,
                                             transLimit)
 
@@ -1202,6 +1245,13 @@
                                             $(".total_casa_amount").text(
                                                 `${formatToCurrency(parseFloat(0.00))}`)
                                         }
+                                        if (data[index].availableBalance != null || data[index].availableBalance !=
+                                            undefined) {
+                                            var availableBalance = formatToCurrency(parseFloat(data[index]
+                                                .availableBalance))
+                                        } else {
+                                            var availableBalance = "0.00"
+                                        }
 
                                         $('.casa_list_display').append(
                                             `<tr>
@@ -1211,7 +1261,7 @@
                                         <td> <b> ${data[index].currency}  </b>  </td>
                                         {{-- <td>  <b> 0.00  </b> </td> --}}
                                         {{-- <td> <b> ${formatToCurrency(parseFloat(data[index].ledgerBalance))}   </b>  </td> --}}
-                                        <td> <b class="float-right"> ${formatToCurrency(parseFloat(data[index].availableBalance))}   </b></td>
+                                        <td> <b class="float-right"> ${availableBalance}   </b></td>
                                     </tr>`
                                         )
                                     })
@@ -1271,7 +1321,15 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                {{-- console.log(response); --}}
+                                console.log("========")
+                                console.log("loan response:", response);
+                                console.log("========")
+
+                                let noLoans = noDataAvailable.replace(
+                                    "Data",
+                                    "Loans"
+                                );
+
                                 if (response.responseCode == '000') {
 
                                     var data = response.data;
@@ -1285,7 +1343,11 @@
                                         $(".loans_display_area").hide()
                                     } else {
                                         if (response.data == null) {
-                                            $('#p_loans_display').html(`<h2 class="text-center text-danger">No Loan</h2>`)
+                                            $("#loans_list_body").append(
+                                                `<td colspan="100%" class="text-center">
+                                                ${noLoans} </td>`
+                                            );
+                                            return;
                                         } else {
 
                                             let loan_count = 0
@@ -1293,7 +1355,7 @@
                                             if (response.data.length > 0) {
                                                 $('#p_loans_display').show()
                                                 $(".loans_display_area").show()
-                                                console.log("response");
+                                                console.log("loans_display length:", response.data.length);
 
                                                 let i_owe_total = 0
                                                 let count = 0
@@ -1320,13 +1382,13 @@
                                                     console.log(`total loans ${account_data.i_owe_total}`)
                                                     $('.loans_display').append(
                                                         `
-                                            <tr>
-                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
-                                                <td> <b> ${data[index].description} </b>  </td>
-                                                <td> <b> ${data[index].isoCode}  </b>  </td>
-                                                <td> <b class="float-right"> ${ formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
-                                                <td> <b class="float-right"> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
-                                            </tr>`
+                                                            <tr>
+                                                                <td>  <a href="{{ url('account-enquiry?accountNumber=${data[index].facilityNo}') }}"> <b class="text-danger">${data[index].facilityNo} </b> </a></td>
+                                                                <td> <b> ${data[index].description} </b>  </td>
+                                                                <td> <b> ${data[index].isoCode}  </b>  </td>
+                                                                <td> <b class="float-right"> ${ formatToCurrency(parseFloat(data[index].amountGranted))}   </b> </b></td>
+                                                                <td> <b class="float-right"> ${formatToCurrency(parseFloat(data[index].loanBalance))}  </b>  </td>
+                                                            </tr>`
                                                     )
                                                     loan_count = loan_count + 1;
 
@@ -1339,9 +1401,9 @@
 
                                                 {{-- show_chart(i_have, i_owe, i_invest_total) --}}
                                             } else {
-                                                $("#loans_list_body").append(
+                                                $(".loans_display").append(
                                                     `<td colspan="100%" class="text-center">
-                                                ${noLoans} </td>`
+                                                        ${noLoans} </td>`
                                                 );
                                                 return;
                                             }
@@ -1358,6 +1420,11 @@
                                     $(".loans_loading_area").hide()
                                     $(".loans_display_area").hide()
                                 } else {
+                                    $(".loans_display").append(
+                                        `<td colspan="100%" class="text-center">
+                                                        ${noLoans} </td>`
+                                    );
+                                    return;
                                     $(".loan_no_data_found").hide()
                                     {{-- $(".loans_error_area").hide()
                             $(".loans_loading_area").hide()
@@ -1661,7 +1728,7 @@
 
                     let acc_line_details = []
 
-                    function getAccountTransactions(account_number, start_date, end_date, transLimit) {
+                    function getAccountTransactions(account_number, account_currency, start_date, end_date, transLimit) {
 
                         $.ajax({
                             "type": "POST",
@@ -1683,10 +1750,10 @@
                                 if (response.responseCode == '000') {
 
                                     let data_ = response.data;
-                                    console.log(data_);
-                                    console.log("========")
-                                    console.log(data_)
-                                    console.log("========")
+                                    //console.log(data_);
+                                    //console.log("========")
+                                    //console.log(data_)
+                                    //console.log("========")
 
 
                                     let acc_run_balances = []
@@ -1698,7 +1765,7 @@
 
                                     })
 
-                                    var details = [account_number, acc_run_balances]
+                                    var details = [account_number, account_currency, acc_run_balances]
 
                                     acc_line_details.push(details)
 
@@ -1737,6 +1804,8 @@
 
 
                     $(document).ready(function() {
+
+                        $("#dropdown_own_account").click("Alert Clicked")
 
 
                         $(".casa_chart").click(function() {
