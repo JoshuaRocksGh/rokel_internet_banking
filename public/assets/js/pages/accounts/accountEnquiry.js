@@ -175,6 +175,17 @@ $(function () {
         table.clear().draw();
 
         if (data.length > 0) {
+            $("#pdf_print").html(`
+                        <a href="print-account-statement?account_number=${account_number}&start_date=${start_date}&end_date=${end_date}" target="_blank">
+                            <img src="{{ asset('assets/images/pdf.png') }}" alt="" style="width: 22px; height: 25px;">
+                        </a>
+                    `);
+
+            $("#excel_print").html(`
+                        <a href="{{ url('print-account-statement') }}">
+                            <img src="{{ asset('assets/images/excel.png') }}" alt="" style="width: 22px; height: 25px;">
+                        </a>
+                    `);
             $.each(data, function (index) {
                 let amount = ``;
                 if (parseFloat(data[index].amount) > 0) {

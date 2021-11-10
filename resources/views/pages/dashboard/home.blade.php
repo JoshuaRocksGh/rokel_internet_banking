@@ -62,30 +62,31 @@
                         </div> <!-- end widget-rounded-circle-->
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <a href="#">
-                        <div class="widget-rounded-circle card-box home-card "
-                            style="background-color: rgba(253, 235, 205, 1);">
-                            <div class="row ">
-                                <div class="col-4">
-                                    <div class="avatar-sm rounded-circle bg-white">
-                                        <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-black"><span> &nbsp;<b>Transfers</b> </span></h3>
-                                    </div>
+                <div class="col-md-6 col-lg-3 dropdown">
 
+                    <div class="widget-rounded-circle card-box home-card  dropdown-toggle" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="background-color: rgba(253, 235, 205, 1);cursor: pointer;">
+                        <div class="row ">
+                            <div class="col-4">
+                                <div class="avatar-sm rounded-circle bg-white">
+                                    <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
                                 </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
-                    </a>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-right">
+                                    <h3 class="mt-1 text-black"><span> &nbsp;<b>Transfers</b> </span></h3>
+                                </div>
+
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end widget-rounded-circle-->
+
                     {{-- <select name="" id="">
                         <option value="">Welcome</option>
                     </select> --}}
-                    <div class="dropdown-menu" style="background-color: rgba(253, 235, 205, 1);">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                        style="background-color: rgba(253, 235, 205, 1);">
                         <a class="dropdown-item" href="{{ url('own-account') }}" id="dropdown_own_account">Own
                             Account</a>
                         <a class="dropdown-item " href="{{ url('same-bank') }}">Same Bank</a>
@@ -391,21 +392,32 @@
                             <li class="nav-item">
                                 <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active"
                                     id="casa_chart_tab">
-                                    <strong class="text-success">CURRENT & SAVINGS</strong>
+                                    <strong class="text-success">CURRENT & SAVINGS &nbsp;
+                                        <select name="" id="casa_line_chart" class="form-control ">
+                                            <option value="" selected disabled>Select
+                                                Account Number</option>
+                                            @foreach (session()->get('customerAccounts') as $i => $account)
+                                                <option
+                                                    value="{{ $account->accountType . ' ~ ' . $account->accountDesc . ' ~ ' . $account->accountNumber . ' ~ ' . $account->currency . ' ~ ' . $account->availableBalance }}">
+                                                    {{ $account->accountDesc . ' || ' . $account->accountNumber . ' || ' . $account->currency . '  ' . $account->availableBalance }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </strong>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link "
                                     id="investment_chart_tab">
                                     <strong class="text-warning">INVESTMENTS</strong>
                                 </a>
-                            </li>
-                            <li class="nav-item">
+                            </li> --}}
+                            {{-- <li class="nav-item">
                                 <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link"
                                     id="loans_chart_tab">
                                     <strong class="text-danger">LOANS</strong> &nbsp;
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="tab-content container">
                             <div class="tab-pane active" id="home">
@@ -803,9 +815,9 @@
 
                     function account_line_chart(cus_accounts, acc_line_details) {
 
-                        //console.log("========")
-                        //console.log(acc_line_details)
-                        //console.log("========")
+                        console.log("========")
+                        console.log([cus_accounts, acc_line_details])
+                        console.log("========")
 
                         let acc_dataset = []
                         let chart_data_details = new Array
@@ -826,16 +838,9 @@
 
                             chart_data_details.push(
 
-                                {{-- {
-                                    label: `${chart_res[0]}`,
-                                    data: `${chart_res[1]}`,
-                                    borderColor: 'rgb(75,192,192, 0.5)',
-                                    backgroundColor: 'rgba(231, 223, 10, 0.5)',
-                                    yAxisID: 'y',
-                                    tension: 0.3
-                                }, --}} {
+                                {
                                     label: `${chart_res[0]} ${chart_res[1]}`,
-                                    data: `${chart_res[2]}`,
+                                    data: chart_res[2],
                                     borderColor: "red",
                                     fill: false
                                 }
@@ -947,7 +952,7 @@
                         new Chart("casa_myChart", {
                             type: "line",
                             data: {
-                                labels: uniqueDates,
+                                labels: dates,
                                 datasets: chart_data_details
                             },
                             options: {
@@ -1220,10 +1225,7 @@
 
                                     account_data.i_have_total = 0
                                     $.each(data, function(index) {
-                                        getAccountTransactions(data[index].accountNumber, data[index].currency,
-                                            start_date,
-                                            end_date,
-                                            transLimit)
+
 
 
 
@@ -1321,9 +1323,9 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                console.log("========")
-                                console.log("loan response:", response);
-                                console.log("========")
+                                //console.log("========")
+                                //console.log("loan response:", response);
+                                //console.log("========")
 
                                 let noLoans = noDataAvailable.replace(
                                     "Data",
@@ -1729,7 +1731,8 @@
                     let acc_line_details = []
 
                     function getAccountTransactions(account_number, account_currency, start_date, end_date, transLimit) {
-
+                        //console.log([account_number, account_currency, start_date, end_date, transLimit]);
+                        //return false;
                         $.ajax({
                             "type": "POST",
                             "url": "account-transaction-history",
@@ -1778,7 +1781,7 @@
                                     let data = response.data.slice(0, limit);
 
 
-
+                                    account_line_chart(cus_accounts, acc_line_details)
                                 }
 
                             },
@@ -1804,8 +1807,6 @@
 
 
                     $(document).ready(function() {
-
-                        $("#dropdown_own_account").click("Alert Clicked")
 
 
                         $(".casa_chart").click(function() {
@@ -1879,12 +1880,23 @@
 
                             show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
                             setTimeout(function() {
-                                {{-- line_graph() --}}
-                                account_line_chart(cus_accounts, acc_line_details)
+                                //line_graph()
+                                //account_line_chart(cus_accounts, acc_line_details)
                             }, 5000)
 
                         }, 2000);
 
+                    })
+
+                    $("#casa_line_chart").change(function() {
+                        var account_details = $(this).val()
+                        var my_account = account_details.split("~")
+                        //console.log("my_account:", my_account)
+
+                        getAccountTransactions(my_account[2], my_account[3],
+                            start_date,
+                            end_date,
+                            transLimit)
                     })
 
 

@@ -129,7 +129,7 @@ class OwnAccountController extends Controller
             "channel" => 'NET',
             "destinationAccountId" => $req->beneficiaryAccountNumber,
             "amount" => $req->transferAmount,
-            "currency" => $req->transferCurrency,
+            "currency" => $req->accountCurrency,
             "narration" => $req->transferPurpose,
             "postBy" => $userID,
             "account_mandate" => $req->accountMandate,
