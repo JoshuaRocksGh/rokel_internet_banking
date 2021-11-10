@@ -57,9 +57,8 @@
                                     <div class="text-right">
                                         <h3 class="mt-1 text-black "><span> &nbsp;<b>Account Enquiry</b> </span></h3>
                                     </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-3 dropdown">
@@ -392,32 +391,21 @@
                             <li class="nav-item">
                                 <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active"
                                     id="casa_chart_tab">
-                                    <strong class="text-success">CURRENT & SAVINGS &nbsp;
-                                        <select name="" id="casa_line_chart" class="form-control ">
-                                            <option value="" selected disabled>Select
-                                                Account Number</option>
-                                            @foreach (session()->get('customerAccounts') as $i => $account)
-                                                <option
-                                                    value="{{ $account->accountType . ' ~ ' . $account->accountDesc . ' ~ ' . $account->accountNumber . ' ~ ' . $account->currency . ' ~ ' . $account->availableBalance }}">
-                                                    {{ $account->accountDesc . ' || ' . $account->accountNumber . ' || ' . $account->currency . '  ' . $account->availableBalance }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </strong>
+                                    <strong class="text-success">CURRENT & SAVINGS</strong>
                                 </a>
                             </li>
-                            {{-- <li class="nav-item">
+                            <li class="nav-item">
                                 <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link "
                                     id="investment_chart_tab">
                                     <strong class="text-warning">INVESTMENTS</strong>
                                 </a>
-                            </li> --}}
-                            {{-- <li class="nav-item">
+                            </li>
+                            <li class="nav-item">
                                 <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link"
                                     id="loans_chart_tab">
                                     <strong class="text-danger">LOANS</strong> &nbsp;
                                 </a>
-                            </li> --}}
+                            </li>
                         </ul>
                         <div class="tab-content container">
                             <div class="tab-pane active" id="home">

@@ -2,6 +2,8 @@ a:hover {
     text-decoration: none !important;
 }
 
+.bootstrap-select, .btn:focus {
+
 .form-control,
 .bootstrap-select .dropdown-toggle {
     height: auto;
@@ -15,8 +17,7 @@ a:hover {
     outline: 0 !important;
 }
 
-.bootstrap-select .dropdown-menu li a:hover,
-.selected {
+.bootstrap-select .dropdown-menu li a:hover {
     background-color: #00bdf3 !important;
     color: white !important;
     font-weight: bold;

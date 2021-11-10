@@ -17,6 +17,7 @@
         </div>
     </div>
 </div>
+@include('snippets.accounts_option')
 <script>
     var transferType = @json($currentPath) 
     var userAccounts = @json(session()->get('customerAccounts'))
