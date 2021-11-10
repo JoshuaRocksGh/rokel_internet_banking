@@ -90,6 +90,7 @@ function getToAccount(endPoint) {
                         )
                     );
                 });
+                $("#to_account").selectpicker("refresh");
             } else {
                 $(".no_beneficiary").show();
             }
@@ -118,6 +119,7 @@ function getCountries() {
                     option = `<option value="${codeType}"  data-country-code="${actualCode}">${description}</option>`;
                     $("#onetime_select_country").append(option);
                 });
+                $("#onetime_select_country").selectpicker("refresh");
             } else {
                 toaster(response.message);
             }
@@ -145,6 +147,7 @@ function getInternationalBanks(countryCode) {
                     option = `<option value="${BICODE}" data-bank-country="${COUNTRY}" >${BANK_DESC}</option>`;
                     $("#onetime_select_bank").append(option);
                 });
+                $("#onetime_select_bank").selectpicker("refresh");
             } else {
                 toaster(response.message);
             }
@@ -169,6 +172,7 @@ function getLocalBanks() {
                     option = `<option value="${bankCode}" data-bank-swift-code="${bankSwiftCode}">${bankDescription}</option>`;
                     $("#onetime_select_bank").append(option);
                 });
+                $("#onetime_select_bank").selectpicker("refresh");
             } else {
                 toaster(response.message);
             }
@@ -204,6 +208,7 @@ function expenseTypes() {
                     );
                 }
             });
+            $("#category").selectpicker("refresh");
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
@@ -227,6 +232,7 @@ function getStandingOrderFrequencies() {
                     }).text(data[index].name)
                 );
             });
+            $("#so_frequency").selectpicker("refresh");
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
@@ -278,10 +284,6 @@ function handleToAccount(account) {
 }
 
 $(() => {
-    // $("#transaction_form").hide();
-    // $("#transaction_summary").show();
-    // $(".show-on-success").show();
-
     let transferInfo = new Object();
     let fromAccount = new Object();
     $(".account_currency").text("SLL");
@@ -300,12 +302,17 @@ $(() => {
             .filter(
                 (account) => account.accountNumber !== fromAccount.accountNumber
             )
-            .forEach((account) =>
-                $("#to_account").append(`<option
-        value=" ${account.accountType} ~ ${account.accountDesc} ~ ${account.accountNumber} ~ ${account.currency} ~ ${account.availableBalance}">
-         ${account.accountDesc}  ||  ${account.accountNumber} || ${account.currency} || ${account.availableBalance} 
-    </option>`)
+            .forEach(
+                (account) => {
+                    let option = getAccountOption(account);
+                    $("#to_account").append(option);
+                }
+                //             $("#to_account").append(`<option
+                //     value=" ${account.accountType} ~ ${account.accountDesc} ~ ${account.accountNumber} ~ ${account.currency} ~ ${account.availableBalance}">
+                //      ${account.accountDesc}  ||  ${account.accountNumber} || ${account.currency} || ${account.availableBalance}
+                // </option>`)
             );
+        $("#to_account").selectpicker("refresh");
     }
 
     function updateTransactionType(type) {

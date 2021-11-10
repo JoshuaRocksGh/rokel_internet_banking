@@ -67,9 +67,9 @@ $currentPath = "Make Payment";
 
                         <select data-style="" data-style-base="form-control select-control" class="form-control"
                             id="from_account" required>
-                            <option disabled selected value=""> --- Select Account ---
-                            </option>
-                            @include("snippets.accounts_select")
+                            {{-- <option disabled selected value=""> --- Select Account ---
+                            </option> --}}
+                            @include("snippets.accounts")
                         </select>
 
                         <hr class="">
