@@ -68,7 +68,10 @@
     }
 
     function formatToCurrency(amount) {
-        return parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        let ret =  parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        if(isNaN(ret)){
+            return ""
+        }else return ret
     }
 
     function validateAll(...args) {
@@ -100,10 +103,13 @@
 
     //intitialize all form-control to bootstrap select
     $(() => {
-        $('.form-control').selectpicker({
-            style: "",
-            baseStyle: "form-control",
-            showTick: "true"
-        })
+    //     $('.form-control').selectpicker({
+    //         style: "",
+    //         baseStyle: "form-control",
+    //         showTick: "true",
+    //         // container:"body",
+    //         // width: "auto"
+    //     })
+    // $(".form-control").selectpicker()
     })
 </script>

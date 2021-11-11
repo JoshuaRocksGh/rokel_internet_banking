@@ -16,6 +16,7 @@ function getOptions(optionUrl, optionId, data) {
             if (optionId === "#loan_sub_sectors") {
                 $("#side-loadingId").hide();
             }
+            // $(optionId).selectpicker("refresh");
         },
         error: (xhr, status, error) => {
             console.log(optionUrl);
@@ -42,6 +43,7 @@ function getBranches() {
                     }).text(branchDescription)
                 );
             });
+            // $("#product_branch").selectpicker("refresh");
         },
     });
 }
@@ -114,11 +116,13 @@ function postLoanOrigination(data) {
             if (response.responseCode === "000") {
                 console.log(response);
                 swal.fire({
-                    title: "Logout successful!",
+                    title: "Successful!",
                     html: response.message,
                     icon: "success",
                     showConfirmButton: "false",
-                    timer: "2000",
+                    // timer: "2000",
+                }).then(() => {
+                    location.reload();
                 });
             } else {
                 $("#btn_loan_request").prop("disabled", false);
@@ -130,7 +134,8 @@ function postLoanOrigination(data) {
 
 $(() => {
     getOptions("get-loan-products-api", "#loan_product");
-    getOptions("get-loan-frequencies-api", ".loan_frequencies");
+    getOptions("get-loan-frequencies-api", "#principal_repay_freq");
+    getOptions("get-loan-frequencies-api", "#interest_repay_freq");
     getOptions("get-interest-types-api", "#interest_rate_type");
     getOptions("get-loan-intro-source-api", "#loan_intro_source");
     getOptions("get-loan-sectors-api", "#loan_sectors");
@@ -148,10 +153,7 @@ $(() => {
 
     $("#loan_amount").on("input", (e) => {
         loanData.loanAmount = $("#loan_amount").val();
-        if (loanData.loanAmount > 9999099) {
-            toaster("Amount exceeds maximum allowed", warning);
-            return false;
-        }
+
         $(".display_loan_amount").text(
             parseFloat(loanData.loanAmount).toFixed(2)
         );
@@ -159,10 +161,6 @@ $(() => {
 
     $("#tenure_in_months").on("input", (e) => {
         loanData.tenureInMonths = $("#tenure_in_months").val();
-        if (loanData.tenureInMonths > 120) {
-            toaster("tenure exceeds maximum allowed", warning);
-            return false;
-        }
         $(".display_tenure_in_months").text(loanData.tenureInMonths);
     });
 
@@ -279,32 +277,6 @@ $(() => {
     });
 
     $("#btn_loan_request").on("click", (e) => {
-        if (loanFormStage === "final") {
-            console.log(loanData);
-            if (
-                !loanData.loanProductCode ||
-                !loanData.loanAmount ||
-                !loanData.tenureInMonths ||
-                !loanData.principalRepayFreqCode ||
-                !loanData.interestRateTypeCode ||
-                !loanData.interestRepayFreqCode ||
-                !loanData.loanIntroSourceCode ||
-                !loanData.loanSectorCode ||
-                !loanData.loanSubSectorCode ||
-                !loanData.loanPurpose ||
-                !loanData.productBranch
-            ) {
-                console.log("A");
-                toaster("Please complete all required fields", "warning");
-                return false;
-            }
-            confirmationCompleted = true;
-            $("#centermodal").modal("show");
-            // postLoanOrigination(loanData);
-            // loanFormStage = false;
-            return;
-        }
-
         if (
             !loanData.loanProductCode ||
             !loanData.loanAmount ||
@@ -315,6 +287,32 @@ $(() => {
         ) {
             toaster("Please complete all required fields", "warning");
             return false;
+        }
+        if (loanData.tenureInMonths > 120) {
+            toaster("tenure exceeds maximum allowed", "warning");
+            return false;
+        }
+        if (loanData.loanAmount > 9999099) {
+            toaster("Amount exceeds maximum allowed", "warning");
+            return false;
+        }
+        if (loanFormStage === "final") {
+            console.log(loanData);
+            if (
+                !loanData.loanIntroSourceCode ||
+                !loanData.loanSectorCode ||
+                !loanData.loanSubSectorCode ||
+                !loanData.loanPurpose ||
+                !loanData.productBranch
+            ) {
+                toaster("Please complete all required fields", "warning");
+                return false;
+            }
+            confirmationCompleted = true;
+            $("#centermodal").modal("show");
+            // postLoanOrigination(loanData);
+            // loanFormStage = false;
+            return;
         }
         loanFormStage = "middle";
         $(".submit-text").hide();

@@ -2,15 +2,13 @@ a:hover {
     text-decoration: none !important;
 }
 
-.bootstrap-select, .btn:focus {
-
+/* .bootstrap-select, .btn:focus { */
+.z-1 {
+    z-index: -1;
+}
 .form-control,
 .bootstrap-select .dropdown-toggle {
     height: auto;
-    transition: all 0.5s;
-    /* z-index: 22299; */
-    /* border-radius: 5px; */
-    /* box-shadow: rgb(0 0 0 / 24%) 0px 1px 1px; */
     border-color: #d9d9d9;
 }
 .bootstrap-select .dropdown-toggle:focus {
@@ -25,18 +23,18 @@ a:hover {
 
 /* .bootstrap-select .dropdown-menu .selected {
     background-color: #00bdf3 !important;
-}
+} */
 .bootstrap-select .dropdown-menu .selected .disabled {
     background-color: #eef0f2;
-} */
+}
 .account-card {
     padding: 0.2rem;
     border-radius: 5px;
 }
 
-/* .bootstrap-select .dropdown-menu li a span.text {
+.bootstrap-select .dropdown-menu li a span.text {
     display: block;
-} */
+}
 
 .account-icon {
     background-color: green;
