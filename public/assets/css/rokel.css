@@ -2,8 +2,10 @@ a:hover {
     text-decoration: none !important;
 }
 
-.bootstrap-select, .btn:focus {
-
+/* .bootstrap-select, .btn:focus { */
+.z-1 {
+    z-index: -1;
+}
 .form-control,
 .bootstrap-select .dropdown-toggle {
     height: auto;

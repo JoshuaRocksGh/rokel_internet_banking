@@ -23,7 +23,7 @@ $pageTitle = "Loan Request"; @endphp
 
                                 <div class="form-group row mb-3">
                                     <b class="col-4 align-self-center text-primary">Loan Product
-                                        &nbsp; <span class="text-danger">*</span> </b>
+                                    </b>
 
 
                                     <select class="form-control col-8 " id="loan_product" required>
@@ -36,7 +36,7 @@ $pageTitle = "Loan Request"; @endphp
 
                                     <b class="col-4 align-self-center text-primary" for="loan_amount">
                                         Amount
-                                        <span class="text-danger">*</span></b>
+                                    </b>
 
                                     <div class="px-0 col-2">
                                         <div class="input-group ">
@@ -57,7 +57,7 @@ $pageTitle = "Loan Request"; @endphp
 
                                     <b class="col-4 align-self-center text-primary" for="tenure_in_months">
                                         Tenure In Months
-                                        <span class="text-danger">*</span></b>
+                                    </b>
                                     <input type="text" class="form-control col-8" id="tenure_in_months" required
                                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
 
@@ -68,8 +68,7 @@ $pageTitle = "Loan Request"; @endphp
                                 <div class="form-group row mb-3" id="pay_from_account">
 
                                     <b class="col-4 align-self-center text-primary">Interest Rate
-                                        Type &nbsp;
-                                        <span class="text-danger">*</span></b>
+                                        Type </b>
 
                                     <select class="form-control col-8" id="interest_rate_type" required>
                                         <option value="" disabled selected>Select Interest Rate Type
@@ -84,7 +83,7 @@ $pageTitle = "Loan Request"; @endphp
 
                                     <b class="col-4 align-self-center text-primary"> Principal
                                         Repayment
-                                        &nbsp; <span class="text-danger">*</span></b>
+                                    </b>
 
 
                                     <select class="form-control col-8 loan_frequencies" id="principal_repay_freq"
@@ -99,7 +98,7 @@ $pageTitle = "Loan Request"; @endphp
 
                                     <b class="col-4 align-self-center text-primary"> Interest
                                         Repayment
-                                        &nbsp; <span class="text-danger">*</span></b>
+                                    </b>
 
 
                                     <select class="form-control col-8 loan_frequencies" id="interest_repay_freq"
@@ -115,7 +114,7 @@ $pageTitle = "Loan Request"; @endphp
                                 <div class="form-group row loan-detail" style="display: none">
 
                                     <b class="col-4 align-self-center text-primary"> Intro Source
-                                        &nbsp; <span class="text-danger">*</span></b>
+                                    </b>
 
 
                                     <select class="form-control col-8" id="loan_intro_source"
@@ -129,7 +128,7 @@ $pageTitle = "Loan Request"; @endphp
                                 <div class="form-group row loan-detail" style="display: none">
 
                                     <b class="col-4 align-self-center text-primary"> Sector
-                                        &nbsp; <span class="text-danger">*</span></b>
+                                    </b>
 
 
                                     <select class="form-control col-8 " id="loan_sectors"
@@ -142,7 +141,7 @@ $pageTitle = "Loan Request"; @endphp
                                 <div class="form-group row loan-sub-sectors-div" style="display: none">
 
                                     <b class="col-4 align-self-center text-primary">Sub Sector
-                                        &nbsp; <span class="text-danger">*</span></b>
+                                    </b>
 
 
                                     <select class="form-control col-8 " id="loan_sub_sectors"
@@ -157,7 +156,7 @@ $pageTitle = "Loan Request"; @endphp
 
                                     <b class="col-4 align-self-center text-primary">
                                         Purpose
-                                        &nbsp; <span class="text-danger">*</span></b>
+                                    </b>
 
 
                                     <select class="form-control col-8" id="loan_purpose"
@@ -173,7 +172,7 @@ $pageTitle = "Loan Request"; @endphp
 
                                     <b class="col-4 align-self-center text-primary">
                                         Product Branch
-                                        &nbsp; <span class="text-danger">*</span></b>
+                                    </b>
 
 
                                     <select class="form-control col-8" id="product_branch"
@@ -202,7 +201,7 @@ $pageTitle = "Loan Request"; @endphp
             </div>
         </div> <!-- end col -->
 
-        <div class="col-md-5 px-3">
+        <div class="col-md-5 z-1 px-3">
             <div class="site-card h-100" id="atm_request_summary">
                 <br>
                 {{-- <br><br> --}}
@@ -260,13 +259,13 @@ $pageTitle = "Loan Request"; @endphp
             </div>
         </div>
 
-        <div class="col-md-5 text-center card-body success-message "
+        {{-- <div class="col-md-5 text-center card-body success-message "
             style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226)); display:none">
 
             <p class="display-4 text-center text-success">
-                <img width="305px" height="505px" src="{{ asset("land_asset/images/rcb_cashless.jpeg") }}" />
+                <img width="305px" height="505px" src="{{ asset(" land_asset/images/rcb_cashless.jpeg") }}" />
             </p>
-        </div>
+        </div> --}}
 
     </div>
 </div>
@@ -294,7 +293,7 @@ $pageTitle = "Loan Request"; @endphp
             <div class="table-responsive p-2 table-striped table-bordered">
                 <table class="table mb-0 loan_payment_schedule w-100">
                     <thead>
-                        <tr class="bg-primary text-white ">
+                        <tr class="bg-info text-white ">
                             <td> <b> NO </b> </td>
                             <td> <b> REPAYMENT DATE </b> </td>
                             <td> <b> PRINCIPAL REPAYMENT AMOUNT </b> </td>
@@ -315,6 +314,6 @@ $pageTitle = "Loan Request"; @endphp
 @endsection
 
 @section('scripts')
-
+@include("extras.datatables")
 <script src="{{ asset('assets/js/pages/loans/loan-request.js') }}"> </script>
 @endsection

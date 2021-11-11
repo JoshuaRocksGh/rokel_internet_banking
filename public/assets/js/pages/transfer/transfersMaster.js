@@ -226,13 +226,12 @@ function getStandingOrderFrequencies() {
         success: function (response) {
             let data = response.data;
             $.each(data, function (index) {
-                $(".so_frequency").append(
-                    $("<option>", {
-                        value: data[index].code + "~" + data[index].name,
-                    }).text(data[index].name)
+                $("#beneficiary_frequency").append(
+                    `<option value=${data[index].code}~${data[index].name}>
+                    ${data[index].name} </option>`
                 );
             });
-            $("#so_frequency").selectpicker("refresh");
+            $("#beneficiary_frequency").selectpicker("refresh");
         },
         error: function (xhr, status, error) {
             setTimeout(function () {
