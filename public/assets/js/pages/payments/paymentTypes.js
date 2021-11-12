@@ -287,7 +287,7 @@ $(() => {
 
     $("#confirm_transfer_button").on("click", (e) => {
         e.preventDefault();
-        $("#centermodal").modal("show");
+        $("#pin_code_modal").modal("show");
     });
 
     $("#next_button").on("click", (e) => {
