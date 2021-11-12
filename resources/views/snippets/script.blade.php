@@ -68,10 +68,10 @@
     }
 
     function formatToCurrency(amount) {
-        let ret =  parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-        if(isNaN(ret)){
+        let ret = parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        if (isNaN(ret)) {
             return ""
-        }else return ret
+        } else return ret
     }
 
     function validateAll(...args) {
@@ -103,13 +103,32 @@
 
     //intitialize all form-control to bootstrap select
     $(() => {
-    //     $('.form-control').selectpicker({
-    //         style: "",
-    //         baseStyle: "form-control",
-    //         showTick: "true",
-    //         // container:"body",
-    //         // width: "auto"
-    //     })
-    // $(".form-control").selectpicker()
+        //     $('.form-control').selectpicker({
+        //         style: "",
+        //         baseStyle: "form-control",
+        //         showTick: "true",
+        //         // container:"body",
+        //         // width: "auto"
+        //     })
+        // $(".form-control").selectpicker()
     })
+</script>
+
+<script type='text/javascript'>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+</script>
+
+<script type='text/javascript' src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'>
+</script>
+
+<script>
+    $.ajaxSetup({
+        timeout: 3000,
+        retryAfter: 5000
+    });
 </script>

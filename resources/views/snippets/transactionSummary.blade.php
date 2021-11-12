@@ -29,8 +29,8 @@
                                     <button class="btn my-1 btn-primary" id="save_as_beneficiary" style="display: none">
                                         save as beneficiary
                                     </button>
-                                    @if ($currentPath === "Same Bank")
-                                    <button class="btn my-1 btn-primary"> make reccuring </button>
+                                    @if ($currentPath === 'Same Bank')
+                                        <button class="btn my-1 btn-primary"> make reccuring </button>
                                     @endif
                                 </div>
                             </td>
@@ -59,14 +59,14 @@
 
                                 <span class="d-block font-13 text-primary text-bold display_to_account_no"
                                     id="display_to_account_no"> </span>
-                                @if ($currentPath !== 'International Bank' && $currentPath !== "Local Bank")
-                                <span class="d-block font-13 text-primary text-bold display_to_account_currency"
-                                    id="display_to_account_currency"></span>
+                                @if ($currentPath !== 'International Bank' && $currentPath !== 'Local Bank')
+                                    <span class="d-block font-13 text-primary text-bold display_to_account_currency"
+                                        id="display_to_account_currency"></span>
                                 @endif
                                 @if ($currentPath === 'Local Bank')
-                                <span class="d-block font-13 text-primary text-bold display_to_bank_name"> </span>
-                                <span class="d-block font-13 text-primary text-bold display_to_account_address">
-                                </span>
+                                    <span class="d-block font-13 text-primary text-bold display_to_bank_name"> </span>
+                                    <span class="d-block font-13 text-primary text-bold display_to_account_address">
+                                    </span>
                                 @endif
                             </td>
                         </tr>
@@ -83,14 +83,14 @@
                             </td>
                         </tr>
                         @if ($currentPath === 'Local Bank')
-                        <tr>
-                            <td>Transfer Type:</td>
-                            <td>
+                            <tr>
+                                <td>Transfer Type:</td>
+                                <td>
 
-                                <span class="font-13 text-primary h3 display_to_transfer_type"></span>
+                                    <span class="font-13 text-primary h3 display_to_transfer_type"></span>
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         @endif
                         <tr>
                             <td>Transfer Fee</td>
@@ -119,60 +119,60 @@
                             </td>
                         </tr>
                         @if ($currentPath === 'Standing Order')
-                        <tr>
-                            <td>Start Date: </td>
-                            <td>
-                                <span class="font-13 text-primary h3 display_so_start_date"></span>
+                            <tr>
+                                <td>Start Date: </td>
+                                <td>
+                                    <span class="font-13 text-primary h3 display_so_start_date"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>End Date: </td>
+                                <td>
+                                    <span class="font-13 text-primary h3 display_so_end_date"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Frequency: </td>
+                                <td>
+                                    <span class="font-13 text-primary h3 display_frequency_so""></span>
                             </td>
                         </tr>
-                        <tr>
-                            <td>End Date: </td>
-                            <td>
-                                <span class="font-13 text-primary h3 display_so_end_date"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Frequency: </td>
-                            <td>
-                                <span class="font-13 text-primary h3 display_frequency_so""></span>
-                            </td>
-                        </tr>
-                            @endif
+                                   @endif
                             <tr>
                                 <td>Transfer Date: </td>
                                 <td>
                                     <span class=" font-13 text-primary h3"
-                                    id="display_transfer_date">{{ date('d F, Y') }}</span>
-                            </td>
-                        </tr>
+                                        id="display_transfer_date">{{ date('d F, Y') }}</span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>Posted By: </td>
-                            <td>
-                                <span class="font-13 text-primary h3"
-                                    id="display_posted_by">{{ session()->get('userAlias') }}</span>
-                            </td>
-                        </tr>
-                        <tr class="hide-on-success bg-info text-white">
+                            <tr>
+                                <td>Posted By: </td>
+                                <td>
+                                    <span class="font-13 text-primary h3"
+                                        id="display_posted_by">{{ session()->get('userAlias') }}</span>
+                                </td>
+                            </tr>
+                            <tr class="hide-on-success bg-info text-white">
 
-                            <td colspan="2">
+                                <td colspan="2">
 
-                                {{-- <div class="alert alert-info form-control col-md-12" role="alert"> --}}
-                                <div class="custom-control custom-checkbox ">
-                                    <input type="checkbox" class="custom-control-input" name="terms_and_conditions"
-                                        name="terms_and_conditions" id="terms_and_conditions">
-                                    <label class="custom-control-label " for="terms_and_conditions">
-                                        <b>
-                                            By checking this box, you agree to
-                                            abide by the Terms and Conditions
-                                        </b>
-                                    </label>
-                                </div>
+                                    {{-- <div class="alert alert-info form-control col-md-12" role="alert"> --}}
+                                    <div class="custom-control custom-checkbox ">
+                                        <input type="checkbox" class="custom-control-input" name="terms_and_conditions"
+                                            name="terms_and_conditions" id="terms_and_conditions">
+                                        <label class="custom-control-label " for="terms_and_conditions">
+                                            <b>
+                                                By checking this box, you agree to
+                                                abide by the Terms and Conditions
+                                            </b>
+                                        </label>
+                                    </div>
 
 
-                                {{-- </div> --}}
-                            </td>
-                        </tr>
+                                    {{-- </div> --}}
+                                </td>
+                            </tr>
                     </tbody>
                 </table>
             </div>

@@ -234,7 +234,7 @@
                                         <th> <b> Bulk Amount </b> </th>
                                         <th> <b> Value date </b> </th>
                                         <th> <b> Bank Type </b> </th>
-                                        <!-- <th> <b> Status </b> </th> -->
+                                        <th> <b> Status </b> </th>
                                         {{-- <th class="text-center"> <b>Actions </b> </th> --}}
 
                                     </tr>
@@ -268,30 +268,8 @@
 
 @section('scripts')
 
+    @include('extras.datatables')
 
-    <!-- third party js -->
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-    </script>
-    {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-<script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-    <!-- third party js ends -->
-
-    <!-- Datatables init -->
-    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
-
-    <script>
-
-    </script>
     <script>
         function my_account() {
             $.ajax({
@@ -334,7 +312,7 @@
                 'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
                 "datatype": "application/json",
                 success: function(response) {
-                    console.log(response.data);
+                    //console.log("bulk upload list:", response.data);
 
 
                     if (response.responseCode == '000') {
@@ -343,7 +321,7 @@
                         data = bulk_upload_array_list
 
                         $.each(data, function(index) {
-                            console.log(data[index])
+                            //console.log("bulk_upload_array_list:", data[index])
 
                             let status = ''
                             let bank_type = ''
@@ -359,14 +337,14 @@
                                     `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
                             }
 
-                            if (data[index].bank_code == 'I') {
+                            if (data[index].bank_code == 'SAB') {
                                 bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
                             } else {
                                 bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
                             }
 
                             let batch =
-                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&bulk_amount=${data[index].total_amount}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}">${data[index].batch_no}</a>`
+                                `<a href="{{ url('view-bulk-transfer?batch_no=${data[index].batch_no}&bulk_amount=${data[index].total_amount}&account_no=${data[index].account_no}&bank_type=${data[index].bank_code}') }}" style="text-decoration: underline;"><b>${data[index].batch_no}</b></a>`
 
                             let action =
                                 `<span class="btn-group mb-2">
@@ -377,8 +355,8 @@
 
                             table.row.add([
                                 batch, data[index].ref_no, data[index].account_no, data[index]
-                                .total_amount, bank_type, data[index].value_date,
-                                // status,
+                                .total_amount, data[index].value_date, bank_type,
+                                status,
                                 //action
 
 
@@ -450,13 +428,13 @@
 
 
 
-            $(".date-picker-valueDate").flatpickr({
+            {{-- $(".date-picker-valueDate").flatpickr({
                 altInput: true,
                 altFormat: "j F, Y",
                 dateFormat: "d-m-Y",
                 defaultDate: [defaultDate],
                 position: "below"
-            })
+            }) --}}
 
             var customer_no = @json(session('customerNumber'))
 
@@ -468,7 +446,7 @@
 
             $('#bulk_upload_form').submit(function() {
                 {{-- e.preventDefault() --}}
-                $('submit_cheque_request').text('Processing ... ')
+                $('#submit_cheque_request').text('Processing ... ')
             })
 
 

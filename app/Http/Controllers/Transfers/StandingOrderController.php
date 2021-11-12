@@ -19,6 +19,12 @@ class StandingOrderController extends Controller
         return view('pages.transfer.standing_order');
     }
 
+    //method to display standing order status
+    public function display_standing_order_status()
+    {
+        return view('pages.transfer.standing_order_status');
+    }
+
     //method to send pay load request
     public function standingOrderTransfer(Request $req)
     {

@@ -118,11 +118,11 @@ class LocalBankController extends Controller
             "bene_name" => $request->beneficiaryName,
             "bene_address" => $request->beneficiaryAddress,
             "bene_tel" => $customerPhone,
-            "amount" => $request->transferamount,
+            "amount" => $request->transferAmount,
             "currency" => $request->accountCurrency,
-            "currency_iso" => $request->currencyCode,
-            "narration" => $request->transferpurpose,
-            "expense_type" => $request->transfercategory,
+            "currency_iso" => $request->accountCurrencyCode,
+            "narration" => $request->transferPurpose,
+            "expense_type" => $request->transferCategory,
         ];
 
         // return $data;

@@ -296,15 +296,24 @@ class BulkUploadsController extends Controller
         $customer_no = session()->get('customerNumber');
 
         // if (null !== ($request->query('batch_no') || $request->query('account_no') || $request->query('bank_type'))) {
+
         //     return back();
         // }
 
-        return view('pages.transfer.bulkTransfers.view_bulk_trasnfer', [
-            'customer_no' => $customer_no,
-            'batch_no' => $batch_no,
-            'account_no' => $account_no,
-            'bank_type' => $bank_type,
-        ]);
+        $bulk_details = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get();
+        $bulk_info = DB::table('TB_CORP_BANK_BULK_REF')->where('batch_no', $batch_no)->first();
+
+        if ($bulk_info == null || $bulk_info == "") {
+            Alert::error("Bulk Transfer Detail Not Found");
+            return view('pages.transfer.bulkTransfers.bulk_trasnfer');
+        } else {
+            return view('pages.transfer.bulkTransfers.view_bulk_trasnfer', [
+                'customer_no' => $customer_no,
+                'batch_no' => $batch_no,
+                'account_no' => $account_no,
+                'bank_type' => $bank_type,
+            ]);
+        }
     }
 
     public function view_bulk_transfer_korpor(Request $request)
@@ -377,15 +386,19 @@ class BulkUploadsController extends Controller
         $bulk_details = DB::table('tb_corp_bank_import_excel')->where('batch_no', $batch_no)->get();
         $bulk_info = DB::table('TB_CORP_BANK_BULK_REF')->where('batch_no', $batch_no)->first();
 
-
-        return response()->json([
-            'responseCode' => '000',
-            'message' => "Detail of upload transfer",
-            'data' => [
-                'bulk_info' => $bulk_info,
-                'bulk_details' => $bulk_details
-            ]
-        ], 200);
+        if ($bulk_info == null || $bulk_info == "") {
+            Alert::error("Bulk Transfer Detail Falied");
+            return redirect()->route('pages.transfer.bulkTransfers.bulk_trasnfer');
+        } else {
+            return response()->json([
+                'responseCode' => '000',
+                'message' => "Detail of upload transfer",
+                'data' => [
+                    'bulk_info' => $bulk_info,
+                    'bulk_details' => $bulk_details
+                ]
+            ], 200);
+        }
     }
 
     public function get_bulk_korpor_file_details(Request $request)
