@@ -693,7 +693,7 @@ $(() => {
             corporateSpecific(transferInfo);
             return;
         }
-        $("#centermodal").modal("show");
+        $("#pin_code_modal").modal("show");
     });
 
     $("#transfer_pin").on("click", (e) => {

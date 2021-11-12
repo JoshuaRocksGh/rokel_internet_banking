@@ -69,7 +69,7 @@
 
     function formatToCurrency(amount) {
         let ret =  parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-        if(isNaN(ret)){
+        if(ret === "NaN"){
             return ""
         }else return ret
     }

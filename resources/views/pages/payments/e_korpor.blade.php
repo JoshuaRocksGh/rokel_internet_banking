@@ -1,91 +1,15 @@
 @extends('layouts.master')
 
-@section('styles')
-
-<style>
-    @media print {
-        .hide_on_print {
-            display: none;
-        }
-
-        ;
-    }
-
-    @page {
-        size: A4;
-
-            {
-                {
-                -- margin: 10px;
-                --
-            }
-        }
-    }
-
-    @media print {
-
-        html,
-        body {
-            width: 210mm;
-            height: 297mm;
-        }
-
-        /* ... the rest of the rules ... */
-    }
-
-
-    @font-face {
-        font-family: 'password';
-        font-style: normal;
-        font-weight: 400;
-        src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
-    }
-
-    /* input[name="reverse_pin"] {
-                                                                                            display: none;
-                                                                                        } */
-</style>
-
-
-@endsection
-
 @section('content')
 
 <div class="">
-
-    <div class="container-fluid">
-        <br>
-        <!-- start page title -->
-        <div class="row">
-            <div class="col-md-6">
-                <h4 class="text-primary">
-                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
-                    E-Korpor
-                </h4>
-            </div>
-
-            <div class="col-md-6 text-right">
-                <h6>
-
-                    <span class="float-right">
-                        <b class="text-primary"> Payment </b> &nbsp; > &nbsp; <b class="text-danger">E-Korpor
-                            Payment</b>
-
-
-                    </span>
-
-                </h6>
-
-            </div>
-
-            <div class="col-md-12 ">
-                <hr class="text-primary" style="margin: 0px;">
-            </div>
-
-        </div>
-    </div>
+    @php
+    $pageTitle = "E-Korpor Payment";
+    $basePath = "Payment";
+    $currentPath = "E-Korpor";
+    @endphp
+    @include("snippets.pageHeader")
     <br>
-
     <div class="">
 
         <ul class="nav nav-pills navtab-bg nav-justified">
@@ -121,7 +45,7 @@
                             <div class="row">
 
                                 <div class="col-md-12">
-
+                                    {{--
                                     <div class="receipt">
                                         <div class="container card card-body">
 
@@ -149,179 +73,53 @@
                                                             <div class="page-header">
                                                                 <h2><span id="personal_transfer_receipt">E-Korpor
                                                                         Transfer Receipt</span>
-                                                                    {{-- <span
-                                                                        id="coporate_transfer_approval">Transaction
-                                                                        Awaiting
-                                                                        Approval</span> --}}
+
                                                                 </h2>
                                                             </div>
-                                                            <br>
-                                                            {{-- <div class="row">
-                                                                <div class="col-md-12 text-center">
-                                                                    <h2>INVOICE</h2>
-                                                                    <h5>04854654101</h5>
-                                                                </div>
-                                                            </div> --}}
-                                                            <br />
-                                                            {{-- <div class="table-responsive">
-                                                                <table class="table mb-0">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>
-                                                                                <h5>Description</h5>
-                                                                            </th>
-                                                                            <th>
-                                                                                <h5>Further Details</h5>
-                                                                            </th>
-                                                                            <th>
-                                                                                <h5>Amount</h5>
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td class="col-md-9">
-                                                                                From Account Number<br>
-                                                                                004004110449140121
-                                                                            </td>
-                                                                            <td class="col-md-3"><i
-                                                                                    class="fas fa-rupee-sign"
-                                                                                    area-hidden="true"></i> 50,000 </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="col-md-9">
-                                                                                To Account Number<br>
-                                                                                004004110445350137
-                                                                            </td>
-                                                                            <td class="col-md-3"><i
-                                                                                    class="fas fa-rupee-sign"
-                                                                                    area-hidden="true"></i> 5,200 </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="col-md-9">Category Type</td>
-                                                                            <td class="col-md-3"><i
-                                                                                    class="fas fa-rupee-sign"
-                                                                                    area-hidden="true"></i> 25,000 </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="col-md-9">Purpose of Transfer
-                                                                            </td>
-                                                                            <td class="col-md-3"><i
-                                                                                    class="fas fa-rupee-sign"
-                                                                                    area-hidden="true"></i> 2,200 </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="col-md-9"> Transfer Amount</td>
-                                                                            <td class="text-right">
-                                                                                <p> <strong>Shipment and Taxes:</strong>
-                                                                                </p>
-                                                                                <p> <strong>Total Amount: </strong> </p>
-                                                                                <p> <strong>Discount: </strong> </p>
-                                                                                <p> <strong>Payable Amount: </strong>
-                                                                                </p>
-                                                                            </td>
-                                                                            <td>
-                                                                                <p> <strong><i class="fas fa-rupee-sign"
-                                                                                            area-hidden="true"></i> 500
-                                                                                    </strong> </p>
-                                                                                <p> <strong><i class="fas fa-rupee-sign"
-                                                                                            area-hidden="true"></i>
-                                                                                        82,900</strong> </p>
-                                                                                <p> <strong><i class="fas fa-rupee-sign"
-                                                                                            area-hidden="true"></i>
-                                                                                        3,000 </strong> </p>
-                                                                                <p> <strong><i class="fas fa-rupee-sign"
-                                                                                            area-hidden="true"></i>
-                                                                                        79,900</strong> </p>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr style="color: #F81D2D;">
-                                                                            <td class="text-right">
-                                                                                <h4><strong>Total:</strong></h4>
-                                                                            </td>
-                                                                            <td class="text-left">
-                                                                                <h4><strong><i class="fas fa-rupee-sign"
-                                                                                            area-hidden="true"></i>
-                                                                                        79,900 </strong></h4>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div> --}}
                                                             <div class="table-responsive">
                                                                 <table class="table mb-0">
                                                                     <thead class="thead-light">
                                                                         <tr>
-                                                                            {{-- <th>#</th> --}}
                                                                             <th>Description</th>
                                                                             <th class="text-right">Further Details
                                                                             </th>
-                                                                            {{-- <th>Amount </th> --}}
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr>
-                                                                            {{-- <th scope="row">1</th> --}}
                                                                             <td>Transfer From Account Number</td>
                                                                             <td class="text-right"><span
                                                                                     id="from_account_receipt"></span>
                                                                             </td>
-                                                                            {{-- <td></td> --}}
                                                                         </tr>
                                                                         <tr>
-                                                                            {{-- <th scope="row">2</th> --}}
                                                                             <td>Receiver Name</td>
                                                                             <td class="text-right"><span
                                                                                     id="receiver_name_receipt"></span>
                                                                             </td>
-                                                                            {{-- <td></td> --}}
                                                                         </tr>
                                                                         <tr>
-                                                                            {{-- <th scope="row">3</th> --}}
                                                                             <td>Receiver Telephone</td>
                                                                             <td class="text-right"><span
                                                                                     id="receiver_telephone_receipt"></span>
                                                                             </td>
-                                                                            {{-- <td></td> --}}
                                                                         </tr>
                                                                         <tr>
-                                                                            {{-- <th scope="row">3</th> --}}
                                                                             <td>Reference Number</td>
                                                                             <td class="text-right"><span
                                                                                     id="reference_number_receipt"></span>
                                                                             </td>
-                                                                            {{-- <td></td> --}}
                                                                         </tr>
                                                                         <tr>
-                                                                            {{-- <th scope="row">3</th> --}}
                                                                             <td>Amount</td>
-                                                                            {{-- <td></td> --}}
                                                                             <td class="text-right"><strong><span
                                                                                         class="receipt_currency"></span>
                                                                                     &nbsp;<span
                                                                                         id="amount_receipt"></span></strong>
                                                                             </td>
                                                                         </tr>
-                                                                        {{-- <tr>
-                                                                            <th scope="row">3</th>
-                                                                            <td>Transaction Fee </td>
-                                                                            <td></td>
-                                                                            <td class="text-right"><strong>(<span
-                                                                                        class="receipt_currency"></span>)
-                                                                                    &nbsp;
-                                                                                    15.00</strong></td>
-                                                                        </tr> --}}
-                                                                        {{-- <tr>
-                                                                            <th scope="row">3</th>
-                                                                            <td><strong>Total Amount</strong> </td>
-                                                                            <td></td>
-                                                                            <td><strong><span
-                                                                                        id="total_amount_receipt"></span></strong>
-                                                                            </td>
-                                                                        </tr> --}}
+
                                                                         <tr>
-                                                                            {{-- <th scope="row">3</th> --}}
-                                                                            {{-- <td></td> --}}
                                                                             <td></td>
                                                                             <td></td>
                                                                         </tr>
@@ -355,11 +153,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form_process">
                                         <div class="row">
-
+                                            {{--
 
 
                                             <div class="col-md-7" id="transaction_summary"
@@ -376,12 +174,7 @@
                                                             <table class="table mb-0">
 
                                                                 <tbody>
-                                                                    {{-- <tr class="success_gif">
-                                                                        <td class="text-center bg-white" colspan="2">
-                                                                            <img src="{{ asset('land_asset/images/statement_success.gif') }}"
-                                                                                style="zoom: 0.5" alt="">
-                                                                        </td>
-                                                                    </tr> --}}
+
                                                                     <tr>
                                                                         <td>From Account:</td>
                                                                         <td>
@@ -412,16 +205,12 @@
                                                                                 id="display_to_account_no"> </span>
 
 
-                                                                            {{-- <span
-                                                                                class="d-block font-13 text-primary text-bold display_to_account_name"
-                                                                                id="online_display_beneficiary_alias_name">
-                                                                            </span> --}}
+
 
                                                                             <span
                                                                                 class="font-13 text-primary h3 online_display_beneficiary_account_no"
                                                                                 id="online_display_beneficiary_account_no">
                                                                             </span>
-                                                                            {{-- &nbsp; | &nbsp; --}}
                                                                             <span
                                                                                 class="font-13 text-primary h3 online_display_beneficiary_account_currency"
                                                                                 id="online_display_beneficiary_account_currency">
@@ -465,19 +254,7 @@
                                                                     </tr>
 
 
-                                                                    {{-- <tr>
-                                                                        <td>Schedule Payment:</td>
-                                                                        <td>
-                                                                            <span
-                                                                                class="font-13 text-primary h3 display_schedule_payment"
-                                                                                id="display_schedule_payment">NO </span>
-                                                                            &nbsp; | &nbsp;
-                                                                            <span
-                                                                                class="font-13 text-primary h3 display_schedule_payment_date"
-                                                                                id="display_schedule_payment_date"> N/A
-                                                                            </span>
-                                                                        </td>
-                                                                    </tr> --}}
+
                                                                     <tr>
                                                                         <td>Amount:</td>
                                                                         <td>
@@ -511,16 +288,6 @@
                                                                         </td>
                                                                     </tr>
 
-                                                                    {{-- <tr class="hide_on_print">
-                                                                        <td>Enter Pin: </td>
-                                                                        <td>
-
-                                                                            <input type="text" name="user_pin"
-                                                                                class="form-control key " id="user_pin"
-                                                                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-
-                                                                        </td>
-                                                                    </tr> --}}
 
                                                                     <tr>
 
@@ -573,18 +340,13 @@
                                                                         aria-hidden="true"></span>
                                                                     <span id="spinner-text">Loading...</span>
                                                                 </button></span>
-                                                            {{-- <span>&nbsp; <button
-                                                                    class="btn btn-light btn-rounded hide_on_print"
-                                                                    type="button" id="print_receipt"
-                                                                    onclick="window.print()">Print
-                                                                    Receipt
-                                                                </button></span> --}}
+
                                                         </div>
                                                     </div>
 
                                                 </div> <!-- end col -->
 
-                                            </div>
+                                            </div> --}}
 
                                             <div class=" col-md-7 m-2" id="request_form_div"
                                                 style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
@@ -744,7 +506,7 @@
 
                                                                             <input type="text"
                                                                                 class="form-control col-md-8 "
-                                                                                id="others_form_narration"
+                                                                                id="narration"
                                                                                 placeholder="Enter Naration"
                                                                                 autocomplete="off" required
                                                                                 value="E-Korpor Transfer">
@@ -869,12 +631,7 @@
                                                                             <span class="submit-text">&nbsp; Next
                                                                                 &nbsp;<i
                                                                                     class="fe-arrow-right"></i></span>
-                                                                            <span
-                                                                                class="spinner-border spinner-border-sm mr-1"
-                                                                                id="spinner-self" role="status"
-                                                                                aria-hidden="true"></span>
-                                                                            <span
-                                                                                id="spinner-text-self">Loading...</span>
+
                                                                         </button>
                                                                     </div>
 
@@ -921,7 +678,6 @@
                                                     <hr class="mt-0">
 
                                                     <div class="row">
-                                                        {{-- <span class="col-md-12 success-message"></span> --}}
                                                         <p class="col-md-5">Account Name:</p>
                                                         <span
                                                             class="text-primary display_from_account_name col-md-7"></span>
@@ -956,8 +712,6 @@
                                                         <span
                                                             class="text-primary hide-if-self-transfer display_receiver_address col-md-7"></span>
 
-                                                        {{-- <p class="col-md-5">Amount:</p>
-                                                        <span class="text-primary display_amount col-md-7"></span> --}}
                                                     </div>
                                                     <hr class="mt-0">
                                                     <div class="row">
@@ -970,7 +724,7 @@
 
                                                     </div>
                                                 </div>
-
+                                                {{--
                                                 <div class="form-group text-center display_button_print">
 
                                                     <span>&nbsp;
@@ -979,16 +733,14 @@
                                                                 onclick="window.print()">Print
                                                                 Receipt
                                                             </button></span>
-                                                </div>
+                                                </div> --}}
                                             </div>
 
-                                            <div class="col-md-4 m-2 self_summary"
+                                            {{-- <div class="col-md-4 m-2 self_summary"
                                                 style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
                                                 <br><br>
                                                 <div class=" col-md-12 card card-body">
-                                                    {{-- <br><br> --}}
                                                     <div class="row">
-                                                        {{-- <span class="col-md-12 success-message"></span> --}}
                                                         <p class="col-md-5">Account Name:</p>
                                                         <span
                                                             class="text-primary display_from_account_name_self col-md-7"></span>
@@ -1034,7 +786,7 @@
                                                                 Receipt
                                                             </button></span>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
 
                                         </div>
@@ -1126,9 +878,8 @@
                     <div class="col-12">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6  m-2" id="request_form_div"
+                                <div class="col-md-6  pt-5 px-4 m-2 " id="request_form_div"
                                     style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                    <br><br><br>
 
                                     <form action="#" class="select_beneficiary" id="redeem_korpor_payment_details_form"
                                         autocomplete="off" aria-autocomplete="none">
@@ -1158,56 +909,48 @@
 
 
                                                         <input type="text" class="form-control col-md-7" id="mobile_no"
-                                                            autocomplete="off" required>
-                                                        <br>
-
+                                                            autocomplete="off" placeholder="Enter Phone Number"
+                                                            required>
                                                     </div>
 
-                                                    <br>
-                                                    <div class="form-group row">
+                                                    <div class=" form-group row">
 
                                                         <b class="col-md-5 text-primary"> Remittance Number:
                                                             &nbsp; <span class="text-danger">*</span></b>
 
                                                         <input type="text" class="form-control col-md-7"
-                                                            id="remittance_no" placeholder="enter phone number"
+                                                            id="remittance_no" placeholder="Enter Remittance Number"
                                                             autocomplete="off"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                             required>
-                                                        <br>
-
                                                     </div>
 
-
-                                                    <br>
-                                                    {{-- <div class="form-group row">
-
-                                                        <b class="col-md-5 text-primary" for="pin">
-                                                            Enter Your Pin
-                                                            <span class="text-danger">*</span></b>
-                                                        <input type="password" class="form-control col-md-7"
-                                                            id="user_pin_reverse"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-
-
-                                                    </div> --}}
-                                                    <br><br><br>
                                                     <div class="form-group text-right ">
                                                         <button type="button"
-                                                            class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success "
-                                                            id="redeem_button">
-                                                            <span id="next-text">Next</span>
-                                                            <span class="spinner-border spinner-border-sm mr-1"
-                                                                id="spinner-next" role="status"
-                                                                aria-hidden="true"></span>
-                                                            <span id="spinner-text-next">Loading...</span>
+                                                            class="btn btn-primary btn-rounded mt-2 waves-effect waves-light disappear-after-success "
+                                                            id="proceed_to_redeem_button">
+                                                            <span id="next-text">Proceed</span> &nbsp;<i
+                                                                class="fe-arrow-right"></i>
                                                         </button>
                                                     </div>
 
 
                                                 </div>
-                                                <div class="col-md-12 korpor_details">
+                                                <div class="col-md-12 korpor_details" style="display: none">
+                                                    <div class="form-group row ">
+                                                        <b class="col-md-12 text-primary">Select Account To Redeem Into
+                                                            &nbsp;
+                                                            <span class="text-danger"></span> </b>
+                                                        <select class="form-control col-md-12 " id="redeem_account"
+                                                            required>
+                                                            <option disabled selected value=""> ---
+                                                                Select
+                                                                Account ---
+                                                            </option>
+                                                            @include("snippets.accounts")
+                                                        </select>
+                                                    </div>
+                                                    <hr style="padding-top: 0px; padding-bottom: 0px;">
 
                                                     <div class="form-group row">
 
@@ -1219,8 +962,6 @@
                                                         <br>
 
                                                     </div>
-
-                                                    <br>
                                                     <div class="form-group row">
 
                                                         <b class="col-md-5 text-primary"> Receiver's Phone:
@@ -1230,24 +971,8 @@
                                                             id="receiver_phone_redeem" autocomplete="off"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                             readonly>
-                                                        <br>
-
                                                     </div>
 
-
-                                                    <br>
-                                                    {{-- <div class="form-group row">
-
-                                                        <b class="col-md-5 text-primary" for="pin">
-                                                            Enter Your Pin
-                                                            <span class="text-danger">*</span></b>
-                                                        <input type="password" class="form-control col-md-7"
-                                                            id="user_pin_reverse"
-                                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')">
-
-
-
-                                                    </div> --}}
                                                     <div class="form-group row">
 
                                                         <b class="col-md-5 text-primary"> Receiver Address:
@@ -1257,11 +982,7 @@
                                                             id="receiver_address_redeem" autocomplete="off"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                             readonly>
-                                                        <br>
-
                                                     </div>
-                                                    <br>
-
                                                     <div class="form-group row">
 
                                                         <b class="col-md-5 text-primary"> Amount:</b>
@@ -1270,12 +991,9 @@
                                                             id="receiver_amount_redeem" autocomplete="off"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                             readonly>
-                                                        <br>
 
                                                     </div>
-                                                    <br>
-
-                                                    <div class="form-group row">
+                                                    {{-- <div class="form-group row">
 
                                                         <b class="col-md-5 text-primary"> Enter OTP:
                                                             &nbsp; <span class="text-danger">*</span></b>
@@ -1285,22 +1003,16 @@
                                                             autocomplete="off"
                                                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                                             required>
-                                                        <br>
-
-                                                    </div>
+                                                    </div> --}}
 
 
 
-                                                    <br><br><br>
                                                     <div class="form-group text-right ">
                                                         <button type="button"
                                                             class="btn btn-primary btn-rounded waves-effect waves-light disappear-after-success"
                                                             id="done_button">
                                                             <span id="redeem-text">Redeem</span>
-                                                            <span class="spinner-border spinner-border-sm mr-1"
-                                                                id="spinner-redeem" role="status"
-                                                                aria-hidden="true"></span>
-                                                            <span id="spinner-text-redeem">Loading...</span>
+
                                                         </button>
                                                     </div>
 
@@ -1314,26 +1026,25 @@
                                     </form>
 
                                 </div>
-                                <div class="col-md-5">
-                                    <br>
+                                <div class="col-md-5 m-2 mx-auto">
                                     <div class="card">
                                         <div class="card-body">
                                             <div id="carouselExampleControls" class="carousel slide"
                                                 data-ride="carousel" style="min-height: 120px; max-height: auto;">
                                                 <div class="carousel-inner" role="listbox">
                                                     <div class="carousel-item active">
-                                                        <img class="d-block img-fluid" style="min-height: 100%"
-                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_9.jpeg') }}"
+                                                        <img class="d-block img-fluid" style="height: 30rem"
+                                                            src="{{ asset('assets/images/rokel/sim_korpor_5.jpeg') }}"
                                                             alt="First slide">
                                                     </div>
                                                     <div class="carousel-item">
-                                                        <img class="d-block img-fluid" style="height: auto;"
-                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_10.jpeg') }}"
+                                                        <img class="d-block img-fluid" style="height: 30rem"
+                                                            src="{{ asset('assets/images/rokel/sim_korpor_3.jpeg') }}"
                                                             alt="Second slide">
                                                     </div>
                                                     <div class="carousel-item">
-                                                        <img class="d-block img-fluid" style="min-height"
-                                                            src="{{ asset('assets/images/ads/sim_korpor_ad_7.jpeg') }}"
+                                                        <img class="d-block img-fluid" style="height: 30rem"
+                                                            src="{{ asset('assets/images/rokel/sim_korpor_4.jpeg') }}"
                                                             alt="Third slide">
                                                     </div>
                                                 </div>
@@ -1578,50 +1289,22 @@
                 </div>
             </div>
             @include("snippets.pinCodeModal")
-            <!-- Center modal content -->
-            {{-- <div class="modal fade" id="centermodal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header text-center ">
-
-                        </div>
-                        <div class="modal-body transfer_pin_modal">
-                            <h3 class="modal-title text-primary text-center" id="myCenterModalLabel ">ENTER TRANSACTION
-                                PIN</h3>
-                            <div class="row">
-                                <div class="col-md-2"></div>
-                                <div class="col-md-9  text-center">
-                                    <form action="#" autocomplete="off" aria-autocomplete="off">
-                                        <input type="text" name="user_pin" maxlength="4" autocomplete="off"
-                                            aria-autocomplete="off" class="form-control key hide_on_print" id="user_pin"
-                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-                                        <br>
-                                        <button class="btn btn-success" type="button" id="transfer_pin"
-                                            data-dismiss="modal">Submit</button>
-                                    </form>
-
-                                </div>
-                                <div class="col-md-1"></div>
-                            </div>
-                        </div>
-                        <br>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div> --}}
-            <!-- /.modal -->
-
-
         </div>
     </div>
 </div>
 <script>
-    const customerInfo = new object();
+    const customerInfo = new Object();
      customerInfo.customerType = @json(session()->get('customerType'));
      customerInfo.userAlias = @json(session()->get('userAlias'));
      customerInfo.userPhone = @json(session()->get('customerPhone'));
      customerInfo.userEmail = @json(session()->get('email'));
+</script>
+<script>
+    @if (config("app.corporate"))
+    const ISCORPORATE = true;
+@else
+    const ISCORPORATE = false;
+@endif
 </script>
 <script src={{ asset('assets/js/pages/payments/e-korpor.js') }}>
 
