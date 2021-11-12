@@ -19,6 +19,12 @@ class StandingOrderController extends Controller
         return view('pages.transfer.standing_order');
     }
 
+    //method to display standing order status
+    public function display_standing_order_status()
+    {
+        return view('pages.transfer.standing_order_status');
+    }
+
     //method to send pay load request
     public function standingOrderTransfer(Request $req)
     {
@@ -94,7 +100,7 @@ class StandingOrderController extends Controller
                 "deviceIp" => $terminalId,
                 "effectiveDate" => $req->soStartDate,
                 "expiryDate" => $req->soEndndDate,
-                "frequency" => $req->soFrequency,
+                "frequency" => $req->soFrequencyCode . '~' . $req->soFrequency,
                 // "pinCode" => $req->secPin,
                 "narration" => $req->transferPurpose,
                 "channel" => 'NET',

@@ -57,35 +57,36 @@
                                     <div class="text-right">
                                         <h3 class="mt-1 text-black "><span> &nbsp;<b>Account Enquiry</b> </span></h3>
                                     </div>
-                                </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
+                                </div> <!-- end row-->
+                            </div> <!-- end widget-rounded-circle-->
+                        </div>
                     </a>
                 </div>
-                <div class="col-md-6 col-lg-3 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <a href="#">
-                        <div class="widget-rounded-circle card-box home-card "
-                            style="background-color: rgba(253, 235, 205, 1);">
-                            <div class="row ">
-                                <div class="col-4">
-                                    <div class="avatar-sm rounded-circle bg-white">
-                                        <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="text-right">
-                                        <h3 class="mt-1 text-black"><span> &nbsp;<b>Transfers</b> </span></h3>
-                                    </div>
+                <div class="col-md-6 col-lg-3 dropdown">
 
+                    <div class="widget-rounded-circle card-box home-card  dropdown-toggle" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="background-color: rgba(253, 235, 205, 1);cursor: pointer;">
+                        <div class="row ">
+                            <div class="col-4">
+                                <div class="avatar-sm rounded-circle bg-white">
+                                    <i class="fe-rss font-20 avatar-title custom-text-color-gold text-success"></i>
                                 </div>
-                            </div> <!-- end row-->
-                        </div> <!-- end widget-rounded-circle-->
-                    </a>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-right">
+                                    <h3 class="mt-1 text-black"><span> &nbsp;<b>Transfers</b> </span></h3>
+                                </div>
+
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end widget-rounded-circle-->
+
                     {{-- <select name="" id="">
-                        <option value="">Welcome</option>
-                    </select> --}}
-                    <div class="dropdown-menu" style="background-color: rgba(253, 235, 205, 1);">
+                    <option value="">Welcome</option>
+                </select> --}}
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                        style="background-color: rgba(253, 235, 205, 1);">
                         <a class="dropdown-item" href="{{ url('own-account') }}" id="dropdown_own_account">Own
                             Account</a>
                         <a class="dropdown-item " href="{{ url('same-bank') }}">Same Bank</a>
@@ -229,110 +230,113 @@
                                 </div>
                             </div>
                             {{-- <div class="col-md-4">
-                            </div> --}}
+                        </div> --}}
 
 
                             {{-- <div class="col-md-8">
-                                <br><br>
-                                <div class="card w-100 h-25 d-inline-block" style="border-radius: 20px;">
-                                    <div class="border mt-0 rounded p-2"
-                                        style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;zoom:0.9">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <h4 class="header-title p-2 mb-0 text-primary col-md-4 "
-                                                    style="font-weight: bolder">
-                                                    Latest
-                                                    Transactions</h4>
+                            <br><br>
+                            <div class="card w-100 h-25 d-inline-block" style="border-radius: 20px;">
+                                <div class="border mt-0 rounded p-2"
+                                    style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;zoom:0.9">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <h4 class="header-title p-2 mb-0 text-primary col-md-4 "
+                                                style="font-weight: bolder">
+                                                Latest
+                                                Transactions</h4>
 
-                                                <div class="col-md-8">
-                                                    <select name="" class="form-control" id="account_transaction">
+                                            <div class="col-md-8">
+                                                <select name="" class="form-control" id="account_transaction">
 
-                                                        @foreach ($accounts as $i => $account)
-                                                            <option value={{ $account->accountNumber }}>
-                        {{ $account->accountDesc . ' ~ ' . $account->accountNumber }}
-                        </option>
-                        @endforeach
+                                                    @foreach ($accounts as $i => $account)
+                                                    <option value={{ $account->accountNumber }}>
+                                                        {{ $account->accountDesc . ' ~ ' . $account->accountNumber }}
+                                                    </option>
+                                                    @endforeach
 
-                        </select>
-                    </div>
-                </div>
+                                                </select>
+                                            </div>
+                                        </div>
 
-            </div>
-
-
-
-            <legend></legend>
-            <div class="table-responsive table-bordered">
-                <table id="" class="table table-striped mb-0 ">
-                    <thead>
-                        <tr class="bg-info text-white ">
-                            <td> <b> Date & Time</b> </td>
-                            <td> <b> Batch No.</b> </td>
-                            <td> <b> Description </b> </td>
-                            <td> <b> Amount </b> </td>
-                            <td> <b> Running Balance </b> </td>
-
-                        </tr>
-                    </thead>
-                    <tbody class="transaction_history">
-
-                        <tr class="text-center text-center">
-                            <td colspan="5"><img src="{{ asset('assets/images/no_data.png') }}" alt="" width="150">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="table-responsive" style="height: 150px; zoom:0.9">
-                <table class="table table-centered table-nowrap mb-0">
-                    <tbody id="transaction_history">
+                                    </div>
 
 
-                    </tbody>
-                </table>
-            </div>
-            <!-- end table-responsive -->
-        </div> <!-- end .border-->
 
-    </div>
-    <div class="card-body">
+                                    <legend></legend>
+                                    <div class="table-responsive table-bordered">
+                                        <table id="" class="table table-striped mb-0 ">
+                                            <thead>
+                                                <tr class="bg-info text-white ">
+                                                    <td> <b> Date & Time</b> </td>
+                                                    <td> <b> Batch No.</b> </td>
+                                                    <td> <b> Description </b> </td>
+                                                    <td> <b> Amount </b> </td>
+                                                    <td> <b> Running Balance </b> </td>
 
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center active"
-                style="font-size: 17px">
+                                                </tr>
+                                            </thead>
+                                            <tbody class="transaction_history">
 
-                <strong>Total Local Amount: </strong>
-                <strong>
+                                                <tr class="text-center text-center">
+                                                    <td colspan="5"><img src="{{ asset('assets/images/no_data.png') }}"
+                                                            alt="" width="150">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
-                    SLL <span class="i_have_amount open-money"></span>
-                    <span class="i_have_amount_ close-money">***********</span>
-                    &nbsp;&nbsp;&nbsp;
-                    <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip" data-placement="bottom"
-                        title="" data-original-title="More Info"></i>
-                    <i class="fa fa-eye-slash  float-right eye-close text-white" data-toggle="tooltip"
-                        data-placement="bottom" title="" data-original-title="More Info"></i>
+                                    <div class="table-responsive" style="height: 150px; zoom:0.9">
+                                        <table class="table table-centered table-nowrap mb-0">
+                                            <tbody id="transaction_history">
 
-                </strong>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
-                <span class="badge badge-success badge-pill currency_and_savings_account_no"></span>
-            </li>
 
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <strong class="text-warning">INVESTMENTS</strong>
-                <span class="badge badge-warning badge-pill investment_count">0</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <strong class="text-danger"> LOANS </strong>
-                <span class="badge badge-danger badge-pill loan_count">0</span>
-            </li>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- end table-responsive -->
+                                </div> <!-- end .border-->
 
-        </ul>
+                            </div>
+                            <div class="card-body">
 
-    </div>
-</div> --}}
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center active"
+                                        style="font-size: 17px">
+
+                                        <strong>Total Local Amount: </strong>
+                                        <strong>
+
+                                            SLL <span class="i_have_amount open-money"></span>
+                                            <span class="i_have_amount_ close-money">***********</span>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
+                                                data-placement="bottom" title="" data-original-title="More Info"></i>
+                                            <i class="fa fa-eye-slash  float-right eye-close text-white"
+                                                data-toggle="tooltip" data-placement="bottom" title=""
+                                                data-original-title="More Info"></i>
+
+                                        </strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
+                                        <span
+                                            class="badge badge-success badge-pill currency_and_savings_account_no"></span>
+                                    </li>
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong class="text-warning">INVESTMENTS</strong>
+                                        <span class="badge badge-warning badge-pill investment_count">0</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong class="text-danger"> LOANS </strong>
+                                        <span class="badge badge-danger badge-pill loan_count">0</span>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div> --}}
                         </div>
 
                         <div class="row" style="padding-bottom: 10px;">
@@ -341,42 +345,42 @@
 
                                 {{-- <div class="card-body">
 
-                                    <ul class="list-group">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center active"
-                                            style="font-size: 17px">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center active"
+                                        style="font-size: 17px">
 
-                                            <strong>Total Local Amount: </strong>
-                                            <strong>
+                                        <strong>Total Local Amount: </strong>
+                                        <strong>
 
-                                                SLL <span class="i_have_amount open-money"></span>
-                                                <span class="i_have_amount_ close-money">***********</span>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
-                                                    data-placement="bottom" title="" data-original-title="More Info"></i>
-                                                <i class="fa fa-eye-slash  float-right eye-close text-white"
-                                                    data-toggle="tooltip" data-placement="bottom" title=""
-                                                    data-original-title="More Info"></i>
+                                            SLL <span class="i_have_amount open-money"></span>
+                                            <span class="i_have_amount_ close-money">***********</span>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <i class="fas fa-eye  float-right eye-open text-white" data-toggle="tooltip"
+                                                data-placement="bottom" title="" data-original-title="More Info"></i>
+                                            <i class="fa fa-eye-slash  float-right eye-close text-white"
+                                                data-toggle="tooltip" data-placement="bottom" title=""
+                                                data-original-title="More Info"></i>
 
-                                            </strong>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
-                                            <span
-                                                class="badge badge-success badge-pill currency_and_savings_account_no"></span>
-                                        </li>
+                                        </strong>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong class="text-success"> CURRENT & SAVINGS ACCOUNT</strong>
+                                        <span
+                                            class="badge badge-success badge-pill currency_and_savings_account_no"></span>
+                                    </li>
 
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong class="text-warning">INVESTMENTS</strong>
-                                            <span class="badge badge-warning badge-pill investment_count">0</span>
-                                        </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong class="text-danger"> LOANS </strong>
-                                            <span class="badge badge-danger badge-pill loan_count">0</span>
-                                        </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong class="text-warning">INVESTMENTS</strong>
+                                        <span class="badge badge-warning badge-pill investment_count">0</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <strong class="text-danger"> LOANS </strong>
+                                        <span class="badge badge-danger badge-pill loan_count">0</span>
+                                    </li>
 
-                                    </ul>
+                                </ul>
 
-                                </div> --}}
+                            </div> --}}
 
                             </div>
                             <div class="col-md-2"></div>
@@ -392,20 +396,30 @@
                                 <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active"
                                     id="casa_chart_tab">
                                     <strong class="text-success">CURRENT & SAVINGS</strong>
+                                    <select name="" id="casa_line_chart" class="form-control ">
+                                        {{-- <option value="" disabled>Select
+                                                Account Number</option> --}}
+                                        @foreach (session()->get('customerAccounts') as $i => $account)
+                                            <option selected
+                                                value="{{ $account->accountType . ' ~ ' . $account->accountDesc . ' ~ ' . $account->accountNumber . ' ~ ' . $account->currency . ' ~ ' . $account->availableBalance }}">
+                                                {{ $account->accountDesc . ' || ' . $account->accountNumber . ' || ' . $account->currency . '  ' . $account->availableBalance }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link "
-                                    id="investment_chart_tab">
-                                    <strong class="text-warning">INVESTMENTS</strong>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link"
-                                    id="loans_chart_tab">
-                                    <strong class="text-danger">LOANS</strong> &nbsp;
-                                </a>
-                            </li>
+                            {{-- <li class="nav-item">
+                            <a href="#profile" data-toggle="tab" aria-expanded="true" class="nav-link "
+                                id="investment_chart_tab">
+                                <strong class="text-warning">INVESTMENTS</strong>
+                            </a>
+                        </li> --}}
+                            {{-- <li class="nav-item">
+                            <a href="#messages" data-toggle="tab" aria-expanded="false" class="nav-link"
+                                id="loans_chart_tab">
+                                <strong class="text-danger">LOANS</strong> &nbsp;
+                            </a>
+                        </li> --}}
                         </ul>
                         <div class="tab-content container">
                             <div class="tab-pane active" id="home">
@@ -424,24 +438,24 @@
                                 {{-- <div id="chartContainer" style="height: 300px; width: 100%;"></div> --}}
 
                                 {{-- <div class="table-responsive table-bordered accounts_display_area">
-                                    <table id="" class="table table-striped mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Account No </b> </td>
-                                                <td> <b> Description </b> </td>
-                                                <td> <b> Product </b> </td>
-                                                <td> <b> Cur </b> </td>
-                                                <td> <b> OverDraft </b> </td>
-                                                <td> <b> Ledger Bal </b> </td>
-                                                <td> <b> Av. Bal </b> </td>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="casa_list_display">
+                                <table id="" class="table table-striped mb-0 ">
+                                    <thead>
+                                        <tr class="bg-info text-white ">
+                                            <td> <b> Account No </b> </td>
+                                            <td> <b> Description </b> </td>
+                                            <td> <b> Product </b> </td>
+                                            <td> <b> Cur </b> </td>
+                                            <td> <b> OverDraft </b> </td>
+                                            <td> <b> Ledger Bal </b> </td>
+                                            <td> <b> Av. Bal </b> </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="casa_list_display">
 
 
-                                        </tbody>
-                                    </table>
-                                </div> --}}
+                                    </tbody>
+                                </table>
+                            </div> --}}
 
 
 
@@ -453,26 +467,26 @@
                                 <p id="fixed_deposit_account">
 
                                     {{-- <div class="table-responsive table-bordered my_investment_display_area">
-                                    <table id="" class="table table-striped mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Account No </b> </td>
-                                                <td> <b> Deal Amount </b> </td>
-                                                <td> <b> Tunure </b> </td>
-                                                <td> <b> FixedInterestRate </b> </td>
-                                                <td> <b> Rollover </b> </td>
+                                <table id="" class="table table-striped mb-0 ">
+                                    <thead>
+                                        <tr class="bg-info text-white ">
+                                            <td> <b> Account No </b> </td>
+                                            <td> <b> Deal Amount </b> </td>
+                                            <td> <b> Tunure </b> </td>
+                                            <td> <b> FixedInterestRate </b> </td>
+                                            <td> <b> Rollover </b> </td>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody class="fixed_deposit_account">
-                                            <td colspan="100%" class="text-center">
-                                                global noDataAvailable image variable shared with all views
-                                                {!! $noDataAvailable !!}
-                                            </td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="fixed_deposit_account">
+                                        <td colspan="100%" class="text-center">
+                                            global noDataAvailable image variable shared with all views
+                                            {!! $noDataAvailable !!}
+                                        </td>
 
-                                        </tbody>
-                                    </table>
-                                </div> --}}
+                                    </tbody>
+                                </table>
+                            </div> --}}
                                     <!-- end table-responsive -->
 
                                 </p>
@@ -483,23 +497,23 @@
                                 <p id="p_loans_display">
 
                                     {{-- <div class="table-responsive table-bordered loans_display_area">
-                                    <table id="" class="table table-striped mb-0 ">
-                                        <thead>
-                                            <tr class="bg-info text-white ">
-                                                <td> <b> Facility No </b> </td>
-                                                <td> <b> Description </b> </td>
-                                                <td> <b> Cur </b> </td>
-                                                <td> <b> Amount Granted </b> </td>
-                                                <td> <b> Loan Bal </b> </td>
+                                <table id="" class="table table-striped mb-0 ">
+                                    <thead>
+                                        <tr class="bg-info text-white ">
+                                            <td> <b> Facility No </b> </td>
+                                            <td> <b> Description </b> </td>
+                                            <td> <b> Cur </b> </td>
+                                            <td> <b> Amount Granted </b> </td>
+                                            <td> <b> Loan Bal </b> </td>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody class="loans_display">
+                                        </tr>
+                                    </thead>
+                                    <tbody class="loans_display">
 
 
-                                        </tbody>
-                                    </table>
-                                </div> --}}
+                                    </tbody>
+                                </table>
+                            </div> --}}
                                     <!-- end table-responsive -->
 
 
@@ -596,12 +610,18 @@
                                         <div>
                                             <input type="text" class="form-control readOnly" id="exchange_result" readonly>
 
-                                            {{-- <span ></span> --}}
+                                            {{-- <span></span> --}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
+                    </div>
+
+                    <div class="card site-card">
+                        <div class="card-body">
+                            <br><br><br><br>
+                        </div>
                     </div>
                 </div>
 
@@ -704,50 +724,6 @@
                 <!-- App js-->
                 {{-- <script src="{{ asset('assets/js/app.min.js') }}"></script> --}}
 
-                <script type="text/javascript">
-                    var i_have = 0
-                    var i_owe = 0
-                    var i_invest_total = 0
-
-                    {{-- function show_chart(i_have, i_owe, i_invest_total) {
-                        $(".canvas_spinner").hide()
-                        console.log(i_have)
-                        console.log(i_owe)
-                        console.log(i_invest_total)
-                        var ctx = document.getElementById('myChart').getContext('2d');
-                        ctx.height = 100;
-                        var myChart = new Chart(ctx, {
-                            type: 'doughnut',
-                            data: {
-                                labels: ['I HAVE', 'Investments', 'I OWE'],
-                                datasets: [{
-                                    label: 'MY ACCOUNTS',
-                                    data: [i_have, i_owe, i_invest_total],
-                                    backgroundColor: [
-
-                                        'rgb(75,192,192, 0.5)',
-                                        'rgba(231, 223, 10, 0.5)',
-                                        'rgb(233,55,93, 0.5)',
-                                        'rgba(75, 192, 192, 0.5)',
-                                        'rgba(153, 102, 255, 0.5)',
-                                        'rgba(255, 159, 64, 0.5)'
-                                    ],
-                                    borderColor: [
-
-                                        'rgb(75,192,192 ,0.5)',
-                                        'rgba(231, 223, 10, 0.5)',
-                                        'rgb(233,55,93,0.5)',
-                                        'rgba(75, 192, 192, 0.5)',
-                                        'rgba(153, 102, 255, 0.5)',
-                                        'rgba(255, 159, 64, 0.5)'
-                                    ],
-                                    borderWidth: 1
-                                }]
-                            },
-
-                        });
-                    } --}}
-                </script>
 
                 <script>
                     var i_have = 0
@@ -764,12 +740,12 @@
                             datasets: [{
                                 label: 'MY ACCOUNTS',
                                 backgroundColor: [
-                                    'rgb(75,192,192, 0.5)',
-                                    'rgba(231, 223, 10, 0.5)',
-                                    'rgb(233,55,93, 0.5)',
-                                    'rgba(75, 192, 192, 0.5)',
-                                    'rgba(153, 102, 255, 0.5)',
-                                    'rgba(255, 159, 64, 0.5)'
+                                    'rgb(75,192,192, 0.7)',
+                                    'rgba(231, 223, 10, 0.7)',
+                                    'rgb(233,55,93, 0.7)',
+                                    'rgba(75, 192, 192, 0.7)',
+                                    'rgba(153, 102, 255, 0.7)',
+                                    'rgba(255, 159, 64, 0.7)'
                                 ],
                                 //borderColor: 'rgb(255, 99, 132)',
                                 data: [i_have, i_owe, i_invest_total],
@@ -804,15 +780,18 @@
                     function account_line_chart(cus_accounts, acc_line_details) {
 
                         //console.log("========")
-                        //console.log(acc_line_details)
+                        //console.log([cus_accounts, acc_line_details])
                         //console.log("========")
 
                         let acc_dataset = []
                         let chart_data_details = new Array
                         {{-- let show_chart_data = [] --}}
+
+                        let before_reverse = []
+
                         let acc_chart_details = acc_line_details
 
-
+                        empty(chart_data_details);
                         $.each(acc_chart_details, function(index) {
 
                             let chart_res = acc_chart_details[index]
@@ -822,20 +801,15 @@
                             //console.log("========")
 
 
-                            let new_chart_res = chart_res[1]
+                            let new_chart_res = chart_res[2]
+                            var mii = new_chart_res.reverse()
+                            before_reverse.push(mii)
 
                             chart_data_details.push(
 
-                                {{-- {
-                                    label: `${chart_res[0]}`,
-                                    data: `${chart_res[1]}`,
-                                    borderColor: 'rgb(75,192,192, 0.5)',
-                                    backgroundColor: 'rgba(231, 223, 10, 0.5)',
-                                    yAxisID: 'y',
-                                    tension: 0.3
-                                }, --}} {
+                                {
                                     label: `${chart_res[0]} ${chart_res[1]}`,
-                                    data: `${chart_res[2]}`,
+                                    data: chart_res[2],
                                     borderColor: "red",
                                     fill: false
                                 }
@@ -860,6 +834,8 @@
                             //console.log(apiData[index])
                             //console.log("=======")
                             let apiDataResult = apiData[index]
+                            empty(numbers)
+                            empty(dates)
                             $.each(apiDataResult, function(index) {
 
 
@@ -890,56 +866,16 @@
                         console.log('chart_data_details:', chart_data_details);
 
 
-                        const NUMBER_CFG = {
-
-                            min: smallest_number,
-                            max: largest_number
-                        };
 
 
-                        const labels = uniqueDates;
 
-                        {{-- return false --}}
 
-                        const data = {
-                            labels: labels,
-                            datasets: chart_data_details
-                        };
 
-                        const config = {
-                            type: 'line',
-                            data: data,
-                            options: {
-                                responsive: true,
-                                interaction: {
-                                    mode: 'index',
-                                    intersect: false,
-                                },
-                                stacked: true,
-                                plugins: {
-                                    title: {
-                                        display: true,
-                                        text: 'Chart.js Line Chart - Multi Axis'
-                                    }
-                                },
-                                scales: {
-                                    y: {
-                                        type: 'linear',
-                                        display: true,
-                                        position: 'left',
-                                    },
-
-                                }
-                            },
-                        };
 
 
                         // === include 'setup' then 'config' above ===
 
-                        {{-- const myChart = new Chart(
-                            document.getElementById('casa_myChart'),
-                            config
-                        ); --}}
+
 
                         // w3schools chart
                         var xValues = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
@@ -947,7 +883,7 @@
                         new Chart("casa_myChart", {
                             type: "line",
                             data: {
-                                labels: uniqueDates,
+                                labels: dates,
                                 datasets: chart_data_details
                             },
                             options: {
@@ -1220,10 +1156,7 @@
 
                                     account_data.i_have_total = 0
                                     $.each(data, function(index) {
-                                        getAccountTransactions(data[index].accountNumber, data[index].currency,
-                                            start_date,
-                                            end_date,
-                                            transLimit)
+
 
 
 
@@ -1321,9 +1254,9 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                console.log("========")
-                                console.log("loan response:", response);
-                                console.log("========")
+                                //console.log("========")
+                                //console.log("loan response:", response);
+                                //console.log("========")
 
                                 let noLoans = noDataAvailable.replace(
                                     "Data",
@@ -1729,7 +1662,8 @@
                     let acc_line_details = []
 
                     function getAccountTransactions(account_number, account_currency, start_date, end_date, transLimit) {
-
+                        //console.log([account_number, account_currency, start_date, end_date, transLimit]);
+                        //return false;
                         $.ajax({
                             "type": "POST",
                             "url": "account-transaction-history",
@@ -1757,8 +1691,10 @@
 
 
                                     let acc_run_balances = []
+                                    empty(cus_accounts);
 
                                     cus_accounts.push(response.data)
+                                    empty(acc_run_balances);
                                     $.each(data_, function(index) {
 
                                         acc_run_balances.push(data_[index].runningBalance)
@@ -1766,7 +1702,7 @@
                                     })
 
                                     var details = [account_number, account_currency, acc_run_balances]
-
+                                    empty(acc_line_details);
                                     acc_line_details.push(details)
 
 
@@ -1778,7 +1714,7 @@
                                     let data = response.data.slice(0, limit);
 
 
-
+                                    account_line_chart(cus_accounts, acc_line_details)
                                 }
 
                             },
@@ -1801,11 +1737,13 @@
 
                     }
 
+                    function empty(arr) {
+                        //empty your array
+                        arr.length = 0;
 
+                    }
 
                     $(document).ready(function() {
-
-                        $("#dropdown_own_account").click("Alert Clicked")
 
 
                         $(".casa_chart").click(function() {
@@ -1872,6 +1810,10 @@
                         fx_rates()
                         converter_rates = get_correct_fx_rate()
                         get_currency()
+                        var acc_det = $("#casa_line_chart").val()
+                        var my_acc = acc_det.split("~")
+                        var acc_num = my_acc[2].trim()
+                        var acc_cur = my_acc[3].trim()
 
                         setTimeout(function() {
 
@@ -1879,12 +1821,24 @@
 
                             show_chart(account_data.i_have_total, account_data.i_owe_total, account_data.i_invest_total)
                             setTimeout(function() {
-                                {{-- line_graph() --}}
-                                account_line_chart(cus_accounts, acc_line_details)
-                            }, 5000)
+                                getAccountTransactions(acc_num, acc_cur, start_date, end_date, transLimit)
+                                //line_graph()
+                                //account_line_chart(cus_accounts, acc_line_details)
+                            }, 2000)
 
                         }, 2000);
 
+                    })
+
+                    $("#casa_line_chart").change(function() {
+                        var account_details = $(this).val()
+                        var my_account = account_details.split("~")
+                        //console.log("my_account:", my_account)
+
+                        getAccountTransactions(my_account[2], my_account[3],
+                            start_date,
+                            end_date,
+                            transLimit)
                     })
 
 

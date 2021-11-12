@@ -46,7 +46,20 @@
                                 <a href="{{ url('international-bank') }}">International Bank</a>
                             </li>
                             <li>
-                                <a href="{{ url('standing-order') }}">Standing Order</a>
+                                <a href="#sidebarStandingOrder" data-toggle="collapse">
+                                    <span>Standing Order</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarStandingOrder">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{ url('standing-order') }}">Create Standing Order</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('standing-order-status') }}">Standing Order Status</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             @if (config('app.corporate'))
                                 <li>

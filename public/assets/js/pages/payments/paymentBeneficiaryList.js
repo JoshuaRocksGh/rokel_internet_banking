@@ -5,6 +5,8 @@ function getBeneficiaryList() {
         url: "payment-beneficiary-list-api",
         datatype: "application/json",
         success: function (response) {
+            console.log(response);
+
             if (response.responseCode == "000") {
                 const data = response.data;
                 console.log(data);
@@ -34,11 +36,13 @@ function getPaymentTypes() {
         url: "get-payment-types-api",
         datatype: "application/json",
         success: function (response) {
+            console.log(response);
             if (response.responseCode == "000") {
-                const data = response.data.data;
+                const data = response.data;
                 pageData.payTypes = [];
                 $.each(data, function (i) {
                     console.log(data[i]);
+                    console.log("a");
 
                     const type = data[i].paymentType;
                     pageData.payTypes.push(type);

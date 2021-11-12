@@ -8,7 +8,7 @@
                 @include('snippets.transfer.bank_transfer_form')
                 @include('snippets.transactionSummary')
             </section>
-            <section class="col-md-5 mb-3 px-3 d-none d-lg-block" id="transfer_details_view">
+            <section class="col-md-5 mb-3 z-1 px-3 d-none d-lg-block" id="transfer_details_view">
                 @include('snippets.transfer.transfers_detail_view')
             </section>
         </div>
@@ -17,6 +17,7 @@
         </div>
     </div>
 </div>
+@include('snippets.accounts_option')
 <script>
     var transferType = @json($currentPath) 
     var userAccounts = @json(session()->get('customerAccounts'))

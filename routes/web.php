@@ -145,6 +145,7 @@ Route::group(['middleware' => ['userAuth']], function () {
     Route::get('/local-bank', [LocalBankController::class, 'local_bank']);
     Route::get('/own-account', [OwnAccountController::class, 'own_account']);
     Route::get('standing-order', [StandingOrderController::class, 'display_standing_order']);
+    Route::get('standing-order-status', [StandingOrderController::class, 'display_standing_order_status']);
     Route::get('/bulk-transfer', [BulkUploadBulkUploadsController::class, 'index']);
     Route::post('/initiate-cardless', [CardlessController::class, 'initiate_cardless'])->name('initiate-cardless');
     Route::post('/cardless-otp', [CardlessController::class, 'cardless_otp'])->name('cardless-otp');

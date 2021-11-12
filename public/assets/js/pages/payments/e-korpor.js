@@ -17,6 +17,7 @@ function korporReversal(data) {
         userPin = "";
     });
 }
+
 function reverseKorpor(url, data) {
     $.ajax({
         type: "POST",
@@ -33,6 +34,142 @@ function reverseKorpor(url, data) {
             } else {
                 toaster(response.message, "error");
             }
+        },
+    });
+}
+
+function initiateKorpor(url, data) {
+    siteLoading("show");
+    $.ajax({
+        type: "POST",
+        url: url,
+        datatype: "application/json",
+        data: {
+            amount: data.amount,
+            debit_account: data.accountNumber,
+            pin_code: data.pinCode,
+            receiver_address: data.recipientAddress,
+            receiver_name: data.recipientName,
+            receiver_phone: data.recipientPhone,
+            sender_name: data.accountName,
+            account_mandate: data.accountMandate,
+            account_currency: data.accountCurrency,
+            currCode: data.accountCurrencyCode,
+        },
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            siteLoading("hide");
+            if (response.responseCode == "000") {
+                Swal.fire({
+                    width: 400,
+                    title: `<h2 class='text-success font-16 font-weight-bold'>${response.message}</h2>`,
+                    imageUrl: "assets/images/animations/payment_successful.gif",
+                    imageHeight: 200,
+                    confirmButtonColor: "#1abc9c",
+                });
+            } else {
+                Swal.fire({
+                    width: 400,
+                    title: `<h2 class='text-danger font-16 font-weight-bold'>${response.message}</h2>`,
+                    imageUrl:
+                        "assets/images/animations/payment_unsuccessful.gif",
+                    imageHeight: 200,
+                    confirmButtonColor: "#dc3545",
+                });
+            }
+        },
+        error: function (xhr, status, error) {
+            siteLoading("hide");
+            console.log(error);
+            toaster("something went wrong", "warning");
+        },
+    });
+}
+function getKorporDetails(mobileNumber, remittanceNumber) {
+    siteLoading("show");
+    $.ajax({
+        type: "POST",
+        url: "korpor-otp",
+        datatype: "application/json",
+        data: {
+            remittance_no: remittanceNumber,
+            mobile_no: mobileNumber,
+        },
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            siteLoading("hide");
+            if (response.responseCode == "000") {
+                console.log(response);
+                toaster(response.message, "success");
+                $(".redeem_korpor").hide();
+                $(".korpor_details").show();
+                let receiver_name = response.data.beneficiaryName;
+                let receiver_address = response.data.beneficiaryAddress;
+                let receiver_amount = response.data.remittanceAmount;
+                let receiver_num = $("#mobile_no").val();
+                // $("#receiver_name_redeem").text(receiver_name);
+                $("#receiver_name_redeem").val(receiver_name);
+                $("#receiver_address_redeem").val(receiver_address);
+                $("#receiver_amount_redeem").val(receiver_amount);
+                $("#receiver_phone_redeem").val(receiver_num);
+                // let accountNo = response.data.accountNumber;
+            } else {
+                toaster(response.message, "error");
+            }
+        },
+        error: (xhr, status, error) => {
+            siteLoading("hide");
+            console.log(error);
+            toaster("something went wrong", "error");
+        },
+    });
+}
+
+function redeemKorpor(data) {
+    $.ajax({
+        type: "POST",
+        url: "redeem-korpor",
+        datatype: "application/json",
+        data: {
+            redeem_amount: data.redeemAmount,
+            redeem_receiver_name: data.receiverName,
+            redeem_receiver_phone: data.receiverPhone,
+            redeem_account: data.redeemAccount,
+            redeem_remittance_no: data.remittanceNumber,
+            otp_number: data.otp,
+        },
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            console.log(response);
+
+            if (response.responseCode == "000") {
+                Swal.fire({
+                    width: 400,
+                    title: `<h2 class='text-success font-16 font-weight-bold'>${response.message}</h2>`,
+                    imageUrl: "assets/images/animations/payment_successful.gif",
+                    imageHeight: 200,
+                    confirmButtonColor: "#1abc9c",
+                });
+            } else {
+                Swal.fire({
+                    width: 400,
+                    title: `<h2 class='text-danger font-16 font-weight-bold'>${response.message}</h2>`,
+                    imageUrl:
+                        "assets/images/animations/payment_unsuccessful.gif",
+                    imageHeight: 200,
+                    confirmButtonColor: "#dc3545",
+                });
+            }
+        },
+        error: (xhr, status, error) => {
+            console.log(error);
+            toaster("something went wrong", "error");
         },
     });
 }
@@ -92,347 +229,192 @@ function getKorporHistory(url, fromAccountNo, target) {
 }
 
 $(document).ready(function () {
-    $("#transaction_summary").hide();
-    $("#spinner").hide();
-    $("#spinner-text").hide();
-    $("#spinner-reverse").hide();
-    $("#spinner-text-reverse").hide();
-    $("#spinner-text-self").hide();
-    $("#spinner-self").hide();
-    $("#spinner-text-next").hide();
-    $("#spinner-next").hide();
-    $(".self_form").hide();
-    $(".self_summary").hide();
-    $("#spinner-redeem").hide();
-    $("#spinner-text-redeem").hide();
-    $(".receipt").hide();
-
-    $(".korpor_details").hide();
-
-    if (customerType == "C") {
-        $(".account_of_transfer_reverse").show();
-        $(".personal_pin").hide();
-    } else {
-        $(".personal_pin").show();
-        $(".account_of_transfer_reverse").hide();
-    }
-
-    $("#redeem_button").click(function () {
-        let mobile_no = $("#mobile_no").val();
-        console.log(mobile_no);
-        let remittance_no = $("#remittance_no").val();
-        console.log(remittance_no);
-
-        if (mobile_no == "" || remittance_no == "") {
-            toaster("fields must not be empty", "error", 2000);
+    // ==============================================================
+    // ------------------- Redeem Korpor ---------------------------
+    // ==============================================================
+    const redeemInfo = new Object();
+    $("#redeem_account option[data-account-currency!='SLL']").remove();
+    $("#proceed_to_redeem_button").click(function () {
+        let mobileNumber = $("#mobile_no").val();
+        let remittanceNumber = $("#remittance_no").val();
+        if (!mobileNumber || !remittanceNumber) {
+            toaster("All Fields Are Required", "warning");
             return false;
         }
-
-        $.ajax({
-            type: "POST",
-            url: "korpor-otp",
-            datatype: "application/json",
-            data: {
-                remittance_no: remittance_no,
-                mobile_no: mobile_no,
-            },
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-            success: function (response) {
-                console.log(response);
-
-                if (response.responseCode == "000") {
-                    toaster(response.message, "success", 20000);
-
-                    $(".redeem_korpor").hide();
-                    $(".korpor_details").show();
-                    let receiver_name = response.data.beneficiaryName;
-                    console.log(receiver_name);
-                    $("#receiver_name_redeem").text(receiver_name);
-                    $("#receiver_name_redeem").val(receiver_name);
-                    let receiver_address = response.data.beneficiaryAddress;
-                    // $("#receiver_address_redeem").text(receiver_address);
-                    $("#receiver_address_redeem").val(receiver_address);
-                    let receiver_amount = response.data.remittanceAmount;
-                    $("#receiver_amount_redeem").val(receiver_amount);
-
-                    let receiver_num = $("#mobile_no").val();
-                    $("#receiver_phone_redeem").val(receiver_num);
-
-                    let accountNo = response.data.accountNumber;
-
-                    $("#done_button").click(function () {
-                        let otp = $("#receiver_otp_redeem").val();
-                        if (otp == "") {
-                            toaster("Kindly enter the otp", "error", 20000);
-                            return false;
-                        }
-
-                        $.ajax({
-                            type: "POST",
-                            url: "redeem-korpor",
-                            datatype: "application/json",
-                            data: {
-                                redeem_amount: receiver_amount,
-                                redeem_receiver_name: receiver_name,
-                                redeem_receiver_phone: receiver_num,
-                                redeem_account: accountNo,
-                                redeem_remittance_no: remittance_no,
-                                otp_number: otp,
-                            },
-                            headers: {
-                                "X-CSRF-TOKEN": $(
-                                    'meta[name="csrf-token"]'
-                                ).attr("content"),
-                            },
-                            success: function (response) {
-                                console.log(response);
-
-                                if (response.responseCode == "000") {
-                                    toaster(response.message, "success", 20000);
-
-                                    setTimeout(function () {
-                                        window.location.reload();
-                                    }, 30000);
-                                } else {
-                                    toaster(response.message, "error", 20000);
-                                }
-                            },
-                        });
-                    });
-
-                    // $("#request_form_div").hide();
-                    // $('.display_button_print').show();
-                    // alert("done test");
-                } else {
-                    toaster(response.message, "error", 9000);
-
-                    $("#spinner").hide();
-                    $("#spinner-text").hide();
-                    $(".submit-text").show();
-                    // $('#confirm_payment').show();
-                    // $('#confirm_button').attr('disabled', false);
-                }
-            },
-        });
+        getKorporDetails(mobileNumber, remittanceNumber);
     });
-
-    // $("#")
-    // $('#print_receipt').hide();
-
-    $(".display_button_print").hide();
-
-    //codes to display self or others transfer
-    $("#inlineRadio1").click(function () {
-        var destination_type = $(
-            'input[type="radio"][name="radioInline"]:checked'
-        ).val();
-        // console.log(destination_type);
-        $(".display_receiver_name").text(userAlias);
-        $(".self_form").toggle("500");
-        // {{-- $(".self_summary").toggle('500'); --}}
-        $(".others_form").hide();
-        // {{-- $(".others_summary").hide(); --}}
-    });
-
-    $("#inlineRadio2").click(function () {
-        var destination_type = $(
-            'input[type="radio"][name="radioInline"]:checked'
-        ).val();
-        // console.log(destination_type);
-        $(".display_receiver_name").text("");
-        $(".others_form").toggle("500");
-        // {{-- $(".others_summary").toggle('500'); --}}
-        $(".self_form").hide();
-        // {{-- $(".self_summary").hide(); --}}
-    });
-
-    // {{-- hide select accounts info --}}
-    $(".from_account_display_info").hide();
-    $(".to_account_display_info").hide();
-    $("#schedule_payment_date").hide();
-    $("#frequency").hide();
-    $("#schedule_payment_contraint_input").hide();
-    $(".display_schedule_payment_date").text("N/A");
-
-    $("#korpor_payment_form").show();
-    $("#korpor_payment_summary").hide();
-
-    //show card after the from_account value changes
-    $(".from_account").change(function () {
-        var from_account = $(this).val();
-        console.log(from_account);
-        if (from_account == "" || from_account.trim() == undefined) {
-            // {{-- alert('money') --}}
-            // $(".from_account_display_info").hide()
-        } else {
-            from_account_info = from_account.split("~");
-
-            // var to_account = $('#to_account').val()
-
-            // set summary values for display
-            $(".display_from_account_type").text(from_account_info[0]);
-            $(".display_from_account_name").text(from_account_info[1]);
-            $(".display_from_account_no").text(from_account_info[2]);
-            $(".display_from_account_currency").text(from_account_info[3]);
-            $(".select_currency").val(from_account_info[3]);
-            $(".display_transfer_currency").text(from_account_info[3]);
-            $("#display_currency").text(from_account_info[3]);
-            $("#from_account_receipt").text(from_account_info[2]);
-            $(".receipt_currency").text(from_account_info[3]);
-
-            $(".display_currency").text(from_account_info[3]); // set summary currency
-
-            amt = from_account_info[4];
-
-            $(".display_from_account_amount").text(
-                formatToCurrency(Number(from_account_info[4]))
-            );
-            $(".from_account_display_info").show();
-
-            //set summary value for display for self
-
-            $(".display_from_account_type_self").text(from_account_info[0]);
-            $(".display_from_account_name_self").text(from_account_info[1]);
-            $(".display_from_account_no_self").text(from_account_info[2]);
-            $(".display_from_account_currency_self").text(from_account_info[3]);
-
-            $(".display_currency_self").text(from_account_info[3]); // set summary currency
-
-            amt = from_account_info[4];
-
-            $(".display_from_account_amount_self").text(
-                formatToCurrency(Number(from_account_info[4]))
-            );
-            $(".from_account_display_info_self").show();
+    $("#done_button").click(function () {
+        transferInfo.istransfer = false;
+        const e = $("#redeem_account option:selected");
+        const accountNumber = e.attr("data-account-number");
+        if (!accountNumber) {
+            toaster("Select account to redeem into");
+            return;
         }
+        redeemInfo.redeemAccount = accountNumber;
+        redeemInfo.redeemAmount = $("#receiver_amount_redeem").val();
+        redeemInfo.receiverPhone = $("#receiver_phone_redeem").val();
+        redeemInfo.receiverName = $("#receiver_name_redeem").val();
+        redeemInfo.remittanceNumber = $("#remittance_no").val();
+        $("#user_pin").attr("maxlength", "8");
+        $("#pin_code_modal")
+            .modal("show")
+            .on("hidden.bs.modal", function () {
+                $("#user_pin").attr("maxlength", "4");
+            });
+    });
+    $("#transfer_pin").on("click", (e) => {
+        e.preventDefault();
+        if (transferInfo.istransfer) {
+            return;
+        }
+        const otp = $("#user_pin").val();
+        if (!otp || otp.length < 4) {
+            toaster("Invalid Pin Code", "warning");
+            return;
+        }
+        redeemInfo.otp = otp;
+        redeemKorpor(redeemInfo);
+        $("#user_pin").val("");
+    });
+    //------------- end of redeem korpor -------------
+
+    // ====================================================
+    //  ------------- Korpor Transfer ------------------
+    // ===================================================
+    let transferInfo = new Object();
+    $("#account_of_transfer").change(function () {
+        const e = $("#account_of_transfer option:selected");
+        const accountNumber = e.attr("data-account-number");
+        const accountCurrency = e.attr("data-account-currency");
+        const accountMandate = e.attr("data-account-mandate");
+        const accountName = e.attr("data-account-description");
+        const accountType = e.attr("data-account-type");
+        const accountBalance = e.attr("data-account-balance");
+        transferInfo = {
+            accountCurrency,
+            accountMandate,
+            accountName,
+            accountNumber,
+            accountType,
+            accountBalance,
+        };
+        $(".display_from_account_type").text(accountType);
+        $(".display_from_account_name").text(accountName);
+        $(".display_from_account_no").text(accountNumber);
+        $(".display_from_account_currency").text(accountCurrency);
+        $(".display_currency").text(accountCurrency).val(accountCurrency);
+        $(".display_from_account_amount").text(
+            formatToCurrency(accountBalance)
+        );
     });
 
-    //for testing process
-    $(".from_account").change(function () {
-        var from_account = $(".from_account").val();
-        console.log(from_account);
-        // alert(from_account);
+    $("#transfer_to_self").on("click", function () {
+        console.log("self");
+        const { userAlias, userPhone, userEmail } = customerInfo;
+        $(".hide-if-self-transfer").hide(500);
+        $("#receiver_name")
+            .val(userAlias)
+            .attr("disabled", true)
+            .trigger("keyup");
+        $("#receiver_phoneNum")
+            .val(userPhone)
+            .attr("disabled", true)
+            .trigger("keyup");
+        $("#receiver_address").val(userEmail);
     });
 
-    $(".unredeemed").change(function () {
-        var account = $(".unredeemed").val();
-        console.log(account);
+    $("#transfer_to_others").on("click", function () {
+        console.log("others");
+        $(".hide-if-self-transfer").show(500);
+        $("#receiver_name").val("").attr("disabled", false).trigger("keyup");
+        $("#receiver_phoneNum")
+            .val("")
+            .attr("disabled", false)
+            .trigger("keyup");
+        $("#receiver_address").val("");
+    });
+    $("#receiver_name").on("keyup", function () {
+        let name = $("#receiver_name").val();
+        $(".display_receiver_name").text(name);
     });
 
-    $("#amount").keyup(function () {
-        var amount_ = $(this).val();
-        var amount = $("#amount").val();
-        $(".display_amount").text(formatToCurrency(parseFloat(amount_)));
-        console.log(amount);
+    $("#receiver_phoneNum").on("keyup", function () {
+        let phone = $("#receiver_phoneNum").val();
+        $(".display_receiver_phoneNum").text(phone);
     });
 
-    $("#receiver_name").change(function () {
-        var receiver_name = $("#receiver_name").val();
-        console.log(receiver_name);
-    });
-
-    $("#receiver_phoneNum").change(function () {
-        var receiver_phoneNum = $("#receiver_phoneNum").val();
-        console.log(receiver_phoneNum);
-    });
-
-    $("#receiver_address").change(function () {
-        var receiver_address = $("#receiver_address").val();
-        console.log(receiver_address);
-    });
-
-    $("#user_pin").change(function () {
-        var user_pin = $("#user_pin").val();
-        console.log(user_pin);
-    });
-    //end of testing process
-
-    //display for others
-    $("#receiver_name").keyup(function () {
-        var receiver_name = $("#receiver_name").val();
-        $(".display_receiver_name").text(receiver_name);
-    });
-
-    $("#receiver_phoneNum").keyup(function () {
-        var receiver_phoneNum = $("#receiver_phoneNum").val();
-        $(".display_receiver_phoneNum").text(receiver_phoneNum);
-    });
-
-    $("#receiver_address").keyup(function () {
-        var receiver_address = $("#receiver_address").val();
-        $(".display_receiver_address").text(receiver_address);
+    $("#receiver_address").on("keyup", function () {
+        let address = $("#receiver_address").val();
+        $(".display_receiver_address").text(address);
     });
 
     $("#amount").change(function () {
-        var amount = $("#amount").val();
-        $(".display_amount").text(amount);
+        let amount = $("#amount").val();
+        $(".display_amount").text(formatToCurrency(amount));
     });
 
-    //korpor transfer details for self
-    $("#amount_self").keyup(function () {
-        var amount_ = $(this).val();
-        var amount = $("#amount_self").val();
-        $(".display_amount").text(formatToCurrency(parseFloat(amount_)));
-        console.log(amount);
+    $("#confirm_next_button").on("click", (e) => {
+        e.preventDefault();
+        console.log("here");
+        let amount = $("#amount").val();
+        let recipientAddress = $("#receiver_address").val();
+        let recipientName = $("#receiver_name").val();
+        let recipientPhone = $("#receiver_phoneNum").val();
+        let narration = $("#narration").val();
+        transferInfo = Object.assign(transferInfo, {
+            amount,
+            recipientName,
+            recipientPhone,
+            narration,
+            recipientAddress,
+        });
+        if (
+            !recipientName ||
+            !recipientAddress ||
+            !amount ||
+            !recipientPhone ||
+            !narration ||
+            !transferInfo.accountNumber
+        ) {
+            toaster("All Fields are required", "warning");
+            return;
+        }
+        if (isNaN(amount)) {
+            toaster("Amount should be a number", "warning");
+            return;
+        }
+        if (ISCORPORATE) {
+            corporateInitiateKorpor(transferInfo);
+            return;
+        }
+        transferInfo.istransfer = true;
+        $("#pin_code_modal").modal("show");
+        $("#transfer_pin").on("click", (e) => {
+            e.preventDefault();
+            if (!transferInfo.istransfer) {
+                return;
+            }
+            const pinCode = $("#user_pin").val();
+            if (!pinCode || pinCode.length !== 4) {
+                toaster("Invalid Pin Code", "warning");
+                return;
+            }
+            transferInfo.pinCode = pinCode;
+            initiateKorpor("initiate-korpor", transferInfo);
+        });
     });
-
-    $("#receiver_name_self").click(function () {
-        var receiver_name = $("#receiver_name_self").val();
-        console.log(receiver_name);
-    });
-
-    $("#receiver_phoneNum_self").change(function () {
-        var receiver_phoneNum = $("#receiver_phoneNum_self").val();
-        console.log(receiver_phoneNum);
-    });
-
-    $("#receiver_address_self").keyup(function () {
-        var receiver_address_ = $(this).val();
-        var receiver_address = $("#receiver_address_self").val();
-        $(".display_receiver_address").text(receiver_address_);
-        console.log(receiver_address);
-    });
-
-    $("#user_pin_self").change(function () {
-        var user_pin = $("#user_pin_self").val();
-        console.log(user_pin);
-    });
-    //end of testing process
-
-    $("#receiver_name_self").click(function () {
-        var receiver_name = userAlias;
-        $(".display_receiver_name_self").text(receiver_name);
-        $(".display_receiver_name").text(receiver_name);
-    });
-
-    $("#receiver_phoneNum_self").keyup(function () {
-        var receiver_phoneNum_ = $(this).val();
-        var receiver_phoneNum = $("#receiver_phoneNum_self").val();
-        $(".display_receiver_phoneNum_self").text(receiver_phoneNum);
-        $(".display_receiver_phoneNum").text(receiver_phoneNum_);
-    });
-
-    $("#amount_self").change(function () {
-        var amount = $("#amount_self").val();
-        $(".display_amount_self").text(amount);
-    });
-
-    $(".reference_no").change(function () {
-        var reference_no = $(".reference_no").val();
-        console.log(reference_no);
-    });
-
-    $(".receiver_phoneNo_reverse").change(function () {
-        var receiver_phoneNo = $(".receiver_phoneNo_reverse").val();
-        console.log(receiver_phoneNo);
-    });
-
-    //method to format currency amount
-    function formatToCurrency(amount) {
-        return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    function corporateInitiateKorpor(transferInfo) {
+        const endPoint = "corporate-initiate-korpor";
+        initiateKorpor(endPoint, transferInfo);
     }
+
+    // ----------- korpor transfer end -----------
+
+    // $(".unredeemed").change(function () {
+    //     var account = $(".unredeemed").val();
+    //     console.log(account);
+    // });
 
     //button to submit for list of redeemed/completed transactions
     $("#submit_account_no_redeemed").on("click", function () {
@@ -481,216 +463,6 @@ $(document).ready(function () {
         let fromAccountNo = fromAccount.split("~")[2];
         getKorporHistory(url, fromAccountNo, target);
     }
-
-    //button to submit korpor payment transaction for others
-    $("#confirm_button").click(function () {
-        // alert('i have been clicked');
-        var from_account = $(".from_account").val();
-
-        // let from_account = from_account_value;
-        let transfer_amount = $("#amount").val();
-        console.log(transfer_amount);
-        // alert('');
-        let receiver_name = $("#receiver_name").val();
-        let receiver_phoneNum = $("#receiver_phoneNum").val();
-        let receiver_address = $("#receiver_address").val();
-        let sender_name = userAlias;
-        let user_pin = $("#user_pin").val();
-        // console.log(sender_name);
-
-        if (
-            from_account.trim() == "" ||
-            transfer_amount == "" ||
-            receiver_name == "" ||
-            receiver_phoneNum == "" ||
-            receiver_address == "" ||
-            user_pin == ""
-        ) {
-            // alert('fields must not be empty');
-            toaster("Fields must not be empty", "error", 10000);
-            return false;
-        } else {
-            //hide the payment form and show the summary form
-            $("#korpor_payment_form").hide();
-            $("#korpor_payment_summary").show();
-
-            amt = from_account_info[4].trim();
-            if (amt < transfer_amount) {
-                toaster("Insufficient account balance", "error", 9000);
-                return false;
-            } else {
-                //display this is the payment summary
-                $("#display_amount").text(transfer_amount);
-                $("#display_receiver_name").text(receiver_name);
-                $("#display_receiver_address").text(receiver_name);
-                $("#display_receiver_phoneNum").text(receiver_phoneNum);
-            }
-
-            if (user_pin == "") {
-                toaster("enter your pin", "error", 9000);
-                // console.log("Error is from here.");
-                return false;
-            } else {
-                $("#spinner").show(),
-                    $("#spinner-text").show(),
-                    // $('#print_receipt').hide();
-                    $(".submit-text").hide();
-                let from_account_value = from_account_info[2].trim();
-            }
-        }
-    });
-
-    $("#back_button").click(function (e) {
-        e.preventDefault();
-        $("#request_form_div").show();
-        $("#transaction_summary").hide();
-    });
-
-    //button to submit korpor payment transaction for self.
-    $("#confirm_next_button").click(function (e) {
-        e.preventDefault();
-        var destination_type = $(
-            'input[type="radio"][name="radioInline"]:checked'
-        ).val();
-        if (destination_type == "OTHERS") {
-            // alert(destination_type);
-
-            var from_account_ = $("#account_of_transfer").val();
-            // console.log("from_account_:", from_account_);
-
-            var receiver_name_ = $("#receiver_name").val();
-            $("#display_receiver_name").text(receiver_name_);
-            $("#receiver_name_receipt").text(receiver_name_);
-            // console.log("receiver_name_:", receiver_name_);
-
-            var receiver_phone_ = $("#receiver_phoneNum").val();
-            $("#display_receiver_telephone").text(receiver_phone_);
-            $("#receiver_telephone_receipt").text(receiver_phone_);
-            // console.log("receiver_phone_:", receiver_phone_);
-
-            var receiver_address_ = $("#receiver_address").val();
-            $("#display_receiver_address").text(receiver_address_);
-            // console.log("receiver_address_:", receiver_address_);
-
-            var amount_ = $("#amount").val();
-            $("#display_transfer_amount").text(
-                formatToCurrency(Number(amount_))
-            );
-            $("#amount_receipt").text(formatToCurrency(Number(amount_)));
-            // console.log("amount_:", amount_);
-
-            // write an if statement for transfer amount if its less
-
-            if (
-                from_account_ == "" ||
-                amount_ == "" ||
-                receiver_name_ == "" ||
-                receiver_phone_ == "" ||
-                receiver_address_ == ""
-            ) {
-                // alert('fields must not be empty');
-                // toaster("Fields must not be empty", "error", 10000);
-                return false;
-            } else {
-                $("#transaction_summary").show();
-                $("#request_form_div").hide();
-            }
-        } else {
-            // {{-- alert("SELF") --}}
-
-            var from_account_self_ = $("#account_of_transfer").val();
-
-            var receiver_name_self_ = $("#receiver_name_self").val();
-
-            $("#display_receiver_name").text(userAlias);
-            $("#receiver_name_receipt").text(userAlias);
-
-            var receiver_phoneNum_self_ = $("#receiver_phoneNum_self").val();
-            $("#display_receiver_telephone").text(receiver_phoneNum_self_);
-            $("#receiver_telephone_receipt").text(receiver_phoneNum_self_);
-
-            var receiver_address_self = $("#receiver_address_self").val();
-            $("#display_receiver_address").text(receiver_address_self);
-
-            var amount_self_ = $("#amount_self").val();
-            $("#display_transfer_amount").text(
-                formatToCurrency(Number(amount_self_))
-            );
-            $("#amount_receipt").text(formatToCurrency(Number(amount_self_)));
-
-            if (
-                !validateAll(
-                    from_account_self_,
-                    amount_self_,
-                    receiver_name_self_,
-                    receiver_phoneNum_self_,
-                    receiver_address_self
-                )
-            ) {
-                // alert('fields must not be empty');
-                toaster("Fields must not be empty", "error", 10000);
-                return false;
-            } else {
-                $("#transaction_summary").show();
-                $("#request_form_div").hide();
-                return false;
-            }
-        }
-
-        // alert('i have been clicked');
-        let from_account = $(".from_account").val();
-        let transfer_amount = $("#amount_self").val();
-        console.log(transfer_amount);
-        // alert('');
-        let receiver_name = $("#receiver_name_self").val();
-        let receiver_phoneNum = $("#receiver_phoneNum_self").val();
-        let receiver_address = $("#receiver_address_self").val();
-        let sender_name = userAlias;
-        let user_pin = $("#user_pin_self").val();
-        // console.log(sender_name);
-
-        //
-
-        if (
-            from_account.trim() == "" ||
-            transfer_amount == "" ||
-            receiver_name == "" ||
-            receiver_phoneNum == "" ||
-            user_pin == ""
-        ) {
-            // alert('fields must not be empty');
-            toaster("Fields must not be empty", "error", 10000);
-            return false;
-        } else {
-            //hide the payment form and show the summary form
-            $("#korpor_payment_form").hide();
-            $("#korpor_payment_summary").show();
-
-            amt = from_account_info[4].trim();
-            if (amt < transfer_amount) {
-                toaster("Insufficient account balance", "error", 9000);
-                return false;
-            } else {
-                //display this is the payment summary
-                $("#display_amount").text(transfer_amount);
-                $("#display_receiver_name").text(receiver_name);
-                $("#display_receiver_address").text(receiver_name);
-                $("#display_receiver_phoneNum").text(receiver_phoneNum);
-            }
-
-            if (user_pin == "") {
-                toaster("enter your pin", "error", 9000);
-                // console.log("Error is from here.");
-                return false;
-            } else {
-                $("#spinner").show(),
-                    $("#spinner-text").show(),
-                    // $('#print_receipt').hide();
-                    $(".submit-text").hide();
-                let from_account_value = from_account_info[2].trim();
-            }
-        }
-    });
 
     //button to submit for korpor payment for reversal
     $("#reverse_button").click(function () {
@@ -834,337 +606,6 @@ $(document).ready(function () {
                     },
                 });
             }
-        }
-    });
-
-    // button to submit for both others and self transaction
-    $("#confirm_modal_button").click(function (e) {
-        e.preventDefault();
-
-        if ($("#terms_and_conditions").is(":checked")) {
-            if (customerType == "C") {
-                // {{-- alert('Corporate Account'); --}}
-
-                $("#confirm_transfer").hide();
-                $("#spinner").show();
-                $("#spinner-text").show();
-                $("#confirm_modal_button").prop("disabled", true);
-
-                var destination_type = $(
-                    'input[type="radio"][name="radioInline"]:checked'
-                ).val();
-
-                if (destination_type == "OTHERS") {
-                    // {{-- alert(destination_type) --}}
-
-                    var from_account_ = $("#account_of_transfer")
-                        .val()
-                        .split("~");
-                    console.log("========");
-                    console.log(from_account_);
-
-                    var from_account = from_account_[2];
-
-                    // let from_account = from_account_value;
-                    let transfer_amount = $("#amount").val();
-                    console.log(transfer_amount);
-                    // alert('');
-                    let receiver_name = $("#receiver_name").val();
-                    let receiver_phoneNum = $("#receiver_phoneNum").val();
-                    let receiver_address = $("#receiver_address").val();
-                    let sender_name = userAlias;
-                    let user_pin = $("#user_pin").val();
-                    let from_account_number = from_account_[2];
-                    var form_account_currency = from_account_[3];
-                    var from_account_mandate = from_account_[5];
-                    var from_account_currCode = from_account_[6];
-                    var narration = $("#others_form_narration").val();
-                    // {{-- console.log(from_account_mandate) --}}
-
-                    $.ajax({
-                        type: "POST",
-                        url: "corporate-initiate-korpor",
-                        datatype: "application/json",
-                        data: {
-                            amount: transfer_amount,
-                            debit_account: from_account_number,
-                            // 'pin_code': user_pin,
-                            receiver_address: receiver_address.trim(),
-                            receiver_name: receiver_name.trim(),
-                            receiver_phone: receiver_phoneNum,
-                            sender_name: sender_name.trim(),
-                            account_currency: form_account_currency,
-                            account_mandate: from_account_mandate,
-                            currCode: from_account_currCode,
-                            narration: narration,
-                        },
-                        headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                                "content"
-                            ),
-                        },
-                        success: function (response) {
-                            console.log(response);
-
-                            if (response.responseCode == "000") {
-                                var ref_number = response.message;
-
-                                var reference_number = ref_number.split(" ");
-                                // {{-- console.log(reference_number); --}}
-                                $("#reference_number_receipt").text(
-                                    reference_number[7]
-                                );
-                                $(".summary_button").hide();
-
-                                // Swal.fire("", response.message, "success");
-                                toaster(response.message, "success", 10000);
-
-                                // $(".receipt").show();
-                                // $(".form_process").hide();
-                            } else {
-                                toaster(response.message, "error", 9000);
-
-                                //$('#spinner').hide();
-                                //$('#spinner-text').hide();
-                                //$('.submit-text').show();
-                                // $('#confirm_payment').show();
-                                // $('#confirm_button').attr('disabled', false);
-                            }
-                        },
-                    });
-                } else {
-                    // alert("SELF")
-
-                    var from_account_ = $("#account_of_transfer")
-                        .val()
-                        .split("~");
-                    // var from_account = from_account_[2]
-                    let from_account_number = from_account_[2];
-                    var form_account_currency = from_account_[3];
-                    var from_account_mandate = from_account_[5];
-                    var from_account_currCode = from_account_[6];
-                    var narration = $("#others_form_narration").val();
-                    // alert('i have been clicked');
-                    let from_account = $(".from_account").val();
-                    let transfer_amount = $("#amount_self").val();
-                    console.log(transfer_amount);
-                    // alert('');
-                    let receiver_name = $("#receiver_name_self").val();
-                    let receiver_phoneNum = $("#receiver_phoneNum_self").val();
-                    let receiver_address = $("#receiver_address_self").val();
-                    let sender_name = userAlias;
-                    let user_pin = $("#user_pin").val();
-                    // console.log(sender_name);
-
-                    let from_account_value = from_account_info[2].trim();
-
-                    function redirect_page() {
-                        window.location.href = "{{ url('home') }}";
-                    }
-                    $.ajax({
-                        type: "POST",
-                        url: "corporate-initiate-korpor",
-                        datatype: "application/json",
-                        data: {
-                            amount: transfer_amount,
-                            debit_account: from_account_number,
-                            // 'pin_code': user_pin,
-                            receiver_address: receiver_address.trim(),
-                            receiver_name: receiver_name.trim(),
-                            receiver_phone: receiver_phoneNum,
-                            sender_name: sender_name.trim(),
-                            account_currency: form_account_currency,
-                            account_mandate: from_account_mandate,
-                            currCode: from_account_currCode,
-                            narration: narration,
-                        },
-                        headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                                "content"
-                            ),
-                        },
-                        success: function (response) {
-                            // {{-- console.log(response) --}}
-
-                            if (response.responseCode == "000") {
-                                var ref_number = response.message;
-
-                                var reference_number = ref_number.split(" ");
-                                // {{-- console.log(reference_number); --}}
-                                $("#reference_number_receipt").text(
-                                    reference_number[7]
-                                );
-
-                                $(".summary_button").hide();
-
-                                // Swal.fire("", response.message, "success");
-                                toaster(response.message, "success", 10000);
-
-                                // setTimeout(function () {
-                                //     redirect_page();
-                                // }, 3000);
-
-                                // $(".receipt").show();
-                                // $('.form_process').hide();
-                                // toaster(response.message, 'success', 20000);
-                                // $("#request_form_div").hide();
-                                // $('.display_button_print').show();
-                            } else {
-                                toaster(response.message, "error", 9000);
-
-                                // $('#spinner').hide();
-                                // $('#spinner-text').hide();
-                                // $('.submit-text').show();
-                                // $('#confirm_payment').show();
-                                // $('#confirm_button').attr('disabled', false);
-                            }
-                        },
-                    });
-                }
-            } else {
-                $("#transfer_pin").click(function (e) {
-                    e.preventDefault();
-                    // {{-- alert("post to API"); --}}
-
-                    var destination_type = $(
-                        'input[type="radio"][name="radioInline"]:checked'
-                    ).val();
-                    if (destination_type == "OTHERS") {
-                        // {{-- alert(destination_type) --}}
-
-                        var from_account = $(".from_account").val();
-
-                        // let from_account = from_account_value;
-                        let transfer_amount = $("#amount").val();
-                        console.log(transfer_amount);
-                        // alert('');
-                        let receiver_name = $("#receiver_name").val();
-                        let receiver_phoneNum = $("#receiver_phoneNum").val();
-                        let receiver_address = $("#receiver_address").val();
-                        let sender_name = userAlias;
-                        let user_pin = $("#user_pin").val();
-                        let from_account_value = from_account_info[2].trim();
-
-                        $.ajax({
-                            type: "POST",
-                            url: "initiate-korpor",
-                            datatype: "application/json",
-                            data: {
-                                amount: transfer_amount,
-                                debit_account: from_account_value,
-                                pin_code: user_pin,
-                                receiver_address: receiver_address.trim(),
-                                receiver_name: receiver_name.trim(),
-                                receiver_phone: receiver_phoneNum,
-                                sender_name: sender_name.trim(),
-                            },
-                            headers: {
-                                "X-CSRF-TOKEN": $(
-                                    'meta[name="csrf-token"]'
-                                ).attr("content"),
-                            },
-                            success: function (response) {
-                                console.log(response);
-
-                                if (response.responseCode == "000") {
-                                    var ref_number = response.message;
-
-                                    var reference_number =
-                                        ref_number.split(" ");
-                                    // {{-- console.log(reference_number); --}}
-                                    $("#reference_number_receipt").text(
-                                        reference_number[7]
-                                    );
-
-                                    Swal.fire("", response.message, "success");
-                                    $(".receipt").show();
-                                    $(".form_process").hide();
-                                } else {
-                                    toaster(response.message, "error", 9000);
-
-                                    //$('#spinner').hide();
-                                    //$('#spinner-text').hide();
-                                    //$('.submit-text').show();
-                                    // $('#confirm_payment').show();
-                                    // $('#confirm_button').attr('disabled', false);
-                                }
-                            },
-                        });
-                    } else {
-                        // {{-- alert("SELF") --}}
-
-                        // alert('i have been clicked');
-                        let from_account = $(".from_account").val();
-                        let transfer_amount = $("#amount_self").val();
-                        // console.log(transfer_amount);
-                        // alert('');
-                        let receiver_name = $("#receiver_name_self").val();
-                        let receiver_phoneNum = $(
-                            "#receiver_phoneNum_self"
-                        ).val();
-                        let receiver_address = $(
-                            "#receiver_address_self"
-                        ).val();
-                        let sender_name = userAlias;
-                        let user_pin = $("#user_pin").val();
-                        // console.log(sender_name);
-
-                        let from_account_value = from_account_info[2].trim();
-
-                        $.ajax({
-                            type: "POST",
-                            url: "initiate-korpor",
-                            datatype: "application/json",
-                            data: {
-                                amount: transfer_amount,
-                                debit_account: from_account_value,
-                                pin_code: user_pin,
-                                receiver_address: receiver_address.trim(),
-                                receiver_name: receiver_name.trim(),
-                                receiver_phone: receiver_phoneNum,
-                                sender_name: sender_name.trim(),
-                            },
-                            headers: {
-                                "X-CSRF-TOKEN": $(
-                                    'meta[name="csrf-token"]'
-                                ).attr("content"),
-                            },
-                            success: function (response) {
-                                // {{-- console.log(response) --}}
-
-                                if (response.responseCode == "000") {
-                                    var ref_number = response.message;
-
-                                    var reference_number =
-                                        ref_number.split(" ");
-                                    // {{-- console.log(reference_number); --}}
-                                    $("#reference_number_receipt").text(
-                                        reference_number[7]
-                                    );
-
-                                    Swal.fire("", response.message, "success");
-                                    $(".receipt").show();
-                                    $(".form_process").hide();
-                                    // toaster(response.message, 'success', 20000);
-                                    // $("#request_form_div").hide();
-                                    // $('.display_button_print').show();
-                                } else {
-                                    toaster(response.message, "error", 9000);
-
-                                    // $('#spinner').hide();
-                                    // $('#spinner-text').hide();
-                                    // $('.submit-text').show();
-                                    // $('#confirm_payment').show();
-                                    // $('#confirm_button').attr('disabled', false);
-                                }
-                            },
-                        });
-                    }
-                });
-            }
-        } else {
-            toaster("Accept Terms & Conditions to continue", "error");
-            return false;
         }
     });
 });

@@ -1,4 +1,4 @@
-<div class="site-card px-4 h-100">
+<div class="site-card z-1 px-4 h-100">
 
 
     {{-- =============================================================== --}}
@@ -48,7 +48,7 @@
         <span class="text-primary display_to_account display_to_receiver_email col-md-7"></span>
         @endif
         {{-- <p class="col-md-5 transfer-detail-text">Account Currency:</p>
-            <span class="text-primary display_to_account display_to_account_currency col-md-7"></span> --}}
+        <span class="text-primary display_to_account display_to_account_currency col-md-7"></span> --}}
 
         @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank')
 
@@ -88,10 +88,10 @@
         <span class="text-primary display_frequency_so col-md-7"></span>
         @endif
         {{-- <p class="col-md-5 transfer-detail-text">Currency Rate:</p>
-            <span class="text-primary display_midrate col-md-7"></span>
+        <span class="text-primary display_midrate col-md-7"></span>
 
-            <p class="col-md-5 transfer-detail-text">Converted Amount:</p>
-            <span class="text-primary display_converted_amount col-md-7"></span> --}}
+        <p class="col-md-5 transfer-detail-text">Converted Amount:</p>
+        <span class="text-primary display_converted_amount col-md-7"></span> --}}
 
         <div class="col-12 mt-0 mb-2">
             <hr style="margin-top: 2px; margin-bottom: 5px;">
