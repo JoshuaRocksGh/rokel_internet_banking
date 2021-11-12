@@ -11,6 +11,7 @@
     data-account-mandate="{{ $account->accountMandate }}" data-account-description="{{ $account->accountDesc }}"
     data-account-currency-code="{{ $account->currencyCode }}"
     value="{{ $account->accountType . '~' . $account->accountDesc . '~' . $account->accountNumber . '~' . $account->currency . '~' . $account->availableBalance . '~' . $account->currencyCode . '~' . $account->accountMandate }}">
-    {{ $account->accountDesc . ' || ' . $account->accountNumber . ' || ' . $account->currency . ' ' . $account->availableBalance }}
+    {{ $account->accountDesc . ' || ' . $account->accountNumber . ' || ' . $account->currency . ' ' .
+    number_format($account->availableBalance, 2) }}
 </option>
 @endforeach
