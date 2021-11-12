@@ -16,7 +16,7 @@ function getLocalBanks() {
                     option = `<option value="${bankCode}" data-bank-swift-code="${bankSwiftCode}">${bankDescription}</option>`;
                     $("#select_bank").append(option);
                 });
-                $("#select_bank").append("refresh");
+                // $("#select_bank").append("refresh");
                 $("#account_number").attr("disabled", false);
             } else {
                 toaster(response.message);
@@ -42,7 +42,7 @@ function getCountries() {
                     option = `<option value="${codeType}"  data-country-code="${actualCode}">${description}</option>`;
                     $("#select_country").append(option);
                 });
-                $("#select_country").selectpicker("refresh")
+                // $("#select_country").selectpicker("refresh")
             } else {
                 toaster(response.message);
             }
@@ -70,7 +70,7 @@ function getInternationalBanks(countryCode) {
                     option = `<option value="${BICODE}" data-bank-country="${COUNTRY}" >${BANK_DESC}</option>`;
                     $("#select_bank").append(option);
                 });
-                $("#select_bank").append("refresh");
+                // $("#select_bank").append("refresh");
                 $("#select_bank").attr("disabled", false);
                 $("#account_number").attr("disabled", false);
             } else {

@@ -16,7 +16,7 @@ function getOptions(optionUrl, optionId, data) {
             if (optionId === "#loan_sub_sectors") {
                 $("#side-loadingId").hide();
             }
-            $(optionId).selectpicker("refresh");
+            // $(optionId).selectpicker("refresh");
         },
         error: (xhr, status, error) => {
             console.log(optionUrl);
@@ -43,7 +43,7 @@ function getBranches() {
                     }).text(branchDescription)
                 );
             });
-            $("#product_branch").selectpicker("refresh");
+            // $("#product_branch").selectpicker("refresh");
         },
     });
 }
@@ -116,11 +116,13 @@ function postLoanOrigination(data) {
             if (response.responseCode === "000") {
                 console.log(response);
                 swal.fire({
-                    title: "Logout successful!",
+                    title: "Successful!",
                     html: response.message,
                     icon: "success",
                     showConfirmButton: "false",
-                    timer: "2000",
+                    // timer: "2000",
+                }).then(() => {
+                    location.reload();
                 });
             } else {
                 $("#btn_loan_request").prop("disabled", false);

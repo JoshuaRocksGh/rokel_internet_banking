@@ -224,29 +224,6 @@ $(document).ready(function () {
     $(".display_button_print").hide();
 
     //codes to display self or others transfer
-    $("#inlineRadio1").click(function () {
-        var destination_type = $(
-            'input[type="radio"][name="radioInline"]:checked'
-        ).val();
-        // console.log(destination_type);
-        $(".display_receiver_name").text(userAlias);
-        $(".self_form").toggle("500");
-        // {{-- $(".self_summary").toggle('500'); --}}
-        $(".others_form").hide();
-        // {{-- $(".others_summary").hide(); --}}
-    });
-
-    $("#inlineRadio2").click(function () {
-        var destination_type = $(
-            'input[type="radio"][name="radioInline"]:checked'
-        ).val();
-        // console.log(destination_type);
-        $(".display_receiver_name").text("");
-        $(".others_form").toggle("500");
-        // {{-- $(".others_summary").toggle('500'); --}}
-        $(".self_form").hide();
-        // {{-- $(".self_summary").hide(); --}}
-    });
 
     // {{-- hide select accounts info --}}
     $(".from_account_display_info").hide();
@@ -259,62 +236,135 @@ $(document).ready(function () {
     $("#korpor_payment_form").show();
     $("#korpor_payment_summary").hide();
 
+    /// ====================================================
+    //  ------------- Korpor Transfer ------------------
+    // ===================================================
     //show card after the from_account value changes
-    $(".from_account").change(function () {
+    $("#account_of_transfer").change(function () {
         var from_account = $(this).val();
+        const e = $("#account_of_transfer option:selected");
         console.log(from_account);
         if (from_account == "" || from_account.trim() == undefined) {
             // {{-- alert('money') --}}
             // $(".from_account_display_info").hide()
         } else {
-            from_account_info = from_account.split("~");
-
-            // var to_account = $('#to_account').val()
-
-            // set summary values for display
-            $(".display_from_account_type").text(from_account_info[0]);
-            $(".display_from_account_name").text(from_account_info[1]);
-            $(".display_from_account_no").text(from_account_info[2]);
-            $(".display_from_account_currency").text(from_account_info[3]);
-            $(".select_currency").val(from_account_info[3]);
-            $(".display_transfer_currency").text(from_account_info[3]);
-            $("#display_currency").text(from_account_info[3]);
-            $("#from_account_receipt").text(from_account_info[2]);
-            $(".receipt_currency").text(from_account_info[3]);
-
-            $(".display_currency").text(from_account_info[3]); // set summary currency
-
-            amt = from_account_info[4];
-
+            const accountNumber = e.attr("data-account-number");
+            const accountCurrency = e.attr("data-account-currency");
+            const accountMandate = e.attr("data-account-mandate");
+            const accountName = e.attr("data-account-description");
+            const accountType = e.attr("data-account-type");
+            const accountBalance = e.attr("data-account-balance");
+            console.table({
+                accountCurrency,
+                accountMandate,
+                accountName,
+                accountNumber,
+                accountType,
+                accountBalance,
+            });
+            $(".display_from_account_type").text(accountType);
+            $(".display_from_account_name").text(accountName);
+            $(".display_from_account_no").text(accountNumber);
+            $(".display_from_account_currency").text(accountCurrency);
+            // $(".select_currency").val(accountCurrency);
+            // $(".display_transfer_currency").text(accountCurrency);
+            $(".display_currency").text(accountCurrency).val(accountCurrency);
+            // $(".receipt_currency").text(accountCurrency);
             $(".display_from_account_amount").text(
-                formatToCurrency(Number(from_account_info[4]))
+                formatToCurrency(accountBalance)
             );
-            $(".from_account_display_info").show();
+            // $("#from_account_receipt").text(from_account_info[2]);
+            // const accountCurrency = e.attr("data-currency")
+            // from_account_info = from_account.split("~");
+            // $(".display_from_account_type").text(from_account_info[0]);
+            // $(".display_from_account_name").text(from_account_info[1]);
+            // $(".display_from_account_no").text(from_account_info[2]);
+            // $(".display_from_account_currency").text(from_account_info[3]);
+            // $(".select_currency").val(from_account_info[3]);
+            // $(".display_transfer_currency").text(from_account_info[3]);
+            // $("#display_currency").text(from_account_info[3]);
+            // $("#from_account_receipt").text(from_account_info[2]);
+            // $(".receipt_currency").text(from_account_info[3]);
+
+            // $(".display_currency").text(from_account_info[3]); // set summary currency
+
+            // amt = from_account_info[4];
+
+            // $(".display_from_account_amount").text(
+            //     formatToCurrency(Number(from_account_info[4]))
+            // );
+            // $(".from_account_display_info").show();
 
             //set summary value for display for self
 
-            $(".display_from_account_type_self").text(from_account_info[0]);
-            $(".display_from_account_name_self").text(from_account_info[1]);
-            $(".display_from_account_no_self").text(from_account_info[2]);
-            $(".display_from_account_currency_self").text(from_account_info[3]);
+            // $(".display_from_account_type_self").text(from_account_info[0]);
+            // $(".display_from_account_name_self").text(from_account_info[1]);
+            // $(".display_from_account_no_self").text(from_account_info[2]);
+            // $(".display_from_account_currency_self").text(from_account_info[3]);
 
-            $(".display_currency_self").text(from_account_info[3]); // set summary currency
+            // $(".display_currency_self").text(from_account_info[3]); // set summary currency
 
-            amt = from_account_info[4];
+            // amt = from_account_info[4];
 
-            $(".display_from_account_amount_self").text(
-                formatToCurrency(Number(from_account_info[4]))
-            );
-            $(".from_account_display_info_self").show();
+            // $(".display_from_account_amount_self").text(
+            //     formatToCurrency(Number(from_account_info[4]))
+            // );
+            // $(".from_account_display_info_self").show();
         }
     });
 
-    //for testing process
-    $(".from_account").change(function () {
-        var from_account = $(".from_account").val();
-        console.log(from_account);
-        // alert(from_account);
+    $("#transfer_to_self").on("click", function () {
+        console.log("self");
+        const { userAlias, userPhone, userEmail } = customerInfo;
+        $(".hide-if-self-transfer").hide(500);
+        $("#receiver_name")
+            .val(userAlias)
+            .attr("disabled", true)
+            .trigger("keyup");
+        $("#receiver_phoneNum")
+            .val(userPhone)
+            .attr("disabled", true)
+            .trigger("keyup");
+        $("#receiver_address").val(userEmail);
     });
+
+    $("#transfer_to_others").on("click", function () {
+        console.log("others");
+        $(".hide-if-self-transfer").show(500);
+        $("#receiver_name").val("").attr("disabled", false).trigger("keyup");
+        $("#receiver_phoneNum")
+            .val("")
+            .attr("disabled", false)
+            .trigger("keyup");
+        $("#receiver_address").val("");
+    });
+
+    //display for others
+    $("#receiver_name").on("keyup", function () {
+        let name = $("#receiver_name").val();
+        $(".display_receiver_name").text(name);
+    });
+
+    $("#receiver_phoneNum").on("keyup", function () {
+        let phone = $("#receiver_phoneNum").val();
+        $(".display_receiver_phoneNum").text(phone);
+    });
+
+    $("#receiver_address").on("keyup", function () {
+        let address = $("#receiver_address").val();
+        $(".display_receiver_address").text(address);
+    });
+
+    $("#amount").change(function () {
+        let amount = $("#amount").val();
+        $(".display_amount").text(amount);
+    });
+    //for testing process
+    // $(".from_account").change(function () {
+    //     var from_account = $(".from_account").val();
+    //     console.log(from_account);
+    //     // alert(from_account);
+    // });
 
     $(".unredeemed").change(function () {
         var account = $(".unredeemed").val();
@@ -328,15 +378,15 @@ $(document).ready(function () {
         console.log(amount);
     });
 
-    $("#receiver_name").change(function () {
-        var receiver_name = $("#receiver_name").val();
-        console.log(receiver_name);
-    });
+    // $("#receiver_name").change(function () {
+    //     var receiver_name = $("#receiver_name").val();
+    //     console.log(receiver_name);
+    // });
 
-    $("#receiver_phoneNum").change(function () {
-        var receiver_phoneNum = $("#receiver_phoneNum").val();
-        console.log(receiver_phoneNum);
-    });
+    // $("#receiver_phoneNum").change(function () {
+    //     var receiver_phoneNum = $("#receiver_phoneNum").val();
+    //     console.log(receiver_phoneNum);
+    // });
 
     $("#receiver_address").change(function () {
         var receiver_address = $("#receiver_address").val();
@@ -349,56 +399,6 @@ $(document).ready(function () {
     });
     //end of testing process
 
-    //display for others
-    $("#receiver_name").keyup(function () {
-        var receiver_name = $("#receiver_name").val();
-        $(".display_receiver_name").text(receiver_name);
-    });
-
-    $("#receiver_phoneNum").keyup(function () {
-        var receiver_phoneNum = $("#receiver_phoneNum").val();
-        $(".display_receiver_phoneNum").text(receiver_phoneNum);
-    });
-
-    $("#receiver_address").keyup(function () {
-        var receiver_address = $("#receiver_address").val();
-        $(".display_receiver_address").text(receiver_address);
-    });
-
-    $("#amount").change(function () {
-        var amount = $("#amount").val();
-        $(".display_amount").text(amount);
-    });
-
-    //korpor transfer details for self
-    $("#amount_self").keyup(function () {
-        var amount_ = $(this).val();
-        var amount = $("#amount_self").val();
-        $(".display_amount").text(formatToCurrency(parseFloat(amount_)));
-        console.log(amount);
-    });
-
-    $("#receiver_name_self").click(function () {
-        var receiver_name = $("#receiver_name_self").val();
-        console.log(receiver_name);
-    });
-
-    $("#receiver_phoneNum_self").change(function () {
-        var receiver_phoneNum = $("#receiver_phoneNum_self").val();
-        console.log(receiver_phoneNum);
-    });
-
-    $("#receiver_address_self").keyup(function () {
-        var receiver_address_ = $(this).val();
-        var receiver_address = $("#receiver_address_self").val();
-        $(".display_receiver_address").text(receiver_address_);
-        console.log(receiver_address);
-    });
-
-    $("#user_pin_self").change(function () {
-        var user_pin = $("#user_pin_self").val();
-        console.log(user_pin);
-    });
     //end of testing process
 
     $("#receiver_name_self").click(function () {
@@ -430,9 +430,9 @@ $(document).ready(function () {
     });
 
     //method to format currency amount
-    function formatToCurrency(amount) {
-        return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-    }
+    // function formatToCurrency(amount) {
+    //     return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    // }
 
     //button to submit for list of redeemed/completed transactions
     $("#submit_account_no_redeemed").on("click", function () {
@@ -549,12 +549,10 @@ $(document).ready(function () {
     //button to submit korpor payment transaction for self.
     $("#confirm_next_button").click(function (e) {
         e.preventDefault();
-        var destination_type = $(
+        let destination_type = $(
             'input[type="radio"][name="radioInline"]:checked'
         ).val();
         if (destination_type == "OTHERS") {
-            // alert(destination_type);
-
             var from_account_ = $("#account_of_transfer").val();
             // console.log("from_account_:", from_account_);
 
