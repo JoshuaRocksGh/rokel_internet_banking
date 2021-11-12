@@ -229,8 +229,11 @@ function getKorporHistory(url, fromAccountNo, target) {
 }
 
 $(document).ready(function () {
+    // ==============================================================
+    // ------------------- Redeem Korpor ---------------------------
+    // ==============================================================
+    const redeemInfo = new Object();
     $("#redeem_account option[data-account-currency!='SLL']").remove();
-
     $("#proceed_to_redeem_button").click(function () {
         let mobileNumber = $("#mobile_no").val();
         let remittanceNumber = $("#remittance_no").val();
@@ -242,7 +245,6 @@ $(document).ready(function () {
     });
     $("#done_button").click(function () {
         transferInfo.istransfer = false;
-        const redeemInfo = new Object();
         const e = $("#redeem_account option:selected");
         const accountNumber = e.attr("data-account-number");
         if (!accountNumber) {
@@ -253,23 +255,29 @@ $(document).ready(function () {
         redeemInfo.redeemAmount = $("#receiver_amount_redeem").val();
         redeemInfo.receiverPhone = $("#receiver_phone_redeem").val();
         redeemInfo.receiverName = $("#receiver_name_redeem").val();
-        reddemInfo.remittanceNumber = $("#remittance_no").val();
-
-        $("#pin_code_modal").modal("show");
-        $("#transfer_pin").on("click", (e) => {
-            e.preventDefault();
-            if (transferInfo.istransfer) {
-                return;
-            }
-            const otp = $("#user_pin").val();
-            if (!otp || otp.length < 4) {
-                toaster("Invalid Pin Code", "warning");
-                return;
-            }
-            redeemInfo.otp = otp;
-            redeemKorpor(redeemInfo);
-        });
+        redeemInfo.remittanceNumber = $("#remittance_no").val();
+        $("#user_pin").attr("maxlength", "8");
+        $("#pin_code_modal")
+            .modal("show")
+            .on("hidden.bs.modal", function () {
+                $("#user_pin").attr("maxlength", "4");
+            });
     });
+    $("#transfer_pin").on("click", (e) => {
+        e.preventDefault();
+        if (transferInfo.istransfer) {
+            return;
+        }
+        const otp = $("#user_pin").val();
+        if (!otp || otp.length < 4) {
+            toaster("Invalid Pin Code", "warning");
+            return;
+        }
+        redeemInfo.otp = otp;
+        redeemKorpor(redeemInfo);
+        $("#user_pin").val("");
+    });
+    //------------- end of redeem korpor -------------
 
     // ====================================================
     //  ------------- Korpor Transfer ------------------
@@ -401,7 +409,7 @@ $(document).ready(function () {
         initiateKorpor(endPoint, transferInfo);
     }
 
-    // =========== korpor transfer end ===========
+    // ----------- korpor transfer end -----------
 
     // $(".unredeemed").change(function () {
     //     var account = $(".unredeemed").val();
