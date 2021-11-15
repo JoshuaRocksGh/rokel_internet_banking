@@ -24,8 +24,40 @@
 
 @section('content')
 
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{{ url()->previous() }}" type="button"
+                    class="btn btn-sm btn-soft-blue waves-effect waves-light float-left"><i
+                        class="mdi mdi-reply-all-outline"></i>&nbsp;Go
+                    Back</a>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-primary mb-0 page-header text-center text-uppercase">
+                    <img src="{{ asset('assets/images/logoRKB.png') }}" alt="logo" style="zoom: 0.05">&emsp;
+                    DETAIL OF BULK UPLOAD
+
+                </h4>
+            </div>
+
+            <div class="col-md-4 text-right">
+                <h6>
+                    <span class="float-right">
+                        <p class="text-primary"> Bulk Transfer </b> &nbsp; > &nbsp; <b class="text-danger">Bulk Transfer
+                                Detail</b>
+                    </span>
+                </h6>
+            </div>
+
+        </div>
+
+        <hr style="margin: 0px;">
+        <br>
+    </div>
+
     <div>
-        <legend></legend>
+
 
         <div class="row">
             <div class="col-12">
@@ -34,8 +66,6 @@
                     <div class="col-md-1"></div>
 
                     <div class="  card-body col-md-10">
-                        <h2 class="header-title m-t-0 text-primary">DETAIL OF BULK UPLOAD</h2>
-                        <hr>
                         {{-- <p class="text-muted font-14 m-b-20">
                             Parsley is a javascript form validation library. It helps you provide your
                             users with feedback on their form submission before sending it to your
@@ -201,8 +231,8 @@
                 url: 'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
                 datatype: "application/json",
                 success: function(response) {
-                    {{-- console.log(response.data); --}}
 
+                    console.log("upload bulk details:", response);
 
                     if (response.responseCode == '000') {
                         bulk_upload_array_list = response.data;
@@ -213,6 +243,12 @@
                         let bulk_info = bulk_upload_array_list.bulk_info
                         let bulk_details = bulk_upload_array_list.bulk_details
                         let data = bulk_upload_array_list.bulk_details
+
+                        //console.log("bulk_info:", bulk_info);
+
+
+                        //return false;
+
 
                         $('.display_batch_no').text(bulk_info.BATCH_NO)
                         $('.display_narrations').text(bulk_info.DESCRIPTION)
@@ -467,7 +503,7 @@
 
 
             $('#approve_upload_btn').click(function() {
-
+                $(this).text('Processing...')
                 submit_upload(batch_no)
             })
 
