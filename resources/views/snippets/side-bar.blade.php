@@ -98,21 +98,37 @@
                                     <span> QR Payment</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ url('payment-beneficiary-list') }}">Beneficiaries</a>
-                            </li>
+
                             @if (config('app.corporate'))
                                 <li>
                                     <a href="{{ url('bulk-korpor') }}">Bulk E-Korpor</a>
                                 </li>
 
-                                <li>
-                                    <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
-                                </li>
-                                <li>
+
+                                {{-- <li>
                                     <a href="{{ url('bulk-upload-payment') }}">Bulk Upload (Mobile Money)</a>
-                                </li>
+                                </li> --}}
                             @endif
+                            <li>
+                                <a href="#sidebarSchedulePayment" data-toggle="collapse">
+                                    <span>Schedule Payments</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="sidebarSchedulePayment">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{ url('schedule-payment') }}">Schedule Payment</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('schedule-payment') }}">View Schedule Payment</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </li>
+                            <li>
+                                <a href="{{ url('payment-beneficiary-list') }}">Beneficiaries</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
