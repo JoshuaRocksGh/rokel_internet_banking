@@ -71,18 +71,9 @@ class paymentController extends Controller
 
     public function paymentBeneficiaries()
     {
-        $base_response = new BaseResponse();
-
-        try {
-            $userID = session()->get('userId');
-            // return $userID;
-
-            $response = Http::get(env('API_BASE_URL') . "beneficiary/getPaymentBeneficiaries/$userID");
-            $result = new ApiBaseResponse();
-            return $result->api_response($response);
-        } catch (\Exception $e) {
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
-
-        }
+        $userID = session()->get('userId');
+        $response = Http::get(env('API_BASE_URL') . "/beneficiary/getPaymentBeneficiaries/$userID");
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
     }
 }

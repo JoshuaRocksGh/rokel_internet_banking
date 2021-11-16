@@ -1,6 +1,14 @@
+// ==============================================================
+// ------------------- Reverse Korpor ---------------------------
+// ==============================================================
 function korporReversal(data) {
-    $("#centermodal").modal("show");
+    // transferInfo.type = "reversal";
+    data.pass = true;
+    $("#pin_code_modal").modal("show");
     $("#transfer_pin").on("click", () => {
+        if (!data.pass) {
+            return;
+        }
         let userPin = $("#user_pin").val();
         if (userPin.length !== 4) {
             toaster("invalid pin", "warning");
@@ -15,6 +23,7 @@ function korporReversal(data) {
         reverseKorpor("reverse-korpor", korporData);
         $("#user_pin").val("");
         userPin = "";
+        data.pass = false;
     });
 }
 
@@ -206,7 +215,7 @@ function getKorporHistory(url, fromAccountNo, target) {
                 }
                 $.each(data, function (index) {
                     if (target.includes("reversal")) {
-                        extracolumn = `<td> <button class="badge badge-danger" id="${data[index].REMITTANCE_REF}" korporData="${data[index].BENEF_TEL}~${data[index].REMITTANCE_REF}"> &nbsp;Reverse&nbsp;</button> </td>`;
+                        extracolumn = `<td> <button class="btn btn-danger badge reversal-button badge-danger" id="${data[index].REMITTANCE_REF}" korporData="${data[index].BENEF_TEL}~${data[index].REMITTANCE_REF}"> &nbsp;Reverse&nbsp;</button> </td>`;
                     }
                     $(`${target}`).append(
                         `<tr><td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
@@ -244,7 +253,7 @@ $(document).ready(function () {
         getKorporDetails(mobileNumber, remittanceNumber);
     });
     $("#done_button").click(function () {
-        transferInfo.istransfer = false;
+        transferInfo.type = "redeem";
         const e = $("#redeem_account option:selected");
         const accountNumber = e.attr("data-account-number");
         if (!accountNumber) {
@@ -265,7 +274,7 @@ $(document).ready(function () {
     });
     $("#transfer_pin").on("click", (e) => {
         e.preventDefault();
-        if (transferInfo.istransfer) {
+        if (transferInfo.type !== "redeem") {
             return;
         }
         const otp = $("#user_pin").val();
@@ -276,6 +285,7 @@ $(document).ready(function () {
         redeemInfo.otp = otp;
         redeemKorpor(redeemInfo);
         $("#user_pin").val("");
+        transferInfo.type = "";
     });
     //------------- end of redeem korpor -------------
 
@@ -388,11 +398,11 @@ $(document).ready(function () {
             corporateInitiateKorpor(transferInfo);
             return;
         }
-        transferInfo.istransfer = true;
+        transferInfo.type = "transfer";
         $("#pin_code_modal").modal("show");
         $("#transfer_pin").on("click", (e) => {
             e.preventDefault();
-            if (!transferInfo.istransfer) {
+            if (transferInfo.type !== "transfer") {
                 return;
             }
             const pinCode = $("#user_pin").val();
@@ -402,6 +412,7 @@ $(document).ready(function () {
             }
             transferInfo.pinCode = pinCode;
             initiateKorpor("initiate-korpor", transferInfo);
+            transferInfo.type = "";
         });
     });
     function corporateInitiateKorpor(transferInfo) {

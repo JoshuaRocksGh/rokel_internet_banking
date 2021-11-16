@@ -42,7 +42,7 @@ function getCountries() {
                     option = `<option value="${codeType}"  data-country-code="${actualCode}">${description}</option>`;
                     $("#select_country").append(option);
                 });
-                // $("#select_country").selectpicker("refresh")
+                $("#select_country").select2();
             } else {
                 toaster(response.message);
             }
@@ -65,12 +65,13 @@ function getInternationalBanks(countryCode) {
                 $("#select_bank").append(
                     `<option selected disabled value=""> --- Select Bank ---</option>`
                 );
+                data = data.sort((a, b) => a.COUNTRY - b.COUNTRY);
                 $.each(data, (i) => {
                     let { BICODE, BANK_DESC, COUNTRY } = data[i];
                     option = `<option value="${BICODE}" data-bank-country="${COUNTRY}" >${BANK_DESC}</option>`;
                     $("#select_bank").append(option);
                 });
-                // $("#select_bank").append("refresh");
+                $("#select_bank").select2("");
                 $("#select_bank").attr("disabled", false);
                 $("#account_number").attr("disabled", false);
             } else {

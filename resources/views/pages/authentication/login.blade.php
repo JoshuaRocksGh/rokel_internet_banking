@@ -168,7 +168,7 @@
                         <div class="form-group">
 
                             <label for="user_id">User ID<span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" id="user_id" placeholder="Enter Email"
+                            <input class="form-control" type="text" id="user_id" placeholder="Enter Username"
                                 parsley-trigger="change" autocomplete="off" aria-autocomplete="off">
 
                         </div>
