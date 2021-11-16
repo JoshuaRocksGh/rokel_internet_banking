@@ -1,94 +1,64 @@
 @extends('layouts.master')
 
-
-@section('styles')
-
-    <style>
-        @media print {
-            .hide_on_print {
-                display: none;
-            }
-
-            ;
-        }
-
-        @page {
-            size: A4;
-
-                {
-                    {
-                    -- margin: 10px;
-                    --
-                }
-            }
-        }
-
-        @media print {
-
-            html,
-            body {
-                width: 210mm;
-                height: 297mm;
-            }
-
-            /* ... the rest of the rules ... */
-        }
-
-
-        @font-face {
-            font-family: 'password';
-            font-style: normal;
-            font-weight: 400;
-            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
-        }
-
-    </style>
-
-
-@endsection
-
-
 @section('content')
-    <div class="container-fluid pt-2 ">
-        <div class="row align-items-center">
-            <div class="col-md-4 align-items-center">
-                <a href="{{ url()->previous() }}" type="button" class="btn btn-sm btn-soft-blue waves-effect waves-light"
-                    id="page_back_button"><i class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
-            </div>
-            <div class="col-md-4">
-                <div class="row align-items-center justify-content-center">
-                    <img class="header-icon" src="{{ asset('assets/images/logoRKB.png') }}" alt="logo">&emsp;
-                    <h4 class="text-primary my-0 page-header text-center text-uppercase"> STANDING ORDER STATUS
-                    </h4>
-                </div>
-            </div>
+{{-- @php
+@basePath = "Transfer"
 
-            <div class="col-md-4 align-items-center d-none d-md-block text-right">
-                <span class="align-items-center d-none d-lg-block">
-                    <span class="text-primary "> Transfers </span> &nbsp; > &nbsp; <span class="text-primary">Standing
-                        Order</span>&nbsp; > &nbsp; <span class="text-danger">Standing Order Status</span>
-                </span>
-            </div>
-
+@endphp
+@include("snippets.pageHeader") --}}
+<div class="container-fluid pt-2 ">
+    <div class="row align-items-center">
+        <div class="col-md-4 align-items-center">
+            <a href="{{ url()->previous() }}" type="button" class="btn btn-sm btn-soft-blue waves-effect waves-light"
+                id="page_back_button"><i class="mdi mdi-reply-all-outline"></i>&nbsp;Back</a>
         </div>
-        <div class="col-md-12 ">
-            <hr class="text-primary my-2">
+        <div class="col-md-4">
+            <div class="row align-items-center justify-content-center">
+                <img class="header-icon" src="{{ asset('assets/images/logoRKB.png') }}" alt="logo">&emsp;
+                <h4 class="text-primary my-0 page-header text-center text-uppercase"> STANDING ORDER STATUS
+                </h4>
+            </div>
+        </div>
+
+        <div class="col-md-4 align-items-center d-none d-md-block text-right">
+            <span class="align-items-center d-none d-lg-block">
+                <span class="text-primary "> Transfers </span> &nbsp; > &nbsp; <span class="text-primary">Standing
+                    Order</span>&nbsp; > &nbsp; <span class="text-danger">Standing Order Status</span>
+            </span>
         </div>
 
     </div>
+    <div class="col-md-12 ">
+        <hr class="text-primary my-2">
+    </div>
 
-    <br>
-    <div class="container">
-        <div class="table-responsive table-bordered my_investment_display_area">
-            <table id="" class="table table-striped mb-0 ">
+</div>
+
+<br>
+<div class="mx-3 my-2 my-lg-3 mx-lg-5">
+    <div class="site-card">
+        <div class="col-md-6 mx-auto">
+            <label class="d-block text-center f-18 font-weight-bold mb-1 text-primary"> Select Account To Transfer
+                From</label>
+            <select data-style="" data-style-base="form-control select-control" class="form-control" id="from_account"
+                required>
+                @include("snippets.accounts")
+            </select>
+        </div>
+        <hr class="col-md-9">
+        <div class="table-responsive table-bordered ">
+            <table class="table table-striped mb-0 " id="standing_order_display_area">
                 <thead>
                     <tr class="bg-info text-white ">
                         <td> <b> Account No </b> </td>
-                        <td> <b> Deal Amount </b> </td>
-                        <td> <b> Tunure </b> </td>
-                        <td> <b> FixedInterestRate </b> </td>
-                        <td> <b> Rollover </b> </td>
-
+                        <td> <b> Beneficiary Account </b> </td>
+                        <td> <b> Due Amount </b> </td>
+                        <td> <b> Order Date </b> </td>
+                        <td> <b> End Date </b> </td>
+                        <td> <b> Frequency </b> </td>
+                        <td> <b> First Payment Date</b> </td>
+                        <td> <b> Last Payment Date </b> </td>
+                        <td> <b> Order Number </b> </td>
                     </tr>
                 </thead>
                 <tbody class="standing_order_details">
@@ -101,14 +71,15 @@
             </table>
         </div>
     </div>
+</div>
 
 @endsection
 
 @section('scripts')
-
-    <script>
-        let noDataAvailable = {!! json_encode($noDataAvailable) !!}
+@include("extras.datatables")
+<script>
+    let noDataAvailable = {!! json_encode($noDataAvailable) !!}
         let account_data = new Object()
-    </script>
-
-@endsection
+</script>
+<script src="assets\js\pages\transfer\standingOrderStatus.js">
+    @endsection

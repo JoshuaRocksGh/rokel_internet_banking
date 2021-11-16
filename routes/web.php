@@ -289,12 +289,13 @@ Route::post('corporate-international-bank-transfer-api', [InternationalBankContr
 Route::get('/get-my-account', [OwnAccountController::class, 'get_my_accounts']);
 
 // Transfers
-Route::get('/get-transfer-beneficiary-api', [FunctionsController::class, 'get_transfer_beneficiary'])->name('get-transfer-beneficiary-api');
-Route::post('/same-bank-transfer-api', [SameBankController::class, 'sameBankTransfer']);
-Route::post('/local-bank-transfer-api', [LocalBankController::class, 'localBankTransfer']);
-Route::post('/international-bank-transfer-api', [InternationalBankController::class, 'internationalBankTransfer'])->name('international-bank-transfer-api');
-Route::post('/own-account-transfer-api', [OwnAccountController::class, 'own_account_transfer']);
+Route::get('get-transfer-beneficiary-api', [FunctionsController::class, 'get_transfer_beneficiary'])->name('get-transfer-beneficiary-api');
+Route::post('same-bank-transfer-api', [SameBankController::class, 'sameBankTransfer']);
+Route::post('local-bank-transfer-api', [LocalBankController::class, 'localBankTransfer']);
+Route::post('international-bank-transfer-api', [InternationalBankController::class, 'internationalBankTransfer'])->name('international-bank-transfer-api');
+Route::post('own-account-transfer-api', [OwnAccountController::class, 'own_account_transfer']);
 Route::post('standing-order-transfer-api', [StandingOrderController::class, 'standingOrderTransfer']);
+Route::post('get-standing-order-status-api', [StandingOrderController::class, 'getStandingOrderStatus']);
 //CORPORATE transfer
 Route::post('/corporate-own-account-transfer-api', [OwnAccountController::class, 'corporate_own_account_transfer']);
 Route::post('/corporate-same-bank-transfer-api', [SameBankController::class, 'corporate_same_bank']);
