@@ -423,6 +423,10 @@
                         </ul>
                         <div class="tab-content container">
                             <div class="tab-pane active" id="home">
+                                <span colspan="100%" class="text-center" id="line_chart_no_data">
+                                    <br><br>
+                                    {!! $noDataAvailable !!}
+                                </span>
                                 <canvas id="casa_myChart" style="width:200px;max-width:700px;">
 
                                 </canvas>
@@ -1679,42 +1683,55 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                console.log(response)
+                                console.log("get account transaction:", response)
+                                //return false;
 
                                 if (response.responseCode == '000') {
 
-                                    let data_ = response.data;
-                                    //console.log(data_);
-                                    //console.log("========")
-                                    //console.log(data_)
-                                    //console.log("========")
+                                    if (response.data == "" || response.data == null || response.data == undefined) {
+                                        $("#line_chart_no_data").show()
+                                        $("#casa_myChart").hide()
+                                    } else {
+
+                                        $("#line_chart_no_data").hide()
 
 
-                                    let acc_run_balances = []
-                                    empty(cus_accounts);
-
-                                    cus_accounts.push(response.data)
-                                    empty(acc_run_balances);
-                                    $.each(data_, function(index) {
-
-                                        acc_run_balances.push(data_[index].runningBalance)
-
-                                    })
-
-                                    var details = [account_number, account_currency, acc_run_balances]
-                                    empty(acc_line_details);
-                                    acc_line_details.push(details)
+                                        let data_ = response.data;
+                                        //console.log(data_);
+                                        //console.log("========")
+                                        //console.log(data_)
+                                        //console.log("========")
 
 
-                                    {{-- console.log(response.data) --}}
+                                        let acc_run_balances = []
+                                        empty(cus_accounts);
+
+                                        cus_accounts.push(response.data)
+                                        empty(acc_run_balances);
+                                        $.each(data_, function(index) {
+
+                                            acc_run_balances.push(data_[index].runningBalance)
+
+                                        })
+
+                                        var details = [account_number, account_currency, acc_run_balances]
+                                        empty(acc_line_details);
+                                        acc_line_details.push(details)
+
+
+                                        {{-- console.log(response.data) --}}
 
 
 
-                                    var limit = 10;
-                                    let data = response.data.slice(0, limit);
+                                        var limit = 10;
+                                        let data = response.data.slice(0, limit);
 
 
-                                    account_line_chart(cus_accounts, acc_line_details)
+                                        account_line_chart(cus_accounts, acc_line_details)
+
+                                    }
+
+
                                 }
 
                             },
