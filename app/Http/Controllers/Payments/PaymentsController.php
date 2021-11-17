@@ -20,8 +20,6 @@ class PaymentsController extends Controller
 
     public function makePayment(Request $req)
     {
-        return $req;
-
         $base_response = new BaseResponse();
         $data = [
             'accountNumber' => $req->account,
@@ -37,7 +35,6 @@ class PaymentsController extends Controller
             'paymentType' => $req->paymentType,
             // 'pinCode' => $req->pinCode,
         ];
-        // return $data;
         if (config("app.corporate")) {
             try {
                 $response = Http::post(env('CIB_API_BASE_URL') . "payment-gone-for-pending", $data);
