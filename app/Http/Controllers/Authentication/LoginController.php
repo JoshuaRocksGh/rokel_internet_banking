@@ -7,7 +7,9 @@ use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\classes\WEB\UserAuth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Stevebauman\Location\Facades\Location;
 use Error;
+use hisorange\BrowserDetect\Facade as Browser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -67,6 +69,7 @@ class LoginController extends Controller
             "password" => $password,
             "userId" => $user_id
         ];
+
         try {
 
             // dd(env('API_BASE_URL') . "user/login", $data);
@@ -102,14 +105,22 @@ class LoginController extends Controller
                 "userToken" => $userDetail->userToken,
                 "customerNumber" => $userDetail->customerNumber,
                 "customerPhone" => $userDetail->customerPhone,
-                // "c_type" => $userDetail->c_type,
                 "lastLogin" => $userDetail->lastLogin,
                 "customerType" => $userDetail->customerType,
                 "checkerMaker" => $userDetail->checkerMaker,
                 "accountDescription" => $userDetail->accountsList[0]->accountDesc,
                 "customerAccounts" => $userDetail->accountsList,
-                // "checkerMaker" => 'M',
                 "userMandate" => 'A',
+                "deviceInfo" => [
+                    "appVersion" => "web",
+                    "deviceBrand" => Browser::deviceFamily(),
+                    "deviceCountry" => Location::get()->countryName,
+                    "deviceId" => Browser::browserName(),
+                    "deviceIp" => request()->ip(),
+                    "deviceManufacturer" => Browser::deviceFamily(),
+                    "deviceModel" => Browser::deviceModel(),
+                    "deviceOs" =>  Browser::platformName(),
+                ],
                 "headers" => [
                     "x-api-key" => "123",
                     "x-api-secret" => "123",

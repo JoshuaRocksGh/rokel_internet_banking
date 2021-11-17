@@ -46,19 +46,19 @@
             </select>
         </div>
         <hr class="col-md-9">
-        <div class="table-responsive table-bordered ">
+        <div class="table-responsive table-centered table-striped table-bordered ">
             <table class="table table-striped mb-0 " id="standing_order_display_area">
                 <thead>
                     <tr class="bg-info text-white ">
                         <td> <b> Account No </b> </td>
                         <td> <b> Beneficiary Account </b> </td>
-                        <td> <b> Due Amount </b> </td>
+                        <td> <b> Amount (SLL) </b> </td>
                         <td> <b> Order Date </b> </td>
                         <td> <b> End Date </b> </td>
                         <td> <b> Frequency </b> </td>
-                        <td> <b> First Payment Date</b> </td>
-                        <td> <b> Last Payment Date </b> </td>
-                        <td> <b> Order Number </b> </td>
+                        <td> <b> First Payment </b> </td>
+                        <td> <b> Last Payment </b> </td>
+                        <td> <b> Cancel </b> </td>
                     </tr>
                 </thead>
                 <tbody class="standing_order_details">
@@ -72,7 +72,7 @@
         </div>
     </div>
 </div>
-
+@include("snippets.pinCodeModal")
 @endsection
 
 @section('scripts')

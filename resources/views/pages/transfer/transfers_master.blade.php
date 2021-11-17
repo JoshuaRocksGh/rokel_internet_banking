@@ -22,15 +22,6 @@
     var transferType = @json($currentPath) 
     var userAccounts = @json(session()->get('customerAccounts'))
 </script>
-@if (config("app.corporate"))
-<script>
-    const ISCORPORATE = true;
-</script>
-@else
-<script>
-    const ISCORPORATE = false;
-</script>
-@endif
 <script src="{{ asset('assets/js/pages/transfer/transfersMaster.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/validateEmail.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/currencyConverter.js') }}" defer></script>

@@ -1,7 +1,15 @@
 <!-- Third Party js-->
 {{-- <script src="{{ asset('land_asset/js/jquery.min.js') }}"></script> --}}
 
-
+@if (config("app.corporate"))
+<script>
+    const ISCORPORATE = true;
+</script>
+@else
+<script>
+    const ISCORPORATE = false;
+</script>
+@endif
 <script type="text/javascript">
     if (typeof jQuery === 'undefined') {
         var oScriptElem = document.createElement("script");

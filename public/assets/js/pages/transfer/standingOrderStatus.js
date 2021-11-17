@@ -10,10 +10,17 @@ let datatableOptions = {
     // paging: false,
     columnDefs: [
         {
+            //ignore time and render only dates
             targets: [3, 4, 6, 7],
             render: (data) => data.split(" ")[0],
         },
         {
+            targets: [8],
+            render: (data) =>
+                `<div class="text-danger cancel-order text-center" data-order-number="${data}"><i style="cursor: pointer;" class="fas fa-ban"></i></div>`,
+        },
+        {
+            // trancate with ellipses ex
             targets: "_all",
             render: function (data, type, row) {
                 return data && data.length > 45 && !data.includes("<b")
@@ -43,7 +50,7 @@ function getStandingOrderStatus(accountNumber) {
                     datatableOptions
                 );
                 $.each(data, function (i, e) {
-                    formattedAmount = `<b class="text-success">${formatToCurrency(
+                    formattedAmount = `<b class="text-success float-right">${formatToCurrency(
                         e.dueAmount
                     )}<b>`;
                     extraData = JSON.stringify(e);
@@ -62,6 +69,7 @@ function getStandingOrderStatus(accountNumber) {
                         .order([0, "desc"])
                         .draw(false);
                 });
+                renderCancelButtons();
             } else {
                 toaster(response.message, "warning");
                 $("#standing_order_display_area tbody").append(
@@ -77,6 +85,61 @@ function getStandingOrderStatus(accountNumber) {
         //         getStandingOrderStatus(accountNumber);
         //     }, $.ajaxSetup().retryAfter);
         // },
+    });
+}
+function renderCancelButtons() {
+    $(".cancel-order").on("click", (e) => {
+        let orderNumber = $(e.currentTarget).attr("data-order-number");
+        Swal.fire({
+            title: "Really cancel this Standing Order?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#D3D3D3",
+            confirmButtonText: "Yes, Proceed!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let pass = true;
+                $("#pin_code_modal").modal("show");
+                $("#transfer_pin").on("click", () => {
+                    if (!pass) {
+                        return;
+                    }
+                    const pinCode = $("#user_pin").val();
+                    if (!pinCode || pinCode.length !== 4) {
+                        toaster("invalid pin", "warning");
+                        $("#user_pin").val("");
+                        return;
+                    }
+                    cancelStandingOrder(orderNumber, pinCode);
+                    pass = false;
+                });
+            }
+        });
+    });
+}
+
+function cancelStandingOrder(orderNumber, pinCode) {
+    $.ajax({
+        type: "POST",
+        url: "cancel-standing-order-api",
+        datatype: "application/json",
+        data: {
+            orderNumber: orderNumber,
+            pinCode: pinCode,
+        },
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: (response) => {
+            console.log(response);
+            toaster(response.message, "warning");
+        },
+        error: (xhr, status, error) => {
+            console.log(xhr);
+            toaster(error, "error");
+        },
     });
 }
 

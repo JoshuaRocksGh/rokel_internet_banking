@@ -296,6 +296,10 @@ $(() => {
 
     $("#confirm_transfer_button").on("click", (e) => {
         e.preventDefault();
+        if (ISCORPORATE) {
+            makePayment();
+            return;
+        }
         $("#pin_code_modal").modal("show");
     });
 

@@ -298,6 +298,8 @@ Route::post('international-bank-transfer-api', [InternationalBankController::cla
 Route::post('own-account-transfer-api', [OwnAccountController::class, 'own_account_transfer']);
 Route::post('standing-order-transfer-api', [StandingOrderController::class, 'standingOrderTransfer']);
 Route::post('get-standing-order-status-api', [StandingOrderController::class, 'getStandingOrderStatus']);
+Route::post('cancel-standing-order-api', [StandingOrderController::class, 'cancelStandingOrder']);
+
 //CORPORATE transfer
 Route::post('/corporate-own-account-transfer-api', [OwnAccountController::class, 'corporate_own_account_transfer']);
 Route::post('/corporate-same-bank-transfer-api', [SameBankController::class, 'corporate_same_bank']);

@@ -58,7 +58,7 @@ $currentPath = "Make Payment";
                 </div>
                 <div class="col-md-9 col-lg-8">
                     {{-- =================================== --}}
-                    {{-- Select Account  --}}
+                    {{-- Select Account --}}
                     {{-- =================================== --}}
                     <div class=" mb-1 mx-auto px-2 px-md-3 px-lg-5" style="max-width: 50rem">
                         <label class="d-block text-center f-18 font-weight-bold mb-1 text-primary"> Select Account To
@@ -149,8 +149,7 @@ $currentPath = "Make Payment";
 @endsection
 
 @section('scripts')
-{{-- <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
-</script> --}}
+
 <script>
     var myaccount = @json(session()->get('customerAccounts'))
 </script>
