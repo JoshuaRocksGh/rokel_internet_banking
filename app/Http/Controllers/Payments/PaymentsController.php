@@ -38,6 +38,17 @@ class PaymentsController extends Controller
         ];
         // return $data;
         if (config("app.corporate")) {
+
+            return $req;
+            return false;
+
+            $authToken = session()->get('userToken');
+            $userID = session()->get('userId');
+            $userAlias = session()->get('userAlias');
+            $customerPhone = session()->get('customerPhone');
+            $customerNumber = session()->get('customerNumber');
+            $userMandate = session()->get('userMandate');
+
             try {
                 $response = Http::post(env('CIB_API_BASE_URL') . "payment-gone-for-pending", $data);
                 $result = new ApiBaseResponse();
