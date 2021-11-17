@@ -308,6 +308,18 @@ $(() => {
         let account = $("#from_account option:selected").attr(
             "data-account-number"
         );
+        let accountName = $("#from_account option:selected").attr(
+            "data-account-description"
+        );
+        let accountMandate = $("#from_account option:selected").attr(
+            "data-account-mandate"
+        );
+        let accountCurrency = $("#from_account option:selected").attr(
+            "data-account-currency"
+        );
+        let accountCurrCode = $("#from_account option:selected").attr(
+            "data-account-currency-code"
+        );
         let amount = $("#amount").val();
         let paymentType = pageData.currentType;
         let beneficiaryAccount, payeeName;
@@ -326,6 +338,10 @@ $(() => {
         }
         pageData.paymentInfo = {
             amount,
+            accountCurrCode,
+            accountCurrency,
+            accountMandate,
+            accountName,
             account,
             beneficiaryAccount,
             payeeName,
