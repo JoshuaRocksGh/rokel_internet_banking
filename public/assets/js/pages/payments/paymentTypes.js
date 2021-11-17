@@ -25,7 +25,7 @@ function getPaymentBeneficiaries() {
             $("#loader").show();
 
             setTimeout(function () {
-                paymentType();
+                getPaymentBeneficiaries();
             }, $.ajaxSetup().retryAfter);
         },
     });
