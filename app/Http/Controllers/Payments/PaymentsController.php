@@ -20,7 +20,6 @@ class PaymentsController extends Controller
 
     public function makePayment(Request $req)
     {
-
         $base_response = new BaseResponse();
         $data = [
             'accountNumber' => $req->account,
@@ -36,7 +35,6 @@ class PaymentsController extends Controller
             'paymentType' => $req->paymentType,
             // 'pinCode' => $req->pinCode,
         ];
-        // return $data;
         if (config("app.corporate")) {
 
             return $req;
