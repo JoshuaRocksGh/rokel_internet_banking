@@ -148,14 +148,15 @@ class StandingOrderController extends Controller
 
     public function cancelStandingOrder(Request $request)
     {
-        $authToken = session()->get('userToken');
+        $deviceInfo = session()->get('deviceInfo');
         $data = [
             "orderNumber" => $request->orderNumber,
-            "authToken" => $authToken,
+            "authToken" => session()->get('userToken'),
             "myPin" => $request->pinCode,
-            "deviceIp" => ""
+            "deviceIp" => $deviceInfo["deviceIp"],
         ];
-        return $data;
+
+        // return $data;
         $response = Http::post(env('API_BASE_URL') . "/transfers/cancelStandingOrder", $data);
         $result = new ApiBaseResponse();
         return $result->api_response($response);

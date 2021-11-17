@@ -49,10 +49,11 @@ function getStandingOrderStatus(accountNumber) {
                 let table = $("#standing_order_display_area").DataTable(
                     datatableOptions
                 );
+                table.clear();
                 $.each(data, function (i, e) {
                     formattedAmount = `<b class="text-success float-right">${formatToCurrency(
                         e.dueAmount
-                    )}<b>`;
+                    )}</b>`;
                     extraData = JSON.stringify(e);
                     table.row
                         .add([
@@ -109,11 +110,11 @@ function renderCancelButtons() {
                     const pinCode = $("#user_pin").val();
                     if (!pinCode || pinCode.length !== 4) {
                         toaster("invalid pin", "warning");
-                        $("#user_pin").val("");
-                        return;
+                    } else {
+                        cancelStandingOrder(orderNumber, pinCode);
                     }
-                    cancelStandingOrder(orderNumber, pinCode);
                     pass = false;
+                    $("#user_pin").val("");
                 });
             }
         });
