@@ -20,10 +20,8 @@ class PaymentsController extends Controller
 
     public function makePayment(Request $req)
     {
-
         $base_response = new BaseResponse();
         $data = [
-
             'accountNumber' => $req->account,
             'amount' => $req->amount,
             'customerName' => session()->get('userId'),
@@ -35,9 +33,29 @@ class PaymentsController extends Controller
             'payeeNumber' => $req->paymentAccount,
             'paymentCode' => $req->payeeName,
             'paymentType' => $req->paymentType,
-            'pinCode' => $req->pinCode,
+            // 'pinCode' => $req->pinCode,
         ];
-        // return $data;
+        if (config("app.corporate")) {
+
+            return $req;
+            return false;
+
+            $authToken = session()->get('userToken');
+            $userID = session()->get('userId');
+            $userAlias = session()->get('userAlias');
+            $customerPhone = session()->get('customerPhone');
+            $customerNumber = session()->get('customerNumber');
+            $userMandate = session()->get('userMandate');
+
+            try {
+                $response = Http::post(env('CIB_API_BASE_URL') . "payment-gone-for-pending", $data);
+                $result = new ApiBaseResponse();
+                return $result->api_response($response);
+            } catch (\Exception $e) {
+                return $base_response->api_response('500', $e->getMessage(),  NULL); // return API BASERESPONSE
+            }
+        }
+        $data["pinCode"] = $req->pinCode;
         try {
             $response = Http::post(env('API_BASE_URL') . "payment/makePayment", $data);
             $result = new ApiBaseResponse();

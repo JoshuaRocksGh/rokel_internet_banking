@@ -132,4 +132,33 @@ class StandingOrderController extends Controller
 
         }
     }
+
+
+    public function getStandingOrderStatus(Request $request)
+    {
+        $authToken = session()->get('userToken');
+        $data = [
+            "accountNumber" => $request->accountNumber,
+            "authToken" => $authToken,
+        ];
+        $response = Http::post(env('API_BASE_URL') . "/transfers/standingOrderEnq/", $data);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
+
+    public function cancelStandingOrder(Request $request)
+    {
+        $deviceInfo = session()->get('deviceInfo');
+        $data = [
+            "orderNumber" => $request->orderNumber,
+            "authToken" => session()->get('userToken'),
+            "myPin" => $request->pinCode,
+            "deviceIp" => $deviceInfo["deviceIp"],
+        ];
+
+        // return $data;
+        $response = Http::post(env('API_BASE_URL') . "/transfers/cancelStandingOrder", $data);
+        $result = new ApiBaseResponse();
+        return $result->api_response($response);
+    }
 }

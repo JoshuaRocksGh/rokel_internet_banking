@@ -1,4 +1,36 @@
 const pageData = new Object();
+function getPaymentBeneficiaries() {
+    $.ajax({
+        type: "GET",
+        url: "payment-beneficiary-list-api",
+        datatype: "application/json",
+        success: function (response) {
+            let data = response.data;
+            console.log(data);
+            // return false;
+            if (data.length > 0) {
+                $.each(pageData.payTypes, (i) => {
+                    const type = pageData.payTypes[i];
+                    pageData["bene_" + type] = data.filter(
+                        (e) => e.PAYMENT_TYPE === type
+                    );
+                });
+                initPaymentsCarousel();
+            } else {
+                console.log(response);
+                return false;
+            }
+        },
+        error: function (xhr, status, error) {
+            $("#loader").show();
+
+            setTimeout(function () {
+                getPaymentBeneficiaries();
+            }, $.ajaxSetup().retryAfter);
+        },
+    });
+}
+
 function paymentType() {
     $.ajax({
         type: "GET",
@@ -7,38 +39,44 @@ function paymentType() {
         success: function (response) {
             $("#loader").hide();
             console.log("response:", response);
-            // return false;
             let data = response.data;
-            console.log(data);
-            pageData.payTypes = [];
-            if (data.length > 0) {
-                let color = [
-                    "bg-success",
-                    "bg-info",
-                    "bg-warning",
-                    "bg-danger",
-                    "bg-primary",
-                    "bg-pink",
-                    "bg-blue",
-                    "bg-secondary",
-                    "bg-dark",
-                ];
-                $(".payments-carousel").empty();
-                $.each(data, function (i) {
-                    const type = data[i].paymentType;
-                    pageData.payTypes.push(type);
-                    pageData["pay_" + type] = data[i];
-                    const { label, paymentType, description } = data[i];
-                    if (!label) return;
-                    let paymentCard = `<div class="display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
+            console.log(data.length);
+            // return false;
+
+            if (response.responseCode == "000") {
+                pageData.payTypes = [];
+
+                if (data.length > 0) {
+                    let color = [
+                        "bg-success",
+                        "bg-info",
+                        "bg-warning",
+                        "bg-danger",
+                        "bg-primary",
+                        "bg-pink",
+                        "bg-blue",
+                        "bg-secondary",
+                        "bg-dark",
+                    ];
+                    $(".payments-carousel").empty();
+                    $.each(data, function (i) {
+                        const type = data[i].paymentType;
+                        pageData.payTypes.push(type);
+                        pageData["pay_" + type] = data[i];
+                        const { label, paymentType, description } = data[i];
+                        if (!label) return;
+                        let paymentCard = `<div class="display-card payments ${color[i]}"  id='${paymentType}_card' data-span="${paymentType}">
                     <span class="box-circle"></span>
                     <span id='${paymentType}_text'>${description}</span>
-        </div>`;
-                    $(".payments-carousel").append(paymentCard);
-                });
-                getPaymentBeneficiaries();
+                    </div>`;
+                        $(".payments-carousel").append(paymentCard);
+                    });
+                    getPaymentBeneficiaries();
+                } else {
+                    return false;
+                }
             } else {
-                return false;
+                toaster("Failed", "error");
             }
         },
         error: function (xhr, status, error) {
@@ -155,35 +193,6 @@ function paymentVerification() {
     pageData.paymentInfo.paymentDescription = paymentDescription;
     $("#payment_verification_modal").modal("show");
 }
-function getPaymentBeneficiaries() {
-    $.ajax({
-        type: "GET",
-        url: "payment-beneficiary-list-api",
-        datatype: "application/json",
-        success: function (response) {
-            let data = response.data;
-            console.log(data);
-            if (data.length > 0) {
-                $.each(pageData.payTypes, (i) => {
-                    const type = pageData.payTypes[i];
-                    pageData["bene_" + type] = data.filter(
-                        (e) => e.PAYMENT_TYPE === type
-                    );
-                });
-                initPaymentsCarousel();
-            } else {
-                return false;
-            }
-        },
-        error: function (xhr, status, error) {
-            $("#loader").show();
-
-            setTimeout(function () {
-                paymentType();
-            }, $.ajaxSetup().retryAfter);
-        },
-    });
-}
 
 function initPaymentsCarousel() {
     let payments = document.querySelectorAll(".payments");
@@ -287,6 +296,10 @@ $(() => {
 
     $("#confirm_transfer_button").on("click", (e) => {
         e.preventDefault();
+        if (ISCORPORATE) {
+            makePayment();
+            return;
+        }
         $("#pin_code_modal").modal("show");
     });
 
@@ -294,6 +307,18 @@ $(() => {
         e.preventDefault();
         let account = $("#from_account option:selected").attr(
             "data-account-number"
+        );
+        let accountName = $("#from_account option:selected").attr(
+            "data-account-description"
+        );
+        let accountMandate = $("#from_account option:selected").attr(
+            "data-account-mandate"
+        );
+        let accountCurrency = $("#from_account option:selected").attr(
+            "data-account-currency"
+        );
+        let accountCurrCode = $("#from_account option:selected").attr(
+            "data-account-currency-code"
         );
         let amount = $("#amount").val();
         let paymentType = pageData.currentType;
@@ -313,6 +338,10 @@ $(() => {
         }
         pageData.paymentInfo = {
             amount,
+            accountCurrCode,
+            accountCurrency,
+            accountMandate,
+            accountName,
             account,
             beneficiaryAccount,
             payeeName,

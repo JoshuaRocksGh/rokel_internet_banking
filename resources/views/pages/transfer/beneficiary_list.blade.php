@@ -119,7 +119,7 @@ $currentPath = "Transfer Beneficiary";
                             <tr class="bg-info text-white">
                                 <th> <b> Beneficiary Name </b> </th>
                                 <th> <b> Account Number </b> </th>
-                                {{-- <th> <b>  </b> </th> --}}
+                                {{-- <th> <b> </b> </th> --}}
                                 <th> <b> Beneficiary Email </b> </th>
                                 <th> <b> Beneficiary Bank </b> </th>
                                 <th class="text-center"> <b>Actions </b> </th>
@@ -140,11 +140,16 @@ $currentPath = "Transfer Beneficiary";
 @endsection
 
 @section('scripts')
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
+
 @include("extras.datatables")
 <script>
     const noDataAvailable =   {!! json_encode($noDataAvailable) !!}
 </script>
-<script src="{{ asset("assets/js/pages/transfer/beneficiary/beneficiaryList.js") }}">
+<script src="assets/js/pages/transfer/beneficiary/beneficiaryList.js">
 </script>
 
 @endsection

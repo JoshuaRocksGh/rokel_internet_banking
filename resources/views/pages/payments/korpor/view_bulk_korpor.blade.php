@@ -116,7 +116,7 @@
                                     <thead>
                                         <tr class="bg-secondary text-white">
                                             <th>No</th>
-                                            <th>Credit Acc</th>
+                                            <th>Mobile No.</th>
                                             <th>Amount</th>
                                             <th>Name</th>
                                         </tr>
@@ -149,27 +149,9 @@
 
 @section('scripts')
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @include('extras.datatables')
 
-    <!-- third party js -->
-    <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}">
-    </script>
-    {{-- <script src="{{ asset('assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-<script src="{{ asset('assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
-<script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script> --}}
-    <!-- third party js ends -->
 
-    <!-- Datatables init -->
-    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
     <script>
         function my_account() {
             $.ajax({
@@ -211,7 +193,7 @@
                 url: 'get-bulk-upload-detail-list-api?customer_no=' + customer_no + '&batch_no=' + batch_no,
                 datatype: "application/json",
                 success: function(response) {
-                    {{-- console.log(response.data); --}}
+                    console.log("response:", response);
 
 
                     if (response.responseCode == '000') {
@@ -230,7 +212,7 @@
                         $('.display_total_amount').text(formatToCurrency(parseFloat(bulk_info.TOTAL_AMOUNT)))
 
                         $.each(data, function(index) {
-                            console.log(data[index])
+                            //console.log(data[index])
 
                             let status = ''
                             let bank_type = ''
@@ -246,7 +228,7 @@
                                     `<span class="badge badge-warning"> &nbsp; Pending &nbsp; </span> `
                             }
 
-                            if (data[index].BANK_CODE == 'SAB') {
+                            if (data[index].BANK_CODE == 'BKROP') {
                                 bank_type = `<span class=""> &nbsp; Same Bank &nbsp; </span> `
                             } else {
                                 bank_type = `<span class=""> &nbsp; Other Bank &nbsp; </span> `
@@ -264,7 +246,7 @@
 
                             table.row.add([
                                 data[index].ID,
-                                data[index].BBAN,
+                                data[index].MOBILE_NO,
                                 formatToCurrency(parseFloat(data[index].AMOUNT)),
                                 data[index].NAME,
 
@@ -461,19 +443,7 @@
             var batch_no = @json($batch_no)
 
 
-            let today = new Date();
-            let dd = today.getDate();
 
-            let mm = today.getMonth() + 1;
-            const yyyy = today.getFullYear()
-            console.log(mm)
-            console.log(String(mm).length)
-            if (String(mm).length == 1) {
-                mm = '0' + mm
-            }
-
-            defaultDate = dd + mm + '-' + today.getFullYear()
-            console.log(defaultDate)
 
 
             $('#approve_upload_btn').click(function() {
@@ -488,18 +458,11 @@
 
 
 
-            $(".date-picker-valueDate").flatpickr({
-                altInput: true,
-                altFormat: "j F, Y",
-                dateFormat: "d-m-Y",
-                defaultDate: [defaultDate],
-                position: "below"
-            })
-
             setTimeout(function() {
                 bulk_upload_detail_list(customer_no, batch_no)
+                //alert("Welcome")
                 {{-- my_account() --}}
-            }, 1000)
+            }, 500)
 
 
 

@@ -20,6 +20,7 @@ function getBeneficiaryList() {
                     drawBeneficiaryTable();
                 }
             } else {
+                console.log(response);
             }
         },
         error: function (xhr, status, error) {

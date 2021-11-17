@@ -441,7 +441,7 @@
             setTimeout(function() {
                 // bulk_upload_list('057725', "P")
                 bulk_upload_list(customer_no, "P")
-                my_account()
+                //my_account()
             }, 1000)
 
             $('#bulk_upload_form').submit(function() {

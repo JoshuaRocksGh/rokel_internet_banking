@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Payments;
 
+use App\Http\classes\API\BaseResponse;
 use App\Http\classes\WEB\ApiBaseResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -71,7 +72,7 @@ class paymentController extends Controller
     public function paymentBeneficiaries()
     {
         $userID = session()->get('userId');
-        $response = Http::get(env('API_BASE_URL') . "beneficiary/getPaymentBeneficiaries/$userID");
+        $response = Http::get(env('API_BASE_URL') . "/beneficiary/getPaymentBeneficiaries/$userID");
         $result = new ApiBaseResponse();
         return $result->api_response($response);
     }

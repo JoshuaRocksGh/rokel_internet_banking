@@ -458,9 +458,16 @@ class KorporController extends Controller
             "customberNumber" => session()->get('customerNumber'),
             "pinCode" => $request->pinCode,
             "postedBy" => $userID,
-            "referenceNo" => $request->referenceNo
+            "referenceNo" => $request->referenceNo,
+            "brand" => "string",
+            "country" => "string",
+            "deviceId" => "string",
+            "deviceName" => "string",
+            "entrySource" => "string",
+            "manufacturer" => "string",
+            "userName" => $userID
         ];
-
+        // return $data;
         Log::alert($data);
         // $accountNumber = $request->accountNo;
         // $accountNumber = "004001100241700194";

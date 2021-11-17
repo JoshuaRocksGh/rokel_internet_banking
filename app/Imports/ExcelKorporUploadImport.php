@@ -217,7 +217,7 @@ class ExcelKorporUploadImport implements WithHeadingRow, ToCollection
                     'created_at' => NOW(),
                     'updated_at' => NOW(),
                     'gender' => $row['gender'],
-                    'age' => $row['age'],
+                    'date_of_birth' => $row['date_of_birth'],
                     'mobile_no' => $row['telephone_number'],
                     'id_number' => $row['id_number'],
                     'address' => $row['address'],

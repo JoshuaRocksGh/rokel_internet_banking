@@ -1,6 +1,14 @@
+// ==============================================================
+// ------------------- Reverse Korpor ---------------------------
+// ==============================================================
 function korporReversal(data) {
-    $("#centermodal").modal("show");
+    // transferInfo.type = "reversal";
+    data.pass = true;
+    $("#pin_code_modal").modal("show");
     $("#transfer_pin").on("click", () => {
+        if (!data.pass) {
+            return;
+        }
         let userPin = $("#user_pin").val();
         if (userPin.length !== 4) {
             toaster("invalid pin", "warning");
@@ -15,10 +23,12 @@ function korporReversal(data) {
         reverseKorpor("reverse-korpor", korporData);
         $("#user_pin").val("");
         userPin = "";
+        data.pass = false;
     });
 }
 
 function reverseKorpor(url, data) {
+    siteLoading("show");
     $.ajax({
         type: "POST",
         url: url,
@@ -28,6 +38,9 @@ function reverseKorpor(url, data) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
+            siteLoading("hide");
+
+            console.log(response);
             if (response.responseCode === "000") {
                 toaster(response.message, "success");
                 // window.ref;
@@ -174,6 +187,7 @@ function redeemKorpor(data) {
     });
 }
 function getKorporHistory(url, fromAccountNo, target) {
+    siteLoading("show");
     $.ajax({
         type: "GET",
         url: url,
@@ -185,9 +199,9 @@ function getKorporHistory(url, fromAccountNo, target) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
-            if (response.data.length > 0) {
-                let data = response.data;
-                $(`${target}`).empty();
+            let data = response.data;
+            $(`${target}`).empty();
+            if (data.length > 0) {
                 let extracolumn;
                 if (!target.includes("reversal")) {
                     let badgeColor;
@@ -206,7 +220,7 @@ function getKorporHistory(url, fromAccountNo, target) {
                 }
                 $.each(data, function (index) {
                     if (target.includes("reversal")) {
-                        extracolumn = `<td> <button class="badge badge-danger" id="${data[index].REMITTANCE_REF}" korporData="${data[index].BENEF_TEL}~${data[index].REMITTANCE_REF}"> &nbsp;Reverse&nbsp;</button> </td>`;
+                        extracolumn = `<td> <button class="btn btn-danger badge reversal-button badge-danger" id="${data[index].REMITTANCE_REF}" korporData="${data[index].BENEF_TEL}~${data[index].REMITTANCE_REF}"> &nbsp;Reverse&nbsp;</button> </td>`;
                     }
                     $(`${target}`).append(
                         `<tr><td> <b> ${data[index].REMITTANCE_REF} </b>  </td>
@@ -223,7 +237,19 @@ function getKorporHistory(url, fromAccountNo, target) {
                         });
                     }
                 });
+            } else {
+                let noData = noDataAvailable.replace(
+                    "No Data Available",
+                    response.message
+                );
+                $(target).append(
+                    `<td colspan="100%" class="text-center">
+                    ${noData} </td>`
+                );
+                $("#no_data_available_img").css("max-width", "250px");
+                // toaster(response.message, "warning");
             }
+            siteLoading("hide");
         },
     });
 }
@@ -244,7 +270,7 @@ $(document).ready(function () {
         getKorporDetails(mobileNumber, remittanceNumber);
     });
     $("#done_button").click(function () {
-        transferInfo.istransfer = false;
+        transferInfo.type = "redeem";
         const e = $("#redeem_account option:selected");
         const accountNumber = e.attr("data-account-number");
         if (!accountNumber) {
@@ -265,7 +291,7 @@ $(document).ready(function () {
     });
     $("#transfer_pin").on("click", (e) => {
         e.preventDefault();
-        if (transferInfo.istransfer) {
+        if (transferInfo.type !== "redeem") {
             return;
         }
         const otp = $("#user_pin").val();
@@ -276,6 +302,7 @@ $(document).ready(function () {
         redeemInfo.otp = otp;
         redeemKorpor(redeemInfo);
         $("#user_pin").val("");
+        transferInfo.type = "";
     });
     //------------- end of redeem korpor -------------
 
@@ -388,11 +415,11 @@ $(document).ready(function () {
             corporateInitiateKorpor(transferInfo);
             return;
         }
-        transferInfo.istransfer = true;
+        transferInfo.type = "transfer";
         $("#pin_code_modal").modal("show");
         $("#transfer_pin").on("click", (e) => {
             e.preventDefault();
-            if (!transferInfo.istransfer) {
+            if (transferInfo.type !== "transfer") {
                 return;
             }
             const pinCode = $("#user_pin").val();
@@ -402,6 +429,7 @@ $(document).ready(function () {
             }
             transferInfo.pinCode = pinCode;
             initiateKorpor("initiate-korpor", transferInfo);
+            transferInfo.type = "";
         });
     });
     function corporateInitiateKorpor(transferInfo) {
@@ -436,7 +464,8 @@ $(document).ready(function () {
         );
     });
 
-    $("#submit_unredeemed_account").on("click", () => {
+    // $("#submit_unredeemed_account").on("click", () => {
+    $("#unredeemed_account").on("change", () => {
         let fromAccount = $("#unredeemed_account").val();
         handleKorporHistory(
             "unredeem-korpor-request",

@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $noData = "<div class='nodata' style='position:relative;'>
     <p class='no-data-text' style='position: absolute; left:50%; top: 50%; transform: translate(-50%,-50%); font-weight: bold; 
                                     color: currentColor;'> No Data Available </p>
-    <img class='img-fluid' src='assets/images/placeholders/no_data.svg' alt='no data available' style='max-width:100px' >
+    <img class='img-fluid' id='no_data_available_img' src='assets/images/placeholders/no_data.svg' alt='no data available' style='max-width:100px' >
 </div>";
         View::share('noDataAvailable', $noData);
         //
