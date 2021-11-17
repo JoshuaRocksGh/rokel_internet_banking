@@ -823,8 +823,9 @@
                                                                 id="unredeemed_account" required>
                                                                 <option disabled selected value="">Select Account Number
                                                                 </option>
-
-                                                                @foreach (session()->get('customerAccounts') as $i =>
+                                                                @include("snippets.accounts")
+                                                                {{-- @foreach (session()->get('customerAccounts') as $i
+                                                                =>
                                                                 $account)
                                                                 <option
                                                                     value="{{ $account->accountType . ' ~ ' . $account->accountDesc . ' ~ ' . $account->accountNumber . ' ~ ' . $account->currency . ' ~ ' . $account->availableBalance }}">
@@ -832,19 +833,19 @@
                                                                     $account->accountNumber . '||' . $account->currency
                                                                     . ' ' . $account->availableBalance }}
                                                                 </option>
-                                                                @endforeach
+                                                                @endforeach --}}
                                                             </select>
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <div class="col-sm-4">
+                                                {{-- <div class="col-sm-4">
                                                     <div class="text-sm-right">
                                                         <button type="button"
                                                             class="btn btn-primary waves-effect waves-light"
                                                             id="submit_unredeemed_account"><i
                                                                 class="mdi mdi-plus-circle mr-1"></i>Submit</button>
                                                     </div>
-                                                </div><!-- end col-->
+                                                </div><!-- end col--> --}}
                                             </div>
                                         </div> <!-- end card-body-->
                                     </div> <!-- end card-->
@@ -1305,6 +1306,7 @@
 @else
     const ISCORPORATE = false;
 @endif
+let noDataAvailable = {!! json_encode($noDataAvailable) !!}
 </script>
 <script src={{ asset('assets/js/pages/payments/e-korpor.js') }}>
 

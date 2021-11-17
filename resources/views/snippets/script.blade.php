@@ -1,7 +1,15 @@
 <!-- Third Party js-->
 {{-- <script src="{{ asset('land_asset/js/jquery.min.js') }}"></script> --}}
 
-
+@if (config("app.corporate"))
+<script>
+    const ISCORPORATE = true;
+</script>
+@else
+<script>
+    const ISCORPORATE = false;
+</script>
+@endif
 <script type="text/javascript">
     if (typeof jQuery === 'undefined') {
         var oScriptElem = document.createElement("script");
@@ -49,7 +57,7 @@
 
     function toaster(message, icon, timer = 3000) {
         let color = "#17a2b8"
-        if (icon.constructor === String) {
+        if (typeof(icon) === 'string') {
             if (icon.toLowerCase() === "success") {
                 color = "#1abc9c"
             } else if (icon.toLowerCase() === "warning") {
@@ -92,12 +100,12 @@
 
     function siteLoading(state) {
         if (state === "show") {
-            $(".preloader").fadeIn(500);
             $("#preloader").css("background-color", "#4fc6e17a")
+            $(".preloader").fadeIn(500);
             return
         }
         $(".preloader").fadeOut(500);
-        $("#preloader").css("background-color", "#fff")
+        // $("#preloader").css("background-color", "#fff")
         return
     }
 

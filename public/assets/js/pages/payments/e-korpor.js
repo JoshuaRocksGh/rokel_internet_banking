@@ -28,6 +28,7 @@ function korporReversal(data) {
 }
 
 function reverseKorpor(url, data) {
+    siteLoading("show");
     $.ajax({
         type: "POST",
         url: url,
@@ -37,6 +38,9 @@ function reverseKorpor(url, data) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
+            siteLoading("hide");
+
+            console.log(response);
             if (response.responseCode === "000") {
                 toaster(response.message, "success");
                 // window.ref;
@@ -183,6 +187,7 @@ function redeemKorpor(data) {
     });
 }
 function getKorporHistory(url, fromAccountNo, target) {
+    siteLoading("show");
     $.ajax({
         type: "GET",
         url: url,
@@ -194,9 +199,9 @@ function getKorporHistory(url, fromAccountNo, target) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
-            if (response.data.length > 0) {
-                let data = response.data;
-                $(`${target}`).empty();
+            let data = response.data;
+            $(`${target}`).empty();
+            if (data.length > 0) {
                 let extracolumn;
                 if (!target.includes("reversal")) {
                     let badgeColor;
@@ -232,7 +237,19 @@ function getKorporHistory(url, fromAccountNo, target) {
                         });
                     }
                 });
+            } else {
+                let noData = noDataAvailable.replace(
+                    "No Data Available",
+                    response.message
+                );
+                $(target).append(
+                    `<td colspan="100%" class="text-center">
+                    ${noData} </td>`
+                );
+                $("#no_data_available_img").css("max-width", "250px");
+                // toaster(response.message, "warning");
             }
+            siteLoading("hide");
         },
     });
 }
@@ -447,7 +464,8 @@ $(document).ready(function () {
         );
     });
 
-    $("#submit_unredeemed_account").on("click", () => {
+    // $("#submit_unredeemed_account").on("click", () => {
+    $("#unredeemed_account").on("change", () => {
         let fromAccount = $("#unredeemed_account").val();
         handleKorporHistory(
             "unredeem-korpor-request",

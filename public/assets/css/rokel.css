@@ -159,8 +159,11 @@ form-control {
 .transfer-detail-text {
     font-size: 0.8rem;
     margin-bottom: 0.4rem;
+    overflow-wrap: anywhere;
 }
-
+.o-wrap {
+    overflow-wrap: anywhere;
+}
 .header-icon {
     height: 1.5rem;
     width: 1.5rem;
