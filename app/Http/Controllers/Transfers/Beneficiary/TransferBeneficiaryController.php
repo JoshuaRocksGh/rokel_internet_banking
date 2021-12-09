@@ -47,7 +47,7 @@ class TransferBeneficiaryController extends Controller
 
             "beneficiaryDetails" => [
                 "email" => $req->beneficiaryEmail,
-                "firstName" => null,
+                "firstName" => $req->accountName,
                 "lastName" => null,
                 "nationality" => null,
                 "nickname" => $req->beneficiaryName,
