@@ -29,9 +29,9 @@
     <h3 class="text-primary transfer-detail-header">Receiver Account Info</h3>
     <hr class="mt-0">
     <div class="row">
-        @if ($currentPath === 'Local Bank')
-        <p class="col-md-5 transfer-detail-text">Bank Name:</p>
-        <span class="text-primary o-wrap display_to_account display_to_bank_name col-md-7"></span>
+        @if ($currentPath === 'Local Bank' || $currentPath === 'Standing Order')
+        <p class="col-md-5 transfer-detail-text bank_div">Bank Name:</p>
+        <span class="text-primary o-wrap bank_div display_to_account display_to_bank_name col-md-7"></span>
         @endif
         <p class="col-md-5 transfer-detail-text">Receiver Name:</p>
         <span class="text-primary o-wrap display_to_account display_to_account_name col-md-7"></span>
@@ -40,12 +40,12 @@
         <span class="text-primary o-wrap display_to_account display_to_account_no col-md-7"></span>
         @if ($currentPath !== 'Own Account')
         @if ($currentPath !== 'Local Bank' && $currentPath !== 'International Bank')
-        <p class="col-md-5 transfer-detail-text">Account Currency:</p>
-        <span class="text-primary o-wrap display_to_account display_to_account_currency col-md-7"></span>
+        <p class="col-md-5 transfer-detail-text currency-div">Account Currency:</p>
+        <span class="text-primary o-wrap display_to_account currency-div display_to_account_currency col-md-7"></span>
 
         @endif
-        <p class="col-md-5 transfer-detail-text">Receiver Email:</p>
-        <span class="text-primary o-wrap display_to_account display_to_receiver_email col-md-7"></span>
+        <p class="col-md-5 transfer-detail-text email-div">Receiver Email:</p>
+        <span class="text-primary o-wrap display_to_account display_to_receiver_email col-md-7 email-div"></span>
         @endif
         {{-- <p class="col-md-5 transfer-detail-text">Account Currency:</p>
         <span class="text-primary display_to_account display_to_account_currency col-md-7"></span> --}}

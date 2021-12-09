@@ -75,7 +75,20 @@
                         <div class="tab-pane fade show active" id="beneficiary_view" role="tabpanel"
                             aria-labelledby="beneficiary_tab">
                             <div class="col-12">
-
+                                @if ($currentPath === 'Standing Order')
+                                <div class="form-group row">
+                                    <label class="col-md-4 text-primary"> Standing Other Type </label>
+                                    <select data-title=" --- Select Standing Other Type ---"
+                                        data-none-selected-text="--- Select Standing Other Type ---"
+                                        class="form-control col-md-8 " id="standing_other_type" required>
+                                        <option disabled value=""> -- Select
+                                            Type --</option>
+                                        <option selected value="own account"> Own Account</option>
+                                        <option value="same bank"> Same Bank</option>
+                                        <option value="other bank">Other Bank</option>
+                                    </select>
+                                </div>
+                                @endif
                                 <div class="form-group row">
                                     <label class="col-md-4 text-primary"> {{ $destination }} </label>
                                     <select data-title=" --- Select {{ $destination}} ---"
@@ -83,13 +96,14 @@
                                         class="form-control col-md-8 select_beneficiary" id="to_account" required>
                                         <option disabled selected value=""> -- Select
                                             {{ $destination }} --</option>
-                                        @if ($currentPath === 'Own Account')
+                                        @if ($currentPath === 'Own Account' || $currentPath === "Standing Order")
                                         @include('snippets.accounts')
                                         @endif
                                     </select>
                                 </div>
-                                @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank')
-                                <div class="form-group row ">
+                                @if ($currentPath === 'Local Bank' || $currentPath === 'International Bank' ||
+                                $currentPath === 'Standing Order')
+                                <div class="form-group row bank_div">
                                     <label class="text-primary col-md-4">{{ $destination }} Bank</label>
                                     <input
                                         class="form-control col-md-8 display_to_account display_to_account_bank readOnly"
@@ -111,7 +125,7 @@
                                         id="saved_beneficiary_name" readonly>
                                 </div>
                                 @if ($currentPath !== 'Own Account')
-                                <div class="form-group row">
+                                <div class="form-group row email-div">
                                     <label class="col-md-4 text-primary"> {{ $destination }} Email</label>
                                     <input type="text"
                                         class="form-control display_to_account display_to_receiver_email col-md-8 readOnly"
