@@ -86,18 +86,18 @@ $currentPath = "Transfer Beneficiary";
                 </h2>
                 <div class="row mb-4 justify-content-center mx-auto" style="max-width: 750px;">
                     <div class="col-md-3 mb-2 mx-2 mx-lg-3  beneficiary-type current-type display-card bg-same-bank"
-                        data-value="SAB" data-title="Same Bank" id=''>
+                        data-bene-type="SAB" data-title="Same Bank" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>Same Bank</span>
                     </div>
 
                     <div class="col-md-3 mb-2 mx-2 mx-lg-3 beneficiary-type display-card  bg-other-bank"
-                        data-value="OTB" data-title="Other Bank" id=''>
+                        data-bene-type="OTB" data-title="Other Bank" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>Other Local Bank</span>
                     </div>
                     <div class="col-md-3 mb-2 mx-2 mx-lg-3 beneficiary-type display-card  bg-international-bank"
-                        data-value="INTB" data-title="International Bank" id=''>
+                        data-bene-type="INTB" data-title="International Bank" id=''>
                         <span class="box-circle"></span>
                         <span class="mt-1 beneficiary-text" id=''>International Bank</span>
                     </div>
@@ -114,14 +114,15 @@ $currentPath = "Transfer Beneficiary";
 
                 <div class="p-3 mt-3 rounded-lg m-2 customize_card table-responsive" id="transaction_summary">
                     <table id="beneficiary_list"
-                        class="table table-bordered table-striped table-centered dt-responsive w-100 mb-0 beneficiary_list_display">
+                        class="table table-bordered table-centered table-striped  dt-responsive w-100 mb-0 beneficiary_list_display">
                         <thead>
                             <tr class="bg-info text-white">
-                                <th> <b> Beneficiary Name </b> </th>
+                                <th> <b> Alias </b> </th>
+                                <th> <b> Account Name </b> </th>
                                 <th> <b> Account Number </b> </th>
                                 {{-- <th> <b> </b> </th> --}}
-                                <th> <b> Beneficiary Email </b> </th>
-                                <th> <b> Beneficiary Bank </b> </th>
+                                <th> <b> Email </b> </th>
+                                <th> <b> Bank </b> </th>
                                 <th class="text-center"> <b>Actions </b> </th>
                             </tr>
                         </thead>
@@ -137,16 +138,27 @@ $currentPath = "Transfer Beneficiary";
 
 @include("pages.transfer.beneficiary_form_modal")
 
+@include("extras.datatables")
 @endsection
 
 @section('scripts')
 
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="assets\plugins\select2\select2.min.css" rel="stylesheet" />
+<link href="assets\plugins\select2\select2-bootstrap4.min.css" rel="stylesheet" />
+<style>
+    .select2-container--bootstrap4 .select2-selection--single .select2-selection__arrow b {
+        top: 0;
+    }
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
+    .select2-container--bootstrap4.select2-container--focus .select2-selection {
+        box-shadow: none;
+        border: 1px solid #ced4da;
+    }
+</style>
+<script src="assets\plugins\select2\select2.min.js" defer></script>
 
-@include("extras.datatables")
 <script>
+    const pageData = new Object()
     const noDataAvailable =   {!! json_encode($noDataAvailable) !!}
 </script>
 <script src="assets/js/pages/transfer/beneficiary/beneficiaryList.js">
