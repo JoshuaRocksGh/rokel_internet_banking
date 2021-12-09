@@ -88,7 +88,8 @@
             font-family: 'password';
             font-style: normal;
             font-weight: 400;
-            src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf);
+            src: url("public\assets\fonts\password.ttf")
+                /* src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf); */
         }
 
 
@@ -110,13 +111,13 @@
 
     @yield('styles')
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js">
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.js">
         $.ajaxSetup({
         timeout: 3000,
         retryAfter: 5000
     });
-    </script>
-
+    </script> --}}
+    <script src="assets\plugins\jquery\jquery-3.6.0.min.js"></script>
     @include('snippets.script')
 
     {{-- @include('extras.datatables') --}}
