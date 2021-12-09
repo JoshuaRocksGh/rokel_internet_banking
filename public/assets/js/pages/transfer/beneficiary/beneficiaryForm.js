@@ -17,7 +17,7 @@ function getLocalBanks() {
                     $("#select_bank").append(option);
                 });
                 // $("#select_bank").append("refresh");
-                $("#account_number").attr("disabled", false);
+                // $("#account_number").attr("disabled", false);
             } else {
                 toaster(response.message);
             }
@@ -42,7 +42,7 @@ function getCountries() {
                     option = `<option value="${codeType}"  data-country-code="${actualCode}">${description}</option>`;
                     $("#select_country").append(option);
                 });
-                $("#select_country").select2();
+                $("#select_country").select2({ theme: "bootstrap4" });
             } else {
                 toaster(response.message);
             }
@@ -60,7 +60,7 @@ function getInternationalBanks(countryCode) {
         datatype: "application/json",
         success: function (response) {
             let data = response.data;
-            if (data.length > 1) {
+            if (data && data.length > 1) {
                 $("#select_bank").empty();
                 $("#select_bank").append(
                     `<option selected disabled value=""> --- Select Bank ---</option>`
@@ -71,9 +71,16 @@ function getInternationalBanks(countryCode) {
                     option = `<option value="${BICODE}" data-bank-country="${COUNTRY}" >${BANK_DESC}</option>`;
                     $("#select_bank").append(option);
                 });
-                $("#select_bank").select2("");
+
+                // select bank if any is attached to country and clear
+                const selectedBank = $("#select_country").attr("data-bank");
+                if (selectedBank) {
+                    $("#select_bank").val(`${selectedBank}`).trigger("change");
+                    $("#select_country").attr("data-bank", "");
+                }
+
+                $("#select_bank").select2({ theme: "bootstrap4" });
                 $("#select_bank").attr("disabled", false);
-                $("#account_number").attr("disabled", false);
             } else {
                 toaster(response.message);
             }
@@ -106,7 +113,7 @@ function deleteBeneficiary(beneficiaryId) {
 
 //validate same bank account number
 function getAccountDescription(accountNumber) {
-    $.ajax({
+    return $.ajax({
         type: "POST",
         url: "get-account-description",
         datatype: "application/json",
@@ -117,18 +124,24 @@ function getAccountDescription(accountNumber) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: (res) => {
-            if (res.responseCode === "000") {
-                $("#account_name").val(res.data.accountDescription);
-                $("#account_currency").val(res.data.accountCurrencyIso);
+            const { data, message, responseCode } = res;
+            const { accountCurrencyIso, accountDescription } = data;
+            if (responseCode === "000") {
+                console.log(res);
+                $("#account_name").val(accountDescription);
+                $("#account_currency").val(accountCurrencyIso);
+                !accountDescription && toaster("Account Not Found", "warning");
             } else {
                 $("#account_name").val("");
+                console.log("Ac");
                 $("#account_currency").val("");
-                toaster(res.message, "error");
+                toaster(message, "error");
             }
         },
-        error: (err) => {
+        error: (xhr, error, status) => {
+            console.log("Acv");
             $("#account_name").val("");
-            toaster(err.statusText, "error");
+            toaster(status, "error");
         },
     });
 }
@@ -144,57 +157,71 @@ async function prepareBeneficiaryForm(currentType, mode) {
     $("#edit_modal").attr("data-mode", mode);
     $("#edit_modal").attr("data-type", currentType);
     if (currentType === "SAB") {
-        $("#beneficiary_form_header").addClass("bg-same-bank");
+        $("#account_number_search").show();
         $("#beneficiary_form_title").text(`${mode} Same Bank Beneficiary`);
-        $("#account_number").on("keyup", () => {
+        $("#account_number").on("change", () => {
+            $("#account_name").val("");
+            $("#account_currency").val("");
+        });
+        $("#account_number_search").on("click", () => {
             if ($("#account_number").val().length >= ACCOUNT_NUMBER_LENGTH) {
-                getAccountDescription($("#account_number").val());
+                blockUi("#beneficiary_form");
+                getAccountDescription($("#account_number").val()).always(() => {
+                    unBlockUi("#beneficiary_form");
+                });
+            } else {
+                toaster("invalid account length", "warning");
             }
         });
 
         $(".same-bank-form").show();
     } else if (currentType === "OTB") {
-        $("#beneficiary_form_header").addClass("bg-other-bank");
         $("#beneficiary_form_title").text(`${mode} Local Bank Beneficiary`);
         $(".other-bank-form").show();
-        $("#account_number").attr("disabled", true);
+        $("#account_name").attr("disabled", false);
         await getLocalBanks();
     } else if (currentType === "INTB") {
-        $("#beneficiary_form_header").addClass("bg-international-bank");
         $("#beneficiary_form_title").text(
             `${mode} International Bank Beneficiary`
         );
         await getCountries();
-        $("#select_country").on("change", () => {
-            getInternationalBanks($("#select_country").val());
+        $("#select_country").on("change", (e) => {
+            blockUi("#beneficiary_form");
+            getInternationalBanks($("#select_country").val()).always(() => {
+                unBlockUi("#beneficiary_form");
+            });
         });
         $(".international-bank-form").show();
+        $("#account_name").attr("disabled", false);
         $("#select_bank").attr("disabled", true);
-        $("#account_number").attr("disabled", true);
     }
     $("#edit_modal").modal("show");
 }
 
 //editting beneficiary
 async function editBankBeneficiary(data, type) {
+    console.table(data);
     await prepareBeneficiaryForm(type, "Edit");
     if (data.BENEF_TYPE === "OTB") {
         $(".other-bank-form").show();
-        $(`#select_bank option[value=${data.BANK_SWIFT_CODE}]`).prop(
-            "selected",
-            true
-        );
+        $("#select_bank").val(`${data.BANK_SWIFT_CODE}`).trigger("change");
     }
-    if (data.BENEF_TYPE === "INT") {
+    if (data.BENEF_TYPE === "INTB") {
         $(".international-bank-form").show();
+        $("#select_country")
+            .val(`${data.BANK_COUNTRY}`)
+            .attr("data-bank", `${data.BANK_SWIFT_CODE}`)
+            .trigger("change");
     }
 
-    $("#account_number").val(data.BEN_ACCOUNT).trigger("keyup");
-    // $("#account_name").val(data.NICKNAME);
+    $("#account_number").val(data.BEN_ACCOUNT);
+    $("#account_number_search").trigger("click");
+    $("#account_name").val(data.FIRST_NAME);
     $("#beneficiary_email").val(data.EMAIL);
     $("#beneficiary_address").val(data.ADDRESS_1);
     $("#beneficiary_name").val(data.NICKNAME);
-    if (data.SEND_EMAIL && data.SEND_EMAIL.toUpperCase() !== "N") {
+    if (data.SEND_MAIL && data.SEND_MAIL.toUpperCase() !== "N") {
+        console.log("A");
         $("#send_email_check").prop("checked", true);
     }
     beneficiaryDetails.beneficiaryId = data.BENE_ID;
@@ -203,47 +230,13 @@ async function editBankBeneficiary(data, type) {
 }
 
 function initBeneficiaryForm() {
-    let currentFs, nextFs, previousFs;
     beneficiaryDetails = {};
-    $(".next").click(function () {
-        currentFs = $(".current-fs");
-        nextFs = currentFs.next();
-        if (!validateFormInputs($(currentFs).attr("data-value"))) {
+    $("#save_btn").click(function () {
+        if (!validateFormInputs()) {
             return false;
         }
-        if ($(".current-fs").html() === $(".last-fs").html()) {
-            // const type = $("#edit_modal").attr("data-mode");
-            saveBeneficiary(beneficiaryDetails);
-            return false;
-        }
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(nextFs)).addClass("active");
-        //show the next fieldset
-        nextFs.toggle(300, "linear");
-        currentFs.toggle(300, "linear");
-        currentFs.removeClass("current-fs");
-        nextFs.addClass("current-fs");
-        $(".action-button-previous").removeAttr("disabled");
-        if ($(".current-fs").html() === $(".last-fs").html()) {
-            $(".action-button").text("save", true);
-        }
-    });
-
-    $(".previous").click(function () {
-        currentFs = $(".current-fs");
-        previousFs = currentFs.prev();
-        //Remove class active
-        $("#progressbar li")
-            .eq($("fieldset").index(currentFs))
-            .removeClass("active");
-        currentFs.toggle(300, "linear");
-        previousFs.toggle(300, "linear");
-        currentFs.removeClass("current-fs");
-        previousFs.addClass("current-fs");
-        $(".action-button").text("next", true);
-        if ($(".current-fs").html() === $(".first-fs").html()) {
-            $(".action-button-previous").attr("disabled", true);
-        }
+        console.log(beneficiaryDetails);
+        saveBeneficiary(beneficiaryDetails);
     });
 
     $("#delete_btn").on("click", () => {
@@ -263,67 +256,69 @@ function initBeneficiaryForm() {
     });
 }
 
-function validateFormInputs(whatToCheck) {
-    const type = $("#edit_modal").attr("data-type");
-    const mode = $("#edit_modal").attr("data-mode");
-    let fail = false;
-    if (whatToCheck === "account") {
-        beneficiaryDetails.mode = mode.toUpperCase();
-        beneficiaryDetails.type = type.toUpperCase();
-        beneficiaryDetails.accountNumber = $("#account_number").val();
-        beneficiaryDetails.bankName = $("#select_bank option:selected").text();
-        beneficiaryDetails.bankCode = $("#select_bank").val();
-        // beneficiaryDetails.bankSwiftCode = $("#select_bank").attr(
-        //     "data-bank-swift-code"
-        // );
-        beneficiaryDetails.bankCountry = $("#select_country").val();
-        if (
-            !beneficiaryDetails.accountNumber ||
-            beneficiaryDetails.accountNumber < ACCOUNT_NUMBER_LENGTH
-        ) {
-            fail = true;
-        }
-        if (type === "SAB") {
-            beneficiaryDetails.bankName = "ROKEL COMMERCIAL BANK";
-            beneficiaryDetails.accountName = $("#account_name").val();
-            if (!beneficiaryDetails.accountName) {
-                toaster("invalid account", "warning");
-                return false;
-            }
-        } else {
-            if (!beneficiaryDetails.bankCode || !beneficiaryDetails.bankName) {
-                fail = true;
-            }
-        }
-    }
-    if (whatToCheck === "beneficiary") {
-        beneficiaryDetails.beneficiaryName = $("#beneficiary_name").val();
-        beneficiaryDetails.beneficiaryEmail = $("#beneficiary_email").val();
-        beneficiaryDetails.beneficiaryAddress = $("#beneficiary_address").val();
-        if ($("#send_email_check").prop("checked")) {
-            beneficiaryDetails.notify = "Y";
-        }
+function validateFormInputs() {
+    const type = $("#edit_modal").attr("data-type").toUpperCase();
+    const mode = $("#edit_modal").attr("data-mode").toUpperCase();
 
-        if (
-            !beneficiaryDetails.beneficiaryName ||
-            !beneficiaryDetails.beneficiaryEmail
-        ) {
-            fail = true;
+    const accountNumber = $("#account_number").val();
+    let bankName = $("#select_bank option:selected").text();
+    const bankCode = $("#select_bank").val();
+    const bankCountry = $("#select_country option:selected").val();
+    const beneficiaryName = $("#beneficiary_name").val();
+    const beneficiaryEmail = $("#beneficiary_email").val();
+    const beneficiaryAddress = $("#beneficiary_address").val();
+    const accountName = $("#account_name").val();
+    //same bank beneficiary checks
+    if (type === "SAB") {
+        bankName = "ROKEL COMMERCIAL BANK";
+        if (!accountName) {
+            toaster("Invalid Account Information", "warning");
+            return false;
         }
-        if (!validateEmail(beneficiaryDetails.beneficiaryEmail)) {
+        if (!beneficiaryName) {
+            toaster("all fields required", "warning");
+            return false;
+        }
+    } else {
+        if (
+            !accountNumber ||
+            !bankCode ||
+            !bankName ||
+            !beneficiaryAddress ||
+            !beneficiaryName ||
+            !beneficiaryEmail
+        ) {
+            toaster("all fields required", "warning");
+            return false;
+        }
+        if (!validateEmail(beneficiaryEmail)) {
             toaster("invalid email", "warning");
             return false;
         }
-
-        if (type !== "SAB" && !beneficiaryDetails.beneficiaryAddress) {
-            fail = true;
+        if (accountNumber < ACCOUNT_NUMBER_LENGTH) {
+            toaster("invalid account", "warning");
+            return false;
         }
     }
 
-    if (fail) {
-        toaster("all fields required", "warning");
-        return false;
-    }
+    if ($("#send_email_check").prop("checked")) beneficiaryDetails.notify = "Y";
+    const bD = {
+        accountNumber,
+        accountName,
+        bankCode,
+        bankName,
+        beneficiaryName,
+        beneficiaryEmail,
+        beneficiaryAddress,
+        type,
+        mode,
+        bankCountry,
+    };
+    console.log(beneficiaryDetails);
+
+    beneficiaryDetails = Object.assign(beneficiaryDetails, bD);
+    console.log(beneficiaryDetails);
+
     return true;
 }
 

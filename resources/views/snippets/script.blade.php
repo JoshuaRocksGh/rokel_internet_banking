@@ -19,18 +19,20 @@
     }
 </script>
 <script src="{{ asset('assets/js/vendor.min.js') }}" defer></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script> --}}
+<script src="assets\plugins\sweet-alert\sweetalert2@11.js"></script>
 <script src="{{ asset('assets/js/app.min.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/getAccounts.js') }}" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
-
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
+--}}
+<script src="assets\plugins\bootstrap-select\bootstrap-select.min.js" defer> </script>
 <script defer>
     function formatToCurrency(amount) {
         return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
     };
 </script>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10" defer></script>
+{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10" defer></script> --}}
 
 <script defer>
     const ACCOUNT_NUMBER_LENGTH = 13
@@ -105,7 +107,6 @@
             return
         }
         $(".preloader").fadeOut(500);
-        // $("#preloader").css("background-color", "#fff")
         return
     }
 
@@ -122,7 +123,7 @@
     })
 </script>
 
-<script type='text/javascript'>
+{{-- <script type='text/javascript'>
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({
             pageLanguage: 'en',
@@ -132,9 +133,9 @@
 </script>
 
 <script type='text/javascript' src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'>
-</script>
+</script> --}}
 
-<script>
+<script defer>
     $.ajaxSetup({
         timeout: 3000,
         retryAfter: 5000

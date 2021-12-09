@@ -19,15 +19,12 @@
 </div>
 @include('snippets.accounts_option')
 <script>
-    var transferType = @json($currentPath) 
-    var userAccounts = @json(session()->get('customerAccounts'))
+    const pageData = new Object();
+     pageData.transferType = @json($currentPath) ;
+     pageData.userAccounts = @json(session()->get('customerAccounts')) ;
+    var  {transferType, userAccounts } = pageData
 </script>
 <script src="{{ asset('assets/js/pages/transfer/transfersMaster.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/validateEmail.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/currencyConverter.js') }}" defer></script>
-<script src="assets/js/pages/transfer/beneficiary/beneficiaryForm.js">
-</script>
-@if (config("app.corporate"))
-<script src="{{ asset('assets/js/pages/transfer/transfersMasterCoorporateOverride.js') }}" defer>
-</script>
-@endif
+<script src="assets/js/pages/transfer/beneficiary/beneficiaryForm.js"></script>

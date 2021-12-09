@@ -482,7 +482,7 @@ class FunctionsController extends Controller
     {
         $base_response = new BaseResponse();
         try {
-            $response = Http::get(env('API_BASE_URL') . "payment/paymentType");
+            $response = Http::get(env('API_BASE_URL') . "/payment/paymentType");
             $result = new ApiBaseResponse();
             return $result->api_response($response);
             // return $base_response->api_response("000", "payment types",  $result); // return API BASERESPONSE

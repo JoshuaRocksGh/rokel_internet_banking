@@ -309,9 +309,9 @@ Route::post('/corporate-local-bank-transfer-api', [LocalBankController::class, '
 Route::post('/corporate-onetime-local-bank-transfer-api', [APITransferLocalBankController::class, 'corporate_onetime_beneficiary']);
 Route::post('corporate-standing-order-transfer-api', [StandingOrderController::class, 'corporate_standing_order_request']);
 // Transfers Add Beneficiary
-Route::post('/save-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'saveBeneficiary']);
-Route::delete('/delete-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'deleteBeneficiary']);
-Route::get('/transfer-beneficiary-list', [transferController::class, 'transferBeneficiaryList']);
+Route::post('save-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'saveBeneficiary']);
+Route::delete('delete-transfer-beneficiary-api', [TransferBeneficiaryController::class, 'deleteBeneficiary']);
+Route::get('transfer-beneficiary-list', [transferController::class, 'transferBeneficiaryList']);
 
 // Payment
 Route::post('/save-payment-beneficiary-api', [PaymentBeneficiaryController::class, 'savePaymentBeneficiary']);

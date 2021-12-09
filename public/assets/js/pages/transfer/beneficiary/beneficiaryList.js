@@ -6,27 +6,23 @@ function getBeneficiaryList() {
         success: function (response) {
             if (response.responseCode == "000") {
                 const data = response.data;
-                // $("#beneficiary_list_loader").hide();
-                // $("#beneficiary_list_retry_btn").hide();
-                sameBankBeneficiaries = [];
-                otherBankBeneficiaries = [];
-                internationalBeneficiaries = [];
-                $.each(data, function (i) {
-                    if (
-                        data[i].BENEF_TYPE === "SAB" ||
-                        data[i].TRANS_TYPE === "SAM"
-                    ) {
-                        sameBankBeneficiaries.push(data[i]);
+                pageData.allBeneficiaries = data;
+                pageData.BENE_SAB = [];
+                pageData.BENE_OTB = [];
+                pageData.BENE_INTB = [];
+                data.forEach((e) => {
+                    if (e.BENEF_TYPE === "SAB" || e.TRANS_TYPE === "SAM") {
+                        pageData.BENE_SAB.push(e);
                     } else if (
-                        data[i].BENEF_TYPE === "OTB" ||
-                        data[i].TRANS_TYPE === "OTR"
+                        e.BENEF_TYPE === "OTB" ||
+                        e.TRANS_TYPE === "OTR"
                     ) {
-                        otherBankBeneficiaries.push(data[i]);
+                        pageData.BENE_OTB.push(e);
                     } else if (
-                        data[i].BENEF_TYPE === "INTB" ||
-                        data[i].TRANS_TYPE === "INT"
+                        e.BENEF_TYPE === "INTB" ||
+                        e.TRANS_TYPE === "INT"
                     ) {
-                        internationalBeneficiaries.push(data[i]);
+                        pageData.BENE_INTB.push(e);
                     }
                 });
                 drawBeneficiaryTable();
@@ -67,48 +63,40 @@ function drawBeneficiaryTable() {
                 {
                     targets: "_all",
                     orderable: false,
+                    render: (data) => (data ? data : "N/A"),
                 },
             ],
         })
         .clear();
     let noBeneficiaries = noDataAvailable.replace("Data", "Beneficiaries");
-    let data = [];
-
     $("#beneficiary_list tbody").empty();
-    const currentType = $(".current-type").attr("data-value");
-    if (currentType === "SAB") {
-        data = sameBankBeneficiaries;
-    } else if (currentType === "OTB") {
-        data = otherBankBeneficiaries;
-    } else if (currentType === "INTB") {
-        data = internationalBeneficiaries;
-    }
-
-    if (data.length < 1) {
+    const currentType = $(".current-type").attr("data-bene-type");
+    let beneficiaries = pageData["BENE_" + currentType];
+    if (beneficiaries && beneficiaries.length < 1) {
         $("#beneficiary_list tbody")
             .append(`<td colspan="100%" class="text-center">
         ${noBeneficiaries} </td>`);
         return;
     }
-    $.each(data, (index) => {
-        beneData = JSON.stringify(data[index]);
+    beneficiaries.forEach((e) => {
         table.row
             .add([
-                data[index].NICKNAME,
-                data[index].BEN_ACCOUNT,
-                data[index].EMAIL,
-                data[index].BANK_NAME,
+                e.NICKNAME,
+                e.FIRST_NAME,
+                e.BEN_ACCOUNT,
+                e.EMAIL,
+                e.BANK_NAME,
 
-                `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-value='${beneData}'> <span class="fe-edit noti-icon text-info"></span></a>`,
+                `<a class='edit-beneficiary' style="display:flex; place-content:center;" href="#" data-bene-id='${e.BENE_ID}'> <span class="fe-edit noti-icon text-info"></span></a>`,
             ])
             .draw("full-reset");
     });
     let editButtons = document.querySelectorAll(".edit-beneficiary");
-    editButtons.forEach((item, i) => {
-        item.addEventListener("click", (e) => {
+    editButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
             const editButton = e.currentTarget;
-            const beneficiaryData = JSON.parse(
-                $(editButton).attr("data-value")
+            const beneficiaryData = beneficiaries.find(
+                (e) => e.BENE_ID === $(editButton).attr("data-bene-id")
             );
             editBankBeneficiary(beneficiaryData, currentType);
         });
@@ -116,15 +104,14 @@ function drawBeneficiaryTable() {
 }
 
 $(document).ready(function () {
-    $("#beneficiary_list_loader").show();
     getBeneficiaryList();
     $("#add_beneficiary").on("click", () => {
-        addBankBeneficiary($(".current-type").attr("data-value"));
+        addBankBeneficiary($(".current-type").attr("data-bene-type"));
     });
 
-    let beneficiaryType = document.querySelectorAll(".beneficiary-type");
-    beneficiaryType.forEach((item, i) => {
-        item.addEventListener("click", (e) => {
+    let beneficiaryTypes = document.querySelectorAll(".beneficiary-type");
+    beneficiaryTypes.forEach((beneType) => {
+        beneType.addEventListener("click", (e) => {
             const currentType = e.currentTarget;
             $(".beneficiary-type").removeClass("current-type");
             $(currentType).addClass("current-type");

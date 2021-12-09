@@ -77,12 +77,14 @@
                 </form>
             </li> --}}
             {{-- <li class="dropdown d-inline-block d-lg-none">
-                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-search noti-icon"></i>
                 </a>
                 <div class="dropdown-menu dropdown-lg dropdown-menu-right p-0">
                     <form class="p-3">
-                        <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                        <input type="text" class="form-control" placeholder="Search ..."
+                            aria-label="Recipient's username">
                     </form>
                 </div>
             </li> --}}
@@ -148,7 +150,7 @@
 
                 </div>
             </li> --}}
-
+            {{--
             <li class="dropdown d-none d-lg-inline-block topbar-dropdown">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
@@ -158,30 +160,31 @@
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('assets/images/flags/germany.jpg') }}" alt="user-image"
-                            class="mr-1" height="12"> <span class="align-middle">German</span>
+                        <img src="{{ asset('assets/images/flags/germany.jpg') }}" alt="user-image" class="mr-1"
+                            height="12"> <span class="align-middle">German</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('assets/images/flags/italy.jpg') }}" alt="user-image"
-                            class="mr-1" height="12"> <span class="align-middle">Italian</span>
+                        <img src="{{ asset('assets/images/flags/italy.jpg') }}" alt="user-image" class="mr-1"
+                            height="12"> <span class="align-middle">Italian</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('assets/images/flags/spain.jpg') }}" alt="user-image"
-                            class="mr-1" height="12"> <span class="align-middle">Spanish</span>
+                        <img src="{{ asset('assets/images/flags/spain.jpg') }}" alt="user-image" class="mr-1"
+                            height="12"> <span class="align-middle">Spanish</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image"
-                            class="mr-1" height="12"> <span class="align-middle">Russian</span>
+                        <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image" class="mr-1"
+                            height="12"> <span class="align-middle">Russian</span>
                     </a>
 
                 </div>
-            </li>
+            </li> --}}
+            {{-- @if ($currentPath === "a") --}}
 
             <li class="dropdown notification-list topbar-dropdown d-none d-md-block d-lg-block ">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"
@@ -190,6 +193,7 @@
 
                 </a>
             </li>
+            {{-- @endif --}}
 
             {{-- <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"

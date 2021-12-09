@@ -54,6 +54,7 @@ function corporateSpecific(transferInfo) {
 }
 
 function getToAccount(endPoint) {
+    siteLoading("show");
     $.ajax({
         type: "GET",
         url: endPoint,
@@ -62,37 +63,32 @@ function getToAccount(endPoint) {
             let data = response.data;
             if (response.data.length > 0) {
                 $(".no_beneficiary").hide();
-                $.each(data, function (index) {
-                    $("#to_account").append(
-                        $("<option>", {
-                            value:
-                                data[index].BENEF_TYPE +
-                                "~" +
-                                data[index].NICKNAME +
-                                "~" +
-                                data[index].BEN_ACCOUNT +
-                                "~" +
-                                data[index].EMAIL +
-                                "~" +
-                                data[index].BANK_NAME +
-                                "~" +
-                                data[index].BANK_SWIFT_CODE +
-                                "~" +
-                                data[index].ADDRESS_1 +
-                                "~" +
-                                data[index].BANK_COUNTRY +
-                                "~" +
-                                data[index].BEN_ACCOUNT_CURRENCY,
-                        }).text(
-                            data[index].BEN_ACCOUNT +
-                                " || " +
-                                data[index].NICKNAME
-                        )
+                console.log(data);
+                $("#to_account")
+                    .empty()
+                    .trigger("change")
+                    .append(
+                        `<option disabled selected> ---Select Beneficiary A/C --- </option>`
                     );
+                data.forEach((e) => {
+                    const value = `${e.BEN_ACCOUNT}`;
+                    const dataAttr = `data-account-number='${e.BEN_ACCOUNT}'
+                      data-account-type='${e.BENEF_TYPE}'
+                      data-account-description='${e.NICKNAME}'  
+                      data-account-email='${e.EMAIL}'
+                      data-account-currency ='${e.BEN_ACCOUNT_CURRENCY}'
+                      data-account-address'${e.ADDRESS_1}' 
+                      data-bank-name='${e.BANK_NAME}' 
+                      data-bank-swift-code='${e.BANK_SWIFT_CODE}'
+                      data-bank-country='${e.BANK_COUNTRY}' `;
+                    const text = `${e.BEN_ACCOUNT} || ${e.NICKNAME}`;
+                    const option = `<option value="${value}" ${dataAttr}>${text}</option>`;
+                    $("#to_account").append(option);
                 });
-                // $("#to_account").selectpicker("refresh");
+                siteLoading("hide");
             } else {
                 $(".no_beneficiary").show();
+                siteLoading("hide");
             }
         },
         error: function (xhr, status, error) {
@@ -311,7 +307,6 @@ $(() => {
                 //      ${account.accountDesc}  ||  ${account.accountNumber} || ${account.currency} || ${account.availableBalance}
                 // </option>`)
             );
-        // $("#to_account").selectpicker("refresh");
     }
 
     function updateTransactionType(type) {
@@ -332,8 +327,11 @@ $(() => {
             getLocalBanks();
             // $("onetime_beneficiary_name").removeAttribute("readonly");
         } else if (transferType === "Standing Order") {
-            beneCode = "SAB";
+            // getToAccount(`get-transfer-beneficiary-api?beneType=OTB`);
+            // getToAccount(`get-transfer-beneficiary-api?beneType=SAB`);
             getStandingOrderFrequencies();
+            $(".email-div").hide(500);
+            $(".bank_div").hide(500);
         } else if (transferType === "International Bank") {
             beneCode = "INTB";
             getCountries();
@@ -405,6 +403,7 @@ $(() => {
         }
         if (transferType === "Own Account") {
             renderOwnAccounts();
+        } else if (transferType === "Standing Order" && $("#sta")) {
         }
     });
 
@@ -414,18 +413,21 @@ $(() => {
             $(".display_to_account").val("").text("");
             return false;
         }
+        let target = $("#to_account option:selected");
         let accountData = beneficiaryInfo.split("~");
-        let beneficiaryType = accountData[0];
-        let beneficiaryName = accountData[1];
-        let beneficiaryAccountNumber = accountData[2];
-        let beneficiaryAccountCurrency = accountData[8];
+        let beneficiaryType = target.attr("data-account-type");
+
+        let beneficiaryName = target.attr("data-account-description");
+
+        let beneficiaryAccountNumber = target.attr("data-account-number");
+        let beneficiaryAccountCurrency = target.attr("data-account-currency");
         let beneficiaryEmail,
             beneficiaryAddress,
             bankName,
             bankCode,
             bankCountryCode;
         if (transferType !== "Own Account") {
-            beneficiaryEmail = accountData[3].trim();
+            beneficiaryEmail = target.attr("data-account-email");
             $(".display_to_receiver_email")
                 .val(beneficiaryEmail)
                 .text(beneficiaryEmail);
@@ -447,8 +449,8 @@ $(() => {
             transferType === "Local Bank" ||
             transferType === "International Bank"
         ) {
-            bankName = accountData[4].trim();
-            bankCode = accountData[5].trim();
+            bankName = target.attr("data-bank-name");
+            bankCode = target.attr("data-bank-swift-code");
             beneficiaryAddress = accountData[6].trim();
 
             $(".display_to_account_address").text(beneficiaryAddress);
@@ -457,7 +459,7 @@ $(() => {
             $("#beneficiary_bank_name").val(bankName);
         }
         if (transferType === "International Bank") {
-            bankCountryCode = accountData[7].trim();
+            bankCountryCode = target.attr("data-bank-country");
         }
         toAccount = {
             beneficiaryName,
@@ -579,6 +581,31 @@ $(() => {
             transferInfo.soEndDate = $("#so_end_date").val();
             $(".display_so_end_date").text(transferInfo.soEndDate);
         });
+        $("#standing_other_type").on("change", () => {
+            const standingOrderType = $("#standing_other_type").val();
+            switch (standingOrderType) {
+                case "own account":
+                    $(".email-div").hide(500);
+                    $(".currency-div").show(500);
+                    $(".bank_div").hide(500);
+                    renderOwnAccounts();
+                    break;
+                case "other bank":
+                    $(".email-div").show(500);
+                    getToAccount(`get-transfer-beneficiary-api?beneType=OTB`);
+                    $(".currency-div").hide(500);
+                    $(".bank_div").show(500);
+                    break;
+                case "same bank":
+                    $(".email-div").show(500);
+                    $(".currency-div").show(500);
+                    $(".bank_div").hide(500);
+                    getToAccount(`get-transfer-beneficiary-api?beneType=SAB`);
+                    break;
+                default:
+                    $(".email-div").hide(500);
+            }
+        });
 
         //standing order frequency
         $("#beneficiary_frequency").on("change", function () {
@@ -670,6 +697,9 @@ $(() => {
                 return false;
             }
         }
+        $("#standing_other_type").on("change", () => {
+            const type = $("#standing_other_type").val();
+        });
         $("#transaction_form").hide();
         $("#transaction_summary").show();
         // $("#transfer_details_view").hide();
