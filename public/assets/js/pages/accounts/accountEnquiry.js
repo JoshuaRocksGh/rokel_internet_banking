@@ -173,17 +173,19 @@ $(function () {
         });
 
         table.clear().draw();
+        let pdf_image = "assets/images/pdf.png";
+        let excel_image = "assets/images/excel.png";
 
         if (data.length > 0) {
             $("#pdf_print").html(`
                         <a href="print-account-statement?account_number=${account_number}&start_date=${start_date}&end_date=${end_date}" target="_blank">
-                            <img src="{{ asset('assets/images/pdf.png') }}" alt="" style="width: 22px; height: 25px;">
+                            <img src=${pdf_image} alt="" style="width: 22px; height: 25px;">
                         </a>
                     `);
 
             $("#excel_print").html(`
                         <a href="{{ url('print-account-statement') }}">
-                            <img src="{{ asset('assets/images/excel.png') }}" alt="" style="width: 22px; height: 25px;">
+                            <img src=${excel_image} alt="" style="width: 22px; height: 25px;">
                         </a>
                     `);
             $.each(data, function (index) {
@@ -225,12 +227,14 @@ $(function () {
                         data[index].documentReference,
                         dd + "/" + mm + "/" + yyyy,
                         amount,
+                        data[index].narration,
+
                         `${formatToCurrency(
                             parseFloat(data[index].runningBalance)
                         )}`,
-                        data[index].narration,
+
                         data[index].contraAccount,
-                        data[index].batchNumber,
+                        // data[index].batchNumber,
                         attachment,
                     ])
                     .order([0, "desc"])
@@ -251,6 +255,7 @@ $(function () {
         $(".account_transaction_display_table").show();
         $(".account_transaction_display").show();
     }
+
     function getAccountTransactions(account_number, start_date, end_date) {
         $("#search_transaction").text("Loading ...");
         $.ajax({
@@ -268,7 +273,7 @@ $(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                console.log(response);
+                //console.log("account-transaction-history=>", response);
                 if (response.responseCode == "000") {
                     transactions = response.data;
                     if (response.data.length === 0) {

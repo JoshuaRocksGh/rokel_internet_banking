@@ -549,8 +549,11 @@
                                     <tr>
                                         <td colspan="3">
                                             <div class="d-flex justify-content-center">
-                                                <div class="spinner-border avatar-lg text-primary  m-2 " role="status">
-                                                </div>
+                                                <br>
+                                                {!! $noDataAvailable !!}
+
+                                                {{-- <div class="spinner-border avatar-lg text-primary  m-2 " role="status">
+                                                </div> --}}
                                             </div>
                                         </td>
 

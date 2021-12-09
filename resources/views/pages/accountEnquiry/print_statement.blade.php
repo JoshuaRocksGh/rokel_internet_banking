@@ -2,111 +2,111 @@
 @section('content')
 
 
-<div class="card-body">
+    <div class="card-body">
 
 
-    <div class="row" style="zoom: 0.9">
+        <div class="row" style="zoom: 0.9">
 
 
 
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr class="___class_+?3___">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr class="___class_+?3___">
 
-                    <th colspan="7">
+                        <th colspan="7">
 
-                        <div class="row">
+                            <div class="row">
 
-                            <div class="col-xs-4 col-md-2">
-                                <img src="{{ asset('assets/images/rokel_logo.png') }}" alt="" class="img-fluid">
-                            </div>
+                                <div class="col-xs-4 col-md-2">
+                                    <img src="{{ asset('assets/images/rokel_logo.png') }}" alt="" class="img-fluid">
+                                </div>
 
-                            <div class="col-xs-8 col-md-6">
+                                <div class="col-xs-8 col-md-6">
 
-                                <span class="h3">ROKEL COMMERCIAL BANK</span><br>
-                                <span class="h5"> 25-27 Siaka Stevens Street</span><br>
-                                <span class="h5"> Freetown, Sierra Leone</span><br>
-                                <span class="h5"> rokelsl@rokelbank.sl</span><br>
-                                <span class="h5"> (+232)-76-22-25-01</span>
+                                    <span class="h3">ROKEL COMMERCIAL BANK</span><br>
+                                    <span class="h5"> 25-27 Siaka Stevens Street</span><br>
+                                    <span class="h5"> Freetown, Sierra Leone</span><br>
+                                    <span class="h5"> rokelsl@rokelbank.sl</span><br>
+                                    <span class="h5"> (+232)-76-22-25-01</span>
 
-                            </div>
-
-                        </div>
-
-
-                    </th>
-
-                </tr>
-
-                <tr class="___class_+?13___" style="background-color: #dce0e1!important;">
-                    <th colspan="7">
-
-                        <div class="row">
-
-                            <div class="col-xs-3 col-md-2"></div>
-
-                            <div class="col-xs-5 col-md-3">
-                                <h3 class="___class_+?17___"> <b>Account Details</b> </h3>
-                                <h5 class="___class_+?18___">Name: <b class="account_description">Joshua Tetteh</b>
-                                </h5>
-                                <h5 class="___class_+?20___">Account NO: <b class="account_number">012453234578521</b>
-                                </h5>
-                                <h5 class="___class_+?22___">Product: <b class="account_product">SAVINGS ACCOUNT</b>
-                                </h5>
-                                <h5 class="___class_+?24___">From: <b class="start_date"> 29-JUN-2001 </b> To <b
-                                        class="end_date"> 29-JUN-2001 </b> </h5>
+                                </div>
 
                             </div>
 
-                            <div class="col-xs-5 col-md-3">
-                                <h3 class="___class_+?28___"> <b>Balance Details</b> </h4>
-                                    <h5 class="___class_+?29___">Currency: <b class="account_currency">SLL</b> </h5>
-                                    <h5 class="___class_+?31___">Book Balance : <b
-                                            class="account_legder_balance">6,893,899,990.00</b> </h5>
-                                    <h5 class="___class_+?33___">Cleared Balance : <b
-                                            class="account_available_balance">6,893,899,990.00</b> </h5>
+
+                        </th>
+
+                    </tr>
+
+                    <tr class="___class_+?13___" style="background-color: #dce0e1!important;">
+                        <th colspan="7">
+
+                            <div class="row">
+
+                                <div class="col-xs-3 col-md-2"></div>
+
+                                <div class="col-xs-5 col-md-3">
+                                    <h3 class="___class_+?17___"> <b>Account Details</b> </h3>
+                                    <h5 class="___class_+?18___">Name: <b class="account_description">Joshua Tetteh</b>
+                                    </h5>
+                                    <h5 class="___class_+?20___">Account NO: <b class="account_number">012453234578521</b>
+                                    </h5>
+                                    <h5 class="___class_+?22___">Product: <b class="account_product">SAVINGS ACCOUNT</b>
+                                    </h5>
+                                    <h5 class="___class_+?24___">From: <b class="start_date"> 29-JUN-2001 </b> To <b
+                                            class="end_date"> 29-JUN-2001 </b> </h5>
+
+                                </div>
+
+                                <div class="col-xs-5 col-md-3">
+                                    <h3 class="___class_+?28___"> <b>Balance Details</b> </h4>
+                                        <h5 class="___class_+?29___">Currency: <b class="account_currency">SLL</b> </h5>
+                                        <h5 class="___class_+?31___">Book Balance : <b
+                                                class="account_legder_balance">6,893,899,990.00</b> </h5>
+                                        <h5 class="___class_+?33___">Cleared Balance : <b
+                                                class="account_available_balance">6,893,899,990.00</b> </h5>
+
+                                </div>
 
                             </div>
 
-                        </div>
+                            <div class="row">
 
-                        <div class="row">
-
-                            <div class="col-xs-3 col-md-2"></div>
-                        </div>
+                                <div class="col-xs-3 col-md-2"></div>
+                            </div>
 
 
-                    </th>
+                        </th>
 
-                </tr>
-
-
-                <tr class="bg-info text-dark ">
-                    <td>Value Date</td>
-                    <td>Amount (SLL)<span class="account_number_display_"></span></td>
-                    <td>Balance (SLL)<span class="account_description_display_"></span></td>
-                    {{-- <td>Explanation <span class="account_currency_display_"></span> </td> --}}
-                    <td>Transaction Details <span class="account_product_display_"></span> </td>
-                    <td>Document Ref <span class="___class_+?41___"></span> </td>
-                    <th>Batch No</th>
-                </tr>
-
-            </thead>
-            <tbody id="transaction_history">
+                    </tr>
 
 
-            </tbody>
-        </table>
+                    <tr class="bg-info text-dark ">
+                        <td>Value Date</td>
+                        <td>Amount (SLL)<span class="account_number_display_"></span></td>
+                        <td>Balance (SLL)<span class="account_description_display_"></span></td>
+                        {{-- <td>Explanation <span class="account_currency_display_"></span> </td> --}}
+                        <td>Transaction Details <span class="account_product_display_"></span> </td>
+                        <td>Document Ref <span class="___class_+?41___"></span> </td>
+                        <th>Batch No</th>
+                    </tr>
+
+                </thead>
+                <tbody id="transaction_history">
+
+
+                </tbody>
+            </table>
+
+
+
+        </div>
+
+
 
 
 
     </div>
-
-
-
-
-
-</div>
 
 
 @endsection
@@ -115,10 +115,10 @@
 @section('scripts')
 
 
-@include("extras.datatables")
+    @include("extras.datatables")
 
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
             var account_number = @json($account_number);
             var start_date = @json($start_date);
@@ -256,8 +256,8 @@
                     })
 
                     setTimeout(function() {
-                        window.print();
-                        window.close();
+                        {{-- window.print(); --}}
+                        {{-- window.close(); --}}
                     }, 2000)
 
 
@@ -274,6 +274,6 @@
 
 
         })
-</script>
+    </script>
 
 @endsection

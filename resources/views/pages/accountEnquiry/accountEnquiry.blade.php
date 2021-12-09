@@ -185,13 +185,14 @@
                                             <th scope="col">Date</th>
                                             <th scope="col">Amount <span class="account_number_display_"></span>
                                             </th>
-                                            <th scope="col">Balance<span class="account_description_display_"></span>
-                                            </th>
-                                            <th scope="col">Purpose of Transfer <span
+                                            <th scope="col">Purpose of Transfer<span
                                                     class="account_currency_display_"></span>
                                             </th>
+                                            <th scope="col">Balance<span class="account_description_display_"></span>
+                                            </th>
+
                                             <th scope="col">Credit Account</th>
-                                            <th scope="col">Batch No</th>
+                                            {{-- <th scope="col">Batch No</th> --}}
                                             <th scope="col">Attachment</th>
                                         </tr>
                                     </thead>

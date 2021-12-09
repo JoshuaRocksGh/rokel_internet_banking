@@ -75,13 +75,14 @@ class LoginController extends Controller
             // dd(env('API_BASE_URL') . "user/login", $data);
 
             $response = Http::post(env('API_BASE_URL') . "user/login", $data);
+            // return $response;
             if (!$response->ok()) { // API response status code is 200
                 return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
             }
             $result = json_decode($response->body());
 
 
-            if ($result->responseCode !== '000') {
+            if ($result->responseCode != '000') {
                 // API responseCode is not 000
                 return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
@@ -113,13 +114,13 @@ class LoginController extends Controller
                 "userMandate" => 'A',
                 "deviceInfo" => [
                     "appVersion" => "web",
-                    "deviceBrand" => Browser::deviceFamily(),
+                    // "deviceBrand" => Browser::deviceFamily(),
                     "deviceCountry" => Location::get()->countryName,
-                    "deviceId" => Browser::browserName(),
+                    // "deviceId" => Browser::browserName(),
                     "deviceIp" => request()->ip(),
-                    "deviceManufacturer" => Browser::deviceFamily(),
-                    "deviceModel" => Browser::deviceModel(),
-                    "deviceOs" =>  Browser::platformName(),
+                    // "deviceManufacturer" => Browser::deviceFamily(),
+                    // "deviceModel" => Browser::deviceModel(),
+                    // "deviceOs" =>  Browser::platformName(),
                 ],
                 "headers" => [
                     "x-api-key" => "123",
@@ -130,7 +131,7 @@ class LoginController extends Controller
 
             ]);
 
-            //   return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
+            // return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
             return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
 
 
@@ -142,10 +143,11 @@ class LoginController extends Controller
             //     'message' => (string) $e->getMessage()
             // ]);
 
-            return $base_response->api_response('500', 'Error: Failed To Contact Server',  NULL); // return API BASERESPONSE
+            // return $base_response->api_response('500', $e->getMessage(),  NULL);
 
+            // return API BASERESPONSE
 
-
+            return $base_response->api_response('500', 'Error: Failed To Contact Server',  NULL);
         }
     }
 

@@ -20,9 +20,9 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js">
         $.ajaxSetup({
-        timeout: 3000,
-        retryAfter: 5000
-    });
+            timeout: 3000,
+            retryAfter: 5000
+        });
     </script>
 
     @yield('styles')
@@ -33,12 +33,11 @@
 <body style="zoom: 0.9; background-color: white;">
 
     <!-- Pre-loader -->
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner">Loading...</div>
+    <div id="preloader" class="preloader">
+        <div id="status" class="preloader">
+            <img class="pulse" style="width: 100px; top: -50px;" src="assets/images/logoRKB.png" />
         </div>
-    </div>
-    <!-- End Preloader-->
+    </div> <!-- End Preloader-->
 
     <!-- Begin page -->
 
