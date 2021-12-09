@@ -88,7 +88,7 @@
             font-family: 'password';
             font-style: normal;
             font-weight: 400;
-            src: url("public\assets\fonts\password.ttf")
+            src: url("assets/fonts/password.ttf")
                 /* src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf); */
         }
 

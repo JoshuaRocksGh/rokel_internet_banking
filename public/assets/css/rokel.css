@@ -143,6 +143,10 @@ form-control {
     background-color: #00bdf3 !important;
     color: white;
 }
+.page-item.active .page-link {
+    background-color: var(--info);
+    border-color: var(--info);
+}
 
 .next-button {
     height: 2rem !important;
