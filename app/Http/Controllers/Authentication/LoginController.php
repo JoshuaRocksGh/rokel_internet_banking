@@ -70,79 +70,67 @@ class LoginController extends Controller
             "userId" => $user_id
         ];
 
-        // try {
+        try {
+            $response = Http::post(env('API_BASE_URL') . "/user/login", $data);
 
-        // dd(env('API_BASE_URL') . "user/login", $data);
+            if (!$response->ok()) { // API response status code is 200
+                return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+            }
+            $result = json_decode($response->body());
+            if ($result->responseCode !== '000') {
+                return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+            } // API responseCode is 000
+            $userDetail = $result->data;
+            // return response()->json($userDetail->accountsList[0]->accountDesc);
+            if (!config("app.corporate") && $userDetail->customerType === 'C') {
+                return  $base_response->api_response('900', 'Corporate account, use Corporate Internet Banking platform',  NULL);
+            } elseif (config("app.corporate") && $userDetail->customerType !== 'C') {
+                return  $base_response->api_response('900', 'Personal account, use Personal Internet Banking platform',  NULL);
+            }
 
-        $response = Http::post(env('API_BASE_URL') . "/user/login", $data);
-        Log::alert("message");
-        if (!$response->ok()) { // API response status code is 200
-            return $base_response->api_response('500', 'API SERVER ERROR',  NULL); // return API BASERESPONSE
+            session([
+                "userId" => $userDetail->userId,
+                "userAlias" => $userDetail->userAlias,
+                "setPin" => $userDetail->setPin,
+                "changePassword" => $userDetail->changePassword,
+                "email" => $userDetail->email,
+                "firstTimeLogin" => $userDetail->firstTimeLogin,
+                "userToken" => $userDetail->userToken,
+                "customerNumber" => $userDetail->customerNumber,
+                "customerPhone" => $userDetail->customerPhone,
+                "lastLogin" => $userDetail->lastLogin,
+                "customerType" => $userDetail->customerType,
+                "checkerMaker" => $userDetail->checkerMaker,
+                "accountDescription" => $userDetail->accountsList[0]->accountDesc,
+                "customerAccounts" => $userDetail->accountsList,
+                "userMandate" => 'A',
+                "deviceInfo" => [
+                    "appVersion" => "web",
+                    "deviceBrand" => Browser::deviceFamily(),
+                    // "deviceCountry" => Location::get()->countryName,
+                    "deviceId" => Browser::browserName(),
+                    "deviceIp" => request()->ip(),
+                    "deviceManufacturer" => Browser::deviceFamily(),
+                    "deviceModel" => Browser::deviceModel(),
+                    "deviceOs" =>  Browser::platformName(),
+                ],
+                "headers" => [
+                    "x-api-key" => "123",
+                    "x-api-secret" => "123",
+                    "x-api-source" => "123",
+                    "x-api-token" => "123"
+                ]
+
+            ]);
+            return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
+        } catch (\Exception $error) {
+            Log::alert($error);
+            return $base_response->api_response('500', 'Cannot Contact API ... Check Your Connection',  NULL); // return API BASERESPONSE
+
         }
-        $result = json_decode($response->body());
-
-
-        if ($result->responseCode !== '000') {
-            // API responseCode is not 000
-            return $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
-
-        } // API responseCode is 000
-        $userDetail = $result->data;
-
-        // return response()->json($userDetail->accountsList[0]->accountDesc);
-        if (!config("app.corporate") && $userDetail->customerType === 'C') {
-            return  $base_response->api_response('900', 'Corporate account, use Corporate Internet Banking platform',  NULL);
-        } elseif (config("app.corporate") && $userDetail->customerType !== 'C') {
-            return  $base_response->api_response('900', 'Personal account, use Personal Internet Banking platform',  NULL);
-        }
-
-        session([
-            "userId" => $userDetail->userId,
-            "userAlias" => $userDetail->userAlias,
-            "setPin" => $userDetail->setPin,
-            "changePassword" => $userDetail->changePassword,
-            "email" => $userDetail->email,
-            "firstTimeLogin" => $userDetail->firstTimeLogin,
-            "userToken" => $userDetail->userToken,
-            "customerNumber" => $userDetail->customerNumber,
-            "customerPhone" => $userDetail->customerPhone,
-            "lastLogin" => $userDetail->lastLogin,
-            "customerType" => $userDetail->customerType,
-            "checkerMaker" => $userDetail->checkerMaker,
-            "accountDescription" => $userDetail->accountsList[0]->accountDesc,
-            "customerAccounts" => $userDetail->accountsList,
-            "userMandate" => 'A',
-            "deviceInfo" => [
-                "appVersion" => "web",
-                "deviceBrand" => Browser::deviceFamily(),
-                // "deviceCountry" => Location::get()->countryName,
-                "deviceId" => Browser::browserName(),
-                "deviceIp" => request()->ip(),
-                "deviceManufacturer" => Browser::deviceFamily(),
-                "deviceModel" => Browser::deviceModel(),
-                "deviceOs" =>  Browser::platformName(),
-            ],
-            "headers" => [
-                "x-api-key" => "123",
-                "x-api-secret" => "123",
-                "x-api-source" => "123",
-                "x-api-token" => "123"
-            ]
-
-        ]);
-
-        //   return  $base_response->api_response($result->responseCode, $result->message,  $result->data);
-        return  $base_response->api_response($result->responseCode, $result->message,  $result->data); // return API BASERESPONSE
     }
 
     //     } catch (\Exception $e) {
-
-    //         // DB::table('tb_error_logs')->insert([
-    //         //     'platform' => 'ONLINE_INTERNET_BANKING',
-    //         //     'user_id' => 'AUTH',
-    //         //     'message' => (string) $e->getMessage()
-    //         // ]);
-
     //         return $base_response->api_response('500', 'Error: Failed To Contact Server',  NULL); // return API BASERESPONSE
 
 

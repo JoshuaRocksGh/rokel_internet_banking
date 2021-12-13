@@ -42,8 +42,14 @@
 
 </head>
 
-<body class="loading auth-fluid-pages pb-0">
+<body class="auth-fluid-pages pb-0">
 
+    <!-- Pre-loader -->
+    <div id="preloader" class="preloader">
+        <div id="status" class="preloader">
+            <img class="pulse" style="width: 100px; top: -50px;" src="assets/images/logoRKB.png" />
+        </div>
+    </div> <!-- End Preloader-->
 
     @yield('content')
 

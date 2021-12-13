@@ -25,7 +25,7 @@
 <script src="{{ asset('assets/js/functions/getAccounts.js') }}" defer></script>
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
 --}}
-<script src="assets\plugins\bootstrap-select\bootstrap-select.min.js" defer> </script>
+{{-- <script src="assets\plugins\bootstrap-select\bootstrap-select.min.js" defer> </script> --}}
 <script defer>
     function formatToCurrency(amount) {
         return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
@@ -106,21 +106,24 @@
             $(".preloader").fadeIn(500);
             return
         }
-        $(".preloader").fadeOut(500);
+        $(".preloader").fadeOut(1500);
         return
     }
-
-    //intitialize all form-control to bootstrap select
-    $(() => {
-        //     $('.form-control').selectpicker({
-        //         style: "",
-        //         baseStyle: "form-control",
-        //         showTick: "true",
-        //         // container:"body",
-        //         // width: "auto"
-        //     })
-        // $(".form-control").selectpicker()
-    })
+$(window).on("load", ()=>{
+    siteLoading("hide")
+})
+    $('#sidebar_logout').on("click", (e) => {
+        e.preventDefault()
+         Swal.fire({
+         title: "Logout successful!",
+         html: 'Redirecting ...',
+         icon: 'success',
+         showConfirmButton: false,
+        })
+        setTimeout(() => {
+            window.location.replace('logout')
+        }, 1000);
+      })  
 </script>
 
 {{-- <script type='text/javascript'>

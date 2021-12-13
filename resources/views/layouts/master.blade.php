@@ -13,11 +13,7 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
-
-
     @include('snippets.style')
-
-
     <style type="text/css">
         .navbar-custom {
             background-color: {
@@ -27,28 +23,9 @@
             }
         }
 
-        /* 
-
-        .btn-primary {
-            color: #fff;
-            box-shadow: 0 0 0 0 rgb(6 55 195 / 70%);
-        } */
-
-        /* .p-text {
-            color: white;
-        } */
-
         .card-icon {
             color: white;
         }
-
-        /* .card-background-image {
-
-            background-image: url("{{ asset('assets/images/login-bg.jpg') }}");
-            background-repeat: no-repeat;
-            background-size: cover;
-
-        } */
 
         /* Works on Firefox */
         * {
@@ -100,33 +77,17 @@
             font-size: 100px;
         }
 
-        .table_over_flow {
+        /* .table_over_flow {
             overflow-y: hidden;
-
-        }
+        } */
     </style>
-
-
-
-
     @yield('styles')
-
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.js">
-        $.ajaxSetup({
-        timeout: 3000,
-        retryAfter: 5000
-    });
-    </script> --}}
     <script src="assets\plugins\jquery\jquery-3.6.0.min.js"></script>
     @include('snippets.script')
-
-    {{-- @include('extras.datatables') --}}
-
 </head>
 
 <body
     style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;"
-    class="loading"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
     <!-- Pre-loader -->
@@ -150,25 +111,9 @@
         </div>
     </div>
 
-    {{-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js">
-    </script> --}}
 
     @yield('scripts')
-    <script>
-        $('#sidebar_logout').on("click", (e) => {
-    e.preventDefault()
-    Swal.fire({
-         title: "Logout successful!",
-         html: 'Redirecting ...',
-         icon: 'success',
-         showConfirmButton: false,
-        })
-        setTimeout(() => {
-            window.location.replace('logout')
-        }, 1000);
-      })
-    
-    </script>
+
 </body>
 
 </html>
