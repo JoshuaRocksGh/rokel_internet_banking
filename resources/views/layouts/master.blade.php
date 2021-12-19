@@ -86,7 +86,7 @@
     @include('snippets.script')
 </head>
 
-<body
+<body id="body" class="body"
     style="background-image: url('assets/images/background.png'); background-repeat: no-repeat; background-size: cover;"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
@@ -113,7 +113,6 @@
 
 
     @yield('scripts')
-
 </body>
 
 </html>

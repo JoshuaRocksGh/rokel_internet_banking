@@ -175,15 +175,13 @@ $(function () {
         table.clear().draw();
 
         if (data.length > 0) {
-            $("#pdf_print").html(`
-                        <a href="print-account-statement?account_number=${account_number}&start_date=${start_date}&end_date=${end_date}" target="_blank">
-                            <img src="{{ asset('assets/images/pdf.png') }}" alt="" style="width: 22px; height: 25px;">
-                        </a>
-                    `);
+            const pdfPath = `print-account-statement\?account_number=${account_number}&start_date=${start_date}&end_date=${end_date}`;
+            console.log(pdfPath);
+            $("#pdf_print").attr("href", pdfPath);
 
             $("#excel_print").html(`
                         <a href="{{ url('print-account-statement') }}">
-                            <img src="{{ asset('assets/images/excel.png') }}" alt="" style="width: 22px; height: 25px;">
+                            <img src="assets/images/excel.png" alt="" style="width: 22px; height: 25px;">
                         </a>
                     `);
             $.each(data, function (index) {
@@ -212,7 +210,8 @@ $(function () {
                     attachment = `<a href="#" data-value='${data[index].batchNumber}' class="attachment-icon" >
                      <i class="fe-file-text d-block text-center text-success"></a>`;
                 } else {
-                    attachment = `<i class="fe-file-text d-block text-center text-danger">`;
+                    attachment = `N/A`;
+                    // attachment = `<i class="fe-file-text d-block text-center text-danger">`;
                 }
 
                 let sysDate = new Date(data[index].postingSysDate);
@@ -253,6 +252,12 @@ $(function () {
     }
     function getAccountTransactions(account_number, start_date, end_date) {
         $("#search_transaction").text("Loading ...");
+        blockUi(
+            "body",
+            "Getting Transactions...Please Wait",
+            "75px",
+            "#4fc6e1"
+        );
         $.ajax({
             type: "POST",
             url: "account-transaction-history",
@@ -269,6 +274,7 @@ $(function () {
             },
             success: function (response) {
                 console.log(response);
+                unblockUi("body");
                 if (response.responseCode == "000") {
                     transactions = response.data;
                     if (response.data.length === 0) {
@@ -296,6 +302,7 @@ $(function () {
                 }
             },
             error: function (xhr, status, error) {
+                unblockUi("body");
                 $("#search_transaction").text("Search");
                 $("#account_transaction_loader").hide();
                 $(".account_transaction_display").hide();

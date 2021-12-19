@@ -1,5 +1,5 @@
 function getAccounts(account_data) {
-    $.ajax({
+    return $.ajax({
         type: "GET",
         url: "get-accounts-api",
         datatype: "application/json",
@@ -8,9 +8,7 @@ function getAccounts(account_data) {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
         success: function (response) {
-            if (response.responseCode == "000") {
-                console.log("acc");
-            } else {
+            if (response.responseCode !== "000") {
                 toater(response.message, "error");
                 setTimeout(() => {
                     if (response.data == null) {
@@ -26,3 +24,5 @@ function getAccounts(account_data) {
         },
     });
 }
+
+// copilot ajax get method
