@@ -169,7 +169,8 @@
 
                             <label for="user_id">User ID<span class="text-danger">*</span></label>
                             <input class="form-control" type="text" id="user_id" placeholder="Enter Username"
-                                parsley-trigger="change" autocomplete="off" aria-autocomplete="off">
+                                parsley-trigger="change" autocomplete="off" autofocus maxlength="50"
+                                aria-autocomplete="off">
 
                         </div>
 
@@ -183,8 +184,8 @@
                             @endif
                             <label for="password">Password<span class="text-danger">*</span></label>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="password" class="form-control" placeholder="Enter Password"
-                                    autocomplete="off" aria-autocomplete="off">
+                                <input type="password" id="password" maxlength="50" class="form-control"
+                                    placeholder="Enter Password" autocomplete="off" aria-autocomplete="off">
                                 <div class="input-group-append" data-password="false">
                                     <div class="input-group-text">
                                         <span class="password-eye"></span>

@@ -77,7 +77,7 @@ function getToAccount(endPoint) {
                       data-account-description='${e.NICKNAME}'  
                       data-account-email='${e.EMAIL}'
                       data-account-currency ='${e.BEN_ACCOUNT_CURRENCY}'
-                      data-account-address'${e.ADDRESS_1}' 
+                      data-account-address='${e.ADDRESS_1}' 
                       data-bank-name='${e.BANK_NAME}' 
                       data-bank-swift-code='${e.BANK_SWIFT_CODE}'
                       data-bank-country='${e.BANK_COUNTRY}' `;
@@ -414,6 +414,7 @@ $(() => {
             return false;
         }
         let target = $("#to_account option:selected");
+        console.log(target);
         let accountData = beneficiaryInfo.split("~");
         let beneficiaryType = target.attr("data-account-type");
 
@@ -451,7 +452,7 @@ $(() => {
         ) {
             bankName = target.attr("data-bank-name");
             bankCode = target.attr("data-bank-swift-code");
-            beneficiaryAddress = accountData[6].trim();
+            beneficiaryAddress = target.attr("data-account-address");
 
             $(".display_to_account_address").text(beneficiaryAddress);
             $("#beneficiary_address").val(beneficiaryAddress);

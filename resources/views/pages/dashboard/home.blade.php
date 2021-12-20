@@ -398,11 +398,11 @@
                                     <strong class="text-success">CURRENT & SAVINGS</strong>
                                     <select name="" id="casa_line_chart" class="form-control ">
                                         {{-- <option value="" disabled>Select
-                                                Account Number</option> --}}
+                                        Account Number</option> --}}
                                         @foreach (session()->get('customerAccounts') as $i => $account)
                                             <option selected
                                                 value="{{ $account->accountType . ' ~ ' . $account->accountDesc . ' ~ ' . $account->accountNumber . ' ~ ' . $account->currency . ' ~ ' . $account->availableBalance }}">
-                                                {{ $account->accountDesc . ' || ' . $account->accountNumber . ' || ' . $account->currency . '  ' . $account->availableBalance }}
+                                                {{ $account->accountDesc . ' || ' . $account->accountNumber . ' || ' . $account->currency . ' ' . $account->availableBalance }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -549,11 +549,8 @@
                                     <tr>
                                         <td colspan="3">
                                             <div class="d-flex justify-content-center">
-                                                <br>
-                                                {!! $noDataAvailable !!}
-
-                                                {{-- <div class="spinner-border avatar-lg text-primary  m-2 " role="status">
-                                                </div> --}}
+                                                <div class="spinner-border avatar-lg text-primary  m-2 " role="status">
+                                                </div>
                                             </div>
                                         </td>
 
@@ -715,8 +712,8 @@
             @section('scripts')
                 <!-- Plugins js-->
                 <script src="{{ asset('assets/js/chart.js') }}"></script>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+                {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> --}}
 
 
                 <!-- Tour page js -->

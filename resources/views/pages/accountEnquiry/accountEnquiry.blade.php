@@ -153,22 +153,22 @@
                                     <div class="col-md-2">
                                         <span style="float: right">
                                             &nbsp;&nbsp;
-                                            <span id="pdf_print">
-                                                <a href="{{ url('print-account-statement') }}">
-                                                    <img src="{{ asset('assets/images/pdf.png') }}" alt=""
-                                                        style="width: 22px; height: 25px;">
-                                                </a>
-                                            </span>
+                                            {{-- <span> --}}
+                                            <a id="pdf_print" href="{{ url('print-account-statement') }}">
+                                                <img src="{{ asset('assets/images/pdf.png') }}" alt=""
+                                                    style="width: 22px; height: 25px;">
+                                            </a>
+                                            {{-- </span> --}}
 
                                             &nbsp;&nbsp;&nbsp;
                                         </span>
                                         <span style="float: right">
-                                            <span id="excel_print">
-                                                <a href="{{ url('print-account-statement') }}">
-                                                    <img src="{{ asset('assets/images/excel.png') }}" alt=""
-                                                        style="width: 22px; height: 25px;">
-                                                </a>
-                                            </span>
+                                            {{-- <span> --}}
+                                            <a id="excel_print" href="{{ url('print-account-statement') }}">
+                                                <img src="{{ asset('assets/images/excel.png') }}" alt=""
+                                                    style="width: 22px; height: 25px;">
+                                            </a>
+                                            {{-- </span> --}}
 
                                         </span>
                                     </div>
@@ -185,14 +185,13 @@
                                             <th scope="col">Date</th>
                                             <th scope="col">Amount <span class="account_number_display_"></span>
                                             </th>
-                                            <th scope="col">Purpose of Transfer<span
-                                                    class="account_currency_display_"></span>
-                                            </th>
                                             <th scope="col">Balance<span class="account_description_display_"></span>
                                             </th>
-
+                                            <th scope="col">Purpose of Transfer <span
+                                                    class="account_currency_display_"></span>
+                                            </th>
                                             <th scope="col">Credit Account</th>
-                                            {{-- <th scope="col">Batch No</th> --}}
+                                            <th scope="col">Batch No</th>
                                             <th scope="col">Attachment</th>
                                         </tr>
                                     </thead>
