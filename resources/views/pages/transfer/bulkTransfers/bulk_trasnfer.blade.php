@@ -121,7 +121,7 @@
 
                             <div class="card-box col-md-12">
                                 <div class="row">
-                                    <h4 for="" class="col-12 col-form-label text-primary"><b>Batch Details</b></h4>
+                                    <h4 for="" class="col-12 col-form-label text-primary"><b>Transfer Details</b></h4>
 
                                     <div class="col-md-4 form-group ">
                                         <label for="inputEmail3" class="text-primary">Bank Type<span
@@ -215,7 +215,7 @@
 
 
                         <div class="col-md-12">
-                            <h4 class="text-primary"><b>File Upload Details</b></h4>
+                            <h4 class="text-primary"><b>Transfer Summary</b></h4>
                             @if ($errors->any())
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -445,6 +445,12 @@
                             let request_type = 'Cheque Book Request'
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
 
+                        } else if (request_type == 'UTL') {
+                            let request_type = 'Utility'
+                            request_type != null ? append_approval_details("Request Type", request_type) : '';
+                        } else if (request_type == 'AIR') {
+                            let request_type = 'Airtime'
+                            request_type != null ? append_approval_details("Request Type", request_type) : '';
                         } else if (request_type == 'MOM') {
                             let request_type = 'Mobile Money'
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
@@ -856,6 +862,8 @@
 
             function ajax_post() {
                 $('#approve_transaction').text("Processing ...")
+                siteLoadind('true')
+
                 var customer = @json($customer_no);
                 var request = @json($request_id);
 
@@ -874,6 +882,8 @@
                         console.log(response)
                         let res = JSON.parse(response);
                         if (res.responseCode == '000') {
+                            siteLoadind('false')
+
                             Swal.fire('', res.message, 'success');
                             getAccounts();
 
@@ -891,6 +901,8 @@
 
 
                         } else {
+                            siteLoadind('false')
+
 
                             Swal.fire('', res.message, 'error');
 
@@ -921,7 +933,6 @@
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
                         ajax_post()
-                        siteLoadind('true')
 
                     } else if (result.isDenied) {
                         Swal.fire('Failed to approve transaction', '', 'info')

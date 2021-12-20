@@ -409,6 +409,10 @@
                                 amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
                                     data[index].total_amount))
                                 request_type = 'Bulk E-Korpor'
+                            } else if (data[index].request_type == "UTL") {
+                                request_type = 'Utility'
+                            } else if (data[index].request_type == "AIR") {
+                                request_type = 'Airtime'
                             } else if (data[index].request_type == "MOM") {
                                 request_type = 'Mobile Money'
 
