@@ -42,7 +42,7 @@ $(function () {
         } else {
             var from_account = $("#from_account").val();
             console.log(start_date);
-            if (!validateAll(from_account)) {
+            if (!from_account) {
                 toaster("please select an account", "warning", 3000);
                 $("#search_transaction").text("Search");
                 return false;
