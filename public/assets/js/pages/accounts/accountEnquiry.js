@@ -27,10 +27,10 @@ $(function () {
         start_date = $("#startDate").val();
         end_date = $("#endDate").val();
         if (start_date > this_day) {
-            toaster("Start Date can't be greater than today", "warning", 3000);
+            toaster("Start Date can't be greater than today", "warning");
             return false;
         } else if (end_date > this_day) {
-            toaster("End Date can't be greater than today", "warning", 3000);
+            toaster("End Date can't be greater than today", "warning");
             return false;
         } else if (start_date > end_date) {
             toaster(
@@ -42,8 +42,8 @@ $(function () {
         } else {
             var from_account = $("#from_account").val();
             console.log(start_date);
-            if (!validateAll(from_account)) {
-                toaster("please select an account", "warning", 3000);
+            if (!from_account) {
+                toaster("please select an account", "warning");
                 $("#search_transaction").text("Search");
                 return false;
             } else {

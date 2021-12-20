@@ -84,14 +84,7 @@
         } else return ret
     }
 
-    function validateAll(...args) {
-        for (arg of args) {
-            if (arg === "" || arg === undefined || arg === null || arg == NaN) {
-                return false
-            }
-        }
-        return true
-    }
+
 
     function somethingWentWrongHandler() {
         toaster("Something went wrong ... please hold on", "error", 3000)
