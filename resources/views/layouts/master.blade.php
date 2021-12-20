@@ -27,7 +27,7 @@
             }
         }
 
-        /* 
+        /*
 
         .btn-primary {
             color: #fff;
@@ -74,6 +74,7 @@
         #datatable-buttons_filter {
             float: right;
         }
+
     </style>
 
 
@@ -88,7 +89,7 @@
             font-family: 'password';
             font-style: normal;
             font-weight: 400;
-            src: url("public\assets\fonts\password.ttf")
+            src: url("{{ asset('assets\fonts\password.ttf') }}")
                 /* src: url(https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf); */
         }
 
@@ -104,6 +105,7 @@
             overflow-y: hidden;
 
         }
+
     </style>
 
 
@@ -117,7 +119,7 @@
         retryAfter: 5000
     });
     </script> --}}
-    <script src="assets\plugins\jquery\jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('assets/plugins/jquery/jquery-3.6.0.min.js') }}"></script>
     @include('snippets.script')
 
     {{-- @include('extras.datatables') --}}
@@ -156,18 +158,17 @@
     @yield('scripts')
     <script>
         $('#sidebar_logout').on("click", (e) => {
-    e.preventDefault()
-    Swal.fire({
-         title: "Logout successful!",
-         html: 'Redirecting ...',
-         icon: 'success',
-         showConfirmButton: false,
+            e.preventDefault()
+            Swal.fire({
+                title: "Logout successful!",
+                html: 'Redirecting ...',
+                icon: 'success',
+                showConfirmButton: false,
+            })
+            setTimeout(() => {
+                window.location.replace('logout')
+            }, 1000);
         })
-        setTimeout(() => {
-            window.location.replace('logout')
-        }, 1000);
-      })
-    
     </script>
 </body>
 

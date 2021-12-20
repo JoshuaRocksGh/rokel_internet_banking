@@ -101,6 +101,7 @@ function makePayment() {
         success: function (response) {
             siteLoading("hide");
             console.log(response);
+
             if (response.responseCode == "000") {
                 getAccounts();
                 Swal.fire({

@@ -409,6 +409,9 @@
                                 amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
                                     data[index].total_amount))
                                 request_type = 'Bulk E-Korpor'
+                            } else if (data[index].request_type == "MOM") {
+                                request_type = 'Mobile Money'
+
                             } else {
                                 request_type = 'Others'
                                 if (request_type = 'Others') {
@@ -478,7 +481,7 @@
             }) --}}
             var customer_no = @json(session()->get('customerNumber'));
             var request_status = 'P'
-            console.log(customer_no);
+            //console.log(customer_no);
             $('.transfer_tab_btn').click(function() {
                 let customer_no = @json(session()->get('customerNumber'));
                 get_corporate_requests(customer_no, 'P')

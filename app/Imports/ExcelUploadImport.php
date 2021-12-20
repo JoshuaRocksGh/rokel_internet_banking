@@ -413,7 +413,7 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
             "account_balance" => "",
             "total_amount" => $total_amount,
             "ref_number" => $ref_no,
-            "excel_total_amount" => $excel_t_amt,
+            "excel_total_amount" => $t_amt,
             "excel_ref_number" => $excel
         ]);
 

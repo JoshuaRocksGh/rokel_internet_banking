@@ -9,12 +9,16 @@ use App\Imports\ExcelKorporUploadImport;
 use App\Imports\ExcelUploadImport;
 use App\Imports\Imports\ExcelUploadKorporImport;
 use Carbon\Carbon;
+use CURLFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
+use SplFileInfo;
+
 
 class BulkUploadsController extends Controller
 {
@@ -123,15 +127,9 @@ class BulkUploadsController extends Controller
         //     "data" => $request->all()
         // ]);
 
-        // return $request;
+        // return $request->excel_file;
 
 
-        // $documentRef = time();
-        // $account_no = $request->account_no;
-        // $bank_code = $request->bank_type;
-        // $trans_ref_no = $request->trans_ref_no;
-        // $total_amount = $request->total_amount;
-        // $value_date = $request->value_date;
 
         $validator = Validator::make($request->all(), [
             'excel_file' => 'required|mimes:xls,xlsx',
@@ -148,15 +146,8 @@ class BulkUploadsController extends Controller
             return $base_response->api_response('500', $validator->errors(), NULL);
         };
 
-        // $this->validate($request, [
-        //     'excel_file' => 'required|mimes:xls,xlsx',
-        //     'my_account' => 'required',
-        //     'bulk_amount' => 'required',
-        //     'reference_no' => 'required',
-        //     'value_date' => 'required',
-        // ]);
 
-        // return $request;
+
 
         $user_id = session()->get('userId');
         $customer_no = session()->get('customerNumber');
@@ -181,6 +172,54 @@ class BulkUploadsController extends Controller
 
         $account_mandate = $account_info[6];
         // return $account_info;
+
+        $upload_file_excel = $request->file_name;
+
+        // $excel_file =  $request->file('excel_file')->getClientOriginalName();
+
+        // $excel_file_upload = $request->excel_file;
+
+
+        // return $path;
+        // $path = $path_2->getRealPath();
+
+        // return $path_2;
+
+
+        // return $excel_file;
+
+        try {
+
+            $filename = $request->excel_file->getClientOriginalName();
+            $path  =  $request->file('excel_file')->getPathName();
+
+
+            $response = Http::attach(
+                'file',
+                file_get_contents($path),
+                $filename
+            )->post('http://192.168.1.225:9096/corporate/uploadBulk');
+            // return $response;
+
+
+
+
+            $result = new ApiBaseResponse();
+
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+        }
+
+        die();
+
 
         if ($request->file()) {
 
@@ -294,6 +333,14 @@ class BulkUploadsController extends Controller
 
         // return response()->json($files);
 
+        $query = DB::connection('oracle')->table('bulk_temp_excel')->get();
+        return response()->json([
+            'responseCode' => '000',
+            'message' => "Successful",
+            'data' => $query
+        ]);
+
+        die();
         $excel_errors = DB::table('tb_bulk_error_logs')
             // ->where('batch_no', $batch_no)
             ->where('customer_no', $customerNumber)

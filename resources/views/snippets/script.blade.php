@@ -1,14 +1,14 @@
 <!-- Third Party js-->
 {{-- <script src="{{ asset('land_asset/js/jquery.min.js') }}"></script> --}}
 
-@if (config("app.corporate"))
-<script>
-    const ISCORPORATE = true;
-</script>
+@if (config('app.corporate'))
+    <script>
+        const ISCORPORATE = true;
+    </script>
 @else
-<script>
-    const ISCORPORATE = false;
-</script>
+    <script>
+        const ISCORPORATE = false;
+    </script>
 @endif
 <script type="text/javascript">
     if (typeof jQuery === 'undefined') {
@@ -20,12 +20,11 @@
 </script>
 <script src="{{ asset('assets/js/vendor.min.js') }}" defer></script>
 {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script> --}}
-<script src="assets\plugins\sweet-alert\sweetalert2@11.js"></script>
+<script src="{{ asset('assets/plugins/sweet-alert/sweetalert2@11.js') }}"></script>
 <script src="{{ asset('assets/js/app.min.js') }}" defer></script>
 <script src="{{ asset('assets/js/functions/getAccounts.js') }}" defer></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
---}}
-<script src="assets\plugins\bootstrap-select\bootstrap-select.min.js" defer> </script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script> --}}
+<script src="{{ asset('assets/plugins/bootstrap-select/bootstrap-select.min.js') }}" defer> </script>
 <script defer>
     function formatToCurrency(amount) {
         return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");

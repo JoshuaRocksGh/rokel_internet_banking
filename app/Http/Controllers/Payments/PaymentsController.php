@@ -20,6 +20,7 @@ class PaymentsController extends Controller
 
     public function makePayment(Request $req)
     {
+        // return $req;
         $base_response = new BaseResponse();
 
 

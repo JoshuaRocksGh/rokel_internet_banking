@@ -197,6 +197,8 @@
     <!-- Datatables init -->
     {{-- <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> --}}
     <script>
+        siteLoading('show')
+
         function my_account() {
             $.ajax({
                 type: 'GET',
@@ -243,9 +245,11 @@
 
                     let ID = 1;
 
-                    console.log("upload bulk details:", response);
+                    //console.log("upload bulk details:", response);
 
                     if (response.responseCode == '000') {
+                        siteLoading('hide')
+
                         bulk_upload_array_list = response.data;
                         {{-- $('#beneficiary_table').show();
                         $('#beneficiary_list_loader').hide();
@@ -267,7 +271,7 @@
                         $('.display_total_amount').text(formatToCurrency(parseFloat(bulk_info.TOTAL_AMOUNT)))
 
                         $.each(data, function(index) {
-                            console.log(data[index])
+                            //console.log(data[index])
 
                             let status = ''
                             let bank_type = ''
@@ -313,6 +317,7 @@
                         })
 
                     } else {
+
                         $('#beneficiary_table').hide();
                         $('#beneficiary_list_loader').hide();
                         $('#beneficiary_list_retry_btn').show();
@@ -401,9 +406,44 @@
 
         function submit_upload(batch_no, customer_no) {
 
-            const ipAPI = 'post-bulk-transaction-api?batch_no=' + batch_no + "~" + customer_no
+            siteLoading("show")
 
-            Swal.queue([{
+            //const ipAPI = 'post-bulk-transaction-api?batch_no=' + batch_no + "~" + customer_no
+
+            $.ajax({
+                type: "GET",
+                url: 'post-bulk-transaction-api?batch_no=' + batch_no + "~" + customer_no,
+                datatype: 'json',
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+                success: function(response) {
+                    siteLoading("hide")
+
+                    if (response.responseCode == '000') {
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: response.message
+                        })
+
+                        setTimeout(function() {
+                            window.location = "{{ url('bulk-transfer') }}"
+                        }, 3000)
+                    }
+
+                },
+                error: function(xhr, status, error) {
+                    siteLoading("hide")
+                    Swal.fire({
+                        icon: 'error',
+                        title: error
+                    })
+                }
+
+            })
+
+            {{-- Swal.fire([{
                 title: 'Are you sure',
                 icon: 'warning',
                 showCancelButton: true,
@@ -416,7 +456,7 @@
                         .then(response => response.json())
                         .then((data) => {
                             if (data.responseCode == '000') {
-                                Swal.insertQueueStep({
+                                Swal.fire({
                                     icon: 'success',
                                     title: data.message
                                 })
@@ -425,21 +465,21 @@
                                     window.location = "{{ url('bulk-transfer') }}"
                                 }, 3000)
                             } else {
-                                Swal.insertQueueStep({
+                                Swal.fire({
                                     icon: 'error',
                                     title: data.message
                                 })
                             }
-                            {{-- Swal.insertQueueStep(data.ip) --}}
+
                         })
                         .catch(() => {
-                            Swal.insertQueueStep({
+                            Swal.fire({
                                 icon: 'error',
                                 title: 'API SERVER ERROR'
                             })
                         })
                 }
-            }])
+            }]) --}}
 
 
         }
@@ -449,7 +489,7 @@
 
             const ipAPI = 'reject-bulk-transaction-api?customer_no=' + customer_no
 
-            Swal.queue([{
+            Swal.fire([{
                 title: 'Are you sure you want to reject',
                 icon: 'warning',
                 showCancelButton: true,
@@ -462,7 +502,7 @@
                         .then(response => response.json())
                         .then((data) => {
                             if (data.responseCode == '000') {
-                                Swal.insertQueueStep({
+                                Swal.fire({
                                     icon: 'success',
                                     title: data.message
                                 })
@@ -471,15 +511,15 @@
                                     window.location = "{{ url('bulk-transfer') }}"
                                 }, 2000)
                             } else {
-                                Swal.insertQueueStep({
+                                Swal.fire({
                                     icon: 'error',
                                     title: data.message
                                 })
                             }
-                            {{-- Swal.insertQueueStep(data.ip) --}}
+                            {{-- Swal.fire(data.ip) --}}
                         })
                         .catch(() => {
-                            Swal.insertQueueStep({
+                            Swal.fire({
                                 icon: 'error',
                                 title: 'API SERVER ERROR'
                             })

@@ -37,16 +37,7 @@
 
     </style>
 
-    <!-- third party css -->
-    <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
-        rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/libs/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <!-- third party css end -->
+
 
 @endsection
 
@@ -363,16 +354,16 @@
             var request = @json($request_id);
             var mandate = @json($mandate)
 
-            console.log(customer);
-            console.log(request);
-            console.log(mandate);
+            //console.log(customer);
+            //console.log(request);
+            //console.log(mandate);
 
             $.ajax({
                 type: 'GET',
                 url: "../../pending-request-details-api?customer_no=" + customer + "&request_id=" + request,
                 datatype: 'application/json',
                 success: function(response) {
-                    console.log(response);
+                    console.log("pending request detail=>", response);
 
                     if (response.responseCode == '000') {
 
@@ -454,6 +445,10 @@
                             let request_type = 'Cheque Book Request'
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
 
+                        } else if (request_type == 'MOM') {
+                            let request_type = 'Mobile Money'
+                            request_type != null ? append_approval_details("Request Type", request_type) : '';
+
                         } else if (request_type == 'KORP') {
                             let request_type = 'E-Korpor Transaction'
                             request_type != null ? append_approval_details("Request Type", request_type) : '';
@@ -508,6 +503,10 @@
                         let beneficiary_name = pending_request.beneficiaryname;
                         beneficiary_name != null ? append_approval_details("Beneficiary Name",
                             beneficiary_name) : '';
+
+                        let beneficiary_telephone = pending_request.beneficiarytelephone;
+                        beneficiary_telephone != null ? append_approval_details("Beneficiary Telephone",
+                            beneficiary_telephone) : "";
 
 
 
@@ -911,6 +910,7 @@
 
                 Swal.fire({
                     title: 'Do you want to Approve the transaction?',
+                    icon: 'question',
                     showDenyButton: false,
                     showCancelButton: true,
                     confirmButtonText: `Proceed`,
@@ -921,6 +921,7 @@
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
                         ajax_post()
+                        siteLoadind('true')
 
                     } else if (result.isDenied) {
                         Swal.fire('Failed to approve transaction', '', 'info')

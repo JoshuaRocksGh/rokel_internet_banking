@@ -105,7 +105,7 @@
 
                         <div class="row">
                             <div class="card-box col-md-12">
-                                <h4 for="" class=" text-primary"><b> Source Account</b><span
+                                <h4 for="" class=" text-primary"><b> Account to transfer from</b><span
                                         class="text-danger">*</span></h4>
 
                                 <div class="form-group">
@@ -374,16 +374,16 @@
 
                 </div>
                 <div class="modal-body">
-                    <ul id="display_bulk_amount_error">
+                    {{-- <ul id="display_bulk_amount_error">
                         <li>
                             <h3 class="text-danger"><b>Bulk Amount and File Total Amount
                                     do not match</b></h3>
                         </li>
-                    </ul>
+                    </ul> --}}
 
                     <br>
-                    <h3 class="failed_upload_header"><b>Failed Upload</b></h3>
-                    <h3 class="successful_upload_header"><b>Successful Upload</b></h3>
+                    {{-- <h3 class="failed_upload_header"><b>Failed Upload</b></h3> --}}
+                    {{-- <h3 class="successful_upload_header"><b>Successful Upload</b></h3> --}}
                     <div class="table-responsive">
                         <table id="datatable-buttons"
                             class="table table-bordered table-striped dt-responsive nowrap w-100 failed_bulk_upload_table"
@@ -399,17 +399,7 @@
                                 </tr>
                             </thead>
                             <tbody class="failed_bulk_upload">
-                                {{-- <tr>
-                                    <td colspan="5">
-                                        <div class="d-flex justify-content-center">
-                                            <br>
-                                            {!! $noDataAvailable !!}
 
-
-                                        </div>
-                                    </td>
-
-                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
@@ -480,6 +470,8 @@
                 'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
                 "datatype": "application/json",
                 success: function(response) {
+                    console.log(response.data);
+                    //return false;
                     //console.log("bulk upload list:", response.data);
 
                     let pending = 0;
@@ -495,8 +487,78 @@
                         "Data"
                     );
 
+                    let file_total_amount = 0;
+                    let new_file_upload = response.data
+                    let today = new Date().toLocaleDateString()
+                    let failed_acc_link = [];
+
+
 
                     if (response.responseCode == '000') {
+
+                        $.each(new_file_upload, function(index) {
+                            if (new_file_upload[index].amount) {
+                                var amount = parseFloat(new_file_upload[index].amount)
+                                file_total_amount += amount
+                            }
+
+                            if (new_file_upload[index].acct_valid != "Valid account") {
+
+                                failed_acc_link.push(new_file_upload[index])
+                            }
+
+                        })
+                        console.log(file_total_amount)
+                        let modal_target =
+                            table.row.add([
+                                `<b>${response.data[0].ref_number}</b>`,
+                                `<b></b>`,
+                                `<b>${formatToCurrency(parseFloat(file_total_amount))}</b>`,
+                                `<b>${today}</b>`,
+                                `<b>${new_file_upload.length}</b>`,
+                                `<b><button type="button" class="btn btn-sm btn-danger waves-effect waves-light error_modal_data" data-toggle="modal" data-target="#full-width-modal" data="${failed_acc_link}">&emsp;${failed_acc_link.length}&emsp;</button></b>`,
+                                `<b></b>`,
+
+
+
+                                //action
+
+
+                            ]).draw(false)
+
+                        var new_table = $('.failed_bulk_upload_table').DataTable();
+                        var nodes = new_table.rows().nodes();
+                        let error_table_modal = failed_acc_link
+                        let upload_summary_count = 1;
+
+                        $.each(failed_acc_link, function(index) {
+                            console.log("failed_acc_link=>", failed_acc_link[index])
+
+
+                            new_table.row.add([
+                                `<b class="h5">${upload_summary_count++}</b>`,
+                                `<b class="h5">${failed_acc_link[index].name}</b>`,
+                                `<b class="h5">${failed_acc_link[index].acct_link}</b>`,
+                                `<b class="h5">${formatToCurrency(parseFloat(failed_acc_link[index].amount))}</b>`,
+                                `<b class="h5">${failed_acc_link[index].ref_number}</b>`,
+                                `<b class="h5 text-danger">${failed_acc_link[index].acct_valid}</b>`
+
+                            ]).draw(false)
+                        })
+
+
+                        {{-- $(".error_modal_data").click(() => {
+                            $(".failed_bulk_upload_table tbody").empty();
+                            $(".successful_bulk_upload tr").remove();
+
+
+
+
+                        }) --}}
+
+
+                        return false;
+
 
                         $(".successful_bulk_upload tr").remove();
                         $(".failed_bulk_upload tr").remove();
@@ -830,7 +892,8 @@
 
                 // FILE UPLOAD
                 var file = document.getElementById("excel_file").files[0];
-                //console.log(file);
+                console.log(file);
+                //return false;
                 if (file) {
 
                     var file_name = file.name;
@@ -904,20 +967,20 @@
                                 siteLoading("hide")
 
                                 toaster(response.message, "success", 3000);
-                                location.reload();
 
-                                {{-- setTimeout(function() {
+                                setTimeout(function() {
+                                    location.reload();
 
-                                }, 3000) --}}
+                                }, 3000)
                             } else {
                                 siteLoading("hide")
 
                                 toaster(response.message, "error", 3000);
                                 //location.reload();
-                                {{-- setTimeout(function() {
+                                setTimeout(function() {
                                     location.reload();
 
-                                }, 3000) --}}
+                                }, 3000)
                             }
 
 
@@ -931,9 +994,9 @@
                             toaster("Error Occurred. Upload Unsuccessful!", "error", 3000);
                             setTimeout(function() {
                                 location.reload();
-
+                                //location.reload();
                             }, 3000)
-                            //location.reload();
+
                         }
                     })
 
