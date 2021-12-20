@@ -583,7 +583,7 @@ $(document).ready(function () {
             //     return false
             // }
 
-            if (!validateAll(reference_no, receiver_phoneNo, pin)) {
+            if (!reference_no || !receiver_phoneNo || !pin) {
                 toaster("Fields must not be empty", "error", 10000);
                 return false;
             } else {
