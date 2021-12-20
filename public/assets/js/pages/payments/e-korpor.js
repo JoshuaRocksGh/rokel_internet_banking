@@ -583,8 +583,8 @@ $(document).ready(function () {
             //     return false
             // }
 
-            if (!validateAll(reference_no, receiver_phoneNo, pin)) {
-                toaster("Fields must not be empty", "error", 10000);
+            if (!reference_no || !receiver_phoneNo || !pin) {
+                toaster("Fields must not be empty", "error");
                 return false;
             } else {
                 $("#reverse-text").hide();
