@@ -862,7 +862,7 @@
 
             function ajax_post() {
                 $('#approve_transaction').text("Processing ...")
-                siteLoadind('true')
+                siteLoading('true')
 
                 var customer = @json($customer_no);
                 var request = @json($request_id);
@@ -882,7 +882,7 @@
                         console.log(response)
                         let res = JSON.parse(response);
                         if (res.responseCode == '000') {
-                            siteLoadind('false')
+                            siteLoading('false')
 
                             Swal.fire('', res.message, 'success');
                             getAccounts();
@@ -901,7 +901,7 @@
 
 
                         } else {
-                            siteLoadind('false')
+                            siteLoading('false')
 
 
                             Swal.fire('', res.message, 'error');

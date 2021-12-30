@@ -334,9 +334,10 @@
         };
 
         function get_corporate_requests(customerNumber, requestStatus) {
-            var table = $('.pending_transaction_request').DataTable({
+            {{-- var table = $('.pending_transaction_request').DataTable({
                 destroy: true
-            });
+            }); --}}
+            var table = $('.pending_transaction_request').DataTable();
             var nodes = table.rows().nodes();
 
             table
