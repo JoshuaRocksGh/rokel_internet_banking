@@ -46,6 +46,82 @@ function somethingWentWrongHandler() {
     }, 3000);
 }
 
+function validateEmail($email) {
+    let emailRegx =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailRegx.test($email);
+}
+
+function currencyConvertor(
+    forexRate,
+    amount = 0,
+    fromCur = "SLL",
+    toCur = "SLL"
+) {
+    let currencyPair1 = fromCur + "/ " + toCur;
+    let currencyPair2 = toCur + "/ " + fromCur;
+    let convertedAmount = 0;
+    let currencyPair;
+    let midrate = 0;
+    let conversionData;
+
+    $.each(forexRate, (i) => {
+        if (forexRate[i].PAIR === currencyPair1) {
+            midrate = forexRate[i].MIDRATE;
+            convertedAmount = (
+                parseFloat(amount) * parseFloat(midrate)
+            ).toFixed(2);
+            currencyPair = currencyPair1;
+            conversionData = {
+                convertedAmount,
+                midrate,
+                currencyPair,
+            };
+            return;
+        } else if (forexRate[i].PAIR === currencyPair2) {
+            midrate = forexRate[i].MIDRATE;
+            convertedAmount = (
+                parseFloat(amount) / parseFloat(midrate)
+            ).toFixed(2);
+            currencyPair = currencyPair2;
+            conversionData = {
+                convertedAmount,
+                midrate,
+                currencyPair,
+            };
+            return;
+        }
+    });
+    return conversionData;
+}
+
+function getAccounts(account_data) {
+    return $.ajax({
+        type: "GET",
+        url: "get-accounts-api",
+        datatype: "application/json",
+
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        success: function (response) {
+            if (response.responseCode !== "000") {
+                toater(response.message, "error");
+                setTimeout(() => {
+                    if (response.data == null) {
+                        window.location = "logout";
+                    }
+                }, 1500);
+            }
+        },
+        error: function (xhr, status, error) {
+            setTimeout(function () {
+                getAccounts(account_data);
+            }, $.ajaxSetup().retryAfter);
+        },
+    });
+}
+
 function siteLoading(state) {
     if (state === "show") {
         $("#preloader").css("background-color", "#4fc6e17a");
