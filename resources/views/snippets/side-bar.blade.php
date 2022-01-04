@@ -221,7 +221,7 @@
                         </ul>
                     </div>
                 </li>
-                @if (config('app.personal'))
+                @if (!config('app.corporate'))
                     <li>
                         <a href="#sidebarTasks" data-toggle="collapse">
                             <i class="fas fa-credit-card"></i>
