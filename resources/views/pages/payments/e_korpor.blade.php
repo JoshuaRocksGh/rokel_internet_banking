@@ -993,7 +993,7 @@
             const ISCORPORATE = true;
         @else
             const ISCORPORATE = false;
-        @endif */
+        @endif
         let noDataAvailable = {!! json_encode($noDataAvailable) !!}
     </script>
     <script src="{{ asset('assets/js/pages/payments/e-korpor.js') }}">

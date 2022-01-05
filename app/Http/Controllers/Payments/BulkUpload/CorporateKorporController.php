@@ -27,7 +27,7 @@ class CorporateKorporController extends Controller
             'sender_name' => 'required',
             'account_currency' => 'required',
             'account_mandate' => 'required',
-            'currCode' => 'required'
+            // 'currCode' => 'required'
         ]);
 
 
