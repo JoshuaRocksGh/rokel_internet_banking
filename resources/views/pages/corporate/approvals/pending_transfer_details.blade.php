@@ -369,7 +369,7 @@
 
                         let pending_request = response.data[0];
                         let approvers_mandate = response.data[1]
-                        {{-- console.log(pending_request); --}}
+                        console.log("pending_request=>", pending_request);
 
                         if (pending_request == null || pending_request == '') {
                             {{-- Swal.fire('', 'Request does not exit', 'error'); --}}
@@ -553,6 +553,9 @@
 
                         let leaflet = pending_request.leaflet;
                         leaflet != null ? append_approval_details("Number of Leaflet", leaflet) : '';
+
+                        let utility_id = pending_request.utility_id;
+                        utility_id != null ? append_approval_details("Utility Id", utility_id) : '';
 
                         let pending_approvers = pending_request.approvers
                         if (pending_approvers == null || pending_approvers == undefined) {

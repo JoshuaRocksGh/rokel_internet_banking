@@ -25,7 +25,7 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6 col-lg-3">
-                    <a href="{{ url('payment-type') }}">
+                    <a href="{{ url('payments') }}">
                         <div class="widget-rounded-circle card-box home-card "
                             style="background-color: rgba(191, 236, 227, 1);">
                             <div class="row">

@@ -360,11 +360,11 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response) {
-                    console.log(response);
+                    //console.log(response);
                     if (response.responseCode == '000') {
 
                         let data = response.data;
-                        console.log(data);
+                        //console.log(data);
 
                         table.clear().draw()
 
@@ -398,7 +398,7 @@
                             } else if (data[index].request_type == 'BULK') {
                                 amount = (data[index].currency) + ' ' + formatToCurrency(parseFloat(
                                     data[index].total_amount))
-                                console.log(data[index].total_amount)
+                                //console.log(data[index].total_amount)
                                 request_type = 'Bulk Transfer'
                             } else if (data[index].request_type == 'INTB') {
                                 request_type = 'International Bank Transfer'

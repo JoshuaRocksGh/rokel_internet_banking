@@ -160,8 +160,15 @@ class BulkUploadsController extends Controller
         $trans_ref_no = $request->reference_no;
         $total_amount = $request->bulk_amount;
         $value_date = $request->value_date;
+        $file_upload = $request->excel_file;
 
-        // return $request;
+        // return response()->json([
+        //     "responseCode" => "502",
+        //     "message" => "file type",
+        //     "data" => $file_upload
+        // ]);
+
+        // return $file_upload;
 
 
 
@@ -175,18 +182,35 @@ class BulkUploadsController extends Controller
 
         $upload_file_excel = $request->file_name;
 
-        // $excel_file =  $request->file('excel_file')->getClientOriginalName();
+        // Validate reference number in excel before upload //
+        if ($file_upload) {
 
-        // $excel_file_upload = $request->excel_file;
+            $path = $request->file('excel_file')->getRealPath();
+            // return $path;
+
+            $file = $request->file('excel_file');
+            $ext = $file->getClientOriginalExtension();
+            $name = strtoupper($documentRef) . '~' . strtoupper($trans_ref_no) . '~' . strtoupper($total_amount) . '.' . $ext;
+
+            // return $name;
+            $post_date = Carbon::now();
+            $post_date = $post_date->toDateTimeString();
 
 
-        // return $path;
-        // $path = $path_2->getRealPath();
+            Excel::import(new ExcelUploadImport($customer_no, $user_id, $user_name, $documentRef, $account_no, $bank_code, $trans_ref_no, $total_amount, $currency, $value_date, $file, $account_mandate), $file);
 
-        // return $path_2;
+            $query_upload = DB::table('tb_corp_bank_import_excel')
+                ->where('customer_no', $customer_no)
+                ->get();
 
-
-        // return $excel_file;
+            return response()->json([
+                "responseCode" => "756",
+                "message" => "Error Occured",
+                "data" => $query_upload
+            ]);
+        } else {
+            return false;
+        }
 
         try {
 

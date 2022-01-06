@@ -968,19 +968,19 @@
 
                                 toaster(response.message, "success", 3000);
 
-                                setTimeout(function() {
-                                    location.reload();
+                                /* setTimeout(function() {
+                                     location.reload();
 
-                                }, 3000)
+                                 }, 3000) */
                             } else {
                                 siteLoading("hide")
 
                                 toaster(response.message, "error", 3000);
                                 //location.reload();
-                                setTimeout(function() {
-                                    location.reload();
+                                /* setTimeout(function() {
+                                     location.reload();
 
-                                }, 3000)
+                                 }, 3000) */
                             }
 
 

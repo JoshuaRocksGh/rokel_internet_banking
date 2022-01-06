@@ -230,50 +230,36 @@ class ExcelUploadImport implements WithHeadingRow, ToCollection
 
 
             $error_message = '';
+            // Validate reference number
 
-            if (null == ($row['account_number'])) {
-                $error_message = $error_message . '- Account number can not be empty.';
-                $row['account_number'] = "";
-            }
+            // if (null == ($row['name'])) {
+            //     $error_message = $error_message . '- Name can not be empty.';
+            //     $row['name'] = "";
+            // }
 
+            // if (null == ($row['amount'])) {
+            //     $error_message = $error_message . '- Amount can not be empty.';
+            //     $row['amount'] = "";
+            // } else if (($row['amount']) <= 0) {
+            //     $error_message = $error_message . '- Amount can not be 0.';
+            //     $row['amount'] = "";
+            // }
 
-            $query = DB::connection('oracle')->table('G_LEDGER')->where('acct_link', trim($row['account_number']))->count();
-            //yeah this
-            //echo json_encode($query);
-            // die($query);
-            // exit($query);
-            if ($query > 0) {
-            } else {
-                $error_message = $error_message . '- Invalid Account number.';
-            }
+            // if (null == ($row['transaction_description'])) {
+            //     $error_message = $error_message . '- Transaction description can not be empty.';
+            //     $row['transaction_description'] = "";
+            // }
 
-            //this is the only i added.
-
-            if (null == ($row['name'])) {
-                $error_message = $error_message . '- Name can not be empty.';
-                $row['name'] = "";
-            }
-
-            if (null == ($row['amount'])) {
-                $error_message = $error_message . '- Amount can not be empty.';
-                $row['amount'] = "";
-            } else if (($row['amount']) <= 0) {
-                $error_message = $error_message . '- Amount can not be 0.';
-                $row['amount'] = "";
-            }
-
-            if (null == ($row['transaction_description'])) {
-                $error_message = $error_message . '- Transaction description can not be empty.';
-                $row['transaction_description'] = "";
-            }
-
-            if (null == ($row['bank'])) {
-                $error_message = $error_message . '- Bank can not be empty.';
-                $row['bank'] = "";
-            }
+            // if (null == ($row['bank'])) {
+            //     $error_message = $error_message . '- Bank can not be empty.';
+            //     $row['bank'] = "";
+            // }
 
             if (null == ($row['ref_number'])) {
                 $error_message = $error_message . '- Ref Number can not be empty.';
+                $row['ref_number'] = "";
+            } else if (($row['ref_number']) != $ref_no) {
+                $error_message = $error_message . '- Ref Number do not match';
                 $row['ref_number'] = "";
             }
 
