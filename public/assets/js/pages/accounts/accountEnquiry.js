@@ -128,8 +128,8 @@ $(function () {
                         if (type === "display" || type === "filter") {
                             const color =
                                 data < 0 ? "text-danger" : "text-success";
+                            // <i class="fe-arrow-up text-${color} mr-1"></i>
                             return `<b class='${color}'>
-                                <i class="fe-arrow-up text-${color} mr-1"></i>
                                 ${formatToCurrency(parseFloat(data))}
                             </b>
                             `;
