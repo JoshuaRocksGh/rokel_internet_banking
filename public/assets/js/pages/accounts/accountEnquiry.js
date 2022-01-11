@@ -33,7 +33,7 @@ $(function () {
         $(`#from_account option[data-account-number=${PageData.reqAccount}]`)
             .prop("selected", true)
             .trigger("change");
-        $("search_transaction").trigger("click");
+        $("#search_transaction").trigger("click");
     }
 
     $("#search_transaction").on("click", function () {
@@ -106,7 +106,7 @@ $(function () {
             destroy: true,
             columnDefs: [
                 {
-                    targets: [0, 4],
+                    targets: 0,
                     // "data": "description",
                     render: function (data, type) {
                         if (type === "display" || type === "filter") {
@@ -123,7 +123,7 @@ $(function () {
                     },
                 },
                 {
-                    targets: 1,
+                    targets: [1, 4],
                     render: function (data, type) {
                         if (type === "display" || type === "filter") {
                             const color =
