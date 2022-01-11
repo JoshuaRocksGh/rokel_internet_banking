@@ -134,18 +134,18 @@ function siteLoading(state) {
 
 function blockUi(data) {
     const defaults = {
-        block: "#preloader",
+        block: "#body",
         message: "Please Wait",
         size: "75px",
         bgColor: "#4fc6e1",
-        opacity: "0.8",
+        opacity: "0.3",
     };
     data = Object.assign(defaults, data);
     const { block, message, size, bgColor, opacity } = data;
     $(block).block({
-        message: `<div><img class="pulse" style="width: ${size};" src="assets/images/logoRKB.png" />
-            <div class="mt-2 row"><span class="lds-hourglass"></span> <span class="text-semibold align-self-center ml-2 font-weight-bold">
-                ${message}</span></div>`,
+        message: `<div><img class="pulse " style="width: ${size};" src="assets/images/logoRKB.png" />
+            <div class="mt-2 row tw-relative"><span class="text-semibold align-self-center mx-2 font-weight-bold">
+                ${message}</span><span class="lds-hourglass tw-absolute"></span> </div>`,
         overlayCSS: {
             backgroundColor: bgColor,
             opacity: opacity,
@@ -153,20 +153,32 @@ function blockUi(data) {
             "z-index": "9999",
         },
         css: {
-            width: "auto",
-            padding: "10px 15px",
+            width: "100%",
+            height: "100%",
+            "backdrop-filter": "blur(3px)",
+            // padding: "10px 15px",
             "-webkit-border-radius": 2,
             "-moz-border-radius": 2,
             border: 0,
+            display: "flex",
+            "justify-content": "center",
+            "align-items": "center",
             "z-index": "99999",
             "font-size": "1rem",
-            transform: "translate(-50%, -50%)",
             backgroundColor: "none",
         },
     });
 }
-function unblockUi(block = "#preloader") {
+function unblockUi(block = "#body") {
     $(block).unblock();
+}
+
+function encodeString(stringToEncode) {
+    return encodeURIComponent(btoa(stringToEncode));
+}
+
+function decodeString(stringToDecode) {
+    return atob(decodeURIComponent(stringToDecode));
 }
 
 $("#sidebar_logout").on("click", (e) => {
