@@ -140,7 +140,7 @@
                                     </h5>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-9 col-md-4">
                                     <select class="form-control col-md-8" id="filter" required>
 
                                         <option value="all" selected> ALL</option>
@@ -149,7 +149,7 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-2">
+                                <div class="col-3 col-md-2">
                                     <span style="float: right">
                                         &nbsp;&nbsp;
                                         {{-- <span> --}}
