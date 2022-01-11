@@ -205,12 +205,6 @@ form-control {
 }
 
 /* =============== blockUi ============ */
-
-.blockMsg {
-    top: 50% !important;
-    left: 50% !important;
-}
-
 .lds-hourglass {
     display: inline-block;
     position: relative;
