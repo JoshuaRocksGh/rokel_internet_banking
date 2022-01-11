@@ -82,9 +82,7 @@
                         </div> <!-- end row-->
                     </div> <!-- end widget-rounded-circle-->
 
-                    {{-- <select name="" id="">
-                    <option value="">Welcome</option>
-                </select> --}}
+                    {
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                         style="background-color: rgba(253, 235, 205, 1);">
                         <a class="dropdown-item" href="{{ url('own-account') }}" id="dropdown_own_account">Own
@@ -530,8 +528,7 @@
 
                 </div>
                 <div class="col-md-4">
-                    {{-- <br> --}}
-                    {{-- <br> --}}
+
                     <div class="card-box"
                         style="background-color: rgba(255, 255, 255, 0.5);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                         <h4 class="header-title text-center"> <b>Transfer Rate</b></h4>
@@ -560,7 +557,6 @@
                         </div>
                     </div>
 
-                    {{-- <br> --}}
                     <div class="card-box"
                         style="background-color: rgba(153, 225, 246, 1);backdrop-filter: blur(5px);box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
                         <h4 class="header-title text-center"><b>Currency Convertor</b></h4>
@@ -623,9 +619,46 @@
                     </div>
 
                     <div class="card site-card">
-                        <div class="card-body">
-                            <br><br><br><br>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <i class="mdi mdi-home" style="zoom: 1.5"></i>
+
+                            </div>
+                            <div class="col-md-10">
+                                <span>25-27 Siaka Stevens St., Freetown, Sierra
+                                    Leone</span>
+                            </div>
                         </div>
+
+                        <span class="m-1"
+                            style="display: block; width: 100% ; border-top: 1px solid #ccc"></span>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <i class="mdi mdi-phone-in-talk" style="zoom: 1.5"></i>
+                            </div>
+                            <div class="col-md-10">
+                                <span>(+232) 22-222-501 EXT.226</span>
+                            </div>
+                        </div>
+
+                        <span class="m-1"
+                            style="display: block; width: 100% ; border-top: 1px solid #ccc"></span>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <i class="mdi mdi-email-edit" style="zoom: 1.5"></i>
+
+                            </div>
+                            <div class="col-md-10">
+
+                                <span> info@rokelbank.sl</span>
+
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
 
