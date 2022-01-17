@@ -82,7 +82,7 @@
                         </div> <!-- end row-->
                     </div> <!-- end widget-rounded-circle-->
 
-                    {
+
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                         style="background-color: rgba(253, 235, 205, 1);">
                         <a class="dropdown-item" href="{{ url('own-account') }}" id="dropdown_own_account">Own
@@ -393,7 +393,7 @@
                             <li class="nav-item">
                                 <a href="#home" data-toggle="tab" aria-expanded="false" class="nav-link active"
                                     id="casa_chart_tab">
-                                    <strong class="text-success">CURRENT & SAVINGS</strong>
+                                    <strong class="text-success">MY ACCOUNTS</strong>
                                     <select name="" id="casa_line_chart" class="form-control ">
                                         {{-- <option value="" disabled>Select
                                         Account Number</option> --}}
@@ -421,13 +421,16 @@
                         </ul>
                         <div class="tab-content container">
                             <div class="tab-pane active" id="home">
-                                <span colspan="100%" class="text-center" id="line_chart_no_data">
-                                    <br><br>
-                                    {!! $noDataAvailable !!}
-                                </span>
-                                <canvas id="casa_myChart" style="width:200px;max-width:700px;">
+                                <div class="card">
+                                    <span colspan="100%" class="text-center" id="line_chart_no_data">
+                                        <br><br>
+                                        {!! $noDataAvailable !!}
+                                    </span>
 
-                                </canvas>
+                                    <canvas id="casa_myChart" style="width:200px;max-width:700px;">
+
+                                    </canvas>
+                                </div>
 
 
                                 {{-- <canvas id="myChart" style="width:100%;max-width:700px"></canvas> --}}
@@ -618,47 +621,48 @@
                         </form>
                     </div>
 
-                    <div class="card site-card">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <i class="mdi mdi-home" style="zoom: 1.5"></i>
+                    <div class="card ">
+                        <div class="card-body m-2">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <i class="mdi mdi-home" style="zoom: 1.5"></i>
 
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="text-danger">25-27 Siaka Stevens St., Freetown, Sierra
+                                        Leone</span>
+                                </div>
                             </div>
-                            <div class="col-md-10">
-                                <span>25-27 Siaka Stevens St., Freetown, Sierra
-                                    Leone</span>
+
+                            <span class="m-1"
+                                style="display: block; width: 100% ; border-top: 1px solid #ccc"></span>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <i class="mdi mdi-phone-in-talk" style="zoom: 1.5"></i>
+                                </div>
+                                <div class="col-md-10">
+                                    <span class="text-danger">(+232) 22-222-501 EXT.226</span>
+                                </div>
                             </div>
+
+                            <span class="m-1"
+                                style="display: block; width: 100% ; border-top: 1px solid #ccc"></span>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <i class="mdi mdi-email-edit" style="zoom: 1.5"></i>
+
+                                </div>
+                                <div class="col-md-10">
+
+                                    <span class="text-danger"> info@rokelbank.sl</span>
+
+                                </div>
+                            </div>
+
+
                         </div>
-
-                        <span class="m-1"
-                            style="display: block; width: 100% ; border-top: 1px solid #ccc"></span>
-
-                        <div class="row">
-                            <div class="col-md-2">
-                                <i class="mdi mdi-phone-in-talk" style="zoom: 1.5"></i>
-                            </div>
-                            <div class="col-md-10">
-                                <span>(+232) 22-222-501 EXT.226</span>
-                            </div>
-                        </div>
-
-                        <span class="m-1"
-                            style="display: block; width: 100% ; border-top: 1px solid #ccc"></span>
-
-                        <div class="row">
-                            <div class="col-md-2">
-                                <i class="mdi mdi-email-edit" style="zoom: 1.5"></i>
-
-                            </div>
-                            <div class="col-md-10">
-
-                                <span> info@rokelbank.sl</span>
-
-                            </div>
-                        </div>
-
-
-
                     </div>
                 </div>
 
