@@ -251,5 +251,6 @@
     <script defer>
         const PageData = new Object();
         PageData.reqAccount = @json($accountNumber);
+        let noDataAvailable = {!! json_encode($noDataAvailable) !!}
     </script>
 @endsection

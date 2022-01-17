@@ -11,9 +11,6 @@ $(function () {
 
     $("#from_account").on("change", function (e) {
         let option = $("#from_account option:selected");
-        console.log(e);
-        console.log(option);
-
         const accountNumber = option.attr("data-account-number");
         if (!accountNumber) {
             $(this).val("");
@@ -104,6 +101,14 @@ $(function () {
 
     function drawTransactionsTable(workingTransactions) {
         $("#account_transaction_display_table tbody").empty();
+        if (!workingTransactions || workingTransactions.length === 0) {
+            let noTrans = noDataAvailable.replace("Data", "Transactions");
+            $("#account_transaction_display_table tbody").append(
+                `<td colspan="100%" class="text-center">
+                ${noTrans} </td>`
+            );
+            return;
+        }
         let transactionTableOptions = {
             destroy: true,
             columnDefs: [
@@ -191,8 +196,10 @@ $(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                console.log(response);
-                if (response.responseCode !== "000" || response.data === 0) {
+                if (
+                    response.responseCode !== "000" ||
+                    response.data.length === 0
+                ) {
                     toaster(response.message, "warning");
                     PageData.transaction = [];
                 } else {
@@ -202,7 +209,6 @@ $(function () {
                 return;
             },
             error: function (xhr, status, error) {
-                console.log(xhr);
                 toaster(error, "error");
             },
         });
@@ -217,11 +223,9 @@ $(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success: function (response) {
-                console.log(response);
                 if (response.responseCode == "000") {
                     const data = response.data;
                     $.each(data, (i) => {
-                        console.log(i);
                         Object.entries(data[i]).forEach(([key, value], j) => {
                             if (key.includes("image")) {
                                 let active = j === 0 ? "active" : "";
