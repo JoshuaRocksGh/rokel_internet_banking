@@ -135,12 +135,15 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarLoans" data-toggle="collapse">
-                        <i class="mdi mdi-briefcase-check-outline"></i>
-                        <span> My Loans </span>
-                        <span class="menu-arrow"></span>
+                    {{-- <a href="#sidebarLoans" data-toggle="collapse"> --}}
+
+                        {{-- <span> My Loans </span>4 --}}
+                        <a href="{{ url('loan-request') }}"> <i class="mdi mdi-briefcase-check-outline"></i><span> My
+                                Loans</span></a>
+
+                        {{-- <span class="menu-arrow"></span> --}}
                     </a>
-                    <div class="collapse" id="sidebarLoans">
+                    {{-- <div class="collapse" id="sidebarLoans">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ url('loan-request') }}">Loan Request</a>
@@ -149,7 +152,7 @@
                                 <a href="#">Loan Payment</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </li>
                 <li>
                     <a href="{{ url('home') }}">
