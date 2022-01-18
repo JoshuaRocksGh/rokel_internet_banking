@@ -129,7 +129,7 @@ class BulkUploadsController extends Controller
 
         // return $request->excel_file;
 
-
+        // return $request;
 
         $validator = Validator::make($request->all(), [
             'excel_file' => 'required|mimes:xls,xlsx',
@@ -183,16 +183,61 @@ class BulkUploadsController extends Controller
         $upload_file_excel = $request->file_name;
 
         // Validate reference number in excel before upload //
+
+        $data = [
+            'debitAccount' => $account_no,
+            'bankType' => $bank_code,
+            'bulkAmount' => $total_amount,
+            'referenceNumber' => $trans_ref_no,
+            'valueDate' => $value_date,
+            'customerNumber' => $customer_no
+        ];
+
+        // return $data;
+
+        try {
+
+            $filename = $request->excel_file->getClientOriginalName();
+            $path  =  $request->file('excel_file')->getPathName();
+
+
+            $response = Http::attach(
+                'file',
+                file_get_contents($path),
+                $filename
+            )->post(env('API_BASE_URL') . "corporate/uploadBulk", $data);
+            // return $response;
+            // dd($response);
+
+
+
+            $result = new ApiBaseResponse();
+
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+        }
+
+        die();
+
+        //
         if ($file_upload) {
 
             $path = $request->file('excel_file')->getRealPath();
-            // return $path;
+
 
             $file = $request->file('excel_file');
             $ext = $file->getClientOriginalExtension();
             $name = strtoupper($documentRef) . '~' . strtoupper($trans_ref_no) . '~' . strtoupper($total_amount) . '.' . $ext;
 
-            // return $name;
+
             $post_date = Carbon::now();
             $post_date = $post_date->toDateTimeString();
 
@@ -212,37 +257,7 @@ class BulkUploadsController extends Controller
             return false;
         }
 
-        try {
-
-            $filename = $request->excel_file->getClientOriginalName();
-            $path  =  $request->file('excel_file')->getPathName();
-
-
-            $response = Http::attach(
-                'file',
-                file_get_contents($path),
-                $filename
-            )->post('http://192.168.1.225:9096/corporate/uploadBulk');
-            // return $response;
-
-
-
-
-            $result = new ApiBaseResponse();
-
-            return $result->api_response($response);
-        } catch (\Exception $e) {
-
-            DB::table('tb_error_logs')->insert([
-                'platform' => 'ONLINE_INTERNET_BANKING',
-                'user_id' => 'AUTH',
-                'message' => (string) $e->getMessage()
-            ]);
-
-            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
-        }
-
-        die();
+        //
 
 
         if ($request->file()) {
@@ -345,18 +360,32 @@ class BulkUploadsController extends Controller
 
         // return $request;
 
-        $customerNumber = $request->query("customer_no");
-        // return $customerNumber;
+        $fileBatch = $request->query("fileBatch");
+        $customerNumber = session()->get('customerNumber');
 
-        // $files = DB::table('tb_corp_bank_import_excel')
-        //     ->distinct()
-        //     ->where('customer_no', $customerNumber)
-        //     ->where('status', 'P')
-        //     ->orderBy('batch_no', 'desc')
-        //     ->get(['batch_no', 'account_no', 'bank_code', 'status', 'ref_no', 'total_amount', 'value_date']);
+        $base_response = new BaseResponse();
 
-        // return response()->json($files);
 
+        // return $fileBatch;
+        // dd('http://192.168.1.225:9096/corporate/getBulkUploadFilesDetails?' . "customerNumber=$customerNumber&batchNumber=$fileBatch");
+
+
+        try {
+            $response = Http::post(env('API_BASE_URL') . "/corporate/getBulkUploadFilesDetails?customerNumber=$customerNumber&batchNumber=$fileBatch");
+            $result = new ApiBaseResponse();
+
+            return $result->api_response($response);
+        } catch (\Exception $e) {
+
+            DB::table('tb_error_logs')->insert([
+                'platform' => 'ONLINE_INTERNET_BANKING',
+                'user_id' => 'AUTH',
+                'message' => (string) $e->getMessage()
+            ]);
+            return $base_response->api_response('500', "Internal Server Error",  NULL); // return API BASERESPONSE
+
+        }
+        die();
         $query = DB::connection('oracle')->table('bulk_temp_excel')->get();
         return response()->json([
             'responseCode' => '000',
@@ -364,7 +393,7 @@ class BulkUploadsController extends Controller
             'data' => $query
         ]);
 
-        die();
+
         $excel_errors = DB::table('tb_bulk_error_logs')
             // ->where('batch_no', $batch_no)
             ->where('customer_no', $customerNumber)

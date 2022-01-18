@@ -459,7 +459,9 @@
         var bulk_detail_list = []
 
 
-        function bulk_upload_list(customer_no, status) {
+        function bulk_upload_list(fileBatch, allErrors) {
+            console.log(fileBatch)
+            console.log(allErrors)
             var table = $('.bulk_upload_list').DataTable();
 
             var nodes = table.rows().nodes();
@@ -467,11 +469,11 @@
             //var _error_nodes = error_table.rows().nodes();
             $.ajax({
                 'tpye': 'GET',
-                'url': 'get-bulk-upload-list-api?customer_no=' + customer_no,
+                'url': 'get-bulk-upload-list-api?fileBatch=' + fileBatch,
                 "datatype": "application/json",
                 success: function(response) {
                     console.log(response.data);
-                    //return false;
+                    return false;
                     //console.log("bulk upload list:", response.data);
 
                     let pending = 0;
@@ -823,7 +825,7 @@
                 error: function(xhr, status, error) {
 
                     setTimeout(function() {
-                        bulk_upload_list(customer_no, status)
+                        bulk_upload_list(fileBatch, allErrors)
                     }, $.ajaxSetup().retryAfter)
                 }
             })
@@ -847,7 +849,6 @@
                 // bulk_upload_list('057725', "P")
                 //alert('called')
                 //console.log(@json(session('excel_details')))
-                bulk_upload_list(customer_no, "P")
                 //my_account()
             }, 500)
 
@@ -892,7 +893,7 @@
 
                 // FILE UPLOAD
                 var file = document.getElementById("excel_file").files[0];
-                console.log(file);
+                //console.log(file);
                 //return false;
                 if (file) {
 
@@ -962,7 +963,8 @@
                         },
                         success: function(response) {
                             console.log(response)
-
+                            //return false;
+                            let data = response.data
                             if (response.responseCode == "000") {
                                 siteLoading("hide")
 
@@ -974,6 +976,18 @@
                                  }, 3000) */
                             } else {
                                 siteLoading("hide")
+                                let allErrors = new Array()
+                                let fileBatch = data.fileBatch
+                                //console.log(fileBatch)
+
+                                let validationErrors = data.validationErrors
+                                $.each(validationErrors, function(index) {
+                                    //console.log(validationErrors[index])
+                                    allErrors.push(validationErrors[index])
+                                })
+
+                                //bulk_upload_list(fileBatch, allErrors)
+
 
                                 toaster(response.message, "error", 3000);
                                 //location.reload();
@@ -992,10 +1006,10 @@
                             siteLoading("hide")
 
                             toaster("Error Occurred. Upload Unsuccessful!", "error", 3000);
-                            setTimeout(function() {
+                            {{-- setTimeout(function() {
                                 location.reload();
-                                //location.reload();
-                            }, 3000)
+                                location.reload();
+                            }, 3000) --}}
 
                         }
                     })

@@ -59,9 +59,11 @@ $(function () {
                     "75px",
                     "#4fc6e1"
                 );
-                getAccountTransactions(account_number, startDate, endDate).done(
-                    () => unblockUi("body")
-                );
+                getAccountTransactions(
+                    account_number,
+                    startDate,
+                    endDate
+                ).always(() => unblockUi("body"));
                 const pdfPath = `print-account-statement\?ac=${encodeString(
                     account_number
                 )}&sd=${encodeString(startDate)}&ed=${encodeString(endDate)}`;

@@ -507,9 +507,8 @@
                 <div class="tab-pane" id="reverse_korpor_page">
                     <div class="col-md-12">
                         <div class="cards_table row">
-                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 customize_card" id=""
-                                style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
-                                <div class="p-3 mt-4 mt-lg-0 rounded">
+                            <div class="col-md-12 col-sm-12 col-xs-12 m-2 " id="">
+                                <div class="p-3 mt-4 mt-lg-0 site-card">
                                     <br>
 
                                     <div class="card-box">
@@ -578,8 +577,8 @@
                         <div class="col-12">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6  pt-5 px-4 m-2 " id="request_form_div"
-                                        style="background-image: linear-gradient(to bottom right, white, rgb(223, 225, 226));">
+                                    <div class="col-md-6  pt-5 px-4 m-2 site-card " id="request_form_div"
+                                        style="max-height: 75%">
 
                                         <form action="#" class="select_beneficiary" id="redeem_korpor_payment_details_form"
                                             autocomplete="off" aria-autocomplete="none">
