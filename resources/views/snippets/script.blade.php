@@ -12,8 +12,8 @@
 <script src="{{ asset('assets/js/vendor.min.js') }}" defer></script>
 <script src="{{ asset('assets\plugins\sweet-alert\sweetalert2@11.js') }}" defer></script>
 <script src="{{ asset('assets/js/app.min.js') }}" defer></script>
-{{-- <script src="{{ asset('assets/js/functions/getAccounts.js') }}" defer></script> --}}
-<script src="assets/plugins/blockui/jquery.blockUI.min.js" defer></script>
+<script src="{{ asset('assets/js/functions/getAccounts.js') }}" defer></script>
+{{-- <script src="assets/plugins/blockui/jquery.blockUI.min.js" defer></script> --}}
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
 --}}
 {{-- <script src="assets\plugins\bootstrap-select\bootstrap-select.min.js" defer> </script> --}}
