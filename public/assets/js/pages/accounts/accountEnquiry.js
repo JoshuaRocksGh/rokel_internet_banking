@@ -47,8 +47,10 @@ $(function () {
             return false;
         } else {
             var from_account = $("#from_account").val();
+            console.log(start_date);
             if (!from_account) {
                 toaster("please select an account", "warning");
+                $("#search_transaction").text("Search");
                 return false;
             } else {
                 from_account_info = from_account.split("~");

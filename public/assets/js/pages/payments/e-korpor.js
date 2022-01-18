@@ -590,7 +590,7 @@ $(document).ready(function () {
             // }
 
             if (!reference_no || !receiver_phoneNo || !pin) {
-                toaster("Fields must not be empty", "error", 10000);
+                toaster("Fields must not be empty", "error");
                 return false;
             } else {
                 $("#reverse-text").hide();
