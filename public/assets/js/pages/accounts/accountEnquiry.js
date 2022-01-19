@@ -47,7 +47,7 @@ $(function () {
             return false;
         } else {
             var from_account = $("#from_account").val();
-            console.log(start_date);
+            console.log(startDate);
             if (!from_account) {
                 toaster("please select an account", "warning");
                 $("#search_transaction").text("Search");
