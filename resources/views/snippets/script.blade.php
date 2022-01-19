@@ -16,7 +16,7 @@
 <script src="{{  asset('assets/plugins/blockui/jquery.blockUI.min.js') }}" defer></script>
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js" defer></script>
 --}}
-{{-- <script src="assets\plugins\bootstrap-select\bootstrap-select.min.js" defer> </script> --}}
+<script src="assets\plugins\bootstrap-select\bootstrap-select.min.js" defer> </script>
 <script defer src="{{ asset('assets/js/functions/genericFunctions.js') }}">
 
 </script>
