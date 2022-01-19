@@ -6,6 +6,7 @@ function to_account() {
         success: function (response) {
             let data = response.data;
             if (response.responseCode == "000") {
+                // console.log(data);
                 $.each(data, function (index) {
                     $("#select_beneficiary").append(
                         $("<option>", {
@@ -33,119 +34,93 @@ function to_account() {
     });
 }
 
-function get_accounts() {
-    $.ajax({
-        type: "GET",
-        url: "get-accounts-api",
-        datatype: "application/json",
+// function get_accounts() {
+//     $.ajax({
+//         type: "GET",
+//         url: "get-accounts-api",
+//         datatype: "application/json",
 
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-        success: function (response) {
-            if (response.responseCode == "000") {
-                let data = response.data;
-                $.each(data, function (index) {
-                    $("#from_account").append(
-                        $("<option>", {
-                            value:
-                                data[index].accountType +
-                                "~" +
-                                data[index].accountDesc +
-                                "~" +
-                                data[index].accountNumber +
-                                "~" +
-                                data[index].currency +
-                                "~" +
-                                data[index].availableBalance,
-                        }).text(
-                            data[index].accountType +
-                                "~" +
-                                data[index].accountNumber +
-                                "~" +
-                                data[index].currency +
-                                "~" +
-                                data[index].availableBalance
-                        )
-                    );
-                    //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
-                });
-            }
-        },
-    });
-}
+//         headers: {
+//             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+//         },
+//         success: function (response) {
+//             if (response.responseCode == "000") {
+//                 let data = response.data;
+//                 $.each(data, function (index) {
+//                     $("#from_account").append(
+//                         $("<option>", {
+//                             value:
+//                                 data[index].accountType +
+//                                 "~" +
+//                                 data[index].accountDesc +
+//                                 "~" +
+//                                 data[index].accountNumber +
+//                                 "~" +
+//                                 data[index].currency +
+//                                 "~" +
+//                                 data[index].availableBalance,
+//                         }).text(
+//                             data[index].accountType +
+//                                 "~" +
+//                                 data[index].accountNumber +
+//                                 "~" +
+//                                 data[index].currency +
+//                                 "~" +
+//                                 data[index].availableBalance
+//                         )
+//                     );
+//                     //$('#to_account').append($('<option>', { value : data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance}).text(data[index].accountType+'~'+data[index].accountNumber+'~'+data[index].currency+'~'+data[index].availableBalance));
+//                 });
+//             }
+//         },
+//     });
+// }
 
-function get_currency() {
-    $.ajax({
-        type: "GET",
-        url: "get-currency-list-api",
-        datatype: "application/json",
-        success: function (response) {
-            let data = response.data;
-            $.each(data, function (index) {
-                $("#select_currency").append(
-                    $("<option>", {
-                        value: data[index].isoCode,
-                    }).text(data[index].isoCode + "~" + data[index].description)
-                );
-            });
-        },
-    });
-}
-
-$("#schedule_payment_form_summary").hide();
-$("#schedule_payment_form").hide();
-$("#schedule_payment_table").show();
-$("#display_view_list").hide();
+// function get_currency() {
+//     $.ajax({
+//         type: "GET",
+//         url: "get-currency-list-api",
+//         datatype: "application/json",
+//         success: function (response) {
+//             let data = response.data;
+//             $.each(data, function (index) {
+//                 $("#select_currency").append(
+//                     $("<option>", {
+//                         value: data[index].isoCode,
+//                     }).text(data[index].isoCode + "~" + data[index].description)
+//                 );
+//             });
+//         },
+//     });
+// }
 
 $(document).ready(function () {
-    setTimeout(function () {
-        get_accounts();
-        to_account();
-        get_currency();
-    }, 2000);
+    // get_accounts();
+    to_account();
+    // get_currency();
 
-    $(".from_account_display_info").hide();
-    $(".to_account_display_info").hide();
-    $(".maximum_attempts").hide();
+    // $(".from_account_display_info").hide();
+    // $(".to_account_display_info").hide();
+    // $(".maximum_attempts").hide();
 
-    function sweet_alert() {
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 5000,
-            timerProgressBar: false,
-            didOpen: (toast) => {
-                toast.addEventListener("mouseenter", Swal.stopTimer);
-                toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-        });
-
-        Toast.fire({
-            icon: "error",
-            title: "Can not send to same account",
-        });
-    }
-
-    $("#display_view_list").click(function () {
+    $("#display_view_list").on("click", function () {
         $("#schedule_payment_table").show();
         $("#schedule_payment_form_summary").hide();
         $("#schedule_payment_form").hide();
         $("#display_view_list").hide();
         $(".maximum_attempts").hide();
-
-        $("#centermodal").attr("disabled", false);
+        $("#payments_list").show(500);
+        $("#display_schedule_payment").show(500).attr("disabled", false);
     });
 
-    $("#centermodal").click(function () {
+    $("#display_schedule_payment").on("click", function () {
         $("#schedule_payment_table").hide();
         $("#display_view_list").show();
         $("#schedule_payment_form").toggle(500);
-        $("#centermodal").attr("disabled", true);
+        $("#display_schedule_payment").hide(500).attr("disabled", true);
     });
 
-    $("#back_button").click(function () {
+    $("#back_button").on("click", function () {
         $("#schedule_payment_table").hide();
         $("#display_view_list").show();
 
@@ -153,7 +128,7 @@ $(document).ready(function () {
         $("#schedule_payment_form").toggle(500);
     });
 
-    $("#from_account").change(function () {
+    $("#from_account").on("change", function () {
         var from_account = $(this).val();
         if (from_account == "" || from_account == undefined) {
             $(".from_account_display_info").hide();
@@ -174,7 +149,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#select_beneficiary").change(function () {
+    $("#select_beneficiary").on("change", function () {
         var to_account = $(this).val();
 
         if (to_account == "" || to_account == undefined) {
@@ -204,7 +179,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#effective_date_to").change(function (e) {
+    $("#effective_date_to").on("change", function (e) {
         let date_from = $("#effective_date_from").val();
         let date_to = $(this).val();
 
@@ -215,7 +190,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#next_button").click(function (e) {
+    $("#next_button").on("change", function (e) {
         e.preventDefault();
 
         var from_account_ = $("#from_account").val().split("~");
@@ -251,7 +226,7 @@ $(document).ready(function () {
         $("#schedule_payment_form").hide();
     });
 
-    $("#submit_button").click(function (e) {
+    $("#submit_button").on("change", function (e) {
         e.preventDefault();
         var from_account_ = $("#from_account").val().split("~");
         var from_account = from_account_[2];
