@@ -460,7 +460,7 @@
 
 
         function bulk_upload_list(fileBatch) {
-            console.log(fileBatch)
+            alert(fileBatch)
             //console.log(allErrors)
             var table = $('.bulk_upload_list').DataTable();
 
@@ -962,7 +962,7 @@
                             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                         },
                         success: function(response) {
-                            console.log(response)
+                            //console.log(response)
                             //return false;
                             let data = response.data
                             if (response.responseCode == "000") {
