@@ -371,7 +371,7 @@ class BulkUploadsController extends Controller
 
 
         try {
-            $response = Http::post(env('API_BASE_URL') . "corporate/getBulkUploadData/$fileBatch");
+            $response = Http::get(env('API_BASE_URL') . "corporate/getBulkUploadData/$fileBatch");
             $result = new ApiBaseResponse();
 
             return $result->api_response($response);

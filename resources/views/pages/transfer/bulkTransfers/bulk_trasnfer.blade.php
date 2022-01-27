@@ -460,7 +460,7 @@
 
 
         function bulk_upload_list(fileBatch) {
-            alert(fileBatch)
+            //alert(fileBatch)
             //console.log(allErrors)
             var table = $('.bulk_upload_list').DataTable();
 
