@@ -459,9 +459,9 @@
         var bulk_detail_list = []
 
 
-        function bulk_upload_list(fileBatch, allErrors) {
+        function bulk_upload_list(fileBatch) {
             console.log(fileBatch)
-            console.log(allErrors)
+            //console.log(allErrors)
             var table = $('.bulk_upload_list').DataTable();
 
             var nodes = table.rows().nodes();
@@ -825,7 +825,7 @@
                 error: function(xhr, status, error) {
 
                     setTimeout(function() {
-                        bulk_upload_list(fileBatch, allErrors)
+                        bulk_upload_list(fileBatch)
                     }, $.ajaxSetup().retryAfter)
                 }
             })
@@ -969,6 +969,7 @@
                                 siteLoading("hide")
 
                                 toaster(response.message, "success", 3000);
+                                bulk_upload_list(data.fileBatch)
 
                                 /* setTimeout(function() {
                                      location.reload();
@@ -986,7 +987,7 @@
                                     allErrors.push(validationErrors[index])
                                 })
 
-                                //bulk_upload_list(fileBatch, allErrors)
+                                //bulk_upload_list(fileBatch)
 
 
                                 toaster(allErrors, "error", 3000);
